@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Gary_s House.mp3-ce5ee0cceb1fd888469c0d77d6e5f4b9.mp3str"
+
+[deps]
+
+source_file="res://Music/Gary_s House.mp3"
+dest_files=[ "res://.import/Gary_s House.mp3-ce5ee0cceb1fd888469c0d77d6e5f4b9.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

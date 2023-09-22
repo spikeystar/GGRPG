@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 62, 317 ), Vector2( 976.665, 317 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "New Anim"
+
+[sub_resource type="AnimationNodeStateMachine" id=3]
+"states/New Anim/node" = SubResource( 2 )
+"states/New Anim/position" = Vector2( 338, 123 )
+start_node = "New Anim"
+
+[sub_resource type="AnimationNodeTimeScale" id=4]
+
+[sub_resource type="AnimationNodeBlendTree" id=5]
+graph_offset = Vector2( -23.9897, 54.0336 )
+"nodes/My State Machine/node" = SubResource( 3 )
+"nodes/My State Machine/position" = Vector2( 140, 120 )
+"nodes/My Time Scale/node" = SubResource( 4 )
+"nodes/My Time Scale/position" = Vector2( 420, 120 )
+nodes/output/position = Vector2( 680, 140 )
+node_connections = [ "My Time Scale", 0, "My State Machine", "output", 0, "My Time Scale" ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
+
+[node name="Node" type="Node"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 830.137, 317 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+"anims/New Anim" = SubResource( 1 )
+
+[node name="AnimationTree" type="AnimationTree" parent="Sprite"]
+tree_root = SubResource( 5 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+"parameters/My State Machine/playback" = SubResource( 6 )
+"parameters/My Time Scale/scale" = 1.0
