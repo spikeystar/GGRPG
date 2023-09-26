@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Gary Basic.png-ab8172ee4f155ebf6b8a6a8bdf06ab58.stex"
+path="res://.import/DebugRuler.png-0150e24b68c15f8db45182aea918f1e7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Players/Gary/Gary Basic.png"
-dest_files=[ "res://.import/Gary Basic.png-ab8172ee4f155ebf6b8a6a8bdf06ab58.stex" ]
+source_file="res://Assets/DebugRuler.png"
+dest_files=[ "res://.import/DebugRuler.png-0150e24b68c15f8db45182aea918f1e7.stex" ]
 
 [params]
 

@@ -1,4 +1,3 @@
 extends Node
 
-var door_name = null
-
+var door_name : String;

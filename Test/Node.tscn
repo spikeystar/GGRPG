@@ -41,7 +41,7 @@ node_connections = [ "My Time Scale", 0, "My State Machine", "output", 0, "My Ti
 [node name="Node" type="Node"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 830.137, 317 )
+position = Vector2( 318.957, 317 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 "anims/New Anim" = SubResource( 1 )
