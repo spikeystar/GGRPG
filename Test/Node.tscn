@@ -34,14 +34,14 @@ graph_offset = Vector2( -23.9897, 54.0336 )
 "nodes/My Time Scale/node" = SubResource( 4 )
 "nodes/My Time Scale/position" = Vector2( 420, 120 )
 nodes/output/position = Vector2( 680, 140 )
-node_connections = [ "My Time Scale", 0, "My State Machine", "output", 0, "My Time Scale" ]
+node_connections = [ "output", 0, "My Time Scale", "My Time Scale", 0, "My State Machine" ]
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=6]
 
 [node name="Node" type="Node"]
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 318.957, 317 )
+position = Vector2( 543.214, 317 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 "anims/New Anim" = SubResource( 1 )

@@ -1,0 +1,235 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://Assets/Gary's House/Interior/lamp.png" type="Texture" id=1]
+[ext_resource path="res://Area.gd" type="Script" id=2]
+[ext_resource path="res://Assets/General/circle shadow small.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Area_Target.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Gary's House/Interior/window.png" type="Texture" id=5]
+[ext_resource path="res://Assets/General/wood tile a.png" type="Texture" id=6]
+[ext_resource path="res://Assets/General/rectangle shadow small.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Gary's House/Interior/bed.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Gary's House/Interior/painting.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Gary's House/Interior/dresser.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Gary's House/Interior/mat b.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Gary's House/Interior/curtains.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Gary's House/Interior/mat a.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Gary's House/Interior/radio.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Gary's House/Interior/cabinets.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Gary's House/Interior/fig leaf.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Gary's House/Interior/sink.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Gary's House/Interior/wall b.png" type="Texture" id=19]
+[ext_resource path="res://Assets/General/wood tile b.png" type="Texture" id=20]
+[ext_resource path="res://Scripts/CollisionV2.gd" type="Script" id=21]
+[ext_resource path="res://Scripts/FloorLayer.gd" type="Script" id=23]
+[ext_resource path="res://Scripts/PlayerFloorSetter.gd" type="Script" id=24]
+[ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=25]
+[ext_resource path="res://Transition.tscn" type="PackedScene" id=26]
+
+[sub_resource type="StreamTexture" id=2]
+load_path = "res://.import/blue bckgd.png-f38ac9d5d4da9eb96a359d986f34dba2.stex"
+
+[sub_resource type="TileSet" id=1]
+0/name = "wood tile a.png 0"
+0/texture = ExtResource( 6 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "wood tile b.png 1"
+1/texture = ExtResource( 20 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[node name="WorldRoot" type="Node2D"]
+position = Vector2( 2, 1 )
+rotation = -0.00598629
+
+[node name="BlueBckgd" type="Sprite" parent="."]
+position = Vector2( 91.1108, -71.9908 )
+rotation = 0.0051088
+scale = Vector2( 0.843241, 0.564033 )
+texture = SubResource( 2 )
+
+[node name="Node2D" type="TileMap" parent="."]
+position = Vector2( 5.93587, 2.66679 )
+rotation = -0.0355323
+scale = Vector2( 1.01358, 1 )
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 63, 28 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -196610, 1, 0, -196609, 0, 0, -262144, 1, 0, -262143, 0, 0, -262142, 1, 0, -262141, 0, 0, -131074, 0, 0, -131073, 1, 0, -196608, 0, 0, -196607, 1, 0, -196606, 0, 0, -196605, 1, 0, -65538, 1, 0, -65537, 0, 0, -131072, 1, 0, -131071, 0, 0, -131070, 1, 0, -131069, 0, 0, -2, 0, 0, -1, 1, 0, -65536, 0, 0, -65535, 1, 0, -65534, 0, 0, -65533, 1, 0, 65534, 1, 0, 65535, 0, 0, 0, 1, 0, 1, 0, 0, 2, 1, 0, 3, 0, 0, 65536, 0, 0, 65537, 1, 0 )
+
+[node name="MatB" type="Sprite" parent="."]
+position = Vector2( 62.0136, -60.4157 )
+rotation = 0.00740846
+scale = Vector2( 1.75054, 1.89113 )
+texture = ExtResource( 12 )
+
+[node name="ShadowSquare" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.956863 )
+position = Vector2( 206.021, -15.6966 )
+rotation = -0.00420219
+scale = Vector2( 1.2, 1.05 )
+texture = ExtResource( 7 )
+
+[node name="ShadowCircle" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.815686 )
+position = Vector2( 101.303, 53.2441 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="YSort" type="YSort" parent="."]
+sort_enabled = false
+
+[node name="MatA" type="Sprite" parent="YSort"]
+position = Vector2( 9.52227, 21.8426 )
+rotation = -0.0109048
+scale = Vector2( 1.21143, 1.42928 )
+texture = ExtResource( 14 )
+
+[node name="WallB" type="Sprite" parent="YSort"]
+position = Vector2( -11.3103, -105.358 )
+rotation = 0.0127711
+scale = Vector2( 0.61459, 0.674059 )
+texture = ExtResource( 19 )
+
+[node name="WallB2" type="Sprite" parent="YSort"]
+position = Vector2( 167.565, -101.133 )
+rotation = 0.0222824
+scale = Vector2( 0.753518, 0.657323 )
+texture = ExtResource( 19 )
+flip_h = true
+
+[node name="Painting" type="Sprite" parent="YSort"]
+position = Vector2( 156.951, -109.751 )
+rotation = 0.0533726
+scale = Vector2( 1.18708, 1.01227 )
+texture = ExtResource( 10 )
+
+[node name="Cabinets" type="Sprite" parent="YSort"]
+position = Vector2( -57.9669, -83.1172 )
+rotation = -0.0042569
+scale = Vector2( 1.01372, 0.993317 )
+texture = ExtResource( 16 )
+
+[node name="Window" type="Sprite" parent="YSort"]
+position = Vector2( -9.667, -107.637 )
+rotation = -0.080861
+scale = Vector2( 1.23956, 1.12049 )
+texture = ExtResource( 5 )
+
+[node name="Curtains" type="Sprite" parent="YSort/Window"]
+position = Vector2( 4.498, 2.59257 )
+rotation = 0.0516677
+scale = Vector2( 1.26663, 1.43402 )
+texture = ExtResource( 13 )
+
+[node name="Bed" type="Sprite" parent="YSort"]
+position = Vector2( 62.8364, -85.761 )
+rotation = 0.0263759
+scale = Vector2( 1.38443, 1.44847 )
+texture = ExtResource( 9 )
+
+[node name="Dresser" type="Sprite" parent="YSort"]
+position = Vector2( 207.964, -33.8551 )
+rotation = -0.00521575
+scale = Vector2( 1.23839, 1.17219 )
+texture = ExtResource( 11 )
+
+[node name="Radio" type="Sprite" parent="YSort/Dresser"]
+position = Vector2( -12.1806, -27.8233 )
+scale = Vector2( 0.607952, 0.64921 )
+texture = ExtResource( 15 )
+
+[node name="Lamp" type="Sprite" parent="YSort/Dresser"]
+position = Vector2( 14.5385, -25.6151 )
+scale = Vector2( 0.744038, 0.799369 )
+texture = ExtResource( 1 )
+
+[node name="Sink" type="Sprite" parent="YSort"]
+position = Vector2( -44, -28 )
+rotation = -0.00493101
+scale = Vector2( 1.14337, 1.19817 )
+texture = ExtResource( 18 )
+
+[node name="FigLeaf" type="Sprite" parent="YSort"]
+position = Vector2( 102.605, 17.6856 )
+scale = Vector2( 0.876722, 0.90527 )
+texture = ExtResource( 17 )
+
+[node name="Area1" type="Area2D" parent="."]
+position = Vector2( 117.509, 15.8751 )
+scale = Vector2( 0.876722, 0.90527 )
+collision_layer = 2
+collision_mask = 0
+input_pickable = false
+script = ExtResource( 2 )
+target_scene = "res://Gary's House.tscn"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area1"]
+position = Vector2( -206.17, 27.3367 )
+polygon = PoolVector2Array( -10.2517, -2.26876, 60.3011, 24.6522, 84.3219, 13.7448, 12.6421, -15.392 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Transition" parent="CanvasLayer" instance=ExtResource( 26 )]
+
+[node name="Area1 Target" type="Node2D" parent="."]
+position = Vector2( 6.86818, 22.0415 )
+script = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 73.3758, -62.5619 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+script = ExtResource( 25 )
+
+[node name="CollisionRoot" type="Node2D" parent="."]
+position = Vector2( 272.929, -154.369 )
+
+[node name="CollisionPolygon" type="Node" parent="CollisionRoot"]
+script = ExtResource( 21 )
+
+[node name="Layer2" type="CollisionPolygon2D" parent="CollisionRoot/CollisionPolygon"]
+position = Vector2( 97, -56 )
+polygon = PoolVector2Array( -178, 9, -152, -3, -98, 18, -126, 32 )
+script = ExtResource( 23 )
+height = 32.0
+
+[node name="Layer1" type="CollisionPolygon2D" parent="CollisionRoot/CollisionPolygon"]
+position = Vector2( 65, -59 )
+polygon = PoolVector2Array( -45, -33, 3, -56, 41, -38, -4, -13 )
+script = ExtResource( 23 )
+height = 16.0
+
+[node name="Layer3" type="CollisionPolygon2D" parent="CollisionRoot/CollisionPolygon"]
+position = Vector2( 50, -26 )
+polygon = PoolVector2Array( 17, -66, 138, -15, 201, 11, 215, 18, 55, 90, -5, 66, -35, 79, -98, 53, -50, 23, -109, -10 )
+script = ExtResource( 23 )
+
+[node name="LayerArea" type="Area2D" parent="CollisionRoot"]
+position = Vector2( -284.198, 199.302 )
+script = ExtResource( 24 )
+
+[connection signal="body_shape_entered" from="CollisionRoot/LayerArea" to="CollisionRoot/LayerArea" method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="CollisionRoot/LayerArea" to="CollisionRoot/LayerArea" method="_on_body_shape_exited"]
