@@ -7,7 +7,7 @@
 [ext_resource path="res://Scripts/Area_Target.gd" type="Script" id=31]
 [ext_resource path="res://Scripts/Exit.gd" type="Script" id=32]
 [ext_resource path="res://Scripts/FloorLayer.gd" type="Script" id=33]
-[ext_resource path="res://Scripts/PlayerFloorSetter.gd" type="Script" id=34]
+[ext_resource path="res://Scripts/FloorSetter.gd" type="Script" id=34]
 [ext_resource path="res://Transition.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Scripts/CollisionV2.gd" type="Script" id=36]
 

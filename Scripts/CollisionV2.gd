@@ -1,6 +1,6 @@
 extends Node
 
-onready var layer_script = load("res://Scripts/PlayerFloorSetter.gd")
+onready var layer_script = load("res://Scripts/FloorSetter.gd")
 onready var area_root = get_node("../LayerArea")
 
 const MARGIN : int = 16;
@@ -164,13 +164,13 @@ func _physics_process(delta):
 	
 	if not motion_root:
 		# Getting gary. Pretty stupid way to do it. But gary is spawned at runtime...
-		motion_root = get_node_or_null("/root/PlayerManager/Gary/MotionRoot")
+		motion_root = PlayerManager.player_motion_root
 	
 	if motion_root:
-		var player_y = motion_root.pos_y
+		var player_z = motion_root.pos_z
 		
 		for layer in layers:
-			if layer.get_child(0).height <= player_y:
+			if layer.get_child(0).height <= player_z:
 				motion_root.add_collision_exception_with(layer)
 			else:
 				motion_root.remove_collision_exception_with(layer)

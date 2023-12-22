@@ -1,8 +1,15 @@
-[gd_scene load_steps=88 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://Scripts/Players/Gary.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/circle shadow small.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/ShadowLayerCheck.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Players/PlayerMotionRoot.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 14, 7 )
+
+[sub_resource type="CircleShape2D" id=172]
+radius = 1.0
 
 [sub_resource type="StreamTexture" id=171]
 load_path = "res://.import/Gary Basic.png-ab8172ee4f155ebf6b8a6a8bdf06ab58.stex"
@@ -276,7 +283,7 @@ graph_offset = Vector2( -194.97, 22.875 )
 [sub_resource type="Animation" id=13]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -288,7 +295,7 @@ tracks/0/keys = {
 "values": [ 22 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -300,7 +307,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -315,7 +322,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=14]
 resource_name = "back_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -327,7 +334,7 @@ tracks/0/keys = {
 "values": [ 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -339,7 +346,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -356,7 +363,7 @@ resource_name = "back_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -368,7 +375,7 @@ tracks/0/keys = {
 "values": [ 20, 20, 21 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -380,7 +387,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -397,7 +404,7 @@ resource_name = "back_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -409,7 +416,7 @@ tracks/0/keys = {
 "values": [ 7, 6, 8, 6 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -421,7 +428,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -436,7 +443,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=16]
 resource_name = "d_down_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -448,7 +455,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -460,7 +467,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -477,7 +484,7 @@ resource_name = "d_down_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -489,7 +496,7 @@ tracks/0/keys = {
 "values": [ 16, 16, 17 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -501,7 +508,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -516,7 +523,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=59]
 resource_name = "d_down_r_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -528,7 +535,7 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -540,7 +547,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -557,7 +564,7 @@ resource_name = "d_down_r_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -569,7 +576,7 @@ tracks/0/keys = {
 "values": [ 16, 16, 17 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -581,7 +588,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -598,7 +605,7 @@ resource_name = "d_down_r_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -610,7 +617,7 @@ tracks/0/keys = {
 "values": [ 1, 0, 2, 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -622,7 +629,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -639,7 +646,7 @@ resource_name = "d_down_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -651,7 +658,7 @@ tracks/0/keys = {
 "values": [ 1, 0, 2, 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -663,7 +670,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -678,7 +685,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=18]
 resource_name = "d_up_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -690,7 +697,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -702,7 +709,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -719,7 +726,7 @@ resource_name = "d_up_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -731,7 +738,7 @@ tracks/0/keys = {
 "values": [ 18, 18, 19 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -743,7 +750,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -758,7 +765,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=60]
 resource_name = "d_up_r_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -770,7 +777,7 @@ tracks/0/keys = {
 "values": [ 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -782,7 +789,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -799,7 +806,7 @@ resource_name = "d_up_r_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -811,7 +818,7 @@ tracks/0/keys = {
 "values": [ 18, 18, 19 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -823,7 +830,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -840,7 +847,7 @@ resource_name = "d_up_r_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -852,7 +859,7 @@ tracks/0/keys = {
 "values": [ 4, 3, 5, 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -864,7 +871,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -881,7 +888,7 @@ resource_name = "d_up_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -893,7 +900,7 @@ tracks/0/keys = {
 "values": [ 4, 3, 5, 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -905,7 +912,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -920,7 +927,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=20]
 resource_name = "front_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -932,7 +939,7 @@ tracks/0/keys = {
 "values": [ 22 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -944,7 +951,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -961,7 +968,7 @@ resource_name = "front_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -973,7 +980,7 @@ tracks/0/keys = {
 "values": [ 14, 14, 15 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -985,7 +992,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1002,7 +1009,7 @@ resource_name = "front_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1014,7 +1021,7 @@ tracks/0/keys = {
 "values": [ 23, 22, 24, 22 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1026,7 +1033,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1041,7 +1048,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=21]
 resource_name = "side_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1053,7 +1060,7 @@ tracks/0/keys = {
 "values": [ 9 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1065,7 +1072,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1082,7 +1089,7 @@ resource_name = "side_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1094,7 +1101,7 @@ tracks/0/keys = {
 "values": [ 12, 12, 13 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1106,7 +1113,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1121,7 +1128,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id=61]
 resource_name = "side_r_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1133,7 +1140,7 @@ tracks/0/keys = {
 "values": [ 9 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1145,7 +1152,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1162,7 +1169,7 @@ resource_name = "side_r_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1174,7 +1181,7 @@ tracks/0/keys = {
 "values": [ 12, 12, 13 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1186,7 +1193,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1203,7 +1210,7 @@ resource_name = "side_r_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1215,7 +1222,7 @@ tracks/0/keys = {
 "values": [ 10, 9, 11, 9 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1227,7 +1234,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1244,7 +1251,7 @@ resource_name = "side_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1256,7 +1263,7 @@ tracks/0/keys = {
 "values": [ 10, 9, 11, 9 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1268,7 +1275,7 @@ tracks/1/keys = {
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Gary:offset")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1280,33 +1287,47 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=11]
-extents = Vector2( 14, 7 )
-
-[sub_resource type="CircleShape2D" id=172]
-radius = 1.0
-
-[node name="Gary" type="Position2D"]
+[node name="Gary" type="YSort"]
+script = ExtResource( 1 )
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
 collision_mask = 2
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 player_acceleration = 3000
 player_friction = 15
 gravity = 940.0
 jump_velocity = 300
 
-[node name="VisualRoot" type="Node2D" parent="MotionRoot"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
+shape = SubResource( 11 )
 
-[node name="Gary" type="Sprite" parent="MotionRoot/VisualRoot"]
+[node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
+script = ExtResource( 3 )
+
+[node name="ShadowCheck" type="CollisionShape2D" parent="MotionRoot/ShadowAreaCheck"]
+shape = SubResource( 172 )
+
+[node name="ShadowYSort" type="Node2D" parent="."]
+
+[node name="ShadowVisualRoot" type="Node2D" parent="ShadowYSort"]
+
+[node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
+position = Vector2( -2.38419e-07, -2 )
+scale = Vector2( 0.84, 0.88 )
+texture = ExtResource( 2 )
+
+[node name="BodyYSort" type="Node2D" parent="."]
+
+[node name="BodyVisualRoot" type="Node2D" parent="BodyYSort"]
+
+[node name="Gary" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
 position = Vector2( 8, -28 )
-z_index = 5
 texture = SubResource( 171 )
 hframes = 9
 vframes = 3
 frame = 22
 
-[node name="AnimationTree" type="AnimationTree" parent="MotionRoot/VisualRoot"]
+[node name="AnimationTree" type="AnimationTree" parent="BodyYSort"]
 tree_root = SubResource( 37 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
@@ -1323,7 +1344,7 @@ parameters/Walk/6/TimeScale/scale = 5.5
 parameters/Walk/7/TimeScale/scale = 5.5
 parameters/Walk/9/TimeScale/scale = 5.5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MotionRoot/VisualRoot"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
 playback_speed = 5.5
 anims/RESET = SubResource( 13 )
 anims/back_idle = SubResource( 14 )
@@ -1350,18 +1371,3 @@ anims/side_r_idle = SubResource( 61 )
 anims/side_r_jump = SubResource( 58 )
 anims/side_r_walk = SubResource( 53 )
 anims/side_walk = SubResource( 22 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
-shape = SubResource( 11 )
-
-[node name="ShadowCircle" type="Sprite" parent="MotionRoot"]
-position = Vector2( -2.38419e-07, -2 )
-scale = Vector2( 0.84, 0.88 )
-z_index = 4
-texture = ExtResource( 2 )
-
-[node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
-script = ExtResource( 3 )
-
-[node name="ShadowCheck" type="CollisionShape2D" parent="MotionRoot/ShadowAreaCheck"]
-shape = SubResource( 172 )
