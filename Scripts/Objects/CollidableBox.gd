@@ -195,6 +195,7 @@ func _generate_region_sprites():
 	var v_coord_length = ceil(texture_size.y / HALF_TILE_HEIGHT)
 	var center_coord = ceil(grid_size.x)
 	var region_x = 0
+	
 	for h_coord in range(0, h_coord_length, 1):
 		var region_x_width = HALF_TILE_WIDTH + (x_margin_width if h_coord == 0 or h_coord == h_coord_length - 1 else 0)
 		
@@ -204,32 +205,23 @@ func _generate_region_sprites():
 		
 		var sprite_offset = Vector2(
 			0.0,
-			texture_size.y - HALF_TILE_HEIGHT - v_base_offset - texture_offset.y
+			round(texture_size.y - HALF_TILE_HEIGHT - v_base_offset - texture_offset.y)
 		)
 		
 		var sprite_y_offset = texture_size.y - HALF_TILE_HEIGHT
 		
-		var region_y = 0
-		for v_coord in range(0, v_coord_length, 1):
-			var region_y_height = HALF_TILE_HEIGHT + (top_margin if v_coord == 0 else 0)
-			
-			var v_offset_from_base = (region_y + region_y_height - sprite_offset.y)
-			var top_clip_sprite_offset = 0.0
-
-			var sprite = Sprite.new()
-			sprite.texture = texture
-			sprite.centered = false
-			sprite.region_enabled = true
-			sprite.region_rect = Rect2(region_x, region_y, region_x_width, region_y_height)
-			sprite.position = Vector2(
-				region_x - sprite_center.x,
-				-v_base_offset + top_clip_sprite_offset
-			)
-			sprite.offset = Vector2(0.0, v_offset_from_base - top_clip_sprite_offset - region_y_height)
-			region_sprites.push_back(sprite)
-			add_child(sprite)
-			
-			region_y += region_y_height
+		var sprite = Sprite.new()
+		sprite.texture = texture
+		sprite.centered = false
+		sprite.region_enabled = true
+		sprite.region_rect = Rect2(region_x, 0.0, region_x_width, texture_size.y)
+		sprite.position = Vector2(
+			region_x - sprite_center.x,
+			 -v_base_offset
+		)
+		sprite.offset = Vector2(0.0, -sprite_offset.y)
+		region_sprites.push_back(sprite)
+		add_child(sprite)
 		
 		region_x += region_x_width
 
