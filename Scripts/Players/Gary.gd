@@ -1,5 +1,4 @@
 extends YSort
-const LOWEST_Z : int = -256;
 
 export var spawn_z = 0
 export var player_acceleration = 10
@@ -33,10 +32,11 @@ func _physics_process(delta):
 		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y))
 	
 	var draw_pos_z = motion_root.pos_z
-	var y_offset_pos_z = motion_root.floor_z
+	var draw_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.pos_z))
 	var draw_shadow_z = motion_root.shadow_z
+	var draw_shadow_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.shadow_z))
 	
-	body_y_sort.global_position = motion_root.global_position + Vector2(0.0, y_offset_pos_z)
+	body_y_sort.global_position = Vector2(motion_root.global_position.x, draw_y_sort)
 	body_visual_root.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z)
-	shadow_y_sort.global_position = motion_root.global_position + Vector2(0.0, draw_shadow_z)
+	shadow_y_sort.global_position = Vector2(motion_root.global_position.x, draw_shadow_y_sort)
 	shadow_visual_root.global_position = motion_root.global_position + Vector2(0.0, -draw_shadow_z)
