@@ -5,12 +5,12 @@ var door_name : String;
 
 func calculate_y_sort(position: Vector3):
 	# Calculate euclidian distance, use as sort order.
-	var transform = Transform2D.rotated(-45.0)
+	var transform = Transform2D.rotated(-45.0).scaled(Vector2(1.0, 0.5))
 	var rotated_position = transform.xform(Vector2(position.x, position.y))
 	position = Vector3(
 		rotated_position.x,
 		rotated_position.y,
-		position.z
+		position.z * 0.6
 	)
 	var y_sort = (
 		position.x * (position.x + 1000) +
