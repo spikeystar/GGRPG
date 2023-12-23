@@ -45,7 +45,6 @@ var is_queued_generate_collider = false
 var is_queued_generate_collision_box_preview = false
 var is_queued_generate_region_sprites = false
 var is_ready = false # _ready() already called
-var region_sprites_y_sort = null # y-sort container for sprites
 var region_sprites = [] # texture is split into multiple sprites with texture regions for y-sorting
 
 #-------------------#
@@ -116,7 +115,6 @@ func _initialize_nodes():
 	collision_preview_mesh = null
 	floor_notify_area = null
 	floor_notify_area_shape = null
-	region_sprites_y_sort = null
 	region_sprites = []
 
 	_generate_collider_edges()
@@ -211,19 +209,6 @@ func _generate_region_sprites():
 	if not texture:
 		return
 	
-	if region_sprites_y_sort == null or not weakref(region_sprites_y_sort).get_ref() or region_sprites_y_sort.get_parent() != self:
-		region_sprites_y_sort = Node2D.new()
-		add_child(region_sprites_y_sort)
-	
-	var sort_position = global_position
-	var sort_height = floor_height
-	if abs(height - floor_height) < 0.1:
-		sort_height -= 1
-	region_sprites_y_sort.global_position = Vector2(
-		global_position.x,
-		Global.calculate_y_sort(Vector3(sort_position.x, sort_position.y, sort_height))
-	)
-	
 	var texture_size = texture.get_size()
 	var left_of_bottom_corner_width = HALF_TILE_WIDTH + ((grid_size.x - 1.0) * HALF_TILE_WIDTH)
 	var right_of_bottom_corner_width = HALF_TILE_WIDTH + ((grid_size.y - 1.0) * HALF_TILE_WIDTH)
@@ -268,6 +253,19 @@ func _generate_region_sprites():
 			var top_clip_sprite_offset = 0.0
 			
 			if true:
+				var y_sort = Node2D.new()
+				var sort_position = global_position + Vector2(
+					region_x - (h_margin + left_of_bottom_corner_width - texture_offset.x),
+					-v_base_offset
+				)
+				var sort_height = floor_height
+				if abs(height - floor_height) < 0.1:
+					sort_height -= 1
+				y_sort.global_position = Vector2(
+					global_position.x,
+					Global.calculate_y_sort(Vector3(sort_position.x, sort_position.y, sort_height))
+				)
+				add_child(y_sort)
 				
 				var sprite = Sprite.new()
 				sprite.texture = texture
@@ -275,8 +273,8 @@ func _generate_region_sprites():
 				sprite.region_enabled = true
 				sprite.region_rect = Rect2(region_x, region_y, region_x_width, region_y_height)
 				sprite.offset = Vector2(0.0, v_offset_from_base - top_clip_sprite_offset - region_y_height)
-				region_sprites.push_back(sprite)
-				region_sprites_y_sort.add_child(sprite)
+				region_sprites.push_back(y_sort)
+				y_sort.add_child(sprite)
 				sprite.global_position = global_position + Vector2(
 					region_x - (h_margin + left_of_bottom_corner_width - texture_offset.x),
 					-v_base_offset + top_clip_sprite_offset

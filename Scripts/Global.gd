@@ -10,7 +10,7 @@ func calculate_y_sort(position: Vector3):
 	position = Vector3(
 		rotated_position.x,
 		rotated_position.y,
-		position.z * 0.6
+		position.z
 	)
 	var y_sort = (
 		position.x * (position.x + 1000) +

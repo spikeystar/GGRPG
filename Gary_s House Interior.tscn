@@ -108,7 +108,7 @@ visible = false
 position = Vector2( 85.3757, -120.083 )
 z_index = 1
 frames = SubResource( 174 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="MatA" type="Sprite" parent="YSort"]
@@ -231,9 +231,8 @@ height = 24.0
 script = ExtResource( 25 )
 
 [node name="Layer3" type="CollisionPolygon2D" parent="CollisionRoot/CollisionPolygon"]
-visible = false
 position = Vector2( -49, 9.10001 )
-polygon = PoolVector2Array( 50, -77, 185, -14, 163, -5, 215, 18, 55, 90, -8.39905, 60.1853, -39, 73.9, -102, 43.9, -68.4242, 31.9573, -130, 3 )
+polygon = PoolVector2Array( 56, -81.1, 178, -29.1, 157, -13.1, 210, 9.89999, 55, 90, -8.39905, 60.1853, -39, 73.9, -102, 43.9, -68.4242, 31.9573, -130, 3 )
 script = ExtResource( 3 )
 
 [node name="LayerArea" type="Area2D" parent="CollisionRoot"]

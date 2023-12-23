@@ -32,7 +32,7 @@ func _physics_process(delta):
 		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y))
 	
 	var draw_pos_z = motion_root.pos_z
-	var draw_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.pos_z))
+	var draw_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.floor_z))
 	var draw_shadow_z = motion_root.shadow_z
 	var draw_shadow_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.shadow_z))
 	
