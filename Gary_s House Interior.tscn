@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Assets/General/wood tile a.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/wood tile b.png" type="Texture" id=2]
@@ -20,11 +20,10 @@
 [ext_resource path="res://Players/Gary/Gary Misc.png" type="Texture" id=18]
 [ext_resource path="res://Assets/General/circle shadow small.png" type="Texture" id=19]
 [ext_resource path="res://Assets/General/rectangle shadow small.png" type="Texture" id=20]
-[ext_resource path="res://Scripts/FloorSetter.gd" type="Script" id=21]
 [ext_resource path="res://Assets/Gary's House/Interior/painting.png" type="Texture" id=22]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=23]
 [ext_resource path="res://Scripts/Area_Target.gd" type="Script" id=24]
-[ext_resource path="res://Scripts/CollisionV2.gd" type="Script" id=25]
+[ext_resource path="res://Objects/Navmesh.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Transition.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Assets/General/blue bckgd.png" type="Texture" id=27]
 
@@ -108,7 +107,6 @@ visible = false
 position = Vector2( 85.3757, -120.083 )
 z_index = 1
 frames = SubResource( 174 )
-frame = 3
 playing = true
 
 [node name="MatA" type="Sprite" parent="YSort"]
@@ -156,6 +154,7 @@ texture = ExtResource( 15 )
 
 [node name="Sink" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( -121, 50.9 )
+tile_size = Vector2( 63, 28 )
 grid_size = Vector2( 1.6, 0.8 )
 texture = ExtResource( 7 )
 texture_offset = Vector2( -2, 16 )
@@ -184,6 +183,7 @@ texture = ExtResource( 20 )
 [node name="Dresser" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 162, 29.9 )
 rotation = 0.00583901
+tile_size = Vector2( 63, 28 )
 grid_size = Vector2( 1.6, 0.8 )
 texture = ExtResource( 8 )
 texture_offset = Vector2( 0, 17 )
@@ -191,24 +191,25 @@ height = 32.0
 
 [node name="Radio" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 140, 19.9 )
+tile_size = Vector2( 63, 28 )
 grid_size = Vector2( 0.6, 0.5 )
 texture = ExtResource( 11 )
 texture_offset = Vector2( -2, 30 )
 height = 18.0
 floor_height = 32.0
-preview_collision_box = false
 
 [node name="Lamp" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 163, 28.9 )
+tile_size = Vector2( 63, 28 )
 grid_size = Vector2( 0.5, 0.5 )
 texture = ExtResource( 10 )
 texture_offset = Vector2( 0, 24 )
 height = 42.0
 floor_height = 32.0
-preview_collision_box = false
 
 [node name="FigLeaf" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 9, 106.9 )
+tile_size = Vector2( 63, 28 )
 texture = ExtResource( 5 )
 texture_offset = Vector2( 0, 22 )
 height = 82.0
@@ -220,6 +221,7 @@ texture = ExtResource( 19 )
 
 [node name="Bed" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( -2, -19.1 )
+tile_size = Vector2( 63, 28 )
 grid_size = Vector2( 1, 1.5 )
 texture = ExtResource( 6 )
 texture_offset = Vector2( 0, 15 )
@@ -227,18 +229,15 @@ height = 24.0
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 
-[node name="CollisionPolygon" type="Node" parent="CollisionRoot"]
-script = ExtResource( 25 )
+[node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 25 )]
 
-[node name="Layer3" type="CollisionPolygon2D" parent="CollisionRoot/CollisionPolygon"]
+[node name="NavmeshShape" type="CollisionPolygon2D" parent="CollisionRoot/Navmesh"]
+visible = false
 position = Vector2( -49, 9.10001 )
 polygon = PoolVector2Array( 56, -81.1, 178, -29.1, 157, -13.1, 210, 9.89999, 55, 90, -8.39905, 60.1853, -39, 73.9, -102, 43.9, -68.4242, 31.9573, -130, 3 )
 script = ExtResource( 3 )
 
-[node name="LayerArea" type="Area2D" parent="CollisionRoot"]
-script = ExtResource( 21 )
-
-[node name="ZoneArea" type="Area2D" parent="CollisionRoot"]
+[node name="ExitOutsideHouse" type="Area2D" parent="CollisionRoot"]
 position = Vector2( 17, -2 )
 collision_layer = 2
 input_pickable = false
@@ -246,11 +245,11 @@ script = ExtResource( 17 )
 target_scene = "res://Gary_s House.tscn"
 exit_name = "OutsideHouse"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/ZoneArea"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/ExitOutsideHouse"]
 position = Vector2( -164, 89 )
 polygon = PoolVector2Array( -28, -23, 2, -36, 63, -6, 32, 6 )
 
-[node name="ExitInsideHouse" type="Node2D" parent="CollisionRoot"]
+[node name="EnterInsideHouse" type="Node2D" parent="CollisionRoot"]
 position = Vector2( -75, 43 )
 script = ExtResource( 24 )
 door_name = "InsideHouse"
@@ -270,4 +269,4 @@ visible = false
 
 [node name="Transition" parent="CanvasLayer" instance=ExtResource( 26 )]
 
-[connection signal="body_entered" from="CollisionRoot/ZoneArea" to="CollisionRoot/ZoneArea" method="_on_body_entered"]
+[connection signal="body_entered" from="CollisionRoot/ExitOutsideHouse" to="CollisionRoot/ExitOutsideHouse" method="_on_body_entered"]

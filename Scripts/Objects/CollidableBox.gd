@@ -1,9 +1,4 @@
-# This node generates a basic collision box that the player can jump on to 
-# The grid_size is how many units in the tilemap the box takes up.
-#   - a value of 1,1 means the space of a full 63 x 28 tile is taken.
-#   - increasing x expands the box diagonally up left (-x axis on tile map).
-#   - increasing y expands the box diagonally up right (-y axis on tile map).
-# The height is specified in pixels.
+# This node generates a basic collision box that the player can jump on to, and handles depth sorting of the sprite
 
 tool
 extends Node2D
@@ -20,11 +15,32 @@ var floor_setter_script = preload("res://Scripts/FloorSetter.gd")
 # Exports #
 #---------#
 
+# Width/height of each isometric tile
+export var tile_size = Vector2(62, 22) setget set_tile_size
+
+# Adjust how many units in the tilemap the box takes up.
+#   - a value of 1,1 means the space of a full 63 x 28 tile is taken.
+#   - increasing x expands the box diagonally up left (-x axis on tile map).
+#   - increasing y expands the box diagonally up right (-y axis on tile map).
 export var grid_size = Vector2(1, 1) setget set_grid_size
+
+# Sprite texture to use
 export(Texture) var texture setget set_texture
+
+# Adjust the offset so the bottom corner of the sprite matches the bottom corner of the collision box
 export var texture_offset = Vector2.ZERO setget set_texture_offset
+
+# Height of the top of the collision box, in pixels
 export var height = 0.0 setget set_height
+
+# Height of the floor underneath the collision box, used to raise object from the ground
 export var floor_height = 0.0 setget set_floor_height
+
+# Use to adjust the 3D position used for y sorting (defaults to centered on the floor)
+# This can work around issues where the default cases bad sorting
+export var depth_test_offset = Vector3.ZERO setget set_depth_test_offset
+
+# Enable/disable preview of the collision box in editor
 export var preview_collision_box = true setget set_preview_collision_box
 
 #------------#
@@ -32,8 +48,6 @@ export var preview_collision_box = true setget set_preview_collision_box
 #------------#
 
 const COLLISION_PREVIEW_DRAW_OFFSET = 1000.0
-const HALF_TILE_WIDTH = 63.0 / 2.0
-const HALF_TILE_HEIGHT = 28.0 / 2.0
 
 var collider_edges = null
 var collision_body = null # blocks player/npc from moving here
@@ -41,6 +55,8 @@ var collision_body_shape = null # belongs to collision_body
 var collision_preview_mesh = null # editor preview mesh of collision box
 var floor_notify_area = null # notifies player/npc of floor height when collision_body non-blocking
 var floor_notify_area_shape = null # belongs to floor_notify_area
+var half_tile_width = 63.0 / 2.0
+var half_tile_height = 28.0 / 2.0
 var is_queued_generate_collider = false
 var is_queued_generate_collision_box_preview = false
 var is_queued_generate_region_sprites = false
@@ -50,6 +66,16 @@ var region_sprites = [] # texture is split into multiple sprites with texture re
 #-------------------#
 # Getters / Setters #
 #-------------------#
+
+func set_tile_size(new_tile_size):
+	tile_size = new_tile_size
+	half_tile_width = tile_size.x / 2.0
+	half_tile_height = tile_size.y / 2.0
+	if is_ready:
+		_generate_collider_edges()
+		_queue_generate_collider()
+		_queue_generate_region_sprites()
+		_queue_generate_collision_box_preview()
 
 func set_texture(new_texture):
 	texture = new_texture
@@ -81,6 +107,11 @@ func set_floor_height(new_floor_height):
 		_queue_generate_region_sprites()
 		_queue_generate_collider()
 		_queue_generate_collision_box_preview()
+
+func set_depth_test_offset(new_depth_test_offset):
+	depth_test_offset = new_depth_test_offset
+	if is_ready:
+		_queue_generate_region_sprites()
 
 func set_preview_collision_box(new_preview_collision_box):
 	preview_collision_box = new_preview_collision_box
@@ -176,20 +207,20 @@ func _generate_collider():
 func _generate_collider_edges():
 	collider_edges = {
 		"left": Vector2(
-			-HALF_TILE_WIDTH - ((grid_size.x - 1.0) * HALF_TILE_WIDTH),
-			-((grid_size.x - 1.0) * HALF_TILE_HEIGHT)
+			-half_tile_width - ((grid_size.x - 1.0) * half_tile_width),
+			-((grid_size.x - 1.0) * half_tile_height)
 		),
 		"top": Vector2(
-			-(HALF_TILE_WIDTH * grid_size.x) + (HALF_TILE_WIDTH * grid_size.y),
-			- HALF_TILE_HEIGHT - ((grid_size.x + grid_size.y - 2.0) * HALF_TILE_HEIGHT)
+			-(half_tile_width * grid_size.x) + (half_tile_width * grid_size.y),
+			- half_tile_height - ((grid_size.x + grid_size.y - 2.0) * half_tile_height)
 		),
 		"bottom": Vector2(
 			0.0,
-			+ HALF_TILE_HEIGHT
+			+ half_tile_height
 		),
 		"right": Vector2(
-			HALF_TILE_WIDTH + ((grid_size.y - 1.0) * HALF_TILE_WIDTH),
-			-((grid_size.y - 1.0) * HALF_TILE_HEIGHT)
+			half_tile_width + ((grid_size.y - 1.0) * half_tile_width),
+			-((grid_size.y - 1.0) * half_tile_height)
 		),
 	}
 
@@ -210,30 +241,30 @@ func _generate_region_sprites():
 		return
 	
 	var texture_size = texture.get_size()
-	var left_of_bottom_corner_width = HALF_TILE_WIDTH + ((grid_size.x - 1.0) * HALF_TILE_WIDTH)
-	var right_of_bottom_corner_width = HALF_TILE_WIDTH + ((grid_size.y - 1.0) * HALF_TILE_WIDTH)
+	var left_of_bottom_corner_width = half_tile_width + ((grid_size.x - 1.0) * half_tile_width)
+	var right_of_bottom_corner_width = half_tile_width + ((grid_size.y - 1.0) * half_tile_width)
 	var h_margin = (texture_size.x - (left_of_bottom_corner_width + right_of_bottom_corner_width)) / 2.0
 	
 	var sprite_center = Vector2(
 		h_margin + left_of_bottom_corner_width,
-		texture_size.y - HALF_TILE_HEIGHT
+		texture_size.y - half_tile_height
 	) - texture_offset
 	
 	var h_coord_length = ceil(grid_size.x) + ceil(grid_size.y)
-	var v_coord_length = ceil(texture_size.y / HALF_TILE_HEIGHT)
+	var v_coord_length = ceil(texture_size.y / half_tile_height)
 	var center_coord = ceil(grid_size.x)
 	var region_x = 0
 	for h_coord in range(0, h_coord_length, 1):
-		var region_x_width = HALF_TILE_WIDTH + (h_margin if h_coord == 0 or h_coord == h_coord_length - 1 else 0)
+		var region_x_width = half_tile_width + (h_margin if h_coord == 0 or h_coord == h_coord_length - 1 else 0)
 		
 		# Pixel offset from the origin of the box object in the sprite for this horizontal slice
 		var v_base_offset = (
 			abs(h_coord - center_coord + 1 if h_coord - center_coord < -1 else (h_coord - center_coord if h_coord - center_coord > 0 else 0.0)
-		) * HALF_TILE_HEIGHT)
+		) * half_tile_height)
 		
 		# Position of the origin of the box object in the sprite
 		var v_sprite_base_offset = (
-			texture_size.y - HALF_TILE_HEIGHT - v_base_offset - texture_offset.y
+			texture_size.y - half_tile_height - v_base_offset - texture_offset.y
 		)
 		
 		# Pixel offset from the top of the sprite
@@ -241,7 +272,7 @@ func _generate_region_sprites():
 			v_sprite_base_offset - height
 		)
 		
-		var sprite_y_offset = texture_size.y - HALF_TILE_HEIGHT
+		var sprite_y_offset = texture_size.y - half_tile_height
 
 		var region_y = 0
 		var v_split_coords = [0, v_sprite_top_offset, floor((v_sprite_top_offset + v_sprite_base_offset)/ 2), v_sprite_base_offset, texture_size.y]
@@ -257,8 +288,8 @@ func _generate_region_sprites():
 				var sort_position = global_position + Vector2(
 					region_x - (h_margin + left_of_bottom_corner_width - texture_offset.x),
 					-v_base_offset
-				)
-				var sort_height = floor_height
+				) + Vector2(depth_test_offset.x, depth_test_offset.y)
+				var sort_height = floor_height + depth_test_offset.z
 				if abs(height - floor_height) < 0.1:
 					sort_height -= 1
 				y_sort.global_position = Vector2(
