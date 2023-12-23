@@ -136,14 +136,12 @@ func _generate_collider():
 	
 	if collision_body == null or not weakref(collision_body).get_ref():
 		collision_body = StaticBody2D.new()
-		collision_body.owner = self
 		collision_body.name = "CollisionBody"
 		collision_body.set_script(collision_body_script)
 		add_child(collision_body)
 	
 	if floor_notify_area == null or not weakref(floor_notify_area).get_ref():
 		floor_notify_area = Area2D.new()
-		floor_notify_area.owner = self
 		floor_notify_area.name = "FloorNotifyArea"
 		floor_notify_area.set_script(floor_setter_script)
 		add_child(floor_notify_area)
@@ -161,7 +159,6 @@ func _generate_collider():
 	
 	for shape in [collision_body_shape, floor_notify_area_shape]:
 		shape.name = "CollisionShape"
-		shape.owner = self
 		var polygon = PoolVector2Array()
 		polygon.push_back(collider_edges.top)
 		polygon.push_back(collider_edges.right)
@@ -216,7 +213,6 @@ func _generate_region_sprites():
 	
 	if region_sprites_y_sort == null or not weakref(region_sprites_y_sort).get_ref() or region_sprites_y_sort.get_parent() != self:
 		region_sprites_y_sort = Node2D.new()
-		region_sprites_y_sort.owner = self
 		add_child(region_sprites_y_sort)
 	
 	var sort_position = global_position
@@ -279,7 +275,6 @@ func _generate_region_sprites():
 				sprite.region_enabled = true
 				sprite.region_rect = Rect2(region_x, region_y, region_x_width, region_y_height)
 				sprite.offset = Vector2(0.0, v_offset_from_base - top_clip_sprite_offset - region_y_height)
-				sprite.owner = self
 				region_sprites.push_back(sprite)
 				region_sprites_y_sort.add_child(sprite)
 				sprite.global_position = global_position + Vector2(
@@ -291,8 +286,6 @@ func _generate_region_sprites():
 		
 		region_x += region_x_width
 
-	Global.print_tree(self)
-
 func _queue_generate_collision_box_preview():
 	if not is_queued_generate_collision_box_preview:
 		is_queued_generate_collision_box_preview = true
@@ -303,7 +296,6 @@ func _generate_collision_box_preview():
 	if Engine.editor_hint and preview_collision_box:
 		if collision_preview_mesh == null or not weakref(collision_preview_mesh).get_ref():
 			collision_preview_mesh = MeshInstance2D.new()
-			collision_preview_mesh.owner = self
 		var array_mesh = ArrayMesh.new()
 		var top_left = collider_edges.left + Vector2(0.0, COLLISION_PREVIEW_DRAW_OFFSET - height - floor_height)
 		var top_top = collider_edges.top + Vector2(0.0, COLLISION_PREVIEW_DRAW_OFFSET - height - floor_height)
