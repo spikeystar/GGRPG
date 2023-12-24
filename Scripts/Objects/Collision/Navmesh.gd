@@ -1,6 +1,10 @@
+# This class is a container for NavmeshLayers.
+# The Navmesh defines where the player can walk in the scene.
+# Each NavmeshLayer has its own height, which the player must jump to access.
+
 extends Area2D
 
-const layer_script = preload("res://Scripts/FloorSetter.gd")
+const layer_script = preload("res://Scripts/Objects/Collision/FloorSetter.gd")
 
 export var height = 0
 
@@ -40,12 +44,14 @@ func _ready():
 			layerBody.add_child(child)
 			get_parent().call_deferred("add_child", layerBody)
 			layers.append(layerBody)
-			
+
 			var area_polygon = CollisionPolygon2D.new()
 			area_polygon.polygon = transformed_polygon
 			area_polygon.name = child.name
+			area_polygon.visible = false
 			
 			var area_copy = Area2D.new()
+			area_copy.visible = false
 			area_copy.set_script(layer_script)
 			area_copy.set("height", child.height)
 			get_parent().call_deferred("add_child", area_copy)
@@ -60,7 +66,7 @@ func _ready():
 		# Clear the polygons to remove
 		polygons_to_remove = []
 		index_to_remove = {}
-		
+
 		# Start looping
 		for i in polygons.size():
 			# Skip if the polygon is due to remove
@@ -85,7 +91,7 @@ func _ready():
 
 				# Replace the polygon with the merged one
 				polygons[j] = merged_polygons[0]
-				
+
 				# Mark to remove the already merged polygon
 				polygons_to_remove.append(a)
 				index_to_remove[i] = true
@@ -99,18 +105,11 @@ func _ready():
 		for polygon in polygons_to_remove:
 			var index = polygons.find(polygon)
 			polygons.pop_at(index)
-
-	
+#
+#
 	var collBody = StaticBody2D.new()
 	get_parent().call_deferred("add_child", collBody)
-	
-	# Clipping surrounding rectangle
-	#var final_polygon = rectangle_polygon;
-	#for polygon in polygons:
-	#	final_polygon = Geometry.exclude_polygons_2d(final_polygon, polygon)[0]
-	
-	
-	
+
 	# Each polygon should be a separate island
 	for polygon in polygons:
 		# Getting the bounds of all the polygons
@@ -123,12 +122,12 @@ func _ready():
 			min_y = min(min_y, point.y)
 			max_x = max(max_x, point.x)
 			max_y = max(max_y, point.y)
-		
+
 		min_x -= MARGIN
 		max_x += MARGIN
 		min_y -= MARGIN
 		max_y += MARGIN
-		
+
 		var rectangle_polygon_left = [
 			Vector2(min_x, min_y),
 			Vector2((max_x + min_x)/2, min_y),
@@ -141,31 +140,33 @@ func _ready():
 			Vector2(max_x, max_y),
 			Vector2((max_x + min_x)/2, max_y)
 		]
-		
+
 		var clips = Geometry.clip_polygons_2d(rectangle_polygon_left, polygon)
 		clips.append_array(Geometry.clip_polygons_2d(rectangle_polygon_right, polygon))
-		
+
 		for clip in clips:
 			var pol_clip = CollisionPolygon2D.new()
+			pol_clip.name = "PlayerBoundsPolygon"
 			pol_clip.polygon = clip
 			collBody.add_child(pol_clip)
-			
+	
+	# Prevent spawn locations being messed up before _physics_process runs.
+	var motion_root = PlayerManager.player_motion_root
 	if motion_root:
-		motion_root.remove_collision_exception_with(collBody)
-
-
-
+		for layer in layers:
+			motion_root.add_collision_exception_with(layer)
+	
+	PlayerManager.notify_navmesh_ready()
 
 func _physics_process(delta):
-	#print_tree(get_parent())
-	
+
 	if not motion_root:
 		# Getting gary. Pretty stupid way to do it. But gary is spawned at runtime...
 		motion_root = PlayerManager.player_motion_root
-	
+
 	if motion_root:
 		var player_z = motion_root.pos_z
-		
+
 		for layer in layers:
 			if layer.get_child(0).height <= player_z:
 				motion_root.add_collision_exception_with(layer)

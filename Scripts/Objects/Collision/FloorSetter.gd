@@ -24,6 +24,7 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 		var index = body.floor_layers.find(self)
 		
 		if index == -1:
+			print_debug("added")
 			body.floor_layers.append(self)
 			body.update_floor()
 

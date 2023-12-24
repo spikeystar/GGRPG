@@ -1,9 +1,9 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Assets/General/wood tile a.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/wood tile b.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/FloorLayer.gd" type="Script" id=3]
-[ext_resource path="res://Objects/CollidableBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Assets/Gary's House/Interior/fig leaf.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Gary's House/Interior/bed.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Gary's House/Interior/sink.png" type="Texture" id=7]
@@ -16,15 +16,14 @@
 [ext_resource path="res://Assets/Gary's House/Interior/window.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Gary's House/Interior/curtains.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Gary's House/Interior/cabinets.png" type="Texture" id=16]
-[ext_resource path="res://Scripts/Exit.gd" type="Script" id=17]
+[ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Players/Gary/Gary Misc.png" type="Texture" id=18]
 [ext_resource path="res://Assets/General/circle shadow small.png" type="Texture" id=19]
 [ext_resource path="res://Assets/General/rectangle shadow small.png" type="Texture" id=20]
+[ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Assets/Gary's House/Interior/painting.png" type="Texture" id=22]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=23]
-[ext_resource path="res://Scripts/Area_Target.gd" type="Script" id=24]
-[ext_resource path="res://Objects/Navmesh.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Transition.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Assets/General/blue bckgd.png" type="Texture" id=27]
 
 [sub_resource type="TileSet" id=1]
@@ -89,7 +88,6 @@ z_index = -100
 texture = ExtResource( 27 )
 
 [node name="YSort" type="YSort" parent="."]
-position = Vector2( 0, -25.9 )
 
 [node name="FloorTiles" type="TileMap" parent="YSort"]
 position = Vector2( -55.5, 41.5 )
@@ -107,6 +105,7 @@ visible = false
 position = Vector2( 85.3757, -120.083 )
 z_index = 1
 frames = SubResource( 174 )
+frame = 1
 playing = true
 
 [node name="MatA" type="Sprite" parent="YSort"]
@@ -231,42 +230,31 @@ height = 24.0
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 25 )]
 
-[node name="NavmeshShape" type="CollisionPolygon2D" parent="CollisionRoot/Navmesh"]
-visible = false
-position = Vector2( -49, 9.10001 )
-polygon = PoolVector2Array( 56, -81.1, 178, -29.1, 157, -13.1, 210, 9.89999, 55, 90, -8.39905, 60.1853, -39, 73.9, -102, 43.9, -68.4242, 31.9573, -130, 3 )
-script = ExtResource( 3 )
+[node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 3 )]
+position = Vector2( -49, 35.1 )
+polygon = PoolVector2Array( 56, -81.1, 178, -29.1, 157, -13.1, 210, 9.89999, 58, 86.9, -8.39905, 60.1853, -39, 73.9, -97, 45.9, -68.4242, 31.9573, -129, 6.89999 )
+__meta__ = {
+"_editor_description_": ""
+}
 
-[node name="ExitOutsideHouse" type="Area2D" parent="CollisionRoot"]
-position = Vector2( 17, -2 )
-collision_layer = 2
-input_pickable = false
-script = ExtResource( 17 )
+[node name="DoorwayToOutsideHouse" parent="CollisionRoot" instance=ExtResource( 21 )]
+position = Vector2( -130, 106 )
 target_scene = "res://Gary_s House.tscn"
 exit_name = "OutsideHouse"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/ExitOutsideHouse"]
-position = Vector2( -164, 89 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToOutsideHouse"]
+position = Vector2( -13, 10 )
 polygon = PoolVector2Array( -28, -23, 2, -36, 63, -6, 32, 6 )
 
-[node name="EnterInsideHouse" type="Node2D" parent="CollisionRoot"]
-position = Vector2( -75, 43 )
-script = ExtResource( 24 )
+[node name="PlayerSpawnFromOutsideHouse" parent="CollisionRoot" instance=ExtResource( 17 )]
+position = Vector2( -86, 77 )
 door_name = "InsideHouse"
 direction = Vector2( 1, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, -24 )
+position = Vector2( 0, 1 )
 offset = Vector2( 0, -20 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 23 )
-offset = Vector2( 0, -20 )
 minPos = Vector2( 0, -70 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Transition" parent="CanvasLayer" instance=ExtResource( 26 )]
-
-[connection signal="body_entered" from="CollisionRoot/ExitOutsideHouse" to="CollisionRoot/ExitOutsideHouse" method="_on_body_entered"]

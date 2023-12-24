@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-const HIGHEST_Z: int = 0;
 const LOWEST_Z: int = 0;
 
 export var spawn_z = 0
@@ -11,6 +10,8 @@ export var gravity = 9.8
 export var max_vertical_speed = 20
 export var jump_velocity = 10
 
+var is_player_motion_root = true
+
 #Movement
 var floor_z : float = LOWEST_Z;
 var shadow_z : float = 0;
@@ -19,15 +20,19 @@ var vel : Vector3;
 var last_dir: Vector2;
 var floor_layers : Array = []
 var is_on_ground = true
+var is_just_teleported = false
 
 func _ready():
 	floor_z = spawn_z
 	pos_z = spawn_z
 
-func teleport2D(tp_pos : Vector2, height : int = 0):
+func teleport_2d(tp_pos : Vector2, height : int = 0):
 	self.global_position = tp_pos
-	move_and_slide(Vector2(0,0))
+	vel = Vector3.ZERO
 	pos_z = height
+	floor_z = height
+	shadow_z = height
+	is_just_teleported = true
 
 func update_floor():
 	floor_z = LOWEST_Z
@@ -35,6 +40,12 @@ func update_floor():
 		floor_z = max(floor_z, f.height)
 
 func _physics_process(delta):
+	if is_just_teleported:
+		is_just_teleported = false
+		var prev_global_position = global_position
+		move_and_slide(Vector2(0,0))
+		global_position = prev_global_position
+
 	is_on_ground = pos_z <= floor_z
 	
 	# Input direction

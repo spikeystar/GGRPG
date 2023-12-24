@@ -1,6 +1,6 @@
 extends Node
 
-onready var layer_script = load("res://Scripts/FloorSetter.gd")
+onready var layer_script = load("res://Scripts/Objects/Collision/FloorSetter.gd")
 onready var area_root = get_node("../LayerArea")
 
 const MARGIN : int = 16;

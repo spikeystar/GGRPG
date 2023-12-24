@@ -1,13 +1,13 @@
-extends Node
+extends Camera2D
 
 # Ideally you'd want a more complex camera system
 # Some way to set boundairies with area
 
 export var vertical_speed : float = 64;
-export var offset : Vector2;
+export var player_offset : Vector2;
 export var minPos : Vector2;
 export var maxPos : Vector2;
-
+export var follow_player = false
 
 func print_tree(node = null, indent = 0):
 	if node == null:
@@ -36,6 +36,7 @@ func _process(delta):
 		if z_offset < motion_root.shadow_z:
 			z_offset = min(z_offset + vertical_speed * delta, max(motion_root.shadow_z, motion_root.pos_z))
 		
-		#self.global_position.x = clamp(motion_root.global_position.x + offset.x, minPos.x, maxPos.x)
-		#self.global_position.y = clamp(motion_root.global_position.y - y_offset + offset.y, minPos.y, maxPos.y)
+		if follow_player:
+			global_position.x = clamp(motion_root.global_position.x + player_offset.x, minPos.x, maxPos.x)
+			global_position.y = clamp(motion_root.global_position.y - z_offset + player_offset.y, minPos.y, maxPos.y)
 

@@ -16,7 +16,6 @@ run/main_scene="res://Gary's House.tscn"
 [autoload]
 
 Global="*res://Scripts/Global.gd"
-GlobalDirection="res://Scripts/Global_Direction.gd"
 PlayerManager="*res://Scripts/Players/PlayerManager.gd"
 
 [display]

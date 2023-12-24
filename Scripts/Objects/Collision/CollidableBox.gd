@@ -7,9 +7,9 @@ extends Node2D
 # Imports #
 #---------#
 
-var collision_body_script = preload("res://Scripts/Objects/CollidableBoxCollisionBody.gd")
-var floor_layer_script = preload("res://Scripts/FloorLayer.gd")
-var floor_setter_script = preload("res://Scripts/FloorSetter.gd")
+var collision_body_script = preload("res://Scripts/Objects/Collision/CollidableBoxCollisionBody.gd")
+var floor_layer_script = preload("res://Scripts/Objects/Collision/FloorLayer.gd")
+var floor_setter_script = preload("res://Scripts/Objects/Collision/FloorSetter.gd")
 
 #---------#
 # Exports #
@@ -26,6 +26,9 @@ export var grid_size = Vector2(1, 1) setget set_grid_size
 
 # Sprite texture to use
 export(Texture) var texture setget set_texture
+
+# Adjust the scale of the texture for display
+export var texture_scale = Vector2(1.0, 1.0) setget set_texture_scale
 
 # Adjust the offset so the bottom corner of the sprite matches the bottom corner of the collision box
 export var texture_offset = Vector2.ZERO setget set_texture_offset
@@ -79,6 +82,11 @@ func set_tile_size(new_tile_size):
 
 func set_texture(new_texture):
 	texture = new_texture
+	if is_ready:
+		_queue_generate_region_sprites()
+
+func set_texture_scale(new_texture_scale):
+	texture_scale = new_texture_scale
 	if is_ready:
 		_queue_generate_region_sprites()
 
@@ -245,17 +253,14 @@ func _generate_region_sprites():
 	var right_of_bottom_corner_width = half_tile_width + ((grid_size.y - 1.0) * half_tile_width)
 	var h_margin = (texture_size.x - (left_of_bottom_corner_width + right_of_bottom_corner_width)) / 2.0
 	
-	var sprite_center = Vector2(
-		h_margin + left_of_bottom_corner_width,
-		texture_size.y - half_tile_height
-	) - texture_offset
-	
 	var h_coord_length = ceil(grid_size.x) + ceil(grid_size.y)
 	var v_coord_length = ceil(texture_size.y / half_tile_height)
 	var center_coord = ceil(grid_size.x)
 	var region_x = 0
 	for h_coord in range(0, h_coord_length, 1):
-		var region_x_width = half_tile_width + (h_margin if h_coord == 0 or h_coord == h_coord_length - 1 else 0)
+		var region_x_width = (
+			half_tile_width + (h_margin if h_coord == 0 or h_coord == h_coord_length - 1 else 0)
+		) * texture_scale.x
 		
 		# Pixel offset from the origin of the box object in the sprite for this horizontal slice
 		var v_base_offset = (
@@ -272,7 +277,7 @@ func _generate_region_sprites():
 			v_sprite_base_offset - height
 		)
 		
-		var sprite_y_offset = texture_size.y - half_tile_height
+		var sprite_y_offset = (texture_size.y - half_tile_height)
 
 		var region_y = 0
 		var v_split_coords = [0, v_sprite_top_offset, floor((v_sprite_top_offset + v_sprite_base_offset)/ 2), v_sprite_base_offset, texture_size.y]

@@ -22,7 +22,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "Transition_In":
 		PlayerManager.remove_player_from_scene()
 		get_tree().change_scene(target_scene)
-		PlayerManager.add_player_to_scene()
+		PlayerManager.call_deferred("add_player_to_scene")
 		emit_signal("transition_in_done")
 	elif anim_name == "Transition_Out":
 		emit_signal("transition_out_done")
