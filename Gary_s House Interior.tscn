@@ -105,7 +105,7 @@ visible = false
 position = Vector2( 85.3757, -120.083 )
 z_index = 1
 frames = SubResource( 174 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="MatA" type="Sprite" parent="YSort"]
@@ -159,6 +159,23 @@ texture = ExtResource( 7 )
 texture_offset = Vector2( -2, 16 )
 height = 32.0
 
+[node name="Sink3" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( -41, 26 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1.6, 0.8 )
+texture = ExtResource( 7 )
+texture_offset = Vector2( -2, 16 )
+height = 32.0
+
+[node name="Sink2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 111, 114 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1.6, 0.8 )
+texture = ExtResource( 7 )
+texture_scale = Vector2( 1.5, 1.6 )
+texture_offset = Vector2( 0, 25 )
+height = 32.0
+
 [node name="Cabinets" type="Sprite" parent="YSort"]
 position = Vector2( -140, -27.1 )
 rotation = -0.00349066
@@ -207,10 +224,10 @@ height = 42.0
 floor_height = 32.0
 
 [node name="FigLeaf" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 9, 106.9 )
-tile_size = Vector2( 63, 28 )
+position = Vector2( 9, 112 )
+tile_size = Vector2( 40, 16 )
 texture = ExtResource( 5 )
-texture_offset = Vector2( 0, 22 )
+texture_offset = Vector2( 0, 25 )
 height = 82.0
 
 [node name="FigLeafShadow" type="Sprite" parent="YSort"]
@@ -229,6 +246,7 @@ height = 24.0
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 25 )]
+visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 3 )]
 position = Vector2( -49, 35.1 )
@@ -246,7 +264,11 @@ exit_name = "OutsideHouse"
 position = Vector2( -13, 10 )
 polygon = PoolVector2Array( -28, -23, 2, -36, 63, -6, 32, 6 )
 
-[node name="PlayerSpawnFromOutsideHouse" parent="CollisionRoot" instance=ExtResource( 17 )]
+[node name="PlayerSpawnDefault" parent="CollisionRoot" instance=ExtResource( 17 )]
+position = Vector2( -39, 29 )
+direction = Vector2( 1, 1 )
+
+[node name="PlayerSpawnFromOutsideHouse2" parent="CollisionRoot" instance=ExtResource( 17 )]
 position = Vector2( -86, 77 )
 door_name = "InsideHouse"
 direction = Vector2( 1, 1 )
