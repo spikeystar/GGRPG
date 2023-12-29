@@ -159,23 +159,6 @@ texture = ExtResource( 7 )
 texture_offset = Vector2( -2, 16 )
 height = 32.0
 
-[node name="Sink3" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( -41, 26 )
-tile_size = Vector2( 63, 28 )
-grid_size = Vector2( 1.6, 0.8 )
-texture = ExtResource( 7 )
-texture_offset = Vector2( -2, 16 )
-height = 32.0
-
-[node name="Sink2" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 111, 114 )
-tile_size = Vector2( 63, 28 )
-grid_size = Vector2( 1.6, 0.8 )
-texture = ExtResource( 7 )
-texture_scale = Vector2( 1.5, 1.6 )
-texture_offset = Vector2( 0, 25 )
-height = 32.0
-
 [node name="Cabinets" type="Sprite" parent="YSort"]
 position = Vector2( -140, -27.1 )
 rotation = -0.00349066
@@ -210,9 +193,9 @@ position = Vector2( 140, 19.9 )
 tile_size = Vector2( 63, 28 )
 grid_size = Vector2( 0.6, 0.5 )
 texture = ExtResource( 11 )
-texture_offset = Vector2( -2, 30 )
+texture_offset = Vector2( -2, -2 )
 height = 18.0
-floor_height = 32.0
+depth_test_offset = Vector3( 0, 0, 17 )
 
 [node name="Lamp" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 163, 28.9 )

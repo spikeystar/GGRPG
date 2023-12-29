@@ -20,6 +20,7 @@ export var tile_size = Vector2(62, 22) setget set_tile_size
 
 # Adjust how many units in the tilemap the box takes up.
 #   - a value of 1,1 means the space of a full 63 x 28 tile is taken.
+#   - you should set up tile_size so that grid_size is as close to integer values as possible.
 #   - increasing x expands the box diagonally up left (-x axis on tile map).
 #   - increasing y expands the box diagonally up right (-y axis on tile map).
 export var grid_size = Vector2(1, 1) setget set_grid_size
@@ -106,6 +107,7 @@ func set_grid_size(new_grid_size):
 func set_height(new_height):
 	height = new_height
 	if is_ready:
+		_queue_generate_region_sprites()
 		_queue_generate_collider()
 		_queue_generate_collision_box_preview()
 
@@ -155,6 +157,9 @@ func _initialize_nodes():
 	floor_notify_area = null
 	floor_notify_area_shape = null
 	region_sprites = []
+	
+	half_tile_width = tile_size.x / 2.0
+	half_tile_height = tile_size.y / 2.0
 
 	_generate_collider_edges()
 	_queue_generate_collider()
@@ -253,8 +258,10 @@ func _generate_region_sprites():
 	var tile_step_grid_size = min_grid_size / ceil(min_grid_size)
 	var tile_step_width = (tile_step_grid_size * tile_size.x) / 2.0
 	var tile_step_height = tile_step_width * (tile_size.y / tile_size.x)
-	var left_half_tile_count = ceil(grid_size.x / tile_step_grid_size)
-	var right_half_tile_count = ceil(grid_size.y / tile_step_grid_size)
+	var left_half_title_size = grid_size.x / tile_step_grid_size
+	var right_half_title_size = grid_size.y / tile_step_grid_size
+	var left_half_tile_count = ceil(left_half_title_size)
+	var right_half_tile_count = ceil(right_half_title_size)
 	var left_of_bottom_corner_width = half_tile_width + ((grid_size.x - 1.0) * half_tile_width)
 	var right_of_bottom_corner_width = half_tile_width + ((grid_size.y - 1.0) * half_tile_width)
 	var h_margin = (texture_size.x - (left_of_bottom_corner_width + right_of_bottom_corner_width)) / 2.0
@@ -265,12 +272,19 @@ func _generate_region_sprites():
 		texture_size.y - half_tile_height
 	) - texture_offset
 	
+	var texture_clip_bounds = Rect2(
+		-texture_origin.x,
+		-texture_origin.y,
+		texture_size.x - texture_origin.x,
+		texture_size.y - texture_origin.y
+	)
+	
 	# Render left side of box
 	for tile_count in range(0, left_half_tile_count):
 		# Generate offset points relative to texture_origin
 		var is_texture_edge = tile_count >= left_half_tile_count - 1
 		var h_coord = -(tile_count * tile_step_width)
-		var left = h_coord - (tile_step_width + h_margin if is_texture_edge else tile_step_width)
+		var left = texture_clip_bounds.position.x if is_texture_edge else h_coord - tile_step_width
 		var right = h_coord
 		var bottom = texture_size.y - texture_origin.y
 		var bottom_left = Vector2(left, bottom)
@@ -281,21 +295,16 @@ func _generate_region_sprites():
 		)
 		var top_left = Vector2(
 			left,
-			Geometry.line_intersects_line_2d(Vector2(left, 0.0), Vector2(0.0, 1.0), top_right, Vector2(-half_tile_width, -half_tile_height).normalized()).y
+			Geometry.line_intersects_line_2d(Vector2(left, 0.0), Vector2(0.0, 1.0), top_right, Vector2(-tile_step_width, -tile_step_height).normalized()).y
 		)
 		
-		# Generate a textured mesh
+		# Generate a textured mesh for the left side
 		var vertices = PoolVector2Array()
-		vertices.push_back(bottom_left + Vector2(0.0, -floor_height))
-		vertices.push_back(top_left + Vector2(0.0, -floor_height))
-		vertices.push_back(bottom_right + Vector2(0.0, -floor_height))
-		vertices.push_back(top_right + Vector2(0.0, -floor_height))
-		var uvs = PoolVector2Array()
-		uvs.push_back((bottom_left + texture_origin) / texture_size)
-		uvs.push_back((top_left + texture_origin) / texture_size)
-		uvs.push_back((bottom_right + texture_origin) / texture_size)
-		uvs.push_back((top_right + texture_origin) / texture_size)
-		_generate_mesh(vertices, uvs, Vector3(
+		vertices.push_back(bottom_left)
+		vertices.push_back(top_left)
+		vertices.push_back(bottom_right)
+		vertices.push_back(top_right)
+		_generate_mesh(vertices, texture_clip_bounds, texture_origin, texture_size, Vector3(
 			global_position.x + right,
 			global_position.y + top_right.y + height - tile_step_height,
 			floor_height
@@ -307,7 +316,7 @@ func _generate_region_sprites():
 		var is_texture_edge = tile_count >= right_half_tile_count - 1
 		var h_coord = tile_count * tile_step_width
 		var left = h_coord
-		var right = h_coord + (tile_step_width + h_margin if is_texture_edge else tile_step_width)
+		var right = texture_clip_bounds.size.x if is_texture_edge else h_coord + tile_step_width
 		var bottom = texture_size.y - texture_origin.y
 		var bottom_left = Vector2(left, bottom)
 		var bottom_right = Vector2(right, bottom)
@@ -320,96 +329,123 @@ func _generate_region_sprites():
 			Geometry.line_intersects_line_2d(Vector2(right, 0.0), Vector2(0.0, 1.0), top_left, Vector2(half_tile_width, -half_tile_height).normalized()).y
 		)
 		
-		# Generate a textured mesh
+		# Generate a textured mesh for the right side
 		var vertices = PoolVector2Array()
-		vertices.push_back(bottom_left + Vector2(0.0, -floor_height))
-		vertices.push_back(top_left + Vector2(0.0, -floor_height))
-		vertices.push_back(bottom_right + Vector2(0.0, -floor_height))
-		vertices.push_back(top_right + Vector2(0.0, -floor_height))
-		var uvs = PoolVector2Array()
-		uvs.push_back((bottom_left + texture_origin) / texture_size)
-		uvs.push_back((top_left + texture_origin) / texture_size)
-		uvs.push_back((bottom_right + texture_origin) / texture_size)
-		uvs.push_back((top_right + texture_origin) / texture_size)
-		_generate_mesh(vertices, uvs, Vector3(
+		vertices.push_back(bottom_left)
+		vertices.push_back(top_left)
+		vertices.push_back(bottom_right)
+		vertices.push_back(top_right)
+		_generate_mesh(vertices, texture_clip_bounds, texture_origin, texture_size, Vector3(
 			global_position.x + left,
 			global_position.y + top_left.y + height - tile_step_height,
 			floor_height
 		) + depth_test_offset)
-	
+		
 	# Render top of box
-	
+	for x_tile in range(0, left_half_tile_count):
+		for y_tile in range(0, right_half_tile_count):
+			var is_last_x_tile = x_tile == left_half_tile_count - 1
+			var is_last_y_tile = y_tile == right_half_tile_count - 1
+			
+			var x_tile_offset = left_half_title_size - 1 if is_last_x_tile else x_tile
+			var y_tile_offset = right_half_title_size - 1 if is_last_y_tile else y_tile
+			
+			var tile_center = Vector2(
+				-(tile_step_width * x_tile_offset) + (tile_step_width * y_tile_offset),
+				- height + tile_step_origin_height_offset +
+					((x_tile_offset + y_tile_offset) * -(tile_step_height))
+			)
+			var left = tile_center.x - tile_step_width
+			var right = tile_center.x + tile_step_width
+			var top = tile_center.y - tile_step_height
+			var bottom = tile_center.y + tile_step_height
+			
+			var left_corner = Vector2(left, tile_center.y)
+			var right_corner = Vector2(right, tile_center.y)
+			var top_corner = Vector2(tile_center.x, top)
+			var bottom_corner = Vector2(tile_center.x, bottom)
+			
+			# Generate a textured mesh for the top side
+			var vertices = PoolVector2Array()
+			vertices.push_back(left_corner)
+			vertices.push_back(top_corner)
+			vertices.push_back(bottom_corner)
+			vertices.push_back(right_corner)
+			
+			var depth_test_position = Vector3(
+				global_position.x - tile_center.x,
+				global_position.y + (tile_step_origin_height_offset + ((x_tile + y_tile) * -(tile_step_height))),
+				floor_height
+			) + depth_test_offset
+			
+			_generate_mesh(vertices, texture_clip_bounds, texture_origin, texture_size, depth_test_position)
+			
+			var left_edge = Vector2.ZERO
+			var right_edge = Vector2.ZERO
+			
+			# Generate a textured mesh for leftover data on left side of image
+			if is_last_x_tile:
+				left_edge = Geometry.line_intersects_line_2d(
+					Vector2(texture_clip_bounds.position.x, 0.0),
+					Vector2(0.0, 1.0),
+					Vector2(tile_center.x, top),
+					Vector2(-half_tile_width, -half_tile_height).normalized()
+				)
+				var p0 = left_edge
+				var p1 = Vector2(left_edge.x, left_edge.y + (tile_step_height * 2))
+				var p2 = Vector2(tile_center.x, top)
+				var p3 = Vector2(left, tile_center.y)
+				vertices = PoolVector2Array()
+				vertices.push_back(p0)
+				vertices.push_back(p1)
+				vertices.push_back(p2)
+				vertices.push_back(p3)
+				_generate_mesh(vertices, texture_clip_bounds, texture_origin, texture_size, depth_test_position)
+			
+			# Generate a textured mesh for leftover data on right side of image
+			if is_last_y_tile:
+				right_edge = Geometry.line_intersects_line_2d(
+					Vector2(texture_clip_bounds.size.x, 0.0),
+					Vector2(0.0, 1.0),
+					Vector2(tile_center.x, top),
+					Vector2(half_tile_width, -half_tile_height).normalized()
+				)
+				var p0 = right_edge
+				var p1 = Vector2(right_edge.x, right_edge.y + (tile_step_height * 2))
+				var p2 = Vector2(tile_center.x, top)
+				var p3 = Vector2(right, tile_center.y)
+				vertices = PoolVector2Array()
+				vertices.push_back(p0)
+				vertices.push_back(p1)
+				vertices.push_back(p2)
+				vertices.push_back(p3)
+				_generate_mesh(vertices, texture_clip_bounds, texture_origin, texture_size, depth_test_position)
+			
+			# Generate a textured mesh for leftover data on top side of image
+			if is_last_x_tile and is_last_y_tile:
+				var p0 = Vector2(texture_clip_bounds.position.x, -texture_origin.y)
+				var p1 = left_edge
+				var p2 = Vector2(tile_center.x, -texture_origin.y)
+				var p3 = Vector2(tile_center.x, top)
+				var p4 = Vector2(texture_clip_bounds.size.x, -texture_origin.y)
+				var p5 = right_edge
+				vertices = PoolVector2Array()
+				vertices.push_back(p0)
+				vertices.push_back(p1)
+				vertices.push_back(p2)
+				vertices.push_back(p3)
+				vertices.push_back(p4)
+				vertices.push_back(p5)
+				_generate_mesh(vertices, texture_clip_bounds, texture_origin, texture_size, depth_test_position)
 
 
-#	var h_coord_length = ceil(grid_size.x) + ceil(grid_size.y)
-#	var v_coord_length = ceil(texture_size.y / half_tile_height)
-#	var center_coord = ceil(grid_size.x)
-#	var region_x = 0
-#	for h_coord in range(0, h_coord_length, 1):
-#		var region_x_width = (
-#			half_tile_width + (h_margin if h_coord == 0 or h_coord == h_coord_length - 1 else 0)
-#		)
-#
-#		# Pixel offset from the origin of the box object in the sprite for this horizontal slice
-#		var v_base_offset = (
-#			abs(h_coord - center_coord + 1 if h_coord - center_coord < -1 else (h_coord - center_coord if h_coord - center_coord > 0 else 0.0)
-#		) * half_tile_height)
-#
-#		# Position of the origin of the box object in the sprite
-#		var v_sprite_base_offset = (
-#			texture_size.y - half_tile_height - v_base_offset - texture_offset.y
-#		)
-#
-#		# Pixel offset from the top of the sprite
-#		var v_sprite_top_offset = (
-#			v_sprite_base_offset - height
-#		)
-#
-#		var sprite_y_offset = (texture_size.y - half_tile_height)
-#
-#		var region_y = 0
-#		var v_split_coords = [0, v_sprite_top_offset, floor((v_sprite_top_offset + v_sprite_base_offset)/ 2), v_sprite_base_offset, texture_size.y]
-#		for v_coord_index in range(0, v_split_coords.size() - 1):
-#			var v_coord = v_split_coords[v_coord_index]
-#			var region_y_height = v_split_coords[v_coord_index + 1] - v_split_coords[v_coord_index]
-#
-#			var v_offset_from_base = (region_y + region_y_height - v_sprite_base_offset - floor_height)
-#			var top_clip_sprite_offset = 0.0
-#
-#			if true:
-#				var y_sort = Node2D.new()
-#				var sort_position = global_position + Vector2(
-#					region_x - (h_margin + left_of_bottom_corner_width - texture_offset.x),
-#					-v_base_offset
-#				) + Vector2(depth_test_offset.x, depth_test_offset.y)
-#				var sort_height = floor_height + depth_test_offset.z
-#				if abs(height - floor_height) < 0.1:
-#					sort_height -= 1
-#				y_sort.global_position = Vector2(
-#					global_position.x,
-#					Global.calculate_y_sort(Vector3(sort_position.x, sort_position.y, sort_height))
-#				)
-#				add_child(y_sort)
-#
-#				var sprite = Sprite.new()
-#				sprite.texture = texture
-#				sprite.centered = false
-#				sprite.region_enabled = true
-#				sprite.region_rect = Rect2(region_x, region_y, region_x_width, region_y_height)
-#				sprite.offset = Vector2(0.0, v_offset_from_base - top_clip_sprite_offset - region_y_height)
-#				region_sprites.push_back(y_sort)
-#				y_sort.add_child(sprite)
-#				sprite.global_position = global_position + Vector2(
-#					region_x - (h_margin + left_of_bottom_corner_width - texture_offset.x),
-#					-v_base_offset + top_clip_sprite_offset
-#				)
-#
-#			region_y += region_y_height
-#
-#		region_x += region_x_width
-
-func _generate_mesh(vertices: PoolVector2Array, uvs: PoolVector2Array, sort_position: Vector3):
-	
+func _generate_mesh(
+	vertices: PoolVector2Array,
+	clip_bounds: Rect2,
+	texture_origin: Vector2,
+	texture_size: Vector2,
+	sort_position: Vector3
+):
 	# Generate y-sort container
 	var y_sort = Node2D.new()
 	y_sort.name = "YSort"
@@ -419,6 +455,14 @@ func _generate_mesh(vertices: PoolVector2Array, uvs: PoolVector2Array, sort_posi
 		Global.calculate_y_sort(Vector3(sort_position.x, sort_position.y, sort_position.z))
 	)
 	region_sprites.push_back(y_sort)
+	
+	# Generate UVs
+	var uvs = PoolVector2Array()
+	var vertex_index: int = 0
+	for vertex in vertices:
+		uvs.push_back((vertex + texture_origin) / texture_size)
+		vertices[vertex_index] = vertex + Vector2(0.0, -floor_height)
+		vertex_index += 1
 	
 	# Generate a textured mesh
 	var array_mesh = Mesh.new()
