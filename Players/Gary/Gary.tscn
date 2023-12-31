@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/General/circle shadow small.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/ShadowLayerCheck.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Players/PlayerMotionRoot.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/Rendering/DepthTestSprite.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 14, 7 )
@@ -13,6 +13,7 @@ extents = Vector2( 14, 7 )
 radius = 1.0
 
 [sub_resource type="StreamTexture" id=171]
+flags = 2
 load_path = "res://.import/Gary Basic.png-ab8172ee4f155ebf6b8a6a8bdf06ab58.stex"
 
 [sub_resource type="AnimationNodeAnimation" id=139]
@@ -1318,7 +1319,7 @@ position = Vector2( -2.38419e-07, -2 )
 scale = Vector2( 0.84, 0.88 )
 texture = ExtResource( 2 )
 script = ExtResource( 5 )
-depth_test_offset = Vector2( 0, -2 )
+feet_height = 8.0
 
 [node name="BodyYSort" type="Node2D" parent="."]
 
@@ -1329,9 +1330,10 @@ position = Vector2( 8, -28 )
 texture = SubResource( 171 )
 hframes = 9
 vframes = 3
-frame = 12
+frame = 22
 script = ExtResource( 5 )
 depth_test_offset = Vector2( -8, 28 )
+feet_height = 10.0
 
 [node name="AnimationTree" type="AnimationTree" parent="BodyYSort"]
 tree_root = SubResource( 37 )

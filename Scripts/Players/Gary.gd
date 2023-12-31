@@ -40,7 +40,7 @@ func _physics_process(delta):
 	var draw_shadow_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.shadow_z))
 	
 	body_sprite.height = motion_root.pos_z
-	shadow_sprite.height = motion_root.shadow_z
+	shadow_sprite.height = motion_root.shadow_z + 0.01
 	
 	body_y_sort.global_position = Vector2(motion_root.global_position.x, draw_y_sort)
 	body_visual_root.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z)

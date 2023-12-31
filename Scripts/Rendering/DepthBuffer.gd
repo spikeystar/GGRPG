@@ -25,13 +25,12 @@ var viewport_size: Vector2 = Vector2(1024, 600)
 # Node Lifecycle #
 #----------------#
 
-func _ready():
-	z_index = 4096
+func _init():
+	z_index = 1
 	depth_viewport_container = ViewportContainer.new()
 	depth_viewport_container.name = "DepthViewportContainer"
 	depth_viewport_container.material = CanvasItemMaterial.new()
 	depth_viewport_container.material.blend_mode = CanvasItemMaterial.BLEND_MODE_PREMULT_ALPHA
-	add_child(depth_viewport_container)
 	
 	depth_viewport = Viewport.new()
 	depth_viewport.name = "DepthViewport"
@@ -42,10 +41,8 @@ func _ready():
 	depth_viewport.world.environment = Environment.new()
 	depth_viewport.world.environment.background_mode = Environment.BG_COLOR
 	depth_viewport.world.environment.background_color = Color(0, 0, 0, 1)
-	depth_viewport_container.add_child(depth_viewport)
 	
 	depth_root = Spatial.new()
-	depth_viewport.add_child(depth_root)
 	
 	depth_camera = Camera.new()
 	depth_camera.current = true
@@ -55,6 +52,12 @@ func _ready():
 	depth_camera.size = 1000
 	depth_camera.far = 1000
 	depth_camera.projection = Camera.PROJECTION_ORTHOGONAL
+	
+
+func _ready():
+	add_child(depth_viewport_container)
+	depth_viewport_container.add_child(depth_viewport)
+	depth_viewport.add_child(depth_root)
 	depth_root.add_child(depth_camera)
 	
 	parent_viewport = get_viewport()
@@ -82,9 +85,6 @@ func _process(delta):
 		(-canvas_origin.y + (viewport_size.y / 2.0)) * (1.0 / canvas_scale.y),
 		(-canvas_origin.y - DEPTH_EDGE_BUFFER) * (1.0 / canvas_scale.y)
 	)
-#	depth_camera.translation.x += delta * 10
-#	depth_camera.translation.z += delta * 10
-#	depth_camera.rotation_degrees.y -= delta * 5
 
 #----------------#
 # Public Methods #
@@ -112,7 +112,7 @@ func add_depth_test_mesh(
 		arrays[ArrayMesh.ARRAY_TEX_UV] = uvs
 		array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLE_STRIP, arrays)
 		var mesh_instance = MeshInstance.new()
-		mesh_instance.name = "DepthTestMeshInstance2D"
+		mesh_instance.name = "DepthTestMeshInstance"
 		mesh_instance.mesh = array_mesh
 		depth_root.add_child(mesh_instance)
 		mesh_instance.global_translation = Vector3(mesh_position.x , mesh_position.y, 0.0)
@@ -126,6 +126,8 @@ func add_depth_test_mesh(
 		return weakref(null)
 
 func remove_depth_test_mesh(mesh_weakref):
+	if not mesh_weakref:
+		return
 	var mesh = mesh_weakref.get_ref()
 	if mesh:
 		var texture = mesh.material_override.get_shader_param("sprite_texture_sampler")
@@ -133,14 +135,15 @@ func remove_depth_test_mesh(mesh_weakref):
 		mesh.queue_free()
 
 func notify_camera_changed():
-	_set_viewport_size(parent_viewport.size)
+	if parent_viewport:
+		_set_viewport_size(parent_viewport.size)
 
 #-----------------#
 # Private Methods #
 #-----------------#
 
 func _create_texture_duplicate(texture: Texture):
-	if texture.resource_path:
+	if texture and texture.resource_path:
 		if texture_duplicates.has(texture.resource_path):
 			texture_duplicates[texture.resource_path].users += 1
 		else:
@@ -154,6 +157,8 @@ func _create_texture_duplicate(texture: Texture):
 	return texture
 
 func _remove_duplicate_texture(texture: Texture):
+	if not texture:
+		return
 	var resource_path = texture.resource_path.replace("_DEPTH_BUFFER", "")
 	if texture.resource_path and texture_duplicates.has(texture.resource_path):
 		texture_duplicates[texture.resource_path].users -= 1
