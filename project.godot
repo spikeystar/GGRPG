@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Gary Goat RPG!"
-run/main_scene="res://Gary's House.tscn"
+run/main_scene="res://Gary_s House.tscn"
 
 [autoload]
 

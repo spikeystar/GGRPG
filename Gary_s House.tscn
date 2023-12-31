@@ -31,6 +31,7 @@
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=30]
 
 [node name="WorldRoot" type="Node2D"]
+position = Vector2( 0, 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
@@ -388,6 +389,14 @@ height = 96.0
 position = Vector2( -42, 32 )
 polygon = PoolVector2Array( 21.5, -38.5001, 28.5, -42.5001, 69, -26, 63, -21 )
 
+[node name="DoorwayToCherryTrail1" parent="CollisionRoot" instance=ExtResource( 8 )]
+position = Vector2( 13, 359 )
+target_scene = "res://Areas/Cherry Trail/Cherry Trail 1.tscn"
+exit_name = "CherryTrail1GarysHouse"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToCherryTrail1"]
+polygon = PoolVector2Array( -33, 16, 37, -13, 29, -24, -52, 9 )
+
 [node name="PlayerSpawnDefault" parent="CollisionRoot" instance=ExtResource( 10 )]
 position = Vector2( -59, -31 )
 direction = Vector2( -1, 1 )
@@ -398,6 +407,11 @@ position = Vector2( -13, -37 )
 door_name = "OutsideHouse"
 direction = Vector2( -1, 1 )
 height = 96
+
+[node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 10 )]
+position = Vector2( -32, 328 )
+door_name = "CherryTrail1GarysHouse"
+direction = Vector2( -1, -1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 0, -20 )

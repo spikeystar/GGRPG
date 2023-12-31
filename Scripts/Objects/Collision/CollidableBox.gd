@@ -57,6 +57,7 @@ var collider_edges = null
 var collision_body = null # blocks player/npc from moving here
 var collision_body_shape = null # belongs to collision_body
 var collision_preview_mesh = null # editor preview mesh of collision box
+var depth_test_meshes = [] # keep track of the meshes created for depth testing
 var floor_notify_area = null # notifies player/npc of floor height when collision_body non-blocking
 var floor_notify_area_shape = null # belongs to floor_notify_area
 var half_tile_width = 63.0 / 2.0
@@ -132,6 +133,10 @@ func set_preview_collision_box(new_preview_collision_box):
 # Node Lifecycle #
 #----------------#
 
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		_clear_depth_test_meshes()
+
 func _ready():
 	is_ready = true
 	
@@ -140,6 +145,10 @@ func _ready():
 func _enter_tree():
 	if is_ready:
 		_initialize_nodes()
+
+func _exit_tree():
+	if is_ready:
+		_clear_depth_test_meshes()
 
 #---------#
 # Methods #
@@ -165,6 +174,11 @@ func _initialize_nodes():
 	_queue_generate_collider()
 	_queue_generate_region_sprites()
 	_queue_generate_collision_box_preview()
+
+func _clear_depth_test_meshes():
+	for depth_test_mesh in depth_test_meshes:
+		Global.depth_buffer.remove_depth_test_mesh(depth_test_mesh)
+	depth_test_meshes = []
 
 func _queue_generate_collider():
 	if not is_queued_generate_collider:
@@ -245,6 +259,8 @@ func _queue_generate_region_sprites():
 func _generate_region_sprites():
 	is_queued_generate_region_sprites = false
 	
+	_clear_depth_test_meshes()
+	
 	if region_sprites.size() > 0:
 		for tx in region_sprites:
 			tx.queue_free()
@@ -279,12 +295,14 @@ func _generate_region_sprites():
 		texture_size.y - texture_origin.y
 	)
 	
+	var front_corner_depth = -(global_position.y + half_tile_height)
+	
 	# Render left side of box
 	for tile_count in range(0, left_half_tile_count):
 		# Generate offset points relative to texture_origin
 		var is_texture_edge = tile_count >= left_half_tile_count - 1
 		var h_coord = -(tile_count * tile_step_width)
-		var left = texture_clip_bounds.position.x if is_texture_edge else h_coord - tile_step_width
+		var left = h_coord - tile_step_width
 		var right = h_coord
 		var bottom = texture_size.y - texture_origin.y
 		var bottom_left = Vector2(left, bottom)
@@ -300,15 +318,50 @@ func _generate_region_sprites():
 		
 		# Generate a textured mesh for the left side
 		var vertices = PoolVector2Array()
+		var depth_test = PoolRealArray()
 		vertices.push_back(bottom_left)
+		depth_test.push_back(1)
 		vertices.push_back(top_left)
+		depth_test.push_back(1)
 		vertices.push_back(bottom_right)
+		depth_test.push_back(0)
 		vertices.push_back(top_right)
-		_generate_mesh(vertices, texture_clip_bounds, texture_origin, texture_size, Vector3(
+		depth_test.push_back(0)
+		var depth_range = Vector2(front_corner_depth + (tile_count * tile_step_height), front_corner_depth + ((tile_count + 1) * tile_step_height))
+		_generate_mesh(vertices, depth_test, depth_range, texture_origin, texture_size, Vector3(
 			global_position.x + right,
 			global_position.y + top_right.y + height - tile_step_height,
 			floor_height
 		) + depth_test_offset)
+		
+		# Generate a mesh containing the remainder of the image on the left side that's not on box
+		if is_texture_edge:
+			left = texture_clip_bounds.position.x
+			right = h_coord - tile_step_width
+			bottom_left = Vector2(left, bottom)
+			bottom_right = Vector2(right, bottom)
+			top_right = top_left
+			top_left = Vector2(
+				left,
+				Geometry.line_intersects_line_2d(Vector2(left, 0.0), Vector2(0.0, 1.0), top_right, Vector2(-tile_step_width, -tile_step_height).normalized()).y
+			)
+			vertices = PoolVector2Array()
+			depth_test = PoolRealArray()
+			vertices.push_back(bottom_left)
+			depth_test.push_back(1)
+			vertices.push_back(top_left)
+			depth_test.push_back(1)
+			vertices.push_back(bottom_right)
+			depth_test.push_back(1)
+			vertices.push_back(top_right)
+			depth_test.push_back(1)
+			depth_range = Vector2(front_corner_depth + ((tile_count + 1) * tile_step_height), front_corner_depth + ((tile_count + 1) * tile_step_height))
+			_generate_mesh(vertices, depth_test, depth_range, texture_origin, texture_size, Vector3(
+				global_position.x + right,
+				global_position.y + top_right.y + height - tile_step_height,
+				floor_height
+			) + depth_test_offset)
+			
 	
 	# Render right side of box
 	for tile_count in range(0, right_half_tile_count):
@@ -316,7 +369,7 @@ func _generate_region_sprites():
 		var is_texture_edge = tile_count >= right_half_tile_count - 1
 		var h_coord = tile_count * tile_step_width
 		var left = h_coord
-		var right = texture_clip_bounds.size.x if is_texture_edge else h_coord + tile_step_width
+		var right = h_coord + tile_step_width
 		var bottom = texture_size.y - texture_origin.y
 		var bottom_left = Vector2(left, bottom)
 		var bottom_right = Vector2(right, bottom)
@@ -331,16 +384,51 @@ func _generate_region_sprites():
 		
 		# Generate a textured mesh for the right side
 		var vertices = PoolVector2Array()
+		var depth_test = PoolRealArray()
 		vertices.push_back(bottom_left)
+		depth_test.push_back(0)
 		vertices.push_back(top_left)
+		depth_test.push_back(0)
 		vertices.push_back(bottom_right)
+		depth_test.push_back(1)
 		vertices.push_back(top_right)
-		_generate_mesh(vertices, texture_clip_bounds, texture_origin, texture_size, Vector3(
+		depth_test.push_back(1)
+		var depth_range = Vector2(front_corner_depth + (tile_count * tile_step_height), front_corner_depth + ((tile_count + 1) * tile_step_height))
+		_generate_mesh(vertices, depth_test, depth_range, texture_origin, texture_size, Vector3(
 			global_position.x + left,
 			global_position.y + top_left.y + height - tile_step_height,
 			floor_height
 		) + depth_test_offset)
 		
+		# Generate a mesh containing the remainder of the image on the left side that's not on box
+		if is_texture_edge:
+			left = h_coord + tile_step_width
+			right = texture_clip_bounds.size.x
+			bottom_left = Vector2(left, bottom)
+			bottom_right = Vector2(right, bottom)
+			top_left = top_right
+			top_right = Vector2(
+				right,
+				Geometry.line_intersects_line_2d(Vector2(right, 0.0), Vector2(0.0, 1.0), top_left, Vector2(half_tile_width, -half_tile_height).normalized()).y
+			)
+			vertices = PoolVector2Array()
+			depth_test = PoolRealArray()
+			vertices.push_back(bottom_left)
+			depth_test.push_back(1)
+			vertices.push_back(top_left)
+			depth_test.push_back(1)
+			vertices.push_back(bottom_right)
+			depth_test.push_back(1)
+			vertices.push_back(top_right)
+			depth_test.push_back(1)
+			depth_range = Vector2(front_corner_depth + ((tile_count + 1) * tile_step_height), front_corner_depth + ((tile_count + 1) * tile_step_height))
+			_generate_mesh(vertices, depth_test, depth_range, texture_origin, texture_size, Vector3(
+				global_position.x + left,
+				global_position.y + top_left.y + height - tile_step_height,
+				floor_height
+			) + depth_test_offset)
+	
+	
 	# Render top of box
 	for x_tile in range(0, left_half_tile_count):
 		for y_tile in range(0, right_half_tile_count):
@@ -367,18 +455,26 @@ func _generate_region_sprites():
 			
 			# Generate a textured mesh for the top side
 			var vertices = PoolVector2Array()
+			var depth_test = PoolRealArray()
 			vertices.push_back(left_corner)
+			depth_test.push_back(0.5)
 			vertices.push_back(top_corner)
+			depth_test.push_back(1)
 			vertices.push_back(bottom_corner)
+			depth_test.push_back(0)
 			vertices.push_back(right_corner)
-			
+			depth_test.push_back(0.5)
+			var depth_range = Vector2(
+				front_corner_depth + ((x_tile + y_tile) * tile_step_height),
+				front_corner_depth + ((x_tile + y_tile) * tile_step_height) + (tile_step_height * 2)
+			)
 			var depth_test_position = Vector3(
 				global_position.x - tile_center.x,
 				global_position.y + (tile_step_origin_height_offset + ((x_tile + y_tile) * -(tile_step_height))),
 				floor_height
 			) + depth_test_offset
 			
-			_generate_mesh(vertices, texture_clip_bounds, texture_origin, texture_size, depth_test_position)
+			_generate_mesh(vertices, depth_test, depth_range, texture_origin, texture_size, depth_test_position)
 			
 			var left_edge = Vector2.ZERO
 			var right_edge = Vector2.ZERO
@@ -392,15 +488,21 @@ func _generate_region_sprites():
 					Vector2(-half_tile_width, -half_tile_height).normalized()
 				)
 				var p0 = left_edge
-				var p1 = Vector2(left_edge.x, left_edge.y + (tile_step_height * 2))
-				var p2 = Vector2(tile_center.x, top)
-				var p3 = Vector2(left, tile_center.y)
+				var p1 = Vector2(tile_center.x, top)
+				var p2 = Vector2(left, tile_center.y)
+				var p3 = Vector2(left_edge.x, left_edge.y + (tile_step_height * 2))
 				vertices = PoolVector2Array()
+				depth_test = PoolRealArray()
 				vertices.push_back(p0)
+				depth_test.push_back(1)
 				vertices.push_back(p1)
+				depth_test.push_back(1)
 				vertices.push_back(p2)
+				depth_test.push_back(1)
 				vertices.push_back(p3)
-				_generate_mesh(vertices, texture_clip_bounds, texture_origin, texture_size, depth_test_position)
+				depth_test.push_back(1)
+				depth_range = Vector2(front_corner_depth + ((x_tile + y_tile) * tile_step_height * 2) + tile_step_height, front_corner_depth + ((x_tile + y_tile) * tile_step_height * 2) + tile_step_height)
+				_generate_mesh(vertices, depth_test, depth_range, texture_origin, texture_size, depth_test_position)
 			
 			# Generate a textured mesh for leftover data on right side of image
 			if is_last_y_tile:
@@ -415,11 +517,17 @@ func _generate_region_sprites():
 				var p2 = Vector2(tile_center.x, top)
 				var p3 = Vector2(right, tile_center.y)
 				vertices = PoolVector2Array()
+				depth_test = PoolRealArray()
 				vertices.push_back(p0)
+				depth_test.push_back(1)
 				vertices.push_back(p1)
+				depth_test.push_back(1)
 				vertices.push_back(p2)
+				depth_test.push_back(1)
 				vertices.push_back(p3)
-				_generate_mesh(vertices, texture_clip_bounds, texture_origin, texture_size, depth_test_position)
+				depth_test.push_back(1)
+				depth_range = Vector2(front_corner_depth + ((x_tile + y_tile) * tile_step_height * 2) + tile_step_height, front_corner_depth + ((x_tile + y_tile) * tile_step_height * 2) + tile_step_height)
+				_generate_mesh(vertices, depth_test, depth_range, texture_origin, texture_size, depth_test_position)
 			
 			# Generate a textured mesh for leftover data on top side of image
 			if is_last_x_tile and is_last_y_tile:
@@ -430,18 +538,27 @@ func _generate_region_sprites():
 				var p4 = Vector2(texture_clip_bounds.size.x, -texture_origin.y)
 				var p5 = right_edge
 				vertices = PoolVector2Array()
+				depth_test = PoolRealArray()
 				vertices.push_back(p0)
+				depth_test.push_back(1)
 				vertices.push_back(p1)
+				depth_test.push_back(1)
 				vertices.push_back(p2)
+				depth_test.push_back(1)
 				vertices.push_back(p3)
+				depth_test.push_back(1)
 				vertices.push_back(p4)
+				depth_test.push_back(1)
 				vertices.push_back(p5)
-				_generate_mesh(vertices, texture_clip_bounds, texture_origin, texture_size, depth_test_position)
+				depth_test.push_back(1)
+				depth_range = Vector2(front_corner_depth + ((x_tile + y_tile) * tile_step_height * 2) + tile_step_height * 2, front_corner_depth + ((x_tile + y_tile) * tile_step_height * 2) + tile_step_height * 2)
+				_generate_mesh(vertices, depth_test, depth_range, texture_origin, texture_size, depth_test_position)
 
 
 func _generate_mesh(
 	vertices: PoolVector2Array,
-	clip_bounds: Rect2,
+	depth_test: PoolRealArray,
+	depth_range: Vector2,
 	texture_origin: Vector2,
 	texture_size: Vector2,
 	sort_position: Vector3
@@ -461,22 +578,34 @@ func _generate_mesh(
 	var vertex_index: int = 0
 	for vertex in vertices:
 		uvs.push_back((vertex + texture_origin) / texture_size)
-		vertices[vertex_index] = vertex + Vector2(0.0, -floor_height)
+		vertices[vertex_index] = vertex
 		vertex_index += 1
 	
 	# Generate a textured mesh
 	var array_mesh = Mesh.new()
-	var floor_arrays = []
-	floor_arrays.resize(ArrayMesh.ARRAY_MAX)
-	floor_arrays[ArrayMesh.ARRAY_VERTEX] = vertices
-	floor_arrays[ArrayMesh.ARRAY_TEX_UV] = uvs
-	array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLE_STRIP, floor_arrays)
+	var arrays = []
+	arrays.resize(ArrayMesh.ARRAY_MAX)
+	arrays[ArrayMesh.ARRAY_VERTEX] = vertices
+	arrays[ArrayMesh.ARRAY_TEX_UV] = uvs
+	array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLE_STRIP, arrays)
 	var mesh_instance = MeshInstance2D.new()
 	mesh_instance.name = "TexturedMeshInstance2D"
 	mesh_instance.mesh = array_mesh
 	mesh_instance.texture = texture
 	y_sort.add_child(mesh_instance)
-	mesh_instance.global_position = global_position
+	mesh_instance.global_position = global_position + Vector2(0.0, -floor_height)
+	
+	if visible:
+		depth_test_meshes.push_back(
+			Global.depth_buffer.add_depth_test_mesh(
+				vertices,
+				uvs,
+				depth_test,
+				depth_range,
+				texture,
+				global_position + Vector2(0.0, -floor_height)
+			)
+		)
 
 func _queue_generate_collision_box_preview():
 	if not is_queued_generate_collision_box_preview:

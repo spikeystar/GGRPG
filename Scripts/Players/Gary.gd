@@ -17,6 +17,9 @@ onready var body_visual_root = $BodyYSort/BodyVisualRoot
 onready var shadow_y_sort = $ShadowYSort
 onready var shadow_visual_root = $ShadowYSort/ShadowVisualRoot
 
+onready var body_sprite = $BodyYSort/BodyVisualRoot/Gary
+onready var shadow_sprite = $ShadowYSort/ShadowVisualRoot/ShadowCircle
+
 func _physics_process(delta):
 
 	var last_dir = motion_root.last_dir
@@ -29,12 +32,15 @@ func _physics_process(delta):
 
 	if !motion_root.is_on_ground:
 		anim_tree.get("parameters/playback").travel("Jump")
-		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y))
+		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
 	
 	var draw_pos_z = motion_root.pos_z
 	var draw_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.floor_z))
 	var draw_shadow_z = motion_root.shadow_z
 	var draw_shadow_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.shadow_z))
+	
+	body_sprite.height = motion_root.pos_z
+	shadow_sprite.height = motion_root.shadow_z
 	
 	body_y_sort.global_position = Vector2(motion_root.global_position.x, draw_y_sort)
 	body_visual_root.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z)

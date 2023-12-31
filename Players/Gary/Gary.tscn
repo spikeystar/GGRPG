@@ -1,9 +1,10 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=90 format=2]
 
 [ext_resource path="res://Scripts/Players/Gary.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/circle shadow small.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/ShadowLayerCheck.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Players/PlayerMotionRoot.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Rendering/DepthTestSprite.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 14, 7 )
@@ -111,6 +112,7 @@ blend_point_8/pos = Vector2( 0, 0 )
 min_space = Vector2( -2, -2 )
 max_space = Vector2( 2, 2 )
 snap = Vector2( 1, 1 )
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id=148]
 animation = "d_down_walk"
@@ -283,46 +285,46 @@ graph_offset = Vector2( -194.97, 22.875 )
 [sub_resource type="Animation" id=13]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 22 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
-}
 
 [sub_resource type="Animation" id=14]
 resource_name = "back_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -330,8 +332,8 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 6 ]
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -342,12 +344,12 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
@@ -355,7 +357,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 6 ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -363,16 +365,16 @@ resource_name = "back_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 20, 20, 21 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -383,20 +385,20 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 20, 20, 21 ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -404,16 +406,16 @@ resource_name = "back_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 7, 6, 8, 6 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -424,26 +426,26 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 7, 6, 8, 6 ]
 }
 
 [sub_resource type="Animation" id=16]
 resource_name = "d_down_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -451,8 +453,8 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -463,12 +465,12 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
@@ -476,7 +478,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=27]
@@ -484,46 +486,46 @@ resource_name = "d_down_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 16, 16, 17 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 16, 16, 17 ]
+}
 
 [sub_resource type="Animation" id=59]
 resource_name = "d_down_r_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -531,8 +533,8 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
+"update": 0,
+"values": [ Vector2( -15, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -543,12 +545,12 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
@@ -556,7 +558,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -15, 0 ) ]
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=56]
@@ -564,16 +566,16 @@ resource_name = "d_down_r_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 16, 16, 17 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -15, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -584,20 +586,20 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -15, 0 ) ]
+"values": [ 16, 16, 17 ]
 }
 
 [sub_resource type="Animation" id=55]
@@ -605,16 +607,16 @@ resource_name = "d_down_r_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 0, 2, 0 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -15, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -625,20 +627,20 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -15, 0 ) ]
+"values": [ 1, 0, 2, 0 ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -646,16 +648,16 @@ resource_name = "d_down_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 1, 0, 2, 0 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -666,26 +668,26 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 1, 0, 2, 0 ]
 }
 
 [sub_resource type="Animation" id=18]
 resource_name = "d_up_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -693,8 +695,8 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 3 ]
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -705,12 +707,12 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
@@ -718,7 +720,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 3 ]
 }
 
 [sub_resource type="Animation" id=25]
@@ -726,46 +728,46 @@ resource_name = "d_up_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 18, 18, 19 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 18, 18, 19 ]
+}
 
 [sub_resource type="Animation" id=60]
 resource_name = "d_up_r_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -773,8 +775,8 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 3 ]
+"update": 0,
+"values": [ Vector2( -15, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -785,12 +787,12 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
@@ -798,7 +800,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -15, 0 ) ]
+"values": [ 3 ]
 }
 
 [sub_resource type="Animation" id=57]
@@ -806,16 +808,16 @@ resource_name = "d_up_r_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 18, 18, 19 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -15, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -826,20 +828,20 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -15, 0 ) ]
+"values": [ 18, 18, 19 ]
 }
 
 [sub_resource type="Animation" id=54]
@@ -847,16 +849,16 @@ resource_name = "d_up_r_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 3, 5, 3 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -15, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -867,20 +869,20 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -15, 0 ) ]
+"values": [ 4, 3, 5, 3 ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -888,16 +890,16 @@ resource_name = "d_up_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 3, 5, 3 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -908,26 +910,26 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 4, 3, 5, 3 ]
 }
 
 [sub_resource type="Animation" id=20]
 resource_name = "front_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -935,8 +937,8 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 22 ]
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -947,12 +949,12 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
@@ -960,7 +962,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 22 ]
 }
 
 [sub_resource type="Animation" id=24]
@@ -968,16 +970,16 @@ resource_name = "front_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 14, 14, 15 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -988,20 +990,20 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 14, 14, 15 ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -1009,16 +1011,16 @@ resource_name = "front_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 23, 22, 24, 22 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -1029,35 +1031,35 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 23, 22, 24, 22 ]
 }
 
 [sub_resource type="Animation" id=21]
 resource_name = "side_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 9 ]
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -1068,20 +1070,20 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 9 ]
 }
 
 [sub_resource type="Animation" id=26]
@@ -1089,55 +1091,55 @@ resource_name = "side_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 12, 12, 13 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 12, 12, 13 ]
+}
 
 [sub_resource type="Animation" id=61]
 resource_name = "side_r_idle"
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.1 ),
+"times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 9 ]
+"update": 0,
+"values": [ Vector2( -15, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -1148,20 +1150,20 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
+"times": PoolRealArray( 0.1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -15, 0 ) ]
+"values": [ 9 ]
 }
 
 [sub_resource type="Animation" id=58]
@@ -1169,16 +1171,16 @@ resource_name = "side_r_jump"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 12, 12, 13 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -15, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -1189,20 +1191,20 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -15, 0 ) ]
+"values": [ 12, 12, 13 ]
 }
 
 [sub_resource type="Animation" id=53]
@@ -1210,16 +1212,16 @@ resource_name = "side_r_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 10, 9, 11, 9 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -15, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -1230,20 +1232,20 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -15, 0 ) ]
+"values": [ 10, 9, 11, 9 ]
 }
 
 [sub_resource type="Animation" id=22]
@@ -1251,16 +1253,16 @@ resource_name = "side_walk"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2, 3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 10, 9, 11, 9 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -1271,20 +1273,20 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
+"update": 0,
 "values": [ false ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
-tracks/2/interp = 1
+tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ 10, 9, 11, 9 ]
 }
 
 [node name="Gary" type="YSort"]
@@ -1315,6 +1317,8 @@ shape = SubResource( 172 )
 position = Vector2( -2.38419e-07, -2 )
 scale = Vector2( 0.84, 0.88 )
 texture = ExtResource( 2 )
+script = ExtResource( 5 )
+depth_test_offset = Vector2( 0, -2 )
 
 [node name="BodyYSort" type="Node2D" parent="."]
 
@@ -1325,7 +1329,9 @@ position = Vector2( 8, -28 )
 texture = SubResource( 171 )
 hframes = 9
 vframes = 3
-frame = 22
+frame = 12
+script = ExtResource( 5 )
+depth_test_offset = Vector2( -8, 28 )
 
 [node name="AnimationTree" type="AnimationTree" parent="BodyYSort"]
 tree_root = SubResource( 37 )
@@ -1333,8 +1339,8 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 38 )
 parameters/Idle/blend_position = Vector2( -0.000871062, 1.27468 )
-parameters/Jump/blend_position = Vector2( -1.75087, 0.0686696 )
-parameters/Walk/blend_position = Vector2( -0.697552, 0.628931 )
+parameters/Jump/blend_position = Vector2( -1.15956, 0.0849857 )
+parameters/Walk/blend_position = Vector2( -0.00297326, 1.06034 )
 parameters/Walk/1/TimeScale/scale = 5.5
 parameters/Walk/2/TimeScale/scale = 5.5
 parameters/Walk/3/TimeScale/scale = 5.5
