@@ -72,24 +72,33 @@ func _calculate_frame_size():
 		frame_height = round(texture.get_size().y / vframes)
 
 func _clear_depth_test_meshes():
-	Global.depth_buffer.remove_depth_test_mesh(depth_test_mesh_top)
-	Global.depth_buffer.remove_depth_test_mesh(depth_test_mesh_bottom)
-	depth_test_mesh_top = null
-	depth_test_mesh_bottom = null
+	if depth_test_mesh_top:
+		Global.depth_buffer.remove_depth_test_mesh(depth_test_mesh_top)
+		depth_test_mesh_top = null
+	if depth_test_mesh_bottom:
+		Global.depth_buffer.remove_depth_test_mesh(depth_test_mesh_bottom)
+		depth_test_mesh_bottom = null
 
 func _generate_meshes():
+	_clear_depth_test_meshes()
+	
 	if not visible:
 		return
 	
-	var top_left = (-Vector2(frame_width / 2, frame_height / 2) if centered else Vector2.ZERO)
-
 	var top_body_frame_bottom = depth_test_offset.y
 	
+	var top_left = (-Vector2(frame_width / 2, frame_height / 2) if centered else Vector2.ZERO)
+	var top_right = top_left + Vector2(frame_width, 0.0)
+	var bottom_left = Vector2(top_left.x, top_body_frame_bottom)
+	var bottom_right = Vector2(top_left.x + frame_width, top_body_frame_bottom)
+	
+	var sprite_transform = Transform2D().scaled(scale).rotated(rotation)
+	
 	var vertices = PoolVector2Array()
-	vertices.push_back(top_left)
-	vertices.push_back(top_left + Vector2(frame_width, 0.0))
-	vertices.push_back(Vector2(top_left.x, top_body_frame_bottom))
-	vertices.push_back(Vector2(top_left.x + frame_width, top_body_frame_bottom))
+	vertices.push_back(sprite_transform.xform(top_left))
+	vertices.push_back(sprite_transform.xform(top_right))
+	vertices.push_back(sprite_transform.xform(bottom_left))
+	vertices.push_back(sprite_transform.xform(bottom_right))
 	var uvs = PoolVector2Array()
 	uvs.push_back(Vector2(0, 0))
 	uvs.push_back(Vector2(1, 0))

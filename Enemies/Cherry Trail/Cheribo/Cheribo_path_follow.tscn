@@ -3,7 +3,7 @@
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_path.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy Path Follow.gd" type="Script" id=2]
 
-[node name="PathFollow2D" type="PathFollow2D"]
+[node name="CheriboPathFollow" type="PathFollow2D"]
 position = Vector2( -87, -128 )
 rotate = false
 loop = false

@@ -1,10 +1,11 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://Scripts/Players/Gary.gd" type="Script" id=1]
-[ext_resource path="res://Assets/General/circle shadow small.png" type="Texture" id=2]
+[ext_resource path="res://Assets/General/circle shadow small dithered.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/ShadowLayerCheck.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Players/PlayerMotionRoot.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 14, 7 )
@@ -1316,10 +1317,10 @@ shape = SubResource( 172 )
 
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
 position = Vector2( -2.38419e-07, -2 )
-scale = Vector2( 0.84, 0.88 )
 texture = ExtResource( 2 )
-script = ExtResource( 5 )
-feet_height = 8.0
+hframes = 2
+script = ExtResource( 6 )
+always_update = true
 
 [node name="BodyYSort" type="Node2D" parent="."]
 

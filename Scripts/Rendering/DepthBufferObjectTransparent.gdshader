@@ -1,5 +1,5 @@
 shader_type spatial;
-render_mode depth_draw_always, cull_disabled, unshaded;
+render_mode cull_disabled, unshaded;
 
 uniform float depth_edge_buffer = 100.0;
 uniform float depth_max = 600.0;
@@ -28,5 +28,4 @@ void fragment() {
 	);
 	ALBEDO = sprite_texture.rgb;
 	ALPHA = sprite_texture.a;
-	ALPHA_SCISSOR = 0.5;
 }

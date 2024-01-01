@@ -4,14 +4,29 @@ extends Sprite
 # Exports #
 #---------#
 
+export var always_update: bool = false setget _set_always_update # Use if the sprite changes position from its initial placement during gameplay
 export var height = 0.0 # The height of the floor this sprite represents
+export var use_transparency: bool = false # Allow partial transparency, but greatly reduces depth accuracy
 
 #------------#
 # Properties #
 #------------#
 
 var depth_test_mesh = null
+var frame_width = 0
+var frame_height = 0
 var is_ready = false
+var last_frame = -1
+var was_flip_h = false
+
+#-------------------#
+# Getters / Setters #
+#-------------------#
+
+func _set_always_update(new_always_update):
+	always_update = new_always_update
+	set_physics_process(always_update)
+	set_process(always_update)
 
 #----------------#
 # Node Lifecycle #
@@ -23,18 +38,43 @@ func _notification(what):
 
 func _ready():
 	is_ready = true
+	_calculate_frame_size()
 	_generate_meshes()
+	set_physics_process(always_update)
+	set_process(always_update)
 
 func _enter_tree():
+	_calculate_frame_size()
 	if is_ready:
 		_generate_meshes()
 
 func _exit_tree():
 	_clear_depth_test_meshes()
 
+func _physics_process(_delta):
+	if depth_test_mesh:
+		var mesh = depth_test_mesh.get_ref()
+		if mesh:
+			if frame != last_frame:
+				last_frame = frame
+				mesh.material_override.set_shader_param("sprite_animation_frame", frame)
+			if flip_h != was_flip_h:
+				was_flip_h = flip_h
+				mesh.material_override.set_shader_param("sprite_flip_h", -1 if flip_h else 1)
+			mesh.global_translation = Vector3(
+				global_position.x,
+				global_position.y,
+				-global_position.y - height
+			)
+
 #-----------------#
 # Private Methods #
 #-----------------#
+
+func _calculate_frame_size():
+	if texture:
+		frame_width = round(texture.get_size().x / hframes)
+		frame_height = round(texture.get_size().y / vframes)
 
 func _clear_depth_test_meshes():
 	if depth_test_mesh != null:
@@ -47,7 +87,7 @@ func _generate_meshes():
 	if not visible:
 		return
 	
-	var texture_size = texture.get_size()
+	var texture_size = texture.get_size() / Vector2(hframes, vframes)
 	var top_left = (-Vector2(texture_size.x / 2, texture_size.y / 2) if centered else Vector2.ZERO)
 	var top_right = top_left + Vector2(texture_size.x, 0.0)
 	var bottom_left = top_left + Vector2(0.0, texture_size.y)
@@ -56,10 +96,10 @@ func _generate_meshes():
 	var sprite_transform = Transform2D().scaled(scale).rotated(rotation)
 
 	var vertices = PoolVector2Array()
-	vertices.push_back(sprite_transform.xform(top_left) + Vector2(0.0, global_position.y))
-	vertices.push_back(sprite_transform.xform(top_right) + Vector2(0.0, global_position.y))
-	vertices.push_back(sprite_transform.xform(bottom_left) + Vector2(0.0, global_position.y))
-	vertices.push_back(sprite_transform.xform(bottom_right) + Vector2(0.0, global_position.y))
+	vertices.push_back(sprite_transform.xform(top_left))
+	vertices.push_back(sprite_transform.xform(top_right))
+	vertices.push_back(sprite_transform.xform(bottom_left))
+	vertices.push_back(sprite_transform.xform(bottom_right))
 	var uvs = PoolVector2Array()
 	uvs.push_back(Vector2(0, 0))
 	uvs.push_back(Vector2(1, 0))
@@ -81,9 +121,20 @@ func _generate_meshes():
 		depth_test,
 		Vector2(-bottom, -top),
 		texture,
-		Vector2(global_position.x, 0.0)
+		Vector2(global_position.x, global_position.y),
+		use_transparency
 	)
 	
 	var mesh = depth_test_mesh.get_ref()
 	if mesh:
+		if hframes != 1 or vframes != 1:
+			mesh.material_override.set_shader_param("sprite_animation_hframes", hframes)
+			mesh.material_override.set_shader_param("sprite_animation_vframes", vframes)
+			mesh.material_override.set_shader_param("sprite_animation_frame", frame)
 		mesh.material_override.set_shader_param("sprite_flip_h", -1 if flip_h else 1)
+		was_flip_h = flip_h
+		mesh.global_translation = Vector3(
+			global_position.x,
+			global_position.y,
+			-global_position.y - height
+		)
