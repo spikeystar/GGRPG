@@ -4,9 +4,12 @@ extends Sprite
 # Exports #
 #---------#
 
+export var alpha_clip = 0.5 # Decrease to 0.01 to dither transparent objects
 export var always_update: bool = false setget _set_always_update # Use if the sprite changes position from its initial placement during gameplay
 export var height = 0.0 # The height of the floor this sprite represents
-export var use_transparency: bool = false # Allow partial transparency, but greatly reduces depth accuracy
+export var use_dithering = true # Dither alpha values, disabled when use_transparency is true
+export var use_dither_blending = true # Offset alpha dithering pattern every frame to create a smoothing effect
+export var use_transparency: bool = false # Allow partial transparency, but greatly reduces depth drawing accuracy
 
 #------------#
 # Properties #
@@ -62,8 +65,8 @@ func _physics_process(_delta):
 				was_flip_h = flip_h
 				mesh.material_override.set_shader_param("sprite_flip_h", -1 if flip_h else 1)
 			mesh.global_translation = Vector3(
-				global_position.x,
-				global_position.y,
+				global_position.x + offset.x,
+				global_position.y + offset.y,
 				-global_position.y - height
 			)
 
@@ -131,7 +134,11 @@ func _generate_meshes():
 			mesh.material_override.set_shader_param("sprite_animation_hframes", hframes)
 			mesh.material_override.set_shader_param("sprite_animation_vframes", vframes)
 			mesh.material_override.set_shader_param("sprite_animation_frame", frame)
+		mesh.material_override.set_shader_param("alpha_clip", alpha_clip)
+		mesh.material_override.set_shader_param("dither_limit_min", 0.0 if use_dithering else 1.0)
+		mesh.material_override.set_shader_param("dither_time_coord_multiplier", 1.0 if use_dither_blending else 0.0)
 		mesh.material_override.set_shader_param("sprite_flip_h", -1 if flip_h else 1)
+		mesh.material_override.set_shader_param("sprite_modulate", modulate * self_modulate)
 		was_flip_h = flip_h
 		mesh.global_translation = Vector3(
 			global_position.x,

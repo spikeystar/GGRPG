@@ -1,7 +1,7 @@
 [gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://Scripts/Players/Gary.gd" type="Script" id=1]
-[ext_resource path="res://Assets/General/circle shadow small dithered.png" type="Texture" id=2]
+[ext_resource path="res://Assets/General/circle shadow small.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/ShadowLayerCheck.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Players/PlayerMotionRoot.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=5]
@@ -1317,9 +1317,10 @@ shape = SubResource( 172 )
 
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
 position = Vector2( -2.38419e-07, -2 )
+scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 2 )
-hframes = 2
 script = ExtResource( 6 )
+alpha_clip = 0.01
 always_update = true
 
 [node name="BodyYSort" type="Node2D" parent="."]
@@ -1335,6 +1336,8 @@ frame = 22
 script = ExtResource( 5 )
 depth_test_offset = Vector2( -8, 28 )
 feet_height = 10.0
+use_dithering = false
+use_dither_blending = false
 
 [node name="AnimationTree" type="AnimationTree" parent="BodyYSort"]
 tree_root = SubResource( 37 )

@@ -41,10 +41,6 @@ func _physics_process(delta):
 	
 	body_sprite.height = motion_root.pos_z
 	shadow_sprite.height = motion_root.shadow_z + 1
-	if shadow_sprite.frame < 1:
-		shadow_sprite.frame += 1
-	else:
-		shadow_sprite.frame = 0
 	
 	body_y_sort.global_position = Vector2(motion_root.global_position.x, draw_y_sort)
 	body_visual_root.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z)

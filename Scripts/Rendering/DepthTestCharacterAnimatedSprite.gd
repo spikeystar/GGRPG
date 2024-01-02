@@ -1,4 +1,4 @@
-extends Sprite
+extends AnimatedSprite
 
 #---------#
 # Exports #
@@ -17,10 +17,12 @@ export var use_dither_blending = true # Offset alpha dithering pattern every fra
 
 var depth_test_mesh_top = null
 var depth_test_mesh_bottom = null
-var frame_width = 0
-var frame_height = 0
+var frame_width = 1
+var frame_height = 1
 var is_ready = false
+var last_animation = null
 var last_frame = -1
+var last_frame_texture = null
 var was_flip_h = false
 
 #----------------#
@@ -33,53 +35,21 @@ func _notification(what):
 
 func _ready():
 	is_ready = true
-	_calculate_frame_size()
 	_generate_meshes()
 
 func _enter_tree():
 	if is_ready:
-		_calculate_frame_size()
 		_generate_meshes()
 
 func _exit_tree():
 	_clear_depth_test_meshes()
 
 func _physics_process(_delta):
-	if depth_test_mesh_top:
-		var top_mesh = depth_test_mesh_top.get_ref()
-		if top_mesh:
-			top_mesh.global_translation = Vector3(
-				global_position.x + offset.x,
-				global_position.y + offset.y,
-				-(global_position.y + depth_test_offset.y + height) - 1
-			)
-			if frame != last_frame:
-				top_mesh.material_override.set_shader_param("sprite_animation_frame", frame)
-			if flip_h != was_flip_h:
-				top_mesh.material_override.set_shader_param("sprite_flip_h", -1 if flip_h else 1)
-	if depth_test_mesh_bottom:
-		var bottom_mesh = depth_test_mesh_bottom.get_ref()
-		if bottom_mesh:
-			bottom_mesh.global_translation = Vector3(
-				global_position.x + offset.x,
-				global_position.y + offset.y,
-				-(global_position.y + depth_test_offset.y + height) - feet_height
-			)
-			if frame != last_frame:
-				bottom_mesh.material_override.set_shader_param("sprite_animation_frame", frame)
-			if flip_h != was_flip_h:
-				bottom_mesh.material_override.set_shader_param("sprite_flip_h", -1 if flip_h else 1)
-	last_frame = frame
-	was_flip_h = flip_h
+	_update_mesh()
 
 #-----------------#
 # Private Methods #
 #-----------------#
-
-func _calculate_frame_size():
-	if texture:
-		frame_width = round(texture.get_size().x / hframes)
-		frame_height = round(texture.get_size().y / vframes)
 
 func _clear_depth_test_meshes():
 	if depth_test_mesh_top:
@@ -92,15 +62,47 @@ func _clear_depth_test_meshes():
 func _generate_meshes():
 	_clear_depth_test_meshes()
 	
-	if not visible:
-		return
+#	if not visible or not frames:
+#		return
 	
+	var left = INF
+	var right = -INF
+	var bottom = INF
+	var top = -INF
+	
+	for animation_name in frames.get_animation_names():
+		var frame_count = frames.get_frame_count(animation_name)
+		for i in range(0, frame_count):
+			var texture = frames.get_frame(animation_name, i)
+			var top_left = Vector2.ZERO
+			var bottom_right = Vector2.ZERO
+			if texture is AtlasTexture:
+				bottom_right = texture.region.size
+				if centered:
+					top_left = -texture.region.size / 2
+					bottom_right = texture.region.size / 2
+			else:
+				bottom_right = texture.get_size()
+				if centered:
+					top_left = -texture.get_size() / 2
+					bottom_right = texture.get_size() / 2
+			if top_left.x < left:
+				left = top_left.x
+			if top_left.y > top:
+				top = top_left.y
+			if bottom_right.x > right:
+				right = bottom_right.x
+			if bottom_right.y < bottom:
+				bottom = bottom_right.y
+	
+	frame_width = right - left
+	frame_height = bottom - top
 	var top_body_frame_bottom = depth_test_offset.y
 	
-	var top_left = (-Vector2(frame_width / 2, frame_height / 2) if centered else Vector2.ZERO)
-	var top_right = top_left + Vector2(frame_width, 0.0)
-	var bottom_left = Vector2(top_left.x, top_body_frame_bottom)
-	var bottom_right = Vector2(top_left.x + frame_width, top_body_frame_bottom)
+	var top_left = Vector2(left, top)
+	var top_right = Vector2(right, top)
+	var bottom_left = Vector2(left, top_body_frame_bottom)
+	var bottom_right = Vector2(right, top_body_frame_bottom)
 	
 	var sprite_transform = Transform2D().scaled(scale).rotated(rotation)
 	
@@ -124,7 +126,7 @@ func _generate_meshes():
 		uvs,
 		depth_test,
 		Vector2.ZERO,
-		texture,
+		null,
 		Vector2.ZERO
 	)
 	
@@ -148,7 +150,7 @@ func _generate_meshes():
 		uvs,
 		depth_test,
 		Vector2.ZERO,
-		texture,
+		null,
 		Vector2.ZERO
 	)
 	
@@ -157,9 +159,6 @@ func _generate_meshes():
 		top_mesh.material_override.set_shader_param("alpha_clip", alpha_clip)
 		top_mesh.material_override.set_shader_param("dither_limit_min", 0.0 if use_dithering else 1.0)
 		top_mesh.material_override.set_shader_param("dither_time_coord_multiplier", 1.0 if use_dither_blending else 0.0)
-		top_mesh.material_override.set_shader_param("sprite_animation_hframes", hframes)
-		top_mesh.material_override.set_shader_param("sprite_animation_vframes", vframes)
-		top_mesh.material_override.set_shader_param("sprite_animation_frame", frame)
 		top_mesh.material_override.set_shader_param("sprite_flip_h", -1 if flip_h else 1)
 		top_mesh.material_override.set_shader_param("sprite_modulate", modulate * self_modulate)
 	var bottom_mesh = depth_test_mesh_bottom.get_ref()
@@ -167,9 +166,66 @@ func _generate_meshes():
 		bottom_mesh.material_override.set_shader_param("alpha_clip", alpha_clip)
 		bottom_mesh.material_override.set_shader_param("dither_limit_min", 0.0 if use_dithering else 1.0)
 		bottom_mesh.material_override.set_shader_param("dither_time_coord_multiplier", 1.0 if use_dither_blending else 0.0)
-		bottom_mesh.material_override.set_shader_param("sprite_animation_hframes", hframes)
-		bottom_mesh.material_override.set_shader_param("sprite_animation_vframes", vframes)
-		bottom_mesh.material_override.set_shader_param("sprite_animation_frame", frame)
 		bottom_mesh.material_override.set_shader_param("sprite_flip_h", -1 if flip_h else 1)
 		bottom_mesh.material_override.set_shader_param("sprite_modulate", modulate * self_modulate)
 	was_flip_h = flip_h
+	
+	_update_mesh()
+
+func _update_mesh():
+	if not depth_test_mesh_top or not depth_test_mesh_bottom:
+		return
+	
+	var top_mesh = depth_test_mesh_top.get_ref()
+	var bottom_mesh = depth_test_mesh_bottom.get_ref()
+	
+	if animation != last_animation or frame != last_frame or flip_h != was_flip_h:
+		last_animation = animation
+		last_frame = frame
+		
+		var texture = frames.get_frame(animation, frame)
+		if texture != last_frame_texture:
+			last_frame_texture = texture
+			if top_mesh:
+				top_mesh.material_override.set_shader_param("sprite_texture_sampler", texture)
+			if bottom_mesh:
+				bottom_mesh.material_override.set_shader_param("sprite_texture_sampler", texture)
+		
+		var texture_region = Rect2(0, 0, 1, 1)
+		if texture is AtlasTexture:
+			var texture_size = texture.atlas.get_size()
+			# This logic will need to change to account for frame_width & frame_height
+			# if you ever use sprites that have different dimensions for each animation
+			texture_region = Rect2(
+				(texture.region.position.x / texture_size.x),
+				(texture.region.position.y / texture_size.y),
+				(texture.region.size.x / texture_size.x),
+				(texture.region.size.y / texture_size.y)
+			)
+			if flip_h:
+				texture_region.position.x = 1.0 - texture_region.position.x - texture_region.size.x
+		if top_mesh:
+			top_mesh.material_override.set_shader_param("sprite_texture_region", texture_region)
+		if bottom_mesh:
+			bottom_mesh.material_override.set_shader_param("sprite_texture_region", texture_region)
+		
+	if top_mesh:
+		top_mesh.global_translation = Vector3(
+			global_position.x + offset.x,
+			global_position.y + offset.y,
+			-(global_position.y + depth_test_offset.y + height) - 1
+		)
+		if flip_h != was_flip_h:
+			top_mesh.material_override.set_shader_param("sprite_flip_h", -1 if flip_h else 1)
+
+	if bottom_mesh:
+		bottom_mesh.global_translation = Vector3(
+			global_position.x + offset.x,
+			global_position.y + offset.y,
+			-(global_position.y + depth_test_offset.y + height) - feet_height
+		)
+		if flip_h != was_flip_h:
+			bottom_mesh.material_override.set_shader_param("sprite_flip_h", -1 if flip_h else 1)
+	
+	was_flip_h = flip_h
+
