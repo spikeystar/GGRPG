@@ -1,24 +1,24 @@
 extends Area2D
-const LOWEST_Y : int = -256;
+const LOWEST_Z : int = -256;
 
-onready var motionRoot = get_parent();
+onready var motion_root = get_parent();
 
 #var floor_layers : Array = []
-#var floor_y : float = 0;
+#var floor_z : float = 0;
 #func update_floor():
-#	floor_y = LOWEST_Y
+#	floor_z = LOWEST_Z
 #	for f in floor_layers:
-#		floor_y = max(floor_y, f.height)
-#	motionRoot.shadow_y = floor_y
-#	print(floor_y)
+#		floor_z = max(floor_z, f.height)
+#	motion_root.shadow_z = floor_z
+#	print(floor_z)
 
 
 func _process(delta):
-	var floor_y = LOWEST_Y
+	var floor_z = LOWEST_Z
 	for area in get_overlapping_areas():
 		if area.has_method("floor_check"):
-			floor_y = max(floor_y, area.height)
-	motionRoot.shadow_y = floor_y
+			floor_z = max(floor_z, area.height)
+	motion_root.shadow_z = floor_z
 
 #func _on_area_shape_entered(_area_rid : RID, area : Area2D, area_shape_index : int, _local_shape_index : int):
 #

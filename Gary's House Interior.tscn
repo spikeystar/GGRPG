@@ -20,13 +20,12 @@
 [ext_resource path="res://Assets/Gary's House/Interior/wall b.png" type="Texture" id=19]
 [ext_resource path="res://Assets/General/wood tile b.png" type="Texture" id=20]
 [ext_resource path="res://Scripts/CollisionV2.gd" type="Script" id=21]
-[ext_resource path="res://Scripts/FloorLayer.gd" type="Script" id=23]
-[ext_resource path="res://Scripts/PlayerFloorSetter.gd" type="Script" id=24]
+[ext_resource path="res://Scripts/Objects/Collision/FloorLayer.gd" type="Script" id=23]
+[ext_resource path="res://Scripts/Objects/Collision/FloorSetter.gd" type="Script" id=24]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=25]
 [ext_resource path="res://Transition.tscn" type="PackedScene" id=26]
 
 [sub_resource type="StreamTexture" id=2]
-load_path = "res://.import/blue bckgd.png-f38ac9d5d4da9eb96a359d986f34dba2.stex"
 
 [sub_resource type="TileSet" id=1]
 0/name = "wood tile a.png 0"

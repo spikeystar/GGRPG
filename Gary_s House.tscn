@@ -1,388 +1,422 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=30 format=2]
 
+[ext_resource path="res://Assets/Gary's House/Exterior/ledge 3.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Gary's House/Exterior/plant 3.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Gary's House/Exterior/plant collection.png" type="Texture" id=4]
+[ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Gary's House/Exterior/ledge 2.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Gary's House/Exterior/door.png" type="Texture" id=7]
+[ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Gary's House/Exterior/pot b.png" type="Texture" id=9]
+[ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Gary's House/Exterior/ledge 1.png" type="Texture" id=12]
+[ext_resource path="res://Assets/General/blue bckgd.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Gary's House/Exterior/plant 4.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Gary's House/Exterior/base ground.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Gary's House/Exterior/watering can.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Gary's House/Exterior/plant 2.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Gary's House/Exterior/hill 6.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Gary's House/Exterior/hill 5.png" type="Texture" id=19]
 [ext_resource path="res://Assets/General/box.png" type="Texture" id=20]
-[ext_resource path="res://Assets/General/circle shadow small.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Gary's House/Exterior/porch.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Gary's House/Exterior/hill 2.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Gary's House/Exterior/hill 1.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Gary's House/Exterior/house.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Gary's House/Exterior/hill 3.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Gary's House/Exterior/pot c.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Gary's House/Exterior/plant 1.png" type="Texture" id=27]
 [ext_resource path="res://Assets/General/circle shadow large.png" type="Texture" id=29]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=30]
-[ext_resource path="res://Scripts/Area_Target.gd" type="Script" id=31]
-[ext_resource path="res://Scripts/Exit.gd" type="Script" id=32]
-[ext_resource path="res://Scripts/FloorLayer.gd" type="Script" id=33]
-[ext_resource path="res://Scripts/PlayerFloorSetter.gd" type="Script" id=34]
-[ext_resource path="res://Transition.tscn" type="PackedScene" id=35]
-[ext_resource path="res://Scripts/CollisionV2.gd" type="Script" id=36]
-
-[sub_resource type="CanvasItemMaterial" id=172]
-
-[sub_resource type="CanvasItemMaterial" id=173]
-
-[sub_resource type="Gradient" id=2]
-offsets = PoolRealArray( 0.709677, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
-
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
-
-[sub_resource type="Gradient" id=4]
-offsets = PoolRealArray( 0.145161, 0.341935, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0 )
-
-[sub_resource type="GradientTexture" id=5]
-gradient = SubResource( 4 )
-
-[sub_resource type="Curve" id=9]
-_data = [ Vector2( 0, 0.536036 ), 0.0, 0.0, 0, 0, Vector2( 0.687151, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=10]
-curve = SubResource( 9 )
-
-[sub_resource type="ParticlesMaterial" id=8]
-lifetime_randomness = 0.5
-emission_shape = 1
-emission_sphere_radius = 0.35
-flag_disable_z = true
-direction = Vector3( 0, 0, -10 )
-spread = 43.67
-gravity = Vector3( 5, 5, 5 )
-initial_velocity = 1.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-damping = 1.2
-scale_curve = SubResource( 10 )
-color_ramp = SubResource( 5 )
-color_initial_ramp = SubResource( 3 )
-
-[sub_resource type="Curve" id=6]
-_data = [ Vector2( 0, 0.436937 ), 0.0, 0.0, 0, 0, Vector2( 0.608939, 1 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="CurveTexture" id=7]
-curve = SubResource( 6 )
-
-[sub_resource type="ParticlesMaterial" id=1]
-lifetime_randomness = 0.02
-emission_shape = 1
-emission_sphere_radius = 0.24
-flag_disable_z = true
-direction = Vector3( 0, 0, -10 )
-spread = 42.78
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 2.0
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-damping = 1.99
-scale_curve = SubResource( 7 )
-color_ramp = SubResource( 5 )
-color_initial_ramp = SubResource( 3 )
 
 [node name="WorldRoot" type="Node2D"]
+position = Vector2( 0, 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
 
 [node name="YSort" type="YSort" parent="."]
-sort_enabled = false
 
-[node name="BlueBckgd2" type="Sprite" parent="YSort"]
-position = Vector2( -164.5, 173.5 )
+[node name="Background" type="Node2D" parent="YSort"]
+z_index = -20
+
+[node name="BlueBckgd2" type="Sprite" parent="YSort/Background"]
+position = Vector2( 465, 121 )
 scale = Vector2( 2.893, 1.951 )
+texture = ExtResource( 13 )
 
-[node name="Hill5" type="Sprite" parent="YSort"]
-modulate = Color( 0.88, 0.902, 1, 1 )
-position = Vector2( -161.5, -121.5 )
+[node name="Hill1" type="Sprite" parent="YSort/Background"]
+position = Vector2( -127, -242 )
+scale = Vector2( 1.54181, 1.54181 )
+texture = ExtResource( 23 )
 
-[node name="Hill3" type="Sprite" parent="YSort"]
-position = Vector2( 87.5, 156.5 )
+[node name="Hill9" type="Sprite" parent="YSort/Background"]
+position = Vector2( 83, -284 )
+scale = Vector2( 1.04122, 1.04122 )
+texture = ExtResource( 18 )
 
-[node name="Hill8" type="Sprite" parent="YSort"]
-position = Vector2( 12.4999, -158.5 )
+[node name="Hill8" type="Sprite" parent="YSort/Background"]
+position = Vector2( 6, -209 )
+scale = Vector2( 0.967572, 0.967572 )
+texture = ExtResource( 18 )
 
-[node name="Hill11" type="Sprite" parent="YSort"]
-modulate = Color( 0.981667, 1, 0.95, 1 )
-position = Vector2( -86.5, -94.5 )
+[node name="Hill10" type="Sprite" parent="YSort/Background"]
+position = Vector2( 358, -253 )
+scale = Vector2( 1.15743, 1.15743 )
+texture = ExtResource( 18 )
 
-[node name="Plant1" type="Sprite" parent="YSort"]
-modulate = Color( 0.6958, 0.89474, 0.98, 1 )
-position = Vector2( 313.5, -77.5 )
+[node name="Plant8" type="Sprite" parent="YSort/Background"]
+position = Vector2( 82, -251 )
+scale = Vector2( 1.54181, 1.54181 )
+texture = ExtResource( 17 )
 
-[node name="Plant7" type="Sprite" parent="YSort"]
-position = Vector2( -93.5, -122.5 )
+[node name="Plant10" type="Sprite" parent="YSort/Background"]
+modulate = Color( 0.890196, 0.890196, 0.890196, 1 )
+position = Vector2( 308, -153 )
+scale = Vector2( 1.65787, 1.65787 )
+texture = ExtResource( 17 )
+
+[node name="Hill11" type="Sprite" parent="YSort/Background"]
+position = Vector2( 439, -82 )
+scale = Vector2( 1.65787, 1.65787 )
+texture = ExtResource( 25 )
+
+[node name="Hill12" type="Sprite" parent="YSort/Background"]
+position = Vector2( 388, 60 )
+scale = Vector2( 1.15743, 1.15743 )
+texture = ExtResource( 18 )
+
+[node name="Hill13" type="Sprite" parent="YSort/Background"]
+position = Vector2( 239, -9 )
+scale = Vector2( 1.15743, 1.15743 )
+texture = ExtResource( 18 )
+
+[node name="Hill14" type="Sprite" parent="YSort/Background"]
+position = Vector2( 35, 139 )
+scale = Vector2( 1.15743, 1.15743 )
+texture = ExtResource( 18 )
+
+[node name="Hill15" type="Sprite" parent="YSort/Background"]
+position = Vector2( -84, 99 )
+scale = Vector2( 1.15743, 1.15743 )
+texture = ExtResource( 18 )
+
+[node name="Hill4" type="Sprite" parent="YSort/Background"]
+position = Vector2( 215, -188 )
+scale = Vector2( 1.54181, 1.54181 )
+texture = ExtResource( 23 )
+
+[node name="Plant9" type="Sprite" parent="YSort/Background"]
+position = Vector2( 159, -113 )
+scale = Vector2( 1.54181, 1.54181 )
+texture = ExtResource( 14 )
+
+[node name="Hill6" type="Sprite" parent="YSort/Background"]
+position = Vector2( -547, -12 )
+scale = Vector2( 1.55686, 1.55686 )
+texture = ExtResource( 18 )
+
+[node name="Hill7" type="Sprite" parent="YSort/Background"]
+position = Vector2( -675, 51 )
+texture = ExtResource( 18 )
+
+[node name="Hill5" type="Sprite" parent="YSort/Background"]
+position = Vector2( -360, 35 )
+scale = Vector2( 2.0215, 2.0215 )
+texture = ExtResource( 19 )
+
+[node name="Plant4" type="Sprite" parent="YSort/Background"]
+position = Vector2( -281, -201 )
+scale = Vector2( 1.76456, 1.76456 )
+texture = ExtResource( 17 )
+
+[node name="Hill2" type="Sprite" parent="YSort/Background"]
+position = Vector2( -258, -109 )
+scale = Vector2( 1.61322, 1.61322 )
+texture = ExtResource( 22 )
+
+[node name="Hill3" type="Sprite" parent="YSort/Background"]
+position = Vector2( -222, 45 )
+scale = Vector2( 1.61322, 1.61322 )
+texture = ExtResource( 22 )
+
+[node name="Plant5" type="Sprite" parent="YSort/Background"]
+position = Vector2( -133, -167 )
+scale = Vector2( 1.53083, 1.53083 )
+texture = ExtResource( 17 )
+
+[node name="Plant6" type="Sprite" parent="YSort/Background"]
+position = Vector2( -254, -22 )
+scale = Vector2( 2.05656, 2.05656 )
+texture = ExtResource( 17 )
+
+[node name="Plant7" type="Sprite" parent="YSort/Background"]
+position = Vector2( -287, 55 )
+scale = Vector2( 1.0931, 1.0931 )
+texture = ExtResource( 17 )
+
+[node name="Plant3" type="Sprite" parent="YSort/Background"]
+position = Vector2( -481, -40 )
+scale = Vector2( 1.15, 1.15 )
+texture = ExtResource( 2 )
+
+[node name="Plant2" type="Sprite" parent="YSort/Background"]
+position = Vector2( -643, -80 )
+scale = Vector2( 1.4, 1.4 )
+texture = ExtResource( 17 )
+
+[node name="Foreground" type="Node2D" parent="YSort"]
+z_index = 10
+
+[node name="Plant4" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( -684, 108 )
+scale = Vector2( 1.2, 1.2 )
+z_index = 10
+texture = ExtResource( 14 )
+
+[node name="Hill6" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( -597, 244 )
+scale = Vector2( 1.12, 1 )
+texture = ExtResource( 18 )
+
+[node name="Hill7" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( -368, 378 )
+scale = Vector2( 1.0008, 0.893573 )
+texture = ExtResource( 18 )
+
+[node name="Plant2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( -550, 291 )
+scale = Vector2( 1.33125, 1.18861 )
+texture = ExtResource( 27 )
+
+[node name="Plant1" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( -474, 281 )
+scale = Vector2( 1.76095, 1.57228 )
+texture = ExtResource( 27 )
+
+[node name="Plant3" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 144, 278 )
+scale = Vector2( 1.8, 1.8 )
+texture = ExtResource( 27 )
+
+[node name="HouseAndPorch" type="YSort" parent="YSort"]
+
+[node name="Porch" type="Sprite" parent="YSort/HouseAndPorch"]
+position = Vector2( 30, -5 )
+scale = Vector2( 2, 2 )
+z_index = -10
+texture = ExtResource( 21 )
+
+[node name="House" parent="YSort/HouseAndPorch" instance=ExtResource( 11 )]
+position = Vector2( 87, 51 )
+tile_size = Vector2( 62, 26 )
+grid_size = Vector2( 4, 3 )
+texture = ExtResource( 24 )
+texture_scale = Vector2( 2, 2 )
+height = 128.0
+floor_height = 96.0
+
+[node name="HouseDoor" parent="YSort/HouseAndPorch" instance=ExtResource( 11 )]
+position = Vector2( 36, 31 )
+tile_size = Vector2( 62, 26 )
+grid_size = Vector2( 1.2, 0.2 )
+texture = ExtResource( 7 )
+texture_scale = Vector2( 1.8, 1.8 )
+height = 64.0
+floor_height = 96.0
+depth_test_offset = Vector3( 0, 0, 2 )
+
+[node name="PlantCollection" parent="YSort/HouseAndPorch" instance=ExtResource( 11 )]
+position = Vector2( -150, 36 )
+tile_size = Vector2( 60, 28 )
+grid_size = Vector2( 1.7, 0.5 )
+texture = ExtResource( 4 )
+texture_scale = Vector2( 1.15, 1.15 )
+height = 48.0
+floor_height = 96.0
+
+[node name="Box" parent="YSort/HouseAndPorch" instance=ExtResource( 11 )]
+position = Vector2( 122, 60 )
+tile_size = Vector2( 60, 28 )
+texture = ExtResource( 20 )
+texture_offset = Vector2( 0, 20 )
+height = 32.0
+floor_height = 96.0
+
+[node name="WateringCanOnBox" parent="YSort/HouseAndPorch" instance=ExtResource( 11 )]
+position = Vector2( 122, 60 )
+tile_size = Vector2( 60, 28 )
+texture = ExtResource( 16 )
+texture_offset = Vector2( -5, -6 )
+height = 48.0
+floor_height = 128.0
+depth_test_offset = Vector3( 0, 0, -30 )
+
+[node name="Box2" parent="YSort/HouseAndPorch" instance=ExtResource( 11 )]
+position = Vector2( 254, 33 )
+tile_size = Vector2( 60, 28 )
+texture = ExtResource( 20 )
+texture_offset = Vector2( 0, 20 )
+height = 32.0
+floor_height = 96.0
+
+[node name="PotCOnBox2" parent="YSort/HouseAndPorch" instance=ExtResource( 11 )]
+position = Vector2( 254, 33 )
+tile_size = Vector2( 60, 28 )
+texture = ExtResource( 26 )
+texture_offset = Vector2( -3, -8 )
+height = 48.0
+floor_height = 128.0
+depth_test_offset = Vector3( 0, 0, -30 )
+
+[node name="Box3" parent="YSort/HouseAndPorch" instance=ExtResource( 11 )]
+position = Vector2( 58, 128 )
+tile_size = Vector2( 60, 28 )
+texture = ExtResource( 20 )
+texture_offset = Vector2( 0, 20 )
+height = 32.0
+floor_height = 96.0
+
+[node name="PotBOnBox3" parent="YSort/HouseAndPorch" instance=ExtResource( 11 )]
+position = Vector2( 58, 121 )
+grid_size = Vector2( 0.5, 0.6 )
+texture = ExtResource( 9 )
+texture_offset = Vector2( 0, -2 )
+height = 48.0
+floor_height = 128.0
+
+[node name="MiddleGroundPlants" type="YSort" parent="YSort"]
+
+[node name="Plant1" parent="YSort/MiddleGroundPlants" instance=ExtResource( 11 )]
+position = Vector2( -52, 237 )
+texture = ExtResource( 27 )
+texture_scale = Vector2( 2, 2 )
+height = 96.0
+
+[node name="Plant2" parent="YSort/MiddleGroundPlants" instance=ExtResource( 11 )]
+position = Vector2( 277, 128 )
+texture = ExtResource( 27 )
+texture_scale = Vector2( 2, 2 )
+height = 96.0
+
+[node name="Plant4" parent="YSort/MiddleGroundPlants" instance=ExtResource( 11 )]
+position = Vector2( 165, 236 )
+texture = ExtResource( 14 )
+texture_scale = Vector2( 1.5, 1.5 )
+
+[node name="Hill1" parent="YSort/MiddleGroundPlants" instance=ExtResource( 11 )]
+position = Vector2( 74, 308 )
+texture = ExtResource( 19 )
+texture_scale = Vector2( 1.8, 1.5 )
+
+[node name="Hill2" parent="YSort/MiddleGroundPlants" instance=ExtResource( 11 )]
+position = Vector2( 180, 265 )
+texture = ExtResource( 23 )
+texture_scale = Vector2( 1.5, 1.5 )
 
 [node name="BaseGround" type="Sprite" parent="YSort"]
-position = Vector2( -286.5, 291.5 )
-
-[node name="Plant13" type="Sprite" parent="YSort"]
-modulate = Color( 0.735, 0.8085, 0.98, 1 )
-material = SubResource( 172 )
-position = Vector2( -269.5, -78.5 )
-
-[node name="Plant14" type="Sprite" parent="YSort"]
-position = Vector2( -184.5, -142.5 )
-
-[node name="Hill2" type="Sprite" parent="YSort"]
-position = Vector2( 138.5, 194.5 )
-rotation = -0.00349896
-
-[node name="Hill6" type="Sprite" parent="YSort"]
-position = Vector2( 122.5, -129.5 )
-
-[node name="Hill7" type="Sprite" parent="YSort"]
-position = Vector2( 228.5, -103.5 )
-
-[node name="Hill9" type="Sprite" parent="YSort"]
-modulate = Color( 0.997, 1, 0.94, 1 )
-position = Vector2( 213.5, -12.5 )
-
-[node name="Hill17" type="Sprite" parent="YSort"]
-position = Vector2( 310.5, 37.5001 )
-
-[node name="Hill10" type="Sprite" parent="YSort"]
-position = Vector2( 233.5, 110.5 )
-rotation = -0.00516866
-
-[node name="Hill18" type="Sprite" parent="YSort"]
-position = Vector2( -168.5, -38.5 )
-
-[node name="Plant2" type="Sprite" parent="YSort"]
-modulate = Color( 0.94416, 0.96, 0.9312, 1 )
-position = Vector2( -246.5, 120.5 )
-
-[node name="Plant6" type="Sprite" parent="YSort"]
-modulate = Color( 0.86, 0.920667, 1, 1 )
-position = Vector2( 146.5, -128.5 )
-
-[node name="Plant12" type="Sprite" parent="YSort"]
-modulate = Color( 0.9, 0.9, 0.855, 1 )
-position = Vector2( -169.5, -4.5 )
-
-[node name="Plant11" type="Sprite" parent="YSort"]
-modulate = Color( 0.87, 0.896, 1, 1 )
-position = Vector2( -221.5, 64.5 )
-
-[node name="Porch" type="Sprite" parent="YSort"]
-position = Vector2( -291.5, 333.5 )
-
-[node name="ShadowCircle" type="Sprite" parent="YSort"]
-self_modulate = Color( 1, 1, 1, 0.117647 )
-position = Vector2( -689.5, 298.5 )
-rotation = -0.0134322
-scale = Vector2( 2.10523, 1.45652 )
-texture = ExtResource( 29 )
-
-[node name="Ledge3" type="Sprite" parent="YSort"]
-position = Vector2( -73.5002, 56.4999 )
-rotation = -0.00734595
-
-[node name="Ledge2" type="Sprite" parent="YSort"]
-position = Vector2( -143.5, 120.5 )
-rotation = -0.00106669
+position = Vector2( -304, 238 )
+scale = Vector2( 1.6, 1.6 )
+z_index = -10
+texture = ExtResource( 15 )
 
 [node name="Ledge1" type="Sprite" parent="YSort"]
-position = Vector2( -210.5, 195.5 )
+position = Vector2( -116, 29 )
 rotation = 0.000951701
+scale = Vector2( 1, 0.8 )
+z_index = -7
+texture = ExtResource( 12 )
 
-[node name="ShadowCircle2" type="Sprite" parent="YSort"]
-self_modulate = Color( 1, 1, 1, 0.117647 )
-position = Vector2( -213.262, 334.958 )
-rotation = 0.0267703
-scale = Vector2( 1.8134, 1.03355 )
-texture = ExtResource( 29 )
+[node name="Ledge2" type="Sprite" parent="YSort"]
+position = Vector2( -156, 91 )
+rotation = -0.00106669
+scale = Vector2( 1.15215, 0.88124 )
+z_index = -8
+texture = ExtResource( 6 )
 
-[node name="ShadowCircle4" type="Sprite" parent="YSort"]
-self_modulate = Color( 1, 1, 1, 0.431373 )
-position = Vector2( -75.4999, -1.43103 )
-scale = Vector2( 0.620876, 0.55725 )
-texture = ExtResource( 25 )
+[node name="Ledge3" type="Sprite" parent="YSort"]
+position = Vector2( -198, 169 )
+rotation = -0.00734595
+scale = Vector2( 1.28978, 0.924574 )
+z_index = -9
+texture = ExtResource( 1 )
 
 [node name="ShadowCircle3" type="Sprite" parent="YSort"]
 self_modulate = Color( 1, 1, 1, 0.117647 )
-position = Vector2( -133.49, 201.295 )
-rotation = -0.0792651
-scale = Vector2( 1.69241, 0.922437 )
+position = Vector2( -201, 193 )
+rotation = 0.00495229
+scale = Vector2( 1.25182, 0.922437 )
 texture = ExtResource( 29 )
-
-[node name="Hill16" type="Sprite" parent="YSort"]
-position = Vector2( -24.5, 150.5 )
-
-[node name="Box2" type="Sprite" parent="YSort"]
-position = Vector2( -4.50012, -79.5 )
-texture = ExtResource( 20 )
-
-[node name="ShadowCircle7" type="Sprite" parent="YSort"]
-self_modulate = Color( 1, 1, 1, 0.588235 )
-position = Vector2( 85.5, -41.5 )
-scale = Vector2( 0.646198, -0.577456 )
-texture = ExtResource( 25 )
-
-[node name="PotC" type="Sprite" parent="YSort"]
-position = Vector2( -4.49988, -116.5 )
-
-[node name="Box3" type="Sprite" parent="YSort"]
-position = Vector2( 151.5, 13.5002 )
-scale = Vector2( 1.17856, 1.13488 )
-texture = ExtResource( 20 )
-
-[node name="Plant3" type="Sprite" parent="YSort"]
-position = Vector2( 94.4999, 65.5 )
-z_index = 20
-
-[node name="Plant15" type="Sprite" parent="YSort"]
-modulate = Color( 0.6958, 0.89474, 0.98, 1 )
-position = Vector2( 145.5, 98.5 )
-
-[node name="Plant8" type="Sprite" parent="YSort"]
-position = Vector2( -65.5001, 240.5 )
-
-[node name="Plant10" type="Sprite" parent="YSort"]
-position = Vector2( -106.5, 206.5 )
-
-[node name="Plant9" type="Sprite" parent="YSort"]
-position = Vector2( 8.5, 66.5 )
-z_index = 10
-
-[node name="Plant4" type="Sprite" parent="YSort"]
-modulate = Color( 0.9024, 0.94272, 0.96, 1 )
-material = SubResource( 173 )
-position = Vector2( 204.5, 217.5 )
-
-[node name="House" type="Sprite" parent="YSort"]
-position = Vector2( 57.5, -79.5 )
-rotation = -0.000515936
-
-[node name="Door" type="Sprite" parent="YSort/House"]
-position = Vector2( 390.348, 112.744 )
-scale = Vector2( 0.887547, 0.904253 )
-offset = Vector2( -467.186, -91.4054 )
-
-[node name="Particles2D2" type="Particles2D" parent="YSort/House"]
-visible = false
-position = Vector2( 94.743, -245.223 )
-scale = Vector2( 0.711238, 0.756145 )
-amount = 4
-lifetime = 1.8
-speed_scale = 0.2
-visibility_rect = Rect2( -100.084, -100, 200, 200 )
-process_material = SubResource( 8 )
-
-[node name="Particles2D" type="Particles2D" parent="YSort/House"]
-visible = false
-position = Vector2( 144.53, -272.445 )
-scale = Vector2( 0.711238, 0.756145 )
-amount = 5
-lifetime = 1.5
-speed_scale = 0.18
-randomness = 0.1
-visibility_rect = Rect2( -100.084, -100, 200, 200 )
-process_material = SubResource( 1 )
-
-[node name="Box" type="Sprite" parent="YSort"]
-position = Vector2( 122.5, -38.5 )
-texture = ExtResource( 20 )
-
-[node name="ShadowCircle5" type="Sprite" parent="YSort"]
-self_modulate = Color( 1, 1, 1, 0.54902 )
-position = Vector2( 125.5, -52.5 )
-scale = Vector2( 0.723973, 0.558624 )
-texture = ExtResource( 25 )
-
-[node name="WateringCan" type="Sprite" parent="YSort"]
-position = Vector2( 124.5, -76.5 )
-
-[node name="ShadowCircle6" type="Sprite" parent="YSort"]
-self_modulate = Color( 1, 1, 1, 0.54902 )
-position = Vector2( 91.5, 107.5 )
-scale = Vector2( 0.646198, -0.577456 )
-texture = ExtResource( 25 )
-
-[node name="PlantCollection" type="Sprite" parent="YSort"]
-position = Vector2( -60.5, -32.5 )
-
-[node name="PotB" type="Sprite" parent="YSort"]
-position = Vector2( 157.5, -28.5 )
-
-[node name="PotA" type="Sprite" parent="YSort"]
-position = Vector2( -99.5, -38.5 )
-
-[node name="Hill4" type="Sprite" parent="YSort"]
-position = Vector2( 34.5, 255.5 )
-
-[node name="Plant5" type="Sprite" parent="YSort"]
-modulate = Color( 0.986, 1, 0.93, 1 )
-position = Vector2( -65.5, 319.5 )
-z_index = 20
-
-[node name="Plant16" type="Sprite" parent="YSort"]
-position = Vector2( -327.5, 124.5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = 0.3
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 
-[node name="CollisionPolygon" type="Node" parent="CollisionRoot"]
-script = ExtResource( 36 )
+[node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 3 )]
 
-[node name="Layer1" type="CollisionPolygon2D" parent="CollisionRoot/CollisionPolygon"]
-position = Vector2( -169, 125 )
-polygon = PoolVector2Array( -36, -35, -3, -52, 33, -60, 59, -60, 89, -42, 91, -23, 79, -8, 51, 3, 6, 8, -20, 0, -41, -13 )
-script = ExtResource( 33 )
-height = -14.0
+[node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 5 )]
+polygon = PoolVector2Array( -149, 32, -174, 19, -175, 5, -145, -9, -138, -30, -227, -67, -22, -173, -9, -118, -45, -91, 84, -39, 175, -80, 178, -115, 292, -69, 60, 46, -47, 8, -67, 24, -121, 34 )
+__meta__ = {
+"_editor_description_": ""
+}
+height = 96.0
 
-[node name="Layer2" type="CollisionPolygon2D" parent="CollisionRoot/CollisionPolygon"]
-position = Vector2( -66, 154 )
-polygon = PoolVector2Array( -202, 13, -182, 0, -135, -12, -106, -12, -91, 1, -88, 13, -83, 24, -88, 34, -112, 44, -136, 49, -167, 50, -191, 43, -205, 29 )
-script = ExtResource( 33 )
-height = -40.0
+[node name="NavmeshLayer2" parent="CollisionRoot/Navmesh" instance=ExtResource( 5 )]
+polygon = PoolVector2Array( -180, 50, -229, 67, -230, 82, -221, 95, -192, 102, -119, 101, -87, 89, -87, 66, -99, 59 )
+__meta__ = {
+"_editor_description_": ""
+}
+height = 64.0
 
-[node name="Layer3" type="CollisionPolygon2D" parent="CollisionRoot/CollisionPolygon"]
-position = Vector2( -49, 9.10001 )
-polygon = PoolVector2Array( 15, -66.1, 114, -24.1, 136.315, -35.9328, 178, -16.1, 90, 28.9, 45, 17.9, 39, 31.9, 18, 48.9, -22, 56.9, -58, 56.9, -81, 49.9, -94, 35.9, -94, 16.9, -71, 0.899994, -34, -4.10001, 0, -2.10001, 22, -17.1, -36, -46.1 )
-script = ExtResource( 33 )
+[node name="NavmeshLayer3" parent="CollisionRoot/Navmesh" instance=ExtResource( 5 )]
+position = Vector2( -1, 1 )
+scale = Vector2( 0.986287, 1 )
+polygon = PoolVector2Array( -287, 158, -290, 146, -275.782, 127, -233.198, 120, -185.544, 119, -141.946, 126, -119.641, 143, -110.515, 156, -129, 169, -202, 176, -256, 171 )
+height = 32.0
 
-[node name="Layer5" type="CollisionPolygon2D" parent="CollisionRoot/CollisionPolygon"]
-position = Vector2( -390, 375 )
-polygon = PoolVector2Array( -226, 30, -141, -21, 256, 129, 160, 196 )
-script = ExtResource( 33 )
-height = -190.0
+[node name="NavmeshLayer4" parent="CollisionRoot/Navmesh" instance=ExtResource( 5 )]
+polygon = PoolVector2Array( -652, 169, -568, 241, -329, 321, -234, 358, -104, 352, -23, 372, 45, 351, 39, 332, -10, 296, 7, 260, -16, 226, -120, 178, -201, 156, -279, 164, -293, 153, -276, 127, -390, 51, -453, 39, -577, 57, -652, 123 )
 
-[node name="Layer4" type="CollisionPolygon2D" parent="CollisionRoot/CollisionPolygon"]
-position = Vector2( -273, 179 )
-polygon = PoolVector2Array( -226, 30, -182, 0, -89, -9, -19, 35, -3, 11, 89, 54, 65, 67, 127, 87, 179, 121, 140, 141, 204, 183, 163, 203, 93, 184, 20, 192, -72, 157, -172, 126, -234, 83 )
-script = ExtResource( 33 )
-height = -78.0
-
-[node name="LayerArea" type="Area2D" parent="CollisionRoot"]
-script = ExtResource( 34 )
-
-[node name="ExitOutsideHouse" type="Node2D" parent="CollisionRoot"]
-position = Vector2( 6, -10 )
-script = ExtResource( 31 )
-door_name = "OutsideHouse"
-direction = Vector2( -1, -1 )
-
-[node name="ZoneArea" type="Area2D" parent="CollisionRoot"]
-position = Vector2( -7.5, 8.50006 )
-collision_layer = 2
-script = ExtResource( 32 )
-target_scene = "res://HouseCopy.tscn"
+[node name="DoorwayToInsideHouse" parent="CollisionRoot" instance=ExtResource( 8 )]
+position = Vector2( 14, -60 )
+target_scene = "res://Gary_s House Interior.tscn"
 exit_name = "InsideHouse"
+height = 96.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/ZoneArea"]
-position = Vector2( 3.5, -3.50006 )
-polygon = PoolVector2Array( 21.5, -38.5001, 28.5, -42.5001, 49.5, -32.5001, 42.5, -28.5001, 33.0131, -33.0176 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToInsideHouse"]
+position = Vector2( -42, 32 )
+polygon = PoolVector2Array( 21.5, -38.5001, 28.5, -42.5001, 69, -26, 63, -21 )
 
-[node name="DebugRuler" type="Sprite" parent="."]
-visible = false
-position = Vector2( -249, 120 )
+[node name="DoorwayToCherryTrail1" parent="CollisionRoot" instance=ExtResource( 8 )]
+position = Vector2( 13, 359 )
+target_scene = "res://Areas/Cherry Trail/Cherry Trail 1.tscn"
+exit_name = "CherryTrail1GarysHouse"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToCherryTrail1"]
+polygon = PoolVector2Array( -33, 16, 37, -13, 29, -24, -52, 9 )
+
+[node name="PlayerSpawnDefault" parent="CollisionRoot" instance=ExtResource( 10 )]
+position = Vector2( -59, -31 )
+direction = Vector2( -1, 1 )
+height = 96
+
+[node name="PlayerSpawnFromInsideHouse" parent="CollisionRoot" instance=ExtResource( 10 )]
+position = Vector2( -13, -37 )
+door_name = "OutsideHouse"
+direction = Vector2( -1, 1 )
+height = 96
+
+[node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 10 )]
+position = Vector2( -32, 328 )
+door_name = "CherryTrail1GarysHouse"
+direction = Vector2( -1, -1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 0, -20 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
 script = ExtResource( 30 )
-offset = Vector2( 0, -20 )
 minPos = Vector2( -290, 0 )
 maxPos = Vector2( 0, 283 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Transition" parent="CanvasLayer" instance=ExtResource( 35 )]
-
-[connection signal="body_shape_entered" from="CollisionRoot/LayerArea" to="CollisionRoot/LayerArea" method="_on_body_shape_entered"]
-[connection signal="body_shape_exited" from="CollisionRoot/LayerArea" to="CollisionRoot/LayerArea" method="_on_body_shape_exited"]
-[connection signal="body_entered" from="CollisionRoot/ZoneArea" to="CollisionRoot/ZoneArea" method="_on_body_entered"]
+follow_player = true

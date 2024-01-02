@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 export var door_name : String;
 export var direction : Vector2;
@@ -7,16 +7,15 @@ export var height : int;
 var motion_root;
 
 func _ready():
-	pass
+	if PlayerManager.player_motion_root:
+		_position_player()
+	else:
+		call_deferred("_position_player")
 
-func _physics_process(delta):
+func _position_player():
 	if Global.door_name == door_name:
-		if not motion_root:
-			# Getting gary. Pretty stupid way to do it. But gary is spawned at runtime...
-			motion_root = get_node_or_null("/root/PlayerManager/Gary/MotionRoot")
-			
+		var motion_root = PlayerManager.player_motion_root
 		if motion_root:
-			motion_root.teleport2D(self.global_position, height)
-			#motion_root.global_position = self.global_position
-			#motion_root.vel = Vector3(direction.x, 0, direction.y).normalized()
+			motion_root.teleport_2d(global_position, height)
 			Global.door_name = ""
+
