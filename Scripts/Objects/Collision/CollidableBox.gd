@@ -20,7 +20,7 @@ var floor_setter_script = preload("res://Scripts/Objects/Collision/FloorSetter.g
 export var tile_size = Vector2(62, 22) setget set_tile_size
 
 # Adjust how many units in the tilemap the box takes up.
-#   - a value of 1,1 means the space of a full 63 x 28 tile is taken.
+#   - a value of 1,1 means the space of tile_size is taken (62 x 22 by default)
 #   - you should set up tile_size so that grid_size is as close to integer values as possible.
 #   - increasing x expands the box diagonally up left (-x axis on tile map).
 #   - increasing y expands the box diagonally up right (-y axis on tile map).
@@ -450,7 +450,7 @@ func _generate_meshes():
 			floor_height
 		) + depth_test_offset)
 		
-		# Generate a mesh containing the remainder of the image on the left side that's not on box
+		# Generate a mesh containing the remainder of the image on the right side that's not on box
 		if is_texture_edge:
 			left = h_coord + tile_step_width
 			right = texture_clip_bounds.size.x
