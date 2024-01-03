@@ -138,9 +138,13 @@ func set_height(new_height):
 func set_floor_height(new_floor_height):
 	floor_height = new_floor_height
 	if is_ready:
-		_queue_generate_meshes()
-		_queue_generate_collider()
-		_queue_generate_collision_box_preview()
+		if Engine.is_editor_hint():
+			_queue_generate_meshes()
+			_queue_generate_collider()
+			_queue_generate_collision_box_preview()
+		else:
+			floor_notify_area.height = floor_height + height
+			collision_body.height = floor_height + height
 
 func set_depth_test_offset(new_depth_test_offset):
 	depth_test_offset = new_depth_test_offset
@@ -164,21 +168,26 @@ func set_animation_vframes(new_animation_vframes):
 
 func set_animation_frame(new_animation_frame):
 	animation_frame = new_animation_frame
-	if depth_test_meshes.size() > 0:
-		for mesh in meshes:
-			if mesh != null:
-				mesh.material.set_shader_param("sprite_animation_frame", animation_frame)
-		for mesh_weakref in depth_test_meshes:
-			var mesh = mesh_weakref.get_ref()
-			if mesh:
-				mesh.material_override.set_shader_param("sprite_animation_frame", animation_frame)
-	elif is_ready:
-		_queue_generate_meshes()
+	if is_ready:
+		if not Engine.is_editor_hint() and depth_test_meshes.size() > 0:
+			for mesh in meshes:
+				if mesh != null:
+					mesh.material.set_shader_param("sprite_animation_frame", animation_frame)
+			for mesh_weakref in depth_test_meshes:
+				var mesh = mesh_weakref.get_ref()
+				if mesh:
+					mesh.material_override.set_shader_param("sprite_animation_frame", animation_frame)
+		else:
+			_queue_generate_meshes()
 
 func set_always_update(new_always_update):
 	always_update = new_always_update
-	set_physics_process(always_update)
-	set_process(always_update)
+	if Engine.is_editor_hint():
+		set_physics_process(false)
+		set_process(false)
+	else:
+		set_physics_process(always_update)
+		set_process(always_update)
 
 #----------------#
 # Node Lifecycle #
@@ -204,6 +213,12 @@ func _exit_tree():
 		_clear_depth_test_meshes()
 
 func _physics_process(delta):
+	for mesh in meshes:
+		if mesh != null:
+			mesh.position = Vector2(
+				0.0,
+				-floor_height
+			)
 	for depth_test_mesh in depth_test_meshes:
 		var mesh = depth_test_mesh.get_ref()
 		if mesh:
