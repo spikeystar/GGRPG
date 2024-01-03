@@ -46,7 +46,7 @@ func _clear_depth_test_meshes():
 func _generate_meshes():
 	_clear_depth_test_meshes()
 	
-	if not visible:
+	if not visible or not tile_set:
 		return
 	
 	var cell_half_size = cell_size / 2.0
@@ -93,7 +93,7 @@ func _generate_meshes():
 						"position": Vector3(
 							position.x,
 							position.y,
-							-position.y - height
+							-position.y - height - cell_origin.y
 						)
 					})
 			

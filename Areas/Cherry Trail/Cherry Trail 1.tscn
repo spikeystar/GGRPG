@@ -332,12 +332,13 @@ texture_offset = Vector2( 0, 21 )
 height = 32.0
 
 [node name="Box2" parent="YSort/MiddleGround" instance=ExtResource( 30 )]
-position = Vector2( 643, -119 )
+position = Vector2( 646, -119 )
 tile_size = Vector2( 62, 30 )
 grid_size = Vector2( 1, 0.95 )
 texture = ExtResource( 7 )
 texture_offset = Vector2( 0, 21 )
 height = 32.0
+floor_height = -16.0
 
 [node name="BushB" parent="YSort/MiddleGround" instance=ExtResource( 30 )]
 position = Vector2( 119, -243 )

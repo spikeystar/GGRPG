@@ -60,7 +60,7 @@ void fragment() {
 		sprite_texture.a * sprite_modulate.a
 	);
 	
-	float dither_time_coord = TIME * 60.0 * dither_time_coord_multiplier;
+	float dither_time_coord = 0.0; // TIME * 60.0 * dither_time_coord_multiplier;
 	float dither_limit = max(dither_limit_min, get_dither_value(int(FRAGCOORD.x + dither_time_coord) % 4, int(FRAGCOORD.y + dither_time_coord * 6.0) % 4));
 	if (color.a < dither_limit || color.a < alpha_clip) {
 		discard;

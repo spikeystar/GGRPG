@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Objects/Rendering/DepthTestFloorSprite.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Cherry Trail/dirt b.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/General/box.png" type="Texture" id=4]
+[ext_resource path="res://Test/CollidableBoxDepthUpdate.gd" type="Script" id=5]
+[ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Box1:floor_height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Box2:floor_height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 32.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "move_boxes"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Box1:floor_height")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -24.0, -24.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Box2:floor_height")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 32.0, 8.0, 8.0, 32.0 ]
+}
+
+[node name="CollidableBoxDepthUpdate" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Floor1" parent="." instance=ExtResource( 1 )]
+position = Vector2( 147, 128 )
+texture = ExtResource( 2 )
+
+[node name="Box1" parent="." instance=ExtResource( 3 )]
+position = Vector2( 146, 132 )
+tile_size = Vector2( 62, 32 )
+texture = ExtResource( 4 )
+texture_offset = Vector2( 0, 20 )
+height = 32.0
+always_update = true
+
+[node name="Floor2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 351, 242 )
+texture = ExtResource( 2 )
+height = 32.0
+
+[node name="Box2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 350, 277 )
+tile_size = Vector2( 62, 32 )
+texture = ExtResource( 4 )
+texture_offset = Vector2( 0, 20 )
+height = 32.0
+floor_height = 32.0
+always_update = true
+
+[node name="Navmesh" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="NavmeshLayer" parent="Navmesh" instance=ExtResource( 7 )]
+polygon = PoolVector2Array( 4, 8, 4, 601, 274, 601, 272, 1 )
+
+[node name="NavmeshLayer2" parent="Navmesh" instance=ExtResource( 7 )]
+position = Vector2( -5, -1 )
+polygon = PoolVector2Array( 272, 4, 275, 601, 454, 603, 452, 1 )
+height = 32.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/move_boxes = SubResource( 2 )
+next/move_boxes = "move_boxes"
