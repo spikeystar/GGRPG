@@ -8,6 +8,7 @@ extends Node2D
 #---------#
 
 var collision_body_script = preload("res://Scripts/Objects/Collision/CollidableBoxCollisionBody.gd")
+var sprite_mesh_shader = preload("res://Scripts/Rendering/SpriteMesh.gdshader")
 var floor_layer_script = preload("res://Scripts/Objects/Collision/FloorLayer.gd")
 var floor_setter_script = preload("res://Scripts/Objects/Collision/FloorSetter.gd")
 
@@ -47,6 +48,24 @@ export var depth_test_offset = Vector3.ZERO setget set_depth_test_offset
 # Enable/disable preview of the collision box in editor
 export var preview_collision_box = true setget set_preview_collision_box
 
+# If using a spritesheet, the number of frames that span the image horizontally
+export var animation_hframes = 1 setget set_animation_hframes
+
+# If using a spritesheet, the number of frames that span the image vertically
+export var animation_vframes = 1 setget set_animation_vframes
+
+# If using a spritesheet, the current frame of animation
+export var animation_frame = 0 setget set_animation_frame
+
+# Dither alpha values, disabled when use_transparency is true
+export var use_dithering = true
+
+# Offset alpha dithering pattern every frame to create a smoothing effect
+export var use_dither_blending = true
+
+# Allow partial transparency, but greatly reduces depth drawing accuracy
+export var use_transparency: bool = false
+
 #------------#
 # Properties #
 #------------#
@@ -62,11 +81,12 @@ var floor_notify_area = null # notifies player/npc of floor height when collisio
 var floor_notify_area_shape = null # belongs to floor_notify_area
 var half_tile_width = 63.0 / 2.0
 var half_tile_height = 28.0 / 2.0
+var mesh_ysort_containers = [] # texture is split into multiple sprites with texture regions for y-sorting
+var meshes = []
 var is_queued_generate_collider = false
 var is_queued_generate_collision_box_preview = false
-var is_queued_generate_region_sprites = false
+var is_queued_generate_meshes = false
 var is_ready = false # _ready() already called
-var region_sprites = [] # texture is split into multiple sprites with texture regions for y-sorting
 
 #-------------------#
 # Getters / Setters #
@@ -79,55 +99,78 @@ func set_tile_size(new_tile_size):
 	if is_ready:
 		_generate_collider_edges()
 		_queue_generate_collider()
-		_queue_generate_region_sprites()
+		_queue_generate_meshes()
 		_queue_generate_collision_box_preview()
 
 func set_texture(new_texture):
 	texture = new_texture
 	if is_ready:
-		_queue_generate_region_sprites()
+		_queue_generate_meshes()
 
 func set_texture_scale(new_texture_scale):
 	texture_scale = new_texture_scale
 	if is_ready:
-		_queue_generate_region_sprites()
+		_queue_generate_meshes()
 
 func set_texture_offset(new_texture_offset):
 	texture_offset = new_texture_offset
 	if is_ready:
-		_queue_generate_region_sprites()
+		_queue_generate_meshes()
 
 func set_grid_size(new_grid_size):
 	grid_size = new_grid_size
 	if is_ready:
 		_generate_collider_edges()
 		_queue_generate_collider()
-		_queue_generate_region_sprites()
+		_queue_generate_meshes()
 		_queue_generate_collision_box_preview()
 
 func set_height(new_height):
 	height = new_height
 	if is_ready:
-		_queue_generate_region_sprites()
+		_queue_generate_meshes()
 		_queue_generate_collider()
 		_queue_generate_collision_box_preview()
 
 func set_floor_height(new_floor_height):
 	floor_height = new_floor_height
 	if is_ready:
-		_queue_generate_region_sprites()
+		_queue_generate_meshes()
 		_queue_generate_collider()
 		_queue_generate_collision_box_preview()
 
 func set_depth_test_offset(new_depth_test_offset):
 	depth_test_offset = new_depth_test_offset
 	if is_ready:
-		_queue_generate_region_sprites()
+		_queue_generate_meshes()
 
 func set_preview_collision_box(new_preview_collision_box):
 	preview_collision_box = new_preview_collision_box
 	if is_ready:
 		_queue_generate_collision_box_preview()
+
+func set_animation_hframes(new_animation_hframes):
+	animation_hframes = new_animation_hframes
+	if is_ready:
+		_queue_generate_meshes()
+
+func set_animation_vframes(new_animation_vframes):
+	animation_vframes = new_animation_vframes
+	if is_ready:
+		_queue_generate_meshes()
+
+func set_animation_frame(new_animation_frame):
+	animation_frame = new_animation_frame
+	if depth_test_meshes.size() > 0:
+		for mesh in meshes:
+			if mesh != null:
+				mesh.material.set_shader_param("sprite_animation_frame", animation_frame)
+		for mesh_weakref in depth_test_meshes:
+			var mesh = mesh_weakref.get_ref()
+			if mesh:
+				mesh.material_override.set_shader_param("sprite_animation_frame", animation_frame)
+	elif is_ready:
+		_queue_generate_meshes()
 
 #----------------#
 # Node Lifecycle #
@@ -165,14 +208,15 @@ func _initialize_nodes():
 	collision_preview_mesh = null
 	floor_notify_area = null
 	floor_notify_area_shape = null
-	region_sprites = []
+	mesh_ysort_containers = []
+	meshes = []
 	
 	half_tile_width = tile_size.x / 2.0
 	half_tile_height = tile_size.y / 2.0
 
 	_generate_collider_edges()
 	_queue_generate_collider()
-	_queue_generate_region_sprites()
+	_queue_generate_meshes()
 	_queue_generate_collision_box_preview()
 
 func _clear_depth_test_meshes():
@@ -251,25 +295,31 @@ func _generate_collider_edges():
 		),
 	}
 
-func _queue_generate_region_sprites():
-	if not is_queued_generate_region_sprites:
-		is_queued_generate_region_sprites = true
-		call_deferred("_generate_region_sprites")
+func _queue_generate_meshes():
+	if not is_queued_generate_meshes:
+		is_queued_generate_meshes = true
+		call_deferred("_generate_meshes")
 
-func _generate_region_sprites():
-	is_queued_generate_region_sprites = false
+func _generate_meshes():
+	is_queued_generate_meshes = false
 	
 	_clear_depth_test_meshes()
 	
-	if region_sprites.size() > 0:
-		for tx in region_sprites:
+	if mesh_ysort_containers.size() > 0:
+		for tx in mesh_ysort_containers:
 			tx.queue_free()
-		region_sprites = []
+		mesh_ysort_containers = []
+	
+	if meshes.size() > 0:
+		for tx in meshes:
+			tx.queue_free()
+		meshes = []
 	
 	if not texture:
 		return
 	
 	var texture_size = texture.get_size() * texture_scale
+	texture_size = Vector2(texture_size.x / animation_hframes, texture_size.y / animation_vframes)
 	var min_grid_size = min(grid_size.x, grid_size.y)
 	var tile_step_grid_size = min_grid_size / ceil(min_grid_size)
 	var tile_step_width = (tile_step_grid_size * tile_size.x) / 2.0
@@ -488,9 +538,9 @@ func _generate_region_sprites():
 					Vector2(-half_tile_width, -half_tile_height).normalized()
 				)
 				var p0 = left_edge
-				var p1 = Vector2(tile_center.x, top)
-				var p2 = Vector2(left, tile_center.y)
-				var p3 = Vector2(left_edge.x, left_edge.y + (tile_step_height * 2))
+				var p1 = Vector2(left_edge.x, left_edge.y + (tile_step_height * 2))
+				var p2 = Vector2(tile_center.x, top)
+				var p3 = Vector2(left, tile_center.y)
 				vertices = PoolVector2Array()
 				depth_test = PoolRealArray()
 				vertices.push_back(p0)
@@ -571,7 +621,7 @@ func _generate_mesh(
 		global_position.x,
 		Global.calculate_y_sort(Vector3(sort_position.x, sort_position.y, sort_position.z))
 	)
-	region_sprites.push_back(y_sort)
+	mesh_ysort_containers.push_back(y_sort)
 	
 	# Generate UVs
 	var uvs = PoolVector2Array()
@@ -592,20 +642,35 @@ func _generate_mesh(
 	mesh_instance.name = "TexturedMeshInstance2D"
 	mesh_instance.mesh = array_mesh
 	mesh_instance.texture = texture
+	mesh_instance.material = ShaderMaterial.new()
+	mesh_instance.material.shader = sprite_mesh_shader
+	mesh_instance.material.set_shader_param("sprite_animation_hframes", animation_hframes)
+	mesh_instance.material.set_shader_param("sprite_animation_vframes", animation_vframes)
+	mesh_instance.material.set_shader_param("sprite_animation_frame", animation_frame)
 	y_sort.add_child(mesh_instance)
 	mesh_instance.global_position = global_position + Vector2(0.0, -floor_height)
+	meshes.push_back(mesh_instance)
 	
 	if visible:
-		depth_test_meshes.push_back(
-			Global.depth_buffer.add_depth_test_mesh(
-				vertices,
-				uvs,
-				depth_test,
-				depth_range,
-				texture,
-				global_position + Vector2(0.0, -floor_height)
-			)
+		var mesh_weakref = Global.depth_buffer.add_depth_test_mesh(
+			vertices,
+			uvs,
+			depth_test,
+			depth_range,
+			texture,
+			global_position + Vector2(0.0, -floor_height),
+			use_transparency
 		)
+		var mesh = mesh_weakref.get_ref()
+		if mesh:
+			depth_test_meshes.push_back(mesh_weakref)
+			if animation_hframes != 1 or animation_vframes != 1:
+				mesh.material_override.set_shader_param("sprite_animation_hframes", animation_hframes)
+				mesh.material_override.set_shader_param("sprite_animation_vframes", animation_vframes)
+				mesh.material_override.set_shader_param("sprite_animation_frame", animation_frame)
+			mesh.material_override.set_shader_param("dither_limit_min", 0.0 if use_dithering else 1.0)
+			mesh.material_override.set_shader_param("dither_time_coord_multiplier", 1.0 if use_dither_blending else 0.0)
+			mesh.material_override.set_shader_param("sprite_modulate", modulate * self_modulate)
 
 func _queue_generate_collision_box_preview():
 	if not is_queued_generate_collision_box_preview:
