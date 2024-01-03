@@ -66,6 +66,9 @@ export var use_dither_blending = true
 # Allow partial transparency, but greatly reduces depth drawing accuracy
 export var use_transparency: bool = false
 
+# Set to true in order to make the box respond to position / height updates
+export var always_update: bool = false setget set_always_update
+
 #------------#
 # Properties #
 #------------#
@@ -172,6 +175,11 @@ func set_animation_frame(new_animation_frame):
 	elif is_ready:
 		_queue_generate_meshes()
 
+func set_always_update(new_always_update):
+	always_update = new_always_update
+	set_physics_process(always_update)
+	set_process(always_update)
+
 #----------------#
 # Node Lifecycle #
 #----------------#
@@ -183,6 +191,8 @@ func _notification(what):
 func _ready():
 	is_ready = true
 	
+	set_always_update(always_update)
+	
 	_initialize_nodes()
 
 func _enter_tree():
@@ -192,6 +202,16 @@ func _enter_tree():
 func _exit_tree():
 	if is_ready:
 		_clear_depth_test_meshes()
+
+func _physics_process(delta):
+	for depth_test_mesh in depth_test_meshes:
+		var mesh = depth_test_mesh.get_ref()
+		if mesh:
+			mesh.global_translation = Vector3(
+				global_position.x,
+				global_position.y - floor_height,
+				0.0
+			)
 
 #---------#
 # Methods #
