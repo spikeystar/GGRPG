@@ -40,13 +40,17 @@ func update_floor():
 		floor_z = max(floor_z, f.height)
 
 func _physics_process(delta):
+	
+	# Floor height could change at any time with movable platforms
+	update_floor()
+	
 	if is_just_teleported:
 		is_just_teleported = false
 		var prev_global_position = global_position
 		move_and_slide(Vector2(0,0))
 		global_position = prev_global_position
 
-	is_on_ground = pos_z <= floor_z
+	is_on_ground = pos_z <= floor_z + 4
 	
 	# Input direction
 	var input_dir = Vector2.ZERO
@@ -78,6 +82,7 @@ func _physics_process(delta):
 		vel.z -= gravity * delta
 	else:
 		vel.z = 0
+		pos_z = floor_z
 	
 	pos_z += vel.z * delta
 	pos_z = max(floor_z, pos_z)
