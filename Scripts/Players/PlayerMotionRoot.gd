@@ -13,9 +13,10 @@ export var jump_velocity = 10
 var is_player_motion_root = true
 
 #Movement
-var floor_z : float = LOWEST_Z;
-var shadow_z : float = 0;
-var pos_z : float;
+var floor_z : float = LOWEST_Z
+var shadow_z : float = 0
+var pos_z : float
+var teleport_z : float
 var vel : Vector3;
 var last_dir: Vector2;
 var floor_layers : Array = []
@@ -32,7 +33,11 @@ func teleport_2d(tp_pos : Vector2, height : int = 0):
 	pos_z = height
 	floor_z = height
 	shadow_z = height
+	teleport_z = height
 	is_just_teleported = true
+
+func set_facing_direction(direction : Vector2):
+	last_dir = direction.normalized()
 
 func update_floor():
 	floor_z = LOWEST_Z
@@ -49,6 +54,10 @@ func _physics_process(delta):
 		var prev_global_position = global_position
 		move_and_slide(Vector2(0,0))
 		global_position = prev_global_position
+		vel.z = 0.0
+		pos_z = teleport_z
+		floor_z = teleport_z
+		shadow_z = teleport_z
 
 	is_on_ground = pos_z <= floor_z + 4
 	
@@ -64,8 +73,7 @@ func _physics_process(delta):
 		input_dir.y += 1.0
 	if input_dir.length_squared() > 1:
 		input_dir = input_dir.normalized()
-		
-		
+	
 	if Input.is_action_pressed("ui_push") and is_on_ground:
 		is_on_ground = false
 		vel.z = jump_velocity

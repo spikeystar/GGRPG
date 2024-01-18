@@ -473,11 +473,13 @@ height = 96
 [node name="PlayerSpawnFromInsideHouse" parent="CollisionRoot" instance=ExtResource( 10 )]
 position = Vector2( -10, -43 )
 door_name = "OutsideHouse"
+direction = Vector2( -1, -1 )
 height = 96
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 10 )]
 position = Vector2( -32, 328 )
 door_name = "CherryTrail1GarysHouse"
+direction = Vector2( -1, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2( 0, -20 )
