@@ -16,10 +16,17 @@ export var exit_name : String;
 export(TransitionType) var transition_type = TransitionType.FADE_TO_BLACK;
 export var height = 0.0
 
-
 func _ready():
-	connect("body_entered", self, "_on_body_entered")
+	var timer = Timer.new()
+	timer.one_shot = true
+	timer.connect("timeout", self, "_on_start_checking_body_entered")
+	add_child(timer)
+	timer.start(0.1)
+	
 	position.y += height
+
+func _on_start_checking_body_entered():
+	connect("body_entered", self, "_on_body_entered")
 
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root:
