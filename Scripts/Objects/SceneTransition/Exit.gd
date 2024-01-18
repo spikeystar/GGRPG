@@ -16,26 +16,14 @@ export var exit_name : String;
 export(TransitionType) var transition_type = TransitionType.FADE_TO_BLACK;
 export var height = 0.0
 
-func _ready():
-	var timer = Timer.new()
-	timer.one_shot = true
-	timer.connect("timeout", self, "_on_start_checking_body_entered")
-	add_child(timer)
-	timer.start(0.1)
-	
-	position.y += height
 
-func _on_start_checking_body_entered():
+func _ready():
 	connect("body_entered", self, "_on_body_entered")
+	position.y += height
 
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root:
 		_on_touch_area()
-
-func _input(event):
-	if event.is_action_pressed("ui_select"):
-		if get_overlapping_bodies().size() > 0:
-			_on_touch_area()
 	
 func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")

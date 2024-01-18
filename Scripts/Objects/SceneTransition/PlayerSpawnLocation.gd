@@ -7,7 +7,6 @@ export var door_name : String
 export var direction : Vector2
 export var height : int
 
-var motion_root
 var is_current_spawn = false
 
 func _ready():
