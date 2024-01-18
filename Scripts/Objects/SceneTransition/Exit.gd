@@ -21,10 +21,9 @@ func _ready():
 	connect("body_entered", self, "_on_body_entered")
 	position.y += height
 
-func _input(event):
-	if event.is_action_pressed("ui_select"):
-		if get_overlapping_bodies().size() > 0:
-			_on_touch_area()
+func _on_body_entered(body):
+	if "is_player_motion_root" in body and body.is_player_motion_root:
+		_on_touch_area()
 	
 func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")

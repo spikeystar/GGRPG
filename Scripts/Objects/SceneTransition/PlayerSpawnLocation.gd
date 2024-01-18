@@ -4,7 +4,7 @@
 extends Node2D
 
 export var door_name : String;
-export var direction : Vector2;
+export var input_dir : Vector2;
 export var height : int;
 
 var motion_root;

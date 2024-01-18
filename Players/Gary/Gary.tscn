@@ -275,12 +275,12 @@ blend_mode = 1
 states/Idle/node = SubResource( 36 )
 states/Idle/position = Vector2( 239, 81.1406 )
 states/Jump/node = SubResource( 109 )
-states/Jump/position = Vector2( 323.03, 198.375 )
+states/Jump/position = Vector2( 295.53, 192.875 )
 states/Walk/node = SubResource( 50 )
 states/Walk/position = Vector2( 423.773, 81.2422 )
 transitions = [ "Idle", "Walk", SubResource( 51 ), "Walk", "Idle", SubResource( 52 ), "Idle", "Jump", SubResource( 110 ), "Jump", "Idle", SubResource( 111 ), "Jump", "Walk", SubResource( 112 ), "Walk", "Jump", SubResource( 113 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -194.97, 22.875 )
+graph_offset = Vector2( -136.41, 34.275 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=38]
 
@@ -364,7 +364,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=23]
 resource_name = "back_jump"
-length = 4.0
+length = 0.7
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
@@ -397,10 +397,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 20, 20, 21 ]
+"values": [ 20 ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -485,7 +485,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=27]
 resource_name = "d_down_jump"
-length = 4.0
+length = 0.7
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
@@ -518,10 +518,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 16, 16, 17 ]
+"values": [ 16 ]
 }
 
 [sub_resource type="Animation" id=59]
@@ -565,7 +565,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=56]
 resource_name = "d_down_r_jump"
-length = 4.0
+length = 0.7
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
@@ -598,10 +598,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 16, 16, 17 ]
+"values": [ 16 ]
 }
 
 [sub_resource type="Animation" id=55]
@@ -727,7 +727,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=25]
 resource_name = "d_up_jump"
-length = 4.0
+length = 0.7
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
@@ -760,10 +760,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 18, 18, 19 ]
+"values": [ 18 ]
 }
 
 [sub_resource type="Animation" id=60]
@@ -807,7 +807,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=57]
 resource_name = "d_up_r_jump"
-length = 4.0
+length = 0.7
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
@@ -840,10 +840,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 18, 18, 19 ]
+"values": [ 18 ]
 }
 
 [sub_resource type="Animation" id=54]
@@ -969,7 +969,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=24]
 resource_name = "front_jump"
-length = 4.0
+length = 0.7
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
@@ -1002,10 +1002,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 14, 14, 15 ]
+"values": [ 14 ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -1090,7 +1090,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=26]
 resource_name = "side_jump"
-length = 4.0
+length = 0.7
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
@@ -1123,10 +1123,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 12, 12, 13 ]
+"values": [ 12 ]
 }
 
 [sub_resource type="Animation" id=61]
@@ -1170,7 +1170,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=58]
 resource_name = "side_r_jump"
-length = 4.0
+length = 0.7
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
@@ -1203,10 +1203,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 12, 12, 13 ]
+"values": [ 12 ]
 }
 
 [sub_resource type="Animation" id=53]
