@@ -1,11 +1,12 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=114 format=2]
 
 [ext_resource path="res://Scripts/Players/Gary.gd" type="Script" id=1]
-[ext_resource path="res://Assets/General/circle shadow small.png" type="Texture" id=2]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/ShadowLayerCheck.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Players/PlayerMotionRoot.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=5]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=6]
+[ext_resource path="res://Players/Gary/Gary Basic.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 14, 7 )
@@ -13,9 +14,54 @@ extents = Vector2( 14, 7 )
 [sub_resource type="CircleShape2D" id=172]
 radius = 1.0
 
-[sub_resource type="StreamTexture" id=171]
-flags = 2
-load_path = "res://.import/Gary Basic.png-ab8172ee4f155ebf6b8a6a8bdf06ab58.stex"
+[sub_resource type="AnimationNodeAnimation" id=196]
+animation = "front_fall"
+
+[sub_resource type="AnimationNodeAnimation" id=197]
+animation = "front_fall"
+
+[sub_resource type="AnimationNodeAnimation" id=198]
+animation = "back_fall"
+
+[sub_resource type="AnimationNodeAnimation" id=199]
+animation = "side_fall"
+
+[sub_resource type="AnimationNodeAnimation" id=200]
+animation = "side_r_fall"
+
+[sub_resource type="AnimationNodeAnimation" id=201]
+animation = "d_down_r_fall"
+
+[sub_resource type="AnimationNodeAnimation" id=202]
+animation = "d_down_fall"
+
+[sub_resource type="AnimationNodeAnimation" id=203]
+animation = "d_up_fall"
+
+[sub_resource type="AnimationNodeAnimation" id=204]
+animation = "d_up_r_fall"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=173]
+blend_point_0/node = SubResource( 196 )
+blend_point_0/pos = Vector2( 0, 0 )
+blend_point_1/node = SubResource( 197 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 198 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 199 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_point_4/node = SubResource( 200 )
+blend_point_4/pos = Vector2( 1, 0 )
+blend_point_5/node = SubResource( 201 )
+blend_point_5/pos = Vector2( 1, 1 )
+blend_point_6/node = SubResource( 202 )
+blend_point_6/pos = Vector2( -1, 1 )
+blend_point_7/node = SubResource( 203 )
+blend_point_7/pos = Vector2( -1, -1 )
+blend_point_8/node = SubResource( 204 )
+blend_point_8/pos = Vector2( 1, -1 )
+snap = Vector2( 1, 1 )
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id=139]
 animation = "front_idle"
@@ -65,55 +111,52 @@ blend_point_8/node = SubResource( 147 )
 blend_point_8/pos = Vector2( 1, -1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=159]
-animation = "side_jump"
-
-[sub_resource type="AnimationNodeAnimation" id=162]
-animation = "d_down_r_jump"
-
-[sub_resource type="AnimationNodeAnimation" id=163]
-animation = "d_up_r_jump"
-
-[sub_resource type="AnimationNodeAnimation" id=164]
+[sub_resource type="AnimationNodeAnimation" id=205]
 animation = "front_jump"
 
-[sub_resource type="AnimationNodeAnimation" id=165]
+[sub_resource type="AnimationNodeAnimation" id=206]
+animation = "front_jump"
+
+[sub_resource type="AnimationNodeAnimation" id=207]
 animation = "back_jump"
 
-[sub_resource type="AnimationNodeAnimation" id=166]
-animation = "d_down_jump"
+[sub_resource type="AnimationNodeAnimation" id=208]
+animation = "side_jump"
 
-[sub_resource type="AnimationNodeAnimation" id=167]
-animation = "d_up_jump"
-
-[sub_resource type="AnimationNodeAnimation" id=168]
+[sub_resource type="AnimationNodeAnimation" id=209]
 animation = "side_r_jump"
 
-[sub_resource type="AnimationNodeAnimation" id=169]
-animation = "front_idle"
+[sub_resource type="AnimationNodeAnimation" id=210]
+animation = "d_down_r_jump"
+
+[sub_resource type="AnimationNodeAnimation" id=211]
+animation = "d_up_r_jump"
+
+[sub_resource type="AnimationNodeAnimation" id=212]
+animation = "d_down_jump"
+
+[sub_resource type="AnimationNodeAnimation" id=213]
+animation = "d_up_jump"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=109]
-blend_point_0/node = SubResource( 159 )
-blend_point_0/pos = Vector2( -2, 0 )
-blend_point_1/node = SubResource( 162 )
-blend_point_1/pos = Vector2( 2, 2 )
-blend_point_2/node = SubResource( 163 )
-blend_point_2/pos = Vector2( 2, -2 )
-blend_point_3/node = SubResource( 164 )
-blend_point_3/pos = Vector2( 0, 2 )
-blend_point_4/node = SubResource( 165 )
-blend_point_4/pos = Vector2( 0, -2 )
-blend_point_5/node = SubResource( 166 )
-blend_point_5/pos = Vector2( -2, 2 )
-blend_point_6/node = SubResource( 167 )
-blend_point_6/pos = Vector2( -2, -2 )
-blend_point_7/node = SubResource( 168 )
-blend_point_7/pos = Vector2( 2, 0 )
-blend_point_8/node = SubResource( 169 )
-blend_point_8/pos = Vector2( 0, 0 )
-min_space = Vector2( -2, -2 )
-max_space = Vector2( 2, 2 )
-snap = Vector2( 1, 1 )
+blend_point_0/node = SubResource( 205 )
+blend_point_0/pos = Vector2( 0, 0 )
+blend_point_1/node = SubResource( 206 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 207 )
+blend_point_2/pos = Vector2( 0, -1 )
+blend_point_3/node = SubResource( 208 )
+blend_point_3/pos = Vector2( -1, 0 )
+blend_point_4/node = SubResource( 209 )
+blend_point_4/pos = Vector2( 1, 0 )
+blend_point_5/node = SubResource( 210 )
+blend_point_5/pos = Vector2( 1, 1 )
+blend_point_6/node = SubResource( 211 )
+blend_point_6/pos = Vector2( 1, -1 )
+blend_point_7/node = SubResource( 212 )
+blend_point_7/pos = Vector2( -1, 1 )
+blend_point_8/node = SubResource( 213 )
+blend_point_8/pos = Vector2( -1, -1 )
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id=148]
@@ -271,16 +314,28 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=113]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=174]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=175]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=176]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=177]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=178]
+
 [sub_resource type="AnimationNodeStateMachine" id=37]
+states/Fall/node = SubResource( 173 )
+states/Fall/position = Vector2( 441.01, 207.242 )
 states/Idle/node = SubResource( 36 )
-states/Idle/position = Vector2( 239, 81.1406 )
+states/Idle/position = Vector2( 238, 80.666 )
 states/Jump/node = SubResource( 109 )
-states/Jump/position = Vector2( 295.53, 192.875 )
+states/Jump/position = Vector2( 195.53, 212.413 )
 states/Walk/node = SubResource( 50 )
-states/Walk/position = Vector2( 423.773, 81.2422 )
-transitions = [ "Idle", "Walk", SubResource( 51 ), "Walk", "Idle", SubResource( 52 ), "Idle", "Jump", SubResource( 110 ), "Jump", "Idle", SubResource( 111 ), "Jump", "Walk", SubResource( 112 ), "Walk", "Jump", SubResource( 113 ) ]
+states/Walk/position = Vector2( 423.273, 81.1914 )
+transitions = [ "Idle", "Walk", SubResource( 51 ), "Walk", "Idle", SubResource( 52 ), "Idle", "Jump", SubResource( 110 ), "Jump", "Idle", SubResource( 111 ), "Jump", "Walk", SubResource( 112 ), "Walk", "Jump", SubResource( 113 ), "Jump", "Fall", SubResource( 174 ), "Idle", "Fall", SubResource( 175 ), "Fall", "Idle", SubResource( 176 ), "Walk", "Fall", SubResource( 177 ), "Fall", "Walk", SubResource( 178 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -136.41, 34.275 )
+graph_offset = Vector2( -3.02985, 27.6328 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=38]
 
@@ -321,6 +376,23 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 22 ]
+}
+
+[sub_resource type="Animation" id=189]
+resource_name = "back_fall"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 21 ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -444,6 +516,23 @@ tracks/2/keys = {
 "values": [ 7, 6, 8, 6 ]
 }
 
+[sub_resource type="Animation" id=190]
+resource_name = "d_down_fall"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 17 ]
+}
+
 [sub_resource type="Animation" id=16]
 resource_name = "d_down_idle"
 tracks/0/type = "value"
@@ -522,6 +611,47 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 16 ]
+}
+
+[sub_resource type="Animation" id=191]
+resource_name = "d_down_r_fall"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 17 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -15, 0 ) ]
 }
 
 [sub_resource type="Animation" id=59]
@@ -686,6 +816,23 @@ tracks/2/keys = {
 "values": [ 1, 0, 2, 0 ]
 }
 
+[sub_resource type="Animation" id=192]
+resource_name = "d_up_fall"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 19 ]
+}
+
 [sub_resource type="Animation" id=18]
 resource_name = "d_up_idle"
 tracks/0/type = "value"
@@ -764,6 +911,46 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 18 ]
+}
+
+[sub_resource type="Animation" id=193]
+resource_name = "d_up_r_fall"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 19 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisualRoot/Gary:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -15, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/Gary:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=60]
@@ -928,6 +1115,23 @@ tracks/2/keys = {
 "values": [ 4, 3, 5, 3 ]
 }
 
+[sub_resource type="Animation" id=179]
+resource_name = "front_fall"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 15 ]
+}
+
 [sub_resource type="Animation" id=20]
 resource_name = "front_idle"
 tracks/0/type = "value"
@@ -969,7 +1173,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id=24]
 resource_name = "front_jump"
-length = 0.7
+length = 1.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
@@ -1002,10 +1206,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 14 ]
+"values": [ 14, 14 ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -1047,6 +1251,23 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 23, 22, 24, 22 ]
+}
+
+[sub_resource type="Animation" id=194]
+resource_name = "side_fall"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 13 ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -1127,6 +1348,47 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 12 ]
+}
+
+[sub_resource type="Animation" id=195]
+resource_name = "side_r_fall"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 13 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/Gary:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -15, 0 ) ]
 }
 
 [sub_resource type="Animation" id=61]
@@ -1329,7 +1591,7 @@ always_update = true
 
 [node name="Gary" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
 position = Vector2( 8, -28 )
-texture = SubResource( 171 )
+texture = ExtResource( 7 )
 hframes = 9
 vframes = 3
 frame = 22
@@ -1344,8 +1606,9 @@ tree_root = SubResource( 37 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 38 )
-parameters/Idle/blend_position = Vector2( -0.000871062, 1.27468 )
-parameters/Jump/blend_position = Vector2( -1.15956, 0.0849857 )
+parameters/Fall/blend_position = Vector2( 0.00385606, 0.708154 )
+parameters/Idle/blend_position = Vector2( 0.00128531, 0.00429177 )
+parameters/Jump/blend_position = Vector2( -0.254499, 2.25751 )
 parameters/Walk/blend_position = Vector2( -0.00297326, 1.06034 )
 parameters/Walk/1/TimeScale/scale = 5.5
 parameters/Walk/2/TimeScale/scale = 5.5
@@ -1359,26 +1622,34 @@ parameters/Walk/9/TimeScale/scale = 5.5
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
 playback_speed = 5.5
 anims/RESET = SubResource( 13 )
+anims/back_fall = SubResource( 189 )
 anims/back_idle = SubResource( 14 )
 anims/back_jump = SubResource( 23 )
 anims/back_walk = SubResource( 15 )
+anims/d_down_fall = SubResource( 190 )
 anims/d_down_idle = SubResource( 16 )
 anims/d_down_jump = SubResource( 27 )
+anims/d_down_r_fall = SubResource( 191 )
 anims/d_down_r_idle = SubResource( 59 )
 anims/d_down_r_jump = SubResource( 56 )
 anims/d_down_r_walk = SubResource( 55 )
 anims/d_down_walk = SubResource( 17 )
+anims/d_up_fall = SubResource( 192 )
 anims/d_up_idle = SubResource( 18 )
 anims/d_up_jump = SubResource( 25 )
+anims/d_up_r_fall = SubResource( 193 )
 anims/d_up_r_idle = SubResource( 60 )
 anims/d_up_r_jump = SubResource( 57 )
 anims/d_up_r_walk = SubResource( 54 )
 anims/d_up_walk = SubResource( 19 )
+anims/front_fall = SubResource( 179 )
 anims/front_idle = SubResource( 20 )
 anims/front_jump = SubResource( 24 )
 anims/front_walk = SubResource( 12 )
+anims/side_fall = SubResource( 194 )
 anims/side_idle = SubResource( 21 )
 anims/side_jump = SubResource( 26 )
+anims/side_r_fall = SubResource( 195 )
 anims/side_r_idle = SubResource( 61 )
 anims/side_r_jump = SubResource( 58 )
 anims/side_r_walk = SubResource( 53 )

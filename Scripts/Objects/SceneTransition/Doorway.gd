@@ -28,10 +28,6 @@ func _ready():
 func _on_start_checking_body_entered():
 	connect("body_entered", self, "_on_body_entered")
 
-func _on_body_entered(body):
-	if "is_player_motion_root" in body and body.is_player_motion_root:
-		_on_touch_area()
-
 func _input(event):
 	if event.is_action_pressed("ui_select"):
 		if get_overlapping_bodies().size() > 0:

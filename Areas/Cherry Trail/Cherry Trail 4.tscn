@@ -1,10 +1,10 @@
 [gd_scene load_steps=41 format=2]
 
-[ext_resource path="res://Assets/General/Grass Tile.png" type="Texture" id=1]
+[ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Cherry Trail/dirt c.png" type="Texture" id=2]
-[ext_resource path="res://Assets/General/circle shadow small.png" type="Texture" id=3]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Cherry Trail/plant b.png" type="Texture" id=4]
-[ext_resource path="res://Assets/General/blue bckgd.png" type="Texture" id=5]
+[ext_resource path="res://Assets/General/Backgrounds/blue bckgd.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Cherry Trail/dirt a.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Cherry Trail/sprout.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Cherry Trail/dirt b.png" type="Texture" id=8]
@@ -23,14 +23,14 @@
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=21]
 [ext_resource path="res://Assets/Cherry Trail/White Flower Tile A.png" type="Texture" id=22]
 [ext_resource path="res://Assets/Cherry Trail/White Flower Tile B.png" type="Texture" id=23]
-[ext_resource path="res://Assets/General/square shadow.png" type="Texture" id=24]
-[ext_resource path="res://Assets/Cherry Trail/Tall Grass A.png" type="Texture" id=25]
-[ext_resource path="res://Assets/Cherry Trail/Tall Grass B.png" type="Texture" id=26]
-[ext_resource path="res://Path Spawn.gd" type="Script" id=27]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=24]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass A.png" type="Texture" id=25]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=26]
+[ext_resource path="res://Scripts/Path Spawn.gd" type="Script" id=27]
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_path_follow.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Pivot Town/Orange Brick A.png" type="Texture" id=30]
-[ext_resource path="res://Assets/General/Dandelion A.png" type="Texture" id=31]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=31]
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=33]
 [ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=34]
@@ -482,7 +482,7 @@ spawn_time = 2
 visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 35 )]
-polygon = PoolVector2Array( -277, 71, -163, 29, -167, -100, 1, -159, 74, -133, 144, -131, 215, -106, 333, -145, 330, -170, 249, -200, 312, -226, 475, -165, 472, -106, 345, -59, 413, -35, 409, 71, 218, 140, 154, 119, 122, 130, -62, 63, -183, 106 )
+polygon = PoolVector2Array( -277, 71, -163, 29, -167, -100, 1, -159, 74, -133, 144, -131, 215, -106, 333, -145, 330, -170, 249, -200, 312, -226, 475, -165, 472, -106, 358, -62, 429, -34, 409, 71, 218, 140, 154, 119, 122, 130, -62, 63, -183, 106 )
 
 [node name="DoorwayToCherryTrail1" parent="CollisionRoot" instance=ExtResource( 32 )]
 position = Vector2( -238, 95 )

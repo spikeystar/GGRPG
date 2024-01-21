@@ -1,6 +1,6 @@
 [gd_scene load_steps=76 format=2]
 
-[ext_resource path="res://Assets/General/blue bckgd.png" type="Texture" id=28]
+[ext_resource path="res://Assets/General/Backgrounds/blue bckgd.png" type="Texture" id=28]
 [ext_resource path="res://Players/Gary/Gary Basic.png" type="Texture" id=29]
 [ext_resource path="res://Scripts/Players/Gary.gd" type="Script" id=30]
 

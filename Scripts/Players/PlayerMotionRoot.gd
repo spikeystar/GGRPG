@@ -21,6 +21,7 @@ var vel : Vector3;
 var last_dir: Vector2;
 var floor_layers : Array = []
 var is_on_ground = true
+var is_falling = true
 var is_just_teleported = false
 
 func _ready():
@@ -38,6 +39,11 @@ func teleport_2d(tp_pos : Vector2, height : int = 0):
 
 func set_facing_direction(direction : Vector2):
 	last_dir = direction.normalized()
+	
+#func freeze():
+	#max_player_speed = 0
+	#anim_tree.get("parameters/playback").travel("Idle")
+	#anim_tree.set("parameters/Idle/blend_position", Vector2(last_dir.x, -last_dir.y))
 
 func update_floor():
 	floor_z = LOWEST_Z
@@ -91,6 +97,7 @@ func _physics_process(delta):
 	else:
 		vel.z = 0
 		pos_z = floor_z
+		
 	
 	pos_z += vel.z * delta
 	pos_z = max(floor_z, pos_z)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_path.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enemy Path Follow.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Enemy Path Follow.gd" type="Script" id=2]
 
 [node name="CheriboPathFollow" type="PathFollow2D"]
 position = Vector2( -87, -128 )

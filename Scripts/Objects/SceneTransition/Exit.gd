@@ -16,7 +16,6 @@ export var exit_name : String;
 export(TransitionType) var transition_type = TransitionType.FADE_TO_BLACK;
 export var height = 0.0
 
-
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
 	position.y += height
