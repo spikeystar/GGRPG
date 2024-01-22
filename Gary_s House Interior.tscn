@@ -129,10 +129,10 @@ tile_data = PoolIntArray( -196610, 1, 0, -196609, 0, 0, -262144, 1, 0, -262143, 
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="YSort"]
 visible = false
-position = Vector2( 85.3757, -120.083 )
+position = Vector2( 19, -77 )
 z_index = 1
 frames = SubResource( 174 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="MatA" type="Sprite" parent="YSort"]
