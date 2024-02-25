@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Cherry Trail/dirt c.png" type="Texture" id=2]
@@ -21,8 +21,6 @@
 [ext_resource path="res://Assets/Cherry Trail/hill c.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile B.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=21]
-[ext_resource path="res://Assets/Cherry Trail/White Flower Tile A.png" type="Texture" id=22]
-[ext_resource path="res://Assets/Cherry Trail/White Flower Tile B.png" type="Texture" id=23]
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=24]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass A.png" type="Texture" id=25]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=26]
@@ -83,7 +81,6 @@
 9/shapes = [  ]
 9/z_index = 0
 10/name = "White Flower Tile A.png 10"
-10/texture = ExtResource( 22 )
 10/tex_offset = Vector2( 0, 0 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 0, 0, 64, 32 )
@@ -97,7 +94,6 @@
 10/shapes = [  ]
 10/z_index = 0
 11/name = "White Flower Tile B.png 11"
-11/texture = ExtResource( 23 )
 11/tex_offset = Vector2( 0, 0 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 0, 0, 64, 32 )

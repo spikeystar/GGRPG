@@ -45,16 +45,14 @@ animations = [ {
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.352941 )
-position = Vector2( 0, -10 )
+position = Vector2( 0, -6 )
 scale = Vector2( 0.824406, 0.529999 )
 texture = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -30 )
-scale = Vector2( 0.85, 0.85 )
 frames = SubResource( 7 )
 animation = "walk_front"
-frame = 1
 speed_scale = 0.95
 playing = true
 flip_h = true
