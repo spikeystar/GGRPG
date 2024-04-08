@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Battle Animations SS.png-75b2d9a7ce3cb79cdd934d95fc63b162.stex"
+path="res://.import/Victory Window.png-81962b75efdc39cece2c529d7d490d2a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Battle Animations SS.png"
-dest_files=[ "res://.import/Battle Animations SS.png-75b2d9a7ce3cb79cdd934d95fc63b162.stex" ]
+source_file="res://UI/Battle/Victory Window.png"
+dest_files=[ "res://.import/Victory Window.png-81962b75efdc39cece2c529d7d490d2a.stex" ]
 
 [params]
 

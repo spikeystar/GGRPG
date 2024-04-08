@@ -1,18 +1,296 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=27 format=2]
 
-[ext_resource path="res://Assets/Cherry Trail/Cherry Trail Arena.jpg" type="Texture" id=1]
-[ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_path.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=28]
+[ext_resource path="res://Assets/Cherry Trail/Cherry Trail BA 1.jpg" type="Texture" id=1]
+[ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_battle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Players/Gary/Gary_Battle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Players/Jacques/Jacques_Battle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Players/Irina/Irina_Battle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/Battle/Defense Window.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Battle/BA.gd" type="Script" id=7]
+[ext_resource path="res://UI/Battle/BattleButtons/BattleButtons.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/Battle/Item Window.png" type="Texture" id=9]
+[ext_resource path="res://UI/Battle/Magic Window.png" type="Texture" id=10]
+[ext_resource path="res://UI/Battle/Enemy Info.png" type="Texture" id=11]
+[ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=12]
+[ext_resource path="res://UI/Battle/Enemy Move.png" type="Texture" id=13]
+[ext_resource path="res://UI/Battle/Gary Alive HUD.png" type="Texture" id=14]
+[ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Misc/Font/Basic.tres" type="DynamicFontData" id=16]
+[ext_resource path="res://UI/Battle/Jacques Alive HUD.png" type="Texture" id=17]
+[ext_resource path="res://UI/Battle/Irina Alive HUD.png" type="Texture" id=18]
+[ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=19]
 
-[node name="WorldRoot" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 14
+outline_size = 2
+outline_color = Color( 0.38, 0.23902, 0.1786, 1 )
+font_data = ExtResource( 16 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 12 )
+region_rect = Rect2( 0, 0, 400, 125 )
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 150, 150 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Flee"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="WorldRoot" type="Control"]
+script = ExtResource( 7 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 current = true
-script = ExtResource( 28 )
-follow_player = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -350.0
+margin_right = 400.0
+margin_bottom = 350.0
+color = Color( 0, 0, 0, 1 )
 
 [node name="CherryTrailArena" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
-[node name="Cheribo_path" parent="." instance=ExtResource( 2 )]
-position = Vector2( 35, 47 )
+[node name="Cheribo_battle" parent="." instance=ExtResource( 2 )]
+position = Vector2( 50, 30 )
+
+[node name="HUDS" type="VBoxContainer" parent="."]
+margin_left = -219.0
+margin_top = -249.0
+margin_right = -179.0
+margin_bottom = -209.0
+
+[node name="GaryAliveHud" type="Sprite" parent="HUDS"]
+position = Vector2( 120, 13 )
+texture = ExtResource( 14 )
+
+[node name="JacquesAliveHud" type="Sprite" parent="HUDS"]
+position = Vector2( 62, 81 )
+texture = ExtResource( 17 )
+
+[node name="IrinaAliveHud" type="Sprite" parent="HUDS"]
+position = Vector2( 6, 153 )
+texture = ExtResource( 18 )
+
+[node name="ProgressBar" type="ProgressBar" parent="HUDS"]
+margin_right = 40.0
+margin_bottom = 1.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+max_value = 88.0
+step = 1.0
+rounded = true
+percent_visible = false
+
+[node name="Gary Health" type="Label" parent="HUDS/ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 123.0
+margin_top = 8.0
+margin_right = 128.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "88/88"
+align = 1
+valign = 1
+
+[node name="Jacques Health" type="Label" parent="HUDS/ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 66.0
+margin_top = 76.0
+margin_right = 71.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "97/97"
+align = 1
+valign = 1
+
+[node name="Irina Health" type="Label" parent="HUDS/ProgressBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 148.0
+margin_right = 28.0
+margin_bottom = 162.0
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "113/113"
+align = 1
+valign = 1
+
+[node name="Irina_Battle" parent="." instance=ExtResource( 5 )]
+position = Vector2( -32, 192 )
+
+[node name="Gary_Battle" parent="." instance=ExtResource( 3 )]
+position = Vector2( -248, 88 )
+
+[node name="Jacques_Battle" parent="." instance=ExtResource( 4 )]
+position = Vector2( -144, 136 )
+
+[node name="FleeDialogue" type="PanelContainer" parent="."]
+visible = false
+margin_left = -338.0
+margin_top = -291.0
+margin_right = 88.0
+margin_bottom = -143.0
+custom_styles/panel = SubResource( 8 )
+
+[node name="Flee Message" type="Label" parent="FleeDialogue"]
+margin_top = 66.0
+margin_right = 426.0
+margin_bottom = 81.0
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "You ran away and lost some marbles!"
+align = 1
+valign = 1
+
+[node name="DefenseWindow" type="PanelContainer" parent="."]
+margin_left = 126.0
+margin_top = 114.0
+margin_right = 270.0
+margin_bottom = 264.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 7 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DefenseWindow"]
+margin_left = 44.0
+margin_top = 55.0
+margin_right = 100.0
+margin_bottom = 95.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Defend" type="Label" parent="DefenseWindow/VBoxContainer"]
+margin_right = 56.0
+margin_bottom = 15.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Defend"
+align = 1
+valign = 1
+script = ExtResource( 19 )
+
+[node name="Flee" type="Label" parent="DefenseWindow/VBoxContainer"]
+margin_left = 10.0
+margin_top = 25.0
+margin_right = 46.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 30, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Flee"
+align = 1
+valign = 1
+script = ExtResource( 19 )
+
+[node name="Menu Cursor" parent="DefenseWindow" instance=ExtResource( 15 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 59.0
+margin_top = 62.0
+margin_right = 84.0
+margin_bottom = 87.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+menu_parent_path = NodePath("../VBoxContainer")
+cursor_offset = Vector2( 17, 2.5 )
+
+[node name="ItemWindow" type="Sprite" parent="."]
+visible = false
+position = Vector2( 160, 141 )
+texture = ExtResource( 9 )
+
+[node name="MagicWindow" type="Sprite" parent="."]
+visible = false
+position = Vector2( 158, 132 )
+texture = ExtResource( 10 )
+
+[node name="BattleButtons" parent="." instance=ExtResource( 8 )]
+position = Vector2( -248, 50 )
+
+[node name="BattleDialogue" type="Sprite" parent="."]
+visible = false
+position = Vector2( -137, -225 )
+texture = ExtResource( 12 )
+
+[node name="EnemyMove" type="Sprite" parent="."]
+visible = false
+position = Vector2( -158, -227 )
+texture = ExtResource( 13 )
+
+[node name="EnemyInfo" type="Sprite" parent="."]
+visible = false
+position = Vector2( 163, 213 )
+texture = ExtResource( 11 )
+
+[node name="FadeRect" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -396.0
+margin_top = -346.0
+margin_right = 404.0
+margin_bottom = 354.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeRect"]
+anims/Flee = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Defend" to="." method="_on_Defend_cursor_selected"]
+[connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Flee" to="." method="_on_Flee_cursor_selected"]

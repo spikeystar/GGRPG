@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Cherry Trail Arena.jpg-606219f16f2a03b4f156cba41b172794.stex"
+path="res://.import/Defense Window.png-7f75215438e162e6bc6157fc922bac11.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Cherry Trail/Cherry Trail Arena.jpg"
-dest_files=[ "res://.import/Cherry Trail Arena.jpg-606219f16f2a03b4f156cba41b172794.stex" ]
+source_file="res://UI/Battle/Defense Window.png"
+dest_files=[ "res://.import/Defense Window.png-7f75215438e162e6bc6157fc922bac11.stex" ]
 
 [params]
 

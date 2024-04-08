@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Boss Death SS.png-10667dd67065db0bd913441afad075d1.stex"
+path="res://.import/Level Up 1.png-5d354b971215407d357785a861f1b0c6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Boss Death SS.png"
-dest_files=[ "res://.import/Boss Death SS.png-10667dd67065db0bd913441afad075d1.stex" ]
+source_file="res://UI/Battle/Level Up 1.png"
+dest_files=[ "res://.import/Level Up 1.png-5d354b971215407d357785a861f1b0c6.stex" ]
 
 [params]
 
