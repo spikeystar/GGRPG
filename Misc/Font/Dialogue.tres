@@ -1,0 +1,11 @@
+[gd_resource type="DynamicFont" load_steps=2 format=2]
+
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+font_path = "res://Misc/Font/Greenscr.ttf"
+
+[resource]
+size = 14
+outline_size = 2
+outline_color = Color( 0.36, 0.22644, 0.1692, 1 )
+font_data = SubResource( 1 )

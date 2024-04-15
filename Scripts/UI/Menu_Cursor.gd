@@ -54,3 +54,11 @@ func set_cursor_from_index(index : int) -> void:
 	rect_global_position = Vector2(position.x, position.y + size.y / 2.0) - (rect_size / 2.0) - cursor_offset
 	
 	cursor_index = index
+
+func _on_WorldRoot_index_reset():
+	if cursor_index != -1:
+			cursor_index = -1
+
+func _on_WorldRoot_index_resetzero():
+	if cursor_index != 0:
+			cursor_index = 0

@@ -25,7 +25,7 @@
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass A.png" type="Texture" id=25]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=26]
 [ext_resource path="res://Scripts/Path Spawn.gd" type="Script" id=27]
-[ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_path_follow.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_path.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Pivot Town/Orange Brick A.png" type="Texture" id=30]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=31]

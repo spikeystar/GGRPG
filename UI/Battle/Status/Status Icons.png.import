@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Battle Animations SS.png-b93e452edf6e0004465576993468d30f.stex"
+path="res://.import/Status Icons.png-8c8b37e94fcda08bfec4692cba1963d2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Battle Animations SS.png"
-dest_files=[ "res://.import/Battle Animations SS.png-b93e452edf6e0004465576993468d30f.stex" ]
+source_file="res://UI/Battle/Status/Status Icons.png"
+dest_files=[ "res://.import/Status Icons.png-8c8b37e94fcda08bfec4692cba1963d2.stex" ]
 
 [params]
 

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Battle/Fighter3.gd" type="Script" id=1]
+[ext_resource path="res://Players/Jacques/Jacques_Battle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Players/Gary/Gary_Battle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Players/Irina/Irina_Battle.tscn" type="PackedScene" id=4]
+
+[node name="f_formation_3" type="Node2D"]
+
+[node name="Gary_Battle" parent="." instance=ExtResource( 3 )]
+position = Vector2( -240, 86 )
+
+[node name="Irina_Battle" parent="." instance=ExtResource( 4 )]
+position = Vector2( -24, 190 )
+
+[node name="Jacques_Battle" parent="." instance=ExtResource( 2 )]
+position = Vector2( -136, 134 )
+script = ExtResource( 1 )

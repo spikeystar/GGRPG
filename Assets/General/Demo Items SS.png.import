@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Boss Death SS.png-3e9da8fd89f9eabaeabeb7711d4e5e60.stex"
+path="res://.import/Demo Items SS.png-cd1d9ba5e91defe7b3d9698553ec5bc9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Boss Death SS.png"
-dest_files=[ "res://.import/Boss Death SS.png-3e9da8fd89f9eabaeabeb7711d4e5e60.stex" ]
+source_file="res://Assets/General/Demo Items SS.png"
+dest_files=[ "res://.import/Demo Items SS.png-cd1d9ba5e91defe7b3d9698553ec5bc9.stex" ]
 
 [params]
 
