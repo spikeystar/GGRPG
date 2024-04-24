@@ -92,7 +92,7 @@ script = ExtResource( 3 )
 [node name="SquareShadow" type="Sprite" parent="."]
 self_modulate = Color( 1, 1, 1, 0.27451 )
 material = SubResource( 3 )
-position = Vector2( -2, 1 )
+position = Vector2( -2, 0 )
 rotation = 0.0105347
 texture = ExtResource( 4 )
 
