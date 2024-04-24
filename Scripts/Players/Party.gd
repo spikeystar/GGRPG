@@ -7,6 +7,8 @@ var attack = 10
 var party_id : int
 var party_members = 3
 
-#func assign_party_id():
-	
+func assign_party_id(party_id):
+	$Gary_Battle.party_id = 0
+	$Jacques_Battle.party_id = 2
+	$Irina_Battle.party_id = 1
 

@@ -1,10 +1,63 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Players/Gary/Gary Battle.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
 [ext_resource path="res://Misc/Shader/Defend_Material.tres" type="Material" id=3]
 [ext_resource path="res://Enemies/Battle Animations/Damage Star SS.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/Battle/Fighter.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Battle/BaseFighter.gd" type="Script" id=5]
+[ext_resource path="res://UI/Cursor.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=13]
+resource_name = "Fighter_Attack"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 14, 15, 12, 12, 16, 17, 17, 18, 19, 20, 20 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -1.48148, -2.22222 ), Vector2( -1.48148, -2.22222 ), Vector2( 1.48148, -1.48148 ), Vector2( 1.48148, -0.740741 ), Vector2( 1.48148, -0.740741 ), Vector2( -1.48148, -8.88889 ), Vector2( -13.3333, -10.3704 ), Vector2( -14.8148, -17.7778 ), Vector2( 0.740741, -6.66667 ), Vector2( 4.44444, -2.22222 ), Vector2( 4.444, -2.222 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CircleShadowSmall:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -3.7037, 25.1852 ), Vector2( -4.44444, 25.1852 ), Vector2( -5.92593, 25.1852 ), Vector2( -5.92593, 25.1852 ), Vector2( -3.7037, 25.1852 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "Fighter_BattleReady"
@@ -31,7 +84,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -3.7037, 23.7037 ) ]
+"values": [ Vector2( -3.704, 25.185 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -56,10 +109,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -8.14815, 6.66667 ), Vector2( 0, 0 ) ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1, 0.5, 1, 0.5 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( -4, 3 ), Vector2( -8.14815, 6.66667 ), Vector2( -4, 3 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CircleShadowSmall:position")
@@ -68,10 +121,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
-"update": 0,
-"values": [ Vector2( -0.740741, 22.963 ), Vector2( -9.62963, 29.6296 ), Vector2( -0.740741, 22.963 ) ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1, 0.5, 1, 0.5 ),
+"update": 1,
+"values": [ Vector2( 0.740741, 22.2222 ), Vector2( -2.22222, 24.4444 ), Vector2( -8.88889, 29.6296 ), Vector2( -3.7037, 25.9259 ), Vector2( -0.740741, 22.963 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -151,7 +204,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 8, 0 ), Vector2( 8, 0 ), Vector2( 8, -10 ), Vector2( 8, -24 ), Vector2( 8, -6 ), Vector2( 8, 0 ) ]
+"values": [ Vector2( 8, 0 ), Vector2( 8, 0 ), Vector2( 8, -14 ), Vector2( 8, -34 ), Vector2( 8, -10 ), Vector2( 8, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CircleShadowSmall:position")
@@ -163,7 +216,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.4, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.740741, 24.4444 ), Vector2( 0.740741, 24.4444 ), Vector2( -230.741, 230.444 ) ]
+"values": [ Vector2( 0.740741, 24.4444 ), Vector2( 0.740741, 24.4444 ), Vector2( -570, 400 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:position")
@@ -175,7 +228,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0.4, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -230, 206 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( -569.63, 377.037 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -204,6 +257,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 0, 28.1481 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -229,7 +294,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -3.7037, 23.7037 ) ]
+"values": [ Vector2( -3.704, 25.185 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:material")
@@ -411,13 +476,165 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
 }
 
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 144, 150 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 35, 37 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../FleeDialogue:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../BattleDialogue:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:rect_min_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../EnemyInfo:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../ItemWindow:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../MagicWindow:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../EnemyInfo/Cursor:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Cursor:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "cursor_idle"
+length = 1.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cursor:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.372549 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Gary_Battle" type="Node2D"]
 scale = Vector2( 1.35, 1.35 )
 script = ExtResource( 5 )
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )
-position = Vector2( -3.7037, 23.7037 )
+position = Vector2( -3.704, 25.185 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -435,7 +652,14 @@ hframes = 6
 vframes = 6
 frame = 24
 
+[node name="Cursor" type="Sprite" parent="."]
+visible = false
+position = Vector2( -34.8148, -57.037 )
+scale = Vector2( 0.740741, 0.740741 )
+texture = ExtResource( 6 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Fighter_Attack = SubResource( 13 )
 anims/Fighter_BattleReady = SubResource( 1 )
 anims/Fighter_Damage = SubResource( 10 )
 anims/Fighter_Defend = SubResource( 5 )
@@ -448,3 +672,7 @@ playback_speed = 0.8
 anims/RESET = SubResource( 7 )
 anims/earth = SubResource( 9 )
 anims/neutral = SubResource( 8 )
+
+[node name="CursorPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 11 )
+anims/cursor_idle = SubResource( 12 )

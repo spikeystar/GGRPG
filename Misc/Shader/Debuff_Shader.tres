@@ -24,11 +24,11 @@ vec2 rotateUV(vec2 uv, vec2 pivot, float rotation) {
 void fragment() {
 	vec4 color = texture(TEXTURE, UV);
 	float tex_alpha = texture(TEXTURE, UV).a;
-	float pattern_intensity = texture(NOISE_PATTERN, rotateUV(UV, vec2(.5), .58) + noiseScale + TIME * scroll).y;
+	float pattern_intensity = texture(NOISE_PATTERN, rotateUV(UV, vec2(.5), .58) + noiseScale + TIME * -scroll).y;
 	float intensity = tex_alpha * pattern_intensity;
 	COLOR = vec4(intensity);
 	COLOR.rgb = mix(color.rgb, vec4(intensity).rgb, flash_modifier);
-	COLOR.b = 1.5;
+	COLOR.b = 2.5;
 	COLOR.r = 1.1;
 	}
 	

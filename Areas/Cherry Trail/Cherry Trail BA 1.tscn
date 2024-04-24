@@ -21,18 +21,18 @@
 [ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=19]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=20]
 [ext_resource path="res://Misc/Font/Move Select.tres" type="DynamicFont" id=21]
-[ext_resource path="res://Scripts/Battle/Fighter3.gd" type="Script" id=22]
+[ext_resource path="res://Scripts/Battle/Fighters.gd" type="Script" id=22]
 [ext_resource path="res://Misc/Font/Enemy Name.tres" type="DynamicFont" id=23]
 [ext_resource path="res://UI/Battle/Enemy Status.png" type="Texture" id=24]
 [ext_resource path="res://UI/Battle/Status/Status Icons.png" type="Texture" id=25]
 [ext_resource path="res://Misc/Font/Enemy Name Theme.tres" type="Theme" id=26]
 [ext_resource path="res://Misc/Font/Move Select Theme.tres" type="Theme" id=27]
 [ext_resource path="res://Misc/Font/Enemy Move.tres" type="DynamicFont" id=28]
-[ext_resource path="res://UI/Cursor.png" type="Texture" id=29]
+[ext_resource path="res://Scripts/Battle/Enemies.gd" type="Script" id=29]
 [ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=30]
 [ext_resource path="res://Misc/Font/Item.tres" type="DynamicFont" id=31]
 [ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=32]
-[ext_resource path="res://BattleSystem/Fighters.tscn" type="PackedScene" id=33]
+[ext_resource path="res://UI/Cursor.png" type="Texture" id=33]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -207,18 +207,6 @@ tracks/8/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
-tracks/9/type = "value"
-tracks/9/path = NodePath("../EnemyInfo/Cursor:modulate")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=13]
 resource_name = "battle_dia_open"
@@ -252,18 +240,6 @@ tracks/1/keys = {
 resource_name = "cursor_idle"
 length = 1.9
 loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("../EnemyInfo/Cursor:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 1 ) ]
-}
 
 [sub_resource type="Animation" id=11]
 resource_name = "defense_open"
@@ -384,10 +360,6 @@ tracks/0/keys = {
 [node name="WorldRoot" type="Control"]
 script = ExtResource( 7 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-visible = false
-current = true
-
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -401,9 +373,6 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="CherryTrailArena" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-
-[node name="Cheribo_battle" parent="." instance=ExtResource( 2 )]
-position = Vector2( 48, 32 )
 
 [node name="HUDS" type="VBoxContainer" parent="."]
 margin_left = -213.0
@@ -436,9 +405,9 @@ percent_visible = false
 [node name="Gary Health" type="Label" parent="HUDS/ProgressBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 123.0
+margin_left = 122.0
 margin_top = 8.0
-margin_right = 128.0
+margin_right = 127.0
 margin_bottom = 22.0
 custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
 custom_fonts/font = ExtResource( 16 )
@@ -449,9 +418,9 @@ valign = 1
 [node name="Jacques Health" type="Label" parent="HUDS/ProgressBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 66.0
+margin_left = 64.0
 margin_top = 76.0
-margin_right = 71.0
+margin_right = 69.0
 margin_bottom = 90.0
 custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
 custom_fonts/font = ExtResource( 16 )
@@ -462,9 +431,9 @@ valign = 1
 [node name="Irina Health" type="Label" parent="HUDS/ProgressBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 5.0
+margin_left = 3.0
 margin_top = 148.0
-margin_right = 28.0
+margin_right = 26.0
 margin_bottom = 162.0
 custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
 custom_fonts/font = ExtResource( 16 )
@@ -472,11 +441,38 @@ text = "113/113"
 align = 1
 valign = 1
 
-[node name="Fighters" parent="." instance=ExtResource( 33 )]
+[node name="Fighters" type="Node2D" parent="."]
+script = ExtResource( 22 )
+
+[node name="Gary_Battle" parent="Fighters" instance=ExtResource( 3 )]
+position = Vector2( -240, 86 )
+
+[node name="Jacques_Battle" parent="Fighters" instance=ExtResource( 4 )]
+position = Vector2( -135, 144 )
+
+[node name="Irina_Battle" parent="Fighters" instance=ExtResource( 5 )]
+position = Vector2( -23, 194 )
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource( 29 )
+
+[node name="Cheribo_battle" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 30, 63 )
+ID = "Cheribo"
+
+[node name="Cheribo_battle2" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 190, 44 )
+ID = "Cheribo"
+
+[node name="Cheribo_battle3" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 16, -23 )
+ID = "Cheribo"
+
+[node name="Tween" type="Tween" parent="."]
 
 [node name="BattleButtons" parent="." instance=ExtResource( 8 )]
 visible = false
-position = Vector2( -240, 48 )
+position = Vector2( -23, 156 )
 
 [node name="FleeDialogue" type="PanelContainer" parent="."]
 visible = false
@@ -907,8 +903,7 @@ custom_fonts/font = ExtResource( 28 )
 text = "Sublimate"
 
 [node name="EnemyInfo" type="Sprite" parent="."]
-visible = false
-position = Vector2( 163, 213 )
+position = Vector2( 165, 225 )
 texture = ExtResource( 11 )
 
 [node name="EnemyStatus" type="Sprite" parent="EnemyInfo"]
@@ -1032,10 +1027,6 @@ hframes = 4
 vframes = 5
 frame = 11
 
-[node name="Cursor" type="Sprite" parent="EnemyInfo"]
-position = Vector2( -163, -253 )
-texture = ExtResource( 29 )
-
 [node name="BattleDialogue" type="Sprite" parent="."]
 visible = false
 position = Vector2( -134, -223 )
@@ -1080,32 +1071,55 @@ anims/flee_dia_open = SubResource( 12 )
 anims/item_open = SubResource( 19 )
 anims/magic_open = SubResource( 20 )
 
-[node name="Fighters2" type="Node2D" parent="."]
-visible = false
-
-[node name="Gary_Battle" parent="Fighters2" instance=ExtResource( 3 )]
-position = Vector2( -240, 86 )
-
-[node name="Irina_Battle" parent="Fighters2" instance=ExtResource( 5 )]
-position = Vector2( -24, 190 )
-
-[node name="Jacques_Battle" parent="Fighters2" instance=ExtResource( 4 )]
-position = Vector2( -136, 134 )
-script = ExtResource( 22 )
-
 [node name="PartyFormation3" type="Node2D" parent="."]
 
-[node name="Fighter1" type="Position2D" parent="PartyFormation3"]
+[node name="Fighter0" type="Position2D" parent="PartyFormation3"]
 position = Vector2( -240, 86 )
 
-[node name="Fighter2" type="Position2D" parent="PartyFormation3"]
-position = Vector2( -140, 137 )
+[node name="Fighter1" type="Position2D" parent="PartyFormation3"]
+position = Vector2( -135, 144 )
 
-[node name="Fighter3" type="Position2D" parent="PartyFormation3"]
+[node name="Fighter2" type="Position2D" parent="PartyFormation3"]
 position = Vector2( -23, 194 )
 
+[node name="BBLocation3" type="Node2D" parent="."]
+
+[node name="Location0" type="Position2D" parent="BBLocation3"]
+position = Vector2( -240, 48 )
+
+[node name="Location1" type="Position2D" parent="BBLocation3"]
+position = Vector2( -135, 106 )
+
+[node name="Location2" type="Position2D" parent="BBLocation3"]
+position = Vector2( -23, 156 )
+
+[node name="TC" type="Sprite" parent="."]
+visible = false
+position = Vector2( -96, 76 )
+texture = ExtResource( 33 )
+
+[node name="TC2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 139, -186 )
+texture = ExtResource( 33 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+current = true
+
+[connection signal="BB_active" from="." to="Fighters" method="_on_WorldRoot_BB_active"]
+[connection signal="attack_active" from="." to="Enemies" method="_on_WorldRoot_attack_active"]
+[connection signal="attack_chosen" from="." to="Enemies" method="_on_WorldRoot_attack_chosen"]
+[connection signal="defend_chosen" from="." to="Fighters" method="_on_WorldRoot_defend_chosen"]
+[connection signal="flee_chosen" from="." to="Fighters" method="_on_WorldRoot_flee_chosen"]
+[connection signal="hide_enemy_cursor" from="." to="Enemies" method="_on_WorldRoot_hide_enemy_cursor"]
 [connection signal="index_reset" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_index_reset"]
 [connection signal="index_resetzero" from="." to="ItemWindow/ItemWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
 [connection signal="index_resetzero" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
+[connection signal="fighter_index_0" from="Fighters" to="." method="_on_Fighters_fighter_index_0"]
+[connection signal="fighter_index_1" from="Fighters" to="." method="_on_Fighters_fighter_index_1"]
+[connection signal="fighter_index_2" from="Fighters" to="." method="_on_Fighters_fighter_index_2"]
+[connection signal="fighters_active" from="Fighters" to="." method="_on_Fighters_fighters_active"]
+[connection signal="enemy_chosen" from="Enemies" to="." method="_on_Enemies_enemy_chosen"]
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Defend" to="." method="_on_Defend_cursor_selected"]
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Flee" to="." method="_on_Flee_cursor_selected"]

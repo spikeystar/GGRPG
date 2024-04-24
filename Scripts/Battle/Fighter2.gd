@@ -1,3 +1,15 @@
 extends Node2D
 
-var party_id : int = 2
+onready var focus = $Cursor
+onready var cursor_player = $CursorPlayer
+var party_id = 1
+
+func ready():
+	focus.hide()
+	
+func focus():
+	focus.show()
+	cursor_player.play("cursor_idle")
+
+func inactive():
+	$Cursor.hide()

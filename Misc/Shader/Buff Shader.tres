@@ -1,8 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+[gd_resource type="Shader" format=2]
 
-[ext_resource path="res://Misc/Shader/Buff Texture.png" type="Texture" id=1]
-
-[sub_resource type="Shader" id=1]
+[resource]
 code = "shader_type canvas_item;
 
 uniform sampler2D NOISE_PATTERN;
@@ -26,20 +24,12 @@ vec2 rotateUV(vec2 uv, vec2 pivot, float rotation) {
 void fragment() {
 	vec4 color = texture(TEXTURE, UV);
 	float tex_alpha = texture(TEXTURE, UV).a;
-	float pattern_intensity = texture(NOISE_PATTERN, rotateUV(UV, vec2(.5), .58) + noiseScale + TIME * -scroll).y;
+	float pattern_intensity = texture(NOISE_PATTERN, rotateUV(UV, vec2(.5), .58) + noiseScale + TIME * scroll).y;
 	float intensity = tex_alpha * pattern_intensity;
 	COLOR = vec4(intensity);
 	COLOR.rgb = mix(color.rgb, vec4(intensity).rgb, flash_modifier);
-	COLOR.b = 2.5;
-	COLOR.r = 1.1;
+	COLOR.b = .31;
+	COLOR.r = 1.15;
 	}
 	
 	"
-
-[resource]
-resource_local_to_scene = true
-shader = SubResource( 1 )
-shader_param/scroll = Vector2( -0.17, 0.17 )
-shader_param/noiseScale = Vector2( 1, 1 )
-shader_param/flash_modifier = 0.2
-shader_param/NOISE_PATTERN = ExtResource( 1 )
