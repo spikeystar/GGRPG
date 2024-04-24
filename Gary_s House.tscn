@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Assets/Gary's House/Exterior/ledge 3.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Gary's House/Exterior/plant 3.png" type="Texture" id=2]
@@ -33,9 +33,10 @@
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=31]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=32]
 [ext_resource path="res://Assets/General/Save Star.png" type="Texture" id=33]
+[ext_resource path="res://Assets/General/Moving Platform Test.tscn" type="PackedScene" id=34]
 
 [node name="WorldRoot" type="Node2D"]
-position = Vector2( 0, 1 )
+position = Vector2( -1, 8 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
@@ -507,3 +508,6 @@ script = ExtResource( 30 )
 minPos = Vector2( -395, -90 )
 maxPos = Vector2( 65, 190 )
 follow_player = true
+
+[node name="MovingPlatform" parent="." instance=ExtResource( 34 )]
+position = Vector2( -415, 154 )
