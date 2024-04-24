@@ -234,7 +234,7 @@ func _physics_process(delta):
 
 func _initialize_nodes():
 	for child in get_children():
-		if child != null and weakref(child).get_ref():
+		if child != null and weakref(child).get_ref() and child.name.begins_with("COLLIDABLE_BOX_GENERATED_"):
 			child.queue_free()
 	
 	collider_edges = null
@@ -271,13 +271,13 @@ func _generate_collider():
 	
 	if collision_body == null or not weakref(collision_body).get_ref():
 		collision_body = StaticBody2D.new()
-		collision_body.name = "CollisionBody"
+		collision_body.name = "COLLIDABLE_BOX_GENERATED_CollisionBody"
 		collision_body.set_script(collision_body_script)
 		add_child(collision_body)
 	
 	if floor_notify_area == null or not weakref(floor_notify_area).get_ref():
 		floor_notify_area = Area2D.new()
-		floor_notify_area.name = "FloorNotifyArea"
+		floor_notify_area.name = "COLLIDABLE_BOX_GENERATED_FloorNotifyArea"
 		floor_notify_area.set_script(floor_setter_script)
 		add_child(floor_notify_area)
 	
@@ -290,10 +290,11 @@ func _generate_collider():
 		floor_notify_area_shape = null
 	
 	collision_body_shape = CollisionPolygon2D.new()
+	collision_body_shape.name = "COLLIDABLE_BOX_GENERATED_CollisionBodyShape"
 	floor_notify_area_shape = CollisionPolygon2D.new()
+	floor_notify_area_shape.name = "COLLIDABLE_BOX_GENERATED_FloorNotifyAreaShape"
 	
 	for shape in [collision_body_shape, floor_notify_area_shape]:
-		shape.name = "CollisionShape"
 		var polygon = PoolVector2Array()
 		polygon.push_back(collider_edges.top)
 		polygon.push_back(collider_edges.right)
@@ -650,7 +651,7 @@ func _generate_mesh(
 ):
 	# Generate y-sort container
 	var y_sort = Node2D.new()
-	y_sort.name = "YSort"
+	y_sort.name = "COLLIDABLE_BOX_GENERATED_YSort"
 	add_child(y_sort)
 	y_sort.global_position = Vector2(
 		global_position.x,
@@ -674,7 +675,7 @@ func _generate_mesh(
 	arrays[ArrayMesh.ARRAY_TEX_UV] = uvs
 	array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLE_STRIP, arrays)
 	var mesh_instance = MeshInstance2D.new()
-	mesh_instance.name = "TexturedMeshInstance2D"
+	mesh_instance.name = "COLLIDABLE_BOX_GENERATED_TexturedMeshInstance2D"
 	mesh_instance.mesh = array_mesh
 	mesh_instance.texture = texture
 	mesh_instance.material = ShaderMaterial.new()
@@ -717,6 +718,7 @@ func _generate_collision_box_preview():
 	if Engine.editor_hint and preview_collision_box:
 		if collision_preview_mesh == null or not weakref(collision_preview_mesh).get_ref():
 			collision_preview_mesh = MeshInstance2D.new()
+			collision_preview_mesh.name = "COLLIDABLE_BOX_GENERATED_CollisionPreviewMesh"
 		var array_mesh = ArrayMesh.new()
 		var top_left = collider_edges.left + Vector2(0.0, COLLISION_PREVIEW_DRAW_OFFSET - height - floor_height)
 		var top_top = collider_edges.top + Vector2(0.0, COLLISION_PREVIEW_DRAW_OFFSET - height - floor_height)
