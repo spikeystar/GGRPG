@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Assets/Gary's House/Exterior/ledge 3.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Gary's House/Exterior/plant 3.png" type="Texture" id=2]
@@ -34,6 +34,7 @@
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=32]
 [ext_resource path="res://Assets/General/Save Star.png" type="Texture" id=33]
 [ext_resource path="res://Assets/General/Moving Platform Test.tscn" type="PackedScene" id=34]
+[ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=35]
 
 [node name="WorldRoot" type="Node2D"]
 position = Vector2( -1, 8 )
@@ -44,6 +45,7 @@ __meta__ = {
 [node name="YSort" type="YSort" parent="."]
 
 [node name="SaveStar" type="Sprite" parent="YSort"]
+visible = false
 position = Vector2( -526.923, 83.0769 )
 scale = Vector2( 0.9, 0.95 )
 texture = ExtResource( 33 )
@@ -511,3 +513,6 @@ follow_player = true
 
 [node name="MovingPlatform" parent="." instance=ExtResource( 34 )]
 position = Vector2( -415, 154 )
+
+[node name="Present" parent="." instance=ExtResource( 35 )]
+position = Vector2( -517, 94 )
