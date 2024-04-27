@@ -59,6 +59,9 @@ export var animation_vframes = 1 setget set_animation_vframes
 # If using a spritesheet, the current frame of animation
 export var animation_frame = 0 setget set_animation_frame
 
+# Set to false to disable collision, only utilizing the rendering aspect of collidable box
+export var use_collision = true setget set_use_collision
+
 # Dither alpha values, disabled when use_transparency is true
 export var use_dithering = true
 
@@ -188,11 +191,15 @@ func set_animation_frame(new_animation_frame):
 		else:
 			_queue_generate_meshes()
 
+func set_use_collision(new_use_collision):
+	use_collision = new_use_collision
+	if is_ready:
+		_queue_generate_collider()
+
 func set_detect_touches(new_detect_touches):
 	detect_touches = new_detect_touches
 	if is_ready:
-		if Engine.is_editor_hint():
-			_queue_generate_touch_area()
+		_queue_generate_touch_area()
 
 func set_always_update(new_always_update):
 	always_update = new_always_update
@@ -285,7 +292,7 @@ func _generate_touch_area():
 		touch_area.queue_free()
 		touch_area = null
 	
-	if not detect_touches:
+	if not detect_touches or Engine.is_editor_hint():
 		return
 	
 	is_touchable = true
@@ -330,7 +337,8 @@ func _queue_generate_collider():
 
 func _generate_collider():
 	is_queued_generate_collider = false
-	if Engine.editor_hint:
+	
+	if Engine.editor_hint or not use_collision:
 		return
 	
 	if collision_body == null or not weakref(collision_body).get_ref():
