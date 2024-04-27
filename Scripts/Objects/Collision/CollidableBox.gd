@@ -3,6 +3,8 @@
 tool
 extends Node2D
 
+signal touched(touch_direction)
+
 #---------#
 # Imports #
 #---------#
@@ -66,6 +68,9 @@ export var use_dither_blending = true
 # Allow partial transparency, but greatly reduces depth drawing accuracy
 export var use_transparency: bool = false
 
+# If true, emits the signal "touched" when the player bumps up against the side of the box
+export var detect_touches: bool = false setget set_detect_touches
+
 # Set to true in order to make the box respond to position / height updates
 export var always_update: bool = false setget set_always_update
 
@@ -82,6 +87,8 @@ var collision_preview_mesh = null # editor preview mesh of collision box
 var depth_test_meshes = [] # keep track of the meshes created for depth testing
 var floor_notify_area = null # notifies player/npc of floor height when collision_body non-blocking
 var floor_notify_area_shape = null # belongs to floor_notify_area
+var touch_area = null # area that detects if the player has touched the box
+var is_touchable = true # whether or not touches will be detected if player enters touch_area
 var half_tile_width = 63.0 / 2.0
 var half_tile_height = 28.0 / 2.0
 var mesh_ysort_containers = [] # texture is split into multiple sprites with texture regions for y-sorting
@@ -89,6 +96,7 @@ var meshes = []
 var is_queued_generate_collider = false
 var is_queued_generate_collision_box_preview = false
 var is_queued_generate_meshes = false
+var is_queued_generate_touch_area = false
 var is_ready = false # _ready() already called
 
 #-------------------#
@@ -180,6 +188,12 @@ func set_animation_frame(new_animation_frame):
 		else:
 			_queue_generate_meshes()
 
+func set_detect_touches(new_detect_touches):
+	detect_touches = new_detect_touches
+	if is_ready:
+		if Engine.is_editor_hint():
+			_queue_generate_touch_area()
+
 func set_always_update(new_always_update):
 	always_update = new_always_update
 	if Engine.is_editor_hint():
@@ -243,6 +257,7 @@ func _initialize_nodes():
 	collision_preview_mesh = null
 	floor_notify_area = null
 	floor_notify_area_shape = null
+	touch_area = null
 	mesh_ysort_containers = []
 	meshes = []
 	
@@ -253,11 +268,60 @@ func _initialize_nodes():
 	_queue_generate_collider()
 	_queue_generate_meshes()
 	_queue_generate_collision_box_preview()
+	_queue_generate_touch_area()
 
 func _clear_depth_test_meshes():
 	for depth_test_mesh in depth_test_meshes:
 		Global.depth_buffer.remove_depth_test_mesh(depth_test_mesh)
 	depth_test_meshes = []
+
+func _queue_generate_touch_area():
+	if not is_queued_generate_touch_area:
+		is_queued_generate_touch_area = true
+		call_deferred("_generate_touch_area")
+
+func _generate_touch_area():
+	if touch_area != null and weakref(touch_area).get_ref():
+		touch_area.queue_free()
+		touch_area = null
+	
+	if not detect_touches:
+		return
+	
+	is_touchable = true
+	touch_area = Area2D.new()
+	touch_area.name = "COLLIDABLE_BOX_GENERATED_TouchArea"
+	touch_area.collision_layer = 0
+	touch_area.collision_mask = 1
+	touch_area.connect("body_entered", self, "_on_touch_area_body_entered")
+	touch_area.connect("body_exited", self, "_on_touch_area_body_exited")
+	
+	var touch_shape = CollisionPolygon2D.new()
+	touch_shape.name = "COLLIDABLE_BOX_GENERATED_TouchShape"
+	
+	var polygon = PoolVector2Array()
+	polygon.push_back(collider_edges.top + Vector2(0.0, -2.0))
+	polygon.push_back(collider_edges.right + Vector2(2.0, 0.0))
+	polygon.push_back(collider_edges.bottom + Vector2(0.0, 2.0))
+	polygon.push_back(collider_edges.left + Vector2(-2.0, 0.0))
+	polygon.push_back(collider_edges.top + Vector2(0.0, -2.0))
+	touch_shape.polygon = polygon
+	
+	touch_area.add_child(touch_shape)
+	add_child(touch_area)
+
+func _on_touch_area_body_entered(body):
+	if (
+		body != null and "is_player_motion_root" in body and
+		body.is_player_motion_root and "last_dir" in body and
+		"pos_z" in body and body.pos_z > floor_height - 1 and body.pos_z < floor_height + height - 1
+	):
+		is_touchable = false
+		emit_signal("touched", body.last_dir)
+
+func _on_touch_area_body_exited(body):
+	if body != null and "is_player_motion_root" in body and body.is_player_motion_root:
+		is_touchable = true
 
 func _queue_generate_collider():
 	if not is_queued_generate_collider:
