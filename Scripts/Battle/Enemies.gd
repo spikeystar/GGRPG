@@ -43,8 +43,8 @@ func _process(delta):
 		#	enemy_max = true
 		#set_max(enemy_index)
 		
-	#if Input.is_action_just_pressed("ui_right") and enemy_index >= (enemy_amount - 1):
-		#enemy_index -= 1
+	if Input.is_action_just_pressed("ui_right") and enemy_index == (enemy_amount - 1):
+		enemy_index = -1
 		
 	if Input.is_action_just_pressed("ui_right") and enemy_amount == 1 and is_instance_valid(enemies[enemy_index]):
 		focus_only(enemy_index)
@@ -120,8 +120,8 @@ func enemy_damage():
 		enemies[enemy_index].death()
 		yield(get_tree().create_timer(1), "timeout")
 		enemies.remove(enemy_index)
-		enemies.resize(enemies.size())
 		enemy_amount = enemies.size()
+		enemies.resize(enemies.size())
 	else:
 		enemies[enemy_index]._ready()
 	
