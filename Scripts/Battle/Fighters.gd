@@ -7,8 +7,11 @@ onready var Enemies = get_tree().get_root().get_node("Enemies")
 var fighters : Array = []
 var fighter_index : int = -1
 var BB_active = false
-var f_current = Node2D
+var f_current 
 var f_position : Vector2
+var attack_chosen = false
+var f_turns : int = 0
+
 
 var party_formation_1 = false
 var party_formation_2 = false
@@ -18,6 +21,8 @@ signal fighter_index_0
 signal fighter_index_1
 signal fighter_index_2
 signal fighters_active
+signal anim_finish
+signal enemies_enabled
 
 func _ready():
 	fighters = get_children()
@@ -54,11 +59,10 @@ func _process(delta):
 		fighter_index_1(fighter_index)
 		fighter_index_2(fighter_index)
 	
-	if Input.is_action_just_pressed("ui_select") and BB_active:
+	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen:
 		fighters[fighter_index].turn()
 		
 
-	
 func switch_focus(x, y):
 	print(fighter_index)
 	fighters[x].focus()
@@ -111,17 +115,18 @@ func _on_WorldRoot_flee_chosen():
 	fighters[2].flee()
 	
 func get_f_current():
-	var f_current = fighters[fighter_index].get_node($Fighters)
-	return f_current
+	var f_self = fighters[fighter_index].get_self()
+	return f_self
 	
 func get_f_position():
-	var f_position = fighters[fighter_index].get_position($Fighters).position
-	return Vector2()
-	#if fighter_index == 0:
-		#current_f_position = Vector2(-240, 86)
-	
+	var f_position: Vector2 = fighters[fighter_index].get_position()
+	return f_position
+		
+		
 func fighter_attack():
+	attack_chosen = false
 	fighters[fighter_index].attack()
+	emit_signal("anim_finish")
 
 #func _on_Enemies_enemy_chosen():
 	#var f_position = get_f_position()
@@ -142,3 +147,17 @@ func fighter_attack():
 	#tween.tween_callback(f_position.queue_free)
 	#var tween = get_tree().create_tween()
 	#tween.tween_property($WorldRoot/TC, "position", Vector2(65, -20), 1)
+func pre_attack():
+	fighters[fighter_index].pre_attack()
+
+func _on_Enemies_enemy_chosen():
+	attack_chosen = true
+	fighters[fighter_index].pre_attack()
+	
+func max_f_turns():
+	var array_size = fighters.size()
+	if f_turns == array_size:
+		emit_signal ("enemies_enabled")
+
+func _on_WorldRoot_turn_used():
+	f_turns += 1

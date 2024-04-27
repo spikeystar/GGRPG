@@ -3,7 +3,6 @@ extends Node
 #export(tscn) var enemy = null
 
 onready var player_instance = PlayerManager.player_instance
-onready var tween = $Tween
 var window_open = false
 var defend_show = false
 var attack_show = false
@@ -17,6 +16,8 @@ var fighter0_active = false
 var fighter1_active = false
 var fighter2_active = false
 var fighters_over = false
+var tween
+
 
 onready var party_members : int
 onready var party_id : int
@@ -34,6 +35,7 @@ signal attack_active()
 signal attack_chosen()
 signal magic_active()
 signal hide_enemy_cursor()
+signal turn_used()
 
 
 func _ready():
@@ -93,9 +95,6 @@ func _input(event):
 		$BattleButtons/ItemX.hide()
 		$BattleButtons/AnimationPlayer.play("Initial")
 		emit_signal("BB_active")
-		#$Fighters/Gary_Battle/AnimationPlayer.play("Fighter_Turn")
-		#$Fighters/Jacques_Battle/AnimationPlayer.play("Fighter_Turn")
-		#$Fighters/Irina_Battle/AnimationPlayer.play("Fighter_Turn")
 		
 	if (Input.is_action_just_pressed("ui_down")) and BB_active and not defend_show and not magic_show and not item_show:
 		defend_show = true
@@ -192,6 +191,7 @@ func _input(event):
 		if item_show and not window_open:
 			window_open = true
 
+	#if (Input.is_action_just_pressed("ui_push")) and BB_active:
 
 #Defend Actions
 func _on_Defend_cursor_selected():
@@ -200,6 +200,7 @@ func _on_Defend_cursor_selected():
 		$BattleButtons/SpadeB.show()
 		$BattleButtons.hide()
 		emit_signal("defend_chosen")
+		emit_signal("turn_used")
 		defend_show = false
 		BB_active = false
 	
@@ -218,20 +219,33 @@ func _on_Flee_cursor_selected():
 		get_tree().quit()
 	
 func _on_Enemies_enemy_chosen():
-	var tween = get_tree().create_tween()
+	emit_signal("turn_used")
+	tween = create_tween()
 	var fighter_node = $Fighters.get_f_current()
-	var enemy_position = $Enemies.get_e_position()
-	tween.tween_property(fighter_node, "position", fighter_node.position, enemy_position, 0.3, Tween.TRANS_LINEAR)
-	tween.start()
+	var enemy_position = $Enemies.get_e_position() + Vector2(-55, -8)
+	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
+	yield(tween, "finished")
+	#yield(get_tree().create_timer(0.3), "timeout")
 	$Fighters.fighter_attack()
+	tween.kill()
+
+	
+	#tween.tween_property(fighter_node, "position", Vector2(-240, 86), 0.5)
 	
 	
+func _on_Fighters_anim_finish():
+	var fighter_node = $Fighters.get_f_current()
+	#var fighter_position = $Fighters.get_f_position()
+	yield(get_tree().create_timer(2.5), "timeout")
+	$Enemies.enemy_damage()
 	
-	#tween.tween_property($Fighters.f_current, "position", $Enemies.e_position, 0.3)
-	#$Fighters.fighter_attack()
-	#$Enemies.enemy_damage()
+	#tween.tween_property(fighter_node, "position", fighter_position, 0.5)
+	#tween.play()
 	
+	#tween.tween_callback(fighter_node, "queue_free")
+	#tween.tween_callback(fighter_node, "position")
 	
-	#var f_position : Vector2 = $Fighters.current_f_position
-	#var e_position : Vector2 = $Enemies.current_e_position
-	#$Tween.tween_callback(f_position.queue_free)
+	#tween = tween.kill()
+	#tween = tween.stop()
+	
+

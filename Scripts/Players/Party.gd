@@ -6,6 +6,7 @@ var attack = 10
 #var party_index : int = 1
 var party_id : int
 var party_members = 3
+var f_turns : int = 0
 
 func assign_party_id(party_id):
 	$Gary_Battle.party_id = 0

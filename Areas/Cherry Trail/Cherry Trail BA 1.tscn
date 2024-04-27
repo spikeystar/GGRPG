@@ -441,6 +441,24 @@ text = "113/113"
 align = 1
 valign = 1
 
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource( 29 )
+
+[node name="Cheribo_battle" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 30, 63 )
+ID = "Cheribo"
+e_health = 55
+
+[node name="Cheribo_battle2" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 190, 44 )
+ID = "Cheribo"
+e_health = 55
+
+[node name="Cheribo_battle3" parent="Enemies" instance=ExtResource( 2 )]
+position = Vector2( 16, -23 )
+ID = "Cheribo"
+e_health = 55
+
 [node name="Fighters" type="Node2D" parent="."]
 script = ExtResource( 22 )
 
@@ -452,23 +470,6 @@ position = Vector2( -135, 144 )
 
 [node name="Irina_Battle" parent="Fighters" instance=ExtResource( 5 )]
 position = Vector2( -23, 194 )
-
-[node name="Enemies" type="Node2D" parent="."]
-script = ExtResource( 29 )
-
-[node name="Cheribo_battle" parent="Enemies" instance=ExtResource( 2 )]
-position = Vector2( 30, 63 )
-ID = "Cheribo"
-
-[node name="Cheribo_battle2" parent="Enemies" instance=ExtResource( 2 )]
-position = Vector2( 190, 44 )
-ID = "Cheribo"
-
-[node name="Cheribo_battle3" parent="Enemies" instance=ExtResource( 2 )]
-position = Vector2( 16, -23 )
-ID = "Cheribo"
-
-[node name="Tween" type="Tween" parent="."]
 
 [node name="BattleButtons" parent="." instance=ExtResource( 8 )]
 visible = false
@@ -1095,7 +1096,7 @@ position = Vector2( -23, 156 )
 
 [node name="TC" type="Sprite" parent="."]
 visible = false
-position = Vector2( -96, 76 )
+position = Vector2( -141, 62 )
 texture = ExtResource( 33 )
 
 [node name="TC2" type="Sprite" parent="."]
@@ -1107,6 +1108,8 @@ texture = ExtResource( 33 )
 visible = false
 current = true
 
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="BB_active" from="." to="Fighters" method="_on_WorldRoot_BB_active"]
 [connection signal="attack_active" from="." to="Enemies" method="_on_WorldRoot_attack_active"]
 [connection signal="attack_chosen" from="." to="Enemies" method="_on_WorldRoot_attack_chosen"]
@@ -1116,10 +1119,13 @@ current = true
 [connection signal="index_reset" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_index_reset"]
 [connection signal="index_resetzero" from="." to="ItemWindow/ItemWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
 [connection signal="index_resetzero" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
+[connection signal="turn_used" from="." to="Fighters" method="_on_WorldRoot_turn_used"]
+[connection signal="enemy_chosen" from="Enemies" to="." method="_on_Enemies_enemy_chosen"]
+[connection signal="enemy_chosen" from="Enemies" to="Fighters" method="_on_Enemies_enemy_chosen"]
+[connection signal="anim_finish" from="Fighters" to="." method="_on_Fighters_anim_finish"]
 [connection signal="fighter_index_0" from="Fighters" to="." method="_on_Fighters_fighter_index_0"]
 [connection signal="fighter_index_1" from="Fighters" to="." method="_on_Fighters_fighter_index_1"]
 [connection signal="fighter_index_2" from="Fighters" to="." method="_on_Fighters_fighter_index_2"]
 [connection signal="fighters_active" from="Fighters" to="." method="_on_Fighters_fighters_active"]
-[connection signal="enemy_chosen" from="Enemies" to="." method="_on_Enemies_enemy_chosen"]
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Defend" to="." method="_on_Defend_cursor_selected"]
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Flee" to="." method="_on_Flee_cursor_selected"]
