@@ -1073,6 +1073,7 @@ anims/item_open = SubResource( 19 )
 anims/magic_open = SubResource( 20 )
 
 [node name="PartyFormation3" type="Node2D" parent="."]
+visible = false
 
 [node name="Fighter0" type="Position2D" parent="PartyFormation3"]
 position = Vector2( -240, 86 )
@@ -1120,6 +1121,7 @@ current = true
 [connection signal="index_resetzero" from="." to="ItemWindow/ItemWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
 [connection signal="index_resetzero" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
 [connection signal="turn_used" from="." to="Fighters" method="_on_WorldRoot_turn_used"]
+[connection signal="e_damage_finish" from="Enemies" to="." method="_on_Enemies_e_damage_finish"]
 [connection signal="enemy_chosen" from="Enemies" to="." method="_on_Enemies_enemy_chosen"]
 [connection signal="enemy_chosen" from="Enemies" to="Fighters" method="_on_Enemies_enemy_chosen"]
 [connection signal="anim_finish" from="Fighters" to="." method="_on_Fighters_anim_finish"]

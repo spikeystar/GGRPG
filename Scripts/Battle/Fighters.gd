@@ -121,7 +121,10 @@ func get_f_current():
 func get_f_position():
 	var f_position: Vector2 = fighters[fighter_index].get_position()
 	return f_position
-		
+	
+func get_f_index():
+	var f_index: int = fighter_index
+	return f_index
 		
 func fighter_attack():
 	attack_chosen = false

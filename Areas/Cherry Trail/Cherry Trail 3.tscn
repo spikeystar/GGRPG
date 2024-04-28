@@ -252,13 +252,6 @@ position = Vector2( 379, -16 )
 scale = Vector2( 0.945, 1 )
 texture = ExtResource( 26 )
 
-[node name="Collide Ledge" parent="YSort" instance=ExtResource( 12 )]
-position = Vector2( -105, -75 )
-grid_size = Vector2( 4, 4 )
-texture = ExtResource( 9 )
-texture_scale = Vector2( 1.3, 1 )
-height = 32.0
-
 [node name="Floor" type="Node2D" parent="YSort"]
 z_index = -10
 
@@ -346,28 +339,6 @@ texture_scale = Vector2( 0.8, 0.8 )
 texture_offset = Vector2( 0, 15 )
 height = 24.0
 
-[node name="Ledge3" type="Sprite" parent="YSort/MiddleGround"]
-visible = false
-modulate = Color( 0.981667, 0.98, 1, 1 )
-position = Vector2( -111, -123 )
-rotation = -0.00251221
-scale = Vector2( 1.34653, 1.01301 )
-texture = ExtResource( 9 )
-
-[node name="Ledge2" type="Sprite" parent="YSort/MiddleGround"]
-modulate = Color( 0.98, 0.98, 1, 1 )
-position = Vector2( -169.42, -203.014 )
-rotation = -0.00251221
-scale = Vector2( 1.29418, 0.989812 )
-texture = ExtResource( 19 )
-
-[node name="Ledge1" type="Sprite" parent="YSort/MiddleGround"]
-modulate = Color( 0.980667, 0.98, 1, 1 )
-position = Vector2( -230.306, -282.205 )
-rotation = -0.00251221
-scale = Vector2( 1.33675, 1.05972 )
-texture = ExtResource( 1 )
-
 [node name="Ledge4" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 0.981667, 0.98, 1, 1 )
 position = Vector2( 245.998, 7.07438 )
@@ -421,6 +392,33 @@ position = Vector2( 197, 161.25 )
 scale = Vector2( 1.53, 1.425 )
 texture = ExtResource( 24 )
 
+[node name="Collide Ledge" parent="YSort" instance=ExtResource( 12 )]
+position = Vector2( -100, -83 )
+sort_enabled = false
+tile_size = Vector2( 78, 22 )
+grid_size = Vector2( 4, 4 )
+texture = ExtResource( 9 )
+texture_scale = Vector2( 1.3, 1 )
+height = 32.0
+preview_collision_box = false
+use_collision = false
+
+[node name="Ledges\?" type="YSort" parent="."]
+
+[node name="Ledge2" type="Sprite" parent="Ledges\?"]
+modulate = Color( 0.98, 0.98, 1, 1 )
+position = Vector2( -169.42, -203.014 )
+rotation = -0.00251221
+scale = Vector2( 1.29418, 0.989812 )
+texture = ExtResource( 19 )
+
+[node name="Ledge1" type="Sprite" parent="Ledges\?"]
+modulate = Color( 0.980667, 0.98, 1, 1 )
+position = Vector2( -230.306, -282.205 )
+rotation = -0.00251221
+scale = Vector2( 1.33675, 1.05972 )
+texture = ExtResource( 1 )
+
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 13 )]
@@ -442,10 +440,9 @@ __meta__ = {
 height = 64.0
 
 [node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 14 )]
-visible = false
-position = Vector2( 83, -312 )
+position = Vector2( 94, -315 )
 scale = Vector2( 0.986287, 1 )
-polygon = PoolVector2Array( -294.134, 168, -290.078, 152, -275.883, 143, -238.369, 134, -188.586, 133, -165.266, 136, -141.947, 141, -121.668, 149, -109.502, 159, -99.3626, 173, -101.39, 182, -125.826, 192, -165.266, 202, -203.795, 202, -230.156, 198, -260.573, 192, -280.953, 181 )
+polygon = PoolVector2Array( -294.134, 168, -290.078, 152, -275.883, 143, -238.369, 134, -188.586, 133, -169.322, 132, -136.877, 137, -112.543, 147, -103.418, 157, -99.3626, 173, -101.39, 182, -125.826, 192, -163.238, 207, -206.836, 206, -234.212, 202, -263.615, 193, -280.953, 181 )
 height = 32.0
 
 [node name="NavmeshLayer6" parent="CollisionRoot/Navmesh2" instance=ExtResource( 14 )]
@@ -472,8 +469,7 @@ position = Vector2( -169, 63 )
 door_name = "CherryTrail1To4"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 149, -79 )
+position = Vector2( -14, -104 )
 current = true
 script = ExtResource( 17 )
-minPos = Vector2( 149, -79 )
-maxPos = Vector2( 149, -79 )
+follow_player = true

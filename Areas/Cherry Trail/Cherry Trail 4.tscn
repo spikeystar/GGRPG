@@ -498,3 +498,4 @@ current = true
 script = ExtResource( 33 )
 minPos = Vector2( 149, -79 )
 maxPos = Vector2( 149, -79 )
+follow_player = false

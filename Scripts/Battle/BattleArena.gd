@@ -225,20 +225,11 @@ func _on_Enemies_enemy_chosen():
 	var enemy_position = $Enemies.get_e_position() + Vector2(-55, -8)
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
-	#yield(get_tree().create_timer(0.3), "timeout")
 	$Fighters.fighter_attack()
-	tween.kill()
-
-	
-	#tween.tween_property(fighter_node, "position", Vector2(-240, 86), 0.5)
-	
 	
 func _on_Fighters_anim_finish():
-	var fighter_node = $Fighters.get_f_current()
-	#var fighter_position = $Fighters.get_f_position()
 	yield(get_tree().create_timer(2.5), "timeout")
 	$Enemies.enemy_damage()
-	
 	#tween.tween_property(fighter_node, "position", fighter_position, 0.5)
 	#tween.play()
 	
@@ -247,5 +238,16 @@ func _on_Fighters_anim_finish():
 	
 	#tween = tween.kill()
 	#tween = tween.stop()
-	
-
+func _on_Enemies_e_damage_finish():
+	var fighter_node = $Fighters.get_f_current()
+	var fighter_index = $Fighters.get_f_index()
+	var fighter_OG_position = Vector2()
+	if fighter_index == 0:
+		fighter_OG_position = Vector2(-240, 86)
+	if fighter_index == 1:
+			fighter_OG_position = Vector2(-135, 144)
+	if fighter_index == 2:
+			fighter_OG_position = Vector2(-23, 194)
+	tween = create_tween()
+	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
+#$PartyFormation3/Fighter0.global_position

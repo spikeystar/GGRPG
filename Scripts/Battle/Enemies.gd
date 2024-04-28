@@ -15,6 +15,7 @@ var party_formation_2 = false
 var party_formation_3 = false
 
 signal enemy_chosen
+signal e_damage_finish
 #signal fighters_active
 
 func _ready():
@@ -115,13 +116,14 @@ func enemy_damage():
 	var e_health: int = enemies[enemy_index].health_check()
 	#print(e_health)
 	enemies[enemy_index].damage()
-	yield(get_tree().create_timer(2), "timeout")
+	yield(get_tree().create_timer(1), "timeout")
+	emit_signal("e_damage_finish")
 	if e_health <= 0:
 		enemies[enemy_index].death()
 		yield(get_tree().create_timer(1), "timeout")
 		enemies.remove(enemy_index)
 		enemy_amount = enemies.size()
-		enemies.resize(enemies.size())
+		#enemies.resize(enemies.size())
 	else:
 		enemies[enemy_index]._ready()
 	

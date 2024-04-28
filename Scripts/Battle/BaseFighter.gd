@@ -44,7 +44,7 @@ func text(TEXT: PackedScene, text_position: Vector2 = global_position):
 		
 func get_position(fighter_position: Vector2 = global_position):
 	return fighter_position
-	
+
 func get_self(fighter_self: Node2D = self):
 	return fighter_self
 
