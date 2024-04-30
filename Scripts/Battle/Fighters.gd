@@ -11,7 +11,9 @@ var f_current
 var f_position : Vector2
 var attack_chosen = false
 var f_turns : int = 0
-
+var fighter_0_able = true
+var fighter_1_able = true
+var fighter_2_able = true
 
 var party_formation_1 = false
 var party_formation_2 = false
@@ -23,9 +25,15 @@ signal fighter_index_2
 signal fighters_active
 signal anim_finish
 signal enemies_enabled
+signal f_attack
+signal f_attack_base
 
 func _ready():
 	fighters = get_children()
+	
+func f_array_size():
+	var f_array_size: int = fighters.size()
+	return f_array_size
 	
 #func set_positions(party_id, fighter_index):
 	#if Party.party_id == 0:
@@ -42,24 +50,27 @@ func _ready():
 		
 func _on_WorldRoot_BB_active():
 		BB_active = true
+		attack_chosen = false
 		hide_cursors(fighter_index)
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_right") and fighter_index <2 and not BB_active:
+	var fighter_turn_used = fighters[fighter_index].get_turn_value()
+	if Input.is_action_just_pressed("ui_right") and fighter_index <2 and not BB_active and not attack_chosen:
 		fighter_index += 1
 		switch_focus(fighter_index, fighter_index-1)
 		fighter_index_0(fighter_index)
 		fighter_index_1(fighter_index)
 		fighter_index_2(fighter_index)
+		emit_signal("fighters_active")
 		
-	if Input.is_action_just_pressed("ui_left") and fighter_index >0 and not BB_active:
+	if Input.is_action_just_pressed("ui_left") and fighter_index >0 and not BB_active and not attack_chosen:
 		fighter_index -= 1
 		switch_focus(fighter_index, fighter_index+1)
 		fighter_index_0(fighter_index)
 		fighter_index_1(fighter_index)
 		fighter_index_2(fighter_index)
 	
-	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen:
+	if Input.is_action_just_pressed("ui_select") and fighter_index >= 0 and BB_active and not attack_chosen and not fighter_turn_used:
 		fighters[fighter_index].turn()
 		
 
@@ -74,18 +85,22 @@ func hide_cursors(x):
 func fighter_index_0(fighter_index):
 	if fighter_index == 0:
 		emit_signal("fighter_index_0")
-		emit_signal("fighters_active")
+		#emit_signal("fighters_active")
 		
 func fighter_index_1(fighter_index):
 	if fighter_index == 1:
 		emit_signal("fighter_index_1")
-		emit_signal("fighters_active")
+		#emit_signal("fighters_active")
 		
 func fighter_index_2(fighter_index):
 	if fighter_index == 2:
 		emit_signal("fighter_index_2")
-		emit_signal("fighters_active")
+		#emit_signal("fighters_active")
 		
+func get_f_name():
+	var f_name = fighters[fighter_index].get_name()
+	return f_name
+	
 #func _set_position():
 	
 	#if party_id == 1 and party_formation_3:
@@ -127,9 +142,9 @@ func get_f_index():
 	return f_index
 		
 func fighter_attack():
-	attack_chosen = false
 	fighters[fighter_index].attack()
 	emit_signal("anim_finish")
+	BB_active = false
 
 #func _on_Enemies_enemy_chosen():
 	#var f_position = get_f_position()
@@ -155,7 +170,18 @@ func pre_attack():
 
 func _on_Enemies_enemy_chosen():
 	attack_chosen = true
+	var f_attack = fighters[fighter_index].get_f_attack()
+	var f_attack_base = fighters[fighter_index].get_f_attack_base()
+	var f_defense = fighters[fighter_index].get_f_defense()
 	fighters[fighter_index].pre_attack()
+	#connect("f_attack", Enemies, f_attack)
+	#connect("f_attack", Enemies, f_attack_base)
+	emit_signal ("f_attack", f_attack)
+	emit_signal ("f_attack_base", f_attack_base)
+	
+func get_turn_value():
+	var turn_value = fighters[fighter_index].get_turn_value()
+	return turn_value
 	
 func max_f_turns():
 	var array_size = fighters.size()
@@ -164,3 +190,10 @@ func max_f_turns():
 
 func _on_WorldRoot_turn_used():
 	f_turns += 1
+
+func _on_WorldRoot_f_turn_used():
+	fighters[fighter_index].turn_used()
+
+func _on_WorldRoot_f_index_reset():
+	fighter_index = -1
+	attack_chosen = false

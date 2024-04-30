@@ -1,11 +1,19 @@
 extends Node2D
 
 var party_id = 0
+export(String) var fighter_name
+export(int) var f_health
+export(int) var f_attack
+export(int) var f_attack_base  
+export(int) var f_magic
+export(int) var f_defense 
+export(String) var f_type
 export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
 export(PackedScene) var TEXT_SP: PackedScene = null
 export(PackedScene) var TEXT_LOSS: PackedScene = null
 var able = true
+var turn_used = false
 
 func focus():
 	if able:
@@ -14,6 +22,9 @@ func focus():
 
 func unfocus():
 	$Cursor.hide()
+	
+func get_name():
+	return fighter_name
 	
 func turn():
 	$AnimationPlayer.play("Fighter_Turn")
@@ -44,7 +55,29 @@ func text(TEXT: PackedScene, text_position: Vector2 = global_position):
 		
 func get_position(fighter_position: Vector2 = global_position):
 	return fighter_position
+	
+func get_f_attack():
+	return f_attack
+	
+func get_f_attack_base():
+	return f_attack_base
+
+func get_f_magic():
+	return f_magic
+	
+func get_f_defense():
+	return f_defense
 
 func get_self(fighter_self: Node2D = self):
 	return fighter_self
+	
+func turn_used():
+	turn_used = true
+	
+func turn_restored():
+	turn_used = false
+	
+func get_turn_value():
+	return turn_used
+	
 

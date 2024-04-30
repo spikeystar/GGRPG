@@ -17,7 +17,10 @@ var fighter1_active = false
 var fighter2_active = false
 var fighters_over = false
 var tween
-
+var attack_ended = true
+var f_turns : int = 0
+var fighters_enabled = true
+var enemies_enabled = false
 
 onready var party_members : int
 onready var party_id : int
@@ -35,8 +38,8 @@ signal attack_active()
 signal attack_chosen()
 signal magic_active()
 signal hide_enemy_cursor()
-signal turn_used()
-
+signal f_turn_used()
+signal f_index_reset()
 
 func _ready():
 	#set_health($HUDS/ProgressBar, Party.current_health, Party.max_health)
@@ -78,7 +81,7 @@ func _on_Fighters_fighters_active():
 		
 func _on_Fighters_fighter_index_0():
 	$BattleButtons.global_position = $BBLocation3/Location0.global_position
-	fighter0_active = true
+	#fighter0_active = true
 	
 func _on_Fighters_fighter_index_1():
 	$BattleButtons.global_position = $BBLocation3/Location1.global_position
@@ -87,7 +90,8 @@ func _on_Fighters_fighter_index_2():
 	$BattleButtons.global_position = $BBLocation3/Location2.global_position
 
 func _input(event):
-	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection:
+	var fighter_turn_used = $Fighters.get_turn_value()
+	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used:
 		BB_active = true
 		$BattleButtons.show()
 		$BattleButtons/AttackX.hide()
@@ -144,13 +148,14 @@ func _input(event):
 		if attack_show and not window_open:
 			window_open = true
 			
-	if (Input.is_action_just_pressed("ui_select")) and BB_active and attack_show:
+	if (Input.is_action_just_pressed("ui_select")) and BB_active and attack_show and not fighter_turn_used:
 		$BattleButtons/DiamondB.show()
 		$BattleButtons.hide()
 		$EnemyInfo.hide()
 		BB_active = false
 		attack_show = false
 		window_open = false
+		attack_ended = false
 		emit_signal("attack_chosen")
 			
 	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show:
@@ -219,17 +224,24 @@ func _on_Flee_cursor_selected():
 		get_tree().quit()
 	
 func _on_Enemies_enemy_chosen():
-	emit_signal("turn_used")
+	emit_signal("f_turn_used")
 	tween = create_tween()
 	var fighter_node = $Fighters.get_f_current()
 	var enemy_position = $Enemies.get_e_position() + Vector2(-55, -8)
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
 	$Fighters.fighter_attack()
+	fighter_selection = false
 	
 func _on_Fighters_anim_finish():
-	yield(get_tree().create_timer(2.5), "timeout")
-	$Enemies.enemy_damage()
+	var f_name = $Fighters.get_f_name()
+	
+	if f_name == "irina":
+		yield(get_tree().create_timer(1.5), "timeout")
+		$Enemies.enemy_damage()
+	else:
+		yield(get_tree().create_timer(2.5), "timeout")
+		$Enemies.enemy_damage()
 	#tween.tween_property(fighter_node, "position", fighter_position, 0.5)
 	#tween.play()
 	
@@ -239,8 +251,10 @@ func _on_Fighters_anim_finish():
 	#tween = tween.kill()
 	#tween = tween.stop()
 func _on_Enemies_e_damage_finish():
+	var f_array_size = $Fighters.f_array_size()
 	var fighter_node = $Fighters.get_f_current()
 	var fighter_index = $Fighters.get_f_index()
+	var fighter_position = $Fighters.get_f_position()
 	var fighter_OG_position = Vector2()
 	if fighter_index == 0:
 		fighter_OG_position = Vector2(-240, 86)
@@ -250,4 +264,14 @@ func _on_Enemies_e_damage_finish():
 			fighter_OG_position = Vector2(-23, 194)
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
-#$PartyFormation3/Fighter0.global_position
+	yield(tween, "finished")
+	attack_ended = true
+	if f_turns == f_array_size:
+		fighters_enabled = false
+		enemies_enabled = true
+	emit_signal("f_index_reset")
+
+func _on_WorldRoot_f_turn_used():
+	f_turns += 1
+	
+	

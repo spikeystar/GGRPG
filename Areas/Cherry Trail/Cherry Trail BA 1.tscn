@@ -447,29 +447,47 @@ script = ExtResource( 29 )
 [node name="Cheribo_battle" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 30, 63 )
 ID = "Cheribo"
-e_health = 55
+e_health = 50
+e_defense = 10
 
 [node name="Cheribo_battle2" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 190, 44 )
 ID = "Cheribo"
-e_health = 55
 
 [node name="Cheribo_battle3" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 16, -23 )
 ID = "Cheribo"
-e_health = 55
 
 [node name="Fighters" type="Node2D" parent="."]
 script = ExtResource( 22 )
 
 [node name="Gary_Battle" parent="Fighters" instance=ExtResource( 3 )]
 position = Vector2( -240, 86 )
+fighter_name = "gary"
+f_health = 100
+f_attack = 50
+f_attack_base = 3
+f_magic = 30
+f_defense = 20
+f_type = "Neutral"
 
 [node name="Jacques_Battle" parent="Fighters" instance=ExtResource( 4 )]
 position = Vector2( -135, 144 )
+fighter_name = "jacques"
+f_health = 100
+f_attack = 25
+f_magic = 40
+f_defense = 50
+f_type = "Neutral"
 
 [node name="Irina_Battle" parent="Fighters" instance=ExtResource( 5 )]
 position = Vector2( -23, 194 )
+fighter_name = "irina"
+f_health = 100
+f_attack = 10
+f_magic = 10
+f_defense = 10
+f_type = "Neutral"
 
 [node name="BattleButtons" parent="." instance=ExtResource( 8 )]
 visible = false
@@ -1111,20 +1129,25 @@ current = true
 
 [node name="Tween" type="Tween" parent="."]
 
+[connection signal="BB_active" from="." to="Enemies" method="_on_WorldRoot_BB_active"]
 [connection signal="BB_active" from="." to="Fighters" method="_on_WorldRoot_BB_active"]
 [connection signal="attack_active" from="." to="Enemies" method="_on_WorldRoot_attack_active"]
 [connection signal="attack_chosen" from="." to="Enemies" method="_on_WorldRoot_attack_chosen"]
 [connection signal="defend_chosen" from="." to="Fighters" method="_on_WorldRoot_defend_chosen"]
+[connection signal="f_index_reset" from="." to="Fighters" method="_on_WorldRoot_f_index_reset"]
+[connection signal="f_turn_used" from="." to="." method="_on_WorldRoot_f_turn_used"]
+[connection signal="f_turn_used" from="." to="Fighters" method="_on_WorldRoot_f_turn_used"]
 [connection signal="flee_chosen" from="." to="Fighters" method="_on_WorldRoot_flee_chosen"]
 [connection signal="hide_enemy_cursor" from="." to="Enemies" method="_on_WorldRoot_hide_enemy_cursor"]
 [connection signal="index_reset" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_index_reset"]
 [connection signal="index_resetzero" from="." to="ItemWindow/ItemWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
 [connection signal="index_resetzero" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
-[connection signal="turn_used" from="." to="Fighters" method="_on_WorldRoot_turn_used"]
 [connection signal="e_damage_finish" from="Enemies" to="." method="_on_Enemies_e_damage_finish"]
 [connection signal="enemy_chosen" from="Enemies" to="." method="_on_Enemies_enemy_chosen"]
 [connection signal="enemy_chosen" from="Enemies" to="Fighters" method="_on_Enemies_enemy_chosen"]
 [connection signal="anim_finish" from="Fighters" to="." method="_on_Fighters_anim_finish"]
+[connection signal="f_attack" from="Fighters" to="Enemies" method="_on_Fighters_f_attack"]
+[connection signal="f_attack_base" from="Fighters" to="Enemies" method="_on_Fighters_f_attack_base"]
 [connection signal="fighter_index_0" from="Fighters" to="." method="_on_Fighters_fighter_index_0"]
 [connection signal="fighter_index_1" from="Fighters" to="." method="_on_Fighters_fighter_index_1"]
 [connection signal="fighter_index_2" from="Fighters" to="." method="_on_Fighters_fighter_index_2"]
