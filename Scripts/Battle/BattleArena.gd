@@ -3,6 +3,8 @@ extends Node
 #export(tscn) var enemy = null
 
 onready var player_instance = PlayerManager.player_instance
+export(int) var EXP_base
+export(int) var marbles_base
 var window_open = false
 var defend_show = false
 var attack_show = false
@@ -40,6 +42,7 @@ signal magic_active()
 signal hide_enemy_cursor()
 signal f_turn_used()
 signal f_index_reset()
+signal start_attack_timer()
 
 func _ready():
 	#set_health($HUDS/ProgressBar, Party.current_health, Party.max_health)
@@ -230,6 +233,7 @@ func _on_Enemies_enemy_chosen():
 	var enemy_position = $Enemies.get_e_position() + Vector2(-55, -8)
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
+	emit_signal("start_attack_timer")
 	$Fighters.fighter_attack()
 	fighter_selection = false
 	

@@ -1,6 +1,6 @@
 extends Node2D
 
-var party_id = 0
+export(int) var party_id
 export(String) var fighter_name
 export(int) var f_health
 export(int) var f_attack
@@ -55,6 +55,7 @@ func text(TEXT: PackedScene, text_position: Vector2 = global_position):
 		
 func get_position(fighter_position: Vector2 = global_position):
 	return fighter_position
+	
 	
 func get_f_attack():
 	return f_attack

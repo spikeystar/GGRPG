@@ -38,12 +38,13 @@ func damage():
 	$AnimationPlayer.play("enemy_damage")
 	$AnimationPlayer.playback_speed = 0.7
 	$DamagePlayer.play("neutral")
+	$AnimationPlayer.playback_speed = 0.5
 	#$DamageText.show()
 	#$DamageText/AnimationPlayer.play("Display")
 	#damage_text(damage)
 	yield(get_tree().create_timer(2), "timeout")
 	$AnimationPlayer.play("enemy_idle")
-	$AnimationPlayer.playback_speed = 0.5
+	
 	#if e_health <= 0:
 		#death()
 	#else:

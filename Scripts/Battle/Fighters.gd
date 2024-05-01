@@ -25,8 +25,6 @@ signal fighter_index_2
 signal fighters_active
 signal anim_finish
 signal enemies_enabled
-signal f_attack
-signal f_attack_base
 
 func _ready():
 	fighters = get_children()
@@ -170,14 +168,7 @@ func pre_attack():
 
 func _on_Enemies_enemy_chosen():
 	attack_chosen = true
-	var f_attack = fighters[fighter_index].get_f_attack()
-	var f_attack_base = fighters[fighter_index].get_f_attack_base()
-	var f_defense = fighters[fighter_index].get_f_defense()
 	fighters[fighter_index].pre_attack()
-	#connect("f_attack", Enemies, f_attack)
-	#connect("f_attack", Enemies, f_attack_base)
-	emit_signal ("f_attack", f_attack)
-	emit_signal ("f_attack_base", f_attack_base)
 	
 func get_turn_value():
 	var turn_value = fighters[fighter_index].get_turn_value()
@@ -197,3 +188,16 @@ func _on_WorldRoot_f_turn_used():
 func _on_WorldRoot_f_index_reset():
 	fighter_index = -1
 	attack_chosen = false
+	
+func get_f_attack():
+	var f_attack = fighters[fighter_index].get_f_attack()
+	return f_attack
+	
+func get_f_attack_base():
+	var f_attack_base = fighters[fighter_index].get_f_attack_base()
+	return f_attack_base
+	
+func get_f_defense():
+	var f_defense = fighters[fighter_index].get_f_defense()
+	return f_defense
+

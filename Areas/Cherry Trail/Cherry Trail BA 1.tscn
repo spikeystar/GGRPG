@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/Cherry Trail BA 1.jpg" type="Texture" id=1]
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_battle.tscn" type="PackedScene" id=2]
@@ -33,6 +33,10 @@
 [ext_resource path="res://Misc/Font/Item.tres" type="DynamicFont" id=31]
 [ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=32]
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=33]
+[ext_resource path="res://UI/Battle/Victory Window.png" type="Texture" id=34]
+[ext_resource path="res://UI/Battle/Level Up Text.png" type="Texture" id=35]
+[ext_resource path="res://UI/Battle/Level Up 1.png" type="Texture" id=36]
+[ext_resource path="res://Scripts/Battle/AttackTimer.gd" type="Script" id=37]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -465,7 +469,7 @@ script = ExtResource( 22 )
 position = Vector2( -240, 86 )
 fighter_name = "gary"
 f_health = 100
-f_attack = 50
+f_attack = 70
 f_attack_base = 3
 f_magic = 30
 f_defense = 20
@@ -473,18 +477,22 @@ f_type = "Neutral"
 
 [node name="Jacques_Battle" parent="Fighters" instance=ExtResource( 4 )]
 position = Vector2( -135, 144 )
+party_id = 1
 fighter_name = "jacques"
 f_health = 100
-f_attack = 25
+f_attack = 55
+f_attack_base = 5
 f_magic = 40
 f_defense = 50
 f_type = "Neutral"
 
 [node name="Irina_Battle" parent="Fighters" instance=ExtResource( 5 )]
 position = Vector2( -23, 194 )
+party_id = 2
 fighter_name = "irina"
 f_health = 100
-f_attack = 10
+f_attack = 55
+f_attack_base = 10
 f_magic = 10
 f_defense = 10
 f_type = "Neutral"
@@ -1129,6 +1137,29 @@ current = true
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="VictoryWindow" type="Node2D" parent="."]
+visible = false
+position = Vector2( 0, -20 )
+
+[node name="VictoryWindow" type="Sprite" parent="VictoryWindow"]
+visible = false
+texture = ExtResource( 34 )
+
+[node name="LevelUp1" type="Sprite" parent="VictoryWindow"]
+visible = false
+position = Vector2( -5, -91 )
+texture = ExtResource( 36 )
+
+[node name="LevelUpText" type="Sprite" parent="VictoryWindow/LevelUp1"]
+visible = false
+position = Vector2( 4, 3 )
+texture = ExtResource( 35 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+script = ExtResource( 37 )
+
 [connection signal="BB_active" from="." to="Enemies" method="_on_WorldRoot_BB_active"]
 [connection signal="BB_active" from="." to="Fighters" method="_on_WorldRoot_BB_active"]
 [connection signal="attack_active" from="." to="Enemies" method="_on_WorldRoot_attack_active"]
@@ -1142,15 +1173,16 @@ current = true
 [connection signal="index_reset" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_index_reset"]
 [connection signal="index_resetzero" from="." to="ItemWindow/ItemWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
 [connection signal="index_resetzero" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
+[connection signal="start_attack_timer" from="." to="Timer" method="_on_WorldRoot_start_attack_timer"]
 [connection signal="e_damage_finish" from="Enemies" to="." method="_on_Enemies_e_damage_finish"]
 [connection signal="enemy_chosen" from="Enemies" to="." method="_on_Enemies_enemy_chosen"]
 [connection signal="enemy_chosen" from="Enemies" to="Fighters" method="_on_Enemies_enemy_chosen"]
 [connection signal="anim_finish" from="Fighters" to="." method="_on_Fighters_anim_finish"]
-[connection signal="f_attack" from="Fighters" to="Enemies" method="_on_Fighters_f_attack"]
-[connection signal="f_attack_base" from="Fighters" to="Enemies" method="_on_Fighters_f_attack_base"]
 [connection signal="fighter_index_0" from="Fighters" to="." method="_on_Fighters_fighter_index_0"]
 [connection signal="fighter_index_1" from="Fighters" to="." method="_on_Fighters_fighter_index_1"]
 [connection signal="fighter_index_2" from="Fighters" to="." method="_on_Fighters_fighter_index_2"]
 [connection signal="fighters_active" from="Fighters" to="." method="_on_Fighters_fighters_active"]
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Defend" to="." method="_on_Defend_cursor_selected"]
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Flee" to="." method="_on_Flee_cursor_selected"]
+[connection signal="attack_bonus" from="Timer" to="Enemies" method="_on_Timer_attack_bonus"]
+[connection signal="timeout" from="Timer" to="Timer" method="_on_Timer_timeout"]

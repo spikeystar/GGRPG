@@ -2,6 +2,7 @@ extends Node2D
 
 onready var enemy_members : int
 onready var party_id : int
+onready var Fighters : Node2D
 var enemies : Array = []
 var enemy_index : int = -1
 var BB_active = false
@@ -10,8 +11,7 @@ var enemy_attacked = false
 var enemy_max = false
 var e_position : Vector2
 var is_attack = false
-var f_attack
-var f_attack_base
+var attack_bonus = false
 
 var party_formation_1 = false
 var party_formation_2 = false
@@ -23,6 +23,7 @@ signal e_damage_finish
 
 func _ready():
 	enemies = get_children()
+	Fighters = get_tree().get_root().get_node("WorldRoot/Fighters")
 	
 func e_array_size():
 	var e_array_size: int = enemies.size()
@@ -122,17 +123,28 @@ func _on_WorldRoot_attack_chosen():
 func _on_WorldRoot_hide_enemy_cursor():
 	hide_cursors(enemy_index)
 	
+func _on_Timer_attack_bonus():
+	attack_bonus = true
+	
 func enemy_damage():
 	BB_active = false
 	var enemy_amount : int
 	var type_check
 	var damage : int
 	var e_defense = enemies[enemy_index].get_e_defense()
-	var f_attack = _on_Fighters_f_attack(f_attack)
-	var f_attack_base = _on_Fighters_f_attack_base(f_attack_base)
-	if is_attack:
-		damage = e_defense - (f_attack + f_attack_base)
+	var f_attack = Fighters.get_f_attack()
+	var f_attack_base = Fighters.get_f_attack_base()
+	if is_attack and not attack_bonus:
+		damage = abs(e_defense - (f_attack + f_attack_base))
 		print(damage)
+		enemies[enemy_index].damage()
+		enemies[enemy_index].damage_text(damage)
+		enemies[enemy_index].health_set(damage)
+		is_attack = false
+	if is_attack and attack_bonus:
+		damage = abs(e_defense - (f_attack + f_attack_base)) + 100
+		print(damage)
+		print("success!")
 		enemies[enemy_index].damage()
 		enemies[enemy_index].damage_text(damage)
 		enemies[enemy_index].health_set(damage)
@@ -160,8 +172,3 @@ func enemy_attack():
 			#enemies.append(enemy_index)
 	#return enemies
 
-func _on_Fighters_f_attack(f_attack: int):
-	return f_attack
-
-func _on_Fighters_f_attack_base(f_attack_base: int):
-	return f_attack_base
