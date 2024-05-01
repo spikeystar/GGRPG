@@ -16,9 +16,9 @@ func _ready():
 func _process(delta):
 	#var time_left = int(get_time_left())
 	var hit_time = (max_time - int(time_left))
-	if Input.is_action_just_pressed("ui_select") and fighter_name == "gary" and hit_time <= 2.1 and max_hits <= 3:
+	if Input.is_action_just_pressed("ui_select") and fighter_name == "gary" and hit_time >= 0.3 or hit_time <= 1 or hit_time >= 1.8 or hit_time <= 2.2 and max_hits <= 3:
 		max_hits += 1
-		print(hit_time)
+		#print(hit_time)
 	if Input.is_action_just_pressed("ui_select") and fighter_name == "jacques" and hit_time == 0.1 or hit_time == 1.3 and max_hits <= 2:
 		max_hits += 1
 	if Input.is_action_just_pressed("ui_select") and fighter_name == "irina" and hit_time == (0.4 or 0.9) and max_hits <= 1:
