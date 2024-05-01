@@ -443,6 +443,8 @@ valign = 1
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource( 29 )
+default_f_attack = 10
+default_f_attack_base = 15
 
 [node name="Cheribo_battle" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 30, 63 )
@@ -1063,6 +1065,7 @@ size_flags_vertical = 0
 script = null
 
 [node name="FadeRect" type="ColorRect" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5

@@ -8,7 +8,8 @@ export(int) var e_defense
 export(int) var e_type
 export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
-var current_e_health : int 
+
+var health : int 
 
 export(String) var move1 = ""
 export(String) var move2 = ""
@@ -17,9 +18,12 @@ export(String) var move3 = ""
 signal enemy_dead
 
 func _ready():
+	reset_animation()
+	unfocus()
+	health = e_health
+	
+func reset_animation():
 	$AnimationPlayer.play("enemy_idle")
-	$Cursor.hide()
-	current_e_health = e_health
 
 func focus():
 	$Cursor.show()
@@ -31,19 +35,28 @@ func unfocus():
 func attack():
 	$AnimationPlayer.play("enemy_attack")
 	
-func damage():
-	#var damage = 50
-	#current_e_health = e_health - damage
+func damage(amount: int):
+	
+	# Spawn the damage text indicator. (Even if it's 0)
+	var damage_text = text(TEXT_DAMAGE)
+	if damage_text:
+		damage_text.label.text = str(amount)
+	
+	# Don't make the enemy blink if the damage is 0
+	if amount <= 0:
+		return
+	
 	$DamageStar.show()
 	$AnimationPlayer.play("enemy_damage")
 	$AnimationPlayer.playback_speed = 0.7
 	$DamagePlayer.play("neutral")
 	#$DamageText.show()
 	#$DamageText/AnimationPlayer.play("Display")
-	#damage_text(damage)
 	yield(get_tree().create_timer(2), "timeout")
 	$AnimationPlayer.play("enemy_idle")
 	$AnimationPlayer.playback_speed = 0.5
+	
+	health = max(0, health - amount)
 	#if e_health <= 0:
 		#death()
 	#else:
@@ -52,11 +65,12 @@ func damage():
 func get_e_defense():
 	return e_defense
 		
-func health_check():
-	return current_e_health
+func get_health():
+	return health
 	
-func health_set(damage: int):
-	current_e_health = current_e_health - damage
+func is_dead():
+	return health == 0
+
 	
 func death():
 		$AnimationPlayer.play("enemy_death")
@@ -76,10 +90,6 @@ func text(TEXT: PackedScene, text_position: Vector2 = global_position):
 		text.global_position = text_position + Vector2(4, -44)
 		return text
 		
-func damage_text(damage: int):
-	var damage_text = text(TEXT_DAMAGE)
-	if damage_text:
-		damage_text.label.text = str(damage)
 	
 #func take_damage():
 	#e_health = e_health - (fighter_attack_total - e_defense)
