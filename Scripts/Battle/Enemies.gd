@@ -8,10 +8,11 @@ var enemy_index : int = -1
 var BB_active = false
 var enemy_selecting = false
 var enemy_attacked = false
-var enemy_max = false
 var e_position : Vector2
 var is_attack = false
 var attack_bonus = false
+var default_f_attack
+var default_F_attack_base
 
 var party_formation_1 = false
 var party_formation_2 = false
@@ -19,15 +20,10 @@ var party_formation_3 = false
 
 signal enemy_chosen
 signal e_damage_finish
-#signal fighters_active
 
 func _ready():
 	enemies = get_children()
 	Fighters = get_tree().get_root().get_node("WorldRoot/Fighters")
-	
-func e_array_size():
-	var e_array_size: int = enemies.size()
-	return e_array_size
 	
 func _on_WorldRoot_BB_active():
 	BB_active = true
@@ -35,41 +31,17 @@ func _on_WorldRoot_BB_active():
 func _on_WorldRoot_attack_active():
 	enemy_selecting = true
 	
-func set_max(enemy_index):
-	var enemy_amount = enemies.size()
-	if enemy_index == enemy_amount - 1:
-		enemy_max = true
-
-func _process(delta):
-	var enemy_amount = enemies.size()
+func select_next_enemy(index_offset):
+	var last_enemy_index = enemy_index;
+	var new_enemy_index = fposmod(last_enemy_index + index_offset, enemies.size())
+	enemies[last_enemy_index].unfocus()
+	enemies[new_enemy_index].focus()
+	enemy_index = new_enemy_index
 	
-	if enemy_index == enemy_amount - 1:
-		enemy_max = true
-		
-	if Input.is_action_just_pressed("ui_right") and (enemy_index +1) < enemy_amount and enemy_selecting and BB_active:
-		print(enemy_index)
-		print(enemy_amount)
-		enemy_index += 1
-		switch_focus(enemy_index, enemy_index-1)
-		#if enemy_index == enemy_amount - 1:
-		#	enemy_max = true
-		#set_max(enemy_index)
-		
-	if Input.is_action_just_pressed("ui_right") and enemy_index == (enemy_amount - 1) and BB_active:
-		enemy_index = -1
-		
-	if Input.is_action_just_pressed("ui_right") and enemy_amount == 1 and is_instance_valid(enemies[enemy_index]) and BB_active:
-		focus_only(enemy_index)
-		
-	if Input.is_action_just_pressed("ui_right") and enemy_max and enemy_selecting and BB_active:
-		enemy_index = -1
-		
-		enemy_max = false
-		
-	if enemy_amount == 1:
-			enemy_index = -1
-			
-		
+func _process(delta):
+	if Input.is_action_just_pressed("ui_right") and enemy_selecting and BB_active:
+		select_next_enemy(+1)
+	
 	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active:
 		enemy_selecting = false
 	
@@ -77,98 +49,53 @@ func _process(delta):
 		emit_signal("enemy_chosen")
 		enemy_selecting = false
 		
-func switch_focus(x, y):
-	var enemy_amount = enemies.size()
-	if enemy_index < enemy_amount and is_instance_valid(enemies[x]) and is_instance_valid(enemies[y]):
-		enemies[x].focus()
-		enemies[y].unfocus()
-		
-	#if enemy_amount == 1:
-		#show_all(enemy_index)
-		
-	#if enemy_amount == enemies.size() and is_instance_valid(enemies[x]) and !is_instance_valid(enemies[y]):
-		#enemies[x].focus()
-	#if !is_instance_valid(enemies[x]) or !is_instance_valid(enemies[y]):
-		#pass
-		
-	#if !is_instance_valid(enemies[y]):
-		#enemies[x].focus()
-		
-	#if !is_instance_valid(enemies[x]):
-		#enemies[y].unfocus()
-	
-func hide_cursors(x):
-		enemies[x].unfocus()
-		
-func focus_only(x):
-	if is_instance_valid(enemies[x]):
-		enemies[x].focus()
-	
-	#if enemy_index == 2:
-		#emit_signal("enemy_index_2")
+func hide_cursors():
+		enemies[enemy_index].unfocus()
 		
 func get_e_position():
-	var e_position: Vector2 = enemies[enemy_index].get_position()
-	return e_position
-	#var e_position = enemies[enemy_index].get_node($Enemies).position
-	#return e_position
-	#if enemy_index == 0:
-		#e_position = Vector2(190, 44)
-		#return Vector2(190, 44)
+	return enemies[enemy_index].get_position()
 
 func _on_WorldRoot_attack_chosen():
-	hide_cursors(enemy_index)
+	hide_cursors()
 	is_attack = true
+	attack_bonus = false
 
 func _on_WorldRoot_hide_enemy_cursor():
-	hide_cursors(enemy_index)
+	hide_cursors()
 	
 func _on_Timer_attack_bonus():
 	attack_bonus = true
 	
 func enemy_damage():
 	BB_active = false
-	var enemy_amount : int
+	var target_enemy = enemies[enemy_index]
 	var type_check
 	var damage : int
-	var e_defense = enemies[enemy_index].get_e_defense()
+	var e_defense = target_enemy.get_e_defense()
 	var f_attack = Fighters.get_f_attack()
 	var f_attack_base = Fighters.get_f_attack_base()
 	if is_attack and not attack_bonus:
-		damage = abs(e_defense - (f_attack + f_attack_base))
-		print(damage)
-		enemies[enemy_index].damage()
-		enemies[enemy_index].damage_text(damage)
-		enemies[enemy_index].health_set(damage)
+		damage = max(0, (f_attack + f_attack_base) - e_defense)
+		target_enemy.damage(damage)
 		is_attack = false
-	if is_attack and attack_bonus:
-		damage = abs(e_defense - (f_attack + f_attack_base)) + 100
-		print(damage)
+	elif is_attack and attack_bonus:
+		damage = max(0, (f_attack + f_attack_base) - e_defense) + 100
+		target_enemy.damage(damage)
 		print("success!")
-		enemies[enemy_index].damage()
-		enemies[enemy_index].damage_text(damage)
-		enemies[enemy_index].health_set(damage)
 		is_attack = false
 	yield(get_tree().create_timer(1), "timeout")
 	emit_signal("e_damage_finish")
-	var e_health = enemies[enemy_index].health_check()
-	#print(e_health)
-	if e_health <= 0:
-		enemies[enemy_index].death()
-		yield(get_tree().create_timer(1), "timeout")
+	target_enemy.unfocus()
+	if target_enemy.is_dead():
+		target_enemy.death()
 		enemies.remove(enemy_index)
-		enemy_amount = enemies.size()
-		#enemies.resize(enemies.size())
+		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
+		yield(get_tree().create_timer(1), "timeout")
 	else:
-		enemies[enemy_index]._ready()
-	enemy_index = -1
+		target_enemy.reset_animation()
 	
 func enemy_attack():
 	enemies[enemy_index].attack()
 	
-#func clean(enemies: Array) -> Array:
-	#for item in enemies:
-		#if is_instance_valid(enemies[enemy_index]):
-			#enemies.append(enemy_index)
-	#return enemies
+
 
