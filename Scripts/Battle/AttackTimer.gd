@@ -21,7 +21,7 @@ func _process(delta):
 		#print(hit_time)
 	if Input.is_action_just_pressed("ui_select") and fighter_name == "jacques" and hit_time == 0.1 or hit_time == 1.3 and max_hits <= 2:
 		max_hits += 1
-	if Input.is_action_just_pressed("ui_select") and fighter_name == "irina" and hit_time == (0.4 or 0.9) and max_hits <= 1:
+	if Input.is_action_just_pressed("ui_select") and fighter_name == "irina" and hit_time == 0.4 or hit_time == 0.9 and max_hits <= 1:
 		max_hits += 1
 	
 func _on_WorldRoot_start_attack_timer():
