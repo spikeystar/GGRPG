@@ -10,7 +10,7 @@ var BB_active = false
 var f_current 
 var f_position : Vector2
 var attack_chosen = false
-var f_turns : int = 0
+var max_f_turns : int = 0
 var fighter_0_able = true
 var fighter_1_able = true
 var fighter_2_able = true
@@ -19,12 +19,10 @@ var party_formation_1 = false
 var party_formation_2 = false
 var party_formation_3 = false
 
-signal fighter_index_0
-signal fighter_index_1
-signal fighter_index_2
 signal fighters_active
 signal anim_finish
 signal enemies_enabled
+signal BB_move
 
 func _ready():
 	fighters = get_children()
@@ -50,54 +48,52 @@ func _on_WorldRoot_BB_active():
 		BB_active = true
 		attack_chosen = false
 		hide_cursors(fighter_index)
+		
+func select_next_fighter(index_offset):
+	var last_fighter_index = fighter_index;
+	var new_fighter_index = fposmod(last_fighter_index + index_offset, fighters.size())
+	fighters[last_fighter_index].unfocus()
+	fighters[new_fighter_index].focus()
+	fighter_index = new_fighter_index
 
 func _process(delta):
 	var fighter_turn_used = fighters[fighter_index].get_turn_value()
-	if Input.is_action_just_pressed("ui_right") and fighter_index <2 and not BB_active and not attack_chosen:
-		fighter_index += 1
-		switch_focus(fighter_index, fighter_index-1)
-		fighter_index_0(fighter_index)
-		fighter_index_1(fighter_index)
-		fighter_index_2(fighter_index)
+	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen: #and fighter_index <2)
+		#fighter_index += 1
+		#switch_focus(fighter_index, fighter_index-1)
+		print(fighter_index)
+		select_next_fighter(+1)
 		emit_signal("fighters_active")
 		
-	if Input.is_action_just_pressed("ui_left") and fighter_index >0 and not BB_active and not attack_chosen:
-		fighter_index -= 1
-		switch_focus(fighter_index, fighter_index+1)
-		fighter_index_0(fighter_index)
-		fighter_index_1(fighter_index)
-		fighter_index_2(fighter_index)
+	if Input.is_action_just_pressed("ui_left") and not BB_active and not attack_chosen:
+		#fighter_index -= 1
+		#switch_focus(fighter_index, fighter_index+1)
+		print(fighter_index)
+		select_next_fighter(-1)
 	
-	if Input.is_action_just_pressed("ui_select") and fighter_index >= 0 and BB_active and not attack_chosen and not fighter_turn_used:
+	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen and not fighter_turn_used:
+		emit_signal("BB_move")
 		fighters[fighter_index].turn()
 		
-
 func switch_focus(x, y):
-	print(fighter_index)
+	#print(fighter_index)
 	fighters[x].focus()
 	fighters[y].unfocus()
 	
 func hide_cursors(x):
 	fighters[x].unfocus()
-	
-func fighter_index_0(fighter_index):
-	if fighter_index == 0:
-		emit_signal("fighter_index_0")
-		#emit_signal("fighters_active")
-		
-func fighter_index_1(fighter_index):
-	if fighter_index == 1:
-		emit_signal("fighter_index_1")
-		#emit_signal("fighters_active")
-		
-func fighter_index_2(fighter_index):
-	if fighter_index == 2:
-		emit_signal("fighter_index_2")
-		#emit_signal("fighters_active")
 		
 func get_f_name():
 	var f_name = fighters[fighter_index].get_name()
 	return f_name
+	
+func get_f_OG_position():
+	var f_OG_position = fighters[fighter_index].get_OG_position()
+	return f_OG_position
+	
+func get_BB_position():
+	var BB_position = fighters[fighter_index].get_BB_position()
+	return BB_position
 	
 #func _set_position():
 	
@@ -121,8 +117,11 @@ func get_f_name():
 
 func _on_WorldRoot_defend_chosen():
 	fighters[fighter_index].defend()
+	_on_WorldRoot_f_index_reset()
+	BB_active = false
 
 func _on_WorldRoot_flee_chosen():
+	fighters = get_children()
 	fighters[0].flee()
 	fighters[1].flee()
 	fighters[2].flee()
@@ -144,25 +143,6 @@ func fighter_attack():
 	emit_signal("anim_finish")
 	BB_active = false
 
-#func _on_Enemies_enemy_chosen():
-	#var f_position = get_f_position()
-	#var e_position = Enemies.get_e_position()
-	#tween.tween_property(f_position, "position", e_position + Vector2(10,-10), 1)
-	#yield()
-	#fighters[fighter_index].attack()
-	#yield()
-	#tween.tween_callback(f_position.queue_free)
-
-#func _on_Enemies_enemy_chosen():
-	#var f_position = get_f_position()
-	#tween.interpolate_property(f_position, "position", Vector2(100, 100), 1)
-	#tween.start()
-	#yield()
-	#fighters[fighter_index].attack()
-	#yield()
-	#tween.tween_callback(f_position.queue_free)
-	#var tween = get_tree().create_tween()
-	#tween.tween_property($WorldRoot/TC, "position", Vector2(65, -20), 1)
 func pre_attack():
 	fighters[fighter_index].pre_attack()
 
@@ -176,18 +156,20 @@ func get_turn_value():
 	
 func max_f_turns():
 	var array_size = fighters.size()
-	if f_turns == array_size:
+	if max_f_turns == array_size:
 		emit_signal ("enemies_enabled")
-
-func _on_WorldRoot_turn_used():
-	f_turns += 1
-
+	
 func _on_WorldRoot_f_turn_used():
 	fighters[fighter_index].turn_used()
+	max_f_turns += 1
 
 func _on_WorldRoot_f_index_reset():
-	fighter_index = -1
+	fighters.remove(fighter_index)
+	fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
 	attack_chosen = false
+	fighter_index = -1
+	if fighters.size() <=0:
+		fighters = get_children()
 	
 func get_f_attack():
 	var f_attack = fighters[fighter_index].get_f_attack()
@@ -201,3 +183,8 @@ func get_f_defense():
 	var f_defense = fighters[fighter_index].get_f_defense()
 	return f_defense
 
+func victory():
+	fighters = get_children()
+	fighters[0].victory()
+	fighters[1].victory()
+	fighters[2].victory()

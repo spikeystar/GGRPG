@@ -11,8 +11,6 @@ var enemy_attacked = false
 var e_position : Vector2
 var is_attack = false
 var attack_bonus = false
-var default_f_attack
-var default_F_attack_base
 
 var party_formation_1 = false
 var party_formation_2 = false
@@ -20,6 +18,7 @@ var party_formation_3 = false
 
 signal enemy_chosen
 signal e_damage_finish
+signal victory
 
 func _ready():
 	enemies = get_children()
@@ -63,7 +62,7 @@ func _on_WorldRoot_attack_chosen():
 func _on_WorldRoot_hide_enemy_cursor():
 	hide_cursors()
 	
-func _on_Timer_attack_bonus():
+func _on_AttackTimer_attack_bonus():
 	attack_bonus = true
 	
 func enemy_damage():
@@ -93,9 +92,9 @@ func enemy_damage():
 		yield(get_tree().create_timer(1), "timeout")
 	else:
 		target_enemy.reset_animation()
+	if enemies.size() == 0:
+		emit_signal("victory")
 	
 func enemy_attack():
 	enemies[enemy_index].attack()
 	
-
-

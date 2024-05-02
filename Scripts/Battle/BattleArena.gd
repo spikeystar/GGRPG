@@ -82,15 +82,19 @@ func hide_cursors():
 func _on_Fighters_fighters_active():
 		fighter_selection = true
 		
-func _on_Fighters_fighter_index_0():
-	$BattleButtons.global_position = $BBLocation3/Location0.global_position
+func _on_Fighters_BB_move():
+	var BB_position = $Fighters.get_BB_position()
+	$BattleButtons.global_position = BB_position
+		
+#func _on_Fighters_fighter_index_0():
+	#$BattleButtons.global_position = $BBLocation3/Location0.global_position
 	#fighter0_active = true
 	
-func _on_Fighters_fighter_index_1():
-	$BattleButtons.global_position = $BBLocation3/Location1.global_position
+#func _on_Fighters_fighter_index_1():
+	#$BattleButtons.global_position = $BBLocation3/Location1.global_position
 	
-func _on_Fighters_fighter_index_2():
-	$BattleButtons.global_position = $BBLocation3/Location2.global_position
+#func _on_Fighters_fighter_index_2():
+	#$BattleButtons.global_position = $BBLocation3/Location2.global_position
 
 func _input(event):
 	var fighter_turn_used = $Fighters.get_turn_value()
@@ -207,10 +211,15 @@ func _on_Defend_cursor_selected():
 		$DefenseWindow.hide()
 		$BattleButtons/SpadeB.show()
 		$BattleButtons.hide()
+		emit_signal("f_turn_used")
 		emit_signal("defend_chosen")
-		emit_signal("turn_used")
 		defend_show = false
 		BB_active = false
+		fighter_selection = false
+		attack_ended = true
+	#if f_turns == f_array_size:
+		#fighters_enabled = false
+		#enemies_enabled = true
 	
 func _on_Flee_cursor_selected():
 	if defend_show:
@@ -239,43 +248,34 @@ func _on_Enemies_enemy_chosen():
 	
 func _on_Fighters_anim_finish():
 	var f_name = $Fighters.get_f_name()
-	
 	if f_name == "irina":
 		yield(get_tree().create_timer(1.5), "timeout")
 		$Enemies.enemy_damage()
 	else:
 		yield(get_tree().create_timer(2.5), "timeout")
 		$Enemies.enemy_damage()
-	#tween.tween_property(fighter_node, "position", fighter_position, 0.5)
-	#tween.play()
 	
-	#tween.tween_callback(fighter_node, "queue_free")
-	#tween.tween_callback(fighter_node, "position")
-	
-	#tween = tween.kill()
-	#tween = tween.stop()
 func _on_Enemies_e_damage_finish():
-	var f_array_size = $Fighters.f_array_size()
+	#var f_array_size = $Fighters.f_array_size()
 	var fighter_node = $Fighters.get_f_current()
 	var fighter_index = $Fighters.get_f_index()
-	var fighter_position = $Fighters.get_f_position()
-	var fighter_OG_position = Vector2()
-	if fighter_index == 0:
-		fighter_OG_position = Vector2(-240, 86)
-	if fighter_index == 1:
-			fighter_OG_position = Vector2(-135, 144)
-	if fighter_index == 2:
-			fighter_OG_position = Vector2(-23, 194)
+	var fighter_position = $Fighters.get_position()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
 	yield(tween, "finished")
 	attack_ended = true
-	if f_turns == f_array_size:
-		fighters_enabled = false
-		enemies_enabled = true
+	#if f_turns == f_array_size:
+		#fighters_enabled = false
+		#enemies_enabled = true
 	emit_signal("f_index_reset")
 
 func _on_WorldRoot_f_turn_used():
 	f_turns += 1
 	
-	
+func _on_Enemies_victory():
+	yield(get_tree().create_timer(0.3), "timeout")
+	$HUDS.hide()
+	$VictoryWindow.show()
+	$WindowPlayer.play("victory_open")
+	$Fighters.victory()

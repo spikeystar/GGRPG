@@ -12,6 +12,8 @@ export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
 export(PackedScene) var TEXT_SP: PackedScene = null
 export(PackedScene) var TEXT_LOSS: PackedScene = null
+var OG_position : Vector2
+var BB_position : Vector2
 var able = true
 var turn_used = false
 
@@ -56,6 +58,23 @@ func text(TEXT: PackedScene, text_position: Vector2 = global_position):
 func get_position(fighter_position: Vector2 = global_position):
 	return fighter_position
 	
+func get_OG_position():
+	if party_id == 0:
+		OG_position = Vector2(-240, 86)
+	elif party_id == 1:
+			OG_position = Vector2(-135, 144)
+	elif party_id == 2:
+			OG_position = Vector2(-23, 194)
+	return OG_position
+	
+func get_BB_position():
+	if party_id == 0:
+		BB_position = Vector2(-240, 48)
+	elif party_id == 1:
+			BB_position = Vector2(-135, 106)
+	elif party_id == 2:
+			BB_position = Vector2(-23, 156)
+	return BB_position
 	
 func get_f_attack():
 	return f_attack
@@ -77,8 +96,11 @@ func turn_used():
 	
 func turn_restored():
 	turn_used = false
+	able = true
 	
 func get_turn_value():
 	return turn_used
 	
+func victory():
+	$AnimationPlayer.play("Fighter_Victory")
 
