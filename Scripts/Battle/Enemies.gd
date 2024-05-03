@@ -11,6 +11,7 @@ var enemy_attacked = false
 var e_position : Vector2
 var is_attack = false
 var attack_bonus = false
+var ongoing = false
 
 var party_formation_1 = false
 var party_formation_2 = false
@@ -30,6 +31,10 @@ func _on_WorldRoot_BB_active():
 func _on_WorldRoot_attack_active():
 	enemy_selecting = true
 	
+func _on_WorldRoot_attack_inactive():
+	enemy_selecting = false
+	enemy_index = -1 
+	
 func select_next_enemy(index_offset):
 	var last_enemy_index = enemy_index;
 	var new_enemy_index = fposmod(last_enemy_index + index_offset, enemies.size())
@@ -41,10 +46,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_right") and enemy_selecting and BB_active:
 		select_next_enemy(+1)
 	
-	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active:
+	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active and not ongoing:
 		enemy_selecting = false
 	
-	if Input.is_action_just_pressed("ui_select") and enemy_selecting:
+	if Input.is_action_just_pressed("ui_select") and enemy_selecting and not ongoing:
 		emit_signal("enemy_chosen")
 		enemy_selecting = false
 		
@@ -98,3 +103,8 @@ func enemy_damage():
 func enemy_attack():
 	enemies[enemy_index].attack()
 	
+func _on_WorldRoot_action_ongoing():
+	ongoing = true
+
+func _on_WorldRoot_action_ended():
+	ongoing = false

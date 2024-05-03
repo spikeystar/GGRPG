@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Players/Gary/Gary Battle.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Enemies/Battle Animations/Damage Star SS.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Battle/BaseFighter.gd" type="Script" id=5]
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=6]
+[ext_resource path="res://Assets/General/Item Usage Animations SS.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=13]
 resource_name = "Fighter_Attack"
@@ -243,6 +244,34 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -569.63, 377.037 ) ]
 }
 
+[sub_resource type="Animation" id=16]
+resource_name = "Fighter_Item"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 25, 7 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CircleShadowSmall:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( -0.740741, 27.4074 ), Vector2( 1.48148, 25.9259 ) ]
+}
+
 [sub_resource type="Animation" id=14]
 resource_name = "Fighter_Pre_Attack"
 length = 0.1
@@ -471,6 +500,18 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Effect:frame")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -708,6 +749,37 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.372549 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=17]
+resource_name = "Heal"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Effect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 0, 20 ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Effect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
 [node name="Gary_Battle" type="Node2D"]
 scale = Vector2( 1.35, 1.35 )
 script = ExtResource( 5 )
@@ -732,6 +804,13 @@ hframes = 6
 vframes = 6
 frame = 24
 
+[node name="Effect" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0.740741, -5.92593 )
+texture = ExtResource( 7 )
+hframes = 5
+vframes = 5
+
 [node name="Cursor" type="Sprite" parent="."]
 visible = false
 position = Vector2( -34.8148, -57.037 )
@@ -744,6 +823,7 @@ anims/Fighter_BattleReady = SubResource( 1 )
 anims/Fighter_Damage = SubResource( 10 )
 anims/Fighter_Defend = SubResource( 5 )
 anims/Fighter_Flee = SubResource( 6 )
+anims/Fighter_Item = SubResource( 16 )
 anims/Fighter_Pre_Attack = SubResource( 14 )
 anims/Fighter_Turn = SubResource( 2 )
 anims/Fighter_Victory = SubResource( 15 )
@@ -758,3 +838,8 @@ anims/neutral = SubResource( 8 )
 [node name="CursorPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 11 )
 anims/cursor_idle = SubResource( 12 )
+
+[node name="EffectPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.75
+anims/Heal = SubResource( 17 )
+anims/RESET = SubResource( 18 )

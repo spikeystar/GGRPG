@@ -35,6 +35,15 @@ func defend():
 	$AnimationPlayer.play("Fighter_Defend")
 	able = false
 	
+func item_used():
+	able = false
+	$AnimationPlayer.play("Fighter_Item")
+	yield(get_tree().create_timer(1.3), "timeout")
+	$AnimationPlayer.play("Fighter_BattleReady")
+	yield(get_tree().create_timer(0.2), "timeout")
+	$Effect.show()
+	$EffectPlayer.play("Heal")
+	
 func flee():
 	$AnimationPlayer.play("Fighter_Flee")
 	$AnimationPlayer.playback_speed = 1

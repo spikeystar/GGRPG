@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/Cherry Trail BA 1.jpg" type="Texture" id=1]
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_battle.tscn" type="PackedScene" id=2]
@@ -38,6 +38,9 @@
 [ext_resource path="res://UI/Battle/Level Up 1.png" type="Texture" id=36]
 [ext_resource path="res://Scripts/Battle/AttackTimer.gd" type="Script" id=37]
 [ext_resource path="res://Misc/Font/Victory.tres" type="DynamicFont" id=38]
+[ext_resource path="res://Scripts/Battle/ItemWindow.gd" type="Script" id=39]
+[ext_resource path="res://Scripts/Battle/ItemInventory_Battle.gd" type="Script" id=40]
+[ext_resource path="res://BattleSystem/ItemUsage.tscn" type="PackedScene" id=41]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -623,7 +626,7 @@ menu_parent_path = NodePath("../VBoxContainer")
 cursor_offset = Vector2( 17, 2.5 )
 
 [node name="ItemWindow" type="Node2D" parent="."]
-visible = false
+script = ExtResource( 39 )
 
 [node name="ItemWindowPanel" type="PanelContainer" parent="ItemWindow"]
 margin_left = -19.0
@@ -635,14 +638,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_styles/panel = SubResource( 16 )
 
-[node name="ItemDisplay" type="Sprite" parent="ItemWindow/ItemWindowPanel"]
-position = Vector2( 262, 72 )
-scale = Vector2( 1.1, 1.1 )
-texture = ExtResource( 30 )
-hframes = 3
-vframes = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ItemWindow/ItemWindowPanel"]
+[node name="ItemInventory" type="VBoxContainer" parent="ItemWindow/ItemWindowPanel"]
 margin_left = 60.0
 margin_top = 39.0
 margin_right = 155.0
@@ -650,8 +646,9 @@ margin_bottom = 260.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 9
+script = ExtResource( 40 )
 
-[node name="Item1" type="Label" parent="ItemWindow/ItemWindowPanel/VBoxContainer"]
+[node name="Item1" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
 margin_right = 95.0
 margin_bottom = 14.0
 size_flags_vertical = 0
@@ -660,8 +657,9 @@ custom_constants/line_spacing = 9
 custom_fonts/font = ExtResource( 31 )
 text = "Yummy Cake"
 align = 1
+script = ExtResource( 19 )
 
-[node name="Item2" type="Label" parent="ItemWindow/ItemWindowPanel/VBoxContainer"]
+[node name="Item2" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
 margin_top = 23.0
 margin_right = 95.0
 margin_bottom = 37.0
@@ -671,8 +669,9 @@ custom_constants/line_spacing = 9
 custom_fonts/font = ExtResource( 31 )
 text = "Pretty Gem"
 align = 1
+script = ExtResource( 19 )
 
-[node name="Item3" type="Label" parent="ItemWindow/ItemWindowPanel/VBoxContainer"]
+[node name="Item3" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
 margin_top = 46.0
 margin_right = 95.0
 margin_bottom = 60.0
@@ -682,8 +681,9 @@ custom_constants/line_spacing = 9
 custom_fonts/font = ExtResource( 31 )
 text = "Picnic Pie"
 align = 1
+script = ExtResource( 19 )
 
-[node name="Item4" type="Label" parent="ItemWindow/ItemWindowPanel/VBoxContainer"]
+[node name="Item4" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
 margin_top = 69.0
 margin_right = 95.0
 margin_bottom = 83.0
@@ -693,8 +693,9 @@ custom_constants/line_spacing = 9
 custom_fonts/font = ExtResource( 31 )
 text = "Bounty Herb"
 align = 1
+script = ExtResource( 19 )
 
-[node name="Item5" type="Label" parent="ItemWindow/ItemWindowPanel/VBoxContainer"]
+[node name="Item5" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
 margin_top = 92.0
 margin_right = 95.0
 margin_bottom = 106.0
@@ -704,8 +705,9 @@ custom_constants/line_spacing = 9
 custom_fonts/font = ExtResource( 31 )
 text = "Sugar Pill"
 align = 1
+script = ExtResource( 19 )
 
-[node name="Item6" type="Label" parent="ItemWindow/ItemWindowPanel/VBoxContainer"]
+[node name="Item6" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
 margin_top = 115.0
 margin_right = 95.0
 margin_bottom = 129.0
@@ -715,8 +717,9 @@ custom_constants/line_spacing = 9
 custom_fonts/font = ExtResource( 31 )
 text = "Yummy Cake"
 align = 1
+script = ExtResource( 19 )
 
-[node name="Item7" type="Label" parent="ItemWindow/ItemWindowPanel/VBoxContainer"]
+[node name="Item7" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
 margin_top = 138.0
 margin_right = 95.0
 margin_bottom = 152.0
@@ -726,8 +729,9 @@ custom_constants/line_spacing = 9
 custom_fonts/font = ExtResource( 31 )
 text = "Ginger Tea"
 align = 1
+script = ExtResource( 19 )
 
-[node name="Item8" type="Label" parent="ItemWindow/ItemWindowPanel/VBoxContainer"]
+[node name="Item8" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
 margin_top = 161.0
 margin_right = 95.0
 margin_bottom = 175.0
@@ -737,8 +741,9 @@ custom_constants/line_spacing = 9
 custom_fonts/font = ExtResource( 31 )
 text = "Picnic Pie"
 align = 1
+script = ExtResource( 19 )
 
-[node name="Item9" type="Label" parent="ItemWindow/ItemWindowPanel/VBoxContainer"]
+[node name="Item9" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
 margin_top = 184.0
 margin_right = 95.0
 margin_bottom = 198.0
@@ -748,8 +753,9 @@ custom_constants/line_spacing = 9
 custom_fonts/font = ExtResource( 31 )
 text = "Bounty Herb"
 align = 1
+script = ExtResource( 19 )
 
-[node name="Item10" type="Label" parent="ItemWindow/ItemWindowPanel/VBoxContainer"]
+[node name="Item10" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
 margin_top = 207.0
 margin_right = 95.0
 margin_bottom = 221.0
@@ -759,6 +765,7 @@ custom_constants/line_spacing = 9
 custom_fonts/font = ExtResource( 31 )
 text = "Pretty Gem"
 align = 1
+script = ExtResource( 19 )
 
 [node name="Menu Cursor" parent="ItemWindow/ItemWindowPanel" instance=ExtResource( 15 )]
 anchor_right = 0.0
@@ -769,7 +776,7 @@ margin_right = 85.0
 margin_bottom = 64.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-menu_parent_path = NodePath("../VBoxContainer")
+menu_parent_path = NodePath("../ItemInventory")
 cursor_offset = Vector2( 17, 2.5 )
 
 [node name="ItemInfo" type="Label" parent="ItemWindow"]
@@ -781,6 +788,13 @@ custom_fonts/font = ExtResource( 32 )
 text = "20 HP"
 align = 1
 autowrap = true
+
+[node name="ItemInventory" type="Sprite" parent="ItemWindow"]
+position = Vector2( 243, 62 )
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 30 )
+hframes = 3
+vframes = 3
 
 [node name="MagicWindow" type="Node2D" parent="."]
 visible = false
@@ -1244,11 +1258,21 @@ script = ExtResource( 37 )
 wait_time = 1.5
 one_shot = true
 
+[node name="ItemUsage" parent="." instance=ExtResource( 41 )]
+visible = false
+
 [connection signal="BB_active" from="." to="Enemies" method="_on_WorldRoot_BB_active"]
 [connection signal="BB_active" from="." to="Fighters" method="_on_WorldRoot_BB_active"]
+[connection signal="action_ended" from="." to="Enemies" method="_on_WorldRoot_action_ended"]
+[connection signal="action_ended" from="." to="Fighters" method="_on_WorldRoot_action_ended"]
+[connection signal="action_ongoing" from="." to="Enemies" method="_on_WorldRoot_action_ongoing"]
+[connection signal="action_ongoing" from="." to="Fighters" method="_on_WorldRoot_action_ongoing"]
 [connection signal="attack_active" from="." to="Enemies" method="_on_WorldRoot_attack_active"]
 [connection signal="attack_chosen" from="." to="Enemies" method="_on_WorldRoot_attack_chosen"]
+[connection signal="attack_inactive" from="." to="Enemies" method="_on_WorldRoot_attack_inactive"]
+[connection signal="defend_active" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_defend_active"]
 [connection signal="defend_chosen" from="." to="Fighters" method="_on_WorldRoot_defend_chosen"]
+[connection signal="defend_inactive" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_defend_inactive"]
 [connection signal="f_index_reset" from="." to="Fighters" method="_on_WorldRoot_f_index_reset"]
 [connection signal="f_turn_used" from="." to="." method="_on_WorldRoot_f_turn_used"]
 [connection signal="f_turn_used" from="." to="Fighters" method="_on_WorldRoot_f_turn_used"]
@@ -1257,6 +1281,8 @@ one_shot = true
 [connection signal="index_reset" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_index_reset"]
 [connection signal="index_resetzero" from="." to="ItemWindow/ItemWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
 [connection signal="index_resetzero" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
+[connection signal="item_active" from="." to="ItemWindow/ItemWindowPanel/ItemInventory" method="_on_WorldRoot_item_active"]
+[connection signal="item_inactive" from="." to="ItemWindow/ItemWindowPanel/ItemInventory" method="_on_WorldRoot_item_inactive"]
 [connection signal="start_attack_timer" from="." to="AttackTimer" method="_on_WorldRoot_start_attack_timer"]
 [connection signal="e_damage_finish" from="Enemies" to="." method="_on_Enemies_e_damage_finish"]
 [connection signal="enemy_chosen" from="Enemies" to="." method="_on_Enemies_enemy_chosen"]
@@ -1267,5 +1293,9 @@ one_shot = true
 [connection signal="fighters_active" from="Fighters" to="." method="_on_Fighters_fighters_active"]
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Defend" to="." method="_on_Defend_cursor_selected"]
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Flee" to="." method="_on_Flee_cursor_selected"]
+[connection signal="go_to_Item" from="DefenseWindow/Menu Cursor" to="." method="_on_Menu_Cursor_go_to_Item"]
+[connection signal="go_to_Defend" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_go_to_Defend"]
+[connection signal="item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_item_chosen"]
+[connection signal="item_active" from="ItemWindow/ItemWindowPanel/Menu Cursor" to="ItemWindow" method="_on_Menu_Cursor_item_active"]
 [connection signal="attack_bonus" from="AttackTimer" to="Enemies" method="_on_AttackTimer_attack_bonus"]
 [connection signal="timeout" from="AttackTimer/Timer" to="AttackTimer" method="_on_Timer_timeout"]

@@ -23,6 +23,7 @@ var attack_ended = true
 var f_turns : int = 0
 var fighters_enabled = true
 var enemies_enabled = false
+var ongoing = false
 
 onready var party_members : int
 onready var party_id : int
@@ -37,12 +38,19 @@ signal BB_active()
 signal defend_chosen()
 signal flee_chosen()
 signal attack_active()
+signal attack_inactive()
 signal attack_chosen()
 signal magic_active()
 signal hide_enemy_cursor()
 signal f_turn_used()
 signal f_index_reset()
 signal start_attack_timer()
+signal item_active()
+signal item_inactive()
+signal defend_active()
+signal defend_inactive()
+signal action_ongoing()
+signal action_ended()
 
 func _ready():
 	#set_health($HUDS/ProgressBar, Party.current_health, Party.max_health)
@@ -96,6 +104,7 @@ func _on_Fighters_BB_move():
 #func _on_Fighters_fighter_index_2():
 	#$BattleButtons.global_position = $BBLocation3/Location2.global_position
 
+
 func _input(event):
 	var fighter_turn_used = $Fighters.get_turn_value()
 	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used:
@@ -122,11 +131,14 @@ func _input(event):
 		$EnemyInfo.hide()
 		emit_signal("hide_enemy_cursor")
 		emit_signal("index_reset")
+		emit_signal("attack_inactive")
+		emit_signal("defend_active")
 		if defend_show and not window_open:
 			window_open = true
 			
 	if (Input.is_action_just_pressed("ui_down")) and BB_active and magic_show or item_show:
 		defend_show = false
+		emit_signal("defend_inactive")
 		$BattleButtons/SpadeB.show()
 		$DefenseWindow.hide()
 		
@@ -136,7 +148,7 @@ func _input(event):
 		$BattleButtons/CloverB.show()
 		$ItemWindow.hide()
 		
-	if (Input.is_action_just_pressed("ui_right")) and BB_active and not attack_show:
+	if (Input.is_action_just_pressed("ui_right")) and BB_active and not attack_show and not ongoing:
 		attack_show = true
 		magic_show = false
 		defend_show = false
@@ -152,6 +164,7 @@ func _input(event):
 		$ItemWindow.hide()
 		$DefenseWindow.hide()
 		emit_signal("attack_active")
+		emit_signal("item_inactive")
 		if attack_show and not window_open:
 			window_open = true
 			
@@ -173,6 +186,8 @@ func _input(event):
 		item_show = false
 		emit_signal("index_resetzero")
 		emit_signal("hide_enemy_cursor")
+		emit_signal("attack_inactive")
+		emit_signal("defend_inactive")
 		$BattleButtons/StarB.hide()
 		$BattleButtons/SpadeB.show()
 		$BattleButtons/CloverB.show()
@@ -191,6 +206,9 @@ func _input(event):
 		magic_show = false
 		emit_signal("index_resetzero")
 		emit_signal("hide_enemy_cursor")
+		emit_signal("item_active")
+		emit_signal("attack_inactive")
+		emit_signal("defend_inactive")
 		$BattleButtons/CloverB.hide()
 		$BattleButtons/SpadeB.show()
 		$BattleButtons/StarB.show()
@@ -205,8 +223,51 @@ func _input(event):
 
 	#if (Input.is_action_just_pressed("ui_push")) and BB_active:
 
+func _on_ItemInventory_go_to_Defend():
+	defend_show = true
+	attack_show = false
+	magic_show = false
+	item_show = false
+	item_halt = true
+	$BattleButtons/SpadeB.hide()
+	$BattleButtons/DiamondB.show()
+	$BattleButtons/CloverB.show()
+	$BattleButtons/StarB.show()
+	$DefenseWindow.show()
+	$WindowPlayer.play("defense_open")
+	$EnemyInfo.hide()
+	emit_signal("hide_enemy_cursor")
+	emit_signal("index_reset")
+	emit_signal("attack_inactive")
+	emit_signal("defend_active")
+	if defend_show and not window_open:
+		window_open = true
+
+func _on_Menu_Cursor_go_to_Item():
+		item_show = true
+		attack_show = false
+		defend_show = false
+		magic_show = false
+		emit_signal("index_resetzero")
+		emit_signal("hide_enemy_cursor")
+		emit_signal("item_active")
+		emit_signal("attack_inactive")
+		emit_signal("defend_inactive")
+		$BattleButtons/CloverB.hide()
+		$BattleButtons/SpadeB.show()
+		$BattleButtons/StarB.show()
+		$BattleButtons/DiamondB.show()
+		$ItemWindow.show()
+		$WindowPlayer.play("item_open")
+		$EnemyInfo.hide()
+		$DefenseWindow.hide()
+		$MagicWindow.hide()
+		if item_show and not window_open:
+			window_open = true
+
 #Defend Actions
 func _on_Defend_cursor_selected():
+	emit_signal("action_ongoing")
 	if defend_show:
 		$DefenseWindow.hide()
 		$BattleButtons/SpadeB.show()
@@ -214,9 +275,12 @@ func _on_Defend_cursor_selected():
 		emit_signal("f_turn_used")
 		emit_signal("defend_chosen")
 		defend_show = false
+		item_halt = false
 		BB_active = false
 		fighter_selection = false
 		attack_ended = true
+		yield(get_tree().create_timer(1), "timeout")
+		emit_signal("action_ended")
 	#if f_turns == f_array_size:
 		#fighters_enabled = false
 		#enemies_enabled = true
@@ -279,3 +343,34 @@ func _on_Enemies_victory():
 	$VictoryWindow.show()
 	$WindowPlayer.play("victory_open")
 	$Fighters.victory()
+
+func _on_ItemInventory_item_chosen():
+	ongoing = true
+	emit_signal("action_ongoing")
+	emit_signal("f_turn_used")
+	var fighter_position = $Fighters.get_f_position() + Vector2(40, -40)
+	var item_id = $ItemWindow.get_item_id()
+	$ItemUsage.position = fighter_position
+	yield(get_tree().create_timer(0.3), "timeout")
+	$Fighters.item_used()
+	if item_id == "Yummy Cake":
+		$ItemUsage/Item.frame = 0
+	if item_id == "Pretty Gem":
+		$ItemUsage/Item.frame = 1
+	#if item_show:
+	$ItemWindow.hide()
+	$BattleButtons/CloverB.show()
+	$BattleButtons.hide()
+	item_show = false
+	item_halt = false
+	BB_active = false
+	fighter_selection = false
+	attack_ended = true
+	$ItemUsage.show()
+	$ItemUsage/ItemPlayer.play("Item_Usage")
+	yield(get_tree().create_timer(1.2), "timeout")
+	$ItemUsage/Poof.show()
+	$ItemUsage/PoofPlayer.play("Poof")
+	yield(get_tree().create_timer(1), "timeout")
+	emit_signal("action_ended")
+	ongoing = false

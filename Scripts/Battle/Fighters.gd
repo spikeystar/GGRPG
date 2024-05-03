@@ -11,6 +11,7 @@ var f_current
 var f_position : Vector2
 var attack_chosen = false
 var max_f_turns : int = 0
+var ongoing = false
 var fighter_0_able = true
 var fighter_1_able = true
 var fighter_2_able = true
@@ -58,20 +59,20 @@ func select_next_fighter(index_offset):
 
 func _process(delta):
 	var fighter_turn_used = fighters[fighter_index].get_turn_value()
-	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen: #and fighter_index <2)
+	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen and not ongoing:
 		#fighter_index += 1
 		#switch_focus(fighter_index, fighter_index-1)
 		print(fighter_index)
 		select_next_fighter(+1)
 		emit_signal("fighters_active")
 		
-	if Input.is_action_just_pressed("ui_left") and not BB_active and not attack_chosen:
+	if Input.is_action_just_pressed("ui_left") and not BB_active and not attack_chosen and not ongoing:
 		#fighter_index -= 1
 		#switch_focus(fighter_index, fighter_index+1)
 		print(fighter_index)
 		select_next_fighter(-1)
 	
-	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen and not fighter_turn_used:
+	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen and not fighter_turn_used and not ongoing:
 		emit_signal("BB_move")
 		fighters[fighter_index].turn()
 		
@@ -145,6 +146,11 @@ func fighter_attack():
 
 func pre_attack():
 	fighters[fighter_index].pre_attack()
+	
+func item_used():
+	fighters[fighter_index].item_used()
+	_on_WorldRoot_f_index_reset()
+	BB_active = false
 
 func _on_Enemies_enemy_chosen():
 	attack_chosen = true
@@ -188,3 +194,11 @@ func victory():
 	fighters[0].victory()
 	fighters[1].victory()
 	fighters[2].victory()
+
+
+func _on_WorldRoot_action_ongoing():
+	ongoing = true
+
+func _on_WorldRoot_action_ended():
+	ongoing = false
+

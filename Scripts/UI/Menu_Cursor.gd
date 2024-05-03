@@ -6,14 +6,24 @@ export var cursor_offset : Vector2
 onready var menu_parent := get_node(menu_parent_path)
 
 var cursor_index : int = 0
+var defend_active = false
+var up_count : int = 0
+signal item_active()
+signal go_to_Item()
 
 func _process(delta):
 	var input := Vector2.ZERO
 	
 	if Input.is_action_just_pressed("ui_up"):
 		input.y -= 1
+		emit_signal("item_active")
+		if defend_active:
+			up_count += 1
 	if Input.is_action_just_pressed("ui_down"):
 		input.y += 1
+		emit_signal("item_active")
+		if defend_active and up_count >-2:
+			up_count -= 1
 	if Input.is_action_just_pressed("ui_left"):
 		input.x -= 1
 	if Input.is_action_just_pressed("ui_right"):
@@ -32,6 +42,16 @@ func _process(delta):
 		if current_menu_item != null:
 			if current_menu_item.has_method("cursor_select"):
 				current_menu_item.cursor_select()
+				
+	if Input.is_action_just_pressed("ui_up") and defend_active and up_count == 0 or up_count == 2:
+		emit_signal("go_to_Item")
+		#defend_active = false
+		up_count = 0
+		#var current_menu_item := get_menu_item_at_index(cursor_index)
+		#var id = current_menu_item.text
+		#print(id)
+		#if id == "Defend":
+		
 
 func get_menu_item_at_index(index : int) -> Control:
 	if menu_parent == null:
@@ -62,3 +82,10 @@ func _on_WorldRoot_index_reset():
 func _on_WorldRoot_index_resetzero():
 	if cursor_index != 0:
 			cursor_index = 0
+
+func _on_WorldRoot_defend_active():
+	up_count = 0
+	defend_active = true
+
+func _on_WorldRoot_defend_inactive():
+	defend_active = false
