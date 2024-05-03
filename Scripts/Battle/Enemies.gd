@@ -46,10 +46,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_right") and enemy_selecting and BB_active:
 		select_next_enemy(+1)
 	
-	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active and not ongoing:
+	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active:
 		enemy_selecting = false
 	
-	if Input.is_action_just_pressed("ui_select") and enemy_selecting and not ongoing:
+	if Input.is_action_just_pressed("ui_select") and enemy_selecting:
 		emit_signal("enemy_chosen")
 		enemy_selecting = false
 		

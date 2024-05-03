@@ -173,6 +173,7 @@ func _on_WorldRoot_f_index_reset():
 	fighters.remove(fighter_index)
 	fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
 	attack_chosen = false
+	ongoing = false
 	fighter_index = -1
 	if fighters.size() <=0:
 		fighters = get_children()
