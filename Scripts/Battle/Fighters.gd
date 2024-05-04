@@ -19,6 +19,7 @@ var item_selecting = false
 var selector_index : int
 var target_index : int
 var fighter_turn_used = false
+var fighters_active = false
 
 var heal = false
 var restore = false
@@ -76,17 +77,19 @@ func _process(delta):
 		#switch_focus(fighter_index, fighter_index-1)
 		print(fighter_index)
 		select_next_fighter(+1)
+		fighters_active = true
 		emit_signal("fighters_active")
 		
-	if Input.is_action_just_pressed("ui_left") and not BB_active and not attack_chosen and not ongoing:
+	if Input.is_action_just_pressed("ui_left") and not BB_active and not attack_chosen and not ongoing and fighters_active:
 		#fighter_index -= 1
 		#switch_focus(fighter_index, fighter_index+1)
 		print(fighter_index)
 		select_next_fighter(-1)
 	
-	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen and not fighter_turn_used and not ongoing:
+	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen and not fighter_turn_used and not ongoing and fighters_active:
 		emit_signal("BB_move")
 		fighters[fighter_index].turn()
+		fighters_active = false
 		
 		####### Item Selection ##########
 		

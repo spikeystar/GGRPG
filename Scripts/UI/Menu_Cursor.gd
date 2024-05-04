@@ -7,7 +7,9 @@ onready var menu_parent := get_node(menu_parent_path)
 
 var cursor_index : int = 0
 var defend_active = false
+var magic_active = false
 var up_count : int = 0
+var cursor_active = false
 signal item_active()
 signal go_to_Item()
 
@@ -19,15 +21,23 @@ func _process(delta):
 		emit_signal("item_active")
 		if defend_active:
 			up_count += 1
+		if magic_active:
+			up_count += 1
 	if Input.is_action_just_pressed("ui_down"):
 		input.y += 1
 		emit_signal("item_active")
 		if defend_active and up_count >-2:
 			up_count -= 1
-	if Input.is_action_just_pressed("ui_left"):
-		input.x -= 1
-	if Input.is_action_just_pressed("ui_right"):
-		input.x += 1
+		if magic_active:
+			up_count -= 1
+			
+			
+			
+			
+	#if Input.is_action_just_pressed("ui_left"):
+		#input.x -= 1
+	#if Input.is_action_just_pressed("ui_right"):
+		#input.x += 1
 	
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)
@@ -36,7 +46,7 @@ func _process(delta):
 	elif menu_parent is GridContainer:
 		set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
 	
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("ui_select") and cursor_active:
 		var current_menu_item := get_menu_item_at_index(cursor_index)
 		
 		if current_menu_item != null:
@@ -44,6 +54,10 @@ func _process(delta):
 				current_menu_item.cursor_select()
 				
 	if Input.is_action_just_pressed("ui_up") and defend_active and up_count == 0 or up_count == 2:
+		emit_signal("go_to_Item")
+		up_count = 0
+		
+	if Input.is_action_just_pressed("ui_up") and magic_active and up_count == 1:
 		emit_signal("go_to_Item")
 		up_count = 0
 		
@@ -81,6 +95,23 @@ func _on_WorldRoot_index_resetzero():
 func _on_WorldRoot_defend_active():
 	up_count = 0
 	defend_active = true
+	cursor_active = true
 
 func _on_WorldRoot_defend_inactive():
 	defend_active = false
+	cursor_active = false
+
+func _on_WorldRoot_magic_active():
+	up_count = 0
+	magic_active = true
+	cursor_active = true
+
+func _on_WorldRoot_magic_inactive():
+	magic_active = false
+	cursor_active = true
+
+func _on_WorldRoot_item_active():
+	cursor_active = true
+
+func _on_WorldRoot_item_inactive():
+	cursor_active = false
