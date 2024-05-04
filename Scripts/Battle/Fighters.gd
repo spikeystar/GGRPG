@@ -15,6 +15,9 @@ var ongoing = false
 var fighter_0_able = true
 var fighter_1_able = true
 var fighter_2_able = true
+var item_selecting = false
+var selector_index : int
+var target_index : int
 
 var party_formation_1 = false
 var party_formation_2 = false
@@ -24,6 +27,7 @@ signal fighters_active
 signal anim_finish
 signal enemies_enabled
 signal BB_move
+signal item_chosen
 
 func _ready():
 	fighters = get_children()
@@ -76,13 +80,30 @@ func _process(delta):
 		emit_signal("BB_move")
 		fighters[fighter_index].turn()
 		
+		####### Item Selection ##########
+		
+	if Input.is_action_just_pressed("ui_right") and item_selecting and not attack_chosen:
+		select_next_fighter(+1)
+		emit_signal("fighters_active")
+		
+	if Input.is_action_just_pressed("ui_left") and item_selecting and not attack_chosen:
+		select_next_fighter(-1)
+	
+	if Input.is_action_just_pressed("ui_select") and item_selecting and not attack_chosen:
+		emit_signal("item_chosen")
+		hide_cursors(fighter_index)
+		target_index = fighter_index
+		item_selecting = false
+		
 func switch_focus(x, y):
-	#print(fighter_index)
 	fighters[x].focus()
 	fighters[y].unfocus()
 	
 func hide_cursors(x):
 	fighters[x].unfocus()
+	
+func show_cursors(x):
+	fighters[x].focus()
 		
 func get_f_name():
 	var f_name = fighters[fighter_index].get_name()
@@ -146,11 +167,6 @@ func fighter_attack():
 
 func pre_attack():
 	fighters[fighter_index].pre_attack()
-	
-func item_used():
-	fighters[fighter_index].item_used()
-	_on_WorldRoot_f_index_reset()
-	BB_active = false
 
 func _on_Enemies_enemy_chosen():
 	attack_chosen = true
@@ -178,6 +194,10 @@ func _on_WorldRoot_f_index_reset():
 	if fighters.size() <=0:
 		fighters = get_children()
 	
+func get_OG_id():
+	var OG_id = fighters[fighter_index].get_OG_id()
+	return OG_id
+	
 func get_f_attack():
 	var f_attack = fighters[fighter_index].get_f_attack()
 	return f_attack
@@ -196,10 +216,30 @@ func victory():
 	fighters[1].victory()
 	fighters[2].victory()
 
-
 func _on_WorldRoot_action_ongoing():
 	ongoing = true
 
 func _on_WorldRoot_action_ended():
 	ongoing = false
+	fighter_index = -1
 
+func _on_ItemInventory_heal_item_chosen():
+	selector_index = fighter_index
+	show_cursors(fighter_index)
+	fighters[fighter_index].idle()
+	yield(get_tree().create_timer(0.2), "timeout")
+	item_selecting = true
+	
+	var OG_id = get_OG_id()
+
+func get_selector_position():
+	var f_position: Vector2 = fighters[selector_index].get_position()
+	return f_position
+
+func item_used():
+	fighters[selector_index].item_used()
+	yield(get_tree().create_timer(0.5), "timeout")
+	fighters[target_index].heal()
+	fighter_index = selector_index
+	_on_WorldRoot_f_index_reset()
+	BB_active = false

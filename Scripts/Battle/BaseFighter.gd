@@ -28,6 +28,13 @@ func unfocus():
 func get_name():
 	return fighter_name
 	
+func get_OG_id():
+	var OG_id = party_id
+	return OG_id
+	
+func idle():
+	$AnimationPlayer.play("Fighter_BattleReady")
+	
 func turn():
 	$AnimationPlayer.play("Fighter_Turn")
 	
@@ -40,9 +47,15 @@ func item_used():
 	$AnimationPlayer.play("Fighter_Item")
 	yield(get_tree().create_timer(1.3), "timeout")
 	$AnimationPlayer.play("Fighter_BattleReady")
+	
+func heal():
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Effect.show()
 	$EffectPlayer.play("Heal")
+	
+func buff():
+	yield(get_tree().create_timer(0.2), "timeout")
+	$AnimationPlayer.play("Fighter_Buff")
 	
 func flee():
 	$AnimationPlayer.play("Fighter_Flee")

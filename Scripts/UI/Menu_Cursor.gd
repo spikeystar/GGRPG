@@ -45,12 +45,7 @@ func _process(delta):
 				
 	if Input.is_action_just_pressed("ui_up") and defend_active and up_count == 0 or up_count == 2:
 		emit_signal("go_to_Item")
-		#defend_active = false
 		up_count = 0
-		#var current_menu_item := get_menu_item_at_index(cursor_index)
-		#var id = current_menu_item.text
-		#print(id)
-		#if id == "Defend":
 		
 
 func get_menu_item_at_index(index : int) -> Control:

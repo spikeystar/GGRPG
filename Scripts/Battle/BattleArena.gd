@@ -107,7 +107,7 @@ func _on_Fighters_BB_move():
 
 func _input(event):
 	var fighter_turn_used = $Fighters.get_turn_value()
-	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used:
+	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing:
 		BB_active = true
 		$BattleButtons.show()
 		$BattleButtons/AttackX.hide()
@@ -348,29 +348,33 @@ func _on_ItemInventory_item_chosen():
 	ongoing = true
 	emit_signal("action_ongoing")
 	emit_signal("f_turn_used")
-	var fighter_position = $Fighters.get_f_position() + Vector2(40, -40)
-	var item_id = $ItemWindow.get_item_id()
-	$ItemUsage.position = fighter_position
-	yield(get_tree().create_timer(0.3), "timeout")
-	$Fighters.item_used()
-	if item_id == "Yummy Cake":
-		$ItemUsage/Item.frame = 0
-	if item_id == "Pretty Gem":
-		$ItemUsage/Item.frame = 1
-	#if item_show:
 	$ItemWindow.hide()
 	$BattleButtons/CloverB.show()
 	$BattleButtons.hide()
 	item_show = false
 	item_halt = false
 	BB_active = false
-	fighter_selection = false
-	attack_ended = true
+	
+func item_animation():
 	$ItemUsage.show()
 	$ItemUsage/ItemPlayer.play("Item_Usage")
 	yield(get_tree().create_timer(1.2), "timeout")
 	$ItemUsage/Poof.show()
 	$ItemUsage/PoofPlayer.play("Poof")
 	yield(get_tree().create_timer(1), "timeout")
+	
+func _on_Fighters_item_chosen():
+	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
+	var item_id = $ItemWindow.get_item_id()
+	$ItemUsage.position = selector_position
+	yield(get_tree().create_timer(0.3), "timeout")
+	$Fighters.item_used()
+	if item_id == "Yummy Cake":
+		$ItemUsage/Item.frame = 0
+	if item_id == "Pretty Gem":
+		$ItemUsage/Item.frame = 1
+	item_animation()
 	emit_signal("action_ended")
+	fighter_selection = false
+	attack_ended = true
 	ongoing = false
