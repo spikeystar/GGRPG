@@ -136,6 +136,7 @@ vframes = 3
 [node name="Poof" type="Sprite" parent="."]
 visible = false
 position = Vector2( -2, -2 )
+scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -30 )
 hframes = 9

@@ -18,6 +18,14 @@ var fighter_2_able = true
 var item_selecting = false
 var selector_index : int
 var target_index : int
+var fighter_turn_used = false
+
+var heal = false
+var restore = false
+var strange = false
+var perfect = false
+var all_heal = false
+var all_restore = false
 
 var party_formation_1 = false
 var party_formation_2 = false
@@ -62,7 +70,7 @@ func select_next_fighter(index_offset):
 	fighter_index = new_fighter_index
 
 func _process(delta):
-	var fighter_turn_used = fighters[fighter_index].get_turn_value()
+	fighter_turn_used = fighters[fighter_index].get_turn_value()
 	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen and not ongoing:
 		#fighter_index += 1
 		#switch_focus(fighter_index, fighter_index-1)
@@ -189,14 +197,28 @@ func _on_WorldRoot_f_index_reset():
 	fighters.remove(fighter_index)
 	fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
 	attack_chosen = false
-	ongoing = false
+	#ongoing = false
 	fighter_index = -1
 	if fighters.size() <=0:
 		fighters = get_children()
 	
-func get_OG_id():
-	var OG_id = fighters[fighter_index].get_OG_id()
-	return OG_id
+func refresh_index():
+	fighters = get_children()
+	var turn_value_0 = fighters[0].get_turn_value()
+	var turn_value_1 = fighters[1].get_turn_value()
+	var turn_value_2 = fighters[2].get_turn_value()
+	if not turn_value_0:
+		fighters.remove(0)
+		fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
+	if not turn_value_1:
+		fighters.remove(1)
+		fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
+	if not turn_value_2:
+		fighters.remove(2)
+		fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
+	fighter_index = -1
+	attack_chosen = false
+
 	
 func get_f_attack():
 	var f_attack = fighters[fighter_index].get_f_attack()
@@ -220,6 +242,7 @@ func _on_WorldRoot_action_ongoing():
 	ongoing = true
 
 func _on_WorldRoot_action_ended():
+	yield(get_tree().create_timer(0.3), "timeout")
 	ongoing = false
 	fighter_index = -1
 
@@ -229,8 +252,7 @@ func _on_ItemInventory_heal_item_chosen():
 	fighters[fighter_index].idle()
 	yield(get_tree().create_timer(0.2), "timeout")
 	item_selecting = true
-	
-	var OG_id = get_OG_id()
+	#var OG_id = get_OG_id()
 
 func get_selector_position():
 	var f_position: Vector2 = fighters[selector_index].get_position()
@@ -239,7 +261,19 @@ func get_selector_position():
 func item_used():
 	fighters[selector_index].item_used()
 	yield(get_tree().create_timer(0.5), "timeout")
-	fighters[target_index].heal()
+	if heal:
+		fighters[target_index].heal()
+	elif all_heal:
+		pass
+	elif restore:
+		fighters[target_index].restore()
 	fighter_index = selector_index
 	_on_WorldRoot_f_index_reset()
+	#refresh_index()
 	BB_active = false
+	heal = false
+	restore = false
+	strange = false
+	perfect = false
+	all_heal = false
+	all_restore = false

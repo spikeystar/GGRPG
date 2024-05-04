@@ -28,10 +28,6 @@ func unfocus():
 func get_name():
 	return fighter_name
 	
-func get_OG_id():
-	var OG_id = party_id
-	return OG_id
-	
 func idle():
 	$AnimationPlayer.play("Fighter_BattleReady")
 	
@@ -52,6 +48,11 @@ func heal():
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Effect.show()
 	$EffectPlayer.play("Heal")
+	
+func restore():
+	yield(get_tree().create_timer(0.2), "timeout")
+	$Effect.show()
+	$EffectPlayer.play("Restore")
 	
 func buff():
 	yield(get_tree().create_timer(0.2), "timeout")

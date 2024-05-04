@@ -23,12 +23,12 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_down") and item_active and item_index == inventory_max:
 		emit_signal("go_to_Defend")
 		item_active = false
-		item_index = 0
+		#item_index = 0
 	if Input.is_action_just_pressed("ui_select") and item_active:
 		emit_signal("item_chosen")
 		emit_signal("heal_item_chosen")
 		item_active = false
-		item_index = 0
+		#item_index = 0
 		
 func get_id():
 	var item_id : String = inventory[item_index].get_id()

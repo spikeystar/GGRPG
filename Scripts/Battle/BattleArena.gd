@@ -279,7 +279,7 @@ func _on_Defend_cursor_selected():
 		BB_active = false
 		fighter_selection = false
 		attack_ended = true
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(0.7), "timeout")
 		emit_signal("action_ended")
 	#if f_turns == f_array_size:
 		#fighters_enabled = false
@@ -329,6 +329,7 @@ func _on_Enemies_e_damage_finish():
 	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
 	yield(tween, "finished")
 	attack_ended = true
+	$Fighters.ongoing = false
 	#if f_turns == f_array_size:
 		#fighters_enabled = false
 		#enemies_enabled = true
@@ -371,9 +372,15 @@ func _on_Fighters_item_chosen():
 	$Fighters.item_used()
 	if item_id == "Yummy Cake":
 		$ItemUsage/Item.frame = 0
+		$Fighters.heal = true
 	if item_id == "Pretty Gem":
 		$ItemUsage/Item.frame = 1
+		$Fighters.heal = true
+	if item_id == "Picnic Pie":
+		$ItemUsage/Item.frame = 2
+		$Fighters.all_heal = true
 	item_animation()
+	yield(get_tree().create_timer(1.5), "timeout")
 	emit_signal("action_ended")
 	fighter_selection = false
 	attack_ended = true
