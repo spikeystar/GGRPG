@@ -227,23 +227,6 @@ func _on_WorldRoot_f_index_reset():
 	fighter_index = -1
 	if fighters.size() <=0:
 		fighters = get_children()
-	
-func refresh_index():
-	#fighters = get_children()
-	var turn_value_0 = fighters[0].get_turn_value()
-	var turn_value_1 = fighters[1].get_turn_value()
-	var turn_value_2 = fighters[2].get_turn_value()
-	var party_id_0 = fighters[0].get_id()
-	var party_id_1 = fighters[1].get_id()
-	var party_id_2 = fighters[2].get_id()
-	if turn_value_0:
-		fighters.remove(party_id_0)
-	if turn_value_1:
-		fighters.remove(party_id_1)
-	if turn_value_2:
-		fighters.remove(party_id_2)
-	fighter_index = -1
-	attack_chosen = false
 
 	
 func get_f_attack():
@@ -303,7 +286,6 @@ func item_used():
 		fighters2[target_index].restore()
 	fighter_index = selector_index
 	_on_WorldRoot_f_index_reset()
-	#refresh_index()
 	BB_active = false
 	heal = false
 	restore = false
@@ -313,3 +295,5 @@ func item_used():
 	all_restore = false
 	item_selecting = false
 
+func buff():
+	fighters2[target_index].buff()

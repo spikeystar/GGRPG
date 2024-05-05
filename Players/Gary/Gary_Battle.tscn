@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Players/Gary/Gary Battle.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://Scripts/Battle/BaseFighter.gd" type="Script" id=5]
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=6]
 [ext_resource path="res://Assets/General/Item Usage Animations SS.png" type="Texture" id=7]
+[ext_resource path="res://Misc/Shader/Buff Material.tres" type="Material" id=8]
+[ext_resource path="res://Misc/Shader/Debuff_Material.tres" type="Material" id=9]
 
 [sub_resource type="Animation" id=13]
 resource_name = "Fighter_Attack"
@@ -100,6 +102,46 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=22]
+resource_name = "Fighter_Buff"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ null, ExtResource( 8 ), null ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:material:shader_param/flash_modifier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.3, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.2, 1.0, 1.0, 0.2 ]
+}
+
 [sub_resource type="Animation" id=10]
 resource_name = "Fighter_Damage"
 length = 0.4
@@ -138,6 +180,46 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 0.5, 1, 0.5, 1, 0.5 ),
 "update": 1,
 "values": [ Vector2( 0.740741, 22.2222 ), Vector2( -2.22222, 24.4444 ), Vector2( -8.88889, 29.6296 ), Vector2( -3.7037, 25.9259 ), Vector2( -0.740741, 22.963 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "Fighter_Debuff"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ null, ExtResource( 9 ), null ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:material:shader_param/flash_modifier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.3, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.2, 1.0, 1.0, 0.2 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -868,7 +950,9 @@ texture = ExtResource( 6 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Fighter_Attack = SubResource( 13 )
 anims/Fighter_BattleReady = SubResource( 1 )
+anims/Fighter_Buff = SubResource( 22 )
 anims/Fighter_Damage = SubResource( 10 )
+anims/Fighter_Debuff = SubResource( 23 )
 anims/Fighter_Defend = SubResource( 5 )
 anims/Fighter_Flee = SubResource( 6 )
 anims/Fighter_Item = SubResource( 16 )

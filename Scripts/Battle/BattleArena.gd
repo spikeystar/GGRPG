@@ -393,6 +393,16 @@ func _on_Fighters_item_chosen():
 	if item_id == "Picnic Pie":
 		$ItemUsage/Item.frame = 2
 		$Fighters.all_heal = true
+	if item_id == "Sugar Pill":
+		$ItemUsage/Item.frame = 3
+		$Fighters.heal = true
+		$Fighters.buff()
+	if item_id == "Ginger Tea":
+		$ItemUsage/Item.frame = 4
+		$Fighters.restore = true
+	if item_id == "Bounty Herb":
+		$ItemUsage/Item.frame = 5
+		$Fighters.restore = true
 	item_animation()
 	yield(get_tree().create_timer(1.5), "timeout")
 	emit_signal("action_ended")

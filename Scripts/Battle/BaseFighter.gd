@@ -58,7 +58,8 @@ func restore():
 	$EffectPlayer.play("Restore")
 	
 func buff():
-	yield(get_tree().create_timer(0.2), "timeout")
+	yield(get_tree().create_timer(1.7), "timeout")
+	$AnimationPlayer.playback_speed = 0.7
 	$AnimationPlayer.play("Fighter_Buff")
 	
 func flee():
