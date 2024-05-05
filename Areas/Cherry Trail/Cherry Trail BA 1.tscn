@@ -1305,6 +1305,7 @@ visible = false
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Defend" to="." method="_on_Defend_cursor_selected"]
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Flee" to="." method="_on_Flee_cursor_selected"]
 [connection signal="go_to_Item" from="DefenseWindow/Menu Cursor" to="." method="_on_Menu_Cursor_go_to_Item"]
+[connection signal="all_heal_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_all_heal_item_chosen"]
 [connection signal="go_to_Defend" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_go_to_Defend"]
 [connection signal="heal_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_heal_item_chosen"]
 [connection signal="item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_item_chosen"]

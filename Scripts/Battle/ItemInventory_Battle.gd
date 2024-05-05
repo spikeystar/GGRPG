@@ -2,10 +2,13 @@ extends VBoxContainer
 onready var inventory : Array = []
 var item_index : int
 var item_active = false
+var item_id : String
 
 signal go_to_Defend()
 signal item_chosen()
 signal heal_item_chosen()
+signal all_heal_item_chosen()
+signal battle_item_chosen()
 
 func _ready():
 	inventory = get_children()
@@ -25,13 +28,17 @@ func _input(event):
 		item_active = false
 		#item_index = 0
 	if Input.is_action_just_pressed("ui_select") and item_active:
+		get_id()
 		emit_signal("item_chosen")
-		emit_signal("heal_item_chosen")
+		if item_id == "Yummy Cake" or item_id == "Pretty Gem" or item_id == "Bounty Herb" or item_id == "Sugar Pill":
+			emit_signal("heal_item_chosen")
+		if item_id == "Picnic Pie":
+			emit_signal("all_heal_item_chosen")
 		item_active = false
 		#item_index = 0
 		
 func get_id():
-	var item_id : String = inventory[item_index].get_id()
+	item_id = inventory[item_index].get_id()
 	return item_id
 
 func _on_WorldRoot_item_active():

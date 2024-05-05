@@ -18,15 +18,18 @@ var able = true
 var turn_used = false
 
 func focus():
-	if able:
-		$Cursor.show()
-		$CursorPlayer.play("cursor_idle")
+	#if able:
+	$Cursor.show()
+	$CursorPlayer.play("cursor_idle")
 
 func unfocus():
 	$Cursor.hide()
 	
 func get_name():
 	return fighter_name
+	
+func get_id():
+	return party_id
 	
 func idle():
 	$AnimationPlayer.play("Fighter_BattleReady")

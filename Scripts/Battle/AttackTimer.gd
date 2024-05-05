@@ -11,9 +11,9 @@ signal attack_bonus
 
 func _ready():
 	Fighters = get_tree().get_root().get_node("WorldRoot/Fighters")
+	fighter_name = Fighters.get_f_name()
 	
 func _process(delta):
-	fighter_name = Fighters.get_f_name()
 	var hit_time = get_time()
 	var gary_time1 = hit_time >= 1.75 and hit_time <= 2.2
 	var gary_time2 = hit_time >= 1.2 and hit_time <= 1.55
