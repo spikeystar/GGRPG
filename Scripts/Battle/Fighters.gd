@@ -21,8 +21,12 @@ var target_index : int
 var fighter_turn_used = false
 var fighters_active = false
 var enemies_active = false
+var HP_amount : int
+var SP_amount : int
 
 var heal = false
+var SP = false
+var combo_heal
 var restore = false
 var strange = false
 var perfect = false
@@ -117,7 +121,7 @@ func _process(delta):
 		emit_signal("item_chosen")
 		hide_cursors2(fighter_index)
 		target_index = fighter_index
-		#item_selecting = false
+		item_selecting = false
 		
 func switch_focus(x, y):
 	fighters[x].focus()
@@ -277,17 +281,24 @@ func item_used():
 	fighters[selector_index].item_used()
 	yield(get_tree().create_timer(0.5), "timeout")
 	if heal:
-		fighters2[target_index].heal()
+		fighters2[target_index].heal(HP_amount)
+	if SP:
+		fighters2[target_index].SP(SP_amount)
+	if combo_heal:
+		fighters2[target_index].heal(HP_amount)
+		fighters2[target_index].combo_heal(SP_amount)
 	if all_heal:
-		fighters2[0].heal()
-		fighters2[1].heal()
-		fighters2[2].heal()
+		fighters2[0].heal(HP_amount)
+		fighters2[1].heal(HP_amount)
+		fighters2[2].heal(HP_amount)
 	if restore:
 		fighters2[target_index].restore()
 	fighter_index = selector_index
 	_on_WorldRoot_f_index_reset()
 	BB_active = false
 	heal = false
+	SP = false
+	combo_heal = false
 	restore = false
 	strange = false
 	perfect = false

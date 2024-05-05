@@ -383,19 +383,22 @@ func _on_Fighters_item_chosen():
 	var item_id = $ItemWindow.get_item_id()
 	$ItemUsage.position = selector_position
 	yield(get_tree().create_timer(0.3), "timeout")
-	$Fighters.item_used()
 	if item_id == "Yummy Cake":
 		$ItemUsage/Item.frame = 0
 		$Fighters.heal = true
+		$Fighters.HP_amount = 50
 	if item_id == "Pretty Gem":
 		$ItemUsage/Item.frame = 1
-		$Fighters.heal = true
+		$Fighters.SP = true
+		$Fighters.SP_amount = 20
 	if item_id == "Picnic Pie":
 		$ItemUsage/Item.frame = 2
 		$Fighters.all_heal = true
+		$Fighters.HP_amount = 50
 	if item_id == "Sugar Pill":
 		$ItemUsage/Item.frame = 3
 		$Fighters.heal = true
+		$Fighters.HP_amount = 30
 		$Fighters.buff()
 	if item_id == "Ginger Tea":
 		$ItemUsage/Item.frame = 4
@@ -403,6 +406,7 @@ func _on_Fighters_item_chosen():
 	if item_id == "Bounty Herb":
 		$ItemUsage/Item.frame = 5
 		$Fighters.restore = true
+	$Fighters.item_used()
 	item_animation()
 	yield(get_tree().create_timer(1.5), "timeout")
 	emit_signal("action_ended")

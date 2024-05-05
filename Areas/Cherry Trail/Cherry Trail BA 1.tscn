@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/Cherry Trail BA 1.jpg" type="Texture" id=1]
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_battle.tscn" type="PackedScene" id=2]
@@ -42,6 +42,10 @@
 [ext_resource path="res://Scripts/Battle/ItemInventory_Battle.gd" type="Script" id=40]
 [ext_resource path="res://BattleSystem/ItemUsage.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Scripts/Battle/SpellList.gd" type="Script" id=42]
+[ext_resource path="res://UI/HealText.tscn" type="PackedScene" id=43]
+[ext_resource path="res://UI/DamageText.tscn" type="PackedScene" id=44]
+[ext_resource path="res://UI/SPText.tscn" type="PackedScene" id=45]
+[ext_resource path="res://UI/LossText.tscn" type="PackedScene" id=46]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -507,6 +511,10 @@ f_attack_base = 3
 f_magic = 30
 f_defense = 20
 f_type = "Neutral"
+TEXT_DAMAGE = ExtResource( 44 )
+TEXT_HEAL = ExtResource( 43 )
+TEXT_SP = ExtResource( 45 )
+TEXT_LOSS = ExtResource( 46 )
 
 [node name="Jacques_Battle" parent="Fighters" instance=ExtResource( 4 )]
 position = Vector2( -135, 144 )
@@ -518,6 +526,10 @@ f_attack_base = 5
 f_magic = 40
 f_defense = 50
 f_type = "Neutral"
+TEXT_DAMAGE = ExtResource( 44 )
+TEXT_HEAL = ExtResource( 43 )
+TEXT_SP = ExtResource( 45 )
+TEXT_LOSS = ExtResource( 46 )
 
 [node name="Irina_Battle" parent="Fighters" instance=ExtResource( 5 )]
 position = Vector2( -23, 194 )
@@ -529,6 +541,10 @@ f_attack_base = 10
 f_magic = 10
 f_defense = 10
 f_type = "Neutral"
+TEXT_DAMAGE = ExtResource( 44 )
+TEXT_HEAL = ExtResource( 43 )
+TEXT_SP = ExtResource( 45 )
+TEXT_LOSS = ExtResource( 46 )
 
 [node name="BattleButtons" parent="." instance=ExtResource( 8 )]
 visible = false

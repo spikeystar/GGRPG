@@ -7,10 +7,10 @@ func item_check():
 	var item_id = $ItemWindowPanel/ItemInventory.get_id()
 	if item_id == "Yummy Cake":
 		$ItemInventory.frame = 0
-		$ItemInfo.text = "20 HP"
+		$ItemInfo.text = "50 HP"
 	if item_id == "Pretty Gem":
 		$ItemInventory.frame = 1
-		$ItemInfo.text = "10 SP"
+		$ItemInfo.text = "20 SP"
 	if item_id == "Picnic Pie":
 		$ItemInventory.frame = 2
 		$ItemInfo.text = "50 HP for all"

@@ -47,11 +47,31 @@ func item_used():
 	yield(get_tree().create_timer(1.3), "timeout")
 	$AnimationPlayer.play("Fighter_BattleReady")
 	
-func heal():
+func heal(HP_amount):
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Effect.show()
 	$EffectPlayer.play("Heal")
-	
+	yield(get_tree().create_timer(0.2), "timeout")
+	var heal_text = text(TEXT_HEAL)
+	if heal_text:
+		heal_text.label.text = str(HP_amount)
+		
+func SP(SP_amount: int):
+	yield(get_tree().create_timer(0.2), "timeout")
+	$Effect.show()
+	$EffectPlayer.play("SP")
+	yield(get_tree().create_timer(0.2), "timeout")
+	var sp_text = text(TEXT_SP)
+	if sp_text:
+		sp_text.label.text = str(SP_amount)
+		
+func combo_heal(SP_amount : int):
+	yield(get_tree().create_timer(0.2), "timeout")
+	yield(get_tree().create_timer(0.2), "timeout")
+	var sp_text = text(TEXT_SP)
+	if sp_text:
+		sp_text.label.text = str(SP_amount)
+
 func restore():
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Effect.show()
@@ -131,3 +151,4 @@ func get_turn_value():
 func victory():
 	$AnimationPlayer.play("Fighter_Victory")
 
+	
