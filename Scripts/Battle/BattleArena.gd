@@ -362,13 +362,63 @@ func _on_Enemies_victory():
 func _on_ItemInventory_item_chosen():
 	ongoing = true
 	emit_signal("action_ongoing")
-	emit_signal("f_turn_used")
+	#emit_signal("f_turn_used")
 	$ItemWindow.hide()
 	$BattleButtons/CloverB.show()
 	$BattleButtons.hide()
 	item_show = false
 	item_halt = false
 	BB_active = false
+	
+func _on_ItemInventory_battle_item_chosen():
+	ongoing = true
+	$Fighters.idle()
+	emit_signal("action_ongoing")
+	$ItemWindow.hide()
+	$BattleButtons.hide()
+	item_show = false
+	item_halt = false
+	BB_active = false
+	attack_show = true
+	magic_show = false
+	defend_show = false
+	$BattleButtons/SpadeB.show()
+	$BattleButtons/CloverB.show()
+	$BattleButtons/StarB.show()
+	$EnemyInfo.show()
+	$WindowPlayer.play("enemyinfo_open")
+	$MagicWindow.hide()
+	$ItemWindow.hide()
+	$DefenseWindow.hide()
+	emit_signal("index_resetzero")
+	emit_signal("item_inactive")
+	emit_signal("magic_inactive")
+	if attack_show and not window_open:
+		window_open = true
+		
+func _on_ItemInventory_all_battle_item_chosen():
+	ongoing = true
+	$Fighters.idle()
+	emit_signal("action_ongoing")
+	$ItemWindow.hide()
+	$BattleButtons.hide()
+	item_show = false
+	item_halt = false
+	BB_active = false
+	attack_show = true
+	magic_show = false
+	defend_show = false
+	$BattleButtons/SpadeB.show()
+	$BattleButtons/CloverB.show()
+	$BattleButtons/StarB.show()
+	$MagicWindow.hide()
+	$ItemWindow.hide()
+	$DefenseWindow.hide()
+	emit_signal("index_resetzero")
+	emit_signal("item_inactive")
+	emit_signal("magic_inactive")
+	if attack_show and not window_open:
+		window_open = true
 	
 func item_animation():
 	$ItemUsage.show()
@@ -414,4 +464,41 @@ func _on_Fighters_item_chosen():
 	attack_ended = true
 	ongoing = false
 
+func _on_Enemies_item_chosen():
+	$EnemyInfo.hide()
+	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
+	var item_id = $ItemWindow.get_item_id()
+	$ItemUsage.position = selector_position
+	if item_id == "Pretty Gem":
+		$ItemUsage/Item.frame = 1
+		$Enemies.item_damage = 50
+	yield(get_tree().create_timer(0.3), "timeout")
+	$Fighters.battle_item_used()
+	$Enemies.battle_item_used()
+	item_animation()
+	yield(get_tree().create_timer(1.5), "timeout")
+	emit_signal("action_ended")
+	fighter_selection = false
+	attack_ended = true
+	attack_show = false
+	ongoing = false
+	$Fighters.ongoing = false
 
+func _on_Enemies_jinx_doll():
+	$EnemyInfo.hide()
+	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
+	var item_id = $ItemWindow.get_item_id()
+	$ItemUsage.position = selector_position
+	if item_id == "Jinx Doll":
+		$ItemUsage/Item.frame = 1
+	yield(get_tree().create_timer(0.3), "timeout")
+	$Fighters.battle_item_used()
+	$Enemies.jinx_doll()
+	item_animation()
+	yield(get_tree().create_timer(1.5), "timeout")
+	emit_signal("action_ended")
+	fighter_selection = false
+	attack_ended = true
+	attack_show = false
+	ongoing = false
+	$Fighters.ongoing = false

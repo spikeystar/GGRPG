@@ -9,6 +9,7 @@ signal item_chosen()
 signal heal_item_chosen()
 signal all_heal_item_chosen()
 signal battle_item_chosen()
+signal all_battle_item_chosen()
 
 func _ready():
 	inventory = get_children()
@@ -29,11 +30,16 @@ func _input(event):
 		#item_index = 0
 	if Input.is_action_just_pressed("ui_select") and item_active:
 		get_id()
-		emit_signal("item_chosen")
-		if item_id == "Yummy Cake" or item_id == "Pretty Gem" or item_id == "Bounty Herb" or item_id == "Sugar Pill" or item_id == "Ginger Tea":
+		if item_id == "Yummy Cake" or item_id == "Bounty Herb" or item_id == "Sugar Pill" or item_id == "Ginger Tea":
 			emit_signal("heal_item_chosen")
+			emit_signal("item_chosen")
 		if item_id == "Picnic Pie":
 			emit_signal("all_heal_item_chosen")
+			emit_signal("item_chosen")
+		if item_id == "Jinx Doll":
+			emit_signal("battle_item_chosen")
+		if item_id == "Pretty Gem":
+			emit_signal("all_battle_item_chosen")
 		item_active = false
 		#item_index = 0
 		

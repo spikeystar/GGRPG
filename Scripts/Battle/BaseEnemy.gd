@@ -5,7 +5,8 @@ export(int) var e_health
 export(int) var e_attack 
 export(int) var e_magic
 export(int) var e_defense 
-export(int) var e_type
+export(String) var type = ""
+var applied_type = ""
 export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
 var health : int
@@ -61,6 +62,7 @@ func is_dead():
 func death():
 		$AnimationPlayer.play("enemy_death")
 		$AnimationPlayer.playback_speed = 0.8
+		yield(get_tree().create_timer(0.1), "timeout")
 		$Poof.show()
 		$PoofPlayer.play("poof")
 

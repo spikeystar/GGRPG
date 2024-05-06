@@ -21,6 +21,7 @@ var target_index : int
 var fighter_turn_used = false
 var fighters_active = false
 var enemies_active = false
+var enemy_item = false
 var HP_amount : int
 var SP_amount : int
 
@@ -87,7 +88,7 @@ func select_next_fighter2(index_offset):
 
 func _process(delta):
 	#fighter_turn_used = fighters[fighter_index].get_turn_value()
-	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen and not ongoing and not item_selecting and not enemies_active:
+	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen and not ongoing and not item_selecting and not enemies_active and not enemy_item:
 		#fighter_index += 1
 		#switch_focus(fighter_index, fighter_index-1)
 		print(fighter_index)
@@ -95,13 +96,13 @@ func _process(delta):
 		fighters_active = true
 		emit_signal("fighters_active")
 		
-	if Input.is_action_just_pressed("ui_left") and not BB_active and not attack_chosen and not ongoing and fighters_active and not item_selecting and not enemies_active:
+	if Input.is_action_just_pressed("ui_left") and not BB_active and not attack_chosen and not ongoing and fighters_active and not item_selecting and not enemies_active and not enemy_item:
 		#fighter_index -= 1
 		#switch_focus(fighter_index, fighter_index+1)
 		print(fighter_index)
 		select_next_fighter(-1)
 	
-	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen and not fighter_turn_used and not ongoing and fighters_active and not item_selecting and not enemies_active:
+	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen and not fighter_turn_used and not ongoing and fighters_active and not item_selecting and not enemies_active and not enemy_item:
 		emit_signal("BB_move")
 		fighters[fighter_index].turn()
 		fighters_active = false
@@ -182,9 +183,8 @@ func _on_WorldRoot_defend_chosen():
 
 func _on_WorldRoot_flee_chosen():
 	fighters = get_children()
-	fighters[0].flee()
-	fighters[1].flee()
-	fighters[2].flee()
+	for x in range (fighters.size()):
+		fighters[x].flee()
 	
 func get_f_current():
 	var f_self = fighters[fighter_index].get_self()
@@ -211,13 +211,21 @@ func _on_Enemies_enemy_chosen():
 	fighters[fighter_index].pre_attack()
 	
 func get_turn_value():
-	if not item_selecting:
+	if not item_selecting and fighters_active:
 		var turn_value = fighters[fighter_index].get_turn_value()
 		return turn_value
 	
 func _on_WorldRoot_f_turn_used():
 	var array_size = fighters2.size()
 	fighters[fighter_index].turn_used()
+	max_turns += 1
+	if max_turns == array_size:
+		emit_signal ("enemies_enabled")
+		enemies_active = true
+
+func f_turn_used():
+	var array_size = fighters2.size()
+	fighters[selector_index].turn_used()
 	max_turns += 1
 	if max_turns == array_size:
 		emit_signal ("enemies_enabled")
@@ -244,12 +252,14 @@ func get_f_attack_base():
 func get_f_defense():
 	var f_defense = fighters[fighter_index].get_f_defense()
 	return f_defense
+	
+func idle():
+	fighters[fighter_index].idle()
 
 func victory():
 	fighters = get_children()
-	fighters[0].victory()
-	fighters[1].victory()
-	fighters[2].victory()
+	for x in range(fighters.size()):
+		fighters[x].victory()
 
 func _on_WorldRoot_action_ongoing():
 	ongoing = true
@@ -268,6 +278,7 @@ func _on_ItemInventory_heal_item_chosen():
 	
 func _on_ItemInventory_all_heal_item_chosen():
 	hide_cursors(fighter_index)
+	f_turn_used()
 	selector_index = fighter_index
 	target_index = fighter_index
 	fighters[fighter_index].idle()
@@ -278,6 +289,7 @@ func get_selector_position():
 	return f_position
 
 func item_used():
+	f_turn_used()
 	fighters[selector_index].item_used()
 	yield(get_tree().create_timer(0.5), "timeout")
 	if heal:
@@ -288,9 +300,8 @@ func item_used():
 		fighters2[target_index].heal(HP_amount)
 		fighters2[target_index].combo_heal(SP_amount)
 	if all_heal:
-		fighters2[0].heal(HP_amount)
-		fighters2[1].heal(HP_amount)
-		fighters2[2].heal(HP_amount)
+		for x in range(fighters2.size()):
+			fighters2[x].heal(HP_amount)
 	if restore:
 		fighters2[target_index].restore()
 	fighter_index = selector_index
@@ -308,3 +319,24 @@ func item_used():
 
 func buff():
 	fighters2[target_index].buff()
+
+func _on_ItemInventory_battle_item_chosen():
+	selector_index = fighter_index
+	item_selecting = false
+	enemy_item = true
+
+func _on_ItemInventory_all_battle_item_chosen():
+	selector_index = fighter_index
+	item_selecting = false
+	enemy_item = true
+
+func battle_item_used():
+	f_turn_used()
+	fighters[selector_index].item_used()
+	yield(get_tree().create_timer(0.5), "timeout")
+	fighter_index = selector_index
+	_on_WorldRoot_f_index_reset()
+	BB_active = false
+	item_selecting = false
+	enemy_item = false
+

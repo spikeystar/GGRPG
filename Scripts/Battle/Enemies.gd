@@ -12,14 +12,20 @@ var e_position : Vector2
 var is_attack = false
 var attack_bonus = false
 var ongoing = false
+var item_selecting = false
+var target_index : int
+var item_damage : int
 
 var party_formation_1 = false
 var party_formation_2 = false
 var party_formation_3 = false
 
 signal enemy_chosen
+signal item_chosen
 signal e_damage_finish
 signal victory
+signal attack_f_index_reset
+signal jinx_doll
 
 func _ready():
 	enemies = get_children()
@@ -53,8 +59,29 @@ func _process(delta):
 		emit_signal("enemy_chosen")
 		enemy_selecting = false
 		
+	######## Item Selecting ########
+	if Input.is_action_just_pressed("ui_right") and item_selecting:
+		select_next_enemy(+1)
+		#print(enemy_index)
+		
+	if Input.is_action_just_pressed("ui_left") and item_selecting:
+		select_next_enemy(-1)
+		#print(enemy_index)
+	
+	if Input.is_action_just_pressed("ui_select") and item_selecting:
+		emit_signal("jinx_doll")
+		hide_cursors()
+		target_index = enemy_index
+		item_selecting = false
+		
 func hide_cursors():
 		enemies[enemy_index].unfocus()
+		
+func show_cursors():
+		enemies[enemy_index].focus()
+		
+func focus():
+	enemies[enemy_index].focus()
 		
 func get_e_position():
 	return enemies[enemy_index].get_position()
@@ -73,7 +100,6 @@ func _on_AttackTimer_attack_bonus():
 func enemy_damage():
 	BB_active = false
 	var target_enemy = enemies[enemy_index]
-	var type_check
 	var damage : int
 	var e_defense = target_enemy.get_e_defense()
 	var f_attack = Fighters.get_f_attack()
@@ -99,7 +125,31 @@ func enemy_damage():
 		target_enemy.reset_animation()
 	if enemies.size() == 0:
 		emit_signal("victory")
+		
+func death_check():
+	var target_enemy = enemies[enemy_index]
+	if target_enemy.is_dead():
+		target_enemy.death()
+		enemies.remove(enemy_index)
+		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
+		yield(get_tree().create_timer(1), "timeout")
+	else:
+		target_enemy.reset_animation()
+	if enemies.size() == 0:
+		emit_signal("victory")
+		
+func item_damage():
+	BB_active = false
+	var damage = item_damage
+	for x in range(enemies.size()):
+		enemies[x].damage(damage)
+	yield(get_tree().create_timer(1), "timeout")
+	for x in range(enemies.size() + 1):
+		death_check()
 	
+func jinx_doll():
+	pass
+
 func enemy_attack():
 	enemies[enemy_index].attack()
 	
@@ -108,3 +158,19 @@ func _on_WorldRoot_action_ongoing():
 
 func _on_WorldRoot_action_ended():
 	ongoing = false
+
+func _on_ItemInventory_battle_item_chosen():
+	show_cursors()
+	select_next_enemy(+1)
+	yield(get_tree().create_timer(0.2), "timeout")
+	item_selecting = true
+
+func battle_item_used():
+	yield(get_tree().create_timer(1.5), "timeout")
+	item_damage()
+
+func _on_ItemInventory_all_battle_item_chosen():
+	hide_cursors()
+	emit_signal("item_chosen")
+	
+	

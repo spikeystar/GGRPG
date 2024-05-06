@@ -7,7 +7,8 @@ export(int) var f_attack
 export(int) var f_attack_base  
 export(int) var f_magic
 export(int) var f_defense 
-export(String) var f_type
+export(String) var type = ""
+var applied_type = ""
 export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
 export(PackedScene) var TEXT_SP: PackedScene = null

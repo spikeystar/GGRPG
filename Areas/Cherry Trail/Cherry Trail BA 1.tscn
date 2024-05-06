@@ -490,14 +490,19 @@ position = Vector2( 30, 63 )
 ID = "Cheribo"
 e_health = 50
 e_defense = 10
+type = "neutral"
 
 [node name="Cheribo_battle2" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 190, 44 )
 ID = "Cheribo"
+e_health = 50
+type = "neutral"
 
 [node name="Cheribo_battle3" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 16, -23 )
 ID = "Cheribo"
+e_health = 50
+type = "neutral"
 
 [node name="Fighters" type="Node2D" parent="."]
 script = ExtResource( 22 )
@@ -510,22 +515,20 @@ f_attack = 70
 f_attack_base = 3
 f_magic = 30
 f_defense = 20
-f_type = "Neutral"
+type = "neutral"
 TEXT_DAMAGE = ExtResource( 44 )
-TEXT_HEAL = ExtResource( 43 )
 TEXT_SP = ExtResource( 45 )
 TEXT_LOSS = ExtResource( 46 )
 
 [node name="Jacques_Battle" parent="Fighters" instance=ExtResource( 4 )]
 position = Vector2( -135, 144 )
-party_id = 1
 fighter_name = "jacques"
 f_health = 100
 f_attack = 55
 f_attack_base = 5
 f_magic = 40
 f_defense = 50
-f_type = "Neutral"
+type = "neutral"
 TEXT_DAMAGE = ExtResource( 44 )
 TEXT_HEAL = ExtResource( 43 )
 TEXT_SP = ExtResource( 45 )
@@ -533,14 +536,13 @@ TEXT_LOSS = ExtResource( 46 )
 
 [node name="Irina_Battle" parent="Fighters" instance=ExtResource( 5 )]
 position = Vector2( -23, 194 )
-party_id = 2
 fighter_name = "irina"
 f_health = 100
 f_attack = 55
 f_attack_base = 10
 f_magic = 10
 f_defense = 10
-f_type = "Neutral"
+type = "neutral"
 TEXT_DAMAGE = ExtResource( 44 )
 TEXT_HEAL = ExtResource( 43 )
 TEXT_SP = ExtResource( 45 )
@@ -1310,9 +1312,12 @@ visible = false
 [connection signal="magic_inactive" from="." to="MagicWindow/MagicWindowPanel/SpellList" method="_on_WorldRoot_magic_inactive"]
 [connection signal="magic_inactive" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_magic_inactive"]
 [connection signal="start_attack_timer" from="." to="AttackTimer" method="_on_WorldRoot_start_attack_timer"]
+[connection signal="attack_f_index_reset" from="Enemies" to="Fighters" method="_on_Enemies_attack_f_index_reset"]
 [connection signal="e_damage_finish" from="Enemies" to="." method="_on_Enemies_e_damage_finish"]
 [connection signal="enemy_chosen" from="Enemies" to="." method="_on_Enemies_enemy_chosen"]
 [connection signal="enemy_chosen" from="Enemies" to="Fighters" method="_on_Enemies_enemy_chosen"]
+[connection signal="item_chosen" from="Enemies" to="." method="_on_Enemies_item_chosen"]
+[connection signal="jinx_doll" from="Enemies" to="." method="_on_Enemies_jinx_doll"]
 [connection signal="victory" from="Enemies" to="." method="_on_Enemies_victory"]
 [connection signal="BB_move" from="Fighters" to="." method="_on_Fighters_BB_move"]
 [connection signal="anim_finish" from="Fighters" to="." method="_on_Fighters_anim_finish"]
@@ -1321,7 +1326,13 @@ visible = false
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Defend" to="." method="_on_Defend_cursor_selected"]
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Flee" to="." method="_on_Flee_cursor_selected"]
 [connection signal="go_to_Item" from="DefenseWindow/Menu Cursor" to="." method="_on_Menu_Cursor_go_to_Item"]
+[connection signal="all_battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_all_battle_item_chosen"]
+[connection signal="all_battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Enemies" method="_on_ItemInventory_all_battle_item_chosen"]
+[connection signal="all_battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_all_battle_item_chosen"]
 [connection signal="all_heal_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_all_heal_item_chosen"]
+[connection signal="battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_battle_item_chosen"]
+[connection signal="battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Enemies" method="_on_ItemInventory_battle_item_chosen"]
+[connection signal="battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_battle_item_chosen"]
 [connection signal="go_to_Defend" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_go_to_Defend"]
 [connection signal="heal_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_heal_item_chosen"]
 [connection signal="item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_item_chosen"]
