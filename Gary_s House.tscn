@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Assets/Gary's House/Exterior/ledge 3.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Gary's House/Exterior/plant 3.png" type="Texture" id=2]
@@ -22,9 +22,9 @@
 [ext_resource path="res://Assets/General/box.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Gary's House/Exterior/porch.png" type="Texture" id=21]
 [ext_resource path="res://Assets/Gary's House/Exterior/hill 2.png" type="Texture" id=22]
-[ext_resource path="res://Assets/Gary's House/Exterior/hill 1.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Cherry Trail/flower hill a.png" type="Texture" id=23]
 [ext_resource path="res://Assets/Gary's House/Exterior/house.png" type="Texture" id=24]
-[ext_resource path="res://Assets/Gary's House/Exterior/hill 3.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Cherry Trail/flower hill b.png" type="Texture" id=25]
 [ext_resource path="res://Assets/Gary's House/Exterior/pot c.png" type="Texture" id=26]
 [ext_resource path="res://Assets/Gary's House/Exterior/plant 1.png" type="Texture" id=27]
 [ext_resource path="res://Assets/Gary's House/Exterior/pot a.png" type="Texture" id=28]
@@ -33,6 +33,13 @@
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=31]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=32]
 [ext_resource path="res://Assets/General/Save Star.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Cherry Trail/flower hill c.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Gary's House/Exterior/cloud b.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Gary's House/Exterior/cloud a.png" type="Texture" id=36]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.119266, 0.46789, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0, 0.849814, 0.849814, 0.849814, 0.143468 )
 
 [node name="WorldRoot" type="Node2D"]
 position = Vector2( -5, 7 )
@@ -92,7 +99,7 @@ scale = Vector2( 1.69658, 1.79863 )
 texture = ExtResource( 17 )
 
 [node name="Hill11" type="Sprite" parent="YSort/Background"]
-position = Vector2( 417, -111 )
+position = Vector2( 418, -125 )
 scale = Vector2( 1.77138, 1.65787 )
 texture = ExtResource( 25 )
 
@@ -127,7 +134,7 @@ scale = Vector2( 1.15743, 1.15743 )
 texture = ExtResource( 18 )
 
 [node name="Hill4" type="Sprite" parent="YSort/Background"]
-position = Vector2( 235.767, -207.978 )
+position = Vector2( 242, -193 )
 rotation = 0.0122327
 scale = Vector2( 1.67535, 1.55067 )
 texture = ExtResource( 23 )
@@ -172,10 +179,10 @@ scale = Vector2( 1.76456, 1.76456 )
 texture = ExtResource( 17 )
 
 [node name="Hill2" type="Sprite" parent="YSort/Background"]
-position = Vector2( -267.766, -115.134 )
+position = Vector2( -263, -99 )
 rotation = -0.0131405
 scale = Vector2( 1.80661, 1.70023 )
-texture = ExtResource( 22 )
+texture = ExtResource( 34 )
 
 [node name="Hill3" type="Sprite" parent="YSort/Background"]
 position = Vector2( -222, 45 )
@@ -323,6 +330,52 @@ height = 64.0
 floor_height = 96.0
 depth_test_offset = Vector3( 0, 0, 2 )
 
+[node name="Smoke" parent="YSort/HouseAndPorch" instance=ExtResource( 11 )]
+position = Vector2( 147, -252 )
+tile_size = Vector2( 100, 30 )
+grid_size = Vector2( 1.2, 0.2 )
+texture_scale = Vector2( 1.8, 1.8 )
+height = 64.0
+depth_test_offset = Vector3( 0, 0, 2 )
+preview_collision_box = false
+use_collision = false
+always_update = true
+
+[node name="Particles2D" type="CPUParticles2D" parent="YSort/HouseAndPorch/Smoke"]
+position = Vector2( -32, -10 )
+amount = 5
+lifetime = 7.0
+speed_scale = 0.8
+explosiveness = 0.11
+randomness = 0.03
+lifetime_randomness = 0.04
+texture = ExtResource( 36 )
+direction = Vector2( 10, 10 )
+spread = 83.92
+gravity = Vector2( 50, -70 )
+damping = 4.73
+scale_amount = 0.55
+scale_amount_random = 0.2
+color_ramp = SubResource( 1 )
+
+[node name="Particles2D2" type="CPUParticles2D" parent="YSort/HouseAndPorch/Smoke"]
+position = Vector2( -11, -11 )
+scale = Vector2( 1, 1.05 )
+amount = 4
+lifetime = 7.0
+speed_scale = 0.8
+explosiveness = 0.11
+randomness = 0.03
+lifetime_randomness = 0.04
+texture = ExtResource( 35 )
+direction = Vector2( 10, 10 )
+spread = 83.92
+gravity = Vector2( 50, -70 )
+damping = 4.73
+scale_amount = 0.65
+scale_amount_random = 0.2
+color_ramp = SubResource( 1 )
+
 [node name="PlantCollection" parent="YSort/HouseAndPorch" instance=ExtResource( 11 )]
 position = Vector2( -150, 36 )
 tile_size = Vector2( 60, 28 )
@@ -396,7 +449,7 @@ texture = ExtResource( 19 )
 texture_scale = Vector2( 1.8, 1.5 )
 
 [node name="Hill2" parent="YSort/MiddleGroundPlants" instance=ExtResource( 11 )]
-position = Vector2( 162, 282 )
+position = Vector2( 186, 396 )
 texture = ExtResource( 23 )
 texture_scale = Vector2( 1.8, 1.7 )
 

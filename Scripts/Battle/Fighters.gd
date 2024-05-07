@@ -34,6 +34,7 @@ var perfect = false
 var all_heal = false
 var all_restore = false
 var party_id : int
+var halt = false
 
 var party_formation_1 = false
 var party_formation_2 = false
@@ -88,7 +89,7 @@ func select_next_fighter2(index_offset):
 
 func _process(delta):
 	#fighter_turn_used = fighters[fighter_index].get_turn_value()
-	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen and not ongoing and not item_selecting and not enemies_active and not enemy_item:
+	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen and not ongoing and not item_selecting and not enemies_active and not enemy_item and not halt:
 		#fighter_index += 1
 		#switch_focus(fighter_index, fighter_index-1)
 		print(fighter_index)
@@ -96,29 +97,40 @@ func _process(delta):
 		fighters_active = true
 		emit_signal("fighters_active")
 		
-	if Input.is_action_just_pressed("ui_left") and not BB_active and not attack_chosen and not ongoing and fighters_active and not item_selecting and not enemies_active and not enemy_item:
+	if Input.is_action_just_pressed("ui_left") and not BB_active and not attack_chosen and not ongoing and fighters_active and not item_selecting and not enemies_active and not enemy_item and not halt:
 		#fighter_index -= 1
 		#switch_focus(fighter_index, fighter_index+1)
 		print(fighter_index)
 		select_next_fighter(-1)
 	
-	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen and not fighter_turn_used and not ongoing and fighters_active and not item_selecting and not enemies_active and not enemy_item:
+	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen and not fighter_turn_used and not ongoing and fighters_active and not item_selecting and not enemies_active and not enemy_item and not halt:
 		emit_signal("BB_move")
 		fighters[fighter_index].turn()
 		fighters_active = false
 		
 		####### Item Selection ##########
 		
-	if Input.is_action_just_pressed("ui_right") and item_selecting and not attack_chosen:
-		select_next_fighter2(+1)
+	if Input.is_action_just_pressed("ui_right") and item_selecting and not attack_chosen and not halt:
+		if fighter_index == -1:
+			select_next_fighter2(+1)
+			select_next_fighter2(+1)
+		else:
+			select_next_fighter2(+1)
 		emit_signal("fighters_active")
 		print(fighter_index)
 		
-	if Input.is_action_just_pressed("ui_left") and item_selecting and not attack_chosen:
-		select_next_fighter2(-1)
+	if Input.is_action_just_pressed("ui_up") and item_selecting and not attack_chosen and not halt:
+		print(fighter_index)
+		
+	if Input.is_action_just_pressed("ui_left") and item_selecting and not attack_chosen and not halt:
+		if fighter_index == -1:
+			select_next_fighter2(-1)
+			select_next_fighter2(-1)
+		else:
+			select_next_fighter2(-1)
 		print(fighter_index)
 	
-	if Input.is_action_just_pressed("ui_select") and item_selecting and not attack_chosen:
+	if Input.is_action_just_pressed("ui_select") and item_selecting and not attack_chosen and not halt:
 		emit_signal("item_chosen")
 		hide_cursors2(fighter_index)
 		target_index = fighter_index
@@ -139,6 +151,11 @@ func show_cursors2(x):
 	
 func hide_cursors2(x):
 	fighters2[x].unfocus()
+	
+func hide_cursors_remote():
+	fighters = get_children()
+	for x in range (fighters.size()):
+		fighters[x].unfocus()
 		
 func get_f_name():
 	var f_name = fighters[fighter_index].get_name()
@@ -273,8 +290,9 @@ func _on_ItemInventory_heal_item_chosen():
 	selector_index = fighter_index
 	fighters[fighter_index].idle()
 	yield(get_tree().create_timer(0.15), "timeout")
-	show_cursors2(fighter_index)
+	show_cursors(fighter_index)
 	item_selecting = true
+	fighter_index = -1
 	
 func _on_ItemInventory_all_heal_item_chosen():
 	hide_cursors(fighter_index)

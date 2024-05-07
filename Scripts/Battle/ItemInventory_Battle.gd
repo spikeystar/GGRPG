@@ -1,6 +1,8 @@
 extends VBoxContainer
-onready var inventory : Array = []
-var item_index : int
+
+const menu_slot = preload("res://UI/Slot.tscn")
+var slot = menu_slot.instance()
+
 var item_active = false
 var item_id : String
 
@@ -11,8 +13,15 @@ signal all_heal_item_chosen()
 signal battle_item_chosen()
 signal all_battle_item_chosen()
 
+onready var inventory : Array = []
+var item_index : int
+
 func _ready():
-	inventory = get_children()
+	inventory = Party.Inventory
+	var item_slot = inventory[item_index]
+	for x in range(inventory.size()):
+		self.add_child(item_slot)
+		
 	
 func _process(delta):
 	item_index = clamp(item_index, 0, inventory.size() - 1)
@@ -33,12 +42,12 @@ func _input(event):
 		if item_id == "Yummy Cake" or item_id == "Bounty Herb" or item_id == "Sugar Pill" or item_id == "Ginger Tea":
 			emit_signal("heal_item_chosen")
 			emit_signal("item_chosen")
-		if item_id == "Picnic Pie":
+		if item_id == "Picnic Pie" or item_id == "Pretty Gem":
 			emit_signal("all_heal_item_chosen")
 			emit_signal("item_chosen")
 		if item_id == "Jinx Doll":
 			emit_signal("battle_item_chosen")
-		if item_id == "Pretty Gem":
+		if item_id == "Spikey Bomb":
 			emit_signal("all_battle_item_chosen")
 		item_active = false
 		#item_index = 0

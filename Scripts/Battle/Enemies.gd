@@ -4,6 +4,7 @@ onready var enemy_members : int
 onready var party_id : int
 onready var Fighters : Node2D
 var enemies : Array = []
+var enemies2 : Array = []
 var enemy_index : int = -1
 var BB_active = false
 var enemy_selecting = false
@@ -26,6 +27,7 @@ signal e_damage_finish
 signal victory
 signal attack_f_index_reset
 signal jinx_doll
+signal e_item_finished
 
 func _ready():
 	enemies = get_children()
@@ -99,53 +101,71 @@ func _on_AttackTimer_attack_bonus():
 	
 func enemy_damage():
 	BB_active = false
+	randomize()
 	var target_enemy = enemies[enemy_index]
 	var damage : int
 	var e_defense = target_enemy.get_e_defense()
 	var f_attack = Fighters.get_f_attack()
 	var f_attack_base = Fighters.get_f_attack_base()
+	var f_total = f_attack + f_attack_base
 	if is_attack and not attack_bonus:
-		damage = max(0, (f_attack + f_attack_base) - e_defense)
+		damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
 		target_enemy.damage(damage)
 		is_attack = false
 	elif is_attack and attack_bonus:
-		damage = max(0, (f_attack + f_attack_base) - e_defense) + 100
+		damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense) + 100
 		target_enemy.damage(damage)
 		print("success!")
 		is_attack = false
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(1.5), "timeout")
 	emit_signal("e_damage_finish")
 	target_enemy.unfocus()
 	if target_enemy.is_dead():
+		ongoing = true
 		target_enemy.death()
 		enemies.remove(enemy_index)
 		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
 		yield(get_tree().create_timer(1), "timeout")
+		ongoing = false
 	else:
 		target_enemy.reset_animation()
 	if enemies.size() == 0:
 		emit_signal("victory")
 		
-func death_check():
-	var target_enemy = enemies[enemy_index]
-	if target_enemy.is_dead():
-		target_enemy.death()
-		enemies.remove(enemy_index)
-		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
-		yield(get_tree().create_timer(1), "timeout")
-	else:
-		target_enemy.reset_animation()
+func victory_check():
+	#var target_enemy = enemies[enemy_index]
+	#if target_enemy.is_dead():
+		#target_enemy.death()
+		#enemies.remove(enemy_index)
+		#enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
+		#yield(get_tree().create_timer(1), "timeout")
+	#else:
+		#target_enemy.reset_animation()
 	if enemies.size() == 0:
 		emit_signal("victory")
 		
 func item_damage():
 	BB_active = false
+	ongoing = true
 	var damage = item_damage
+	var death_count = 0
+	#var target_enemy = enemies[enemy_index]
 	for x in range(enemies.size()):
 		enemies[x].damage(damage)
-	yield(get_tree().create_timer(1), "timeout")
-	for x in range(enemies.size() + 1):
-		death_check()
+	yield(get_tree().create_timer(1.5), "timeout")
+	for x in range(enemies.size()):
+		if enemies[x].is_dead():
+			enemies[x].death()
+			enemies[x].death_tagged = true
+	for x in range(enemies.size() -1, -1, -1):
+			var death_tagged = enemies[x].get_death_tag()
+			if death_tagged == true:
+				enemies.remove(x)
+	enemy_index = clamp(enemy_index, 0, enemies.size())
+	yield(get_tree().create_timer(0.8), "timeout")
+	victory_check()
+	yield(get_tree().create_timer(0.4), "timeout")
+	emit_signal("e_item_finished")
 	
 func jinx_doll():
 	pass

@@ -156,7 +156,7 @@ func _input(event):
 		if attack_show and not window_open:
 			window_open = true
 			
-	if (Input.is_action_just_pressed("ui_select")) and BB_active and attack_show and not fighter_turn_used:
+	if (Input.is_action_just_pressed("ui_select")) and BB_active and attack_show and not fighter_turn_used and not ongoing:
 		$BattleButtons/DiamondB.show()
 		$BattleButtons.hide()
 		$EnemyInfo.hide()
@@ -353,11 +353,17 @@ func _on_WorldRoot_f_turn_used():
 	f_turns += 1
 	
 func _on_Enemies_victory():
+	ongoing = true
+	$Fighters.ongoing = true
+	$Fighters.halt = true
 	yield(get_tree().create_timer(0.3), "timeout")
 	$HUDS.hide()
 	$VictoryWindow.show()
 	$WindowPlayer.play("victory_open")
+	$Fighters.hide_cursors_remote()
 	$Fighters.victory()
+
+##### Item Usage #####
 
 func _on_ItemInventory_item_chosen():
 	ongoing = true
@@ -390,7 +396,7 @@ func _on_ItemInventory_battle_item_chosen():
 	$MagicWindow.hide()
 	$ItemWindow.hide()
 	$DefenseWindow.hide()
-	emit_signal("index_resetzero")
+	#emit_signal("index_resetzero")
 	emit_signal("item_inactive")
 	emit_signal("magic_inactive")
 	if attack_show and not window_open:
@@ -398,6 +404,8 @@ func _on_ItemInventory_battle_item_chosen():
 		
 func _on_ItemInventory_all_battle_item_chosen():
 	ongoing = true
+	$Fighters.ongoing = true
+	$Fighters.halt = true
 	$Fighters.idle()
 	emit_signal("action_ongoing")
 	$ItemWindow.hide()
@@ -414,7 +422,7 @@ func _on_ItemInventory_all_battle_item_chosen():
 	$MagicWindow.hide()
 	$ItemWindow.hide()
 	$DefenseWindow.hide()
-	emit_signal("index_resetzero")
+	#emit_signal("index_resetzero")
 	emit_signal("item_inactive")
 	emit_signal("magic_inactive")
 	if attack_show and not window_open:
@@ -430,7 +438,7 @@ func item_animation():
 	
 func _on_Fighters_item_chosen():
 	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
-	var item_id = $ItemWindow.get_item_id()
+	var item_id = $ItemWindow/ItemWindowPanel/ItemInventory.item_id
 	$ItemUsage.position = selector_position
 	yield(get_tree().create_timer(0.3), "timeout")
 	if item_id == "Yummy Cake":
@@ -466,13 +474,13 @@ func _on_Fighters_item_chosen():
 
 func _on_Enemies_item_chosen():
 	$EnemyInfo.hide()
-	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
-	var item_id = $ItemWindow.get_item_id()
-	$ItemUsage.position = selector_position
-	if item_id == "Pretty Gem":
-		$ItemUsage/Item.frame = 1
-		$Enemies.item_damage = 50
+	var fighter_position = $Fighters.get_f_position() + Vector2(40, -40)
+	var item_id = $ItemWindow/ItemWindowPanel/ItemInventory.item_id
+	$ItemUsage.position = fighter_position
 	yield(get_tree().create_timer(0.3), "timeout")
+	if item_id == "Spikey Bomb":
+		$ItemUsage/Item.frame = 0
+		$Enemies.item_damage = 100
 	$Fighters.battle_item_used()
 	$Enemies.battle_item_used()
 	item_animation()
@@ -481,8 +489,8 @@ func _on_Enemies_item_chosen():
 	fighter_selection = false
 	attack_ended = true
 	attack_show = false
-	ongoing = false
-	$Fighters.ongoing = false
+	#ongoing = false
+	#$Fighters.ongoing = false
 
 func _on_Enemies_jinx_doll():
 	$EnemyInfo.hide()
@@ -502,3 +510,8 @@ func _on_Enemies_jinx_doll():
 	attack_show = false
 	ongoing = false
 	$Fighters.ongoing = false
+
+func _on_Enemies_e_item_finished():
+	ongoing = false
+	$Fighters.ongoing = false
+	$Fighters.halt = false

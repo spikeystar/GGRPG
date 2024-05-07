@@ -501,7 +501,7 @@ type = "neutral"
 [node name="Cheribo_battle3" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 16, -23 )
 ID = "Cheribo"
-e_health = 50
+e_health = 55
 type = "neutral"
 
 [node name="Fighters" type="Node2D" parent="."]
@@ -660,131 +660,12 @@ custom_styles/panel = SubResource( 16 )
 [node name="ItemInventory" type="VBoxContainer" parent="ItemWindow/ItemWindowPanel"]
 margin_left = 60.0
 margin_top = 39.0
-margin_right = 155.0
-margin_bottom = 260.0
+margin_right = 60.0
+margin_bottom = 39.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 9
 script = ExtResource( 40 )
-
-[node name="Item1" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
-margin_right = 95.0
-margin_bottom = 14.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Yummy Cake"
-align = 1
-script = ExtResource( 19 )
-
-[node name="Item2" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
-margin_top = 23.0
-margin_right = 95.0
-margin_bottom = 37.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Pretty Gem"
-align = 1
-script = ExtResource( 19 )
-
-[node name="Item3" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
-margin_top = 46.0
-margin_right = 95.0
-margin_bottom = 60.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Picnic Pie"
-align = 1
-script = ExtResource( 19 )
-
-[node name="Item4" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
-margin_top = 69.0
-margin_right = 95.0
-margin_bottom = 83.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Bounty Herb"
-align = 1
-script = ExtResource( 19 )
-
-[node name="Item5" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
-margin_top = 92.0
-margin_right = 95.0
-margin_bottom = 106.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Sugar Pill"
-align = 1
-script = ExtResource( 19 )
-
-[node name="Item6" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
-margin_top = 115.0
-margin_right = 95.0
-margin_bottom = 129.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Yummy Cake"
-align = 1
-script = ExtResource( 19 )
-
-[node name="Item7" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
-margin_top = 138.0
-margin_right = 95.0
-margin_bottom = 152.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Ginger Tea"
-align = 1
-script = ExtResource( 19 )
-
-[node name="Item8" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
-margin_top = 161.0
-margin_right = 95.0
-margin_bottom = 175.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Picnic Pie"
-align = 1
-script = ExtResource( 19 )
-
-[node name="Item9" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
-margin_top = 184.0
-margin_right = 95.0
-margin_bottom = 198.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Bounty Herb"
-align = 1
-script = ExtResource( 19 )
-
-[node name="Item10" type="Label" parent="ItemWindow/ItemWindowPanel/ItemInventory"]
-margin_top = 207.0
-margin_right = 95.0
-margin_bottom = 221.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Pretty Gem"
-align = 1
-script = ExtResource( 19 )
 
 [node name="Menu Cursor" parent="ItemWindow/ItemWindowPanel" instance=ExtResource( 15 )]
 anchor_right = 0.0
@@ -1281,6 +1162,131 @@ one_shot = true
 [node name="ItemUsage" parent="." instance=ExtResource( 41 )]
 visible = false
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Item1" type="Label" parent="Node2D"]
+visible = false
+margin_right = 86.0
+margin_bottom = 14.0
+size_flags_vertical = 0
+theme = ExtResource( 27 )
+custom_constants/line_spacing = 9
+custom_fonts/font = ExtResource( 31 )
+text = "Pretty Gem"
+align = 1
+script = ExtResource( 19 )
+
+[node name="Item2" type="Label" parent="Node2D"]
+visible = false
+margin_top = 23.0
+margin_right = 86.0
+margin_bottom = 37.0
+size_flags_vertical = 0
+theme = ExtResource( 27 )
+custom_constants/line_spacing = 9
+custom_fonts/font = ExtResource( 31 )
+text = "Pretty Gem"
+align = 1
+script = ExtResource( 19 )
+
+[node name="Item3" type="Label" parent="Node2D"]
+visible = false
+margin_left = 41.0
+margin_top = 75.0
+margin_right = 128.0
+margin_bottom = 89.0
+size_flags_vertical = 0
+theme = ExtResource( 27 )
+custom_constants/line_spacing = 9
+custom_fonts/font = ExtResource( 31 )
+text = "Picnic Pie"
+align = 1
+script = ExtResource( 19 )
+
+[node name="Item4" type="Label" parent="Node2D"]
+visible = false
+margin_left = 41.0
+margin_top = 29.0
+margin_right = 136.0
+margin_bottom = 43.0
+size_flags_vertical = 0
+theme = ExtResource( 27 )
+custom_constants/line_spacing = 9
+custom_fonts/font = ExtResource( 31 )
+text = "Bounty Herb"
+align = 1
+script = ExtResource( 19 )
+
+[node name="Item5" type="Label" parent="Node2D"]
+visible = false
+margin_left = 41.0
+margin_top = 29.0
+margin_right = 136.0
+margin_bottom = 43.0
+size_flags_vertical = 0
+theme = ExtResource( 27 )
+custom_constants/line_spacing = 9
+custom_fonts/font = ExtResource( 31 )
+text = "Sugar Pill"
+align = 1
+script = ExtResource( 19 )
+
+[node name="Item6" type="Label" parent="Node2D"]
+visible = false
+margin_left = 41.0
+margin_top = 29.0
+margin_right = 136.0
+margin_bottom = 43.0
+size_flags_vertical = 0
+theme = ExtResource( 27 )
+custom_constants/line_spacing = 9
+custom_fonts/font = ExtResource( 31 )
+text = "Yummy Cake"
+align = 1
+script = ExtResource( 19 )
+
+[node name="Item7" type="Label" parent="Node2D"]
+visible = false
+margin_left = 41.0
+margin_top = 29.0
+margin_right = 136.0
+margin_bottom = 43.0
+size_flags_vertical = 0
+theme = ExtResource( 27 )
+custom_constants/line_spacing = 9
+custom_fonts/font = ExtResource( 31 )
+text = "Ginger Tea"
+align = 1
+script = ExtResource( 19 )
+
+[node name="Item8" type="Label" parent="Node2D"]
+visible = false
+margin_left = 41.0
+margin_top = 29.0
+margin_right = 136.0
+margin_bottom = 43.0
+size_flags_vertical = 0
+theme = ExtResource( 27 )
+custom_constants/line_spacing = 9
+custom_fonts/font = ExtResource( 31 )
+text = "Picnic Pie"
+align = 1
+script = ExtResource( 19 )
+
+[node name="Item9" type="Label" parent="Node2D"]
+visible = false
+margin_left = 41.0
+margin_top = 29.0
+margin_right = 136.0
+margin_bottom = 43.0
+size_flags_vertical = 0
+theme = ExtResource( 27 )
+custom_constants/line_spacing = 9
+custom_fonts/font = ExtResource( 31 )
+text = "Bounty Herb"
+align = 1
+script = ExtResource( 19 )
+
 [connection signal="BB_active" from="." to="Enemies" method="_on_WorldRoot_BB_active"]
 [connection signal="BB_active" from="." to="Fighters" method="_on_WorldRoot_BB_active"]
 [connection signal="action_ended" from="." to="Enemies" method="_on_WorldRoot_action_ended"]
@@ -1314,6 +1320,7 @@ visible = false
 [connection signal="start_attack_timer" from="." to="AttackTimer" method="_on_WorldRoot_start_attack_timer"]
 [connection signal="attack_f_index_reset" from="Enemies" to="Fighters" method="_on_Enemies_attack_f_index_reset"]
 [connection signal="e_damage_finish" from="Enemies" to="." method="_on_Enemies_e_damage_finish"]
+[connection signal="e_item_finished" from="Enemies" to="." method="_on_Enemies_e_item_finished"]
 [connection signal="enemy_chosen" from="Enemies" to="." method="_on_Enemies_enemy_chosen"]
 [connection signal="enemy_chosen" from="Enemies" to="Fighters" method="_on_Enemies_enemy_chosen"]
 [connection signal="item_chosen" from="Enemies" to="." method="_on_Enemies_item_chosen"]

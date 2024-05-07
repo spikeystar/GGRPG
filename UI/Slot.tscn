@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=1]
+[ext_resource path="res://Misc/Font/Item.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Misc/Font/Move Select Theme.tres" type="Theme" id=3]
+
+[node name="Slot" type="Label"]
+visible = false
+margin_left = 41.0
+margin_top = 29.0
+margin_right = 127.0
+margin_bottom = 43.0
+size_flags_vertical = 0
+theme = ExtResource( 3 )
+custom_constants/line_spacing = 9
+custom_fonts/font = ExtResource( 2 )
+text = "slot"
+align = 1
+script = ExtResource( 1 )

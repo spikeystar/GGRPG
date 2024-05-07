@@ -17,6 +17,7 @@ var OG_position : Vector2
 var BB_position : Vector2
 var able = true
 var turn_used = false
+var health : int
 
 func focus():
 	#if able:
@@ -56,6 +57,9 @@ func heal(HP_amount):
 	var heal_text = text(TEXT_HEAL)
 	if heal_text:
 		heal_text.label.text = str(HP_amount)
+	health = max(f_health, health + HP_amount)
+	if health > f_health:
+		health = f_health
 		
 func SP(SP_amount: int):
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -102,6 +106,7 @@ func text(TEXT: PackedScene, text_position: Vector2 = global_position):
 		var text = TEXT.instance()
 		get_tree().current_scene.add_child(text)
 		text.global_position = text_position + Vector2(0, -60)
+		return text
 		
 func get_position(fighter_position: Vector2 = global_position):
 	return fighter_position

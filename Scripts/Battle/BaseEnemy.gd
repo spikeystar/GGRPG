@@ -10,6 +10,7 @@ var applied_type = ""
 export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
 var health : int
+var death_tagged = false
 
 export(String) var move1 = ""
 export(String) var move2 = ""
@@ -58,6 +59,9 @@ func get_health():
 	
 func is_dead():
 	return health == 0
+	
+func get_death_tag():
+	return death_tagged
 	
 func death():
 		$AnimationPlayer.play("enemy_death")
