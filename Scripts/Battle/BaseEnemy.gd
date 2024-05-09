@@ -5,12 +5,15 @@ export(int) var e_health
 export(int) var e_attack 
 export(int) var e_magic
 export(int) var e_defense 
-export(String) var type = ""
-var applied_type = ""
+export(String) var initial_type = ""
+var current_type = ""
+var applied_type = false
 export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
 var health : int
 var death_tagged = false
+var poison = true
+var stun = true
 
 export(String) var move1 = ""
 export(String) var move2 = ""
@@ -22,6 +25,18 @@ func _ready():
 	reset_animation()
 	unfocus()
 	health = e_health
+	
+func get_name():
+	return ID
+	
+func get_status(var status_id: bool):
+	if status_id == poison:
+		return poison
+	if status_id == stun:
+		return stun
+	
+func get_type():
+	return initial_type
 	
 func reset_animation():	
 	$AnimationPlayer.play("enemy_idle")

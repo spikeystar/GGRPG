@@ -2,7 +2,6 @@ extends Node2D
 
 onready var party_members : int
 onready var tween = $Tween
-onready var Enemies = get_tree().get_root().get_node("Enemies")
 var fighters : Array = []
 var fighters2 : Array = []
 var fighter_index : int = -1
@@ -257,7 +256,6 @@ func _on_WorldRoot_f_index_reset():
 	if fighters.size() <=0:
 		fighters = get_children()
 
-	
 func get_f_attack():
 	var f_attack = fighters[fighter_index].get_f_attack()
 	return f_attack
@@ -292,13 +290,12 @@ func _on_ItemInventory_heal_item_chosen():
 	yield(get_tree().create_timer(0.15), "timeout")
 	show_cursors(fighter_index)
 	item_selecting = true
-	fighter_index = -1
+	#fighter_index = -1
 	
 func _on_ItemInventory_all_heal_item_chosen():
 	hide_cursors(fighter_index)
-	f_turn_used()
 	selector_index = fighter_index
-	target_index = fighter_index
+	target_index = selector_index
 	fighters[fighter_index].idle()
 	emit_signal("item_chosen")
 
@@ -313,7 +310,7 @@ func item_used():
 	if heal:
 		fighters2[target_index].heal(HP_amount)
 	if SP:
-		fighters2[target_index].SP(SP_amount)
+		fighters[target_index].SP(SP_amount)
 	if combo_heal:
 		fighters2[target_index].heal(HP_amount)
 		fighters2[target_index].combo_heal(SP_amount)

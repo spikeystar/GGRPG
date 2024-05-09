@@ -5,11 +5,13 @@
 [ext_resource path="res://Misc/Font/Move Select Theme.tres" type="Theme" id=3]
 
 [node name="Slot" type="Label"]
-visible = false
 margin_left = 41.0
 margin_top = 29.0
 margin_right = 127.0
 margin_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 41, 0 )
 size_flags_vertical = 0
 theme = ExtResource( 3 )
 custom_constants/line_spacing = 9

@@ -38,8 +38,8 @@
 [ext_resource path="res://Assets/Gary's House/Exterior/cloud a.png" type="Texture" id=36]
 
 [sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0.119266, 0.46789, 1 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0, 0.849814, 0.849814, 0.849814, 0.143468 )
+offsets = PoolRealArray( 0, 0.059633, 0.807339, 0.981651, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.470588, 1, 1, 1, 1, 1, 1, 1, 0, 0.910604, 0.910604, 0.910604, 0.0853976, 0.849814, 0.849814, 0.849814, 0.143468 )
 
 [node name="WorldRoot" type="Node2D"]
 position = Vector2( -5, 7 )
@@ -158,6 +158,11 @@ texture = ExtResource( 17 )
 
 [node name="Hill7" type="Sprite" parent="YSort/Background"]
 position = Vector2( -694, 52 )
+scale = Vector2( 1.16786, 1.0567 )
+texture = ExtResource( 18 )
+
+[node name="Hill19" type="Sprite" parent="YSort/Background"]
+position = Vector2( -469, 364 )
 scale = Vector2( 1.16786, 1.0567 )
 texture = ExtResource( 18 )
 
@@ -330,52 +335,6 @@ height = 64.0
 floor_height = 96.0
 depth_test_offset = Vector3( 0, 0, 2 )
 
-[node name="Smoke" parent="YSort/HouseAndPorch" instance=ExtResource( 11 )]
-position = Vector2( 147, -252 )
-tile_size = Vector2( 100, 30 )
-grid_size = Vector2( 1.2, 0.2 )
-texture_scale = Vector2( 1.8, 1.8 )
-height = 64.0
-depth_test_offset = Vector3( 0, 0, 2 )
-preview_collision_box = false
-use_collision = false
-always_update = true
-
-[node name="Particles2D" type="CPUParticles2D" parent="YSort/HouseAndPorch/Smoke"]
-position = Vector2( -32, -10 )
-amount = 5
-lifetime = 7.0
-speed_scale = 0.8
-explosiveness = 0.11
-randomness = 0.03
-lifetime_randomness = 0.04
-texture = ExtResource( 36 )
-direction = Vector2( 10, 10 )
-spread = 83.92
-gravity = Vector2( 50, -70 )
-damping = 4.73
-scale_amount = 0.55
-scale_amount_random = 0.2
-color_ramp = SubResource( 1 )
-
-[node name="Particles2D2" type="CPUParticles2D" parent="YSort/HouseAndPorch/Smoke"]
-position = Vector2( -11, -11 )
-scale = Vector2( 1, 1.05 )
-amount = 4
-lifetime = 7.0
-speed_scale = 0.8
-explosiveness = 0.11
-randomness = 0.03
-lifetime_randomness = 0.04
-texture = ExtResource( 35 )
-direction = Vector2( 10, 10 )
-spread = 83.92
-gravity = Vector2( 50, -70 )
-damping = 4.73
-scale_amount = 0.65
-scale_amount_random = 0.2
-color_ramp = SubResource( 1 )
-
 [node name="PlantCollection" parent="YSort/HouseAndPorch" instance=ExtResource( 11 )]
 position = Vector2( -150, 36 )
 tile_size = Vector2( 60, 28 )
@@ -487,6 +446,51 @@ position = Vector2( -201.006, 194.132 )
 rotation = 0.00495229
 scale = Vector2( 1.25182, 0.933753 )
 texture = ExtResource( 29 )
+
+[node name="Particles2D" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2( 130, -281 )
+z_index = 1
+amount = 3
+lifetime = 7.0
+speed_scale = 0.6
+explosiveness = 0.11
+randomness = 0.03
+lifetime_randomness = 0.04
+fixed_fps = 8
+fract_delta = false
+texture = ExtResource( 36 )
+direction = Vector2( 10, 10 )
+spread = 83.92
+gravity = Vector2( 50, -70 )
+damping = 4.73
+scale_amount = 0.55
+scale_amount_random = 0.2
+color_ramp = SubResource( 1 )
+
+[node name="Particles2D2" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2( 154, -284 )
+scale = Vector2( 1, 1.05 )
+z_index = 1
+amount = 2
+lifetime = 6.0
+speed_scale = 0.6
+explosiveness = 0.11
+randomness = 0.12
+lifetime_randomness = 0.06
+fixed_fps = 8
+fract_delta = false
+texture = ExtResource( 35 )
+direction = Vector2( 10, 10 )
+spread = 83.92
+gravity = Vector2( 80, -80 )
+damping = 10.14
+angle = 0.1
+angle_random = 0.1
+scale_amount = 0.65
+scale_amount_random = 0.2
+color_ramp = SubResource( 1 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = 0.3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/Cherry Trail BA 1.jpg" type="Texture" id=1]
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_battle.tscn" type="PackedScene" id=2]
@@ -30,7 +30,7 @@
 [ext_resource path="res://Misc/Font/Enemy Move.tres" type="DynamicFont" id=28]
 [ext_resource path="res://Scripts/Battle/Enemies.gd" type="Script" id=29]
 [ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=30]
-[ext_resource path="res://Misc/Font/Item.tres" type="DynamicFont" id=31]
+[ext_resource path="res://Scripts/Battle/MagicWindow.gd" type="Script" id=31]
 [ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=32]
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=33]
 [ext_resource path="res://UI/Battle/Victory Window.png" type="Texture" id=34]
@@ -46,6 +46,9 @@
 [ext_resource path="res://UI/DamageText.tscn" type="PackedScene" id=44]
 [ext_resource path="res://UI/SPText.tscn" type="PackedScene" id=45]
 [ext_resource path="res://UI/LossText.tscn" type="PackedScene" id=46]
+[ext_resource path="res://Scripts/Battle/EnemyStatus.gd" type="Script" id=47]
+[ext_resource path="res://Scripts/Battle/EnemyName.gd" type="Script" id=48]
+[ext_resource path="res://Scripts/Battle/PartySP.gd" type="Script" id=49]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -490,19 +493,19 @@ position = Vector2( 30, 63 )
 ID = "Cheribo"
 e_health = 50
 e_defense = 10
-type = "neutral"
+initial_type = "neutral"
 
 [node name="Cheribo_battle2" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 190, 44 )
 ID = "Cheribo"
 e_health = 50
-type = "neutral"
+initial_type = "neutral"
 
 [node name="Cheribo_battle3" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 16, -23 )
 ID = "Cheribo"
 e_health = 55
-type = "neutral"
+initial_type = "neutral"
 
 [node name="Fighters" type="Node2D" parent="."]
 script = ExtResource( 22 )
@@ -645,6 +648,7 @@ menu_parent_path = NodePath("../VBoxContainer")
 cursor_offset = Vector2( 17, 2.5 )
 
 [node name="ItemWindow" type="Node2D" parent="."]
+visible = false
 script = ExtResource( 39 )
 
 [node name="ItemWindowPanel" type="PanelContainer" parent="ItemWindow"]
@@ -667,7 +671,7 @@ size_flags_vertical = 0
 custom_constants/separation = 9
 script = ExtResource( 40 )
 
-[node name="Menu Cursor" parent="ItemWindow/ItemWindowPanel" instance=ExtResource( 15 )]
+[node name="MenuCursor" parent="ItemWindow/ItemWindowPanel" instance=ExtResource( 15 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 60.0
@@ -697,8 +701,8 @@ hframes = 3
 vframes = 3
 
 [node name="MagicWindow" type="Node2D" parent="."]
-visible = false
 position = Vector2( -1, -2 )
+script = ExtResource( 31 )
 
 [node name="MagicWindowPanel" type="PanelContainer" parent="MagicWindow"]
 margin_left = -17.0
@@ -710,94 +714,16 @@ custom_styles/panel = SubResource( 17 )
 [node name="SpellList" type="VBoxContainer" parent="MagicWindow/MagicWindowPanel"]
 margin_left = 62.0
 margin_top = 61.0
-margin_right = 175.0
-margin_bottom = 274.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
+margin_right = 168.0
+margin_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 106, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
 custom_constants/separation = 12
+alignment = 1
 script = ExtResource( 42 )
-
-[node name="Spell1" type="Label" parent="MagicWindow/MagicWindowPanel/SpellList"]
-margin_right = 113.0
-margin_bottom = 15.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
-custom_fonts/font = ExtResource( 21 )
-text = "Thunderstorm"
-align = 1
-valign = 1
-script = ExtResource( 19 )
-
-[node name="Spell2" type="Label" parent="MagicWindow/MagicWindowPanel/SpellList"]
-margin_top = 27.0
-margin_right = 113.0
-margin_bottom = 42.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
-custom_fonts/font = ExtResource( 21 )
-text = "Earthslide"
-align = 1
-valign = 1
-autowrap = true
-script = ExtResource( 19 )
-
-[node name="Spell3" type="Label" parent="MagicWindow/MagicWindowPanel/SpellList"]
-margin_top = 54.0
-margin_right = 113.0
-margin_bottom = 69.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
-custom_fonts/font = ExtResource( 21 )
-text = "Electrify"
-align = 1
-valign = 1
-autowrap = true
-script = ExtResource( 19 )
-
-[node name="Spell4" type="Label" parent="MagicWindow/MagicWindowPanel/SpellList"]
-margin_top = 81.0
-margin_right = 113.0
-margin_bottom = 96.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
-custom_fonts/font = ExtResource( 21 )
-text = "Dream Noise"
-align = 1
-valign = 1
-autowrap = true
-script = ExtResource( 19 )
-
-[node name="Spell5" type="Label" parent="MagicWindow/MagicWindowPanel/SpellList"]
-margin_top = 108.0
-margin_right = 113.0
-margin_bottom = 123.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
-custom_fonts/font = ExtResource( 21 )
-text = "Celebrate!"
-align = 1
-valign = 1
-autowrap = true
-script = ExtResource( 19 )
-
-[node name="Spell6" type="Label" parent="MagicWindow/MagicWindowPanel/SpellList"]
-margin_top = 135.0
-margin_right = 113.0
-margin_bottom = 168.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
-custom_fonts/font = ExtResource( 21 )
-text = "Reverb Rupture"
-align = 1
-valign = 1
-autowrap = true
-script = ExtResource( 19 )
-
-[node name="Spell7" type="Label" parent="MagicWindow/MagicWindowPanel/SpellList"]
-margin_top = 180.0
-margin_right = 113.0
-margin_bottom = 213.0
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
-custom_fonts/font = ExtResource( 21 )
-text = "Sonic Shatter"
-align = 1
-valign = 1
-autowrap = true
-script = ExtResource( 19 )
 
 [node name="Menu Cursor" parent="MagicWindow/MagicWindowPanel" instance=ExtResource( 15 )]
 anchor_right = 0.0
@@ -819,6 +745,7 @@ margin_bottom = 16.0
 theme = SubResource( 18 )
 custom_fonts/font = ExtResource( 32 )
 text = "SP: 30/30"
+script = ExtResource( 49 )
 
 [node name="SpellInfo" type="Label" parent="MagicWindow"]
 margin_left = 193.0
@@ -881,6 +808,117 @@ texture = ExtResource( 11 )
 [node name="EnemyStatus" type="Sprite" parent="EnemyInfo"]
 position = Vector2( -37, 16 )
 texture = ExtResource( 24 )
+script = ExtResource( 47 )
+
+[node name="Icons" type="Node2D" parent="EnemyInfo/EnemyStatus"]
+position = Vector2( -126, -229 )
+
+[node name="Types" type="Node2D" parent="EnemyInfo/EnemyStatus/Icons"]
+
+[node name="Fire" type="Sprite" parent="EnemyInfo/EnemyStatus/Icons/Types"]
+visible = false
+position = Vector2( 51, 229 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+
+[node name="Water" type="Sprite" parent="EnemyInfo/EnemyStatus/Icons/Types"]
+visible = false
+position = Vector2( 51, 229 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 1
+
+[node name="Air" type="Sprite" parent="EnemyInfo/EnemyStatus/Icons/Types"]
+visible = false
+position = Vector2( 51, 229 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 4
+
+[node name="Earth" type="Sprite" parent="EnemyInfo/EnemyStatus/Icons/Types"]
+visible = false
+position = Vector2( 51, 229 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 5
+
+[node name="Neutral" type="Sprite" parent="EnemyInfo/EnemyStatus/Icons/Types"]
+visible = false
+position = Vector2( 51, 229 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 16
+
+[node name="Statuses" type="Node2D" parent="EnemyInfo/EnemyStatus/Icons"]
+
+[node name="Attack_D" type="Sprite" parent="EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 81, 229 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 12
+
+[node name="Attack_B" type="Sprite" parent="EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 81, 229 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 8
+
+[node name="Magic_D" type="Sprite" parent="EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 111, 229 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 13
+
+[node name="Magic_B" type="Sprite" parent="EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 111, 229 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 9
+
+[node name="Defense_D" type="Sprite" parent="EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 141, 229 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 14
+
+[node name="Defense_B" type="Sprite" parent="EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 141, 229 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 10
+
+[node name="Poison" type="Sprite" parent="EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 171, 229 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 7
+
+[node name="Stun" type="Sprite" parent="EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 201, 229 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 11
 
 [node name="EnemyName" type="Label" parent="EnemyInfo"]
 margin_left = -127.0
@@ -893,111 +931,7 @@ theme = ExtResource( 26 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.196078 )
 custom_fonts/font = ExtResource( 23 )
 text = "Cheribo"
-
-[node name="Icons" type="Node2D" parent="EnemyInfo"]
-position = Vector2( -163, -213 )
-
-[node name="Fire" type="Sprite" parent="EnemyInfo/Icons"]
-visible = false
-position = Vector2( 51, 229 )
-texture = ExtResource( 25 )
-hframes = 4
-vframes = 5
-
-[node name="Water" type="Sprite" parent="EnemyInfo/Icons"]
-visible = false
-position = Vector2( 51, 229 )
-texture = ExtResource( 25 )
-hframes = 4
-vframes = 5
-frame = 1
-
-[node name="Air" type="Sprite" parent="EnemyInfo/Icons"]
-visible = false
-position = Vector2( 51, 229 )
-texture = ExtResource( 25 )
-hframes = 4
-vframes = 5
-frame = 4
-
-[node name="Earth" type="Sprite" parent="EnemyInfo/Icons"]
-visible = false
-position = Vector2( 51, 229 )
-texture = ExtResource( 25 )
-hframes = 4
-vframes = 5
-frame = 5
-
-[node name="Neutral" type="Sprite" parent="EnemyInfo/Icons"]
-position = Vector2( 51, 229 )
-texture = ExtResource( 25 )
-hframes = 4
-vframes = 5
-frame = 16
-
-[node name="Attack_D" type="Sprite" parent="EnemyInfo/Icons"]
-visible = false
-position = Vector2( 81, 229 )
-texture = ExtResource( 25 )
-hframes = 4
-vframes = 5
-frame = 12
-
-[node name="Attack_B" type="Sprite" parent="EnemyInfo/Icons"]
-visible = false
-position = Vector2( 81, 229 )
-texture = ExtResource( 25 )
-hframes = 4
-vframes = 5
-frame = 8
-
-[node name="Magic_D" type="Sprite" parent="EnemyInfo/Icons"]
-visible = false
-position = Vector2( 111, 229 )
-texture = ExtResource( 25 )
-hframes = 4
-vframes = 5
-frame = 13
-
-[node name="Magic_B" type="Sprite" parent="EnemyInfo/Icons"]
-visible = false
-position = Vector2( 111, 229 )
-texture = ExtResource( 25 )
-hframes = 4
-vframes = 5
-frame = 9
-
-[node name="Defense_D" type="Sprite" parent="EnemyInfo/Icons"]
-visible = false
-position = Vector2( 141, 229 )
-texture = ExtResource( 25 )
-hframes = 4
-vframes = 5
-frame = 14
-
-[node name="Defense_B" type="Sprite" parent="EnemyInfo/Icons"]
-visible = false
-position = Vector2( 141, 229 )
-texture = ExtResource( 25 )
-hframes = 4
-vframes = 5
-frame = 10
-
-[node name="Poison" type="Sprite" parent="EnemyInfo/Icons"]
-visible = false
-position = Vector2( 171, 229 )
-texture = ExtResource( 25 )
-hframes = 4
-vframes = 5
-frame = 7
-
-[node name="Stun" type="Sprite" parent="EnemyInfo/Icons"]
-visible = false
-position = Vector2( 201, 229 )
-texture = ExtResource( 25 )
-hframes = 4
-vframes = 5
-frame = 11
+script = ExtResource( 48 )
 
 [node name="BattleDialogue" type="Sprite" parent="."]
 visible = false
@@ -1163,128 +1097,100 @@ one_shot = true
 visible = false
 
 [node name="Node2D" type="Node2D" parent="."]
-
-[node name="Item1" type="Label" parent="Node2D"]
 visible = false
-margin_right = 86.0
-margin_bottom = 14.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Pretty Gem"
+
+[node name="Spell1" type="Label" parent="Node2D"]
+visible = false
+margin_left = 44.0
+margin_top = 41.0
+margin_right = 150.0
+margin_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 1
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
+custom_fonts/font = ExtResource( 21 )
+text = "Icicle"
 align = 1
+valign = 1
 script = ExtResource( 19 )
 
-[node name="Item2" type="Label" parent="Node2D"]
-visible = false
-margin_top = 23.0
-margin_right = 86.0
-margin_bottom = 37.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Pretty Gem"
+[node name="Spell2" type="Label" parent="Node2D"]
+margin_left = 44.0
+margin_top = 68.0
+margin_right = 157.0
+margin_bottom = 83.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
+custom_fonts/font = ExtResource( 21 )
+text = "Earthslide"
 align = 1
+valign = 1
+autowrap = true
 script = ExtResource( 19 )
 
-[node name="Item3" type="Label" parent="Node2D"]
-visible = false
-margin_left = 41.0
-margin_top = 75.0
-margin_right = 128.0
-margin_bottom = 89.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Picnic Pie"
+[node name="Spell3" type="Label" parent="Node2D"]
+margin_left = 44.0
+margin_top = 95.0
+margin_right = 157.0
+margin_bottom = 110.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
+custom_fonts/font = ExtResource( 21 )
+text = "Electrify"
 align = 1
+valign = 1
+autowrap = true
 script = ExtResource( 19 )
 
-[node name="Item4" type="Label" parent="Node2D"]
-visible = false
-margin_left = 41.0
-margin_top = 29.0
-margin_right = 136.0
-margin_bottom = 43.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Bounty Herb"
+[node name="Spell4" type="Label" parent="Node2D"]
+margin_left = 44.0
+margin_top = 122.0
+margin_right = 157.0
+margin_bottom = 137.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
+custom_fonts/font = ExtResource( 21 )
+text = "Dream Noise"
 align = 1
+valign = 1
+autowrap = true
 script = ExtResource( 19 )
 
-[node name="Item5" type="Label" parent="Node2D"]
-visible = false
-margin_left = 41.0
-margin_top = 29.0
-margin_right = 136.0
-margin_bottom = 43.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Sugar Pill"
+[node name="Spell5" type="Label" parent="Node2D"]
+margin_left = 44.0
+margin_top = 149.0
+margin_right = 157.0
+margin_bottom = 164.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
+custom_fonts/font = ExtResource( 21 )
+text = "Celebrate!"
 align = 1
+valign = 1
+autowrap = true
 script = ExtResource( 19 )
 
-[node name="Item6" type="Label" parent="Node2D"]
-visible = false
-margin_left = 41.0
-margin_top = 29.0
-margin_right = 136.0
-margin_bottom = 43.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Yummy Cake"
+[node name="Spell6" type="Label" parent="Node2D"]
+margin_left = 44.0
+margin_top = 176.0
+margin_right = 157.0
+margin_bottom = 209.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
+custom_fonts/font = ExtResource( 21 )
+text = "Reverb Rupture"
 align = 1
+valign = 1
+autowrap = true
 script = ExtResource( 19 )
 
-[node name="Item7" type="Label" parent="Node2D"]
-visible = false
-margin_left = 41.0
-margin_top = 29.0
-margin_right = 136.0
-margin_bottom = 43.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Ginger Tea"
+[node name="Spell7" type="Label" parent="Node2D"]
+margin_left = 44.0
+margin_top = 221.0
+margin_right = 157.0
+margin_bottom = 254.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.160784 )
+custom_fonts/font = ExtResource( 21 )
+text = "Sonic Shatter"
 align = 1
-script = ExtResource( 19 )
-
-[node name="Item8" type="Label" parent="Node2D"]
-visible = false
-margin_left = 41.0
-margin_top = 29.0
-margin_right = 136.0
-margin_bottom = 43.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Picnic Pie"
-align = 1
-script = ExtResource( 19 )
-
-[node name="Item9" type="Label" parent="Node2D"]
-visible = false
-margin_left = 41.0
-margin_top = 29.0
-margin_right = 136.0
-margin_bottom = 43.0
-size_flags_vertical = 0
-theme = ExtResource( 27 )
-custom_constants/line_spacing = 9
-custom_fonts/font = ExtResource( 31 )
-text = "Bounty Herb"
-align = 1
+valign = 1
+autowrap = true
 script = ExtResource( 19 )
 
 [connection signal="BB_active" from="." to="Enemies" method="_on_WorldRoot_BB_active"]
@@ -1294,6 +1200,8 @@ script = ExtResource( 19 )
 [connection signal="action_ongoing" from="." to="Enemies" method="_on_WorldRoot_action_ongoing"]
 [connection signal="action_ongoing" from="." to="Fighters" method="_on_WorldRoot_action_ongoing"]
 [connection signal="attack_active" from="." to="Enemies" method="_on_WorldRoot_attack_active"]
+[connection signal="attack_active" from="." to="EnemyInfo/EnemyStatus" method="_on_WorldRoot_attack_active"]
+[connection signal="attack_active" from="." to="EnemyInfo/EnemyName" method="_on_WorldRoot_attack_active"]
 [connection signal="attack_chosen" from="." to="Enemies" method="_on_WorldRoot_attack_chosen"]
 [connection signal="attack_inactive" from="." to="Enemies" method="_on_WorldRoot_attack_inactive"]
 [connection signal="defend_active" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_defend_active"]
@@ -1305,14 +1213,16 @@ script = ExtResource( 19 )
 [connection signal="flee_chosen" from="." to="Fighters" method="_on_WorldRoot_flee_chosen"]
 [connection signal="hide_enemy_cursor" from="." to="Enemies" method="_on_WorldRoot_hide_enemy_cursor"]
 [connection signal="index_reset" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_index_reset"]
-[connection signal="index_reset" from="." to="ItemWindow/ItemWindowPanel/Menu Cursor" method="_on_WorldRoot_index_reset"]
+[connection signal="index_reset" from="." to="ItemWindow/ItemWindowPanel/MenuCursor" method="_on_WorldRoot_index_reset"]
 [connection signal="index_reset" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_index_reset"]
-[connection signal="index_resetzero" from="." to="ItemWindow/ItemWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
+[connection signal="index_resetzero" from="." to="ItemWindow/ItemWindowPanel/MenuCursor" method="_on_WorldRoot_index_resetzero"]
 [connection signal="index_resetzero" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
 [connection signal="item_active" from="." to="ItemWindow/ItemWindowPanel/ItemInventory" method="_on_WorldRoot_item_active"]
-[connection signal="item_active" from="." to="ItemWindow/ItemWindowPanel/Menu Cursor" method="_on_WorldRoot_item_active"]
+[connection signal="item_active" from="." to="ItemWindow/ItemWindowPanel/MenuCursor" method="_on_WorldRoot_item_active"]
 [connection signal="item_inactive" from="." to="ItemWindow/ItemWindowPanel/ItemInventory" method="_on_WorldRoot_item_inactive"]
-[connection signal="item_inactive" from="." to="ItemWindow/ItemWindowPanel/Menu Cursor" method="_on_WorldRoot_item_inactive"]
+[connection signal="item_inactive" from="." to="ItemWindow/ItemWindowPanel/MenuCursor" method="_on_WorldRoot_item_inactive"]
+[connection signal="item_removed" from="." to="ItemWindow/ItemWindowPanel/ItemInventory" method="_on_WorldRoot_item_removed"]
+[connection signal="magic_active" from="." to="MagicWindow" method="_on_WorldRoot_magic_active"]
 [connection signal="magic_active" from="." to="MagicWindow/MagicWindowPanel/SpellList" method="_on_WorldRoot_magic_active"]
 [connection signal="magic_active" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_magic_active"]
 [connection signal="magic_inactive" from="." to="MagicWindow/MagicWindowPanel/SpellList" method="_on_WorldRoot_magic_inactive"]
@@ -1323,8 +1233,12 @@ script = ExtResource( 19 )
 [connection signal="e_item_finished" from="Enemies" to="." method="_on_Enemies_e_item_finished"]
 [connection signal="enemy_chosen" from="Enemies" to="." method="_on_Enemies_enemy_chosen"]
 [connection signal="enemy_chosen" from="Enemies" to="Fighters" method="_on_Enemies_enemy_chosen"]
+[connection signal="enemy_chosen" from="Enemies" to="EnemyInfo/EnemyStatus" method="_on_Enemies_enemy_chosen"]
+[connection signal="enemy_chosen" from="Enemies" to="EnemyInfo/EnemyName" method="_on_Enemies_enemy_chosen"]
 [connection signal="item_chosen" from="Enemies" to="." method="_on_Enemies_item_chosen"]
 [connection signal="jinx_doll" from="Enemies" to="." method="_on_Enemies_jinx_doll"]
+[connection signal="jinx_doll" from="Enemies" to="EnemyInfo/EnemyStatus" method="_on_Enemies_jinx_doll"]
+[connection signal="jinx_doll" from="Enemies" to="EnemyInfo/EnemyName" method="_on_Enemies_jinx_doll"]
 [connection signal="victory" from="Enemies" to="." method="_on_Enemies_victory"]
 [connection signal="BB_move" from="Fighters" to="." method="_on_Fighters_BB_move"]
 [connection signal="anim_finish" from="Fighters" to="." method="_on_Fighters_anim_finish"]
@@ -1340,11 +1254,13 @@ script = ExtResource( 19 )
 [connection signal="battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_battle_item_chosen"]
 [connection signal="battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Enemies" method="_on_ItemInventory_battle_item_chosen"]
 [connection signal="battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_battle_item_chosen"]
+[connection signal="empty_items" from="ItemWindow/ItemWindowPanel/ItemInventory" to="ItemWindow" method="_on_ItemInventory_empty_items"]
 [connection signal="go_to_Defend" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_go_to_Defend"]
 [connection signal="heal_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_heal_item_chosen"]
 [connection signal="item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_item_chosen"]
-[connection signal="item_active" from="ItemWindow/ItemWindowPanel/Menu Cursor" to="ItemWindow" method="_on_Menu_Cursor_item_active"]
+[connection signal="item_active" from="ItemWindow/ItemWindowPanel/MenuCursor" to="ItemWindow" method="_on_Menu_Cursor_item_active"]
 [connection signal="go_to_Defend" from="MagicWindow/MagicWindowPanel/SpellList" to="." method="_on_SpellList_go_to_Defend"]
 [connection signal="go_to_Item" from="MagicWindow/MagicWindowPanel/Menu Cursor" to="." method="_on_Menu_Cursor_go_to_Item"]
+[connection signal="magic_active" from="MagicWindow/MagicWindowPanel/Menu Cursor" to="MagicWindow" method="_on_Menu_Cursor_magic_active"]
 [connection signal="attack_bonus" from="AttackTimer" to="Enemies" method="_on_AttackTimer_attack_bonus"]
 [connection signal="timeout" from="AttackTimer/Timer" to="AttackTimer" method="_on_Timer_timeout"]

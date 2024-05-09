@@ -33,6 +33,24 @@ func _ready():
 	enemies = get_children()
 	Fighters = get_tree().get_root().get_node("WorldRoot/Fighters")
 	
+func get_name():
+	var enemy_name = enemies[enemy_index].get_name()
+	return enemy_name
+	
+func get_status(var status_id: bool):
+	var poison = false
+	var stun = false
+	if status_id == poison:
+		poison = enemies[enemy_index].get_status(poison)
+		return poison
+	if status_id == stun:
+		stun = enemies[enemy_index].get_status(stun)
+		return stun
+	
+func get_type():
+	var type: String = enemies[enemy_index].get_type()
+	return type
+	
 func _on_WorldRoot_BB_active():
 	BB_active = true
 	

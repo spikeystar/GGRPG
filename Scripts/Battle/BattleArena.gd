@@ -52,6 +52,7 @@ signal defend_active()
 signal defend_inactive()
 signal action_ongoing()
 signal action_ended()
+signal item_removed()
 
 func _ready():
 	#set_health($HUDS/ProgressBar, Party.current_health, Party.max_health)
@@ -252,6 +253,7 @@ func _on_ItemInventory_go_to_Defend():
 	emit_signal("hide_enemy_cursor")
 	emit_signal("index_reset")
 	emit_signal("attack_inactive")
+	emit_signal("magic_inactive")
 	emit_signal("defend_active")
 	if defend_show and not window_open:
 		window_open = true
@@ -471,6 +473,8 @@ func _on_Fighters_item_chosen():
 	fighter_selection = false
 	attack_ended = true
 	ongoing = false
+	Party.remove_item()
+	emit_signal("item_removed")
 
 func _on_Enemies_item_chosen():
 	$EnemyInfo.hide()
@@ -508,10 +512,15 @@ func _on_Enemies_jinx_doll():
 	fighter_selection = false
 	attack_ended = true
 	attack_show = false
+	Party.remove_item()
+	emit_signal("item_removed")
 	ongoing = false
 	$Fighters.ongoing = false
 
 func _on_Enemies_e_item_finished():
+	Party.remove_item()
+	emit_signal("item_removed")
 	ongoing = false
 	$Fighters.ongoing = false
 	$Fighters.halt = false
+	

@@ -10,7 +10,10 @@ var defend_active = false
 var magic_active = false
 var up_count : int = 0
 var cursor_active = false
+var item_active = false
+var empty_items = false
 signal item_active()
+signal magic_active()
 signal go_to_Item()
 
 func _process(delta):
@@ -19,6 +22,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_up"):
 		input.y -= 1
 		emit_signal("item_active")
+		emit_signal("magic_active")
 		if defend_active:
 			up_count += 1
 		if magic_active:
@@ -26,12 +30,14 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_down"):
 		input.y += 1
 		emit_signal("item_active")
+		emit_signal("magic_active")
 		if defend_active and up_count >-2:
 			up_count -= 1
 		if magic_active:
 			up_count -= 1
 			
-			
+	if Input.is_action_just_pressed("ui_left"):
+		emit_signal("magic_active")
 			
 			
 	#if Input.is_action_just_pressed("ui_left"):
@@ -115,3 +121,4 @@ func _on_WorldRoot_item_active():
 
 func _on_WorldRoot_item_inactive():
 	cursor_active = false
+
