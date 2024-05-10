@@ -6,6 +6,7 @@ export(int) var f_health
 export(int) var f_attack
 export(int) var f_attack_base  
 export(int) var f_magic
+export(int) var f_magic_base
 export(int) var f_defense 
 export(String) var type = ""
 var applied_type = ""
@@ -138,6 +139,9 @@ func get_f_attack_base():
 func get_f_magic():
 	return f_magic
 	
+func get_f_magic_base():
+	return f_magic_base
+	
 func get_f_defense():
 	return f_defense
 
@@ -156,5 +160,11 @@ func get_turn_value():
 	
 func victory():
 	$AnimationPlayer.play("Fighter_Victory")
+	
+func spell_1():
+	$AnimationPlayer.play("Spell_1")
+	
+func spell_2():
+	$AnimationPlayer.play("Spell_2")
 
 	

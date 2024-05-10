@@ -7,8 +7,9 @@ var party_id : int
 var party_members = 3
 var f_turns : int = 0
 var party_level : int = 1
-var party_sp = 30
-var party_max_sp = 30
+var party_marbles : int = 100
+var party_sp = 150
+var party_max_sp = 150
 var spell_name : String
 var remove_item_name: String
 

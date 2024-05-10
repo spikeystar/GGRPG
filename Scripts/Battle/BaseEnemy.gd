@@ -15,6 +15,8 @@ var death_tagged = false
 var poison = true
 var stun = true
 
+var damage_type : String
+
 export(String) var move1 = ""
 export(String) var move2 = ""
 export(String) var move3 = ""
@@ -66,6 +68,21 @@ func damage(amount: int):
 	yield(get_tree().create_timer(2), "timeout")
 	$AnimationPlayer.play("enemy_idle")
 	
+func magic_damage(amount: int, damage_type: String):
+	var damage_text = text(TEXT_DAMAGE)
+	if damage_text:
+		damage_text.label.text = str(amount)
+	if amount <= 0:
+		return
+	$DamageStar.show()
+	$AnimationPlayer.play("enemy_damage")
+	$AnimationPlayer.playback_speed = 0.7
+	type_damage(damage_type)
+	$AnimationPlayer.playback_speed = 0.5
+	health = max(0, health - amount)
+	yield(get_tree().create_timer(2), "timeout")
+	$AnimationPlayer.play("enemy_idle")
+	
 func get_e_defense():
 	return e_defense
 		
@@ -77,6 +94,21 @@ func is_dead():
 	
 func get_death_tag():
 	return death_tagged
+	
+func type_damage(damage_type):
+	if damage_type == "neutral":
+		$DamagePlayer.play("neutral")
+	if damage_type == "fire":
+		$DamagePlayer.play("fire")
+	if damage_type == "water":
+		$DamagePlayer.play("water")
+	if damage_type == "air":
+		$DamagePlayer.play("air")
+	if damage_type == "earth":
+		$DamagePlayer.play("earth")
+	if damage_type == "whammy":
+		$DamagePlayer.play("whammy")
+		
 	
 func death():
 		$AnimationPlayer.play("enemy_death")

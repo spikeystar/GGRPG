@@ -12,6 +12,7 @@ var up_count : int = 0
 var cursor_active = false
 var item_active = false
 var empty_items = false
+var spell_selected = false
 signal item_active()
 signal magic_active()
 signal go_to_Item()
@@ -63,7 +64,7 @@ func _process(delta):
 		emit_signal("go_to_Item")
 		up_count = 0
 		
-	if Input.is_action_just_pressed("ui_up") and magic_active and up_count == 1:
+	if Input.is_action_just_pressed("ui_up") and magic_active and up_count == 1 and not spell_selected:
 		emit_signal("go_to_Item")
 		up_count = 0
 		
@@ -111,6 +112,7 @@ func _on_WorldRoot_magic_active():
 	up_count = 0
 	magic_active = true
 	cursor_active = true
+	spell_selected = false
 
 func _on_WorldRoot_magic_inactive():
 	magic_active = false
@@ -122,3 +124,5 @@ func _on_WorldRoot_item_active():
 func _on_WorldRoot_item_inactive():
 	cursor_active = false
 
+func _on_SpellList_spell_chosen():
+	spell_selected = true

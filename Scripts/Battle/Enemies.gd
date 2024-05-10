@@ -16,6 +16,9 @@ var ongoing = false
 var item_selecting = false
 var target_index : int
 var item_damage : int
+var magic_selecting = false
+var initial = false
+var damage_type : String
 
 var party_formation_1 = false
 var party_formation_2 = false
@@ -24,10 +27,13 @@ var party_formation_3 = false
 signal enemy_chosen
 signal item_chosen
 signal e_damage_finish
+signal e_magic_damage_finish
 signal victory
 signal attack_f_index_reset
 signal jinx_doll
 signal e_item_finished
+signal single_enemy_spell
+signal all_enemy_spell
 
 func _ready():
 	enemies = get_children()
@@ -94,6 +100,24 @@ func _process(delta):
 		target_index = enemy_index
 		item_selecting = false
 		
+	####### Magic Selecting #######
+	if Input.is_action_just_pressed("ui_select") and initial:
+		select_next_enemy(+1)
+	
+	if Input.is_action_just_pressed("ui_right") and magic_selecting:
+		select_next_enemy(+1)
+		
+	if Input.is_action_just_pressed("ui_left") and magic_selecting:
+		select_next_enemy(-1)
+	
+	if Input.is_action_just_pressed("ui_select") and magic_selecting:
+		emit_signal("single_enemy_spell")
+		hide_cursors()
+		target_index = enemy_index
+		magic_selecting = false
+	
+	
+		
 func hide_cursors():
 		enemies[enemy_index].unfocus()
 		
@@ -150,15 +174,62 @@ func enemy_damage():
 	if enemies.size() == 0:
 		emit_signal("victory")
 		
+func magic_damage():
+	BB_active = false
+	randomize()
+	var target_enemy = enemies[enemy_index]
+	var damage : int
+	var e_defense = target_enemy.get_e_defense()
+	var f_magic = Fighters.get_f_magic()
+	var f_magic_base = Fighters.get_f_magic_base()
+	var f_total = f_magic + f_magic_base
+	damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
+	target_enemy.magic_damage(damage, damage_type)
+	yield(get_tree().create_timer(1.5), "timeout")
+	emit_signal("e_magic_damage_finish")
+	target_enemy.unfocus()
+	if target_enemy.is_dead():
+		ongoing = true
+		target_enemy.death()
+		enemies.remove(enemy_index)
+		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
+		yield(get_tree().create_timer(1), "timeout")
+		ongoing = false
+	else:
+		target_enemy.reset_animation()
+	if enemies.size() == 0:
+		emit_signal("victory")
+		
+		
+func all_magic_damage():
+	BB_active = false
+	ongoing = true
+	randomize()
+	var f_magic = Fighters.get_f_magic()
+	var f_magic_base = Fighters.get_f_magic_base()
+	var f_total = f_magic + f_magic_base
+	for x in range(enemies.size()):
+		var e_defense = enemies[x].get_e_defense()
+		var damage : int
+		damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
+		enemies[x].magic_damage(damage, damage_type)
+	yield(get_tree().create_timer(1.5), "timeout")
+	for x in range(enemies.size()):
+		if enemies[x].is_dead():
+			enemies[x].death()
+			enemies[x].death_tagged = true
+	for x in range(enemies.size() -1, -1, -1):
+			var death_tagged = enemies[x].get_death_tag()
+			if death_tagged == true:
+				enemies.remove(x)
+	enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
+	yield(get_tree().create_timer(0.8), "timeout")
+	victory_check()
+	yield(get_tree().create_timer(0.4), "timeout")
+	emit_signal("e_magic_damage_finish")
+		
+		
 func victory_check():
-	#var target_enemy = enemies[enemy_index]
-	#if target_enemy.is_dead():
-		#target_enemy.death()
-		#enemies.remove(enemy_index)
-		#enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
-		#yield(get_tree().create_timer(1), "timeout")
-	#else:
-		#target_enemy.reset_animation()
 	if enemies.size() == 0:
 		emit_signal("victory")
 		
@@ -166,8 +237,6 @@ func item_damage():
 	BB_active = false
 	ongoing = true
 	var damage = item_damage
-	var death_count = 0
-	#var target_enemy = enemies[enemy_index]
 	for x in range(enemies.size()):
 		enemies[x].damage(damage)
 	yield(get_tree().create_timer(1.5), "timeout")
@@ -208,7 +277,16 @@ func battle_item_used():
 	item_damage()
 
 func _on_ItemInventory_all_battle_item_chosen():
-	hide_cursors()
+	show_cursors()
 	emit_signal("item_chosen")
 	
-	
+func _on_SpellList_single_enemy_spell():
+	enemy_index = -1
+	initial = true
+	yield(get_tree().create_timer(0.2), "timeout")
+	magic_selecting = true
+	initial = false
+
+func _on_SpellList_all_enemy_spell():
+	#show_cursors()
+	emit_signal("all_enemy_spell")

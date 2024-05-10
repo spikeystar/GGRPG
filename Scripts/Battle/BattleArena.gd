@@ -24,6 +24,7 @@ var f_turns : int = 0
 var fighters_enabled = true
 var enemies_enabled = false
 var ongoing = false
+var enemy_selecting = false
 
 onready var party_members : int
 onready var party_id : int
@@ -92,7 +93,7 @@ func _on_Fighters_BB_move():
 
 func _input(event):
 	var fighter_turn_used = $Fighters.get_turn_value()
-	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing:
+	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting:
 		BB_active = true
 		$BattleButtons.show()
 		$BattleButtons/AttackX.hide()
@@ -101,7 +102,7 @@ func _input(event):
 		$BattleButtons/AnimationPlayer.play("Initial")
 		emit_signal("BB_active")
 		
-	if (Input.is_action_just_pressed("ui_down")) and BB_active and not defend_show and not magic_show and not item_show:
+	if (Input.is_action_just_pressed("ui_down")) and BB_active and not defend_show and not magic_show and not item_show and not enemy_selecting:
 		defend_show = true
 		attack_show = false
 		magic_show = false
@@ -380,6 +381,7 @@ func _on_ItemInventory_item_chosen():
 	
 func _on_ItemInventory_battle_item_chosen():
 	ongoing = true
+	enemy_selecting = true
 	$Fighters.idle()
 	emit_signal("action_ongoing")
 	$ItemWindow.hide()
@@ -524,3 +526,111 @@ func _on_Enemies_e_item_finished():
 	$Fighters.ongoing = false
 	$Fighters.halt = false
 	
+	
+func _on_SpellList_spell_chosen():
+	enemy_selecting = true
+	$Fighters.idle()
+	attack_show = true
+	magic_show = false
+	defend_show = false
+	item_show = false
+	item_halt = false
+	$BattleButtons/DiamondB.show()
+	$BattleButtons/SpadeB.show()
+	$BattleButtons/CloverB.show()
+	$BattleButtons/StarB.show()
+	$EnemyInfo.show()
+	$WindowPlayer.play("enemyinfo_open")
+	$MagicWindow.hide()
+	$ItemWindow.hide()
+	$DefenseWindow.hide()
+	emit_signal("index_resetzero")
+	emit_signal("item_inactive")
+	if attack_show and not window_open:
+		window_open = true
+		
+
+func _on_SpellList_ally_spell_chosen():
+	fighter_selection = true
+	$Fighters.idle()
+	attack_show = false
+	magic_show = false
+	defend_show = false
+	item_show = false
+	item_halt = false
+	$BattleButtons/DiamondB.show()
+	$BattleButtons/SpadeB.show()
+	$BattleButtons/CloverB.show()
+	$BattleButtons/StarB.show()
+	$MagicWindow.hide()
+	$ItemWindow.hide()
+	$DefenseWindow.hide()
+	emit_signal("index_resetzero")
+	emit_signal("item_inactive")
+
+func _on_Enemies_single_enemy_spell():
+	ongoing = true
+	emit_signal("action_ongoing")
+	$EnemyInfo.hide()
+	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
+	var spell_id = $MagicWindow.get_spell_id()
+	print(spell_id)
+	yield(get_tree().create_timer(0.3), "timeout")
+	if spell_id == "Earthslide":
+		Earthslide()
+	yield(get_tree().create_timer(2), "timeout")
+	$Fighters.idle()
+	$Enemies.magic_damage()
+	emit_signal("f_turn_used")
+	emit_signal("magic_inactive")
+	
+func _on_Enemies_all_enemy_spell():
+	emit_signal("action_ongoing")
+	$EnemyInfo.hide()
+	var spell_id = $MagicWindow.get_spell_id()
+	print(spell_id)
+	yield(get_tree().create_timer(0.3), "timeout")
+	ongoing = true
+	if spell_id == "Thunderstorm":
+		Thunderstorm()
+	yield(get_tree().create_timer(2), "timeout")
+	$Fighters.idle()
+	$Enemies.all_magic_damage()
+	emit_signal("f_turn_used")
+	emit_signal("magic_inactive")
+	
+func _on_Enemies_e_magic_damage_finish():
+	var fighter_node = $Fighters.get_f_current()
+	var fighter_position = $Fighters.get_position()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	tween = create_tween()
+	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
+	yield(tween, "finished")
+	emit_signal("f_index_reset")
+	ongoing = false
+	$Fighters.ongoing = false
+	emit_signal("action_ended")
+	attack_ended = true
+	fighter_selection = false
+	attack_show = false
+	$Fighters.BB_active = false
+	$Fighters.magic_selecting = false
+	BB_active = false
+	enemy_selecting = false
+	
+	
+	##### Magic Spells ######
+	
+func Earthslide():
+	var fighter_node = $Fighters.get_f_current()
+	var fighter_position = $Fighters.get_position()
+	var enemy_position = $Enemies.get_e_position() + Vector2(-175, 40)
+	$Enemies.damage_type = "earth"
+	tween = create_tween()
+	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
+	yield(tween, "finished")
+	$Fighters.spell_2()
+	
+func Thunderstorm():
+	$Enemies.damage_type = "air"
+

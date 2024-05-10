@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Players/Gary/Gary Battle.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -597,6 +597,45 @@ tracks/10/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="Animation" id=25]
+resource_name = "Spell_2"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 16, 17, 17, 18, 19, 20, 20 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, 2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1.48148, -0.740741 ), Vector2( 0, -5.92593 ), Vector2( -11.1111, -8.14815 ), Vector2( -11.8519, -17.7778 ), Vector2( 2.96296, -8.14815 ), Vector2( 3.7037, -1.48148 ), Vector2( 3.7037, 0.740741 ) ]
+}
+
 [sub_resource type="Animation" id=7]
 length = 0.001
 tracks/0/type = "value"
@@ -1050,6 +1089,7 @@ anims/Fighter_Pre_Attack = SubResource( 14 )
 anims/Fighter_Turn = SubResource( 2 )
 anims/Fighter_Victory = SubResource( 15 )
 anims/RESET = SubResource( 3 )
+anims/Spell_2 = SubResource( 25 )
 
 [node name="DamagePlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.8
