@@ -45,6 +45,7 @@ signal anim_finish
 signal enemies_enabled
 signal BB_move
 signal item_chosen
+signal ally_spell_chosen
 
 func _ready():
 	fighters = get_children()
@@ -118,6 +119,24 @@ func _process(delta):
 		hide_cursors2(fighter_index)
 		target_index = fighter_index
 		item_selecting = false
+		
+		######### Magic Selection ##########
+		
+	if Input.is_action_just_pressed("ui_right") and magic_selecting and not attack_chosen and not item_selecting and not halt:
+		select_next_fighter2(+1)
+		emit_signal("fighters_active")
+		print(fighter_index)
+		
+	if Input.is_action_just_pressed("ui_left") and magic_selecting and not attack_chosen and not item_selecting and not halt:
+		select_next_fighter2(-1)
+		print(fighter_index)
+	
+	if Input.is_action_just_pressed("ui_select") and magic_selecting and not attack_chosen and not item_selecting and not halt:
+		emit_signal("ally_spell_chosen")
+		hide_cursors2(fighter_index)
+		target_index = fighter_index
+		magic_selecting = false
+		
 		
 func switch_focus(x, y):
 	fighters[x].focus()
@@ -300,6 +319,10 @@ func _on_ItemInventory_all_heal_item_chosen():
 func get_selector_position():
 	var f_position: Vector2 = fighters[selector_index].get_position()
 	return f_position
+	
+func get_target_position():
+	var f_position: Vector2 = fighters[target_index].get_position()
+	return f_position
 
 func item_used():
 	f_turn_used()
@@ -352,16 +375,21 @@ func battle_item_used():
 	BB_active = false
 	item_selecting = false
 	enemy_item = false
-	
-	#func _on_SpellList_spell_chosen():
-	#magic_selecting = true
 
 func _on_SpellList_single_ally_spell():
 	selector_index = fighter_index
+	fighters[fighter_index].idle()
 	yield(get_tree().create_timer(0.2), "timeout")
 	magic_selecting = true
+	hide_all_cursors()
+	fighter_index = -1
+	(select_next_fighter2(+1))
 	
-	
+func _on_SpellList_all_ally_spell():
+	selector_index = fighter_index
+	fighters[fighter_index].idle()
+	magic_selecting = false
+	emit_signal("ally_spell_chosen")
 	
 	##### Spell Animations #####
 	
@@ -370,3 +398,21 @@ func spell_1():
 	
 func spell_2():
 	fighters[fighter_index].spell_2()
+	
+	##### Ally Spells ######
+func Sweet_gift():
+	f_turn_used()
+	fighters2[target_index].heal(50)
+	yield(get_tree().create_timer(0.5), "timeout")
+	fighter_index = selector_index
+	_on_WorldRoot_f_index_reset()
+	BB_active = false
+	
+func Blossom():	
+	f_turn_used()
+	for x in range(fighters2.size()):
+		fighters2[x].heal(100)
+	yield(get_tree().create_timer(0.5), "timeout")
+	fighter_index = selector_index
+	_on_WorldRoot_f_index_reset()
+	BB_active = false

@@ -126,3 +126,6 @@ func _on_WorldRoot_item_inactive():
 
 func _on_SpellList_spell_chosen():
 	spell_selected = true
+
+func _on_SpellList_ally_spell_chosen():
+	spell_selected = true

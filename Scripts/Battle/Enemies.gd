@@ -288,5 +288,4 @@ func _on_SpellList_single_enemy_spell():
 	initial = false
 
 func _on_SpellList_all_enemy_spell():
-	#show_cursors()
 	emit_signal("all_enemy_spell")

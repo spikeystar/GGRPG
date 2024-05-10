@@ -22,8 +22,8 @@ func spell_check():
 		$SpellCost.text = "SP: 7"
 		$SpellTypeIcon.frame = 1
 	if spell_id == "Sweet Gift":
-		$SpellInfo.text = "Heals one party member and removes all ailments"
-		$SpellCost.text = "SP: 6"
+		$SpellInfo.text = "Heals and fully revives one party member, removes all ailments"
+		$SpellCost.text = "SP: 10"
 		$SpellTypeIcon.frame = 16
 	if spell_id == "Precious Beam":
 		$SpellInfo.text = "Singes one enemy with a ray of heavenly light\n\nDoes more damage for each enemy buff, inflicts magic debuff"

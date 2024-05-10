@@ -549,19 +549,22 @@ func _on_SpellList_spell_chosen():
 	if attack_show and not window_open:
 		window_open = true
 		
-
 func _on_SpellList_ally_spell_chosen():
+	emit_signal("action_ongoing")
+	ongoing = true
 	fighter_selection = true
 	$Fighters.idle()
 	attack_show = false
 	magic_show = false
 	defend_show = false
 	item_show = false
-	item_halt = false
+	item_halt = true
+	BB_active = false
 	$BattleButtons/DiamondB.show()
 	$BattleButtons/SpadeB.show()
 	$BattleButtons/CloverB.show()
 	$BattleButtons/StarB.show()
+	$BattleButtons.hide()
 	$MagicWindow.hide()
 	$ItemWindow.hide()
 	$DefenseWindow.hide()
@@ -599,6 +602,28 @@ func _on_Enemies_all_enemy_spell():
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
 	
+	
+func _on_Fighters_ally_spell_chosen():
+	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
+	var target_position = $Fighters.get_target_position() + Vector2(40, -40)
+	var spell_id = $MagicWindow.get_spell_id()
+	yield(get_tree().create_timer(0.3), "timeout")
+	if spell_id == "Sweet Gift":
+		$Fighters.Sweet_gift()
+	if spell_id == "Blossom":
+		$Fighters.Blossom()
+	yield(get_tree().create_timer(1.5), "timeout")
+	emit_signal("action_ended")
+	fighter_selection = false
+	attack_ended = true
+	ongoing = false
+	$Fighters.ongoing = false
+	$Fighters.BB_active = false
+	$Fighters.magic_selecting = false
+	item_halt = false
+	BB_active = false
+	
+	
 func _on_Enemies_e_magic_damage_finish():
 	var fighter_node = $Fighters.get_f_current()
 	var fighter_position = $Fighters.get_position()
@@ -633,4 +658,6 @@ func Earthslide():
 	
 func Thunderstorm():
 	$Enemies.damage_type = "air"
+	
+	
 

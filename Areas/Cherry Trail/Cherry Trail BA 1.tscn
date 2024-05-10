@@ -749,10 +749,10 @@ text = "SP: 30/30"
 script = ExtResource( 49 )
 
 [node name="SpellInfo" type="Label" parent="MagicWindow"]
-margin_left = 193.0
-margin_top = 122.0
-margin_right = 295.0
-margin_bottom = 224.0
+margin_left = 194.0
+margin_top = 121.0
+margin_right = 296.0
+margin_bottom = 223.0
 custom_fonts/font = ExtResource( 32 )
 text = "Strikes all with lightning bolts
 
@@ -1245,6 +1245,7 @@ script = ExtResource( 19 )
 [connection signal="single_enemy_spell" from="Enemies" to="." method="_on_Enemies_single_enemy_spell"]
 [connection signal="victory" from="Enemies" to="." method="_on_Enemies_victory"]
 [connection signal="BB_move" from="Fighters" to="." method="_on_Fighters_BB_move"]
+[connection signal="ally_spell_chosen" from="Fighters" to="." method="_on_Fighters_ally_spell_chosen"]
 [connection signal="anim_finish" from="Fighters" to="." method="_on_Fighters_anim_finish"]
 [connection signal="fighters_active" from="Fighters" to="." method="_on_Fighters_fighters_active"]
 [connection signal="item_chosen" from="Fighters" to="." method="_on_Fighters_item_chosen"]
@@ -1263,8 +1264,11 @@ script = ExtResource( 19 )
 [connection signal="heal_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_heal_item_chosen"]
 [connection signal="item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_item_chosen"]
 [connection signal="item_active" from="ItemWindow/ItemWindowPanel/MenuCursor" to="ItemWindow" method="_on_Menu_Cursor_item_active"]
+[connection signal="all_ally_spell" from="MagicWindow/MagicWindowPanel/SpellList" to="Fighters" method="_on_SpellList_all_ally_spell"]
 [connection signal="all_enemy_spell" from="MagicWindow/MagicWindowPanel/SpellList" to="Enemies" method="_on_SpellList_all_enemy_spell"]
 [connection signal="ally_spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="." method="_on_SpellList_ally_spell_chosen"]
+[connection signal="ally_spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="MagicWindow/MagicWindowPanel/SpellList" method="_on_SpellList_ally_spell_chosen"]
+[connection signal="ally_spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_SpellList_ally_spell_chosen"]
 [connection signal="go_to_Defend" from="MagicWindow/MagicWindowPanel/SpellList" to="." method="_on_SpellList_go_to_Defend"]
 [connection signal="single_ally_spell" from="MagicWindow/MagicWindowPanel/SpellList" to="Fighters" method="_on_SpellList_single_ally_spell"]
 [connection signal="single_enemy_spell" from="MagicWindow/MagicWindowPanel/SpellList" to="Enemies" method="_on_SpellList_single_enemy_spell"]
