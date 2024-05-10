@@ -43,14 +43,12 @@ func get_name():
 	var enemy_name = enemies[enemy_index].get_name()
 	return enemy_name
 	
-func get_status(var status_id: bool):
-	var poison = false
-	var stun = false
-	if status_id == poison:
-		poison = enemies[enemy_index].get_status(poison)
+func get_status(parameter: String):
+	var poison = enemies[enemy_index].get_status("poison")
+	var stun = enemies[enemy_index].get_status("stun")
+	if parameter == "poison":
 		return poison
-	if status_id == stun:
-		stun = enemies[enemy_index].get_status(stun)
+	if parameter == "stun":
 		return stun
 	
 func get_type():

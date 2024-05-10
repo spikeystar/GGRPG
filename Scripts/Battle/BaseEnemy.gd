@@ -12,8 +12,8 @@ export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
 var health : int
 var death_tagged = false
-var poison = true
-var stun = true
+var poison = false
+var stun = false
 
 var damage_type : String
 
@@ -31,10 +31,10 @@ func _ready():
 func get_name():
 	return ID
 	
-func get_status(var status_id: bool):
-	if status_id == poison:
+func get_status(parameter: String):
+	if parameter == "poison":
 		return poison
-	if status_id == stun:
+	if parameter == "stun":
 		return stun
 	
 func get_type():

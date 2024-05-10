@@ -702,6 +702,7 @@ hframes = 3
 vframes = 3
 
 [node name="MagicWindow" type="Node2D" parent="."]
+visible = false
 position = Vector2( -1, -2 )
 script = ExtResource( 31 )
 
@@ -802,7 +803,6 @@ custom_fonts/font = ExtResource( 28 )
 text = "Sublimate"
 
 [node name="EnemyInfo" type="Sprite" parent="."]
-visible = false
 position = Vector2( 165, 225 )
 texture = ExtResource( 11 )
 

@@ -215,7 +215,43 @@ func _input(event):
 		if item_show and not window_open:
 			window_open = true
 
-	#if (Input.is_action_just_pressed("ui_push")) and BB_active:
+
+##### RETURN BUTTON ########
+
+	if (Input.is_action_just_pressed("ui_push")) and BB_active and not ongoing:
+		$Fighters.idle()
+		$BattleButtons/CloverB.show()
+		$BattleButtons/SpadeB.show()
+		$BattleButtons/StarB.show()
+		$BattleButtons/DiamondB.show()
+		$BattleButtons.hide()
+		$ItemWindow.hide()
+		$EnemyInfo.hide()
+		$DefenseWindow.hide()
+		$MagicWindow.hide()
+		$Fighters.BB_active = false
+		$Enemies.BB_active = false
+		$Fighters.fighter_index = -1
+		$Fighters.select_next_fighter(+1)
+		BB_active = false
+		item_show = false
+		attack_show = false
+		defend_show = false
+		magic_show = false
+		window_open = false
+		attack_ended = true
+		enemy_selecting = false
+		ongoing = false
+		fighter_selection = false
+		emit_signal("index_resetzero")
+		emit_signal("hide_enemy_cursor")
+		emit_signal("item_inactive")
+		emit_signal("magic_inactive")
+		emit_signal("attack_inactive")
+		emit_signal("defend_inactive")
+		
+		
+##### RETURN BUTTON END ########
 	
 func _on_SpellList_go_to_Defend():
 	defend_show = true

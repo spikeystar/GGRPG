@@ -151,6 +151,9 @@ func show_cursors(x):
 func show_cursors2(x):
 	fighters2[x].focus()
 	
+func show_cursors_remote():
+	fighters[fighter_index].focus()
+	
 func hide_cursors2(x):
 	fighters2[x].unfocus()
 
