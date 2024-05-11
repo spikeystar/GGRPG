@@ -20,6 +20,11 @@ var able = true
 var turn_used = false
 var health : int
 
+onready var HUDS = get_tree().get_root().get_node("WorldRoot/HUDS")
+
+func _ready():
+	health = f_health
+
 func focus():
 	#if able:
 	$Cursor.show()
@@ -30,6 +35,12 @@ func unfocus():
 	
 func get_name():
 	return fighter_name
+	
+func get_health():
+	return health
+	
+func get_f_health():
+	return f_health
 	
 func get_id():
 	return party_id
@@ -92,6 +103,12 @@ func damage(amount: int, damage_type: String):
 	type_damage(damage_type)
 	$AnimationPlayer.playback_speed = 0.5
 	health = max(0, health - amount)
+	if fighter_name == "gary":
+		HUDS.gary_update()
+	if fighter_name == "jacques":
+		HUDS.jacques_update()
+	if fighter_name == "irina":
+		HUDS.irina_update()
 	yield(get_tree().create_timer(1.6), "timeout")
 	$AnimationPlayer.play("Fighter_BattleReady")
 

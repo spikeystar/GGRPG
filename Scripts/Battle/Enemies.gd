@@ -23,6 +23,8 @@ var damage_type : String
 var enemies_active = false
 var enemy_turns = 0
 var attack_over = false
+var move_index : int
+var move_name : String
 
 var party_formation_1 = false
 var party_formation_2 = false
@@ -298,8 +300,12 @@ func _on_Fighters_enemies_enabled():
 	
 	if enemies_active:
 		for x in range(enemies.size()):
-			#var move_name = pick_move()
-			var move_name = "Basic"
+			var move_list : Array = enemies[x].move_list
+			randomize()
+			var rng = RandomNumberGenerator.new()
+			rng.randomize()
+			move_index = rng.randi_range(0, move_list.size() - 1)
+			move_name = move_list[move_index]
 			enemy_turns += 1
 			enemies[x].attack()
 			yield(get_tree().create_timer(0.3), "timeout")
@@ -322,9 +328,6 @@ func enemies_active_check():
 		emit_signal("fighters_active")
 		enemy_turns = 0
 		
-		
-func pick_move():
-	pass
 	
 ###### Enemy Attacks #######
 func Basic():
@@ -338,9 +341,11 @@ func Basic():
 func Barrage():
 	Fighters.move_kind = "attack"
 	Fighters.move_type = "neutral"
-	Fighters.move_spread = "single"
+	Fighters.move_spread = "all"
 	Fighters.e_move_base = 10
 	#Fighters.status_afflcited()
-	for x in range(Fighters.fighters.size()):
+	for x in range(Fighters.fighters2.size()):
+		Fighters.fighter_x = x
 		Fighters.damage()
+		
 

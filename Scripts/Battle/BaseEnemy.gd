@@ -22,6 +22,8 @@ var damage_type : String
 export(String) var move1 = ""
 export(String) var move2 = ""
 export(String) var move3 = ""
+onready var move_list : Array = [move1, move2, move3]
+var check_name : String
 
 signal enemy_dead
 
@@ -29,9 +31,15 @@ func _ready():
 	reset_animation()
 	unfocus()
 	health = e_health
-	
+	for x in range(move_list.size() -1, -1, -1):
+		check_name = move_list[x]
+		if check_name == "":
+			move_list.remove(x)
+			x = clamp(x, 0, move_list.size() - 1)
+		
 func get_name():
 	return ID
+	
 	
 func get_status(parameter: String):
 	if parameter == "poison":

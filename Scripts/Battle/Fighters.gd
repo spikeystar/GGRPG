@@ -42,6 +42,7 @@ var e_move_base : int
 var move_type : String
 var move_spread : String
 var move_kind : String
+var fighter_x : int
 
 
 var party_formation_1 = false
@@ -179,6 +180,14 @@ func get_f_name():
 	var f_name = fighters[fighter_index].get_name()
 	return f_name
 	
+func get_health():
+	var health = fighters[fighter_index].get_health()
+	return health
+	
+func get_f_health():
+	var f_health = fighters[fighter_index].get_f_health()
+	return f_health
+	
 func get_party_id():
 	var party_id = fighters[fighter_index].get_id()
 	return party_id
@@ -238,7 +247,10 @@ func damage():
 	var damage : int
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	fighter_index = rng.randi_range(0, fighters.size() - 1)
+	if move_spread == "single":
+		fighter_index = rng.randi_range(0, fighters.size() - 1)
+	else:
+		fighter_index = fighter_x
 	var f_defense = fighters[fighter_index].get_f_defense()
 	if move_kind == "attack":
 		var total = e_attack + e_move_base

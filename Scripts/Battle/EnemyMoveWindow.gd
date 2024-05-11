@@ -6,8 +6,7 @@ var move_name : String
 signal move_window_done
 
 func get_move_name():
-	#move_name = Enemies.pick_move()
-	move_name = "Basic"
+	move_name = Enemies.move_name
 	return move_name
 
 func _on_Enemies_update_move_window():
