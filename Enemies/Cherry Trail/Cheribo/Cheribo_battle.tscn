@@ -120,8 +120,8 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -5 ), Vector2( 0, -12 ), Vector2( 0, -5 ), Vector2( 0, 0 ) ]
+"update": 1,
+"values": [ Vector2( 0, -7 ), Vector2( 0, -18 ), Vector2( 0, -5 ), Vector2( 0, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:position")
@@ -134,6 +134,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, -29 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CircleShadowSmall:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, -2 ), Vector2( 2, -2 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -174,6 +186,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 0.5, 1, 0.5, 1, 0.5 ),
 "update": 1,
 "values": [ Vector2( 2, -2 ), Vector2( 9.5, -6.5 ), Vector2( 12, -8 ), Vector2( 4.5, -3.5 ), Vector2( 2, -2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -5 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -239,6 +263,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -5 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "enemy_idle"
@@ -251,10 +287,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, -25 ) ]
+"values": [ Vector2( 2, -25 ), Vector2( 2, -25 ), Vector2( 2, -25 ), Vector2( 2, -25 ), Vector2( 2, -25 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:frame")
@@ -267,6 +303,30 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 2, 1, 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CircleShadowSmall:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, -2 ), Vector2( 2, -2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -5 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -587,13 +647,13 @@ scale = Vector2( 1.09549, 0.706501 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 2, -25 )
+position = Vector2( 1, -29 )
 scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 1 )
-offset = Vector2( 0, -5 )
+offset = Vector2( 0, -18 )
 hframes = 9
 vframes = 3
-frame = 1
+frame = 7
 
 [node name="DamageStar" type="Sprite" parent="."]
 visible = false

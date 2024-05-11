@@ -42,7 +42,9 @@ func turn():
 	
 func defend():
 	$AnimationPlayer.play("Fighter_Defend")
+	$AnimationPlayer.playback_speed = 1
 	able = false
+	f_defense = f_defense + (f_defense * 0.2)
 	
 func item_used():
 	able = false
@@ -77,6 +79,34 @@ func combo_heal(SP_amount : int):
 	var sp_text = text(TEXT_SP)
 	if sp_text:
 		sp_text.label.text = str(SP_amount)
+
+func damage(amount: int, damage_type: String):
+	var damage_text = text(TEXT_DAMAGE)
+	if damage_text:
+		damage_text.label.text = str(amount)
+	if amount <= 0:
+		return
+	$DamageStar.show()
+	$AnimationPlayer.play("Fighter_Damage")
+	$AnimationPlayer.playback_speed = 0.7
+	type_damage(damage_type)
+	$AnimationPlayer.playback_speed = 0.5
+	health = max(0, health - amount)
+	yield(get_tree().create_timer(1.6), "timeout")
+	$AnimationPlayer.play("Fighter_BattleReady")
+
+func type_damage(damage_type):
+	if damage_type == "neutral":
+		$DamagePlayer.play("neutral")
+	if damage_type == "fire":
+		$DamagePlayer.play("fire")
+	if damage_type == "water":
+		$DamagePlayer.play("water")
+	if damage_type == "air":
+		$DamagePlayer.play("air")
+	if damage_type == "earth":
+		$DamagePlayer.play("earth")
+
 
 func restore():
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -154,6 +184,7 @@ func turn_used():
 func turn_restored():
 	turn_used = false
 	able = true
+	f_defense = f_defense
 	
 func get_turn_value():
 	return turn_used

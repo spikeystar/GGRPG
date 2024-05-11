@@ -36,6 +36,14 @@ var all_restore = false
 var party_id : int
 var halt = false
 
+var e_attack : int
+var e_magic : int
+var e_move_base : int
+var move_type : String
+var move_spread : String
+var move_kind : String
+
+
 var party_formation_1 = false
 var party_formation_2 = false
 var party_formation_3 = false
@@ -46,6 +54,7 @@ signal enemies_enabled
 signal BB_move
 signal item_chosen
 signal ally_spell_chosen
+signal fighter_damage_over
 
 func _ready():
 	fighters = get_children()
@@ -223,6 +232,24 @@ func get_f_position():
 func get_f_index():
 	var f_index: int = fighter_index
 	return f_index
+	
+func damage():
+	randomize()
+	var damage : int
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	fighter_index = rng.randi_range(0, fighters.size() - 1)
+	var f_defense = fighters[fighter_index].get_f_defense()
+	if move_kind == "attack":
+		var total = e_attack + e_move_base
+		damage = max(0, ((total) + int(total * (rand_range(0.05, 0.15)))) - f_defense)
+	if move_kind == "magic":
+		var total = e_magic + e_move_base
+		damage = max(0, ((total) + int(total * (rand_range(0.05, 0.15)))) - f_defense)
+	fighters[fighter_index].damage(damage, move_type)
+	yield(get_tree().create_timer(1.7), "timeout")
+	emit_signal("fighter_damage_over")
+	
 		
 func fighter_attack():
 	fighters[fighter_index].attack()
@@ -245,14 +272,14 @@ func _on_WorldRoot_f_turn_used():
 	var array_size = fighters2.size()
 	fighters[fighter_index].turn_used()
 	max_turns += 1
-	if max_turns == array_size:
-		emit_signal ("enemies_enabled")
-		enemies_active = true
 
 func f_turn_used():
 	var array_size = fighters2.size()
 	fighters[selector_index].turn_used()
 	max_turns += 1
+	
+func fighters_active_check():
+	var array_size = fighters2.size()
 	if max_turns == array_size:
 		emit_signal ("enemies_enabled")
 		enemies_active = true
@@ -394,6 +421,14 @@ func _on_SpellList_all_ally_spell():
 	magic_selecting = false
 	emit_signal("ally_spell_chosen")
 	
+	
+func _on_Enemies_fighters_active():
+	for x in range (fighters2.size()):
+		fighters2[x].turn_restored()
+	max_turns = 0
+	enemies_active = false
+	fighter_index = -1
+	
 	##### Spell Animations #####
 	
 func spell_1():
@@ -419,3 +454,4 @@ func Blossom():
 	fighter_index = selector_index
 	_on_WorldRoot_f_index_reset()
 	BB_active = false
+

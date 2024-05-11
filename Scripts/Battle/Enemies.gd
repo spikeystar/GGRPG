@@ -3,6 +3,7 @@ extends Node2D
 onready var enemy_members : int
 onready var party_id : int
 onready var Fighters : Node2D
+onready var EnemyMove = get_tree().get_root().get_node("WorldRoot/EnemyMove")
 var enemies : Array = []
 var enemies2 : Array = []
 var enemy_index : int = -1
@@ -19,6 +20,9 @@ var item_damage : int
 var magic_selecting = false
 var initial = false
 var damage_type : String
+var enemies_active = false
+var enemy_turns = 0
+var attack_over = false
 
 var party_formation_1 = false
 var party_formation_2 = false
@@ -34,6 +38,8 @@ signal jinx_doll
 signal e_item_finished
 signal single_enemy_spell
 signal all_enemy_spell
+signal fighters_active
+signal update_move_window
 
 func _ready():
 	enemies = get_children()
@@ -54,6 +60,7 @@ func get_status(parameter: String):
 func get_type():
 	var type: String = enemies[enemy_index].get_type()
 	return type
+	
 	
 func _on_WorldRoot_BB_active():
 	BB_active = true
@@ -113,7 +120,6 @@ func _process(delta):
 		hide_cursors()
 		target_index = enemy_index
 		magic_selecting = false
-	
 	
 		
 func hide_cursors():
@@ -255,8 +261,6 @@ func item_damage():
 func jinx_doll():
 	pass
 
-func enemy_attack():
-	enemies[enemy_index].attack()
 	
 func _on_WorldRoot_action_ongoing():
 	ongoing = true
@@ -287,3 +291,56 @@ func _on_SpellList_single_enemy_spell():
 
 func _on_SpellList_all_enemy_spell():
 	emit_signal("all_enemy_spell")
+
+func _on_Fighters_enemies_enabled():
+	yield(get_tree().create_timer(0.5), "timeout")
+	enemies_active = true
+	
+	if enemies_active:
+		for x in range(enemies.size()):
+			#var move_name = pick_move()
+			var move_name = "Basic"
+			enemy_turns += 1
+			enemies[x].attack()
+			yield(get_tree().create_timer(0.3), "timeout")
+			emit_signal("update_move_window")
+			yield(EnemyMove, "move_window_done")
+			Fighters.e_attack = enemies[x].get_stats("e_attack")
+			Fighters.e_magic = enemies[x].get_stats("e_magic")
+			if move_name == "Basic":
+				Basic()
+			if move_name == "Barrage":
+				Barrage()
+			yield(Fighters, "fighter_damage_over")
+			enemies[x].reset_animation()
+			enemies_active_check()
+		
+func enemies_active_check():
+	if enemy_turns == (enemies.size()):
+		enemies_active = false
+		yield(get_tree().create_timer(0.2), "timeout")
+		emit_signal("fighters_active")
+		enemy_turns = 0
+		
+		
+func pick_move():
+	pass
+	
+###### Enemy Attacks #######
+func Basic():
+	Fighters.move_kind = "attack"
+	Fighters.move_type = "neutral"
+	Fighters.move_spread = "single"
+	Fighters.e_move_base = 1
+	Fighters.damage()
+
+
+func Barrage():
+	Fighters.move_kind = "attack"
+	Fighters.move_type = "neutral"
+	Fighters.move_spread = "single"
+	Fighters.e_move_base = 10
+	#Fighters.status_afflcited()
+	for x in range(Fighters.fighters.size()):
+		Fighters.damage()
+

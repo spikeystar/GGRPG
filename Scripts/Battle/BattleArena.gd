@@ -327,6 +327,7 @@ func _on_Defend_cursor_selected():
 		$BattleButtons.hide()
 		emit_signal("f_turn_used")
 		emit_signal("defend_chosen")
+		emit_signal("defend_inactive")
 		defend_show = false
 		item_halt = false
 		BB_active = false
@@ -334,6 +335,7 @@ func _on_Defend_cursor_selected():
 		attack_ended = true
 		yield(get_tree().create_timer(0.7), "timeout")
 		emit_signal("action_ended")
+		$Fighters.fighters_active_check()
 	#if f_turns == f_array_size:
 		#fighters_enabled = false
 		#enemies_enabled = true
@@ -347,6 +349,7 @@ func _on_Flee_cursor_selected():
 		defend_show = false
 		BB_active = false
 		emit_signal("flee_chosen")
+		emit_signal("defend_inactive")
 		$WindowPlayer.play("flee_dia_open")
 		$FadeRect/AnimationPlayer.play("Flee")
 		yield(get_tree().create_timer(2.3), "timeout")
@@ -387,6 +390,7 @@ func _on_Enemies_e_damage_finish():
 		#fighters_enabled = false
 		#enemies_enabled = true
 	emit_signal("f_index_reset")
+	$Fighters.fighters_active_check()
 
 func _on_WorldRoot_f_turn_used():
 	f_turns += 1
@@ -513,6 +517,7 @@ func _on_Fighters_item_chosen():
 	ongoing = false
 	Party.remove_item()
 	emit_signal("item_removed")
+	$Fighters.fighters_active_check()
 
 func _on_Enemies_item_chosen():
 	$EnemyInfo.hide()
@@ -554,6 +559,7 @@ func _on_Enemies_jinx_doll():
 	emit_signal("item_removed")
 	ongoing = false
 	$Fighters.ongoing = false
+	$Fighters.fighters_active_check()
 
 func _on_Enemies_e_item_finished():
 	Party.remove_item()
@@ -561,6 +567,7 @@ func _on_Enemies_e_item_finished():
 	ongoing = false
 	$Fighters.ongoing = false
 	$Fighters.halt = false
+	$Fighters.fighters_active_check()
 	
 	
 func _on_SpellList_spell_chosen():
@@ -622,6 +629,7 @@ func _on_Enemies_single_enemy_spell():
 	$Enemies.magic_damage()
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
+	$Fighters.fighters_active_check()
 	
 func _on_Enemies_all_enemy_spell():
 	emit_signal("action_ongoing")
@@ -637,6 +645,7 @@ func _on_Enemies_all_enemy_spell():
 	$Enemies.all_magic_damage()
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
+	$Fighters.fighters_active_check()
 	
 	
 func _on_Fighters_ally_spell_chosen():
@@ -658,6 +667,7 @@ func _on_Fighters_ally_spell_chosen():
 	$Fighters.magic_selecting = false
 	item_halt = false
 	BB_active = false
+	$Fighters.fighters_active_check()
 	
 	
 func _on_Enemies_e_magic_damage_finish():

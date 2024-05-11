@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var Enemies = get_tree().get_root().get_node("WorldRoot/Enemies")
+
 export(String) var ID = ""
 export(int) var e_health
 export(int) var e_attack 
@@ -40,8 +42,20 @@ func get_status(parameter: String):
 func get_type():
 	return initial_type
 	
+func get_stats(parameter: String):
+	if parameter == "e_attack":
+		return e_attack
+	if parameter == "e_magic":
+		return e_magic
+	if parameter == "e_defense":
+		return e_defense
+	
+func get_e_defense():
+	return e_defense
+	
 func reset_animation():	
 	$AnimationPlayer.play("enemy_idle")
+	$AnimationPlayer.playback_speed = 0.5
 
 func focus():
 	$Cursor.show()
@@ -52,6 +66,7 @@ func unfocus():
 	
 func attack():
 	$AnimationPlayer.play("enemy_attack")
+	$AnimationPlayer.playback_speed = 0.8
 	
 func damage(amount: int):
 	var damage_text = text(TEXT_DAMAGE)
@@ -83,8 +98,6 @@ func magic_damage(amount: int, damage_type: String):
 	yield(get_tree().create_timer(2), "timeout")
 	$AnimationPlayer.play("enemy_idle")
 	
-func get_e_defense():
-	return e_defense
 		
 func get_health():
 	return health

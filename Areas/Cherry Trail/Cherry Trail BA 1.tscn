@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/Cherry Trail BA 1.jpg" type="Texture" id=1]
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_battle.tscn" type="PackedScene" id=2]
@@ -49,6 +49,7 @@
 [ext_resource path="res://Scripts/Battle/EnemyStatus.gd" type="Script" id=47]
 [ext_resource path="res://Scripts/Battle/EnemyName.gd" type="Script" id=48]
 [ext_resource path="res://Scripts/Battle/PartySP.gd" type="Script" id=49]
+[ext_resource path="res://Scripts/Battle/EnemyMoveWindow.gd" type="Script" id=50]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -492,6 +493,7 @@ script = ExtResource( 29 )
 position = Vector2( 30, 63 )
 ID = "Cheribo"
 e_health = 50
+e_attack = 40
 e_defense = 10
 initial_type = "neutral"
 
@@ -499,12 +501,14 @@ initial_type = "neutral"
 position = Vector2( 190, 44 )
 ID = "Cheribo"
 e_health = 50
+e_attack = 40
 initial_type = "neutral"
 
 [node name="Cheribo_battle3" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 16, -23 )
 ID = "Cheribo"
 e_health = 55
+e_attack = 40
 initial_type = "neutral"
 
 [node name="Fighters" type="Node2D" parent="."]
@@ -531,7 +535,7 @@ f_health = 100
 f_attack = 55
 f_attack_base = 5
 f_magic = 40
-f_defense = 50
+f_defense = 20
 type = "neutral"
 TEXT_DAMAGE = ExtResource( 44 )
 TEXT_HEAL = ExtResource( 43 )
@@ -789,8 +793,9 @@ visible = false
 position = Vector2( -163, -233 )
 scale = Vector2( 0.976667, 1 )
 texture = ExtResource( 13 )
+script = ExtResource( 50 )
 
-[node name="EnemyMove2" type="Label" parent="EnemyMove"]
+[node name="Move_Name" type="Label" parent="EnemyMove"]
 margin_left = -118.259
 margin_top = -10.0
 margin_right = 87.7406
@@ -1238,15 +1243,19 @@ script = ExtResource( 19 )
 [connection signal="enemy_chosen" from="Enemies" to="Fighters" method="_on_Enemies_enemy_chosen"]
 [connection signal="enemy_chosen" from="Enemies" to="EnemyInfo/EnemyStatus" method="_on_Enemies_enemy_chosen"]
 [connection signal="enemy_chosen" from="Enemies" to="EnemyInfo/EnemyName" method="_on_Enemies_enemy_chosen"]
+[connection signal="fighters_active" from="Enemies" to="Fighters" method="_on_Enemies_fighters_active"]
 [connection signal="item_chosen" from="Enemies" to="." method="_on_Enemies_item_chosen"]
 [connection signal="jinx_doll" from="Enemies" to="." method="_on_Enemies_jinx_doll"]
 [connection signal="jinx_doll" from="Enemies" to="EnemyInfo/EnemyStatus" method="_on_Enemies_jinx_doll"]
 [connection signal="jinx_doll" from="Enemies" to="EnemyInfo/EnemyName" method="_on_Enemies_jinx_doll"]
 [connection signal="single_enemy_spell" from="Enemies" to="." method="_on_Enemies_single_enemy_spell"]
+[connection signal="update_move_window" from="Enemies" to="EnemyMove" method="_on_Enemies_update_move_window"]
 [connection signal="victory" from="Enemies" to="." method="_on_Enemies_victory"]
 [connection signal="BB_move" from="Fighters" to="." method="_on_Fighters_BB_move"]
 [connection signal="ally_spell_chosen" from="Fighters" to="." method="_on_Fighters_ally_spell_chosen"]
 [connection signal="anim_finish" from="Fighters" to="." method="_on_Fighters_anim_finish"]
+[connection signal="enemies_enabled" from="Fighters" to="Enemies" method="_on_Fighters_enemies_enabled"]
+[connection signal="fighter_damage_over" from="Fighters" to="Enemies" method="_on_Fighters_fighter_damage_over"]
 [connection signal="fighters_active" from="Fighters" to="." method="_on_Fighters_fighters_active"]
 [connection signal="item_chosen" from="Fighters" to="." method="_on_Fighters_item_chosen"]
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Defend" to="." method="_on_Defend_cursor_selected"]
@@ -1278,5 +1287,6 @@ script = ExtResource( 19 )
 [connection signal="spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_SpellList_spell_chosen"]
 [connection signal="go_to_Item" from="MagicWindow/MagicWindowPanel/Menu Cursor" to="." method="_on_Menu_Cursor_go_to_Item"]
 [connection signal="magic_active" from="MagicWindow/MagicWindowPanel/Menu Cursor" to="MagicWindow" method="_on_Menu_Cursor_magic_active"]
+[connection signal="move_window_done" from="EnemyMove" to="Enemies" method="_on_EnemyMove_move_window_done"]
 [connection signal="attack_bonus" from="AttackTimer" to="Enemies" method="_on_AttackTimer_attack_bonus"]
 [connection signal="timeout" from="AttackTimer/Timer" to="AttackTimer" method="_on_Timer_timeout"]
