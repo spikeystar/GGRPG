@@ -24,6 +24,8 @@ var enemy_item = false
 var magic_selecting = false
 var HP_amount : int
 var SP_amount : int
+var health : int
+var f_health : int
 
 var heal = false
 var SP = false
@@ -188,6 +190,12 @@ func get_f_health():
 	var f_health = fighters[fighter_index].get_f_health()
 	return f_health
 	
+func get_health_heal():
+		return health
+	
+func get_f_health_heal():
+		return f_health
+		
 func get_party_id():
 	var party_id = fighters[fighter_index].get_id()
 	return party_id
@@ -372,6 +380,9 @@ func item_used():
 	yield(get_tree().create_timer(0.5), "timeout")
 	if heal:
 		fighters2[target_index].heal(HP_amount)
+		health = fighters2[target_index].get_health()
+		f_health = fighters2[target_index].get_f_health()
+		fighters2[target_index].huds_update_heal()
 	if SP:
 		fighters[target_index].SP(SP_amount)
 	if combo_heal:
@@ -380,6 +391,9 @@ func item_used():
 	if all_heal:
 		for x in range(fighters2.size()):
 			fighters2[x].heal(HP_amount)
+			health = fighters2[x].get_health()
+			f_health = fighters2[x].get_f_health()
+			fighters2[x].huds_update_heal()
 	if restore:
 		fighters2[target_index].restore()
 	fighter_index = selector_index
@@ -453,17 +467,26 @@ func spell_2():
 func Sweet_gift():
 	f_turn_used()
 	fighters2[target_index].heal(50)
+	health = fighters2[target_index].get_health()
+	f_health = fighters2[target_index].get_f_health()
+	fighters2[target_index].huds_update_heal()
 	yield(get_tree().create_timer(0.5), "timeout")
 	fighter_index = selector_index
 	_on_WorldRoot_f_index_reset()
 	BB_active = false
 	
+	
 func Blossom():	
 	f_turn_used()
 	for x in range(fighters2.size()):
 		fighters2[x].heal(100)
+		health = fighters2[x].get_health()
+		f_health = fighters2[x].get_f_health()
+		fighters2[x].huds_update_heal()
 	yield(get_tree().create_timer(0.5), "timeout")
 	fighter_index = selector_index
 	_on_WorldRoot_f_index_reset()
 	BB_active = false
 
+	
+	

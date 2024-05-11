@@ -42,6 +42,22 @@ func get_health():
 func get_f_health():
 	return f_health
 	
+func huds_update():
+	if fighter_name == "gary":
+		HUDS.gary_update()
+	if fighter_name == "jacques":
+		HUDS.jacques_update()
+	if fighter_name == "irina":
+		HUDS.irina_update()
+		
+func huds_update_heal():
+	if fighter_name == "gary":
+		HUDS.gary_update_heal()
+	if fighter_name == "jacques":
+		HUDS.jacques_update_heal()
+	if fighter_name == "irina":
+		HUDS.irina_update_heal()
+	
 func get_id():
 	return party_id
 	
@@ -103,12 +119,7 @@ func damage(amount: int, damage_type: String):
 	type_damage(damage_type)
 	$AnimationPlayer.playback_speed = 0.5
 	health = max(0, health - amount)
-	if fighter_name == "gary":
-		HUDS.gary_update()
-	if fighter_name == "jacques":
-		HUDS.jacques_update()
-	if fighter_name == "irina":
-		HUDS.irina_update()
+	huds_update()
 	yield(get_tree().create_timer(1.6), "timeout")
 	$AnimationPlayer.play("Fighter_BattleReady")
 
