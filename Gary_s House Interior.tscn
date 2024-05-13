@@ -82,6 +82,7 @@ animations = [ {
 } ]
 
 [node name="WorldRoot" type="Node2D"]
+rotation = 0.00523599
 
 [node name="BlueBckgd" type="Sprite" parent="."]
 position = Vector2( 74, -118 )
@@ -132,7 +133,7 @@ visible = false
 position = Vector2( 19, -77 )
 z_index = 1
 frames = SubResource( 174 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="MatA" type="Sprite" parent="YSort"]
@@ -268,9 +269,12 @@ door_name = "InsideHouse"
 direction = Vector2( 1, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, 1 )
+position = Vector2( 6.0085, 0.947603 )
 offset = Vector2( 0, -20 )
 current = true
-zoom = Vector2( 0.5, 0.5 )
+zoom = Vector2( 0.655, 0.65 )
 script = ExtResource( 23 )
-minPos = Vector2( 0, -70 )
+minPos = Vector2( -30, -30 )
+
+[node name="CameraTester" type="Node2D" parent="."]
+position = Vector2( 7, 155 )

@@ -25,6 +25,7 @@ func _on_body_entered(body):
 		_on_touch_area()
 	
 func _on_touch_area():
+	PlayerManager.freeze = true
 	disconnect("body_entered", self, "_on_body_entered")
 	Global.door_name = exit_name
 	var transition = TransitionPlayer.instance()
