@@ -28,6 +28,8 @@ run/main_scene="res://Gary_s House.tscn"
 Global="*res://Scripts/Global.gd"
 PlayerManager="*res://Scripts/Players/PlayerManager.gd"
 Party="*res://Scripts/Players/Party.gd"
+Music="*res://Misc/Music.tscn"
+SE="*res://Misc/SE.tscn"
 
 [display]
 

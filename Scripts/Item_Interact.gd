@@ -21,6 +21,8 @@ func _on_body_entered(body):
 		
 		
 func item_get():
+	SE.id = "Item_Get"
+	SE.effect()
 	Party.add_item_name = item_name
 	Party.add_item()
 	emit_signal("item_get")
