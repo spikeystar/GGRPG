@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Cherry Trail.mp3-e9ca6115f808e26d4bf2e2d6e505faad.mp3str"
+
+[deps]
+
+source_file="res://Music/Cherry Trail.mp3"
+dest_files=[ "res://.import/Cherry Trail.mp3-e9ca6115f808e26d4bf2e2d6e505faad.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=67.44
