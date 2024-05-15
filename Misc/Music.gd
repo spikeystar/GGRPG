@@ -3,15 +3,20 @@ extends Node
 var id : String
 var active : AudioStreamPlayer
 var saved_time : float
+var is_playing = false
 
 func music():
 	if id == "Garys_House":
 		active = $Garys_House
-		$Garys_House.play()
+		active.play()
 	if id == "Cherry_Trail":
 		active = $Cherry_Trail
-		$Cherry_Trail.play(0)
-			
+		active.play(0)
+	is_playing = true
+	
+func switch_songs():
+	if is_playing:
+		active.stop()
 
 func pause():
 	saved_time = active.get_playback_position()
