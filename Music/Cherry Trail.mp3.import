@@ -12,4 +12,4 @@ dest_files=[ "res://.import/Cherry Trail.mp3-e9ca6115f808e26d4bf2e2d6e505faad.mp
 [params]
 
 loop=true
-loop_offset=67.44
+loop_offset=0

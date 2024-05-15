@@ -23,7 +23,7 @@ func item_window():
 	$Info_Window.show()
 	tween = create_tween()
 	tween.tween_property($Info_Window, "modulate:a", 1, 0.15)
-	yield(get_tree().create_timer(1.8), "timeout")
+	yield(get_tree().create_timer(1.7), "timeout")
 	$Info_Window.hide()
 	PlayerManager.freeze = false
 

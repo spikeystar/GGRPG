@@ -36,6 +36,8 @@ func _input(event):
 		PlayerManager.freeze = true
 		_on_touch_area()
 		gary_entered = false
+		yield(get_tree().create_timer(1.5), "timeout")
+		
 	
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root:
@@ -47,7 +49,6 @@ func _on_touch_area():
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.transition_in(target_scene, _get_animation_name())
-	
 
 func _get_animation_name():
 	var animation_name = "FadeToBlack" # default
