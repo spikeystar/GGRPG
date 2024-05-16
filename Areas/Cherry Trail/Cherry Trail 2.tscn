@@ -1,0 +1,985 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Pivot Town/Orange Brick A.png" type="Texture" id=3]
+[ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Gary's House/Exterior/ledge 3.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Cherry Trail/sprout.png" type="Texture" id=10]
+[ext_resource path="res://Assets/General/Tiles/grass depth 1.png" type="Texture" id=11]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/General/Backgrounds/blue bckgd.png" type="Texture" id=13]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Cherry Trail/hill a.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Cherry Trail/hill c.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Cherry Trail/flower hill d.png" type="Texture" id=17]
+[ext_resource path="res://Assets/General/box.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Cherry Trail/flower hill a.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Cherry Trail/flower hill b.png" type="Texture" id=20]
+[ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=21]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=22]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=23]
+[ext_resource path="res://Assets/Cherry Trail/plant c.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Cherry Trail/plant b.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Cherry Trail/plant a.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Cherry Trail/hill b.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Cherry Trail/bush a.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Cherry Trail/dirt d.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Cherry Trail/Clover Tile B.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=31]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass A.png" type="Texture" id=32]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=33]
+[ext_resource path="res://Assets/General/Tiles/grass depth 2.png" type="Texture" id=34]
+[ext_resource path="res://Assets/General/Shadows/rectangle shadow large.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Cherry Trail/dirt b.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Cherry Trail/bush b.png" type="Texture" id=37]
+[ext_resource path="res://Assets/Cherry Trail/flower hill c.png" type="Texture" id=38]
+
+[sub_resource type="StreamTexture" id=2]
+
+[sub_resource type="StreamTexture" id=3]
+
+[sub_resource type="TileSet" id=1]
+7/name = "Grass Tile.png 7"
+7/texture = ExtResource( 21 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 64, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+8/name = "Clover Tile A.png 8"
+8/texture = ExtResource( 31 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 0, 64, 32 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
+9/name = "Clover Tile B.png 9"
+9/texture = ExtResource( 30 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 0, 0, 64, 32 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape_one_way = false
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
+10/name = "White Flower Tile A.png 10"
+10/texture = SubResource( 2 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 0, 0, 64, 32 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape_one_way = false
+10/shape_one_way_margin = 0.0
+10/shapes = [  ]
+10/z_index = 0
+11/name = "White Flower Tile B.png 11"
+11/texture = SubResource( 3 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 0, 0, 64, 32 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
+12/name = "Tall Grass A.png 12"
+12/texture = ExtResource( 32 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 0, 0, 64, 32 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shape_offset = Vector2( 0, 0 )
+12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+12/shape_one_way = false
+12/shape_one_way_margin = 0.0
+12/shapes = [  ]
+12/z_index = 0
+13/name = "Tall Grass B.png 13"
+13/texture = ExtResource( 33 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 0, 0, 64, 32 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shape_offset = Vector2( 0, 0 )
+13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+13/shape_one_way = false
+13/shape_one_way_margin = 0.0
+13/shapes = [  ]
+13/z_index = 0
+14/name = "Orange Brick B.png 14"
+14/texture = ExtResource( 2 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 0, 0, 64, 32 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 0, 0 )
+14/navigation_offset = Vector2( 0, 0 )
+14/shape_offset = Vector2( 0, 0 )
+14/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+14/shape_one_way = false
+14/shape_one_way_margin = 0.0
+14/shapes = [  ]
+14/z_index = 0
+15/name = "Orange Brick A.png 15"
+15/texture = ExtResource( 3 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 0, 0, 64, 32 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 0, 0 )
+15/navigation_offset = Vector2( 0, 0 )
+15/shape_offset = Vector2( 0, 0 )
+15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+15/shape_one_way = false
+15/shape_one_way_margin = 0.0
+15/shapes = [  ]
+15/z_index = 0
+16/name = "Dandelion A.png 16"
+16/texture = ExtResource( 1 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 0, 0, 64, 32 )
+16/tile_mode = 0
+16/occluder_offset = Vector2( 0, 0 )
+16/navigation_offset = Vector2( 0, 0 )
+16/shape_offset = Vector2( 0, 0 )
+16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+16/shape_one_way = false
+16/shape_one_way_margin = 0.0
+16/shapes = [  ]
+16/z_index = 0
+17/name = "grass depth 1.png 17"
+17/texture = ExtResource( 11 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 0, 0, 64, 32 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shape_offset = Vector2( 0, 0 )
+17/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+17/shape_one_way = false
+17/shape_one_way_margin = 0.0
+17/shapes = [  ]
+17/z_index = 0
+18/name = "grass depth 2.png 18"
+18/texture = ExtResource( 34 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 0, 0, 64, 32 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shape_offset = Vector2( 0, 0 )
+18/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+18/shape_one_way = false
+18/shape_one_way_margin = 0.0
+18/shapes = [  ]
+18/z_index = 0
+
+[node name="WorldRoot" type="Node2D"]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Background" type="Node2D" parent="YSort"]
+z_index = -20
+
+[node name="BlueBckgd" type="Sprite" parent="YSort/Background"]
+position = Vector2( 389, -122 )
+scale = Vector2( 1.90449, 1.27863 )
+texture = ExtResource( 13 )
+
+[node name="PlantB4" type="Sprite" parent="YSort/Background"]
+position = Vector2( 450, -450 )
+scale = Vector2( 2.52977, 2.71162 )
+texture = ExtResource( 25 )
+
+[node name="PlantB5" type="Sprite" parent="YSort/Background"]
+position = Vector2( 80, -452 )
+scale = Vector2( 2.52977, 2.71162 )
+texture = ExtResource( 25 )
+
+[node name="FlowerHillB" type="Sprite" parent="YSort/Background"]
+position = Vector2( -309, -299 )
+scale = Vector2( 1.57436, 1.43353 )
+texture = ExtResource( 20 )
+
+[node name="FlowerHillB2" type="Sprite" parent="YSort/Background"]
+position = Vector2( 104, -402 )
+scale = Vector2( 1.57436, 1.43353 )
+texture = ExtResource( 20 )
+
+[node name="PlantC3" type="Sprite" parent="YSort/Background"]
+position = Vector2( -37, -347 )
+scale = Vector2( 1.72577, 1.97813 )
+texture = ExtResource( 24 )
+
+[node name="PlantA4" type="Sprite" parent="YSort/Background"]
+position = Vector2( -213, -322 )
+rotation = -0.0654874
+scale = Vector2( 1.54194, 1.57424 )
+texture = ExtResource( 26 )
+
+[node name="HillB2" type="Sprite" parent="YSort/Background"]
+position = Vector2( 101, -296 )
+rotation = -0.00992938
+scale = Vector2( 1.265, 1.18375 )
+texture = ExtResource( 27 )
+
+[node name="HillB3" type="Sprite" parent="YSort/Background"]
+position = Vector2( -132, -293 )
+scale = Vector2( 1.45121, 1.26775 )
+texture = ExtResource( 27 )
+
+[node name="HillB4" type="Sprite" parent="YSort/Background"]
+position = Vector2( 302, -447 )
+scale = Vector2( 1.66327, 1.53084 )
+texture = ExtResource( 27 )
+
+[node name="HillB5" type="Sprite" parent="YSort/Background"]
+position = Vector2( 801, -192 )
+scale = Vector2( 1.66327, 1.53084 )
+texture = ExtResource( 27 )
+
+[node name="FlowerHillD" type="Sprite" parent="YSort/Background"]
+position = Vector2( -20, -234 )
+rotation = -0.0280624
+scale = Vector2( 1.41725, 1.19547 )
+texture = ExtResource( 17 )
+
+[node name="PlantB3" type="Sprite" parent="YSort/Background"]
+position = Vector2( -174, -202 )
+rotation = 0.0779527
+scale = Vector2( 1.64562, 1.69566 )
+texture = ExtResource( 25 )
+
+[node name="HillB" type="Sprite" parent="YSort/Background"]
+position = Vector2( -310, -132 )
+scale = Vector2( 1.505, 1.41375 )
+texture = ExtResource( 27 )
+
+[node name="PlantB" type="Sprite" parent="YSort/Background"]
+position = Vector2( 311, -365 )
+rotation = 0.0779527
+scale = Vector2( 1.37, 1.38 )
+texture = ExtResource( 25 )
+
+[node name="FlowerHillA" type="Sprite" parent="YSort/Background"]
+position = Vector2( 473, -384 )
+scale = Vector2( 1.53159, 1.34272 )
+texture = ExtResource( 19 )
+
+[node name="PlantA2" type="Sprite" parent="YSort/Background"]
+visible = false
+position = Vector2( 50, -200 )
+rotation = -0.111647
+scale = Vector2( 1.64804, 1.74106 )
+texture = ExtResource( 26 )
+
+[node name="HillC2" type="Sprite" parent="YSort/Background"]
+position = Vector2( 580, -123 )
+scale = Vector2( 1.44475, 1.3055 )
+texture = ExtResource( 16 )
+
+[node name="PlantA3" type="Sprite" parent="YSort/Background"]
+position = Vector2( 89, -276 )
+rotation = -0.0187791
+scale = Vector2( 1.74657, 1.83519 )
+texture = ExtResource( 26 )
+
+[node name="PlantA5" type="Sprite" parent="YSort/Background"]
+position = Vector2( 542, -337 )
+rotation = -0.0187791
+scale = Vector2( 1.78149, 1.87728 )
+texture = ExtResource( 26 )
+
+[node name="FlowerHillD2" type="Sprite" parent="YSort/Background"]
+position = Vector2( 933, -294 )
+scale = Vector2( 1.90931, 1.90615 )
+texture = ExtResource( 17 )
+
+[node name="PlantC2" type="Sprite" parent="YSort/Background"]
+position = Vector2( 207, -304 )
+rotation = 0.0946257
+scale = Vector2( 1.67138, 1.82442 )
+texture = ExtResource( 24 )
+
+[node name="Floor" type="Node2D" parent="YSort"]
+z_index = -10
+
+[node name="Grass Map" type="TileMap" parent="YSort/Floor"]
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -1376265, 7, 0, -1376264, 7, 0, -1376263, 7, 0, -1376262, 7, 0, -1376261, 7, 0, -1376260, 7, 0, -1376259, 7, 0, -1376258, 7, 0, -1376257, 7, 0, -1441792, 7, 0, -1441791, 7, 0, -1441790, 7, 0, -1441789, 7, 0, -1441788, 7, 0, -1441787, 7, 0, -1441786, 7, 0, -1310729, 7, 0, -1310728, 7, 0, -1310727, 7, 0, -1310726, 7, 0, -1310725, 7, 0, -1310724, 7, 0, -1310723, 7, 0, -1310722, 7, 0, -1310721, 7, 0, -1376256, 7, 0, -1376255, 7, 0, -1376254, 7, 0, -1376253, 7, 0, -1376252, 7, 0, -1376251, 7, 0, -1376250, 7, 0, -1376249, 7, 0, -1245193, 7, 0, -1245192, 7, 0, -1245191, 7, 0, -1245190, 7, 0, -1245189, 7, 0, -1245188, 7, 0, -1245187, 7, 0, -1245186, 7, 0, -1245185, 7, 0, -1310720, 7, 0, -1310719, 7, 0, -1310718, 7, 0, -1310717, 7, 0, -1310716, 7, 0, -1310715, 7, 0, -1310714, 7, 0, -1310713, 7, 0, -1310712, 7, 0, -1179657, 7, 0, -1179656, 7, 0, -1179655, 7, 0, -1179654, 7, 0, -1179653, 7, 0, -1179652, 7, 0, -1179651, 7, 0, -1179650, 7, 0, -1179649, 7, 0, -1245184, 7, 0, -1245183, 7, 0, -1245182, 7, 0, -1245181, 7, 0, -1245180, 7, 0, -1245179, 7, 0, -1245178, 7, 0, -1245177, 7, 0, -1245176, 7, 0, -1114121, 7, 0, -1114120, 7, 0, -1114119, 7, 0, -1114118, 7, 0, -1114117, 7, 0, -1114116, 7, 0, -1114115, 7, 0, -1114114, 7, 0, -1114113, 7, 0, -1179648, 7, 0, -1179647, 7, 0, -1179646, 7, 0, -1179645, 7, 0, -1179644, 7, 0, -1179643, 7, 0, -1179642, 7, 0, -1179641, 7, 0, -1179640, 7, 0, -1048585, 7, 0, -1048584, 7, 0, -1048583, 7, 0, -1048582, 7, 0, -1048581, 7, 0, -1048580, 7, 0, -1048579, 7, 0, -1048578, 7, 0, -1048577, 7, 0, -1114112, 7, 0, -1114111, 7, 0, -1114110, 7, 0, -1114109, 7, 0, -1114108, 7, 0, -1114107, 7, 0, -1114106, 7, 0, -1114105, 7, 0, -1114104, 7, 0, -983049, 7, 0, -983048, 7, 0, -983047, 7, 0, -983046, 7, 0, -983045, 7, 0, -983044, 7, 0, -983043, 7, 0, -983042, 7, 0, -983041, 7, 0, -1048576, 7, 0, -1048575, 7, 0, -1048574, 7, 0, -1048573, 7, 0, -1048572, 7, 0, -1048571, 7, 0, -1048570, 7, 0, -1048569, 7, 0, -1048568, 7, 0, -917513, 7, 0, -917512, 7, 0, -917511, 7, 0, -917510, 7, 0, -917509, 7, 0, -917508, 7, 0, -917507, 7, 0, -917506, 7, 0, -917505, 7, 0, -983040, 7, 0, -983039, 7, 0, -983038, 7, 0, -983037, 7, 0, -983036, 7, 0, -983035, 7, 0, -983034, 7, 0, -983033, 7, 0, -983032, 7, 0, -851977, 7, 0, -851976, 7, 0, -851975, 7, 0, -851974, 7, 0, -851973, 7, 0, -851972, 7, 0, -851971, 7, 0, -851970, 7, 0, -851969, 7, 0, -917504, 7, 0, -917503, 7, 0, -917502, 7, 0, -917501, 7, 0, -917500, 7, 0, -917499, 7, 0, -917498, 7, 0, -917497, 7, 0, -917496, 7, 0, -786441, 7, 0, -786440, 7, 0, -786439, 7, 0, -786438, 7, 0, -786437, 7, 0, -786436, 7, 0, -786435, 7, 0, -786434, 7, 0, -786433, 7, 0, -851968, 7, 0, -851967, 7, 0, -851966, 7, 0, -851965, 7, 0, -851964, 7, 0, -851963, 7, 0, -851962, 7, 0, -851961, 7, 0, -851960, 7, 0, -720905, 7, 0, -720904, 7, 0, -720903, 7, 0, -720902, 7, 0, -720901, 7, 0, -720900, 7, 0, -720899, 7, 0, -720898, 7, 0, -720897, 7, 0, -786432, 7, 0, -786431, 7, 0, -786430, 7, 0, -786429, 7, 0, -786428, 7, 0, -786427, 7, 0, -786426, 7, 0, -786425, 7, 0, -786424, 7, 0, -655369, 7, 0, -655368, 7, 0, -655367, 7, 0, -655366, 7, 0, -655365, 7, 0, -655364, 7, 0, -655363, 7, 0, -655362, 7, 0, -655361, 7, 0, -720896, 7, 0, -720895, 7, 0, -720894, 7, 0, -720893, 7, 0, -720892, 7, 0, -720891, 7, 0, -720890, 7, 0, -720889, 7, 0, -720888, 7, 0, -589833, 7, 0, -589832, 7, 0, -589831, 7, 0, -589830, 7, 0, -589829, 7, 0, -589828, 7, 0, -589827, 7, 0, -589826, 7, 0, -589825, 7, 0, -655360, 7, 0, -655359, 7, 0, -655358, 7, 0, -655357, 7, 0, -655356, 7, 0, -655355, 7, 0, -655354, 7, 0, -655353, 7, 0, -655352, 7, 0, -524297, 7, 0, -524296, 7, 0, -524295, 7, 0, -524294, 7, 0, -524293, 7, 0, -524292, 7, 0, -524291, 7, 0, -524290, 7, 0, -524289, 7, 0, -589824, 7, 0, -589823, 7, 0, -589822, 7, 0, -589821, 7, 0, -589820, 7, 0, -589819, 7, 0, -589818, 7, 0, -589817, 7, 0, -589816, 7, 0, -458761, 7, 0, -458760, 7, 0, -458759, 7, 0, -458758, 7, 0, -458757, 7, 0, -458756, 7, 0, -458755, 7, 0, -458754, 7, 0, -458753, 7, 0, -524288, 7, 0, -524287, 7, 0, -524286, 7, 0, -524285, 7, 0, -524284, 7, 0, -524283, 7, 0, -524282, 7, 0, -524281, 7, 0, -524280, 7, 0, -393225, 7, 0, -393224, 7, 0, -393223, 7, 0, -393222, 7, 0, -393221, 7, 0, -393220, 7, 0, -393219, 7, 0, -393218, 7, 0, -393217, 7, 0, -458752, 7, 0, -458751, 7, 0, -458750, 7, 0, -458749, 7, 0, -458748, 7, 0, -458747, 7, 0, -458746, 7, 0, -458745, 7, 0, -458744, 7, 0, -327689, 7, 0, -327688, 7, 0, -327687, 7, 0, -327686, 7, 0, -327685, 7, 0, -327684, 7, 0, -327683, 7, 0, -327682, 7, 0, -327681, 7, 0, -393216, 7, 0, -393215, 7, 0, -393214, 7, 0, -393213, 7, 0, -393212, 7, 0, -393211, 7, 0, -393210, 7, 0, -393209, 7, 0, -393208, 7, 0, -262153, 7, 0, -262152, 7, 0, -262151, 7, 0, -262150, 7, 0, -262149, 7, 0, -262148, 7, 0, -262147, 7, 0, -262146, 7, 0, -262145, 7, 0, -327680, 7, 0, -327679, 7, 0, -327678, 7, 0, -327677, 7, 0, -327676, 7, 0, -327675, 7, 0, -327674, 7, 0, -327673, 7, 0, -327672, 7, 0, -196617, 7, 0, -196616, 7, 0, -196615, 7, 0, -196614, 7, 0, -196613, 7, 0, -196612, 7, 0, -196611, 7, 0, -196610, 7, 0, -196609, 7, 0, -262144, 7, 0, -262143, 7, 0, -262142, 7, 0, -262141, 7, 0, -262140, 7, 0, -262139, 7, 0, -262138, 7, 0, -262137, 7, 0, -262136, 7, 0, -131081, 7, 0, -131080, 7, 0, -131079, 7, 0, -131078, 7, 0, -131077, 7, 0, -131076, 7, 0, -131075, 7, 0, -131074, 7, 0, -131073, 7, 0, -196608, 7, 0, -196607, 7, 0, -196606, 7, 0, -196605, 7, 0, -196604, 7, 0, -196603, 7, 0, -196602, 7, 0, -196601, 7, 0, -196600, 7, 0, -65545, 7, 0, -65544, 7, 0, -65543, 7, 0, -65542, 7, 0, -65541, 7, 0, -65540, 7, 0, -65539, 7, 0, -65538, 7, 0, -65537, 7, 0, -131072, 7, 0, -131071, 7, 0, -131070, 7, 0, -131069, 7, 0, -131068, 7, 0, -131067, 7, 0, -131066, 7, 0, -131065, 7, 0, -131064, 7, 0, -9, 7, 0, -8, 7, 0, -7, 7, 0, -6, 7, 0, -5, 7, 0, -4, 7, 0, -3, 7, 0, -2, 7, 0, -1, 7, 0, -65536, 7, 0, -65535, 7, 0, -65534, 7, 0, -65533, 7, 0, -65532, 7, 0, -65531, 7, 0, -65530, 7, 0, -65529, 7, 0, 65528, 7, 0, 65529, 7, 0, 65530, 7, 0, 65531, 7, 0, 65532, 7, 0, 65533, 7, 0, 65534, 7, 0, 65535, 7, 0, 0, 7, 0, 1, 7, 0, 2, 7, 0, 131066, 7, 0, 131071, 7, 0, 65536, 7, 0, 65537, 7, 0, 196607, 7, 0, 131072, 7, 0, 131073, 7, 0, 262143, 7, 0, 196608, 7, 0, 196609, 7, 0, 327679, 7, 0, 262144, 7, 0, 262145, 7, 0, 393215, 7, 0, 327680, 7, 0, 327681, 7, 0, 458751, 7, 0, 393216, 7, 0, 393217, 7, 0 )
+
+[node name="Flower Map" type="TileMap" parent="YSort/Floor"]
+modulate = Color( 1, 1, 1, 0.784314 )
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+format = 1
+tile_data = PoolIntArray( -1376265, 12, 0, -1441791, 13, 0, -1441787, 12, 0, -1310725, 12, 0, -1310721, 13, 0, -1376250, 9, 0, -1310712, 12, 0, -1179656, 9, 0, -1179648, 8, 0, -1048581, 9, 0, -1114108, 9, 0, -1048575, 8, 0, -917513, 12, 0, -917502, 9, 0, -917496, 12, 0, -786434, 8, 0, -720905, 8, 0, -786426, 8, 0, -655369, 13, 0, -655365, 8, 0, -720893, 13, 0, -458756, 8, 0, -524280, 13, 0, -393225, 9, 0, -458746, 9, 0, -327689, 13, 0, -393214, 8, 0, -196613, 9, 0, -196610, 8, 0, -262144, 8, 0, -262137, 13, 0, -131080, 9, 0, -196601, 13, 0, -6, 12, 0, -65534, 8, 0, 131068, 10, 0, 131073, 13, 0 )
+
+[node name="RectangleShadowLarge" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 595, -271 )
+rotation = 0.00475742
+scale = Vector2( 1.18796, 1.13459 )
+texture = ExtResource( 35 )
+
+[node name="CircleShadowSmall4" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.254902 )
+position = Vector2( 481.24, -296.733 )
+rotation = 0.161373
+scale = Vector2( 1.17724, 0.896937 )
+texture = ExtResource( 22 )
+
+[node name="Bush3" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 0.976471, 0.945098, 1, 1 )
+position = Vector2( 491.24, -310.733 )
+rotation = -0.0341529
+scale = Vector2( 1, 0.9 )
+texture = ExtResource( 28 )
+
+[node name="CircleShadowSmall5" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.25098 )
+position = Vector2( 720, -227 )
+rotation = 0.161373
+scale = Vector2( 1.13263, 0.900418 )
+texture = ExtResource( 22 )
+
+[node name="BushA4" parent="YSort/Floor" instance=ExtResource( 12 )]
+position = Vector2( 721, -229 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.9, 0.77 )
+texture = ExtResource( 28 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 24.0
+preview_collision_box = false
+
+[node name="Ground4" type="TileMap" parent="YSort/Floor"]
+position = Vector2( 56, 6 )
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+format = 1
+tile_data = PoolIntArray( -1507334, 17, 0, -1507333, 17, 0, -1507332, 17, 0, -1507331, 17, 0, -1441798, 17, 0, -1441797, 17, 0, -1441796, 17, 0, -1441795, 17, 0, -1376262, 17, 0, -1376261, 17, 0, -1376260, 17, 0, -1376259, 17, 0, -1310726, 17, 0, -1310725, 17, 0, -1310724, 17, 0, -1310723, 17, 0, 131068, 10, 0 )
+
+[node name="Ground3" type="TileMap" parent="YSort/Floor"]
+position = Vector2( 56, -4 )
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+format = 1
+tile_data = PoolIntArray( -1507334, 17, 0, -1507333, 17, 0, -1507332, 17, 0, -1507331, 17, 0, -1441798, 17, 0, -1441797, 17, 0, -1441796, 17, 0, -1441795, 17, 0, -1376262, 17, 0, -1376261, 17, 0, -1376260, 17, 0, -1376259, 17, 0, -1310726, 17, 0, -1310725, 17, 0, -1310724, 17, 0, -1310723, 17, 0, 131068, 10, 0 )
+
+[node name="Ground2" type="TileMap" parent="YSort/Floor"]
+position = Vector2( 56, -15 )
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+format = 1
+tile_data = PoolIntArray( -1507334, 17, 0, -1507333, 17, 0, -1507332, 17, 0, -1507331, 17, 0, -1441798, 17, 0, -1441797, 17, 0, -1441796, 17, 0, -1441795, 17, 0, -1376262, 17, 0, -1376261, 17, 0, -1376260, 17, 0, -1376259, 17, 0, -1310726, 17, 0, -1310725, 17, 0, -1310724, 17, 0, -1310723, 17, 0, 131068, 10, 0 )
+
+[node name="Ground1" type="TileMap" parent="YSort/Floor"]
+position = Vector2( 56, -25 )
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+format = 1
+tile_data = PoolIntArray( -1507334, 17, 0, -1507333, 17, 0, -1507332, 17, 0, -1507331, 17, 0, -1441798, 17, 0, -1441797, 17, 0, -1441796, 17, 0, -1441795, 17, 0, -1376262, 17, 0, -1376261, 17, 0, -1376260, 17, 0, -1376259, 17, 0, -1310726, 17, 0, -1310725, 17, 0, -1310724, 17, 0, -1310723, 17, 0, 131068, 10, 0 )
+
+[node name="GrassTop" type="TileMap" parent="YSort/Floor"]
+position = Vector2( 57, -35 )
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+format = 1
+tile_data = PoolIntArray( -1507334, 7, 0, -1507333, 7, 0, -1507332, 7, 0, -1507331, 7, 0, -1441798, 7, 0, -1441797, 7, 0, -1441796, 7, 0, -1441795, 7, 0, -1376262, 7, 0, -1376261, 7, 0, -1376260, 7, 0, -1376259, 7, 0, -1310726, 7, 0, -1310725, 7, 0, -1310724, 7, 0, -1310723, 7, 0, 131068, 10, 0 )
+
+[node name="PlantB3" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 0.964706, 0.94902, 1, 1 )
+position = Vector2( 753, -327 )
+rotation = -0.0518837
+scale = Vector2( 1.45653, 1.48447 )
+texture = ExtResource( 25 )
+script = ExtResource( 23 )
+feet_height = 100.0
+height = 100.0
+
+[node name="DirtB" type="Sprite" parent="YSort/Floor"]
+position = Vector2( 163, -85 )
+rotation = 0.0925753
+scale = Vector2( 1.96527, 1.52506 )
+texture = ExtResource( 36 )
+
+[node name="DirtD" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 1, 0.980392, 0.988235, 1 )
+self_modulate = Color( 1, 1, 1, 0.968627 )
+position = Vector2( 435, -179 )
+rotation = 0.0800041
+scale = Vector2( 2.09881, 1.80248 )
+texture = ExtResource( 29 )
+
+[node name="MiddleGround" type="Node2D" parent="YSort"]
+
+[node name="SquareShadow" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 236, -276 )
+rotation = -0.00725972
+scale = Vector2( 0.779632, 0.724024 )
+texture = ExtResource( 14 )
+
+[node name="SquareShadow2" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 546, -18 )
+rotation = -0.00725972
+scale = Vector2( 0.779632, 0.724024 )
+texture = ExtResource( 14 )
+
+[node name="SquareShadow3" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 595, -35 )
+rotation = -0.00725972
+scale = Vector2( 0.779632, 0.724024 )
+texture = ExtResource( 14 )
+
+[node name="SquareShadow4" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 865, -147 )
+rotation = -0.00725972
+scale = Vector2( 0.779632, 0.724024 )
+texture = ExtResource( 14 )
+
+[node name="Box" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
+position = Vector2( 237, -279 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 18 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 28.0
+
+[node name="Box2" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
+position = Vector2( 869, -149 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 18 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 28.0
+
+[node name="Box3" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
+position = Vector2( 551, -20 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 18 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 28.0
+
+[node name="Box4" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
+position = Vector2( 598, -38 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 18 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 28.0
+
+[node name="HillA2" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 40, 128 )
+rotation = 0.0101436
+scale = Vector2( 2.38885, 2.0096 )
+texture = ExtResource( 15 )
+script = ExtResource( 23 )
+
+[node name="PlantC" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( -260, -92 )
+rotation = 0.206845
+scale = Vector2( 1.68581, 1.78387 )
+texture = ExtResource( 24 )
+script = ExtResource( 23 )
+depth_test_offset = Vector2( 0, 96 )
+
+[node name="CircleShadowSmall2" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 127, 31 )
+rotation = 0.161373
+scale = Vector2( 1.13263, 0.900418 )
+texture = ExtResource( 22 )
+
+[node name="CircleShadowSmall3" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.254902 )
+position = Vector2( 33, -201 )
+rotation = -0.0991675
+scale = Vector2( 1.13263, 0.900418 )
+texture = ExtResource( 22 )
+
+[node name="CircleShadowSmall4" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.254902 )
+position = Vector2( 197, -263 )
+rotation = -0.0991675
+scale = Vector2( 1.13263, 0.900418 )
+texture = ExtResource( 22 )
+
+[node name="BushA" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
+position = Vector2( 133, 31 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.9, 0.77 )
+texture = ExtResource( 28 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 24.0
+
+[node name="BushA2" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
+modulate = Color( 0.992157, 0.992157, 1, 1 )
+position = Vector2( 33, -203 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.9, 0.77 )
+texture = ExtResource( 37 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 24.0
+preview_collision_box = false
+
+[node name="BushA3" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
+position = Vector2( 197, -264 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.9, 0.77 )
+texture = ExtResource( 37 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 24.0
+preview_collision_box = false
+
+[node name="Ledge4" type="Sprite" parent="YSort/MiddleGround"]
+visible = false
+modulate = Color( 0.981667, 0.98, 1, 1 )
+position = Vector2( 245.998, 7.07438 )
+rotation = -0.00251221
+scale = Vector2( 1.34653, 1.02925 )
+texture = ExtResource( 8 )
+
+[node name="ShadowCircle" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.282353 )
+position = Vector2( -48, -105 )
+rotation = 0.217532
+scale = Vector2( 2.8509, 2.08619 )
+texture = ExtResource( 22 )
+
+[node name="ShadowCircle2" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.282353 )
+position = Vector2( 341, 0.999999 )
+rotation = 0.200125
+scale = Vector2( 2.78272, 1.8764 )
+texture = ExtResource( 22 )
+
+[node name="ShadowCircle3" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.282353 )
+position = Vector2( 192, -164 )
+rotation = 0.217532
+scale = Vector2( 2.83447, 1.99353 )
+texture = ExtResource( 22 )
+
+[node name="ShadowCircle4" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.282353 )
+position = Vector2( 653, -114 )
+rotation = 0.201879
+scale = Vector2( 2.8509, 2.08619 )
+texture = ExtResource( 22 )
+
+[node name="ShadowCircle5" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.282353 )
+position = Vector2( 335, -270 )
+rotation = 0.190841
+scale = Vector2( 2.8509, 2.08619 )
+texture = ExtResource( 22 )
+
+[node name="Sprout" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
+modulate = Color( 1, 1, 0.988235, 1 )
+position = Vector2( -17, -120 )
+rotation = 0.00870104
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 90, 36 )
+grid_size = Vector2( 2.2, 1.1 )
+texture = ExtResource( 10 )
+texture_scale = Vector2( 1.4, 1.4 )
+texture_offset = Vector2( 0, 91 )
+height = 45.0
+
+[node name="Sprout2" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
+modulate = Color( 1, 1, 0.933333, 1 )
+position = Vector2( 373, -14 )
+rotation = 0.00870104
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 90, 36 )
+grid_size = Vector2( 2.2, 1.1 )
+texture = ExtResource( 10 )
+texture_scale = Vector2( 1.4, 1.4 )
+texture_offset = Vector2( 0, 91 )
+height = 45.0
+preview_collision_box = false
+
+[node name="Sprout3" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
+modulate = Color( 0.952941, 0.976471, 1, 1 )
+position = Vector2( 223, -179 )
+rotation = 0.00870104
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 90, 36 )
+grid_size = Vector2( 2.2, 1.1 )
+texture = ExtResource( 10 )
+texture_scale = Vector2( 1.4, 1.4 )
+texture_offset = Vector2( 0, 91 )
+height = 45.0
+preview_collision_box = false
+
+[node name="Sprout4" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
+modulate = Color( 0.933333, 0.968627, 1, 1 )
+position = Vector2( 685, -127 )
+rotation = 0.00870104
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 90, 36 )
+grid_size = Vector2( 2.2, 1.1 )
+texture = ExtResource( 10 )
+texture_scale = Vector2( 1.4, 1.4 )
+texture_offset = Vector2( 0, 91 )
+height = 45.0
+preview_collision_box = false
+
+[node name="Sprout5" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
+modulate = Color( 0.752941, 0.952941, 1, 1 )
+position = Vector2( 366, -282 )
+rotation = 0.00870104
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 90, 36 )
+grid_size = Vector2( 2.2, 1.1 )
+texture = ExtResource( 10 )
+texture_scale = Vector2( 1.4, 1.4 )
+texture_offset = Vector2( 0, 91 )
+height = 45.0
+preview_collision_box = false
+
+[node name="HillA8" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( -42, 219 )
+rotation = 0.0101436
+scale = Vector2( 3.18914, 3.0471 )
+texture = ExtResource( 15 )
+
+[node name="PlantC2" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 43, 165 )
+scale = Vector2( 1.80729, 1.805 )
+texture = ExtResource( 24 )
+script = ExtResource( 23 )
+
+[node name="PlantC3" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 938, -203 )
+rotation = 0.0820624
+scale = Vector2( 1.92603, 1.97304 )
+texture = ExtResource( 24 )
+script = ExtResource( 23 )
+feet_height = 100.0
+height = 110.0
+
+[node name="HillA" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 558, 113 )
+rotation = 0.0101436
+scale = Vector2( 2.48616, 2.21026 )
+texture = ExtResource( 15 )
+script = ExtResource( 23 )
+
+[node name="HillA5" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 691, 282 )
+rotation = 0.0101436
+scale = Vector2( 2.48616, 2.21026 )
+texture = ExtResource( 15 )
+script = ExtResource( 23 )
+
+[node name="HillA7" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 304, 306 )
+rotation = 0.0101436
+scale = Vector2( 2.48616, 2.21026 )
+texture = ExtResource( 15 )
+script = ExtResource( 23 )
+
+[node name="HillB6" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( -357, 136 )
+scale = Vector2( 1.8679, 1.81632 )
+texture = ExtResource( 27 )
+script = ExtResource( 23 )
+
+[node name="HillB" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 427, 150 )
+rotation = 0.0101436
+scale = Vector2( 1.84826, 1.76526 )
+texture = ExtResource( 27 )
+script = ExtResource( 23 )
+
+[node name="HillB2" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 1007, -78 )
+rotation = 0.0101436
+scale = Vector2( 1.84826, 1.76526 )
+texture = ExtResource( 27 )
+script = ExtResource( 23 )
+height = 115.0
+
+[node name="FlowerHillA2" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 800, 10 )
+scale = Vector2( 1.80729, 1.805 )
+texture = ExtResource( 19 )
+script = ExtResource( 23 )
+
+[node name="HillA4" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 755, 77 )
+rotation = 0.0101436
+scale = Vector2( 2.48616, 2.21026 )
+texture = ExtResource( 15 )
+
+[node name="PlantC4" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 656, 87 )
+scale = Vector2( 1.80729, 1.805 )
+texture = ExtResource( 24 )
+script = ExtResource( 23 )
+
+[node name="HillA3" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 963, 62 )
+rotation = 0.0101436
+scale = Vector2( 2.48616, 2.21026 )
+texture = ExtResource( 15 )
+
+[node name="PlantA2" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 996, -16 )
+rotation = 0.0101436
+scale = Vector2( 2.61079, 2.51609 )
+z_index = 1
+texture = ExtResource( 26 )
+
+[node name="HillA6" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 906, 195 )
+rotation = 0.0101436
+scale = Vector2( 2.48616, 2.21026 )
+texture = ExtResource( 15 )
+script = ExtResource( 23 )
+
+[node name="PlantB" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 790, 216 )
+scale = Vector2( 2.5719, 2.6648 )
+texture = ExtResource( 25 )
+script = ExtResource( 23 )
+
+[node name="PlantB3" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 1146, -224 )
+scale = Vector2( 2.5719, 2.6648 )
+texture = ExtResource( 25 )
+script = ExtResource( 23 )
+
+[node name="PlantB2" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 516, 302 )
+scale = Vector2( 2.26579, 2.51336 )
+texture = ExtResource( 25 )
+script = ExtResource( 23 )
+
+[node name="Foreground" type="Node2D" parent="YSort"]
+visible = false
+z_index = 20
+
+[node name="PlantB2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( -14, 103.25 )
+scale = Vector2( 1.37, 1.38 )
+texture = ExtResource( 25 )
+
+[node name="HillC3" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 481, 60.2496 )
+scale = Vector2( 1.43737, 1.28775 )
+texture = ExtResource( 16 )
+
+[node name="FlowerHillB" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 90, 129.25 )
+scale = Vector2( 1.09667, 1.07333 )
+texture = ExtResource( 20 )
+
+[node name="HillC" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 366, 123 )
+scale = Vector2( 1.49738, 1.38275 )
+texture = ExtResource( 16 )
+
+[node name="PlantA" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 239, 126.25 )
+scale = Vector2( 1.655, 1.65375 )
+texture = ExtResource( 26 )
+
+[node name="PlantB4" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 524, -133 )
+rotation = 0.0779527
+scale = Vector2( 1.37, 1.38 )
+texture = ExtResource( 25 )
+
+[node name="PlantB5" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 439, 64.2496 )
+rotation = 0.0779527
+scale = Vector2( 1.37, 1.38 )
+texture = ExtResource( 25 )
+
+[node name="HillA" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 197, 161.25 )
+scale = Vector2( 1.53, 1.425 )
+texture = ExtResource( 15 )
+
+[node name="FlowerHillC" type="Sprite" parent="YSort"]
+position = Vector2( 207, 113 )
+rotation = 0.0143586
+scale = Vector2( 1.99143, 1.75307 )
+texture = ExtResource( 38 )
+script = ExtResource( 23 )
+
+[node name="PlantA" type="Sprite" parent="YSort"]
+position = Vector2( 335, 171 )
+rotation = 0.0101436
+scale = Vector2( 2.61079, 2.51609 )
+texture = ExtResource( 26 )
+script = ExtResource( 23 )
+
+[node name="PlantB3" type="Sprite" parent="YSort"]
+position = Vector2( 154, 283 )
+scale = Vector2( 2.26579, 2.51336 )
+texture = ExtResource( 25 )
+script = ExtResource( 23 )
+
+[node name="PlantB4" type="Sprite" parent="YSort"]
+position = Vector2( -229, 262 )
+rotation = -0.0110932
+scale = Vector2( 2.26579, 2.51336 )
+texture = ExtResource( 25 )
+script = ExtResource( 23 )
+
+[node name="Collide Ledge" parent="YSort" instance=ExtResource( 12 )]
+visible = false
+position = Vector2( -100, -83 )
+sort_enabled = false
+tile_size = Vector2( 78, 22 )
+grid_size = Vector2( 4, 4 )
+texture = ExtResource( 8 )
+texture_scale = Vector2( 1.3, 1 )
+height = 32.0
+preview_collision_box = false
+use_collision = false
+
+[node name="CollisionRoot" type="Node2D" parent="."]
+
+[node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 4 )]
+visible = false
+
+[node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 6 )]
+polygon = PoolVector2Array( -249, 60, -67, -4, -109, -18, -296, -98, 67, -228, 183, -269, 403, -347, 515, -309, 490, -305, 493, -287, 546, -300, 682, -248, 901, -171, 873, -159, 901, -148, 873, -136, 900, -126, 308, 87, 279, 75, 247, 87, 95, 31, 62, 42, 32, 31, -62, 63, -156, 97 )
+
+[node name="NavmeshLayer6" parent="CollisionRoot/Navmesh2" instance=ExtResource( 6 )]
+position = Vector2( 799, -491 )
+scale = Vector2( 0.986287, 1 )
+polygon = PoolVector2Array( -320.393, 169, -186.558, 123, -55.7646, 170, -185.544, 219 )
+height = 45.0
+
+[node name="NavmeshLayer7" parent="CollisionRoot/Navmesh2" instance=ExtResource( 6 )]
+position = Vector2( 731, -502 )
+scale = Vector2( 0.986287, 1 )
+polygon = PoolVector2Array( -271.726, 174, -260.573, 167, -235.226, 171, -223.059, 178, -239.281, 186, -267.671, 183 )
+height = 12.0
+
+[node name="DoorwayToCherryTrail1" parent="CollisionRoot" instance=ExtResource( 5 )]
+position = Vector2( -231, 90 )
+target_scene = "res://Areas/Cherry Trail/Cherry Trail 1.tscn"
+exit_name = "CherryTrail1_2"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToCherryTrail1"]
+position = Vector2( 26, -8 )
+polygon = PoolVector2Array( -39, -23, 37.3564, 4.91525, 54, 11, 67, 7, -26, -28 )
+
+[node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 7 )]
+position = Vector2( -123, 47 )
+door_name = "CherryTrail1_2"
+direction = Vector2( 1, 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -14, -104 )
+offset = Vector2( 0, -20 )
+current = true
+script = ExtResource( 9 )
+minPos = Vector2( -45, -250 )
+maxPos = Vector2( 640, -15 )
+follow_player = true
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 344, 165 )

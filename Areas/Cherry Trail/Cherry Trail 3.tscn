@@ -472,4 +472,5 @@ door_name = "CherryTrail1To4"
 position = Vector2( -14, -104 )
 current = true
 script = ExtResource( 17 )
+minPos = Vector2( -45, -250 )
 follow_player = true
