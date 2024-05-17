@@ -500,9 +500,6 @@ scale_amount = 0.65
 scale_amount_random = 0.2
 color_ramp = SubResource( 1 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = 0.3
-
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 3 )]

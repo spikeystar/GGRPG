@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Cherry Trail/dirt c.png" type="Texture" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://Assets/Cherry Trail/hill c.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile B.png" type="Texture" id=20]
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=21]
+[ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=22]
+[ext_resource path="res://Scripts/Area_Specific/Cherry Trail.gd" type="Script" id=23]
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=24]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass A.png" type="Texture" id=25]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=26]
@@ -183,6 +185,7 @@ _data = {
 }
 
 [node name="WorldRoot" type="Node2D"]
+script = ExtResource( 23 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -212,13 +215,13 @@ scale = Vector2( 1.37, 1.38 )
 texture = ExtResource( 4 )
 
 [node name="HillB" type="Sprite" parent="YSort/Background"]
-position = Vector2( -217, -134 )
-scale = Vector2( 1.505, 1.41375 )
+position = Vector2( -228, -145 )
+scale = Vector2( 1.57194, 1.50448 )
 texture = ExtResource( 14 )
 
 [node name="FlowerHillA" type="Sprite" parent="YSort/Background"]
 position = Vector2( 522, -212 )
-scale = Vector2( 1.16583, 1.08854 )
+scale = Vector2( 1.3211, 1.19628 )
 texture = ExtResource( 12 )
 
 [node name="HillB2" type="Sprite" parent="YSort/Background"]
@@ -243,9 +246,9 @@ scale = Vector2( 1.44475, 1.3055 )
 texture = ExtResource( 19 )
 
 [node name="PlantA3" type="Sprite" parent="YSort/Background"]
-position = Vector2( 410, -246 )
-rotation = -0.0654874
-scale = Vector2( 1.37, 1.38 )
+position = Vector2( 405, -265 )
+rotation = 0.0674849
+scale = Vector2( 1.42753, 1.41628 )
 texture = ExtResource( 10 )
 
 [node name="PlantC2" type="Sprite" parent="YSort/Background"]
@@ -265,7 +268,7 @@ format = 1
 tile_data = PoolIntArray( -917509, 7, 0, -917508, 7, 0, -917507, 7, 0, -917506, 7, 0, -917505, 7, 0, -983040, 7, 0, -851973, 7, 0, -851972, 7, 0, -851971, 7, 0, -851970, 7, 0, -851969, 7, 0, -917504, 7, 0, -917503, 7, 0, -786434, 7, 0, -786433, 7, 0, -851968, 7, 0, -851967, 7, 0, -851966, 7, 0, -720897, 7, 0, -786432, 7, 0, -786431, 7, 0, -786430, 7, 0, -655361, 7, 0, -720896, 7, 0, -720895, 7, 0, -720894, 7, 0, -589825, 7, 0, -655360, 7, 0, -655359, 7, 0, -655358, 7, 0, -524289, 7, 0, -589824, 7, 0, -589823, 7, 0, -589822, 7, 0, -458757, 7, 0, -458756, 7, 0, -458755, 7, 0, -458754, 7, 0, -458753, 7, 0, -524288, 7, 0, -524287, 7, 0, -524286, 7, 0, -524285, 7, 0, -524284, 7, 0, -524283, 7, 0, -393223, 7, 0, -393222, 7, 0, -393221, 7, 0, -393220, 7, 0, -393219, 7, 0, -393218, 7, 0, -393217, 7, 0, -458752, 7, 0, -458751, 7, 0, -458750, 7, 0, -458749, 7, 0, -458748, 7, 0, -458747, 7, 0, -458746, 7, 0, -327687, 7, 0, -327686, 7, 0, -327685, 7, 0, -327684, 7, 0, -327683, 7, 0, -327682, 7, 0, -327681, 7, 0, -393216, 7, 0, -393215, 7, 0, -393214, 7, 0, -393213, 7, 0, -393212, 7, 0, -393211, 7, 0, -393210, 7, 0, -393209, 7, 0, -262151, 7, 0, -262150, 7, 0, -262149, 7, 0, -262148, 7, 0, -262147, 7, 0, -262146, 7, 0, -262145, 7, 0, -327680, 7, 0, -327679, 7, 0, -327678, 7, 0, -327677, 7, 0, -327676, 7, 0, -327675, 7, 0, -327674, 7, 0, -327673, 7, 0, -327672, 7, 0, -196615, 7, 0, -196614, 7, 0, -196613, 7, 0, -196612, 7, 0, -196611, 7, 0, -196610, 7, 0, -196609, 7, 0, -262144, 7, 0, -262143, 7, 0, -262142, 7, 0, -262141, 7, 0, -262140, 7, 0, -262139, 7, 0, -262138, 7, 0, -262137, 7, 0, -262136, 7, 0, -262135, 7, 0, -131079, 7, 0, -131078, 7, 0, -131077, 7, 0, -131076, 7, 0, -131075, 7, 0, -131074, 7, 0, -131073, 7, 0, -196608, 7, 0, -196607, 7, 0, -196606, 7, 0, -196605, 7, 0, -196604, 7, 0, -196603, 7, 0, -196602, 7, 0, -196601, 7, 0, -196600, 7, 0, -196599, 7, 0, -65543, 7, 0, -65542, 7, 0, -65541, 7, 0, -65540, 7, 0, -65539, 7, 0, -65538, 7, 0, -65537, 7, 0, -131072, 7, 0, -131071, 7, 0, -131070, 7, 0, -131069, 7, 0, -131068, 7, 0, -131067, 7, 0, -131066, 7, 0, -131065, 7, 0, -131064, 7, 0, -131063, 7, 0, -6, 7, 0, -5, 7, 0, -4, 7, 0, -3, 7, 0, -2, 7, 0, -1, 7, 0, -65536, 7, 0, -65535, 7, 0, -65534, 7, 0, -65533, 7, 0, -65532, 7, 0, -65531, 7, 0, -65530, 7, 0, -65529, 7, 0, -65528, 7, 0, -65527, 7, 0, 65531, 7, 0, 65532, 7, 0, 65533, 7, 0, 65534, 7, 0, 65535, 7, 0, 0, 7, 0, 1, 7, 0, 2, 7, 0, 3, 7, 0, 4, 7, 0, 5, 7, 0, 6, 7, 0, 7, 7, 0, 8, 7, 0, 9, 7, 0, 131068, 7, 0, 131069, 7, 0, 131070, 7, 0, 131071, 7, 0, 65536, 7, 0, 65537, 7, 0, 65538, 7, 0, 65539, 7, 0, 65540, 7, 0, 65541, 7, 0, 65542, 7, 0, 65543, 7, 0, 65544, 7, 0, 65545, 7, 0, 196605, 7, 0, 196606, 7, 0, 196607, 7, 0, 131072, 7, 0, 131073, 7, 0, 131074, 7, 0, 131075, 7, 0, 131076, 7, 0, 131077, 7, 0, 131078, 7, 0, 131079, 7, 0, 131080, 7, 0, 131081, 7, 0, 262142, 7, 0, 262143, 7, 0, 196608, 7, 0, 196609, 7, 0, 196610, 7, 0, 196611, 7, 0, 196612, 7, 0, 196613, 7, 0, 196614, 7, 0, 196615, 7, 0, 327679, 7, 0, 262144, 7, 0, 262145, 7, 0, 393215, 7, 0, 327680, 7, 0, 327681, 7, 0, 458751, 7, 0, 393216, 7, 0, 393217, 7, 0, 524287, 7, 0, 458752, 7, 0, 458753, 7, 0 )
 
 [node name="Flower Map" type="TileMap" parent="YSort/Floor"]
-modulate = Color( 1, 1, 1, 0.784314 )
+modulate = Color( 1, 1, 1, 0.627451 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
@@ -304,8 +307,8 @@ texture = ExtResource( 9 )
 
 [node name="DirtA" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 1, 1, 0.968627 )
-position = Vector2( 27, -70 )
-rotation = 0.0683896
+position = Vector2( 26, -72 )
+rotation = 0.0599259
 scale = Vector2( 1.41364, 1.37518 )
 texture = ExtResource( 6 )
 flip_h = true
@@ -341,9 +344,9 @@ scale = Vector2( 1.55229, 1.06753 )
 texture = ExtResource( 3 )
 
 [node name="PlantC" type="Sprite" parent="YSort/MiddleGround"]
-position = Vector2( -214, -80 )
+position = Vector2( -216, -86 )
 rotation = 0.176411
-scale = Vector2( 1.45342, 1.44045 )
+scale = Vector2( 1.48226, 1.48177 )
 texture = ExtResource( 16 )
 script = ExtResource( 37 )
 depth_test_offset = Vector2( 0, 96 )
@@ -424,8 +427,41 @@ height = 32.0
 z_index = 20
 
 [node name="PlantB2" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( -14, 103.25 )
-scale = Vector2( 1.37, 1.38 )
+position = Vector2( -17, 109 )
+scale = Vector2( 1.46744, 1.50518 )
+texture = ExtResource( 4 )
+
+[node name="FlowerHillB" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 88, 141 )
+scale = Vector2( 1.45148, 1.36639 )
+texture = ExtResource( 15 )
+
+[node name="PlantA" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 237, 165 )
+rotation = -0.057955
+scale = Vector2( 2.03583, 2.12992 )
+z_index = 1
+texture = ExtResource( 10 )
+
+[node name="PlantA2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 636, 63 )
+rotation = -0.0760113
+scale = Vector2( 2.70564, 2.64071 )
+z_index = 1
+texture = ExtResource( 10 )
+flip_h = true
+
+[node name="PlantA3" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 431, 293 )
+rotation = -0.0760113
+scale = Vector2( 1.98448, 1.98481 )
+z_index = 1
+texture = ExtResource( 4 )
+
+[node name="PlantB4" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 531, -132 )
+rotation = 0.0779527
+scale = Vector2( 1.52719, 1.52865 )
 texture = ExtResource( 4 )
 
 [node name="HillC3" type="Sprite" parent="YSort/Foreground"]
@@ -433,26 +469,10 @@ position = Vector2( 481, 60.2496 )
 scale = Vector2( 1.43737, 1.28775 )
 texture = ExtResource( 19 )
 
-[node name="FlowerHillB" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 90, 129.25 )
-scale = Vector2( 1.09667, 1.07333 )
-texture = ExtResource( 15 )
-
 [node name="HillC" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( 366, 123 )
 scale = Vector2( 1.49738, 1.38275 )
 texture = ExtResource( 19 )
-
-[node name="PlantA" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 239, 126.25 )
-scale = Vector2( 1.655, 1.65375 )
-texture = ExtResource( 10 )
-
-[node name="PlantB4" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 524, -133 )
-rotation = 0.0779527
-scale = Vector2( 1.37, 1.38 )
-texture = ExtResource( 4 )
 
 [node name="PlantB5" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( 439, 64.2496 )
@@ -461,14 +481,23 @@ scale = Vector2( 1.37, 1.38 )
 texture = ExtResource( 4 )
 
 [node name="HillA" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 197, 161.25 )
+position = Vector2( 197, 167 )
 scale = Vector2( 1.53, 1.425 )
 texture = ExtResource( 13 )
+
+[node name="HillA2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 289, 168 )
+scale = Vector2( 1.53, 1.425 )
+texture = ExtResource( 13 )
+
+[node name="HillB4" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 446, 224 )
+scale = Vector2( 2.18422, 2.09159 )
+texture = ExtResource( 12 )
 
 [node name="CheriboPath" type="Path2D" parent="YSort"]
 curve = SubResource( 3 )
 script = ExtResource( 27 )
-spawn_time = 2
 
 [node name="CheriboPathFollow" parent="YSort/CheriboPath" instance=ExtResource( 28 )]
 
@@ -480,21 +509,40 @@ visible = false
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 35 )]
 polygon = PoolVector2Array( -277, 71, -163, 29, -167, -100, 1, -159, 74, -133, 144, -131, 215, -106, 333, -145, 330, -170, 249, -200, 312, -226, 475, -165, 472, -106, 358, -62, 429, -34, 409, 71, 218, 140, 154, 119, 122, 130, -62, 63, -183, 106 )
 
-[node name="DoorwayToCherryTrail1" parent="CollisionRoot" instance=ExtResource( 32 )]
-position = Vector2( -238, 95 )
-target_scene = "res://Areas/Cherry Trail/Cherry Trail 1.tscn"
-exit_name = "CherryTrail1To4"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToCherryTrail1"]
-polygon = PoolVector2Array( -39, -23, 54, 11, 67, 7, -26, -28 )
-
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 34 )]
 position = Vector2( -185, 69 )
-door_name = "CherryTrail1To4"
+door_name = "CherryTrail3_4"
+direction = Vector2( 1, 1 )
+
+[node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 34 )]
+position = Vector2( 310, -204 )
+door_name = "CherryTrail4_5"
+direction = Vector2( 1, -1 )
+
+[node name="DoorwayToCherryTrail5" parent="CollisionRoot" instance=ExtResource( 32 )]
+position = Vector2( 304, -192 )
+script = ExtResource( 22 )
+target_scene = "res://Areas/Cherry Trail/Cherry Trail 5.tscn"
+exit_name = "CherryTrail4_5"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToCherryTrail5"]
+position = Vector2( -6, -2 )
+polygon = PoolVector2Array( 11, -32, 23, -28, -40, -5, -51, -10 )
+
+[node name="DoorwayToCherryTrail4" parent="CollisionRoot" instance=ExtResource( 32 )]
+position = Vector2( -222, 83 )
+script = ExtResource( 22 )
+target_scene = "res://Areas/Cherry Trail/Cherry Trail 3.tscn"
+exit_name = "CherryTrail3_4"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToCherryTrail4"]
+position = Vector2( -6, -2 )
+polygon = PoolVector2Array( -37, -15, 58, 18, 42, 26, -51, -10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 149, -79 )
+position = Vector2( 17, -86 )
 current = true
 script = ExtResource( 33 )
-minPos = Vector2( 149, -79 )
-maxPos = Vector2( 149, -79 )
+minPos = Vector2( -18, -80 )
+maxPos = Vector2( 240, -75 )
+follow_player = true

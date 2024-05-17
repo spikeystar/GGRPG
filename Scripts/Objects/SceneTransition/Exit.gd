@@ -25,12 +25,14 @@ func _on_body_entered(body):
 		_on_touch_area()
 	
 func _on_touch_area():
-	PlayerManager.freeze = true
 	disconnect("body_entered", self, "_on_body_entered")
+	PlayerManager.freeze = true
 	Global.door_name = exit_name
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.transition_in(target_scene, _get_animation_name())
+	
+	
 
 func _get_animation_name():
 	var animation_name = "FadeToBlack" # default
