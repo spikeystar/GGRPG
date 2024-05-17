@@ -396,6 +396,9 @@ func _on_WorldRoot_f_turn_used():
 	f_turns += 1
 	
 func _on_Enemies_victory():
+	BattleMusic.switch_songs()
+	BattleMusic.id = "Victory"
+	BattleMusic.music()
 	ongoing = true
 	$Fighters.ongoing = true
 	$Fighters.halt = true

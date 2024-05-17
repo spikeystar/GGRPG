@@ -30,6 +30,7 @@ PlayerManager="*res://Scripts/Players/PlayerManager.gd"
 Party="*res://Scripts/Players/Party.gd"
 Music="*res://Misc/Music.tscn"
 SE="*res://Misc/SE.tscn"
+BattleMusic="*res://Misc/BattleMusic.tscn"
 
 [display]
 

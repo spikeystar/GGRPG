@@ -100,15 +100,15 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:rect_rotation")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 180.0 ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 22.5, 45.0, 67.5, 90.0, 112.5, 135.0, 157.5, 180.0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -183,11 +183,11 @@ margin_left = -189.0
 margin_top = -181.0
 margin_right = 203.0
 margin_bottom = 153.0
-rect_pivot_offset = Vector2( 510, 450 )
+rect_pivot_offset = Vector2( 514, 449 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 0.9
+playback_speed = 0.92
 anims/RESET = SubResource( 2 )
 anims/StarTransition = SubResource( 3 )
 anims/TransitionIn = SubResource( 4 )
