@@ -95,6 +95,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "enemy_attack"
@@ -647,13 +659,13 @@ scale = Vector2( 1.09549, 0.706501 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 1, -29 )
+position = Vector2( 2, -25 )
 scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 1 )
-offset = Vector2( 0, -18 )
+offset = Vector2( 0, -5 )
 hframes = 9
 vframes = 3
-frame = 7
+frame = 1
 
 [node name="DamageStar" type="Sprite" parent="."]
 visible = false

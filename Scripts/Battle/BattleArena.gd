@@ -1,6 +1,7 @@
 extends Node
 
 #export(tscn) var enemy = null
+const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
 
 onready var player_instance = PlayerManager.player_instance
 export(int) var EXP_base
@@ -56,6 +57,9 @@ signal action_ended()
 signal item_removed()
 
 func _ready():
+	var transition = TransitionPlayer.instance()
+	get_tree().get_root().add_child(transition)
+	transition.ease_in()
 	#set_health($HUDS/ProgressBar, Party.current_health, Party.max_health)
 	$DefenseWindow.hide()
 	$BattleButtons.hide()
@@ -66,7 +70,7 @@ func _ready():
 	$EnemyInfo.hide()
 	$EnemyMove.hide()
 	$FleeDialogue.hide()
-	player_instance.queue_free()
+	#player_instance.queue_free()
 	
 	if party_members == 1:
 		party_formation_1 = true

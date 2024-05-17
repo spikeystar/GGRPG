@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Cherry Trail/dirt c.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Cherry Trail/bush b.png" type="Texture" id=6]
+[ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_wander.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=8]
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/General/Backgrounds/blue bckgd.png" type="Texture" id=10]
@@ -564,6 +565,9 @@ script = ExtResource( 3 )
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
+[node name="Cheribo_wander" parent="." instance=ExtResource( 7 )]
+position = Vector2( 226, -27 )
+
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 38 )]
@@ -602,7 +606,7 @@ position = Vector2( 214, -102 )
 polygon = PoolVector2Array( 10, -31, 103, 4, 86, 10, -7, -26 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 309, -202 )
+position = Vector2( 206, -67 )
 current = true
 script = ExtResource( 8 )
 minPos = Vector2( -50, -200 )

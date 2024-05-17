@@ -1,8 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
-[ext_resource path="res://Scripts/Rendering/DepthTestCharacterAnimatedSprite.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/EnemyWander.gd" type="Script" id=4]
+[ext_resource path="res://Enemies/PlayerDetection.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/BattleTrigger.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CircleShape2D" id=15]
+radius = 14.0
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
@@ -41,7 +46,17 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="Cheribo_path" type="KinematicBody2D"]
+[sub_resource type="CircleShape2D" id=14]
+radius = 81.0062
+
+[node name="Cheribo_wander" type="KinematicBody2D"]
+collision_mask = 2
+script = ExtResource( 4 )
+target_scene = "res://Areas/Cherry Trail/Cherry Trail BA 1.tscn"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -2, -21 )
+shape = SubResource( 15 )
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.352941 )
@@ -50,14 +65,27 @@ scale = Vector2( 0.824406, 0.529999 )
 texture = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 0.972549, 0.988235, 1, 1 )
 position = Vector2( 0, -30 )
 frames = SubResource( 7 )
 animation = "walk_front"
 speed_scale = 0.95
 playing = true
 flip_h = true
-script = ExtResource( 3 )
-depth_test_offset = Vector2( 0, 25 )
-feet_height = 1.0
-use_dithering = false
-use_dither_blending = false
+
+[node name="PlayerDetection" parent="." instance=ExtResource( 5 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+visible = false
+modulate = Color( 1, 1, 1, 0.254902 )
+position = Vector2( -1, -17 )
+shape = SubResource( 14 )
+
+[node name="BattleTrigger" parent="." instance=ExtResource( 6 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BattleTrigger"]
+visible = false
+position = Vector2( -2, -21 )
+shape = SubResource( 15 )
+
+[connection signal="triggered" from="BattleTrigger" to="." method="_on_BattleTrigger_triggered"]

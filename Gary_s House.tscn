@@ -530,9 +530,6 @@ polygon = PoolVector2Array( -652, 169, -568, 241, -329, 321, -234, 358, -104, 35
 
 [node name="InsideHouse" parent="CollisionRoot" instance=ExtResource( 8 )]
 position = Vector2( 13, 359 )
-target_scene = "res://Gary_s House Interior.tscn"
-exit_name = "InsideHouse"
-height = 96.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/InsideHouse"]
 position = Vector2( -11, -425 )
