@@ -605,8 +605,10 @@ rotation = -0.00251221
 scale = Vector2( 1.47306, 1.1387 )
 texture = ExtResource( 9 )
 script = ExtResource( 37 )
+depth_test_offset = Vector2( 0, -25 )
 feet_height = 32.0
-height = -15.0
+use_dithering = false
+use_dither_blending = false
 
 [node name="PlantA3" type="Sprite" parent="."]
 position = Vector2( -481, -227 )
