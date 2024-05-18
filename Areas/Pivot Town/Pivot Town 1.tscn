@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/plant b.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=2]
@@ -42,6 +42,7 @@
 [ext_resource path="res://Assets/Pivot Town/bench a.png" type="Texture" id=40]
 [ext_resource path="res://Assets/Pivot Town/stump.png" type="Texture" id=41]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion B.png" type="Texture" id=42]
+[ext_resource path="res://Assets/General/Shadows/rectangle shadow large.png" type="Texture" id=43]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -330,7 +331,7 @@ z_index = -10
 
 [node name="Grass Bottom" type="TileMap" parent="YSort/Floor"]
 modulate = Color( 0.85, 0.86, 1, 1 )
-position = Vector2( 15, -4 )
+position = Vector2( 15.1047, -1.00183 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
@@ -339,7 +340,7 @@ format = 1
 tile_data = PoolIntArray( -262148, 18, 0, -262147, 18, 0, -262146, 18, 0, -262145, 18, 0, -327680, 18, 0, -327679, 18, 0, -327673, 8, 0, -196612, 18, 0, -196611, 7, 0, -196610, 7, 0, -196609, 7, 0, -262144, 7, 0, -262143, 7, 0, -262142, 7, 0, -262141, 7, 0, -131076, 18, 0, -131075, 7, 0, -131074, 7, 0, -131073, 7, 0, -196608, 7, 0, -196607, 7, 0, -196606, 7, 0, -196605, 7, 0, -65540, 18, 0, -65539, 7, 0, -65538, 7, 0, -65537, 7, 0, -131072, 7, 0, -131071, 7, 0, -131070, 7, 0, -131069, 7, 0, -131065, 9, 0, -4, 18, 0, -3, 7, 0, -2, 7, 0, -1, 7, 0, -65536, 7, 0, -65535, 7, 0, -65534, 7, 0, -65533, 7, 0, 65532, 18, 0, 65533, 7, 0, 65534, 7, 0, 65535, 7, 0, 0, 7, 0, 1, 7, 0, 2, 7, 0, 7, 12, 0, 131068, 10, 0, 65542, 12, 0 )
 
 [node name="Layer 2" type="TileMap" parent="YSort/Floor"]
-position = Vector2( 0, -5 )
+position = Vector2( 0.104675, -2.00183 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
@@ -349,7 +350,7 @@ tile_data = PoolIntArray( -262148, 18, 0, -262147, 18, 0, -262146, 18, 0, -26214
 
 [node name="Middle Layer" type="TileMap" parent="YSort/Floor"]
 modulate = Color( 0.94, 0.947, 1, 1 )
-position = Vector2( 0, -5 )
+position = Vector2( 0.104675, -2.00183 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
@@ -358,7 +359,7 @@ format = 1
 tile_data = PoolIntArray( -327679, 18, 0, -327677, 18, 0, -327673, 8, 0, -262143, 7, 0, -262142, 7, 0, -262141, 7, 0, -196606, 7, 0, -196605, 7, 0, -196604, 7, 0, -131065, 9, 0, 7, 12, 0, 131068, 10, 0, 65542, 12, 0 )
 
 [node name="Layer 1" type="TileMap" parent="YSort/Floor"]
-position = Vector2( 0, -15 )
+position = Vector2( 0.104675, -12.0018 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
@@ -406,103 +407,91 @@ texture = ExtResource( 19 )
 script = ExtResource( 29 )
 depth_test_offset = Vector2( 0, -32 )
 
-[node name="Node2D" type="Node2D" parent="YSort/Floor"]
+[node name="Inn Ledge 2" type="Node2D" parent="YSort/Floor"]
 position = Vector2( 3.66125, 18.8837 )
-rotation = -0.0349066
 
-[node name="Upper Grass 0" type="TileMap" parent="YSort/Floor/Node2D"]
+[node name="Upper Grass 0" type="TileMap" parent="YSort/Floor/Inn Ledge 2"]
 position = Vector2( 99.538, 2.2986 )
-rotation = 0.0349066
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
 tile_data = PoolIntArray( -786462, 17, 0, -786461, 17, 0, -786460, 17, 0, -786459, 17, 0, -786458, 17, 0, -786457, 17, 0, -786456, 17, 0, -786455, 17, 0, -786454, 17, 0, -786453, 17, 0, -720926, 17, 0, -720925, 17, 0, -720924, 17, 0, -720923, 17, 0, -720922, 17, 0, -720921, 17, 0, -720920, 17, 0, -720919, 17, 0, -720918, 17, 0, -720917, 17, 0, -655390, 17, 0, -655389, 17, 0, -655388, 17, 0, -655387, 17, 0, -655386, 17, 0, -655385, 17, 0, -655384, 17, 0, -655383, 17, 0, -655382, 17, 0, -655381, 17, 0, -589854, 17, 0, -589853, 17, 0, -589852, 17, 0, -589851, 17, 0, -589850, 17, 0, -589849, 17, 0, -589848, 17, 0, -589847, 17, 0, -589846, 17, 0, -589845, 17, 0, -524318, 17, 0, -524317, 17, 0, -524316, 17, 0, -524315, 17, 0, -524314, 17, 0, -524313, 17, 0, -524312, 17, 0, -524311, 17, 0, -524310, 17, 0, -524309, 17, 0, -458782, 17, 0, -458781, 17, 0, -458780, 17, 0, -458779, 17, 0, -458778, 17, 0, -458777, 17, 0, -458776, 17, 0, -458775, 17, 0, -458774, 17, 0, -458773, 17, 0, -393246, 17, 0, -393245, 17, 0, -393244, 17, 0, -393243, 17, 0, -393242, 17, 0, -393241, 17, 0, -393240, 17, 0, -393239, 17, 0, -393238, 17, 0, -393237, 17, 0, -327710, 17, 0, -327709, 17, 0, -327708, 17, 0, -327707, 17, 0, -327706, 17, 0, -327705, 17, 0, -327704, 17, 0, -327703, 17, 0, -327702, 17, 0, -327701, 17, 0 )
 
-[node name="Upper Grass 1" type="TileMap" parent="YSort/Floor/Node2D"]
+[node name="Upper Grass 1" type="TileMap" parent="YSort/Floor/Inn Ledge 2"]
 position = Vector2( 99.538, -8.7014 )
-rotation = 0.0349066
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
 tile_data = PoolIntArray( -786462, 17, 0, -786461, 17, 0, -786460, 17, 0, -786459, 17, 0, -786458, 17, 0, -786457, 17, 0, -786456, 17, 0, -786455, 17, 0, -786454, 17, 0, -786453, 17, 0, -720926, 17, 0, -720925, 17, 0, -720924, 17, 0, -720923, 17, 0, -720922, 17, 0, -720921, 17, 0, -720920, 17, 0, -720919, 17, 0, -720918, 17, 0, -720917, 17, 0, -655390, 17, 0, -655389, 17, 0, -655388, 17, 0, -655387, 17, 0, -655386, 17, 0, -655385, 17, 0, -655384, 17, 0, -655383, 17, 0, -655382, 17, 0, -655381, 17, 0, -589854, 17, 0, -589853, 17, 0, -589852, 17, 0, -589851, 17, 0, -589850, 17, 0, -589849, 17, 0, -589848, 17, 0, -589847, 17, 0, -589846, 17, 0, -589845, 17, 0, -524318, 17, 0, -524317, 17, 0, -524316, 17, 0, -524315, 17, 0, -524314, 17, 0, -524313, 17, 0, -524312, 17, 0, -524311, 17, 0, -524310, 17, 0, -524309, 17, 0, -458782, 17, 0, -458781, 17, 0, -458780, 17, 0, -458779, 17, 0, -458778, 17, 0, -458777, 17, 0, -458776, 17, 0, -458775, 17, 0, -458774, 17, 0, -458773, 17, 0, -393246, 17, 0, -393245, 17, 0, -393244, 17, 0, -393243, 17, 0, -393242, 17, 0, -393241, 17, 0, -393240, 17, 0, -393239, 17, 0, -393238, 17, 0, -393237, 17, 0, -327710, 17, 0, -327709, 17, 0, -327708, 17, 0, -327707, 17, 0, -327706, 17, 0, -327705, 17, 0, -327704, 17, 0, -327703, 17, 0, -327702, 17, 0, -327701, 17, 0 )
 
-[node name="Upper Grass 2" type="TileMap" parent="YSort/Floor/Node2D"]
+[node name="Upper Grass 2" type="TileMap" parent="YSort/Floor/Inn Ledge 2"]
 position = Vector2( 99.538, -18.7014 )
-rotation = 0.0349066
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
 tile_data = PoolIntArray( -786462, 17, 0, -786461, 17, 0, -786460, 17, 0, -786459, 17, 0, -786458, 17, 0, -786457, 17, 0, -786456, 17, 0, -786455, 17, 0, -786454, 17, 0, -786453, 17, 0, -720926, 17, 0, -720925, 17, 0, -720924, 17, 0, -720923, 17, 0, -720922, 17, 0, -720921, 17, 0, -720920, 17, 0, -720919, 17, 0, -720918, 17, 0, -720917, 17, 0, -655390, 17, 0, -655389, 17, 0, -655388, 17, 0, -655387, 17, 0, -655386, 17, 0, -655385, 17, 0, -655384, 17, 0, -655383, 17, 0, -655382, 17, 0, -655381, 17, 0, -589854, 17, 0, -589853, 17, 0, -589852, 17, 0, -589851, 17, 0, -589850, 17, 0, -589849, 17, 0, -589848, 17, 0, -589847, 17, 0, -589846, 17, 0, -589845, 17, 0, -524318, 17, 0, -524317, 17, 0, -524316, 17, 0, -524315, 17, 0, -524314, 17, 0, -524313, 17, 0, -524312, 17, 0, -524311, 17, 0, -524310, 17, 0, -524309, 17, 0, -458782, 17, 0, -458781, 17, 0, -458780, 17, 0, -458779, 17, 0, -458778, 17, 0, -458777, 17, 0, -458776, 17, 0, -458775, 17, 0, -458774, 17, 0, -458773, 17, 0, -393246, 17, 0, -393245, 17, 0, -393244, 17, 0, -393243, 17, 0, -393242, 17, 0, -393241, 17, 0, -393240, 17, 0, -393239, 17, 0, -393238, 17, 0, -393237, 17, 0, -327710, 17, 0, -327709, 17, 0, -327708, 17, 0, -327707, 17, 0, -327706, 17, 0, -327705, 17, 0, -327704, 17, 0, -327703, 17, 0, -327702, 17, 0, -327701, 17, 0 )
 
-[node name="Upper Grass 3" type="TileMap" parent="YSort/Floor/Node2D"]
+[node name="Upper Grass 3" type="TileMap" parent="YSort/Floor/Inn Ledge 2"]
 position = Vector2( 99.538, -28.7014 )
-rotation = 0.0349066
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
 tile_data = PoolIntArray( -786462, 17, 0, -786461, 17, 0, -786460, 17, 0, -786459, 17, 0, -786458, 17, 0, -786457, 17, 0, -786456, 17, 0, -786455, 17, 0, -786454, 17, 0, -786453, 17, 0, -720926, 17, 0, -720925, 17, 0, -720924, 17, 0, -720923, 17, 0, -720922, 17, 0, -720921, 17, 0, -720920, 17, 0, -720919, 17, 0, -720918, 17, 0, -720917, 17, 0, -655390, 17, 0, -655389, 17, 0, -655388, 17, 0, -655387, 17, 0, -655386, 17, 0, -655385, 17, 0, -655384, 17, 0, -655383, 17, 0, -655382, 17, 0, -655381, 17, 0, -589854, 17, 0, -589853, 17, 0, -589852, 17, 0, -589851, 17, 0, -589850, 17, 0, -589849, 17, 0, -589848, 17, 0, -589847, 17, 0, -589846, 17, 0, -589845, 17, 0, -524318, 17, 0, -524317, 17, 0, -524316, 17, 0, -524315, 17, 0, -524314, 17, 0, -524313, 17, 0, -524312, 17, 0, -524311, 17, 0, -524310, 17, 0, -524309, 17, 0, -458782, 17, 0, -458781, 17, 0, -458780, 17, 0, -458779, 17, 0, -458778, 17, 0, -458777, 17, 0, -458776, 17, 0, -458775, 17, 0, -458774, 17, 0, -458773, 17, 0, -393246, 17, 0, -393245, 17, 0, -393244, 17, 0, -393243, 17, 0, -393242, 17, 0, -393241, 17, 0, -393240, 17, 0, -393239, 17, 0, -393238, 17, 0, -393237, 17, 0, -327710, 17, 0, -327709, 17, 0, -327708, 17, 0, -327707, 17, 0, -327706, 17, 0, -327705, 17, 0, -327704, 17, 0, -327703, 17, 0, -327702, 17, 0, -327701, 17, 0, 131068, 10, 0 )
 
-[node name="Upper Grass 4" type="TileMap" parent="YSort/Floor/Node2D"]
+[node name="Upper Grass 4" type="TileMap" parent="YSort/Floor/Inn Ledge 2"]
 position = Vector2( 99.538, -39.7014 )
-rotation = 0.0349066
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
 tile_data = PoolIntArray( -786462, 17, 0, -786461, 17, 0, -786460, 17, 0, -786459, 17, 0, -786458, 17, 0, -786457, 17, 0, -786456, 17, 0, -786455, 17, 0, -786454, 17, 0, -786453, 17, 0, -720926, 17, 0, -720925, 17, 0, -720924, 17, 0, -720923, 17, 0, -720922, 17, 0, -720921, 17, 0, -720920, 17, 0, -720919, 17, 0, -720918, 17, 0, -720917, 17, 0, -655390, 17, 0, -655389, 17, 0, -655388, 17, 0, -655387, 17, 0, -655386, 17, 0, -655385, 17, 0, -655384, 17, 0, -655383, 17, 0, -655382, 17, 0, -655381, 17, 0, -589854, 17, 0, -589853, 17, 0, -589852, 17, 0, -589851, 17, 0, -589850, 17, 0, -589849, 17, 0, -589848, 17, 0, -589847, 17, 0, -589846, 17, 0, -589845, 17, 0, -524318, 17, 0, -524317, 17, 0, -524316, 17, 0, -524315, 17, 0, -524314, 17, 0, -524313, 17, 0, -524312, 17, 0, -524311, 17, 0, -524310, 17, 0, -524309, 17, 0, -458782, 17, 0, -458781, 17, 0, -458780, 17, 0, -458779, 17, 0, -458778, 17, 0, -458777, 17, 0, -458776, 17, 0, -458775, 17, 0, -458774, 17, 0, -458773, 17, 0, -393246, 17, 0, -393245, 17, 0, -393244, 17, 0, -393243, 17, 0, -393242, 17, 0, -393241, 17, 0, -393240, 17, 0, -393239, 17, 0, -393238, 17, 0, -393237, 17, 0, -327710, 17, 0, -327709, 17, 0, -327708, 17, 0, -327707, 17, 0, -327706, 17, 0, -327705, 17, 0, -327704, 17, 0, -327703, 17, 0, -327702, 17, 0, -327701, 17, 0 )
 
-[node name="Upper Grass 5" type="TileMap" parent="YSort/Floor/Node2D"]
+[node name="Upper Grass 5" type="TileMap" parent="YSort/Floor/Inn Ledge 2"]
 position = Vector2( 99.538, -48.7014 )
-rotation = 0.0349066
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
 tile_data = PoolIntArray( -786462, 17, 0, -786461, 17, 0, -786460, 17, 0, -786459, 17, 0, -786458, 17, 0, -786457, 17, 0, -786456, 17, 0, -786455, 17, 0, -786454, 17, 0, -786453, 17, 0, -720926, 17, 0, -720925, 17, 0, -720924, 17, 0, -720923, 17, 0, -720922, 17, 0, -720921, 17, 0, -720920, 17, 0, -720919, 17, 0, -720918, 17, 0, -720917, 17, 0, -655390, 17, 0, -655389, 17, 0, -655388, 17, 0, -655387, 17, 0, -655386, 17, 0, -655385, 17, 0, -655384, 17, 0, -655383, 17, 0, -655382, 17, 0, -655381, 17, 0, -589854, 17, 0, -589853, 17, 0, -589852, 17, 0, -589851, 17, 0, -589850, 17, 0, -589849, 17, 0, -589848, 17, 0, -589847, 17, 0, -589846, 17, 0, -589845, 17, 0, -524318, 17, 0, -524317, 17, 0, -524316, 17, 0, -524315, 17, 0, -524314, 17, 0, -524313, 17, 0, -524312, 17, 0, -524311, 17, 0, -524310, 17, 0, -524309, 17, 0, -458782, 17, 0, -458781, 17, 0, -458780, 17, 0, -458779, 17, 0, -458778, 17, 0, -458777, 17, 0, -458776, 17, 0, -458775, 17, 0, -458774, 17, 0, -458773, 17, 0, -393246, 17, 0, -393245, 17, 0, -393244, 17, 0, -393243, 17, 0, -393242, 17, 0, -393241, 17, 0, -393240, 17, 0, -393239, 17, 0, -393238, 17, 0, -393237, 17, 0, -327710, 17, 0, -327709, 17, 0, -327708, 17, 0, -327707, 17, 0, -327706, 17, 0, -327705, 17, 0, -327704, 17, 0, -327703, 17, 0, -327702, 17, 0, -327701, 17, 0 )
 
-[node name="Upper Grass 6" type="TileMap" parent="YSort/Floor/Node2D"]
+[node name="Upper Grass 6" type="TileMap" parent="YSort/Floor/Inn Ledge 2"]
 position = Vector2( 100.538, -57.7014 )
-rotation = 0.0349066
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
 tile_data = PoolIntArray( -786462, 7, 0, -786461, 7, 0, -786460, 7, 0, -786459, 7, 0, -786458, 7, 0, -786457, 7, 0, -786456, 7, 0, -786455, 7, 0, -786454, 7, 0, -786453, 7, 0, -720926, 7, 0, -720925, 7, 0, -720924, 7, 0, -720923, 7, 0, -720922, 7, 0, -720921, 7, 0, -720920, 7, 0, -720919, 7, 0, -720918, 7, 0, -720917, 7, 0, -655390, 7, 0, -655389, 7, 0, -655388, 7, 0, -655387, 7, 0, -655386, 7, 0, -655385, 7, 0, -655384, 7, 0, -655383, 7, 0, -655382, 7, 0, -655381, 7, 0, -589854, 7, 0, -589853, 7, 0, -589852, 7, 0, -589851, 7, 0, -589850, 7, 0, -589849, 7, 0, -589848, 7, 0, -589847, 7, 0, -589846, 7, 0, -589845, 7, 0, -524318, 7, 0, -524317, 7, 0, -524316, 7, 0, -524315, 7, 0, -524314, 7, 0, -524313, 7, 0, -524312, 7, 0, -524311, 7, 0, -524310, 7, 0, -524309, 7, 0, -458782, 7, 0, -458781, 7, 0, -458780, 7, 0, -458779, 7, 0, -458778, 7, 0, -458777, 7, 0, -458776, 7, 0, -458775, 7, 0, -458774, 7, 0, -458773, 7, 0, -393246, 7, 0, -393245, 7, 0, -393244, 7, 0, -393243, 7, 0, -393242, 7, 0, -393241, 7, 0, -393240, 7, 0, -393239, 7, 0, -393238, 7, 0, -393237, 7, 0, -327710, 7, 0, -327709, 7, 0, -327708, 7, 0, -327707, 7, 0, -327706, 7, 0, -327705, 7, 0, -327704, 7, 0, -327703, 7, 0, -327702, 7, 0, -327701, 7, 0 )
 
-[node name="Node2D2" type="Node2D" parent="YSort/Floor"]
-position = Vector2( -245.206, 141.644 )
-rotation = -0.0349066
-
-[node name="Upper Grass 1" type="TileMap" parent="YSort/Floor/Node2D2"]
-position = Vector2( 73.2534, -37.7014 )
-rotation = 0.0349066
+[node name="Upper Grass 1" type="TileMap" parent="YSort/Floor"]
+position = Vector2( -171.953, 103.943 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
 tile_data = PoolIntArray( -786461, 17, 0, -786460, 17, 0, -786459, 17, 0, -786458, 17, 0, -786457, 17, 0, -720925, 17, 0, -720924, 17, 0, -720923, 17, 0, -720922, 17, 0, -720921, 17, 0, -655389, 17, 0, -655388, 17, 0, -655387, 17, 0, -655386, 17, 0, -655385, 17, 0, -589853, 17, 0, -589852, 17, 0, -589851, 17, 0, -589850, 17, 0, -589849, 17, 0 )
 
-[node name="Upper Grass 2" type="TileMap" parent="YSort/Floor/Node2D2"]
-position = Vector2( 73.2534, -47.7014 )
-rotation = 0.0349066
+[node name="Upper Grass 2" type="TileMap" parent="YSort/Floor"]
+position = Vector2( -171.953, 93.9426 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
 tile_data = PoolIntArray( -786461, 17, 0, -786460, 17, 0, -786459, 17, 0, -786458, 17, 0, -786457, 17, 0, -720925, 17, 0, -720924, 17, 0, -720923, 17, 0, -720922, 17, 0, -720921, 17, 0, -655389, 17, 0, -655388, 17, 0, -655387, 17, 0, -655386, 17, 0, -655385, 17, 0, -589853, 17, 0, -589852, 17, 0, -589851, 17, 0, -589850, 17, 0, -589849, 17, 0 )
 
-[node name="Upper Grass 3" type="TileMap" parent="YSort/Floor/Node2D2"]
-position = Vector2( 73.2534, -56.7014 )
-rotation = 0.0349066
+[node name="Upper Grass 3" type="TileMap" parent="YSort/Floor"]
+position = Vector2( -171.953, 84.9426 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
 tile_data = PoolIntArray( -786461, 7, 0, -786460, 7, 0, -786459, 7, 0, -786458, 7, 0, -786457, 7, 0, -720925, 7, 0, -720924, 7, 0, -720923, 7, 0, -720922, 7, 0, -720921, 7, 0, -655389, 7, 0, -655388, 7, 0, -655387, 7, 0, -655386, 7, 0, -655385, 7, 0, -589853, 7, 0, -589852, 7, 0, -589851, 7, 0, -589850, 7, 0, -589849, 7, 0 )
+
+[node name="Inn Ledge 1" type="Node2D" parent="YSort/Floor"]
+position = Vector2( -245.206, 141.644 )
 
 [node name="Flower Map2" type="TileMap" parent="YSort/Floor"]
 modulate = Color( 1, 1, 1, 0.784314 )
@@ -579,13 +568,27 @@ texture = ExtResource( 34 )
 
 [node name="CircleShadowSmall2" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.392157 )
-position = Vector2( 305, -26 )
+position = Vector2( 115, -221 )
+rotation = 0.161373
+scale = Vector2( 1.13263, 0.900418 )
+texture = ExtResource( 7 )
+
+[node name="CircleShadowSmall4" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 404, -59 )
+rotation = 0.0570669
+scale = Vector2( 1.7234, 1.33594 )
+texture = ExtResource( 7 )
+
+[node name="CircleShadowSmall3" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 412, -162 )
 rotation = 0.161373
 scale = Vector2( 1.13263, 0.900418 )
 texture = ExtResource( 7 )
 
 [node name="BushA" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
-position = Vector2( 314, -33 )
+position = Vector2( 120, -225 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -597,7 +600,7 @@ texture_offset = Vector2( 0, 15 )
 height = 24.0
 
 [node name="BushA2" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
-position = Vector2( 439, -175 )
+position = Vector2( 415, -164 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -620,22 +623,49 @@ texture_scale = Vector2( 0.8, 0.8 )
 texture_offset = Vector2( 0, 15 )
 height = 28.0
 
-[node name="Box4" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
-position = Vector2( 396, -29 )
+[node name="Stump" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
+position = Vector2( 402, -60 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 0.76, 0.77 )
 texture = ExtResource( 41 )
 texture_scale = Vector2( 1.3, 1.2 )
-texture_offset = Vector2( 0, 15 )
-height = 28.0
+texture_offset = Vector2( 2, 30 )
+height = 32.0
 
 [node name="WaterPump" type="Sprite" parent="YSort/MiddleGround"]
 position = Vector2( 28, -88 )
 texture = ExtResource( 33 )
 flip_h = true
+
+[node name="RectangleShadowLarge2" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.666667 )
+position = Vector2( 347, -770 )
+rotation = 0.0783994
+scale = Vector2( 2.14724, 2.08808 )
+texture = ExtResource( 43 )
+
+[node name="RectangleShadowLarge3" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.666667 )
+position = Vector2( 860, -495 )
+rotation = 0.0944185
+scale = Vector2( 1.89021, 1.86155 )
+texture = ExtResource( 43 )
+
+[node name="RectangleShadowLarge4" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.666667 )
+position = Vector2( 912, -456 )
+rotation = 0.0463043
+scale = Vector2( 1.34351, 1.52796 )
+texture = ExtResource( 43 )
+
+[node name="RectangleShadowLarge" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.705882 )
+position = Vector2( 633, -631 )
+rotation = 0.131774
+scale = Vector2( 2.30354, 2.22365 )
+texture = ExtResource( 43 )
 
 [node name="Bench A2" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
 position = Vector2( 233, -529 )
@@ -654,13 +684,54 @@ preview_collision_box = false
 position = Vector2( 303, -561 )
 scale = Vector2( 1.9, 1.9 )
 frames = SubResource( 10 )
-frame = 5
+frame = 4
 playing = true
 script = ExtResource( 36 )
 alpha_clip = 0.01
 height = 64.0
 use_dithering = false
 use_dither_blending = false
+
+[node name="Tom\'s Shop" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
+position = Vector2( 299, -114 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 6, 3 )
+texture = ExtResource( 38 )
+texture_scale = Vector2( 1.6, 1.6 )
+texture_offset = Vector2( 5, 44 )
+height = 220.0
+preview_collision_box = false
+
+[node name="Inn" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
+position = Vector2( -316, -344 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 7, 3 )
+texture = ExtResource( 37 )
+texture_scale = Vector2( 1.75, 1.7 )
+texture_offset = Vector2( 10, 23 )
+height = 250.0
+floor_height = 50.0
+preview_collision_box = false
+
+[node name="Bench A" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
+modulate = Color( 0.988235, 0.988235, 0.992157, 1 )
+position = Vector2( 339, -480 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 25 )
+grid_size = Vector2( 1, 2 )
+texture = ExtResource( 40 )
+texture_scale = Vector2( 0.95, 0.9 )
+texture_offset = Vector2( 1, 7 )
+height = 32.0
+preview_collision_box = false
 
 [node name="Edgar\'s House3" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
 position = Vector2( 432.829, -664 )
@@ -693,7 +764,7 @@ texture = ExtResource( 15 )
 texture_scale = Vector2( 1.7, 1.7 )
 texture_offset = Vector2( 6, 40 )
 height = 350.0
-depth_test_offset = Vector3( 50, 100, 0 )
+depth_test_offset = Vector3( 950, -400, 0 )
 preview_collision_box = false
 
 [node name="Derek\'s House" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
@@ -707,45 +778,6 @@ texture = ExtResource( 4 )
 texture_scale = Vector2( 1.7, 1.7 )
 texture_offset = Vector2( 6, 40 )
 height = 300.0
-preview_collision_box = false
-
-[node name="Tom\'s Shop" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
-position = Vector2( 299, -114 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 6, 3 )
-texture = ExtResource( 38 )
-texture_scale = Vector2( 1.6, 1.6 )
-texture_offset = Vector2( 5, 44 )
-height = 220.0
-preview_collision_box = false
-
-[node name="Inn" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
-position = Vector2( -320, -398 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 7, 3 )
-texture = ExtResource( 37 )
-texture_scale = Vector2( 1.75, 1.7 )
-texture_offset = Vector2( 10, 23 )
-height = 220.0
-
-[node name="Bench A" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
-modulate = Color( 0.988235, 0.988235, 0.992157, 1 )
-position = Vector2( 339, -480 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 62, 25 )
-grid_size = Vector2( 1, 2 )
-texture = ExtResource( 40 )
-texture_scale = Vector2( 0.95, 0.9 )
-texture_offset = Vector2( 1, 7 )
-height = 32.0
 preview_collision_box = false
 
 [node name="Foreground" type="Node2D" parent="YSort"]
@@ -796,12 +828,31 @@ scale = Vector2( 1.53, 1.425 )
 texture = ExtResource( 17 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-
-[node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 22 )]
 visible = false
 
+[node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 22 )]
+
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 21 )]
-polygon = PoolVector2Array( -320, 159, -745, 98, -964, -233, -403, -595, -113, -707, 124, -783, 850, -531, 1126, -408, 707, -14, 409, 71, 218, 140, 154, 119, 122, 130, -57, 213 )
+polygon = PoolVector2Array( -225, 133, -372, 72, -409, 84, -589, 10, -716, 50, -807, 12, -690, -28, -803, -77, -780, -86, -865, -123, -839, -133, -895, -156, -840, -177, -893, -202, -834, -222, -892, -246, -836, -263, -890, -289, -867, -299, -920, -324, -831, -353, -887, -377, -830, -396, -855, -410, -830, -419, -854, -431, -830, -440, -854, -454, -828, -462, -853, -477, -137, -702, -284, -765, -158, -804, -7, -744, 51, -762, 25, -775, 113, -802, 89, -818, 147, -837, 137, -852, 190, -869, 521, -693, 677, -763, 835, -814, 958, -765, 835.358, -716.755, 717, -617, 1040, -464, 1015, -453, 1072, -430, 1044, -420, 1071, -406, 1040, -398, 1070, -387, 1042, -376, 1069, -363, 1011, -343, 1037, -333, 1008, -322, 1036, -310, 977, -290, 1003, -279, 945, -259, 972, -246, 911, -226, 940, -214, 911, -205, 938, -193, 850, -163, 1058, -79, 930, -36, 748, -109, 690, -90, 718, -80, 658, -59, 685, -47, 497, 12, 527, 24, 179, 136, 152, 123, 94, 30, 244, -18, 34, -103, -119, -53, -33, -18, 92, 30, 111, 58, 147, 118, 149, 123, 133, 127, 119, 134, 90, 122, 56, 132, -3, 107, -37, 117, -65, 105, -161, 134, -189, 122 )
+
+[node name="NavmeshLayer2" parent="CollisionRoot/Navmesh" instance=ExtResource( 21 )]
+polygon = PoolVector2Array( -103, -34, 33, -74, 141, -31, 123, -20, 123, -15, 140, -8, 123, -2, 123, 7, 142, 14, 73, 41 )
+height = -32.0
+
+[node name="NavmeshLayer3" parent="CollisionRoot/Navmesh" instance=ExtResource( 21 )]
+position = Vector2( 86, 2 )
+polygon = PoolVector2Array( 36, -2, 61, -13, 37, -24, 66, -37, 135, -13, 68, 9 )
+height = -24.0
+
+[node name="NavmeshLayer4" parent="CollisionRoot/Navmesh" instance=ExtResource( 21 )]
+position = Vector2( -764, -343 )
+polygon = PoolVector2Array( -20, -19, 105, -62, 263, 1, 136, 44 )
+height = 20.0
+
+[node name="NavmeshLayer5" parent="CollisionRoot/Navmesh" instance=ExtResource( 21 )]
+position = Vector2( -423, -421 )
+polygon = PoolVector2Array( -240, -27, 0, -114, 329, 12, 72, 99 )
+height = 50.0
 
 [node name="DoorwayToCherryTrail1" parent="CollisionRoot" instance=ExtResource( 11 )]
 position = Vector2( -768, 33 )
