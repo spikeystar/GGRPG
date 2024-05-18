@@ -181,11 +181,11 @@ script = ExtResource( 3 )
 
 [node name="BattleTransitionRect" type="ColorRect" parent="."]
 material = SubResource( 1 )
-margin_left = -196.0
+margin_left = -199.0
 margin_top = -178.0
-margin_right = 836.0
+margin_right = 833.0
 margin_bottom = 716.0
-rect_pivot_offset = Vector2( 514, 449 )
+rect_pivot_offset = Vector2( 515, 447.5 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleTransitionRect"]

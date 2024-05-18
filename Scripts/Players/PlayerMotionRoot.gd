@@ -3,7 +3,7 @@ extends KinematicBody2D
 const LOWEST_Z: int = 0;
 
 export var spawn_z = 0
-export var player_acceleration = 10
+export var player_acceleration = 12
 export var player_friction = 2
 export var max_player_speed = 2
 export var gravity = 9.8

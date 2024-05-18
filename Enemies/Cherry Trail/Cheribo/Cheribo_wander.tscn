@@ -6,8 +6,7 @@
 [ext_resource path="res://Enemies/PlayerDetection.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/BattleTrigger.tscn" type="PackedScene" id=6]
 
-[sub_resource type="CircleShape2D" id=15]
-radius = 14.0
+[sub_resource type="CircleShape2D" id=16]
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 1 )
@@ -50,13 +49,15 @@ animations = [ {
 radius = 81.0062
 
 [node name="Cheribo_wander" type="KinematicBody2D"]
+collision_layer = 2
 collision_mask = 2
 script = ExtResource( 4 )
 target_scene = "res://Areas/Cherry Trail/Cherry Trail BA 1.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2, -21 )
-shape = SubResource( 15 )
+position = Vector2( -3, -24 )
+scale = Vector2( 1.33998, -1.4054 )
+shape = SubResource( 16 )
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.352941 )
@@ -76,16 +77,18 @@ flip_h = true
 [node name="PlayerDetection" parent="." instance=ExtResource( 5 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
-visible = false
 modulate = Color( 1, 1, 1, 0.254902 )
 position = Vector2( -1, -17 )
+scale = Vector2( 0.927677, 0.881874 )
 shape = SubResource( 14 )
 
 [node name="BattleTrigger" parent="." instance=ExtResource( 6 )]
+position = Vector2( -1, -4 )
+scale = Vector2( 0.965735, 0.831711 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BattleTrigger"]
-visible = false
-position = Vector2( -2, -21 )
-shape = SubResource( 15 )
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BattleTrigger"]
+position = Vector2( -1.03548, -21.6421 )
+scale = Vector2( 1.60839, -1.51859 )
+shape = SubResource( 16 )
 
 [connection signal="triggered" from="BattleTrigger" to="." method="_on_BattleTrigger_triggered"]

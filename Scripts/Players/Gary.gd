@@ -21,6 +21,7 @@ onready var body_sprite = $BodyYSort/BodyVisualRoot/Gary
 onready var shadow_sprite = $ShadowYSort/ShadowVisualRoot/ShadowCircle
 
 func _physics_process(delta):
+	var freeze = PlayerManager.freeze
 
 	var last_dir = motion_root.last_dir
 	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1:
@@ -34,7 +35,7 @@ func _physics_process(delta):
 		anim_tree.get("parameters/playback").travel("Fall")
 		anim_tree.set("parameters/Fall/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
 	
-	if Input.is_action_pressed("ui_push"):
+	if Input.is_action_pressed("ui_push") and not freeze:
 		anim_tree.get("parameters/playback").travel("Jump")
 		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
 		
