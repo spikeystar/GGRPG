@@ -32,6 +32,11 @@ Music="*res://Misc/Music.tscn"
 SE="*res://Misc/SE.tscn"
 BattleMusic="*res://Misc/BattleMusic.tscn"
 
+[debug]
+
+settings/fps/force_fps=40
+settings/stdout/print_fps=true
+
 [display]
 
 window/size/width=640
