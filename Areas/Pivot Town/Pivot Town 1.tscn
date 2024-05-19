@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/plant b.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=2]
@@ -55,6 +55,9 @@
 [ext_resource path="res://Assets/Pivot Town/Orange Tile D.png" type="Texture" id=53]
 [ext_resource path="res://Assets/Pivot Town/Yellow Tile B.png" type="Texture" id=54]
 [ext_resource path="res://Assets/Pivot Town/Yellow Tile A.png" type="Texture" id=55]
+[ext_resource path="res://Assets/Pivot Town/pivot town sign.png" type="Texture" id=56]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=57]
+[ext_resource path="res://Assets/Pivot Town/White Dandelion B.png" type="Texture" id=58]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -359,6 +362,10 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="Gradient" id=11]
+offsets = PoolRealArray( 0, 0.059633, 0.807339, 0.981651, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.470588, 1, 1, 1, 1, 1, 1, 1, 0, 0.910604, 0.910604, 0.910604, 0.0853976, 0.849814, 0.849814, 0.849814, 0.143468 )
 
 [node name="WorldRoot" type="Node2D"]
 
@@ -700,7 +707,6 @@ tile_data = PoolIntArray( -2621458, 15, 0, -2555922, 15, 0, -2555921, 15, 0, -24
 modulate = Color( 1, 1, 1, 0.988235 )
 position = Vector2( 38.2211, 5.66956 )
 rotation = -0.00872665
-scale = Vector2( 1, 1 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 60, 27 )
@@ -712,7 +718,6 @@ tile_data = PoolIntArray( -2621458, 15, 0, -2555922, 15, 0, -2555921, 15, 0, -24
 modulate = Color( 1, 1, 1, 0.988235 )
 position = Vector2( 38.2211, 5.66956 )
 rotation = -0.00872665
-scale = Vector2( 1, 1 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 60, 27 )
@@ -1379,15 +1384,28 @@ rotation = -0.00106369
 scale = Vector2( 1.72148, 1.56892 )
 texture = ExtResource( 5 )
 
+[node name="SquareShadow" type="Sprite" parent="YSort/Foreground"]
+modulate = Color( 1, 1, 1, 0.372549 )
+position = Vector2( -605, -151 )
+rotation = 0.0857767
+texture = ExtResource( 57 )
+
+[node name="PivotTownSign" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( -615, -164 )
+rotation = -0.0197586
+texture = ExtResource( 56 )
+
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 22 )]
+visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 21 )]
-polygon = PoolVector2Array( -225, 133, -372, 72, -409, 84, -589, 10, -716, 50, -807, 12, -690, -28, -803, -77, -780, -86, -865, -123, -839, -133, -895, -156, -840, -177, -893, -202, -834, -222, -892, -246, -836, -263, -890, -289, -867, -299, -920, -324, -831, -353, -887, -377, -830, -396, -855, -410, -830, -419, -854, -431, -830, -440, -854, -454, -828, -462, -853, -477, -137, -702, -284, -765, -158, -804, -7, -744, 51, -762, 25, -775, 113, -802, 89, -818, 147, -837, 137, -852, 190, -869, 521, -693, 677, -763, 835, -814, 958, -765, 835.358, -716.755, 717, -617, 1040, -464, 1015, -453, 1072, -430, 1044, -420, 1071, -406, 1040, -398, 1070, -387, 1042, -376, 1069, -363, 1011, -343, 1037, -333, 1008, -322, 1036, -310, 977, -290, 1003, -279, 945, -259, 972, -246, 911, -226, 940, -214, 911, -205, 938, -193, 850, -163, 1058, -79, 930, -36, 748, -109, 690, -90, 718, -80, 658, -59, 685, -47, 497, 12, 527, 24, 179, 136, 152, 123, 94, 30, 244, -18, 34, -103, -119, -53, -33, -18, 92, 30, 111, 58, 147, 118, 149, 123, 133, 127, 119, 134, 90, 122, 56, 132, -3, 107, -37, 117, -65, 105, -161, 134, -189, 122 )
+visible = false
+polygon = PoolVector2Array( -225, 133, -372, 72, -409, 84, -589, 10, -716, 50, -807, 12, -690, -28, -803, -77, -780, -86, -865, -123, -839, -133, -895, -156, -840, -177, -893, -202, -834, -222, -892, -246, -836, -263, -890, -289, -867, -299, -920, -324, -831, -353, -887, -377, -830, -396, -855, -410, -830, -419, -854, -431, -830, -440, -854, -454, -828, -462, -853, -477, -137, -702, -284, -765, -158, -804, -7, -744, 51, -762, 25, -775, 113, -802, 89, -818, 147, -837, 137, -852, 190, -869, 521, -693, 677, -763, 835, -814, 958, -765, 835.358, -716.755, 717, -617, 1040, -464, 1015, -453, 1072, -430, 1044, -420, 1071, -406, 1040, -398, 1070, -387, 1042, -376, 1069, -363, 1011, -343, 1037, -333, 1008, -322, 1036, -310, 977, -290, 1003, -279, 945, -259, 972, -246, 911, -226, 940, -214, 911, -205, 938, -193, 850, -163, 1058, -79, 930, -36, 748, -109, 690, -90, 718, -80, 658, -59, 685, -47, 497, 12, 527, 24, 179, 136, 152, 123, 133, 127, 119, 134, 90, 122, 56, 132, -3, 107, -37, 117, -65, 105, -161, 134, -189, 122 )
 
 [node name="NavmeshLayer2" parent="CollisionRoot/Navmesh" instance=ExtResource( 21 )]
+position = Vector2( -1, 0 )
 polygon = PoolVector2Array( -103, -34, 33, -74, 141, -31, 123, -20, 123, -15, 140, -8, 123, -2, 123, 7, 142, 14, 73, 41 )
 height = -32.0
 
@@ -1403,7 +1421,7 @@ height = 20.0
 
 [node name="NavmeshLayer5" parent="CollisionRoot/Navmesh" instance=ExtResource( 21 )]
 position = Vector2( -423, -421 )
-polygon = PoolVector2Array( -240, -27, 0, -114, 329, 12, 72, 99 )
+polygon = PoolVector2Array( -240, -27, 0, -114, 331, 18, 72, 99 )
 height = 50.0
 
 [node name="DoorwayToCherryTrail1" parent="CollisionRoot" instance=ExtResource( 11 )]
@@ -1423,3 +1441,164 @@ script = ExtResource( 3 )
 minPos = Vector2( -800, -600 )
 maxPos = Vector2( 1000, 0 )
 follow_player = true
+
+[node name="Particles2D" type="CPUParticles2D" parent="."]
+position = Vector2( -282, -74 )
+rotation = 0.999572
+z_index = 1
+amount = 9
+lifetime = 7.0
+speed_scale = 0.6
+explosiveness = 0.11
+randomness = 0.04
+lifetime_randomness = 0.09
+fixed_fps = 10
+fract_delta = false
+texture = ExtResource( 58 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2( -10, -10 )
+spread = 141.08
+gravity = Vector2( 50, -70 )
+damping = 4.73
+scale_amount = 0.55
+scale_amount_random = 0.2
+color_ramp = SubResource( 11 )
+
+[node name="Particles2D2" type="CPUParticles2D" parent="."]
+position = Vector2( -861, -401 )
+rotation = 0.999572
+z_index = 1
+amount = 9
+lifetime = 7.0
+speed_scale = 0.5
+explosiveness = 0.08
+randomness = 0.04
+lifetime_randomness = 0.09
+fixed_fps = 10
+fract_delta = false
+texture = ExtResource( 58 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2( -10, -10 )
+spread = 180.0
+gravity = Vector2( 50, -70 )
+damping = 4.73
+scale_amount = 0.55
+scale_amount_random = 0.2
+color_ramp = SubResource( 11 )
+
+[node name="Particles2D3" type="CPUParticles2D" parent="."]
+position = Vector2( -333, -706 )
+rotation = 0.999572
+z_index = 1
+amount = 9
+lifetime = 7.0
+speed_scale = 0.5
+explosiveness = 0.08
+randomness = 0.04
+lifetime_randomness = 0.09
+fixed_fps = 10
+fract_delta = false
+texture = ExtResource( 58 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2( -10, -10 )
+spread = 180.0
+gravity = Vector2( 50, -70 )
+damping = 4.73
+scale_amount = 0.55
+scale_amount_random = 0.2
+color_ramp = SubResource( 11 )
+
+[node name="Particles2D4" type="CPUParticles2D" parent="."]
+position = Vector2( 129, -474 )
+rotation = 0.999572
+z_index = 1
+amount = 9
+lifetime = 7.0
+speed_scale = 0.5
+explosiveness = 0.08
+randomness = 0.04
+lifetime_randomness = 0.09
+fixed_fps = 10
+fract_delta = false
+texture = ExtResource( 58 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2( -10, -10 )
+spread = 180.0
+gravity = Vector2( 50, -70 )
+damping = 4.73
+scale_amount = 0.55
+scale_amount_random = 0.2
+color_ramp = SubResource( 11 )
+
+[node name="Particles2D5" type="CPUParticles2D" parent="."]
+position = Vector2( 661, -391 )
+rotation = 0.999572
+z_index = 1
+amount = 9
+lifetime = 7.0
+speed_scale = 0.5
+explosiveness = 0.08
+randomness = 0.04
+lifetime_randomness = 0.09
+fixed_fps = 10
+fract_delta = false
+texture = ExtResource( 58 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2( -10, -10 )
+spread = 180.0
+gravity = Vector2( 50, -70 )
+damping = 4.73
+scale_amount = 0.55
+scale_amount_random = 0.2
+color_ramp = SubResource( 11 )
+
+[node name="Particles2D6" type="CPUParticles2D" parent="."]
+position = Vector2( 588, -860 )
+rotation = 0.999572
+z_index = 1
+amount = 9
+lifetime = 7.0
+speed_scale = 0.5
+explosiveness = 0.08
+randomness = 0.04
+lifetime_randomness = 0.09
+fixed_fps = 10
+fract_delta = false
+texture = ExtResource( 58 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2( -10, -10 )
+spread = 180.0
+gravity = Vector2( 50, -70 )
+damping = 4.73
+scale_amount = 0.55
+scale_amount_random = 0.2
+color_ramp = SubResource( 11 )
+
+[node name="Particles2D7" type="CPUParticles2D" parent="."]
+position = Vector2( 253, 110 )
+rotation = 0.999572
+z_index = 1
+amount = 9
+lifetime = 7.0
+speed_scale = 0.5
+explosiveness = 0.08
+randomness = 0.04
+lifetime_randomness = 0.09
+fixed_fps = 10
+fract_delta = false
+texture = ExtResource( 58 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2( -10, -10 )
+spread = 180.0
+gravity = Vector2( 50, -70 )
+damping = 4.73
+scale_amount = 0.55
+scale_amount_random = 0.2
+color_ramp = SubResource( 11 )
