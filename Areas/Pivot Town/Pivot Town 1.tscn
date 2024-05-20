@@ -1162,7 +1162,7 @@ preview_collision_box = false
 position = Vector2( 303, -561 )
 scale = Vector2( 1.9, 1.9 )
 frames = SubResource( 10 )
-frame = 2
+frame = 4
 playing = true
 script = ExtResource( 36 )
 alpha_clip = 0.01
@@ -1386,13 +1386,14 @@ texture = ExtResource( 5 )
 
 [node name="SquareShadow" type="Sprite" parent="YSort/Foreground"]
 modulate = Color( 1, 1, 1, 0.372549 )
-position = Vector2( -605, -151 )
-rotation = 0.0857767
+position = Vector2( -589.615, -155.615 )
+rotation = 0.048918
 texture = ExtResource( 57 )
 
 [node name="PivotTownSign" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( -615, -164 )
-rotation = -0.0197586
+self_modulate = Color( 1, 1, 0.862745, 1 )
+position = Vector2( -599.615, -168.615 )
+rotation = -0.0364956
 texture = ExtResource( 56 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
