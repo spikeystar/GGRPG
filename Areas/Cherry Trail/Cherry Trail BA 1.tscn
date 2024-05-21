@@ -589,7 +589,6 @@ align = 1
 valign = 1
 
 [node name="DefenseWindow" type="PanelContainer" parent="."]
-visible = false
 margin_left = 126.0
 margin_top = 112.0
 margin_right = 270.0
@@ -810,6 +809,7 @@ custom_fonts/font = ExtResource( 28 )
 text = "Sublimate"
 
 [node name="EnemyInfo" type="Sprite" parent="."]
+visible = false
 position = Vector2( 165, 225 )
 texture = ExtResource( 11 )
 

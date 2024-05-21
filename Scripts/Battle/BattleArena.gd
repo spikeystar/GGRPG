@@ -57,9 +57,9 @@ signal action_ended()
 signal item_removed()
 
 func _ready():
-	var transition = TransitionPlayer.instance()
-	get_tree().get_root().add_child(transition)
-	transition.ease_in()
+	#var transition = TransitionPlayer.instance()
+	#get_tree().get_root().add_child(transition)
+	#transition.ease_in()
 	#set_health($HUDS/ProgressBar, Party.current_health, Party.max_health)
 	$DefenseWindow.hide()
 	$BattleButtons.hide()

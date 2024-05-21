@@ -1,0 +1,466 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://UI/Pause/Pause Items.png" type="Texture" id=1]
+[ext_resource path="res://UI/Pause/Pause Members.png" type="Texture" id=2]
+[ext_resource path="res://UI/Pause/Pause Menu Base.png" type="Texture" id=3]
+[ext_resource path="res://UI/Pause/Pause Key.png" type="Texture" id=4]
+[ext_resource path="res://UI/Pause/Sub Menu.png" type="Texture" id=5]
+[ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Misc/Font/Pause Member HP.tres" type="DynamicFont" id=7]
+[ext_resource path="res://UI/Pause/SP Icon.png" type="Texture" id=8]
+[ext_resource path="res://UI/Cursor.png" type="Texture" id=9]
+[ext_resource path="res://UI/Pause/Member Display.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Battle/ItemInventory_Battle.gd" type="Script" id=11]
+[ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=12]
+[ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://UI/PauseMembers.gd" type="Script" id=14]
+[ext_resource path="res://UI/PauseMenu.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/UI/Pause_Menu_Cursor.gd" type="Script" id=16]
+[ext_resource path="res://UI/SubMenu.gd" type="Script" id=17]
+[ext_resource path="res://UI/Pause_Menu_Item.gd" type="Script" id=18]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 6 )
+
+[node name="PauseMenu" type="Node2D"]
+script = ExtResource( 15 )
+
+[node name="Base" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="MainSelection" type="VBoxContainer" parent="."]
+margin_left = -319.0
+margin_top = -201.0
+margin_right = -289.0
+margin_bottom = 256.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_scale = Vector2( 1.1, 1.1 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 58
+
+[node name="Party" type="Label" parent="MainSelection"]
+margin_left = 14.0
+margin_right = 15.0
+margin_bottom = 14.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Party"
+clip_text = true
+script = ExtResource( 18 )
+
+[node name="Items" type="Label" parent="MainSelection"]
+margin_left = 14.0
+margin_top = 72.0
+margin_right = 15.0
+margin_bottom = 86.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Items"
+clip_text = true
+script = ExtResource( 18 )
+
+[node name="Trinkets" type="Label" parent="MainSelection"]
+margin_left = 14.0
+margin_top = 144.0
+margin_right = 15.0
+margin_bottom = 158.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Trinkets"
+clip_text = true
+script = ExtResource( 18 )
+
+[node name="Enemies" type="Label" parent="MainSelection"]
+margin_left = 14.0
+margin_top = 216.0
+margin_right = 15.0
+margin_bottom = 230.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Enemies"
+clip_text = true
+script = ExtResource( 18 )
+
+[node name="Map" type="Label" parent="MainSelection"]
+margin_left = 14.0
+margin_top = 288.0
+margin_right = 15.0
+margin_bottom = 302.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Map"
+clip_text = true
+script = ExtResource( 18 )
+
+[node name="Key" type="Label" parent="MainSelection"]
+margin_left = 14.0
+margin_top = 360.0
+margin_right = 15.0
+margin_bottom = 374.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Key"
+clip_text = true
+script = ExtResource( 18 )
+
+[node name="MenuCursor" parent="MainSelection" instance=ExtResource( 13 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 2.0
+margin_top = 432.0
+margin_right = 27.0
+margin_bottom = 457.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource( 16 )
+menu_parent_path = NodePath("..")
+
+[node name="Members" type="Sprite" parent="."]
+position = Vector2( 100, -56 )
+texture = ExtResource( 2 )
+script = ExtResource( 14 )
+
+[node name="Display1" type="Sprite" parent="Members"]
+position = Vector2( -105, -63 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 10 )
+hframes = 5
+
+[node name="Display2" type="Sprite" parent="Members"]
+position = Vector2( 4.00002, -63 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 10 )
+hframes = 5
+frame = 1
+
+[node name="Display3" type="Sprite" parent="Members"]
+position = Vector2( 114, -62 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 10 )
+hframes = 5
+frame = 2
+
+[node name="Display4" type="Sprite" parent="Members"]
+visible = false
+position = Vector2( -50, 78 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 10 )
+hframes = 5
+frame = 1
+
+[node name="Display5" type="Sprite" parent="Members"]
+visible = false
+position = Vector2( 59, 78 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 10 )
+hframes = 5
+frame = 1
+
+[node name="Cursors" type="Node2D" parent="Members"]
+visible = false
+
+[node name="Cursor1" type="Sprite" parent="Members/Cursors"]
+position = Vector2( -157, -137 )
+texture = ExtResource( 9 )
+
+[node name="Cursor2" type="Sprite" parent="Members/Cursors"]
+visible = false
+position = Vector2( -48, -137 )
+texture = ExtResource( 9 )
+
+[node name="Cursor3" type="Sprite" parent="Members/Cursors"]
+visible = false
+position = Vector2( 61, -137 )
+texture = ExtResource( 9 )
+
+[node name="Cursor4" type="Sprite" parent="Members/Cursors"]
+visible = false
+position = Vector2( -103, 3 )
+texture = ExtResource( 9 )
+
+[node name="Cursor5" type="Sprite" parent="Members/Cursors"]
+visible = false
+position = Vector2( 6, 3 )
+texture = ExtResource( 9 )
+
+[node name="Name1" type="Label" parent="Members"]
+margin_left = -140.0
+margin_top = -122.0
+margin_right = -84.0
+margin_bottom = -108.0
+custom_fonts/font = ExtResource( 6 )
+text = "Gary"
+align = 1
+
+[node name="Name2" type="Label" parent="Members"]
+margin_left = -31.0
+margin_top = -122.0
+margin_right = 25.0
+margin_bottom = -108.0
+custom_fonts/font = ExtResource( 6 )
+text = "Jacques"
+align = 1
+
+[node name="Name3" type="Label" parent="Members"]
+margin_left = 78.0
+margin_top = -121.0
+margin_right = 134.0
+margin_bottom = -107.0
+custom_fonts/font = ExtResource( 6 )
+text = "Irina"
+align = 1
+
+[node name="Name4" type="Label" parent="Members"]
+visible = false
+margin_left = -86.0
+margin_top = 19.0
+margin_right = -30.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 6 )
+text = "Suzy"
+align = 1
+
+[node name="Name5" type="Label" parent="Members"]
+visible = false
+margin_left = 23.0
+margin_top = 19.0
+margin_right = 79.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 6 )
+text = "Damien"
+align = 1
+
+[node name="Hidden2" type="Sprite" parent="Members"]
+visible = false
+self_modulate = Color( 1, 0.960784, 1, 1 )
+position = Vector2( -4, -116 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 9 )
+
+[node name="Hidden3" type="Sprite" parent="Members"]
+visible = false
+self_modulate = Color( 1, 0.960784, 1, 1 )
+position = Vector2( 106, -115 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 9 )
+
+[node name="Hidden4" type="Sprite" parent="Members"]
+self_modulate = Color( 1, 0.960784, 1, 1 )
+position = Vector2( -58, 25 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 9 )
+
+[node name="Hidden5" type="Sprite" parent="Members"]
+self_modulate = Color( 1, 0.960784, 1, 1 )
+position = Vector2( 51, 25 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 9 )
+
+[node name="HP1" type="Label" parent="Members"]
+margin_left = -153.0
+margin_top = -29.0
+margin_right = -68.0
+margin_bottom = -15.0
+custom_fonts/font = ExtResource( 7 )
+text = "HP: 121/121"
+align = 1
+
+[node name="HP2" type="Label" parent="Members"]
+margin_left = -44.0
+margin_top = -29.0
+margin_right = 41.0
+margin_bottom = -15.0
+custom_fonts/font = ExtResource( 7 )
+text = "HP: 153/153"
+align = 1
+
+[node name="HP3" type="Label" parent="Members"]
+margin_left = 65.0
+margin_top = -29.0
+margin_right = 150.0
+margin_bottom = -15.0
+custom_fonts/font = ExtResource( 7 )
+text = "HP: 207/207"
+align = 1
+
+[node name="HP4" type="Label" parent="Members"]
+visible = false
+margin_left = -99.0
+margin_top = 112.0
+margin_right = -14.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 7 )
+text = "HP: 104/104"
+align = 1
+
+[node name="HP5" type="Label" parent="Members"]
+visible = false
+margin_left = 10.0
+margin_top = 112.0
+margin_right = 95.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 7 )
+text = "HP: 115/115"
+align = 1
+
+[node name="Items" type="Sprite" parent="."]
+visible = false
+position = Vector2( 97, -58 )
+texture = ExtResource( 1 )
+
+[node name="ItemInventoryBox" type="VBoxContainer" parent="Items"]
+margin_left = -160.0
+margin_top = -173.0
+margin_right = -135.0
+margin_bottom = -148.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 9
+script = ExtResource( 11 )
+
+[node name="MenuCursor" parent="Items/ItemInventoryBox" instance=ExtResource( 13 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 25.0
+margin_bottom = 25.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = null
+
+[node name="Stock" type="Label" parent="Items"]
+margin_left = 50.0
+margin_top = -43.0
+margin_right = 106.0
+margin_bottom = -29.0
+theme = SubResource( 1 )
+text = "Stock:"
+
+[node name="Stock_amount" type="Label" parent="Items"]
+margin_left = 88.0
+margin_top = -43.0
+margin_right = 144.0
+margin_bottom = -29.0
+theme = SubResource( 1 )
+text = "100"
+align = 1
+
+[node name="ItemInfo" type="Label" parent="Items"]
+margin_left = 40.0
+margin_top = 3.0
+margin_right = 142.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 6 )
+text = "20 HP"
+align = 1
+autowrap = true
+
+[node name="ItemInventory" type="Sprite" parent="Items"]
+position = Vector2( 90, -121 )
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 12 )
+hframes = 3
+vframes = 3
+
+[node name="Trinkets" type="Sprite" parent="."]
+visible = false
+position = Vector2( 97, -58 )
+texture = ExtResource( 1 )
+
+[node name="Enemies (Placeholder)" type="Sprite" parent="."]
+visible = false
+position = Vector2( 97, -58 )
+texture = ExtResource( 1 )
+
+[node name="Map (Placeholder)" type="Sprite" parent="."]
+visible = false
+position = Vector2( 97, -58 )
+texture = ExtResource( 1 )
+
+[node name="Key" type="Sprite" parent="."]
+visible = false
+position = Vector2( 97, -58 )
+texture = ExtResource( 4 )
+
+[node name="SubMenu" type="Sprite" parent="."]
+position = Vector2( 101, 213 )
+texture = ExtResource( 5 )
+script = ExtResource( 17 )
+
+[node name="SP Icon" type="Sprite" parent="SubMenu"]
+position = Vector2( -115, -26 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 8 )
+
+[node name="SP" type="Label" parent="SubMenu"]
+margin_left = -123.0
+margin_top = -32.0
+margin_right = -62.0
+margin_bottom = -18.0
+theme = SubResource( 1 )
+text = "SP"
+align = 1
+
+[node name="SP_amount" type="Label" parent="SubMenu"]
+margin_left = -59.0
+margin_top = -31.0
+margin_right = 2.0
+margin_bottom = -17.0
+theme = SubResource( 1 )
+text = "121/121"
+align = 1
+
+[node name="Marbles" type="Label" parent="SubMenu"]
+margin_left = -128.0
+margin_top = 7.0
+margin_right = -72.0
+margin_bottom = 21.0
+theme = SubResource( 1 )
+text = "Marbles"
+
+[node name="Marbles_amount" type="Label" parent="SubMenu"]
+margin_left = -58.0
+margin_top = 7.0
+margin_right = -2.0
+margin_bottom = 21.0
+theme = SubResource( 1 )
+text = "6567"
+align = 1
+
+[node name="Level" type="Label" parent="SubMenu"]
+margin_left = 20.0
+margin_top = -32.0
+margin_right = 76.0
+margin_bottom = -18.0
+theme = SubResource( 1 )
+text = "Level"
+
+[node name="Level_amount" type="Label" parent="SubMenu"]
+margin_left = 86.0
+margin_top = -32.0
+margin_right = 142.0
+margin_bottom = -18.0
+theme = SubResource( 1 )
+text = "2"
+align = 1
+
+[node name="Next" type="Label" parent="SubMenu"]
+margin_left = 10.0
+margin_top = 7.0
+margin_right = 71.0
+margin_bottom = 21.0
+theme = SubResource( 1 )
+text = "Next Lvl"
+
+[node name="Next_amount" type="Label" parent="SubMenu"]
+margin_left = 83.0
+margin_top = 7.0
+margin_right = 144.0
+margin_bottom = 21.0
+theme = SubResource( 1 )
+text = "3842"
+align = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
