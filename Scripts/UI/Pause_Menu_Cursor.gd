@@ -19,7 +19,7 @@ func _process(delta):
 		input.y -= 1
 		if down_count >=1:
 			down_count -= 1
-	if Input.is_action_just_pressed("ui_down") and down_count <=5:
+	if Input.is_action_just_pressed("ui_down") and down_count <5:
 		input.y += 1
 		down_count += 1	
 	else:

@@ -13,11 +13,11 @@
 [ext_resource path="res://Scripts/Battle/ItemInventory_Battle.gd" type="Script" id=11]
 [ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=12]
 [ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=13]
-[ext_resource path="res://UI/PauseMembers.gd" type="Script" id=14]
-[ext_resource path="res://UI/PauseMenu.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/UI/PauseMembers.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/UI/PauseMenu.gd" type="Script" id=15]
 [ext_resource path="res://Scripts/UI/Pause_Menu_Cursor.gd" type="Script" id=16]
-[ext_resource path="res://UI/SubMenu.gd" type="Script" id=17]
-[ext_resource path="res://UI/Pause_Menu_Item.gd" type="Script" id=18]
+[ext_resource path="res://Scripts/UI/SubMenu.gd" type="Script" id=17]
+[ext_resource path="res://Scripts/UI/Pause_Menu_Item.gd" type="Script" id=18]
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 6 )
@@ -368,12 +368,12 @@ visible = false
 position = Vector2( 97, -58 )
 texture = ExtResource( 1 )
 
-[node name="Enemies (Placeholder)" type="Sprite" parent="."]
+[node name="Enemies" type="Sprite" parent="."]
 visible = false
 position = Vector2( 97, -58 )
 texture = ExtResource( 1 )
 
-[node name="Map (Placeholder)" type="Sprite" parent="."]
+[node name="Map" type="Sprite" parent="."]
 visible = false
 position = Vector2( 97, -58 )
 texture = ExtResource( 1 )
