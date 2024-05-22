@@ -16,10 +16,14 @@ var remove_item_name: String
 const menu_slot = preload("res://UI/Slot.tscn")
 onready var slot = menu_slot.instance()
 var add_item_name : String
+var add_trinket_name : String
+var add_key_item_name : String
 var item_index : int
 var spell_index : int
 
 var Inventory : Array = []
+var Trinkets : Array = []
+var KeyItems : Array = []
 var Gary_Spells : Array = []
 var Jacques_Spells : Array = []
 var Irina_Spells : Array = []
@@ -31,6 +35,11 @@ func _ready():
 	add_item()
 	add_item_name = "Picnic Pie"
 	add_item()
+	
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
 	
 	spell_name = "Thunderstorm"
 	populate_Gary()
@@ -52,6 +61,16 @@ func add_item():
 	var new_slot = slot.duplicate()
 	new_slot.text = add_item_name
 	Inventory.append(new_slot)
+	
+func add_trinket():
+	var new_slot = slot.duplicate()
+	new_slot.text = add_trinket_name
+	Trinkets.append(new_slot)
+	
+func add_key_item():
+	var new_slot = slot.duplicate()
+	new_slot.text = add_key_item_name
+	KeyItems.append(new_slot)
 	
 func populate_Gary():
 	var new_slot = slot.duplicate()
