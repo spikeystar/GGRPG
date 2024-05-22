@@ -9,11 +9,12 @@ var cursor_index : int = 0
 var cursor_active = false
 var down_count = 0
 var menu_name : String
-var main_active = true
+var member_options = false
 var stats_active = false
 
 signal party_selecting
-signal item_selecting
+signal switch_selecting
+signal show_stats
 signal retread
 
 func _process(delta):
@@ -21,31 +22,41 @@ func _process(delta):
 	var current_menu_item := get_menu_item_at_index(cursor_index)
 	menu_name = current_menu_item.get_id()
 	
-	if Input.is_action_just_pressed("ui_up") and main_active:
+	if Input.is_action_just_pressed("ui_up") and member_options:
 		input.y -= 1
 		if down_count >=1:
 			down_count -= 1
-	if Input.is_action_just_pressed("ui_down") and down_count <5 and main_active:
+	if Input.is_action_just_pressed("ui_down") and down_count <1 and member_options:
 		input.y += 1
 		down_count += 1	
 	else:
 		input.y += 0
 		
-	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Party":
+		
+	if Input.is_action_just_pressed("ui_accept") and member_options:
 		self.hide()
-		main_active = false
-		stats_active = false
+		member_options = false
+		cursor_index = 0
+		down_count = 0
+		
+	if Input.is_action_just_pressed("ui_select") and member_options and down_count ==0:
+		member_options = false
+		cursor_index = 0
+		down_count = 0
+		emit_signal("switch_selecting")
+		
+	if Input.is_action_just_pressed("ui_select") and member_options and down_count ==1:
+		member_options = false
+		cursor_index = 0
+		emit_signal("show_stats")
+		yield(get_tree().create_timer(0.2), "timeout")
+		down_count = 0
+		stats_active = true
+		
+	if Input.is_action_just_pressed("ui_accept") and stats_active:
 		emit_signal("party_selecting")
-		
-	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Items":
-		self.hide()
-		main_active = false
-		emit_signal("item_selecting")
-		
-	if Input.is_action_just_pressed("ui_accept") and not main_active and not stats_active:
-		self.show()
-		main_active = true
 		emit_signal("retread")
+		stats_active = false
 		
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)
@@ -85,18 +96,5 @@ func set_cursor_from_index(index : int) -> void:
 	
 	cursor_index = index
 
-func _on_MemberOptionsCursor_show_stats():
-	stats_active = true
 
-func _on_MemberOptionsCursor_retread():
-	stats_active = false
 
-func _on_ItemMenuCursor_retread():
-	self.show()
-	main_active = true
-
-func _on_ItemInventoryBox_heal_item_chosen():
-	cursor_index = 0
-
-func _on_ItemInventoryBox_return_to_item():
-	cursor_index = 1

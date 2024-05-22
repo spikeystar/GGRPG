@@ -7,45 +7,33 @@ onready var menu_parent := get_node(menu_parent_path)
 
 var cursor_index : int = 0
 var cursor_active = false
-var down_count = 0
-var menu_name : String
-var main_active = true
-var stats_active = false
+var item_selecting = false
 
-signal party_selecting
 signal item_selecting
 signal retread
+
+func _ready():
+	self.modulate.a = 0
 
 func _process(delta):
 	var input := Vector2.ZERO
 	var current_menu_item := get_menu_item_at_index(cursor_index)
-	menu_name = current_menu_item.get_id()
 	
-	if Input.is_action_just_pressed("ui_up") and main_active:
+	if Input.is_action_just_pressed("ui_up") and cursor_index >1 and item_selecting:
 		input.y -= 1
-		if down_count >=1:
-			down_count -= 1
-	if Input.is_action_just_pressed("ui_down") and down_count <5 and main_active:
+	if Input.is_action_just_pressed("ui_down") and item_selecting:
 		input.y += 1
-		down_count += 1	
 	else:
 		input.y += 0
 		
-	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Party":
-		self.hide()
-		main_active = false
-		stats_active = false
-		emit_signal("party_selecting")
-		
-	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Items":
-		self.hide()
-		main_active = false
-		emit_signal("item_selecting")
-		
-	if Input.is_action_just_pressed("ui_accept") and not main_active and not stats_active:
-		self.show()
-		main_active = true
+	if Input.is_action_just_pressed("ui_accept") and item_selecting:
+		item_selecting = false
+		self.modulate.a = 0
 		emit_signal("retread")
+		
+	if Input.is_action_just_pressed("ui_select") and item_selecting:
+		item_selecting = false
+		self.modulate.a = 0
 		
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)
@@ -85,18 +73,7 @@ func set_cursor_from_index(index : int) -> void:
 	
 	cursor_index = index
 
-func _on_MemberOptionsCursor_show_stats():
-	stats_active = true
-
-func _on_MemberOptionsCursor_retread():
-	stats_active = false
-
-func _on_ItemMenuCursor_retread():
-	self.show()
-	main_active = true
-
-func _on_ItemInventoryBox_heal_item_chosen():
-	cursor_index = 0
-
-func _on_ItemInventoryBox_return_to_item():
-	cursor_index = 1
+func _on_MenuCursor_item_selecting():
+	self.modulate.a = 1
+	set_cursor_from_index(1)
+	item_selecting = true

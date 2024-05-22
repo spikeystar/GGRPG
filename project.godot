@@ -35,7 +35,6 @@ BattleMusic="*res://Misc/BattleMusic.tscn"
 [debug]
 
 settings/fps/force_fps=40
-settings/stdout/print_fps=true
 
 [display]
 

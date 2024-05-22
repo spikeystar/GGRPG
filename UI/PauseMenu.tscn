@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://UI/Pause/Pause Items.png" type="Texture" id=1]
 [ext_resource path="res://UI/Pause/Pause Members.png" type="Texture" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://UI/Pause/SP Icon.png" type="Texture" id=8]
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=9]
 [ext_resource path="res://UI/Pause/Member Display.png" type="Texture" id=10]
-[ext_resource path="res://Scripts/Battle/ItemInventory_Battle.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/UI/ItemInventoryBox.gd" type="Script" id=11]
 [ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=12]
 [ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scripts/UI/PauseMembers.gd" type="Script" id=14]
@@ -18,8 +18,28 @@
 [ext_resource path="res://Scripts/UI/Pause_Menu_Cursor.gd" type="Script" id=16]
 [ext_resource path="res://Scripts/UI/SubMenu.gd" type="Script" id=17]
 [ext_resource path="res://Scripts/UI/Pause_Menu_Item.gd" type="Script" id=18]
+[ext_resource path="res://UI/Pause/Member Options.png" type="Texture" id=19]
+[ext_resource path="res://Misc/Font/Move Select Theme.tres" type="Theme" id=20]
+[ext_resource path="res://Misc/Font/Move Select.tres" type="DynamicFont" id=21]
+[ext_resource path="res://Scripts/UI/Member_Options_Cursor.gd" type="Script" id=22]
+[ext_resource path="res://Scripts/UI/MemberOptions.gd" type="Script" id=23]
+[ext_resource path="res://UI/Pause/Member Stats.png" type="Texture" id=24]
+[ext_resource path="res://Assets/General/Weapons SS.png" type="Texture" id=25]
+[ext_resource path="res://Scripts/UI/Item_Menu_Cursor.gd" type="Script" id=26]
+[ext_resource path="res://Scripts/UI/Pause_Items.gd" type="Script" id=27]
 
-[sub_resource type="Theme" id=1]
+[sub_resource type="DynamicFontData" id=1]
+antialiased = false
+font_path = "res://Misc/Font/Greenscr.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+outline_size = 2
+outline_color = Color( 0.47, 0.29892, 0.2256, 1 )
+extra_spacing_space = -3
+font_data = SubResource( 1 )
+
+[sub_resource type="Theme" id=3]
 default_font = ExtResource( 6 )
 
 [node name="PauseMenu" type="Node2D"]
@@ -118,6 +138,7 @@ script = ExtResource( 16 )
 menu_parent_path = NodePath("..")
 
 [node name="Members" type="Sprite" parent="."]
+visible = false
 position = Vector2( 100, -56 )
 texture = ExtResource( 2 )
 script = ExtResource( 14 )
@@ -305,36 +326,191 @@ custom_fonts/font = ExtResource( 7 )
 text = "HP: 115/115"
 align = 1
 
-[node name="Items" type="Sprite" parent="."]
+[node name="Stats" type="Sprite" parent="."]
 visible = false
+position = Vector2( 100, -56 )
+texture = ExtResource( 24 )
+
+[node name="Name" type="Label" parent="Stats"]
+margin_left = -136.0
+margin_top = -79.0
+margin_right = -80.0
+margin_bottom = -65.0
+custom_fonts/font = ExtResource( 6 )
+text = "Gary"
+align = 1
+
+[node name="Display" type="Sprite" parent="Stats"]
+position = Vector2( -101, -16 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 10 )
+hframes = 5
+
+[node name="WeaponDisplay" type="Sprite" parent="Stats"]
+position = Vector2( -109, 90 )
+texture = ExtResource( 25 )
+hframes = 9
+vframes = 3
+
+[node name="Stats" type="Label" parent="Stats"]
+margin_left = 28.0
+margin_top = -122.0
+margin_right = 89.0
+margin_bottom = -104.0
+custom_fonts/font = SubResource( 2 )
+text = "Stats"
+align = 1
+
+[node name="Weapon" type="Label" parent="Stats"]
+margin_left = -11.0
+margin_top = -75.0
+margin_right = 45.0
+margin_bottom = -61.0
+custom_fonts/font = ExtResource( 6 )
+text = "Weapon"
+align = 1
+
+[node name="Trinket" type="Label" parent="Stats"]
+margin_left = -11.0
+margin_top = -41.0
+margin_right = 45.0
+margin_bottom = -27.0
+custom_fonts/font = ExtResource( 6 )
+text = "Trinket"
+align = 1
+
+[node name="HP" type="Label" parent="Stats"]
+margin_left = -12.0
+margin_top = -7.0
+margin_right = 44.0
+margin_bottom = 7.0
+custom_fonts/font = ExtResource( 6 )
+text = "HP"
+align = 1
+
+[node name="Attack" type="Label" parent="Stats"]
+margin_left = -11.0
+margin_top = 27.0
+margin_right = 45.0
+margin_bottom = 41.0
+custom_fonts/font = ExtResource( 6 )
+text = "Attack"
+align = 1
+
+[node name="Magic" type="Label" parent="Stats"]
+margin_left = -11.0
+margin_top = 61.0
+margin_right = 45.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 6 )
+text = "Magic"
+align = 1
+
+[node name="Defense" type="Label" parent="Stats"]
+margin_left = -11.0
+margin_top = 95.0
+margin_right = 45.0
+margin_bottom = 109.0
+custom_fonts/font = ExtResource( 6 )
+text = "Defense"
+align = 1
+
+[node name="Weapon_info" type="Label" parent="Stats"]
+margin_left = 59.0
+margin_top = -80.5
+margin_right = 131.0
+margin_bottom = -53.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 6 )
+text = "Red Fender"
+align = 1
+autowrap = true
+
+[node name="Trinket_info" type="Label" parent="Stats"]
+margin_left = 59.0
+margin_top = -45.5
+margin_right = 131.0
+margin_bottom = -18.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 6 )
+text = "Gold Bracelet"
+align = 1
+autowrap = true
+
+[node name="HP_info" type="Label" parent="Stats"]
+margin_left = 65.0
+margin_top = -6.0
+margin_right = 121.0
+margin_bottom = 8.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 6 )
+text = "121/121"
+align = 1
+
+[node name="Attack_info" type="Label" parent="Stats"]
+margin_left = 66.0
+margin_top = 28.0
+margin_right = 122.0
+margin_bottom = 42.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 6 )
+text = "57"
+align = 1
+
+[node name="Magic_info" type="Label" parent="Stats"]
+margin_left = 66.0
+margin_top = 62.0
+margin_right = 122.0
+margin_bottom = 76.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 6 )
+text = "53"
+align = 1
+
+[node name="Defense_info" type="Label" parent="Stats"]
+margin_left = 66.0
+margin_top = 95.0
+margin_right = 122.0
+margin_bottom = 109.0
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 6 )
+text = "37"
+align = 1
+
+[node name="Items" type="Sprite" parent="."]
 position = Vector2( 97, -58 )
 texture = ExtResource( 1 )
+script = ExtResource( 27 )
 
 [node name="ItemInventoryBox" type="VBoxContainer" parent="Items"]
-margin_left = -160.0
-margin_top = -173.0
-margin_right = -135.0
-margin_bottom = -148.0
+margin_left = -134.0
+margin_top = -186.0
+margin_right = -109.0
+margin_bottom = -161.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 9
 script = ExtResource( 11 )
 
-[node name="MenuCursor" parent="Items/ItemInventoryBox" instance=ExtResource( 13 )]
+[node name="ItemMenuCursor" parent="Items/ItemInventoryBox" instance=ExtResource( 13 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 25.0
 margin_bottom = 25.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-script = null
+script = ExtResource( 26 )
+menu_parent_path = NodePath("..")
+cursor_offset = Vector2( 17, 2.5 )
 
 [node name="Stock" type="Label" parent="Items"]
 margin_left = 50.0
 margin_top = -43.0
 margin_right = 106.0
 margin_bottom = -29.0
-theme = SubResource( 1 )
+theme = SubResource( 3 )
 text = "Stock:"
 
 [node name="Stock_amount" type="Label" parent="Items"]
@@ -342,7 +518,7 @@ margin_left = 88.0
 margin_top = -43.0
 margin_right = 144.0
 margin_bottom = -29.0
-theme = SubResource( 1 )
+theme = SubResource( 3 )
 text = "100"
 align = 1
 
@@ -398,7 +574,7 @@ margin_left = -123.0
 margin_top = -32.0
 margin_right = -62.0
 margin_bottom = -18.0
-theme = SubResource( 1 )
+theme = SubResource( 3 )
 text = "SP"
 align = 1
 
@@ -407,7 +583,7 @@ margin_left = -59.0
 margin_top = -31.0
 margin_right = 2.0
 margin_bottom = -17.0
-theme = SubResource( 1 )
+theme = SubResource( 3 )
 text = "121/121"
 align = 1
 
@@ -416,7 +592,7 @@ margin_left = -128.0
 margin_top = 7.0
 margin_right = -72.0
 margin_bottom = 21.0
-theme = SubResource( 1 )
+theme = SubResource( 3 )
 text = "Marbles"
 
 [node name="Marbles_amount" type="Label" parent="SubMenu"]
@@ -424,7 +600,7 @@ margin_left = -58.0
 margin_top = 7.0
 margin_right = -2.0
 margin_bottom = 21.0
-theme = SubResource( 1 )
+theme = SubResource( 3 )
 text = "6567"
 align = 1
 
@@ -433,7 +609,7 @@ margin_left = 20.0
 margin_top = -32.0
 margin_right = 76.0
 margin_bottom = -18.0
-theme = SubResource( 1 )
+theme = SubResource( 3 )
 text = "Level"
 
 [node name="Level_amount" type="Label" parent="SubMenu"]
@@ -441,7 +617,7 @@ margin_left = 86.0
 margin_top = -32.0
 margin_right = 142.0
 margin_bottom = -18.0
-theme = SubResource( 1 )
+theme = SubResource( 3 )
 text = "2"
 align = 1
 
@@ -450,7 +626,7 @@ margin_left = 10.0
 margin_top = 7.0
 margin_right = 71.0
 margin_bottom = 21.0
-theme = SubResource( 1 )
+theme = SubResource( 3 )
 text = "Next Lvl"
 
 [node name="Next_amount" type="Label" parent="SubMenu"]
@@ -458,9 +634,92 @@ margin_left = 83.0
 margin_top = 7.0
 margin_right = 144.0
 margin_bottom = 21.0
-theme = SubResource( 1 )
+theme = SubResource( 3 )
 text = "3842"
 align = 1
 
+[node name="MemberOptions" type="Sprite" parent="."]
+visible = false
+position = Vector2( 97, 146 )
+texture = ExtResource( 19 )
+script = ExtResource( 23 )
+
+[node name="VBoxOptions" type="VBoxContainer" parent="MemberOptions"]
+margin_left = -28.0
+margin_top = -26.0
+margin_right = 28.0
+margin_bottom = 14.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Switch" type="Label" parent="MemberOptions/VBoxOptions"]
+margin_right = 55.0
+margin_bottom = 15.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.156863 )
+custom_fonts/font = ExtResource( 21 )
+text = "Switch"
+align = 1
+valign = 1
+script = ExtResource( 18 )
+
+[node name="Info" type="Label" parent="MemberOptions/VBoxOptions"]
+margin_left = 9.0
+margin_top = 25.0
+margin_right = 46.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 30, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource( 20 )
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.156863 )
+custom_fonts/font = ExtResource( 21 )
+text = "Info"
+align = 1
+valign = 1
+script = ExtResource( 18 )
+
+[node name="MemberOptionsCursor" parent="MemberOptions/VBoxOptions" instance=ExtResource( 13 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 15.0
+margin_top = 50.0
+margin_right = 40.0
+margin_bottom = 75.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource( 22 )
+menu_parent_path = NodePath("..")
+cursor_offset = Vector2( 17, 2.5 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[connection signal="item_selecting" from="MainSelection/MenuCursor" to="Items/ItemInventoryBox" method="_on_MenuCursor_item_selecting"]
+[connection signal="item_selecting" from="MainSelection/MenuCursor" to="Items/ItemInventoryBox/ItemMenuCursor" method="_on_MenuCursor_item_selecting"]
+[connection signal="party_selecting" from="MainSelection/MenuCursor" to="Members" method="_on_MenuCursor_party_selecting"]
+[connection signal="retread" from="MainSelection/MenuCursor" to="." method="_on_MenuCursor_retread"]
+[connection signal="retread" from="MainSelection/MenuCursor" to="Members" method="_on_MenuCursor_retread"]
+[connection signal="item_usage" from="Members" to="Items/ItemInventoryBox" method="_on_Members_item_usage"]
+[connection signal="member_options" from="Members" to="MemberOptions" method="_on_Members_member_options"]
+[connection signal="empty_items" from="Items/ItemInventoryBox" to="Items" method="_on_ItemInventoryBox_empty_items"]
+[connection signal="heal_item_chosen" from="Items/ItemInventoryBox" to="MainSelection/MenuCursor" method="_on_ItemInventoryBox_heal_item_chosen"]
+[connection signal="heal_item_chosen" from="Items/ItemInventoryBox" to="Members" method="_on_ItemInventoryBox_heal_item_chosen"]
+[connection signal="return_to_item" from="Items/ItemInventoryBox" to="MainSelection/MenuCursor" method="_on_ItemInventoryBox_return_to_item"]
+[connection signal="retread" from="Items/ItemInventoryBox/ItemMenuCursor" to="MainSelection/MenuCursor" method="_on_ItemMenuCursor_retread"]
+[connection signal="retread" from="Items/ItemInventoryBox/ItemMenuCursor" to="Items/ItemInventoryBox" method="_on_ItemMenuCursor_retread"]
+[connection signal="party_selecting" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="Members" method="_on_MemberOptionsCursor_party_selecting"]
+[connection signal="party_selecting" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="MemberOptions" method="_on_MemberOptionsCursor_party_selecting"]
+[connection signal="retread" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="." method="_on_MemberOptionsCursor_retread"]
+[connection signal="retread" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="MainSelection/MenuCursor" method="_on_MemberOptionsCursor_retread"]
+[connection signal="show_stats" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="." method="_on_MemberOptionsCursor_show_stats"]
+[connection signal="show_stats" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="MainSelection/MenuCursor" method="_on_MemberOptionsCursor_show_stats"]
+[connection signal="switch_selecting" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="Members" method="_on_MemberOptionsCursor_switch_selecting"]
+[connection signal="switch_selecting" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="MemberOptions" method="_on_MemberOptionsCursor_switch_selecting"]
