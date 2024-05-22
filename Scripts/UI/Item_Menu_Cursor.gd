@@ -6,7 +6,6 @@ export var cursor_offset : Vector2
 onready var menu_parent := get_node(menu_parent_path)
 
 var cursor_index : int = 0
-var cursor_active = false
 var item_selecting = false
 
 signal item_selecting
@@ -19,7 +18,7 @@ func _process(delta):
 	var input := Vector2.ZERO
 	var current_menu_item := get_menu_item_at_index(cursor_index)
 	
-	if Input.is_action_just_pressed("ui_up") and cursor_index >1 and item_selecting:
+	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and item_selecting:
 		input.y -= 1
 	if Input.is_action_just_pressed("ui_down") and item_selecting:
 		input.y += 1
@@ -45,9 +44,9 @@ func _process(delta):
 #	if Input.is_action_just_pressed("ui_select") and cursor_active:
 		#var current_menu_item := get_menu_item_at_index(cursor_index)
 		
-		if current_menu_item != null:
-			if current_menu_item.has_method("cursor_select"):
-				current_menu_item.cursor_select()
+		#if current_menu_item != null:
+			#if current_menu_item.has_method("cursor_select"):
+				#current_menu_item.cursor_select()
 				
 		
 
@@ -75,5 +74,10 @@ func set_cursor_from_index(index : int) -> void:
 
 func _on_MenuCursor_item_selecting():
 	self.modulate.a = 1
-	set_cursor_from_index(1)
+	set_cursor_from_index(0)
+	item_selecting = true
+
+func _on_ItemInventoryBox_return_to_item():
+	self.modulate.a = 1
+	set_cursor_from_index(0)
 	item_selecting = true

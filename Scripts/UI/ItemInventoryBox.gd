@@ -5,7 +5,6 @@ var empty_items = false
 var item_id : String
 
 signal heal_item_chosen()
-signal all_heal_item_chosen()
 signal empty_items()
 signal return_to_item()
 
@@ -38,11 +37,9 @@ func _input(event):
 		if item_id == "Yummy Cake" or item_id == "Sugar Pill":
 			emit_signal("heal_item_chosen")
 		if item_id == "Picnic Pie" or item_id == "Pretty Gem":
-			emit_signal("all_heal_item_chosen")
-			emit_signal("item_chosen")
+			_on_Members_item_usage()
 		if item_id == "Bounty Herb" or item_id == "Ginger Tea":
 			pass
-		Party.item_index = item_index
 		item_active = false
 		
 func get_id():
@@ -70,6 +67,13 @@ func _on_ItemMenuCursor_retread():
 func _on_Members_item_usage():
 	if item_id == "Yummy Cake":
 		print("healed")
+	if item_id == "Pretty Gem":
+		print("SP")
+		
+	Party.item_index = item_index
+	Party.remove_item()
 	item_removed()
 	yield(get_tree().create_timer(0.8), "timeout")
 	emit_signal("return_to_item")
+	item_index = 0
+	item_active = true
