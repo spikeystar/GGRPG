@@ -78,6 +78,15 @@ func _on_MenuCursor_retread():
 	member_index = -1
 	switching = false
 	
+func _on_MenuCursor_mini_retread():
+	$Cursors.show()
+	Cursors[member_index].show()
+	party_selecting = true
+	able = false
+	yield(get_tree().create_timer(0.1), "timeout")
+	able = true
+	switching = false
+	
 func _on_MemberOptionsCursor_party_selecting():
 	party_selecting = true
 	$Cursors.show()
@@ -108,3 +117,4 @@ func _on_TrinketsInventory_trinket_chosen():
 	trinket_selecting = true
 	yield(get_tree().create_timer(0.2), "timeout")
 	able = true
+

@@ -16,6 +16,7 @@ signal party_selecting
 signal item_selecting
 signal trinket_selecting
 signal retread
+signal mini_retread
 
 func _process(delta):
 	var input := Vector2.ZERO
@@ -52,6 +53,10 @@ func _process(delta):
 		self.show()
 		main_active = true
 		emit_signal("retread")
+		
+	if Input.is_action_just_pressed("ui_accept") and not main_active and stats_active:
+		self.hide()
+		emit_signal("mini_retread")
 		
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)

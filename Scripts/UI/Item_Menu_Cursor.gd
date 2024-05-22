@@ -25,7 +25,7 @@ func _process(delta):
 	else:
 		input.y += 0
 		
-	if Input.is_action_just_pressed("ui_accept") and item_selecting:
+	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_left") and item_selecting:
 		item_selecting = false
 		self.modulate.a = 0
 		emit_signal("retread")
