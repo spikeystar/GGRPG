@@ -5,9 +5,11 @@ var party_selecting = false
 var able = false
 var switching = false
 var item_selecting = false
+var trinket_selecting = false
 
 signal member_options
 signal item_usage
+signal trinket_equipped
 
 func _ready():
 	Cursors = $Cursors.get_children()
@@ -47,6 +49,19 @@ func _process(delta):
 		item_selecting = false
 		able = false
 		
+		##############
+		
+	if Input.is_action_just_pressed("ui_right") and trinket_selecting:
+		select_next_member(+1)
+		
+	if Input.is_action_just_pressed("ui_left") and trinket_selecting:
+		select_next_member(-1)
+
+	if Input.is_action_just_pressed("ui_select") and trinket_selecting and able:
+		emit_signal("trinket_equipped")
+		trinket_selecting = false
+		able = false
+		
 
 func _on_MenuCursor_party_selecting():
 	party_selecting = true
@@ -82,5 +97,14 @@ func _on_ItemInventoryBox_heal_item_chosen():
 	$Cursors.show()
 	Cursors[member_index].show()
 	item_selecting = true
+	yield(get_tree().create_timer(0.2), "timeout")
+	able = true
+
+func _on_TrinketsInventory_trinket_chosen():
+	Cursors[member_index].hide()
+	member_index = 0
+	$Cursors.show()
+	Cursors[member_index].show()
+	trinket_selecting = true
 	yield(get_tree().create_timer(0.2), "timeout")
 	able = true

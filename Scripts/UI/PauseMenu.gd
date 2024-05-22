@@ -9,6 +9,7 @@ func _process(delta):
 	if $MainSelection/MenuCursor.menu_name == "Party":
 		$Members.show()
 		$Items.hide()
+		$Trinkets.hide()
 	if $MainSelection/MenuCursor.menu_name == "Items":
 		$Items.show()
 		$Members.hide()
@@ -40,3 +41,12 @@ func _on_MemberOptionsCursor_retread():
 
 func _on_MenuCursor_retread():
 	$MemberOptions.hide()
+
+func _on_TrinketsInventory_trinket_chosen():
+	$Members/HP.hide()
+	$Members/Trinkets.show()
+
+func _on_TrinketsInventory_return_to_trinkets():
+	yield(get_tree().create_timer(0.3), "timeout")
+	$Members/HP.show()
+	$Members/Trinkets.hide()

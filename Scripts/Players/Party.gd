@@ -36,10 +36,93 @@ func _ready():
 	add_item_name = "Picnic Pie"
 	add_item()
 	
+	
 	add_trinket_name = "Gold Bracelet"
 	add_trinket()
 	add_trinket_name = "Gold Earring"
 	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	spell_name = "Thunderstorm"
 	populate_Gary()
@@ -56,8 +139,8 @@ func _ready():
 	
 		
 func add_item():
-	if Inventory.size() == 10:
-		return
+	#if Inventory.size() == 10:
+		#return
 	var new_slot = slot.duplicate()
 	new_slot.text = add_item_name
 	Inventory.append(new_slot)

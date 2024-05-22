@@ -14,6 +14,7 @@ var stats_active = false
 
 signal party_selecting
 signal item_selecting
+signal trinket_selecting
 signal retread
 
 func _process(delta):
@@ -41,6 +42,11 @@ func _process(delta):
 		self.hide()
 		main_active = false
 		emit_signal("item_selecting")
+		
+	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Trinkets":
+		self.hide()
+		main_active = false
+		emit_signal("trinket_selecting")
 		
 	if Input.is_action_just_pressed("ui_accept") and not main_active and not stats_active:
 		self.show()
@@ -100,3 +106,13 @@ func _on_ItemInventoryBox_heal_item_chosen():
 
 func _on_ItemInventoryBox_return_to_item():
 	cursor_index = 1
+
+func _on_TrinketsCursor_retread():
+	self.show()
+	main_active = true
+
+func _on_TrinketsInventory_trinket_chosen():
+	cursor_index = 0
+
+func _on_TrinketsInventory_return_to_trinkets():
+	cursor_index = 2
