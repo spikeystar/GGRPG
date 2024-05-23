@@ -5,6 +5,7 @@ var active = false
 var down_count = 0
 var size_max = false
 
+
 func _process(delta):
 	$TrinketsInventory.margin_left = margin_left + 3
 	$TrinketsInventory.margin_top = margin_top + 3
