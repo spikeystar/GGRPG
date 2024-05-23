@@ -19,11 +19,15 @@ var BB_position : Vector2
 var able = true
 var turn_used = false
 var health : int
+var formation : int
 
 onready var HUDS = get_tree().get_root().get_node("WorldRoot/HUDS")
 
 func _ready():
 	health = f_health
+	set_stats()
+	get_formation()
+	set_formation()
 
 func focus():
 	#if able:
@@ -35,6 +39,41 @@ func unfocus():
 	
 func get_name():
 	return fighter_name
+	
+func set_stats():
+	if fighter_name == "gary":
+		f_health = PartyStats.gary_health
+		f_attack = PartyStats.gary_attack
+		f_magic = PartyStats.gary_magic
+		f_defense = PartyStats.gary_defense
+	if fighter_name == "jacques":
+		f_health = PartyStats.jacques_health
+		f_attack = PartyStats.jacques_attack
+		f_magic = PartyStats.jacques_magic
+		f_defense = PartyStats.jacques_defense
+	if fighter_name == "irina":
+		f_health = PartyStats.irina_health
+		f_attack = PartyStats.irina_attack
+		f_magic = PartyStats.irina_magic
+		f_defense = PartyStats.irina_defense
+		
+func get_formation():
+	formation = PartyStats.party_members
+		
+func set_formation():
+		if fighter_name == "gary":
+			party_id = PartyStats.gary_id
+		if fighter_name == "jacques":
+			party_id = PartyStats.jacques_id
+		if fighter_name == "irina":
+			party_id = PartyStats.irina_id
+		if formation == 1 and party_id >= 2:
+			self.queue_free()
+		if formation == 2 and party_id >= 3:
+			self.queue_free()
+		if party_id > 3:
+			self.queue_free()
+		
 	
 func get_health():
 	return health

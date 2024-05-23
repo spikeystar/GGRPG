@@ -23,4 +23,10 @@ func music():
 func switch_songs():
 	if is_playing:
 		active.stop()
+		
+func quiet():
+	active.volume_db -= 4
+	
+func loud():
+	active.volume_db += 4
 

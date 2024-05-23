@@ -1,15 +1,7 @@
 extends Node
 
-var current_health = 88
-var max_health = 88
-var attack = 10
-var party_id : int
-var party_members = 3
 var f_turns : int = 0
-var party_level : int = 1
-var party_marbles : int = 100
-var party_sp = 150
-var party_max_sp = 150
+var marbles : int = 438
 var spell_name : String
 var remove_item_name: String
 
@@ -106,8 +98,6 @@ func _ready():
 	add_trinket_name = "Gold Earring"
 	add_trinket()
 	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
 	add_trinket()
 	
 	

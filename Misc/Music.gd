@@ -25,3 +25,9 @@ func pause():
 func unpause():
 	active.play()
 	active.seek(saved_time)
+	
+func quiet():
+	active.volume_db -= 4
+	
+func loud():
+	active.volume_db += 4

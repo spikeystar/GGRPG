@@ -6,6 +6,9 @@ var able = false
 var switching = false
 var item_selecting = false
 var trinket_selecting = false
+var current_id : int
+var member_name : String
+var selector_name : String
 
 signal member_options
 signal item_usage
@@ -22,19 +25,40 @@ func select_next_member(index_offset):
 	member_index = new_member_index
 
 func _process(delta):
+	PartyStats.party_id = (member_index + 1)
 	if Input.is_action_just_pressed("ui_right") and party_selecting:
 		select_next_member(+1)
+		print(member_index)
 		
 	if Input.is_action_just_pressed("ui_left") and party_selecting:
 		select_next_member(-1)
+		print(member_index)
 
 	if Input.is_action_just_pressed("ui_select") and party_selecting and able and not switching:
 		emit_signal("member_options")
 		party_selecting = false
+		current_id = (member_index + 1)
+		selector_name = get_name()
+		PartyStats.switching_id = current_id
+		print(member_index)
 		
 	if Input.is_action_just_pressed("ui_select") and party_selecting and able and switching:
 		print("switch")
 		switching = false
+		member_name = get_name()
+		if selector_name == "gary":
+			PartyStats.gary_id = PartyStats.party_id
+		if selector_name == "jacques":
+			PartyStats.jacques_id = PartyStats.party_id
+		if selector_name == "irina":
+			PartyStats.irina_id = PartyStats.party_id
+		if member_name == "gary":
+			PartyStats.gary_id = current_id
+		if member_name == "jacques":
+			PartyStats.jacques_id = current_id
+		if member_name == "irina":
+			PartyStats.irina_id = current_id
+		print(member_index)
 		
 		##########
 		
@@ -62,6 +86,18 @@ func _process(delta):
 		trinket_selecting = false
 		able = false
 		
+func get_name():
+	if member_index == 0:
+		member_name = $Name1.text
+	if member_index == 1:
+		member_name = $Name2.text
+	if member_index == 2:
+		member_name = $Name3.text
+	if member_index == 3:
+		member_name = $Name4.text
+	if member_index == 4:
+		member_name = $Name5.text
+	
 
 func _on_MenuCursor_party_selecting():
 	party_selecting = true
