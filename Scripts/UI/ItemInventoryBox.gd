@@ -1,8 +1,11 @@
 extends VBoxContainer
 
+onready var Members = get_tree().get_root().get_node("PauseMenu/Members")
+
 var item_active = false
 var empty_items = false
 var item_id : String
+var amount : int
 
 signal heal_item_chosen()
 signal empty_items()
@@ -66,9 +69,11 @@ func _on_ItemMenuCursor_retread():
 
 func _on_Members_item_usage():
 	if item_id == "Yummy Cake":
-		print("healed")
+		amount = 50
 	if item_id == "Pretty Gem":
-		print("SP")
+		amount = 20
+		PartyStats.party_sp = max(PartyStats.party_max_sp, PartyStats.party_sp + amount)
+	set_member_target()
 		
 	Party.item_index = item_index
 	Party.remove_item()
@@ -77,3 +82,12 @@ func _on_Members_item_usage():
 	emit_signal("return_to_item")
 	item_index = 0
 	item_active = true
+	
+func set_member_target():
+	if Members.selector_name == "Gary":
+		PartyStats.gary_current_health = clamp(PartyStats.gary_current_health + amount, 1, PartyStats.gary_health)
+	if Members.selector_name == "Jacques":
+		PartyStats.jacques_current_health = clamp(PartyStats.jacques_current_health + amount, 1, PartyStats.jacques_health)
+	if Members.selector_name == "Irina":
+		PartyStats.irina_current_health = clamp(PartyStats.irina_current_health + amount, 1, PartyStats.irina_health)
+	

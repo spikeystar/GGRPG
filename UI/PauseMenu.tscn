@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://UI/Pause/Pause Items.png" type="Texture" id=1]
 [ext_resource path="res://UI/Pause/Pause Members.png" type="Texture" id=2]
@@ -36,6 +36,7 @@
 [ext_resource path="res://UI/Pause/Pause Enemies.png" type="Texture" id=34]
 [ext_resource path="res://UI/Battle/Status/Status Icons.png" type="Texture" id=35]
 [ext_resource path="res://Assets/General/Enemy Display.png" type="Texture" id=36]
+[ext_resource path="res://Scripts/UI/Stats.gd" type="Script" id=37]
 
 [sub_resource type="DynamicFontData" id=4]
 antialiased = false
@@ -293,7 +294,6 @@ script = ExtResource( 16 )
 menu_parent_path = NodePath("..")
 
 [node name="Members" type="Sprite" parent="."]
-visible = false
 position = Vector2( 100, -56 )
 texture = ExtResource( 2 )
 script = ExtResource( 14 )
@@ -535,6 +535,7 @@ align = 1
 visible = false
 position = Vector2( 100, -56 )
 texture = ExtResource( 24 )
+script = ExtResource( 37 )
 
 [node name="Name" type="Label" parent="Stats"]
 margin_left = -136.0
@@ -621,10 +622,10 @@ text = "Defense"
 align = 1
 
 [node name="Weapon_info" type="Label" parent="Stats"]
-margin_left = 59.0
-margin_top = -80.5
-margin_right = 131.0
-margin_bottom = -53.5
+margin_left = 53.0
+margin_top = -75.5
+margin_right = 135.0
+margin_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = ExtResource( 6 )
@@ -751,6 +752,7 @@ hframes = 3
 vframes = 3
 
 [node name="Trinkets" type="Sprite" parent="."]
+visible = false
 position = Vector2( 97, -58 )
 texture = ExtResource( 1 )
 script = ExtResource( 28 )
@@ -1158,6 +1160,7 @@ current = true
 [connection signal="heal_item_chosen" from="Items/ItemPanel/ItemInventoryBox" to="MainSelection/MenuCursor" method="_on_ItemInventoryBox_heal_item_chosen"]
 [connection signal="heal_item_chosen" from="Items/ItemPanel/ItemInventoryBox" to="Members" method="_on_ItemInventoryBox_heal_item_chosen"]
 [connection signal="return_to_item" from="Items/ItemPanel/ItemInventoryBox" to="MainSelection/MenuCursor" method="_on_ItemInventoryBox_return_to_item"]
+[connection signal="return_to_item" from="Items/ItemPanel/ItemInventoryBox" to="Members" method="_on_ItemInventoryBox_return_to_item"]
 [connection signal="return_to_item" from="Items/ItemPanel/ItemInventoryBox" to="Items/ItemPanel/ItemMenuCursor" method="_on_ItemInventoryBox_return_to_item"]
 [connection signal="retread" from="Items/ItemPanel/ItemMenuCursor" to="MainSelection/MenuCursor" method="_on_ItemMenuCursor_retread"]
 [connection signal="retread" from="Items/ItemPanel/ItemMenuCursor" to="Items/ItemPanel/ItemInventoryBox" method="_on_ItemMenuCursor_retread"]

@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+onready var Members = get_tree().get_root().get_node("PauseMenu/Members")
+
 var trinkets_active = false
 var empty_trinkets = false
 var trinket_id : String
