@@ -15,7 +15,6 @@ signal size_ready()
 
 onready var inventory : Array = []
 var trinket_index : int
-#var size_max : int
 
 func _ready():
 	inventory = Party.Trinkets
@@ -24,11 +23,22 @@ func _ready():
 	if inventory.size() == 0:
 		empty_trinkets = true
 		emit_signal("empty_trinkets")
-	#var bottom_max = trinket_index
+	if inventory.size() > 15:
+		for x in range(15, inventory.size()):
+			inventory[x].hide()
 		
 func add_slot(trinket_index):
 	var trinket_slot = inventory[trinket_index]
 	self.add_child(trinket_slot)
+	
+func scroll_down():
+	inventory[trinket_index].show()
+	inventory[trinket_index - 15].hide()
+	
+func scroll_up():
+	inventory[trinket_index - 14].show()
+	inventory[trinket_index + 1].hide()
+	
 	
 func _process(delta):
 	var size_max = inventory.size()
@@ -37,10 +47,11 @@ func _process(delta):
 		trinket_index += 1
 	if Input.is_action_just_pressed("ui_up") and trinkets_active and trinket_index > 0:
 		trinket_index -= 1
-	if trinket_index == size_max:
-		emit_signal("size_max")
-	if trinket_index < size_max:
-		emit_signal("size_ready")
+	if Input.is_action_just_pressed("ui_down") and trinket_index >=15:
+		scroll_down()
+	if Input.is_action_just_pressed("ui_up") and trinket_index >=14:
+		scroll_up()
+	
 		
 func _input(event):
 	var inventory_max = (inventory.size() -1)
@@ -64,6 +75,12 @@ func get_holder_name():
 			return "-"
 
 func _on_TrinketsCursor_retread():
+	if inventory.size() > 15:
+		for x in range(15, inventory.size()):
+			inventory[x].hide()
+		for x in range(0, 14):
+			inventory[x].show()
+	trinket_index = 0
 	trinkets_active = false
 
 func _on_MenuCursor_trinket_selecting():

@@ -11,6 +11,9 @@ var down_count = 0
 var menu_name : String
 var main_active = true
 var stats_active = false
+var items_empty = false
+var trinkets_empty = false
+var key_empty = false
 
 signal party_selecting
 signal item_selecting
@@ -40,17 +43,17 @@ func _process(delta):
 		stats_active = false
 		emit_signal("party_selecting")
 		
-	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Items":
+	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Items" and not items_empty:
 		self.hide()
 		main_active = false
 		emit_signal("item_selecting")
 		
-	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Trinkets":
+	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Trinkets" and not trinkets_empty:
 		self.hide()
 		main_active = false
 		emit_signal("trinket_selecting")
 		
-	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Key":
+	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Key" and not key_empty:
 		self.hide()
 		main_active = false
 		emit_signal("key_selecting")
@@ -110,6 +113,9 @@ func _on_MemberOptionsCursor_retread():
 
 func _on_ItemMenuCursor_retread():
 	self.show()
+	self.modulate.a = 0
+	yield(get_tree().create_timer(0.05), "timeout")
+	self.modulate.a = 1
 	main_active = true
 
 func _on_ItemInventoryBox_heal_item_chosen():
@@ -120,6 +126,9 @@ func _on_ItemInventoryBox_return_to_item():
 
 func _on_TrinketsCursor_retread():
 	self.show()
+	self.modulate.a = 0
+	yield(get_tree().create_timer(0.05), "timeout")
+	self.modulate.a = 1
 	main_active = true
 
 func _on_TrinketsInventory_trinket_chosen():
@@ -131,6 +140,15 @@ func _on_TrinketsInventory_return_to_trinkets():
 func _on_KeyCursor_retread():
 	self.show()
 	self.modulate.a = 0
-	yield(get_tree().create_timer(0.1), "timeout")
+	yield(get_tree().create_timer(0.05), "timeout")
 	self.modulate.a = 1
 	main_active = true
+
+func _on_ItemInventoryBox_empty_items():
+	items_empty = true
+
+func _on_TrinketsInventory_empty_trinkets():
+	trinkets_empty = true
+
+func _on_KeyInventory_empty_key():
+	key_empty = true

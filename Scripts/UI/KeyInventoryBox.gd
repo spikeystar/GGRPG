@@ -19,8 +19,8 @@ func _ready():
 	if inventory.size() == 0:
 		empty_key = true
 		emit_signal("empty_key")
-	if inventory.size() > 10:
-		for x in range(10, inventory.size()):
+	if inventory.size() > 8:
+		for x in range(8, inventory.size()):
 			inventory[x].hide()
 			
 		
@@ -30,10 +30,10 @@ func add_slot(key_index):
 	
 func scroll_down():
 	inventory[key_index].show()
-	inventory[key_index - 10].hide()
+	inventory[key_index - 8].hide()
 	
 func scroll_up():
-	inventory[key_index - 9].show()
+	inventory[key_index - 7].show()
 	inventory[key_index + 1].hide()
 	
 func _process(delta):
@@ -45,9 +45,9 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_up") and key_active and key_index > 0:
 		key_index -= 1
 		print(key_index)
-	if Input.is_action_just_pressed("ui_down") and key_index >=10:
+	if Input.is_action_just_pressed("ui_down") and key_index >=8:
 		scroll_down()
-	if Input.is_action_just_pressed("ui_up") and key_index >=9:
+	if Input.is_action_just_pressed("ui_up") and key_index >=7:
 		scroll_up()
 		
 		
@@ -55,13 +55,15 @@ func get_id():
 	if key_active and not empty_key:
 		key_id = inventory[key_index].get_id()
 		return key_id
+	else:
+		pass
 		
 
 func _on_KeyCursor_retread():
-	if inventory.size() > 10:
-		for x in range(10, inventory.size()):
+	if inventory.size() > 8:
+		for x in range(8, inventory.size()):
 			inventory[x].hide()
-		for x in range(0, 9):
+		for x in range(0, 7):
 			inventory[x].show()
 	key_index = 0
 	key_active = false

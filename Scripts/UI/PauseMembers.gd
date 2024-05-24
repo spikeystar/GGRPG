@@ -9,6 +9,7 @@ var trinket_selecting = false
 var current_id : int
 var member_name : String
 var selector_name : String
+var stats_active = false
 
 signal member_options
 signal item_usage
@@ -43,6 +44,11 @@ func _process(delta):
 		current_id = (member_index + 1)
 		selector_name = get_name()
 		print(member_index)
+		
+	if Input.is_action_just_pressed("ui_accept") and party_selecting and not stats_active:
+		$Cursors.hide()
+		Cursors[member_index].hide()
+		member_index = -1
 		
 	if Input.is_action_just_pressed("ui_select") and party_selecting and able and switching:
 		print("switch")
@@ -432,3 +438,8 @@ func _on_TrinketsInventory_return_to_trinkets():
 	member_index = -1
 	$Cursors.hide()
 
+func _on_MemberOptionsCursor_show_stats():
+	stats_active = true
+
+func _on_MemberOptionsCursor_retread():
+	stats_active = false

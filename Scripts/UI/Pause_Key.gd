@@ -1,5 +1,8 @@
 extends Sprite
 
+func _ready():
+	var key_id = $KeyPanel/KeyInventory.get_id()
+
 func _process(delta):
 	var key_id = $KeyPanel/KeyInventory.get_id()
 	if key_id == "Lighthouse Key":
