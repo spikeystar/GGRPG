@@ -371,7 +371,62 @@ func set_labels():
 		$Display5.frame = 2
 		$HP/HP5.text = str(PartyStats.irina_current_health) + "/" + str(PartyStats.irina_health)
 		$Trinkets/Trinket5.text = PartyStats.irina_trinket
+	if PartyStats.suzy_id == 1:
+		$Name1.text = "Suzy"
+		$Display1.frame = 3
+		$HP/HP1.text = str(PartyStats.suzy_current_health) + "/" + str(PartyStats.suzy_health)
+		$Trinkets/Trinket1.text = PartyStats.suzy_trinket
+	if PartyStats.suzy_id == 2:
+		$Name2.text = "Suzy"
+		$Display2.frame = 3
+		$HP/HP2.text = str(PartyStats.suzy_current_health) + "/" + str(PartyStats.suzy_health)
+		$Trinkets/Trinket2.text = PartyStats.suzy_trinket
+	if PartyStats.suzy_id == 3:
+		$Name3.text = "Suzy"
+		$Display3.frame = 3
+		$HP/HP3.text = str(PartyStats.suzy_current_health) + "/" + str(PartyStats.suzy_health)
+		$Trinkets/Trinket3.text = PartyStats.suzy_trinket
+	if PartyStats.suzy_id == 4:
+		$Name4.text = "Suzy"
+		$Display4.frame = 3
+		$HP/HP4.text = str(PartyStats.suzy_current_health) + "/" + str(PartyStats.suzy_health)
+		$Trinkets/Trinket4.text = PartyStats.suzy_trinket
+	if PartyStats.suzy_id == 5:
+		$Name5.text = "Suzy"
+		$Display5.frame = 3
+		$HP/HP5.text = str(PartyStats.suzy_current_health) + "/" + str(PartyStats.suzy_health)
+		$Trinkets/Trinket5.text = PartyStats.suzy_trinket
+	if PartyStats.damien_id == 1:
+		$Name1.text = "Damien"
+		$Display1.frame = 4
+		$HP/HP1.text = str(PartyStats.damien_current_health) + "/" + str(PartyStats.damien_health)
+		$Trinkets/Trinket1.text = PartyStats.damien_trinket
+	if PartyStats.damien_id == 2:
+		$Name2.text = "Damien"
+		$Display2.frame = 4
+		$HP/HP2.text = str(PartyStats.damien_current_health) + "/" + str(PartyStats.damien_health)
+		$Trinkets/Trinket2.text = PartyStats.damien_trinket
+	if PartyStats.damien_id == 3:
+		$Name3.text = "Damien"
+		$Display3.frame = 4
+		$HP/HP3.text = str(PartyStats.damien_current_health) + "/" + str(PartyStats.damien_health)
+		$Trinkets/Trinket3.text = PartyStats.damien_trinket
+	if PartyStats.damien_id == 4:
+		$Name4.text = "Damien"
+		$Display4.frame = 4
+		$HP/HP4.text = str(PartyStats.damien_current_health) + "/" + str(PartyStats.damien_health)
+		$Trinkets/Trinket4.text = PartyStats.damien_trinket
+	if PartyStats.damien_id == 5:
+		$Name5.text = "Damien"
+		$Display5.frame = 4
+		$HP/HP5.text = str(PartyStats.damien_current_health) + "/" + str(PartyStats.damien_health)
+		$Trinkets/Trinket5.text = PartyStats.damien_trinket
 
 func _on_ItemInventoryBox_return_to_item():
 	member_index = -1
 	$Cursors.hide()
+
+func _on_TrinketsInventory_return_to_trinkets():
+	pass
+	#member_index = -1
+	#$Cursors.hide()

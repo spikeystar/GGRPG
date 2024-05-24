@@ -70,10 +70,17 @@ func _on_ItemMenuCursor_retread():
 func _on_Members_item_usage():
 	if item_id == "Yummy Cake":
 		amount = 50
+		set_member_target()
+	if item_id == "Sugar Pill":
+		amount = 20
+		set_member_target()
+	if item_id == "Picnic Pie":
+		amount = 100
+		all_heal()
 	if item_id == "Pretty Gem":
 		amount = 20
 		PartyStats.party_sp = max(PartyStats.party_max_sp, PartyStats.party_sp + amount)
-	set_member_target()
+	
 		
 	Party.item_index = item_index
 	Party.remove_item()
@@ -90,4 +97,29 @@ func set_member_target():
 		PartyStats.jacques_current_health = clamp(PartyStats.jacques_current_health + amount, 1, PartyStats.jacques_health)
 	if Members.selector_name == "Irina":
 		PartyStats.irina_current_health = clamp(PartyStats.irina_current_health + amount, 1, PartyStats.irina_health)
+	if Members.selector_name == "Suzy":
+		PartyStats.suzy_current_health = clamp(PartyStats.suzy_current_health + amount, 1, PartyStats.suzy_health)
+	if Members.selector_name == "Damien":
+		PartyStats.damien_current_health = clamp(PartyStats.damien_current_health + amount, 1, PartyStats.damien_health)
 	
+func all_heal():
+	if PartyStats.party_member == 1:
+		PartyStats.gary_current_health = clamp(PartyStats.gary_current_health + amount, 1, PartyStats.gary_health)
+	if PartyStats.party_member == 2:
+		PartyStats.gary_current_health = clamp(PartyStats.gary_current_health + amount, 1, PartyStats.gary_health)
+		PartyStats.jacques_current_health = clamp(PartyStats.jacques_current_health + amount, 1, PartyStats.jacques_health)
+	if PartyStats.party_member == 3:
+		PartyStats.gary_current_health = clamp(PartyStats.gary_current_health + amount, 1, PartyStats.gary_health)
+		PartyStats.jacques_current_health = clamp(PartyStats.jacques_current_health + amount, 1, PartyStats.jacques_health)
+		PartyStats.irina_current_health = clamp(PartyStats.irina_current_health + amount, 1, PartyStats.irina_health)
+	if PartyStats.party_member == 4:
+		PartyStats.gary_current_health = clamp(PartyStats.gary_current_health + amount, 1, PartyStats.gary_health)
+		PartyStats.jacques_current_health = clamp(PartyStats.jacques_current_health + amount, 1, PartyStats.jacques_health)
+		PartyStats.irina_current_health = clamp(PartyStats.irina_current_health + amount, 1, PartyStats.irina_health)
+		PartyStats.suzy_current_health = clamp(PartyStats.suzy_current_health + amount, 1, PartyStats.suzy_health)
+	if PartyStats.party_member == 5:
+		PartyStats.gary_current_health = clamp(PartyStats.gary_current_health + amount, 1, PartyStats.gary_health)
+		PartyStats.jacques_current_health = clamp(PartyStats.jacques_current_health + amount, 1, PartyStats.jacques_health)
+		PartyStats.irina_current_health = clamp(PartyStats.irina_current_health + amount, 1, PartyStats.irina_health)
+		PartyStats.suzy_current_health = clamp(PartyStats.suzy_current_health + amount, 1, PartyStats.suzy_health)
+		PartyStats.damien_current_health = clamp(PartyStats.damien_current_health + amount, 1, PartyStats.damien_health)

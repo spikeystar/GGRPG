@@ -206,9 +206,9 @@ align = 1
 
 [node name="MainSelection" type="VBoxContainer" parent="."]
 margin_left = -319.0
-margin_top = -201.0
+margin_top = -202.0
 margin_right = -289.0
-margin_bottom = 256.0
+margin_bottom = 255.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_scale = Vector2( 1.1, 1.1 )
@@ -294,6 +294,7 @@ script = ExtResource( 16 )
 menu_parent_path = NodePath("..")
 
 [node name="Members" type="Sprite" parent="."]
+visible = false
 position = Vector2( 100, -56 )
 texture = ExtResource( 2 )
 script = ExtResource( 14 )
@@ -752,7 +753,6 @@ hframes = 3
 vframes = 3
 
 [node name="Trinkets" type="Sprite" parent="."]
-visible = false
 position = Vector2( 97, -58 )
 texture = ExtResource( 1 )
 script = ExtResource( 28 )
@@ -1167,6 +1167,7 @@ current = true
 [connection signal="empty_trinkets" from="Trinkets/TrinketsNode/TrinketsPanel/TrinketsInventory" to="Trinkets" method="_on_TrinketsInventory_empty_trinkets"]
 [connection signal="return_to_trinkets" from="Trinkets/TrinketsNode/TrinketsPanel/TrinketsInventory" to="." method="_on_TrinketsInventory_return_to_trinkets"]
 [connection signal="return_to_trinkets" from="Trinkets/TrinketsNode/TrinketsPanel/TrinketsInventory" to="MainSelection/MenuCursor" method="_on_TrinketsInventory_return_to_trinkets"]
+[connection signal="return_to_trinkets" from="Trinkets/TrinketsNode/TrinketsPanel/TrinketsInventory" to="Members" method="_on_TrinketsInventory_return_to_trinkets"]
 [connection signal="return_to_trinkets" from="Trinkets/TrinketsNode/TrinketsPanel/TrinketsInventory" to="Trinkets/TrinketsNode/TrinketsCursor" method="_on_TrinketsInventory_return_to_trinkets"]
 [connection signal="size_max" from="Trinkets/TrinketsNode/TrinketsPanel/TrinketsInventory" to="Trinkets/TrinketsNode/TrinketsPanel" method="_on_TrinketsInventory_size_max"]
 [connection signal="size_ready" from="Trinkets/TrinketsNode/TrinketsPanel/TrinketsInventory" to="Trinkets/TrinketsNode/TrinketsPanel" method="_on_TrinketsInventory_size_ready"]

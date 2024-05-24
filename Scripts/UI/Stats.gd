@@ -34,4 +34,24 @@ func _process(delta):
 		$Magic_info.text = str(PartyStats.irina_magic)
 		$Defense_info.text = str(PartyStats.irina_defense)
 		$Trinket_info.text = str(PartyStats.irina_trinket)
+	if selector_name == "Suzy":
+		$Name.text = "Suzy"
+		$Display.frame = 3
+		$WeaponDisplay.frame = 5
+		$Weapon_info.text = "Candy Gun"
+		$HP_info.text = str(PartyStats.suzy_current_health) + "/" + str(PartyStats.suzy_health)
+		$Attack_info.text = str(PartyStats.suzy_attack)
+		$Magic_info.text = str(PartyStats.suzy_magic)
+		$Defense_info.text = str(PartyStats.suzy_defense)
+		$Trinket_info.text = str(PartyStats.suzy_trinket)
+	if selector_name == "Damien":
+		$Name.text = "Damien"
+		$Display.frame = 4
+		$WeaponDisplay.frame = 9
+		$Weapon_info.text = "Spellbook"
+		$HP_info.text = str(PartyStats.damien_current_health) + "/" + str(PartyStats.damien_health)
+		$Attack_info.text = str(PartyStats.damien_attack)
+		$Magic_info.text = str(PartyStats.damien_magic)
+		$Defense_info.text = str(PartyStats.damien_defense)
+		$Trinket_info.text = str(PartyStats.damien_trinket)
 		

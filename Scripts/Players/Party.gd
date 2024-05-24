@@ -19,6 +19,8 @@ var KeyItems : Array = []
 var Gary_Spells : Array = []
 var Jacques_Spells : Array = []
 var Irina_Spells : Array = []
+var Suzy_Spells : Array = []
+var Damien_Spells : Array = []
 
 func _ready():
 	add_item_name = "Yummy Cake"
@@ -32,6 +34,8 @@ func _ready():
 	add_trinket_name = "Gold Bracelet"
 	add_trinket()
 	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Unequip Trinket"
 	add_trinket()
 	add_trinket_name = "Gold Bracelet"
 	add_trinket()
