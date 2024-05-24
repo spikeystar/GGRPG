@@ -210,20 +210,20 @@ func get_position(fighter_position: Vector2 = global_position):
 	return fighter_position
 	
 func get_OG_position():
-	if party_id == 0:
+	if party_id == 1:
 		OG_position = Vector2(-240, 86)
-	elif party_id == 1:
-			OG_position = Vector2(-135, 144)
 	elif party_id == 2:
+			OG_position = Vector2(-135, 144)
+	elif party_id == 3:
 			OG_position = Vector2(-23, 194)
 	return OG_position
 	
 func get_BB_position():
-	if party_id == 0:
+	if party_id == 1:
 		BB_position = Vector2(-240, 48)
-	elif party_id == 1:
-			BB_position = Vector2(-135, 106)
 	elif party_id == 2:
+			BB_position = Vector2(-135, 106)
+	elif party_id == 3:
 			BB_position = Vector2(-23, 156)
 	return BB_position
 	
