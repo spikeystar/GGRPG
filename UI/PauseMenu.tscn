@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://UI/Pause/Pause Items.png" type="Texture" id=1]
 [ext_resource path="res://UI/Pause/Pause Members.png" type="Texture" id=2]
@@ -37,6 +37,9 @@
 [ext_resource path="res://UI/Battle/Status/Status Icons.png" type="Texture" id=35]
 [ext_resource path="res://Assets/General/Enemy Display.png" type="Texture" id=36]
 [ext_resource path="res://Scripts/UI/Stats.gd" type="Script" id=37]
+[ext_resource path="res://Scripts/UI/Pause_Key.gd" type="Script" id=38]
+[ext_resource path="res://Scripts/UI/KeyInventoryBox.gd" type="Script" id=39]
+[ext_resource path="res://Scripts/UI/Pause_Key_Cursor.gd" type="Script" id=40]
 
 [sub_resource type="DynamicFontData" id=4]
 antialiased = false
@@ -294,7 +297,6 @@ script = ExtResource( 16 )
 menu_parent_path = NodePath("..")
 
 [node name="Members" type="Sprite" parent="."]
-visible = false
 position = Vector2( 100, -56 )
 texture = ExtResource( 2 )
 script = ExtResource( 14 )
@@ -753,6 +755,7 @@ hframes = 3
 vframes = 3
 
 [node name="Trinkets" type="Sprite" parent="."]
+visible = false
 position = Vector2( 97, -58 )
 texture = ExtResource( 1 )
 script = ExtResource( 28 )
@@ -959,34 +962,39 @@ texture = ExtResource( 1 )
 visible = false
 position = Vector2( 97, -58 )
 texture = ExtResource( 4 )
+script = ExtResource( 38 )
 
 [node name="KeyPanel" type="Node2D" parent="Key"]
-position = Vector2( -140, -158 )
+position = Vector2( -134, -159 )
 
 [node name="KeyInventory" type="VBoxContainer" parent="Key/KeyPanel"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_left = -7.0
+margin_top = -1.0
+margin_right = -7.0
+margin_bottom = -1.0
+script = ExtResource( 39 )
 
 [node name="KeyCursor" parent="Key/KeyPanel" instance=ExtResource( 13 )]
-visible = false
 margin_right = 25.0
 margin_bottom = 25.0
-script = null
+script = ExtResource( 40 )
+menu_parent_path = NodePath("../KeyInventory")
+cursor_offset = Vector2( 17, 2.5 )
 
-[node name="KeyInfo" type="Label" parent="Key/KeyPanel"]
-margin_left = 179.0
-margin_top = 100.0
-margin_right = 281.0
-margin_bottom = 172.0
+[node name="KeyInfo" type="Label" parent="Key"]
+margin_left = 39.0
+margin_top = -60.0
+margin_right = 141.0
+margin_bottom = 12.0
 grow_horizontal = 2
 custom_fonts/font = ExtResource( 6 )
 text = "No key items"
 align = 1
 autowrap = true
 
-[node name="KeyDisplay" type="Sprite" parent="Key/KeyPanel"]
+[node name="KeyDisplay" type="Sprite" parent="Key"]
 visible = false
-position = Vector2( 230, 36 )
+position = Vector2( 90, -122 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 12 )
 hframes = 3
@@ -1146,6 +1154,8 @@ current = true
 
 [connection signal="item_selecting" from="MainSelection/MenuCursor" to="Items/ItemPanel/ItemInventoryBox" method="_on_MenuCursor_item_selecting"]
 [connection signal="item_selecting" from="MainSelection/MenuCursor" to="Items/ItemPanel/ItemMenuCursor" method="_on_MenuCursor_item_selecting"]
+[connection signal="key_selecting" from="MainSelection/MenuCursor" to="Key/KeyPanel/KeyInventory" method="_on_MenuCursor_key_selecting"]
+[connection signal="key_selecting" from="MainSelection/MenuCursor" to="Key/KeyPanel/KeyCursor" method="_on_MenuCursor_key_selecting"]
 [connection signal="mini_retread" from="MainSelection/MenuCursor" to="Members" method="_on_MenuCursor_mini_retread"]
 [connection signal="party_selecting" from="MainSelection/MenuCursor" to="Members" method="_on_MenuCursor_party_selecting"]
 [connection signal="retread" from="MainSelection/MenuCursor" to="." method="_on_MenuCursor_retread"]
@@ -1177,6 +1187,9 @@ current = true
 [connection signal="retread" from="Trinkets/TrinketsNode/TrinketsCursor" to="MainSelection/MenuCursor" method="_on_TrinketsCursor_retread"]
 [connection signal="retread" from="Trinkets/TrinketsNode/TrinketsCursor" to="Trinkets/TrinketsNode/TrinketsPanel" method="_on_TrinketsCursor_retread"]
 [connection signal="retread" from="Trinkets/TrinketsNode/TrinketsCursor" to="Trinkets/TrinketsNode/TrinketsPanel/TrinketsInventory" method="_on_TrinketsCursor_retread"]
+[connection signal="empty_key" from="Key/KeyPanel/KeyInventory" to="Key" method="_on_KeyInventory_empty_key"]
+[connection signal="retread" from="Key/KeyPanel/KeyCursor" to="MainSelection/MenuCursor" method="_on_KeyCursor_retread"]
+[connection signal="retread" from="Key/KeyPanel/KeyCursor" to="Key/KeyPanel/KeyInventory" method="_on_KeyCursor_retread"]
 [connection signal="party_selecting" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="Members" method="_on_MemberOptionsCursor_party_selecting"]
 [connection signal="party_selecting" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="MemberOptions" method="_on_MemberOptionsCursor_party_selecting"]
 [connection signal="retread" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="." method="_on_MemberOptionsCursor_retread"]

@@ -104,15 +104,12 @@ func _ready():
 	add_trinket_name = "Gold Bracelet"
 	add_trinket()
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	add_key_item_name = "Lighthouse Key"
+	add_key_item()
+	add_key_item_name = "Mansion Key"
+	add_key_item()
+	add_key_item_name = "Pearl"
+	add_key_item()
 	
 	
 	

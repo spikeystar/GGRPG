@@ -15,6 +15,7 @@ var stats_active = false
 signal party_selecting
 signal item_selecting
 signal trinket_selecting
+signal key_selecting
 signal retread
 signal mini_retread
 
@@ -48,6 +49,11 @@ func _process(delta):
 		self.hide()
 		main_active = false
 		emit_signal("trinket_selecting")
+		
+	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Key":
+		self.hide()
+		main_active = false
+		emit_signal("key_selecting")
 		
 	if Input.is_action_just_pressed("ui_accept") and not main_active and not stats_active:
 		self.show()
@@ -121,3 +127,10 @@ func _on_TrinketsInventory_trinket_chosen():
 
 func _on_TrinketsInventory_return_to_trinkets():
 	cursor_index = 2
+
+func _on_KeyCursor_retread():
+	self.show()
+	self.modulate.a = 0
+	yield(get_tree().create_timer(0.1), "timeout")
+	self.modulate.a = 1
+	main_active = true
