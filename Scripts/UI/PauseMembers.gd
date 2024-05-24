@@ -150,6 +150,7 @@ func _on_ItemInventoryBox_heal_item_chosen():
 	able = true
 
 func _on_TrinketsInventory_trinket_chosen():
+	$Cursors.hide()
 	Cursors[member_index].hide()
 	member_index = 0
 	$Cursors.show()
@@ -427,6 +428,7 @@ func _on_ItemInventoryBox_return_to_item():
 	$Cursors.hide()
 
 func _on_TrinketsInventory_return_to_trinkets():
-	pass
-	#member_index = -1
-	#$Cursors.hide()
+	Cursors[member_index].hide()
+	member_index = -1
+	$Cursors.hide()
+
