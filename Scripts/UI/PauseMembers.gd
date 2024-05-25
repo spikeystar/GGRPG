@@ -452,10 +452,12 @@ func set_labels():
 		$Trinkets/Trinket5.text = PartyStats.damien_trinket
 
 func _on_ItemInventoryBox_return_to_item():
+	yield(get_tree().create_timer(0.2), "timeout")
 	member_index = -1
 	$Cursors.hide()
 
 func _on_TrinketsInventory_return_to_trinkets():
+	yield(get_tree().create_timer(0.2), "timeout")
 	Cursors[member_index].hide()
 	member_index = -1
 	$Cursors.hide()
