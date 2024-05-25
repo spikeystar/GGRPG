@@ -31,7 +31,7 @@ func _process(delta):
 	else:
 		input.y += 0
 		
-	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_left") and enemies_selecting:
+	if Input.is_action_just_pressed("ui_accept") and enemies_selecting or Input.is_action_just_pressed("ui_left") and enemies_selecting:
 		enemies_selecting = false
 		self.modulate.a = 0
 		emit_signal("retread")

@@ -44,7 +44,6 @@ func _on_MemberOptionsCursor_show_stats():
 
 func _on_MemberOptionsCursor_retread():
 	$Stats.hide()
-	$MainSelection/MenuCursor.main_active = false
 	$MainSelection/MenuCursor.hide()
 
 func _on_MenuCursor_retread():

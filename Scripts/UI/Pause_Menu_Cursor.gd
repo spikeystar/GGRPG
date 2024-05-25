@@ -113,9 +113,11 @@ func set_cursor_from_index(index : int) -> void:
 
 func _on_MemberOptionsCursor_show_stats():
 	stats_active = true
+	main_active = false
 
 func _on_MemberOptionsCursor_retread():
 	stats_active = false
+	main_active = false
 
 func _on_ItemMenuCursor_retread():
 	self.show()
