@@ -9,13 +9,17 @@ const menu_slot = preload("res://UI/Slot.tscn")
 onready var slot = menu_slot.instance()
 var add_item_name : String
 var add_trinket_name : String
+var add_enemy_name : String
 var add_key_item_name : String
 var item_index : int
+var storage_index : int
 var spell_index : int
 
 var Inventory : Array = []
+var Storage : Array = []
 var Trinkets : Array = []
 var KeyItems : Array = []
+var EnemyList : Array = []
 var Gary_Spells : Array = []
 var Jacques_Spells : Array = []
 var Irina_Spells : Array = []
@@ -30,82 +34,23 @@ func _ready():
 	add_item_name = "Picnic Pie"
 	add_item()
 	
-	
 	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Chain"
 	add_trinket()
 	add_trinket_name = "Gold Earring"
 	add_trinket()
 	add_trinket_name = "Unequip Trinket"
 	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
 	
-	
-	
+	add_enemy_name = "Cheribo"
+	add_enemy()
+	add_enemy_name = "Flutterbie"
+	add_enemy()
+	add_enemy_name = "Sapling"
+	add_enemy()
+	add_enemy_name = "Tindrum"
+	add_enemy()
 	
 	
 	spell_name = "Thunderstorm"
@@ -123,8 +68,10 @@ func _ready():
 	
 		
 func add_item():
-	#if Inventory.size() == 10:
-		#return
+	if Inventory.size() == 10:
+		var new_slot = slot.duplicate()
+		new_slot.text = add_item_name
+		Storage.append(new_slot)
 	var new_slot = slot.duplicate()
 	new_slot.text = add_item_name
 	Inventory.append(new_slot)
@@ -138,6 +85,11 @@ func add_key_item():
 	var new_slot = slot.duplicate()
 	new_slot.text = add_key_item_name
 	KeyItems.append(new_slot)
+	
+func add_enemy():
+	var new_slot = slot.duplicate()
+	new_slot.text = add_enemy_name
+	EnemyList.append(new_slot)
 	
 func populate_Gary():
 	var new_slot = slot.duplicate()
@@ -157,6 +109,10 @@ func populate_Irina():
 func remove_item():
 	Inventory.remove(item_index)
 	item_index = clamp(item_index, 0, Inventory.size() - 1)
+	
+func remove_storage():
+	Storage.remove(storage_index)
+	storage_index = clamp(storage_index, 0, Storage.size() - 1)
 	
 func initial_items():
 	add_item_name = "Yummy Cake"

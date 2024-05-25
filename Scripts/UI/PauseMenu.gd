@@ -9,23 +9,29 @@ func _process(delta):
 	if $MainSelection/MenuCursor.menu_name == "Party":
 		$Members.show()
 		$Items.hide()
+		$Items.reset()
 		$Trinkets.hide()
 	if $MainSelection/MenuCursor.menu_name == "Items":
 		$Items.show()
 		$Members.hide()
 		$Members.party_selecting = false
 		$Trinkets.hide()
+		$Trinkets.reset()
 	if $MainSelection/MenuCursor.menu_name == "Trinkets":
 		$Trinkets.show()
 		$Items.hide()
+		$Items.reset()
 		$Enemies.hide()
+		$Enemies.reset()
 	if $MainSelection/MenuCursor.menu_name == "Enemies":
 		$Enemies.show()
 		$Trinkets.hide()
+		$Trinkets.reset()
 		$Map.hide()
 	if $MainSelection/MenuCursor.menu_name == "Map":
 		$Map.show()
 		$Enemies.hide()
+		$Enemies.reset()
 		$Key.hide()
 	if $MainSelection/MenuCursor.menu_name == "Key":
 		$Map.hide()

@@ -1,7 +1,23 @@
 extends Sprite
+var item_id
+
+func _ready():
+	item_id = $ItemPanel/ItemInventoryBox.initial_id()
+	set_id()
+
+func reset():
+	item_id = $ItemPanel/ItemInventoryBox.initial_id()
+	set_id()
 
 func _process(delta):
-	var item_id = $ItemPanel/ItemInventoryBox.get_id()
+	item_id = $ItemPanel/ItemInventoryBox.get_id()
+	set_id()
+
+func _on_ItemInventoryBox_empty_items():
+	$ItemInventory.hide()
+	$ItemInfo.text = "No items"
+	
+func set_id():
 	if item_id == "Yummy Cake":
 		$ItemInventory.show()
 		$ItemInventory.frame = 0
@@ -26,7 +42,3 @@ func _process(delta):
 		$ItemInventory.show()
 		$ItemInventory.frame = 5
 		$ItemInfo.text = "Revives a fallen party member to half health"
-
-func _on_ItemInventoryBox_empty_items():
-	$ItemInventory.hide()
-	$ItemInfo.text = "No items"

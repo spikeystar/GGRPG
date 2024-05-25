@@ -1,13 +1,32 @@
 extends Sprite
+var trinket_id
+
+func _ready():
+	trinket_id = $TrinketsNode/TrinketsInventory.initial_id()
+	set_id()
+
+func reset():
+	trinket_id = $TrinketsNode/TrinketsInventory.initial_id()
+	set_id()
 
 func _process(delta):
-	var trinket_id = $TrinketsNode/TrinketsInventory.get_id()
+	trinket_id = $TrinketsNode/TrinketsInventory.get_id()
+	set_id()
+
+func set_trinket_holder():
+	$Held_name.text = $TrinketsNode/TrinketsInventory.get_holder_name()
+
+func _on_TrinketsInventory_empty_trinkets():
+	$TrinketInventory.hide()
+	$TrinketInfo.text = "No trinkets"
+	
+func set_id():
 	if trinket_id == "Gold Bracelet":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 6
 		$TrinketInfo.text = "Increases holder's Attack by 20%"
 		set_trinket_holder()
-	if trinket_id == "Gold Necklace":
+	if trinket_id == "Gold Chain":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 7
 		$TrinketInfo.text = "Increases holder's Defense by 20%"
@@ -22,10 +41,3 @@ func _process(delta):
 		$TrinketInventory.frame = 0
 		$TrinketInfo.text = "Remove the trinket from a party member"
 		set_trinket_holder()
-
-func set_trinket_holder():
-	$Held_name.text = $TrinketsNode/TrinketsInventory.get_holder_name()
-
-func _on_TrinketsInventory_empty_trinkets():
-	$TrinketInventory.hide()
-	$TrinketInfo.text = "No trinkets"

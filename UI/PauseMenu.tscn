@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://UI/Pause/Pause Items.png" type="Texture" id=1]
 [ext_resource path="res://UI/Pause/Pause Members.png" type="Texture" id=2]
@@ -32,6 +32,7 @@
 [ext_resource path="res://Assets/General/Misc Items SS.png" type="Texture" id=30]
 [ext_resource path="res://Scripts/UI/Trinket_Menu_Cursor.gd" type="Script" id=31]
 [ext_resource path="res://Scripts/UI/TrinketsInventoryBox.gd" type="Script" id=32]
+[ext_resource path="res://Scripts/UI/EnemiesInventory.gd" type="Script" id=33]
 [ext_resource path="res://UI/Pause/Pause Enemies.png" type="Texture" id=34]
 [ext_resource path="res://UI/Battle/Status/Status Icons.png" type="Texture" id=35]
 [ext_resource path="res://Assets/General/Enemy Display.png" type="Texture" id=36]
@@ -39,6 +40,8 @@
 [ext_resource path="res://Scripts/UI/Pause_Key.gd" type="Script" id=38]
 [ext_resource path="res://Scripts/UI/KeyInventoryBox.gd" type="Script" id=39]
 [ext_resource path="res://Scripts/UI/Pause_Key_Cursor.gd" type="Script" id=40]
+[ext_resource path="res://Scripts/UI/Enemies_Cursor.gd" type="Script" id=41]
+[ext_resource path="res://Scripts/UI/Pause_Enemies.gd" type="Script" id=42]
 
 [sub_resource type="DynamicFontData" id=4]
 antialiased = false
@@ -677,13 +680,14 @@ texture = ExtResource( 1 )
 script = ExtResource( 27 )
 
 [node name="ItemPanel" type="Node2D" parent="Items"]
-position = Vector2( -6, 26 )
+position = Vector2( -96, -159 )
 
 [node name="ItemInventoryBox" type="VBoxContainer" parent="Items/ItemPanel"]
-margin_left = -134.0
-margin_top = -186.0
-margin_right = -109.0
-margin_bottom = -161.0
+margin_left = -45.0
+margin_top = -1.0
+margin_right = 80.0
+margin_bottom = 299.0
+rect_min_size = Vector2( 125, 300 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 9
@@ -751,10 +755,9 @@ margin_top = -1.0
 margin_right = 80.0
 margin_bottom = 299.0
 rect_min_size = Vector2( 125, 300 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_horizontal = 0
+size_flags_vertical = 0
 custom_constants/separation = 9
-alignment = 1
 script = ExtResource( 32 )
 
 [node name="TrinketsCursor" parent="Trinkets/TrinketsNode" instance=ExtResource( 13 )]
@@ -799,9 +802,33 @@ autowrap = true
 visible = false
 position = Vector2( 100, -56 )
 texture = ExtResource( 34 )
+script = ExtResource( 42 )
+
+[node name="EnemiesNode" type="Node2D" parent="Enemies"]
+position = Vector2( -96, -161 )
+
+[node name="EnemiesInventory" type="VBoxContainer" parent="Enemies/EnemiesNode"]
+margin_left = -45.0
+margin_top = -1.0
+margin_right = 80.0
+margin_bottom = 299.0
+rect_min_size = Vector2( 125, 300 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 9
+script = ExtResource( 33 )
+
+[node name="EnemiesCursor" parent="Enemies/EnemiesNode" instance=ExtResource( 13 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 25.0
+margin_bottom = 25.0
+script = ExtResource( 41 )
+menu_parent_path = NodePath("../EnemiesInventory")
+cursor_offset = Vector2( 17, 2.5 )
 
 [node name="EnemyDisplay" type="Sprite" parent="Enemies"]
-position = Vector2( 85, -126 )
+position = Vector2( 86, -126 )
 texture = ExtResource( 36 )
 hframes = 9
 vframes = 3
@@ -876,7 +903,7 @@ margin_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 5 )
-text = "30"
+text = "20"
 align = 1
 
 [node name="Attack_info" type="Label" parent="Enemies"]
@@ -887,7 +914,7 @@ margin_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 5 )
-text = "5"
+text = "3"
 align = 1
 
 [node name="Magic_info" type="Label" parent="Enemies"]
@@ -920,7 +947,7 @@ margin_bottom = 171.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 15 )
-text = "They're not very strong but are a little mischevious. They like to line up behind things."
+text = "They're not very strong but are a little mischevious. They like to line up behind things"
 align = 1
 autowrap = true
 
@@ -944,6 +971,8 @@ margin_top = -1.0
 margin_right = -7.0
 margin_bottom = -1.0
 rect_min_size = Vector2( 125, 0 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
 custom_constants/separation = 9
 script = ExtResource( 39 )
 
@@ -1123,6 +1152,8 @@ cursor_offset = Vector2( 17, 2.5 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
+[connection signal="enemy_selecting" from="MainSelection/MenuCursor" to="Enemies/EnemiesNode/EnemiesInventory" method="_on_MenuCursor_enemy_selecting"]
+[connection signal="enemy_selecting" from="MainSelection/MenuCursor" to="Enemies/EnemiesNode/EnemiesCursor" method="_on_MenuCursor_enemy_selecting"]
 [connection signal="item_selecting" from="MainSelection/MenuCursor" to="Items/ItemPanel/ItemInventoryBox" method="_on_MenuCursor_item_selecting"]
 [connection signal="item_selecting" from="MainSelection/MenuCursor" to="Items/ItemPanel/ItemMenuCursor" method="_on_MenuCursor_item_selecting"]
 [connection signal="key_selecting" from="MainSelection/MenuCursor" to="Key/KeyPanel/KeyInventory" method="_on_MenuCursor_key_selecting"]
@@ -1156,6 +1187,8 @@ current = true
 [connection signal="trinket_chosen" from="Trinkets/TrinketsNode/TrinketsInventory" to="Members" method="_on_TrinketsInventory_trinket_chosen"]
 [connection signal="retread" from="Trinkets/TrinketsNode/TrinketsCursor" to="MainSelection/MenuCursor" method="_on_TrinketsCursor_retread"]
 [connection signal="retread" from="Trinkets/TrinketsNode/TrinketsCursor" to="Trinkets/TrinketsNode/TrinketsInventory" method="_on_TrinketsCursor_retread"]
+[connection signal="retread" from="Enemies/EnemiesNode/EnemiesCursor" to="MainSelection/MenuCursor" method="_on_EnemiesCursor_retread"]
+[connection signal="retread" from="Enemies/EnemiesNode/EnemiesCursor" to="Enemies/EnemiesNode/EnemiesInventory" method="_on_EnemiesCursor_retread"]
 [connection signal="empty_key" from="Key/KeyPanel/KeyInventory" to="MainSelection/MenuCursor" method="_on_KeyInventory_empty_key"]
 [connection signal="empty_key" from="Key/KeyPanel/KeyInventory" to="Key" method="_on_KeyInventory_empty_key"]
 [connection signal="retread" from="Key/KeyPanel/KeyCursor" to="MainSelection/MenuCursor" method="_on_KeyCursor_retread"]

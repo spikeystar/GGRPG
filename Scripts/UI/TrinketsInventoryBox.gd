@@ -65,9 +65,15 @@ func get_id():
 		trinket_id = inventory[trinket_index].get_id()
 		return trinket_id
 		
+func initial_id():
+	if not empty_trinkets:
+		trinket_id = inventory[0].get_id()
+		return trinket_id
+		
+		
 func get_holder_name():
 	trinket_id = inventory[trinket_index].get_id()
-	if trinkets_active and not empty_trinkets:
+	if not empty_trinkets:
 		if PartyStats.gary_trinket == trinket_id or PartyStats.jacques_trinket == trinket_id or PartyStats.irina_trinket == trinket_id or PartyStats.suzy_trinket == trinket_id or PartyStats.damien_trinket == trinket_id:
 			trinket_holder = inventory[trinket_index].get_holder_name()
 			return trinket_holder

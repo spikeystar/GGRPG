@@ -49,6 +49,11 @@ func get_id():
 	if item_active and not empty_items:
 		item_id = inventory[item_index].get_id()
 		return item_id
+		
+func initial_id():
+	if not empty_items:
+		item_id = inventory[0].get_id()
+		return item_id
 
 func item_removed():
 	for x in self.get_children():
@@ -66,6 +71,7 @@ func _on_MenuCursor_item_selecting():
 
 func _on_ItemMenuCursor_retread():
 	item_active = false
+	item_index = 0
 
 func _on_Members_item_usage():
 	if item_id == "Yummy Cake":

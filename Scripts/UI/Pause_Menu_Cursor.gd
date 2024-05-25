@@ -18,6 +18,7 @@ var key_empty = false
 signal party_selecting
 signal item_selecting
 signal trinket_selecting
+signal enemy_selecting
 signal key_selecting
 signal retread
 signal mini_retread
@@ -52,6 +53,11 @@ func _process(delta):
 		self.hide()
 		main_active = false
 		emit_signal("trinket_selecting")
+		
+	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Enemies":
+		self.hide()
+		main_active = false
+		emit_signal("enemy_selecting")
 		
 	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Key" and not key_empty:
 		self.hide()
@@ -152,3 +158,10 @@ func _on_TrinketsInventory_empty_trinkets():
 
 func _on_KeyInventory_empty_key():
 	key_empty = true
+
+func _on_EnemiesCursor_retread():
+	self.show()
+	self.modulate.a = 0
+	yield(get_tree().create_timer(0.05), "timeout")
+	self.modulate.a = 1
+	main_active = true
