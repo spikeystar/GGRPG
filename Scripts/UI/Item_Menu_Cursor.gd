@@ -78,6 +78,8 @@ func _on_MenuCursor_item_selecting():
 	item_selecting = true
 
 func _on_ItemInventoryBox_return_to_item():
+	self.modulate.a = 0
+	yield(get_tree().create_timer(0.05), "timeout")
 	self.modulate.a = 1
 	set_cursor_from_index(0)
 	item_selecting = true
