@@ -85,7 +85,7 @@ func _on_Members_item_usage():
 		all_heal()
 	if item_id == "Pretty Gem":
 		amount = 20
-		PartyStats.party_sp = max(PartyStats.party_max_sp, PartyStats.party_sp + amount)
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
 	
 		
 	Party.item_index = item_index

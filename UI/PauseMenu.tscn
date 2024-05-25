@@ -1165,6 +1165,7 @@ current = true
 [connection signal="trinket_selecting" from="MainSelection/MenuCursor" to="Trinkets/TrinketsNode/TrinketsInventory" method="_on_MenuCursor_trinket_selecting"]
 [connection signal="trinket_selecting" from="MainSelection/MenuCursor" to="Trinkets/TrinketsNode/TrinketsCursor" method="_on_MenuCursor_trinket_selecting"]
 [connection signal="item_usage" from="Members" to="Items/ItemPanel/ItemInventoryBox" method="_on_Members_item_usage"]
+[connection signal="main_retread" from="Members" to="MainSelection/MenuCursor" method="_on_Members_main_retread"]
 [connection signal="member_options" from="Members" to="MemberOptions" method="_on_Members_member_options"]
 [connection signal="trinket_equipped" from="Members" to="Trinkets/TrinketsNode/TrinketsInventory" method="_on_Members_trinket_equipped"]
 [connection signal="empty_items" from="Items/ItemPanel/ItemInventoryBox" to="MainSelection/MenuCursor" method="_on_ItemInventoryBox_empty_items"]

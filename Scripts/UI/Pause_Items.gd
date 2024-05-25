@@ -29,7 +29,7 @@ func set_id():
 	if item_id == "Picnic Pie":
 		$ItemInventory.show()
 		$ItemInventory.frame = 2
-		$ItemInfo.text = "50 HP for all"
+		$ItemInfo.text = "100 HP for all"
 	if item_id == "Sugar Pill":
 		$ItemInventory.show()
 		$ItemInventory.frame = 3

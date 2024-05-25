@@ -14,6 +14,7 @@ var stats_active = false
 signal member_options
 signal item_usage
 signal trinket_equipped
+signal main_retread
 
 func _ready():
 	Cursors = $Cursors.get_children()
@@ -48,7 +49,28 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept") and party_selecting and not stats_active:
 		$Cursors.hide()
 		Cursors[member_index].hide()
+		able = false
 		member_index = -1
+		
+	if Input.is_action_just_pressed("ui_accept") and item_selecting:
+		Cursors[member_index].hide()
+		member_index = -1
+		$Cursors.hide()
+		item_selecting = false
+		able = false
+		emit_signal("main_retread")
+		
+		
+	if Input.is_action_just_pressed("ui_accept") and trinket_selecting:
+		Cursors[member_index].hide()
+		member_index = -1
+		$Cursors.hide()
+		$Trinkets.hide()
+		$HP.show()
+		trinket_selecting = false
+		able = false
+		emit_signal("main_retread")
+		
 		
 	if Input.is_action_just_pressed("ui_select") and party_selecting and able and switching:
 		print("switch")

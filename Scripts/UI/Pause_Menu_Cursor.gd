@@ -165,3 +165,7 @@ func _on_EnemiesCursor_retread():
 	yield(get_tree().create_timer(0.05), "timeout")
 	self.modulate.a = 1
 	main_active = true
+
+func _on_Members_main_retread():
+	cursor_index = 0
+	down_count = 0
