@@ -1,12 +1,13 @@
 extends Node2D
 
 onready var player_instance = PlayerManager.player_instance
+var stats_showing = false
 
 func _ready():
 	player_instance.queue_free()
 	
 func _process(delta):
-	if $MainSelection/MenuCursor.menu_name == "Party":
+	if $MainSelection/MenuCursor.menu_name == "Party" and not stats_showing:
 		$Members.show()
 		$Items.hide()
 		$Items.reset()
@@ -41,10 +42,13 @@ func _on_MemberOptionsCursor_show_stats():
 	$Members.hide()
 	$MemberOptions.hide()
 	$Stats.show()
+	stats_showing = true
 
 func _on_MemberOptionsCursor_retread():
 	$Stats.hide()
+	$Members.show()
 	$MainSelection/MenuCursor.hide()
+	stats_showing = false
 
 func _on_MenuCursor_retread():
 	$MemberOptions.hide()
