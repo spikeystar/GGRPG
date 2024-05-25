@@ -38,6 +38,36 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_left") and party_selecting:
 		select_next_member(-1)
 		print(member_index)
+		
+	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members >= 4 and member_index == 0:
+		member_index = 3
+		Cursors[0].hide()
+		Cursors[3].show()
+		
+	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members >= 4 and member_index == 1:
+		member_index = 3
+		Cursors[1].hide()
+		Cursors[3].show()
+		
+	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members == 4 and member_index == 2:
+		member_index = 3
+		Cursors[2].hide()
+		Cursors[3].show()
+		
+	if Input.is_action_just_pressed("ui_up") and party_selecting and member_index == 3 and PartyStats.party_members >= 4:
+		member_index = 0
+		Cursors[3].hide()
+		Cursors[0].show()
+		
+	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members == 5 and member_index == 2:
+		member_index = 4
+		Cursors[2].hide()
+		Cursors[4].show()
+		
+	if Input.is_action_just_pressed("ui_up") and party_selecting and PartyStats.party_members == 5 and member_index == 4:
+		member_index = 1
+		Cursors[4].hide()
+		Cursors[1].show()
 
 	if Input.is_action_just_pressed("ui_select") and party_selecting and able and not switching:
 		emit_signal("member_options")
@@ -104,6 +134,36 @@ func _process(delta):
 		item_selecting = false
 		able = false
 		
+	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members >= 4 and member_index == 0:
+		member_index = 3
+		Cursors[0].hide()
+		Cursors[3].show()
+		
+	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members >= 4 and member_index == 1:
+		member_index = 3
+		Cursors[1].hide()
+		Cursors[3].show()
+		
+	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members == 4 and member_index == 2:
+		member_index = 3
+		Cursors[2].hide()
+		Cursors[3].show()
+		
+	if Input.is_action_just_pressed("ui_up") and item_selecting and member_index == 3 and PartyStats.party_members >= 4:
+		member_index = 0
+		Cursors[3].hide()
+		Cursors[0].show()
+		
+	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members == 5 and member_index == 2:
+		member_index = 4
+		Cursors[2].hide()
+		Cursors[4].show()
+		
+	if Input.is_action_just_pressed("ui_up") and item_selecting and PartyStats.party_members == 5 and member_index == 4:
+		member_index = 1
+		Cursors[4].hide()
+		Cursors[1].show()
+		
 		##############
 		
 	if Input.is_action_just_pressed("ui_right") and trinket_selecting:
@@ -117,6 +177,38 @@ func _process(delta):
 		emit_signal("trinket_equipped")
 		trinket_selecting = false
 		able = false
+		
+	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members >= 4 and member_index == 0:
+		member_index = 3
+		Cursors[0].hide()
+		Cursors[3].show()
+		
+	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members >= 4 and member_index == 1:
+		member_index = 3
+		Cursors[1].hide()
+		Cursors[3].show()
+		
+	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members == 4 and member_index == 2:
+		member_index = 3
+		Cursors[2].hide()
+		Cursors[3].show()
+		
+	if Input.is_action_just_pressed("ui_up") and trinket_selecting and member_index == 3 and PartyStats.party_members >= 4:
+		member_index = 0
+		Cursors[3].hide()
+		Cursors[0].show()
+		
+	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members == 5 and member_index == 2:
+		member_index = 4
+		Cursors[2].hide()
+		Cursors[4].show()
+		
+	if Input.is_action_just_pressed("ui_up") and trinket_selecting and PartyStats.party_members == 5 and member_index == 4:
+		member_index = 1
+		Cursors[4].hide()
+		Cursors[1].show()
+		
+		#################
 		
 func get_name():
 	if member_index == 0:
