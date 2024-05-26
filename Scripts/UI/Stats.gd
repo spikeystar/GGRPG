@@ -13,7 +13,10 @@ func _process(delta):
 		$Attack_info.text = str(PartyStats.gary_attack)
 		$Magic_info.text = str(PartyStats.gary_magic)
 		$Defense_info.text = str(PartyStats.gary_defense)
-		$Trinket_info.text = str(PartyStats.gary_trinket)
+		if PartyStats.gary_trinket == "-":
+			$Trinket_info.text = "_"
+		else:
+			$Trinket_info.text = str(PartyStats.gary_trinket)
 	if selector_name == "Jacques":
 		$Name.text = "Jacques"
 		$Display.frame = 1
@@ -23,7 +26,10 @@ func _process(delta):
 		$Attack_info.text = str(PartyStats.jacques_attack)
 		$Magic_info.text = str(PartyStats.jacques_magic)
 		$Defense_info.text = str(PartyStats.jacques_defense)
-		$Trinket_info.text = str(PartyStats.jacques_trinket)
+		if PartyStats.jacques_trinket == "-":
+			$Trinket_info.text = "_"
+		else:
+			$Trinket_info.text = str(PartyStats.jacques_trinket)
 	if selector_name == "Irina":
 		$Name.text = "Irina"
 		$Display.frame = 2
@@ -33,7 +39,10 @@ func _process(delta):
 		$Attack_info.text = str(PartyStats.irina_attack)
 		$Magic_info.text = str(PartyStats.irina_magic)
 		$Defense_info.text = str(PartyStats.irina_defense)
-		$Trinket_info.text = str(PartyStats.irina_trinket)
+		if PartyStats.irina_trinket == "-":
+			$Trinket_info.text = "_"
+		else:
+			$Trinket_info.text = str(PartyStats.irina_trinket)
 	if selector_name == "Suzy":
 		$Name.text = "Suzy"
 		$Display.frame = 3
@@ -43,7 +52,10 @@ func _process(delta):
 		$Attack_info.text = str(PartyStats.suzy_attack)
 		$Magic_info.text = str(PartyStats.suzy_magic)
 		$Defense_info.text = str(PartyStats.suzy_defense)
-		$Trinket_info.text = str(PartyStats.suzy_trinket)
+		if PartyStats.suzy_trinket == "-":
+			$Trinket_info.text = "_"
+		else:
+			$Trinket_info.text = str(PartyStats.suzy_trinket)
 	if selector_name == "Damien":
 		$Name.text = "Damien"
 		$Display.frame = 4
@@ -53,5 +65,8 @@ func _process(delta):
 		$Attack_info.text = str(PartyStats.damien_attack)
 		$Magic_info.text = str(PartyStats.damien_magic)
 		$Defense_info.text = str(PartyStats.damien_defense)
-		$Trinket_info.text = str(PartyStats.damien_trinket)
+		if PartyStats.damien_trinket == "-":
+			$Trinket_info.text = "_"
+		else:
+			$Trinket_info.text = str(PartyStats.damien_trinket)
 		
