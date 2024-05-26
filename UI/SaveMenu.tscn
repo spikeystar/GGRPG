@@ -1,0 +1,309 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Misc/Font/SaveStar.tres" type="DynamicFont" id=1]
+[ext_resource path="res://UI/Pause/Save Menu Base.png" type="Texture" id=2]
+[ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/Pause/Member Display.png" type="Texture" id=4]
+[ext_resource path="res://UI/Cursor.png" type="Texture" id=5]
+[ext_resource path="res://Assets/General/Misc Items SS.png" type="Texture" id=6]
+
+[node name="SaveMenu" type="Node2D"]
+
+[node name="Base" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Save Star" type="Label" parent="."]
+margin_left = -102.0
+margin_top = -225.0
+margin_right = 102.0
+margin_bottom = -190.0
+custom_colors/font_color = Color( 1, 0.990833, 0.95, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.00392157 )
+custom_fonts/font = ExtResource( 1 )
+text = "Save Star"
+
+[node name="Save1" type="Node2D" parent="."]
+
+[node name="Location" type="Label" parent="Save1"]
+margin_left = -155.0
+margin_top = -91.5
+margin_right = -59.0
+margin_bottom = -64.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 9
+size_flags_vertical = 1
+custom_fonts/font = ExtResource( 3 )
+text = "-"
+align = 1
+autowrap = true
+
+[node name="Level" type="Label" parent="Save1"]
+margin_left = -148.0
+margin_top = -57.0
+margin_right = -55.0
+margin_bottom = -43.0
+custom_fonts/font = ExtResource( 3 )
+text = "Level:"
+
+[node name="Level_info" type="Label" parent="Save1"]
+margin_left = -96.0
+margin_top = -57.0
+margin_right = -61.0
+margin_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 3 )
+text = "-"
+align = 1
+
+[node name="Initial" type="Sprite" parent="Save1"]
+modulate = Color( 1, 0.94902, 1, 1 )
+position = Vector2( -203, -70 )
+texture = ExtResource( 5 )
+
+[node name="Display" type="Sprite" parent="Save1"]
+visible = false
+position = Vector2( -193, -65 )
+texture = ExtResource( 4 )
+hframes = 5
+
+[node name="Seed1" type="Sprite" parent="Save1"]
+visible = false
+position = Vector2( -18, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed2" type="Sprite" parent="Save1"]
+visible = false
+position = Vector2( 18, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed3" type="Sprite" parent="Save1"]
+visible = false
+position = Vector2( 54, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed4" type="Sprite" parent="Save1"]
+visible = false
+position = Vector2( 90, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed5" type="Sprite" parent="Save1"]
+visible = false
+position = Vector2( 126, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed6" type="Sprite" parent="Save1"]
+visible = false
+position = Vector2( 162, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed7" type="Sprite" parent="Save1"]
+visible = false
+position = Vector2( 198, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Save2" type="Node2D" parent="."]
+position = Vector2( 0, 137 )
+
+[node name="Location" type="Label" parent="Save2"]
+margin_left = -155.0
+margin_top = -91.5
+margin_right = -59.0
+margin_bottom = -64.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 3 )
+text = "-"
+align = 1
+autowrap = true
+
+[node name="Level" type="Label" parent="Save2"]
+margin_left = -148.0
+margin_top = -57.0
+margin_right = -55.0
+margin_bottom = -43.0
+custom_fonts/font = ExtResource( 3 )
+text = "Level:"
+
+[node name="Level_info" type="Label" parent="Save2"]
+margin_left = -96.0
+margin_top = -57.0
+margin_right = -61.0
+margin_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 3 )
+text = "-"
+align = 1
+
+[node name="Initial" type="Sprite" parent="Save2"]
+modulate = Color( 1, 0.94902, 1, 1 )
+position = Vector2( -203, -70 )
+texture = ExtResource( 5 )
+
+[node name="Display" type="Sprite" parent="Save2"]
+visible = false
+position = Vector2( -193, -65 )
+texture = ExtResource( 4 )
+hframes = 5
+
+[node name="Seed1" type="Sprite" parent="Save2"]
+visible = false
+position = Vector2( -18, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed2" type="Sprite" parent="Save2"]
+visible = false
+position = Vector2( 18, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed3" type="Sprite" parent="Save2"]
+visible = false
+position = Vector2( 54, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed4" type="Sprite" parent="Save2"]
+visible = false
+position = Vector2( 90, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed5" type="Sprite" parent="Save2"]
+visible = false
+position = Vector2( 126, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed6" type="Sprite" parent="Save2"]
+visible = false
+position = Vector2( 162, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed7" type="Sprite" parent="Save2"]
+visible = false
+position = Vector2( 198, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Save3" type="Node2D" parent="."]
+position = Vector2( 0, 274 )
+
+[node name="Location" type="Label" parent="Save3"]
+margin_left = -155.0
+margin_top = -91.5
+margin_right = -59.0
+margin_bottom = -64.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 3 )
+text = "-"
+align = 1
+autowrap = true
+
+[node name="Level" type="Label" parent="Save3"]
+margin_left = -148.0
+margin_top = -57.0
+margin_right = -55.0
+margin_bottom = -43.0
+custom_fonts/font = ExtResource( 3 )
+text = "Level:"
+
+[node name="Level_info" type="Label" parent="Save3"]
+margin_left = -96.0
+margin_top = -57.0
+margin_right = -61.0
+margin_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 3 )
+text = "-"
+align = 1
+
+[node name="Initial" type="Sprite" parent="Save3"]
+modulate = Color( 1, 0.94902, 1, 1 )
+position = Vector2( -203, -70 )
+texture = ExtResource( 5 )
+
+[node name="Display" type="Sprite" parent="Save3"]
+visible = false
+position = Vector2( -193, -65 )
+texture = ExtResource( 4 )
+hframes = 5
+
+[node name="Seed1" type="Sprite" parent="Save3"]
+visible = false
+position = Vector2( -18, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed2" type="Sprite" parent="Save3"]
+visible = false
+position = Vector2( 18, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed3" type="Sprite" parent="Save3"]
+visible = false
+position = Vector2( 54, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed4" type="Sprite" parent="Save3"]
+visible = false
+position = Vector2( 90, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed5" type="Sprite" parent="Save3"]
+visible = false
+position = Vector2( 126, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed6" type="Sprite" parent="Save3"]
+visible = false
+position = Vector2( 162, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Seed7" type="Sprite" parent="Save3"]
+visible = false
+position = Vector2( 198, -75 )
+texture = ExtResource( 6 )
+hframes = 10
+vframes = 3
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
