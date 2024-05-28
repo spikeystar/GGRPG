@@ -26,7 +26,6 @@ onready var HUDS = get_tree().get_root().get_node("WorldRoot/HUDS")
 func _ready():
 	health = f_health
 	set_stats()
-	get_formation()
 	set_formation()
 
 func focus():
@@ -42,38 +41,34 @@ func get_name():
 	
 func set_stats():
 	if fighter_name == "gary":
+		party_id = PartyStats.gary_id
 		f_health = PartyStats.gary_health
 		f_attack = PartyStats.gary_attack
 		f_magic = PartyStats.gary_magic
 		f_defense = PartyStats.gary_defense
 	if fighter_name == "jacques":
+		party_id = PartyStats.jacques_id
 		f_health = PartyStats.jacques_health
 		f_attack = PartyStats.jacques_attack
 		f_magic = PartyStats.jacques_magic
 		f_defense = PartyStats.jacques_defense
 	if fighter_name == "irina":
+		party_id = PartyStats.irina_id
 		f_health = PartyStats.irina_health
 		f_attack = PartyStats.irina_attack
 		f_magic = PartyStats.irina_magic
 		f_defense = PartyStats.irina_defense
 		
-func get_formation():
-	formation = PartyStats.party_members
-		
 func set_formation():
-		if fighter_name == "gary":
-			party_id = PartyStats.gary_id
-		if fighter_name == "jacques":
-			party_id = PartyStats.jacques_id
-		if fighter_name == "irina":
-			party_id = PartyStats.irina_id
-		if formation == 1 and party_id >= 2:
+	if PartyStats.party_members == 1:
+		if party_id >= 2:
 			self.queue_free()
-		if formation == 2 and party_id >= 3:
+	if PartyStats.party_members == 2:
+		if party_id >= 3:
 			self.queue_free()
-		if party_id > 3:
+	if PartyStats.party_members == 3:
+		if party_id >= 4:
 			self.queue_free()
-		
 	
 func get_health():
 	return health
@@ -210,22 +205,48 @@ func get_position(fighter_position: Vector2 = global_position):
 	return fighter_position
 	
 func get_OG_position():
-	if party_id == 1:
-		OG_position = Vector2(-240, 86)
-	elif party_id == 2:
+	if PartyStats.party_members == 1:
+		if party_id == 1:
+			OG_position = Vector2(-138, 136)
+			return OG_position
+			
+	if PartyStats.party_members == 2:
+		if party_id == 1:
+			OG_position = Vector2(-199, 112)
+		elif party_id == 2:
+			OG_position = Vector2(-86, 168)
+		return OG_position
+	
+	if PartyStats.party_members == 3:
+		if party_id == 1:
+			OG_position = Vector2(-240, 86)
+		elif party_id == 2:
 			OG_position = Vector2(-135, 144)
-	elif party_id == 3:
+		elif party_id == 3:
 			OG_position = Vector2(-23, 194)
-	return OG_position
+		return OG_position
 	
 func get_BB_position():
-	if party_id == 1:
-		BB_position = Vector2(-240, 48)
-	elif party_id == 2:
+	if PartyStats.party_members == 1:
+		if party_id == 1:
+			BB_position = Vector2(-138, 98)
+			return BB_position
+			
+	if PartyStats.party_members == 2:
+		if party_id == 1:
+			BB_position = Vector2(-199, 74)
+		elif party_id == 2:
+			BB_position = Vector2(-86, 130)
+		return BB_position
+	
+	if PartyStats.party_members == 3:
+		if party_id == 1:
+			BB_position = Vector2(-240, 48)
+		elif party_id == 2:
 			BB_position = Vector2(-135, 106)
-	elif party_id == 3:
+		elif party_id == 3:
 			BB_position = Vector2(-23, 156)
-	return BB_position
+		return BB_position
 	
 func get_f_attack():
 	return f_attack

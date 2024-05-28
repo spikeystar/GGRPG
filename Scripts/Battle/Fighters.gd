@@ -60,7 +60,8 @@ signal ally_spell_chosen
 signal fighter_damage_over
 
 func _ready():
-	fighters = get_children()
+	#fighters = get_children()
+	set_positions()
 	fighters2 = fighters.duplicate()
 	fighter_turn_used = fighters[fighter_index].get_turn_value()
 	
@@ -68,15 +69,67 @@ func f_array_size():
 	var f_array_size: int = fighters.size()
 	return f_array_size
 	
-#func set_positions(party_id, fighter_index):
-	#if Party.party_id == 0:
-	#	fighters[0].global_position = Vector2(-240, 86)
+func set_positions():
+	if PartyStats.party_members == 1:
+		if PartyStats.gary_id == 1:
+			fighters.append($Gary_Battle)
+			fighters[0].global_position = Vector2(-138, 136)
+			
+	if PartyStats.party_members == 2:
+		if PartyStats.gary_id == 1:
+			fighters.append($Gary_Battle)
+			fighters[0].global_position = Vector2(-199, 112)
+			
+		if PartyStats.jacques_id == 1:
+			fighters.append($Jacques_Battle)
+			fighters[0].global_position = Vector2(-199, 112)
+			
+		if PartyStats.gary_id == 2:
+			fighters.append($Gary_Battle)
+			fighters[1].global_position = Vector2(-86, 168)
+			
+		if PartyStats.jacques_id == 2:
+			fighters.append($Jacques_Battle)
+			fighters[1].global_position = Vector2(-86, 168)
 		
-	#if Party.party_id == 1:
-		#fighters[1].position = Vector2(-135, 144)
+	
+	if PartyStats.party_members == 3:
+		if PartyStats.gary_id == 1:
+			fighters.append($Gary_Battle)
+			fighters[0].global_position = Vector2(-240, 86)
 		
-	#if Party.party_id == 2:
-		#fighters[2].position = Vector2(-23, 194)
+		if PartyStats.jacques_id == 1:
+			fighters.append($Jacques_Battle)
+			fighters[0].global_position = Vector2(-240, 86)
+		
+		if PartyStats.irina_id == 1:
+			fighters.append($Irina_Battle)
+			fighters[0].global_position = Vector2(-240, 86)
+		
+		if PartyStats.gary_id == 2:
+			fighters.append($Gary_Battle)
+			fighters[1].global_position = Vector2(-135, 144)
+		
+		if PartyStats.jacques_id == 2:
+			fighters.append($Jacques_Battle)
+			fighters[1].global_position = Vector2(-135, 144)
+		
+		if PartyStats.irina_id == 2:
+			fighters.append($Irina_Battle)
+			fighters[1].global_position = Vector2(-135, 144)
+		
+		if PartyStats.gary_id == 3:
+			fighters.append($Gary_Battle)
+			fighters[2].global_position = Vector2(-23, 194)
+		
+		if PartyStats.jacques_id == 3:
+			fighters.append($Jacques_Battle)
+			fighters[2].global_position = Vector2(-23, 194)
+		
+		if PartyStats.irina_id == 3:
+			fighters.append($Irina_Battle)
+			fighters[2].global_position = Vector2(-23, 194)
+		
 		
 func _on_WorldRoot_BB_active():
 		BB_active = true
@@ -208,25 +261,6 @@ func get_BB_position():
 	var BB_position = fighters[fighter_index].get_BB_position()
 	return BB_position
 	
-#func _set_position():
-	
-	#if party_id == 1 and party_formation_3:
-		#$PartyFormation3/Fighter1.position
-		
-	#if party_id == 2 and party_formation_3:
-		#$PartyFormation3/Fighter2.position
-		
-	#if party_id == 3 and party_formation_3:
-		#$PartyFormation3/Fighter3.position
-
-#if party_members == 1:
-		#party_formation_1 = true
-
-	#if party_members == 2:
-		#party_formation_2 = true
-
-	#if party_members == 3:
-		#party_formation_3 = true
 
 func _on_WorldRoot_defend_chosen():
 	fighters[fighter_index].defend()
@@ -234,9 +268,10 @@ func _on_WorldRoot_defend_chosen():
 	BB_active = false
 
 func _on_WorldRoot_flee_chosen():
-	fighters = get_children()
-	for x in range (fighters.size()):
-		fighters[x].flee()
+	#fighters = get_children()
+	#set_positions()
+	for x in range (fighters2.size()):
+		fighters2[x].flee()
 	
 func get_f_current():
 	var f_self = fighters[fighter_index].get_self()
@@ -311,7 +346,8 @@ func _on_WorldRoot_f_index_reset():
 	#ongoing = false
 	fighter_index = -1
 	if fighters.size() <=0:
-		fighters = get_children()
+		set_positions()
+		#fighters = get_children()
 
 func get_f_attack():
 	var f_attack = fighters[fighter_index].get_f_attack()
@@ -446,7 +482,6 @@ func _on_SpellList_all_ally_spell():
 	fighters[fighter_index].idle()
 	magic_selecting = false
 	emit_signal("ally_spell_chosen")
-	
 	
 func _on_Enemies_fighters_active():
 	for x in range (fighters2.size()):

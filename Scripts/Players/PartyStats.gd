@@ -1,11 +1,11 @@
 extends Node
 
 var party_id : int
-var party_members = 3
+var party_members = 2
 var member_name : String
 var holder_name : String
 
-var gary_id = 1
+var gary_id = 2
 var gary_health = 87
 var gary_current_health = 43
 var gary_attack = 25
@@ -13,7 +13,7 @@ var gary_magic = 23
 var gary_defense = 15
 var gary_trinket : String = "-"
 
-var jacques_id = 2
+var jacques_id = 1
 var jacques_health = 103
 var jacques_current_health = 103
 var jacques_attack = 20

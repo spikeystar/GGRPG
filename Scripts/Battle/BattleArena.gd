@@ -30,10 +30,6 @@ var enemy_selecting = false
 onready var party_members : int
 onready var party_id : int
 
-var party_formation_1 = false
-var party_formation_2 = false
-var party_formation_3 = false
-
 signal index_reset()
 signal index_resetzero()
 signal BB_active()
@@ -70,16 +66,7 @@ func _ready():
 	$EnemyInfo.hide()
 	$EnemyMove.hide()
 	$FleeDialogue.hide()
-	#player_instance.queue_free()
-	
-	if party_members == 1:
-		party_formation_1 = true
-
-	if party_members == 2:
-		party_formation_2 = true
-
-	if party_members == 3:
-		party_formation_3 = true
+	player_instance.queue_free()
 
 	
 #Window Display
