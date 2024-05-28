@@ -1,7 +1,11 @@
 extends VBoxContainer
 onready var Fighters = get_tree().get_root().get_node("WorldRoot/Fighters")
 
+var heal_health : int
+var max_health : int
+
 func _ready():
+	initial_health()
 	$GaryHud.hide()
 	$JacquesHud.hide()
 	$IrinaHud.hide()
@@ -82,22 +86,27 @@ func irina_update():
 #######
 
 func gary_update_heal():
-	var health = Fighters.health
-	var f_health = Fighters.f_health
-	$GaryHud/Health.text = str(health) + "/" + str(f_health)
-	if health >0:
+	#var health = Fighters.health
+	#var f_health = Fighters.f_health
+	$GaryHud/Health.text = str(heal_health) + "/" + str(max_health)
+	if heal_health >0:
 		$GaryHud/Dead.hide()
 	
 func jacques_update_heal():
-	var health = Fighters.health
-	var f_health = Fighters.f_health
-	$JacquesHud/Health.text = str(health) + "/" + str(f_health)
-	if health >0:
+	#var health = Fighters.health
+	#var f_health = Fighters.f_health
+	$JacquesHud/Health.text = str(heal_health) + "/" + str(max_health)
+	if heal_health >0:
 		$JacquesHud/Dead.hide()
 	
 func irina_update_heal():
-	var health = Fighters.health
-	var f_health = Fighters.f_health
-	$IrinaHud/Health.text = str(health) + "/" + str(f_health)
-	if health >0:
+	#var health = Fighters.health
+	#var f_health = Fighters.f_health
+	$IrinaHud/Health.text = str(heal_health) + "/" + str(max_health)
+	if heal_health >0:
 		$IrinaHud/Dead.hide()
+
+func initial_health():
+	$GaryHud/Health.text = str(PartyStats.gary_current_health) + "/" + str(PartyStats.gary_health)
+	$JacquesHud/Health.text = str(PartyStats.jacques_current_health) + "/" + str(PartyStats.jacques_health)
+	$IrinaHud/Health.text = str(PartyStats.irina_current_health) + "/" + str(PartyStats.irina_health)

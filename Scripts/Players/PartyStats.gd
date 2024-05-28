@@ -15,7 +15,7 @@ var gary_trinket : String = "-"
 
 var jacques_id = 1
 var jacques_health = 103
-var jacques_current_health = 103
+var jacques_current_health = 92
 var jacques_attack = 20
 var jacques_magic = 27
 var jacques_defense = 24

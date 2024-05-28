@@ -24,10 +24,10 @@ var formation : int
 onready var HUDS = get_tree().get_root().get_node("WorldRoot/HUDS")
 
 func _ready():
-	health = f_health
 	set_stats()
 	set_formation()
-
+	health = f_health
+	
 func focus():
 	#if able:
 	$Cursor.show()
@@ -124,6 +124,10 @@ func heal(HP_amount):
 	health = max(f_health, health + HP_amount)
 	if health > f_health:
 		health = f_health
+	HUDS.heal_health = health
+	HUDS.max_health = f_health
+	huds_update_heal()
+	print(fighter_name)
 		
 func SP(SP_amount: int):
 	yield(get_tree().create_timer(0.2), "timeout")

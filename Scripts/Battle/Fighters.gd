@@ -46,11 +46,6 @@ var move_spread : String
 var move_kind : String
 var fighter_x : int
 
-
-var party_formation_1 = false
-var party_formation_2 = false
-var party_formation_3 = false
-
 signal fighters_active
 signal anim_finish
 signal enemies_enabled
@@ -227,9 +222,9 @@ func hide_all_cursors():
 		fighters2[x].unfocus()
 	
 func hide_cursors_remote():
-	fighters = get_children()
-	for x in range (fighters.size()):
-		fighters[x].unfocus()
+	#fighters = get_children()
+	for x in range (fighters2.size()):
+		fighters2[x].unfocus()
 		
 func get_f_name():
 	var f_name = fighters[fighter_index].get_name()
@@ -244,10 +239,12 @@ func get_f_health():
 	return f_health
 	
 func get_health_heal():
-		return health
+	var health = fighters[target_index].get_health()
+	return health
 	
 func get_f_health_heal():
-		return f_health
+	var f_health = fighters[target_index].get_f_health()
+	return f_health
 		
 func get_party_id():
 	var party_id = fighters[fighter_index].get_id()
@@ -373,9 +370,9 @@ func idle():
 	fighters[fighter_index].idle()
 
 func victory():
-	fighters = get_children()
-	for x in range(fighters.size()):
-		fighters[x].victory()
+	#fighters = get_children()
+	for x in range(fighters2.size()):
+		fighters2[x].victory()
 
 func _on_WorldRoot_action_ongoing():
 	ongoing = true
@@ -418,7 +415,7 @@ func item_used():
 		fighters2[target_index].heal(HP_amount)
 		health = fighters2[target_index].get_health()
 		f_health = fighters2[target_index].get_f_health()
-		fighters2[target_index].huds_update_heal()
+		#fighters2[target_index].huds_update_heal()
 	if SP:
 		fighters[target_index].SP(SP_amount)
 	if combo_heal:
@@ -504,7 +501,7 @@ func Sweet_gift():
 	fighters2[target_index].heal(50)
 	health = fighters2[target_index].get_health()
 	f_health = fighters2[target_index].get_f_health()
-	fighters2[target_index].huds_update_heal()
+	#fighters2[target_index].huds_update_heal()
 	yield(get_tree().create_timer(0.5), "timeout")
 	fighter_index = selector_index
 	_on_WorldRoot_f_index_reset()
@@ -517,7 +514,7 @@ func Blossom():
 		fighters2[x].heal(100)
 		health = fighters2[x].get_health()
 		f_health = fighters2[x].get_f_health()
-		fighters2[x].huds_update_heal()
+		#fighters2[x].huds_update_heal()
 	yield(get_tree().create_timer(0.5), "timeout")
 	fighter_index = selector_index
 	_on_WorldRoot_f_index_reset()
