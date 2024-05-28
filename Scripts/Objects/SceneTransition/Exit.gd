@@ -2,6 +2,7 @@
 # You should create a CollisionPolygon2D and put it inside of this node in order to define the shape of the area.
 
 extends Area2D
+var entered = false
 
 const TransitionPlayer = preload("res://Objects/SceneTransition/TransitionPlayer.tscn")
 
@@ -31,6 +32,7 @@ func _on_touch_area():
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.transition_in(target_scene, _get_animation_name())
+	
 	
 	
 

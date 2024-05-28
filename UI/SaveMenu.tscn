@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Misc/Font/SaveStar.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Pause/Save Menu Base.png" type="Texture" id=2]
@@ -6,21 +6,81 @@
 [ext_resource path="res://UI/Pause/Member Display.png" type="Texture" id=4]
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=5]
 [ext_resource path="res://Assets/General/Misc Items SS.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/UI/Save_Cursor.gd" type="Script" id=7]
+[ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/UI/SaveMenu.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/UI/SaveSlot.gd" type="Script" id=10]
 
 [node name="SaveMenu" type="Node2D"]
+script = ExtResource( 9 )
 
 [node name="Base" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
+[node name="SaveSelection" type="VBoxContainer" parent="."]
+margin_left = -294.0
+margin_top = -80.0
+margin_right = -254.0
+margin_bottom = 437.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_scale = Vector2( 1.1, 1.1 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 112
+
+[node name="1" type="Label" parent="SaveSelection"]
+margin_left = 19.0
+margin_right = 20.0
+margin_bottom = 14.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "1"
+clip_text = true
+script = ExtResource( 10 )
+
+[node name="2" type="Label" parent="SaveSelection"]
+margin_left = 19.0
+margin_top = 126.0
+margin_right = 20.0
+margin_bottom = 140.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "2"
+clip_text = true
+script = ExtResource( 10 )
+
+[node name="3" type="Label" parent="SaveSelection"]
+margin_left = 19.0
+margin_top = 252.0
+margin_right = 20.0
+margin_bottom = 266.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "3"
+clip_text = true
+script = ExtResource( 10 )
+
+[node name="MenuCursor" parent="SaveSelection" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 378.0
+margin_right = 40.0
+margin_bottom = 403.0
+script = ExtResource( 7 )
+menu_parent_path = NodePath("..")
+cursor_offset = Vector2( 17, 2.5 )
+
 [node name="Save Star" type="Label" parent="."]
-margin_left = -102.0
-margin_top = -225.0
-margin_right = 102.0
-margin_bottom = -190.0
+margin_left = -105.0
+margin_top = -226.0
+margin_right = 99.0
+margin_bottom = -191.0
 custom_colors/font_color = Color( 1, 0.990833, 0.95, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 0.00392157 )
+custom_colors/font_color_shadow = Color( 0.25, 0.159042, 0.1025, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "Save Star"
+align = 1
 
 [node name="Save1" type="Node2D" parent="."]
 

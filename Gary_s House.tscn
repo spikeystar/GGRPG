@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Assets/Gary's House/Exterior/ledge 3.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Gary's House/Exterior/plant 3.png" type="Texture" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=39]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=40]
 [ext_resource path="res://Scripts/Area_Specific/Garys_House.gd" type="Script" id=41]
+[ext_resource path="res://Scripts/Objects/SceneTransition/Doorway.gd" type="Script" id=42]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.059633, 0.807339, 0.981651, 1 )
@@ -530,6 +531,10 @@ polygon = PoolVector2Array( -652, 169, -568, 241, -329, 321, -234, 358, -104, 35
 
 [node name="InsideHouse" parent="CollisionRoot" instance=ExtResource( 8 )]
 position = Vector2( 13, 359 )
+script = ExtResource( 42 )
+target_scene = "res://Gary_s House Interior.tscn"
+exit_name = "InsideHouse"
+height = 96.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/InsideHouse"]
 position = Vector2( -11, -425 )
