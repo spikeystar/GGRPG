@@ -22,7 +22,7 @@
 [ext_resource path="res://Assets/General/Shadows/rectangle shadow small.png" type="Texture" id=20]
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Assets/Gary's House/Interior/painting.png" type="Texture" id=22]
-[ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=23]
+[ext_resource path="res://Scripts/ScaledCamera2D.gd" type="Script" id=23]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=24]
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Scripts/Item_Interact.gd" type="Script" id=26]
@@ -86,42 +86,44 @@ animations = [ {
 } ]
 
 [node name="WorldRoot" type="Node2D"]
-rotation = 0.00523599
 script = ExtResource( 30 )
 
-[node name="BlueBckgd" type="Sprite" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+rotation = 0.00523599
+
+[node name="BlueBckgd" type="Sprite" parent="Node2D"]
 position = Vector2( 73.3969, -115.386 )
 z_index = -100
 texture = ExtResource( 27 )
 
-[node name="RectangleShadowSmall" type="Sprite" parent="."]
+[node name="RectangleShadowSmall" type="Sprite" parent="Node2D"]
 self_modulate = Color( 1, 1, 1, 0.8 )
 position = Vector2( 145, 21 )
 rotation = 0.0142471
 scale = Vector2( 1.27778, 1.14444 )
 texture = ExtResource( 20 )
 
-[node name="Dresser2" type="Sprite" parent="."]
+[node name="Dresser2" type="Sprite" parent="Node2D"]
 position = Vector2( 147, 2.71007 )
 scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 8 )
 
-[node name="Radio" type="Sprite" parent="."]
+[node name="Radio" type="Sprite" parent="Node2D"]
 position = Vector2( 95, -64.2899 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 11 )
 centered = false
 offset = Vector2( 0, -2 )
 
-[node name="Lamp" type="Sprite" parent="."]
+[node name="Lamp" type="Sprite" parent="Node2D"]
 position = Vector2( 162, -28.2899 )
 scale = Vector2( 0.96, 0.96 )
 texture = ExtResource( 10 )
 offset = Vector2( 0, 0.302 )
 
-[node name="YSort" type="YSort" parent="."]
+[node name="YSort" type="YSort" parent="Node2D"]
 
-[node name="FloorTiles" type="TileMap" parent="YSort"]
+[node name="FloorTiles" type="TileMap" parent="Node2D/YSort"]
 modulate = Color( 0.98, 0.9506, 0.9506, 1 )
 position = Vector2( -55.5, 41.5 )
 rotation = -0.0349066
@@ -133,29 +135,29 @@ centered_textures = true
 format = 1
 tile_data = PoolIntArray( -196610, 1, 0, -196609, 0, 0, -262144, 1, 0, -262143, 0, 0, -262142, 1, 0, -262141, 0, 0, -131074, 0, 0, -131073, 1, 0, -196608, 0, 0, -196607, 1, 0, -196606, 0, 0, -196605, 1, 0, -65538, 1, 0, -65537, 0, 0, -131072, 1, 0, -131071, 0, 0, -131070, 1, 0, -131069, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 1, 0, -65534, 0, 0, -65533, 1, 0, 65534, 1, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 1, 0, 65538, 0, 0, 65539, 0, 0, 131072, 0, 0, 131073, 1, 0 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Node2D/YSort"]
 visible = false
 position = Vector2( 19, -77 )
 z_index = 1
 frames = SubResource( 174 )
-frame = 2
+frame = 3
 playing = true
 
-[node name="MatA" type="Sprite" parent="YSort"]
+[node name="MatA" type="Sprite" parent="Node2D/YSort"]
 position = Vector2( -96, 82 )
 rotation = 0.0327665
 scale = Vector2( 1.18876, 1.18876 )
 z_index = -1
 texture = ExtResource( 9 )
 
-[node name="WallB" type="Sprite" parent="YSort"]
+[node name="WallB" type="Sprite" parent="Node2D/YSort"]
 position = Vector2( -92.4479, -53.9254 )
 rotation = -0.0535369
 scale = Vector2( 0.761036, 0.659741 )
 z_index = -10
 texture = ExtResource( 12 )
 
-[node name="WallB2" type="Sprite" parent="YSort"]
+[node name="WallB2" type="Sprite" parent="Node2D/YSort"]
 position = Vector2( 78.9514, -14.4848 )
 rotation = -0.00893207
 scale = Vector2( 0.744264, 0.674072 )
@@ -165,28 +167,28 @@ centered = false
 offset = Vector2( -120, -219 )
 flip_h = true
 
-[node name="MatB" type="Sprite" parent="YSort"]
+[node name="MatB" type="Sprite" parent="Node2D/YSort"]
 position = Vector2( -1, -24 )
 rotation = 0.00740846
 scale = Vector2( 1.65873, 1.62398 )
 z_index = -1
 texture = ExtResource( 13 )
 
-[node name="Window" type="Sprite" parent="YSort"]
+[node name="Window" type="Sprite" parent="Node2D/YSort"]
 position = Vector2( -93.1041, -58.5009 )
 rotation = -0.0452074
 scale = Vector2( 1.04662, 1.00764 )
 z_index = -3
 texture = ExtResource( 14 )
 
-[node name="Curtains" type="Sprite" parent="YSort"]
+[node name="Curtains" type="Sprite" parent="Node2D/YSort"]
 position = Vector2( -87.1041, -52.5008 )
 rotation = -0.0269755
 scale = Vector2( 1.57944, 1.44791 )
 z_index = -2
 texture = ExtResource( 15 )
 
-[node name="Sink" parent="YSort" instance=ExtResource( 4 )]
+[node name="Sink" parent="Node2D/YSort" instance=ExtResource( 4 )]
 position = Vector2( -118, 55 )
 tile_size = Vector2( 63, 28 )
 grid_size = Vector2( 1.9, 0.8 )
@@ -195,21 +197,20 @@ texture_scale = Vector2( 1.2, 1.2 )
 texture_offset = Vector2( -2, 16 )
 height = 64.0
 
-[node name="Cabinets" type="Sprite" parent="YSort"]
+[node name="Cabinets" type="Sprite" parent="Node2D/YSort"]
 position = Vector2( -141, -32 )
 rotation = -0.00349066
 scale = Vector2( 1.1, 1 )
 z_index = -3
 texture = ExtResource( 16 )
 
-[node name="Painting" type="Sprite" parent="YSort"]
+[node name="Painting" type="Sprite" parent="Node2D/YSort"]
 position = Vector2( 93, -69 )
-rotation = 0.0181964
 scale = Vector2( 0.986361, 0.979884 )
 z_index = -3
 texture = ExtResource( 22 )
 
-[node name="FigLeaf" parent="YSort" instance=ExtResource( 4 )]
+[node name="FigLeaf" parent="Node2D/YSort" instance=ExtResource( 4 )]
 position = Vector2( 10.7201, 106.996 )
 tile_size = Vector2( 40, 16 )
 texture = ExtResource( 5 )
@@ -217,12 +218,12 @@ texture_offset = Vector2( 0, 25 )
 height = 82.0
 preview_collision_box = false
 
-[node name="FigLeafShadow" type="Sprite" parent="YSort"]
+[node name="FigLeafShadow" type="Sprite" parent="Node2D/YSort"]
 self_modulate = Color( 1, 1, 1, 0.815686 )
 position = Vector2( 10, 105 )
 texture = ExtResource( 19 )
 
-[node name="Bed" parent="YSort" instance=ExtResource( 4 )]
+[node name="Bed" parent="Node2D/YSort" instance=ExtResource( 4 )]
 position = Vector2( -14, -16 )
 rotation = 0.0189685
 tile_size = Vector2( 60.35, 27.708 )
@@ -232,7 +233,7 @@ texture_scale = Vector2( 1.4, 1.4 )
 texture_offset = Vector2( 2.766, 26.476 )
 height = 24.0
 
-[node name="Dresser" parent="." instance=ExtResource( 4 )]
+[node name="Dresser" parent="Node2D" instance=ExtResource( 4 )]
 position = Vector2( 166, 29 )
 rotation = 0.00583901
 sort_enabled = false
@@ -243,42 +244,50 @@ texture_offset = Vector2( 0, 17 )
 height = 64.0
 always_update = true
 
-[node name="CollisionRoot" type="Node2D" parent="."]
+[node name="CollisionRoot" type="Node2D" parent="Node2D"]
 
-[node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 25 )]
+[node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 25 )]
 
-[node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 3 )]
+[node name="NavmeshLayer" parent="Node2D/CollisionRoot/Navmesh" instance=ExtResource( 3 )]
 position = Vector2( -49, 35.1 )
 polygon = PoolVector2Array( 56, -83.1, 160, -36.1, 142, -25.1, 211, 9.9, 58, 86.9, -8.39905, 60.1853, -39, 73.9, -97, 45.9, -68.4242, 31.9573, -129, 6.89999 )
 __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="OutsideHouse" parent="CollisionRoot" instance=ExtResource( 21 )]
+[node name="OutsideHouse" parent="Node2D/CollisionRoot" instance=ExtResource( 21 )]
 position = Vector2( -130, 106 )
 script = ExtResource( 24 )
 target_scene = "res://Gary_s House.tscn"
 exit_name = "OutsideHouse"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/OutsideHouse"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/OutsideHouse"]
 position = Vector2( -13, 10 )
 polygon = PoolVector2Array( -28, -23, 2, -36, 63, -6, 32, 6 )
 
-[node name="PlayerSpawnDefault" parent="CollisionRoot" instance=ExtResource( 17 )]
+[node name="PlayerSpawnDefault" parent="Node2D/CollisionRoot" instance=ExtResource( 17 )]
 position = Vector2( -39, 29 )
 
-[node name="PlayerSpawnFromOutsideHouse2" parent="CollisionRoot" instance=ExtResource( 17 )]
+[node name="PlayerSpawnFromOutsideHouse2" parent="Node2D/CollisionRoot" instance=ExtResource( 17 )]
 position = Vector2( -96, 82 )
 door_name = "InsideHouse"
 direction = Vector2( 1, 1 )
 
+[node name="Item_Interact" type="Area2D" parent="Node2D"]
+script = ExtResource( 26 )
+item_name = "Yummy Cake"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Item_Interact"]
+position = Vector2( -47.3501, 124.25 )
+polygon = PoolVector2Array( -84.601, -114.559, -54.5281, -100.716, -85.4334, -82.5542, -116.517, -98.3916 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 6.0085, 0.947603 )
+pause_mode = 2
+position = Vector2( 6.00346, 0.97905 )
 offset = Vector2( 0, -20 )
 current = true
 zoom = Vector2( 0.655, 0.65 )
 script = ExtResource( 23 )
-minPos = Vector2( -30, -30 )
 
 [node name="Info_Window" type="Sprite" parent="Camera2D"]
 visible = false
@@ -303,12 +312,4 @@ margin_bottom = 4.00748
 custom_fonts/font = ExtResource( 29 )
 text = "Pretty Gem!"
 
-[node name="Item_Interact" type="Area2D" parent="."]
-script = ExtResource( 26 )
-item_name = "Yummy Cake"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Item_Interact"]
-position = Vector2( -47.3501, 124.25 )
-polygon = PoolVector2Array( -84.601, -114.559, -54.5281, -100.716, -85.4334, -82.5542, -116.517, -98.3916 )
-
-[connection signal="item_get" from="Item_Interact" to="Camera2D" method="_on_Item_Interact_item_get"]
+[connection signal="item_get" from="Node2D/Item_Interact" to="Camera2D" method="_on_Item_Interact_item_get"]

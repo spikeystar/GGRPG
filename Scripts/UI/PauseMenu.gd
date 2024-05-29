@@ -2,9 +2,12 @@ extends Node2D
 
 onready var player_instance = PlayerManager.player_instance
 var stats_showing = false
+var able = false
 
 func _ready():
-	pass
+	$AnimationPlayer.play("open")
+	#yield(get_tree().create_timer(0.3), "timeout")
+	#able = true
 	#player_instance.queue_free()
 	
 func _process(delta):
@@ -38,6 +41,12 @@ func _process(delta):
 	if $MainSelection/MenuCursor.menu_name == "Key":
 		$Map.hide()
 		$Key.show()
+		
+	#if Input.is_action_pressed("ui_pause") and PlayerManager.freeze and able:
+	#	get_tree().paused = false
+		#able = false
+		#$AnimationPlayer.play("open")
+		
 
 func _on_MemberOptionsCursor_show_stats():
 	$Members.hide()

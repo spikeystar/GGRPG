@@ -16,6 +16,12 @@ signal item_usage
 signal trinket_equipped
 signal main_retread
 
+signal gary
+signal jacques
+signal irina
+signal suzy
+signal damien
+
 func _ready():
 	Cursors = $Cursors.get_children()
 	set_available()
@@ -74,6 +80,16 @@ func _process(delta):
 		party_selecting = false
 		current_id = (member_index + 1)
 		selector_name = get_name()
+		if selector_name == "Gary":
+			emit_signal("gary")
+		if selector_name == "Jacques":
+			emit_signal("jacques")
+		if selector_name == "Irina":
+			emit_signal("irina")
+		if selector_name == "Suzy":
+			emit_signal("suzy")
+		if selector_name == "Damien":
+			emit_signal("damien")
 		print(member_index)
 		
 	if Input.is_action_just_pressed("ui_accept") and party_selecting and not stats_active:
@@ -130,6 +146,16 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("ui_select") and item_selecting and able:
 		selector_name = get_name()
+		if selector_name == "Gary":
+			emit_signal("gary")
+		if selector_name == "Jacques":
+			emit_signal("jacques")
+		if selector_name == "Irina":
+			emit_signal("irina")
+		if selector_name == "Suzy":
+			emit_signal("suzy")
+		if selector_name == "Damien":
+			emit_signal("damien")
 		emit_signal("item_usage")
 		item_selecting = false
 		able = false
@@ -174,6 +200,16 @@ func _process(delta):
 
 	if Input.is_action_just_pressed("ui_select") and trinket_selecting and able:
 		selector_name = get_name()
+		if selector_name == "Gary":
+			emit_signal("gary")
+		if selector_name == "Jacques":
+			emit_signal("jacques")
+		if selector_name == "Irina":
+			emit_signal("irina")
+		if selector_name == "Suzy":
+			emit_signal("suzy")
+		if selector_name == "Damien":
+			emit_signal("damien")
 		emit_signal("trinket_equipped")
 		trinket_selecting = false
 		able = false

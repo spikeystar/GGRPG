@@ -8,6 +8,10 @@ export var gravity = 9.8
 export var max_vertical_speed = 20
 export var jump_velocity = 10
 
+const PauseMenu = preload("res://UI/PauseMenu.tscn")
+const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
+var pause_menu
+
 onready var motion_root: KinematicBody2D = $MotionRoot
 onready var world_collider = $MotionRoot/CollisionShape2D
 onready var anim_tree = $BodyYSort/AnimationTree
@@ -39,10 +43,13 @@ func _physics_process(delta):
 		anim_tree.get("parameters/playback").travel("Jump")
 		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
 		
-	#if Input.is_action_pressed("ui_push") and not freeze:
+	#if Input.is_action_pressed("ui_pause") and not freeze:
 		#PlayerManager.freeze = true
 		#get_tree().paused = true
-		#PauseMenu.show()
+		#pause_menu = PauseMenu.instance()
+		#get_tree().get_root().add_child(pause_menu)
+		
+	
 	
 	var draw_pos_z = motion_root.pos_z
 	var draw_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.floor_z))

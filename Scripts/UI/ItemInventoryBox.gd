@@ -6,6 +6,7 @@ var item_active = false
 var empty_items = false
 var item_id : String
 var amount : int
+var selector_name : String
 
 signal heal_item_chosen()
 signal empty_items()
@@ -97,15 +98,15 @@ func _on_Members_item_usage():
 	item_active = true
 	
 func set_member_target():
-	if Members.selector_name == "Gary":
+	if selector_name == "Gary":
 		PartyStats.gary_current_health = clamp(PartyStats.gary_current_health + amount, 1, PartyStats.gary_health)
-	if Members.selector_name == "Jacques":
+	if selector_name == "Jacques":
 		PartyStats.jacques_current_health = clamp(PartyStats.jacques_current_health + amount, 1, PartyStats.jacques_health)
-	if Members.selector_name == "Irina":
+	if selector_name == "Irina":
 		PartyStats.irina_current_health = clamp(PartyStats.irina_current_health + amount, 1, PartyStats.irina_health)
-	if Members.selector_name == "Suzy":
+	if selector_name == "Suzy":
 		PartyStats.suzy_current_health = clamp(PartyStats.suzy_current_health + amount, 1, PartyStats.suzy_health)
-	if Members.selector_name == "Damien":
+	if selector_name == "Damien":
 		PartyStats.damien_current_health = clamp(PartyStats.damien_current_health + amount, 1, PartyStats.damien_health)
 	
 func all_heal():
@@ -129,3 +130,18 @@ func all_heal():
 		PartyStats.irina_current_health = clamp(PartyStats.irina_current_health + amount, 1, PartyStats.irina_health)
 		PartyStats.suzy_current_health = clamp(PartyStats.suzy_current_health + amount, 1, PartyStats.suzy_health)
 		PartyStats.damien_current_health = clamp(PartyStats.damien_current_health + amount, 1, PartyStats.damien_health)
+
+func _on_Members_damien():
+	selector_name = "Damien"
+
+func _on_Members_gary():
+	selector_name = "Gary"
+
+func _on_Members_irina():
+	selector_name = "Irina"
+
+func _on_Members_jacques():
+	selector_name = "Jacques"
+
+func _on_Members_suzy():
+	selector_name = "Suzy"

@@ -6,6 +6,7 @@ var trinkets_active = false
 var empty_trinkets = false
 var trinket_id : String
 var trinket_holder : String
+var selector_name : String
 
 signal trinket_chosen()
 signal empty_trinkets()
@@ -93,8 +94,8 @@ func _on_MenuCursor_trinket_selecting():
 	trinkets_active = true
 
 func _on_Members_trinket_equipped():
-	var selector_name = Members.selector_name
-	PartyStats.holder_name = Members.selector_name
+	#var selector_name = Members.selector_name
+	PartyStats.holder_name = selector_name
 	var equipped = inventory[trinket_index].get_trinket()
 	var trinket_name = inventory[trinket_index].get_id()
 	if trinket_name == "Unequip Trinket":
@@ -122,3 +123,19 @@ func _on_Members_trinket_equipped():
 	emit_signal("return_to_trinkets")
 	trinket_index = 0
 	trinkets_active = true
+
+
+func _on_Members_damien():
+	selector_name = "Damien"
+
+func _on_Members_gary():
+	selector_name = "Gary"
+
+func _on_Members_irina():
+	selector_name = "Irina"
+
+func _on_Members_jacques():
+	selector_name = "Jacques"
+
+func _on_Members_suzy():
+	selector_name = "Suzy"

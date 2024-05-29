@@ -1,9 +1,11 @@
 extends Sprite
 
-onready var Members = get_tree().get_root().get_node("PauseMenu/Members")
+#onready var Members = get_tree().get_root().get_node("PauseMenu/Members")
+#onready var Members = get_tree().get_root().get_node("PauseInstance/CanvasLayer/PauseMenu/Members")
+var selector_name : String
 
 func _process(delta):
-	var selector_name = Members.selector_name
+	#var selector_name = Members.selector_name
 	if selector_name == "Gary":
 		$Name.text = "Gary"
 		$Display.frame = 0
@@ -70,3 +72,19 @@ func _process(delta):
 		else:
 			$Trinket_info.text = str(PartyStats.damien_trinket)
 		
+
+
+func _on_Members_gary():
+	selector_name = "Gary"
+
+func _on_Members_damien():
+	selector_name = "Damien"
+
+func _on_Members_irina():
+	selector_name = "Irina"
+
+func _on_Members_suzy():
+	selector_name = "Suzy"
+
+func _on_Members_jacques():
+	selector_name = "Jacques"

@@ -1,47 +1,47 @@
 [gd_scene load_steps=58 format=2]
 
-[ext_resource path="res://UI/Pause/Pause Items.png" type="Texture" id=1]
-[ext_resource path="res://UI/Pause/Pause Members.png" type="Texture" id=2]
-[ext_resource path="res://UI/Pause/Pause Menu Base.png" type="Texture" id=3]
-[ext_resource path="res://UI/Pause/Pause Key.png" type="Texture" id=4]
-[ext_resource path="res://UI/Pause/Sub Menu.png" type="Texture" id=5]
-[ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=6]
-[ext_resource path="res://Misc/Font/Pause Member HP.tres" type="DynamicFont" id=7]
-[ext_resource path="res://UI/Pause/SP Icon.png" type="Texture" id=8]
-[ext_resource path="res://UI/Cursor.png" type="Texture" id=9]
-[ext_resource path="res://UI/Pause/Member Display.png" type="Texture" id=10]
-[ext_resource path="res://Scripts/UI/ItemInventoryBox.gd" type="Script" id=11]
-[ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=12]
-[ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Scripts/UI/PauseMembers.gd" type="Script" id=14]
-[ext_resource path="res://Scripts/UI/PauseMenu.gd" type="Script" id=15]
-[ext_resource path="res://Scripts/UI/Pause_Menu_Cursor.gd" type="Script" id=16]
-[ext_resource path="res://Scripts/UI/SubMenu.gd" type="Script" id=17]
-[ext_resource path="res://Scripts/UI/Pause_Menu_Item.gd" type="Script" id=18]
-[ext_resource path="res://UI/Pause/Member Options.png" type="Texture" id=19]
-[ext_resource path="res://Misc/Font/Move Select Theme.tres" type="Theme" id=20]
-[ext_resource path="res://Misc/Font/Move Select.tres" type="DynamicFont" id=21]
-[ext_resource path="res://Scripts/UI/Member_Options_Cursor.gd" type="Script" id=22]
-[ext_resource path="res://Scripts/UI/MemberOptions.gd" type="Script" id=23]
-[ext_resource path="res://UI/Pause/Member Stats.png" type="Texture" id=24]
-[ext_resource path="res://Assets/General/Weapons SS.png" type="Texture" id=25]
-[ext_resource path="res://Scripts/UI/Item_Menu_Cursor.gd" type="Script" id=26]
-[ext_resource path="res://Scripts/UI/Pause_Items.gd" type="Script" id=27]
-[ext_resource path="res://Scripts/UI/Pause_Trinkets.gd" type="Script" id=28]
-[ext_resource path="res://Misc/Font/Trinket Held.tres" type="DynamicFont" id=29]
-[ext_resource path="res://Assets/General/Misc Items SS.png" type="Texture" id=30]
-[ext_resource path="res://Scripts/UI/Trinket_Menu_Cursor.gd" type="Script" id=31]
-[ext_resource path="res://Scripts/UI/TrinketsInventoryBox.gd" type="Script" id=32]
-[ext_resource path="res://Scripts/UI/EnemiesInventory.gd" type="Script" id=33]
-[ext_resource path="res://UI/Pause/Pause Enemies.png" type="Texture" id=34]
-[ext_resource path="res://UI/Battle/Status/Status Icons.png" type="Texture" id=35]
-[ext_resource path="res://Assets/General/Enemy Display.png" type="Texture" id=36]
-[ext_resource path="res://Scripts/UI/Stats.gd" type="Script" id=37]
-[ext_resource path="res://Scripts/UI/Pause_Key.gd" type="Script" id=38]
-[ext_resource path="res://Scripts/UI/KeyInventoryBox.gd" type="Script" id=39]
-[ext_resource path="res://Scripts/UI/Pause_Key_Cursor.gd" type="Script" id=40]
-[ext_resource path="res://Scripts/UI/Enemies_Cursor.gd" type="Script" id=41]
-[ext_resource path="res://Scripts/UI/Pause_Enemies.gd" type="Script" id=42]
+[ext_resource path="res://UI/Pause/SP Icon.png" type="Texture" id=1]
+[ext_resource path="res://UI/Pause/Member Display.png" type="Texture" id=2]
+[ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=3]
+[ext_resource path="res://Assets/General/Misc Items SS.png" type="Texture" id=4]
+[ext_resource path="res://UI/Pause/Pause Enemies.png" type="Texture" id=5]
+[ext_resource path="res://UI/Battle/Status/Status Icons.png" type="Texture" id=6]
+[ext_resource path="res://Assets/General/Enemy Display.png" type="Texture" id=7]
+[ext_resource path="res://UI/Cursor.png" type="Texture" id=8]
+[ext_resource path="res://UI/Pause/Sub Menu.png" type="Texture" id=9]
+[ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Assets/General/Weapons SS.png" type="Texture" id=11]
+[ext_resource path="res://Misc/Font/Trinket Held.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Misc/Font/Pause Member HP.tres" type="DynamicFont" id=13]
+[ext_resource path="res://UI/Pause/Member Options.png" type="Texture" id=14]
+[ext_resource path="res://UI/Pause/Member Stats.png" type="Texture" id=15]
+[ext_resource path="res://Misc/Font/Move Select.tres" type="DynamicFont" id=16]
+[ext_resource path="res://UI/Pause/Pause Members.png" type="Texture" id=17]
+[ext_resource path="res://UI/Pause/Pause Menu Base.png" type="Texture" id=18]
+[ext_resource path="res://UI/Pause/Pause Key.png" type="Texture" id=19]
+[ext_resource path="res://UI/Pause/Pause Items.png" type="Texture" id=20]
+[ext_resource path="res://Scripts/UI/Enemies_Cursor.gd" type="Script" id=21]
+[ext_resource path="res://Scripts/UI/EnemiesInventory.gd" type="Script" id=22]
+[ext_resource path="res://Scripts/UI/Item_Menu_Cursor.gd" type="Script" id=23]
+[ext_resource path="res://Scripts/UI/ItemInventoryBox.gd" type="Script" id=24]
+[ext_resource path="res://Scripts/UI/KeyInventoryBox.gd" type="Script" id=25]
+[ext_resource path="res://Scripts/UI/Member_Options_Cursor.gd" type="Script" id=26]
+[ext_resource path="res://Scripts/UI/MemberOptions.gd" type="Script" id=27]
+[ext_resource path="res://Scripts/UI/Pause_Enemies.gd" type="Script" id=28]
+[ext_resource path="res://Scripts/UI/Pause_Items.gd" type="Script" id=29]
+[ext_resource path="res://Scripts/UI/Pause_Key.gd" type="Script" id=30]
+[ext_resource path="res://Scripts/UI/Pause_Key_Cursor.gd" type="Script" id=31]
+[ext_resource path="res://Scripts/UI/Pause_Menu_Cursor.gd" type="Script" id=32]
+[ext_resource path="res://Scripts/UI/Pause_Menu_Item.gd" type="Script" id=33]
+[ext_resource path="res://Scripts/UI/Pause_Trinkets.gd" type="Script" id=34]
+[ext_resource path="res://Scripts/UI/PauseMembers.gd" type="Script" id=35]
+[ext_resource path="res://Scripts/UI/PauseMenu.gd" type="Script" id=36]
+[ext_resource path="res://Misc/Font/Move Select Theme.tres" type="Theme" id=37]
+[ext_resource path="res://Scripts/UI/Stats.gd" type="Script" id=38]
+[ext_resource path="res://Scripts/UI/SubMenu.gd" type="Script" id=39]
+[ext_resource path="res://Scripts/UI/Trinket_Menu_Cursor.gd" type="Script" id=40]
+[ext_resource path="res://Scripts/UI/TrinketsInventoryBox.gd" type="Script" id=41]
+[ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=42]
 
 [sub_resource type="DynamicFontData" id=4]
 antialiased = false
@@ -91,7 +91,7 @@ extra_spacing_space = -3
 font_data = SubResource( 13 )
 
 [sub_resource type="Theme" id=3]
-default_font = ExtResource( 29 )
+default_font = ExtResource( 12 )
 
 [sub_resource type="DynamicFontData" id=17]
 antialiased = false
@@ -149,10 +149,11 @@ tracks/0/keys = {
 [node name="PauseMenu" type="Node2D"]
 pause_mode = 2
 position = Vector2( 0, -20 )
-script = ExtResource( 15 )
+scale = Vector2( 0.655, 0.65 )
+script = ExtResource( 36 )
 
 [node name="Base" type="Sprite" parent="."]
-texture = ExtResource( 3 )
+texture = ExtResource( 18 )
 
 [node name="Main Labels" type="Node2D" parent="."]
 
@@ -245,7 +246,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Party"
 clip_text = true
-script = ExtResource( 18 )
+script = ExtResource( 33 )
 
 [node name="Items" type="Label" parent="MainSelection"]
 margin_left = 14.0
@@ -256,7 +257,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Items"
 clip_text = true
-script = ExtResource( 18 )
+script = ExtResource( 33 )
 
 [node name="Trinkets" type="Label" parent="MainSelection"]
 margin_left = 14.0
@@ -267,7 +268,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Trinkets"
 clip_text = true
-script = ExtResource( 18 )
+script = ExtResource( 33 )
 
 [node name="Enemies" type="Label" parent="MainSelection"]
 margin_left = 14.0
@@ -278,7 +279,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Enemies"
 clip_text = true
-script = ExtResource( 18 )
+script = ExtResource( 33 )
 
 [node name="Map" type="Label" parent="MainSelection"]
 margin_left = 14.0
@@ -289,7 +290,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Map"
 clip_text = true
-script = ExtResource( 18 )
+script = ExtResource( 33 )
 
 [node name="Key" type="Label" parent="MainSelection"]
 margin_left = 14.0
@@ -300,9 +301,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 text = "Key"
 clip_text = true
-script = ExtResource( 18 )
+script = ExtResource( 33 )
 
-[node name="MenuCursor" parent="MainSelection" instance=ExtResource( 13 )]
+[node name="MenuCursor" parent="MainSelection" instance=ExtResource( 42 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 2.0
@@ -311,31 +312,31 @@ margin_right = 27.0
 margin_bottom = 457.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource( 16 )
+script = ExtResource( 32 )
 menu_parent_path = NodePath("..")
 
 [node name="Members" type="Sprite" parent="."]
 position = Vector2( 100, -56 )
-texture = ExtResource( 2 )
-script = ExtResource( 14 )
+texture = ExtResource( 17 )
+script = ExtResource( 35 )
 
 [node name="Display1" type="Sprite" parent="Members"]
 position = Vector2( -105, -63 )
 scale = Vector2( 0.85, 0.85 )
-texture = ExtResource( 10 )
+texture = ExtResource( 2 )
 hframes = 5
 
 [node name="Display2" type="Sprite" parent="Members"]
 position = Vector2( 4.00002, -63 )
 scale = Vector2( 0.85, 0.85 )
-texture = ExtResource( 10 )
+texture = ExtResource( 2 )
 hframes = 5
 frame = 1
 
 [node name="Display3" type="Sprite" parent="Members"]
 position = Vector2( 114, -62 )
 scale = Vector2( 0.85, 0.85 )
-texture = ExtResource( 10 )
+texture = ExtResource( 2 )
 hframes = 5
 frame = 2
 
@@ -343,7 +344,7 @@ frame = 2
 visible = false
 position = Vector2( -50, 78 )
 scale = Vector2( 0.85, 0.85 )
-texture = ExtResource( 10 )
+texture = ExtResource( 2 )
 hframes = 5
 frame = 1
 
@@ -351,7 +352,7 @@ frame = 1
 visible = false
 position = Vector2( 59, 78 )
 scale = Vector2( 0.85, 0.85 )
-texture = ExtResource( 10 )
+texture = ExtResource( 2 )
 hframes = 5
 frame = 1
 
@@ -360,34 +361,34 @@ visible = false
 
 [node name="Cursor1" type="Sprite" parent="Members/Cursors"]
 position = Vector2( -157, -137 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="Cursor2" type="Sprite" parent="Members/Cursors"]
 visible = false
 position = Vector2( -48, -137 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="Cursor3" type="Sprite" parent="Members/Cursors"]
 visible = false
 position = Vector2( 61, -137 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="Cursor4" type="Sprite" parent="Members/Cursors"]
 visible = false
 position = Vector2( -103, 3 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="Cursor5" type="Sprite" parent="Members/Cursors"]
 visible = false
 position = Vector2( 6, 3 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="Name1" type="Label" parent="Members"]
 margin_left = -140.0
 margin_top = -122.0
 margin_right = -84.0
 margin_bottom = -108.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Gary"
 align = 1
 
@@ -396,7 +397,7 @@ margin_left = -31.0
 margin_top = -122.0
 margin_right = 25.0
 margin_bottom = -108.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Jacques"
 align = 1
 
@@ -405,7 +406,7 @@ margin_left = 78.0
 margin_top = -121.0
 margin_right = 134.0
 margin_bottom = -107.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Irina"
 align = 1
 
@@ -415,7 +416,7 @@ margin_left = -86.0
 margin_top = 19.0
 margin_right = -30.0
 margin_bottom = 33.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Suzy"
 align = 1
 
@@ -425,7 +426,7 @@ margin_left = 23.0
 margin_top = 19.0
 margin_right = 79.0
 margin_bottom = 33.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Damien"
 align = 1
 
@@ -434,26 +435,26 @@ visible = false
 self_modulate = Color( 1, 0.960784, 1, 1 )
 position = Vector2( -4, -116 )
 scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="Hidden3" type="Sprite" parent="Members"]
 visible = false
 self_modulate = Color( 1, 0.960784, 1, 1 )
 position = Vector2( 106, -115 )
 scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="Hidden4" type="Sprite" parent="Members"]
 self_modulate = Color( 1, 0.960784, 1, 1 )
 position = Vector2( -58, 25 )
 scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="Hidden5" type="Sprite" parent="Members"]
 self_modulate = Color( 1, 0.960784, 1, 1 )
 position = Vector2( 51, 25 )
 scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="HP" type="Node2D" parent="Members"]
 
@@ -462,7 +463,7 @@ margin_left = -153.0
 margin_top = -29.0
 margin_right = -68.0
 margin_bottom = -15.0
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 13 )
 text = "HP: 83/83"
 align = 1
 
@@ -471,7 +472,7 @@ margin_left = -44.0
 margin_top = -29.0
 margin_right = 41.0
 margin_bottom = -15.0
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 13 )
 text = "HP: 107/107"
 align = 1
 
@@ -480,7 +481,7 @@ margin_left = 65.0
 margin_top = -29.0
 margin_right = 150.0
 margin_bottom = -15.0
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 13 )
 text = "HP: 124/124"
 align = 1
 
@@ -490,7 +491,7 @@ margin_left = -99.0
 margin_top = 112.0
 margin_right = -14.0
 margin_bottom = 126.0
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 13 )
 text = "HP: 104/104"
 align = 1
 
@@ -500,7 +501,7 @@ margin_left = 10.0
 margin_top = 112.0
 margin_right = 95.0
 margin_bottom = 126.0
-custom_fonts/font = ExtResource( 7 )
+custom_fonts/font = ExtResource( 13 )
 text = "HP: 115/115"
 align = 1
 
@@ -555,27 +556,27 @@ align = 1
 [node name="Stats" type="Sprite" parent="."]
 visible = false
 position = Vector2( 100, -56 )
-texture = ExtResource( 24 )
-script = ExtResource( 37 )
+texture = ExtResource( 15 )
+script = ExtResource( 38 )
 
 [node name="Name" type="Label" parent="Stats"]
 margin_left = -136.0
 margin_top = -79.0
 margin_right = -80.0
 margin_bottom = -65.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Gary"
 align = 1
 
 [node name="Display" type="Sprite" parent="Stats"]
 position = Vector2( -101, -16 )
 scale = Vector2( 0.85, 0.85 )
-texture = ExtResource( 10 )
+texture = ExtResource( 2 )
 hframes = 5
 
 [node name="WeaponDisplay" type="Sprite" parent="Stats"]
 position = Vector2( -109, 91 )
-texture = ExtResource( 25 )
+texture = ExtResource( 11 )
 hframes = 9
 vframes = 3
 
@@ -593,7 +594,7 @@ margin_left = -11.0
 margin_top = -75.0
 margin_right = 45.0
 margin_bottom = -61.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Weapon"
 align = 1
 
@@ -602,7 +603,7 @@ margin_left = -11.0
 margin_top = -41.0
 margin_right = 45.0
 margin_bottom = -27.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Trinket"
 align = 1
 
@@ -611,7 +612,7 @@ margin_left = -12.0
 margin_top = -7.0
 margin_right = 44.0
 margin_bottom = 7.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "HP"
 align = 1
 
@@ -620,7 +621,7 @@ margin_left = -11.0
 margin_top = 27.0
 margin_right = 45.0
 margin_bottom = 41.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Attack"
 align = 1
 
@@ -629,7 +630,7 @@ margin_left = -11.0
 margin_top = 61.0
 margin_right = 45.0
 margin_bottom = 75.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Magic"
 align = 1
 
@@ -638,7 +639,7 @@ margin_left = -11.0
 margin_top = 95.0
 margin_right = 45.0
 margin_bottom = 109.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Defense"
 align = 1
 
@@ -649,7 +650,7 @@ margin_right = 135.0
 margin_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Red Fender"
 align = 1
 autowrap = true
@@ -661,7 +662,7 @@ margin_right = 131.0
 margin_bottom = -18.5
 grow_horizontal = 2
 grow_vertical = 2
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Gold Bracelet"
 align = 1
 autowrap = true
@@ -672,7 +673,7 @@ margin_top = -6.0
 margin_right = 121.0
 margin_bottom = 8.0
 grow_horizontal = 2
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "83/83"
 align = 1
 
@@ -682,7 +683,7 @@ margin_top = 28.0
 margin_right = 122.0
 margin_bottom = 42.0
 grow_horizontal = 2
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "57"
 align = 1
 
@@ -692,7 +693,7 @@ margin_top = 62.0
 margin_right = 122.0
 margin_bottom = 76.0
 grow_horizontal = 2
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "53"
 align = 1
 
@@ -702,15 +703,15 @@ margin_top = 96.0
 margin_right = 122.0
 margin_bottom = 110.0
 grow_horizontal = 2
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "37"
 align = 1
 
 [node name="Items" type="Sprite" parent="."]
 visible = false
 position = Vector2( 97, -58 )
-texture = ExtResource( 1 )
-script = ExtResource( 27 )
+texture = ExtResource( 20 )
+script = ExtResource( 29 )
 
 [node name="ItemPanel" type="Node2D" parent="Items"]
 position = Vector2( -96, -159 )
@@ -724,9 +725,9 @@ rect_min_size = Vector2( 125, 300 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 9
-script = ExtResource( 11 )
+script = ExtResource( 24 )
 
-[node name="ItemMenuCursor" parent="Items/ItemPanel" instance=ExtResource( 13 )]
+[node name="ItemMenuCursor" parent="Items/ItemPanel" instance=ExtResource( 42 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -134.0
@@ -735,7 +736,7 @@ margin_right = -109.0
 margin_bottom = -161.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-script = ExtResource( 26 )
+script = ExtResource( 23 )
 menu_parent_path = NodePath("../ItemInventoryBox")
 cursor_offset = Vector2( 17, 2.5 )
 
@@ -761,7 +762,7 @@ margin_left = 40.0
 margin_top = 3.0
 margin_right = 142.0
 margin_bottom = 75.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "20 HP"
 align = 1
 autowrap = true
@@ -769,15 +770,15 @@ autowrap = true
 [node name="ItemInventory" type="Sprite" parent="Items"]
 position = Vector2( 90, -121 )
 scale = Vector2( 1.1, 1.1 )
-texture = ExtResource( 12 )
+texture = ExtResource( 3 )
 hframes = 3
 vframes = 3
 
 [node name="Trinkets" type="Sprite" parent="."]
 visible = false
 position = Vector2( 97, -58 )
-texture = ExtResource( 1 )
-script = ExtResource( 28 )
+texture = ExtResource( 20 )
+script = ExtResource( 34 )
 
 [node name="TrinketsNode" type="Node2D" parent="Trinkets"]
 position = Vector2( -96, -159 )
@@ -791,21 +792,21 @@ rect_min_size = Vector2( 125, 300 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 9
-script = ExtResource( 32 )
+script = ExtResource( 41 )
 
-[node name="TrinketsCursor" parent="Trinkets/TrinketsNode" instance=ExtResource( 13 )]
+[node name="TrinketsCursor" parent="Trinkets/TrinketsNode" instance=ExtResource( 42 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 25.0
 margin_bottom = 25.0
-script = ExtResource( 31 )
+script = ExtResource( 40 )
 menu_parent_path = NodePath("../TrinketsInventory")
 cursor_offset = Vector2( 17, 2.5 )
 
 [node name="TrinketInventory" type="Sprite" parent="Trinkets"]
 position = Vector2( 90, -121 )
 scale = Vector2( 1.1, 1.1 )
-texture = ExtResource( 12 )
+texture = ExtResource( 3 )
 hframes = 3
 vframes = 3
 frame = 6
@@ -826,7 +827,7 @@ margin_left = 40.0
 margin_top = 3.0
 margin_right = 142.0
 margin_bottom = 75.0
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Increases holder's Attack by 20%"
 align = 1
 autowrap = true
@@ -834,8 +835,8 @@ autowrap = true
 [node name="Enemies" type="Sprite" parent="."]
 visible = false
 position = Vector2( 100, -56 )
-texture = ExtResource( 34 )
-script = ExtResource( 42 )
+texture = ExtResource( 5 )
+script = ExtResource( 28 )
 
 [node name="EnemiesNode" type="Node2D" parent="Enemies"]
 position = Vector2( -96, -161 )
@@ -849,26 +850,26 @@ rect_min_size = Vector2( 125, 300 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 9
-script = ExtResource( 33 )
+script = ExtResource( 22 )
 
-[node name="EnemiesCursor" parent="Enemies/EnemiesNode" instance=ExtResource( 13 )]
+[node name="EnemiesCursor" parent="Enemies/EnemiesNode" instance=ExtResource( 42 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 25.0
 margin_bottom = 25.0
-script = ExtResource( 41 )
+script = ExtResource( 21 )
 menu_parent_path = NodePath("../EnemiesInventory")
 cursor_offset = Vector2( 17, 2.5 )
 
 [node name="EnemyDisplay" type="Sprite" parent="Enemies"]
 position = Vector2( 86, -126 )
-texture = ExtResource( 36 )
+texture = ExtResource( 7 )
 hframes = 9
 vframes = 3
 
 [node name="TypeDisplay" type="Sprite" parent="Enemies"]
 position = Vector2( 120, -47 )
-texture = ExtResource( 35 )
+texture = ExtResource( 6 )
 hframes = 4
 vframes = 5
 frame = 16
@@ -987,13 +988,13 @@ autowrap = true
 [node name="Map" type="Sprite" parent="."]
 visible = false
 position = Vector2( 97, -58 )
-texture = ExtResource( 1 )
+texture = ExtResource( 20 )
 
 [node name="Key" type="Sprite" parent="."]
 visible = false
 position = Vector2( 97, -58 )
-texture = ExtResource( 4 )
-script = ExtResource( 38 )
+texture = ExtResource( 19 )
+script = ExtResource( 30 )
 
 [node name="KeyPanel" type="Node2D" parent="Key"]
 position = Vector2( -133, -162 )
@@ -1007,12 +1008,12 @@ rect_min_size = Vector2( 125, 0 )
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 9
-script = ExtResource( 39 )
+script = ExtResource( 25 )
 
-[node name="KeyCursor" parent="Key/KeyPanel" instance=ExtResource( 13 )]
+[node name="KeyCursor" parent="Key/KeyPanel" instance=ExtResource( 42 )]
 margin_right = 25.0
 margin_bottom = 25.0
-script = ExtResource( 40 )
+script = ExtResource( 31 )
 menu_parent_path = NodePath("../KeyInventory")
 cursor_offset = Vector2( 17, 2.5 )
 
@@ -1022,7 +1023,7 @@ margin_top = -60.0
 margin_right = 141.0
 margin_bottom = 12.0
 grow_horizontal = 2
-custom_fonts/font = ExtResource( 6 )
+custom_fonts/font = ExtResource( 10 )
 text = "Opens the Puzzle Pier lighthouse"
 align = 1
 autowrap = true
@@ -1030,7 +1031,7 @@ autowrap = true
 [node name="KeyDisplay" type="Sprite" parent="Key"]
 position = Vector2( 90, -122 )
 scale = Vector2( 1.1, 1.1 )
-texture = ExtResource( 12 )
+texture = ExtResource( 3 )
 hframes = 3
 vframes = 3
 
@@ -1038,19 +1039,19 @@ vframes = 3
 visible = false
 position = Vector2( 0, 40 )
 scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 30 )
+texture = ExtResource( 4 )
 hframes = 10
 vframes = 3
 
 [node name="SubMenu" type="Sprite" parent="."]
 position = Vector2( 101, 213 )
-texture = ExtResource( 5 )
-script = ExtResource( 17 )
+texture = ExtResource( 9 )
+script = ExtResource( 39 )
 
 [node name="SP Icon" type="Sprite" parent="SubMenu"]
 position = Vector2( -115, -26 )
 scale = Vector2( 0.8, 0.8 )
-texture = ExtResource( 8 )
+texture = ExtResource( 1 )
 
 [node name="SP" type="Label" parent="SubMenu"]
 margin_left = -123.0
@@ -1124,8 +1125,8 @@ align = 1
 [node name="MemberOptions" type="Sprite" parent="."]
 visible = false
 position = Vector2( 97, 146 )
-texture = ExtResource( 19 )
-script = ExtResource( 23 )
+texture = ExtResource( 14 )
+script = ExtResource( 27 )
 
 [node name="VBoxOptions" type="VBoxContainer" parent="MemberOptions"]
 margin_left = -28.0
@@ -1143,14 +1144,14 @@ margin_bottom = 15.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
-theme = ExtResource( 20 )
+theme = ExtResource( 37 )
 custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.156863 )
-custom_fonts/font = ExtResource( 21 )
+custom_fonts/font = ExtResource( 16 )
 text = "Switch"
 align = 1
 valign = 1
-script = ExtResource( 18 )
+script = ExtResource( 33 )
 
 [node name="Info" type="Label" parent="MemberOptions/VBoxOptions"]
 margin_left = 9.0
@@ -1160,16 +1161,16 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 30, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource( 20 )
+theme = ExtResource( 37 )
 custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.156863 )
-custom_fonts/font = ExtResource( 21 )
+custom_fonts/font = ExtResource( 16 )
 text = "Info"
 align = 1
 valign = 1
-script = ExtResource( 18 )
+script = ExtResource( 33 )
 
-[node name="MemberOptionsCursor" parent="MemberOptions/VBoxOptions" instance=ExtResource( 13 )]
+[node name="MemberOptionsCursor" parent="MemberOptions/VBoxOptions" instance=ExtResource( 42 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 15.0
@@ -1178,7 +1179,7 @@ margin_right = 40.0
 margin_bottom = 75.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-script = ExtResource( 22 )
+script = ExtResource( 26 )
 menu_parent_path = NodePath("..")
 cursor_offset = Vector2( 17, 2.5 )
 

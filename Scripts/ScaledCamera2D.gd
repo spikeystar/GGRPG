@@ -10,7 +10,7 @@ export var minPos : Vector2
 export var maxPos : Vector2
 export var follow_player = false
 
-const PauseMenu = preload("res://UI/PauseMenu.tscn")
+const PauseMenu = preload("res://UI/ScaledPauseMenu.tscn")
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
 var pause_menu
 var able = false
