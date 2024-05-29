@@ -69,6 +69,7 @@ func _on_WorldRoot_BB_active():
 	
 func _on_WorldRoot_attack_active():
 	enemy_selecting = true
+	enemy_index = -1 
 	
 func _on_WorldRoot_attack_inactive():
 	enemy_selecting = false
@@ -172,7 +173,7 @@ func enemy_damage():
 		target_enemy.death()
 		enemies.remove(enemy_index)
 		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(0.5), "timeout")
 		ongoing = false
 	else:
 		target_enemy.reset_animation()
@@ -198,7 +199,7 @@ func magic_damage():
 		target_enemy.death()
 		enemies.remove(enemy_index)
 		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(0.5), "timeout")
 		ongoing = false
 	else:
 		target_enemy.reset_animation()

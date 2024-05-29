@@ -87,6 +87,9 @@ func seek_player():
 		state = CHASE
 	
 func _on_BattleTrigger_triggered():
+	var player = PlayerManager.player_motion_root
+	SceneManager.position = player.position
+	SceneManager.height = player.pos_z
 	SceneManager.previous_scene = get_tree().current_scene.filename
 	sprite.playing = false
 	state = IDLE

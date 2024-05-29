@@ -25,8 +25,8 @@ run/main_scene="res://Gary_s House.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="GGRPGSaveSystem"
 config/icon="res://UI/Game Load Icon.png"
-config/macos_native_icon="res://UI/Game Load Icon.ico"
-config/windows_native_icon="res://UI/Game Load Icon.ico"
+config/macos_native_icon="res://UI/Start Screen/Game Load Icon.ico"
+config/windows_native_icon="res://UI/Start Screen/Game Load Icon.ico"
 
 [autoload]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -30,6 +30,7 @@
 [ext_resource path="res://Assets/Cherry Trail/bush a.png" type="Texture" id=28]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Cherry Trail/sprout.png" type="Texture" id=30]
+[ext_resource path="res://Scripts/Objects/SceneTransition/PlayerSpawnLocation.gd" type="Script" id=31]
 [ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=36]
@@ -604,6 +605,10 @@ exit_name = "CherryTrail5_PivotTown"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToCherryTrail3"]
 position = Vector2( 214, -102 )
 polygon = PoolVector2Array( 10, -31, 103, 4, 86, 10, -7, -26 )
+
+[node name="SpawnDefault" type="Position2D" parent="CollisionRoot"]
+script = ExtResource( 31 )
+door_name = "Default"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2

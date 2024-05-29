@@ -378,6 +378,7 @@ func _on_Enemies_e_damage_finish():
 	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
 	yield(tween, "finished")
 	$Fighters.sp_recovery()
+	yield(get_tree().create_timer(0.5), "timeout")
 	attack_ended = true
 	#yield(get_tree().create_timer(0.2), "timeout")
 	$Fighters.ongoing = false
@@ -391,19 +392,21 @@ func _on_WorldRoot_f_turn_used():
 	f_turns += 1
 	
 func _on_Enemies_victory():
+	yield(get_tree().create_timer(1.5), "timeout")
 	BattleMusic.switch_songs()
 	BattleMusic.id = "Victory"
 	BattleMusic.music()
+	yield(get_tree().create_timer(0.2), "timeout")
 	ongoing = true
 	$Fighters.ongoing = true
 	$Fighters.halt = true
-	yield(get_tree().create_timer(0.3), "timeout")
 	$HUDS.hide()
 	$VictoryWindow.show()
 	$WindowPlayer.play("victory_open")
 	$Fighters.hide_cursors_remote()
 	$Fighters.victory()
 	victory_ended = true
+	Global.door_name = "Default"
 	
 
 ##### Item Usage #####
@@ -675,6 +678,7 @@ func _on_Enemies_e_magic_damage_finish():
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
 	yield(tween, "finished")
+	yield(get_tree().create_timer(0.5), "timeout")
 	emit_signal("f_index_reset")
 	ongoing = false
 	$Fighters.ongoing = false
