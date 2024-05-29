@@ -17,7 +17,7 @@ func _ready():
 			inventory[x].hide()
 		
 func add_slot(enemy_index):
-	var enemy_slot = inventory[enemy_index]
+	var enemy_slot = inventory[enemy_index].duplicate()
 	self.add_child(enemy_slot)
 	
 func scroll_down():

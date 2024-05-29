@@ -6,9 +6,6 @@ var able = false
 
 func _ready():
 	$AnimationPlayer.play("open")
-	#yield(get_tree().create_timer(0.3), "timeout")
-	#able = true
-	#player_instance.queue_free()
 	
 func _process(delta):
 	if $MainSelection/MenuCursor.menu_name == "Party" and not stats_showing:

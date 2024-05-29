@@ -25,7 +25,7 @@ func _ready():
 			
 		
 func add_slot(key_index):
-	var key_slot = inventory[key_index]
+	var key_slot = inventory[key_index].duplicate()
 	self.add_child(key_slot)
 	
 func scroll_down():

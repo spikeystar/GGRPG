@@ -24,7 +24,7 @@ func _ready():
 		emit_signal("empty_items")
 		
 func add_slot(item_index):
-	var item_slot = inventory[item_index]
+	var item_slot = inventory[item_index].duplicate()
 	self.add_child(item_slot)
 	
 func _process(delta):

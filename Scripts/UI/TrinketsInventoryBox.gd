@@ -29,7 +29,7 @@ func _ready():
 			inventory[x].hide()
 		
 func add_slot(trinket_index):
-	var trinket_slot = inventory[trinket_index]
+	var trinket_slot = inventory[trinket_index].duplicate()
 	self.add_child(trinket_slot)
 	
 func scroll_down():

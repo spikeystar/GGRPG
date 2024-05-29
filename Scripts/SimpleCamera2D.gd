@@ -12,7 +12,8 @@ export var follow_player = false
 
 const PauseMenu = preload("res://UI/PauseMenu.tscn")
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
-var pause_menu
+onready var pause_menu = PauseMenu.instance()
+var new_pause_menu
 var able = false
 
 var motion_root
@@ -50,11 +51,11 @@ func _process(delta):
 				global_position.y = clamp(motion_root.global_position.y - z_offset + player_offset.y, minPos.y, maxPos.y)
 
 func _input(event):
-		if Input.is_action_pressed("ui_pause") and not PlayerManager.freeze:
+		if Input.is_action_pressed("ui_pause") and not PlayerManager.freeze and not able:
 			PlayerManager.freeze = true
 			get_tree().paused = true
-			pause_menu = PauseMenu.instance()
-			add_child(pause_menu)
+			new_pause_menu = pause_menu.duplicate()
+			add_child(new_pause_menu)
 			yield(get_tree().create_timer(0.3), "timeout")
 			able = true
 		
@@ -63,10 +64,11 @@ func _input(event):
 			get_tree().get_root().add_child(transition)
 			transition.speed_up()
 			transition.ease_in()
-			remove_child(pause_menu)
-			able = false
+			remove_child(new_pause_menu)
 			PlayerManager.freeze = false
 			get_tree().paused = false
+			yield(get_tree().create_timer(0.6), "timeout")
+			able = false
 		
 			
 

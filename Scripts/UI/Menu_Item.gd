@@ -6,6 +6,9 @@ var holder_name : String = "-"
 signal cursor_selected()
 signal go_to_Item()
 
+func _ready():
+	#print("ok")
+	pass
 
 func cursor_select() ->void:
 	emit_signal("cursor_selected")
