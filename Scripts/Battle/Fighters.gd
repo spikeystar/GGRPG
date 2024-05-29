@@ -308,6 +308,10 @@ func fighter_attack():
 	emit_signal("anim_finish")
 	BB_active = false
 
+func sp_recovery():
+	var amount = 2
+	fighters[fighter_index].weapon_SP(amount)
+
 func pre_attack():
 	fighters[fighter_index].pre_attack()
 

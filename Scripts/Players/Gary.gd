@@ -39,6 +39,10 @@ func _physics_process(delta):
 		anim_tree.get("parameters/playback").travel("Jump")
 		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
 		
+	#if Input.is_action_pressed("ui_push") and not freeze:
+		#PlayerManager.freeze = true
+		#get_tree().paused = true
+		#PauseMenu.show()
 	
 	var draw_pos_z = motion_root.pos_z
 	var draw_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.floor_z))

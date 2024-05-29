@@ -45,7 +45,7 @@ var damien_magic = 25
 var damien_defense = 15
 var damien_trinket : String = "-"
 
-var party_sp = 50
+var party_sp = 20
 var party_max_sp = 50
 var party_level = 7
 var party_exp = 538

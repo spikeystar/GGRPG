@@ -4,7 +4,8 @@ onready var player_instance = PlayerManager.player_instance
 var stats_showing = false
 
 func _ready():
-	player_instance.queue_free()
+	pass
+	#player_instance.queue_free()
 	
 func _process(delta):
 	if $MainSelection/MenuCursor.menu_name == "Party" and not stats_showing:

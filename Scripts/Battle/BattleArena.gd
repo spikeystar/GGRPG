@@ -375,7 +375,9 @@ func _on_Enemies_e_damage_finish():
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
 	yield(tween, "finished")
+	$Fighters.sp_recovery()
 	attack_ended = true
+	#yield(get_tree().create_timer(0.2), "timeout")
 	$Fighters.ongoing = false
 	#if f_turns == f_array_size:
 		#fighters_enabled = false
