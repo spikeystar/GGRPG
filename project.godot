@@ -38,6 +38,7 @@ SE="*res://Misc/SE.tscn"
 BattleMusic="*res://Misc/BattleMusic.tscn"
 PartyStats="*res://Scripts/Players/PartyStats.gd"
 EventManager="*res://Scripts/EventManager.gd"
+SceneManager="*res://Scripts/SceneManager.gd"
 
 [debug]
 

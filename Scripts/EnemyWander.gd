@@ -87,9 +87,10 @@ func seek_player():
 		state = CHASE
 	
 func _on_BattleTrigger_triggered():
-	PlayerManager.freeze = true
+	SceneManager.previous_scene = get_tree().current_scene.filename
 	sprite.playing = false
 	state = IDLE
+	get_tree().paused = true
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.transition()

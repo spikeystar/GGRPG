@@ -412,6 +412,7 @@ tracks/0/keys = {
 }
 
 [node name="WorldRoot" type="Control"]
+pause_mode = 2
 script = ExtResource( 7 )
 
 [node name="ColorRect" type="ColorRect" parent="."]

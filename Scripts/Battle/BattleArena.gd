@@ -3,7 +3,7 @@ extends Node
 #export(tscn) var enemy = null
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
 
-onready var player_instance = PlayerManager.player_instance
+#onready var player_instance = PlayerManager.player_instance
 export(int) var EXP_base
 export(int) var marbles_base
 var window_open = false
@@ -26,6 +26,7 @@ var fighters_enabled = true
 var enemies_enabled = false
 var ongoing = false
 var enemy_selecting = false
+var victory_ended = false
 
 onready var party_members : int
 onready var party_id : int
@@ -53,10 +54,9 @@ signal action_ended()
 signal item_removed()
 
 func _ready():
-	#var transition = TransitionPlayer.instance()
-	#get_tree().get_root().add_child(transition)
-	#transition.ease_in()
-	#set_health($HUDS/ProgressBar, Party.current_health, Party.max_health)
+	var transition = TransitionPlayer.instance()
+	get_tree().get_root().add_child(transition)
+	transition.ease_in()
 	$DefenseWindow.hide()
 	$BattleButtons.hide()
 	$BattleButtons.global_position = Vector2(0,0)
@@ -66,7 +66,7 @@ func _ready():
 	$EnemyInfo.hide()
 	$EnemyMove.hide()
 	$FleeDialogue.hide()
-	player_instance.queue_free()
+	#player_instance.queue_free()
 
 	
 #Window Display
@@ -206,10 +206,12 @@ func _input(event):
 		if item_show and not window_open:
 			window_open = true
 
+	if Input.is_action_just_pressed("ui_select") and victory_ended:
+		get_tree().change_scene(SceneManager.previous_scene)
 
 ##### RETURN BUTTON ########
 
-	if (Input.is_action_just_pressed("ui_push")) and BB_active and not ongoing:
+	if (Input.is_action_just_pressed("ui_accept")) and BB_active and not ongoing:
 		$Fighters.idle()
 		$BattleButtons/CloverB.show()
 		$BattleButtons/SpadeB.show()
@@ -401,6 +403,8 @@ func _on_Enemies_victory():
 	$WindowPlayer.play("victory_open")
 	$Fighters.hide_cursors_remote()
 	$Fighters.victory()
+	victory_ended = true
+	
 
 ##### Item Usage #####
 
@@ -555,7 +559,6 @@ func _on_Enemies_jinx_doll():
 	emit_signal("item_removed")
 	ongoing = false
 	$Fighters.ongoing = false
-	$Fighters.fighters_active_check()
 
 func _on_Enemies_e_item_finished():
 	Party.remove_item()
@@ -641,7 +644,6 @@ func _on_Enemies_all_enemy_spell():
 	$Enemies.all_magic_damage()
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
-	$Fighters.fighters_active_check()
 	
 	
 func _on_Fighters_ally_spell_chosen():
@@ -684,6 +686,7 @@ func _on_Enemies_e_magic_damage_finish():
 	$Fighters.magic_selecting = false
 	BB_active = false
 	enemy_selecting = false
+	$Fighters.fighters_active_check()
 	
 	
 	##### Magic Spells ######

@@ -166,7 +166,6 @@ func enemy_damage():
 		print("success!")
 		is_attack = false
 	yield(get_tree().create_timer(1.5), "timeout")
-	emit_signal("e_damage_finish")
 	target_enemy.unfocus()
 	if target_enemy.is_dead():
 		ongoing = true
@@ -179,6 +178,7 @@ func enemy_damage():
 		target_enemy.reset_animation()
 	if enemies.size() == 0:
 		emit_signal("victory")
+	emit_signal("e_damage_finish")
 		
 func magic_damage():
 	BB_active = false
@@ -192,7 +192,6 @@ func magic_damage():
 	damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
 	target_enemy.magic_damage(damage, damage_type)
 	yield(get_tree().create_timer(1.5), "timeout")
-	emit_signal("e_magic_damage_finish")
 	target_enemy.unfocus()
 	if target_enemy.is_dead():
 		ongoing = true
@@ -205,6 +204,7 @@ func magic_damage():
 		target_enemy.reset_animation()
 	if enemies.size() == 0:
 		emit_signal("victory")
+	emit_signal("e_magic_damage_finish")
 		
 		
 func all_magic_damage():
@@ -224,11 +224,12 @@ func all_magic_damage():
 		if enemies[x].is_dead():
 			enemies[x].death()
 			enemies[x].death_tagged = true
+			#yield(get_tree().create_timer(1), "timeout")
 	for x in range(enemies.size() -1, -1, -1):
 			var death_tagged = enemies[x].get_death_tag()
 			if death_tagged == true:
 				enemies.remove(x)
-	enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
+				enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
 	yield(get_tree().create_timer(0.8), "timeout")
 	victory_check()
 	yield(get_tree().create_timer(0.4), "timeout")
@@ -254,7 +255,7 @@ func item_damage():
 			var death_tagged = enemies[x].get_death_tag()
 			if death_tagged == true:
 				enemies.remove(x)
-	enemy_index = clamp(enemy_index, 0, enemies.size())
+				enemy_index = clamp(enemy_index, 0, enemies.size())
 	yield(get_tree().create_timer(0.8), "timeout")
 	victory_check()
 	yield(get_tree().create_timer(0.4), "timeout")
@@ -262,6 +263,7 @@ func item_damage():
 	
 func jinx_doll():
 	pass
+	emit_signal("e_item_finished")
 
 	
 func _on_WorldRoot_action_ongoing():

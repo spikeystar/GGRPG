@@ -606,7 +606,9 @@ position = Vector2( 214, -102 )
 polygon = PoolVector2Array( 10, -31, 103, 4, 86, 10, -7, -26 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
 position = Vector2( 206, -67 )
+z_index = 4096
 current = true
 script = ExtResource( 8 )
 minPos = Vector2( -50, -200 )
