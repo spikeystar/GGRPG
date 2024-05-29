@@ -140,7 +140,6 @@ visible = false
 position = Vector2( 19, -77 )
 z_index = 1
 frames = SubResource( 174 )
-frame = 3
 playing = true
 
 [node name="MatA" type="Sprite" parent="Node2D/YSort"]
@@ -284,6 +283,7 @@ polygon = PoolVector2Array( -84.601, -114.559, -54.5281, -100.716, -85.4334, -82
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
 position = Vector2( 6.00346, 0.97905 )
+z_index = 4096
 offset = Vector2( 0, -20 )
 current = true
 zoom = Vector2( 0.655, 0.65 )

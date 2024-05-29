@@ -23,6 +23,7 @@ var tween
 func _ready():
 	Global.current_camera = self
 	z_index = 4096
+	pause_mode = Node.PAUSE_MODE_PROCESS
 	
 func item_window():
 	PlayerManager.freeze = true

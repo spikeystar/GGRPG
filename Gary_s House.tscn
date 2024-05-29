@@ -568,7 +568,6 @@ direction = Vector2( -1, 1 )
 pause_mode = 2
 position = Vector2( 74, -131 )
 z_index = 4096
-offset = Vector2( 0, -20 )
 current = true
 script = ExtResource( 30 )
 minPos = Vector2( -395, -90 )

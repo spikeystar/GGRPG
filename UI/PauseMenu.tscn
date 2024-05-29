@@ -148,7 +148,6 @@ tracks/0/keys = {
 
 [node name="PauseMenu" type="Node2D"]
 pause_mode = 2
-position = Vector2( 0, -20 )
 script = ExtResource( 15 )
 
 [node name="Base" type="Sprite" parent="."]
