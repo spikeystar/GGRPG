@@ -52,7 +52,6 @@ radius = 81.0062
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 4 )
-target_scene = "res://Areas/Cherry Trail/Cherry Trail BA 1.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -3, -24 )
@@ -70,7 +69,7 @@ modulate = Color( 0.972549, 0.988235, 1, 1 )
 position = Vector2( 0, -30 )
 frames = SubResource( 7 )
 animation = "walk_front"
-frame = 3
+frame = 2
 speed_scale = 0.95
 playing = true
 flip_h = true

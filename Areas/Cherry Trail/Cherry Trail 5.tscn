@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -31,6 +31,7 @@
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Cherry Trail/sprout.png" type="Texture" id=30]
 [ext_resource path="res://Scripts/Objects/SceneTransition/PlayerSpawnLocation.gd" type="Script" id=31]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 1.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=36]
@@ -568,6 +569,7 @@ z_index = 20
 
 [node name="Cheribo_wander" parent="." instance=ExtResource( 7 )]
 position = Vector2( 226, -27 )
+target_scene = ExtResource( 32 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 

@@ -1,11 +1,11 @@
 extends VBoxContainer
 onready var spell_list : Array = []
-onready var Fighters = get_tree().get_root().get_node("WorldRoot/Fighters")
 var spell_index : int
 var spell_id : String
 var spell_type : String
 var magic_active = false
 var spell_selected = false
+var fighter_name : String
 
 signal go_to_Defend()
 signal spell_chosen()
@@ -75,7 +75,6 @@ func get_spell_type():
 func _on_WorldRoot_magic_active():
 	magic_active = true
 	spell_selected = false
-	var fighter_name = Fighters.get_f_name()
 	
 	for x in self.get_children():
 		self.remove_child(x)
@@ -101,3 +100,18 @@ func _on_SpellList_spell_chosen():
 
 func _on_SpellList_ally_spell_chosen():
 	spell_selected = true
+
+func _on_Fighters_gary():
+	fighter_name = "gary"
+
+func _on_Fighters_jacques():
+	fighter_name = "jacques"
+
+func _on_Fighters_irina():
+	fighter_name = "irina"
+
+func _on_Fighters_suzy():
+	fighter_name = "suzy"
+
+func _on_Fighters_damien():
+	fighter_name = "damien"

@@ -6,6 +6,7 @@ const depth_buffer_script = preload("res://Scripts/Rendering/DepthBuffer.gd")
 var current_camera : Camera2D setget _set_current_camera
 var depth_buffer : Node2D
 var door_name : String
+var battle_ended = false
 
 func _init():
 	depth_buffer = Node2D.new()

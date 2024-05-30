@@ -10,8 +10,7 @@ var active = false
 signal attack_bonus
 
 func _ready():
-	Fighters = get_tree().get_root().get_node("WorldRoot/Fighters")
-	fighter_name = Fighters.get_f_name()
+	pass
 	
 func _process(delta):
 	var hit_time = get_time()
@@ -41,7 +40,6 @@ func get_time():
 	return current_time
 	
 func _on_WorldRoot_start_attack_timer():
-	fighter_name = Fighters.get_f_name()
 	if fighter_name == "gary":
 		timer.wait_time = 2.4
 	if fighter_name == "jacques":
@@ -52,7 +50,6 @@ func _on_WorldRoot_start_attack_timer():
 	active = true
 
 func _on_Timer_timeout():
-	fighter_name = Fighters.get_f_name()
 	active = false
 	print(fighter_name)
 	print(max_hits)

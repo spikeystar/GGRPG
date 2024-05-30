@@ -1,11 +1,11 @@
 extends Label
-onready var Enemies = get_tree().get_root().get_node("WorldRoot/Enemies")
 
 var enemy_selecting = false
+var enemy_name : String
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_right") and enemy_selecting:
-		text = Enemies.get_name()
+		text = enemy_name
 
 func _on_WorldRoot_attack_active():
 	enemy_selecting = true

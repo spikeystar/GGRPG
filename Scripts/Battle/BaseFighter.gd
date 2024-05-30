@@ -21,12 +21,9 @@ var turn_used = false
 var health : int
 var formation : int
 
-onready var HUDS = get_tree().get_root().get_node("WorldRoot/HUDS")
-
 func _ready():
 	set_stats()
 	set_formation()
-	health = f_health
 	
 func focus():
 	#if able:
@@ -42,18 +39,21 @@ func get_name():
 func set_stats():
 	if fighter_name == "gary":
 		party_id = PartyStats.gary_id
+		health = PartyStats.gary_current_health
 		f_health = PartyStats.gary_health
 		f_attack = PartyStats.gary_attack
 		f_magic = PartyStats.gary_magic
 		f_defense = PartyStats.gary_defense
 	if fighter_name == "jacques":
 		party_id = PartyStats.jacques_id
+		health = PartyStats.jacques_current_health
 		f_health = PartyStats.jacques_health
 		f_attack = PartyStats.jacques_attack
 		f_magic = PartyStats.jacques_magic
 		f_defense = PartyStats.jacques_defense
 	if fighter_name == "irina":
 		party_id = PartyStats.irina_id
+		health = PartyStats.irina_current_health
 		f_health = PartyStats.irina_health
 		f_attack = PartyStats.irina_attack
 		f_magic = PartyStats.irina_magic
@@ -75,22 +75,6 @@ func get_health():
 	
 func get_f_health():
 	return f_health
-	
-func huds_update():
-	if fighter_name == "gary":
-		HUDS.gary_update()
-	if fighter_name == "jacques":
-		HUDS.jacques_update()
-	if fighter_name == "irina":
-		HUDS.irina_update()
-		
-func huds_update_heal():
-	if fighter_name == "gary":
-		HUDS.gary_update_heal()
-	if fighter_name == "jacques":
-		HUDS.jacques_update_heal()
-	if fighter_name == "irina":
-		HUDS.irina_update_heal()
 	
 func get_id():
 	return party_id
@@ -114,6 +98,7 @@ func item_used():
 	$AnimationPlayer.play("Fighter_BattleReady")
 	
 func heal(HP_amount):
+	health = clamp(health + HP_amount, 0, f_health)
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Effect.show()
 	$EffectPlayer.play("Heal")
@@ -121,13 +106,8 @@ func heal(HP_amount):
 	var heal_text = text(TEXT_HEAL)
 	if heal_text:
 		heal_text.label.text = str(HP_amount)
-	health = max(f_health, health + HP_amount)
-	if health > f_health:
-		health = f_health
-	HUDS.heal_health = health
-	HUDS.max_health = f_health
-	huds_update_heal()
-	print(fighter_name)
+	
+	
 		
 func SP(SP_amount: int):
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -164,7 +144,6 @@ func damage(amount: int, damage_type: String):
 	type_damage(damage_type)
 	$AnimationPlayer.playback_speed = 0.5
 	health = max(0, health - amount)
-	huds_update()
 	yield(get_tree().create_timer(1.6), "timeout")
 	$AnimationPlayer.play("Fighter_BattleReady")
 
@@ -209,10 +188,10 @@ func text(TEXT: PackedScene, text_position: Vector2 = global_position):
 	if TEXT:
 		var text = TEXT.instance()
 		get_tree().current_scene.add_child(text)
-		text.global_position = text_position + Vector2(0, -60)
+		text.position = text_position + Vector2(0, -60)
 		return text
 		
-func get_position(fighter_position: Vector2 = global_position):
+func get_position(fighter_position: Vector2 = position):
 	return fighter_position
 	
 func get_OG_position():

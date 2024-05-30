@@ -19,7 +19,7 @@ func player_check():
 	#player = body
 
 func _on_body_entered(body):
-	if "is_player_motion_root" in body and body.is_player_motion_root:
+	if "is_player_motion_root" in body and body.is_player_motion_root and not Global.battle_ended:
 		_on_touch_area()
 	
 func _on_touch_area():

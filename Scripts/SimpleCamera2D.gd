@@ -36,6 +36,8 @@ func item_window():
 	PlayerManager.freeze = false
 
 func _process(delta):
+	if Global.battle_ended:
+		current = true
 	if not is_in_editor:
 		if not motion_root:
 			# Getting Gary. Pretty stupid way to do it. But Gary is spawned at runtime...

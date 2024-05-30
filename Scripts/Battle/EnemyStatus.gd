@@ -1,8 +1,9 @@
 extends Sprite
-onready var Enemies = get_tree().get_root().get_node("WorldRoot/Enemies")
 
 var enemy_selecting = false
-
+var type : String
+var poison
+var stun
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_right") and enemy_selecting:
@@ -15,21 +16,12 @@ func _process(delta):
 		$Icons/Statuses/Defense_B.hide()
 		$Icons/Statuses/Poison.hide()
 		$Icons/Statuses/Stun.hide()
-		#var attack_buff = Enemies.get_status()
-		#var magic_buff = Enemies.get_status()
-		#var defense_buff = Enemies.get_status()
-		#var attack_debuff = Enemies.get_status()
-		#var magic_debuff = Enemies.get_status()
-		#var defense_debuff = Enemies.get_status()
-		var poison = Enemies.get_status("poison")
-		var stun = Enemies.get_status("stun")
 		if poison:
 			$Icons/Statuses/Poison.show()
 		if stun:
 			$Icons/Statuses/Stun.show()
 
 	if Input.is_action_just_pressed("ui_right") and enemy_selecting:
-		var type = Enemies.get_type()
 		if type == "neutral":
 			$Icons/Types/Neutral.show()
 			$Icons/Types/Fire.hide()

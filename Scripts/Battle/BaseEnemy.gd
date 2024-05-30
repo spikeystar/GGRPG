@@ -1,7 +1,5 @@
 extends Node2D
 
-onready var Enemies = get_tree().get_root().get_node("WorldRoot/Enemies")
-
 export(String) var ID = ""
 export(int) var e_health
 export(int) var e_attack 
@@ -138,12 +136,12 @@ func death():
 		$Poof.show()
 		$PoofPlayer.play("poof")
 
-func get_position(enemy_position: Vector2 = global_position):
+func get_position(enemy_position: Vector2 = position):
 	return enemy_position
 	
 func text(TEXT: PackedScene, text_position: Vector2 = global_position):
 	if TEXT:
 		var text = TEXT.instance()
 		get_tree().current_scene.add_child(text)
-		text.global_position = text_position + Vector2(4, -44)
+		text.position = text_position + Vector2(4, -44)
 		return text

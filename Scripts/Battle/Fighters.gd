@@ -44,6 +44,7 @@ var e_move_base : int
 var move_type : String
 var move_spread : String
 var move_kind : String
+var fighter_name : String
 var fighter_x : int
 
 signal fighters_active
@@ -53,6 +54,11 @@ signal BB_move
 signal item_chosen
 signal ally_spell_chosen
 signal fighter_damage_over
+signal gary
+signal jacques
+signal irina
+signal suzy
+signal damien
 
 func _ready():
 	#fighters = get_children()
@@ -73,57 +79,57 @@ func set_positions():
 	if PartyStats.party_members == 2:
 		if PartyStats.gary_id == 1:
 			fighters.append($Gary_Battle)
-			fighters[0].global_position = Vector2(-199, 112)
+			fighters[0].position = Vector2(-199, 112)
 			
 		if PartyStats.jacques_id == 1:
 			fighters.append($Jacques_Battle)
-			fighters[0].global_position = Vector2(-199, 112)
+			fighters[0].position = Vector2(-199, 112)
 			
 		if PartyStats.gary_id == 2:
 			fighters.append($Gary_Battle)
-			fighters[1].global_position = Vector2(-86, 168)
+			fighters[1].position = Vector2(-86, 168)
 			
 		if PartyStats.jacques_id == 2:
 			fighters.append($Jacques_Battle)
-			fighters[1].global_position = Vector2(-86, 168)
+			fighters[1].position = Vector2(-86, 168)
 		
 	
 	if PartyStats.party_members == 3:
 		if PartyStats.gary_id == 1:
 			fighters.append($Gary_Battle)
-			fighters[0].global_position = Vector2(-240, 86)
+			fighters[0].position = Vector2(-240, 86)
 		
 		if PartyStats.jacques_id == 1:
 			fighters.append($Jacques_Battle)
-			fighters[0].global_position = Vector2(-240, 86)
+			fighters[0].position = Vector2(-240, 86)
 		
 		if PartyStats.irina_id == 1:
 			fighters.append($Irina_Battle)
-			fighters[0].global_position = Vector2(-240, 86)
+			fighters[0].position = Vector2(-240, 86)
 		
 		if PartyStats.gary_id == 2:
 			fighters.append($Gary_Battle)
-			fighters[1].global_position = Vector2(-135, 144)
+			fighters[1].position = Vector2(-135, 144)
 		
 		if PartyStats.jacques_id == 2:
 			fighters.append($Jacques_Battle)
-			fighters[1].global_position = Vector2(-135, 144)
+			fighters[1].position = Vector2(-135, 144)
 		
 		if PartyStats.irina_id == 2:
 			fighters.append($Irina_Battle)
-			fighters[1].global_position = Vector2(-135, 144)
+			fighters[1].position = Vector2(-135, 144)
 		
 		if PartyStats.gary_id == 3:
 			fighters.append($Gary_Battle)
-			fighters[2].global_position = Vector2(-23, 194)
+			fighters[2].position = Vector2(-23, 194)
 		
 		if PartyStats.jacques_id == 3:
 			fighters.append($Jacques_Battle)
-			fighters[2].global_position = Vector2(-23, 194)
+			fighters[2].position = Vector2(-23, 194)
 		
 		if PartyStats.irina_id == 3:
 			fighters.append($Irina_Battle)
-			fighters[2].global_position = Vector2(-23, 194)
+			fighters[2].position = Vector2(-23, 194)
 		
 		
 func _on_WorldRoot_BB_active():
@@ -162,6 +168,22 @@ func _process(delta):
 		emit_signal("BB_move")
 		fighters[fighter_index].turn()
 		fighters_active = false
+		fighter_name = get_f_name()
+		if fighter_name == "gary":
+			$AttackTimer.fighter_name = "gary"
+			emit_signal("gary")
+		if fighter_name == "jacques":
+			$AttackTimer.fighter_name = "jacques"
+			emit_signal("jacques")
+		if fighter_name == "irina":
+			$AttackTimer.fighter_name = "irina"
+			emit_signal("irina")
+		if fighter_name == "suzy":
+			$AttackTimer.fighter_name = "suzy"
+			emit_signal("suzy")
+		if fighter_name == "damien":
+			$AttackTimer.fighter_name = "damien"
+			emit_signal("damien")
 		
 		####### Item Selection ##########
 		
@@ -239,11 +261,11 @@ func get_f_health():
 	return f_health
 	
 func get_health_heal():
-	var health = fighters[target_index].get_health()
+	var health = fighters2[target_index].get_health()
 	return health
 	
 func get_f_health_heal():
-	var f_health = fighters[target_index].get_f_health()
+	var f_health = fighters2[target_index].get_f_health()
 	return f_health
 		
 func get_party_id():
@@ -299,9 +321,42 @@ func damage():
 		var total = e_magic + e_move_base
 		damage = max(0, ((total) + int(total * (rand_range(0.05, 0.15)))) - f_defense)
 	fighters[fighter_index].damage(damage, move_type)
+	huds_update()
 	yield(get_tree().create_timer(1.7), "timeout")
 	emit_signal("fighter_damage_over")
 	
+func huds_update():
+	fighter_name = fighters[fighter_index].get_name()
+	health = get_health()
+	f_health = get_f_health()
+	$HUDS.health = health
+	$HUDS.f_health = f_health
+	if fighter_name == "gary":
+		$HUDS.gary_update()
+	if fighter_name == "jacques":
+		$HUDS.jacques_update()
+	if fighter_name == "irina":
+		$HUDS.irina_update()
+	
+func huds_heal_update():
+	health = get_health_heal()
+	f_health = get_f_health_heal()
+	$HUDS.health = health
+	$HUDS.f_health = f_health
+	if fighter_name == "gary":
+		$HUDS.gary_update()
+	if fighter_name == "jacques":
+		$HUDS.jacques_update()
+	if fighter_name == "irina":
+		$HUDS.irina_update()
+		
+func all_heal_update():
+	if fighter_name == "gary":
+		$HUDS.gary_update()
+	if fighter_name == "jacques":
+		$HUDS.jacques_update()
+	if fighter_name == "irina":
+		$HUDS.irina_update()
 		
 func fighter_attack():
 	fighters[fighter_index].attack()
@@ -417,20 +472,27 @@ func item_used():
 	yield(get_tree().create_timer(0.5), "timeout")
 	if heal:
 		fighters2[target_index].heal(HP_amount)
-		health = fighters2[target_index].get_health()
-		f_health = fighters2[target_index].get_f_health()
-		#fighters2[target_index].huds_update_heal()
+		fighter_name = fighters2[target_index].get_name()
+		#health = fighters2[target_index].get_health()
+		#f_health = fighters2[target_index].get_f_health()
+		huds_heal_update()
 	if SP:
 		fighters[target_index].SP(SP_amount)
 	if combo_heal:
+		fighter_name = fighters2[target_index].get_name()
 		fighters2[target_index].heal(HP_amount)
 		fighters2[target_index].combo_heal(SP_amount)
+		huds_heal_update()
 	if all_heal:
 		for x in range(fighters2.size()):
 			fighters2[x].heal(HP_amount)
+			fighter_name = fighters2[x].get_name()
 			health = fighters2[x].get_health()
 			f_health = fighters2[x].get_f_health()
-			fighters2[x].huds_update_heal()
+			$HUDS.health = health
+			$HUDS.f_health = f_health
+			all_heal_update()
+			#fighters2[x].huds_update_heal()
 	if restore:
 		fighters2[target_index].restore()
 	fighter_index = selector_index
@@ -524,5 +586,15 @@ func Blossom():
 	_on_WorldRoot_f_index_reset()
 	BB_active = false
 
-	
-	
+func _on_WorldRoot_update_party():
+	for x in range(fighters2.size()):
+		fighter_name = fighters2[x].get_name()
+		health = fighters2[x].get_health()
+		if health == 0:
+			health = 1
+		if fighter_name == "gary":
+			PartyStats.gary_current_health = health
+		if fighter_name == "jacques":
+			PartyStats.jacques_current_health = health
+		if fighter_name == "irina":
+			PartyStats.irina_current_health = health

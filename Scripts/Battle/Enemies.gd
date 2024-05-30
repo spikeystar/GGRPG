@@ -2,8 +2,6 @@ extends Node2D
 
 onready var enemy_members : int
 onready var party_id : int
-onready var Fighters : Node2D
-onready var EnemyMove = get_tree().get_root().get_node("WorldRoot/EnemyMove")
 var enemies : Array = []
 var enemies2 : Array = []
 var enemy_index : int = -1
@@ -26,6 +24,13 @@ var attack_over = false
 var move_index : int
 var move_name : String
 
+var f_attack
+var f_attack_base
+var f_magic
+var f_magic_base
+var e_attack
+var e_magic
+
 var party_formation_1 = false
 var party_formation_2 = false
 var party_formation_3 = false
@@ -43,9 +48,11 @@ signal all_enemy_spell
 signal fighters_active
 signal update_move_window
 
+signal Basic
+signal Barrage
+
 func _ready():
-	enemies = get_children()
-	Fighters = get_tree().get_root().get_node("WorldRoot/Fighters")
+	enemies = $Field.get_children()
 	
 func get_name():
 	var enemy_name = enemies[enemy_index].get_name()
@@ -82,12 +89,21 @@ func select_next_enemy(index_offset):
 	enemies[new_enemy_index].focus()
 	enemy_index = new_enemy_index
 	
+func enemy_info_update():
+	$EnemyInfo/EnemyStatus.type = enemies[enemy_index].get_type()
+	$EnemyInfo/EnemyStatus.stun = get_status("stun")
+	$EnemyInfo/EnemyStatus.poison = get_status("poison")
+	$EnemyInfo/EnemyName.enemy_name = get_name()
+
+	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_right") and enemy_selecting and BB_active:
 		select_next_enemy(+1)
+		enemy_info_update()
 	
 	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active:
 		enemy_selecting = false
+		enemy_info_update()
 	
 	if Input.is_action_just_pressed("ui_select") and enemy_selecting:
 		emit_signal("enemy_chosen")
@@ -96,10 +112,12 @@ func _process(delta):
 	######## Item Selecting ########
 	if Input.is_action_just_pressed("ui_right") and item_selecting:
 		select_next_enemy(+1)
+		enemy_info_update()
 		#print(enemy_index)
 		
 	if Input.is_action_just_pressed("ui_left") and item_selecting:
 		select_next_enemy(-1)
+		enemy_info_update()
 		#print(enemy_index)
 	
 	if Input.is_action_just_pressed("ui_select") and item_selecting:
@@ -111,12 +129,15 @@ func _process(delta):
 	####### Magic Selecting #######
 	if Input.is_action_just_pressed("ui_select") and initial:
 		select_next_enemy(+1)
+		enemy_info_update()
 	
 	if Input.is_action_just_pressed("ui_right") and magic_selecting:
 		select_next_enemy(+1)
+		enemy_info_update()
 		
 	if Input.is_action_just_pressed("ui_left") and magic_selecting:
 		select_next_enemy(-1)
+		enemy_info_update()
 	
 	if Input.is_action_just_pressed("ui_select") and magic_selecting:
 		emit_signal("single_enemy_spell")
@@ -154,8 +175,6 @@ func enemy_damage():
 	var target_enemy = enemies[enemy_index]
 	var damage : int
 	var e_defense = target_enemy.get_e_defense()
-	var f_attack = Fighters.get_f_attack()
-	var f_attack_base = Fighters.get_f_attack_base()
 	var f_total = f_attack + f_attack_base
 	if is_attack and not attack_bonus:
 		damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
@@ -187,8 +206,6 @@ func magic_damage():
 	var target_enemy = enemies[enemy_index]
 	var damage : int
 	var e_defense = target_enemy.get_e_defense()
-	var f_magic = Fighters.get_f_magic()
-	var f_magic_base = Fighters.get_f_magic_base()
 	var f_total = f_magic + f_magic_base
 	damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
 	target_enemy.magic_damage(damage, damage_type)
@@ -212,8 +229,6 @@ func all_magic_damage():
 	BB_active = false
 	ongoing = true
 	randomize()
-	var f_magic = Fighters.get_f_magic()
-	var f_magic_base = Fighters.get_f_magic_base()
 	var f_total = f_magic + f_magic_base
 	for x in range(enemies.size()):
 		var e_defense = enemies[x].get_e_defense()
@@ -312,15 +327,16 @@ func _on_Fighters_enemies_enabled():
 			enemy_turns += 1
 			enemies[x].attack()
 			yield(get_tree().create_timer(0.3), "timeout")
+			$EnemyMove.move_name = move_name
 			emit_signal("update_move_window")
-			yield(EnemyMove, "move_window_done")
-			Fighters.e_attack = enemies[x].get_stats("e_attack")
-			Fighters.e_magic = enemies[x].get_stats("e_magic")
+			yield($EnemyMove, "move_window_done")
+			e_attack = enemies[x].get_stats("e_attack")
+			e_magic = enemies[x].get_stats("e_magic")
 			if move_name == "Basic":
-				Basic()
+				emit_signal("Basic")
+				yield(get_tree().create_timer(1.5), "timeout")
 			if move_name == "Barrage":
-				Barrage()
-			yield(Fighters, "fighter_damage_over")
+				emit_signal("Barrage")
 			enemies[x].reset_animation()
 			enemies_active_check()
 		
@@ -330,25 +346,5 @@ func enemies_active_check():
 		yield(get_tree().create_timer(0.2), "timeout")
 		emit_signal("fighters_active")
 		enemy_turns = 0
-		
-	
-###### Enemy Attacks #######
-func Basic():
-	Fighters.move_kind = "attack"
-	Fighters.move_type = "neutral"
-	Fighters.move_spread = "single"
-	Fighters.e_move_base = 1
-	Fighters.damage()
-
-
-func Barrage():
-	Fighters.move_kind = "attack"
-	Fighters.move_type = "neutral"
-	Fighters.move_spread = "all"
-	Fighters.e_move_base = 10
-	#Fighters.status_afflcited()
-	for x in range(Fighters.fighters2.size()):
-		Fighters.fighter_x = x
-		Fighters.damage()
-		
+			
 

@@ -52,6 +52,7 @@ signal defend_inactive()
 signal action_ongoing()
 signal action_ended()
 signal item_removed()
+signal update_party
 
 func _ready():
 	var transition = TransitionPlayer.instance()
@@ -59,12 +60,12 @@ func _ready():
 	transition.ease_in()
 	$DefenseWindow.hide()
 	$BattleButtons.hide()
-	$BattleButtons.global_position = Vector2(0,0)
+	$BattleButtons.position = Vector2(0,0)
 	$ItemWindow.hide()
 	$MagicWindow.hide()
 	$BattleDialogue.hide()
-	$EnemyInfo.hide()
-	$EnemyMove.hide()
+	$Enemies/EnemyInfo.hide()
+	$Enemies/EnemyMove.hide()
 	$FleeDialogue.hide()
 	#player_instance.queue_free()
 
@@ -79,7 +80,7 @@ func _on_Fighters_fighters_active():
 		
 func _on_Fighters_BB_move():
 	var BB_position = $Fighters.get_BB_position()
-	$BattleButtons.global_position = BB_position
+	$BattleButtons.position = BB_position
 		
 
 func _input(event):
@@ -105,7 +106,7 @@ func _input(event):
 		$BattleButtons/StarB.show()
 		$DefenseWindow.show()
 		$WindowPlayer.play("defense_open")
-		$EnemyInfo.hide()
+		$Enemies/EnemyInfo.hide()
 		emit_signal("hide_enemy_cursor")
 		emit_signal("index_reset")
 		emit_signal("item_inactive")
@@ -137,7 +138,7 @@ func _input(event):
 		$BattleButtons/SpadeB.show()
 		$BattleButtons/CloverB.show()
 		$BattleButtons/StarB.show()
-		$EnemyInfo.show()
+		$Enemies/EnemyInfo.show()
 		$WindowPlayer.play("enemyinfo_open")
 		$MagicWindow.hide()
 		$ItemWindow.hide()
@@ -152,7 +153,7 @@ func _input(event):
 	if (Input.is_action_just_pressed("ui_select")) and BB_active and attack_show and not fighter_turn_used and not ongoing:
 		$BattleButtons/DiamondB.show()
 		$BattleButtons.hide()
-		$EnemyInfo.hide()
+		$Enemies/EnemyInfo.hide()
 		BB_active = false
 		attack_show = false
 		window_open = false
@@ -177,7 +178,7 @@ func _input(event):
 		$BattleButtons/DiamondB.show()
 		$MagicWindow.show()
 		$WindowPlayer.play("magic_open")
-		$EnemyInfo.hide()
+		$Enemies/EnemyInfo.hide()
 		$ItemWindow.hide()
 		$DefenseWindow.hide()
 		if magic_show and not window_open:
@@ -200,14 +201,22 @@ func _input(event):
 		$BattleButtons/DiamondB.show()
 		$ItemWindow.show()
 		$WindowPlayer.play("item_open")
-		$EnemyInfo.hide()
+		$Enemies/EnemyInfo.hide()
 		$DefenseWindow.hide()
 		$MagicWindow.hide()
 		if item_show and not window_open:
 			window_open = true
 
 	if Input.is_action_just_pressed("ui_select") and victory_ended:
-		get_tree().change_scene(SceneManager.previous_scene)
+		var transition = TransitionPlayer.instance()
+		get_tree().get_root().add_child(transition)
+		transition.ease_out()
+		BattleMusic.fade_out()
+		yield(get_tree().create_timer(1), "timeout")
+		transition.queue_free()
+		BattleMusic.switch_songs()
+		get_tree().paused = false
+		Global.battle_ended = true
 
 ##### RETURN BUTTON ########
 
@@ -219,7 +228,7 @@ func _input(event):
 		$BattleButtons/DiamondB.show()
 		$BattleButtons.hide()
 		$ItemWindow.hide()
-		$EnemyInfo.hide()
+		$Enemies/EnemyInfo.hide()
 		$DefenseWindow.hide()
 		$MagicWindow.hide()
 		$Fighters.BB_active = false
@@ -259,7 +268,7 @@ func _on_SpellList_go_to_Defend():
 	$DefenseWindow.show()
 	$WindowPlayer.play("defense_open")
 	$MagicWindow.hide()
-	$EnemyInfo.hide()
+	$Enemies/EnemyInfo.hide()
 	emit_signal("hide_enemy_cursor")
 	emit_signal("index_reset")
 	emit_signal("attack_inactive")
@@ -279,7 +288,7 @@ func _on_ItemInventory_go_to_Defend():
 	$BattleButtons/StarB.show()
 	$DefenseWindow.show()
 	$WindowPlayer.play("defense_open")
-	$EnemyInfo.hide()
+	$Enemies/EnemyInfo.hide()
 	emit_signal("hide_enemy_cursor")
 	emit_signal("index_reset")
 	emit_signal("attack_inactive")
@@ -305,7 +314,7 @@ func _on_Menu_Cursor_go_to_Item():
 		$BattleButtons/DiamondB.show()
 		$ItemWindow.show()
 		$WindowPlayer.play("item_open")
-		$EnemyInfo.hide()
+		$Enemies/EnemyInfo.hide()
 		$DefenseWindow.hide()
 		$MagicWindow.hide()
 		if item_show and not window_open:
@@ -335,7 +344,7 @@ func _on_Defend_cursor_selected():
 	
 func _on_Flee_cursor_selected():
 	if defend_show:
-		$HUDS.hide()
+		$Fighters/HUDS.hide()
 		$DefenseWindow.hide()
 		$BattleButtons.hide()
 		$FleeDialogue.show()
@@ -363,9 +372,13 @@ func _on_Fighters_anim_finish():
 	var f_name = $Fighters.get_f_name()
 	if f_name == "irina":
 		yield(get_tree().create_timer(1.5), "timeout")
+		$Enemies.f_attack = $Fighters.get_f_attack()
+		$Enemies.f_attack_base = $Fighters.get_f_attack_base()
 		$Enemies.enemy_damage()
 	else:
 		yield(get_tree().create_timer(2.5), "timeout")
+		$Enemies.f_attack = $Fighters.get_f_attack()
+		$Enemies.f_attack_base = $Fighters.get_f_attack_base()
 		$Enemies.enemy_damage()
 	
 func _on_Enemies_e_damage_finish():
@@ -392,7 +405,7 @@ func _on_WorldRoot_f_turn_used():
 	f_turns += 1
 	
 func _on_Enemies_victory():
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(get_tree().create_timer(1.2), "timeout")
 	BattleMusic.switch_songs()
 	BattleMusic.id = "Victory"
 	BattleMusic.music()
@@ -400,14 +413,13 @@ func _on_Enemies_victory():
 	ongoing = true
 	$Fighters.ongoing = true
 	$Fighters.halt = true
-	$HUDS.hide()
+	$Fighters/HUDS.hide()
 	$VictoryWindow.show()
 	$WindowPlayer.play("victory_open")
 	$Fighters.hide_cursors_remote()
 	$Fighters.victory()
 	victory_ended = true
-	Global.door_name = "Default"
-	
+	emit_signal("update_party")
 
 ##### Item Usage #####
 
@@ -438,7 +450,7 @@ func _on_ItemInventory_battle_item_chosen():
 	$BattleButtons/SpadeB.show()
 	$BattleButtons/CloverB.show()
 	$BattleButtons/StarB.show()
-	$EnemyInfo.show()
+	$Enemies/EnemyInfo.show()
 	$WindowPlayer.play("enemyinfo_open")
 	$MagicWindow.hide()
 	$ItemWindow.hide()
@@ -499,7 +511,7 @@ func _on_Fighters_item_chosen():
 	if item_id == "Picnic Pie":
 		$ItemUsage/Item.frame = 2
 		$Fighters.all_heal = true
-		$Fighters.HP_amount = 50
+		$Fighters.HP_amount = 100
 	if item_id == "Sugar Pill":
 		$ItemUsage/Item.frame = 3
 		$Fighters.heal = true
@@ -543,7 +555,7 @@ func _on_Enemies_item_chosen():
 	#$Fighters.ongoing = false
 
 func _on_Enemies_jinx_doll():
-	$EnemyInfo.hide()
+	$Enemies/EnemyInfo.hide()
 	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
 	var item_id = $ItemWindow.get_item_id()
 	$ItemUsage.position = selector_position
@@ -584,7 +596,7 @@ func _on_SpellList_spell_chosen():
 	$BattleButtons/SpadeB.show()
 	$BattleButtons/CloverB.show()
 	$BattleButtons/StarB.show()
-	$EnemyInfo.show()
+	$Enemies/EnemyInfo.show()
 	$WindowPlayer.play("enemyinfo_open")
 	$MagicWindow.hide()
 	$ItemWindow.hide()
@@ -619,7 +631,7 @@ func _on_SpellList_ally_spell_chosen():
 func _on_Enemies_single_enemy_spell():
 	ongoing = true
 	emit_signal("action_ongoing")
-	$EnemyInfo.hide()
+	$Enemies/EnemyInfo.hide()
 	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
 	var spell_id = $MagicWindow.get_spell_id()
 	print(spell_id)
@@ -628,6 +640,8 @@ func _on_Enemies_single_enemy_spell():
 		Earthslide()
 	yield(get_tree().create_timer(2), "timeout")
 	$Fighters.idle()
+	$Enemies.f_magic = $Fighters.get_f_magic()
+	$Enemies.f_magic_base = $Fighters.get_f_magic_base()
 	$Enemies.magic_damage()
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
@@ -635,7 +649,7 @@ func _on_Enemies_single_enemy_spell():
 	
 func _on_Enemies_all_enemy_spell():
 	emit_signal("action_ongoing")
-	$EnemyInfo.hide()
+	$Enemies/EnemyInfo.hide()
 	var spell_id = $MagicWindow.get_spell_id()
 	print(spell_id)
 	yield(get_tree().create_timer(0.3), "timeout")
@@ -644,6 +658,8 @@ func _on_Enemies_all_enemy_spell():
 		Thunderstorm()
 	yield(get_tree().create_timer(2), "timeout")
 	$Fighters.idle()
+	$Enemies.f_magic = $Fighters.get_f_magic()
+	$Enemies.f_magic_base = $Fighters.get_f_magic_base()
 	$Enemies.all_magic_damage()
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
@@ -709,4 +725,26 @@ func Thunderstorm():
 	$Enemies.damage_type = "air"
 	
 	
+	##### Enemy Attacks #####
+	
+func _on_Enemies_Basic():
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "neutral"
+	$Fighters.move_spread = "single"
+	$Fighters.e_move_base = 1
+	$Fighters.e_attack = $Enemies.e_attack
+	$Fighters.e_magic = $Enemies.e_magic
+	$Fighters.damage()
+
+
+func _on_Enemies_Barrage():
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "neutral"
+	$Fighters.move_spread = "all"
+	$Fighters.e_move_base = 10
+	$Fighters.e_attack = $Enemies.e_attack
+	$Fighters.e_magic = $Enemies.e_magic
+	for x in range($Fighters.fighters2.size()):
+		$Fighters.fighter_x = x
+		$Fighters.damage()
 

@@ -5,7 +5,7 @@ onready var Trigger = $BattleTrigger
 onready var sprite = $AnimatedSprite
 
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
-export(String, FILE, "*.tscn,*.scn") var target_scene
+export var target_scene : PackedScene
 
 const LOWEST_Z: int = 0;
 
@@ -21,6 +21,7 @@ var floor_layers : Array = []
 var is_on_ground = true
 var is_falling = true
 var freeze = PlayerManager.freeze
+onready var battle_arena = target_scene.instance()
 
 enum {IDLE,
 WANDER,
@@ -48,6 +49,12 @@ func update_floor():
 
 func _physics_process(delta):
 	update_floor()
+	if Global.battle_ended:
+		get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(battle_arena)
+		var transition = TransitionPlayer.instance()
+		get_tree().get_root().add_child(transition)
+		transition.ease_in()
+		self.queue_free()
 	
 	match state:
 		IDLE:
@@ -87,16 +94,11 @@ func seek_player():
 		state = CHASE
 	
 func _on_BattleTrigger_triggered():
-	var player = PlayerManager.player_motion_root
-	SceneManager.position = player.position
-	SceneManager.height = player.pos_z
-	SceneManager.previous_scene = get_tree().current_scene.filename
-	sprite.playing = false
-	state = IDLE
 	get_tree().paused = true
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.transition()
 	yield(get_tree().create_timer(0.9), "timeout")
-	get_tree().change_scene(target_scene)
 	transition.queue_free()
+	get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(battle_arena)
+	
