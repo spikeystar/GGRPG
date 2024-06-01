@@ -1,0 +1,566 @@
+[gd_scene load_steps=49 format=2]
+
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Pivot Town/misc shelf b.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Pivot Town/wood dresser b 1.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=4]
+[ext_resource path="res://Assets/General/Shadows/rectangle shadow small.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Pivot Town/item shop counter.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Pivot Town/misc shelf a.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Pivot Town/End Table.png" type="Texture" id=8]
+[ext_resource path="res://Assets/General/Backgrounds/Inside BCKGD.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Gary's House/Exterior/pot b.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Pivot Town/large bookshelf.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Pivot Town/flower pot.png" type="Texture" id=12]
+[ext_resource path="res://Scripts/ScaledCamera2D.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/Area_Specific/Toms_Shop.gd" type="Script" id=15]
+[ext_resource path="res://Assets/Pivot Town/cupboard.png" type="Texture" id=16]
+[ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=17]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Assets/Pivot Town/wall a.png" type="Texture" id=19]
+[ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=20]
+[ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=21]
+[ext_resource path="res://Assets/General/Tiles/wood tile b.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Pivot Town/wall b.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Pivot Town/green rug.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Pivot Town/door interior.png" type="Texture" id=25]
+[ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Assets/Pivot Town/cuckoo clock.png" type="Texture" id=27]
+[ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=30]
+[ext_resource path="res://Assets/Pivot Town/painting 4.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Pivot Town/oil lamp.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Pivot Town/ivy.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Pivot Town/book stack.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Pivot Town/red rug.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Pivot Town/dinner chair a 2.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Pivot Town/dinner chair a 1.png" type="Texture" id=37]
+[ext_resource path="res://NPC/Pivot Town/Tom.tscn" type="PackedScene" id=38]
+[ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=39]
+[ext_resource path="res://Scripts/Shop_Interact.gd" type="Script" id=40]
+[ext_resource path="res://UI/Shop/Options Window.png" type="Texture" id=41]
+[ext_resource path="res://UI/Shop/Shop Window.png" type="Texture" id=42]
+[ext_resource path="res://Assets/Pivot Town/begonia.png" type="Texture" id=43]
+[ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=44]
+[ext_resource path="res://Scripts/UI/Shop_Menu_Cursor.gd" type="Script" id=45]
+[ext_resource path="res://Scripts/Interaction.gd" type="Script" id=46]
+[ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=47]
+
+[sub_resource type="TileSet" id=1]
+0/name = "wood tile a.png 0"
+0/texture = ExtResource( 17 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "wood tile b.png 1"
+1/texture = ExtResource( 22 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[node name="WorldRoot" type="Node2D"]
+script = ExtResource( 15 )
+
+[node name="Node2D" type="Node2D" parent="."]
+rotation = 0.00523599
+
+[node name="BlackBckgd" type="Sprite" parent="Node2D"]
+position = Vector2( 173.288, 247.047 )
+scale = Vector2( 0.804624, 0.700275 )
+z_index = -100
+texture = ExtResource( 9 )
+
+[node name="Ivy" type="Sprite" parent="Node2D"]
+position = Vector2( 243.63, -71.2766 )
+scale = Vector2( 0.95, 0.95 )
+z_index = 1
+texture = ExtResource( 33 )
+
+[node name="DoorInterior" type="Sprite" parent="Node2D"]
+position = Vector2( 193.741, -50.0151 )
+rotation = 0.0352188
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 25 )
+
+[node name="RectangleShadowSmall" type="Sprite" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.8 )
+position = Vector2( 20.5699, -82.1082 )
+rotation = 0.0815029
+scale = Vector2( 1.27778, 1.14444 )
+texture = ExtResource( 5 )
+
+[node name="RedRug" type="Sprite" parent="Node2D"]
+modulate = Color( 0.717647, 0.576471, 0.815686, 1 )
+position = Vector2( -56.1616, -30.7067 )
+rotation = -0.0169483
+scale = Vector2( 1.09, 1.173 )
+texture = ExtResource( 35 )
+flip_v = true
+
+[node name="RedRug2" type="Sprite" parent="Node2D"]
+modulate = Color( 0.9528, 0.912, 0.96, 1 )
+position = Vector2( -56.1672, -31.7067 )
+rotation = -0.0169483
+scale = Vector2( 1.09, 1.173 )
+texture = ExtResource( 35 )
+flip_v = true
+
+[node name="CuckooClock" type="Sprite" parent="Node2D"]
+position = Vector2( 152.453, -104.8 )
+rotation = 0.0296666
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 27 )
+
+[node name="Painting4" type="Sprite" parent="Node2D"]
+position = Vector2( -147.553, -105.229 )
+rotation = 0.0166143
+scale = Vector2( 1.15, 1.15 )
+texture = ExtResource( 31 )
+flip_h = true
+
+[node name="WallA" type="Sprite" parent="Node2D"]
+modulate = Color( 0.980392, 0.980392, 0.980392, 1 )
+position = Vector2( 142.414, -111.747 )
+rotation = 0.0737339
+scale = Vector2( 1.07755, 0.811776 )
+z_index = -5
+texture = ExtResource( 19 )
+
+[node name="WallA2" type="Sprite" parent="Node2D"]
+visible = false
+modulate = Color( 0.980392, 0.980392, 0.980392, 1 )
+position = Vector2( 133.402, -114.7 )
+rotation = 0.110226
+scale = Vector2( 1, 0.8 )
+z_index = -5
+texture = ExtResource( 19 )
+
+[node name="WallB" type="Sprite" parent="Node2D"]
+modulate = Color( 0.980392, 0.980392, 0.980392, 1 )
+position = Vector2( -110.611, -116.422 )
+rotation = -0.0696255
+scale = Vector2( 1.046, 0.81 )
+z_index = -5
+texture = ExtResource( 23 )
+
+[node name="RectangleShadowSmall2" type="Sprite" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.8 )
+position = Vector2( 80.7057, -56.4234 )
+rotation = 0.0367998
+scale = Vector2( 1.24857, 1.15885 )
+texture = ExtResource( 5 )
+
+[node name="GreenRug4" type="Sprite" parent="Node2D"]
+modulate = Color( 0.8536, 0.88, 0.88, 1 )
+position = Vector2( 169.992, -1.8901 )
+rotation = -0.0156184
+scale = Vector2( 1.05, 1.05 )
+texture = ExtResource( 24 )
+flip_v = true
+
+[node name="GreenRug3" type="Sprite" parent="Node2D"]
+position = Vector2( 169.987, -2.89009 )
+rotation = -0.0156184
+scale = Vector2( 1.05, 1.05 )
+texture = ExtResource( 24 )
+flip_v = true
+
+[node name="GreenRug5" type="Sprite" parent="Node2D"]
+modulate = Color( 0.8536, 0.88, 0.88, 1 )
+position = Vector2( -69.0097, 65.0129 )
+rotation = -0.0287032
+scale = Vector2( 1.05, 1.05 )
+texture = ExtResource( 24 )
+flip_v = true
+
+[node name="GreenRug6" type="Sprite" parent="Node2D"]
+position = Vector2( -69.0151, 64.0129 )
+rotation = -0.0287032
+scale = Vector2( 1.05, 1.05 )
+texture = ExtResource( 24 )
+flip_v = true
+
+[node name="YSort" type="YSort" parent="Node2D"]
+
+[node name="FloorTiles" type="TileMap" parent="Node2D/YSort"]
+modulate = Color( 0.98, 0.9506, 0.9506, 1 )
+position = Vector2( -55.5, 41.5 )
+z_index = -5
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 63, 28 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -327684, 0, 0, -327683, 1, 0, -327682, 0, 0, -327681, 0, 0, -393216, 1, 0, -393215, 0, 0, -393214, 0, 0, -393213, 1, 0, -262148, 0, 0, -262147, 0, 0, -262146, 0, 0, -262145, 1, 0, -327680, 0, 0, -327679, 1, 0, -327678, 0, 0, -327677, 0, 0, -196612, 0, 0, -196611, 0, 0, -196610, 1, 0, -196609, 0, 0, -262144, 1, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 1, 0, -196608, 0, 0, -196607, 1, 0, -196606, 0, 0, -196605, 1, 0, -65540, 1, 0, -65539, 0, 0, -65538, 1, 0, -65537, 0, 0, -131072, 1, 0, -131071, 0, 0, -131070, 1, 0, -131069, 0, 0, -4, 0, 0, -3, 1, 0, -2, 0, 0, -1, 1, 0, -65536, 0, 0, -65535, 1, 0, -65534, 0, 0, -65533, 1, 0, 65532, 1, 0, 65533, 0, 0, 65534, 1, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 0, 0, 131068, 0, 0, 131069, 1, 0, 131070, 0, 0, 131071, 1, 0, 65536, 0, 0, 65537, 1, 0, 65538, 0, 0, 65539, 1, 0, 131072, 0, 0, 131073, 1, 0 )
+
+[node name="Tom" parent="Node2D/YSort" instance=ExtResource( 38 )]
+position = Vector2( -1.25655, -48.9941 )
+
+[node name="Counter" parent="Node2D/YSort" instance=ExtResource( 18 )]
+modulate = Color( 0.992157, 0.976471, 1, 1 )
+position = Vector2( -23.1882, -35.8791 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 2.3, 0.8 )
+texture = ExtResource( 6 )
+texture_offset = Vector2( 0, 3 )
+height = 55.0
+preview_collision_box = false
+
+[node name="Bookshelf 1" parent="Node2D/YSort" instance=ExtResource( 18 )]
+position = Vector2( 70.6953, -58.371 )
+tile_size = Vector2( 60, 25 )
+grid_size = Vector2( 0.8, 0.9 )
+texture = ExtResource( 11 )
+texture_scale = Vector2( 1.2, 1.2 )
+texture_offset = Vector2( -2, 22 )
+height = 70.0
+preview_collision_box = false
+
+[node name="Dresser" parent="Node2D/YSort" instance=ExtResource( 18 )]
+position = Vector2( 43.6276, -71.2294 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 2, 0.8 )
+texture = ExtResource( 3 )
+texture_scale = Vector2( 1.2, 1.2 )
+texture_offset = Vector2( -2, 22 )
+height = 55.0
+preview_collision_box = false
+
+[node name="Cupholder" parent="Node2D/YSort" instance=ExtResource( 18 )]
+position = Vector2( 35.6906, -59.1877 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.8, 0.8 )
+texture = ExtResource( 16 )
+texture_offset = Vector2( 2, 27 )
+height = 25.0
+floor_height = 55.0
+
+[node name="Misc A" parent="Node2D/YSort" instance=ExtResource( 18 )]
+position = Vector2( 101.753, -47.5334 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.8, 0.8 )
+texture = ExtResource( 7 )
+texture_scale = Vector2( 1.2, 1.2 )
+texture_offset = Vector2( -1, 30 )
+height = 40.0
+preview_collision_box = false
+
+[node name="Misc B" parent="Node2D/YSort" instance=ExtResource( 18 )]
+position = Vector2( 101.815, -35.5336 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.7, 0.8 )
+texture = ExtResource( 2 )
+texture_scale = Vector2( 1.2, 1.2 )
+texture_offset = Vector2( -1, 30 )
+height = 64.0
+floor_height = 40.0
+preview_collision_box = false
+
+[node name="Bookshelf2 2" parent="Node2D/YSort" instance=ExtResource( 18 )]
+position = Vector2( -221.777, 8.34404 )
+tile_size = Vector2( 60, 25 )
+grid_size = Vector2( 0.8, 0.9 )
+texture = ExtResource( 11 )
+texture_scale = Vector2( -1.2, 1.2 )
+texture_offset = Vector2( 2, 22 )
+height = 80.0
+preview_collision_box = false
+
+[node name="Misc A2" parent="Node2D/YSort" instance=ExtResource( 18 )]
+position = Vector2( -188.845, -4.82854 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.8, 0.8 )
+texture = ExtResource( 7 )
+texture_scale = Vector2( -1.2, 1.2 )
+texture_offset = Vector2( -1, 30 )
+height = 60.0
+preview_collision_box = false
+use_dithering = false
+use_dither_blending = false
+
+[node name="Bookstack" parent="Node2D/YSort" instance=ExtResource( 18 )]
+position = Vector2( -221.96, 8.16229 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.6, 0.5 )
+texture = ExtResource( 34 )
+texture_scale = Vector2( 0.9, 0.9 )
+texture_offset = Vector2( 1, 25 )
+height = 25.0
+floor_height = 70.0
+
+[node name="OilLamp" parent="Node2D/YSort" instance=ExtResource( 18 )]
+position = Vector2( -188.929, 13.9894 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.4, 0.4 )
+texture = ExtResource( 32 )
+texture_scale = Vector2( -0.7, 0.7 )
+texture_offset = Vector2( 0, 19 )
+height = 32.0
+floor_height = 60.0
+preview_collision_box = false
+use_dithering = false
+use_dither_blending = false
+
+[node name="Chair1" parent="Node2D/YSort" instance=ExtResource( 18 )]
+position = Vector2( 60.4547, 86.6847 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1, 0.6 )
+texture = ExtResource( 36 )
+texture_scale = Vector2( 1.2, 1.2 )
+texture_offset = Vector2( 0, 26 )
+height = 55.0
+preview_collision_box = false
+
+[node name="Chair2" parent="Node2D/YSort" instance=ExtResource( 18 )]
+position = Vector2( 145.249, 47.2401 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1, 0.6 )
+texture = ExtResource( 37 )
+texture_scale = Vector2( 1.2, 1.2 )
+texture_offset = Vector2( 3, 26 )
+height = 55.0
+preview_collision_box = false
+
+[node name="SideTable" parent="Node2D/YSort" instance=ExtResource( 18 )]
+position = Vector2( 95.3757, 71.5016 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1, 1.3 )
+texture = ExtResource( 8 )
+texture_scale = Vector2( 1.2, 1.2 )
+texture_offset = Vector2( -1, 21 )
+height = 40.0
+preview_collision_box = false
+
+[node name="CircleShadowSmall3" type="Sprite" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 72.355, -123.38 )
+scale = Vector2( 0.545205, 0.588312 )
+texture = ExtResource( 1 )
+
+[node name="Begonia" parent="Node2D" instance=ExtResource( 18 )]
+modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
+position = Vector2( 72.7005, -57.3814 )
+grid_size = Vector2( 0.3, 0.3 )
+texture = ExtResource( 43 )
+texture_scale = Vector2( 0.7, 0.7 )
+height = 32.0
+floor_height = 70.0
+preview_collision_box = false
+
+[node name="CircleShadowSmall" type="Sprite" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 7.35063, -124.04 )
+scale = Vector2( 0.53, 0.56 )
+texture = ExtResource( 1 )
+script = ExtResource( 4 )
+height = 55.0
+
+[node name="Daisy Pot" parent="Node2D" instance=ExtResource( 18 )]
+modulate = Color( 0.91632, 0.9016, 0.92, 0.960784 )
+position = Vector2( 8.60718, -75.0461 )
+grid_size = Vector2( 0.3, 0.3 )
+texture = ExtResource( 10 )
+texture_scale = Vector2( 0.55, 0.55 )
+height = 32.0
+floor_height = 55.0
+preview_collision_box = false
+use_transparency = true
+
+[node name="CircleShadowSmall2" type="Sprite" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 101.182, 34.471 )
+scale = Vector2( 0.53, 0.56 )
+texture = ExtResource( 1 )
+script = ExtResource( 4 )
+height = 40.0
+
+[node name="Violet Pot" parent="Node2D" instance=ExtResource( 18 )]
+position = Vector2( 102.517, 98.4646 )
+grid_size = Vector2( 0.3, 0.3 )
+texture = ExtResource( 12 )
+texture_scale = Vector2( 0.95, 0.95 )
+height = 32.0
+floor_height = 40.0
+preview_collision_box = false
+
+[node name="CollisionRoot" type="Node2D" parent="Node2D"]
+visible = false
+position = Vector2( 3.99995, -0.0209439 )
+
+[node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 29 )]
+
+[node name="NavmeshLayer" parent="Node2D/CollisionRoot/Navmesh" instance=ExtResource( 30 )]
+position = Vector2( -49, 35.1 )
+polygon = PoolVector2Array( 63.45, -140.177, 307.059, -24.451, 56.6439, 87.8617, -5.50183, 60.1867, -39, 73.9, -100.584, 44.6843, -68.4242, 31.9573, -195.95, -24.8173 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Outside" parent="Node2D/CollisionRoot" instance=ExtResource( 26 )]
+position = Vector2( -133.459, 103.7 )
+script = ExtResource( 14 )
+target_scene = "res://Areas/Pivot Town/Pivot Town 1.tscn"
+exit_name = "Toms_Shop"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Outside"]
+position = Vector2( -13, 10 )
+polygon = PoolVector2Array( -28, -23, 2, -36, 63, -6, 32, 6 )
+
+[node name="Shop" parent="Node2D/CollisionRoot" instance=ExtResource( 26 )]
+position = Vector2( -74.1561, -29.6121 )
+script = ExtResource( 40 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Shop"]
+position = Vector2( 2.1047, 19.9893 )
+polygon = PoolVector2Array( -4.14655, -27.9787, 5.8219, -34.031, 45.9208, -15.2406, 31.9577, -8.16744 )
+
+[node name="PlayerSpawnDefault" parent="Node2D/CollisionRoot" instance=ExtResource( 28 )]
+position = Vector2( -39, 29 )
+
+[node name="PlayerSpawnFromOutsideHouse2" parent="Node2D/CollisionRoot" instance=ExtResource( 28 )]
+position = Vector2( -96, 82 )
+door_name = "Pivot_Town_1"
+direction = Vector2( 1, 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
+position = Vector2( 6.00346, 0.97905 )
+z_index = 4096
+offset = Vector2( 0, -20 )
+current = true
+zoom = Vector2( 0.655, 0.65 )
+script = ExtResource( 13 )
+minPos = Vector2( -70, -110 )
+maxPos = Vector2( 100, -30 )
+follow_player = true
+
+[node name="Interaction" type="Node2D" parent="Camera2D"]
+script = ExtResource( 46 )
+
+[node name="Dialogue" type="Sprite" parent="Camera2D/Interaction"]
+visible = false
+position = Vector2( -76.8348, -158.579 )
+scale = Vector2( 0.7, 0.7 )
+z_index = 3
+texture = ExtResource( 20 )
+
+[node name="DialogueCursor" parent="Camera2D/Interaction/Dialogue" instance=ExtResource( 39 )]
+visible = false
+position = Vector2( 154.045, 25.1428 )
+
+[node name="Label" type="Label" parent="Camera2D/Interaction/Dialogue"]
+margin_left = -157.384
+margin_top = -29.1429
+margin_right = 163.429
+margin_bottom = 21.8571
+custom_fonts/font = ExtResource( 21 )
+text = "Tom: Hey. What do you need?"
+autowrap = true
+percent_visible = 0.31
+
+[node name="ShopOptions" type="Sprite" parent="Camera2D/Interaction"]
+visible = false
+position = Vector2( 138.997, 88.021 )
+scale = Vector2( 0.65, 0.6 )
+texture = ExtResource( 41 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Interaction/ShopOptions"]
+margin_left = -38.4623
+margin_top = -61.6667
+margin_right = 43.0377
+margin_bottom = 53.3333
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1, 1.05 )
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Buy" type="Label" parent="Camera2D/Interaction/ShopOptions/VBoxContainer"]
+margin_right = 81.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 21 )
+text = "Buy"
+align = 1
+autowrap = true
+script = ExtResource( 47 )
+
+[node name="Sell" type="Label" parent="Camera2D/Interaction/ShopOptions/VBoxContainer"]
+margin_top = 25.0
+margin_right = 81.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 21 )
+text = "Sell"
+align = 1
+autowrap = true
+script = ExtResource( 47 )
+
+[node name="Deposit" type="Label" parent="Camera2D/Interaction/ShopOptions/VBoxContainer"]
+margin_top = 50.0
+margin_right = 81.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 21 )
+text = "Deposit"
+align = 1
+autowrap = true
+script = ExtResource( 47 )
+
+[node name="Withdraw" type="Label" parent="Camera2D/Interaction/ShopOptions/VBoxContainer"]
+margin_top = 75.0
+margin_right = 81.0
+margin_bottom = 90.0
+custom_fonts/font = ExtResource( 21 )
+text = "Withdraw"
+align = 1
+autowrap = true
+script = ExtResource( 47 )
+
+[node name="Talk" type="Label" parent="Camera2D/Interaction/ShopOptions/VBoxContainer"]
+margin_top = 100.0
+margin_right = 81.0
+margin_bottom = 115.0
+custom_fonts/font = ExtResource( 21 )
+text = "Talk"
+align = 1
+autowrap = true
+script = ExtResource( 47 )
+
+[node name="Menu Cursor" parent="Camera2D/Interaction/ShopOptions" instance=ExtResource( 44 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -38.4623
+margin_top = 52.0832
+margin_right = 42.5377
+margin_bottom = 77.0832
+rect_scale = Vector2( 1, 1.05 )
+script = ExtResource( 45 )
+menu_parent_path = NodePath("../VBoxContainer")
+cursor_offset = Vector2( -35, 0 )
+
+[node name="Inventory" type="Sprite" parent="Camera2D/Interaction"]
+visible = false
+position = Vector2( 109.997, 76.0209 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 42 )
+
+[connection signal="interaction" from="Node2D/CollisionRoot/Shop" to="Camera2D/Interaction" method="_on_Shop_interaction"]
+[connection signal="option_selecting" from="Camera2D/Interaction" to="Camera2D/Interaction/ShopOptions/Menu Cursor" method="_on_Interaction_option_selecting"]
