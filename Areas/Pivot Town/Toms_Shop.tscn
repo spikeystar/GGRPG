@@ -468,15 +468,24 @@ texture = ExtResource( 20 )
 visible = false
 position = Vector2( 154.045, 25.1428 )
 
-[node name="Label" type="Label" parent="Camera2D/Interaction/Dialogue"]
+[node name="Name" type="Label" parent="Camera2D/Interaction/Dialogue"]
 margin_left = -157.384
-margin_top = -29.1429
+margin_top = -27.7143
 margin_right = 163.429
-margin_bottom = 21.8571
+margin_bottom = 23.2857
 custom_fonts/font = ExtResource( 21 )
-text = "Tom: Hey. What do you need?"
+text = "Tom:"
 autowrap = true
-percent_visible = 0.31
+
+[node name="Label" type="Label" parent="Camera2D/Interaction/Dialogue"]
+margin_left = -110.241
+margin_top = -27.7144
+margin_right = 153.0
+margin_bottom = 23.2856
+custom_fonts/font = ExtResource( 21 )
+text = "Hey. What do you need?"
+autowrap = true
+percent_visible = 0.1
 
 [node name="ShopOptions" type="Sprite" parent="Camera2D/Interaction"]
 visible = false
@@ -485,66 +494,60 @@ scale = Vector2( 0.65, 0.6 )
 texture = ExtResource( 41 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Interaction/ShopOptions"]
-margin_left = -38.4623
-margin_top = -61.6667
-margin_right = 43.0377
-margin_bottom = 53.3333
+margin_left = -24.616
+margin_top = -59.5
+margin_right = 58.384
+margin_bottom = 55.5
 grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 1, 1.05 )
 custom_constants/separation = 10
-alignment = 1
 
 [node name="Buy" type="Label" parent="Camera2D/Interaction/ShopOptions/VBoxContainer"]
-margin_right = 81.0
+margin_right = 83.0
 margin_bottom = 15.0
 custom_fonts/font = ExtResource( 21 )
 text = "Buy"
-align = 1
 autowrap = true
 script = ExtResource( 47 )
 
 [node name="Sell" type="Label" parent="Camera2D/Interaction/ShopOptions/VBoxContainer"]
 margin_top = 25.0
-margin_right = 81.0
+margin_right = 83.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 21 )
 text = "Sell"
-align = 1
 autowrap = true
 script = ExtResource( 47 )
 
 [node name="Deposit" type="Label" parent="Camera2D/Interaction/ShopOptions/VBoxContainer"]
 margin_top = 50.0
-margin_right = 81.0
+margin_right = 83.0
 margin_bottom = 65.0
 custom_fonts/font = ExtResource( 21 )
 text = "Deposit"
-align = 1
 autowrap = true
 script = ExtResource( 47 )
 
 [node name="Withdraw" type="Label" parent="Camera2D/Interaction/ShopOptions/VBoxContainer"]
 margin_top = 75.0
-margin_right = 81.0
+margin_right = 83.0
 margin_bottom = 90.0
 custom_fonts/font = ExtResource( 21 )
 text = "Withdraw"
-align = 1
 autowrap = true
 script = ExtResource( 47 )
 
 [node name="Talk" type="Label" parent="Camera2D/Interaction/ShopOptions/VBoxContainer"]
 margin_top = 100.0
-margin_right = 81.0
+margin_right = 83.0
 margin_bottom = 115.0
 custom_fonts/font = ExtResource( 21 )
 text = "Talk"
-align = 1
 autowrap = true
 script = ExtResource( 47 )
 
-[node name="Menu Cursor" parent="Camera2D/Interaction/ShopOptions" instance=ExtResource( 44 )]
+[node name="MenuCursor" parent="Camera2D/Interaction/ShopOptions" instance=ExtResource( 44 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = -38.4623
@@ -554,7 +557,7 @@ margin_bottom = 77.0832
 rect_scale = Vector2( 1, 1.05 )
 script = ExtResource( 45 )
 menu_parent_path = NodePath("../VBoxContainer")
-cursor_offset = Vector2( -35, 0 )
+cursor_offset = Vector2( -21, 0 )
 
 [node name="Inventory" type="Sprite" parent="Camera2D/Interaction"]
 visible = false
@@ -563,4 +566,5 @@ scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 42 )
 
 [connection signal="interaction" from="Node2D/CollisionRoot/Shop" to="Camera2D/Interaction" method="_on_Shop_interaction"]
-[connection signal="option_selecting" from="Camera2D/Interaction" to="Camera2D/Interaction/ShopOptions/Menu Cursor" method="_on_Interaction_option_selecting"]
+[connection signal="option_selecting" from="Camera2D/Interaction" to="Camera2D/Interaction/ShopOptions/MenuCursor" method="_on_Interaction_option_selecting"]
+[connection signal="restart" from="Camera2D/Interaction" to="Node2D/CollisionRoot/Shop" method="_on_Interaction_restart"]

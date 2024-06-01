@@ -6,7 +6,7 @@ signal interaction
 
 func _ready():
 	var timer = Timer.new()
-	timer.one_shot = true
+	#timer.one_shot = true
 	timer.connect("timeout", self, "_on_start_checking_body_entered")
 	add_child(timer)
 	timer.start(0.1)
@@ -22,8 +22,7 @@ func _input(event):
 		PlayerManager.freeze = true
 		_on_touch_area()
 		gary_entered = false
-		yield(get_tree().create_timer(1.5), "timeout")
-		
+		#yield(get_tree().create_timer(1.5), "timeout")
 	
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root:
@@ -32,3 +31,6 @@ func _on_body_entered(body):
 func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")
 	emit_signal("interaction")
+	
+func _on_Interaction_restart():
+	gary_entered = true

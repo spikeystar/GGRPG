@@ -8,6 +8,7 @@ onready var menu_parent := get_node(menu_parent_path)
 var cursor_index : int = 0
 var menu_name : String
 var option_selecting = false
+var able = false
 
 signal option_selecting
 signal retread
@@ -28,12 +29,15 @@ func _process(delta):
 	else:
 		input.y += 0
 		
-	if Input.is_action_just_pressed("ui_accept") and option_selecting or Input.is_action_just_pressed("ui_left") and option_selecting:
+	if Input.is_action_just_pressed("ui_accept") and able or Input.is_action_just_pressed("ui_left") and able:
 		option_selecting = false
+		able = false
+		cursor_index = 0
 		self.modulate.a = 0
 		emit_signal("retread")
 		
-	if Input.is_action_just_pressed("ui_select") and option_selecting:
+	if Input.is_action_just_pressed("ui_select") and able:
+		able = false
 		option_selecting = false
 		self.modulate.a = 0
 		
@@ -79,3 +83,5 @@ func set_cursor_from_index(index : int) -> void:
 func _on_Interaction_option_selecting():
 	option_selecting = true
 	self.modulate.a = 1
+	yield(get_tree().create_timer(0.2), "timeout")
+	able = true
