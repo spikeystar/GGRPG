@@ -717,9 +717,9 @@ script = ExtResource( 29 )
 position = Vector2( -96, -159 )
 
 [node name="ItemInventoryBox" type="VBoxContainer" parent="Items/ItemPanel"]
-margin_left = -45.0
+margin_left = -52.6336
 margin_top = -1.0
-margin_right = 80.0
+margin_right = 72.3664
 margin_bottom = 299.0
 rect_min_size = Vector2( 125, 300 )
 size_flags_horizontal = 0
@@ -738,7 +738,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 script = ExtResource( 23 )
 menu_parent_path = NodePath("../ItemInventoryBox")
-cursor_offset = Vector2( 17, 2.5 )
 
 [node name="Storage" type="Label" parent="Items"]
 margin_left = 49.0
@@ -801,7 +800,7 @@ margin_right = 25.0
 margin_bottom = 25.0
 script = ExtResource( 40 )
 menu_parent_path = NodePath("../TrinketsInventory")
-cursor_offset = Vector2( 17, 2.5 )
+cursor_offset = Vector2( 5, 0 )
 
 [node name="TrinketInventory" type="Sprite" parent="Trinkets"]
 position = Vector2( 90, -121 )
@@ -842,9 +841,9 @@ script = ExtResource( 28 )
 position = Vector2( -96, -161 )
 
 [node name="EnemiesInventory" type="VBoxContainer" parent="Enemies/EnemiesNode"]
-margin_left = -45.0
+margin_left = -54.1603
 margin_top = -1.0
-margin_right = 80.0
+margin_right = 70.8397
 margin_bottom = 299.0
 rect_min_size = Vector2( 125, 300 )
 size_flags_horizontal = 0
@@ -859,7 +858,7 @@ margin_right = 25.0
 margin_bottom = 25.0
 script = ExtResource( 21 )
 menu_parent_path = NodePath("../EnemiesInventory")
-cursor_offset = Vector2( 17, 2.5 )
+cursor_offset = Vector2( 2, 0 )
 
 [node name="EnemyDisplay" type="Sprite" parent="Enemies"]
 position = Vector2( 86, -126 )
@@ -1000,9 +999,9 @@ script = ExtResource( 30 )
 position = Vector2( -133, -162 )
 
 [node name="KeyInventory" type="VBoxContainer" parent="Key/KeyPanel"]
-margin_left = -7.0
+margin_left = -13.1069
 margin_top = -1.0
-margin_right = -7.0
+margin_right = 111.893
 margin_bottom = -1.0
 rect_min_size = Vector2( 125, 0 )
 size_flags_horizontal = 0
@@ -1015,7 +1014,6 @@ margin_right = 25.0
 margin_bottom = 25.0
 script = ExtResource( 31 )
 menu_parent_path = NodePath("../KeyInventory")
-cursor_offset = Vector2( 17, 2.5 )
 
 [node name="KeyInfo" type="Label" parent="Key"]
 margin_left = 39.0

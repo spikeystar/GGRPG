@@ -1,7 +1,7 @@
 extends Node
 
 var f_turns : int = 0
-var marbles : int = 1067
+var marbles : int = 4067
 var spell_name : String
 var remove_item_name: String
 

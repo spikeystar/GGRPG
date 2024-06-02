@@ -832,7 +832,6 @@ preview_collision_box = false
 [node name="Plantbox" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
 position = Vector2( -286, -339 )
 rotation = 0.0529893
-scale = Vector2( 1, 1 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1335,7 +1334,6 @@ height = 32.0
 modulate = Color( 1, 1, 1, 0.372549 )
 position = Vector2( -589.615, -155.615 )
 rotation = 0.048918
-scale = Vector2( 1, 1 )
 texture = ExtResource( 57 )
 
 [node name="TownSign" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
@@ -1454,7 +1452,9 @@ position = Vector2( -185, 69 )
 door_name = "CherryTrail1To4"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
 position = Vector2( 812, -147 )
+z_index = 4096
 current = true
 script = ExtResource( 3 )
 minPos = Vector2( -800, -600 )
@@ -1464,7 +1464,7 @@ follow_player = true
 [node name="Particles2D" type="CPUParticles2D" parent="."]
 position = Vector2( -282, -74 )
 rotation = 0.999572
-z_index = 1
+z_index = 5
 amount = 9
 lifetime = 7.0
 speed_scale = 0.6
@@ -1487,7 +1487,7 @@ color_ramp = SubResource( 11 )
 [node name="Particles2D2" type="CPUParticles2D" parent="."]
 position = Vector2( -861, -401 )
 rotation = 0.999572
-z_index = 1
+z_index = 5
 amount = 9
 lifetime = 7.0
 speed_scale = 0.5
@@ -1510,7 +1510,7 @@ color_ramp = SubResource( 11 )
 [node name="Particles2D3" type="CPUParticles2D" parent="."]
 position = Vector2( -333, -706 )
 rotation = 0.999572
-z_index = 1
+z_index = 5
 amount = 9
 lifetime = 7.0
 speed_scale = 0.5
@@ -1533,7 +1533,7 @@ color_ramp = SubResource( 11 )
 [node name="Particles2D4" type="CPUParticles2D" parent="."]
 position = Vector2( 129, -474 )
 rotation = 0.999572
-z_index = 1
+z_index = 5
 amount = 9
 lifetime = 7.0
 speed_scale = 0.5
@@ -1556,7 +1556,7 @@ color_ramp = SubResource( 11 )
 [node name="Particles2D5" type="CPUParticles2D" parent="."]
 position = Vector2( 661, -391 )
 rotation = 0.999572
-z_index = 1
+z_index = 5
 amount = 9
 lifetime = 7.0
 speed_scale = 0.5
@@ -1579,7 +1579,7 @@ color_ramp = SubResource( 11 )
 [node name="Particles2D6" type="CPUParticles2D" parent="."]
 position = Vector2( 588, -860 )
 rotation = 0.999572
-z_index = 1
+z_index = 5
 amount = 9
 lifetime = 7.0
 speed_scale = 0.5
@@ -1602,7 +1602,7 @@ color_ramp = SubResource( 11 )
 [node name="Particles2D7" type="CPUParticles2D" parent="."]
 position = Vector2( 253, 110 )
 rotation = 0.999572
-z_index = 1
+z_index = 5
 amount = 9
 lifetime = 7.0
 speed_scale = 0.5

@@ -6,40 +6,37 @@ export var cursor_offset : Vector2
 onready var menu_parent := get_node(menu_parent_path)
 
 var cursor_index : int = 0
+var item_selecting = false
 var menu_name : String
-var option_selecting = false
-var able = false
-
-signal option_selecting
-signal retread
 
 func _ready():
-	pass
-	#self.modulate.a = 0
+	self.modulate.a = 0
 
 func _process(delta):
 	var input := Vector2.ZERO
 	var current_menu_item := get_menu_item_at_index(cursor_index)
-	if option_selecting:
+	if item_selecting:
 		menu_name = current_menu_item.get_id()
 	
-	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and option_selecting:
+	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and item_selecting:
 		input.y -= 1
-	if Input.is_action_just_pressed("ui_down") and option_selecting:
+		self.modulate.a = 0
+		yield(get_tree().create_timer(0.01), "timeout")
+		self.modulate.a = 1
+	if Input.is_action_just_pressed("ui_down") and item_selecting:
 		input.y += 1
+		self.modulate.a = 0
+		yield(get_tree().create_timer(0.01), "timeout")
+		self.modulate.a = 1
 	else:
 		input.y += 0
 		
-	#if Input.is_action_just_pressed("ui_accept") and able or Input.is_action_just_pressed("ui_left") and able:
-		#option_selecting = false
-		#able = false
-		#cursor_index = 0
+	#if Input.is_action_just_pressed("ui_accept") and item_selecting or Input.is_action_just_pressed("ui_left") and item_selecting:
+		#item_selecting = false
 		#self.modulate.a = 0
+		#emit_signal("retread")
+		#cursor_index = 0
 		
-	if Input.is_action_just_pressed("ui_select") and able:
-		able = false
-		option_selecting = false
-		self.modulate.a = 0
 		
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)
@@ -80,9 +77,9 @@ func set_cursor_from_index(index : int) -> void:
 	cursor_index = index
 
 
-func _on_Interaction_option_selecting():
-	option_selecting = true
-	cursor_index = 0
+func _on_Interaction_buying():
 	self.modulate.a = 1
-	yield(get_tree().create_timer(0.2), "timeout")
-	able = true
+	item_selecting = true
+
+func _on_Interaction_retread():
+	item_selecting = false
