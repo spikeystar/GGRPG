@@ -8,14 +8,17 @@ onready var menu_parent := get_node(menu_parent_path)
 var cursor_index : int = 0
 var item_selecting = false
 var menu_name : String
+var empty = false
+
 
 func _ready():
 	self.modulate.a = 0
 
 func _process(delta):
+	var child_count = menu_parent.get_child_count()
 	var input := Vector2.ZERO
 	var current_menu_item := get_menu_item_at_index(cursor_index)
-	if item_selecting:
+	if item_selecting and child_count > 0:
 		menu_name = current_menu_item.get_id()
 	
 	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and item_selecting:
@@ -30,6 +33,13 @@ func _process(delta):
 		self.modulate.a = 1
 	else:
 		input.y += 0
+		
+	if child_count == 0:
+		empty = true
+		self.modulate.a = 0
+		
+	if child_count > 0:
+		empty = false
 		
 	#if Input.is_action_just_pressed("ui_accept") and item_selecting or Input.is_action_just_pressed("ui_left") and item_selecting:
 		#item_selecting = false
@@ -60,6 +70,7 @@ func get_menu_item_at_index(index : int) -> Control:
 	
 	if index >= menu_parent.get_child_count() or index < 0:
 		return null
+		
 	
 	return menu_parent.get_child(index) as Control
 
@@ -79,7 +90,16 @@ func set_cursor_from_index(index : int) -> void:
 
 func _on_Interaction_buying():
 	self.modulate.a = 1
+	cursor_index = 0
 	item_selecting = true
 
 func _on_Interaction_retread():
 	item_selecting = false
+
+func _on_Interaction_selling():
+	self.modulate.a = 1
+	cursor_index = 0
+	item_selecting = true
+
+func _on_Interaction_option_selecting():
+	cursor_index = 0

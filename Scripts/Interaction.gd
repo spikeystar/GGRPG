@@ -12,6 +12,9 @@ var ongoing = false
 signal option_selecting
 signal restart
 signal buying
+signal selling
+signal deposit
+signal withdraw
 signal retread
 
 func welcome():
@@ -92,9 +95,21 @@ func _input(event):
 		item_selecting = true
 		options = false
 		
+	if Input.is_action_just_pressed("ui_select") and menu_name == "Sell" and not item_selecting and not ongoing:
+		emit_signal("selling")
+		$Dialogue.hide()
+		$Dialogue/DialogueCursor.hide()
+		$ShopOptions.hide()
+		$ShopOptions/MenuCursor.option_selecting = false
+		$ShopOptions/MenuCursor.able = false
+		$Sell.show()
+		$Sell/MenuCursor.cursor_index = 0
+		item_selecting = true
+		options = false
+		
 	if Input.is_action_just_pressed("ui_accept") and item_selecting or Input.is_action_just_pressed("ui_left") and item_selecting:
 		$Buy.hide()
-		$Buy/MenuCursor.cursor_index = 0
+		$Sell.hide()
 		$ShopOptions.show()
 		$ShopOptions/MenuCursor.able = false
 		item_selecting = false

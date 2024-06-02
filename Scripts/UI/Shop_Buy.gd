@@ -70,11 +70,10 @@ func _input(event):
 			Shops.item_index = $Buy_Inventory.item_index
 			Shops.remove_item()
 			$MenuCursor.item_selecting = false
-			$MenuCursor.cursor_index -= 1
-			$Buy_Inventory.item_index -= 1
+			if $Buy_Inventory.item_index == $Buy_Inventory.inventory_max:
+				$MenuCursor.cursor_index -= 1
 			$Buy_Inventory.item_removed()
 			$MenuCursor.item_selecting = true
-			
 		else:
 			Party.marbles = Party.marbles - item_cost
 			Party.add_item_name = item_id
@@ -84,3 +83,7 @@ func _on_Interaction_buying():
 	buying = true
 	yield(get_tree().create_timer(0.1), "timeout")
 	able = true
+
+func _on_Interaction_option_selecting():
+	buying = false
+	able = false
