@@ -19,20 +19,20 @@ signal size_ready()
 
 onready var inventory : Array = []
 var trinket_index : int
+var trinket_max : int
 
 func _ready():
 	inventory = Party.Trinkets.duplicate()
 	for trinket_index in inventory.size():
 		add_slot(trinket_index)
-	#for x in inventory.size():
-		#new_name = inventory[x].get_id()
-		#add_slot()
 	if inventory.size() == 0:
 		empty_trinkets = true
 		emit_signal("empty_trinkets")
 	if inventory.size() > 15:
 		for x in range(15, inventory.size()):
-			inventory[x].hide()
+			remove_child(inventory[x])
+			#inventory[x].hide()
+	trinket_max = inventory.size() - 1
 		
 func add_slot(trinket_index):
 	var trinket_slot = inventory[trinket_index].duplicate()
@@ -44,12 +44,20 @@ func add_slot(trinket_index):
 	#self.add_child(new_slot)
 	
 func scroll_down():
-	inventory[trinket_index].show()
-	inventory[trinket_index - 15].hide()
+	#inventory[trinket_index].show()
+	#inventory[trinket_index - 15].hide()
+	remove_child(inventory[trinket_index - 15])
+	add_child(inventory[trinket_index])
+	
 	
 func scroll_up():
-	inventory[trinket_index - 14].show()
-	inventory[trinket_index + 1].hide()
+	#inventory[trinket_index - 14].show()
+	#inventory[trinket_index + 1].hide()
+	remove_child(inventory[trinket_index + 1])
+	add_child(inventory[trinket_index - 14])
+	move_child(inventory[trinket_index - 14], 0)
+	
+	
 	
 	
 func _process(delta):
@@ -71,6 +79,8 @@ func _input(event):
 		get_id()
 		emit_signal("trinket_chosen")
 		trinkets_active = false
+	if Input.is_action_just_pressed("ui_select"):
+		_ready()
 		
 func get_id():
 	if trinkets_active and not empty_trinkets:

@@ -817,7 +817,7 @@ margin_bottom = -29.0
 grow_horizontal = 2
 grow_vertical = 2
 custom_fonts/font = SubResource( 5 )
-text = "Gary"
+text = "-"
 align = 1
 
 [node name="TrinketInfo" type="Label" parent="Trinkets"]

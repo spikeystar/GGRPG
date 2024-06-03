@@ -4,6 +4,7 @@ var trinket_id
 func _ready():
 	trinket_id = $TrinketsNode/TrinketsInventory.initial_id()
 	set_id()
+	$TrinketsNode/TrinketsCursor.inventory_max = $TrinketsNode/TrinketsInventory.trinket_max
 
 func reset():
 	trinket_id = $TrinketsNode/TrinketsInventory.initial_id()

@@ -35,21 +35,62 @@ func _ready():
 	add_item()
 
 
-	
-	
-	
-	
-	
-	
-	
 	add_trinket_name = "Gold Bracelet"
 	add_trinket()
 	add_trinket_name = "Gold Chain"
 	add_trinket()
 	add_trinket_name = "Gold Earring"
 	add_trinket()
-	add_trinket_name = "-"
+	add_trinket_name = "Gold Bracelet"
 	add_trinket()
+	add_trinket_name = "Gold Chain"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Chain"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Chain"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Chain"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()
+	add_trinket_name = "Gold Chain"
+	add_trinket()
+	add_trinket_name = "Gold Earring"
+	add_trinket()
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	add_enemy_name = "Cheribo"
 	add_enemy()
@@ -87,6 +128,20 @@ func add_item():
 		
 	
 func add_trinket():
+	if Trinkets.size() > 1:
+		Trinkets.remove(Trinkets.size() - 1)
+		new_trinket()
+		blank_trinket()
+	if Trinkets.size() == 0:
+		new_trinket()
+		blank_trinket()
+		
+func blank_trinket():
+	var new_slot = slot.duplicate()
+	new_slot.text = "-"
+	Trinkets.append(new_slot)
+	
+func new_trinket():
 	var new_slot = slot.duplicate()
 	new_slot.text = add_trinket_name
 	Trinkets.append(new_slot)

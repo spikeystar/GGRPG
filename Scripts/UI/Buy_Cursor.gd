@@ -20,7 +20,6 @@ func _process(delta):
 	var current_menu_item := get_menu_item_at_index(cursor_index)
 	if item_selecting and child_count > 0:
 		menu_name = current_menu_item.get_id()
-		print(cursor_index)
 	
 	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and item_selecting:
 		input.y -= 1

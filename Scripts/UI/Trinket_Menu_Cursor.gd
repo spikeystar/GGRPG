@@ -7,6 +7,8 @@ onready var menu_parent := get_node(menu_parent_path)
 
 var cursor_index : int = 0
 var trinket_selecting = false
+var down_count = 0
+var inventory_max : int
 
 signal trinket_selecting
 signal retread
@@ -20,6 +22,9 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and trinket_selecting:
 		input.y -= 1
+		down_count -= 1
+		if down_count > 13:
+			input.y += 1
 		self.modulate.a = 0
 		yield(get_tree().create_timer(0.01), "timeout")
 		self.modulate.a = 1
@@ -28,6 +33,9 @@ func _process(delta):
 		self.modulate.a = 0
 		yield(get_tree().create_timer(0.01), "timeout")
 		self.modulate.a = 1
+		if down_count < inventory_max:
+			down_count += 1
+		print(str(down_count) + " down_count")
 	else:
 		input.y += 0
 		
@@ -82,6 +90,7 @@ func _on_MenuCursor_trinket_selecting():
 	self.modulate.a = 1
 	set_cursor_from_index(0)
 	trinket_selecting = true
+	down_count = 0
 
 func _on_TrinketsInventory_return_to_trinkets():
 	self.modulate.a = 1
