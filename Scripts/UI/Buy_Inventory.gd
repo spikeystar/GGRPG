@@ -9,29 +9,27 @@ onready var inventory : Array = []
 var item_index : int
 
 func _ready():
-	#if SceneManager.location == "Pivot Town":
-	inventory = Shops.Tom
+	if shop_name == "Tom":
+		inventory = Shops.Tom.duplicate()
+	if shop_name == "Cranston":
+		inventory = Shops.Cranston.duplicate()
 	for item_index in inventory.size():
 		add_slot(item_index)
-	#if inventory.size() == 0:
-		#empty_key = true
-		#emit_signal("empty_key")
-	if inventory.size() > 11:
-		for x in range(11, inventory.size()):
+	if inventory.size() > 10:
+		for x in range(10, inventory.size()):
 			inventory[x].hide()
-			
 		
 func add_slot(item_index):
-	var item_slot = inventory[item_index].duplicate()
+	var item_slot = inventory[item_index]
 	self.add_child(item_slot)
 	
 	
 func scroll_down():
 	inventory[item_index].show()
-	inventory[item_index - 11].hide()
+	inventory[item_index - 10].hide()
 	
 func scroll_up():
-	inventory[item_index - 10].show()
+	inventory[item_index - 9].show()
 	inventory[item_index + 1].hide()
 	
 func _process(delta):
@@ -41,10 +39,12 @@ func _process(delta):
 		item_index += 1
 	if Input.is_action_just_pressed("ui_up") and active and item_index > 0:
 		item_index -= 1
-	if Input.is_action_just_pressed("ui_down") and item_index >=11:
+	if Input.is_action_just_pressed("ui_down") and active and item_index >=10:
 		scroll_down()
-	if Input.is_action_just_pressed("ui_up") and item_index >=10:
+	if Input.is_action_just_pressed("ui_up") and active and item_index >=9:
 		scroll_up()
+	if Input.is_action_just_pressed("ui_accept") and active or Input.is_action_just_pressed("ui_left") and active:
+		reset()
 		
 		
 #func get_id():
@@ -58,7 +58,7 @@ func item_removed():
 	for x in self.get_children():
 		self.remove_child(x)
 	item_index = clamp(item_index, 0, inventory.size() - 1)
-	inventory = Shops.Tom
+	inventory = Shops.Tom.duplicate()
 	for item_index in inventory.size():
 		add_slot(item_index)
 	#if inventory.size() == 0:
@@ -66,10 +66,10 @@ func item_removed():
 		#emit_signal("empty_items")
 
 func reset():
-	if inventory.size() > 11:
-		for x in range(11, inventory.size()):
+	if inventory.size() > 10:
+		for x in range(10, inventory.size()):
 			inventory[x].hide()
-		for x in range(0, 10):
+		for x in range(0, 9):
 			inventory[x].show()
 	item_index = 0
 	active = false

@@ -1,12 +1,15 @@
 extends VBoxContainer
 
-onready var Members = get_tree().get_root().get_node("PauseMenu/Members")
+#onready var Members = get_tree().get_root().get_node("PauseMenu/Members")
+#const menu_slot = preload("res://UI/Slot.tscn")
+#onready var slot = menu_slot.instance()
 
 var trinkets_active = false
 var empty_trinkets = false
 var trinket_id : String
 var trinket_holder : String
 var selector_name : String
+var new_name : String
 
 signal trinket_chosen()
 signal empty_trinkets()
@@ -18,9 +21,12 @@ onready var inventory : Array = []
 var trinket_index : int
 
 func _ready():
-	inventory = Party.Trinkets
+	inventory = Party.Trinkets.duplicate()
 	for trinket_index in inventory.size():
 		add_slot(trinket_index)
+	#for x in inventory.size():
+		#new_name = inventory[x].get_id()
+		#add_slot()
 	if inventory.size() == 0:
 		empty_trinkets = true
 		emit_signal("empty_trinkets")
@@ -31,6 +37,11 @@ func _ready():
 func add_slot(trinket_index):
 	var trinket_slot = inventory[trinket_index].duplicate()
 	self.add_child(trinket_slot)
+	
+#func add_slot():
+	#var new_slot = slot.duplicate()
+	#new_slot.text = new_name
+	#self.add_child(new_slot)
 	
 func scroll_down():
 	inventory[trinket_index].show()
@@ -98,7 +109,7 @@ func _on_Members_trinket_equipped():
 	PartyStats.holder_name = selector_name
 	var equipped = inventory[trinket_index].get_trinket()
 	var trinket_name = inventory[trinket_index].get_id()
-	if trinket_name == "Unequip Trinket":
+	if trinket_name == "-":
 		inventory[trinket_index].trinket_unequip()
 	if equipped:
 		inventory[trinket_index].trinket_relocate()

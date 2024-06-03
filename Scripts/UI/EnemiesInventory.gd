@@ -9,7 +9,7 @@ onready var inventory : Array = []
 var enemy_index : int
 
 func _ready():
-	inventory = Party.EnemyList
+	inventory = Party.EnemyList.duplicate()
 	for enemy_index in inventory.size():
 		add_slot(enemy_index)
 	if inventory.size() > 15:

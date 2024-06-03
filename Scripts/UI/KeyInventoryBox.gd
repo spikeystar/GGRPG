@@ -13,7 +13,7 @@ onready var inventory : Array = []
 var key_index : int
 
 func _ready():
-	inventory = Party.KeyItems
+	inventory = Party.KeyItems.duplicate()
 	for key_index in inventory.size():
 		add_slot(key_index)
 	if inventory.size() == 0:

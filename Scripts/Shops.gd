@@ -24,6 +24,8 @@ func _ready():
 	add_item()
 	item_name = "Gold Chain"
 	add_item()
+		
+	
 	this_shop = Cranston
 	item_name = "Yummy Cake"
 	add_item()

@@ -33,6 +33,14 @@ func _ready():
 	add_item()
 	add_item_name = "Picnic Pie"
 	add_item()
+
+
+	
+	
+	
+	
+	
+	
 	
 	add_trinket_name = "Gold Bracelet"
 	add_trinket()
@@ -40,7 +48,7 @@ func _ready():
 	add_trinket()
 	add_trinket_name = "Gold Earring"
 	add_trinket()
-	add_trinket_name = "Unequip Trinket"
+	add_trinket_name = "-"
 	add_trinket()
 	
 	add_enemy_name = "Cheribo"
@@ -72,9 +80,11 @@ func add_item():
 		var new_slot = slot.duplicate()
 		new_slot.text = add_item_name
 		Storage.append(new_slot)
-	var new_slot = slot.duplicate()
-	new_slot.text = add_item_name
-	Inventory.append(new_slot)
+	else:
+		var new_slot = slot.duplicate()
+		new_slot.text = add_item_name
+		Inventory.append(new_slot)
+		
 	
 func add_trinket():
 	var new_slot = slot.duplicate()
@@ -109,6 +119,11 @@ func populate_Irina():
 func remove_item():
 	Inventory.remove(item_index)
 	item_index = clamp(item_index, 0, Inventory.size() - 1)
+	
+func deposit_item():
+	var new_slot = slot.duplicate()
+	new_slot.text = add_item_name
+	Storage.append(new_slot)
 	
 func remove_storage():
 	Storage.remove(storage_index)

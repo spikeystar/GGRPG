@@ -8,6 +8,7 @@ var item_selecting = false
 var able = false
 var complete = false
 var ongoing = false
+export var shop_name : String
 
 signal option_selecting
 signal restart
@@ -18,11 +19,11 @@ signal withdraw
 signal retread
 
 func welcome():
-	$Dialogue/Label.percent_visible = 0.1
+	$Dialogue/Name/Talk.percent_visible = 0.1
 	$Dialogue.show()
-	$Dialogue/Label.text = "Hey. What do you need?"
+	welcome_text()
 	tween = create_tween()
-	tween.tween_property($Dialogue/Label, "percent_visible", 1, 1)
+	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, 1)
 	yield(get_tree().create_timer(1), "timeout")
 	$Dialogue/DialogueCursor.show()
 	dialogue_cursor = true
@@ -35,7 +36,7 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_select") and dialogue_cursor and welcome:
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
-		$Dialogue/Label.percent_visible = 0.1
+		$Dialogue/Name/Talk.percent_visible = 0.1
 		$ShopOptions.show()
 		welcome = false
 		options = true
@@ -57,14 +58,14 @@ func _input(event):
 		ongoing = true
 		$ShopOptions.hide()
 		$Dialogue.show()
-		$Dialogue/Label.text = "Someday I'm gonna leave this town."
+		text_1()
 		tween_go()
 		yield(get_tree().create_timer(1), "timeout")
 		$Dialogue/DialogueCursor.show()
 		able = true
 	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and able:
 		$Dialogue/DialogueCursor.hide()
-		$Dialogue/Label.text = "There's gotta be somewhere more interesting to live than here."
+		text_2()
 		tween_go()
 		yield(get_tree().create_timer(2), "timeout")
 		$Dialogue/DialogueCursor.show()
@@ -107,9 +108,35 @@ func _input(event):
 		item_selecting = true
 		options = false
 		
+	if Input.is_action_just_pressed("ui_select") and menu_name == "Deposit" and not item_selecting and not ongoing:
+		emit_signal("deposit")
+		$Dialogue.hide()
+		$Dialogue/DialogueCursor.hide()
+		$ShopOptions.hide()
+		$ShopOptions/MenuCursor.option_selecting = false
+		$ShopOptions/MenuCursor.able = false
+		$Deposit.show()
+		$Deposit/MenuCursor.cursor_index = 0
+		item_selecting = true
+		options = false
+		
+	if Input.is_action_just_pressed("ui_select") and menu_name == "Withdraw" and not item_selecting and not ongoing:
+		emit_signal("withdraw")
+		$Dialogue.hide()
+		$Dialogue/DialogueCursor.hide()
+		$ShopOptions.hide()
+		$ShopOptions/MenuCursor.option_selecting = false
+		$ShopOptions/MenuCursor.able = false
+		$Withdraw.show()
+		$Withdraw/MenuCursor.cursor_index = 0
+		item_selecting = true
+		options = false
+		
 	if Input.is_action_just_pressed("ui_accept") and item_selecting or Input.is_action_just_pressed("ui_left") and item_selecting:
 		$Buy.hide()
 		$Sell.hide()
+		$Deposit.hide()
+		$Withdraw.hide()
 		$ShopOptions.show()
 		$ShopOptions/MenuCursor.able = false
 		item_selecting = false
@@ -122,8 +149,22 @@ func _on_Shop_interaction():
 	welcome()
 	
 func tween_go():
-	var length = $Dialogue/Label.text.length()
-	$Dialogue/Label.percent_visible = 0.1
+	var length = $Dialogue/Name/Talk.text.length()
+	$Dialogue/Name/Talk.percent_visible = 0.1
 	tween = create_tween()
-	tween.tween_property($Dialogue/Label, "percent_visible", 1, (length/27))
+	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, (length/27))
+	
+func welcome_text():
+	$Dialogue/Name.text = shop_name + ":"
+	if shop_name == "Tom":
+		$Dialogue/Name/Talk.text = "Hey. What do you need?"
+	
+func text_1():
+	if shop_name == "Tom":
+		$Dialogue/Name/Talk.text = "Someday I'm gonna leave this town."
+	
+func text_2():
+	if shop_name == "Tom":
+		$Dialogue/Name/Talk.text = "There's gotta be somewhere more interesting to live than here."
+	
 	

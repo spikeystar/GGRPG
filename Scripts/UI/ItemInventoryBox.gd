@@ -16,7 +16,7 @@ onready var inventory : Array = []
 var item_index : int
 
 func _ready():
-	inventory = Party.Inventory
+	inventory = Party.Inventory.duplicate()
 	for item_index in inventory.size():
 		add_slot(item_index)
 	if inventory.size() == 0:
@@ -59,8 +59,8 @@ func initial_id():
 func item_removed():
 	for x in self.get_children():
 		self.remove_child(x)
+	inventory = Party.Inventory.duplicate()
 	item_index = clamp(item_index, 0, inventory.size() - 1)
-	inventory = Party.Inventory
 	for item_index in inventory.size():
 		add_slot(item_index)
 	if inventory.size() == 0:
