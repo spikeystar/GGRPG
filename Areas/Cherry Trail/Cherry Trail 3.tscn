@@ -689,7 +689,9 @@ exit_name = "CherryTrail2_3"
 polygon = PoolVector2Array( -42, -15, 52, 17, 38, 23, -59, -12 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
 position = Vector2( -235, -234 )
+z_index = 4096
 current = true
 script = ExtResource( 17 )
 minPos = Vector2( -220, -280 )

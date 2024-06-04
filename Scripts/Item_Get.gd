@@ -16,8 +16,12 @@ func _on_body_entered(body):
 		used = true
 		
 func item_get():
-	SE.id = "Item_Get"
-	SE.effect()
-	Party.add_item_name = item_name
-	Party.add_item()
-	emit_signal("item_get")
+	if not Global.Collected.has(global_position):
+		SE.id = "Item_Get"
+		SE.effect()
+		Party.add_item_name = item_name
+		Party.add_item()
+		emit_signal("item_get")
+		Global.Collected.append(global_position)
+	else:
+		return

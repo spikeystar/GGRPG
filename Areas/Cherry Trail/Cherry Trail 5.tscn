@@ -498,6 +498,8 @@ script = ExtResource( 3 )
 position = Vector2( 138, 277 )
 scale = Vector2( 1.58395, 1.37216 )
 texture = ExtResource( 16 )
+script = ExtResource( 3 )
+height = 32.0
 
 [node name="HillC" type="Sprite" parent="YSort"]
 position = Vector2( 467, -102 )
