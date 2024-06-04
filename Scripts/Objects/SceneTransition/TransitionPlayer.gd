@@ -11,6 +11,9 @@ var animation_name = "FadeToBlack"
  
 func _ready():
 	animation_player.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
+	
+func fade_speed():
+	animation_player.playback_speed = 0.8
 
 func transition_in(target_scene, animation_name = "FadeToBlack"):
 	self.animation_name = animation_name

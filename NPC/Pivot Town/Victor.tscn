@@ -20,6 +20,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 6, 7, 6, 8 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("CircleShadowSmall:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -6, -4 ), Vector2( -8, -3 ), Vector2( -6, -4 ), Vector2( -6, -3 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -33,7 +45,19 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0 ]
+"values": [ 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CircleShadowSmall:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -6, -4 ) ]
 }
 
 [node name="Victor" type="Node2D"]
@@ -45,7 +69,7 @@ scale = Vector2( 1.1205, 1.08122 )
 texture = ExtResource( 3 )
 
 [node name="CollidableBox" parent="." instance=ExtResource( 2 )]
-modulate = Color( 0.99, 0.98505, 0.9801, 1 )
+modulate = Color( 0.988235, 0.988235, 0.992157, 1 )
 tile_size = Vector2( 69, 22 )
 grid_size = Vector2( 1, 0.6 )
 texture = ExtResource( 1 )
@@ -55,6 +79,7 @@ height = 90.0
 preview_collision_box = false
 animation_hframes = 9
 animation_vframes = 3
+animation_frame = 6
 use_dither_blending = false
 always_update = true
 

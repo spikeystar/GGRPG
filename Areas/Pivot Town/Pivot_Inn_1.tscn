@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Assets/Pivot Town/End Table.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Backgrounds/Inside BCKGD.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://Assets/Pivot Town/yellow rug a.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Pivot Town/staircase b.png" type="Texture" id=9]
 [ext_resource path="res://UI/Interaction Window.png" type="Texture" id=10]
+[ext_resource path="res://Assets/General/Rugs/red rug e.png" type="Texture" id=11]
+[ext_resource path="res://Assets/General/Rugs/orange mat.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Gary's House/Exterior/pot b.png" type="Texture" id=13]
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=15]
@@ -37,7 +39,6 @@
 [ext_resource path="res://Assets/Pivot Town/cookies basket.png" type="Texture" id=46]
 [ext_resource path="res://Assets/Pivot Town/inn counter.png" type="Texture" id=47]
 [ext_resource path="res://Assets/Pivot Town/yellow cake.png" type="Texture" id=48]
-[ext_resource path="res://Assets/Pivot Town/red rug.png" type="Texture" id=49]
 [ext_resource path="res://Assets/Pivot Town/dinner chair a 2.png" type="Texture" id=50]
 [ext_resource path="res://Assets/Pivot Town/dinner chair a 1.png" type="Texture" id=51]
 [ext_resource path="res://Assets/General/Shadows/rectangle shadow small.png" type="Texture" id=53]
@@ -169,7 +170,7 @@ texture = ExtResource( 43 )
 flip_h = true
 
 [node name="PinkRug2" type="Sprite" parent="Node2D"]
-self_modulate = Color( 0.973467, 0.9604, 0.98, 1 )
+self_modulate = Color( 0.996078, 0.94902, 0.996078, 1 )
 position = Vector2( -71.177, -33.6278 )
 rotation = -0.00523599
 scale = Vector2( 1.3, 1.3 )
@@ -185,9 +186,12 @@ texture = ExtResource( 54 )
 flip_h = true
 
 [node name="YellowRugA" type="Sprite" parent="Node2D"]
-position = Vector2( 149.909, -17.7852 )
+modulate = Color( 1, 0.996078, 1, 1 )
+position = Vector2( 153.909, -17.8061 )
 rotation = -0.00523599
-texture = ExtResource( 8 )
+scale = Vector2( 1.05, 1.05 )
+texture = ExtResource( 12 )
+flip_h = true
 
 [node name="YellowRugA2" type="Sprite" parent="Node2D"]
 position = Vector2( -62.685, 60.329 )
@@ -201,21 +205,13 @@ rotation = 0.0815029
 scale = Vector2( 1.27778, 1.14444 )
 texture = ExtResource( 53 )
 
-[node name="RedRug" type="Sprite" parent="Node2D"]
-modulate = Color( 0.717647, 0.576471, 0.815686, 1 )
-position = Vector2( 231.815, 118.904 )
-rotation = -0.0169483
-scale = Vector2( 1.6, 1.7 )
-texture = ExtResource( 49 )
-flip_v = true
-
 [node name="RedRug2" type="Sprite" parent="Node2D"]
-modulate = Color( 0.9528, 0.912, 0.96, 1 )
-position = Vector2( 231.809, 117.904 )
-rotation = -0.0169483
+modulate = Color( 0.98, 0.98, 0.98, 1 )
+position = Vector2( 223.599, 113.83 )
+rotation = 0.0472169
 scale = Vector2( 1.6, 1.7 )
-texture = ExtResource( 49 )
-flip_v = true
+texture = ExtResource( 11 )
+flip_h = true
 
 [node name="WallA" type="Sprite" parent="Node2D"]
 modulate = Color( 0.980392, 0.980392, 0.980392, 1 )
@@ -603,7 +599,7 @@ exit_name = "Pivot_Inn_2"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Upstairs"]
 position = Vector2( -13, 10 )
-polygon = PoolVector2Array( -24.0571, -20.8061, 8.86916, -34.9787, 16.9005, -29.0207, -12.0258, -14.869 )
+polygon = PoolVector2Array( -24.0571, -20.8061, 2.88497, -31.9469, 9.91105, -26.9837, -14.031, -15.8582 )
 
 [node name="Shop" parent="Node2D/CollisionRoot" instance=ExtResource( 33 )]
 position = Vector2( -74.1561, -29.6121 )

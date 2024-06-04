@@ -180,14 +180,14 @@ height = 65.0
 preview_collision_box = false
 
 [node name="Bed" parent="Node2D/YSort" instance=ExtResource( 24 )]
-position = Vector2( -16.2406, -45.9156 )
+position = Vector2( -17.2459, -46.9104 )
 rotation = 0.0189685
 tile_size = Vector2( 60.35, 27.708 )
-grid_size = Vector2( 2.5, 2.5 )
+grid_size = Vector2( 3, 3.5 )
 texture = ExtResource( 8 )
 texture_scale = Vector2( 1.6, 1.65 )
-texture_offset = Vector2( 2.766, 23 )
-height = 32.0
+texture_offset = Vector2( 2.766, 24 )
+height = 40.0
 preview_collision_box = false
 
 [node name="Begonia" parent="Node2D/YSort" instance=ExtResource( 24 )]
@@ -236,7 +236,6 @@ preview_collision_box = false
 use_collision = false
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
-visible = false
 position = Vector2( 3.99995, -0.0209439 )
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 45 )]
@@ -259,10 +258,10 @@ position = Vector2( 52.947, -10.2772 )
 polygon = PoolVector2Array( 15.9946, -1.08376, 48.9208, -15.2564, 63, -6, 32, 6 )
 
 [node name="Sleep" parent="Node2D/CollisionRoot" instance=ExtResource( 48 )]
-position = Vector2( 11.4082, -113.061 )
+position = Vector2( 17.4657, -102.093 )
 door_name = "Sleep"
 direction = Vector2( -1, -1 )
-height = 32
+height = 40
 
 [node name="PlayerSpawnFromOutsideHouse2" parent="Node2D/CollisionRoot" instance=ExtResource( 48 )]
 position = Vector2( -59.6065, 75.3131 )
@@ -291,6 +290,6 @@ offset = Vector2( 0, -20 )
 current = true
 zoom = Vector2( 0.655, 0.65 )
 script = ExtResource( 31 )
-minPos = Vector2( -70, -110 )
-maxPos = Vector2( 300, 5 )
+minPos = Vector2( -70, -70 )
+maxPos = Vector2( 100, 5 )
 follow_player = true

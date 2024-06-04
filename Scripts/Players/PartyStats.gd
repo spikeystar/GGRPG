@@ -7,7 +7,7 @@ var holder_name : String
 
 var gary_id = 2
 var gary_health = 87
-var gary_current_health = 87
+var gary_current_health = 43
 var gary_attack = 25
 var gary_magic = 23
 var gary_defense = 15
@@ -62,3 +62,11 @@ func set_id():
 		suzy_id = party_id
 	if member_name == "damien":
 		damien_id = party_id
+		
+func full_heal():
+	gary_current_health = gary_health
+	jacques_current_health = jacques_health
+	irina_current_health = irina_health
+	suzy_current_health = suzy_health
+	damien_current_health = damien_health
+	party_sp = party_max_sp

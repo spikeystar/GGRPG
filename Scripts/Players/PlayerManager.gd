@@ -8,6 +8,7 @@ var global_position_when_removed = Vector2()
 var is_navmesh_ready = false
 var freeze = false
 var sleep = false
+var ongoing = false
 
 func _ready():
 	spawn_player()

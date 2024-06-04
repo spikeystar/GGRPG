@@ -19,11 +19,12 @@ signal withdraw
 signal retread
 
 func welcome():
-	$Dialogue/Name/Talk.percent_visible = 0.1
+	$Dialogue/Name/Talk.percent_visible = 0.0
 	$Dialogue.show()
 	welcome_text()
+	var length = $Dialogue/Name/Talk.text.length()
 	tween = create_tween()
-	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, 1)
+	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, (length/25))
 	yield(get_tree().create_timer(1), "timeout")
 	$Dialogue/DialogueCursor.show()
 	dialogue_cursor = true
@@ -150,9 +151,9 @@ func _on_Shop_interaction():
 	
 func tween_go():
 	var length = $Dialogue/Name/Talk.text.length()
-	$Dialogue/Name/Talk.percent_visible = 0.1
+	$Dialogue/Name/Talk.percent_visible = 0.0
 	tween = create_tween()
-	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, (length/27))
+	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, (length/25))
 	
 func welcome_text():
 	$Dialogue/Name.text = shop_name + ":"

@@ -24,11 +24,12 @@ signal restart
 signal sleep
 
 func welcome():
-	$Dialogue/Name/Talk.percent_visible = 0.1
+	$Dialogue/Name/Talk.percent_visible = 0.0
 	$Dialogue.show()
 	welcome_text()
+	var length = $Dialogue/Name/Talk.text.length()
 	tween = create_tween()
-	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, 1)
+	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, (length/25))
 	yield(get_tree().create_timer(1), "timeout")
 	$Dialogue/DialogueCursor.show()
 	dialogue_cursor = true
@@ -91,14 +92,16 @@ func _input(event):
 		
 	if Input.is_action_just_pressed("ui_select") and menu_name == "Sleep" and Party.marbles >= cost:
 		Party.marbles = Party.marbles - cost
+		PartyStats.full_heal()
+		PlayerManager.ongoing = true
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
+		$ShopOptions.hide()
 		welcome = true
 		dialogue_cursor = false
 		options = false
 		complete = false
 		menu_name = ""
-		PlayerManager.freeze = false
 		ongoing = false
 		yield(get_tree().create_timer(0.1), "timeout")
 		Global.door_name = "Sleep"
@@ -107,7 +110,13 @@ func _input(event):
 		yield(get_tree().create_timer(0.7), "timeout")
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)
+		transition.fade_speed()
+		yield(get_tree().create_timer(0.5), "timeout")
 		transition.transition_in(target_scene, _get_animation_name())
+		yield(get_tree().create_timer(0.8), "timeout")
+		PlayerManager.sleep = true
+		yield(get_tree().create_timer(0.5), "timeout")
+		PlayerManager.ongoing = false
 		
 func _get_animation_name():
 	var animation_name = "FadeToBlack" # default
@@ -121,9 +130,9 @@ func _on_Shop_interaction():
 	
 func tween_go():
 	var length = $Dialogue/Name/Talk.text.length()
-	$Dialogue/Name/Talk.percent_visible = 0.1
+	$Dialogue/Name/Talk.percent_visible = 0.0
 	tween = create_tween()
-	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, (length/27))
+	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, (length/25))
 	
 func welcome_text():
 	$Dialogue/Name.text = inn_name + ":"
