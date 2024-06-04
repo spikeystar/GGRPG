@@ -6,3 +6,4 @@ var direction : Vector2
 var height : int
 
 var location : String
+var npc_name : String

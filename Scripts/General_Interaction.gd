@@ -3,6 +3,8 @@ onready var Dialogue = get_tree().get_root().get_node("Camera2D/Interaction/Dial
 
 export var height = 0.0
 var gary_entered = false
+export var npc_name : String
+signal general_dialogue
 
 func _ready():
 	var timer = Timer.new()
@@ -22,7 +24,8 @@ func _input(event):
 		PlayerManager.freeze = true
 		_on_touch_area()
 		gary_entered = false
-		connect("general_dialogue", Dialogue, "on_Area2D_general_dialogue")
+		SceneManager.npc_name = npc_name
+		emit_signal("general_dialogue")
 		#yield(get_tree().create_timer(1.5), "timeout")
 	
 func _on_body_entered(body):
@@ -33,3 +36,6 @@ func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")
 	emit_signal("interaction")
 	
+
+func _on_NPC_body_exited(body):
+	gary_entered = false

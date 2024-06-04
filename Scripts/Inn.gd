@@ -9,6 +9,7 @@ var complete = false
 var ongoing = false
 export var inn_name : String
 export var cost : int
+var length : int
 
 const TransitionPlayer = preload("res://Objects/SceneTransition/TransitionPlayer.tscn")
 export(String, FILE, "*.tscn,*.scn") var target_scene
@@ -27,10 +28,10 @@ func welcome():
 	$Dialogue/Name/Talk.percent_visible = 0.0
 	$Dialogue.show()
 	welcome_text()
-	var length = $Dialogue/Name/Talk.text.length()
+	length = $Dialogue/Name/Talk.text.length()
 	tween = create_tween()
 	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, (length/25))
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer((length/25)), "timeout")
 	$Dialogue/DialogueCursor.show()
 	dialogue_cursor = true
 	
@@ -66,14 +67,14 @@ func _input(event):
 		$Dialogue.show()
 		text_1()
 		tween_go()
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer((length/25)), "timeout")
 		$Dialogue/DialogueCursor.show()
 		able = true
 	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and able:
 		$Dialogue/DialogueCursor.hide()
 		text_2()
 		tween_go()
-		yield(get_tree().create_timer(2), "timeout")
+		yield(get_tree().create_timer((length/25)), "timeout")
 		$Dialogue/DialogueCursor.show()
 		able = false
 		complete = true
@@ -129,7 +130,7 @@ func _on_Shop_interaction():
 	welcome()
 	
 func tween_go():
-	var length = $Dialogue/Name/Talk.text.length()
+	length = $Dialogue/Name/Talk.text.length()
 	$Dialogue/Name/Talk.percent_visible = 0.0
 	tween = create_tween()
 	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, (length/25))

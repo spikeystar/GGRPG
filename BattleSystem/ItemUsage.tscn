@@ -131,7 +131,7 @@ tracks/1/keys = {
 scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 2 )
 hframes = 3
-vframes = 3
+vframes = 4
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false

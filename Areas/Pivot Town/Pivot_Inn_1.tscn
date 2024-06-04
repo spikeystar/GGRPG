@@ -621,12 +621,13 @@ position = Vector2( -96, 82 )
 door_name = "Pivot_Town_1"
 direction = Vector2( 1, 1 )
 
-[node name="Victor" type="Area2D" parent="Node2D/CollisionRoot"]
+[node name="NPC" type="Area2D" parent="Node2D/CollisionRoot"]
 script = ExtResource( 19 )
+npc_name = "Victor"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Victor"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/NPC"]
 position = Vector2( 180.128, 24.0572 )
-polygon = PoolVector2Array( -3.01566, -2.98425, 23.052, 9.87944, 11.0993, 18.9421, -17.9736, 5.09418 )
+polygon = PoolVector2Array( -7.02567, -4.96329, 27.0576, 10.8585, 9.11026, 20.9526, -22.9836, 3.12037 )
 
 [node name="Window" type="Sprite" parent="Node2D"]
 position = Vector2( -186.453, -86.0245 )
@@ -738,6 +739,9 @@ script = ExtResource( 7 )
 menu_parent_path = NodePath("../VBoxContainer")
 cursor_offset = Vector2( -21, 0 )
 
+[connection signal="body_exited" from="Node2D/CollisionRoot/Shop" to="Node2D/CollisionRoot/Shop" method="_on_Shop_body_exited"]
 [connection signal="interaction" from="Node2D/CollisionRoot/Shop" to="Camera2D/Interaction" method="_on_Shop_interaction"]
+[connection signal="body_exited" from="Node2D/CollisionRoot/NPC" to="Node2D/CollisionRoot/NPC" method="_on_NPC_body_exited"]
+[connection signal="general_dialogue" from="Node2D/CollisionRoot/NPC" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]
 [connection signal="option_selecting" from="Camera2D/Interaction" to="Camera2D/Interaction/ShopOptions/MenuCursor" method="_on_Interaction_option_selecting"]
 [connection signal="restart" from="Camera2D/Interaction" to="Node2D/CollisionRoot/Shop" method="_on_Interaction_restart"]

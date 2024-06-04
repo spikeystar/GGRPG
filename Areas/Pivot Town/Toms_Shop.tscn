@@ -960,7 +960,7 @@ position = Vector2( 84.9992, -81.6665 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 50 )
 hframes = 3
-vframes = 3
+vframes = 4
 
 [node name="Cost" type="Label" parent="Camera2D/Interaction/Buy"]
 margin_left = 47.0
@@ -1011,7 +1011,7 @@ position = Vector2( 84.9992, -81.6665 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 50 )
 hframes = 3
-vframes = 3
+vframes = 4
 
 [node name="Cost" type="Label" parent="Camera2D/Interaction/Sell"]
 margin_left = 47.0
@@ -1062,7 +1062,7 @@ position = Vector2( 84.9992, -81.6665 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 50 )
 hframes = 3
-vframes = 3
+vframes = 4
 
 [node name="Storage" type="Label" parent="Camera2D/Interaction/Deposit"]
 margin_left = 38.3326
@@ -1123,7 +1123,7 @@ position = Vector2( 84.9992, -81.6665 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 50 )
 hframes = 3
-vframes = 3
+vframes = 4
 
 [node name="Bag" type="Label" parent="Camera2D/Interaction/Withdraw"]
 margin_left = 34.9992

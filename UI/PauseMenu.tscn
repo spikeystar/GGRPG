@@ -770,7 +770,7 @@ position = Vector2( 90, -121 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 12 )
 hframes = 3
-vframes = 3
+vframes = 4
 
 [node name="Trinkets" type="Sprite" parent="."]
 visible = false
@@ -806,7 +806,7 @@ position = Vector2( 90, -121 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 12 )
 hframes = 3
-vframes = 3
+vframes = 4
 frame = 6
 
 [node name="Held_name" type="Label" parent="Trinkets"]
