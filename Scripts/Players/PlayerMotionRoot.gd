@@ -52,6 +52,7 @@ func update_floor():
 
 func _physics_process(delta):
 	var freeze = PlayerManager.freeze
+	var sleep = PlayerManager.sleep
 	# Floor height could change at any time with movable platforms
 	update_floor()
 	
@@ -69,19 +70,20 @@ func _physics_process(delta):
 	
 	# Input direction
 	var input_dir = Vector2.ZERO
-	if Input.is_action_pressed("ui_right") and not freeze:
+	if Input.is_action_pressed("ui_right") and not freeze and not sleep:
 		input_dir.x += 1.0
-	if Input.is_action_pressed("ui_left") and not freeze:
+	if Input.is_action_pressed("ui_left") and not freeze and not sleep:
 		input_dir.x -= 1.0
-	if Input.is_action_pressed("ui_down") and not freeze:
+	if Input.is_action_pressed("ui_down") and not freeze and not sleep:
 		input_dir.y -= 1.0
-	if Input.is_action_pressed("ui_up") and not freeze:
+	if Input.is_action_pressed("ui_up") and not freeze and not sleep:
 		input_dir.y += 1.0
 	if input_dir.length_squared() > 1:
 		input_dir = input_dir.normalized()
 	
 	if Input.is_action_pressed("ui_push") and is_on_ground and not freeze:
 		is_on_ground = false
+		PlayerManager.sleep = false
 		vel.z = jump_velocity
 	
 	vel.x += input_dir.x * player_acceleration * delta

@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=2]
+[gd_scene load_steps=115 format=2]
 
 [ext_resource path="res://Scripts/Players/Gary.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -335,7 +335,7 @@ states/Walk/node = SubResource( 50 )
 states/Walk/position = Vector2( 423.273, 81.1914 )
 transitions = [ "Idle", "Walk", SubResource( 51 ), "Walk", "Idle", SubResource( 52 ), "Idle", "Jump", SubResource( 110 ), "Jump", "Idle", SubResource( 111 ), "Jump", "Walk", SubResource( 112 ), "Walk", "Jump", SubResource( 113 ), "Jump", "Fall", SubResource( 174 ), "Idle", "Fall", SubResource( 175 ), "Fall", "Idle", SubResource( 176 ), "Walk", "Fall", SubResource( 177 ), "Fall", "Walk", SubResource( 178 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -3.02985, 27.6328 )
+graph_offset = Vector2( 27.3302, 0.0703009 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=38]
 
@@ -1553,6 +1553,23 @@ tracks/2/keys = {
 "values": [ 10, 9, 11, 9 ]
 }
 
+[sub_resource type="Animation" id=214]
+resource_name = "sleep"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 27, 28, 29, 30 ]
+}
+
 [node name="Gary" type="YSort"]
 script = ExtResource( 1 )
 
@@ -1654,3 +1671,4 @@ anims/side_r_idle = SubResource( 61 )
 anims/side_r_jump = SubResource( 58 )
 anims/side_r_walk = SubResource( 53 )
 anims/side_walk = SubResource( 22 )
+anims/sleep = SubResource( 214 )

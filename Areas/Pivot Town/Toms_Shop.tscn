@@ -30,7 +30,7 @@
 [ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=29]
 [ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=30]
-[ext_resource path="res://Assets/Pivot Town/painting 4.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Pivot Town/painting 3.png" type="Texture" id=31]
 [ext_resource path="res://Assets/Pivot Town/ivy.png" type="Texture" id=33]
 [ext_resource path="res://Assets/Pivot Town/book stack.png" type="Texture" id=34]
 [ext_resource path="res://Assets/Pivot Town/red rug.png" type="Texture" id=35]
@@ -500,7 +500,7 @@ scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 27 )
 
 [node name="Painting4" type="Sprite" parent="Node2D"]
-position = Vector2( -147.553, -105.229 )
+position = Vector2( -147.537, -102.229 )
 rotation = 0.0166143
 scale = Vector2( 1.15, 1.15 )
 texture = ExtResource( 31 )

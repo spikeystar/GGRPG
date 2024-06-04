@@ -15,6 +15,7 @@ var pause_menu
 onready var motion_root: KinematicBody2D = $MotionRoot
 onready var world_collider = $MotionRoot/CollisionShape2D
 onready var anim_tree = $BodyYSort/AnimationTree
+onready var anim_player = $BodyYSort/AnimationPlayer
 
 onready var body_y_sort = $BodyYSort
 onready var body_visual_root = $BodyYSort/BodyVisualRoot
@@ -26,6 +27,7 @@ onready var shadow_sprite = $ShadowYSort/ShadowVisualRoot/ShadowCircle
 
 func _physics_process(delta):
 	var freeze = PlayerManager.freeze
+	var sleep = PlayerManager.sleep
 
 	var last_dir = motion_root.last_dir
 	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1:
@@ -42,6 +44,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_push") and not freeze:
 		anim_tree.get("parameters/playback").travel("Jump")
 		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
+		
+	if sleep:
+		anim_player.play("sleep")
 		
 	#if Input.is_action_pressed("ui_pause") and not freeze:
 		#PlayerManager.freeze = true

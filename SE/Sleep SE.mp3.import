@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sleep SE.mp3-65f2aa0aa585797d18e1607462c8c88a.mp3str"
+
+[deps]
+
+source_file="res://SE/Sleep SE.mp3"
+dest_files=[ "res://.import/Sleep SE.mp3-65f2aa0aa585797d18e1607462c8c88a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
