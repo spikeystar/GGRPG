@@ -35,7 +35,7 @@ func _ready():
 	trinket_max = inventory.size() - 1
 		
 func add_slot(trinket_index):
-	var trinket_slot = inventory[trinket_index].duplicate()
+	var trinket_slot = inventory[trinket_index]
 	self.add_child(trinket_slot)
 	
 #func add_slot():

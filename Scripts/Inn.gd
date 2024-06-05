@@ -105,8 +105,7 @@ func _input(event):
 		ongoing = false
 		yield(get_tree().create_timer(0.1), "timeout")
 		Global.door_name = "Sleep"
-		SE.id = "Sleep"
-		SE.effect()
+		SE.effect("Sleep")
 		yield(get_tree().create_timer(0.7), "timeout")
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)

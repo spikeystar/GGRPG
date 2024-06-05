@@ -36,7 +36,7 @@
 [ext_resource path="res://Assets/Pivot Town/red rug.png" type="Texture" id=35]
 [ext_resource path="res://Assets/Pivot Town/dinner chair a 2.png" type="Texture" id=36]
 [ext_resource path="res://Assets/Pivot Town/dinner chair a 1.png" type="Texture" id=37]
-[ext_resource path="res://NPC/Pivot Town/Tom.tscn" type="PackedScene" id=38]
+[ext_resource path="res://NPC/Pivot Town/Older/Tom.tscn" type="PackedScene" id=38]
 [ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=39]
 [ext_resource path="res://Scripts/Shop_Interact.gd" type="Script" id=40]
 [ext_resource path="res://UI/Shop/Options Window.png" type="Texture" id=41]

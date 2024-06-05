@@ -1,8 +1,6 @@
 extends Node
 
-var id : String
-
-func effect():
+func effect(id : String):
 	if id == "Item_Get":
 		$Item_Get.play()
 	if id == "Sleep":

@@ -17,8 +17,7 @@ func _on_body_entered(body):
 		
 func item_get():
 	if not Global.Collected.has(global_position):
-		SE.id = "Item_Get"
-		SE.effect()
+		SE.effect("Item_Get")
 		Party.add_item_name = item_name
 		Party.add_item()
 		emit_signal("item_get")
