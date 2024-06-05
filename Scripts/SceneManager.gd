@@ -7,3 +7,4 @@ var height : int
 
 var location : String
 var npc_name : String
+var ready_again = false

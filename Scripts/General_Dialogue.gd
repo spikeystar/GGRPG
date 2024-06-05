@@ -6,6 +6,8 @@ signal text_ready
 signal talk_done
 signal restart
 var length : int
+var alternate = false
+var js = Party.jewel_seeds
 
 func _on_NPC_general_dialogue():
 	npc_name = SceneManager.npc_name
@@ -35,7 +37,8 @@ func talking():
 func done():
 	hide()
 	PlayerManager.freeze = false
-	emit_signal("restart")
+	yield(get_tree().create_timer(0.1), "timeout")
+	SceneManager.ready_again = true
 
 func talk():
 	$Name.text = npc_name + ":"
@@ -43,11 +46,22 @@ func talk():
 		Victor()
 		
 func Victor():
-	$Name/Talk.text = "I wonder what that strange noise was."
-	talking()
-	yield(self, "talk_done")
-	$Name/Talk.text = "It's usually so quiet around here. I have a bad feeling about it..."
-	talking()
-	yield(self, "talk_done")
-	done()
+	if js < 2 and not alternate:
+		$Name/Talk.text = "I wonder what that strange noise was."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "It's usually so quiet around here. I have a bad feeling about it..."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif js < 2 and alternate:
+		$Name/Talk.text = "That's a nice guitar you have! I used to work the bass back in the day."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "Now it hurts my wrists too much... Wish I had a different instrument I could play."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
 	

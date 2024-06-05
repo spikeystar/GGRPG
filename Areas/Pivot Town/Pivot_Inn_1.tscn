@@ -676,9 +676,9 @@ position = Vector2( 154.045, 25.1428 )
 
 [node name="Name" type="Label" parent="Camera2D/Interaction/Dialogue"]
 margin_left = -158.813
-margin_top = -29.1429
+margin_top = -30.5715
 margin_right = 162.0
-margin_bottom = 21.8571
+margin_bottom = 20.4285
 custom_fonts/font = ExtResource( 29 )
 text = "Tom:"
 autowrap = true

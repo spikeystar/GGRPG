@@ -1,5 +1,5 @@
 extends Area2D
-onready var Dialogue = get_tree().get_root().get_node("Camera2D/Interaction/Dialogue")
+#onready var Dialogue = get_tree().get_root().get_node("Camera2D/Interaction/Dialogue")
 
 export var height = 0.0
 var gary_entered = false
@@ -20,22 +20,22 @@ func _on_start_checking_body_entered():
 	connect("body_entered", self, "_on_body_entered")
 
 func _input(event):
-	if event.is_action_pressed("ui_select") and get_overlapping_bodies().size() > 0 and gary_entered:
+	if event.is_action_pressed("ui_select") and get_overlapping_bodies().size() > 0 and not PlayerManager.freeze and SceneManager.ready_again:
 		PlayerManager.freeze = true
 		_on_touch_area()
-		gary_entered = false
+		SceneManager.ready_again = false
 		SceneManager.npc_name = npc_name
 		emit_signal("general_dialogue")
 		#yield(get_tree().create_timer(1.5), "timeout")
 	
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root:
-		gary_entered = true
+		SceneManager.ready_again = true
 	
 func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")
 	emit_signal("interaction")
 	
-
+	
 func _on_NPC_body_exited(body):
-	gary_entered = false
+	SceneManager.ready_again = false
