@@ -391,6 +391,11 @@ func f_turn_used():
 	
 func fighters_active_check():
 	var array_size = fighters2.size()
+	for x in range (fighters2.size()):
+		var dead = fighters2[x].death_count()
+		if dead:
+			array_size = array_size - 1
+			fighters.remove(x)
 	if max_turns == array_size:
 		emit_signal ("enemies_enabled")
 		enemies_active = true

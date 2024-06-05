@@ -8,8 +8,10 @@ export(int) var f_attack_base
 export(int) var f_magic
 export(int) var f_magic_base
 export(int) var f_defense 
-export(String) var type = ""
-var applied_type = ""
+var trinket : String
+var base_type = "neutral"
+var current_type : String
+var applied_type : String
 export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
 export(PackedScene) var TEXT_SP: PackedScene = null
@@ -21,9 +23,12 @@ var turn_used = false
 var health : int
 var formation : int
 
+var dead = false
+
 func _ready():
 	set_stats()
 	set_formation()
+	set_trinket()
 	
 func focus():
 	#if able:
@@ -44,6 +49,7 @@ func set_stats():
 		f_attack = PartyStats.gary_attack
 		f_magic = PartyStats.gary_magic
 		f_defense = PartyStats.gary_defense
+		trinket = PartyStats.gary_trinket
 	if fighter_name == "jacques":
 		party_id = PartyStats.jacques_id
 		health = PartyStats.jacques_current_health
@@ -51,6 +57,7 @@ func set_stats():
 		f_attack = PartyStats.jacques_attack
 		f_magic = PartyStats.jacques_magic
 		f_defense = PartyStats.jacques_defense
+		trinket = PartyStats.jacques_trinket
 	if fighter_name == "irina":
 		party_id = PartyStats.irina_id
 		health = PartyStats.irina_current_health
@@ -58,6 +65,7 @@ func set_stats():
 		f_attack = PartyStats.irina_attack
 		f_magic = PartyStats.irina_magic
 		f_defense = PartyStats.irina_defense
+		trinket = PartyStats.irina_trinket
 		
 func set_formation():
 	if PartyStats.party_members == 1:
@@ -79,6 +87,9 @@ func get_f_health():
 func get_id():
 	return party_id
 	
+func death_count():
+	return dead
+	
 func idle():
 	$AnimationPlayer.play("Fighter_BattleReady")
 	
@@ -98,15 +109,33 @@ func item_used():
 	$AnimationPlayer.play("Fighter_BattleReady")
 	
 func heal(HP_amount):
-	health = clamp(health + HP_amount, 0, f_health)
+	if dead:
+		yield(get_tree().create_timer(0.2), "timeout")
+		$Effect.show()
+		$EffectPlayer.play("Heal")
+		yield(get_tree().create_timer(0.2), "timeout")
+		var heal_text = text(TEXT_HEAL)
+		if heal_text:
+			heal_text.label.text = str(0)
+	else:
+		health = clamp(health + HP_amount, 0, f_health)
+		yield(get_tree().create_timer(0.2), "timeout")
+		$Effect.show()
+		$EffectPlayer.play("Heal")
+		yield(get_tree().create_timer(0.2), "timeout")
+		var heal_text = text(TEXT_HEAL)
+		if heal_text:
+			heal_text.label.text = str(HP_amount)
+		
+func restore():
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Effect.show()
-	$EffectPlayer.play("Heal")
-	yield(get_tree().create_timer(0.2), "timeout")
-	var heal_text = text(TEXT_HEAL)
-	if heal_text:
-		heal_text.label.text = str(HP_amount)
-	
+	$EffectPlayer.play("Restore")
+	if dead:
+		$AnimationPlayer.play_backwards("Fighter_Dead")
+		$AnimationPlayer.play("Fighter_BattleReady")
+		dead = false
+		turn_used = false
 	
 		
 func SP(SP_amount: int):
@@ -145,7 +174,12 @@ func damage(amount: int, damage_type: String):
 	$AnimationPlayer.playback_speed = 0.5
 	health = max(0, health - amount)
 	yield(get_tree().create_timer(1.6), "timeout")
-	$AnimationPlayer.play("Fighter_BattleReady")
+	if health == 0:
+		dead = true
+		turn_used = true
+		$AnimationPlayer.play("Fighter_Dead")
+	else:
+		$AnimationPlayer.play("Fighter_BattleReady")
 
 func type_damage(damage_type):
 	if damage_type == "neutral":
@@ -159,11 +193,6 @@ func type_damage(damage_type):
 	if damage_type == "earth":
 		$DamagePlayer.play("earth")
 
-
-func restore():
-	yield(get_tree().create_timer(0.2), "timeout")
-	$Effect.show()
-	$EffectPlayer.play("Restore")
 	
 func buff():
 	yield(get_tree().create_timer(1.7), "timeout")
@@ -260,9 +289,13 @@ func turn_used():
 	turn_used = true
 	
 func turn_restored():
-	turn_used = false
-	able = true
-	f_defense = f_defense
+	if dead:
+		turn_used = true
+		f_defense = f_defense
+	else:
+		turn_used = false
+		able = true
+		f_defense = f_defense
 	
 func get_turn_value():
 	return turn_used
@@ -275,5 +308,13 @@ func spell_1():
 	
 func spell_2():
 	$AnimationPlayer.play("Spell_2")
+	
+func set_trinket():
+	if trinket == "Gold Bracelet":
+		f_attack = f_attack + (f_attack*0.2)
+	elif trinket == "Gold Chain":
+		f_attack = f_defense + (f_defense*0.2)
+	elif trinket == "Gold Earring":
+		f_attack = f_magic + (f_magic*0.2)
 
 	
