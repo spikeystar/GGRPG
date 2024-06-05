@@ -22,6 +22,8 @@ func _input(event):
 		PlayerManager.freeze = true
 		_on_touch_area()
 		gary_entered = false
+	else:
+		return
 		#yield(get_tree().create_timer(1.5), "timeout")
 	
 func _on_body_entered(body):
@@ -34,7 +36,6 @@ func _on_touch_area():
 	
 func _on_Interaction_restart():
 	gary_entered = true
-	
 	
 func _on_Shop_body_exited(body):
 	gary_entered = false

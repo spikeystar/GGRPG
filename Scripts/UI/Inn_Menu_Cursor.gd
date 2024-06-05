@@ -27,8 +27,8 @@ func _process(delta):
 		input.y -= 1
 	if Input.is_action_just_pressed("ui_down") and option_selecting:
 		input.y += 1
-	else:
-		input.y += 0
+	#else:
+		#input.y += 0
 		
 	#if Input.is_action_just_pressed("ui_accept") and able or Input.is_action_just_pressed("ui_left") and able:
 		#option_selecting = false

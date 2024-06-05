@@ -78,7 +78,7 @@ height = 80.0
 preview_collision_box = false
 animation_hframes = 9
 animation_vframes = 3
-use_dither_blending = false
+use_transparency = true
 always_update = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

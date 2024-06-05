@@ -1156,6 +1156,7 @@ text = "50 HP"
 align = 1
 autowrap = true
 
+[connection signal="body_exited" from="Node2D/CollisionRoot/Shop" to="Node2D/CollisionRoot/Shop" method="_on_Shop_body_exited"]
 [connection signal="interaction" from="Node2D/CollisionRoot/Shop" to="Camera2D/Interaction" method="_on_Shop_interaction"]
 [connection signal="buying" from="Camera2D/Interaction" to="Camera2D/Interaction/Buy" method="_on_Interaction_buying"]
 [connection signal="buying" from="Camera2D/Interaction" to="Camera2D/Interaction/Buy/Buy_Inventory" method="_on_Interaction_buying"]

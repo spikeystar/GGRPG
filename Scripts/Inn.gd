@@ -9,7 +9,7 @@ var complete = false
 var ongoing = false
 export var inn_name : String
 export var cost : int
-var length : int
+var length : float
 
 const TransitionPlayer = preload("res://Objects/SceneTransition/TransitionPlayer.tscn")
 export(String, FILE, "*.tscn,*.scn") var target_scene
@@ -40,16 +40,15 @@ func _process(delta):
 		menu_name = $ShopOptions/MenuCursor.menu_name
 	
 func _input(event):
-	if Input.is_action_just_pressed("ui_select") and dialogue_cursor and welcome:
+	if Input.is_action_just_pressed("ui_select") and dialogue_cursor and welcome and $Dialogue/Name/Talk.percent_visible == 1:
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
-		$Dialogue/Name/Talk.percent_visible = 0.1
 		$ShopOptions.show()
 		welcome = false
 		options = true
 		emit_signal("option_selecting")
 		
-	if Input.is_action_just_pressed("ui_accept") and dialogue_cursor and not ongoing or Input.is_action_just_pressed("ui_left") and dialogue_cursor and not ongoing:
+	elif Input.is_action_just_pressed("ui_accept") and dialogue_cursor and not ongoing or Input.is_action_just_pressed("ui_left") and dialogue_cursor and not ongoing:
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
 		$ShopOptions.hide()
@@ -61,7 +60,7 @@ func _input(event):
 		PlayerManager.freeze = false
 		emit_signal("restart")
 	
-	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and not able and not complete:
+	elif Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and not able and not complete and $Dialogue/Name/Talk.percent_visible == 1:
 		ongoing = true
 		$ShopOptions.hide()
 		$Dialogue.show()
@@ -70,7 +69,7 @@ func _input(event):
 		yield(get_tree().create_timer((length/25)), "timeout")
 		$Dialogue/DialogueCursor.show()
 		able = true
-	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and able:
+	elif Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and able and $Dialogue/Name/Talk.percent_visible == 1:
 		$Dialogue/DialogueCursor.hide()
 		text_2()
 		tween_go()
@@ -78,7 +77,7 @@ func _input(event):
 		$Dialogue/DialogueCursor.show()
 		able = false
 		complete = true
-	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and complete:
+	elif Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and complete and $Dialogue/Name/Talk.percent_visible == 1:
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
 		welcome = true
@@ -91,7 +90,7 @@ func _input(event):
 		yield(get_tree().create_timer(0.1), "timeout")
 		emit_signal("restart")
 		
-	if Input.is_action_just_pressed("ui_select") and menu_name == "Sleep" and Party.marbles >= cost:
+	elif Input.is_action_just_pressed("ui_select") and menu_name == "Sleep" and Party.marbles >= cost:
 		Party.marbles = Party.marbles - cost
 		PartyStats.full_heal()
 		PlayerManager.ongoing = true
@@ -118,6 +117,7 @@ func _input(event):
 		PlayerManager.sleep = true
 		yield(get_tree().create_timer(0.5), "timeout")
 		PlayerManager.ongoing = false
+		
 		
 func _get_animation_name():
 	var animation_name = "FadeToBlack" # default

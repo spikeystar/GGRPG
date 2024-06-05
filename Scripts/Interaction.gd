@@ -9,6 +9,7 @@ var able = false
 var complete = false
 var ongoing = false
 export var shop_name : String
+var length : float
 
 signal option_selecting
 signal restart
@@ -22,10 +23,10 @@ func welcome():
 	$Dialogue/Name/Talk.percent_visible = 0.0
 	$Dialogue.show()
 	welcome_text()
-	var length = $Dialogue/Name/Talk.text.length()
+	length = $Dialogue/Name/Talk.text.length()
 	tween = create_tween()
 	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, (length/25))
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer((length/25)), "timeout")
 	$Dialogue/DialogueCursor.show()
 	dialogue_cursor = true
 	
@@ -34,10 +35,9 @@ func _process(delta):
 		menu_name = $ShopOptions/MenuCursor.menu_name
 	
 func _input(event):
-	if Input.is_action_just_pressed("ui_select") and dialogue_cursor and welcome:
+	if Input.is_action_just_pressed("ui_select") and dialogue_cursor and welcome and $Dialogue/Name/Talk.percent_visible == 1:
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
-		$Dialogue/Name/Talk.percent_visible = 0.1
 		$ShopOptions.show()
 		welcome = false
 		options = true
@@ -55,7 +55,7 @@ func _input(event):
 		PlayerManager.freeze = false
 		emit_signal("restart")
 	
-	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and not able and not complete and not item_selecting:
+	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and not able and not complete and not item_selecting and $Dialogue/Name/Talk.percent_visible == 1:
 		ongoing = true
 		$ShopOptions.hide()
 		$Dialogue.show()
@@ -64,7 +64,7 @@ func _input(event):
 		yield(get_tree().create_timer(1), "timeout")
 		$Dialogue/DialogueCursor.show()
 		able = true
-	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and able:
+	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and able and $Dialogue/Name/Talk.percent_visible == 1:
 		$Dialogue/DialogueCursor.hide()
 		text_2()
 		tween_go()
@@ -72,7 +72,7 @@ func _input(event):
 		$Dialogue/DialogueCursor.show()
 		able = false
 		complete = true
-	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and complete:
+	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and complete and $Dialogue/Name/Talk.percent_visible == 1:
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
 		welcome = true
@@ -150,7 +150,7 @@ func _on_Shop_interaction():
 	welcome()
 	
 func tween_go():
-	var length = $Dialogue/Name/Talk.text.length()
+	length = $Dialogue/Name/Talk.text.length()
 	$Dialogue/Name/Talk.percent_visible = 0.0
 	tween = create_tween()
 	tween.tween_property($Dialogue/Name/Talk, "percent_visible", 1, (length/25))

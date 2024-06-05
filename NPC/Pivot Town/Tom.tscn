@@ -37,7 +37,7 @@ tracks/0/keys = {
 [node name="Node2D" type="Node2D"]
 
 [node name="CollidableBox" parent="." instance=ExtResource( 2 )]
-modulate = Color( 0.99, 0.98505, 0.9801, 1 )
+modulate = Color( 0.988235, 0.984314, 0.980392, 1 )
 grid_size = Vector2( 1, 0.6 )
 texture = ExtResource( 1 )
 texture_scale = Vector2( 1.25, 1.15 )
@@ -46,7 +46,7 @@ height = 80.0
 preview_collision_box = false
 animation_hframes = 9
 animation_vframes = 3
-use_dither_blending = false
+use_transparency = true
 always_update = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
