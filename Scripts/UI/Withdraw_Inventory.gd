@@ -12,7 +12,8 @@ var item_index : int
 var new_name : String
 
 func _ready():
-	inventory = Party.Storage.duplicate()
+	for x in range (Party.Storage.size()):
+			inventory.append(Party.Storage[x].duplicate())
 	for item_index in inventory.size():
 		add_slot(item_index)
 		
@@ -57,7 +58,8 @@ func _process(delta):
 func item_removed():
 	for x in self.get_children():
 		self.remove_child(x)
-	inventory = Party.Storage.duplicate()
+	for x in range (Party.Storage.size()):
+			inventory.append(Party.Storage[x].duplicate())
 	item_index = clamp(item_index, 0, inventory.size() - 1)
 	for item_index in inventory.size():
 		add_slot(item_index)
@@ -76,7 +78,8 @@ func item_removed():
 func refresh():
 	for x in self.get_children():
 		self.remove_child(x)
-	inventory = Party.Storage.duplicate()
+	for x in range (Party.Storage.size()):
+			inventory.append(Party.Storage[x].duplicate())
 	for item_index in inventory.size():
 		add_slot(item_index)
 		

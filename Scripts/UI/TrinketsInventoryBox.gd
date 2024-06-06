@@ -22,7 +22,8 @@ var trinket_index : int
 var trinket_max : int
 
 func _ready():
-	inventory = Party.Trinkets.duplicate()
+	for x in range (Party.Trinkets.size()):
+		inventory.append(Party.Trinkets[x].duplicate())
 	for trinket_index in inventory.size():
 		add_slot(trinket_index)
 	if inventory.size() == 0:
@@ -30,8 +31,8 @@ func _ready():
 		emit_signal("empty_trinkets")
 	if inventory.size() > 15:
 		for x in range(15, inventory.size()):
-			remove_child(inventory[x])
-			#inventory[x].hide()
+			#remove_child(inventory[x])
+			inventory[x].hide()
 	trinket_max = inventory.size() - 1
 		
 func add_slot(trinket_index):
@@ -44,18 +45,18 @@ func add_slot(trinket_index):
 	#self.add_child(new_slot)
 	
 func scroll_down():
-	#inventory[trinket_index].show()
-	#inventory[trinket_index - 15].hide()
-	remove_child(inventory[trinket_index - 15])
-	add_child(inventory[trinket_index])
+	inventory[trinket_index].show()
+	inventory[trinket_index - 15].hide()
+	#remove_child(inventory[trinket_index - 15])
+	#add_child(inventory[trinket_index])
 	
 	
 func scroll_up():
-	#inventory[trinket_index - 14].show()
-	#inventory[trinket_index + 1].hide()
-	remove_child(inventory[trinket_index + 1])
-	add_child(inventory[trinket_index - 14])
-	move_child(inventory[trinket_index - 14], 0)
+	inventory[trinket_index - 14].show()
+	inventory[trinket_index + 1].hide()
+	#remove_child(inventory[trinket_index + 1])
+	#add_child(inventory[trinket_index - 14])
+	#move_child(inventory[trinket_index - 14], 0)
 	
 	
 	

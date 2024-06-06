@@ -24,6 +24,7 @@ var health : int
 var formation : int
 
 var dead = false
+var hide = false
 
 func _ready():
 	set_stats()
@@ -127,16 +128,32 @@ func heal(HP_amount):
 		if heal_text:
 			heal_text.label.text = str(HP_amount)
 		
-func restore():
-	yield(get_tree().create_timer(0.2), "timeout")
-	$Effect.show()
-	$EffectPlayer.play("Restore")
-	if dead:
+func restore(id : String):
+	if id == "Bounty Herb":
+		if dead:
+			health = int(f_health / 2)
+			$AnimationPlayer.play_backwards("Fighter_Dead")
+			$AnimationPlayer.play("Fighter_BattleReady")
+			dead = false
+			hide = false
+			turn_used = false
+			yield(get_tree().create_timer(0.2), "timeout")
+			$Effect.show()
+			$EffectPlayer.play("Restore")
+		else:
+			yield(get_tree().create_timer(0.2), "timeout")
+			$Effect.show()
+			$EffectPlayer.play("Restore")
+	elif id == "Sweet Gift":
+		health = int(f_health / 2)
 		$AnimationPlayer.play_backwards("Fighter_Dead")
 		$AnimationPlayer.play("Fighter_BattleReady")
 		dead = false
+		hide = false
 		turn_used = false
-	
+		yield(get_tree().create_timer(0.2), "timeout")
+		$Effect.show()
+		$EffectPlayer.play("Heal")
 		
 func SP(SP_amount: int):
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -177,9 +194,22 @@ func damage(amount: int, damage_type: String):
 	if health == 0:
 		dead = true
 		turn_used = true
+		hide = true
 		$AnimationPlayer.play("Fighter_Dead")
 	else:
 		$AnimationPlayer.play("Fighter_BattleReady")
+		
+func poison_damage():
+	var amount = int(f_health / 8)
+	var damage_text = text(TEXT_DAMAGE)
+	if damage_text:
+		damage_text.label.text = str(amount)
+	health = max(0, health - amount)
+	if health == 0:
+		dead = true
+		turn_used = true
+		hide = true
+		$AnimationPlayer.play("Fighter_Dead")
 
 func type_damage(damage_type):
 	if damage_type == "neutral":

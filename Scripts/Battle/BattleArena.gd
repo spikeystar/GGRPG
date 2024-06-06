@@ -27,6 +27,8 @@ var enemies_enabled = false
 var ongoing = false
 var enemy_selecting = false
 var victory_ended = false
+var wimpy = false
+var dizzy = false
 
 onready var party_members : int
 onready var party_id : int
@@ -128,7 +130,7 @@ func _input(event):
 		$BattleButtons/CloverB.show()
 		$ItemWindow.hide()
 		
-	if (Input.is_action_just_pressed("ui_right")) and BB_active and not attack_show and not ongoing:
+	if (Input.is_action_just_pressed("ui_right")) and BB_active and not attack_show and not ongoing and not wimpy:
 		attack_show = true
 		magic_show = false
 		defend_show = false
@@ -160,7 +162,7 @@ func _input(event):
 		attack_ended = false
 		emit_signal("attack_chosen")
 			
-	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show:
+	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show and not dizzy:
 		magic_show = true
 		item_halt = true
 		attack_show = false
@@ -523,6 +525,8 @@ func _on_Fighters_item_chosen():
 	if item_id == "Bounty Herb":
 		$ItemUsage/Item.frame = 5
 		$Fighters.restore = true
+		$Fighters.revive = true
+		$Fighters.item_name = "Bounty Herb"
 	$Fighters.item_used()
 	item_animation()
 	yield(get_tree().create_timer(1.5), "timeout")
@@ -744,7 +748,7 @@ func _on_Enemies_Barrage():
 	$Fighters.e_move_base = 10
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
-	for x in range($Fighters.fighters2.size()):
+	for x in range($Fighters.fighters.size() -1):
 		$Fighters.fighter_x = x
 		$Fighters.damage()
 

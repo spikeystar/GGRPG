@@ -31,12 +31,12 @@
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=29]
 [ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=30]
 [ext_resource path="res://Assets/Pivot Town/painting 3.png" type="Texture" id=31]
+[ext_resource path="res://NPC/Pivot Town/Tom.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Assets/Pivot Town/ivy.png" type="Texture" id=33]
 [ext_resource path="res://Assets/Pivot Town/book stack.png" type="Texture" id=34]
 [ext_resource path="res://Assets/Pivot Town/red rug.png" type="Texture" id=35]
 [ext_resource path="res://Assets/Pivot Town/dinner chair a 2.png" type="Texture" id=36]
 [ext_resource path="res://Assets/Pivot Town/dinner chair a 1.png" type="Texture" id=37]
-[ext_resource path="res://NPC/Pivot Town/Older/Tom.tscn" type="PackedScene" id=38]
 [ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=39]
 [ext_resource path="res://Scripts/Shop_Interact.gd" type="Script" id=40]
 [ext_resource path="res://UI/Shop/Options Window.png" type="Texture" id=41]
@@ -581,8 +581,8 @@ centered_textures = true
 format = 1
 tile_data = PoolIntArray( -327684, 0, 0, -327683, 1, 0, -327682, 0, 0, -327681, 0, 0, -393216, 1, 0, -393215, 0, 0, -393214, 0, 0, -393213, 1, 0, -262148, 0, 0, -262147, 0, 0, -262146, 0, 0, -262145, 1, 0, -327680, 0, 0, -327679, 1, 0, -327678, 0, 0, -327677, 0, 0, -196612, 0, 0, -196611, 0, 0, -196610, 1, 0, -196609, 0, 0, -262144, 1, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 1, 0, -196608, 0, 0, -196607, 1, 0, -196606, 0, 0, -196605, 1, 0, -65540, 1, 0, -65539, 0, 0, -65538, 1, 0, -65537, 0, 0, -131072, 1, 0, -131071, 0, 0, -131070, 1, 0, -131069, 0, 0, -4, 0, 0, -3, 1, 0, -2, 0, 0, -1, 1, 0, -65536, 0, 0, -65535, 1, 0, -65534, 0, 0, -65533, 1, 0, 65532, 1, 0, 65533, 0, 0, 65534, 1, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 0, 0, 131068, 0, 0, 131069, 1, 0, 131070, 0, 0, 131071, 1, 0, 65536, 0, 0, 65537, 1, 0, 65538, 0, 0, 65539, 1, 0, 131072, 0, 0, 131073, 1, 0 )
 
-[node name="Tom" parent="Node2D/YSort" instance=ExtResource( 38 )]
-position = Vector2( -10.2875, -55.5 )
+[node name="Tom" parent="Node2D/YSort" instance=ExtResource( 32 )]
+position = Vector2( -24.282, -53.5 )
 
 [node name="Counter" parent="Node2D/YSort" instance=ExtResource( 18 )]
 modulate = Color( 0.992157, 0.976471, 1, 1 )

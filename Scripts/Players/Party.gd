@@ -34,6 +34,12 @@ func _ready():
 	add_item()
 	add_item_name = "Picnic Pie"
 	add_item()
+	add_item_name = "Bounty Herb"
+	add_item()
+	add_item_name = "Bounty Herb"
+	add_item()
+	add_item_name = "Bounty Herb"
+	add_item()
 
 
 	add_trinket_name = "Gold Bracelet"
@@ -42,53 +48,6 @@ func _ready():
 	add_trinket()
 	add_trinket_name = "Gold Earring"
 	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Chain"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Chain"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Chain"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Chain"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Chain"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

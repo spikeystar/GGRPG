@@ -31,6 +31,8 @@ var f_magic_base
 var e_attack
 var e_magic
 
+var damage_over = false
+
 var party_formation_1 = false
 var party_formation_2 = false
 var party_formation_3 = false
@@ -318,6 +320,7 @@ func _on_Fighters_enemies_enabled():
 	
 	if enemies_active:
 		for x in range(enemies.size()):
+			yield(get_tree().create_timer(0.3), "timeout")
 			var move_list : Array = enemies[x].move_list
 			randomize()
 			var rng = RandomNumberGenerator.new()
@@ -334,7 +337,7 @@ func _on_Fighters_enemies_enabled():
 			e_magic = enemies[x].get_stats("e_magic")
 			if move_name == "Basic":
 				emit_signal("Basic")
-				yield(get_tree().create_timer(1.5), "timeout")
+				yield(get_tree().create_timer(2), "timeout")
 			if move_name == "Barrage":
 				emit_signal("Barrage")
 			enemies[x].reset_animation()

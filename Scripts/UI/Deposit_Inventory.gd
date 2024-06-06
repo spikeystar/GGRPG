@@ -8,7 +8,8 @@ onready var inventory : Array = []
 var item_index : int
 
 func _ready():
-	inventory = Party.Inventory.duplicate()
+	for x in range (Party.Inventory.size()):
+			inventory.append(Party.Inventory[x].duplicate())
 	for item_index in inventory.size():
 		add_slot(item_index)
 	if inventory.size() > 10:
@@ -16,7 +17,7 @@ func _ready():
 			inventory[x].hide()
 		
 func add_slot(item_index):
-	var item_slot = inventory[item_index].duplicate()
+	var item_slot = inventory[item_index]
 	self.add_child(item_slot)
 	
 	
@@ -47,7 +48,8 @@ func _process(delta):
 func item_removed():
 	for x in self.get_children():
 		self.remove_child(x)
-	inventory = Party.Inventory.duplicate()
+	for x in range (Party.Inventory.size()):
+			inventory.append(Party.Inventory[x].duplicate())
 	item_index = clamp(item_index, 0, inventory.size() - 1)
 	for item_index in inventory.size():
 		add_slot(item_index)
@@ -58,7 +60,8 @@ func item_removed():
 func refresh():
 	for x in self.get_children():
 		self.remove_child(x)
-	inventory = Party.Inventory.duplicate()
+	for x in range (Party.Inventory.size()):
+			inventory.append(Party.Inventory[x].duplicate())
 	for item_index in inventory.size():
 		add_slot(item_index)
 

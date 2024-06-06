@@ -1,13 +1,13 @@
 extends Node
 
 var party_id : int
-var party_members = 2
+var party_members = 3
 var member_name : String
 var holder_name : String
 
 var gary_id = 2
 var gary_health = 87
-var gary_current_health = 43
+var gary_current_health = 1
 var gary_attack = 25
 var gary_magic = 23
 var gary_defense = 15
@@ -23,7 +23,7 @@ var jacques_trinket : String = "-"
 
 var irina_id = 3
 var irina_health = 122
-var irina_current_health = 122
+var irina_current_health = 1
 var irina_attack = 17
 var irina_magic = 25
 var irina_defense = 15
