@@ -641,39 +641,75 @@ align = 1
 valign = 1
 
 [node name="Icons" type="Node2D" parent="Fighters/HUDS/GaryHud"]
-visible = false
 position = Vector2( -1, -1 )
 scale = Vector2( 0.95, 0.95 )
 
 [node name="Attack" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
 position = Vector2( -34.7368, -28.421 )
 texture = ExtResource( 25 )
 hframes = 4
 vframes = 5
 frame = 8
 
+[node name="Attack_D" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -34.7368, -28.421 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 12
+
 [node name="Magic" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
 position = Vector2( -54.7369, -37.8947 )
 texture = ExtResource( 25 )
 hframes = 4
 vframes = 5
 frame = 9
 
+[node name="Magic_D" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -54.7369, -37.8947 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 13
+
 [node name="Defense" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
 position = Vector2( -76.8421, -37.8947 )
 texture = ExtResource( 25 )
 hframes = 4
 vframes = 5
 frame = 10
 
+[node name="Defense_D" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -76.8421, -37.8947 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 14
+
 [node name="Wimpy" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
 position = Vector2( -95.7895, -25.2632 )
 texture = ExtResource( 25 )
 hframes = 4
 vframes = 5
 frame = 2
 
+[node name="Dizzy" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -95.7895, -25.2632 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 6
+
 [node name="Stun" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
 position = Vector2( -104.211, -3.15788 )
 texture = ExtResource( 25 )
 hframes = 4
@@ -681,6 +717,7 @@ vframes = 5
 frame = 11
 
 [node name="Targeted" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
 position = Vector2( -98.9474, 18.9474 )
 texture = ExtResource( 25 )
 hframes = 4
@@ -688,6 +725,7 @@ vframes = 5
 frame = 15
 
 [node name="Anxious" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
 position = Vector2( -83.1579, 35.7895 )
 texture = ExtResource( 25 )
 hframes = 4
@@ -695,6 +733,7 @@ vframes = 5
 frame = 3
 
 [node name="Poison" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
 position = Vector2( -60, 40 )
 texture = ExtResource( 25 )
 hframes = 4
@@ -702,11 +741,12 @@ vframes = 5
 frame = 7
 
 [node name="Type" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
 position = Vector2( -38.9474, 31.5789 )
 texture = ExtResource( 25 )
 hframes = 4
 vframes = 5
-frame = 1
+frame = 5
 
 [node name="JacquesHud" type="Sprite" parent="Fighters/HUDS"]
 position = Vector2( 59, 92 )
@@ -730,39 +770,75 @@ align = 1
 valign = 1
 
 [node name="Icons" type="Node2D" parent="Fighters/HUDS/JacquesHud"]
-visible = false
 position = Vector2( -1, -1 )
 scale = Vector2( 0.95, 0.95 )
 
 [node name="Attack" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
 position = Vector2( -34.7368, -28.421 )
 texture = ExtResource( 25 )
 hframes = 4
 vframes = 5
 frame = 8
 
+[node name="Attack_D" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -34.7368, -28.421 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 12
+
 [node name="Magic" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
 position = Vector2( -54.7369, -37.8947 )
 texture = ExtResource( 25 )
 hframes = 4
 vframes = 5
 frame = 9
 
+[node name="Magic_D" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -54.7369, -37.8947 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 13
+
 [node name="Defense" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
 position = Vector2( -76.8421, -37.8947 )
 texture = ExtResource( 25 )
 hframes = 4
 vframes = 5
 frame = 10
 
+[node name="Defense_D" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -76.8421, -37.8947 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 14
+
 [node name="Wimpy" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
 position = Vector2( -95.7895, -25.2632 )
 texture = ExtResource( 25 )
 hframes = 4
 vframes = 5
 frame = 2
 
+[node name="Dizzy" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -95.7895, -25.2632 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 6
+
 [node name="Stun" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
 position = Vector2( -104.211, -3.15788 )
 texture = ExtResource( 25 )
 hframes = 4
@@ -770,6 +846,7 @@ vframes = 5
 frame = 11
 
 [node name="Targeted" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
 position = Vector2( -98.9474, 18.9474 )
 texture = ExtResource( 25 )
 hframes = 4
@@ -777,6 +854,7 @@ vframes = 5
 frame = 15
 
 [node name="Anxious" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
 position = Vector2( -83.1579, 35.7895 )
 texture = ExtResource( 25 )
 hframes = 4
@@ -784,6 +862,7 @@ vframes = 5
 frame = 3
 
 [node name="Poison" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
 position = Vector2( -60, 40 )
 texture = ExtResource( 25 )
 hframes = 4
@@ -791,6 +870,7 @@ vframes = 5
 frame = 7
 
 [node name="Type" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
 position = Vector2( -38.9474, 31.5789 )
 texture = ExtResource( 25 )
 hframes = 4
@@ -819,39 +899,75 @@ align = 1
 valign = 1
 
 [node name="Icons" type="Node2D" parent="Fighters/HUDS/IrinaHud"]
-visible = false
 position = Vector2( -1, -1 )
 scale = Vector2( 0.95, 0.95 )
 
 [node name="Attack" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
 position = Vector2( -34.7368, -28.421 )
 texture = ExtResource( 25 )
 hframes = 4
 vframes = 5
 frame = 8
 
+[node name="Attack_D" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -34.7368, -28.421 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 12
+
 [node name="Magic" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
 position = Vector2( -54.7369, -37.8947 )
 texture = ExtResource( 25 )
 hframes = 4
 vframes = 5
 frame = 9
 
+[node name="Magic_D" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -54.7369, -37.8947 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 13
+
 [node name="Defense" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
 position = Vector2( -76.8421, -37.8947 )
 texture = ExtResource( 25 )
 hframes = 4
 vframes = 5
 frame = 10
 
+[node name="Defense_D" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -76.8421, -37.8947 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 14
+
 [node name="Wimpy" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
 position = Vector2( -95.7895, -25.2632 )
 texture = ExtResource( 25 )
 hframes = 4
 vframes = 5
 frame = 2
 
+[node name="Dizzy" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -95.7895, -25.2632 )
+texture = ExtResource( 25 )
+hframes = 4
+vframes = 5
+frame = 6
+
 [node name="Stun" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
 position = Vector2( -104.211, -3.15788 )
 texture = ExtResource( 25 )
 hframes = 4
@@ -859,6 +975,7 @@ vframes = 5
 frame = 11
 
 [node name="Targeted" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
 position = Vector2( -98.9474, 18.9474 )
 texture = ExtResource( 25 )
 hframes = 4
@@ -866,6 +983,7 @@ vframes = 5
 frame = 15
 
 [node name="Anxious" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
 position = Vector2( -83.1579, 35.7895 )
 texture = ExtResource( 25 )
 hframes = 4
@@ -873,6 +991,7 @@ vframes = 5
 frame = 3
 
 [node name="Poison" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
 position = Vector2( -60, 40 )
 texture = ExtResource( 25 )
 hframes = 4
@@ -880,6 +999,7 @@ vframes = 5
 frame = 7
 
 [node name="Type" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
 position = Vector2( -38.9474, 31.5789 )
 texture = ExtResource( 25 )
 hframes = 4

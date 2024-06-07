@@ -49,6 +49,19 @@ var move_kind : String
 var fighter_name : String
 var fighter_x : int
 
+var stun = false
+var poison = false
+var wimpy = false
+var dizzy = false
+var item_halt = false
+var targeted = false
+var anxious = false
+var buff = false
+var debuff = false
+var applied_type = false
+var changing_type : String
+
+
 signal fighters_active
 signal anim_finish
 signal enemies_enabled
@@ -306,16 +319,20 @@ func get_f_index():
 	var f_index: int = fighter_index
 	return f_index
 	
+func reset_status():
+	stun = false
+	poison = false
+	wimpy = false
+	dizzy = false
+	item_halt = false
+	targeted = false
+	anxious = false
+	buff = false
+	debuff = false
+	applied_type = false
+	changing_type = ""
+	
 func damage():
-	#for x in range (fighters.size() -1, -1, -1):
-		#print("gloopies")
-		#var dead = fighters[x].death_count()
-		#if dead:
-			#print("deadz")
-			#fighters.remove(x)
-			#fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
-		#else:
-		#	pass
 	randomize()
 	var damage : int
 	var rng = RandomNumberGenerator.new()
@@ -332,6 +349,8 @@ func damage():
 		var total = e_magic + e_move_base
 		damage = max(0, ((total) + int(total * (rand_range(0.05, 0.15)))) - f_defense)
 	fighters[fighter_index].damage(damage, move_type)
+	if stun:
+		fighters[fighter_index].stun()
 	huds_update()
 	yield(get_tree().create_timer(1.7), "timeout")
 	for x in range (fighters.size() -1, -1, -1):
@@ -341,12 +360,27 @@ func damage():
 			print("dead")
 			fighters.remove(x)
 			fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
+	reset_status()
 	emit_signal("fighter_damage_over")
 	
 func huds_update():
 	fighter_name = fighters[fighter_index].get_name()
 	health = get_health()
 	f_health = get_f_health()
+	$HUDS.stun = fighters[fighter_index].get_status("stun")
+	$HUDS.poison = fighters[fighter_index].get_status("poison")
+	$HUDS.anxious = fighters[fighter_index].get_status("anxious")
+	$HUDS.wimpy = fighters[fighter_index].get_status("wimpy")
+	$HUDS.dizzy = fighters[fighter_index].get_status("dizzy")
+	$HUDS.targeted = fighters[fighter_index].get_status("targeted")
+	$HUDS.a_buff = fighters[fighter_index].get_status("a_buff")
+	$HUDS.a_debuff = fighters[fighter_index].get_status("a_debuff")
+	$HUDS.m_buff = fighters[fighter_index].get_status("m_buff")
+	$HUDS.m_debuff = fighters[fighter_index].get_status("m_debuff")
+	$HUDS.d_buff = fighters[fighter_index].get_status("d_buff")
+	$HUDS.d_debuff = fighters[fighter_index].get_status("d_debuff")
+	$HUDS.current_type = fighters[fighter_index].get_status("type")
+	
 	$HUDS.health = health
 	$HUDS.f_health = f_health
 	if fighter_name == "gary":
@@ -432,6 +466,12 @@ func _on_WorldRoot_f_index_reset():
 				fighters.remove(x)
 				fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
 				max_turns += 1
+		for x in range (fighters.size() -1, -1, -1):
+			var stun = fighters[x].get_status("stun")
+			if stun:
+				fighters.remove(x)
+				fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
+				max_turns += 1
 		
 		#fighters = get_children()
 
@@ -499,6 +539,7 @@ func get_target_position():
 func item_used():
 	var turn_used = true
 	var dead = false
+	var stun = false
 	f_turn_used()
 	fighters[selector_index].item_used()
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -530,10 +571,9 @@ func item_used():
 			dead = fighters2[target_index].death_count()
 			if dead:
 				fighters2[target_index].restore(item_name)
-				for x in range (fighters.size()):
+				for x in range (fighters.size() -1, -1, -1):
 					fighters.remove(x)
 				set_positions()
-				#fighters2 = fighters.duplicate()
 				for x in range (fighters.size() -1, -1, -1):
 					turn_used = fighters[x].get_turn_value()
 					if turn_used:
@@ -546,12 +586,27 @@ func item_used():
 				fighters2[target_index].restore(item_name)
 				pass
 		else:
+			stun = fighters2[target_index].get_status("stun")
+			if stun:
+				for x in range (fighters.size() -1, -1, -1):
+					fighters.remove(x)
+				set_positions()
+				for x in range (fighters.size() -1, -1, -1):
+					turn_used = fighters[x].get_turn_value()
+					if turn_used:
+						fighters.remove(x)
+						fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
+			else: 
+				pass
 			fighters2[target_index].restore(item_name)
+			huds_update()
 	fighter_index = selector_index
 	if not revive:
 		_on_WorldRoot_f_index_reset()
 	elif not dead:
 		_on_WorldRoot_f_index_reset()
+	elif stun:
+		fighter_index = -1
 	else:
 		fighter_index = -1
 	BB_active = false
@@ -617,10 +672,9 @@ func revive_healing():
 		fighters2[target_index].restore(item_name)
 		health = fighters2[target_index].get_health()
 		f_health = fighters2[target_index].get_f_health()
-		for x in range (fighters.size()):
+		for x in range (fighters.size() -1, -1, -1):
 			fighters.remove(x)
 		set_positions()
-		fighters2 = fighters.duplicate()
 		for x in range (fighters.size() -1, -1, -1):
 			var turn_used = fighters[x].get_turn_value()
 			if turn_used:
@@ -631,9 +685,6 @@ func revive_healing():
 		huds_update()
 	else:
 		pass
-	#elif not dead:
-		#fighters2[target_index].restore(item_name)
-		#pass
 	
 	##### Spell Animations #####
 	

@@ -40,6 +40,10 @@ func _ready():
 	add_item()
 	add_item_name = "Bounty Herb"
 	add_item()
+	add_item_name = "Ginger Tea"
+	add_item()
+	add_item_name = "Ginger Tea"
+	add_item()
 
 
 	add_trinket_name = "Gold Bracelet"

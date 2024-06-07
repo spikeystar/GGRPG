@@ -732,16 +732,25 @@ func Thunderstorm():
 	##### Enemy Attacks #####
 	
 func _on_Enemies_Basic():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.move_spread = "single"
 	$Fighters.e_move_base = 1
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
+	var stun = rng.randi_range(0.0,1.0)
+	if stun < 0.3:
+		$Fighters.stun = true
 	$Fighters.damage()
 
 
 func _on_Enemies_Barrage():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.move_spread = "all"
@@ -749,6 +758,9 @@ func _on_Enemies_Barrage():
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
 	for x in range($Fighters.fighters.size() -1):
+		var stun = rng.randi_range(0.0,1.0)
+		if stun < 0.3:
+			$Fighters.stun = true
 		$Fighters.fighter_x = x
 		$Fighters.damage()
 

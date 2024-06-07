@@ -11,7 +11,6 @@ export(int) var f_defense
 var trinket : String
 var base_type = "neutral"
 var current_type : String
-var applied_type : String
 export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
 export(PackedScene) var TEXT_SP: PackedScene = null
@@ -25,6 +24,37 @@ var formation : int
 
 var dead = false
 var hide = false
+var stun = false
+var poison = false
+var wimpy = false
+var dizzy = false
+var item_halt = false
+var targeted = false
+var anxious = false
+var applied_type = false
+var changing_type : String
+
+var a_buff = false
+var a_debuff = false
+var m_buff = false
+var m_debuff = false
+var d_buff = false
+var d_debuff = false
+
+var stun_timer = 0
+var poison_timer = 0
+var wimpy_timer = 0
+var dizzy_timer = 0
+var targeted_timer = 0
+var anxious_timer = 0
+var type_timer = 0
+
+var a_buff_timer = 0
+var a_debuff_timer = 0
+var m_buff_timer = 0
+var m_debuff_timer = 0
+var d_buff_timer = 0
+var d_debuff_timer = 0
 
 func _ready():
 	set_stats()
@@ -91,6 +121,35 @@ func get_id():
 func death_count():
 	return dead
 	
+func get_status(id : String):
+	if id == "stun":
+		return stun
+	if id == "poison":
+		return poison
+	if id == "anxious":
+		return anxious
+	if id == "targeted":
+		return targeted
+	if id == "wimpy":
+		return wimpy
+	if id == "dizzy":
+		return dizzy
+	if id == "type":
+		return current_type
+		
+	if id == "a_buff":
+		return a_buff
+	if id == "a_debuff":
+		return a_debuff
+	if id == "m_buff":
+		return m_buff
+	if id == "m_debuff":
+		return m_debuff
+	if id == "d_buff":
+		return d_buff
+	if id == "d_debuff":
+		return d_debuff
+	
 func idle():
 	$AnimationPlayer.play("Fighter_BattleReady")
 	
@@ -152,8 +211,14 @@ func restore(id : String):
 		hide = false
 		turn_used = false
 		yield(get_tree().create_timer(0.2), "timeout")
+		status_restore()
 		$Effect.show()
 		$EffectPlayer.play("Heal")
+	elif id == "Ginger Tea":
+		yield(get_tree().create_timer(0.2), "timeout")
+		status_restore()
+		$Effect.show()
+		$EffectPlayer.play("Restore")
 		
 func SP(SP_amount: int):
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -326,6 +391,7 @@ func turn_restored():
 		turn_used = false
 		able = true
 		f_defense = f_defense
+		status_countdown()
 	
 func get_turn_value():
 	return turn_used
@@ -346,5 +412,77 @@ func set_trinket():
 		f_attack = f_defense + (f_defense*0.2)
 	elif trinket == "Gold Earring":
 		f_attack = f_magic + (f_magic*0.2)
+		
+##########
+func status_restore():
+	if stun:
+		stun = false
+		turn_used = false
+	var poison = false
+	var wimpy = false
+	var dizzy = false
+	var targeted = false
+	var anxious = false
+	current_type = "neutral"
+
+func status_countdown():
+	if stun:
+		stun_timer -= 1
+		if stun_timer == 0:
+			stun = false
+	if wimpy:
+		wimpy_timer -= 1
+		if wimpy_timer == 0:
+			wimpy = false
+	if dizzy:
+		dizzy_timer -= 1
+		if dizzy_timer == 0:
+			dizzy = false
+	if poison:
+		poison_timer -= 1
+		if poison_timer == 0:
+			poison = false
+	if anxious:
+		anxious_timer -= 1
+		if anxious_timer == 0:
+			anxious = false
+	if targeted:
+		targeted_timer -= 1
+		if targeted_timer == 0:
+			targeted = false	
+	if applied_type:
+		type_timer -= 1
+		if type_timer == 0:
+			current_type = "neutral"
+			
+	if a_buff:
+		a_buff_timer -= 1
+		if a_buff_timer == 0:
+			a_buff = false
+	if a_debuff:
+		a_debuff_timer -= 1
+		if a_debuff_timer == 0:
+			a_debuff = false	
+	if m_buff:
+		m_buff_timer -= 1
+		if m_buff_timer == 0:
+			m_buff = false
+	if m_debuff:
+		m_debuff_timer -= 1
+		if m_debuff_timer == 0:
+			m_debuff = false			
+	if d_buff:
+		d_buff_timer -= 1
+		if d_buff_timer == 0:
+			d_buff = false
+	if d_debuff:
+		d_debuff_timer -= 1
+		if d_debuff_timer == 0:
+			d_debuff = false			
+
+func stun():
+	if not stun:
+		stun = true
+		stun_timer = 2
 
 	
