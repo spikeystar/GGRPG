@@ -297,6 +297,13 @@ func get_BB_position():
 	var BB_position = fighters[fighter_index].get_BB_position()
 	return BB_position
 	
+func get_wimpy():
+	var wimpy = fighters[fighter_index].get_status("wimpy")
+	return wimpy
+	
+func get_dizzy():
+	var dizzy = fighters[fighter_index].get_status("dizzy")
+	return dizzy
 
 func _on_WorldRoot_defend_chosen():
 	fighters[fighter_index].defend()
@@ -366,6 +373,10 @@ func damage():
 		fighters[fighter_index].poison()
 	if targeted:
 		fighters[fighter_index].targeted()
+	if wimpy:
+		fighters[fighter_index].wimpy()
+	if dizzy:
+		fighters[fighter_index].dizzy()
 	huds_update()
 	yield(get_tree().create_timer(1.7), "timeout")
 	for x in range (fighters.size() -1, -1, -1):

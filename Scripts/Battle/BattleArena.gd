@@ -29,6 +29,7 @@ var enemy_selecting = false
 var victory_ended = false
 var wimpy = false
 var dizzy = false
+var item_stolen = false
 
 onready var party_members : int
 onready var party_id : int
@@ -96,6 +97,14 @@ func _input(event):
 		$BattleButtons/ItemX.hide()
 		$BattleButtons/AnimationPlayer.play("Initial")
 		emit_signal("BB_active")
+		wimpy = $Fighters.get_wimpy()
+		if wimpy:
+			$BattleButtons/AttackX.show()
+		dizzy = $Fighters.get_dizzy()
+		if dizzy:
+			$BattleButtons/MagicX.show()
+		if item_stolen:
+			$BattleButtons/ItemX.show()
 		
 	if (Input.is_action_just_pressed("ui_down")) and BB_active and not defend_show and not magic_show and not item_show and not enemy_selecting:
 		defend_show = true
@@ -187,7 +196,7 @@ func _input(event):
 		if magic_show and not window_open:
 			window_open = true
 		
-	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt:
+	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt and not item_stolen:
 		item_show = true
 		attack_show = false
 		defend_show = false
@@ -240,6 +249,7 @@ func _input(event):
 		$Fighters.select_next_fighter(+1)
 		BB_active = false
 		item_show = false
+		item_halt = false
 		attack_show = false
 		defend_show = false
 		magic_show = false
@@ -247,7 +257,8 @@ func _input(event):
 		attack_ended = true
 		enemy_selecting = false
 		ongoing = false
-		fighter_selection = false
+		#fighter_selection = false
+		$Fighters.fighters_active = true
 		emit_signal("index_resetzero")
 		emit_signal("hide_enemy_cursor")
 		emit_signal("item_inactive")
@@ -763,9 +774,12 @@ func _on_Enemies_Basic():
 	$Fighters.e_move_base = 1
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
-	var targeted = rng.randi_range(0.0,1.0)
-	if targeted < 0.3:
-		$Fighters.targeted = true
+	var wimpy = rng.randi_range(0.0,1.0)
+	if wimpy < 0.3:
+		$Fighters.wimpy = true
+	var dizzy = rng.randi_range(0.0,1.0)
+	if dizzy < 0.3:
+		$Fighters.dizzy = true
 	$Fighters.damage()
 
 

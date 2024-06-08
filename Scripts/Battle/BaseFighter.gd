@@ -29,7 +29,6 @@ var stun = false
 var poison = false
 var wimpy = false
 var dizzy = false
-var item_halt = false
 var targeted = false
 var anxious = false
 var applied_type = false
@@ -600,3 +599,16 @@ func targeted():
 	else:
 		return
 	
+func wimpy():
+	if not wimpy and not dizzy:
+		wimpy = true
+		wimpy_timer = 4
+	else:
+		return
+		
+func dizzy():
+	if not dizzy and not wimpy:
+		dizzy = true
+		dizzy_timer = 4
+	else:
+		return
