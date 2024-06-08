@@ -6,14 +6,35 @@ export(int) var e_attack
 export(int) var e_magic
 export(int) var e_defense 
 export(String) var initial_type = ""
+export(bool) var boss = false
 var current_type = ""
-var applied_type = false
 export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
 var health : int
 var death_tagged = false
+
 var poison = false
 var stun = false
+var applied_type = false
+var changing_type : String
+
+var a_buff = false
+var a_debuff = false
+var m_buff = false
+var m_debuff = false
+var d_buff = false
+var d_debuff = false
+
+var stun_timer = 0
+var poison_timer = 0
+var type_timer = 0
+
+var a_buff_timer = 0
+var a_debuff_timer = 0
+var m_buff_timer = 0
+var m_debuff_timer = 0
+var d_buff_timer = 0
+var d_debuff_timer = 0
 
 var damage_type : String
 
@@ -29,6 +50,7 @@ func _ready():
 	reset_animation()
 	unfocus()
 	health = e_health
+	current_type = initial_type
 	for x in range(move_list.size() -1, -1, -1):
 		check_name = move_list[x]
 		if check_name == "":
@@ -37,7 +59,6 @@ func _ready():
 		
 func get_name():
 	return ID
-	
 	
 func get_status(parameter: String):
 	if parameter == "poison":
@@ -145,3 +166,16 @@ func text(TEXT: PackedScene, text_position: Vector2 = global_position):
 		get_tree().current_scene.add_child(text)
 		text.position = text_position + Vector2(4, -44)
 		return text
+
+func stun():
+	if not stun:
+		stun = true
+		stun_timer = 1
+	else:
+		pass
+
+func countdown():
+	if stun:
+		stun_timer -= 1
+		if stun_timer == 0:
+			stun = false

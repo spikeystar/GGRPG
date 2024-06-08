@@ -725,6 +725,9 @@ func _on_Enemies_e_magic_damage_finish():
 	##### Magic Spells ######
 	
 func Earthslide():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
 	var fighter_node = $Fighters.get_f_current()
 	var fighter_position = $Fighters.get_position()
 	var enemy_position = $Enemies.get_e_position() + Vector2(-175, 40)
@@ -733,9 +736,15 @@ func Earthslide():
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
 	$Fighters.spell_2()
+	var stun = rng.randi_range(0.0,1.0)
+	if stun < 0.3:
+		$Enemies.stun = true
+	
 	
 func Thunderstorm():
 	$Enemies.damage_type = "air"
+	$Enemies.stun = true
+	$Enemies.stun_chance = 0.3
 	
 	
 	##### Enemy Attacks #####

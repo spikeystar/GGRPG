@@ -470,20 +470,17 @@ func turn_restored():
 			defend = false
 	elif stun:
 		turn_used = true
-		stun_timer -= 1
-		if stun_timer == 0:
-			stun = false
-			turn_used = false
+		status_countdown()
 		if defend:
 			f_defense -= (f_defense * 0.2)
 			defend = false
 	else:
 		turn_used = false
 		able = true
+		status_countdown()
 		if defend:
 			f_defense -= (f_defense * 0.2)
 			defend = false
-		status_countdown()
 	
 func get_turn_value():
 	return turn_used

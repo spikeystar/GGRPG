@@ -618,6 +618,16 @@ func item_used():
 		_on_WorldRoot_f_index_reset()
 	elif not dead and not stun and not remedy_b and not perfect_p:
 		_on_WorldRoot_f_index_reset()
+	elif heal:
+		_on_WorldRoot_f_index_reset()
+	elif SP:
+		_on_WorldRoot_f_index_reset()
+	elif strange:
+		_on_WorldRoot_f_index_reset()
+	elif combo_heal:
+		_on_WorldRoot_f_index_reset()
+	elif all_heal:
+		_on_WorldRoot_f_index_reset()
 	elif stun:
 		fighter_index = -1
 	else:

@@ -50,6 +50,11 @@ signal all_enemy_spell
 signal fighters_active
 signal update_move_window
 
+var stun = false
+var poison = false
+var stun_chance : float
+var poison_chance : float
+
 signal Basic
 signal Barrage
 
@@ -213,6 +218,8 @@ func magic_damage():
 	var f_total = f_magic + f_magic_base
 	damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
 	target_enemy.magic_damage(damage, damage_type)
+	if stun:
+		target_enemy.stun()
 	yield(get_tree().create_timer(1.5), "timeout")
 	target_enemy.unfocus()
 	if target_enemy.is_dead():
@@ -227,9 +234,14 @@ func magic_damage():
 	if enemies.size() == 0:
 		emit_signal("victory")
 	emit_signal("e_magic_damage_finish")
+	stun = false
+	poison = false
 		
 		
 func all_magic_damage():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
 	BB_active = false
 	ongoing = true
 	randomize()
@@ -239,6 +251,14 @@ func all_magic_damage():
 		var damage : int
 		damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
 		enemies[x].magic_damage(damage, damage_type)
+		if stun:
+			var apply = rng.randi_range(0.0,1.0)
+			if apply < stun_chance:
+				enemies[x].stun()
+				
+				
+				
+				
 	yield(get_tree().create_timer(1.5), "timeout")
 	for x in range(enemies.size()):
 		if enemies[x].is_dead():
@@ -254,6 +274,8 @@ func all_magic_damage():
 	victory_check()
 	yield(get_tree().create_timer(0.4), "timeout")
 	emit_signal("e_magic_damage_finish")
+	stun = false
+	poison = false
 		
 		
 func victory_check():
@@ -322,27 +344,31 @@ func _on_Fighters_enemies_enabled():
 	
 	if enemies_active:
 		for x in range(enemies.size()):
-			yield(get_tree().create_timer(0.3), "timeout")
-			var move_list : Array = enemies[x].move_list
-			randomize()
-			var rng = RandomNumberGenerator.new()
-			rng.randomize()
-			move_index = rng.randi_range(0, move_list.size() - 1)
-			move_name = move_list[move_index]
-			enemy_turns += 1
-			enemies[x].attack()
-			yield(get_tree().create_timer(0.3), "timeout")
-			$EnemyMove.move_name = move_name
-			emit_signal("update_move_window")
-			yield($EnemyMove, "move_window_done")
-			e_attack = enemies[x].get_stats("e_attack")
-			e_magic = enemies[x].get_stats("e_magic")
-			if move_name == "Basic":
-				emit_signal("Basic")
-				yield(get_tree().create_timer(2), "timeout")
-			if move_name == "Barrage":
-				emit_signal("Barrage")
-			enemies[x].reset_animation()
+			var stun = enemies[x].get_status("stun")
+			if not stun:
+				yield(get_tree().create_timer(0.3), "timeout")
+				var move_list : Array = enemies[x].move_list
+				randomize()
+				var rng = RandomNumberGenerator.new()
+				rng.randomize()
+				move_index = rng.randi_range(0, move_list.size() - 1)
+				move_name = move_list[move_index]
+				enemy_turns += 1
+				enemies[x].attack()
+				yield(get_tree().create_timer(0.3), "timeout")
+				$EnemyMove.move_name = move_name
+				emit_signal("update_move_window")
+				yield($EnemyMove, "move_window_done")
+				e_attack = enemies[x].get_stats("e_attack")
+				e_magic = enemies[x].get_stats("e_magic")
+				if move_name == "Basic":
+					emit_signal("Basic")
+					yield(get_tree().create_timer(2), "timeout")
+				if move_name == "Barrage":
+					emit_signal("Barrage")
+				enemies[x].reset_animation()
+			elif stun:
+				enemy_turns += 1
 			enemies_active_check()
 		
 func enemies_active_check():
@@ -350,6 +376,10 @@ func enemies_active_check():
 		enemies_active = false
 		yield(get_tree().create_timer(0.2), "timeout")
 		emit_signal("fighters_active")
+		enemy_countdown()
 		enemy_turns = 0
 			
-
+	
+func enemy_countdown():
+	for x in range (enemies.size()):
+		enemies[x].countdown()
