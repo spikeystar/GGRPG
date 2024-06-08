@@ -112,58 +112,58 @@ func gary_statuses():
 		$GaryHud/Icons/Poison.show()
 	elif not poison:
 		$GaryHud/Icons/Poison.hide()
-	elif anxious:
+	if anxious:
 		$GaryHud/Icons/Anxious.show()
 	elif not anxious:
 		$GaryHud/Icons/Anxious.hide()
-	elif wimpy:
+	if wimpy:
 		$GaryHud/Icons/Wimpy.show()
 	elif not wimpy:
 		$GaryHud/Icons/Wimpy.hide()
-	elif dizzy:
+	if dizzy:
 		$GaryHud/Icons/Dizzy.show()
 	elif not dizzy:
 		$GaryHud/Icons/Dizzy.hide()
-	elif targeted:
+	if targeted:
 		$GaryHud/Icons/Targeted.show()
 	elif not targeted:
 		$GaryHud/Icons/Targeted.hide()
-	elif a_buff:
+	if a_buff:
 		$GaryHud/Icons/Attack.show()
 	elif not a_buff:
 		$GaryHud/Icons/Attack.hide()
-	elif a_debuff:
+	if a_debuff:
 		$GaryHud/Icons/Attack_D.show()
 	elif not a_debuff:
 		$GaryHud/Icons/Attack_D.hide()
-	elif m_buff:
+	if m_buff:
 		$GaryHud/Icons/Magic.show()
 	elif not m_buff:
 		$GaryHud/Icons/Magic.hide()
-	elif m_debuff:
+	if m_debuff:
 		$GaryHud/Icons/Magic_D.show()
 	elif not m_debuff:
 		$GaryHud/Icons/Magic_D.hide()
-	elif d_buff:
+	if d_buff:
 		$GaryHud/Icons/Defense.show()
 	elif not d_buff:
 		$GaryHud/Icons/Defense.hide()
-	elif d_debuff:
+	if d_debuff:
 		$GaryHud/Icons/Defense_D.show()
 	elif not d_debuff:
 		$GaryHud/Icons/Defense_D.hide()
-	elif current_type == "neutral":
+	if current_type == "neutral":
 		$GaryHud/Icons/Type.hide()
-	elif current_type == "fire":
+	if current_type == "fire":
 		$GaryHud/Icons/Type.show()
 		$GaryHud/Icons/Type.frame = 0
-	elif current_type == "water":
+	if current_type == "water":
 		$GaryHud/Icons/Type.show()
 		$GaryHud/Icons/Type.frame = 1
-	elif current_type == "air":
+	if current_type == "air":
 		$GaryHud/Icons/Type.show()
 		$GaryHud/Icons/Type.frame = 4
-	elif current_type == "earth":
+	if current_type == "earth":
 		$GaryHud/Icons/Type.show()
 		$GaryHud/Icons/Type.frame = 5
 		
@@ -176,58 +176,58 @@ func jacques_statuses():
 		$JacquesHud/Icons/Poison.show()
 	elif not poison:
 		$JacquesHud/Icons/Poison.hide()
-	elif anxious:
+	if anxious:
 		$JacquesHud/Icons/Anxious.show()
 	elif not anxious:
 		$JacquesHud/Icons/Anxious.hide()
-	elif wimpy:
+	if wimpy:
 		$JacquesHud/Icons/Wimpy.show()
 	elif not wimpy:
 		$JacquesHud/Icons/Wimpy.hide()
-	elif dizzy:
+	if dizzy:
 		$JacquesHud/Icons/Dizzy.show()
 	elif not dizzy:
 		$JacquesHud/Icons/Dizzy.hide()
-	elif targeted:
+	if targeted:
 		$JacquesHud/Icons/Targeted.show()
 	elif not targeted:
 		$JacquesHud/Icons/Targeted.hide()
-	elif a_buff:
+	if a_buff:
 		$JacquesHud/Icons/Attack.show()
 	elif not a_buff:
 		$JacquesHud/Icons/Attack.hide()
-	elif a_debuff:
+	if a_debuff:
 		$JacquesHud/Icons/Attack_D.show()
 	elif not a_debuff:
 		$JacquesHud/Icons/Attack_D.hide()
-	elif m_buff:
+	if m_buff:
 		$JacquesHud/Icons/Magic.show()
 	elif not m_buff:
 		$JacquesHud/Icons/Magic.hide()
-	elif m_debuff:
+	if m_debuff:
 		$JacquesHud/Icons/Magic_D.show()
 	elif not m_debuff:
 		$JacquesHud/Icons/Magic_D.hide()
-	elif d_buff:
+	if d_buff:
 		$JacquesHud/Icons/Defense.show()
 	elif not d_buff:
 		$JacquesHud/Icons/Defense.hide()
-	elif d_debuff:
+	if d_debuff:
 		$JacquesHud/Icons/Defense_D.show()
 	elif not d_debuff:
 		$JacquesHud/Icons/Defense_D.hide()
-	elif current_type == "neutral":
+	if current_type == "neutral":
 		$JacquesHud/Icons/Type.hide()
-	elif current_type == "fire":
+	if current_type == "fire":
 		$JacquesHud/Icons/Type.show()
 		$JacquesHud/Icons/Type.frame = 0
-	elif current_type == "water":
+	if current_type == "water":
 		$JacquesHud/Icons/Type.show()
 		$JacquesHud/Icons/Type.frame = 1
-	elif current_type == "air":
+	if current_type == "air":
 		$JacquesHud/Icons/Type.show()
 		$JacquesHud/Icons/Type.frame = 4
-	elif current_type == "earth":
+	if current_type == "earth":
 		$JacquesHud/Icons/Type.show()
 		$JacquesHud/Icons/Type.frame = 5
 		
@@ -240,58 +240,58 @@ func irina_statuses():
 		$IrinaHud/Icons/Poison.show()
 	elif not poison:
 		$IrinaHud/Icons/Poison.hide()
-	elif anxious:
+	if anxious:
 		$IrinaHud/Icons/Anxious.show()
 	elif not anxious:
 		$IrinaHud/Icons/Anxious.hide()
-	elif wimpy:
+	if wimpy:
 		$IrinaHud/Icons/Wimpy.show()
 	elif not wimpy:
 		$IrinaHud/Icons/Wimpy.hide()
-	elif dizzy:
+	if dizzy:
 		$IrinaHud/Icons/Dizzy.show()
 	elif not dizzy:
 		$IrinaHud/Icons/Dizzy.hide()
-	elif targeted:
+	if targeted:
 		$IrinaHud/Icons/Targeted.show()
 	elif not targeted:
 		$IrinaHud/Icons/Targeted.hide()
-	elif a_buff:
+	if a_buff:
 		$IrinaHud/Icons/Attack.show()
 	elif not a_buff:
 		$IrinaHud/Icons/Attack.hide()
-	elif a_debuff:
+	if a_debuff:
 		$IrinaHud/Icons/Attack_D.show()
 	elif not a_debuff:
 		$IrinaHud/Icons/Attack_D.hide()
-	elif m_buff:
+	if m_buff:
 		$IrinaHud/Icons/Magic.show()
 	elif not m_buff:
 		$IrinaHud/Icons/Magic.hide()
-	elif m_debuff:
+	if m_debuff:
 		$IrinaHud/Icons/Magic_D.show()
 	elif not m_debuff:
 		$IrinaHud/Icons/Magic_D.hide()
-	elif d_buff:
+	if d_buff:
 		$IrinaHud/Icons/Defense.show()
 	elif not d_buff:
 		$IrinaHud/Icons/Defense.hide()
-	elif d_debuff:
+	if d_debuff:
 		$IrinaHud/Icons/Defense_D.show()
 	elif not d_debuff:
 		$IrinaHud/Icons/Defense_D.hide()
-	elif current_type == "neutral":
+	if current_type == "neutral":
 		$IrinaHud/Icons/Type.hide()
-	elif current_type == "fire":
+	if current_type == "fire":
 		$IrinaHud/Icons/Type.show()
 		$IrinaHud/Icons/Type.frame = 0
-	elif current_type == "water":
+	if current_type == "water":
 		$IrinaHud/Icons/Type.show()
 		$IrinaHud/Icons/Type.frame = 1
-	elif current_type == "air":
+	if current_type == "air":
 		$IrinaHud/Icons/Type.show()
 		$IrinaHud/Icons/Type.frame = 4
-	elif current_type == "earth":
+	if current_type == "earth":
 		$IrinaHud/Icons/Type.show()
 		$IrinaHud/Icons/Type.frame = 5
 		

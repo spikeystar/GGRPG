@@ -58,6 +58,7 @@ var d_buff_timer = 0
 var d_debuff_timer = 0
 
 func _ready():
+	SceneManager.targeted_applied = false
 	set_stats()
 	set_formation()
 	set_trinket()
@@ -510,9 +511,11 @@ func status_restore():
 	if poison:
 		poison = false
 		f_defense += (f_defense * 0.1)
+	if targeted:
+		targeted = false
+		SceneManager.targeted_applied = false
 	wimpy = false
 	dizzy = false
-	targeted = false
 	anxious = false
 	current_type = "neutral"
 
@@ -542,6 +545,7 @@ func status_countdown():
 		targeted_timer -= 1
 		if targeted_timer == 0:
 			targeted = false	
+			SceneManager.targeted_applied = false
 	if applied_type:
 		type_timer -= 1
 		if type_timer == 0:
@@ -585,6 +589,14 @@ func poison():
 		poison = true
 		poison_timer = 3
 		f_defense -= (f_defense * 0.1)
+	else:
+		return
+		
+func targeted():
+	if not targeted and not SceneManager.targeted_applied:
+		targeted = true
+		SceneManager.targeted_applied = true
+		targeted_timer = 3
 	else:
 		return
 	

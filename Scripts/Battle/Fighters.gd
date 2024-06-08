@@ -340,7 +340,16 @@ func damage():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	if move_spread == "single":
-		fighter_index = rng.randi_range(0, fighters.size() - 1)
+		var targeted = false
+		var target_index
+		for x in range (fighters.size()):
+			targeted = fighters[x].get_status("targeted")
+			if targeted:
+				target_index = x
+		if targeted:
+			fighter_index = target_index
+		else:
+			fighter_index = rng.randi_range(0, fighters.size() - 1)
 	else:
 		fighter_index = fighter_x
 	var f_defense = fighters[fighter_index].get_f_defense()
@@ -355,6 +364,8 @@ func damage():
 		fighters[fighter_index].stun()
 	if poison:
 		fighters[fighter_index].poison()
+	if targeted:
+		fighters[fighter_index].targeted()
 	huds_update()
 	yield(get_tree().create_timer(1.7), "timeout")
 	for x in range (fighters.size() -1, -1, -1):
