@@ -344,7 +344,7 @@ func damage(amount: int, damage_type: String):
 		$AnimationPlayer.play("Fighter_BattleReady")
 		
 func poison_damage():
-	var amount = int(f_health / 8)
+	var amount = int(f_health / 10)
 	var damage_text = text(TEXT_DAMAGE)
 	if damage_text:
 		damage_text.label.text = str(amount)
@@ -507,11 +507,13 @@ func status_restore():
 	if stun:
 		stun = false
 		turn_used = false
-	var poison = false
-	var wimpy = false
-	var dizzy = false
-	var targeted = false
-	var anxious = false
+	if poison:
+		poison = false
+		f_defense += (f_defense * 0.1)
+	wimpy = false
+	dizzy = false
+	targeted = false
+	anxious = false
 	current_type = "neutral"
 
 func status_countdown():
@@ -531,6 +533,7 @@ func status_countdown():
 		poison_timer -= 1
 		if poison_timer == 0:
 			poison = false
+			f_defense += (f_defense * 0.1)
 	if anxious:
 		anxious_timer -= 1
 		if anxious_timer == 0:
@@ -577,4 +580,11 @@ func stun():
 	else:
 		return
 
+func poison():
+	if not poison:
+		poison = true
+		poison_timer = 3
+		f_defense -= (f_defense * 0.1)
+	else:
+		return
 	

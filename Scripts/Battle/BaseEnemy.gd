@@ -186,6 +186,7 @@ func poison():
 	if not poison:
 		poison = true
 		poison_timer = 3
+		e_defense -= (e_defense * 0.1)
 	else:
 		pass
 
@@ -199,3 +200,10 @@ func countdown():
 		poison_timer -= 1
 		if poison_timer == 0:
 			poison = false
+			e_defense += (e_defense * 0.1)
+			
+func enemy_restore():
+	if poison:
+		poison = false
+		e_defense += (e_defense * 0.1)
+	current_type = initial_type

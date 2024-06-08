@@ -108,7 +108,7 @@ func gary_statuses():
 		$GaryHud/Icons/Stun.show()
 	elif not stun:
 		$GaryHud/Icons/Stun.hide()
-	elif poison:
+	if poison:
 		$GaryHud/Icons/Poison.show()
 	elif not poison:
 		$GaryHud/Icons/Poison.hide()
@@ -172,7 +172,7 @@ func jacques_statuses():
 		$JacquesHud/Icons/Stun.show()
 	elif not stun:
 		$JacquesHud/Icons/Stun.hide()
-	elif poison:
+	if poison:
 		$JacquesHud/Icons/Poison.show()
 	elif not poison:
 		$JacquesHud/Icons/Poison.hide()
@@ -236,7 +236,7 @@ func irina_statuses():
 		$IrinaHud/Icons/Stun.show()
 	elif not stun:
 		$IrinaHud/Icons/Stun.hide()
-	elif poison:
+	if poison:
 		$IrinaHud/Icons/Poison.show()
 	elif not poison:
 		$IrinaHud/Icons/Poison.hide()

@@ -353,6 +353,8 @@ func damage():
 	fighters[fighter_index].damage(damage, move_type)
 	if stun:
 		fighters[fighter_index].stun()
+	if poison:
+		fighters[fighter_index].poison()
 	huds_update()
 	yield(get_tree().create_timer(1.7), "timeout")
 	for x in range (fighters.size() -1, -1, -1):
@@ -613,6 +615,7 @@ func item_used():
 				stun_healing()
 			else: 
 				fighters2[target_index].restore(item_name)
+				yield(get_tree().create_timer(0.25), "timeout")
 				huds_heal_update()
 	fighter_index = selector_index
 	if not revive and not stun and not remedy_b and not perfect_p:
@@ -688,6 +691,20 @@ func _on_SpellList_all_ally_spell():
 	emit_signal("ally_spell_chosen")
 	
 func _on_Enemies_fighters_active():
+	for x in range (fighters.size()):
+		var poisoned = fighters[x].get_status("poison")
+		if poisoned:
+			fighters[x].poison_damage()
+			fighter_index = x
+			huds_update()
+	yield(get_tree().create_timer(0.3), "timeout")
+	for x in range (fighters.size() -1, -1, -1):
+		var dead = fighters[x].death_count()
+		if dead:
+			fighters.remove(x)
+			fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
+	yield(get_tree().create_timer(0.3), "timeout")
+	
 	max_turns = 0
 	for x in range (fighters2.size()):
 		fighters2[x].turn_restored()

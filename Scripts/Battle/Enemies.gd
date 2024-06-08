@@ -343,7 +343,7 @@ func _on_SpellList_all_enemy_spell():
 	emit_signal("all_enemy_spell")
 
 func _on_Fighters_enemies_enabled():
-	yield(get_tree().create_timer(0.5), "timeout")
+	#yield(get_tree().create_timer(0.5), "timeout")
 	enemies_active = true
 
 	for x in range (enemies.size()):
@@ -362,7 +362,7 @@ func _on_Fighters_enemies_enabled():
 				enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
 	yield(get_tree().create_timer(1), "timeout")
 	victory_check()
-	yield(get_tree().create_timer(0.2), "timeout")
+	#yield(get_tree().create_timer(0.2), "timeout")
 	
 	if enemies_active:
 		

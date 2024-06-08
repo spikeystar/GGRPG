@@ -763,9 +763,9 @@ func _on_Enemies_Basic():
 	$Fighters.e_move_base = 1
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
-	#var stun = rng.randi_range(0.0,1.0)
-	#if stun < 0.3:
-		#$Fighters.stun = true
+	var poison = rng.randi_range(0.0,1.0)
+	if poison < 0.3:
+		$Fighters.poison = true
 	$Fighters.damage()
 
 
