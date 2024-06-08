@@ -7,7 +7,7 @@ var holder_name : String
 
 var gary_id = 2
 var gary_health = 87
-var gary_current_health = 1
+var gary_current_health = 20
 var gary_attack = 25
 var gary_magic = 23
 var gary_defense = 15
@@ -15,7 +15,7 @@ var gary_trinket : String = "-"
 
 var jacques_id = 1
 var jacques_health = 103
-var jacques_current_health = 103
+var jacques_current_health = 20
 var jacques_attack = 20
 var jacques_magic = 27
 var jacques_defense = 24
@@ -23,7 +23,7 @@ var jacques_trinket : String = "-"
 
 var irina_id = 3
 var irina_health = 122
-var irina_current_health = 1
+var irina_current_health = 122
 var irina_attack = 17
 var irina_magic = 25
 var irina_defense = 15

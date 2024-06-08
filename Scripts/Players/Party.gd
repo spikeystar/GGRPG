@@ -116,9 +116,17 @@ func add_key_item():
 	KeyItems.append(new_slot)
 	
 func add_enemy():
-	var new_slot = slot.duplicate()
-	new_slot.text = add_enemy_name
-	EnemyList.append(new_slot)
+	var SearchList : Array = []
+	var search_name : String
+	for x in range (EnemyList.size()):
+		search_name = EnemyList[x].get_id()
+		SearchList.append(search_name)
+	if SearchList.has(add_enemy_name):
+			return
+	else:
+		var new_slot = slot.duplicate()
+		new_slot.text = add_enemy_name
+		EnemyList.append(new_slot)
 	
 func populate_Gary():
 	var new_slot = slot.duplicate()

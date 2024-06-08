@@ -18,6 +18,7 @@ export(PackedScene) var TEXT_LOSS: PackedScene = null
 var OG_position : Vector2
 var BB_position : Vector2
 var able = true
+var defend = false
 var turn_used = false
 var health : int
 var formation : int
@@ -159,6 +160,7 @@ func turn():
 func defend():
 	$AnimationPlayer.play("Fighter_Defend")
 	$AnimationPlayer.playback_speed = 1
+	defend = true
 	able = false
 	f_defense = f_defense + (f_defense * 0.2)
 	
@@ -196,6 +198,7 @@ func restore(id : String):
 			dead = false
 			hide = false
 			turn_used = false
+			status_restore()
 			yield(get_tree().create_timer(0.2), "timeout")
 			$Effect.show()
 			$EffectPlayer.play("Restore")
@@ -214,11 +217,87 @@ func restore(id : String):
 		status_restore()
 		$Effect.show()
 		$EffectPlayer.play("Heal")
+	elif id == "Blossom":
+		yield(get_tree().create_timer(0.2), "timeout")
+		status_restore()
+		$Effect.show()
+		$EffectPlayer.play("Heal")
 	elif id == "Ginger Tea":
 		yield(get_tree().create_timer(0.2), "timeout")
 		status_restore()
 		$Effect.show()
 		$EffectPlayer.play("Restore")
+	elif id == "Remedy Bouquet":
+		yield(get_tree().create_timer(0.2), "timeout")
+		status_restore()
+		$Effect.show()
+		$EffectPlayer.play("Restore")
+	elif id == "Perfect Panacea":
+		yield(get_tree().create_timer(0.2), "timeout")
+		status_restore()
+		#GIVE ALL BUFFS
+		if dead:
+			health = f_health
+			$AnimationPlayer.play_backwards("Fighter_Dead")
+			$AnimationPlayer.play("Fighter_BattleReady")
+			dead = false
+			hide = false
+			turn_used = false
+		else:
+			pass
+		$Effect.show()
+		$EffectPlayer.play("Perfect")
+	elif id == "Miracle Bell":
+		yield(get_tree().create_timer(0.2), "timeout")
+		status_restore()
+		if dead:
+			health = f_health
+			$AnimationPlayer.play_backwards("Fighter_Dead")
+			$AnimationPlayer.play("Fighter_BattleReady")
+			dead = false
+			hide = false
+			turn_used = false
+		else:
+			pass
+		$Effect.show()
+		$EffectPlayer.play("Heal")
+	elif id == "Elucidate":
+		yield(get_tree().create_timer(0.2), "timeout")
+		if dead:
+			health = f_health
+			$AnimationPlayer.play_backwards("Fighter_Dead")
+			$AnimationPlayer.play("Fighter_BattleReady")
+			dead = false
+			hide = false
+			turn_used = false
+		else:
+			pass
+		$Effect.show()
+		$EffectPlayer.play("SP")
+	elif id == "Mystery Treat":
+		health = int(f_health / 2)
+		$AnimationPlayer.play_backwards("Fighter_Dead")
+		$AnimationPlayer.play("Fighter_BattleReady")
+		dead = false
+		hide = false
+		turn_used = false
+		yield(get_tree().create_timer(0.2), "timeout")
+		status_restore()
+		$Effect.show()
+		$EffectPlayer.play("Strange")
+	elif id == "Alchemy":
+		yield(get_tree().create_timer(0.2), "timeout")
+		if dead:
+			health = f_health
+			$AnimationPlayer.play_backwards("Fighter_Dead")
+			$AnimationPlayer.play("Fighter_BattleReady")
+			dead = false
+			hide = false
+			turn_used = false
+		else:
+			pass
+		$Effect.show()
+		$EffectPlayer.play("SP")
 		
 func SP(SP_amount: int):
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -386,11 +465,24 @@ func turn_used():
 func turn_restored():
 	if dead:
 		turn_used = true
-		f_defense = f_defense
+		if defend:
+			f_defense -= (f_defense * 0.2)
+			defend = false
+	elif stun:
+		turn_used = true
+		stun_timer -= 1
+		if stun_timer == 0:
+			stun = false
+			turn_used = false
+		if defend:
+			f_defense -= (f_defense * 0.2)
+			defend = false
 	else:
 		turn_used = false
 		able = true
-		f_defense = f_defense
+		if defend:
+			f_defense -= (f_defense * 0.2)
+			defend = false
 		status_countdown()
 	
 func get_turn_value():
@@ -483,6 +575,9 @@ func status_countdown():
 func stun():
 	if not stun:
 		stun = true
+		turn_used = true
 		stun_timer = 2
+	else:
+		return
 
 	

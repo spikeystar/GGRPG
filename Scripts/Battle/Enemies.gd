@@ -96,6 +96,8 @@ func enemy_info_update():
 	$EnemyInfo/EnemyStatus.stun = get_status("stun")
 	$EnemyInfo/EnemyStatus.poison = get_status("poison")
 	$EnemyInfo/EnemyName.enemy_name = get_name()
+	#Party.add_enemy_name = get_name()
+	#Party.add_enemy()
 
 	
 func _process(delta):

@@ -522,11 +522,20 @@ func _on_Fighters_item_chosen():
 	if item_id == "Ginger Tea":
 		$ItemUsage/Item.frame = 4
 		$Fighters.restore = true
+		$Fighters.item_name = "Ginger Tea"
 	if item_id == "Bounty Herb":
 		$ItemUsage/Item.frame = 5
 		$Fighters.restore = true
 		$Fighters.revive = true
 		$Fighters.item_name = "Bounty Herb"
+	if item_id == "Remedy Bouquet":
+		$ItemUsage/Item.frame = 5
+		$Fighters.remedy_b = true
+		$Fighters.item_name = "Remedy Bouquet"
+	if item_id == "Perfect Panacea":
+		$ItemUsage/Item.frame = 5
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Perfect Panacea"
 	$Fighters.item_used()
 	item_animation()
 	yield(get_tree().create_timer(1.5), "timeout")
@@ -536,7 +545,7 @@ func _on_Fighters_item_chosen():
 	ongoing = false
 	Party.remove_item()
 	emit_signal("item_removed")
-	$Fighters.fighters_active_check()
+	#$Fighters.fighters_active_check()
 
 func _on_Enemies_item_chosen():
 	$EnemyInfo.hide()
@@ -741,9 +750,9 @@ func _on_Enemies_Basic():
 	$Fighters.e_move_base = 1
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
-	var stun = rng.randi_range(0.0,1.0)
-	if stun < 0.3:
-		$Fighters.stun = true
+	#var stun = rng.randi_range(0.0,1.0)
+	#if stun < 0.3:
+		#$Fighters.stun = true
 	$Fighters.damage()
 
 
@@ -758,9 +767,9 @@ func _on_Enemies_Barrage():
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
 	for x in range($Fighters.fighters.size() -1):
-		var stun = rng.randi_range(0.0,1.0)
-		if stun < 0.3:
-			$Fighters.stun = true
+		#var stun = rng.randi_range(0.0,1.0)
+		#if stun < 0.3:
+			#$Fighters.stun = true
 		$Fighters.fighter_x = x
 		$Fighters.damage()
 
