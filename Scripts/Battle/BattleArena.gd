@@ -57,6 +57,7 @@ signal item_removed()
 signal update_party
 
 func _ready():
+	SceneManager.victory = false
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.ease_in()
@@ -408,6 +409,7 @@ func _on_WorldRoot_f_turn_used():
 	
 func _on_Enemies_victory():
 	yield(get_tree().create_timer(1.2), "timeout")
+	SceneManager.victory = true
 	BattleMusic.switch_songs()
 	BattleMusic.id = "Victory"
 	BattleMusic.music()
@@ -743,8 +745,10 @@ func Earthslide():
 	
 func Thunderstorm():
 	$Enemies.damage_type = "air"
-	$Enemies.stun = true
-	$Enemies.stun_chance = 0.3
+	#$Enemies.stun = true
+	#$Enemies.stun_chance = 0.3
+	$Enemies.poison = true
+	$Enemies.poison_chance = 0.3
 	
 	
 	##### Enemy Attacks #####

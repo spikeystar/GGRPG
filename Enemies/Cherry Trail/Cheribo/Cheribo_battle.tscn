@@ -923,13 +923,13 @@ scale = Vector2( 1.09549, 0.706501 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 2, -25 )
+position = Vector2( 1, -30 )
 scale = Vector2( 1.2, 1.2 )
 texture = SubResource( 17 )
 offset = Vector2( 0, -5 )
 hframes = 9
 vframes = 3
-frame = 1
+frame = 9
 
 [node name="DamageStar" type="Sprite" parent="."]
 visible = false

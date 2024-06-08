@@ -194,6 +194,8 @@ func enemy_damage():
 		target_enemy.damage(damage)
 		print("success!")
 		is_attack = false
+	if poison:
+		target_enemy.poison()
 	yield(get_tree().create_timer(1.5), "timeout")
 	target_enemy.unfocus()
 	if target_enemy.is_dead():
@@ -220,6 +222,8 @@ func magic_damage():
 	target_enemy.magic_damage(damage, damage_type)
 	if stun:
 		target_enemy.stun()
+	if poison:
+		target_enemy.poison()
 	yield(get_tree().create_timer(1.5), "timeout")
 	target_enemy.unfocus()
 	if target_enemy.is_dead():
@@ -255,16 +259,16 @@ func all_magic_damage():
 			var apply = rng.randi_range(0.0,1.0)
 			if apply < stun_chance:
 				enemies[x].stun()
-				
-				
-				
-				
+		if poison:
+			var apply = rng.randi_range(0.0,1.0)
+			if apply < poison_chance:
+				enemies[x].poison()
+
 	yield(get_tree().create_timer(1.5), "timeout")
 	for x in range(enemies.size()):
 		if enemies[x].is_dead():
 			enemies[x].death()
 			enemies[x].death_tagged = true
-			#yield(get_tree().create_timer(1), "timeout")
 	for x in range(enemies.size() -1, -1, -1):
 			var death_tagged = enemies[x].get_death_tag()
 			if death_tagged == true:
@@ -341,8 +345,27 @@ func _on_SpellList_all_enemy_spell():
 func _on_Fighters_enemies_enabled():
 	yield(get_tree().create_timer(0.5), "timeout")
 	enemies_active = true
+
+	for x in range (enemies.size()):
+		var poisoned = enemies[x].get_status("poison")
+		if poisoned:
+			enemies[x].poison_damage()
+	yield(get_tree().create_timer(0.3), "timeout")
+	for x in range(enemies.size()):
+		if enemies[x].is_dead():
+			enemies[x].death()
+			enemies[x].death_tagged = true
+	for x in range(enemies.size() -1, -1, -1):
+			var death_tagged = enemies[x].get_death_tag()
+			if death_tagged == true:
+				enemies.remove(x)
+				enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
+	yield(get_tree().create_timer(1), "timeout")
+	victory_check()
+	yield(get_tree().create_timer(0.2), "timeout")
 	
 	if enemies_active:
+		
 		for x in range(enemies.size()):
 			var stun = enemies[x].get_status("stun")
 			if not stun:

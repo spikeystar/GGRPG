@@ -125,6 +125,14 @@ func magic_damage(amount: int, damage_type: String):
 	yield(get_tree().create_timer(2), "timeout")
 	$AnimationPlayer.play("enemy_idle")
 	
+func poison_damage():
+	var amount = e_health / 10
+	var damage_text = text(TEXT_DAMAGE)
+	if damage_text:
+		damage_text.label.text = str(amount)
+	health = max(0, health - amount)
+	#yield(get_tree().create_timer(2), "timeout")
+	#$AnimationPlayer.play("enemy_idle")
 		
 func get_health():
 	return health
@@ -173,9 +181,21 @@ func stun():
 		stun_timer = 1
 	else:
 		pass
+		
+func poison():
+	if not poison:
+		poison = true
+		poison_timer = 3
+	else:
+		pass
 
 func countdown():
 	if stun:
 		stun_timer -= 1
 		if stun_timer == 0:
 			stun = false
+			
+	if poison:
+		poison_timer -= 1
+		if poison_timer == 0:
+			poison = false
