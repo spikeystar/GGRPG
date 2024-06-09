@@ -394,6 +394,8 @@ func damage():
 		fighters[fighter_index].random_debuff()
 	if multi_debuff:
 		fighters[fighter_index].multi_debuff()
+	if anxious:
+		fighters[fighter_index].anxious()
 	huds_update()
 	yield(get_tree().create_timer(1.7), "timeout")
 	for x in range (fighters.size() -1, -1, -1):
@@ -516,7 +518,7 @@ func _on_WorldRoot_f_index_reset():
 	attack_chosen = false
 	#ongoing = false
 	fighter_index = -1
-	print(fighters.size())
+	print("pleep")
 	if fighters.size() <=0:
 		set_positions()
 		#fighters2 = fighters.duplicate()

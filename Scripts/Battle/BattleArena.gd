@@ -409,9 +409,6 @@ func _on_Enemies_e_damage_finish():
 	attack_ended = true
 	#yield(get_tree().create_timer(0.2), "timeout")
 	$Fighters.ongoing = false
-	#if f_turns == f_array_size:
-		#fighters_enabled = false
-		#enemies_enabled = true
 	emit_signal("f_index_reset")
 	$Fighters.fighters_active_check()
 
@@ -671,6 +668,7 @@ func _on_Enemies_single_enemy_spell():
 	$Enemies.magic_damage()
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
+	emit_signal("f_index_reset")
 	$Fighters.fighters_active_check()
 	
 func _on_Enemies_all_enemy_spell():
@@ -689,6 +687,8 @@ func _on_Enemies_all_enemy_spell():
 	$Enemies.all_magic_damage()
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
+	emit_signal("f_index_reset")
+	$Fighters.fighters_active_check()
 	
 	
 func _on_Fighters_ally_spell_chosen():
@@ -720,8 +720,7 @@ func _on_Enemies_e_magic_damage_finish():
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
 	yield(tween, "finished")
-	yield(get_tree().create_timer(0.5), "timeout")
-	emit_signal("f_index_reset")
+	yield(get_tree().create_timer(0.3), "timeout")
 	ongoing = false
 	$Fighters.ongoing = false
 	emit_signal("action_ended")

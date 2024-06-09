@@ -60,8 +60,6 @@ var hocus_potion
 var hocus_potion_timer = 0
 
 func _ready():
-	anxious = true
-	poison = true
 	SceneManager.targeted_applied = false
 	set_stats()
 	set_formation()
@@ -619,6 +617,25 @@ func poison():
 		poison = true
 		poison_timer = 3
 		f_defense -= (f_defense * 0.1)
+	else:
+		return
+		
+func envenomate():
+	if not poison and not hocus_potion:
+		poison = true
+		poison_timer = 3
+		f_defense -= (f_defense * 0.1)
+	if poison:
+		apply_debuff("attack")
+		apply_debuff("magic")
+		apply_debuff("defense")
+	else:
+		return
+		
+func anxious():
+	if not anxious and not hocus_potion:
+		anxious = true
+		anxious_timer = 3
 	else:
 		return
 		

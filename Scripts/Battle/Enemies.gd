@@ -307,7 +307,8 @@ func all_magic_damage():
 				enemies.remove(x)
 				enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
 	yield(get_tree().create_timer(0.8), "timeout")
-	victory_check()
+	if not SceneManager.victory:
+		victory_check()
 	yield(get_tree().create_timer(0.4), "timeout")
 	emit_signal("e_magic_damage_finish")
 	stun = false
@@ -340,7 +341,8 @@ func item_damage():
 				enemies.remove(x)
 				enemy_index = clamp(enemy_index, 0, enemies.size())
 	yield(get_tree().create_timer(0.8), "timeout")
-	victory_check()
+	if not SceneManager.victory:
+		victory_check()
 	yield(get_tree().create_timer(0.4), "timeout")
 	emit_signal("e_item_finished")
 	
@@ -399,7 +401,8 @@ func _on_Fighters_enemies_enabled():
 				enemies.remove(x)
 				enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
 	yield(get_tree().create_timer(1), "timeout")
-	victory_check()
+	if not SceneManager.victory:
+		victory_check()
 	#yield(get_tree().create_timer(0.2), "timeout")
 	
 	if enemies_active:
