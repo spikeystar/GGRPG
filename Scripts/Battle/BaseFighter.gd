@@ -56,6 +56,9 @@ var m_debuff_timer = 0
 var d_buff_timer = 0
 var d_debuff_timer = 0
 
+var hocus_potion
+var hocus_potion_timer = 0
+
 func _ready():
 	SceneManager.targeted_applied = false
 	set_stats()
@@ -373,6 +376,11 @@ func buff():
 	$AnimationPlayer.playback_speed = 0.7
 	$AnimationPlayer.play("Fighter_Buff")
 	
+func debuff():
+	yield(get_tree().create_timer(1.7), "timeout")
+	$AnimationPlayer.playback_speed = 0.7
+	$AnimationPlayer.play("Fighter_Debuff")
+	
 func flee():
 	$AnimationPlayer.play("Fighter_Flee")
 	$AnimationPlayer.playback_speed = 1
@@ -554,29 +562,40 @@ func status_countdown():
 		a_buff_timer -= 1
 		if a_buff_timer == 0:
 			a_buff = false
+			f_attack -= (f_attack * 0.2)
 	if a_debuff:
 		a_debuff_timer -= 1
 		if a_debuff_timer == 0:
 			a_debuff = false	
+			f_attack += (f_attack * 0.2)
 	if m_buff:
 		m_buff_timer -= 1
 		if m_buff_timer == 0:
 			m_buff = false
+			f_magic -= (f_magic * 0.2)
 	if m_debuff:
 		m_debuff_timer -= 1
 		if m_debuff_timer == 0:
-			m_debuff = false			
+			m_debuff = false	
+			f_magic += (f_magic * 0.2)		
 	if d_buff:
 		d_buff_timer -= 1
 		if d_buff_timer == 0:
 			d_buff = false
+			f_defense -= (f_defense * 0.2)
 	if d_debuff:
 		d_debuff_timer -= 1
 		if d_debuff_timer == 0:
-			d_debuff = false			
+			d_debuff = false	
+			f_defense += (f_defense * 0.2)	
+	
+	if hocus_potion:
+		hocus_potion_timer -= 1
+		if hocus_potion_timer == 0:
+			hocus_potion = false
 
 func stun():
-	if not stun:
+	if not stun and not hocus_potion:
 		stun = true
 		turn_used = true
 		stun_timer = 2
@@ -584,7 +603,7 @@ func stun():
 		return
 
 func poison():
-	if not poison:
+	if not poison and not hocus_potion:
 		poison = true
 		poison_timer = 3
 		f_defense -= (f_defense * 0.1)
@@ -592,7 +611,7 @@ func poison():
 		return
 		
 func targeted():
-	if not targeted and not SceneManager.targeted_applied:
+	if not targeted and not SceneManager.targeted_applied and not hocus_potion:
 		targeted = true
 		SceneManager.targeted_applied = true
 		targeted_timer = 3
@@ -600,15 +619,189 @@ func targeted():
 		return
 	
 func wimpy():
-	if not wimpy and not dizzy:
+	if not wimpy and not dizzy and not hocus_potion:
 		wimpy = true
 		wimpy_timer = 4
 	else:
 		return
 		
 func dizzy():
-	if not dizzy and not wimpy:
+	if not dizzy and not wimpy and not hocus_potion:
 		dizzy = true
 		dizzy_timer = 4
 	else:
 		return
+		
+func apply_buff(id : String):
+	if id == "attack" and not a_buff and not a_debuff:
+		a_buff = true
+		a_buff_timer = 4
+		f_attack += (f_attack * 0.2)
+		buff()
+	elif id == "attack" and a_debuff:
+		a_debuff = false
+		a_debuff_timer = 0
+		f_attack += (f_attack * 0.2)
+		buff()
+		
+	if id == "magic" and not m_buff and not m_debuff:
+		m_buff = true
+		m_buff_timer = 4
+		f_magic += (f_magic * 0.2)
+		buff()
+	elif id == "magic" and m_debuff:
+		m_debuff = false
+		m_debuff_timer = 0
+		f_magic += (f_magic * 0.2)
+		buff()
+		
+		
+	if id == "defense" and not d_buff and not d_debuff:
+		d_buff = true
+		d_buff_timer = 3
+		f_defense += (f_defense * 0.2)
+		buff()
+	elif id == "defense" and d_debuff:
+		d_debuff = false
+		d_debuff_timer = 0
+		f_defense += (f_defense * 0.2)
+		buff()	
+		
+		
+func apply_debuff(id : String):
+	if id == "attack" and not a_debuff and not a_buff and not hocus_potion:
+		a_debuff = true
+		a_debuff_timer = 4
+		f_attack -= (f_attack * 0.2)
+		debuff()
+	if id == "attack" and a_buff and not hocus_potion:
+		a_buff = false
+		a_buff_timer = 0
+		f_attack -= (f_attack * 0.2)
+		debuff()
+		
+		
+	if id == "magic" and not m_debuff and not m_buff and not hocus_potion:
+		m_debuff = true
+		m_debuff_timer = 4
+		f_magic -= (f_magic * 0.2)
+		debuff()
+	if id == "magic" and m_buff and not hocus_potion:
+		m_buff = false
+		m_buff_timer = 0
+		f_magic -= (f_magic * 0.2)
+		debuff()
+		
+		
+	if id == "defense" and not d_debuff and not d_buff and not hocus_potion:
+		d_debuff = true
+		d_debuff_timer = 3
+		f_defense -= (f_defense * 0.2)
+		debuff()
+	if id == "defense" and d_buff and not hocus_potion:
+		d_buff = false
+		d_buff_timer = 0
+		f_defense -= (f_defense * 0.2)
+		debuff()
+
+func random_buff():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var index = rng.randi_range(1, 3)
+	if index == 1:
+		apply_buff("attack")
+	if index == 2:
+		apply_buff("magic")
+	if index == 3:
+		apply_buff("defense")
+		
+func random_debuff():
+	if hocus_potion:
+		return
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var index = rng.randi_range(1, 3)
+	if index == 1:
+		apply_debuff("attack")
+	if index == 2:
+		apply_debuff("magic")
+	if index == 3:
+		apply_debuff("defense")
+
+func multi_random_buff():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var index = rng.randi_range(1, 3)
+	var last_index = index
+	if index == 1:
+		apply_buff("attack")
+	if index == 2:
+		apply_buff("magic")
+	if index == 3:
+		apply_buff("defense")
+		
+	var chance = rng.randi_range(0.0, 1.0)
+	if chance < 0.5:
+		while index == last_index:
+			index = rng.randi_range(1, 3)
+		if index == 1:
+			apply_buff("attack")
+		if index == 2:
+			apply_buff("magic")
+		if index == 3:
+			apply_buff("defense")
+	
+	chance = rng.randi_range(0.0, 1.0)
+	if chance < 0.25:
+		var previous_index = last_index
+		last_index = index
+		while index == last_index or index == previous_index:
+			index = rng.randi_range(1, 3)
+		if index == 1:
+			apply_buff("attack")
+		if index == 2:
+			apply_buff("magic")
+		if index == 3:
+			apply_buff("defense")
+			
+func multi_random_debuff():
+	if hocus_potion:
+		return
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var index = rng.randi_range(1, 3)
+	var last_index = index
+	if index == 1:
+		apply_debuff("attack")
+	if index == 2:
+		apply_debuff("magic")
+	if index == 3:
+		apply_debuff("defense")
+		
+	var chance = rng.randi_range(0.0, 1.0)
+	if chance < 0.5:
+		while index == last_index:
+			index = rng.randi_range(1, 3)
+		if index == 1:
+			apply_debuff("attack")
+		if index == 2:
+			apply_debuff("magic")
+		if index == 3:
+			apply_debuff("defense")
+	
+	chance = rng.randi_range(0.0, 1.0)
+	if chance < 0.25:
+		var previous_index = last_index
+		last_index = index
+		while index == last_index or index == previous_index:
+			index = rng.randi_range(1, 3)
+		if index == 1:
+			apply_debuff("attack")
+		if index == 2:
+			apply_debuff("magic")
+		if index == 3:
+			apply_debuff("defense")

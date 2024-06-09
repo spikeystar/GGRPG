@@ -58,10 +58,14 @@ var dizzy = false
 var item_halt = false
 var targeted = false
 var anxious = false
-var buff = false
-var debuff = false
 var applied_type = false
 var changing_type : String
+
+var a_debuff = false
+var m_debuff = false
+var d_debuff = false
+var random_debuff = false
+var multi_debuff = false
 
 
 signal fighters_active
@@ -333,11 +337,14 @@ func reset_status():
 	poison = false
 	wimpy = false
 	dizzy = false
-	item_halt = false
+	#item_halt = false
 	targeted = false
 	anxious = false
-	buff = false
-	debuff = false
+	a_debuff = false
+	m_debuff = false
+	d_debuff = false
+	random_debuff = false
+	multi_debuff = false
 	applied_type = false
 	changing_type = ""
 	
@@ -377,6 +384,16 @@ func damage():
 		fighters[fighter_index].wimpy()
 	if dizzy:
 		fighters[fighter_index].dizzy()
+	if a_debuff:
+		fighters[fighter_index].apply_debuff("attack")
+	if m_debuff:
+		fighters[fighter_index].apply_debuff("magic")
+	if d_debuff:
+		fighters[fighter_index].apply_debuff("defense")
+	if random_debuff:
+		fighters[fighter_index].random_debuff()
+	if multi_debuff:
+		fighters[fighter_index].multi_debuff()
 	huds_update()
 	yield(get_tree().create_timer(1.7), "timeout")
 	for x in range (fighters.size() -1, -1, -1):

@@ -55,6 +55,12 @@ var poison = false
 var stun_chance : float
 var poison_chance : float
 
+var random_debuff
+var multi_debuff
+var a_debuff
+var m_debuff
+var d_debuff
+
 signal Basic
 signal Barrage
 
@@ -224,6 +230,17 @@ func magic_damage():
 		target_enemy.stun()
 	if poison:
 		target_enemy.poison()
+	if a_debuff:
+		target_enemy.apply_debuff("attack")
+	if m_debuff:
+		target_enemy.apply_debuff("magic")
+	if d_debuff:
+		target_enemy.apply_debuff("defense")
+	if random_debuff:
+		target_enemy.random_debuff()
+	if multi_debuff:
+		target_enemy.multi_debuff()
+		
 	yield(get_tree().create_timer(1.5), "timeout")
 	target_enemy.unfocus()
 	if target_enemy.is_dead():
@@ -240,6 +257,11 @@ func magic_damage():
 	emit_signal("e_magic_damage_finish")
 	stun = false
 	poison = false
+	a_debuff = false
+	m_debuff = false
+	d_debuff = false
+	random_debuff = false
+	multi_debuff = false
 		
 		
 func all_magic_damage():
@@ -263,6 +285,16 @@ func all_magic_damage():
 			var apply = rng.randi_range(0.0,1.0)
 			if apply < poison_chance:
 				enemies[x].poison()
+		if a_debuff:
+			enemies[x].apply_debuff("attack")
+		if m_debuff:
+			enemies[x].apply_debuff("magic")
+		if d_debuff:
+			enemies[x].apply_debuff("defense")
+		if random_debuff:
+			enemies[x].random_debuff()
+		if multi_debuff:
+			enemies[x].multi_random_debuff()
 
 	yield(get_tree().create_timer(1.5), "timeout")
 	for x in range(enemies.size()):
@@ -280,6 +312,11 @@ func all_magic_damage():
 	emit_signal("e_magic_damage_finish")
 	stun = false
 	poison = false
+	a_debuff = false
+	m_debuff = false
+	d_debuff = false
+	random_debuff = false
+	multi_debuff = false
 		
 		
 func victory_check():
@@ -310,6 +347,7 @@ func item_damage():
 func jinx_doll():
 	pass
 	emit_signal("e_item_finished")
+	multi_debuff = false
 
 	
 func _on_WorldRoot_action_ongoing():
