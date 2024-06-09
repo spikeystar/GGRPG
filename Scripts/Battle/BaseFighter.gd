@@ -60,6 +60,8 @@ var hocus_potion
 var hocus_potion_timer = 0
 
 func _ready():
+	anxious = true
+	poison = true
 	SceneManager.targeted_applied = false
 	set_stats()
 	set_formation()
@@ -317,6 +319,13 @@ func weapon_SP(SP_amount: int):
 	if sp_text:
 		sp_text.label.text = str(SP_amount)
 	PartyStats.party_sp = clamp(PartyStats.party_sp + SP_amount, 0, PartyStats.party_max_sp)
+	
+func anxious_SP(SP_amount: int):
+	var sp_text = text(TEXT_LOSS)
+	SP_amount = int(PartyStats.party_max_sp / 16)
+	if sp_text:
+		sp_text.label.text = str(SP_amount)
+	PartyStats.party_sp = clamp(PartyStats.party_sp - SP_amount, 0, PartyStats.party_max_sp)
 		
 func combo_heal(SP_amount : int):
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -544,10 +553,6 @@ func status_countdown():
 		if poison_timer == 0:
 			poison = false
 			f_defense += (f_defense * 0.1)
-	if anxious:
-		anxious_timer -= 1
-		if anxious_timer == 0:
-			anxious = false
 	if targeted:
 		targeted_timer -= 1
 		if targeted_timer == 0:
@@ -593,6 +598,13 @@ func status_countdown():
 		hocus_potion_timer -= 1
 		if hocus_potion_timer == 0:
 			hocus_potion = false
+			
+	if anxious:
+		anxious_timer -= 1
+		if anxious_timer == 0:
+			anxious = false
+		yield(get_tree().create_timer(0.7), "timeout")
+		anxious_SP(1)
 
 func stun():
 	if not stun and not hocus_potion:
@@ -792,6 +804,7 @@ func multi_random_debuff():
 			apply_debuff("magic")
 		if index == 3:
 			apply_debuff("defense")
+			
 	
 	chance = rng.randi_range(0.0, 1.0)
 	if chance < 0.25:
@@ -805,3 +818,4 @@ func multi_random_debuff():
 			apply_debuff("magic")
 		if index == 3:
 			apply_debuff("defense")
+
