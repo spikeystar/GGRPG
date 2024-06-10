@@ -752,7 +752,7 @@ func Earthslide():
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
 	$Fighters.spell_2()
-	var stun = rng.randi_range(0, 100)
+	var stun = rng.randi_range(1, 100)
 	if stun <= 30:
 		$Enemies.stun = true
 	
@@ -777,10 +777,10 @@ func _on_Enemies_Basic():
 	$Fighters.e_move_base = 1
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
-	var wimpy = rng.randi_range(0, 100)
+	var wimpy = rng.randi_range(1, 100)
 	if wimpy <= 30:
 		$Fighters.wimpy = true
-	var dizzy = rng.randi_range(0, 100)
+	var dizzy = rng.randi_range(1, 100)
 	if dizzy <= 30:
 		$Fighters.dizzy = true
 	$Fighters.damage()
@@ -797,7 +797,7 @@ func _on_Enemies_Barrage():
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
 	for x in range($Fighters.fighters.size() -1):
-		#var stun = rng.randi_range(0, 100)
+		#var stun = rng.randi_range(1, 100)
 		#if stun <= 30:
 			#$Fighters.stun = true
 		$Fighters.fighter_x = x

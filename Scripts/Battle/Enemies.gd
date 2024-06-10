@@ -199,7 +199,7 @@ func enemy_damage():
 	var e_defense = target_enemy.get_e_defense()
 	var f_total = f_attack + f_attack_base
 	var whammy = false
-	var whammy_hit = rng.randi_range(0, 100)
+	var whammy_hit = rng.randi_range(1, 100)
 	if whammy_hit <= whammy_chance:
 		whammy = true
 	
@@ -249,7 +249,7 @@ func magic_damage():
 	var e_defense = target_enemy.get_e_defense()
 	var f_total = f_magic + f_magic_base
 	var whammy = false
-	var whammy_hit = rng.randi_range(0, 100)
+	var whammy_hit = rng.randi_range(1, 100)
 	if whammy_hit <= whammy_chance:
 		whammy = true
 		damage_type = "whammy"
@@ -310,7 +310,7 @@ func all_magic_damage():
 	for x in range(enemies.size()):
 		var whammy = false
 		damage_type = set_type
-		var whammy_hit = rng.randi_range(0, 100)
+		var whammy_hit = rng.randi_range(1, 100)
 		if whammy_hit <= whammy_chance:
 			whammy = true
 			damage_type = "whammy"
@@ -324,11 +324,11 @@ func all_magic_damage():
 		
 		enemies[x].magic_damage(damage, damage_type)
 		if stun:
-			var apply = rng.randi_range(0, 100)
+			var apply = rng.randi_range(1, 100)
 			if apply <= stun_chance:
 				enemies[x].stun()
 		if poison:
-			var apply = rng.randi_range(0, 100)
+			var apply = rng.randi_range(1, 100)
 			if apply <= poison_chance:
 				enemies[x].poison()
 		if a_debuff:

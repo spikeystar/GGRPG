@@ -34,7 +34,7 @@ var targeted = false
 var anxious = false
 var applied_type = false
 var changing_type : String
-var whammy_chance = 70
+var whammy_chance = 3
 
 var a_buff = false
 var a_debuff = false
@@ -820,7 +820,7 @@ func multi_random_buff():
 	if index == 3:
 		apply_buff("defense")
 		
-	var chance = rng.randi_range(0, 100)
+	var chance = rng.randi_range(1, 100)
 	if chance <= 50:
 		while index == last_index:
 			index = rng.randi_range(1, 3)
@@ -831,7 +831,7 @@ func multi_random_buff():
 		if index == 3:
 			apply_buff("defense")
 	
-	chance = rng.randi_range(0, 100)
+	chance = rng.randi_range(1, 100)
 	if chance <= 25:
 		var previous_index = last_index
 		last_index = index
@@ -859,7 +859,7 @@ func multi_random_debuff():
 	if index == 3:
 		apply_debuff("defense")
 		
-	var chance = rng.randi_range(0, 100)
+	var chance = rng.randi_range(1, 100)
 	if chance <= 50:
 		while index == last_index:
 			index = rng.randi_range(1, 3)
@@ -871,7 +871,7 @@ func multi_random_debuff():
 			apply_debuff("defense")
 			
 	
-	chance = rng.randi_range(0, 100)
+	chance = rng.randi_range(1, 100)
 	if chance <= 25:
 		var previous_index = last_index
 		last_index = index

@@ -523,7 +523,6 @@ func _on_WorldRoot_f_index_reset():
 	attack_chosen = false
 	#ongoing = false
 	#fighter_index = -1
-	print("pleep")
 	if fighters.size() <=0:
 		set_positions()
 		#fighters2 = fighters.duplicate()
