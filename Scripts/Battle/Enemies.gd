@@ -23,6 +23,7 @@ var enemy_turns = 0
 var attack_over = false
 var move_index : int
 var move_name : String
+var whammy_chance
 
 var f_attack
 var f_attack_base
@@ -52,8 +53,8 @@ signal update_move_window
 
 var stun = false
 var poison = false
-var stun_chance : float
-var poison_chance : float
+var stun_chance : int
+var poison_chance : int
 
 var random_debuff
 var multi_debuff
@@ -104,11 +105,15 @@ func select_next_enemy(index_offset):
 	
 func enemy_info_update():
 	$EnemyInfo/EnemyStatus.type = enemies[enemy_index].get_type()
+	$EnemyInfo/EnemyName.enemy_name = get_name()
 	$EnemyInfo/EnemyStatus.stun = get_status("stun")
 	$EnemyInfo/EnemyStatus.poison = get_status("poison")
-	$EnemyInfo/EnemyName.enemy_name = get_name()
-	#Party.add_enemy_name = get_name()
-	#Party.add_enemy()
+	$EnemyInfo/EnemyStatus.a_buff = get_status("a_buff")
+	$EnemyInfo/EnemyStatus.a_debuff = get_status("a_debuff")
+	$EnemyInfo/EnemyStatus.m_buff = get_status("m_buff")
+	$EnemyInfo/EnemyStatus.m_debuff = get_status("m_debuff")
+	$EnemyInfo/EnemyStatus.d_buff = get_status("d_buff")
+	$EnemyInfo/EnemyStatus.d_debuff = get_status("d_debuff")
 
 	
 func _process(delta):
@@ -187,19 +192,36 @@ func _on_AttackTimer_attack_bonus():
 func enemy_damage():
 	BB_active = false
 	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
 	var target_enemy = enemies[enemy_index]
 	var damage : int
 	var e_defense = target_enemy.get_e_defense()
 	var f_total = f_attack + f_attack_base
-	if is_attack and not attack_bonus:
-		damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
-		target_enemy.damage(damage)
-		is_attack = false
-	elif is_attack and attack_bonus:
-		damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense) + 100
-		target_enemy.damage(damage)
-		print("success!")
-		is_attack = false
+	var whammy = false
+	var whammy_hit = rng.randi_range(0, 100)
+	if whammy_hit <= whammy_chance:
+		whammy = true
+	
+	damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
+	if attack_bonus:
+		damage += 100
+	if whammy:
+		damage += damage
+		target_enemy.whammy = true
+	target_enemy.damage(damage)
+	is_attack = false
+	
+	#if is_attack and not attack_bonus:
+		#damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
+		#target_enemy.damage(damage)
+		#is_attack = false
+	#elif is_attack and attack_bonus:
+		#damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense) + 100
+		#target_enemy.damage(damage)
+		#print("success!")
+		#is_attack = false
+
 	if poison:
 		target_enemy.poison()
 	yield(get_tree().create_timer(1.5), "timeout")
@@ -220,12 +242,24 @@ func enemy_damage():
 func magic_damage():
 	BB_active = false
 	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
 	var target_enemy = enemies[enemy_index]
 	var damage : int
 	var e_defense = target_enemy.get_e_defense()
 	var f_total = f_magic + f_magic_base
+	var whammy = false
+	var whammy_hit = rng.randi_range(0, 100)
+	if whammy_hit <= whammy_chance:
+		whammy = true
+		damage_type = "whammy"
+	
 	damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
+	if whammy:
+		damage += damage
+	
 	target_enemy.magic_damage(damage, damage_type)
+	
 	if stun:
 		target_enemy.stun()
 	if poison:
@@ -271,19 +305,31 @@ func all_magic_damage():
 	BB_active = false
 	ongoing = true
 	randomize()
+	var set_type = damage_type
 	var f_total = f_magic + f_magic_base
 	for x in range(enemies.size()):
+		var whammy = false
+		damage_type = set_type
+		var whammy_hit = rng.randi_range(0, 100)
+		if whammy_hit <= whammy_chance:
+			whammy = true
+			damage_type = "whammy"
+		
 		var e_defense = enemies[x].get_e_defense()
 		var damage : int
 		damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
+		
+		if whammy:
+			damage += damage
+		
 		enemies[x].magic_damage(damage, damage_type)
 		if stun:
-			var apply = rng.randi_range(0.0,1.0)
-			if apply < stun_chance:
+			var apply = rng.randi_range(0, 100)
+			if apply <= stun_chance:
 				enemies[x].stun()
 		if poison:
-			var apply = rng.randi_range(0.0,1.0)
-			if apply < poison_chance:
+			var apply = rng.randi_range(0, 100)
+			if apply <= poison_chance:
 				enemies[x].poison()
 		if a_debuff:
 			enemies[x].apply_debuff("attack")

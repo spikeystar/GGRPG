@@ -4,6 +4,12 @@ var enemy_selecting = false
 var type : String
 var poison
 var stun
+var a_buff
+var a_debuff
+var m_buff
+var m_debuff
+var d_buff
+var d_debuff
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_right") and enemy_selecting:
@@ -20,6 +26,18 @@ func _process(delta):
 			$Icons/Statuses/Poison.show()
 		if stun:
 			$Icons/Statuses/Stun.show()
+		if a_buff:
+			$Icons/Statuses/Attack_B.show()
+		if a_debuff:
+			$Icons/Statuses/Attack_D.show()
+		if m_buff:
+			$Icons/Statuses/Magic_B.show()
+		if m_debuff:
+			$Icons/Statuses/Magic_D.show()
+		if d_buff:
+			$Icons/Statuses/Defense_B.show()
+		if d_debuff:
+			$Icons/Statuses/Defense_D.show()
 
 	if Input.is_action_just_pressed("ui_right") and enemy_selecting:
 		if type == "neutral":

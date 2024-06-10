@@ -273,6 +273,11 @@ func get_f_name():
 	var f_name = fighters[fighter_index].get_name()
 	return f_name
 	
+func get_status(id : String):
+	if id == "whammy_chance":
+		var whammy_chance = fighters[fighter_index].get_status("whammy_chance")
+		return whammy_chance
+
 func get_health():
 	var health = fighters[fighter_index].get_health()
 	return health
@@ -517,7 +522,7 @@ func _on_WorldRoot_f_index_reset():
 	fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
 	attack_chosen = false
 	#ongoing = false
-	fighter_index = -1
+	#fighter_index = -1
 	print("pleep")
 	if fighters.size() <=0:
 		set_positions()
@@ -528,6 +533,7 @@ func _on_WorldRoot_f_index_reset():
 				fighters.remove(x)
 				fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
 				max_turns += 1
+	fighter_index = -1
 		#fighters = get_children()
 
 func get_f_attack():
@@ -663,16 +669,16 @@ func item_used():
 		_on_WorldRoot_f_index_reset()
 	elif not dead and not stun and not remedy_b and not perfect_p:
 		_on_WorldRoot_f_index_reset()
-	if heal:
-		_on_WorldRoot_f_index_reset()
-	if SP:
-		_on_WorldRoot_f_index_reset()
-	if strange:
-		_on_WorldRoot_f_index_reset()
-	if combo_heal:
-		_on_WorldRoot_f_index_reset()
-	if all_heal:
-		_on_WorldRoot_f_index_reset()
+	#if heal:
+		#_on_WorldRoot_f_index_reset()
+	#if SP:
+		#_on_WorldRoot_f_index_reset()
+	#if strange:
+		#_on_WorldRoot_f_index_reset()
+	#if combo_heal:
+		#_on_WorldRoot_f_index_reset()
+	#if all_heal:
+		#_on_WorldRoot_f_index_reset()
 	elif stun:
 		fighter_index = -1
 	else:

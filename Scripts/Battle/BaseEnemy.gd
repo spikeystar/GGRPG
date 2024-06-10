@@ -12,11 +12,13 @@ export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
 var health : int
 var death_tagged = false
+var move_type : String
 
 var poison = false
 var stun = false
 var applied_type = false
 var changing_type : String
+var whammy
 
 var a_buff = false
 var a_debuff = false
@@ -65,6 +67,18 @@ func get_status(parameter: String):
 		return poison
 	if parameter == "stun":
 		return stun
+	if parameter == "a_buff":
+		return a_buff
+	if parameter == "a_debuff":
+		return a_debuff
+	if parameter == "m_buff":
+		return m_buff
+	if parameter == "m_debuff":
+		return m_debuff
+	if parameter == "d_buff":
+		return d_buff
+	if parameter == "d_debuff":
+		return d_debuff
 	
 func get_type():
 	return initial_type
@@ -114,11 +128,13 @@ func damage(amount: int):
 	$DamageStar.show()
 	$AnimationPlayer.play("enemy_damage")
 	$AnimationPlayer.playback_speed = 0.7
-	$DamagePlayer.play("neutral")
+	if whammy:
+		$DamagePlayer.play("whammy")
 	$AnimationPlayer.playback_speed = 0.5
 	health = max(0, health - amount)
 	yield(get_tree().create_timer(2), "timeout")
 	$AnimationPlayer.play("enemy_idle")
+	whammy = false
 	
 func magic_damage(amount: int, damage_type: String):
 	var damage_text = text(TEXT_DAMAGE)
@@ -360,8 +376,8 @@ func multi_random_buff():
 	if index == 3:
 		apply_buff("defense")
 		
-	var chance = rng.randi_range(0.0, 1.0)
-	if chance < 0.5:
+	var chance = rng.randi_range(0, 100)
+	if chance <= 50:
 		while index == last_index:
 			index = rng.randi_range(1, 3)
 		if index == 1:
@@ -371,8 +387,8 @@ func multi_random_buff():
 		if index == 3:
 			apply_buff("defense")
 	
-	chance = rng.randi_range(0.0, 1.0)
-	if chance < 0.25:
+	chance = rng.randi_range(0, 100)
+	if chance <= 25:
 		var previous_index = last_index
 		last_index = index
 		while index == last_index or index == previous_index:
@@ -397,8 +413,8 @@ func multi_random_debuff():
 	if index == 3:
 		apply_debuff("defense")
 		
-	var chance = rng.randi_range(0.0, 1.0)
-	if chance < 0.5:
+	var chance = rng.randi_range(0, 100)
+	if chance <= 50:
 		while index == last_index:
 			index = rng.randi_range(1, 3)
 		if index == 1:
@@ -408,8 +424,8 @@ func multi_random_debuff():
 		if index == 3:
 			apply_debuff("defense")
 	
-	chance = rng.randi_range(0.0, 1.0)
-	if chance < 0.25:
+	chance = rng.randi_range(0, 100)
+	if chance <= 25:
 		var previous_index = last_index
 		last_index = index
 		while index == last_index or index == previous_index:

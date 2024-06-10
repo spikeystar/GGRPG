@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-onready var Members = get_tree().get_root().get_node("PauseMenu/Members")
+#onready var Members = get_tree().get_root().get_node("PauseMenu/Members")
 
 var enemies_active = false
 var enemy_id : String
@@ -9,7 +9,8 @@ onready var inventory : Array = []
 var enemy_index : int
 
 func _ready():
-	inventory = Party.EnemyList.duplicate()
+	for x in range (Party.EnemyList.size()):
+		inventory.append(Party.EnemyList[x].duplicate())
 	for enemy_index in inventory.size():
 		add_slot(enemy_index)
 	if inventory.size() > 15:

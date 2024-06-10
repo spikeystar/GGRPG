@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 
-onready var Members = get_tree().get_root().get_node("PauseMenu/Members")
+#onready var Members = get_tree().get_root().get_node("PauseMenu/Members")
 
 var key_active = false
 var empty_key = false
@@ -13,7 +13,8 @@ onready var inventory : Array = []
 var key_index : int
 
 func _ready():
-	inventory = Party.KeyItems.duplicate()
+	for x in range (Party.KeyItems.size()):
+		inventory.append(Party.KeyItems[x].duplicate())
 	for key_index in inventory.size():
 		add_slot(key_index)
 	if inventory.size() == 0:

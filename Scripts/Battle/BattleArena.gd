@@ -386,11 +386,13 @@ func _on_Fighters_anim_finish():
 	var f_name = $Fighters.get_f_name()
 	if f_name == "irina":
 		yield(get_tree().create_timer(1.5), "timeout")
+		$Enemies.whammy_chance = $Fighters.get_status("whammy_chance")
 		$Enemies.f_attack = $Fighters.get_f_attack()
 		$Enemies.f_attack_base = $Fighters.get_f_attack_base()
 		$Enemies.enemy_damage()
 	else:
 		yield(get_tree().create_timer(2.5), "timeout")
+		$Enemies.whammy_chance = $Fighters.get_status("whammy_chance")
 		$Enemies.f_attack = $Fighters.get_f_attack()
 		$Enemies.f_attack_base = $Fighters.get_f_attack_base()
 		$Enemies.enemy_damage()
@@ -663,6 +665,7 @@ func _on_Enemies_single_enemy_spell():
 		Earthslide()
 	yield(get_tree().create_timer(2), "timeout")
 	$Fighters.idle()
+	$Enemies.whammy_chance = $Fighters.get_status("whammy_chance")
 	$Enemies.f_magic = $Fighters.get_f_magic()
 	$Enemies.f_magic_base = $Fighters.get_f_magic_base()
 	$Enemies.magic_damage()
@@ -682,6 +685,7 @@ func _on_Enemies_all_enemy_spell():
 		Thunderstorm()
 	yield(get_tree().create_timer(2), "timeout")
 	$Fighters.idle()
+	$Enemies.whammy_chance = $Fighters.get_status("whammy_chance")
 	$Enemies.f_magic = $Fighters.get_f_magic()
 	$Enemies.f_magic_base = $Fighters.get_f_magic_base()
 	$Enemies.all_magic_damage()
@@ -748,8 +752,8 @@ func Earthslide():
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
 	$Fighters.spell_2()
-	var stun = rng.randi_range(0.0,1.0)
-	if stun < 0.3:
+	var stun = rng.randi_range(0, 100)
+	if stun <= 30:
 		$Enemies.stun = true
 	
 	
@@ -758,7 +762,7 @@ func Thunderstorm():
 	#$Enemies.stun = true
 	#$Enemies.stun_chance = 0.3
 	$Enemies.poison = true
-	$Enemies.poison_chance = 0.3
+	$Enemies.poison_chance = 30
 	
 	
 	##### Enemy Attacks #####
@@ -773,11 +777,11 @@ func _on_Enemies_Basic():
 	$Fighters.e_move_base = 1
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
-	var wimpy = rng.randi_range(0.0,1.0)
-	if wimpy < 0.3:
+	var wimpy = rng.randi_range(0, 100)
+	if wimpy <= 30:
 		$Fighters.wimpy = true
-	var dizzy = rng.randi_range(0.0,1.0)
-	if dizzy < 0.3:
+	var dizzy = rng.randi_range(0, 100)
+	if dizzy <= 30:
 		$Fighters.dizzy = true
 	$Fighters.damage()
 
@@ -793,8 +797,8 @@ func _on_Enemies_Barrage():
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
 	for x in range($Fighters.fighters.size() -1):
-		#var stun = rng.randi_range(0.0,1.0)
-		#if stun < 0.3:
+		#var stun = rng.randi_range(0, 100)
+		#if stun <= 30:
 			#$Fighters.stun = true
 		$Fighters.fighter_x = x
 		$Fighters.damage()
