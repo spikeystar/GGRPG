@@ -539,13 +539,16 @@ func status_restore():
 		targeted = false
 		targeted_timer = 0
 		SceneManager.targeted_applied = false
+	if applied_type:
+		applied_type = false
+		type_timer = 0
+		current_type = "neutral"
 	wimpy = false
 	wimpy_timer = 0
 	dizzy = false
 	dizzy_timer = 0
 	anxious = false
 	anxious_timer = 0
-	current_type = "neutral"
 	if a_debuff:
 		a_debuff = false
 		a_debuff_timer = 0
@@ -694,6 +697,14 @@ func dizzy():
 	if not dizzy and not wimpy and not hocus_potion:
 		dizzy = true
 		dizzy_timer = 4
+	else:
+		return
+		
+func apply_type(id : String):
+	if not applied_type and not hocus_potion:
+		applied_type = true
+		current_type = id
+		type_timer = 3
 	else:
 		return
 		

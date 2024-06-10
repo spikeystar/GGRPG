@@ -407,11 +407,12 @@ func _on_Enemies_e_damage_finish():
 	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
 	yield(tween, "finished")
 	$Fighters.sp_recovery()
+	emit_signal("f_index_reset")
 	yield(get_tree().create_timer(0.5), "timeout")
 	attack_ended = true
 	#yield(get_tree().create_timer(0.2), "timeout")
 	$Fighters.ongoing = false
-	emit_signal("f_index_reset")
+	#emit_signal("f_index_reset")
 	$Fighters.fighters_active_check()
 
 func _on_WorldRoot_f_turn_used():
@@ -692,7 +693,7 @@ func _on_Enemies_all_enemy_spell():
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
 	emit_signal("f_index_reset")
-	$Fighters.fighters_active_check()
+	#$Fighters.fighters_active_check()
 	
 	
 func _on_Fighters_ally_spell_chosen():
@@ -748,6 +749,7 @@ func Earthslide():
 	var fighter_position = $Fighters.get_position()
 	var enemy_position = $Enemies.get_e_position() + Vector2(-175, 40)
 	$Enemies.damage_type = "earth"
+	$Enemies.move_type = "earth"
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
@@ -759,6 +761,7 @@ func Earthslide():
 	
 func Thunderstorm():
 	$Enemies.damage_type = "air"
+	$Enemies.move_type = "air"
 	#$Enemies.stun = true
 	#$Enemies.stun_chance = 0.3
 	$Enemies.poison = true

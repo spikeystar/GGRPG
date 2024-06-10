@@ -58,7 +58,7 @@ var dizzy = false
 var item_halt = false
 var targeted = false
 var anxious = false
-var applied_type = false
+var apply_type = false
 var changing_type : String
 
 var a_debuff = false
@@ -350,7 +350,7 @@ func reset_status():
 	d_debuff = false
 	random_debuff = false
 	multi_debuff = false
-	applied_type = false
+	apply_type = false
 	changing_type = ""
 	
 func damage():
@@ -372,13 +372,25 @@ func damage():
 	else:
 		fighter_index = fighter_x
 	var f_defense = fighters[fighter_index].get_f_defense()
+	var type_bonus : String = type_matchup()
+	
 	if move_kind == "attack":
 		var total = e_attack + e_move_base
 		damage = max(0, ((total) + int(total * (rand_range(0.05, 0.15)))) - f_defense)
 	elif move_kind == "magic":
 		var total = e_magic + e_move_base
 		damage = max(0, ((total) + int(total * (rand_range(0.05, 0.15)))) - f_defense)
+		
+	if type_bonus == "adv":
+		damage += (damage/2)
+	if type_bonus == "dis":
+		damage -= (damage/2)
+	if type_bonus == "none":
+		pass
+		
 	fighters[fighter_index].damage(damage, move_type)
+	if apply_type:
+		fighters[fighter_index].apply_type(move_type)
 	if stun:
 		fighters[fighter_index].stun()
 	if poison:
@@ -410,6 +422,30 @@ func damage():
 			fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
 	reset_status()
 	emit_signal("fighter_damage_over")
+	
+func type_matchup():
+	var fighter_type = fighters[fighter_index].get_status("type")
+	
+	if move_type == "fire" and fighter_type == "fire":
+		return "dis"
+	if move_type == "water" and fighter_type == "water":
+		return "dis"
+	if move_type == "air" and fighter_type == "air":
+		return "dis"
+	if move_type == "earth" and fighter_type == "earth":
+		return "dis"
+		
+	if move_type == "fire" and fighter_type == "water":
+		return "adv"
+	if move_type == "water" and fighter_type == "fire":
+		return "adv"
+	if move_type == "air" and fighter_type == "earth":
+		return "adv"
+	if move_type == "earth" and fighter_type == "air":
+		return "adv"
+		
+	else:
+		return "none"
 	
 func huds_update():
 	fighter_name = fighters[fighter_index].get_name()
@@ -614,7 +650,7 @@ func item_used():
 		#f_health = fighters2[target_index].get_f_health()
 		huds_heal_update()
 	if SP:
-		fighters2[target_index].SP(SP_amount)
+		fighters[selector_index].SP(SP_amount)
 	if combo_heal:
 		fighter_name = fighters2[target_index].get_name()
 		fighters2[target_index].heal(HP_amount)

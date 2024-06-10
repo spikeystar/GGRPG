@@ -130,6 +130,8 @@ func damage(amount: int):
 	$AnimationPlayer.playback_speed = 0.7
 	if whammy:
 		$DamagePlayer.play("whammy")
+	else:
+		$DamagePlayer.play("neutral")
 	$AnimationPlayer.playback_speed = 0.5
 	health = max(0, health - amount)
 	yield(get_tree().create_timer(2), "timeout")
@@ -227,7 +229,12 @@ func countdown():
 		if poison_timer == 0:
 			poison = false
 			e_defense += (e_defense * 0.1)
-			
+	
+	if applied_type:
+		type_timer -= 1
+		if type_timer == 0:
+			applied_type = false
+			current_type = initial_type
 			
 	if a_buff:
 		a_buff_timer -= 1
@@ -265,6 +272,14 @@ func enemy_restore():
 		poison = false
 		e_defense += (e_defense * 0.1)
 	current_type = initial_type
+	
+func apply_type(id : String):
+	if not applied_type:
+		applied_type = true
+		current_type = id
+		type_timer = 3
+	else:
+		return
 	
 func apply_buff(id : String):
 	if id == "attack" and not a_buff and not a_debuff:

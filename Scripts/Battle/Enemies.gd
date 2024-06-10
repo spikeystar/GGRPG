@@ -24,6 +24,7 @@ var attack_over = false
 var move_index : int
 var move_name : String
 var whammy_chance
+var move_type : String = "neutral"
 
 var f_attack
 var f_attack_base
@@ -248,6 +249,9 @@ func magic_damage():
 	var damage : int
 	var e_defense = target_enemy.get_e_defense()
 	var f_total = f_magic + f_magic_base
+	
+	var type_bonus : String = type_matchup()
+	
 	var whammy = false
 	var whammy_hit = rng.randi_range(1, 100)
 	if whammy_hit <= whammy_chance:
@@ -255,6 +259,12 @@ func magic_damage():
 		damage_type = "whammy"
 	
 	damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
+	if type_bonus == "adv":
+		damage += (damage/2)
+	if type_bonus == "dis":
+		damage -= (damage/2)
+	if type_bonus == "none":
+		pass
 	if whammy:
 		damage += damage
 	
@@ -308,6 +318,8 @@ func all_magic_damage():
 	var set_type = damage_type
 	var f_total = f_magic + f_magic_base
 	for x in range(enemies.size()):
+		enemy_index = x
+		var type_bonus : String = type_matchup()
 		var whammy = false
 		damage_type = set_type
 		var whammy_hit = rng.randi_range(1, 100)
@@ -318,6 +330,13 @@ func all_magic_damage():
 		var e_defense = enemies[x].get_e_defense()
 		var damage : int
 		damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
+		
+		if type_bonus == "adv":
+			damage += (damage/2)
+		if type_bonus == "dis":
+			damage -= (damage/2)
+		if type_bonus == "none":
+			pass
 		
 		if whammy:
 			damage += damage
@@ -355,7 +374,7 @@ func all_magic_damage():
 	yield(get_tree().create_timer(0.8), "timeout")
 	if not SceneManager.victory:
 		victory_check()
-	yield(get_tree().create_timer(0.4), "timeout")
+	#yield(get_tree().create_timer(0.4), "timeout")
 	emit_signal("e_magic_damage_finish")
 	stun = false
 	poison = false
@@ -364,6 +383,31 @@ func all_magic_damage():
 	d_debuff = false
 	random_debuff = false
 	multi_debuff = false
+		
+		
+func type_matchup():
+	var enemy_type = enemies[enemy_index].get_status("type")
+	
+	if move_type == "fire" and enemy_type == "fire":
+		return "dis"
+	if move_type == "water" and enemy_type == "water":
+		return "dis"
+	if move_type == "air" and enemy_type == "air":
+		return "dis"
+	if move_type == "earth" and enemy_type == "earth":
+		return "dis"
+		
+	if move_type == "fire" and enemy_type == "water":
+		return "adv"
+	if move_type == "water" and enemy_type == "fire":
+		return "adv"
+	if move_type == "air" and enemy_type == "earth":
+		return "adv"
+	if move_type == "earth" and enemy_type == "air":
+		return "adv"
+		
+	else:
+		return "none"
 		
 		
 func victory_check():
@@ -375,7 +419,18 @@ func item_damage():
 	ongoing = true
 	var damage = item_damage
 	for x in range(enemies.size()):
+		enemy_index = x
+		var type_bonus : String = type_matchup()
+		if type_bonus == "adv":
+			damage += (damage/2)
+		if type_bonus == "dis":
+			damage -= (damage/2)
+		if type_bonus == "none":
+			pass
+		
 		enemies[x].damage(damage)
+		if move_type != "neutral":
+			enemies[x].apply_type(move_type)
 	yield(get_tree().create_timer(1.5), "timeout")
 	for x in range(enemies.size()):
 		if enemies[x].is_dead():
