@@ -4,6 +4,11 @@
 [ext_resource path="res://UI/Transition Star.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/UI/BattleTransition.gd" type="Script" id=3]
 
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 1 )
+shader_param/scale = 0.0
+shader_param/mask = ExtResource( 2 )
+
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
@@ -78,11 +83,6 @@ tracks/5/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 1 )
-shader_param/scale = 0.0
-shader_param/mask = ExtResource( 2 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "StarTransition"
@@ -253,9 +253,11 @@ tracks/4/keys = {
 
 [node name="BattleTransition" type="CanvasLayer"]
 pause_mode = 2
+layer = 2
 script = ExtResource( 3 )
 
 [node name="BattleTransitionRect" type="ColorRect" parent="."]
+material = SubResource( 6 )
 margin_left = -199.0
 margin_top = -178.0
 margin_right = 833.0

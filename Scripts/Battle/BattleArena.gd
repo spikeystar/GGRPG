@@ -2,6 +2,8 @@ extends Node
 
 #export(tscn) var enemy = null
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
+const PixelationPlayer = preload("res://UI/PixelationTransition.tscn")
+export(String, FILE, "*.tscn,*.scn") var main_menu
 
 #onready var player_instance = PlayerManager.player_instance
 export(int) var EXP_base
@@ -407,13 +409,13 @@ func _on_Enemies_e_damage_finish():
 	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
 	yield(tween, "finished")
 	$Fighters.sp_recovery()
-	emit_signal("f_index_reset")
 	yield(get_tree().create_timer(0.5), "timeout")
 	attack_ended = true
 	#yield(get_tree().create_timer(0.2), "timeout")
 	$Fighters.ongoing = false
-	#emit_signal("f_index_reset")
+	emit_signal("f_index_reset")
 	$Fighters.fighters_active_check()
+	#emit_signal("f_index_reset")
 
 func _on_WorldRoot_f_turn_used():
 	f_turns += 1
@@ -435,6 +437,24 @@ func _on_Enemies_victory():
 	$Fighters.victory()
 	victory_ended = true
 	emit_signal("update_party")
+	
+func _on_Fighters_game_over():
+	ongoing = true
+	yield(get_tree().create_timer(0.5), "timeout")
+	#BattleMusic.fade_out()
+	var pixelation = PixelationPlayer.instance()
+	get_tree().get_root().add_child(pixelation)
+	pixelation.pixelate()
+	yield(get_tree().create_timer(1.5), "timeout")
+	#var transition = TransitionPlayer.instance()
+	#get_tree().get_root().add_child(transition)
+	#transition.ease_out()
+	yield(get_tree().create_timer(1), "timeout")
+	pixelation.queue_free()
+	#transition.queue_free()
+	PlayerManager.remove_player_from_scene()
+	get_tree().change_scene(main_menu)
+	#PlayerManager.call_deferred("add_player_to_scene")
 
 ##### Item Usage #####
 
@@ -693,7 +713,7 @@ func _on_Enemies_all_enemy_spell():
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
 	emit_signal("f_index_reset")
-	#$Fighters.fighters_active_check()
+	$Fighters.fighters_active_check()
 	
 	
 func _on_Fighters_ally_spell_chosen():
@@ -736,7 +756,7 @@ func _on_Enemies_e_magic_damage_finish():
 	$Fighters.magic_selecting = false
 	BB_active = false
 	enemy_selecting = false
-	$Fighters.fighters_active_check()
+	#$Fighters.fighters_active_check()
 	
 	
 	##### Magic Spells ######

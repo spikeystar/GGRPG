@@ -1,21 +1,78 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Misc/Shader/Pixelation.gdshader" type="Shader" id=1]
-[ext_resource path="res://Assets/Cherry Trail/Cherry Trail BA 1.jpg" type="Texture" id=2]
+[ext_resource path="res://Scripts/UI/PixelationTransition.gd" type="Script" id=3]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
 shader_param/pixelation = 0.2
 
-[node name="Pixelation" type="CanvasLayer"]
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:material:shader")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect:material:shader_param/pixelation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.2 ]
+}
 
-[node name="TextureRect2" type="Sprite" parent="."]
-material = SubResource( 1 )
-position = Vector2( 320, 280 )
-texture = ExtResource( 2 )
+[sub_resource type="Animation" id=3]
+resource_name = "pixelate"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:material:shader")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect:material:shader_param/pixelation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.198, 0.174, 0.148, 0.122, 0.096, 0.07, 0.044, 0.032, 0.024, 0.018 ]
+}
+
+[node name="Pixelation" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 3 )
 
 [node name="TextureRect" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 material = SubResource( 1 )
 margin_right = 640.0
 margin_bottom = 560.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.8
+anims/RESET = SubResource( 2 )
+anims/pixelate = SubResource( 3 )

@@ -80,6 +80,7 @@ signal jacques
 signal irina
 signal suzy
 signal damien
+signal game_over
 
 func _ready():
 	#fighters = get_children()
@@ -421,6 +422,7 @@ func damage():
 			fighters.remove(x)
 			fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
 	reset_status()
+	game_over_check()
 	emit_signal("fighter_damage_over")
 	
 func type_matchup():
@@ -598,6 +600,16 @@ func victory():
 	#fighters = get_children()
 	for x in range(fighters2.size()):
 		fighters2[x].victory()
+		
+func game_over_check():
+	var death_count = 0
+	for x in range(fighters2.size()):
+		var dead = fighters2[x].death_count()
+		if dead:
+			death_count += 1
+	if death_count == fighters2.size():
+		emit_signal("game_over")
+		
 
 func _on_WorldRoot_action_ongoing():
 	ongoing = true
@@ -605,7 +617,7 @@ func _on_WorldRoot_action_ongoing():
 func _on_WorldRoot_action_ended():
 	yield(get_tree().create_timer(0.3), "timeout")
 	ongoing = false
-	fighter_index = -1
+	#fighter_index = -1
 
 func _on_ItemInventory_heal_item_chosen():
 	print(fighter_index)
@@ -786,6 +798,7 @@ func _on_Enemies_fighters_active():
 			fighters.remove(x)
 			fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
 	yield(get_tree().create_timer(0.3), "timeout")
+	game_over_check()
 	
 	max_turns = 0
 	for x in range (fighters2.size()):
@@ -1070,3 +1083,7 @@ func _on_WorldRoot_update_party():
 			PartyStats.jacques_current_health = health
 		if fighter_name == "irina":
 			PartyStats.irina_current_health = health
+		if fighter_name == "suzy":
+			PartyStats.suzy_current_health = health
+		if fighter_name == "damien":
+			PartyStats.damien_current_health = health
