@@ -25,6 +25,7 @@ var move_index : int
 var move_name : String
 var whammy_chance
 var move_type : String = "neutral"
+var fighter_type : String = "neutral"
 
 var f_attack
 var f_attack_base
@@ -259,6 +260,8 @@ func magic_damage():
 		damage_type = "whammy"
 	
 	damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
+	if fighter_type == move_type:
+		damage += (damage * 0.2)
 	if type_bonus == "adv":
 		damage += (damage/2)
 	if type_bonus == "dis":
@@ -331,6 +334,8 @@ func all_magic_damage():
 		var damage : int
 		damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
 		
+		if fighter_type == move_type:
+			damage += (damage * 0.2)
 		if type_bonus == "adv":
 			damage += (damage/2)
 		if type_bonus == "dis":

@@ -279,6 +279,9 @@ func get_status(id : String):
 	if id == "whammy_chance":
 		var whammy_chance = fighters[fighter_index].get_status("whammy_chance")
 		return whammy_chance
+	if id == "type":
+		var type = fighters[fighter_index].get_status("type")
+		return type
 
 func get_health():
 	var health = fighters[fighter_index].get_health()

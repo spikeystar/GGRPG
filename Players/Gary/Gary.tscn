@@ -174,7 +174,7 @@ nodes/Animation/position = Vector2( 60, 150 )
 nodes/TimeScale/node = SubResource( 84 )
 nodes/TimeScale/position = Vector2( 260, 130 )
 nodes/output/position = Vector2( 460, 140 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=107]
 animation = "d_down_r_walk"
@@ -188,7 +188,7 @@ nodes/Animation/position = Vector2( -10, 130 )
 nodes/TimeScale/node = SubResource( 108 )
 nodes/TimeScale/position = Vector2( 231.99, 171.183 )
 nodes/output/position = Vector2( 410, 100 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=87]
 animation = "side_r_walk"
@@ -201,7 +201,7 @@ nodes/Animation/node = SubResource( 87 )
 nodes/Animation/position = Vector2( -120, 120 )
 nodes/TimeScale/node = SubResource( 88 )
 nodes/TimeScale/position = Vector2( 100, 120 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=90]
 animation = "d_up_r_walk"
@@ -214,7 +214,7 @@ nodes/Animation/node = SubResource( 90 )
 nodes/Animation/position = Vector2( -110, 150 )
 nodes/TimeScale/node = SubResource( 91 )
 nodes/TimeScale/position = Vector2( 80, 140 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=93]
 animation = "back_walk"
@@ -227,7 +227,7 @@ nodes/Animation/node = SubResource( 93 )
 nodes/Animation/position = Vector2( -160, 150 )
 nodes/TimeScale/node = SubResource( 94 )
 nodes/TimeScale/position = Vector2( 60, 140 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=96]
 animation = "d_up_walk"
@@ -240,7 +240,7 @@ nodes/Animation/node = SubResource( 96 )
 nodes/Animation/position = Vector2( -60, 130 )
 nodes/TimeScale/node = SubResource( 97 )
 nodes/TimeScale/position = Vector2( 100, 120 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=99]
 animation = "side_walk"
@@ -254,7 +254,7 @@ nodes/Animation/position = Vector2( 20, 140 )
 nodes/TimeScale/node = SubResource( 100 )
 nodes/TimeScale/position = Vector2( 200, 120 )
 nodes/output/position = Vector2( 370, 150 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=102]
 animation = "front_idle"
@@ -277,7 +277,7 @@ nodes/Animation/position = Vector2( 310, 130 )
 nodes/TimeScale/node = SubResource( 105 )
 nodes/TimeScale/position = Vector2( 530, 110 )
 nodes/output/position = Vector2( 700, 130 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=50]
 blend_point_0/node = SubResource( 148 )
@@ -1618,6 +1618,10 @@ gravity = 940.0
 jump_velocity = 300
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
+shape = SubResource( 11 )
+
+[node name="JumpShape" type="CollisionShape2D" parent="MotionRoot"]
+position = Vector2( 0, -66 )
 shape = SubResource( 11 )
 
 [node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]

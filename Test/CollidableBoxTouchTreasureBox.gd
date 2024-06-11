@@ -5,8 +5,14 @@ onready var animation_player = $AnimationPlayer
 
 var is_opened = false
 
-func _ready():
+func _process(delta):
 	pass
+	#if Global.jumping:
+		#$CollidableBox.use_collision = true
+	#if not Global.jumping:
+		#$CollidableBox.use_collision = false
+
+func _ready():
 	#animation_player.play("Idle")
 	collidable_box.connect("touched", self, "_on_box_touched")
 

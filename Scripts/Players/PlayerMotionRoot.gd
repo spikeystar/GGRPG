@@ -99,8 +99,10 @@ func _physics_process(delta):
 		last_dir = Vector2(vel.x, vel.y).normalized()
 	
 	if not is_on_ground:
+		Global.jumping = true
 		vel.z -= gravity * delta
 	else:
+		Global.jumping = false
 		vel.z = 0
 		pos_z = floor_z
 		
