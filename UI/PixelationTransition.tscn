@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Misc/Shader/Pixelation.gdshader" type="Shader" id=1]
+[ext_resource path="res://Misc/Shader/Pixel Material.tres" type="Material" id=2]
 [ext_resource path="res://Scripts/UI/PixelationTransition.gd" type="Script" id=3]
-
-[sub_resource type="ShaderMaterial" id=1]
-shader = ExtResource( 1 )
-shader_param/pixelation = 0.2
+[ext_resource path="res://Assets/Cherry Trail/Cherry Trail BA 1.jpg" type="Texture" id=4]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -32,6 +30,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureRect:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 2 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -61,14 +71,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 0.198, 0.174, 0.148, 0.122, 0.096, 0.07, 0.044, 0.032, 0.024, 0.018 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureRect:material")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
 
 [node name="Pixelation" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 3 )
 
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 322, 280 )
+texture = ExtResource( 4 )
+
 [node name="TextureRect" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
-material = SubResource( 1 )
+material = ExtResource( 2 )
 margin_right = 640.0
 margin_bottom = 560.0
 

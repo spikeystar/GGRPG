@@ -370,8 +370,11 @@ func _on_Flee_cursor_selected():
 		emit_signal("defend_inactive")
 		$WindowPlayer.play("flee_dia_open")
 		$FadeRect/AnimationPlayer.play("Flee")
-		yield(get_tree().create_timer(2.3), "timeout")
-		get_tree().quit()
+		yield(get_tree().create_timer(2), "timeout")
+		#BattleMusic.fade_out()
+		#BattleMusic.switch_songs()
+		get_tree().paused = false
+		Global.battle_ended = true
 	
 func _on_Enemies_enemy_chosen():
 	emit_signal("f_turn_used")
@@ -446,12 +449,12 @@ func _on_Fighters_game_over():
 	get_tree().get_root().add_child(pixelation)
 	pixelation.pixelate()
 	yield(get_tree().create_timer(1.5), "timeout")
-	#var transition = TransitionPlayer.instance()
-	#get_tree().get_root().add_child(transition)
-	#transition.ease_out()
+	var transition = TransitionPlayer.instance()
+	get_tree().get_root().add_child(transition)
+	transition.ease_out()
 	yield(get_tree().create_timer(1), "timeout")
 	pixelation.queue_free()
-	#transition.queue_free()
+	transition.queue_free()
 	PlayerManager.remove_player_from_scene()
 	get_tree().change_scene(main_menu)
 	#PlayerManager.call_deferred("add_player_to_scene")
