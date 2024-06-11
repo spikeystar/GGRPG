@@ -73,6 +73,8 @@ func _ready():
 	$Enemies/EnemyInfo.hide()
 	$Enemies/EnemyMove.hide()
 	$FleeDialogue.hide()
+	yield(get_tree().create_timer(1.3), "timeout")
+	transition.queue_free()
 	#player_instance.queue_free()
 
 	
@@ -443,20 +445,26 @@ func _on_Enemies_victory():
 	
 func _on_Fighters_game_over():
 	ongoing = true
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(1.5), "timeout")
 	#BattleMusic.fade_out()
+	var transition = TransitionPlayer.instance()
+	get_tree().get_root().add_child(transition)
+	transition.hide()
 	var pixelation = PixelationPlayer.instance()
 	get_tree().get_root().add_child(pixelation)
 	pixelation.pixelate()
-	yield(get_tree().create_timer(1.5), "timeout")
-	var transition = TransitionPlayer.instance()
-	get_tree().get_root().add_child(transition)
+	yield(get_tree().create_timer(0.3), "timeout")
+	transition.slow_down()
 	transition.ease_out()
-	yield(get_tree().create_timer(1), "timeout")
-	pixelation.queue_free()
+	yield(get_tree().create_timer(0.05), "timeout")
+	transition.show()
+	yield(get_tree().create_timer(3.5), "timeout")
 	transition.queue_free()
-	PlayerManager.remove_player_from_scene()
+	pixelation.queue_free()
+	get_tree().paused = false
+	Global.battle_ended = true
 	get_tree().change_scene(main_menu)
+	#PlayerManager.remove_player_from_scene()
 	#PlayerManager.call_deferred("add_player_to_scene")
 
 ##### Item Usage #####

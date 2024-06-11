@@ -253,7 +253,6 @@ tracks/4/keys = {
 
 [node name="BattleTransition" type="CanvasLayer"]
 pause_mode = 2
-layer = 2
 script = ExtResource( 3 )
 
 [node name="BattleTransitionRect" type="ColorRect" parent="."]

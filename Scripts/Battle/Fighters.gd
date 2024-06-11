@@ -81,6 +81,7 @@ signal irina
 signal suzy
 signal damien
 signal game_over
+var game_over = false
 
 func _ready():
 	#fighters = get_children()
@@ -607,7 +608,8 @@ func game_over_check():
 		var dead = fighters2[x].death_count()
 		if dead:
 			death_count += 1
-	if death_count == fighters2.size():
+	if death_count == fighters2.size() and not game_over:
+		game_over = true
 		emit_signal("game_over")
 		
 
