@@ -545,8 +545,6 @@ e_attack = 40
 e_defense = 10
 initial_type = "neutral"
 move1 = "Basic"
-move2 = "Barrage"
-move3 = "Barrage"
 
 [node name="Cheribo_battle2" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 190, 44 )
@@ -555,8 +553,6 @@ e_health = 50
 e_attack = 40
 initial_type = "neutral"
 move1 = "Basic"
-move2 = "Barrage"
-move3 = "Barrage"
 
 [node name="Cheribo_battle3" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 16, -23 )
@@ -565,8 +561,6 @@ e_health = 55
 e_attack = 40
 initial_type = "neutral"
 move1 = "Basic"
-move2 = "Barrage"
-move3 = "Barrage"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
@@ -1544,7 +1538,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1561,6 +1554,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 

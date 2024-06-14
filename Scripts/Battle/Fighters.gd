@@ -61,6 +61,7 @@ var anxious = false
 var apply_type = false
 var changing_type : String
 var enemy_type : String
+var sp_loss = false
 
 var a_debuff = false
 var m_debuff = false
@@ -348,7 +349,6 @@ func reset_status():
 	poison = false
 	wimpy = false
 	dizzy = false
-	#item_halt = false
 	targeted = false
 	anxious = false
 	a_debuff = false
@@ -357,7 +357,8 @@ func reset_status():
 	random_debuff = false
 	multi_debuff = false
 	apply_type = false
-	changing_type = ""
+	changing_type = "neutral"
+	sp_loss = false
 	
 func damage():
 	var immune = false
@@ -400,6 +401,9 @@ func damage():
 	if type_bonus == "none":
 		pass
 		
+	if damage == 0:
+		immune = true
+		
 	fighters[fighter_index].damage(damage, move_type)
 	if apply_type:
 		fighters[fighter_index].apply_type(move_type)
@@ -425,6 +429,8 @@ func damage():
 		fighters[fighter_index].multi_debuff()
 	if anxious and not immune:
 		fighters[fighter_index].anxious()
+	if sp_loss and not immune:
+		fighters[fighter_index].SP_loss(SP_amount)
 	huds_update()
 	yield(get_tree().create_timer(1.7), "timeout")
 	for x in range (fighters.size() -1, -1, -1):

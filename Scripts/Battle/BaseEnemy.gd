@@ -119,6 +119,13 @@ func attack():
 	$AnimationPlayer.play("enemy_attack")
 	$AnimationPlayer.playback_speed = 0.8
 	
+func heal(amount : int):
+	var heal_text = text(TEXT_HEAL)
+	if heal_text:
+		heal_text.label.text = str(amount)
+	health = clamp(health + amount, 0, e_health)
+
+	
 func damage(amount: int):
 	var damage_text = text(TEXT_DAMAGE)
 	if damage_text:

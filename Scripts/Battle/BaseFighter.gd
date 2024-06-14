@@ -329,6 +329,13 @@ func anxious_SP(SP_amount: int):
 	if sp_text:
 		sp_text.label.text = str(SP_amount)
 	PartyStats.party_sp = clamp(PartyStats.party_sp - SP_amount, 0, PartyStats.party_max_sp)
+	
+func SP_loss(SP_amount: int):
+	yield(get_tree().create_timer(2), "timeout")
+	var sp_text = text(TEXT_LOSS)
+	if sp_text:
+		sp_text.label.text = str(SP_amount)
+	PartyStats.party_sp = clamp(PartyStats.party_sp - SP_amount, 0, PartyStats.party_max_sp)
 		
 func combo_heal(SP_amount : int):
 	yield(get_tree().create_timer(0.2), "timeout")

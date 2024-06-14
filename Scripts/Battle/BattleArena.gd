@@ -857,12 +857,10 @@ func _on_Enemies_Basic():
 	$Fighters.e_move_base = 1
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
-	var wimpy = rng.randi_range(1, 100)
-	if wimpy <= 30:
-		$Fighters.wimpy = true
-	var dizzy = rng.randi_range(1, 100)
-	if dizzy <= 30:
-		$Fighters.dizzy = true
+	var sp_loss = rng.randi_range(1, 100)
+	if sp_loss <= 50:
+		$Fighters.sp_loss = true
+		$Fighters.SP_amount = int(PartyStats.party_max_sp * 0.1)
 	$Fighters.damage()
 
 
