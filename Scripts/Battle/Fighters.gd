@@ -60,6 +60,7 @@ var targeted = false
 var anxious = false
 var apply_type = false
 var changing_type : String
+var enemy_type : String
 
 var a_debuff = false
 var m_debuff = false
@@ -97,7 +98,7 @@ func set_positions():
 	if PartyStats.party_members == 1:
 		if PartyStats.gary_id == 1:
 			fighters.append($Gary_Battle)
-			fighters[0].global_position = Vector2(-138, 136)
+			fighters[0].position = Vector2(-138, 136)
 			
 	if PartyStats.party_members == 2:
 		if PartyStats.gary_id == 1:
@@ -359,6 +360,7 @@ func reset_status():
 	changing_type = ""
 	
 func damage():
+	var immune = false
 	randomize()
 	var damage : int
 	var rng = RandomNumberGenerator.new()
@@ -377,6 +379,9 @@ func damage():
 	else:
 		fighter_index = fighter_x
 	var f_defense = fighters[fighter_index].get_f_defense()
+	var fighter_type = fighters[fighter_index].get_status("type")
+	if fighter_type != "neutral" and fighter_type == move_type:
+		immune = true
 	var type_bonus : String = type_matchup()
 	
 	if move_kind == "attack":
@@ -386,6 +391,8 @@ func damage():
 		var total = e_magic + e_move_base
 		damage = max(0, ((total) + int(total * (rand_range(0.05, 0.15)))) - f_defense)
 		
+	if enemy_type == move_type:
+		damage += (damage * 0.1)
 	if type_bonus == "adv":
 		damage += (damage/2)
 	if type_bonus == "dis":
@@ -396,27 +403,27 @@ func damage():
 	fighters[fighter_index].damage(damage, move_type)
 	if apply_type:
 		fighters[fighter_index].apply_type(move_type)
-	if stun:
+	if stun and not immune:
 		fighters[fighter_index].stun()
-	if poison:
+	if poison and not immune:
 		fighters[fighter_index].poison()
-	if targeted:
+	if targeted and not immune:
 		fighters[fighter_index].targeted()
-	if wimpy:
+	if wimpy and not immune:
 		fighters[fighter_index].wimpy()
-	if dizzy:
+	if dizzy and not immune:
 		fighters[fighter_index].dizzy()
-	if a_debuff:
+	if a_debuff and not immune:
 		fighters[fighter_index].apply_debuff("attack")
-	if m_debuff:
+	if m_debuff and not immune:
 		fighters[fighter_index].apply_debuff("magic")
-	if d_debuff:
+	if d_debuff and not immune:
 		fighters[fighter_index].apply_debuff("defense")
-	if random_debuff:
+	if random_debuff and not immune:
 		fighters[fighter_index].random_debuff()
-	if multi_debuff:
+	if multi_debuff and not immune:
 		fighters[fighter_index].multi_debuff()
-	if anxious:
+	if anxious and not immune:
 		fighters[fighter_index].anxious()
 	huds_update()
 	yield(get_tree().create_timer(1.7), "timeout")

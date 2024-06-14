@@ -69,12 +69,13 @@ modulate = Color( 0.972549, 0.988235, 1, 1 )
 position = Vector2( 0, -30 )
 frames = SubResource( 7 )
 animation = "walk_front"
-frame = 3
 speed_scale = 0.95
 playing = true
 flip_h = true
 
 [node name="PlayerDetection" parent="." instance=ExtResource( 5 )]
+collision_layer = 0
+collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 modulate = Color( 1, 1, 1, 0.254902 )
@@ -85,6 +86,8 @@ shape = SubResource( 14 )
 [node name="BattleTrigger" parent="." instance=ExtResource( 6 )]
 position = Vector2( -1, -4 )
 scale = Vector2( 0.965735, 0.831711 )
+collision_layer = 0
+collision_mask = 1
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="BattleTrigger"]
 position = Vector2( -1.03548, -21.6421 )

@@ -251,6 +251,11 @@ func magic_damage():
 	var e_defense = target_enemy.get_e_defense()
 	var f_total = f_magic + f_magic_base
 	
+	var enemy_type = target_enemy.get_status("type")
+	var immune = false
+	if enemy_type != "neutral" and enemy_type == move_type:
+		immune = true
+	
 	var type_bonus : String = type_matchup()
 	
 	var whammy = false
@@ -273,19 +278,19 @@ func magic_damage():
 	
 	target_enemy.magic_damage(damage, damage_type)
 	
-	if stun:
+	if stun and not immune:
 		target_enemy.stun()
-	if poison:
+	if poison and not immune:
 		target_enemy.poison()
-	if a_debuff:
+	if a_debuff and not immune:
 		target_enemy.apply_debuff("attack")
-	if m_debuff:
+	if m_debuff and not immune:
 		target_enemy.apply_debuff("magic")
-	if d_debuff:
+	if d_debuff and not immune:
 		target_enemy.apply_debuff("defense")
-	if random_debuff:
+	if random_debuff and not immune:
 		target_enemy.random_debuff()
-	if multi_debuff:
+	if multi_debuff and not immune:
 		target_enemy.multi_debuff()
 		
 	yield(get_tree().create_timer(1.5), "timeout")
@@ -331,6 +336,10 @@ func all_magic_damage():
 			damage_type = "whammy"
 		
 		var e_defense = enemies[x].get_e_defense()
+		var enemy_type = enemies[x].get_status("type")
+		var immune = false
+		if enemy_type != "neutral" and enemy_type == move_type:
+			immune = true
 		var damage : int
 		damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
 		
@@ -347,23 +356,23 @@ func all_magic_damage():
 			damage += damage
 		
 		enemies[x].magic_damage(damage, damage_type)
-		if stun:
+		if stun and not immune:
 			var apply = rng.randi_range(1, 100)
 			if apply <= stun_chance:
 				enemies[x].stun()
-		if poison:
+		if poison and not immune:
 			var apply = rng.randi_range(1, 100)
 			if apply <= poison_chance:
 				enemies[x].poison()
-		if a_debuff:
+		if a_debuff and not immune:
 			enemies[x].apply_debuff("attack")
-		if m_debuff:
+		if m_debuff and not immune:
 			enemies[x].apply_debuff("magic")
-		if d_debuff:
+		if d_debuff and not immune:
 			enemies[x].apply_debuff("defense")
-		if random_debuff:
+		if random_debuff and not immune:
 			enemies[x].random_debuff()
-		if multi_debuff:
+		if multi_debuff and not immune:
 			enemies[x].multi_random_debuff()
 
 	yield(get_tree().create_timer(1.5), "timeout")
@@ -515,8 +524,8 @@ func _on_Fighters_enemies_enabled():
 		
 		for x in range(enemies.size()):
 			var stun = enemies[x].get_status("stun")
-			if not stun:
-				yield(get_tree().create_timer(0.3), "timeout")
+			if not stun and enemies_active:
+				yield(get_tree().create_timer(0.7), "timeout")
 				var move_list : Array = enemies[x].move_list
 				randomize()
 				var rng = RandomNumberGenerator.new()
@@ -526,9 +535,13 @@ func _on_Fighters_enemies_enabled():
 				enemy_turns += 1
 				enemies[x].attack()
 				yield(get_tree().create_timer(0.3), "timeout")
-				$EnemyMove.move_name = move_name
-				emit_signal("update_move_window")
-				yield($EnemyMove, "move_window_done")
+				if move_name == "Basic":
+					yield(get_tree().create_timer(0.3), "timeout")
+					pass
+				else:
+					$EnemyMove.move_name = move_name
+					emit_signal("update_move_window")
+					yield($EnemyMove, "move_window_done")
 				e_attack = enemies[x].get_stats("e_attack")
 				e_magic = enemies[x].get_stats("e_magic")
 				if move_name == "Basic":
@@ -536,6 +549,7 @@ func _on_Fighters_enemies_enabled():
 					yield(get_tree().create_timer(2), "timeout")
 				if move_name == "Barrage":
 					emit_signal("Barrage")
+					yield(get_tree().create_timer(2), "timeout")
 				enemies[x].reset_animation()
 			elif stun:
 				enemy_turns += 1
@@ -553,3 +567,6 @@ func enemies_active_check():
 func enemy_countdown():
 	for x in range (enemies.size()):
 		enemies[x].countdown()
+
+func _on_Fighters_game_over():
+	enemies_active = false

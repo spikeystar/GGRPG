@@ -32,6 +32,7 @@ var victory_ended = false
 var wimpy = false
 var dizzy = false
 var item_stolen = false
+var new_spell = false
 
 onready var party_members : int
 onready var party_id : int
@@ -233,6 +234,23 @@ func _input(event):
 		BattleMusic.switch_songs()
 		get_tree().paused = false
 		Global.battle_ended = true
+		
+	if Input.is_action_just_pressed("ui_select") and new_spell:
+		new_spell = false
+		$LevelUpWindow.hide()
+		$VictoryWindow.hide()
+		$NewSpellWindow.show()
+		$WindowPlayer.playback_speed = 0.9
+		$WindowPlayer.play("new_spell_open")
+		if PartyStats.new_spell_2:
+			$NewSpellWindow/NewSpell.text = "Gary learned \"Earthslide\"!"
+			yield(get_tree().create_timer(2.5), "timeout")
+			$WindowPlayer.play("new_spell_open")
+			$NewSpellWindow/NewSpell.text = "Jacques learned \"Prism Snow\"!"
+			yield(get_tree().create_timer(2), "timeout")
+			PartyStats.new_spell_2 = false
+			victory_ended = true
+		
 
 ##### RETURN BUTTON ########
 
@@ -426,6 +444,10 @@ func _on_WorldRoot_f_turn_used():
 	f_turns += 1
 	
 func _on_Enemies_victory():
+	var EXP_reward = int(EXP_base + (rand_range(0.05, 0.2) * EXP_base))
+	var marbles_reward = int(marbles_base + (rand_range(0.05, 0.2) * marbles_base))
+	PartyStats.party_exp += EXP_reward
+	Party.marbles += marbles_reward
 	yield(get_tree().create_timer(1.2), "timeout")
 	SceneManager.victory = true
 	BattleMusic.switch_songs()
@@ -436,12 +458,28 @@ func _on_Enemies_victory():
 	$Fighters.ongoing = true
 	$Fighters.halt = true
 	$Fighters/HUDS.hide()
+	$VictoryWindow/MarblesReward.text = str(marbles_reward)
+	$VictoryWindow/EXPReward.text = str(EXP_reward)
 	$VictoryWindow.show()
 	$WindowPlayer.play("victory_open")
+	
+	if PartyStats.party_exp >= PartyStats.next_level:
+		PartyStats.party_level += 1
+		PartyStats.party_exp -= PartyStats.next_level
+		PartyStats.level_check()
+		$LevelUpWindow.show()
+		$LevelUpWindow.scale = Vector2(1.05, 1.04)
+		yield(get_tree().create_timer(0.1), "timeout")
+		$LevelUpWindow.scale = Vector2(1.1, 1.09)
+		$WindowPlayer.play("Level_up_text")
+	
 	$Fighters.hide_cursors_remote()
 	$Fighters.victory()
-	victory_ended = true
 	emit_signal("update_party")
+	if PartyStats.new_spell_2:	
+		new_spell = true
+	else:
+		victory_ended = true
 	
 func _on_Fighters_game_over():
 	ongoing = true
@@ -686,6 +724,7 @@ func _on_SpellList_ally_spell_chosen():
 	emit_signal("item_inactive")
 
 func _on_Enemies_single_enemy_spell():
+	$Fighters/HUDS.hiding()
 	ongoing = true
 	emit_signal("action_ongoing")
 	$Enemies/EnemyInfo.hide()
@@ -708,6 +747,7 @@ func _on_Enemies_single_enemy_spell():
 	$Fighters.fighters_active_check()
 	
 func _on_Enemies_all_enemy_spell():
+	$Fighters/HUDS.hiding()
 	emit_signal("action_ongoing")
 	$Enemies/EnemyInfo.hide()
 	var spell_id = $MagicWindow.get_spell_id()
@@ -758,6 +798,7 @@ func _on_Enemies_e_magic_damage_finish():
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
 	yield(tween, "finished")
+	$Fighters/HUDS.showing()
 	yield(get_tree().create_timer(0.3), "timeout")
 	ongoing = false
 	$Fighters.ongoing = false
@@ -769,6 +810,7 @@ func _on_Enemies_e_magic_damage_finish():
 	$Fighters.magic_selecting = false
 	BB_active = false
 	enemy_selecting = false
+	
 	#$Fighters.fighters_active_check()
 	
 	
@@ -802,6 +844,8 @@ func Thunderstorm():
 	
 	
 	##### Enemy Attacks #####
+func _on_Enemies_update_move_window():
+	$Fighters/HUDS.hiding()
 	
 func _on_Enemies_Basic():
 	randomize()
@@ -829,13 +873,16 @@ func _on_Enemies_Barrage():
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.move_spread = "all"
+	$Fighters.enemy_type = $Enemies.get_type()
 	$Fighters.e_move_base = 10
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
-	for x in range($Fighters.fighters.size() -1):
+	for x in range($Fighters.fighters.size()):
 		#var stun = rng.randi_range(1, 100)
 		#if stun <= 30:
 			#$Fighters.stun = true
 		$Fighters.fighter_x = x
 		$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
 

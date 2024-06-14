@@ -701,7 +701,7 @@ func dizzy():
 		return
 		
 func apply_type(id : String):
-	if not applied_type and not hocus_potion:
+	if not applied_type and not hocus_potion and not id == current_type:
 		applied_type = true
 		current_type = id
 		type_timer = 3

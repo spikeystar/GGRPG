@@ -274,7 +274,7 @@ func enemy_restore():
 	current_type = initial_type
 	
 func apply_type(id : String):
-	if not applied_type:
+	if not applied_type and not id == current_type:
 		applied_type = true
 		current_type = id
 		type_timer = 3

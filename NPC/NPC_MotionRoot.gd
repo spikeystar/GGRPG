@@ -30,7 +30,6 @@ func _ready():
 func _physics_process(delta):
 	is_on_ground = pos_z <= floor_z + 4
 
-
 func update_floor():
 	floor_z = LOWEST_Z
 	for f in floor_layers:

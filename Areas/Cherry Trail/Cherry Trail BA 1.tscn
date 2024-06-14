@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/Cherry Trail BA 1.jpg" type="Texture" id=1]
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_battle.tscn" type="PackedScene" id=2]
@@ -54,6 +54,9 @@
 [ext_resource path="res://UI/Battle/Irina Dead HUD.png" type="Texture" id=52]
 [ext_resource path="res://UI/Battle/Gary Dead HUD.png" type="Texture" id=53]
 [ext_resource path="res://UI/Battle/Jacques Dead HUD.png" type="Texture" id=54]
+[ext_resource path="res://UI/Battle/New Spell 2.png" type="Texture" id=55]
+[ext_resource path="res://UI/Battle/New Spell 1.png" type="Texture" id=56]
+[ext_resource path="res://UI/Battle/Level Up 2.png" type="Texture" id=57]
 
 [sub_resource type="Theme" id=14]
 
@@ -121,6 +124,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "Level_up_text"
+length = 1.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../LevelUpWindow/Window/LevelUpText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 4.091, 2.4 ), Vector2( 4.09095, 1.76881 ), Vector2( 4.09091, 1.13762 ), Vector2( 4.09091, 0.449547 ), Vector2( 4.09091, -0.238522 ), Vector2( 4.09091, -0.92659 ), Vector2( 4.09093, -0.169943 ), Vector2( 4.09095, 0.586705 ), Vector2( 4.09098, 1.34335 ), Vector2( 4.091, 2.1 ), Vector2( 4.091, 2.36667 ), Vector2( 4.091, 2.63333 ), Vector2( 4.091, 2.9 ), Vector2( 4.091, 2.73333 ), Vector2( 4.091, 2.56667 ) ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -244,6 +264,42 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1.15, 1.15 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../LevelUpWindow/Window/LevelUpText:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4.09091, 1.82568 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../NewSpellWindow:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.985, 0.985 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("../NewSpellWindow/NewSpell:self_modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -395,6 +451,34 @@ tracks/0/keys = {
 "values": [ Vector2( 0.985, 0.985 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=25]
+resource_name = "new_spell_open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("../NewSpellWindow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0.985, 0.985 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../NewSpellWindow/NewSpell:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [sub_resource type="Animation" id=22]
 resource_name = "victory_open"
 length = 0.1
@@ -411,10 +495,28 @@ tracks/0/keys = {
 "values": [ Vector2( 1.1, 1.1 ), Vector2( 1.15, 1.15 ) ]
 }
 
+[sub_resource type="SpriteFrames" id=27]
+animations = [ {
+"frames": [ ExtResource( 36 ), ExtResource( 57 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=26]
+animations = [ {
+"frames": [ ExtResource( 56 ), ExtResource( 55 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="WorldRoot" type="Control"]
 pause_mode = 2
 script = ExtResource( 7 )
 main_menu = "res://UI/MainMenu.tscn"
+EXP_base = 20
+marbles_base = 30
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -443,6 +545,8 @@ e_attack = 40
 e_defense = 10
 initial_type = "neutral"
 move1 = "Basic"
+move2 = "Barrage"
+move3 = "Barrage"
 
 [node name="Cheribo_battle2" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 190, 44 )
@@ -451,6 +555,8 @@ e_health = 50
 e_attack = 40
 initial_type = "neutral"
 move1 = "Basic"
+move2 = "Barrage"
+move3 = "Barrage"
 
 [node name="Cheribo_battle3" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 16, -23 )
@@ -459,6 +565,8 @@ e_health = 55
 e_attack = 40
 initial_type = "neutral"
 move1 = "Basic"
+move2 = "Barrage"
+move3 = "Barrage"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
@@ -1319,6 +1427,8 @@ anims/RESET = SubResource( 6 )
 
 [node name="WindowPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../DefenseWindow")
+autoplay = "Level_up_text"
+anims/Level_up_text = SubResource( 24 )
 anims/RESET = SubResource( 10 )
 anims/battle_dia_open = SubResource( 13 )
 anims/cursor_idle = SubResource( 21 )
@@ -1327,6 +1437,7 @@ anims/enemyinfo_open = SubResource( 15 )
 anims/flee_dia_open = SubResource( 12 )
 anims/item_open = SubResource( 19 )
 anims/magic_open = SubResource( 20 )
+anims/new_spell_open = SubResource( 25 )
 anims/victory_open = SubResource( 22 )
 
 [node name="PartyFormation3" type="Node2D" parent="."]
@@ -1378,10 +1489,10 @@ scale = Vector2( 1.15, 1.15 )
 texture = ExtResource( 34 )
 
 [node name="Marbles" type="Label" parent="VictoryWindow"]
-margin_left = -139.0
-margin_top = -24.0
-margin_right = -63.0
-margin_bottom = -7.0
+margin_left = -134.0
+margin_top = -23.0
+margin_right = -58.0
+margin_bottom = -6.0
 custom_colors/font_color = Color( 1, 0.998, 0.99, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0156863 )
 custom_fonts/font = ExtResource( 38 )
@@ -1401,9 +1512,9 @@ text = "100"
 align = 1
 
 [node name="EXP" type="Label" parent="VictoryWindow"]
-margin_left = -145.0
+margin_left = -140.0
 margin_top = 26.0
-margin_right = -69.0
+margin_right = -64.0
 margin_bottom = 43.0
 size_flags_horizontal = 4
 custom_colors/font_color = Color( 1, 0.998, 0.99, 1 )
@@ -1427,16 +1538,44 @@ align = 1
 
 [node name="LevelUpWindow" type="Node2D" parent="."]
 visible = false
+position = Vector2( 3, -21 )
+scale = Vector2( 1.1, 1.09 )
 
-[node name="LevelUp1" type="Sprite" parent="LevelUpWindow"]
-visible = false
+[node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
-texture = ExtResource( 36 )
+frames = SubResource( 27 )
+frame = 1
+speed_scale = 0.6
+playing = true
 
-[node name="LevelUpText" type="Sprite" parent="LevelUpWindow/LevelUp1"]
-visible = false
-position = Vector2( 4, 3 )
+[node name="LevelUpText" type="Sprite" parent="LevelUpWindow/Window"]
+position = Vector2( 4.09091, 1.82568 )
 texture = ExtResource( 35 )
+offset = Vector2( -1, 0.25 )
+
+[node name="NewSpellWindow" type="Node2D" parent="."]
+visible = false
+position = Vector2( 0, -49 )
+scale = Vector2( 0.985, 0.985 )
+
+[node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
+scale = Vector2( 1.1, 1.09 )
+frames = SubResource( 26 )
+speed_scale = 0.6
+playing = true
+
+[node name="NewSpell" type="Label" parent="NewSpellWindow"]
+margin_left = -137.0
+margin_top = -11.0
+margin_right = 134.0
+margin_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 1, 0.998, 0.99, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0156863 )
+custom_fonts/font = ExtResource( 38 )
+text = "Gary learned \"Earthslide\"!"
+align = 1
 
 [node name="ItemUsage" parent="." instance=ExtResource( 41 )]
 visible = false
@@ -1494,6 +1633,7 @@ visible = false
 [connection signal="jinx_doll" from="Enemies" to="Enemies/EnemyInfo/EnemyStatus" method="_on_Enemies_jinx_doll"]
 [connection signal="jinx_doll" from="Enemies" to="Enemies/EnemyInfo/EnemyName" method="_on_Enemies_jinx_doll"]
 [connection signal="single_enemy_spell" from="Enemies" to="." method="_on_Enemies_single_enemy_spell"]
+[connection signal="update_move_window" from="Enemies" to="." method="_on_Enemies_update_move_window"]
 [connection signal="update_move_window" from="Enemies" to="Enemies/EnemyMove" method="_on_Enemies_update_move_window"]
 [connection signal="victory" from="Enemies" to="." method="_on_Enemies_victory"]
 [connection signal="move_window_done" from="Enemies/EnemyMove" to="Enemies" method="_on_EnemyMove_move_window_done"]
@@ -1505,6 +1645,7 @@ visible = false
 [connection signal="fighter_damage_over" from="Fighters" to="Enemies" method="_on_Fighters_fighter_damage_over"]
 [connection signal="fighters_active" from="Fighters" to="." method="_on_Fighters_fighters_active"]
 [connection signal="game_over" from="Fighters" to="." method="_on_Fighters_game_over"]
+[connection signal="game_over" from="Fighters" to="Enemies" method="_on_Fighters_game_over"]
 [connection signal="gary" from="Fighters" to="MagicWindow/MagicWindowPanel/SpellList" method="_on_Fighters_gary"]
 [connection signal="irina" from="Fighters" to="MagicWindow/MagicWindowPanel/SpellList" method="_on_Fighters_irina"]
 [connection signal="item_chosen" from="Fighters" to="." method="_on_Fighters_item_chosen"]

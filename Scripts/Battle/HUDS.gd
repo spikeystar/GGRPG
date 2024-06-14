@@ -314,3 +314,13 @@ func initial_health():
 	$GaryHud/Health.text = str(PartyStats.gary_current_health) + "/" + str(PartyStats.gary_health)
 	$JacquesHud/Health.text = str(PartyStats.jacques_current_health) + "/" + str(PartyStats.jacques_health)
 	$IrinaHud/Health.text = str(PartyStats.irina_current_health) + "/" + str(PartyStats.irina_health)
+
+func hiding():
+	modulate.a = 0.5
+	yield(get_tree().create_timer(0.125), "timeout")
+	modulate.a = 0
+
+func showing():
+	modulate.a = 0.5
+	yield(get_tree().create_timer(0.125), "timeout")
+	modulate.a = 1
