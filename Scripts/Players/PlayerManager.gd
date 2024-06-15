@@ -4,11 +4,13 @@ const player_scene = preload("res://Players/Gary/Gary.tscn")
 
 var player_instance = null
 var player_motion_root = null
+var player_jump_shape = null
 var global_position_when_removed = Vector2()
 var is_navmesh_ready = false
 var freeze = false
 var sleep = false
 var ongoing = false
+var jumping = false
 
 func _ready():
 	spawn_player()
@@ -19,6 +21,7 @@ func spawn_player():
 	
 	player_instance = player_scene.instance()
 	player_motion_root = player_instance.find_node("MotionRoot")
+	player_jump_shape = player_instance.find_node("JumpShape")
 	add_player_to_scene()
 
 func remove_player_from_scene():

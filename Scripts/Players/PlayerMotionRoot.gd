@@ -23,6 +23,9 @@ var floor_layers : Array = []
 var is_on_ground = true
 var is_falling = true
 var is_just_teleported = false
+var freeze = PlayerManager.freeze
+var sleep = PlayerManager.sleep
+var ongoing = PlayerManager.ongoing
 
 func _ready():
 	floor_z = spawn_z
@@ -51,9 +54,9 @@ func update_floor():
 		floor_z = max(floor_z, f.height)
 
 func _physics_process(delta):
-	var freeze = PlayerManager.freeze
-	var sleep = PlayerManager.sleep
-	var ongoing = PlayerManager.ongoing
+	#var freeze = PlayerManager.freeze
+	#var sleep = PlayerManager.sleep
+	#var ongoing = PlayerManager.ongoing
 	# Floor height could change at any time with movable platforms
 	update_floor()
 	
@@ -99,10 +102,10 @@ func _physics_process(delta):
 		last_dir = Vector2(vel.x, vel.y).normalized()
 	
 	if not is_on_ground:
-		Global.jumping = true
+		PlayerManager.jumping = true
 		vel.z -= gravity * delta
 	else:
-		Global.jumping = false
+		PlayerManager.jumping = false
 		vel.z = 0
 		pos_z = floor_z
 		

@@ -49,8 +49,6 @@ animations = [ {
 radius = 81.0062
 
 [node name="Cheribo_wander" type="KinematicBody2D"]
-collision_layer = 2
-collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -69,12 +67,13 @@ modulate = Color( 0.972549, 0.988235, 1, 1 )
 position = Vector2( 0, -30 )
 frames = SubResource( 7 )
 animation = "walk_front"
+frame = 1
 speed_scale = 0.95
 playing = true
 flip_h = true
 
 [node name="PlayerDetection" parent="." instance=ExtResource( 5 )]
-collision_layer = 0
+collision_layer = 1
 collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
@@ -86,7 +85,7 @@ shape = SubResource( 14 )
 [node name="BattleTrigger" parent="." instance=ExtResource( 6 )]
 position = Vector2( -1, -4 )
 scale = Vector2( 0.965735, 0.831711 )
-collision_layer = 0
+collision_layer = 1
 collision_mask = 1
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="BattleTrigger"]

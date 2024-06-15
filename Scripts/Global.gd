@@ -8,7 +8,6 @@ var depth_buffer : Node2D
 var door_name : String
 var battle_ended = false
 var Collected : Array = []
-var jumping = false
 
 func _init():
 	depth_buffer = Node2D.new()

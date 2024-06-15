@@ -55,13 +55,6 @@ func _physics_process(delta):
 		anim_player.playback_speed = 0.3
 		anim_player.play("sleep")
 		
-	#if Input.is_action_pressed("ui_pause") and not freeze:
-		#PlayerManager.freeze = true
-		#get_tree().paused = true
-		#pause_menu = PauseMenu.instance()
-		#get_tree().get_root().add_child(pause_menu)
-		
-	
 	
 	var draw_pos_z = motion_root.pos_z
 	var draw_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.floor_z))
