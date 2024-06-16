@@ -91,7 +91,8 @@ var collision_preview_mesh = null # editor preview mesh of collision box
 var depth_test_meshes = [] # keep track of the meshes created for depth testing
 var floor_notify_area = null # notifies player/npc of floor height when collision_body non-blocking
 var floor_notify_area_shape = null # belongs to floor_notify_area
-var touch_area = null # area that detects if the player has touched the box
+var touch_area = null # area that detects if the player has touched the box from the sides
+var inner_touch_area = null # area that detects if the player has touched the box while above or blow it
 var current_touching_body = null # the player body that is currently touching the box
 var is_touchable = true # whether or not touches will be detected if player enters touch_area
 var is_bumpable_from_bottom = true # whether the player can bump the box from the bottom by jumping into it
@@ -157,8 +158,10 @@ func set_floor_height(new_floor_height):
 			_queue_generate_collider()
 			_queue_generate_collision_box_preview()
 		else:
-			floor_notify_area.height = floor_height + height
-			collision_body.height = floor_height + height
+			if floor_notify_area:
+				floor_notify_area.height = floor_height + height
+			if collision_body:
+				collision_body.height = floor_height + height
 
 func set_depth_test_offset(new_depth_test_offset):
 	depth_test_offset = new_depth_test_offset
@@ -284,6 +287,7 @@ func _initialize_nodes():
 	floor_notify_area = null
 	floor_notify_area_shape = null
 	touch_area = null
+	inner_touch_area = null
 	mesh_ysort_containers = []
 	meshes = []
 	
@@ -311,6 +315,10 @@ func _generate_touch_area():
 		touch_area.queue_free()
 		touch_area = null
 	
+	if inner_touch_area != null and weakref(inner_touch_area).get_ref():
+		inner_touch_area.queue_free()
+		inner_touch_area = null
+	
 	if not detect_touches or Engine.is_editor_hint():
 		return
 	
@@ -335,13 +343,33 @@ func _generate_touch_area():
 	
 	touch_area.add_child(touch_shape)
 	add_child(touch_area)
+	
+	inner_touch_area = Area2D.new()
+	inner_touch_area.name = "COLLIDABLE_BOX_GENERATED_InnerTouchArea"
+	inner_touch_area.collision_layer = 0
+	inner_touch_area.collision_mask = 1
+	inner_touch_area.connect("body_entered", self, "_on_inner_touch_area_body_entered")
+	inner_touch_area.connect("body_exited", self, "_on_inner_touch_area_body_exited")
+	
+	touch_shape = CollisionPolygon2D.new()
+	touch_shape.name = "COLLIDABLE_BOX_GENERATED_InnerTouchShape"
+	
+	polygon = PoolVector2Array()
+	polygon.push_back(collider_edges.top + Vector2(0.0, 2.0))
+	polygon.push_back(collider_edges.right + Vector2(-2.0, 0.0))
+	polygon.push_back(collider_edges.bottom + Vector2(0.0, -2.0))
+	polygon.push_back(collider_edges.left + Vector2(2.0, 0.0))
+	polygon.push_back(collider_edges.top + Vector2(0.0, 2.0))
+	touch_shape.polygon = polygon
+	
+	inner_touch_area.add_child(touch_shape)
+	add_child(inner_touch_area)
 
 func _on_touch_area_body_entered(body):
 	if (
 		body != null and "is_player_motion_root" in body and body.is_player_motion_root and
 		"last_dir" in body and "pos_z" in body and "player_height" in body
 	):
-		current_touching_body = body
 		if (
 			 body.pos_z > floor_height - 1 and body.pos_z < floor_height + height - 1
 		):
@@ -350,8 +378,18 @@ func _on_touch_area_body_entered(body):
 
 func _on_touch_area_body_exited(body):
 	if body != null and "is_player_motion_root" in body and body.is_player_motion_root:
-		current_touching_body = null
 		is_touchable = true
+
+func _on_inner_touch_area_body_entered(body):
+	if (
+		body != null and "is_player_motion_root" in body and body.is_player_motion_root and
+		"last_dir" in body and "pos_z" in body and "player_height" in body
+	):
+		current_touching_body = body
+
+func _on_inner_touch_area_body_exited(body):
+	if body != null and "is_player_motion_root" in body and body.is_player_motion_root:
+		current_touching_body = null
 
 func _queue_generate_collider():
 	if not is_queued_generate_collider:

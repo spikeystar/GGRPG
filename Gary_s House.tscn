@@ -424,6 +424,10 @@ texture_scale = Vector2( 1.8, 1.7 )
 [node name="PresentBase" parent="YSort" instance=ExtResource( 43 )]
 position = Vector2( -410, 136 )
 
+[node name="PresentBase2" parent="YSort" instance=ExtResource( 43 )]
+position = Vector2( -107, -100 )
+floor_height = 96.0
+
 [node name="BaseGround" type="Sprite" parent="YSort"]
 position = Vector2( -304, 238 )
 scale = Vector2( 1.6, 1.6 )
@@ -573,8 +577,6 @@ position = Vector2( 74, -131 )
 z_index = 4096
 current = true
 script = ExtResource( 30 )
-vertical_speed = 64.0
-player_offset = Vector2( 0, 0 )
 minPos = Vector2( -395, -90 )
 maxPos = Vector2( 65, 190 )
 follow_player = true
