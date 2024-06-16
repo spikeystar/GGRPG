@@ -73,10 +73,10 @@ func _input(event):
 
 func _on_Item_Get_item_get():
 	var item_name = Party.add_item_name
-	$Info_Window/Second_Text.text = item_name + "!"
+	$Info_Window/First_Text.text = "You got a " + item_name + "!"
 	item_window()
 
 func _on_Item_Interact_item_get():
 	var item_name = Party.add_item_name
-	$Info_Window/Second_Text.text = item_name + "!"
+	$Info_Window/First_Text.text = "You got a " + item_name + "!"
 	item_window()

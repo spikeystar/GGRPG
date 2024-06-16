@@ -73,6 +73,7 @@ func item_animation():
 	$ItemUsage/ItemPlayer.play("Item_Usage")
 	yield(get_tree().create_timer(1.4), "timeout")
 	$ItemUsage/Poof.show()
+	$ItemUsage/Poof.position += Vector2(-1, 0)
 	$ItemUsage/PoofPlayer.play("Poof")
 	$ItemUsage/ItemPlayer.playback_speed = 1
 	yield(get_tree().create_timer(1), "timeout")
@@ -112,6 +113,9 @@ func full_heal():
 func set_item():
 	if item_name == "Yummy Cake":
 		$ItemUsage/Item.frame = 0
+		item_get()
+	if item_name == "Pretty Gem":
+		$ItemUsage/Item.frame = 1
 		item_get()
 	if item_name == "Marbles":
 		$ItemUsage/Item.frame = 11

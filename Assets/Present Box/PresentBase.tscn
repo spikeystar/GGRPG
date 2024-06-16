@@ -143,7 +143,7 @@ anims/Idle = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 
 [node name="SquareShadow" type="Sprite" parent="."]
-modulate = Color( 0.301961, 0.458824, 0.266667, 1 )
+modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 0, -7.10543e-15 )
 scale = Vector2( 0.623138, 0.550726 )
 texture = ExtResource( 6 )

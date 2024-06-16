@@ -591,15 +591,10 @@ script = ExtResource( 3 )
 z_index = 20
 
 [node name="PresentBase" parent="." instance=ExtResource( 40 )]
-position = Vector2( -146, -124 )
+position = Vector2( -144, -128 )
 item_name = "Full Heal"
 floor_height = 45.0
 shadow_color = Color( 0.188235, 0.552941, 0.298039, 1 )
-
-[node name="PresentBase2" parent="." instance=ExtResource( 40 )]
-position = Vector2( -41, -126 )
-item_name = "Full Heal"
-shadow_color = Color( 0.156863, 0.490196, 0.254902, 1 )
 
 [node name="Cheribo_wander" parent="." instance=ExtResource( 7 )]
 position = Vector2( 223, -50 )
@@ -660,23 +655,21 @@ follow_player = true
 [node name="Info_Window" type="Sprite" parent="Camera2D"]
 visible = false
 modulate = Color( 1, 1, 1, 0.6 )
-position = Vector2( -140, -223 )
-scale = Vector2( 0.9, 0.9 )
+position = Vector2( -184, -229 )
+scale = Vector2( 0.7, 0.8 )
 z_index = 3
 texture = ExtResource( 33 )
 
 [node name="First_Text" type="Label" parent="Camera2D/Info_Window"]
-margin_left = -102.222
-margin_top = -10.4678
-margin_right = -9.22221
-margin_bottom = 4.53217
+margin_left = -147.143
+margin_top = -11.0
+margin_right = 98.857
+margin_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1.2, 1.1 )
 custom_fonts/font = ExtResource( 39 )
-text = "You got a "
+text = "You got a Flummery Flambe!"
+align = 1
 
-[node name="Second_Text" type="Label" parent="Camera2D/Info_Window"]
-margin_left = -8.88889
-margin_top = -10.4678
-margin_right = 96.1111
-margin_bottom = 4.53217
-custom_fonts/font = ExtResource( 39 )
-text = "Pretty Gem!"
+[connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

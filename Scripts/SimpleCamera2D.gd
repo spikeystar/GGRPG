@@ -77,25 +77,24 @@ func _input(event):
 
 func _on_Item_Get_item_get():
 	var item_name = Party.add_item_name
-	$Info_Window/Second_Text.text = item_name + "!"
+	$Info_Window/First_Text.text = "You got a " + item_name + "!"
 	item_window()
 
 func _on_Item_Interact_item_get():
 	var item_name = Party.add_item_name
-	$Info_Window/Second_Text.text = item_name + "!"
+	$Info_Window/First_Text.text = "You got a " + item_name + "!"
 	item_window()
 
 func _on_PresentBase_item_get():
 	if Party.marbles_get:
 		var item_name = Party.add_item_name
-		$Info_Window/First_Text.text = "You got"
-		$Info_Window/Second_Text.rect_position = Vector2(-25.55, -10)
-		$Info_Window/Second_Text.text = item_name + "!"
+		$Info_Window/First_Text.text = "You got " + item_name + "!"
 		item_window()
 		Party.marbles_get = false
 	else:
 		var item_name = Party.add_item_name
-		$Info_Window/First_Text.text = "You got a"
-		$Info_Window/Second_Text.rect_position = Vector2(-8.889, -10.468)
-		$Info_Window/Second_Text.text = item_name + "!"
+		$Info_Window/First_Text.text = "You got a " + item_name + "!"
 		item_window()
+
+func _on_PresentBase2_item_get():
+	_on_PresentBase_item_get()

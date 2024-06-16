@@ -574,26 +574,22 @@ follow_player = true
 [node name="Info_Window" type="Sprite" parent="Camera2D"]
 visible = false
 modulate = Color( 1, 1, 1, 0.6 )
-position = Vector2( -140, -223 )
-scale = Vector2( 0.9, 0.9 )
+position = Vector2( -184, -229 )
+scale = Vector2( 0.7, 0.8 )
 z_index = 3
 texture = ExtResource( 39 )
 
 [node name="First_Text" type="Label" parent="Camera2D/Info_Window"]
-margin_left = -102.222
-margin_top = -10.4678
-margin_right = -9.22221
-margin_bottom = 4.53217
+margin_left = -147.143
+margin_top = -11.0
+margin_right = 98.857
+margin_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1.2, 1.1 )
 custom_fonts/font = ExtResource( 40 )
-text = "You got a "
-
-[node name="Second_Text" type="Label" parent="Camera2D/Info_Window"]
-margin_left = -8.88889
-margin_top = -10.4678
-margin_right = 96.1111
-margin_bottom = 4.53217
-custom_fonts/font = ExtResource( 40 )
-text = "Pretty Gem!"
+text = "You got a Flummery Flambe!"
+align = 1
 
 [node name="Item_Get" type="Area2D" parent="."]
 script = ExtResource( 38 )
