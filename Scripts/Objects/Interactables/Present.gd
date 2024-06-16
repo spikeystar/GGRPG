@@ -1,23 +1,59 @@
+tool
 extends Node2D
+
+signal item_get
 
 onready var collidable_box = $CollidableBox
 onready var animation_player = $AnimationPlayer
+onready var square_shadow = $SquareShadow
+
 export var item_name : String
 export var marbles_amount : int
-export var location_height : int
-signal item_get
+export var floor_height = 0.0 setget set_floor_height
+export var box_height_above_floor = 95.0 setget set_box_height_above_floor
+export(Color) var shadow_color = Color(0.0, 0.0, 0.0, 1.0) setget set_shadow_color
 
+var is_ready = false
 var is_opened = false
 
 func _ready():
-	if not Global.Collected.has(global_position):
-		animation_player.play("Idle")
-		collidable_box.connect("bumped_from_bottom", self, "_on_bumped_from_bottom")
-	else:
-		animation_player.play("Done")
-	$CollidableBox.present_height = location_height
-	$CollidableBox.position = Vector2(0, (0.2 * location_height))
+	is_ready = true
+	
+	square_shadow.modulate = shadow_color
+	square_shadow.update_mesh()
 
+	if not Engine.editor_hint:
+
+		_calculate_box_position()
+
+		if not Global.Collected.has(global_position):
+			animation_player.play("Idle")
+			collidable_box.connect("bumped_from_bottom", self, "_on_bumped_from_bottom")
+		else:
+			animation_player.play("Done")
+
+func set_floor_height(new_floor_height):
+	floor_height = new_floor_height
+	if is_ready:
+		_calculate_box_position()
+
+func set_box_height_above_floor(new_box_height_above_floor):
+	box_height_above_floor = new_box_height_above_floor
+	if is_ready:
+		_calculate_box_position()
+
+func set_shadow_color(new_shadow_color):
+	shadow_color = new_shadow_color
+	if is_ready:
+		square_shadow.modulate = shadow_color
+		if not Engine.editor_hint:
+			square_shadow.update_mesh()
+
+func _calculate_box_position():
+	if not Engine.editor_hint:
+		collidable_box.floor_height = floor_height + box_height_above_floor
+		collidable_box.position.y = floor_height
+		square_shadow.height = floor_height + 0.5
 
 func _on_bumped_from_bottom():
 	yield(get_tree().create_timer(0.1), "timeout")

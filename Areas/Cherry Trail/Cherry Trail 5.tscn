@@ -593,7 +593,13 @@ z_index = 20
 [node name="PresentBase" parent="." instance=ExtResource( 40 )]
 position = Vector2( -146, -124 )
 item_name = "Full Heal"
-location_height = 45
+floor_height = 45.0
+shadow_color = Color( 0.188235, 0.552941, 0.298039, 1 )
+
+[node name="PresentBase2" parent="." instance=ExtResource( 40 )]
+position = Vector2( -41, -126 )
+item_name = "Full Heal"
+shadow_color = Color( 0.156863, 0.490196, 0.254902, 1 )
 
 [node name="Cheribo_wander" parent="." instance=ExtResource( 7 )]
 position = Vector2( 223, -50 )

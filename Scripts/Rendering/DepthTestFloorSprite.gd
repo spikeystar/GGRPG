@@ -6,7 +6,7 @@ extends Sprite
 
 export var alpha_clip = 0.5 # Decrease to 0.01 to dither transparent objects
 export var always_update: bool = false setget _set_always_update # Use if the sprite changes position from its initial placement during gameplay
-export var height = 0.0 # The height of the floor this sprite represents
+export var height = 0.0 setget _set_height # The height of the floor this sprite represents
 export var use_dithering = true # Dither alpha values, disabled when use_transparency is true
 export var use_dither_blending = true # Offset alpha dithering pattern every frame to create a smoothing effect
 export var use_transparency: bool = false # Allow partial transparency, but greatly reduces depth drawing accuracy
@@ -30,6 +30,11 @@ func _set_always_update(new_always_update):
 	always_update = new_always_update
 	set_physics_process(always_update)
 	set_process(always_update)
+
+func _set_height(new_height):
+	height = new_height
+	if is_ready and not always_update:
+		_generate_meshes()
 
 #----------------#
 # Node Lifecycle #
@@ -69,6 +74,19 @@ func _physics_process(_delta):
 				global_position.y + offset.y,
 				-global_position.y - height
 			)
+
+#----------------#
+# Public Methods #
+#----------------#
+
+func update_mesh():
+	var mesh = depth_test_mesh.get_ref()
+	if mesh:
+		mesh.material_override.set_shader_param("alpha_clip", alpha_clip)
+		mesh.material_override.set_shader_param("dither_limit_min", 0.0 if use_dithering else 1.0)
+		mesh.material_override.set_shader_param("dither_time_coord_multiplier", 1.0 if use_dither_blending else 0.0)
+		mesh.material_override.set_shader_param("sprite_flip_h", -1 if flip_h else 1)
+		mesh.material_override.set_shader_param("sprite_modulate", modulate * self_modulate)
 
 #-----------------#
 # Private Methods #
