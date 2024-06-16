@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Objects/Interactables/Present.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BattleSystem/ItemUsage.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/Present Box/Present Animations SS.png" type="Texture" id=4]
-[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=5]
+[ext_resource path="res://Assets/General/Shadows/square shadow modulatable.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Done"
@@ -85,12 +87,12 @@ tracks/0/path = NodePath("CollidableBox:animation_frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0 ]
+"values": [ Vector2( 0, -99 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CollidableBox:use_collision")
@@ -105,24 +107,12 @@ tracks/1/keys = {
 "values": [ true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CollidableBox:height")
+tracks/2/path = NodePath("CollidableBox:texture_offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 20.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("CollidableBox:texture_offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -138,7 +128,8 @@ grid_size = Vector2( 0.9, 0.9 )
 texture = ExtResource( 4 )
 texture_offset = Vector2( -0.5, 21 )
 height = 20.0
-floor_height = 80.0
+floor_height = 95.0
+preview_collision_box = false
 animation_hframes = 9
 animation_vframes = 3
 detect_touches = true
@@ -152,7 +143,14 @@ anims/Idle = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 
 [node name="SquareShadow" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.27451 )
-position = Vector2( -1, -0.999999 )
+modulate = Color( 0.301961, 0.458824, 0.266667, 1 )
+position = Vector2( 0, -7.10543e-15 )
 scale = Vector2( 0.623138, 0.550726 )
 texture = ExtResource( 6 )
+script = ExtResource( 5 )
+always_update = true
+
+[node name="ItemUsage" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 1, -119 )
+z_index = 1

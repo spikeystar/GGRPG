@@ -5,3 +5,7 @@ func effect(id : String):
 		$Item_Get.play()
 	if id == "Sleep":
 		$Sleep.play()
+	if id == "Present":
+		$Present.play()
+	if id == "Full Heal":
+		$Full_Heal.play()
