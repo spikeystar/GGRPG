@@ -84,3 +84,8 @@ func _on_Item_Interact_item_get():
 	var item_name = Party.add_item_name
 	$Info_Window/Second_Text.text = item_name + "!"
 	item_window()
+
+func _on_PresentBase_item_get():
+	var item_name = Party.add_item_name
+	$Info_Window/Second_Text.text = item_name + "!"
+	item_window()

@@ -422,7 +422,7 @@ texture = ExtResource( 23 )
 texture_scale = Vector2( 1.8, 1.7 )
 
 [node name="PresentBase" parent="YSort" instance=ExtResource( 43 )]
-position = Vector2( -410, 136 )
+position = Vector2( -456, 107 )
 
 [node name="BaseGround" type="Sprite" parent="YSort"]
 position = Vector2( -304, 238 )
@@ -460,7 +460,6 @@ scale = Vector2( 1.25182, 0.933753 )
 texture = ExtResource( 29 )
 
 [node name="Particles2D" type="CPUParticles2D" parent="."]
-visible = false
 position = Vector2( 130, -281 )
 z_index = 1
 amount = 3
@@ -481,7 +480,6 @@ scale_amount_random = 0.2
 color_ramp = SubResource( 1 )
 
 [node name="Particles2D2" type="CPUParticles2D" parent="."]
-visible = false
 position = Vector2( 154, -284 )
 scale = Vector2( 1, 1.05 )
 z_index = 1
@@ -573,8 +571,6 @@ position = Vector2( 74, -131 )
 z_index = 4096
 current = true
 script = ExtResource( 30 )
-vertical_speed = 64.0
-player_offset = Vector2( 0, 0 )
 minPos = Vector2( -395, -90 )
 maxPos = Vector2( 65, 190 )
 follow_player = true
@@ -582,7 +578,7 @@ follow_player = true
 [node name="Info_Window" type="Sprite" parent="Camera2D"]
 visible = false
 modulate = Color( 1, 1, 1, 0.6 )
-position = Vector2( -140, -240 )
+position = Vector2( -140, -223 )
 scale = Vector2( 0.9, 0.9 )
 z_index = 3
 texture = ExtResource( 39 )
@@ -612,4 +608,5 @@ item_name = "Pretty Gem"
 position = Vector2( 184, -34 )
 polygon = PoolVector2Array( -78, -110, -34, -92, -51, -76, -96, -96 )
 
+[connection signal="item_get" from="YSort/PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="Item_Get" to="Camera2D" method="_on_Item_Get_item_get"]
