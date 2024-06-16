@@ -5,6 +5,7 @@ var marbles : int = 4067
 var jewel_seeds : int = 0
 var spell_name : String
 var remove_item_name: String
+var marbles_get = false
 
 const menu_slot = preload("res://UI/Slot.tscn")
 onready var slot = menu_slot.instance()
