@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 export var height = 0 setget _set_height
+export var bottom = -128 setget _set_bottom
 
 var collision_shapes = []
 var motion_root = null
@@ -13,6 +14,12 @@ func _set_height(new_height):
 	for shape in collision_shapes:
 		if shape and "height" in shape:
 			shape.height = height
+
+func _set_bottom(new_bottom):
+	bottom = new_bottom
+	for shape in collision_shapes:
+		if shape and "bottom" in shape:
+			shape.bottom = bottom
 
 func discover_shapes():
 	collision_shapes = []
@@ -37,7 +44,7 @@ func _physics_process(delta):
 			
 
 func _manage_collision_exceptions_between(shape, motion_root):
-	if shape.height <= motion_root.pos_z:
+	if motion_root.pos_z >= shape.height or motion_root.pos_z + motion_root.player_height < shape.bottom:
 		motion_root.add_collision_exception_with(self)
 	else:
 		motion_root.remove_collision_exception_with(self)
