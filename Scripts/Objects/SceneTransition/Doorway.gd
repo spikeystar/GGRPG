@@ -29,7 +29,8 @@ func _ready():
 	position.y += height
 
 func _on_start_checking_body_entered():
-	connect("body_entered", self, "_on_body_entered")
+	if not is_connected("body_entered", self, "_on_body_entered"):
+		connect("body_entered", self, "_on_body_entered")
 
 func _input(event):
 	if event.is_action_pressed("ui_select") and get_overlapping_bodies().size() > 0 and gary_entered:

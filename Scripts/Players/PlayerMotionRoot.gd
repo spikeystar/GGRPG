@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-const LOWEST_Z: int = 0;
+const LOWEST_Z : int = 0;
+const HIGHEST_Z : int = 512;
 
 export var spawn_z = 0
 export var player_acceleration = 12
@@ -9,11 +10,13 @@ export var max_player_speed = 2
 export var gravity = 9.8
 export var max_vertical_speed = 20
 export var jump_velocity = 10
+export var player_height = 64
 
 var is_player_motion_root = true
 
 #Movement
 var floor_z : float = LOWEST_Z
+var ceiling_z : float = HIGHEST_Z
 var shadow_z : float = 0
 var pos_z : float
 var teleport_z : float
@@ -50,8 +53,12 @@ func set_facing_direction(direction : Vector2):
 
 func update_floor():
 	floor_z = LOWEST_Z
+	ceiling_z = HIGHEST_Z
 	for f in floor_layers:
-		floor_z = max(floor_z, f.height)
+		if f.bottom <= pos_z:
+			floor_z = max(floor_z, f.height)
+		else:
+			ceiling_z = min(ceiling_z, f.bottom)
 
 func _physics_process(delta):
 	#var freeze = PlayerManager.freeze
@@ -111,7 +118,13 @@ func _physics_process(delta):
 		
 	
 	pos_z += vel.z * delta
+	
+	var current_max_z = ceiling_z - player_height - 1
+	pos_z = min(current_max_z, pos_z)
 	pos_z = max(floor_z, pos_z)
+	
+	if pos_z == current_max_z and vel.z > 0:
+		vel.z = 0
 	
 	var delta2D = Vector2(vel.x, -vel.y * 0.5)
 	move_and_slide(delta2D)

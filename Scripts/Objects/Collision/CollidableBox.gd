@@ -4,6 +4,7 @@ tool
 extends Node2D
 
 signal touched(touch_direction)
+signal bumped_from_bottom()
 
 #---------#
 # Imports #
@@ -91,7 +92,9 @@ var depth_test_meshes = [] # keep track of the meshes created for depth testing
 var floor_notify_area = null # notifies player/npc of floor height when collision_body non-blocking
 var floor_notify_area_shape = null # belongs to floor_notify_area
 var touch_area = null # area that detects if the player has touched the box
+var current_touching_body = null # the player body that is currently touching the box
 var is_touchable = true # whether or not touches will be detected if player enters touch_area
+var is_bumpable_from_bottom = true # whether the player can bump the box from the bottom by jumping into it
 var half_tile_width = 63.0 / 2.0
 var half_tile_height = 28.0 / 2.0
 var mesh_ysort_containers = [] # texture is split into multiple sprites with texture regions for y-sorting
@@ -248,6 +251,22 @@ func _physics_process(delta):
 				global_position.y - floor_height,
 				0.0
 			)
+	if current_touching_body:
+		if (
+			is_bumpable_from_bottom and
+			current_touching_body.pos_z < floor_height + height and
+			current_touching_body.pos_z + current_touching_body.player_height > floor_height - 3
+		):
+			is_bumpable_from_bottom = false
+			emit_signal("bumped_from_bottom")
+		elif (
+			not is_bumpable_from_bottom and
+			(
+				current_touching_body.pos_z >= floor_height + height or
+				current_touching_body.pos_z + current_touching_body.player_height < floor_height - 4
+			)
+		):
+			is_bumpable_from_bottom = true
 
 #---------#
 # Methods #
@@ -319,15 +338,19 @@ func _generate_touch_area():
 
 func _on_touch_area_body_entered(body):
 	if (
-		body != null and "is_player_motion_root" in body and
-		body.is_player_motion_root and "last_dir" in body and
-		"pos_z" in body and body.pos_z > floor_height - 1 and body.pos_z < floor_height + height - 1
+		body != null and "is_player_motion_root" in body and body.is_player_motion_root and
+		"last_dir" in body and "pos_z" in body and "player_height" in body
 	):
-		is_touchable = false
-		emit_signal("touched", body.last_dir)
+		current_touching_body = body
+		if (
+			 body.pos_z > floor_height - 1 and body.pos_z < floor_height + height - 1
+		):
+			is_touchable = false
+			emit_signal("touched", body.last_dir)
 
 func _on_touch_area_body_exited(body):
 	if body != null and "is_player_motion_root" in body and body.is_player_motion_root:
+		current_touching_body = null
 		is_touchable = true
 
 func _queue_generate_collider():
@@ -340,6 +363,9 @@ func _generate_collider():
 	
 	if Engine.editor_hint or not use_collision:
 		return
+	
+	var collision_height = floor_height + height
+	var collision_bottom = floor_height if floor_height < height else floor_height - 1
 	
 	if collision_body == null or not weakref(collision_body).get_ref():
 		collision_body = StaticBody2D.new()
@@ -375,11 +401,13 @@ func _generate_collider():
 		polygon.push_back(collider_edges.top)
 		shape.polygon = polygon
 		shape.set_script(floor_layer_script)
-		shape.height = floor_height + height
+		shape.height = collision_height
+		shape.bottom = collision_bottom
 	
 	collision_body.add_child(collision_body_shape)
 	floor_notify_area.add_child(floor_notify_area_shape)
-	floor_notify_area.height = floor_height + height
+	floor_notify_area.height = collision_height
+	floor_notify_area.bottom = collision_bottom
 	
 	collision_body.discover_shapes()
 
