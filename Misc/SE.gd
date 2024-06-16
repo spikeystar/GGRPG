@@ -7,3 +7,5 @@ func effect(id : String):
 		$Sleep.play()
 	if id == "Present":
 		$Present.play()
+	if id == "Full Heal":
+		$Full_Heal.play()

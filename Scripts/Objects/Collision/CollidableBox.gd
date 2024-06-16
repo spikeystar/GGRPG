@@ -5,6 +5,7 @@ extends Node2D
 
 signal touched(touch_direction)
 signal bumped_from_bottom()
+var present_height = 0
 
 #---------#
 # Imports #
@@ -150,7 +151,7 @@ func set_height(new_height):
 		_queue_generate_collision_box_preview()
 
 func set_floor_height(new_floor_height):
-	floor_height = new_floor_height
+	floor_height = new_floor_height + present_height
 	if is_ready:
 		if Engine.is_editor_hint():
 			_queue_generate_meshes()

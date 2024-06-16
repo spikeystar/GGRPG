@@ -4,6 +4,7 @@ onready var collidable_box = $CollidableBox
 onready var animation_player = $AnimationPlayer
 export var item_name : String
 export var marbles_amount : int
+export var location_height : int
 signal item_get
 
 var is_opened = false
@@ -14,6 +15,8 @@ func _ready():
 		collidable_box.connect("bumped_from_bottom", self, "_on_bumped_from_bottom")
 	else:
 		animation_player.play("Done")
+	$CollidableBox.present_height = location_height
+	$CollidableBox.position = Vector2(0, (0.2 * location_height))
 
 
 func _on_bumped_from_bottom():
@@ -59,11 +62,24 @@ func marbles_get():
 		Global.Collected.append(global_position)
 	else:
 		return
+		
+func full_heal():
+	if not Global.Collected.has(global_position):
+		SE.effect("Full Heal")
+		PartyStats.full_heal()
+		Party.add_item_name = item_name
+		emit_signal("item_get")
+		Global.Collected.append(global_position)
+	else:
+		return
 	
 func set_item():
 	if item_name == "Yummy Cake":
 		$ItemUsage/Item.frame = 0
 		item_get()
 	if item_name == "Marbles":
-		$ItemUsage/Item.frame = 9
+		$ItemUsage/Item.frame = 11
 		marbles_get()
+	if item_name == "Full Heal":
+		$ItemUsage/Item.frame = 10
+		full_heal()
