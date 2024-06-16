@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Gary Goat RPG!"
-run/main_scene="res://Gary_s House.tscn"
+run/main_scene="res://Areas/Cherry Trail/Cherry Trail 5.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="GGRPGSaveSystem"
 config/icon="res://UI/Game Load Icon.png"
