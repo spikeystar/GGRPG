@@ -68,12 +68,12 @@ func _on_bumped_from_bottom():
 	
 
 func item_animation():
-	$ItemUsage.show()
 	$ItemUsage/ItemPlayer.playback_speed = 0.9
 	$ItemUsage/ItemPlayer.play("Item_Usage")
-	yield(get_tree().create_timer(1.4), "timeout")
+	$ItemUsage.show()
+	yield(get_tree().create_timer(1.2), "timeout")
 	$ItemUsage/Poof.show()
-	$ItemUsage/Poof.position += Vector2(-1, 0)
+	$ItemUsage/Poof.position += Vector2(-1, -1)
 	$ItemUsage/PoofPlayer.play("Poof")
 	$ItemUsage/ItemPlayer.playback_speed = 1
 	yield(get_tree().create_timer(1), "timeout")

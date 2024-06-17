@@ -6,6 +6,7 @@ var jewel_seeds : int = 0
 var spell_name : String
 var remove_item_name: String
 var marbles_get = false
+var sent_storage = false
 
 const menu_slot = preload("res://UI/Slot.tscn")
 onready var slot = menu_slot.instance()
@@ -44,6 +45,10 @@ func _ready():
 	add_item_name = "Ginger Tea"
 	add_item()
 	add_item_name = "Ginger Tea"
+	add_item()
+	add_item_name = "Yummy Cake"
+	add_item()
+	add_item_name = "Pretty Gem"
 	add_item()
 
 
@@ -86,6 +91,7 @@ func add_item():
 		var new_slot = slot.duplicate()
 		new_slot.text = add_item_name
 		Storage.append(new_slot)
+		sent_storage = true
 	else:
 		var new_slot = slot.duplicate()
 		new_slot.text = add_item_name

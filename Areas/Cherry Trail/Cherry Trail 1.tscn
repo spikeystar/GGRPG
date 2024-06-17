@@ -326,9 +326,9 @@ script = ExtResource( 34 )
 [node name="MiddleGround" type="YSort" parent="YSort"]
 
 [node name="FlowerHillD" parent="YSort/MiddleGround" instance=ExtResource( 30 )]
-position = Vector2( -18, -113 )
+position = Vector2( -18, -112 )
 texture = ExtResource( 14 )
-texture_scale = Vector2( 1.6, 1.388 )
+texture_scale = Vector2( 1.65, 1.45 )
 texture_offset = Vector2( 25, 80 )
 floor_height = -64.0
 
@@ -556,6 +556,6 @@ align = 1
 [node name="PresentBase" parent="." instance=ExtResource( 38 )]
 position = Vector2( 180, -252 )
 item_name = "Yummy Cake"
-shadow_color = Color( 0.2184, 0.37296, 0.42, 1 )
+shadow_color = Color( 0.2142, 0.39942, 0.42, 1 )
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
