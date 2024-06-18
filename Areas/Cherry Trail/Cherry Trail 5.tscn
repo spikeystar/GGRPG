@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -40,6 +40,7 @@
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=38]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=39]
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=40]
+[ext_resource path="res://Enemies/EnemyTest.tscn" type="PackedScene" id=41]
 
 [sub_resource type="TileSet" id=1]
 7/name = "Grass Tile.png 7"
@@ -597,7 +598,7 @@ floor_height = 45.0
 shadow_color = Color( 0.188235, 0.552941, 0.298039, 1 )
 
 [node name="Cheribo_wander" parent="." instance=ExtResource( 7 )]
-position = Vector2( 223, -50 )
+position = Vector2( -16, -35 )
 target_scene = ExtResource( 32 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
@@ -671,5 +672,8 @@ rect_scale = Vector2( 1.2, 1.1 )
 custom_fonts/font = ExtResource( 39 )
 text = "You got a Flummery Flambe!"
 align = 1
+
+[node name="Enemy" parent="." instance=ExtResource( 41 )]
+position = Vector2( 191, -38 )
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

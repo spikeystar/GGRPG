@@ -26,9 +26,6 @@ var floor_layers : Array = []
 var is_on_ground = true
 var is_falling = true
 var is_just_teleported = false
-#var freeze = PlayerManager.freeze
-#var sleep = PlayerManager.sleep
-#var ongoing = PlayerManager.ongoing
 
 func _ready():
 	floor_z = spawn_z
@@ -46,10 +43,6 @@ func teleport_2d(tp_pos : Vector2, height : int = 0):
 func set_facing_direction(direction : Vector2):
 	last_dir = direction.normalized()
 	
-#func freeze():
-	#max_player_speed = 0
-	#anim_tree.get("parameters/playback").travel("Idle")
-	#anim_tree.set("parameters/Idle/blend_position", Vector2(last_dir.x, -last_dir.y))
 
 func update_floor():
 	floor_z = LOWEST_Z
@@ -109,10 +102,8 @@ func _physics_process(delta):
 		last_dir = Vector2(vel.x, vel.y).normalized()
 	
 	if not is_on_ground:
-		PlayerManager.jumping = true
 		vel.z -= gravity * delta
 	else:
-		PlayerManager.jumping = false
 		vel.z = 0
 		pos_z = floor_z
 		

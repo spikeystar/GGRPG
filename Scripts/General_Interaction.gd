@@ -6,6 +6,8 @@ var gary_entered = false
 export var npc_name : String
 signal general_dialogue
 
+var this_body = false
+
 func _ready():
 	var timer = Timer.new()
 	#timer.one_shot = true
@@ -20,7 +22,7 @@ func _on_start_checking_body_entered():
 	connect("body_entered", self, "_on_body_entered")
 
 func _input(event):
-	if event.is_action_pressed("ui_select") and get_overlapping_bodies().size() > 0 and not PlayerManager.freeze and SceneManager.ready_again:
+	if event.is_action_pressed("ui_select") and get_overlapping_bodies().size() > 0 and not PlayerManager.freeze and SceneManager.ready_again and this_body:
 		PlayerManager.freeze = true
 		_on_touch_area()
 		SceneManager.ready_again = false
@@ -31,11 +33,16 @@ func _input(event):
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root:
 		SceneManager.ready_again = true
+		this_body = true
 	
 func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")
 	emit_signal("interaction")
 	
-	
 func _on_NPC_body_exited(body):
 	SceneManager.ready_again = false
+	this_body = false
+
+func _on_NPC2_body_exited(body):
+	SceneManager.ready_again = false
+	this_body = false

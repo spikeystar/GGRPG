@@ -464,6 +464,12 @@ position = Vector2( 243.63, -71.2766 )
 scale = Vector2( 0.95, 0.95 )
 texture = ExtResource( 33 )
 
+[node name="Ivy2" type="Sprite" parent="Node2D"]
+position = Vector2( -61.7689, -146.679 )
+scale = Vector2( 0.95, 0.95 )
+texture = ExtResource( 33 )
+flip_h = true
+
 [node name="DoorInterior" type="Sprite" parent="Node2D"]
 position = Vector2( 193.741, -50.0151 )
 rotation = 0.0352188

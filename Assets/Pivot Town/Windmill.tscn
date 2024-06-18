@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Objects/Collision/CollidableBox.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Pivot Town/Windmill SS.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation_frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation_frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[node name="Windmill" type="YSort"]
+script = ExtResource( 1 )
+grid_size = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+texture_scale = Vector2( 1.8, 1.8 )
+texture_offset = Vector2( 15, 72 )
+height = 300.0
+preview_collision_box = false
+animation_hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+playback_speed = 0.5
+anims/Idle = SubResource( 1 )
+anims/RESET = SubResource( 2 )

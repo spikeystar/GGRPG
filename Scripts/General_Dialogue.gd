@@ -14,12 +14,19 @@ func _on_NPC_general_dialogue():
 	show()
 	talk()
 	
+func _on_NPC2_general_dialogue():
+	npc_name = SceneManager.npc_name
+	show()
+	talk()
+	
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and cursor_ready:
 		emit_signal("text_ready")
 	
 func tween_go():
 	length = $Name/Talk.text.length()
+	if length <= 25:
+		length = 25
 	$Name/Talk.percent_visible = 0.0
 	tween = create_tween()
 	tween.tween_property($Name/Talk, "percent_visible", 1, (length/25))
@@ -44,6 +51,12 @@ func talk():
 	$Name.text = npc_name + ":"
 	if npc_name == "Victor":
 		Victor()
+	if npc_name == "Derek":
+		Derek()
+	if npc_name == "Marjorie":
+		Marjorie()
+	if npc_name == "Penelope":
+		Penelope()
 		
 func Victor():
 	if js < 2 and not alternate:
@@ -65,3 +78,62 @@ func Victor():
 		done()
 		alternate = false
 	
+func Derek():
+	if js < 2 and not alternate:
+		$Name/Talk.text = "Pivot Town is known for being a meeting place."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "They say the wind brings people here."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif js < 2 and alternate:
+		$Name/Talk.text = "Henry and Tom live next door to us. They're nice to have as neighbors since they're so quiet"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "I hope they don't mind how loud Penelope can be..."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
+		
+func Marjorie():
+	if js < 2 and not alternate:
+		$Name/Talk.text = "We're having a carrot cake I made later."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "I'm hoping this helps Penelope learn to like vegetables..."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif js < 2 and alternate:
+		$Name/Talk.text = "Penelope can be a bit of a handful sometimes..."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "She just has so much energy, I worry about keeping up with her."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
+		
+func Penelope():
+	if js < 2 and not alternate:
+		$Name/Talk.text = "What do you think that strange noise was?"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "It sounded like a big crash!"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif js < 2 and alternate:
+		$Name/Talk.text = "Mommy and Daddy said that if I’m good they'll take me to Puzzle Pier!"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "I want to go so bad!"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
