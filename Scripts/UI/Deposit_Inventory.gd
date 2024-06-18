@@ -48,6 +48,7 @@ func _process(delta):
 func item_removed():
 	for x in self.get_children():
 		self.remove_child(x)
+		inventory = []
 	for x in range (Party.Inventory.size()):
 			inventory.append(Party.Inventory[x].duplicate())
 	item_index = clamp(item_index, 0, inventory.size() - 1)
@@ -60,6 +61,7 @@ func item_removed():
 func refresh():
 	for x in self.get_children():
 		self.remove_child(x)
+		inventory = []
 	for x in range (Party.Inventory.size()):
 			inventory.append(Party.Inventory[x].duplicate())
 	for item_index in inventory.size():

@@ -30,7 +30,7 @@ var Suzy_Spells : Array = []
 var Damien_Spells : Array = []
 
 func _ready():
-	add_item_name = "Yummy Cake"
+	add_item_name = "Bounty Herb"
 	add_item()
 	add_item_name = "Pretty Gem"
 	add_item()
