@@ -1230,6 +1230,7 @@ anims/open = SubResource( 21 )
 [connection signal="empty_items" from="Items/ItemPanel/ItemInventoryBox" to="Items" method="_on_ItemInventoryBox_empty_items"]
 [connection signal="heal_item_chosen" from="Items/ItemPanel/ItemInventoryBox" to="MainSelection/MenuCursor" method="_on_ItemInventoryBox_heal_item_chosen"]
 [connection signal="heal_item_chosen" from="Items/ItemPanel/ItemInventoryBox" to="Members" method="_on_ItemInventoryBox_heal_item_chosen"]
+[connection signal="not_usable" from="Items/ItemPanel/ItemInventoryBox" to="Items/ItemPanel/ItemMenuCursor" method="_on_ItemInventoryBox_not_usable"]
 [connection signal="return_to_item" from="Items/ItemPanel/ItemInventoryBox" to="MainSelection/MenuCursor" method="_on_ItemInventoryBox_return_to_item"]
 [connection signal="return_to_item" from="Items/ItemPanel/ItemInventoryBox" to="Members" method="_on_ItemInventoryBox_return_to_item"]
 [connection signal="return_to_item" from="Items/ItemPanel/ItemInventoryBox" to="Items/ItemPanel/ItemMenuCursor" method="_on_ItemInventoryBox_return_to_item"]

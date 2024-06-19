@@ -22,6 +22,7 @@ var trinket_index : int
 var trinket_max : int
 
 func _ready():
+	inventory = []
 	for x in range (Party.Trinkets.size()):
 		inventory.append(Party.Trinkets[x].duplicate())
 	for trinket_index in inventory.size():
@@ -80,8 +81,8 @@ func _input(event):
 		get_id()
 		emit_signal("trinket_chosen")
 		trinkets_active = false
-	if Input.is_action_just_pressed("ui_select"):
-		_ready()
+	#if Input.is_action_just_pressed("ui_select"):
+		#_ready()
 		
 func get_id():
 	if trinkets_active and not empty_trinkets:

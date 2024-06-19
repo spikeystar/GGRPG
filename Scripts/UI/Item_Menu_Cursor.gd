@@ -17,6 +17,7 @@ func _ready():
 func _process(delta):
 	var input := Vector2.ZERO
 	var current_menu_item := get_menu_item_at_index(cursor_index)
+	#var item_name = current_menu_item.get_id()
 	
 	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and item_selecting:
 		input.y -= 1
@@ -83,3 +84,8 @@ func _on_ItemInventoryBox_return_to_item():
 	self.modulate.a = 1
 	set_cursor_from_index(0)
 	item_selecting = true
+
+func _on_ItemInventoryBox_not_usable():
+	yield(get_tree().create_timer(0.01), "timeout")
+	item_selecting = true
+	self.modulate.a = 1

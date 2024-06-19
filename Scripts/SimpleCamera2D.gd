@@ -43,7 +43,7 @@ func item_window():
 		PlayerManager.freeze = false
 	
 func sent_storage():
-	$Info_Window/First_Text.text = "Sent to storage."
+	$Info_Window/First_Text.text = "Sent to storage"
 	$Info_Window.show()
 	tween = create_tween()
 	tween.tween_property($Info_Window, "modulate:a", 1, 0.2)

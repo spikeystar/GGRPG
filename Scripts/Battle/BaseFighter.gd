@@ -812,7 +812,7 @@ func apply_debuff(id : String):
 		
 	if id == "defense" and not d_debuff and not d_buff and not hocus_potion:
 		d_debuff = true
-		d_debuff_timer = 3
+		d_debuff_timer = 4
 		f_defense -= (f_defense * 0.2)
 		whammy_chance -= 1
 		debuff()
