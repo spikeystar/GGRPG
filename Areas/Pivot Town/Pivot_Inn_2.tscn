@@ -212,6 +212,7 @@ height = 25.0
 floor_height = 55.0
 use_collision = false
 use_dither_blending = false
+use_transparency = true
 
 [node name="Sunflowers" parent="Node2D" instance=ExtResource( 24 )]
 modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
@@ -225,15 +226,13 @@ floor_height = 55.0
 use_collision = false
 
 [node name="Violet Pot" parent="Node2D" instance=ExtResource( 24 )]
-position = Vector2( 93.8626, -26.4918 )
-z_index = 1
-grid_size = Vector2( 0.3, 0.3 )
+position = Vector2( 91.7212, -53.481 )
+grid_size = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 texture_scale = Vector2( 0.95, 0.95 )
-height = 32.0
+texture_offset = Vector2( 2, 27 )
+height = 30.0
 floor_height = 40.0
-preview_collision_box = false
-use_collision = false
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
 position = Vector2( 3.99995, -0.0209439 )

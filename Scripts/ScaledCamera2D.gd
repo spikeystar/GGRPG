@@ -29,9 +29,29 @@ func item_window():
 	PlayerManager.freeze = true
 	$Info_Window.show()
 	tween = create_tween()
-	tween.tween_property($Info_Window, "modulate:a", 1, 0.15)
+	tween.tween_property($Info_Window, "modulate:a", 1, 0.2)
 	yield(get_tree().create_timer(1.7), "timeout")
+	var tween = create_tween()
+	tween.tween_property($Info_Window, "modulate:a", 0, 0.2)
+	yield(get_tree().create_timer(0.2), "timeout")
 	$Info_Window.hide()
+	if Party.sent_storage:
+		yield(get_tree().create_timer(0.1), "timeout")
+		sent_storage()
+	else:
+		PlayerManager.freeze = false
+		
+func sent_storage():
+	$Info_Window/First_Text.text = "Sent to storage"
+	$Info_Window.show()
+	tween = create_tween()
+	tween.tween_property($Info_Window, "modulate:a", 1, 0.2)
+	yield(get_tree().create_timer(0.9), "timeout")
+	var tween = create_tween()
+	tween.tween_property($Info_Window, "modulate:a", 0, 0.2)
+	yield(get_tree().create_timer(0.2), "timeout")
+	$Info_Window.hide()
+	Party.sent_storage = false
 	PlayerManager.freeze = false
 
 func _process(delta):

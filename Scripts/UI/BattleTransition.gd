@@ -19,3 +19,6 @@ func speed_up():
 
 func slow_down():
 	animation_player.playback_speed = 0.7
+	
+func slow_down_alot():
+	animation_player.playback_speed = 0.3

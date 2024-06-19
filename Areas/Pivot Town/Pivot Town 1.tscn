@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/plant b.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=2]
@@ -75,6 +75,7 @@
 [ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=73]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Doorway.gd" type="Script" id=74]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=75]
+[ext_resource path="res://NPC/Pivot Town/Henry.tscn" type="PackedScene" id=76]
 
 [sub_resource type="StreamTexture" id=12]
 
@@ -1258,7 +1259,7 @@ texture_offset = Vector2( 1, 21 )
 height = 32.0
 
 [node name="Box15" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
-position = Vector2( 904, -303 )
+position = Vector2( 904, -311 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1420,7 +1421,7 @@ preview_collision_box = false
 position = Vector2( 303, -561 )
 scale = Vector2( 1.9, 1.9 )
 frames = SubResource( 10 )
-frame = 1
+frame = 3
 playing = true
 script = ExtResource( 36 )
 alpha_clip = 0.01
@@ -1638,6 +1639,19 @@ texture = ExtResource( 59 )
 
 [node name="Penelope" parent="YSort/MiddleGround" instance=ExtResource( 72 )]
 position = Vector2( 779, -442 )
+
+[node name="BushA17" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
+position = Vector2( -410, -271 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.9, 0.82 )
+texture = ExtResource( 62 )
+texture_scale = Vector2( 1.4, 1.4 )
+texture_offset = Vector2( 3, 40 )
+height = 35.0
+preview_collision_box = false
 
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
@@ -1877,7 +1891,7 @@ exit_name = "PivotTown1_Edgar"
 polygon = PoolVector2Array( -34, -19, 9, 2, 21, -6, -20, -25 )
 
 [node name="Entrance" parent="CollisionRoot" instance=ExtResource( 23 )]
-position = Vector2( -697, 5 )
+position = Vector2( -691, 7 )
 door_name = "CherryTrail5_PivotTown1"
 direction = Vector2( 1, 1 )
 
@@ -2131,6 +2145,9 @@ damping = 4.73
 scale_amount = 0.55
 scale_amount_random = 0.2
 color_ramp = SubResource( 11 )
+
+[node name="Henry" parent="." instance=ExtResource( 76 )]
+position = Vector2( 90, -196 )
 
 [connection signal="body_exited" from="CollisionRoot/NPC" to="CollisionRoot/NPC" method="_on_NPC_body_exited"]
 [connection signal="general_dialogue" from="CollisionRoot/NPC" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]

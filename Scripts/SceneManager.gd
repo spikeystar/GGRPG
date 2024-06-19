@@ -6,6 +6,8 @@ var direction : Vector2
 var height : int
 
 var location : String
+var new_file = true
+
 var npc_name : String
 var ready_again = false
 var victory = false

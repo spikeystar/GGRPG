@@ -74,6 +74,7 @@ func _physics_process(_delta):
 				global_position.y + offset.y,
 				-global_position.y - height
 			)
+	
 
 #----------------#
 # Public Methods #

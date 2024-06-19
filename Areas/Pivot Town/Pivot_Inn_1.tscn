@@ -22,6 +22,7 @@
 [ext_resource path="res://NPC/Pivot Town/Victor.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scripts/Shop_Interact.gd" type="Script" id=21]
 [ext_resource path="res://NPC/Pivot Town/Freya.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Assets/Pivot Town/bucket.png" type="Texture" id=23]
 [ext_resource path="res://Scripts/UI/Talk_Adjusting.gd" type="Script" id=25]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=28]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=29]
@@ -58,7 +59,6 @@
 [ext_resource path="res://Assets/Pivot Town/Pivot Town Place SS.png" type="Texture" id=64]
 [ext_resource path="res://Assets/Pivot Town/dish cabinet.png" type="Texture" id=65]
 [ext_resource path="res://Assets/Pivot Town/sunflowers.png" type="Texture" id=66]
-[ext_resource path="res://Assets/Pivot Town/oil lamp.png" type="Texture" id=67]
 [ext_resource path="res://Assets/Gary's House/Interior/window.png" type="Texture" id=68]
 [ext_resource path="res://Assets/Pivot Town/curtains b.png" type="Texture" id=69]
 
@@ -293,15 +293,13 @@ always_update = true
 
 [node name="Cookies" parent="Node2D/YSort" instance=ExtResource( 14 )]
 modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
-position = Vector2( 32.8948, -20.1725 )
-grid_size = Vector2( 0.3, 0.3 )
+position = Vector2( 32.6802, -61.172 )
+grid_size = Vector2( 0.6, 0.6 )
 texture = ExtResource( 46 )
 texture_scale = Vector2( 1.25, 1.25 )
+texture_offset = Vector2( 3, 38 )
 height = 32.0
 floor_height = 55.0
-depth_test_offset = Vector3( 0, -80, 0 )
-preview_collision_box = false
-use_collision = false
 
 [node name="Dresser" parent="Node2D/YSort" instance=ExtResource( 14 )]
 position = Vector2( 43.6276, -71.2294 )
@@ -313,17 +311,29 @@ texture_offset = Vector2( -2, 22 )
 height = 55.0
 preview_collision_box = false
 
+[node name="Bucket" parent="Node2D/YSort" instance=ExtResource( 14 )]
+modulate = Color( 0.91632, 0.9016, 0.92, 0.960784 )
+position = Vector2( 68.7268, -52.3606 )
+grid_size = Vector2( 0.4, 0.4 )
+texture = ExtResource( 23 )
+texture_scale = Vector2( -0.9, 0.9 )
+texture_offset = Vector2( 0, 30 )
+height = 25.0
+floor_height = 75.0
+depth_test_offset = Vector3( 0, 200, 0 )
+use_collision = false
+use_transparency = true
+
 [node name="Top" parent="Node2D/YSort" instance=ExtResource( 14 )]
-position = Vector2( 70.8419, -30.3713 )
+position = Vector2( 71.7163, -54.3763 )
 tile_size = Vector2( 63, 28 )
 grid_size = Vector2( 0.9, 0.8 )
 texture = ExtResource( 62 )
 texture_scale = Vector2( 1.2, 1.2 )
 texture_offset = Vector2( 2, 32 )
-height = 64.0
-floor_height = 60.0
-depth_test_offset = Vector3( 0, -125, 0 )
-use_collision = false
+height = 40.0
+floor_height = 35.0
+preview_collision_box = false
 
 [node name="Misc A" parent="Node2D/YSort" instance=ExtResource( 14 )]
 position = Vector2( 70.7058, -56.371 )
@@ -335,16 +345,16 @@ texture_offset = Vector2( -1, 30 )
 height = 60.0
 preview_collision_box = false
 
-[node name="Bookshelf2 2" parent="Node2D/YSort" instance=ExtResource( 14 )]
+[node name="Dish Cabinet" parent="Node2D/YSort" instance=ExtResource( 14 )]
 modulate = Color( 1, 0.996078, 0.992157, 1 )
-position = Vector2( 94.7474, -48.4968 )
+position = Vector2( 97.763, -45.5125 )
 tile_size = Vector2( 60, 25 )
 grid_size = Vector2( 0.8, 0.9 )
 texture = ExtResource( 65 )
 texture_scale = Vector2( 1.3, 1.3 )
-texture_offset = Vector2( 2, 22 )
+texture_offset = Vector2( 0, 20 )
 height = 124.0
-depth_test_offset = Vector3( 0, 100, 0 )
+depth_test_offset = Vector3( 0, 300, 0 )
 preview_collision_box = false
 
 [node name="Misc A2" parent="Node2D/YSort" instance=ExtResource( 14 )]
@@ -360,15 +370,14 @@ use_dithering = false
 use_dither_blending = false
 
 [node name="Fireplace" parent="Node2D/YSort" instance=ExtResource( 14 )]
-position = Vector2( 311.242, 45.371 )
+position = Vector2( 307.299, 56.3918 )
 tile_size = Vector2( 60, 25 )
-grid_size = Vector2( 0.8, 0.9 )
+grid_size = Vector2( 1.4, 1.5 )
 texture = ExtResource( 64 )
 texture_scale = Vector2( 1.4, 1.4 )
-texture_offset = Vector2( -2, 22 )
+texture_offset = Vector2( -2, 14 )
 height = 70.0
-depth_test_offset = Vector3( 0, -70, 10 )
-preview_collision_box = false
+depth_test_offset = Vector3( 0, -70, 0 )
 animation_hframes = 9
 animation_vframes = 3
 animation_frame = 10
@@ -437,21 +446,21 @@ grid_size = Vector2( 1, 1.3 )
 texture = ExtResource( 1 )
 texture_scale = Vector2( 1.2, 1.2 )
 texture_offset = Vector2( -1, 21 )
-height = 65.0
+height = 55.0
 preview_collision_box = false
 
 [node name="Begonia" parent="Node2D/YSort" instance=ExtResource( 14 )]
 modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
-position = Vector2( 244.243, 45.7218 )
-grid_size = Vector2( 0.3, 0.3 )
+position = Vector2( 241.19, 35.7376 )
+grid_size = Vector2( 0.5, 0.5 )
 texture = ExtResource( 56 )
 texture_scale = Vector2( 0.8, 0.8 )
-height = 15.0
-floor_height = 65.0
+texture_offset = Vector2( 3, 1 )
+height = 30.0
+floor_height = 55.0
 preview_collision_box = false
-use_collision = false
 
-[node name="SideTable2" parent="Node2D/YSort" instance=ExtResource( 14 )]
+[node name="Staircase" parent="Node2D/YSort" instance=ExtResource( 14 )]
 position = Vector2( 22.6647, 126.883 )
 rotation = -0.0184242
 tile_size = Vector2( 63, 28 )
@@ -460,6 +469,7 @@ texture = ExtResource( 9 )
 texture_scale = Vector2( 1.8, 1.8 )
 texture_offset = Vector2( 1, 42 )
 height = 65.0
+preview_collision_box = false
 
 [node name="CircleShadowSmall2" type="Sprite" parent="Node2D/YSort"]
 visible = false
@@ -542,18 +552,6 @@ depth_test_offset = Vector3( 0, 100, 0 )
 preview_collision_box = false
 use_transparency = true
 
-[node name="OilLamp" parent="Node2D" instance=ExtResource( 14 )]
-modulate = Color( 0.91632, 0.9016, 0.92, 0.960784 )
-position = Vector2( 67.9886, -2.35602 )
-grid_size = Vector2( 0.5, 0.5 )
-texture = ExtResource( 67 )
-texture_scale = Vector2( 0.7, 0.7 )
-texture_offset = Vector2( 3, 20 )
-height = 25.0
-floor_height = 124.0
-depth_test_offset = Vector3( 0, 100, 0 )
-use_collision = false
-
 [node name="Violet Pot" parent="Node2D" instance=ExtResource( 14 )]
 position = Vector2( -220.788, 41.1566 )
 z_index = 1
@@ -594,7 +592,7 @@ target_scene = "res://Areas/Pivot Town/Pivot_Inn_2.tscn"
 exit_name = "Pivot_Inn_2"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Upstairs"]
-position = Vector2( -13, 10 )
+position = Vector2( -16.9474, 10.0893 )
 polygon = PoolVector2Array( -24.0571, -20.8061, 2.88497, -31.9469, 9.91105, -26.9837, -14.031, -15.8582 )
 
 [node name="Shop" parent="Node2D/CollisionRoot" instance=ExtResource( 33 )]

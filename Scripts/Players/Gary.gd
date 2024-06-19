@@ -68,3 +68,11 @@ func _physics_process(delta):
 	body_visual_root.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z)
 	shadow_y_sort.global_position = Vector2(motion_root.global_position.x, draw_shadow_y_sort)
 	shadow_visual_root.global_position = motion_root.global_position + Vector2(0.0, -draw_shadow_z)
+
+func _process(delta):
+	pass
+	#if PlayerManager.sleep:
+		#shadow_sprite.hide()
+		#anim_tree.active = false
+		#anim_player.playback_speed = 0.3
+		#anim_player.play("sleep")
