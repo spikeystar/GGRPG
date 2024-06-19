@@ -117,6 +117,9 @@ func set_item():
 	if item_name == "Pretty Gem":
 		$ItemUsage/Item.frame = 1
 		item_get()
+	if item_name == "Bounty Herb":
+		$ItemUsage/Item.frame = 5
+		item_get()
 	if item_name == "Marbles":
 		$ItemUsage/Item.frame = 11
 		marbles_get()

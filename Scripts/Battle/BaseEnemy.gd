@@ -296,7 +296,11 @@ func apply_buff(id : String):
 		buff()
 	elif id == "attack" and a_debuff:
 		a_debuff = false
+		a_buff_timer = 3 - a_debuff_timer
 		a_debuff_timer = 0
+		if a_buff_timer > 0:
+			a_buff = true
+			e_attack += (e_attack * 0.2)
 		e_attack += (e_attack * 0.2)
 		buff()
 		
@@ -307,7 +311,11 @@ func apply_buff(id : String):
 		buff()
 	elif id == "magic" and m_debuff:
 		m_debuff = false
+		m_buff_timer = 3 - m_debuff_timer
 		m_debuff_timer = 0
+		if m_buff_timer > 0:
+			m_buff = true
+			e_magic += (e_magic * 0.2)
 		e_magic += (e_magic * 0.2)
 		buff()
 		
@@ -319,7 +327,11 @@ func apply_buff(id : String):
 		buff()
 	elif id == "defense" and d_debuff:
 		d_debuff = false
+		d_buff_timer = 3 - d_debuff_timer
 		d_debuff_timer = 0
+		if d_buff_timer > 0:
+			d_buff = true
+			e_defense += (e_defense * 0.2)
 		e_defense += (e_defense * 0.2)
 		buff()	
 		
@@ -332,7 +344,11 @@ func apply_debuff(id : String):
 		debuff()
 	if id == "attack" and a_buff:
 		a_buff = false
+		a_debuff_timer = 3 - a_buff_timer
 		a_buff_timer = 0
+		if a_debuff_timer > 0:
+			a_debuff = true
+			e_attack -= (e_attack * 0.2)
 		e_attack -= (e_attack * 0.2)
 		debuff()
 		
@@ -344,7 +360,11 @@ func apply_debuff(id : String):
 		debuff()
 	if id == "magic" and m_buff:
 		m_buff = false
+		m_debuff_timer = 3 - m_buff_timer
 		m_buff_timer = 0
+		if m_debuff_timer > 0:
+			m_debuff = true
+			e_magic -= (e_magic * 0.2)
 		e_magic -= (e_magic * 0.2)
 		debuff()
 		
@@ -356,7 +376,11 @@ func apply_debuff(id : String):
 		debuff()
 	if id == "defense" and d_buff:
 		d_buff = false
+		d_debuff_timer = 3 - d_buff_timer
 		d_buff_timer = 0
+		if d_debuff_timer > 0:
+			d_debuff = true
+			e_defense -= (e_defense * 0.2)
 		e_defense -= (e_defense * 0.2)
 		debuff()
 

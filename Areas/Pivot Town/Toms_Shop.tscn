@@ -779,7 +779,6 @@ floor_height = 40.0
 preview_collision_box = false
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
-visible = false
 position = Vector2( 3.99995, -0.0209439 )
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 29 )]
@@ -795,7 +794,7 @@ __meta__ = {
 position = Vector2( -133.459, 103.7 )
 script = ExtResource( 14 )
 target_scene = "res://Areas/Pivot Town/Pivot Town 1.tscn"
-exit_name = "Toms_Shop"
+exit_name = "PivotTown1_Shop"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Outside"]
 position = Vector2( -13, 10 )
@@ -809,12 +808,9 @@ script = ExtResource( 40 )
 position = Vector2( 2.1047, 19.9893 )
 polygon = PoolVector2Array( -4.14655, -27.9787, 5.8219, -34.031, 45.9208, -15.2406, 31.9577, -8.16744 )
 
-[node name="PlayerSpawnDefault" parent="Node2D/CollisionRoot" instance=ExtResource( 28 )]
-position = Vector2( -39, 29 )
-
 [node name="PlayerSpawnFromOutsideHouse2" parent="Node2D/CollisionRoot" instance=ExtResource( 28 )]
 position = Vector2( -96, 82 )
-door_name = "Pivot_Town_1"
+door_name = "PivotTown1_Shop"
 direction = Vector2( 1, 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

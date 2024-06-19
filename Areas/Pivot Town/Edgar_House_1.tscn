@@ -557,7 +557,6 @@ script = ExtResource( 6 )
 height = 250.0
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
-visible = false
 position = Vector2( 3.99995, -0.0209439 )
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 33 )]
@@ -573,7 +572,7 @@ __meta__ = {
 position = Vector2( 31.8792, 167.835 )
 script = ExtResource( 10 )
 target_scene = "res://Areas/Pivot Town/Pivot Town 1.tscn"
-exit_name = "Toms_Shop"
+exit_name = "PivotTown1_Edgar"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Outside"]
 position = Vector2( -13, 10 )
@@ -582,22 +581,22 @@ polygon = PoolVector2Array( -28, -23, 2, -36, 63, -6, 32, 6 )
 [node name="Upstairs" parent="Node2D/CollisionRoot" instance=ExtResource( 3 )]
 position = Vector2( 88.7632, -45.4654 )
 script = ExtResource( 10 )
-target_scene = "res://Areas/Pivot Town/Pivot_Inn_2.tscn"
-exit_name = "Pivot_Inn_2"
+target_scene = "res://Areas/Pivot Town/Edgar_House_2.tscn"
+exit_name = "Edgar1_Edgar2"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Upstairs"]
 position = Vector2( -13, 10 )
 polygon = PoolVector2Array( -24.0571, -20.8061, 2.88497, -31.9469, 9.91105, -26.9837, -14.031, -15.8582 )
 
 [node name="PlayerSpawnDefault" parent="Node2D/CollisionRoot" instance=ExtResource( 60 )]
-position = Vector2( 69.7321, 139.637 )
-door_name = "Pivot_Inn_2"
-direction = Vector2( 1, -1 )
+position = Vector2( 71.7425, 141.626 )
+door_name = "PivotTown1_Edgar"
+direction = Vector2( 1, 1 )
 
 [node name="PlayerSpawnFromOutsideHouse2" parent="Node2D/CollisionRoot" instance=ExtResource( 60 )]
-position = Vector2( -96, 82 )
-door_name = "Pivot_Town_1"
-direction = Vector2( 1, 1 )
+position = Vector2( 87.7579, -46.4601 )
+door_name = "Edgar2_Edgar1"
+direction = Vector2( 1, -1 )
 
 [node name="NPC" type="Area2D" parent="Node2D/CollisionRoot"]
 script = ExtResource( 12 )

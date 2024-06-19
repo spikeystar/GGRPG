@@ -262,27 +262,26 @@ preview_collision_box = false
 use_collision = false
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
-visible = false
 position = Vector2( 3.99995, -0.0209439 )
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 28 )]
 
 [node name="NavmeshLayer" parent="Node2D/CollisionRoot/Navmesh" instance=ExtResource( 29 )]
 position = Vector2( -49, 35.1 )
-polygon = PoolVector2Array( 63.45, -140.177, 305.059, -24.4406, 82.5703, 73.7257, 19.414, 44.056, -11.5122, 58.2181, -68.4242, 31.9573, -198.955, -25.8016 )
+polygon = PoolVector2Array( 63.45, -140.177, 305.059, -24.4406, 82.5703, 73.7257, 47.487, 57.9092, 17.5659, 73.0661, -68.4242, 31.9573, -198.955, -25.8016 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="Downstairs" parent="Node2D/CollisionRoot" instance=ExtResource( 30 )]
-position = Vector2( -133.459, 103.7 )
+position = Vector2( -73.444, 106.386 )
 script = ExtResource( 5 )
-target_scene = "res://Areas/Pivot Town/Pivot_Inn_1.tscn"
-exit_name = "Pivot_Inn_2"
+target_scene = "res://Areas/Pivot Town/Derek_House_1.tscn"
+exit_name = "Derek2_Derek1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Downstairs"]
 position = Vector2( 52.947, -10.2772 )
-polygon = PoolVector2Array( 15.9946, -1.08376, 48.9208, -15.2564, 63, -6, 32, 6 )
+polygon = PoolVector2Array( 14.9997, -0.0786819, 22.9787, -4.12052, 56.062, 11.7065, 50.0882, 16.7378 )
 
 [node name="Sleep" parent="Node2D/CollisionRoot" instance=ExtResource( 31 )]
 position = Vector2( 17.4657, -102.093 )
@@ -291,9 +290,9 @@ direction = Vector2( -1, -1 )
 height = 40
 
 [node name="PlayerSpawnFromOutsideHouse2" parent="Node2D/CollisionRoot" instance=ExtResource( 31 )]
-position = Vector2( -59.6065, 75.3131 )
-door_name = "Pivot_Inn_2"
-direction = Vector2( -1, 1 )
+position = Vector2( 25.4657, 88.8679 )
+door_name = "Derek1_Derek2"
+direction = Vector2( 1, 1 )
 
 [node name="Ivy4" type="Sprite" parent="Node2D"]
 position = Vector2( -207.468, -88.9149 )

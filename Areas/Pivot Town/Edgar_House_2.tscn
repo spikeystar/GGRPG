@@ -339,7 +339,6 @@ preview_collision_box = false
 use_collision = false
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
-visible = false
 position = Vector2( 3.99995, -0.0209439 )
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 22 )]
@@ -354,8 +353,8 @@ __meta__ = {
 [node name="Downstairs" parent="Node2D/CollisionRoot" instance=ExtResource( 23 )]
 position = Vector2( -133.459, 103.7 )
 script = ExtResource( 1 )
-target_scene = "res://Areas/Pivot Town/Pivot_Inn_1.tscn"
-exit_name = "Pivot_Inn_2"
+target_scene = "res://Areas/Pivot Town/Edgar_House_1.tscn"
+exit_name = "Edgar2_Edgar1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Downstairs"]
 position = Vector2( 52.947, -10.2772 )
@@ -369,7 +368,7 @@ height = 40
 
 [node name="PlayerSpawnFromOutsideHouse2" parent="Node2D/CollisionRoot" instance=ExtResource( 8 )]
 position = Vector2( -59.6065, 75.3131 )
-door_name = "Pivot_Inn_2"
+door_name = "Edgar1_Edgar2"
 direction = Vector2( -1, 1 )
 
 [node name="Window" type="Sprite" parent="Node2D"]

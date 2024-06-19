@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/plant b.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=2]
@@ -73,6 +73,8 @@
 [ext_resource path="res://Scripts/UI/Talk_Adjusting.gd" type="Script" id=71]
 [ext_resource path="res://NPC/Pivot Town/Penelope.tscn" type="PackedScene" id=72]
 [ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=73]
+[ext_resource path="res://Scripts/Objects/SceneTransition/Doorway.gd" type="Script" id=74]
+[ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=75]
 
 [sub_resource type="StreamTexture" id=12]
 
@@ -390,7 +392,7 @@ colors = PoolColorArray( 1, 1, 1, 0.470588, 1, 1, 1, 1, 1, 1, 1, 0, 0.910604, 0.
 z_index = -20
 
 [node name="BlueBckgd" type="Sprite" parent="YSort/Background"]
-position = Vector2( 88, -386 )
+position = Vector2( 93, -384 )
 scale = Vector2( 2.39578, 1.73054 )
 texture = ExtResource( 31 )
 
@@ -1304,27 +1306,27 @@ height = 64.0
 preview_collision_box = false
 
 [node name="Fence3" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
-position = Vector2( -71, -733 )
+position = Vector2( -40, -746 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 30 )
 grid_size = Vector2( 0.6, 1 )
 texture = ExtResource( 49 )
-texture_scale = Vector2( -1.4, 1.4 )
+texture_scale = Vector2( 1.4, 1.4 )
 texture_offset = Vector2( -2, 30 )
 height = 64.0
 preview_collision_box = false
 
 [node name="Fence4" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
-position = Vector2( -121, -709 )
+position = Vector2( -156, -705 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 30 )
 grid_size = Vector2( 0.6, 1 )
 texture = ExtResource( 49 )
-texture_scale = Vector2( -1.4, 1.4 )
+texture_scale = Vector2( 1.4, 1.4 )
 texture_offset = Vector2( -2, 30 )
 height = 64.0
 preview_collision_box = false
@@ -1418,7 +1420,7 @@ preview_collision_box = false
 position = Vector2( 303, -561 )
 scale = Vector2( 1.9, 1.9 )
 frames = SubResource( 10 )
-frame = 5
+frame = 1
 playing = true
 script = ExtResource( 36 )
 alpha_clip = 0.01
@@ -1805,20 +1807,121 @@ height = 50.0
 
 [node name="DoorwayToCherryTrail1" parent="CollisionRoot" instance=ExtResource( 11 )]
 position = Vector2( -768, 33 )
+script = ExtResource( 75 )
+target_scene = "res://Areas/Cherry Trail/Cherry Trail 5.tscn"
+exit_name = "CherryTrail5_PivotTown1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToCherryTrail1"]
 polygon = PoolVector2Array( -39, -23, 54, 11, 67, 7, -26, -28 )
 
-[node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 23 )]
-position = Vector2( -185, 69 )
-door_name = "CherryTrail1To4"
+[node name="PivotTown2" parent="CollisionRoot" instance=ExtResource( 11 )]
+position = Vector2( -246, -742 )
+script = ExtResource( 75 )
+target_scene = "res://Areas/Pivot Town/Pivot Town 2.tscn"
+exit_name = "PivotTown1_PivotTown2"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/PivotTown2"]
+polygon = PoolVector2Array( -39, -23, -17, -14, 107, -57, 87, -63 )
+
+[node name="PivotTown3" parent="CollisionRoot" instance=ExtResource( 11 )]
+position = Vector2( 747, -750 )
+script = ExtResource( 75 )
+exit_name = "PivotTown1_PivotTown3"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/PivotTown3"]
+polygon = PoolVector2Array( 78, -61, 201, -11, 213, -14, 89, -64 )
+
+[node name="CoastalLane" parent="CollisionRoot" instance=ExtResource( 11 )]
+position = Vector2( 728, -25 )
+script = ExtResource( 75 )
+exit_name = "PivotTown1_CoastalLane1"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/CoastalLane"]
+polygon = PoolVector2Array( 187, -17, 201, -11, 330, -54, 313, -61 )
+
+[node name="Inn_Door" parent="CollisionRoot" instance=ExtResource( 11 )]
+position = Vector2( -474, -441 )
+script = ExtResource( 74 )
+target_scene = "res://Areas/Pivot Town/Pivot_Inn_1.tscn"
+exit_name = "PivotTown1_Inn"
+height = 50.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Inn_Door"]
+polygon = PoolVector2Array( -39, -21, 10, 3, 24, -5, -26, -28 )
+
+[node name="Shop_Door" parent="CollisionRoot" instance=ExtResource( 11 )]
+position = Vector2( 198, -132 )
+script = ExtResource( 74 )
+target_scene = "res://Areas/Pivot Town/Toms_Shop.tscn"
+exit_name = "PivotTown1_Shop"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Shop_Door"]
+polygon = PoolVector2Array( -34, -19, 9, 2, 21, -6, -20, -25 )
+
+[node name="Derek_Door" parent="CollisionRoot" instance=ExtResource( 11 )]
+position = Vector2( 886, -394 )
+script = ExtResource( 74 )
+target_scene = "res://Areas/Pivot Town/Derek_House_1.tscn"
+exit_name = "PivotTown1_Derek"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Derek_Door"]
+polygon = PoolVector2Array( -34, -19, 9, 2, 21, -6, -20, -25 )
+
+[node name="Edgar_Door" parent="CollisionRoot" instance=ExtResource( 11 )]
+position = Vector2( 386, -658 )
+script = ExtResource( 74 )
+target_scene = "res://Areas/Pivot Town/Edgar_House_1.tscn"
+exit_name = "PivotTown1_Edgar"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Edgar_Door"]
+polygon = PoolVector2Array( -34, -19, 9, 2, 21, -6, -20, -25 )
+
+[node name="Entrance" parent="CollisionRoot" instance=ExtResource( 23 )]
+position = Vector2( -697, 5 )
+door_name = "CherryTrail5_PivotTown1"
+direction = Vector2( 1, 1 )
+
+[node name="FromInn" parent="CollisionRoot" instance=ExtResource( 23 )]
+position = Vector2( -505, -439 )
+door_name = "PivotTown1_Inn"
+direction = Vector2( -1, -1 )
+
+[node name="FromShop" parent="CollisionRoot" instance=ExtResource( 23 )]
+position = Vector2( 176, -133 )
+door_name = "PivotTown1_Shop"
+direction = Vector2( -1, -1 )
+
+[node name="FromDerek" parent="CollisionRoot" instance=ExtResource( 23 )]
+position = Vector2( 865, -391 )
+door_name = "PivotTown1_Derek"
+direction = Vector2( -1, -1 )
+
+[node name="FromEdgar" parent="CollisionRoot" instance=ExtResource( 23 )]
+position = Vector2( 368, -658 )
+door_name = "PivotTown1_Edgar"
+direction = Vector2( -1, -1 )
+
+[node name="FromPivotTown2" parent="CollisionRoot" instance=ExtResource( 23 )]
+position = Vector2( -148, -753 )
+door_name = "PivotTown2_PivotTown1"
+direction = Vector2( 1, -1 )
+
+[node name="FromPivotTown3" parent="CollisionRoot" instance=ExtResource( 23 )]
+position = Vector2( 821, -768 )
+door_name = "PivotTown1_PivotTown3"
+direction = Vector2( -1, -1 )
+
+[node name="FromPivotTown4" parent="CollisionRoot" instance=ExtResource( 23 )]
+position = Vector2( 901, -95 )
+door_name = "PivotTown1_CoastalLane1"
+direction = Vector2( 1, -1 )
 
 [node name="NPC" type="Area2D" parent="CollisionRoot"]
 script = ExtResource( 69 )
 npc_name = "Penelope"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/NPC"]
-position = Vector2( 771, -446 )
+position = Vector2( 772, -444 )
 polygon = PoolVector2Array( -6.00998, -1.96857, 26.0576, 10.8637, 12.1102, 20.9369, -19.9679, 6.10462 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

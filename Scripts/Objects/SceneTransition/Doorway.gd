@@ -25,6 +25,7 @@ func _ready():
 	add_child(timer)
 	timer.start(0.1)
 	connect("body_entered", self, "_on_body_entered")
+	connect("body_exited", self, "_on_body_exited")
 	
 	position.y += height
 
@@ -43,6 +44,9 @@ func _input(event):
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root:
 		gary_entered = true
+		
+func _on_body_exited(body):
+		gary_entered = false
 	
 func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")

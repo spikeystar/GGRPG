@@ -129,7 +129,7 @@ func Penelope():
 		done()
 		alternate = true
 	elif js < 2 and alternate:
-		$Name/Talk.text = "Mommy and Daddy said that if I’m good they'll take me to Puzzle Pier!"
+		$Name/Talk.text = "Mommy and Daddy said that if I'm good they'll take me to Puzzle Pier!"
 		talking()
 		yield(self, "talk_done")
 		$Name/Talk.text = "I want to go so bad!"
