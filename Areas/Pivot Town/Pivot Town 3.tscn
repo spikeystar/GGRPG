@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=2]
@@ -44,6 +44,7 @@
 [ext_resource path="res://Assets/Kugi Canyon/Orange Ledge A.png" type="Texture" id=42]
 [ext_resource path="res://Assets/Pivot Town/White Dandelion B.png" type="Texture" id=43]
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=44]
+[ext_resource path="res://Scripts/Objects/Collision/Boundary.gd" type="Script" id=45]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -882,7 +883,7 @@ texture = ExtResource( 14 )
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 28 )]
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 29 )]
-polygon = PoolVector2Array( -450, -35, -409, -60, -448, -80, -346, -126, -378, -138, -315, -158, -313, -166, -240, -195, -205, -201, -177, -207, -125, -228, -93, -214, -62, -225, -33, -216, 0, -226, 98, -188, 101, -178, 93, -135, 79, -90, 97, -87, 118, -83, 163, -93, 188, -104, 207, -119, 244, -139, 409, -80, 109, 128, 55, 98, 27, 111, -4, 95, -50, 112, -189, 61, -312, 109, -403, 72, -286, 30 )
+polygon = PoolVector2Array( -450, -35, -409, -60, -448, -80, -346, -126, -378, -138, -315, -158, -313, -166, -240, -195, -205, -201, -177, -207, -125, -228, -93, -214, -62, -225, -33, -216, 0, -226, 244, -139, 409, -80, 109, 128, 55, 98, 27, 111, -4, 95, -50, 112, -189, 61, -312, 109, -403, 72, -286, 30 )
 
 [node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 29 )]
 position = Vector2( 214, -251 )
@@ -899,6 +900,14 @@ direction = Vector2( -1, 1 )
 position = Vector2( 327, -134 )
 door_name = "CherryTrail3_4"
 direction = Vector2( -1, -1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CollisionRoot"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 45 )
+
+[node name="Boundary" type="CollisionPolygon2D" parent="CollisionRoot/StaticBody2D"]
+polygon = PoolVector2Array( 79, -95, 121, -90, 172, -105, 202, -123, 241, -144, 243, -170, 191, -186, 124, -184, 80, -175, 22, -171, 80, -148, 83, -134, 83, -114 )
 
 [node name="Kugi Canyon" parent="." instance=ExtResource( 1 )]
 visible = false
