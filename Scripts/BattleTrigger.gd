@@ -3,6 +3,9 @@ extends Area2D
 var player = null
 var detected = false
 export var height = 0.0
+var able = false
+var player_height
+
 signal triggered
 
 func _ready():
@@ -10,7 +13,11 @@ func _ready():
 	position.y += height
 
 func _physics_process(delta):
-	pass
+	player_height = PlayerManager.player_motion_root.pos_z
+	if height < player_height:
+		able = false
+	else:
+		able = true
 
 func player_check():
 	return player !=null
@@ -19,8 +26,9 @@ func player_check():
 	#player = body
 
 func _on_body_entered(body):
-	if "is_player_motion_root" in body and body.is_player_motion_root and not Global.battle_ended:
+	if "is_player_motion_root" in body and body.is_player_motion_root and not Global.battle_ended and able:
 		_on_touch_area()
+		detected = true
 	
 func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")

@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const LOWEST_Z: int = 0;
+const HIGHEST_Z : int = 512;
 
 export var spawn_z = 0
 export var player_acceleration = 12
@@ -12,6 +13,7 @@ export var jump_velocity = 10
 
 #Movement
 var floor_z : float = LOWEST_Z
+var ceiling_z : float = HIGHEST_Z
 var shadow_z : float = 0
 var pos_z : float
 var teleport_z : float
@@ -23,13 +25,17 @@ var is_falling = true
 var is_just_teleported = false
 var freeze = PlayerManager.freeze
 
+var rng = RandomNumberGenerator.new()
+var wander_range = Vector2(rng.randi_range(-100, 100), rng.randi_range(-100, 100))
+var direction = (wander_range - self.position).normalized()
+
 enum {IDLE,
 WANDER,
 CHASE
 }
 
 export var ACCELERATION = 150
-export var MAX_SPEED = 50
+export var MAX_SPEED = 30
 export var FRICTION = 100
 
 var velocity = Vector2.ZERO
@@ -40,31 +46,36 @@ var ready = true
 func _ready():
 	floor_z = spawn_z
 	pos_z = spawn_z
-	state = CHASE
+	state = WANDER
+	
+	yield(get_tree().create_timer(0.1), "timeout")
 	
 func _physics_process(delta):
 	is_on_ground = pos_z <= floor_z + 4
 	
+	update_floor()
+	
 	match state:
 		IDLE:
+			MAX_SPEED = 35
 			FRICTION = 1000
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+			velocity = 0
+			#velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
 		WANDER:
 			#sprite.speed_scale = 0.75
+			MAX_SPEED = 35
 			if ready and not freeze:
-				randomize()
-				var wander_range = Vector2(rand_range(-100, 100), rand_range(-100, 100))
-				var direction = (wander_range - global_position).normalized()
 				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
-				ready = false
-				yield(get_tree().create_timer(0.5), "timeout")
-				ready = true
-		#	seek_player()
+				#yield(get_tree().create_timer(4), "timeout")
+				#ready = false
+			#yield(get_tree().create_timer(6), "timeout")
+			#ready = true
 		CHASE:
 			#sprite.speed_scale = 0.95
-			var player = PlayerManager.player_instance
-			if player != null and not freeze:
-				var direction = (player.position - position).normalized()
+			MAX_SPEED = 50
+			var player = PlayerManager.player_motion_root
+			if not freeze:
+				var direction = (player.global_position - self.global_position).normalized()
 				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 			else:
 				state = WANDER
@@ -74,17 +85,39 @@ func _physics_process(delta):
 
 func update_floor():
 	floor_z = LOWEST_Z
+	ceiling_z = HIGHEST_Z
 	for f in floor_layers:
-		floor_z = max(floor_z, f.height)
+		if f.bottom <= pos_z:
+			floor_z = max(floor_z, f.height)
+		else:
+			ceiling_z = min(ceiling_z, f.bottom)
 
 #func seek_player():
 	#if PlayerDetection.player_check():
 		#state = CHASE
-
-func _on_PlayerDetection_body_entered(body):
-	state = CHASE
-	print("chasing")
+				
 
 func _on_PlayerDetection_body_exited(body):
 	state = WANDER
 	print("wandering")
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	wander_range = Vector2(rng.randi_range(-100, 100), rng.randi_range(-100, 100))
+	direction = (wander_range - self.position).normalized()
+
+func _on_Timer_timeout():
+	if state == WANDER:
+		state = IDLE
+	if state == IDLE:
+		state = WANDER
+		randomize()
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		wander_range = Vector2(rng.randi_range(-100, 100), rng.randi_range(-100, 100))
+		direction = (wander_range - self.position).normalized()
+
+
+func _on_PlayerDetection_start_chase():
+	state = CHASE
+	print("chasing")

@@ -5,6 +5,7 @@ extends TileMap
 #---------#
 
 export var height = 0.0 # The height of the floor this tile map represents
+export var depth_test_offset = Vector2.ZERO
 
 #------------#
 # Properties #
@@ -12,6 +13,8 @@ export var height = 0.0 # The height of the floor this tile map represents
 
 var depth_test_multimeshes = []
 var is_ready = false
+var frame_width = 0
+var frame_height = 0
 
 #----------------#
 # Node Lifecycle #
@@ -48,6 +51,14 @@ func _generate_meshes():
 	
 	if not visible or not tile_set:
 		return
+		
+	var top_body_frame_bottom = depth_test_offset.y
+	
+	var top_left = Vector2.ZERO
+	var top_right = top_left + Vector2(frame_width, 0.0)
+	var bottom_left = Vector2(top_left.x, top_body_frame_bottom)
+	var bottom_right = Vector2(top_left.x + frame_width, top_body_frame_bottom)
+		
 	
 	var cell_half_size = cell_size / 2.0
 	
@@ -58,8 +69,15 @@ func _generate_meshes():
 			var tile_texture_size = tile_texture.get_size()
 			var tile_texture_region = tile_set.tile_get_region(tile_id)
 			var texture_half_size = tile_texture_region.size / 2.0
-				
+			
+			var sprite_transform = Transform2D().scaled(scale).rotated(rotation)
+
 			var vertices = PoolVector2Array()
+			vertices.push_back(sprite_transform.xform(top_left))
+			vertices.push_back(sprite_transform.xform(top_right))
+			vertices.push_back(sprite_transform.xform(bottom_left))
+			vertices.push_back(sprite_transform.xform(bottom_right))
+			
 			if centered_textures:
 				vertices.push_back(Vector2(-texture_half_size.x, -texture_half_size.y))
 				vertices.push_back(Vector2(texture_half_size.x, -texture_half_size.y))
@@ -108,3 +126,4 @@ func _generate_meshes():
 					global_position
 				)
 			)
+	

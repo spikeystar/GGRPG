@@ -455,7 +455,7 @@ rotation = 0.00495229
 scale = Vector2( 1.25182, 0.933753 )
 texture = ExtResource( 29 )
 
-[node name="Particles2D" type="CPUParticles2D" parent="."]
+[node name="Smoke1" type="CPUParticles2D" parent="."]
 position = Vector2( 130, -281 )
 z_index = 1
 amount = 3
@@ -475,7 +475,7 @@ scale_amount = 0.55
 scale_amount_random = 0.2
 color_ramp = SubResource( 1 )
 
-[node name="Particles2D2" type="CPUParticles2D" parent="."]
+[node name="Smoke2" type="CPUParticles2D" parent="."]
 position = Vector2( 154, -284 )
 scale = Vector2( 1, 1.05 )
 z_index = 1

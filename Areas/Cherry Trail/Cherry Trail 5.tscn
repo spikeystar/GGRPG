@@ -671,12 +671,13 @@ text = "You got a Flummery Flambe!"
 align = 1
 
 [node name="Cheribo" parent="." instance=ExtResource( 41 )]
-position = Vector2( 196, 119 )
+position = Vector2( 333, 46 )
 
 [node name="Enemies" type="Node2D" parent="."]
+position = Vector2( 67, -1 )
 
 [node name="Cheribo" type="Node2D" parent="Enemies"]
-position = Vector2( 65, -92 )
+position = Vector2( 197, -103 )
 script = ExtResource( 7 )
 scene_enemy = ExtResource( 41 )
 

@@ -8,6 +8,3 @@ func _ready():
 
 	SceneManager.SceneEnemies = []
 
-func _process(delta):
-	if Global.battle_ended:
-		SceneManager.SceneEnemies = []

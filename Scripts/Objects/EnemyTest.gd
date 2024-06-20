@@ -8,8 +8,8 @@ export var gravity = 9.8
 export var max_vertical_speed = 20
 export var jump_velocity = 10
 
-onready var PlayerDetection = $PlayerDetection
-onready var Trigger = $BattleTrigger
+onready var PlayerDetection = $MotionRoot/PlayerDetection
+onready var Trigger = $MotionRoot/BattleTrigger
 onready var sprite = $BodyYSort/BodyVisualRoot/Enemy
 
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
@@ -41,7 +41,6 @@ func _ready():
 	SceneManager.SceneEnemies.append(self)
 
 func _physics_process(delta):
-
 	var draw_pos_z = motion_root.pos_z
 	var draw_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.floor_z))
 	var draw_shadow_z = motion_root.shadow_z
@@ -56,14 +55,17 @@ func _physics_process(delta):
 	shadow_visual_root.global_position = motion_root.global_position + Vector2(0.0, -draw_shadow_z)
 	
 	if Global.battle_ended:
+		Music.unpause()
+		SceneManager.SceneEnemies = []
 		get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(battle_arena)
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)
 		transition.ease_in()
 		yield(get_tree().create_timer(0.01), "timeout")
 		dead = true
+		Global.battle_ended = false
 		
-		if dead:
+		if $MotionRoot/BattleTrigger.detected:
 			self.queue_free()
 		else:
 			SceneManager.SceneEnemies.append(self)
@@ -73,8 +75,11 @@ func _physics_process(delta):
 		anim_player.play("walk_back")
 	if motion_root.velocity.y > 0:
 		anim_player.play("walk_front")
+	if motion_root.velocity.y == 0:
+		anim_player.play("walk_front")
 	
 func _on_BattleTrigger_triggered():
+	Music.pause()
 	get_tree().paused = true
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
