@@ -198,13 +198,14 @@ texture = ExtResource( 39 )
 
 [node name="Cookies" parent="Node2D/YSort" instance=ExtResource( 5 )]
 modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
-position = Vector2( 173.202, 38.0936 )
-grid_size = Vector2( 0.3, 0.3 )
+position = Vector2( 167.956, -8.87953 )
+grid_size = Vector2( 0.6, 0.7 )
 texture = ExtResource( 18 )
 texture_scale = Vector2( 1.2, 1.2 )
-height = 32.0
-floor_height = 55.0
-depth_test_offset = Vector3( 0, -100, 0 )
+texture_offset = Vector2( 2, 34 )
+height = 50.0
+floor_height = 43.0
+depth_test_offset = Vector3( 0, -20, 0 )
 preview_collision_box = false
 use_collision = false
 
@@ -232,16 +233,15 @@ depth_test_offset = Vector3( 0, 100, 10 )
 preview_collision_box = false
 
 [node name="Cupholder" parent="Node2D/YSort" instance=ExtResource( 5 )]
-position = Vector2( 334.352, 66.2503 )
+position = Vector2( 334.357, 67.2502 )
 tile_size = Vector2( 63, 28 )
 grid_size = Vector2( 0.8, 0.8 )
 texture = ExtResource( 44 )
 texture_offset = Vector2( 2, 27 )
 height = 25.0
 floor_height = 55.0
-depth_test_offset = Vector3( 0, 50, 0 )
+depth_test_offset = Vector3( 0, 55, 0 )
 preview_collision_box = false
-use_collision = false
 always_update = true
 
 [node name="Cabinet" parent="Node2D/YSort" instance=ExtResource( 5 )]
@@ -286,7 +286,7 @@ grid_size = Vector2( 1, 1.3 )
 texture = ExtResource( 52 )
 texture_scale = Vector2( 1.2, 1.2 )
 texture_offset = Vector2( -1, 21 )
-height = 65.0
+height = 50.0
 preview_collision_box = false
 
 [node name="SideTable2" parent="Node2D/YSort" instance=ExtResource( 5 )]
@@ -300,14 +300,13 @@ height = 65.0
 preview_collision_box = false
 
 [node name="Sofa" parent="Node2D/YSort" instance=ExtResource( 5 )]
-position = Vector2( -102.967, 6.53922 )
+position = Vector2( -123.946, 10.6491 )
 tile_size = Vector2( 63, 28 )
-grid_size = Vector2( 2, 0.8 )
+grid_size = Vector2( 2, 2.3 )
 texture = ExtResource( 25 )
 texture_scale = Vector2( -1.4, 1.4 )
-texture_offset = Vector2( -2, 22 )
-height = 40.0
-preview_collision_box = false
+texture_offset = Vector2( -2, 15 )
+height = 50.0
 
 [node name="China Dish" parent="Node2D/YSort" instance=ExtResource( 5 )]
 modulate = Color( 1, 0.996078, 0.992157, 1 )
@@ -318,6 +317,7 @@ texture = ExtResource( 48 )
 texture_scale = Vector2( 1.3, 1.3 )
 texture_offset = Vector2( 2, 22 )
 height = 124.0
+depth_test_offset = Vector3( 0, 20, 0 )
 preview_collision_box = false
 
 [node name="Stove" parent="Node2D/YSort" instance=ExtResource( 5 )]
@@ -339,7 +339,7 @@ grid_size = Vector2( 0.8, 0.8 )
 texture = ExtResource( 30 )
 texture_scale = Vector2( -1.1, 1.1 )
 texture_offset = Vector2( 3, 32 )
-height = 40.0
+height = 50.0
 preview_collision_box = false
 use_dithering = false
 use_dither_blending = false
@@ -408,10 +408,11 @@ use_collision = false
 
 [node name="Fruit" parent="Node2D/YSort" instance=ExtResource( 5 )]
 modulate = Color( 0.90636, 0.8918, 0.91, 1 )
-position = Vector2( 360.587, 111.114 )
-grid_size = Vector2( 0.3, 0.3 )
+position = Vector2( 361.383, 72.1088 )
+grid_size = Vector2( 0.6, 0.6 )
 texture = ExtResource( 20 )
 texture_scale = Vector2( 1.15, 1.12 )
+texture_offset = Vector2( 3, 38 )
 height = 32.0
 floor_height = 45.0
 preview_collision_box = false
@@ -419,12 +420,12 @@ use_collision = false
 
 [node name="Begonia" parent="Node2D/YSort" instance=ExtResource( 5 )]
 modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
-position = Vector2( -188.652, 66.9887 )
+position = Vector2( -188.783, 41.989 )
 grid_size = Vector2( 0.3, 0.3 )
 texture = ExtResource( 42 )
 texture_scale = Vector2( -0.8, 0.8 )
-height = 15.0
-floor_height = 75.0
+height = 30.0
+floor_height = 50.0
 depth_test_offset = Vector3( 0, 75, 0 )
 preview_collision_box = false
 use_collision = false
@@ -461,6 +462,7 @@ height = 35.0
 floor_height = 80.0
 depth_test_offset = Vector3( 0, 100, 0 )
 preview_collision_box = false
+use_collision = false
 
 [node name="Misc A3" parent="Node2D/YSort" instance=ExtResource( 5 )]
 position = Vector2( -67.1928, -36.6487 )
@@ -469,21 +471,21 @@ grid_size = Vector2( 0.8, 0.8 )
 texture = ExtResource( 47 )
 texture_scale = Vector2( -1.2, 1.2 )
 texture_offset = Vector2( 3, 32 )
-height = 40.0
+height = 50.0
 depth_test_offset = Vector3( 0, -100, 0 )
 preview_collision_box = false
 use_dithering = false
 use_dither_blending = false
 
 [node name="Bookstack" parent="Node2D/YSort" instance=ExtResource( 5 )]
-position = Vector2( -67.1771, -33.6487 )
+position = Vector2( -67.1195, -22.6489 )
 tile_size = Vector2( 63, 28 )
 grid_size = Vector2( 0.6, 0.5 )
 texture = ExtResource( 41 )
 texture_scale = Vector2( 0.9, 0.9 )
 texture_offset = Vector2( 1, 25 )
 height = 45.0
-floor_height = 40.0
+floor_height = 50.0
 preview_collision_box = false
 use_collision = false
 always_update = true
@@ -537,6 +539,7 @@ script = ExtResource( 3 )
 height = 250.0
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
+visible = false
 position = Vector2( 3.99995, -0.0209439 )
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 57 )]

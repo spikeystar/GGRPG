@@ -45,6 +45,9 @@ func _notification(what):
 		_clear_depth_test_meshes()
 
 func _ready():
+	#if SceneManager.new_file:
+		#modulate.a = 0
+	
 	is_ready = true
 	_calculate_frame_size()
 	_generate_meshes()
@@ -164,3 +167,7 @@ func _generate_meshes():
 			global_position.y,
 			-global_position.y - height
 		)
+		
+func _input(event):
+	if Input.is_action_just_pressed("ui_push"):
+		modulate.a = 1

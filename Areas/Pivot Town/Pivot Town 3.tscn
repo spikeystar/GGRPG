@@ -503,7 +503,7 @@ colors = PoolColorArray( 1, 1, 1, 0.470588, 1, 1, 1, 1, 1, 1, 1, 0, 0.910604, 0.
 z_index = -20
 
 [node name="BlueBckgd" type="Sprite" parent="YSort/Background"]
-position = Vector2( -62.6876, -139.938 )
+position = Vector2( -63, -140 )
 scale = Vector2( 1.64538, 1.08188 )
 texture = ExtResource( 8 )
 
@@ -516,7 +516,7 @@ texture = ExtResource( 14 )
 flip_h = true
 
 [node name="HillB4" type="Sprite" parent="YSort/Background"]
-position = Vector2( -623, -165 )
+position = Vector2( -637, -150 )
 rotation = -0.0208685
 scale = Vector2( 1.82057, 1.67616 )
 z_index = 1
@@ -661,8 +661,8 @@ texture = ExtResource( 11 )
 
 [node name="SquareShadow7" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.235294 )
-position = Vector2( 6, -92 )
-rotation = 0.0523821
+position = Vector2( 4.76837e-07, -90 )
+rotation = 0.0747696
 scale = Vector2( 2.29511, 1.9169 )
 texture = ExtResource( 11 )
 
@@ -682,7 +682,7 @@ texture = ExtResource( 11 )
 
 [node name="SquareShadow5" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.235294 )
-position = Vector2( -306, -120 )
+position = Vector2( -305, -124 )
 rotation = -0.00725972
 scale = Vector2( 0.779632, 0.724024 )
 texture = ExtResource( 11 )
@@ -725,18 +725,6 @@ texture_scale = Vector2( 0.8, 0.8 )
 texture_offset = Vector2( 0, 15 )
 height = 28.0
 
-[node name="Box4" parent="YSort/MiddleGround" instance=ExtResource( 3 )]
-position = Vector2( 312, -8 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 0.76, 0.77 )
-texture = ExtResource( 9 )
-texture_scale = Vector2( 0.8, 0.8 )
-texture_offset = Vector2( 0, 15 )
-height = 28.0
-
 [node name="Box6" parent="YSort/MiddleGround" instance=ExtResource( 3 )]
 position = Vector2( -353, -16 )
 __meta__ = {
@@ -766,15 +754,17 @@ script = ExtResource( 5 )
 
 [node name="PlantB5" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 1, 1, 0.996078, 1 )
-position = Vector2( 384, -107 )
+position = Vector2( 384, -117 )
 rotation = 0.0507048
 scale = Vector2( 1.55902, 1.74541 )
 texture = ExtResource( 15 )
+script = ExtResource( 5 )
+height = 100.0
 
 [node name="HillC3" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 0.99, 0.99, 0.9603, 1 )
-position = Vector2( 400, 27 )
-scale = Vector2( 1.44475, 1.3055 )
+position = Vector2( 416, 20 )
+scale = Vector2( 1.53237, 1.37775 )
 texture = ExtResource( 13 )
 script = ExtResource( 5 )
 
@@ -792,19 +782,19 @@ script = ExtResource( 5 )
 
 [node name="RectangleShadowLarge" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 1, 1, 1, 0.368627 )
-position = Vector2( 136, -125 )
-rotation = 3.05499
+position = Vector2( 136, -126 )
+rotation = 3.06385
 scale = Vector2( 1.23135, -1.3838 )
 texture = ExtResource( 27 )
 
 [node name="Ledge2" parent="YSort/MiddleGround" instance=ExtResource( 3 )]
 modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
-position = Vector2( -257, -135 )
+position = Vector2( -255, -135 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 32 )
-grid_size = Vector2( 2.5, 3 )
+grid_size = Vector2( 2.6, 3 )
 texture = ExtResource( 42 )
 texture_scale = Vector2( -1.75, 1.65 )
 texture_offset = Vector2( 0, 100 )
@@ -812,38 +802,38 @@ height = 40.0
 preview_collision_box = false
 
 [node name="Big Ledge" parent="YSort/MiddleGround" instance=ExtResource( 3 )]
-modulate = Color( 0.96, 0.96, 0.9312, 1 )
-position = Vector2( 117, -100 )
-rotation = 0.0216605
+modulate = Color( 0.960784, 0.960784, 0.929412, 1 )
+position = Vector2( 117, -119 )
+rotation = 0.010472
 __meta__ = {
 "_editor_description_": ""
 }
-tile_size = Vector2( 63, 30 )
+tile_size = Vector2( 63, 29 )
 grid_size = Vector2( 4, 5 )
 texture = ExtResource( 16 )
 texture_scale = Vector2( 2, 1.5 )
-texture_offset = Vector2( 10, 49 )
+texture_offset = Vector2( 9, 70 )
 height = 75.0
 depth_test_offset = Vector3( 0, -300, 0 )
 preview_collision_box = false
 
 [node name="Ledge" parent="YSort/MiddleGround" instance=ExtResource( 3 )]
-modulate = Color( 0.96, 0.9408, 0.95232, 1 )
-position = Vector2( 22, -74 )
+modulate = Color( 0.960784, 0.941176, 0.952941, 1 )
+position = Vector2( 15, -75 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 63, 30 )
-grid_size = Vector2( 2.5, 2.5 )
+grid_size = Vector2( 2.6, 2.5 )
 texture = ExtResource( 42 )
 texture_scale = Vector2( 1.75, 1.62 )
-texture_offset = Vector2( 0, 100 )
-height = 40.0
+texture_offset = Vector2( 4, 102 )
+height = 43.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
 
 [node name="Box2" parent="YSort/MiddleGround" instance=ExtResource( 3 )]
-position = Vector2( -307, -123 )
+position = Vector2( -303, -128 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -882,18 +872,23 @@ scale = Vector2( 1.84066, 1.9521 )
 texture = ExtResource( 15 )
 
 [node name="HillB7" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 419, 197 )
+position = Vector2( 365, 231 )
 rotation = 0.00312448
 scale = Vector2( 1.85577, 1.67568 )
 texture = ExtResource( 14 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 28 )]
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 29 )]
-polygon = PoolVector2Array( -450, -35, -409, -60, -448, -80, -346, -126, -376, -136, -312, -156, -310, -175, -312, -199, -250, -228, -206, -218, -179, -211, -174, -206, -124, -227, -93, -214, -62, -225, -33, -216, 0, -226, 19, -216, 20, -238, 151, -276, 252, -244, 241, -145, 244, -140, 408, -74, 109, 128, 55, 98, 27, 111, -4, 95, -50, 112, -189, 61, -312, 109, -403, 72, -286, 30 )
+polygon = PoolVector2Array( -450, -35, -409, -60, -448, -80, -346, -126, -378, -138, -315, -158, -313, -166, -240, -195, -205, -201, -177, -207, -125, -228, -93, -214, -62, -225, -33, -216, 0, -226, 98, -188, 101, -178, 93, -135, 79, -90, 97, -87, 118, -83, 163, -93, 188, -104, 207, -119, 244, -139, 409, -80, 109, 128, 55, 98, 27, 111, -4, 95, -50, 112, -189, 61, -312, 109, -403, 72, -286, 30 )
+
+[node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 29 )]
+position = Vector2( 214, -251 )
+scale = Vector2( 0.327864, 0.307135 )
+polygon = PoolVector2Array( -549.009, -9.76733, -366.006, -48.8381, -146.402, -113.956, -112.852, -107.444, -45.7509, -74.8853, 176.903, -6.51141, 97.6013, 58.6065, -21.3505, 104.189, -164.703, 149.772, -295.855, 195.354, -402.607, 188.842, -518.508, 166.051, -594.76, 117.213, -625.26, 19.5358 )
+height = 75.0
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 30 )]
 position = Vector2( 431, 91 )
@@ -937,8 +932,8 @@ position = Vector2( -235, -234 )
 z_index = 4096
 current = true
 script = ExtResource( 6 )
-minPos = Vector2( -220, -280 )
-maxPos = Vector2( 400, 0 )
+minPos = Vector2( -220, -225 )
+maxPos = Vector2( 140, -30 )
 follow_player = true
 
 [node name="Info_Window" type="Sprite" parent="Camera2D"]

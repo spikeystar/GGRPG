@@ -25,8 +25,8 @@ func _ready():
 		Music.music()
 	
 	if SceneManager.new_file:
-		PlayerManager.ongoing = true
 		PlayerManager.sleep = true
+		PlayerManager.ongoing = true
 		add_child(transition)
 		transition.slow_down_alot()
 		transition.ease_in()
