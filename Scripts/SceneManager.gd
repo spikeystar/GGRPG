@@ -5,6 +5,8 @@ var position : Vector2
 var direction : Vector2
 var height : int
 
+var SceneEnemies = []
+
 var location : String
 var new_file = true
 

@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends YSort
 
 export var spawn_z = 0
 export var player_acceleration = 10
@@ -31,22 +31,14 @@ onready var shadow_visual_root = $ShadowYSort/ShadowVisualRoot
 onready var body_sprite = $BodyYSort/BodyVisualRoot/Enemy
 onready var shadow_sprite = $ShadowYSort/ShadowVisualRoot/ShadowCircle
 
-enum {IDLE,
-WANDER,
-CHASE
-}
+var motion_root_z
 
-export var ACCELERATION = 150
-export var MAX_SPEED = 50
-export var FRICTION = 100
-
-var velocity = Vector2.ZERO
-var state = WANDER
-
-var ready = true
+export var dead = false
 
 func _ready():
-	state = WANDER
+	motion_root_z = motion_root.pos_z
+	yield(get_tree().create_timer(0.01), "timeout")
+	SceneManager.SceneEnemies.append(self)
 
 func _physics_process(delta):
 
@@ -68,42 +60,19 @@ func _physics_process(delta):
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)
 		transition.ease_in()
-		self.queue_free()
+		yield(get_tree().create_timer(0.01), "timeout")
+		dead = true
+		
+		if dead:
+			self.queue_free()
+		else:
+			SceneManager.SceneEnemies.append(self)
 	
-	match state:
-		IDLE:
-			FRICTION = 1000
-			velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
-		WANDER:
-			#sprite.speed_scale = 0.75
-			if ready and not freeze:
-				randomize()
-				var wander_range = Vector2(rand_range(-100, 100), rand_range(-100, 100))
-				var direction = (wander_range - global_position).normalized()
-				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
-				ready = false
-				yield(get_tree().create_timer(0.5), "timeout")
-				ready = true
-			seek_player()
-		CHASE:
-			#sprite.speed_scale = 0.95
-			var player = PlayerDetection.player
-			if player != null and not freeze:
-				var direction = (player.global_position - global_position).normalized()
-				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
-			else:
-				state = WANDER
-			seek_player()
-	sprite.flip_h = velocity.x > 0
-	if 	velocity.y < 0:
+	sprite.flip_h = motion_root.velocity.x > 0
+	if motion_root.velocity.y < 0:
 		anim_player.play("walk_back")
-	if 	velocity.y > 0:
+	if motion_root.velocity.y > 0:
 		anim_player.play("walk_front")
-	velocity = move_and_slide(velocity)
-	
-func seek_player():
-	if PlayerDetection.player_check():
-		state = CHASE
 	
 func _on_BattleTrigger_triggered():
 	get_tree().paused = true

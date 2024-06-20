@@ -27,7 +27,7 @@
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass A.png" type="Texture" id=25]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=26]
 [ext_resource path="res://Scripts/Path Spawn.gd" type="Script" id=27]
-[ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_path.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Enemies/Old/old_Cheribo_path.tscn" type="PackedScene" id=28]
 
 [sub_resource type="TileSet" id=1]
 7/name = "Grass Tile.png 7"

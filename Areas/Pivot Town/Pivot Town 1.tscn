@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/plant b.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=2]
@@ -76,6 +76,7 @@
 [ext_resource path="res://Scripts/Objects/SceneTransition/Doorway.gd" type="Script" id=74]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=75]
 [ext_resource path="res://NPC/Pivot Town/Henry.tscn" type="PackedScene" id=76]
+[ext_resource path="res://Scripts/Area_Specific/Pivot_Town.gd" type="Script" id=77]
 
 [sub_resource type="StreamTexture" id=12]
 
@@ -386,6 +387,7 @@ offsets = PoolRealArray( 0, 0.059633, 0.807339, 0.981651, 1 )
 colors = PoolColorArray( 1, 1, 1, 0.470588, 1, 1, 1, 1, 1, 1, 1, 0, 0.910604, 0.910604, 0.910604, 0.0853976, 0.849814, 0.849814, 0.849814, 0.143468 )
 
 [node name="WorldRoot" type="Node2D"]
+script = ExtResource( 77 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -1421,7 +1423,7 @@ preview_collision_box = false
 position = Vector2( 303, -561 )
 scale = Vector2( 1.9, 1.9 )
 frames = SubResource( 10 )
-frame = 3
+frame = 5
 playing = true
 script = ExtResource( 36 )
 alpha_clip = 0.01

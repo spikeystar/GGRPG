@@ -38,9 +38,11 @@ var state = WANDER
 var ready = true
 
 func _ready():
-	state = WANDER
+	state = CHASE
 	floor_z = spawn_z
 	pos_z = spawn_z
+	
+	SceneManager.SceneEnemies.append(self)
 
 func update_floor():
 	floor_z = LOWEST_Z
@@ -65,7 +67,7 @@ func _physics_process(delta):
 			if ready and not freeze:
 				randomize()
 				var wander_range = Vector2(rand_range(-100, 100), rand_range(-100, 100))
-				var direction = (wander_range - global_position).normalized()
+				var direction = (wander_range - position).normalized()
 				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 				ready = false
 				yield(get_tree().create_timer(0.5), "timeout")

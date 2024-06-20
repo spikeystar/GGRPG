@@ -155,11 +155,19 @@ func _ready():
 	if motion_root:
 		for layer in layers:
 			motion_root.add_collision_exception_with(layer)
+			
+	
+	yield(get_tree().create_timer(0.01), "timeout")
+	if SceneManager.SceneEnemies.size() > 0:	
+		for x in range (SceneManager.SceneEnemies.size()):
+			print("hello")
+			for layer in layers:
+				SceneManager.SceneEnemies[x].motion_root.add_collision_exception_with(layer)
+			
 	
 	PlayerManager.notify_navmesh_ready()
 
 func _physics_process(delta):
-
 	if not motion_root:
 		# Getting gary. Pretty stupid way to do it. But gary is spawned at runtime...
 		motion_root = PlayerManager.player_motion_root
@@ -172,4 +180,16 @@ func _physics_process(delta):
 				motion_root.add_collision_exception_with(layer)
 			else:
 				motion_root.remove_collision_exception_with(layer)
+				
+				
+	if SceneManager.SceneEnemies.size() > 0:	
+		for x in range (SceneManager.SceneEnemies.size()):
+			var player_z = SceneManager.SceneEnemies[x].motion_root.pos_z
+			for layer in layers:
+				if layer.get_child(0).height <= player_z:
+					SceneManager.SceneEnemies[x].motion_root.add_collision_exception_with(layer)
+				else:
+					SceneManager.SceneEnemies[x].motion_root.remove_collision_exception_with(layer)
+				
+		
 

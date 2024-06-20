@@ -47,8 +47,8 @@ var damien_trinket : String = "-"
 
 var party_sp = 20
 var party_max_sp = 20
-var party_level = 4
-var party_exp = 932
+var party_level = 1
+var party_exp = 0
 var next_level = int((200) * (party_level/1.5) + (party_level * 100))
 
 var new_spell_2 = false

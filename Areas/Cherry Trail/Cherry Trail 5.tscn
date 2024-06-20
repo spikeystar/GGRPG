@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Cherry Trail/dirt c.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Cherry Trail/bush b.png" type="Texture" id=6]
-[ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_wander.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/Objects/EnemySpawn.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=8]
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/General/Backgrounds/blue bckgd.png" type="Texture" id=10]
@@ -31,7 +31,6 @@
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Cherry Trail/sprout.png" type="Texture" id=30]
 [ext_resource path="res://Scripts/Objects/SceneTransition/PlayerSpawnLocation.gd" type="Script" id=31]
-[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 1.tscn" type="PackedScene" id=32]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=33]
 [ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=35]
@@ -40,7 +39,8 @@
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=38]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=39]
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=40]
-[ext_resource path="res://Enemies/EnemyTest.tscn" type="PackedScene" id=41]
+[ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_wander.tscn" type="PackedScene" id=41]
+[ext_resource path="res://Scripts/Area_Specific/Cherry Trail.gd" type="Script" id=42]
 
 [sub_resource type="TileSet" id=1]
 7/name = "Grass Tile.png 7"
@@ -183,6 +183,7 @@
 16/z_index = 0
 
 [node name="WorldRoot" type="Node2D"]
+script = ExtResource( 42 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -597,10 +598,6 @@ item_name = "Full Heal"
 floor_height = 45.0
 shadow_color = Color( 0.188235, 0.552941, 0.298039, 1 )
 
-[node name="Cheribo_wander" parent="." instance=ExtResource( 7 )]
-position = Vector2( -16, -35 )
-target_scene = ExtResource( 32 )
-
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 38 )]
@@ -673,7 +670,14 @@ custom_fonts/font = ExtResource( 39 )
 text = "You got a Flummery Flambe!"
 align = 1
 
-[node name="Enemy" parent="." instance=ExtResource( 41 )]
-position = Vector2( 191, -38 )
+[node name="Cheribo" parent="." instance=ExtResource( 41 )]
+position = Vector2( 196, 119 )
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Cheribo" type="Node2D" parent="Enemies"]
+position = Vector2( 65, -92 )
+script = ExtResource( 7 )
+scene_enemy = ExtResource( 41 )
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

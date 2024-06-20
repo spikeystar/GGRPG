@@ -5,3 +5,9 @@ func _ready():
 		Music.switch_songs()
 		Music.id = "Cherry_Trail"
 		Music.music()
+
+	SceneManager.SceneEnemies = []
+
+func _process(delta):
+	if Global.battle_ended:
+		SceneManager.SceneEnemies = []

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_wander.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/Old/old_Cheribo_wander.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Enemy Path Follow.gd" type="Script" id=2]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 1.tscn" type="PackedScene" id=3]
 

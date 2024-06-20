@@ -57,6 +57,8 @@ func talk():
 		Marjorie()
 	if npc_name == "Penelope":
 		Penelope()
+	if npc_name == "Edgar":
+		Edgar()
 		
 func Victor():
 	if js < 2 and not alternate:
@@ -137,3 +139,14 @@ func Penelope():
 		yield(self, "talk_done")
 		done()
 		alternate = false
+
+func Edgar():
+	if js < 1:
+		$Name/Talk.text = "Let me know if you find anything at the lake."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "I'm curious to know if our theory is correct!"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
