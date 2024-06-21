@@ -26,61 +26,78 @@ var is_just_teleported = false
 var freeze = PlayerManager.freeze
 
 var rng = RandomNumberGenerator.new()
-var wander_range = Vector2(rng.randi_range(-100, 100), rng.randi_range(-100, 100))
+var wander_range = Vector2(rng.randi_range(-20, 20), rng.randi_range(-20, 20))
 var direction = (wander_range - self.position).normalized()
 
 enum {IDLE,
+RETURN,
 WANDER,
 CHASE
 }
 
-export var ACCELERATION = 150
+export var ACCELERATION = 75
 export var MAX_SPEED = 30
 export var FRICTION = 100
 
 var velocity = Vector2.ZERO
+var origin = Vector2()
 var state 
 
-var ready = true
+var ready = false
 
 func _ready():
+	origin = self.global_position
+	print(origin)
 	floor_z = spawn_z
 	pos_z = spawn_z
-	state = WANDER
-	
-	yield(get_tree().create_timer(0.1), "timeout")
+	state = IDLE
 	
 func _physics_process(delta):
+	#print(state)
 	is_on_ground = pos_z <= floor_z + 4
-	
 	update_floor()
+	
+	if state == WANDER and ready:
+		ready = false
+		random_direction()
+		
+	if is_on_wall():
+		direction -= Vector2(1, 1)
 	
 	match state:
 		IDLE:
-			MAX_SPEED = 35
-			FRICTION = 1000
-			velocity = 0
-			#velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+			print("idle")
+			velocity = Vector2.ZERO
+			yield(get_tree().create_timer(2), "timeout")
+			state = WANDER
+		RETURN:
+			print(self.global_position)
+			var return_spot = (origin - self.global_position).normalized()
+			velocity = velocity.move_toward(return_spot * MAX_SPEED, ACCELERATION * delta)
+			if self.global_position.round() == origin:
+				velocity = Vector2.ZERO
+				state = IDLE
+				ready = true
+				print("tadaa")
+			#if range(origin, (origin + Vector2(5,5))).has(self.global_position):
+				#print("hello")
+				#state = IDLE
 		WANDER:
-			#sprite.speed_scale = 0.75
+			print("wander")
 			MAX_SPEED = 35
-			if ready and not freeze:
-				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
-				#yield(get_tree().create_timer(4), "timeout")
-				#ready = false
-			#yield(get_tree().create_timer(6), "timeout")
-			#ready = true
+			velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
+			yield(get_tree().create_timer(4), "timeout")
+			state = RETURN
 		CHASE:
-			#sprite.speed_scale = 0.95
 			MAX_SPEED = 50
 			var player = PlayerManager.player_motion_root
 			if not freeze:
 				var direction = (player.global_position - self.global_position).normalized()
 				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
 			else:
-				state = WANDER
-		#	seek_player()
-			
+				state = RETURN
+
+
 	velocity = move_and_slide(velocity)
 
 func update_floor():
@@ -92,32 +109,31 @@ func update_floor():
 		else:
 			ceiling_z = min(ceiling_z, f.bottom)
 
-#func seek_player():
-	#if PlayerDetection.player_check():
-		#state = CHASE
-				
+	return
+	
+	#if state == WANDER:
+	#	state = IDLE
+	#if state == IDLE:
+		#state = WANDER
 
-func _on_PlayerDetection_body_exited(body):
-	state = WANDER
-	print("wandering")
+func random_direction():
+	print("random!")
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	wander_range = Vector2(rng.randi_range(-100, 100), rng.randi_range(-100, 100))
+	wander_range = Vector2(rng.randi_range(-20, 20), rng.randi_range(-20, 20))
 	direction = (wander_range - self.position).normalized()
-
-func _on_Timer_timeout():
-	if state == WANDER:
-		state = IDLE
-	if state == IDLE:
-		state = WANDER
-		randomize()
-		var rng = RandomNumberGenerator.new()
-		rng.randomize()
-		wander_range = Vector2(rng.randi_range(-100, 100), rng.randi_range(-100, 100))
-		direction = (wander_range - self.position).normalized()
-
 
 func _on_PlayerDetection_start_chase():
 	state = CHASE
 	print("chasing")
+
+func _on_PlayerDetection_stop_chase():
+	#ACCELERATION = 50
+	yield(get_tree().create_timer(2), "timeout")
+	state = RETURN
+	print("return")
+
+func _on_Timer_timeout():
+	pass
+	#random_direction()

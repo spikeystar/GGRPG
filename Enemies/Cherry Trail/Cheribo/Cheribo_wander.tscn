@@ -10,7 +10,7 @@
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo.png" type="Texture" id=9]
 [ext_resource path="res://Enemies/BattleTrigger.tscn" type="PackedScene" id=10]
 
-[sub_resource type="CapsuleShape2D" id=175]
+[sub_resource type="CircleShape2D" id=180]
 
 [sub_resource type="CircleShape2D" id=172]
 radius = 1.0
@@ -136,12 +136,13 @@ target_scene = ExtResource( 8 )
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
 position = Vector2( 0, 1 )
 collision_mask = 2
+collision/safe_margin = 0.5
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
-position = Vector2( 2, 7.15256e-07 )
+position = Vector2( 2, 0.0728853 )
 scale = Vector2( 1.42294, 0.314577 )
-shape = SubResource( 175 )
+shape = SubResource( 180 )
 
 [node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
 script = ExtResource( 2 )
@@ -209,9 +210,8 @@ anims/walk_back = SubResource( 176 )
 anims/walk_front = SubResource( 177 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
 
-[connection signal="body_exited" from="MotionRoot/PlayerDetection" to="MotionRoot" method="_on_PlayerDetection_body_exited"]
 [connection signal="start_chase" from="MotionRoot/PlayerDetection" to="MotionRoot" method="_on_PlayerDetection_start_chase"]
+[connection signal="stop_chase" from="MotionRoot/PlayerDetection" to="MotionRoot" method="_on_PlayerDetection_stop_chase"]
 [connection signal="triggered" from="MotionRoot/BattleTrigger" to="." method="_on_BattleTrigger_triggered"]
 [connection signal="timeout" from="Timer" to="MotionRoot" method="_on_Timer_timeout"]

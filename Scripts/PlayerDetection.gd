@@ -4,6 +4,7 @@ var player = null
 var detected = false
 
 signal start_chase
+signal stop_chase
 
 func _ready():
 	yield(get_tree().create_timer(0.1), "timeout")
@@ -23,5 +24,7 @@ func _on_PlayerDetection_body_entered(body):
 		emit_signal("start_chase")
 
 func _on_PlayerDetection_body_exited(body):
-	player = null
-	detected = false
+	if "is_player_motion_root" in body and body.is_player_motion_root:
+		player = null
+		detected = false
+		emit_signal("stop_chase")

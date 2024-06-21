@@ -70,13 +70,19 @@ func _physics_process(delta):
 		else:
 			SceneManager.SceneEnemies.append(self)
 	
+	#if motion_root.velocity.x > 0:
+		#sprite.flip_h = true
+	#else:
+		#sprite.flip_h = false
+		
 	sprite.flip_h = motion_root.velocity.x > 0
+	
 	if motion_root.velocity.y < 0:
 		anim_player.play("walk_back")
 	if motion_root.velocity.y > 0:
 		anim_player.play("walk_front")
-	if motion_root.velocity.y == 0:
-		anim_player.play("walk_front")
+	#if motion_root.velocity.y == 0:
+		#anim_player.play("walk_front")
 	
 func _on_BattleTrigger_triggered():
 	Music.pause()
