@@ -514,8 +514,6 @@ rotation = -0.0196544
 scale = Vector2( 1.93822, 1.78674 )
 texture = ExtResource( 5 )
 
-[node name="Topleft" type="Node2D" parent="YSort"]
-
 [node name="Floor" type="Node2D" parent="YSort"]
 rotation = 0.0349066
 z_index = -10
@@ -646,9 +644,39 @@ flip_h = true
 script = ExtResource( 29 )
 height = 50.0
 
-[node name="Backarea" type="Node2D" parent="YSort"]
+[node name="Topleft" type="Node2D" parent="YSort"]
 
-[node name="Fence3" parent="YSort/Backarea" instance=ExtResource( 10 )]
+[node name="Box16" parent="YSort/Topleft" instance=ExtResource( 10 )]
+position = Vector2( 175, -760 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.9, 1 )
+texture = ExtResource( 30 )
+texture_offset = Vector2( 1, 21 )
+height = 32.0
+
+[node name="BushA25" parent="YSort/Topleft" instance=ExtResource( 10 )]
+position = Vector2( 58, -775 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.9, 0.82 )
+texture = ExtResource( 62 )
+texture_scale = Vector2( 1.4, 1.4 )
+texture_offset = Vector2( 3, 40 )
+height = 35.0
+
+[node name="RectangleShadowLarge2" type="Sprite" parent="YSort/Topleft"]
+self_modulate = Color( 1, 1, 1, 0.666667 )
+position = Vector2( 347, -770 )
+rotation = 0.0783994
+scale = Vector2( 2.14724, 2.08808 )
+texture = ExtResource( 43 )
+
+[node name="Fence3" parent="YSort/Topleft" instance=ExtResource( 10 )]
 position = Vector2( -30, -745 )
 __meta__ = {
 "_editor_description_": ""
@@ -662,7 +690,7 @@ height = 64.0
 depth_test_offset = Vector3( 0, -32, 0 )
 preview_collision_box = false
 
-[node name="Fence4" parent="YSort/Backarea" instance=ExtResource( 10 )]
+[node name="Fence4" parent="YSort/Topleft" instance=ExtResource( 10 )]
 position = Vector2( -145, -709 )
 __meta__ = {
 "_editor_description_": ""
@@ -675,6 +703,44 @@ texture_offset = Vector2( 1, 30 )
 height = 64.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
+
+[node name="Edgar\'s House3" parent="YSort/Topleft" instance=ExtResource( 10 )]
+position = Vector2( 432.829, -664 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 8, 2.6 )
+texture = ExtResource( 32 )
+texture_scale = Vector2( 1.8, 1.8 )
+texture_offset = Vector2( 7, 39 )
+height = 700.0
+preview_collision_box = false
+
+[node name="Plantbox4" parent="YSort/Topleft" instance=ExtResource( 10 )]
+position = Vector2( 295, -695 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 2.5, 1 )
+texture = ExtResource( 47 )
+texture_scale = Vector2( 1.8, 1.8 )
+texture_offset = Vector2( 1, 40 )
+height = 64.0
+preview_collision_box = false
+
+[node name="PotBOnBox4" parent="YSort/Topleft" instance=ExtResource( 10 )]
+position = Vector2( 176, -763 )
+grid_size = Vector2( 0.5, 0.6 )
+texture = ExtResource( 63 )
+texture_scale = Vector2( 0.65, 0.65 )
+texture_offset = Vector2( 0, -2 )
+height = 48.0
+floor_height = 32.0
+preview_collision_box = false
+
+[node name="Backarea" type="Node2D" parent="YSort"]
 
 [node name="BushA24" parent="YSort/Backarea" instance=ExtResource( 10 )]
 position = Vector2( -90, -514 )
@@ -737,30 +803,6 @@ texture_offset = Vector2( 1, 40 )
 height = 64.0
 preview_collision_box = false
 
-[node name="Box16" parent="YSort/Backarea" instance=ExtResource( 10 )]
-position = Vector2( 175, -760 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 0.9, 1 )
-texture = ExtResource( 30 )
-texture_offset = Vector2( 1, 21 )
-height = 32.0
-
-[node name="Plantbox4" parent="YSort/Backarea" instance=ExtResource( 10 )]
-position = Vector2( 295, -695 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 2.5, 1 )
-texture = ExtResource( 47 )
-texture_scale = Vector2( 1.8, 1.8 )
-texture_offset = Vector2( 1, 40 )
-height = 64.0
-preview_collision_box = false
-
 [node name="PotBOnBox5" parent="YSort/Backarea" instance=ExtResource( 10 )]
 position = Vector2( 460, -650 )
 grid_size = Vector2( 0.5, 0.6 )
@@ -768,13 +810,6 @@ texture = ExtResource( 65 )
 texture_scale = Vector2( 1.1, 1.1 )
 texture_offset = Vector2( 0, -2 )
 height = 55.0
-
-[node name="RectangleShadowLarge2" type="Sprite" parent="YSort/Backarea"]
-self_modulate = Color( 1, 1, 1, 0.666667 )
-position = Vector2( 347, -770 )
-rotation = 0.0783994
-scale = Vector2( 2.14724, 2.08808 )
-texture = ExtResource( 43 )
 
 [node name="RectangleShadowLarge3" type="Sprite" parent="YSort/Backarea"]
 self_modulate = Color( 1, 1, 1, 0.666667 )
@@ -789,19 +824,6 @@ position = Vector2( 912, -456 )
 rotation = 0.0463043
 scale = Vector2( 1.34351, 1.52796 )
 texture = ExtResource( 43 )
-
-[node name="Edgar\'s House3" parent="YSort/Backarea" instance=ExtResource( 10 )]
-position = Vector2( 432.829, -664 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 8, 2.6 )
-texture = ExtResource( 32 )
-texture_scale = Vector2( 1.8, 1.8 )
-texture_offset = Vector2( 7, 39 )
-height = 700.0
-depth_test_offset = Vector3( 0, 900, 0 )
 
 [node name="Overpass" type="Sprite" parent="YSort/Backarea"]
 position = Vector2( 588, -760 )
@@ -1149,16 +1171,6 @@ height = 55.0
 floor_height = 32.0
 preview_collision_box = false
 
-[node name="PotBOnBox4" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
-position = Vector2( 176, -763 )
-grid_size = Vector2( 0.5, 0.6 )
-texture = ExtResource( 63 )
-texture_scale = Vector2( 0.65, 0.65 )
-texture_offset = Vector2( 0, -2 )
-height = 48.0
-floor_height = 32.0
-preview_collision_box = false
-
 [node name="BushA" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
 position = Vector2( 391, -182 )
 __meta__ = {
@@ -1283,18 +1295,6 @@ height = 35.0
 
 [node name="BushA27" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
 position = Vector2( 611, -321 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 0.9, 0.82 )
-texture = ExtResource( 62 )
-texture_scale = Vector2( 1.4, 1.4 )
-texture_offset = Vector2( 3, 40 )
-height = 35.0
-
-[node name="BushA25" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
-position = Vector2( 58, -775 )
 __meta__ = {
 "_editor_description_": ""
 }
