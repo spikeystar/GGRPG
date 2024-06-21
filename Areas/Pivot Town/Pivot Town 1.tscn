@@ -514,6 +514,8 @@ rotation = -0.0196544
 scale = Vector2( 1.93822, 1.78674 )
 texture = ExtResource( 5 )
 
+[node name="Topleft" type="Node2D" parent="YSort"]
+
 [node name="Floor" type="Node2D" parent="YSort"]
 rotation = 0.0349066
 z_index = -10
