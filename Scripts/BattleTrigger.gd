@@ -5,16 +5,18 @@ var detected = false
 export var height = 0.0
 var able = false
 var player_height
+var ground_enemy : bool
 
 signal triggered
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
 	position.y += height
+	print(height)
 
 func _physics_process(delta):
 	player_height = PlayerManager.player_motion_root.pos_z
-	if height < player_height:
+	if height < player_height and ground_enemy:
 		able = false
 	else:
 		able = true

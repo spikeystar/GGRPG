@@ -10,6 +10,7 @@ export var max_player_speed = 2
 export var gravity = 9.8
 export var max_vertical_speed = 20
 export var jump_velocity = 10
+var ground_enemy
 
 #Movement
 var floor_z : float = LOWEST_Z
@@ -66,26 +67,28 @@ func _physics_process(delta):
 	
 	match state:
 		IDLE:
-			print("idle")
+			#print("idle")
 			velocity = Vector2.ZERO
 			yield(get_tree().create_timer(2), "timeout")
 			state = WANDER
 		RETURN:
-			print(self.global_position)
+			#print(self.global_position)
 			var return_spot = (origin - self.global_position).normalized()
 			velocity = velocity.move_toward(return_spot * MAX_SPEED, ACCELERATION * delta)
 			if self.global_position.round() == origin:
 				velocity = Vector2.ZERO
 				state = IDLE
 				ready = true
-				print("tadaa")
+				#print("tadaa")
 			#if range(origin, (origin + Vector2(5,5))).has(self.global_position):
 				#print("hello")
 				#state = IDLE
 		WANDER:
-			print("wander")
+			#print("wander")
 			MAX_SPEED = 35
 			velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
+			if not ground_enemy:
+				pos_z = pos_z * delta
 			yield(get_tree().create_timer(4), "timeout")
 			state = RETURN
 		CHASE:
@@ -117,7 +120,7 @@ func update_floor():
 		#state = WANDER
 
 func random_direction():
-	print("random!")
+	#print("random!")
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()

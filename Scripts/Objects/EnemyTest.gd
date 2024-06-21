@@ -7,6 +7,7 @@ export var max_player_speed = 2
 export var gravity = 9.8
 export var max_vertical_speed = 20
 export var jump_velocity = 10
+export var ground_enemy : bool
 
 onready var PlayerDetection = $MotionRoot/PlayerDetection
 onready var Trigger = $MotionRoot/BattleTrigger
@@ -36,9 +37,13 @@ var motion_root_z
 export var dead = false
 
 func _ready():
+	$MotionRoot/BattleTrigger.ground_enemy = ground_enemy
+	$MotionRoot.ground_enemy = ground_enemy
+	anim_player.play("walk_front")
 	motion_root_z = motion_root.pos_z
 	yield(get_tree().create_timer(0.01), "timeout")
 	SceneManager.SceneEnemies.append(self)
+	print($MotionRoot/BattleTrigger.height)
 
 func _physics_process(delta):
 	var draw_pos_z = motion_root.pos_z
@@ -53,6 +58,10 @@ func _physics_process(delta):
 	body_visual_root.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z)
 	shadow_y_sort.global_position = Vector2(motion_root.global_position.x, draw_shadow_y_sort)
 	shadow_visual_root.global_position = motion_root.global_position + Vector2(0.0, -draw_shadow_z)
+	
+	$MotionRoot/PlayerDetection.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z)
+	$MotionRoot/BattleTrigger.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z)
+	
 	
 	if Global.battle_ended:
 		Music.unpause()
