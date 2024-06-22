@@ -792,13 +792,13 @@ func _on_Fighters_ally_spell_chosen():
 	
 	
 func _on_Enemies_e_magic_damage_finish():
+	$Fighters/HUDS.showing()
 	var fighter_node = $Fighters.get_f_current()
 	var fighter_position = $Fighters.get_position()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
 	yield(tween, "finished")
-	$Fighters/HUDS.showing()
 	yield(get_tree().create_timer(0.3), "timeout")
 	ongoing = false
 	$Fighters.ongoing = false
@@ -837,10 +837,13 @@ func Earthslide():
 func Thunderstorm():
 	$Enemies.damage_type = "air"
 	$Enemies.move_type = "air"
-	#$Enemies.stun = true
-	#$Enemies.stun_chance = 0.3
-	$Enemies.poison = true
-	$Enemies.poison_chance = 30
+	$Enemies.stun = true
+	$Enemies.stun_chance = 20
+	$Fighters.spell_1()
+	yield(get_tree().create_timer(0.8), "timeout")
+	$MovePlayer/AnimPlayer.playback_speed = 0.6
+	$MovePlayer/AnimPlayer.play("Thunderstorm")
+	#yield(get_tree().create_timer(1), "timeout")
 	
 	
 	##### Enemy Attacks #####

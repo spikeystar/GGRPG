@@ -887,6 +887,8 @@ func stun_healing():
 			pass
 	
 	##### Spell Animations #####
+func battle_ready():
+	fighters[fighter_index].idle()
 	
 func spell_1():
 	fighters[fighter_index].spell_1()
