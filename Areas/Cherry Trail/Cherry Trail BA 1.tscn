@@ -1609,6 +1609,7 @@ visible = false
 [connection signal="magic_active" from="." to="MagicWindow" method="_on_WorldRoot_magic_active"]
 [connection signal="magic_active" from="." to="MagicWindow/MagicWindowPanel/SpellList" method="_on_WorldRoot_magic_active"]
 [connection signal="magic_active" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_magic_active"]
+[connection signal="magic_enemy_update" from="." to="Enemies/EnemyInfo/EnemyStatus" method="_on_WorldRoot_magic_enemy_update"]
 [connection signal="magic_inactive" from="." to="MagicWindow/MagicWindowPanel/SpellList" method="_on_WorldRoot_magic_inactive"]
 [connection signal="magic_inactive" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_magic_inactive"]
 [connection signal="start_attack_timer" from="." to="Fighters/AttackTimer" method="_on_WorldRoot_start_attack_timer"]

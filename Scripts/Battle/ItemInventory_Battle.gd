@@ -16,7 +16,8 @@ onready var inventory : Array = []
 var item_index : int
 
 func _ready():
-	inventory = Party.Inventory
+	for x in range (Party.Inventory.size()):
+			inventory.append(Party.Inventory[x].duplicate())
 	for item_index in inventory.size():
 		add_slot(item_index)
 	if inventory.size() == 0:
@@ -75,8 +76,10 @@ func _on_WorldRoot_item_inactive():
 func _on_WorldRoot_item_removed():
 	for x in self.get_children():
 		self.remove_child(x)
+	inventory = []
 	item_index = clamp(item_index, 0, inventory.size() - 1)
-	inventory = Party.Inventory
+	for x in range (Party.Inventory.size()):
+			inventory.append(Party.Inventory[x].duplicate())
 	for item_index in inventory.size():
 		add_slot(item_index)
 	if inventory.size() == 0:

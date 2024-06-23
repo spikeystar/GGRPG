@@ -78,13 +78,17 @@ func _on_WorldRoot_magic_active():
 	
 	for x in self.get_children():
 		self.remove_child(x)
+	spell_list = []
 	
 	if fighter_name == "gary":
-		spell_list = Party.Gary_Spells
+		for x in range (Party.Gary_Spells.size()):
+			spell_list.append(Party.Gary_Spells[x].duplicate())
 	if fighter_name == "jacques":
-		spell_list = Party.Jacques_Spells
+		for x in range (Party.Jacques_Spells.size()):
+			spell_list.append(Party.Jacques_Spells[x].duplicate())
 	if fighter_name == "irina":
-		spell_list = Party.Irina_Spells
+		for x in range (Party.Irina_Spells.size()):
+			spell_list.append(Party.Irina_Spells[x].duplicate())
 		
 	for spell_index in spell_list.size():
 		add_slot(spell_index)

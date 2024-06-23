@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Players/Irina/Irina SS.png" type="Texture" id=1]
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=2]
@@ -512,6 +512,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 0.0, 0.0, -1.5, -1.5, -1.5 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.75 ]
+}
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -670,6 +682,57 @@ tracks/12/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ ExtResource( 9 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("AnimationPlayer:playback_speed")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.6 ]
+}
+
+[sub_resource type="Animation" id=37]
+resource_name = "Spell_1"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CircleShadowSmall:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.740741, 23.7037 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer:playback_speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.6 ]
 }
 
 [sub_resource type="Animation" id=11]
@@ -1198,6 +1261,7 @@ scale = Vector2( 0.740741, 0.740741 )
 texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.6
 anims/Fighter_Attack = SubResource( 14 )
 anims/Fighter_BattleReady = SubResource( 1 )
 anims/Fighter_Buff = SubResource( 23 )
@@ -1211,6 +1275,7 @@ anims/Fighter_Pre_Attack = SubResource( 15 )
 anims/Fighter_Turn = SubResource( 2 )
 anims/Fighter_Victory = SubResource( 16 )
 anims/RESET = SubResource( 3 )
+anims/Spell_1 = SubResource( 37 )
 
 [node name="CursorPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 11 )

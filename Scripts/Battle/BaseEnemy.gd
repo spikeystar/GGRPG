@@ -95,18 +95,20 @@ func get_e_defense():
 	return e_defense
 	
 func buff():
-	yield(get_tree().create_timer(1.7), "timeout")
-	$AnimationPlayer.playback_speed = 0.7
+	yield(get_tree().create_timer(0.1), "timeout")
 	$AnimationPlayer.play("buff")
+	yield(get_tree().create_timer(1.6), "timeout")
+	reset_animation()
 	
 func debuff():
-	yield(get_tree().create_timer(1.7), "timeout")
-	$AnimationPlayer.playback_speed = 0.7
+	yield(get_tree().create_timer(0.1), "timeout")
 	$AnimationPlayer.play("debuff")
+	yield(get_tree().create_timer(1.6), "timeout")
+	reset_animation()
 	
 func reset_animation():	
-	$AnimationPlayer.play("enemy_idle")
 	$AnimationPlayer.playback_speed = 0.5
+	$AnimationPlayer.play("enemy_idle")
 
 func focus():
 	$Cursor.show()
@@ -133,15 +135,15 @@ func damage(amount: int):
 	if amount <= 0:
 		return
 	$DamageStar.show()
+	$AnimationPlayer.playback_speed = 0.5
 	$AnimationPlayer.play("enemy_damage")
-	$AnimationPlayer.playback_speed = 0.7
 	if whammy:
 		$DamagePlayer.play("whammy")
 	else:
 		$DamagePlayer.play("neutral")
-	$AnimationPlayer.playback_speed = 0.5
 	health = max(0, health - amount)
-	yield(get_tree().create_timer(2), "timeout")
+	yield(get_tree().create_timer(1.7), "timeout")
+	$AnimationPlayer.playback_speed = 0.5
 	$AnimationPlayer.play("enemy_idle")
 	whammy = false
 	
@@ -152,12 +154,12 @@ func magic_damage(amount: int, damage_type: String):
 	if amount <= 0:
 		return
 	$DamageStar.show()
-	$AnimationPlayer.play("enemy_damage")
-	$AnimationPlayer.playback_speed = 0.7
-	type_damage(damage_type)
 	$AnimationPlayer.playback_speed = 0.5
+	$AnimationPlayer.play("enemy_damage")
+	type_damage(damage_type)
 	health = max(0, health - amount)
-	yield(get_tree().create_timer(2), "timeout")
+	yield(get_tree().create_timer(1.7), "timeout")
+	$AnimationPlayer.playback_speed = 0.5
 	$AnimationPlayer.play("enemy_idle")
 	
 func poison_damage():

@@ -59,6 +59,7 @@ signal action_ongoing()
 signal action_ended()
 signal item_removed()
 signal update_party
+signal magic_enemy_update
 
 func _ready():
 	SceneManager.victory = false
@@ -171,6 +172,7 @@ func _input(event):
 		$BattleButtons/DiamondB.show()
 		$BattleButtons.hide()
 		$Enemies/EnemyInfo.hide()
+		print("pleeep")
 		BB_active = false
 		attack_show = false
 		window_open = false
@@ -691,7 +693,6 @@ func _on_SpellList_spell_chosen():
 	$BattleButtons/SpadeB.show()
 	$BattleButtons/CloverB.show()
 	$BattleButtons/StarB.show()
-	$Enemies/EnemyInfo.show()
 	$WindowPlayer.play("enemyinfo_open")
 	$MagicWindow.hide()
 	$ItemWindow.hide()
@@ -700,6 +701,9 @@ func _on_SpellList_spell_chosen():
 	emit_signal("item_inactive")
 	if attack_show and not window_open:
 		window_open = true
+	emit_signal("magic_enemy_update")
+	yield(get_tree().create_timer(0.01), "timeout")
+	$Enemies/EnemyInfo.show()
 		
 func _on_SpellList_ally_spell_chosen():
 	emit_signal("action_ongoing")
@@ -728,12 +732,13 @@ func _on_Enemies_single_enemy_spell():
 	ongoing = true
 	emit_signal("action_ongoing")
 	$Enemies/EnemyInfo.hide()
-	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
+	#var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
 	var spell_id = $MagicWindow.get_spell_id()
-	print(spell_id)
 	yield(get_tree().create_timer(0.3), "timeout")
 	if spell_id == "Earthslide":
 		Earthslide()
+	if spell_id == "Icicle":
+		Icicle()
 	yield(get_tree().create_timer(2), "timeout")
 	$Fighters.idle()
 	$Enemies.whammy_chance = $Fighters.get_status("whammy_chance")
@@ -749,9 +754,9 @@ func _on_Enemies_single_enemy_spell():
 func _on_Enemies_all_enemy_spell():
 	$Fighters/HUDS.hiding()
 	emit_signal("action_ongoing")
-	$Enemies/EnemyInfo.hide()
 	var spell_id = $MagicWindow.get_spell_id()
-	print(spell_id)
+	yield(get_tree().create_timer(0.01), "timeout")
+	$Enemies/EnemyInfo.hide()
 	yield(get_tree().create_timer(0.3), "timeout")
 	ongoing = true
 	if spell_id == "Thunderstorm":
@@ -775,7 +780,7 @@ func _on_Fighters_ally_spell_chosen():
 	var spell_id = $MagicWindow.get_spell_id()
 	yield(get_tree().create_timer(0.3), "timeout")
 	if spell_id == "Sweet Gift":
-		$Fighters.Sweet_gift()
+		Sweet_Gift()
 	if spell_id == "Blossom":
 		$Fighters.Blossom()
 	yield(get_tree().create_timer(1.5), "timeout")
@@ -788,7 +793,6 @@ func _on_Fighters_ally_spell_chosen():
 	$Fighters.magic_selecting = false
 	item_halt = false
 	BB_active = false
-	$Fighters.fighters_active_check()
 	
 	
 func _on_Enemies_e_magic_damage_finish():
@@ -815,6 +819,19 @@ func _on_Enemies_e_magic_damage_finish():
 	
 	
 	##### Magic Spells ######
+func Sweet_Gift():
+	var target_position = $Fighters.get_target_position() 
+	$MovePlayer.position = target_position + Vector2(2, -60)
+	#$Fighters.fighter_index = $Fighters.selector_index
+	$Fighters.spell_1()
+	yield(get_tree().create_timer(0.8), "timeout")
+	$MovePlayer/AnimPlayer.play("Sweet_Gift")
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters.battle_ready()
+	yield(get_tree().create_timer(0.4), "timeout")
+	$Fighters.Sweet_gift()
+	$Fighters.fighters_active_check()
+	
 	
 func Earthslide():
 	randomize()
@@ -825,6 +842,7 @@ func Earthslide():
 	var enemy_position = $Enemies.get_e_position() + Vector2(-175, 40)
 	$Enemies.damage_type = "earth"
 	$Enemies.move_type = "earth"
+	$Enemies.f_magic_base = 50
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
@@ -833,17 +851,32 @@ func Earthslide():
 	if stun <= 30:
 		$Enemies.stun = true
 	
+func Icicle():
+	var enemy_position = $Enemies.get_e_position()
+	$Enemies.damage_type = "water"
+	$Enemies.move_type = "water"
+	$Enemies.f_magic_base = 30
+	$Enemies.d_debuff = true
+	$Fighters.spell_1()
+	yield(get_tree().create_timer(0.5), "timeout")
+	$MovePlayer.position = enemy_position + Vector2(-30, -120)
+	$MovePlayer/AnimPlayer.play("Icicle")
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters.battle_ready()
 	
 func Thunderstorm():
+	$MovePlayer.position = Vector2(0,0)
 	$Enemies.damage_type = "air"
 	$Enemies.move_type = "air"
+	$Enemies.f_magic_base = 20
 	$Enemies.stun = true
 	$Enemies.stun_chance = 20
+	yield(get_tree().create_timer(0.2), "timeout")
 	$Fighters.spell_1()
-	yield(get_tree().create_timer(0.8), "timeout")
+	yield(get_tree().create_timer(1), "timeout")
 	$MovePlayer/AnimPlayer.playback_speed = 0.6
 	$MovePlayer/AnimPlayer.play("Thunderstorm")
-	#yield(get_tree().create_timer(1), "timeout")
+	
 	
 	
 	##### Enemy Attacks #####

@@ -110,12 +110,12 @@ func enemy_info_update():
 	$EnemyInfo/EnemyName.enemy_name = get_name()
 	$EnemyInfo/EnemyStatus.stun = get_status("stun")
 	$EnemyInfo/EnemyStatus.poison = get_status("poison")
-	$EnemyInfo/EnemyStatus.a_buff = get_status("a_buff")
-	$EnemyInfo/EnemyStatus.a_debuff = get_status("a_debuff")
-	$EnemyInfo/EnemyStatus.m_buff = get_status("m_buff")
-	$EnemyInfo/EnemyStatus.m_debuff = get_status("m_debuff")
-	$EnemyInfo/EnemyStatus.d_buff = get_status("d_buff")
-	$EnemyInfo/EnemyStatus.d_debuff = get_status("d_debuff")
+	$EnemyInfo/EnemyStatus.a_buff = enemies[enemy_index].get_status("a_buff")
+	$EnemyInfo/EnemyStatus.a_debuff = enemies[enemy_index].get_status("a_debuff")
+	$EnemyInfo/EnemyStatus.m_buff = enemies[enemy_index].get_status("m_buff")
+	$EnemyInfo/EnemyStatus.m_debuff = enemies[enemy_index].get_status("m_debuff")
+	$EnemyInfo/EnemyStatus.d_buff = enemies[enemy_index].get_status("d_buff")
+	$EnemyInfo/EnemyStatus.d_debuff = enemies[enemy_index].get_status("d_debuff")
 
 	
 func _process(delta):
@@ -207,7 +207,7 @@ func enemy_damage():
 	
 	damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
 	if attack_bonus:
-		damage += 100
+		damage += (damage * 0.3)
 	if whammy:
 		damage += damage
 		target_enemy.whammy = true
@@ -226,7 +226,7 @@ func enemy_damage():
 
 	if poison:
 		target_enemy.poison()
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(get_tree().create_timer(1.7), "timeout")
 	target_enemy.unfocus()
 	if target_enemy.is_dead():
 		ongoing = true
@@ -277,23 +277,12 @@ func magic_damage():
 		damage += damage
 	
 	target_enemy.magic_damage(damage, damage_type)
+	var dead = false
+	if target_enemy.get_health() == 0:
+		dead = true
 	
-	if stun and not immune:
-		target_enemy.stun()
-	if poison and not immune:
-		target_enemy.poison()
-	if a_debuff and not immune:
-		target_enemy.apply_debuff("attack")
-	if m_debuff and not immune:
-		target_enemy.apply_debuff("magic")
-	if d_debuff and not immune:
-		target_enemy.apply_debuff("defense")
-	if random_debuff and not immune:
-		target_enemy.random_debuff()
-	if multi_debuff and not immune:
-		target_enemy.multi_debuff()
-		
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(get_tree().create_timer(1.7), "timeout")
+	
 	target_enemy.unfocus()
 	if target_enemy.is_dead():
 		ongoing = true
@@ -306,6 +295,23 @@ func magic_damage():
 		target_enemy.reset_animation()
 	if enemies.size() == 0:
 		emit_signal("victory")
+		
+	if stun and not immune and not dead:
+		target_enemy.stun()
+	if poison and not immune and not dead:
+		target_enemy.poison()
+	if a_debuff and not immune and not dead:
+		target_enemy.apply_debuff("attack")
+	if m_debuff and not immune and not dead:
+		target_enemy.apply_debuff("magic")
+	if d_debuff and not immune and not dead:
+		target_enemy.apply_debuff("defense")
+	if random_debuff and not immune and not dead:
+		target_enemy.random_debuff()
+	if multi_debuff and not immune and not dead:
+		target_enemy.multi_debuff()
+		
+		
 	emit_signal("e_magic_damage_finish")
 	stun = false
 	poison = false
@@ -356,26 +362,30 @@ func all_magic_damage():
 			damage += damage
 		
 		enemies[x].magic_damage(damage, damage_type)
-		if stun and not immune:
+		var dead = false
+		if enemies[x].get_health() == 0:
+			dead = true
+		
+		if stun and not immune and not dead:
 			var apply = rng.randi_range(1, 100)
 			if apply <= stun_chance:
 				enemies[x].stun()
-		if poison and not immune:
+		if poison and not immune and not dead:
 			var apply = rng.randi_range(1, 100)
 			if apply <= poison_chance:
 				enemies[x].poison()
-		if a_debuff and not immune:
+		if a_debuff and not immune and not dead:
 			enemies[x].apply_debuff("attack")
-		if m_debuff and not immune:
+		if m_debuff and not immune and not dead:
 			enemies[x].apply_debuff("magic")
-		if d_debuff and not immune:
+		if d_debuff and not immune and not dead:
 			enemies[x].apply_debuff("defense")
-		if random_debuff and not immune:
+		if random_debuff and not immune and not dead:
 			enemies[x].random_debuff()
-		if multi_debuff and not immune:
+		if multi_debuff and not immune and not dead:
 			enemies[x].multi_random_debuff()
 
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(get_tree().create_timer(1.7), "timeout")
 	for x in range(enemies.size()):
 		if enemies[x].is_dead():
 			enemies[x].death()

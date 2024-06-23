@@ -79,3 +79,6 @@ func _on_Enemies_enemy_chosen():
 
 func _on_Enemies_jinx_doll():
 	enemy_selecting = false
+
+func _on_WorldRoot_magic_enemy_update():
+	enemy_selecting = true
