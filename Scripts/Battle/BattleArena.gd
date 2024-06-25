@@ -172,7 +172,6 @@ func _input(event):
 		$BattleButtons/DiamondB.show()
 		$BattleButtons.hide()
 		$Enemies/EnemyInfo.hide()
-		print("pleeep")
 		BB_active = false
 		attack_show = false
 		window_open = false
@@ -451,7 +450,6 @@ func _on_Enemies_victory():
 	PartyStats.party_exp += EXP_reward
 	Party.marbles += marbles_reward
 	yield(get_tree().create_timer(1.2), "timeout")
-	SceneManager.victory = true
 	BattleMusic.switch_songs()
 	BattleMusic.id = "Victory"
 	BattleMusic.music()
@@ -693,7 +691,6 @@ func _on_SpellList_spell_chosen():
 	$BattleButtons/SpadeB.show()
 	$BattleButtons/CloverB.show()
 	$BattleButtons/StarB.show()
-	$WindowPlayer.play("enemyinfo_open")
 	$MagicWindow.hide()
 	$ItemWindow.hide()
 	$DefenseWindow.hide()
@@ -703,6 +700,7 @@ func _on_SpellList_spell_chosen():
 		window_open = true
 	emit_signal("magic_enemy_update")
 	yield(get_tree().create_timer(0.01), "timeout")
+	$WindowPlayer.play("enemyinfo_open")
 	$Enemies/EnemyInfo.show()
 		
 func _on_SpellList_ally_spell_chosen():
@@ -728,6 +726,7 @@ func _on_SpellList_ally_spell_chosen():
 	emit_signal("item_inactive")
 
 func _on_Enemies_single_enemy_spell():
+	var debuff_move = false
 	$Fighters/HUDS.hiding()
 	ongoing = true
 	emit_signal("action_ongoing")
@@ -737,8 +736,11 @@ func _on_Enemies_single_enemy_spell():
 	yield(get_tree().create_timer(0.3), "timeout")
 	if spell_id == "Earthslide":
 		Earthslide()
+		debuff_move = true
+		yield(get_tree().create_timer(1.7), "timeout")
 	if spell_id == "Icicle":
 		Icicle()
+		debuff_move = true
 	yield(get_tree().create_timer(2), "timeout")
 	$Fighters.idle()
 	$Enemies.whammy_chance = $Fighters.get_status("whammy_chance")
@@ -749,7 +751,11 @@ func _on_Enemies_single_enemy_spell():
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
 	emit_signal("f_index_reset")
-	$Fighters.fighters_active_check()
+	if debuff_move:
+		yield(get_tree().create_timer(1.7), "timeout")
+		$Fighters.fighters_active_check()
+	else:
+		$Fighters.fighters_active_check()
 	
 func _on_Enemies_all_enemy_spell():
 	$Fighters/HUDS.hiding()
@@ -761,6 +767,7 @@ func _on_Enemies_all_enemy_spell():
 	ongoing = true
 	if spell_id == "Thunderstorm":
 		Thunderstorm()
+		yield(get_tree().create_timer(1.5), "timeout")
 	yield(get_tree().create_timer(2), "timeout")
 	$Fighters.idle()
 	$Enemies.whammy_chance = $Fighters.get_status("whammy_chance")
@@ -771,6 +778,7 @@ func _on_Enemies_all_enemy_spell():
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
 	emit_signal("f_index_reset")
+	yield(get_tree().create_timer(2), "timeout")
 	$Fighters.fighters_active_check()
 	
 	
@@ -822,7 +830,7 @@ func _on_Enemies_e_magic_damage_finish():
 func Sweet_Gift():
 	var target_position = $Fighters.get_target_position() 
 	$MovePlayer.position = target_position + Vector2(2, -60)
-	#$Fighters.fighter_index = $Fighters.selector_index
+	$Fighters.fighter_index = $Fighters.selector_index
 	$Fighters.spell_1()
 	yield(get_tree().create_timer(0.8), "timeout")
 	$MovePlayer/AnimPlayer.play("Sweet_Gift")
@@ -838,7 +846,7 @@ func Earthslide():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var fighter_node = $Fighters.get_f_current()
-	var fighter_position = $Fighters.get_position()
+	var fighter_position = $Fighters.get_f_OG_position()
 	var enemy_position = $Enemies.get_e_position() + Vector2(-175, 40)
 	$Enemies.damage_type = "earth"
 	$Enemies.move_type = "earth"
@@ -847,9 +855,15 @@ func Earthslide():
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
 	$Fighters.spell_2()
-	var stun = rng.randi_range(1, 100)
-	if stun <= 30:
-		$Enemies.stun = true
+	yield(get_tree().create_timer(0.7), "timeout")
+	$WindowPlayer.play("little_shake")
+	$MovePlayer.position = enemy_position + Vector2(60, 15)
+	$MovePlayer/AnimPlayer.play("Earthslide")
+	$Enemies.a_debuff = true
+	yield(get_tree().create_timer(2), "timeout")
+	$Fighters.idle()
+	var tween2 = create_tween()
+	tween2.tween_property(fighter_node, "position", fighter_position, 0.5)
 	
 func Icicle():
 	var enemy_position = $Enemies.get_e_position()
@@ -865,6 +879,8 @@ func Icicle():
 	$Fighters.battle_ready()
 	
 func Thunderstorm():
+	$WindowPlayer.playback_speed = 1.2
+	$WindowPlayer.play("darken")
 	$MovePlayer.position = Vector2(0,0)
 	$Enemies.damage_type = "air"
 	$Enemies.move_type = "air"
@@ -876,6 +892,9 @@ func Thunderstorm():
 	yield(get_tree().create_timer(1), "timeout")
 	$MovePlayer/AnimPlayer.playback_speed = 0.6
 	$MovePlayer/AnimPlayer.play("Thunderstorm")
+	yield(get_tree().create_timer(1.6), "timeout")
+	$WindowPlayer.playback_speed = 1
+	$WindowPlayer.play_backwards("darken")
 	
 	
 	
@@ -899,24 +918,62 @@ func _on_Enemies_Basic():
 		$Fighters.SP_amount = int(PartyStats.party_max_sp * 0.1)
 	$Fighters.damage()
 
-
 func _on_Enemies_Barrage():
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
-	$Fighters.move_spread = "all"
+	$Fighters.d_debuff = true
 	$Fighters.enemy_type = $Enemies.get_type()
-	$Fighters.e_move_base = 10
+	$Fighters.e_move_base = 5
 	$Fighters.e_attack = $Enemies.e_attack
-	$Fighters.e_magic = $Enemies.e_magic
-	for x in range($Fighters.fighters.size()):
-		#var stun = rng.randi_range(1, 100)
-		#if stun <= 30:
-			#$Fighters.stun = true
-		$Fighters.fighter_x = x
-		$Fighters.damage()
+	$MovePlayer.position = fighter_OG_position + Vector2(30, -5)
+	$MovePlayer/AnimPlayer.play("Barrage")
+	yield(get_tree().create_timer(1.1), "timeout")
+	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
 
+func _on_Enemies_Beat_Down():
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "neutral"
+	$Fighters.enemy_type = $Enemies.get_type()
+	for x in $Enemies.enemies.size():
+		$Fighters.e_move_base += 5
+	$Fighters.e_attack = $Enemies.e_attack
+	$MovePlayer.position = fighter_OG_position + Vector2(-2, -12)
+	$MovePlayer/AnimPlayer.play("Beat_Down")
+	yield(get_tree().create_timer(1.1), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+
+func _on_Enemies_Sting():
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "neutral"
+	$Fighters.poison = true
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_attack = $Enemies.e_attack
+	$MovePlayer.position = fighter_OG_position + Vector2(240, -97)
+	$MovePlayer/AnimPlayer.play("Sting")
+	yield(get_tree().create_timer(1.2), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()

@@ -66,6 +66,8 @@ var d_debuff
 
 signal Basic
 signal Barrage
+signal Beat_Down
+signal Sting
 
 func _ready():
 	enemies = $Field.get_children()
@@ -293,6 +295,7 @@ func magic_damage():
 		ongoing = false
 	else:
 		target_enemy.reset_animation()
+		
 	if enemies.size() == 0:
 		emit_signal("victory")
 		
@@ -302,14 +305,19 @@ func magic_damage():
 		target_enemy.poison()
 	if a_debuff and not immune and not dead:
 		target_enemy.apply_debuff("attack")
+		yield(get_tree().create_timer(0.7), "timeout")
 	if m_debuff and not immune and not dead:
 		target_enemy.apply_debuff("magic")
+		yield(get_tree().create_timer(0.7), "timeout")
 	if d_debuff and not immune and not dead:
 		target_enemy.apply_debuff("defense")
+		yield(get_tree().create_timer(0.7), "timeout")
 	if random_debuff and not immune and not dead:
 		target_enemy.random_debuff()
+		yield(get_tree().create_timer(0.7), "timeout")
 	if multi_debuff and not immune and not dead:
 		target_enemy.multi_debuff()
+		yield(get_tree().create_timer(0.7), "timeout")
 		
 		
 	emit_signal("e_magic_damage_finish")
@@ -376,14 +384,19 @@ func all_magic_damage():
 				enemies[x].poison()
 		if a_debuff and not immune and not dead:
 			enemies[x].apply_debuff("attack")
+			yield(get_tree().create_timer(0.7), "timeout")
 		if m_debuff and not immune and not dead:
 			enemies[x].apply_debuff("magic")
+			yield(get_tree().create_timer(0.7), "timeout")
 		if d_debuff and not immune and not dead:
 			enemies[x].apply_debuff("defense")
+			yield(get_tree().create_timer(0.7), "timeout")
 		if random_debuff and not immune and not dead:
 			enemies[x].random_debuff()
+			yield(get_tree().create_timer(0.7), "timeout")
 		if multi_debuff and not immune and not dead:
 			enemies[x].multi_random_debuff()
+			yield(get_tree().create_timer(0.7), "timeout")
 
 	yield(get_tree().create_timer(1.7), "timeout")
 	for x in range(enemies.size()):
@@ -437,6 +450,7 @@ func type_matchup():
 func victory_check():
 	if enemies.size() == 0:
 		emit_signal("victory")
+		SceneManager.victory = true
 		
 func item_damage():
 	BB_active = false
@@ -500,6 +514,7 @@ func _on_ItemInventory_all_battle_item_chosen():
 func _on_SpellList_single_enemy_spell():
 	enemy_index = -1
 	initial = true
+	enemy_info_update()
 	yield(get_tree().create_timer(0.2), "timeout")
 	magic_selecting = true
 	initial = false
@@ -559,7 +574,13 @@ func _on_Fighters_enemies_enabled():
 					yield(get_tree().create_timer(2), "timeout")
 				if move_name == "Barrage":
 					emit_signal("Barrage")
-					yield(get_tree().create_timer(2), "timeout")
+					yield(get_tree().create_timer(3.3), "timeout")
+				if move_name == "Beat Down":
+					emit_signal("Beat_Down")
+					yield(get_tree().create_timer(3), "timeout")
+				if move_name == "Sting":
+					emit_signal("Sting")
+					yield(get_tree().create_timer(2.5), "timeout")
 				enemies[x].reset_animation()
 			elif stun:
 				enemy_turns += 1

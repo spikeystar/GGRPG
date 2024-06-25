@@ -201,30 +201,33 @@ func restore(id : String):
 	if id == "Bounty Herb":
 		if dead:
 			health = int(f_health / 2)
-			$AnimationPlayer.play_backwards("Fighter_Dead")
-			$AnimationPlayer.play("Fighter_BattleReady")
+			$Effect.show()
+			$EffectPlayer.play("Restore")
 			dead = false
 			hide = false
 			turn_used = false
 			status_restore()
 			yield(get_tree().create_timer(0.2), "timeout")
-			$Effect.show()
-			$EffectPlayer.play("Restore")
+			$AnimationPlayer.play_backwards("Fighter_Dead")
+			yield(get_tree().create_timer(0.2), "timeout")
+			$AnimationPlayer.play("Fighter_BattleReady")
 		else:
 			yield(get_tree().create_timer(0.2), "timeout")
 			$Effect.show()
 			$EffectPlayer.play("Restore")
 	elif id == "Sweet Gift":
 		health = int(f_health / 2)
-		$AnimationPlayer.play_backwards("Fighter_Dead")
-		$AnimationPlayer.play("Fighter_BattleReady")
 		dead = false
 		hide = false
 		turn_used = false
-		yield(get_tree().create_timer(0.2), "timeout")
-		status_restore()
 		$Effect.show()
 		$EffectPlayer.play("Heal")
+		status_restore()
+		yield(get_tree().create_timer(0.2), "timeout")
+		$AnimationPlayer.play_backwards("Fighter_Dead")
+		yield(get_tree().create_timer(0.2), "timeout")
+		$AnimationPlayer.play("Fighter_BattleReady")
+
 	elif id == "Blossom":
 		yield(get_tree().create_timer(0.2), "timeout")
 		status_restore()

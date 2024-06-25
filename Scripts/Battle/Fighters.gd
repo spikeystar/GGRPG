@@ -44,7 +44,7 @@ var halt = false
 
 var e_attack : int
 var e_magic : int
-var e_move_base : int
+var e_move_base : int = 0
 var move_type : String
 var move_spread : String
 var move_kind : String
@@ -359,11 +359,10 @@ func reset_status():
 	apply_type = false
 	changing_type = "neutral"
 	sp_loss = false
+	e_move_base = 0
 	
-func damage():
-	var immune = false
+func pick_fighter():
 	randomize()
-	var damage : int
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	if move_spread == "single":
@@ -379,6 +378,26 @@ func damage():
 			fighter_index = rng.randi_range(0, fighters.size() - 1)
 	else:
 		fighter_index = fighter_x
+	
+func damage():
+	var immune = false
+	#randomize()
+	var damage : int
+	#var rng = RandomNumberGenerator.new()
+	#rng.randomize()
+	#if move_spread == "single":
+		#var targeted = false
+		#var target_index
+		#for x in range (fighters.size()):
+		#	targeted = fighters[x].get_status("targeted")
+		#	if targeted:
+		#		target_index = x
+		#if targeted:
+		#	fighter_index = target_index
+		#else:
+		#	fighter_index = rng.randi_range(0, fighters.size() - 1)
+	#else:
+		#fighter_index = fighter_x
 	var f_defense = fighters[fighter_index].get_f_defense()
 	var fighter_type = fighters[fighter_index].get_status("type")
 	if fighter_type != "neutral" and fighter_type == move_type:
@@ -405,34 +424,38 @@ func damage():
 		immune = true
 		
 	fighters[fighter_index].damage(damage, move_type)
-	if apply_type:
+	var is_dead = false
+	if fighters[fighter_index].get_health() == 0:
+		is_dead = true
+	
+	if apply_type and not is_dead:
 		fighters[fighter_index].apply_type(move_type)
-	if stun and not immune:
+	if stun and not immune and not is_dead:
 		fighters[fighter_index].stun()
-	if poison and not immune:
+	if poison and not immune and not is_dead:
 		fighters[fighter_index].poison()
-	if targeted and not immune:
+	if targeted and not immune and not is_dead:
 		fighters[fighter_index].targeted()
-	if wimpy and not immune:
+	if wimpy and not immune and not is_dead:
 		fighters[fighter_index].wimpy()
-	if dizzy and not immune:
+	if dizzy and not immune and not is_dead:
 		fighters[fighter_index].dizzy()
-	if a_debuff and not immune:
+	if a_debuff and not immune and not is_dead:
 		fighters[fighter_index].apply_debuff("attack")
-	if m_debuff and not immune:
+	if m_debuff and not immune and not is_dead:
 		fighters[fighter_index].apply_debuff("magic")
-	if d_debuff and not immune:
+	if d_debuff and not immune and not is_dead:
 		fighters[fighter_index].apply_debuff("defense")
-	if random_debuff and not immune:
+	if random_debuff and not immune and not is_dead:
 		fighters[fighter_index].random_debuff()
-	if multi_debuff and not immune:
+	if multi_debuff and not immune and not is_dead:
 		fighters[fighter_index].multi_debuff()
-	if anxious and not immune:
+	if anxious and not immune and not is_dead:
 		fighters[fighter_index].anxious()
-	if sp_loss and not immune:
+	if sp_loss and not immune and not is_dead:
 		fighters[fighter_index].SP_loss(SP_amount)
-	huds_update()
 	yield(get_tree().create_timer(1.7), "timeout")
+	huds_update()
 	for x in range (fighters.size() -1, -1, -1):
 		var dead = fighters[x].death_count()
 		if dead:
@@ -803,12 +826,6 @@ func _on_SpellList_all_ally_spell():
 	emit_signal("ally_spell_chosen")
 	
 func _on_Enemies_fighters_active():
-	for x in range (fighters.size()):
-		var poisoned = fighters[x].get_status("poison")
-		if poisoned:
-			fighters[x].poison_damage()
-			fighter_index = x
-			huds_update()
 	yield(get_tree().create_timer(0.3), "timeout")
 	for x in range (fighters.size() -1, -1, -1):
 		var dead = fighters[x].death_count()
@@ -817,6 +834,19 @@ func _on_Enemies_fighters_active():
 			fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
 	yield(get_tree().create_timer(0.3), "timeout")
 	game_over_check()
+	
+	var poison_check = false
+	for x in range (fighters.size()):
+		var is_poisoned = fighters[x].get_status("poison")
+		if is_poisoned and not poison_check:
+			poison_check = true
+			yield(get_tree().create_timer(1), "timeout")
+	for y in range (fighters.size()):
+		var poisoned = fighters[y].get_status("poison")
+		if poisoned:
+			fighters[y].poison_damage()
+			fighter_index = y
+			huds_update()
 	
 	max_turns = 0
 	for x in range (fighters2.size()):
