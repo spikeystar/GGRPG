@@ -389,26 +389,54 @@ func apply_debuff(id : String):
 
 func random_buff():
 	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var index = rng.randi_range(1, 3)
-	if index == 1:
+	var index
+	var choices = ["attack", "magic", "defense"]
+	if a_buff:
+		for x in range(choices.size() -1, -1, -1):
+			if choices[x] == "attack":
+				choices.remove(x)
+	if m_buff:
+		for x in range(choices.size() -1, -1, -1):
+			if choices[x] == "magic":
+				choices.remove(x)
+	if d_buff:
+		for x in range(choices.size() -1, -1, -1):
+			if choices[x] == "defense":
+				choices.remove(x)
+	choices.shuffle()
+	index = choices[0]
+	
+	if index == "attack" and not a_buff:
 		apply_buff("attack")
-	if index == 2:
+	if index == "magic" and not m_buff:
 		apply_buff("magic")
-	if index == 3:
+	if index == "defense" and not d_buff:
 		apply_buff("defense")
 		
 func random_debuff():
 	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var index = rng.randi_range(1, 3)
-	if index == 1:
+	var index
+	var choices = ["attack", "magic", "defense"]
+	if a_debuff:
+		for x in range(choices.size() -1, -1, -1):
+			if choices[x] == "attack":
+				choices.remove(x)
+	if m_debuff:
+		for x in range(choices.size() -1, -1, -1):
+			if choices[x] == "magic":
+				choices.remove(x)
+	if d_debuff:
+		for x in range(choices.size() -1, -1, -1):
+			if choices[x] == "defense":
+				choices.remove(x)
+	choices.shuffle()
+	index = choices[0]
+	
+	if index == "attack" and not a_debuff:
 		apply_debuff("attack")
-	if index == 2:
+	if index == "magic" and not m_debuff:
 		apply_debuff("magic")
-	if index == 3:
+	if index == "defense" and not d_debuff:
 		apply_debuff("defense")
 
 func multi_random_buff():

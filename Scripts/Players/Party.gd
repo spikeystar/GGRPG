@@ -36,19 +36,15 @@ func _ready():
 	add_item()
 	add_item_name = "Picnic Pie"
 	add_item()
-	add_item_name = "Bounty Herb"
+	add_item_name = "Sugar Pill"
 	add_item()
-	add_item_name = "Bounty Herb"
+	add_item_name = "Sugar Pill"
 	add_item()
-	add_item_name = "Bounty Herb"
-	add_item()
-	add_item_name = "Ginger Tea"
+	add_item_name = "Sugar Pill"
 	add_item()
 	add_item_name = "Ginger Tea"
 	add_item()
-	add_item_name = "Yummy Cake"
-	add_item()
-	add_item_name = "Pretty Gem"
+	add_item_name = "Ginger Tea"
 	add_item()
 
 

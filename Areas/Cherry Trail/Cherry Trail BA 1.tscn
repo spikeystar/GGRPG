@@ -601,7 +601,7 @@ e_health = 70
 e_attack = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Sting"
+move1 = "Slash"
 
 [node name="Cheribo_battle2" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 190, 44 )
@@ -610,7 +610,7 @@ e_health = 70
 e_attack = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Sting"
+move1 = "Slash"
 
 [node name="Cheribo_battle3" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 16, -23 )
@@ -619,7 +619,7 @@ e_health = 70
 e_attack = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Sting"
+move1 = "Basic"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
@@ -1188,7 +1188,6 @@ f_health = 97
 f_attack = 55
 f_attack_base = 5
 f_magic = 40
-f_defense = 20
 TEXT_DAMAGE = ExtResource( 44 )
 TEXT_HEAL = ExtResource( 43 )
 TEXT_SP = ExtResource( 45 )
@@ -1676,6 +1675,10 @@ visible = false
 [connection signal="Barrage" from="Enemies" to="." method="_on_Enemies_Barrage"]
 [connection signal="Basic" from="Enemies" to="." method="_on_Enemies_Basic"]
 [connection signal="Beat_Down" from="Enemies" to="." method="_on_Enemies_Beat_Down"]
+[connection signal="Extort" from="Enemies" to="." method="_on_Enemies_Extort"]
+[connection signal="Pester" from="Enemies" to="." method="_on_Enemies_Pester"]
+[connection signal="Sabotage" from="Enemies" to="." method="_on_Enemies_Sabotage"]
+[connection signal="Slash" from="Enemies" to="." method="_on_Enemies_Slash"]
 [connection signal="Sting" from="Enemies" to="." method="_on_Enemies_Sting"]
 [connection signal="all_enemy_spell" from="Enemies" to="." method="_on_Enemies_all_enemy_spell"]
 [connection signal="attack_f_index_reset" from="Enemies" to="Fighters" method="_on_Enemies_attack_f_index_reset"]
