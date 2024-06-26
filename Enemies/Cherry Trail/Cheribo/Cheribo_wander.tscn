@@ -16,9 +16,10 @@
 radius = 1.0
 
 [sub_resource type="CircleShape2D" id=178]
-radius = 81.0062
+radius = 130.0
 
 [sub_resource type="CircleShape2D" id=179]
+radius = 8.94814
 
 [sub_resource type="Animation" id=173]
 length = 0.001
@@ -138,6 +139,13 @@ position = Vector2( 0, 1 )
 collision_mask = 2
 collision/safe_margin = 0.5
 script = ExtResource( 1 )
+WANDER_SPEED = 32
+FRICTION = 1
+MIN_IDLE_TIME = 3
+MAX_IDLE_TIME = 5
+MAX_WANDER_TIME = 4
+WANDER_RADIUS = 80
+MAX_CHASE_DISTANCE = 180
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
 position = Vector2( 2, 0.0728853 )
@@ -152,14 +160,12 @@ shape = SubResource( 172 )
 
 [node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 3 )]
 position = Vector2( 6, 11 )
-scale = Vector2( 1.62956, 1.60333 )
 collision_layer = 0
 collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot/PlayerDetection"]
 modulate = Color( 1, 1, 1, 0.254902 )
 position = Vector2( -1, -17 )
-scale = Vector2( 0.927677, 0.881874 )
 shape = SubResource( 178 )
 disabled = true
 
@@ -169,7 +175,7 @@ scale = Vector2( 0.972756, 0.936889 )
 collision_layer = 3
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
-position = Vector2( -1.03548, -21.6421 )
+position = Vector2( -3.08402, -9.60626 )
 scale = Vector2( 1.60839, -1.51859 )
 shape = SubResource( 179 )
 

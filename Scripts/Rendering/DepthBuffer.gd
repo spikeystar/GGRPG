@@ -114,7 +114,7 @@ func add_depth_test_mesh(
 		var colors = PoolColorArray()
 		for i in vertices.size():
 			var vertex = vertices[i]
-			var depth = depth_range[0] + (depth_range[1] - depth_range[0]) * depth_test[i]
+			var depth = depth_range[0] + (depth_range[1] - depth_range[0]) * depth_test[clamp(i, 0, depth_test.size() - 1)]
 			vertices_3d.push_back(Vector3(vertex.x, vertex.y, depth))
 		arrays[ArrayMesh.ARRAY_VERTEX] = vertices_3d
 		arrays[ArrayMesh.ARRAY_TEX_UV] = uvs
@@ -158,7 +158,7 @@ func add_depth_test_multimesh(
 		var colors = PoolColorArray()
 		for i in vertices.size():
 			var vertex = vertices[i]
-			var depth = depth_range[0] + (depth_range[1] - depth_range[0]) * depth_test[i]
+			var depth = depth_range[0] + (depth_range[1] - depth_range[0]) * depth_test[clamp(i, 0, depth_test.size() - 1)]
 			vertices_3d.push_back(Vector3(vertex.x, vertex.y, depth))
 		arrays[ArrayMesh.ARRAY_VERTEX] = vertices_3d
 		arrays[ArrayMesh.ARRAY_TEX_UV] = uvs

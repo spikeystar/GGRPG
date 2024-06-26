@@ -4,13 +4,18 @@ const LOWEST_Z: int = 0;
 const HIGHEST_Z : int = 512;
 
 export var spawn_z = 0
-export var player_acceleration = 12
-export var player_friction = 2
-export var max_player_speed = 2
-export var gravity = 9.8
-export var max_vertical_speed = 20
-export var jump_velocity = 10
-var ground_enemy
+
+export var ACCELERATION = 75
+export var CHASE_SPEED = 50
+export var WANDER_SPEED = 20
+export var FRICTION = 10
+export var MIN_IDLE_TIME = 1
+export var MAX_IDLE_TIME = 3
+export var MIN_WANDER_TIME = 1
+export var MAX_WANDER_TIME = 1
+export var WANDER_RADIUS = 30
+export var MAX_CHASE_DISTANCE = 50
+export var MAX_Z_DIFF = 10
 
 #Movement
 var floor_z : float = LOWEST_Z
@@ -18,90 +23,110 @@ var ceiling_z : float = HIGHEST_Z
 var shadow_z : float = 0
 var pos_z : float
 var teleport_z : float
-var vel : Vector3;
 var last_dir: Vector2;
 var floor_layers : Array = []
 var is_on_ground = true
 var is_falling = true
 var is_just_teleported = false
 var freeze = PlayerManager.freeze
+var collided_last_frame = false
+var collided_normal : Vector2;
+var timer = 0;
+var velocity = Vector2.ZERO
+var origin = Vector2()
+var state
+var ground_enemy
+var rng : RandomNumberGenerator
+var wander_destination : Vector2
+var direction = Vector2.ZERO
+var player_in_radius = false
+var chase_fatigued = false
 
-var rng = RandomNumberGenerator.new()
-var wander_range = Vector2(rng.randi_range(-20, 20), rng.randi_range(-20, 20))
-var direction = (wander_range - self.position).normalized()
-
-enum {IDLE,
+enum ENEMY_STATE {
+IDLE,
 RETURN,
 WANDER,
 CHASE
 }
 
-export var ACCELERATION = 75
-export var MAX_SPEED = 30
-export var FRICTION = 100
 
-var velocity = Vector2.ZERO
-var origin = Vector2()
-var state 
 
-var ready = false
+
 
 func _ready():
 	origin = self.global_position
-	print(origin)
+	rng = RandomNumberGenerator.new()
+	#print(origin)
 	floor_z = spawn_z
 	pos_z = spawn_z
-	state = IDLE
+	state = ENEMY_STATE.IDLE
 	
 func _physics_process(delta):
-	#print(state)
+	var player = PlayerManager.player_motion_root
+	
+	#print(ENEMY_STATE.keys()[state])
+	#print(player.floor_z - floor_z)
+	
 	is_on_ground = pos_z <= floor_z + 4
 	update_floor()
+	check_chase()
 	
-	if state == WANDER and ready:
-		ready = false
-		random_direction()
-		
-	if is_on_wall():
-		direction -= Vector2(1, 1)
 	
 	match state:
-		IDLE:
-			#print("idle")
-			velocity = Vector2.ZERO
-			yield(get_tree().create_timer(2), "timeout")
-			state = WANDER
-		RETURN:
-			#print(self.global_position)
+		ENEMY_STATE.IDLE:
+			if timer == 0:
+				state = ENEMY_STATE.WANDER
+				timer = rng.randf_range(MIN_WANDER_TIME, MAX_WANDER_TIME)
+				random_direction()
+			
+		ENEMY_STATE.RETURN:
+			
 			var return_spot = (origin - self.global_position).normalized()
-			velocity = velocity.move_toward(return_spot * MAX_SPEED, ACCELERATION * delta)
-			if self.global_position.round() == origin:
-				velocity = Vector2.ZERO
-				state = IDLE
-				ready = true
-				#print("tadaa")
-			#if range(origin, (origin + Vector2(5,5))).has(self.global_position):
-				#print("hello")
-				#state = IDLE
-		WANDER:
-			#print("wander")
-			MAX_SPEED = 35
-			velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
-			if not ground_enemy:
-				pos_z = pos_z * delta
-			yield(get_tree().create_timer(4), "timeout")
-			state = RETURN
-		CHASE:
-			MAX_SPEED = 50
-			var player = PlayerManager.player_motion_root
-			if not freeze:
-				var direction = (player.global_position - self.global_position).normalized()
-				velocity = velocity.move_toward(direction * MAX_SPEED, ACCELERATION * delta)
-			else:
-				state = RETURN
+			velocity = velocity.move_toward(return_spot * WANDER_SPEED, ACCELERATION * delta)
+			
+			if self.global_position.distance_to(origin) < WANDER_RADIUS:
+				chase_fatigued = false
+				state = ENEMY_STATE.IDLE
+				timer = rng.randf_range(MIN_IDLE_TIME, MAX_IDLE_TIME)
+				
+		ENEMY_STATE.WANDER:
+			
+			velocity = velocity.move_toward(direction * WANDER_SPEED, ACCELERATION * delta)
+			if timer == 0 || wander_destination.distance_to(global_position) < 10:
+				timer = 0
+				state = ENEMY_STATE.RETURN
+				
+		ENEMY_STATE.CHASE:
+			
+			var diffToTarget = player.global_position - self.global_position;
+			var direction = diffToTarget.normalized()
+			velocity = velocity.move_toward(direction * CHASE_SPEED, ACCELERATION * delta)
 
 
-	velocity = move_and_slide(velocity)
+
+	if collided_last_frame && collided_normal.length_squared() > 0.01 && collided_normal.dot(velocity) < 0:
+		collided_normal.normalized()
+		velocity = project_onto_plane(velocity, collided_normal)
+	move_and_slide(Vector2(velocity.x * 2, velocity.y))
+	apply_friction(delta)
+	
+	collided_last_frame = false
+	collided_normal = Vector2.ZERO
+	for i in range(get_slide_count()):
+		var collision = get_slide_collision(i)
+		collided_normal += (global_position - collision.position).normalized()
+		collided_last_frame = true
+	collided_normal.y *= 2;
+	
+	timer = max(0, timer - delta)
+	
+	##update()
+
+
+##func _draw():
+	##var p = Vector2.ZERO
+	##draw_line(p, p + project_onto_plane(velocity, collided_normal)  * 1, Color.red, 2)
+	##draw_line(p, p + collided_normal * 30, Color.blue, 2)
 
 func update_floor():
 	floor_z = LOWEST_Z
@@ -112,31 +137,49 @@ func update_floor():
 		else:
 			ceiling_z = min(ceiling_z, f.bottom)
 
-	return
-	
-	#if state == WANDER:
-	#	state = IDLE
-	#if state == IDLE:
-		#state = WANDER
-
 func random_direction():
-	#print("random!")
-	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	wander_range = Vector2(rng.randi_range(-20, 20), rng.randi_range(-20, 20))
-	direction = (wander_range - self.position).normalized()
+	wander_destination = Vector2(rng.randi_range(-WANDER_RADIUS, WANDER_RADIUS), 
+								rng.randi_range(-WANDER_RADIUS, WANDER_RADIUS))
+	wander_destination = origin + wander_destination.clamped(WANDER_RADIUS)
+	direction = (wander_destination - global_position).normalized()
 
 func _on_PlayerDetection_start_chase():
-	state = CHASE
-	print("chasing")
+	player_in_radius = true
 
 func _on_PlayerDetection_stop_chase():
-	#ACCELERATION = 50
-	yield(get_tree().create_timer(2), "timeout")
-	state = RETURN
-	print("return")
+	player_in_radius = false
+	
+func reflect(vector: Vector2, normal: Vector2) -> Vector2:
+	normal = normal.normalized()
+	return vector - 2 * vector.dot(normal) * normal
+
+func project_onto_plane(vector: Vector2, normal: Vector2) -> Vector2:
+	normal = normal.normalized()
+	return vector - normal * vector.dot(normal)
+
+func apply_friction(delta):
+	velocity *= exp(delta * -FRICTION)
+	
+func check_chase():
+	var player = PlayerManager.player_motion_root
+	var diffToTarget = player.global_position - self.global_position;
+	var diffToOrigin = self.global_position - origin
+	
+	var playerTooFar = diffToTarget.length() > MAX_CHASE_DISTANCE
+	var playerTooHigh = (player.floor_z - floor_z) > MAX_Z_DIFF
+	var originTooFar = diffToOrigin.length() > (WANDER_RADIUS + MAX_CHASE_DISTANCE / 2)
+	var should_start_chase = (player_in_radius && !chase_fatigued) && !freeze && !playerTooHigh && !originTooFar
+	var should_end_chase = playerTooFar || freeze || playerTooHigh || originTooFar
+	
+	if state == ENEMY_STATE.CHASE && should_end_chase:
+		if originTooFar:
+			chase_fatigued = true
+		
+		timer = 0
+		state = ENEMY_STATE.RETURN
+	elif state != ENEMY_STATE.CHASE && should_start_chase:
+		timer = 0
+		state = ENEMY_STATE.CHASE
 
 func _on_Timer_timeout():
 	pass
-	#random_direction()

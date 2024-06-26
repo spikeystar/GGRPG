@@ -34,6 +34,9 @@ onready var shadow_sprite = $ShadowYSort/ShadowVisualRoot/ShadowCircle
 
 var motion_root_z
 
+const VEL_EPSILON = 0.1
+const VEL_ANIM_MAX = 30
+
 export var dead = false
 
 func _ready():
@@ -83,13 +86,16 @@ func _physics_process(delta):
 		#sprite.flip_h = true
 	#else:
 		#sprite.flip_h = false
-		
-	sprite.flip_h = motion_root.velocity.x > 0
 	
-	if motion_root.velocity.y < 0:
+	if abs(motion_root.velocity.x) > VEL_EPSILON:
+		sprite.flip_h = motion_root.velocity.x > 0
+	
+	if motion_root.velocity.y < VEL_EPSILON:
 		anim_player.play("walk_back")
-	if motion_root.velocity.y > 0:
+	if motion_root.velocity.y > VEL_EPSILON:
 		anim_player.play("walk_front")
+	
+	anim_player.playback_speed = lerp(0.5, 1.5, clamp(abs(motion_root.velocity.length() / VEL_ANIM_MAX), 0, 1));
 	#if motion_root.velocity.y == 0:
 		#anim_player.play("walk_front")
 	
