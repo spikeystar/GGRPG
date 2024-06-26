@@ -760,6 +760,7 @@ func item_used():
 		if revive:
 			dead = fighters2[target_index].death_count()
 			if dead:
+				max_turns -=1
 				fighters2[target_index].restore(item_name)
 				yield(get_tree().create_timer(0.25), "timeout")
 				huds_heal_update()
