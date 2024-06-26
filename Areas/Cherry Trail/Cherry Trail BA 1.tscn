@@ -601,8 +601,7 @@ e_health = 70
 e_attack = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Extort"
-move2 = "Pester"
+move1 = "Slash"
 
 [node name="Cheribo_battle2" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 190, 44 )
@@ -611,8 +610,7 @@ e_health = 70
 e_attack = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Extort"
-move2 = "Pester"
+move1 = "Slash"
 
 [node name="Cheribo_battle3" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 16, -23 )
@@ -621,8 +619,7 @@ e_health = 70
 e_attack = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Extort"
-move2 = "Pester"
+move1 = "Basic"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
@@ -1191,7 +1188,6 @@ f_health = 97
 f_attack = 55
 f_attack_base = 5
 f_magic = 40
-f_defense = 20
 TEXT_DAMAGE = ExtResource( 44 )
 TEXT_HEAL = ExtResource( 43 )
 TEXT_SP = ExtResource( 45 )
@@ -1601,6 +1597,7 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1617,7 +1614,6 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1682,6 +1678,7 @@ visible = false
 [connection signal="Extort" from="Enemies" to="." method="_on_Enemies_Extort"]
 [connection signal="Pester" from="Enemies" to="." method="_on_Enemies_Pester"]
 [connection signal="Sabotage" from="Enemies" to="." method="_on_Enemies_Sabotage"]
+[connection signal="Slash" from="Enemies" to="." method="_on_Enemies_Slash"]
 [connection signal="Sting" from="Enemies" to="." method="_on_Enemies_Sting"]
 [connection signal="all_enemy_spell" from="Enemies" to="." method="_on_Enemies_all_enemy_spell"]
 [connection signal="attack_f_index_reset" from="Enemies" to="Fighters" method="_on_Enemies_attack_f_index_reset"]

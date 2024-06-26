@@ -580,6 +580,7 @@ func item_animation():
 	yield(get_tree().create_timer(1), "timeout")
 	
 func _on_Fighters_item_chosen():
+	fighter_selection = false
 	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
 	var item_id = $ItemWindow/ItemWindowPanel/ItemInventory.item_id
 	$ItemUsage.position = selector_position
@@ -622,7 +623,6 @@ func _on_Fighters_item_chosen():
 	item_animation()
 	yield(get_tree().create_timer(1.5), "timeout")
 	emit_signal("action_ended")
-	fighter_selection = false
 	attack_ended = true
 	ongoing = false
 	Party.remove_item()
@@ -816,7 +816,7 @@ func _on_Enemies_e_magic_damage_finish():
 	$Fighters.ongoing = false
 	emit_signal("action_ended")
 	attack_ended = true
-	fighter_selection = false
+	#fighter_selection = false
 	attack_show = false
 	$Fighters.BB_active = false
 	$Fighters.magic_selecting = false
@@ -922,9 +922,6 @@ func _on_Enemies_Barrage():
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
-	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.d_debuff = true
@@ -942,9 +939,6 @@ func _on_Enemies_Beat_Down():
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
-	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.enemy_type = $Enemies.get_type()
@@ -962,9 +956,6 @@ func _on_Enemies_Sting():
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
-	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.poison = true
@@ -982,9 +973,6 @@ func _on_Enemies_Sabotage():
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
-	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.wimpy = true
@@ -1002,9 +990,6 @@ func _on_Enemies_Pester():
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
-	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.anxious = true
@@ -1022,9 +1007,6 @@ func _on_Enemies_Extort():
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
-	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.enemy_type = $Enemies.get_type()
@@ -1038,3 +1020,27 @@ func _on_Enemies_Extort():
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+
+func _on_Enemies_Slash():
+	$Fighters.move_spread = "spread"
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$MovePlayer.position = Vector2(0, 0)
+	$MovePlayer/AnimPlayer.play("Slash")
+	yield(get_tree().create_timer(1), "timeout")
+	for x in range ($Fighters.fighters.size()):
+		$Fighters.move_kind = "attack"
+		$Fighters.move_type = "neutral"
+		$Fighters.enemy_type = $Enemies.get_type()
+		$Fighters.e_move_base = 15
+		$Fighters.e_attack = $Enemies.e_attack
+		var a_debuff = rng.randi_range(1, 100)
+		if a_debuff <= 25:
+			$Fighters.a_debuff = true
+		$Fighters.fighter_index = x
+		$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+	yield(get_tree().create_timer(0.7), "timeout")
+	$Fighters.damage_end()

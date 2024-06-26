@@ -90,7 +90,11 @@ func _ready():
 	set_positions()
 	fighters2 = fighters.duplicate()
 	#show_cursors(fighter_index)
-	#fighter_turn_used = fighters[fighter_index].get_turn_value()
+	yield(get_tree().create_timer(1), "timeout")
+	fighters_active = true
+	emit_signal("fighters_active")
+	select_next_fighter(+1)
+
 	
 func f_array_size():
 	var f_array_size: int = fighters.size()
@@ -180,11 +184,11 @@ func select_next_fighter2(index_offset):
 
 func _process(delta):
 	#fighter_turn_used = fighters[fighter_index].get_turn_value()
-	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen and not ongoing and not item_selecting and not enemies_active and not enemy_item and not magic_selecting and not halt:
-		print(fighter_index)
+	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen and not ongoing and not item_selecting and not enemies_active and not enemy_item and not magic_selecting and not halt and fighters_active:
+		#print(fighter_index)
 		select_next_fighter(+1)
-		fighters_active = true
-		emit_signal("fighters_active")
+		#fighters_active = true
+		#emit_signal("fighters_active")
 		
 	if Input.is_action_just_pressed("ui_left") and not BB_active and not attack_chosen and not ongoing and fighters_active and not item_selecting and not enemies_active and not enemy_item and not magic_selecting and not halt:
 		print(fighter_index)
@@ -377,8 +381,6 @@ func pick_fighter():
 			fighter_index = target_index
 		else:
 			fighter_index = rng.randi_range(0, fighters.size() - 1)
-	else:
-		fighter_index = fighter_x
 	
 func damage():
 	var immune = false
@@ -399,6 +401,13 @@ func damage():
 		#	fighter_index = rng.randi_range(0, fighters.size() - 1)
 	#else:
 		#fighter_index = fighter_x
+		
+	#if move_spread == "spread":
+		#for x in range (fighters.size()):
+			#fighter_index = x
+	#else:
+		#pass
+		
 	var f_defense = fighters[fighter_index].get_f_defense()
 	var fighter_type = fighters[fighter_index].get_status("type")
 	if fighter_type != "neutral" and fighter_type == move_type:
@@ -455,7 +464,14 @@ func damage():
 		fighters[fighter_index].anxious()
 	if sp_loss and not immune:
 		fighters[fighter_index].SP_loss(SP_amount)
-	yield(get_tree().create_timer(1.7), "timeout")
+	if move_spread == "single":
+		yield(get_tree().create_timer(1.7), "timeout")
+		damage_end()
+	else:
+		huds_update()
+		reset_status()
+	
+func damage_end():
 	huds_update()
 	for x in range (fighters.size() -1, -1, -1):
 		var dead = fighters[x].death_count()
@@ -544,6 +560,21 @@ func huds_heal_update():
 		$HUDS.irina_update()
 		
 func all_heal_update():
+	$HUDS.stun = fighters[fighter_index].get_status("stun")
+	$HUDS.poison = fighters[fighter_index].get_status("poison")
+	$HUDS.anxious = fighters[fighter_index].get_status("anxious")
+	$HUDS.wimpy = fighters[fighter_index].get_status("wimpy")
+	$HUDS.dizzy = fighters[fighter_index].get_status("dizzy")
+	$HUDS.targeted = fighters[fighter_index].get_status("targeted")
+	$HUDS.a_buff = fighters[fighter_index].get_status("a_buff")
+	$HUDS.a_debuff = fighters[fighter_index].get_status("a_debuff")
+	$HUDS.m_buff = fighters[fighter_index].get_status("m_buff")
+	$HUDS.m_debuff = fighters[fighter_index].get_status("m_debuff")
+	$HUDS.d_buff = fighters[fighter_index].get_status("d_buff")
+	$HUDS.d_debuff = fighters[fighter_index].get_status("d_debuff")
+	$HUDS.current_type = fighters[fighter_index].get_status("type")
+	
+	
 	if fighter_name == "gary":
 		$HUDS.gary_update()
 	if fighter_name == "jacques":
@@ -595,6 +626,11 @@ func fighters_active_check():
 	if max_turns == array_size:
 		emit_signal ("enemies_enabled")
 		enemies_active = true
+	else:
+		yield(get_tree().create_timer(0.8), "timeout")
+		fighters_active = true
+		emit_signal("fighters_active")
+		select_next_fighter(+1)
 
 func _on_WorldRoot_f_index_reset():
 	fighters.remove(fighter_index)
@@ -718,6 +754,7 @@ func item_used():
 			f_health = fighters2[x].get_f_health()
 			$HUDS.health = health
 			$HUDS.f_health = f_health
+			fighter_index = x
 			all_heal_update()
 			#fighters2[x].huds_update_heal()
 	if restore:
@@ -785,7 +822,8 @@ func item_used():
 	remedy_b = false
 	perfect_p = false
 	item_selecting = false
-	yield(get_tree().create_timer(0.3), "timeout")
+	#yield(get_tree().create_timer(0.3), "timeout")
+	yield(get_tree().create_timer(1), "timeout")
 	fighters_active_check()
 
 func buff():
@@ -869,9 +907,16 @@ func _on_Enemies_fighters_active():
 			max_turns += 1
 	enemies_active = false
 	fighter_index = -1
+	
 	if max_turns == fighters2.size():
 		emit_signal ("enemies_enabled")
 		enemies_active = true
+		
+	yield(get_tree().create_timer(0.8), "timeout")
+	select_next_fighter(+1)
+	fighters_active = true
+	emit_signal("fighters_active")
+		
 		
 func revive_healing():
 	var dead = fighters2[target_index].death_count()
