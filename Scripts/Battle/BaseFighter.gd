@@ -362,6 +362,7 @@ func damage(amount: int, damage_type: String):
 	yield(get_tree().create_timer(1.6), "timeout")
 	if health == 0:
 		dead = true
+		lose_buffs()
 		turn_used = true
 		hide = true
 		$AnimationPlayer.play("Fighter_Dead")
@@ -376,9 +377,27 @@ func poison_damage():
 	health = max(0, health - amount)
 	if health == 0:
 		dead = true
+		lose_buffs()
 		turn_used = true
 		hide = true
 		$AnimationPlayer.play("Fighter_Dead")
+		
+func lose_buffs():
+	if a_buff:
+		a_buff = false
+		a_buff_timer = 0
+		f_attack -= (f_attack * 0.2)
+		whammy_chance -= 1
+	if m_buff:
+		m_buff = false
+		m_buff_timer = 0
+		f_magic -= (f_magic * 0.2)
+		whammy_chance -= 1
+	if d_buff:
+		d_buff = false
+		d_buff_timer = 0
+		f_defense -= (f_defense * 0.2)
+		whammy_chance -= 1
 
 func type_damage(damage_type):
 	if damage_type == "neutral":
