@@ -560,20 +560,19 @@ func huds_heal_update():
 		$HUDS.irina_update()
 		
 func all_heal_update():
-	$HUDS.stun = fighters[fighter_index].get_status("stun")
-	$HUDS.poison = fighters[fighter_index].get_status("poison")
-	$HUDS.anxious = fighters[fighter_index].get_status("anxious")
-	$HUDS.wimpy = fighters[fighter_index].get_status("wimpy")
-	$HUDS.dizzy = fighters[fighter_index].get_status("dizzy")
-	$HUDS.targeted = fighters[fighter_index].get_status("targeted")
-	$HUDS.a_buff = fighters[fighter_index].get_status("a_buff")
-	$HUDS.a_debuff = fighters[fighter_index].get_status("a_debuff")
-	$HUDS.m_buff = fighters[fighter_index].get_status("m_buff")
-	$HUDS.m_debuff = fighters[fighter_index].get_status("m_debuff")
-	$HUDS.d_buff = fighters[fighter_index].get_status("d_buff")
-	$HUDS.d_debuff = fighters[fighter_index].get_status("d_debuff")
-	$HUDS.current_type = fighters[fighter_index].get_status("type")
-	
+	$HUDS.stun = fighters2[fighter_index].get_status("stun")
+	$HUDS.poison = fighters2[fighter_index].get_status("poison")
+	$HUDS.anxious = fighters2[fighter_index].get_status("anxious")
+	$HUDS.wimpy = fighters2[fighter_index].get_status("wimpy")
+	$HUDS.dizzy = fighters2[fighter_index].get_status("dizzy")
+	$HUDS.targeted = fighters2[fighter_index].get_status("targeted")
+	$HUDS.a_buff = fighters2[fighter_index].get_status("a_buff")
+	$HUDS.a_debuff = fighters2[fighter_index].get_status("a_debuff")
+	$HUDS.m_buff = fighters2[fighter_index].get_status("m_buff")
+	$HUDS.m_debuff = fighters2[fighter_index].get_status("m_debuff")
+	$HUDS.d_buff = fighters2[fighter_index].get_status("d_buff")
+	$HUDS.d_debuff = fighters2[fighter_index].get_status("d_debuff")
+	$HUDS.current_type = fighters2[fighter_index].get_status("type")
 	
 	if fighter_name == "gary":
 		$HUDS.gary_update()
@@ -826,8 +825,11 @@ func item_used():
 	yield(get_tree().create_timer(1), "timeout")
 	fighters_active_check()
 
-func buff():
-	fighters2[target_index].buff()
+func buff(id : String):
+	fighters2[target_index].apply_buff(id)
+	
+func random_buff():
+	fighters2[target_index].random_buff()
 
 func _on_ItemInventory_battle_item_chosen():
 	selector_index = fighter_index

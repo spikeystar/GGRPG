@@ -572,6 +572,7 @@ func _on_ItemInventory_all_battle_item_chosen():
 		window_open = true
 	
 func item_animation():
+	yield(get_tree().create_timer(0.3), "timeout")
 	$ItemUsage.show()
 	$ItemUsage/ItemPlayer.play("Item_Usage")
 	yield(get_tree().create_timer(1.2), "timeout")
@@ -601,7 +602,7 @@ func _on_Fighters_item_chosen():
 		$ItemUsage/Item.frame = 3
 		$Fighters.heal = true
 		$Fighters.HP_amount = 30
-		$Fighters.buff()
+		$Fighters.random_buff()
 	if item_id == "Ginger Tea":
 		$ItemUsage/Item.frame = 4
 		$Fighters.restore = true

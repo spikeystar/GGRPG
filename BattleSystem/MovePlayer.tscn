@@ -1160,6 +1160,18 @@ tracks/57/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
+tracks/58/type = "value"
+tracks/58/path = NodePath("Slash/Sprite:rotation_degrees")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/imported = false
+tracks/58/enabled = true
+tracks/58/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "Sabotage"
@@ -1334,7 +1346,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -30, 22 ), Vector2( -65, 50 ), Vector2( -97, 94 ), Vector2( -108, 89 ), Vector2( -112, 89 ), Vector2( -132, 85 ) ]
+"values": [ Vector2( -30, 22 ), Vector2( -66.5725, 51.8307 ), Vector2( -97, 94 ), Vector2( -108, 89 ), Vector2( -112, 89 ), Vector2( -132, 85 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Slash/Sprite2:frame")
@@ -1382,7 +1394,7 @@ tracks/10/keys = {
 "times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -1.07166, -1.65328, -7.29595, -5.81602, -6.98698, -6.98698 ]
+"values": [ -1.07166, 7.00251, -7.29595, -5.81602, -6.98698, -6.98698 ]
 }
 tracks/11/type = "value"
 tracks/11/path = NodePath("Slash/CanvasLayer:modulate")
@@ -1394,7 +1406,19 @@ tracks/11/keys = {
 "times": PoolRealArray( 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.18 ), Color( 1, 1, 1, 0.35 ), Color( 1, 1, 1, 0.2 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.117647 ), Color( 1, 1, 1, 0.235294 ), Color( 1, 1, 1, 0.117647 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Slash/Sprite:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 8.12365, 2.42262, 2.42262 ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -1755,9 +1779,9 @@ frame = 3
 
 [node name="Slash" type="Node2D" parent="."]
 visible = false
-position = Vector2( 41, 1 )
-rotation = 0.0885101
-scale = Vector2( 1.4, 1.3 )
+position = Vector2( 64, 5 )
+rotation = 0.0731452
+scale = Vector2( 1.6, 1.3 )
 
 [node name="Sprite2" type="Sprite" parent="Slash"]
 visible = false
