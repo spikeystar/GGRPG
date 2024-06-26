@@ -594,10 +594,10 @@ func _on_Fighters_enemies_enabled():
 					yield(get_tree().create_timer(3), "timeout")
 				if move_name == "Sting":
 					emit_signal("Sting")
-					yield(get_tree().create_timer(2.5), "timeout")
+					yield(get_tree().create_timer(3.3), "timeout")
 				if move_name == "Sabotage":
 					emit_signal("Sabotage")
-					yield(get_tree().create_timer(2.8), "timeout")
+					yield(get_tree().create_timer(3), "timeout")
 				if move_name == "Pester":
 					emit_signal("Pester")
 					yield(get_tree().create_timer(3), "timeout")

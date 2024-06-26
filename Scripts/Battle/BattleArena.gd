@@ -96,7 +96,6 @@ func _on_Fighters_BB_move():
 func _input(event):
 	var fighter_turn_used = $Fighters.get_turn_value()
 	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting:
-		BB_active = true
 		$BattleButtons.show()
 		$BattleButtons/AttackX.hide()
 		$BattleButtons/MagicX.hide()
@@ -111,6 +110,8 @@ func _input(event):
 			$BattleButtons/MagicX.show()
 		if item_stolen:
 			$BattleButtons/ItemX.show()
+		yield(get_tree().create_timer(0.1), "timeout")
+		BB_active = true
 		
 	if (Input.is_action_just_pressed("ui_down")) and BB_active and not defend_show and not magic_show and not item_show and not enemy_selecting:
 		defend_show = true
