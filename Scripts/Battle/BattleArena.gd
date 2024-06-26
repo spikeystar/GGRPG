@@ -977,3 +977,64 @@ func _on_Enemies_Sting():
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+
+func _on_Enemies_Sabotage():
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "neutral"
+	$Fighters.wimpy = true
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_attack = $Enemies.e_attack
+	$MovePlayer.position = fighter_OG_position + Vector2(24, -9)
+	$MovePlayer/AnimPlayer.play("Sabotage")
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+
+func _on_Enemies_Pester():
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "neutral"
+	$Fighters.anxious = true
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_attack = $Enemies.e_attack
+	$MovePlayer.position = fighter_OG_position + Vector2(20, -60)
+	$MovePlayer/AnimPlayer.play("Pester")
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+
+func _on_Enemies_Extort():
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "neutral"
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_attack = $Enemies.e_attack
+	$Fighters.sp_loss = true
+	$Fighters.SP_amount = int(PartyStats.party_max_sp * 0.1)
+	$MovePlayer.position = fighter_OG_position + Vector2(0, -10)
+	$MovePlayer/AnimPlayer.play("Extort")
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()

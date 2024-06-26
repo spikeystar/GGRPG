@@ -89,6 +89,7 @@ func _ready():
 	#fighters = get_children()
 	set_positions()
 	fighters2 = fighters.duplicate()
+	#show_cursors(fighter_index)
 	#fighter_turn_used = fighters[fighter_index].get_turn_value()
 	
 func f_array_size():
@@ -452,7 +453,7 @@ func damage():
 		fighters[fighter_index].multi_debuff()
 	if anxious and not immune and not is_dead:
 		fighters[fighter_index].anxious()
-	if sp_loss and not immune and not is_dead:
+	if sp_loss and not immune:
 		fighters[fighter_index].SP_loss(SP_amount)
 	yield(get_tree().create_timer(1.7), "timeout")
 	huds_update()
