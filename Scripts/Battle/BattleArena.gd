@@ -572,6 +572,7 @@ func _on_ItemInventory_all_battle_item_chosen():
 		window_open = true
 	
 func item_animation():
+	yield(get_tree().create_timer(0.3), "timeout")
 	$ItemUsage.show()
 	$ItemUsage/ItemPlayer.play("Item_Usage")
 	yield(get_tree().create_timer(1.2), "timeout")
@@ -580,6 +581,7 @@ func item_animation():
 	yield(get_tree().create_timer(1), "timeout")
 	
 func _on_Fighters_item_chosen():
+	fighter_selection = false
 	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
 	var item_id = $ItemWindow/ItemWindowPanel/ItemInventory.item_id
 	$ItemUsage.position = selector_position
@@ -600,7 +602,7 @@ func _on_Fighters_item_chosen():
 		$ItemUsage/Item.frame = 3
 		$Fighters.heal = true
 		$Fighters.HP_amount = 30
-		$Fighters.buff()
+		$Fighters.random_buff()
 	if item_id == "Ginger Tea":
 		$ItemUsage/Item.frame = 4
 		$Fighters.restore = true
@@ -622,7 +624,6 @@ func _on_Fighters_item_chosen():
 	item_animation()
 	yield(get_tree().create_timer(1.5), "timeout")
 	emit_signal("action_ended")
-	fighter_selection = false
 	attack_ended = true
 	ongoing = false
 	Party.remove_item()
@@ -816,7 +817,7 @@ func _on_Enemies_e_magic_damage_finish():
 	$Fighters.ongoing = false
 	emit_signal("action_ended")
 	attack_ended = true
-	fighter_selection = false
+	#fighter_selection = false
 	attack_show = false
 	$Fighters.BB_active = false
 	$Fighters.magic_selecting = false
@@ -922,9 +923,6 @@ func _on_Enemies_Barrage():
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
-	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.d_debuff = true
@@ -942,9 +940,6 @@ func _on_Enemies_Beat_Down():
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
-	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.enemy_type = $Enemies.get_type()
@@ -962,9 +957,6 @@ func _on_Enemies_Sting():
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
-	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.poison = true
@@ -977,3 +969,79 @@ func _on_Enemies_Sting():
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+
+func _on_Enemies_Sabotage():
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "neutral"
+	$Fighters.wimpy = true
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_attack = $Enemies.e_attack
+	$MovePlayer.position = fighter_OG_position + Vector2(24, -9)
+	$MovePlayer/AnimPlayer.play("Sabotage")
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+
+func _on_Enemies_Pester():
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "neutral"
+	$Fighters.anxious = true
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_attack = $Enemies.e_attack
+	$MovePlayer.position = fighter_OG_position + Vector2(20, -60)
+	$MovePlayer/AnimPlayer.play("Pester")
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+
+func _on_Enemies_Extort():
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "neutral"
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_attack = $Enemies.e_attack
+	$Fighters.sp_loss = true
+	$Fighters.SP_amount = int(PartyStats.party_max_sp * 0.1)
+	$MovePlayer.position = fighter_OG_position + Vector2(0, -10)
+	$MovePlayer/AnimPlayer.play("Extort")
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+
+func _on_Enemies_Slash():
+	$Fighters.move_spread = "spread"
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$MovePlayer.position = Vector2(0, 0)
+	$MovePlayer/AnimPlayer.play("Slash")
+	yield(get_tree().create_timer(1), "timeout")
+	for x in range ($Fighters.fighters.size()):
+		$Fighters.move_kind = "attack"
+		$Fighters.move_type = "neutral"
+		$Fighters.enemy_type = $Enemies.get_type()
+		$Fighters.e_move_base = 15
+		$Fighters.e_attack = $Enemies.e_attack
+		var a_debuff = rng.randi_range(1, 100)
+		if a_debuff <= 25:
+			$Fighters.a_debuff = true
+		$Fighters.fighter_index = x
+		$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+	yield(get_tree().create_timer(0.7), "timeout")
+	$Fighters.damage_end()

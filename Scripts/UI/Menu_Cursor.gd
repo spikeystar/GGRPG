@@ -21,6 +21,7 @@ func _process(delta):
 	var input := Vector2.ZERO
 	
 	if Input.is_action_just_pressed("ui_up"):
+		flicker_control()
 		input.y -= 1
 		emit_signal("item_active")
 		emit_signal("magic_active")
@@ -129,3 +130,8 @@ func _on_SpellList_spell_chosen():
 
 func _on_SpellList_ally_spell_chosen():
 	spell_selected = true
+
+func flicker_control():
+	modulate.a = 0
+	yield(get_tree().create_timer(0.05), "timeout")
+	modulate.a = 1

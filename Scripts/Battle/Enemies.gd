@@ -68,6 +68,20 @@ signal Basic
 signal Barrage
 signal Beat_Down
 signal Sting
+signal Sabotage
+signal Pester
+signal Extort
+signal Slash
+signal Splat
+signal Asphyxiate
+signal Stream_Strike
+signal Bubble_Ring
+signal Friction
+signal Aero_Bullet
+signal Squall
+signal Zap
+signal Terra_Arrow
+signal Gravel_Spat
 
 func _ready():
 	enemies = $Field.get_children()
@@ -581,6 +595,21 @@ func _on_Fighters_enemies_enabled():
 				if move_name == "Sting":
 					emit_signal("Sting")
 					yield(get_tree().create_timer(2.5), "timeout")
+				if move_name == "Sabotage":
+					emit_signal("Sabotage")
+					yield(get_tree().create_timer(2.8), "timeout")
+				if move_name == "Pester":
+					emit_signal("Pester")
+					yield(get_tree().create_timer(3), "timeout")
+				if move_name == "Extort":
+					emit_signal("Extort")
+					yield(get_tree().create_timer(3.5), "timeout")
+				if move_name == "Slash":
+					emit_signal("Slash")
+					yield(get_tree().create_timer(3.8), "timeout")
+					
+					
+					
 				enemies[x].reset_animation()
 			elif stun:
 				enemy_turns += 1
