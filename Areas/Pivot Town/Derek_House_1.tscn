@@ -497,7 +497,7 @@ position = Vector2( 284.473, 89.5117 )
 position = Vector2( 76.8052, -37.4027 )
 
 [node name="Daisy Pot" parent="Node2D" instance=ExtResource( 5 )]
-modulate = Color( 0.91632, 0.9016, 0.92, 0.960784 )
+modulate = Color( 0.917647, 0.901961, 0.921569, 1 )
 position = Vector2( 164.103, 210.144 )
 grid_size = Vector2( 0.3, 0.3 )
 texture = ExtResource( 26 )
@@ -506,7 +506,6 @@ height = 32.0
 floor_height = 70.0
 depth_test_offset = Vector3( 0, 100, 0 )
 preview_collision_box = false
-use_transparency = true
 
 [node name="Ivy" type="Sprite" parent="Node2D"]
 position = Vector2( 190.469, -101.999 )

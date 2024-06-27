@@ -541,7 +541,7 @@ script = ExtResource( 38 )
 height = 55.0
 
 [node name="Daisy Pot" parent="Node2D" instance=ExtResource( 14 )]
-modulate = Color( 0.91632, 0.9016, 0.92, 0.960784 )
+modulate = Color( 0.921569, 0.901961, 0.921569, 1 )
 position = Vector2( 394.419, 78.9359 )
 grid_size = Vector2( 0.3, 0.3 )
 texture = ExtResource( 13 )
@@ -550,7 +550,6 @@ height = 32.0
 floor_height = 70.0
 depth_test_offset = Vector3( 0, 100, 0 )
 preview_collision_box = false
-use_transparency = true
 
 [node name="Violet Pot" parent="Node2D" instance=ExtResource( 14 )]
 position = Vector2( -220.788, 41.1566 )
