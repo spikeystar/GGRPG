@@ -8,7 +8,7 @@ export var spawn_z = 0
 export var ACCELERATION = 75
 export var CHASE_SPEED = 50
 export var WANDER_SPEED = 20
-export var FRICTION = 10
+export var FRICTION : float 
 export var MIN_IDLE_TIME = 1
 export var MAX_IDLE_TIME = 3
 export var MIN_WANDER_TIME = 1
@@ -41,6 +41,7 @@ var wander_destination : Vector2
 var direction = Vector2.ZERO
 var player_in_radius = false
 var chase_fatigued = false
+var initial_z
 
 enum ENEMY_STATE {
 IDLE,
@@ -59,10 +60,13 @@ func _ready():
 	#print(origin)
 	floor_z = spawn_z
 	pos_z = spawn_z
+	initial_z = pos_z
 	state = ENEMY_STATE.IDLE
 	
 func _physics_process(delta):
 	var player = PlayerManager.player_motion_root
+	
+	$BattleTrigger.height = pos_z
 	
 	#print(ENEMY_STATE.keys()[state])
 	#print(player.floor_z - floor_z)
@@ -74,12 +78,19 @@ func _physics_process(delta):
 	
 	match state:
 		ENEMY_STATE.IDLE:
+			if not ground_enemy:
+				raise_height(delta)
+				pos_z = min(initial_z, pos_z)
+			
 			if timer == 0:
 				state = ENEMY_STATE.WANDER
 				timer = rng.randf_range(MIN_WANDER_TIME, MAX_WANDER_TIME)
 				random_direction()
 			
 		ENEMY_STATE.RETURN:
+			if not ground_enemy:
+				raise_height(delta)
+				pos_z = min(initial_z, pos_z)
 			
 			var return_spot = (origin - self.global_position).normalized()
 			velocity = velocity.move_toward(return_spot * WANDER_SPEED, ACCELERATION * delta)
@@ -88,19 +99,31 @@ func _physics_process(delta):
 				chase_fatigued = false
 				state = ENEMY_STATE.IDLE
 				timer = rng.randf_range(MIN_IDLE_TIME, MAX_IDLE_TIME)
+				apply_friction(delta)
 				
 		ENEMY_STATE.WANDER:
+			if not ground_enemy:
+				raise_height(delta)
+				pos_z = min(initial_z, pos_z)
 			
 			velocity = velocity.move_toward(direction * WANDER_SPEED, ACCELERATION * delta)
 			if timer == 0 || wander_destination.distance_to(global_position) < 10:
 				timer = 0
 				state = ENEMY_STATE.RETURN
+				apply_friction(delta)
+				
 				
 		ENEMY_STATE.CHASE:
 			
-			var diffToTarget = player.global_position - self.global_position;
+			var diffToTarget = (player.global_position) - self.global_position;
 			var direction = diffToTarget.normalized()
 			velocity = velocity.move_toward(direction * CHASE_SPEED, ACCELERATION * delta)
+			apply_friction(delta)
+			
+			if not ground_enemy:
+				lower_height(delta)
+				pos_z = max(player.floor_z, pos_z)
+
 
 
 
@@ -160,13 +183,24 @@ func project_onto_plane(vector: Vector2, normal: Vector2) -> Vector2:
 func apply_friction(delta):
 	velocity *= exp(delta * -FRICTION)
 	
+func lower_height(delta):
+	pos_z *= exp(delta * -1.5)
+	
+func raise_height(delta):
+	pos_z *= exp(delta * 1.5)
+	
 func check_chase():
 	var player = PlayerManager.player_motion_root
+	var playerTooHigh
 	var diffToTarget = player.global_position - self.global_position;
 	var diffToOrigin = self.global_position - origin
 	
+	if PlayerManager.jumping:
+		pass
+	else:
+		playerTooHigh = (player.floor_z - floor_z) > MAX_Z_DIFF
+		
 	var playerTooFar = diffToTarget.length() > MAX_CHASE_DISTANCE
-	var playerTooHigh = (player.floor_z - floor_z) > MAX_Z_DIFF
 	var originTooFar = diffToOrigin.length() > (WANDER_RADIUS + MAX_CHASE_DISTANCE / 2)
 	var should_start_chase = (player_in_radius && !chase_fatigued) && !freeze && !playerTooHigh && !originTooFar
 	var should_end_chase = playerTooFar || freeze || playerTooHigh || originTooFar

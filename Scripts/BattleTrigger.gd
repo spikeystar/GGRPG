@@ -12,7 +12,6 @@ signal triggered
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
 	position.y += height
-	print(height)
 
 func _physics_process(delta):
 	player_height = PlayerManager.player_motion_root.pos_z

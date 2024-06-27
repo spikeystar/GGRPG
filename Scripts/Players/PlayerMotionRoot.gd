@@ -57,6 +57,8 @@ func _physics_process(delta):
 	var freeze = PlayerManager.freeze
 	var sleep = PlayerManager.sleep
 	var ongoing = PlayerManager.ongoing
+	var jumping = PlayerManager.jumping
+	jumping = false
 	# Floor height could change at any time with movable platforms
 	update_floor()
 	
@@ -88,6 +90,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_push") and is_on_ground and not freeze:
 		is_on_ground = false
 		PlayerManager.sleep = false
+		jumping = true
 		vel.z = jump_velocity
 		
 	if Input.is_action_pressed("ui_push") and sleep and not ongoing:

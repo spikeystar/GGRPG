@@ -11,6 +11,7 @@ var is_navmesh_ready = false
 var freeze = false
 var sleep = false
 var ongoing = false
+var jumping = false
 
 func _ready():
 	spawn_player()

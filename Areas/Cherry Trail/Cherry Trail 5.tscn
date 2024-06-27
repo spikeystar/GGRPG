@@ -672,7 +672,6 @@ align = 1
 
 [node name="Cheribo" parent="." instance=ExtResource( 41 )]
 position = Vector2( 45, -50 )
-ground_enemy = true
 
 [node name="Flutterbie" parent="." instance=ExtResource( 7 )]
 position = Vector2( 249, -89 )

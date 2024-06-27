@@ -127,11 +127,14 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, -1 ), Vector2( 2, -1 ) ]
+"values": [ Vector2( 3, -2 ), Vector2( 3, -2 ) ]
 }
 
 [node name="Cheribo" type="YSort"]
 script = ExtResource( 5 )
+ground_enemy = true
+min_speed = 0.4
+max_speed = 0.5
 target_scene = ExtResource( 8 )
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
@@ -139,13 +142,16 @@ position = Vector2( 0, 1 )
 collision_mask = 2
 collision/safe_margin = 0.5
 script = ExtResource( 1 )
-WANDER_SPEED = 32
-FRICTION = 1
+ACCELERATION = 50
+CHASE_SPEED = 40
+WANDER_SPEED = 25
+FRICTION = 1.0
 MIN_IDLE_TIME = 3
 MAX_IDLE_TIME = 5
-MAX_WANDER_TIME = 4
-WANDER_RADIUS = 80
-MAX_CHASE_DISTANCE = 180
+MIN_WANDER_TIME = 2
+MAX_WANDER_TIME = 5
+WANDER_RADIUS = 65
+MAX_CHASE_DISTANCE = 160
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
 position = Vector2( 2, 0.0728853 )
@@ -184,6 +190,7 @@ shape = SubResource( 179 )
 [node name="ShadowVisualRoot" type="Node2D" parent="ShadowYSort"]
 
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
+modulate = Color( 1, 1, 1, 0.75 )
 position = Vector2( 2, -1 )
 scale = Vector2( 0.914288, 0.918545 )
 texture = ExtResource( 6 )

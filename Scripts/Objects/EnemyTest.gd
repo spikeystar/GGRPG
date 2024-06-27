@@ -8,6 +8,8 @@ export var gravity = 9.8
 export var max_vertical_speed = 20
 export var jump_velocity = 10
 export var ground_enemy : bool
+export var min_speed : float
+export var max_speed : float
 
 onready var PlayerDetection = $MotionRoot/PlayerDetection
 onready var Trigger = $MotionRoot/BattleTrigger
@@ -95,7 +97,7 @@ func _physics_process(delta):
 	if motion_root.velocity.y > VEL_EPSILON:
 		anim_player.play("walk_front")
 	
-	anim_player.playback_speed = lerp(0.5, 1.5, clamp(abs(motion_root.velocity.length() / VEL_ANIM_MAX), 0, 1));
+	anim_player.playback_speed = lerp(min_speed, max_speed, clamp(abs(motion_root.velocity.length() / VEL_ANIM_MAX), 0, 1));
 	#if motion_root.velocity.y == 0:
 		#anim_player.play("walk_front")
 	
