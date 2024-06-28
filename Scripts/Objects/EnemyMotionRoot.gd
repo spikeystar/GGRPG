@@ -118,7 +118,7 @@ func _physics_process(delta):
 			var diffToTarget = (player.global_position) - self.global_position;
 			var direction = diffToTarget.normalized()
 			velocity = velocity.move_toward(direction * CHASE_SPEED, ACCELERATION * delta)
-			apply_friction(delta)
+			apply_friction2(delta)
 			
 			if not ground_enemy:
 				lower_height(delta)
@@ -182,6 +182,9 @@ func project_onto_plane(vector: Vector2, normal: Vector2) -> Vector2:
 
 func apply_friction(delta):
 	velocity *= exp(delta * -FRICTION)
+	
+func apply_friction2(delta):
+	velocity *= exp(delta * (-FRICTION/2))
 	
 func lower_height(delta):
 	pos_z *= exp(delta * -1.5)

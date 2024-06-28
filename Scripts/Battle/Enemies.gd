@@ -255,6 +255,7 @@ func enemy_damage():
 		target_enemy.reset_animation()
 	if enemies.size() == 0:
 		emit_signal("victory")
+		SceneManager.victory = true
 	emit_signal("e_damage_finish")
 		
 func magic_damage():
@@ -311,6 +312,7 @@ func magic_damage():
 		target_enemy.reset_animation()
 		
 	if enemies.size() == 0:
+		SceneManager.victory = true
 		emit_signal("victory")
 		
 	if stun and not immune and not dead:
@@ -607,7 +609,24 @@ func _on_Fighters_enemies_enabled():
 				if move_name == "Slash":
 					emit_signal("Slash")
 					yield(get_tree().create_timer(3.8), "timeout")
-					
+				if move_name == "Splat":
+					emit_signal("Splat")
+					yield(get_tree().create_timer(3.8), "timeout")
+				if move_name == "Asphyxiate":
+					emit_signal("Asphyxiate")
+					yield(get_tree().create_timer(4.5), "timeout")
+				if move_name == "Bubble Ring":
+					emit_signal("Bubble_Ring")
+					yield(get_tree().create_timer(5), "timeout")
+				if move_name == "Stream Strike":
+					emit_signal("Stream_Strike")
+					yield(get_tree().create_timer(4.5), "timeout")
+				if move_name == "Friction":
+					emit_signal("Friction")
+					yield(get_tree().create_timer(4), "timeout")
+				if move_name == "Aero Bullet":
+					emit_signal("Aero_Bullet")
+					yield(get_tree().create_timer(3.5), "timeout")
 					
 					
 				enemies[x].reset_animation()

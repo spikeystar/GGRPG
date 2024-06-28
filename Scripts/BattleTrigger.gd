@@ -30,6 +30,11 @@ func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root and not Global.battle_ended and able:
 		_on_touch_area()
 		detected = true
+		
+	if "is_player_jump_shape" in body and body.is_player_jump_shape and not Global.battle_ended and able:
+		_on_touch_area()
+		detected = true
+		print("jump shape")
 	
 func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")

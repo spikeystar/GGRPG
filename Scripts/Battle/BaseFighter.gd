@@ -517,7 +517,7 @@ func turn_restored():
 		if defend:
 			f_defense -= (f_defense * 0.2)
 			defend = false
-	elif stun:
+	if stun:
 		turn_used = true
 		status_countdown()
 		if defend:
@@ -600,6 +600,7 @@ func status_countdown():
 		stun_timer -= 1
 		if stun_timer == 0:
 			stun = false
+			turn_used = false
 	if wimpy:
 		wimpy_timer -= 1
 		if wimpy_timer == 0:

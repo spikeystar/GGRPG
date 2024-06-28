@@ -905,19 +905,12 @@ func _on_Enemies_update_move_window():
 	$Fighters/HUDS.hiding()
 	
 func _on_Enemies_Basic():
-	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.move_spread = "single"
 	$Fighters.e_move_base = 1
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
-	var sp_loss = rng.randi_range(1, 100)
-	if sp_loss <= 50:
-		$Fighters.sp_loss = true
-		$Fighters.SP_amount = int(PartyStats.party_max_sp * 0.1)
 	$Fighters.damage()
 
 func _on_Enemies_Barrage():
@@ -1046,3 +1039,139 @@ func _on_Enemies_Slash():
 	$Fighters/HUDS.showing()
 	yield(get_tree().create_timer(0.7), "timeout")
 	$Fighters.damage_end()
+
+func _on_Enemies_Splat():
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	$Fighters.move_kind = "magic"
+	$Fighters.move_type = "neutral"
+	$Fighters.m_debuff = true
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_magic = $Enemies.e_magic
+	$MovePlayer.position = fighter_OG_position + Vector2(125, -82)
+	$MovePlayer/AnimPlayer.play("Splat")
+	yield(get_tree().create_timer(1.2), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+
+func _on_Enemies_Asphyxiate():
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	$Fighters.move_kind = "magic"
+	$Fighters.move_type = "neutral"
+	$Fighters.dizzy = true
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_magic = $Enemies.e_magic
+	$MovePlayer.position = fighter_OG_position + Vector2(-6, -27)
+	$MovePlayer/AnimPlayer.play("Asphyxiate")
+	yield(get_tree().create_timer(1.8), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+
+func _on_Enemies_Bubble_Ring():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	$Fighters.move_kind = "magic"
+	$Fighters.move_type = "water"
+	var dizzy = rng.randi_range(1, 100)
+	if dizzy <= 50:
+		$Fighters.dizzy = true
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_magic = $Enemies.e_magic
+	$MovePlayer.position = fighter_OG_position + Vector2(260, -154)
+	$MovePlayer/AnimPlayer.play("Bubble_Ring")
+	yield(get_tree().create_timer(2), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+
+func _on_Enemies_Stream_Strike():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "water"
+	var d_debuff = rng.randi_range(1, 100)
+	if d_debuff <= 50:
+		$Fighters.d_debuff = true
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 15
+	$Fighters.e_attack = $Enemies.e_attack
+	$MovePlayer.position = fighter_OG_position + Vector2(247, -95)
+	$MovePlayer/AnimPlayer.play("Stream_Strike")
+	yield(get_tree().create_timer(2), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+
+func _on_Enemies_Friction():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	var fighter = $Fighters.get_f_current()
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "fire"
+	var stun = rng.randi_range(1, 100)
+	if stun <= 30:
+		$Fighters.stun = true
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_attack = $Enemies.e_attack
+	$MovePlayer.position = fighter_OG_position + Vector2(5, -35)
+	$MovePlayer/AnimPlayer.play("Friction")
+	var og_color : Color
+	og_color.r = 1
+	og_color.g = 1
+	og_color.b = 1
+	var modulate_color : Color
+	modulate_color.r = 1
+	modulate_color.g = 0.25
+	modulate_color.b = 0
+	var tween = create_tween()
+	tween.tween_property(fighter, "modulate", modulate_color, 0.8)
+	yield(get_tree().create_timer(1), "timeout")
+	var tween2 = create_tween()
+	tween2.tween_property(fighter, "modulate", og_color, 0.7)
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+
+func _on_Enemies_Aero_Bullet():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "air"
+	var chance = rng.randi_range(1, 100)
+	if chance <= 50:
+		$Fighters.m_debuff = true
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_attack = $Enemies.e_attack
+	$MovePlayer.position = fighter_OG_position + Vector2(240, -93)
+	$MovePlayer/AnimPlayer.play("Aero_Bullet")
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
