@@ -602,7 +602,7 @@ e_attack = 15
 e_magic = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Aero Bullet"
+move1 = "Terra Arrow"
 
 [node name="Cheribo_battle2" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 190, 44 )
@@ -612,7 +612,7 @@ e_attack = 15
 e_magic = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Aero Bullet"
+move1 = "Terra Arrow"
 
 [node name="Cheribo_battle3" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 16, -23 )
@@ -622,7 +622,7 @@ e_attack = 15
 e_magic = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Aero Bullet"
+move1 = "Terra Arrow"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
@@ -1687,8 +1687,11 @@ visible = false
 [connection signal="Sabotage" from="Enemies" to="." method="_on_Enemies_Sabotage"]
 [connection signal="Slash" from="Enemies" to="." method="_on_Enemies_Slash"]
 [connection signal="Splat" from="Enemies" to="." method="_on_Enemies_Splat"]
+[connection signal="Squall" from="Enemies" to="." method="_on_Enemies_Squall"]
 [connection signal="Sting" from="Enemies" to="." method="_on_Enemies_Sting"]
 [connection signal="Stream_Strike" from="Enemies" to="." method="_on_Enemies_Stream_Strike"]
+[connection signal="Terra_Arrow" from="Enemies" to="." method="_on_Enemies_Terra_Arrow"]
+[connection signal="Zap" from="Enemies" to="." method="_on_Enemies_Zap"]
 [connection signal="all_enemy_spell" from="Enemies" to="." method="_on_Enemies_all_enemy_spell"]
 [connection signal="attack_f_index_reset" from="Enemies" to="Fighters" method="_on_Enemies_attack_f_index_reset"]
 [connection signal="e_damage_finish" from="Enemies" to="." method="_on_Enemies_e_damage_finish"]

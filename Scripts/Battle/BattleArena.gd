@@ -1175,3 +1175,72 @@ func _on_Enemies_Aero_Bullet():
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+
+func _on_Enemies_Squall():
+	$Fighters.move_spread = "spread"
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$MovePlayer.position = Vector2(0, 0)
+	$MovePlayer/AnimPlayer.play("Squall")
+	yield(get_tree().create_timer(1.5), "timeout")
+	for x in range ($Fighters.fighters.size()):
+		$Fighters.move_kind = "attack"
+		$Fighters.move_type = "air"
+		$Fighters.enemy_type = $Enemies.get_type()
+		$Fighters.e_move_base = 15
+		$Fighters.e_attack = $Enemies.e_attack
+		var chance = rng.randi_range(1, 100)
+		if chance <= 30:
+			$Fighters.random_debuff = true
+		$Fighters.fighter_index = x
+		$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+	yield(get_tree().create_timer(0.7), "timeout")
+	$Fighters.damage_end()
+
+func _on_Enemies_Zap():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	$Fighters.move_kind = "magic"
+	$Fighters.move_type = "air"
+	var chance = rng.randi_range(1, 100)
+	if chance <= 50:
+		$Fighters.dizzy = true
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_magic = $Enemies.e_magic
+	$MovePlayer.position = fighter_OG_position + Vector2(240, -90)
+	$MovePlayer/AnimPlayer.play("Zap")
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+
+
+func _on_Enemies_Terra_Arrow():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
+	var fighter_OG_position = $Fighters.get_f_OG_position()
+	$Fighters.move_kind = "attack"
+	$Fighters.move_type = "earth"
+	var chance = rng.randi_range(1, 100)
+	if chance <= 50:
+		$Fighters.a_debuff = true
+	$Fighters.enemy_type = $Enemies.get_type()
+	$Fighters.e_move_base = 10
+	$Fighters.e_attack = $Enemies.e_attack
+	$MovePlayer.position = fighter_OG_position + Vector2(240, -93)
+	$MovePlayer/AnimPlayer.play("Terra_Arrow")
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()

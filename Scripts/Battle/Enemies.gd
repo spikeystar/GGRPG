@@ -627,6 +627,15 @@ func _on_Fighters_enemies_enabled():
 				if move_name == "Aero Bullet":
 					emit_signal("Aero_Bullet")
 					yield(get_tree().create_timer(3.5), "timeout")
+				if move_name == "Squall":
+					emit_signal("Squall")
+					yield(get_tree().create_timer(4), "timeout")
+				if move_name == "Zap":
+					emit_signal("Zap")
+					yield(get_tree().create_timer(3.5), "timeout")
+				if move_name == "Terra Arrow":
+					emit_signal("Terra_Arrow")
+					yield(get_tree().create_timer(3.5), "timeout")
 					
 					
 				enemies[x].reset_animation()
