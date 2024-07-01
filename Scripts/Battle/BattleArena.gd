@@ -743,6 +743,10 @@ func _on_Enemies_single_enemy_spell():
 	if spell_id == "Icicle":
 		Icicle()
 		debuff_move = true
+	if spell_id == "Precious Beam":
+		Precious_Beam()
+		debuff_move = true
+		yield(get_tree().create_timer(2.5), "timeout")
 	yield(get_tree().create_timer(2), "timeout")
 	$Fighters.idle()
 	$Enemies.whammy_chance = $Fighters.get_status("whammy_chance")
@@ -770,6 +774,9 @@ func _on_Enemies_all_enemy_spell():
 	if spell_id == "Thunderstorm":
 		Thunderstorm()
 		yield(get_tree().create_timer(1.5), "timeout")
+	if spell_id == "Prism Snow":
+		Prism_Snow()
+		yield(get_tree().create_timer(1.2), "timeout")
 	yield(get_tree().create_timer(2), "timeout")
 	$Fighters.idle()
 	$Enemies.whammy_chance = $Fighters.get_status("whammy_chance")
@@ -880,6 +887,31 @@ func Icicle():
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters.battle_ready()
 	
+func Precious_Beam():
+	$WindowPlayer.playback_speed = 1.2
+	$WindowPlayer.play("darken")
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var fighter_node = $Fighters.get_f_current()
+	var fighter_position = $Fighters.get_f_OG_position()
+	var enemy_position = $Enemies.get_e_position() + Vector2(-127, 21)
+	$Enemies.damage_type = "fire"
+	$Enemies.move_type = "fire"
+	$Enemies.f_magic_base = 50
+	tween = create_tween()
+	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
+	yield(tween, "finished")
+	$Fighters.spell_2()
+	yield(get_tree().create_timer(3.5), "timeout")
+	$Enemies.m_debuff = true
+	#yield(get_tree().create_timer(1), "timeout")
+	$Fighters.idle()
+	var tween2 = create_tween()
+	tween2.tween_property(fighter_node, "position", fighter_position, 0.5)
+	$WindowPlayer.playback_speed = 1
+	$WindowPlayer.play_backwards("darken")
+	
 func Thunderstorm():
 	$WindowPlayer.playback_speed = 1.2
 	$WindowPlayer.play("darken")
@@ -898,6 +930,21 @@ func Thunderstorm():
 	$WindowPlayer.playback_speed = 1
 	$WindowPlayer.play_backwards("darken")
 	
+func Prism_Snow():
+	$WindowPlayer.playback_speed = 1.2
+	$WindowPlayer.play("darken")
+	$MovePlayer.position = Vector2(0,0)
+	$Enemies.damage_type = "water"
+	$Enemies.move_type = "water"
+	$Enemies.f_magic_base = 30
+	$Enemies.multi_debuff = true
+	yield(get_tree().create_timer(0.2), "timeout")
+	$Fighters.spell_2()
+	yield(get_tree().create_timer(0.6), "timeout")
+	$MovePlayer/AnimPlayer.play("Prism_Snow")
+	yield(get_tree().create_timer(1.6), "timeout")
+	$WindowPlayer.playback_speed = 1
+	$WindowPlayer.play_backwards("darken")
 	
 	
 	##### Enemy Attacks #####
@@ -1244,3 +1291,28 @@ func _on_Enemies_Terra_Arrow():
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+
+func _on_Enemies_Gravel_Spat():
+	$Fighters.move_spread = "spread"
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$MovePlayer.position = Vector2(0, 0)
+	$MovePlayer/AnimPlayer.play("Gravel_Spat")
+	$WindowPlayer.play("Gravel_Spat")
+	yield(get_tree().create_timer(1.5), "timeout")
+	for x in range ($Fighters.fighters.size()):
+		$Fighters.move_kind = "attack"
+		$Fighters.move_type = "earth"
+		$Fighters.enemy_type = $Enemies.get_type()
+		$Fighters.e_move_base = 15
+		$Fighters.e_attack = $Enemies.e_attack
+		var chance = rng.randi_range(1, 100)
+		if chance <= 25:
+			$Fighters.wimpy = true
+		$Fighters.fighter_index = x
+		$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+	yield(get_tree().create_timer(0.7), "timeout")
+	$Fighters.damage_end()

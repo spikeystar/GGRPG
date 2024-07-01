@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/Cherry Trail BA 1.jpg" type="Texture" id=1]
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_battle.tscn" type="PackedScene" id=2]
@@ -125,6 +125,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "Gravel_Spat"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4, -14 ), Vector2( 1, 10 ), Vector2( 1, -13 ), Vector2( -4, 11 ), Vector2( 4, -12 ), Vector2( -2, 11 ), Vector2( 1, -12 ), Vector2( 4, 13 ), Vector2( -2, -11 ), Vector2( -1, 12 ), Vector2( -1, -11 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=24]
@@ -602,7 +618,7 @@ e_attack = 15
 e_magic = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Terra Arrow"
+move1 = "Gravel Spat"
 
 [node name="Cheribo_battle2" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 190, 44 )
@@ -612,7 +628,7 @@ e_attack = 15
 e_magic = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Terra Arrow"
+move1 = "Gravel Spat"
 
 [node name="Cheribo_battle3" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 16, -23 )
@@ -622,7 +638,7 @@ e_attack = 15
 e_magic = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Terra Arrow"
+move1 = "Gravel Spat"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
@@ -1483,6 +1499,7 @@ anims/RESET = SubResource( 6 )
 [node name="WindowPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../DefenseWindow")
 autoplay = "Level_up_text"
+anims/Gravel_Spat = SubResource( 30 )
 anims/Level_up_text = SubResource( 24 )
 anims/RESET = SubResource( 10 )
 anims/battle_dia_open = SubResource( 13 )
@@ -1600,6 +1617,7 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1616,7 +1634,6 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1683,6 +1700,7 @@ visible = false
 [connection signal="Bubble_Ring" from="Enemies" to="." method="_on_Enemies_Bubble_Ring"]
 [connection signal="Extort" from="Enemies" to="." method="_on_Enemies_Extort"]
 [connection signal="Friction" from="Enemies" to="." method="_on_Enemies_Friction"]
+[connection signal="Gravel_Spat" from="Enemies" to="." method="_on_Enemies_Gravel_Spat"]
 [connection signal="Pester" from="Enemies" to="." method="_on_Enemies_Pester"]
 [connection signal="Sabotage" from="Enemies" to="." method="_on_Enemies_Sabotage"]
 [connection signal="Slash" from="Enemies" to="." method="_on_Enemies_Slash"]

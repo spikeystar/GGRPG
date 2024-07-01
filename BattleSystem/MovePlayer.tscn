@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://BattleSystem/BattleMoves/Sweet_Gift/Sweet Gift SS.png" type="Texture" id=1]
 [ext_resource path="res://Test/Testing Screenshot.png" type="Texture" id=2]
@@ -28,6 +28,9 @@
 [ext_resource path="res://BattleSystem/BattleMoves/Zap/Zap SS.png" type="Texture" id=26]
 [ext_resource path="res://BattleSystem/BattleMoves/Zap/Zap Misc.png" type="Texture" id=27]
 [ext_resource path="res://BattleSystem/BattleMoves/Terra_Arrow/Terra Arrow SS.png" type="Texture" id=28]
+[ext_resource path="res://BattleSystem/BattleMoves/Gravel_Spat/Gravel Spat SS.png" type="Texture" id=29]
+[ext_resource path="res://BattleSystem/BattleMoves/Prism_Snow/Prism Snow Texture.png" type="Texture" id=30]
+[ext_resource path="res://Misc/Shader/Prism_Snow Material.tres" type="Material" id=31]
 
 [sub_resource type="Animation" id=19]
 resource_name = "Aero_Bullet"
@@ -601,6 +604,70 @@ tracks/3/keys = {
 "values": [ 0.75 ]
 }
 
+[sub_resource type="Animation" id=23]
+resource_name = "Gravel_Spat"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Gravel Spat:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Gravel Spat/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 5 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Gravel Spat/Sprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.45 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.6 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Gravel Spat/Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 149, -80 ), Vector2( 99, -85 ), Vector2( 50, -9 ), Vector2( 2, 3 ), Vector2( -47, 69 ), Vector2( -96, 79 ), Vector2( -145, 145 ), Vector2( -194, 153 ), Vector2( -242, 232 ), Vector2( -291, 229 ), Vector2( -340, 296 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimPlayer:playback_speed")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.85 ]
+}
+
 [sub_resource type="Animation" id=5]
 resource_name = "Icicle"
 length = 1.4
@@ -727,6 +794,46 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.7 ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "Prism_Snow"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Prism_Snow:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Prism_Snow:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 1.1, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.4 ), Color( 1, 1, 1, 0.74902 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.74902 ), Color( 1, 1, 1, 0.4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimPlayer:playback_speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.8 ]
 }
 
 [sub_resource type="Animation" id=1]
@@ -2195,6 +2302,78 @@ tracks/121/keys = {
 "update": 0,
 "values": [ Vector2( -103, 3 ) ]
 }
+tracks/122/type = "value"
+tracks/122/path = NodePath("Gravel Spat:visible")
+tracks/122/interp = 1
+tracks/122/loop_wrap = true
+tracks/122/imported = false
+tracks/122/enabled = true
+tracks/122/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/123/type = "value"
+tracks/123/path = NodePath("Gravel Spat/Sprite:frame")
+tracks/123/interp = 1
+tracks/123/loop_wrap = true
+tracks/123/imported = false
+tracks/123/enabled = true
+tracks/123/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/124/type = "value"
+tracks/124/path = NodePath("Gravel Spat/Sprite:self_modulate")
+tracks/124/interp = 1
+tracks/124/loop_wrap = true
+tracks/124/imported = false
+tracks/124/enabled = true
+tracks/124/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/125/type = "value"
+tracks/125/path = NodePath("Gravel Spat/Sprite:position")
+tracks/125/interp = 1
+tracks/125/loop_wrap = true
+tracks/125/imported = false
+tracks/125/enabled = true
+tracks/125/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 148, -96 ) ]
+}
+tracks/126/type = "value"
+tracks/126/path = NodePath("Prism_Snow:visible")
+tracks/126/interp = 1
+tracks/126/loop_wrap = true
+tracks/126/imported = false
+tracks/126/enabled = true
+tracks/126/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/127/type = "value"
+tracks/127/path = NodePath("Prism_Snow:modulate")
+tracks/127/interp = 1
+tracks/127/loop_wrap = true
+tracks/127/imported = false
+tracks/127/enabled = true
+tracks/127/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.4 ) ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "Sabotage"
@@ -3264,8 +3443,10 @@ anims/Bubble_Ring = SubResource( 16 )
 anims/Earthslide = SubResource( 6 )
 anims/Extort = SubResource( 11 )
 anims/Friction = SubResource( 18 )
+anims/Gravel_Spat = SubResource( 23 )
 anims/Icicle = SubResource( 5 )
 anims/Pester = SubResource( 12 )
+anims/Prism_Snow = SubResource( 24 )
 anims/RESET = SubResource( 1 )
 anims/Sabotage = SubResource( 10 )
 anims/Slash = SubResource( 13 )
@@ -3328,6 +3509,29 @@ position = Vector2( 128.889, -87.7778 )
 rotation = 0.0742098
 scale = Vector2( 2.466, 2.99768 )
 texture = ExtResource( 10 )
+
+[node name="Sprite4" type="Sprite" parent="Earthslide"]
+visible = false
+position = Vector2( 92.2222, -63.3333 )
+scale = Vector2( 1.2, 1.13 )
+texture = ExtResource( 9 )
+hframes = 7
+frame = 1
+
+[node name="Sprite3" type="Sprite" parent="Earthslide"]
+visible = false
+position = Vector2( 46.6667, -41.1111 )
+scale = Vector2( 1.2, 1.13 )
+texture = ExtResource( 9 )
+hframes = 7
+
+[node name="Sprite2" type="Sprite" parent="Earthslide"]
+visible = false
+position = Vector2( 14.4444, -7.77778 )
+scale = Vector2( 1.2, 1.13 )
+texture = ExtResource( 9 )
+hframes = 7
+frame = 1
 
 [node name="Sprite" type="Sprite" parent="Earthslide"]
 texture = ExtResource( 9 )
@@ -3689,3 +3893,30 @@ scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 28 )
 hframes = 7
 vframes = 2
+
+[node name="Gravel Spat" type="Node2D" parent="."]
+visible = false
+position = Vector2( 29, 1 )
+
+[node name="Sprite" type="Sprite" parent="Gravel Spat"]
+modulate = Color( 1, 0.968627, 0.996078, 1 )
+position = Vector2( 148, -96 )
+scale = Vector2( 2.1, 2.1 )
+texture = ExtResource( 29 )
+hframes = 6
+
+[node name="Prism_Snow" type="Node2D" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.4 )
+
+[node name="TextureRect" type="TextureRect" parent="Prism_Snow"]
+self_modulate = Color( 1, 1, 1, 0.85 )
+material = ExtResource( 31 )
+margin_left = -450.0
+margin_top = -400.0
+margin_right = 450.0
+margin_bottom = 400.0
+rect_scale = Vector2( 0.87, 0.87 )
+rect_pivot_offset = Vector2( 450, 400 )
+texture = ExtResource( 30 )
+stretch_mode = 2

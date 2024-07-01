@@ -328,12 +328,17 @@ func magic_damage():
 	if d_debuff and not immune and not dead:
 		target_enemy.apply_debuff("defense")
 		yield(get_tree().create_timer(0.7), "timeout")
-	if random_debuff and not immune and not dead:
-		target_enemy.random_debuff()
-		yield(get_tree().create_timer(0.7), "timeout")
-	if multi_debuff and not immune and not dead:
-		target_enemy.multi_debuff()
-		yield(get_tree().create_timer(0.7), "timeout")
+		
+	if random_debuff:
+			var target_type = target_enemy.get_status("type")
+			var target_immune = false
+			var target_dead = false
+			if target_enemy.get_health() == 0:
+				target_dead = true
+			if target_type != "neutral" and target_type == move_type:
+				target_immune = true
+			if random_debuff and not target_immune and not target_dead:
+				target_enemy.random_debuff()
 		
 		
 	emit_signal("e_magic_damage_finish")
@@ -407,13 +412,7 @@ func all_magic_damage():
 		if d_debuff and not immune and not dead:
 			enemies[x].apply_debuff("defense")
 			yield(get_tree().create_timer(0.7), "timeout")
-		if random_debuff and not immune and not dead:
-			enemies[x].random_debuff()
-			yield(get_tree().create_timer(0.7), "timeout")
-		if multi_debuff and not immune and not dead:
-			enemies[x].multi_random_debuff()
-			yield(get_tree().create_timer(0.7), "timeout")
-
+			
 	yield(get_tree().create_timer(1.7), "timeout")
 	for x in range(enemies.size()):
 		if enemies[x].is_dead():
@@ -427,6 +426,34 @@ func all_magic_damage():
 	yield(get_tree().create_timer(0.8), "timeout")
 	if not SceneManager.victory:
 		victory_check()
+		
+	if random_debuff:
+		for x in range(enemies.size()):
+			enemy_index = x
+			var enemy_type = enemies[x].get_status("type")
+			var immune = false
+			var dead = false
+			if enemies[x].get_health() == 0:
+				dead = true
+			if enemy_type != "neutral" and enemy_type == move_type:
+				immune = true
+			if random_debuff and not immune and not dead:
+				enemies[x].random_debuff()
+				
+	if multi_debuff:
+		for x in range(enemies.size()):
+			enemy_index = x
+			var enemy_type = enemies[x].get_status("type")
+			var immune = false
+			var dead = false
+			if enemies[x].get_health() == 0:
+				dead = true
+			if enemy_type != "neutral" and enemy_type == move_type:
+				immune = true
+			if multi_debuff and not immune and not dead:
+				enemies[x].multi_random_debuff()
+		
+		
 	#yield(get_tree().create_timer(0.4), "timeout")
 	emit_signal("e_magic_damage_finish")
 	stun = false
@@ -635,6 +662,9 @@ func _on_Fighters_enemies_enabled():
 					yield(get_tree().create_timer(3.5), "timeout")
 				if move_name == "Terra Arrow":
 					emit_signal("Terra_Arrow")
+					yield(get_tree().create_timer(3.5), "timeout")
+				if move_name == "Gravel Spat":
+					emit_signal("Gravel_Spat")
 					yield(get_tree().create_timer(3.5), "timeout")
 					
 					

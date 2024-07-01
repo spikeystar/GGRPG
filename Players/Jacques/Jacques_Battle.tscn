@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Enemies/Battle Animations/Damage Star SS.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -831,6 +831,46 @@ tracks/2/keys = {
 "values": [ 0.7 ]
 }
 
+[sub_resource type="Animation" id=38]
+resource_name = "Spell_2"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 11, 14 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CircleShadowSmall:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.740741, 22.2222 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer:playback_speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.7 ]
+}
+
 [sub_resource type="Animation" id=11]
 length = 0.001
 tracks/0/type = "value"
@@ -1372,6 +1412,7 @@ anims/Fighter_Turn = SubResource( 2 )
 anims/Fighter_Victory = SubResource( 16 )
 anims/RESET = SubResource( 3 )
 anims/Spell_1 = SubResource( 37 )
+anims/Spell_2 = SubResource( 38 )
 
 [node name="CursorPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 11 )
