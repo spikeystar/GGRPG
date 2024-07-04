@@ -93,10 +93,16 @@ func get_name():
 func get_status(parameter: String):
 	var poison = enemies[enemy_index].get_status("poison")
 	var stun = enemies[enemy_index].get_status("stun")
+	var buff_counter = enemies[enemy_index].get_status("buff_counter")
+	var debuff_counter = enemies[enemy_index].get_status("debuff_counter")
 	if parameter == "poison":
 		return poison
 	if parameter == "stun":
 		return stun
+	if parameter == "buff_counter":
+		return buff_counter
+	if parameter == "debuff_counter":
+		return debuff_counter
 	
 func get_type():
 	var type: String = enemies[enemy_index].get_type()

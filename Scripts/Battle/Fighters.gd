@@ -626,10 +626,11 @@ func fighters_active_check():
 		emit_signal ("enemies_enabled")
 		enemies_active = true
 	else:
-		yield(get_tree().create_timer(0.8), "timeout")
-		fighters_active = true
-		emit_signal("fighters_active")
-		select_next_fighter(+1)
+		if not SceneManager.victory:
+			yield(get_tree().create_timer(0.8), "timeout")
+			fighters_active = true
+			emit_signal("fighters_active")
+			select_next_fighter(+1)
 
 func _on_WorldRoot_f_index_reset():
 	fighters.remove(fighter_index)
@@ -917,9 +918,10 @@ func _on_Enemies_fighters_active():
 		
 	yield(get_tree().create_timer(0.8), "timeout")
 	#fighter_index = -1
-	select_next_fighter(+1)
-	fighters_active = true
-	emit_signal("fighters_active")
+	if not SceneManager.victory:
+		select_next_fighter(+1)
+		fighters_active = true
+		emit_signal("fighters_active")
 		
 		
 func revive_healing():

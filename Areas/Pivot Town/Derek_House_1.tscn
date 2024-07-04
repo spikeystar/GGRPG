@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=1]
 [ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=2]
@@ -57,6 +57,7 @@
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=55]
 [ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=56]
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=57]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=58]
 
 [sub_resource type="TileSet" id=1]
 0/name = "wood tile a.png 0"
@@ -93,6 +94,28 @@ script = ExtResource( 12 )
 
 [node name="Node2D" type="Node2D" parent="."]
 rotation = 0.00523599
+
+[node name="Shadow2" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0.360784 )
+position = Vector2( 164.919, 175.139 )
+rotation = 0.0406731
+scale = Vector2( 0.702535, 0.712736 )
+texture = ExtResource( 58 )
+
+[node name="Shadow" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0.360784 )
+position = Vector2( 168.876, -23.8827 )
+rotation = 0.0187396
+scale = Vector2( 0.794248, 0.837242 )
+texture = ExtResource( 58 )
+
+[node name="RectangleShadowSmall3" type="Sprite" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.8 )
+position = Vector2( -115.026, -4.39556 )
+rotation = -0.116144
+scale = Vector2( 1.62251, 1.33723 )
+texture = ExtResource( 40 )
+flip_h = true
 
 [node name="YellowRugA" type="Sprite" parent="Node2D"]
 modulate = Color( 1, 0.996078, 1, 1 )
@@ -307,6 +330,7 @@ texture = ExtResource( 25 )
 texture_scale = Vector2( -1.4, 1.4 )
 texture_offset = Vector2( -2, 15 )
 height = 50.0
+preview_collision_box = false
 
 [node name="China Dish" parent="Node2D/YSort" instance=ExtResource( 5 )]
 modulate = Color( 1, 0.996078, 0.992157, 1 )

@@ -3910,7 +3910,7 @@ visible = false
 modulate = Color( 1, 1, 1, 0.4 )
 
 [node name="TextureRect" type="TextureRect" parent="Prism_Snow"]
-self_modulate = Color( 1, 1, 1, 0.85 )
+self_modulate = Color( 1, 1, 1, 0.9 )
 material = ExtResource( 31 )
 margin_left = -450.0
 margin_top = -400.0

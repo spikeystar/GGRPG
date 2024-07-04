@@ -59,6 +59,8 @@ func talk():
 		Penelope()
 	if npc_name == "Edgar":
 		Edgar()
+	if npc_name == "Henry":
+		Henry()
 		
 func Victor():
 	if js < 2 and not alternate:
@@ -150,3 +152,23 @@ func Edgar():
 		yield(self, "talk_done")
 		done()
 		alternate = true
+
+func Henry():
+	if js < 2 and not alternate:
+		$Name/Talk.text = "I've been working on all the fences around town."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "If somewhere is closed off come back later, ok?"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif js < 2 and alternate:
+		$Name/Talk.text = "I need to finish chopping that wood soon... And then check out the boiler at the Inn..."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "It'll be a while before I can start clearing away that landslide by the windmill."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false

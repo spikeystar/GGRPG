@@ -37,6 +37,8 @@ var m_buff_timer = 0
 var m_debuff_timer = 0
 var d_buff_timer = 0
 var d_debuff_timer = 0
+var buff_counter = 0
+var debuff_counter = 0
 
 var damage_type : String
 
@@ -79,6 +81,10 @@ func get_status(parameter: String):
 		return d_buff
 	if parameter == "d_debuff":
 		return d_debuff
+	if parameter == "buff_counter":
+		return buff_counter
+	if parameter == "debuff_counter":
+		return debuff_counter
 	
 func get_type():
 	return initial_type
@@ -250,31 +256,37 @@ func countdown():
 		if a_buff_timer == 0:
 			a_buff = false
 			e_attack -= (e_attack * 0.2)
+			buff_counter -= 1
 	if a_debuff:
 		a_debuff_timer -= 1
 		if a_debuff_timer == 0:
 			a_debuff = false	
 			e_attack += (e_attack * 0.2)
+			debuff_counter -= 1
 	if m_buff:
 		m_buff_timer -= 1
 		if m_buff_timer == 0:
 			m_buff = false
 			e_magic -= (e_magic * 0.2)
+			buff_counter -= 1
 	if m_debuff:
 		m_debuff_timer -= 1
 		if m_debuff_timer == 0:
 			m_debuff = false	
-			e_magic += (e_magic * 0.2)		
+			e_magic += (e_magic * 0.2)
+			debuff_counter -= 1
 	if d_buff:
 		d_buff_timer -= 1
 		if d_buff_timer == 0:
 			d_buff = false
 			e_defense -= (e_defense * 0.2)
+			buff_counter -= 1
 	if d_debuff:
 		d_debuff_timer -= 1
 		if d_debuff_timer == 0:
 			d_debuff = false	
-			e_defense += (e_defense * 0.2)		
+			e_defense += (e_defense * 0.2)
+			debuff_counter -= 1
 			
 func enemy_restore():
 	if poison:
@@ -295,14 +307,17 @@ func apply_buff(id : String):
 		a_buff = true
 		a_buff_timer = 4
 		e_attack += (e_attack * 0.2)
+		buff_counter += 1
 		buff()
 	elif id == "attack" and a_debuff:
 		a_debuff = false
 		a_buff_timer = 4 - a_debuff_timer
+		debuff_counter -= 1
 		a_debuff_timer = 0
 		if a_buff_timer > 0:
 			a_buff = true
 			e_attack += (e_attack * 0.2)
+			buff_counter += 1
 		e_attack += (e_attack * 0.2)
 		buff()
 		
@@ -310,14 +325,17 @@ func apply_buff(id : String):
 		m_buff = true
 		m_buff_timer = 4
 		e_magic += (e_magic * 0.2)
+		buff_counter += 1
 		buff()
 	elif id == "magic" and m_debuff:
 		m_debuff = false
 		m_buff_timer = 4 - m_debuff_timer
 		m_debuff_timer = 0
+		debuff_counter -= 1
 		if m_buff_timer > 0:
 			m_buff = true
 			e_magic += (e_magic * 0.2)
+			buff_counter += 1
 		e_magic += (e_magic * 0.2)
 		buff()
 		
@@ -326,14 +344,17 @@ func apply_buff(id : String):
 		d_buff = true
 		d_buff_timer = 4
 		e_defense += (e_defense * 0.2)
+		buff_counter += 1
 		buff()
 	elif id == "defense" and d_debuff:
 		d_debuff = false
 		d_buff_timer = 4 - d_debuff_timer
 		d_debuff_timer = 0
+		debuff_counter -= 1
 		if d_buff_timer > 0:
 			d_buff = true
 			e_defense += (e_defense * 0.2)
+			buff_counter += 1
 		e_defense += (e_defense * 0.2)
 		buff()	
 		
@@ -343,14 +364,17 @@ func apply_debuff(id : String):
 		a_debuff = true
 		a_debuff_timer = 3
 		e_attack -= (e_attack * 0.2)
+		debuff_counter += 1
 		debuff()
 	if id == "attack" and a_buff:
 		a_buff = false
 		a_debuff_timer = 3 - a_buff_timer
 		a_buff_timer = 0
+		buff_counter -= 1
 		if a_debuff_timer > 0:
 			a_debuff = true
 			e_attack -= (e_attack * 0.2)
+			debuff_counter += 1
 		e_attack -= (e_attack * 0.2)
 		debuff()
 		
@@ -359,14 +383,17 @@ func apply_debuff(id : String):
 		m_debuff = true
 		m_debuff_timer = 3
 		e_magic -= (e_magic * 0.2)
+		debuff_counter += 1
 		debuff()
 	if id == "magic" and m_buff:
 		m_buff = false
 		m_debuff_timer = 3 - m_buff_timer
 		m_buff_timer = 0
+		buff_counter -= 1
 		if m_debuff_timer > 0:
 			m_debuff = true
 			e_magic -= (e_magic * 0.2)
+			debuff_counter += 1
 		e_magic -= (e_magic * 0.2)
 		debuff()
 		
@@ -375,14 +402,17 @@ func apply_debuff(id : String):
 		d_debuff = true
 		d_debuff_timer = 4
 		e_defense -= (e_defense * 0.2)
+		debuff_counter += 1
 		debuff()
 	if id == "defense" and d_buff:
 		d_buff = false
 		d_debuff_timer = 3 - d_buff_timer
 		d_buff_timer = 0
+		buff_counter -= 1
 		if d_debuff_timer > 0:
 			d_debuff = true
 			e_defense -= (e_defense * 0.2)
+			debuff_counter += 1
 		e_defense -= (e_defense * 0.2)
 		debuff()
 

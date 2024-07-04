@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Assets/General/Backgrounds/Inside BCKGD.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=2]
@@ -50,6 +50,7 @@
 [ext_resource path="res://Assets/Pivot Town/cupboard.png" type="Texture" id=48]
 [ext_resource path="res://Assets/Pivot Town/flower pot.png" type="Texture" id=49]
 [ext_resource path="res://NPC/Pivot Town/Edgar.tscn" type="PackedScene" id=50]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=51]
 [ext_resource path="res://Assets/Pivot Town/wood pile.png" type="Texture" id=53]
 [ext_resource path="res://Assets/Pivot Town/Pivot Town Place SS.png" type="Texture" id=54]
 [ext_resource path="res://Assets/Pivot Town/dish cabinet.png" type="Texture" id=55]
@@ -178,6 +179,21 @@ rotation = 0.097064
 scale = Vector2( 1.27778, 1.14444 )
 texture = ExtResource( 44 )
 
+[node name="RectangleShadowSmall3" type="Sprite" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.8 )
+position = Vector2( 219.986, -3.15492 )
+rotation = 0.0694254
+scale = Vector2( 1.27778, 1.14444 )
+texture = ExtResource( 44 )
+
+[node name="RectangleShadowSmall4" type="Sprite" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.8 )
+position = Vector2( -9.31878, -60.952 )
+rotation = -0.0745215
+scale = Vector2( 1.27778, 1.14444 )
+texture = ExtResource( 44 )
+flip_h = true
+
 [node name="RectangleShadowSmall2" type="Sprite" parent="Node2D"]
 self_modulate = Color( 1, 1, 1, 0.8 )
 position = Vector2( 375.372, 70.0355 )
@@ -229,6 +245,20 @@ cell_size = Vector2( 63, 28 )
 centered_textures = true
 format = 1
 tile_data = PoolIntArray( -327683, 1, 0, -327682, 0, 0, -327681, 0, 0, -393216, 1, 0, -393215, 0, 0, -393214, 0, 0, -393213, 0, 0, -393212, 1, 0, -393211, 0, 0, -393210, 1, 0, -393209, 0, 0, -393208, 1, 0, -262147, 0, 0, -262146, 0, 0, -262145, 1, 0, -327680, 0, 0, -327679, 1, 0, -327678, 0, 0, -327677, 1, 0, -327676, 0, 0, -327675, 1, 0, -327674, 0, 0, -327673, 1, 0, -327672, 0, 0, -196611, 0, 0, -196610, 1, 0, -196609, 0, 0, -262144, 1, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 1, 0, -262139, 0, 0, -262138, 1, 0, -262137, 0, 0, -262136, 1, 0, -131075, 0, 0, -131074, 0, 0, -131073, 1, 0, -196608, 0, 0, -196607, 1, 0, -196606, 0, 0, -196605, 1, 0, -196604, 0, 0, -196603, 1, 0, -196602, 0, 0, -196601, 1, 0, -196600, 0, 0, -65539, 0, 0, -65538, 1, 0, -65537, 0, 0, -131072, 1, 0, -131071, 0, 0, -131070, 1, 0, -131069, 0, 0, -131068, 1, 0, -131067, 0, 0, -131066, 1, 0, -131065, 0, 0, -131064, 1, 0, -3, 1, 0, -2, 0, 0, -1, 1, 0, -65536, 0, 0, -65535, 1, 0, -65534, 0, 0, -65533, 1, 0, -65532, 0, 0, -65531, 1, 0, -65530, 0, 0, -65529, 1, 0, -65528, 0, 0, 65533, 0, 0, 65534, 1, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 0, 0, 4, 1, 0, 5, 0, 0, 6, 1, 0, 7, 0, 0, 8, 1, 0, 131069, 1, 0, 131070, 0, 0, 131071, 1, 0, 65536, 0, 0, 65537, 1, 0, 65538, 0, 0, 65539, 1, 0, 65540, 0, 0, 65541, 1, 0, 65542, 0, 0, 65543, 1, 0, 65544, 0, 0, 131077, 0, 0, 131078, 1, 0 )
+
+[node name="Shadow" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.360784 )
+position = Vector2( 161.884, -20.813 )
+rotation = 0.0485687
+scale = Vector2( 0.794248, 0.837242 )
+texture = ExtResource( 51 )
+
+[node name="Shadow2" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.360784 )
+position = Vector2( 201.851, 161.945 )
+rotation = 0.00796762
+scale = Vector2( 0.862488, 0.846162 )
+texture = ExtResource( 51 )
 
 [node name="Bookshelf 1" parent="Node2D/YSort" instance=ExtResource( 18 )]
 position = Vector2( 386.429, 80.9778 )
@@ -324,6 +354,7 @@ texture = ExtResource( 36 )
 texture_scale = Vector2( 1.4, 1.4 )
 texture_offset = Vector2( 3, 13 )
 height = 70.0
+preview_collision_box = false
 
 [node name="China Dish" parent="Node2D/YSort" instance=ExtResource( 18 )]
 modulate = Color( 1, 0.996078, 0.992157, 1 )
@@ -374,6 +405,7 @@ texture_scale = Vector2( -1.4, 1.4 )
 texture_offset = Vector2( -3, 14 )
 height = 70.0
 depth_test_offset = Vector3( 0, -70, 10 )
+preview_collision_box = false
 animation_hframes = 9
 animation_vframes = 3
 animation_frame = 10
@@ -565,6 +597,7 @@ script = ExtResource( 6 )
 height = 250.0
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
+visible = false
 position = Vector2( 3.99995, -0.0209439 )
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 33 )]

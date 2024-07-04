@@ -895,10 +895,11 @@ func Precious_Beam():
 	rng.randomize()
 	var fighter_node = $Fighters.get_f_current()
 	var fighter_position = $Fighters.get_f_OG_position()
-	var enemy_position = $Enemies.get_e_position() + Vector2(-127, 21)
+	var enemy_position = $Enemies.get_e_position() + Vector2(-140, 18)
+	var buff_counter = $Enemies.get_status("buff_counter")
 	$Enemies.damage_type = "fire"
 	$Enemies.move_type = "fire"
-	$Enemies.f_magic_base = 50
+	$Enemies.f_magic_base = 50 + (buff_counter * 20)
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
@@ -940,7 +941,7 @@ func Prism_Snow():
 	$Enemies.multi_debuff = true
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Fighters.spell_2()
-	yield(get_tree().create_timer(0.6), "timeout")
+	yield(get_tree().create_timer(0.5), "timeout")
 	$MovePlayer/AnimPlayer.play("Prism_Snow")
 	yield(get_tree().create_timer(1.6), "timeout")
 	$WindowPlayer.playback_speed = 1

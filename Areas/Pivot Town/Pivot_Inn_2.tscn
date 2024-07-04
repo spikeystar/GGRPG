@@ -1,7 +1,8 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Assets/Pivot Town/pink rug.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Pivot Town/flower pot.png" type="Texture" id=2]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Pivot Town/begonia.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Gary's House/Interior/curtains.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Pivot Town/painting 4.png" type="Texture" id=7]
@@ -64,6 +65,13 @@ script = ExtResource( 40 )
 
 [node name="Node2D" type="Node2D" parent="."]
 rotation = 0.00523599
+
+[node name="Shadow" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0.360784 )
+position = Vector2( -206.976, 5.08379 )
+rotation = 0.0392615
+scale = Vector2( 0.794248, 0.837242 )
+texture = ExtResource( 3 )
 
 [node name="BlackBckgd" type="Sprite" parent="Node2D"]
 position = Vector2( -120.435, 108.649 )
@@ -235,6 +243,7 @@ height = 30.0
 floor_height = 40.0
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
+visible = false
 position = Vector2( 3.99995, -0.0209439 )
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 45 )]

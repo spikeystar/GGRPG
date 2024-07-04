@@ -27,7 +27,6 @@
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass A.png" type="Texture" id=25]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=26]
 [ext_resource path="res://Scripts/Path Spawn.gd" type="Script" id=27]
-[ext_resource path="res://Enemies/Old/old_Cheribo_path.tscn" type="PackedScene" id=28]
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Pivot Town/Orange Brick A.png" type="Texture" id=30]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=31]
@@ -41,6 +40,7 @@
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=39]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=40]
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=41]
+[ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_full_path.tscn" type="PackedScene" id=42]
 
 [sub_resource type="TileSet" id=1]
 7/name = "Grass Tile.png 7"
@@ -184,7 +184,7 @@
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -87, -128, 0, 0, 0, 0, 304, 64 )
+"points": PoolVector2Array( 0, 0, 0, 0, -87, -128, 0, 0, 0, 0, 76.1547, -46.7922, 0, 0, 0, 0, 304, 64 )
 }
 
 [node name="WorldRoot" type="Node2D"]
@@ -519,8 +519,10 @@ texture = ExtResource( 12 )
 [node name="CheriboPath" type="Path2D" parent="YSort"]
 curve = SubResource( 3 )
 script = ExtResource( 27 )
+spawn_time = 2.5
+follower = ExtResource( 42 )
 
-[node name="CheriboPathFollow" parent="YSort/CheriboPath" instance=ExtResource( 28 )]
+[node name="CheriboPathFollow" parent="YSort/CheriboPath" instance=ExtResource( 42 )]
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 

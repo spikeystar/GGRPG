@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Pivot Town/misc shelf b.png" type="Texture" id=2]
@@ -37,6 +37,7 @@
 [ext_resource path="res://Assets/Pivot Town/red rug.png" type="Texture" id=35]
 [ext_resource path="res://Assets/Pivot Town/dinner chair a 2.png" type="Texture" id=36]
 [ext_resource path="res://Assets/Pivot Town/dinner chair a 1.png" type="Texture" id=37]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=38]
 [ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=39]
 [ext_resource path="res://Scripts/Shop_Interact.gd" type="Script" id=40]
 [ext_resource path="res://UI/Shop/Options Window.png" type="Texture" id=41]
@@ -453,6 +454,13 @@ script = ExtResource( 15 )
 [node name="Node2D" type="Node2D" parent="."]
 rotation = 0.00523599
 
+[node name="Shadow" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0.3 )
+position = Vector2( 101.339, 64.47 )
+rotation = 0.0686858
+scale = Vector2( 0.794248, 0.837242 )
+texture = ExtResource( 38 )
+
 [node name="BlackBckgd" type="Sprite" parent="Node2D"]
 position = Vector2( 173.288, 247.047 )
 scale = Vector2( 0.804624, 0.700275 )
@@ -778,6 +786,7 @@ floor_height = 40.0
 preview_collision_box = false
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
+visible = false
 position = Vector2( 3.99995, -0.0209439 )
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 29 )]
