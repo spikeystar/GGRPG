@@ -12,7 +12,8 @@ const depth_buffer_object_transparent_shader = preload("res://Scripts/Rendering/
 # Properties #
 #------------#
 
-const DEPTH_EDGE_BUFFER = 600.0
+const DEPTH_EDGE_BUFFER = 1000.0
+const DEPTH_DRAW_FAR = 2000.0
 
 var depth_camera: Camera
 var depth_viewport: Viewport
@@ -54,7 +55,7 @@ func _init():
 		depth_camera.rotation_degrees.y = 180
 		depth_camera.rotation_degrees.z = 180
 		depth_camera.size = 1000
-		depth_camera.far = 1000
+		depth_camera.far = DEPTH_DRAW_FAR
 		depth_camera.projection = Camera.PROJECTION_ORTHOGONAL
 	
 
@@ -90,7 +91,7 @@ func _process(delta):
 	depth_camera.translation = Vector3(
 		(-canvas_origin.x + (viewport_size.x / 2.0)) * (1.0 / canvas_scale.x),
 		(-canvas_origin.y + (viewport_size.y / 2.0)) * (1.0 / canvas_scale.y),
-		(-canvas_origin.y - DEPTH_EDGE_BUFFER) * (1.0 / canvas_scale.y)
+		(canvas_origin.y - DEPTH_EDGE_BUFFER) * (1.0 / canvas_scale.y)
 	)
 
 #----------------#
