@@ -12,6 +12,6 @@ func _process(delta):
 	if (timer > spawn_time):
 		var new_follower = follower.instance()
 		add_child(new_follower)
-		new_follower.position = spawn_position
+		new_follower.global_position = spawn_position
 		timer = 0
 		
