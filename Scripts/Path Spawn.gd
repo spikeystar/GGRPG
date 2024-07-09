@@ -12,6 +12,5 @@ func _process(delta):
 		var new_follower = follower.instance()
 		new_follower.global_position = $SpawnPosition.position
 		add_child(new_follower)
-		new_follower.global_position = $SpawnPosition.position
 		timer = 0
 		
