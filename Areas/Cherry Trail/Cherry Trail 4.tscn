@@ -520,10 +520,13 @@ texture = ExtResource( 12 )
 curve = SubResource( 3 )
 script = ExtResource( 27 )
 spawn_time = 2.5
-spawn_position = Vector2( -87, -128 )
 follower = ExtResource( 42 )
 
 [node name="CheriboPathFollow" parent="YSort/CheriboPath" instance=ExtResource( 42 )]
+position = Vector2( -87, -128 )
+
+[node name="SpawnPosition" type="Position2D" parent="YSort/CheriboPath"]
+position = Vector2( -87, -128 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 

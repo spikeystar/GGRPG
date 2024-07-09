@@ -4,7 +4,6 @@
 [ext_resource path="res://Scripts/Enemy Path Follow.gd" type="Script" id=2]
 
 [node name="CheriboPathFollow" type="PathFollow2D"]
-position = Vector2( -87, -128 )
 rotate = false
 loop = false
 script = ExtResource( 2 )

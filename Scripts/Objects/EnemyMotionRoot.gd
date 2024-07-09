@@ -65,6 +65,7 @@ func _ready():
 	
 func _physics_process(delta):
 	var player = PlayerManager.player_motion_root
+	freeze = PlayerManager.freeze
 	
 	$BattleTrigger.height = pos_z
 	
@@ -114,7 +115,6 @@ func _physics_process(delta):
 				
 				
 		ENEMY_STATE.CHASE:
-			
 			var diffToTarget = (player.global_position) - self.global_position;
 			var direction = diffToTarget.normalized()
 			velocity = velocity.move_toward(direction * CHASE_SPEED, ACCELERATION * delta)
@@ -197,6 +197,7 @@ func check_chase():
 	var playerTooHigh
 	var diffToTarget = player.global_position - self.global_position;
 	var diffToOrigin = self.global_position - origin
+	
 	
 	if PlayerManager.jumping:
 		pass

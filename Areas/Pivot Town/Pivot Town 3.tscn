@@ -918,8 +918,12 @@ exit_name = "PivotTown3_KugiCanyon1"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Kugi Canyon"]
 polygon = PoolVector2Array( 27, -45, 131, -12, 111, -3, 6, -39 )
 
+[node name="FromPivotTown3" parent="." instance=ExtResource( 30 )]
+position = Vector2( -305, 66 )
+door_name = "PivotTown1_PivotTown3"
+direction = Vector2( 1, 1 )
+
 [node name="PivotTown1" parent="." instance=ExtResource( 1 )]
-visible = false
 position = Vector2( -334, 87 )
 rotation = 0.0231584
 script = ExtResource( 2 )
@@ -969,7 +973,7 @@ align = 1
 position = Vector2( -425, -242 )
 rotation = 0.999572
 z_index = 5
-amount = 9
+amount = 6
 lifetime = 7.0
 speed_scale = 0.6
 explosiveness = 0.11
@@ -992,7 +996,7 @@ color_ramp = SubResource( 7 )
 position = Vector2( -208, 82 )
 rotation = 0.999572
 z_index = 5
-amount = 9
+amount = 6
 lifetime = 7.0
 speed_scale = 0.5
 explosiveness = 0.08
@@ -1015,7 +1019,7 @@ color_ramp = SubResource( 7 )
 position = Vector2( -1.00002, -310 )
 rotation = 0.999572
 z_index = 5
-amount = 9
+amount = 4
 lifetime = 7.0
 speed_scale = 0.5
 explosiveness = 0.08
@@ -1035,10 +1039,10 @@ scale_amount_random = 0.2
 color_ramp = SubResource( 7 )
 
 [node name="Particles2D4" type="CPUParticles2D" parent="."]
-position = Vector2( 424, 63 )
+position = Vector2( 377, 1.99998 )
 rotation = 0.999572
 z_index = 5
-amount = 9
+amount = 5
 lifetime = 7.0
 speed_scale = 0.5
 explosiveness = 0.08
