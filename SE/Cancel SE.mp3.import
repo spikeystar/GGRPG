@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Cancel SE.mp3-4d2e4aca7b3de924a011df725e496618.mp3str"
+
+[deps]
+
+source_file="res://SE/Cancel SE.mp3"
+dest_files=[ "res://.import/Cancel SE.mp3-4d2e4aca7b3de924a011df725e496618.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

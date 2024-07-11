@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Drama Thud SE.mp3-01f81e318fbeb11d58766db269110ba8.mp3str"
+
+[deps]
+
+source_file="res://SE/Drama Thud SE.mp3"
+dest_files=[ "res://.import/Drama Thud SE.mp3-01f81e318fbeb11d58766db269110ba8.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

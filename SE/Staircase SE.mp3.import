@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Staircase SE.mp3-89a8f535913e5f219b35bed69eaedc3d.mp3str"
+
+[deps]
+
+source_file="res://SE/Staircase SE.mp3"
+dest_files=[ "res://.import/Staircase SE.mp3-89a8f535913e5f219b35bed69eaedc3d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

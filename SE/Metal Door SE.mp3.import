@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Metal Door SE.mp3-7342bafbe49db1e6ad5ee451cae0def0.mp3str"
+
+[deps]
+
+source_file="res://SE/Metal Door SE.mp3"
+dest_files=[ "res://.import/Metal Door SE.mp3-7342bafbe49db1e6ad5ee451cae0def0.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

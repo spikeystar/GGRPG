@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Beat Down SE.mp3-e61bcb1849cbc064fea2389adcd233fc.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Beat Down SE.mp3"
+dest_files=[ "res://.import/Beat Down SE.mp3-e61bcb1849cbc064fea2389adcd233fc.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

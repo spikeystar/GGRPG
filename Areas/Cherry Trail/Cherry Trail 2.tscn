@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=2]
@@ -43,6 +43,8 @@
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=41]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=42]
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Enemies/Cherry Trail/Sapling/Sapling_wander.tscn" type="PackedScene" id=44]
+[ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie_wander.tscn" type="PackedScene" id=45]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -1050,6 +1052,20 @@ position = Vector2( 343, -65 )
 item_name = "Pretty Gem"
 floor_height = 45.0
 shadow_color = Color( 0.188235, 0.552941, 0.298039, 1 )
+
+[node name="Flutterbie" parent="." instance=ExtResource( 45 )]
+position = Vector2( 294, -228 )
+spawn_z = 0
+
+[node name="Sapling" parent="." instance=ExtResource( 44 )]
+position = Vector2( 525, -164 )
+
+[node name="Sapling2" parent="." instance=ExtResource( 44 )]
+position = Vector2( 90, -108 )
+
+[node name="Flutterbie2" parent="." instance=ExtResource( 45 )]
+position = Vector2( 464, -81 )
+spawn_z = 0
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase2_item_get"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Drown SE.mp3-d9f24ca31e0f1a5dbc8b4e6a7d2b24e2.mp3str"
+
+[deps]
+
+source_file="res://SE/Drown SE.mp3"
+dest_files=[ "res://.import/Drown SE.mp3-d9f24ca31e0f1a5dbc8b4e6a7d2b24e2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

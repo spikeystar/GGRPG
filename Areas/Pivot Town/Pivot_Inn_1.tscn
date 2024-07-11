@@ -595,6 +595,7 @@ polygon = PoolVector2Array( -28, -23, 2, -36, 63, -6, 32, 6 )
 [node name="Upstairs" parent="Node2D/CollisionRoot" instance=ExtResource( 33 )]
 position = Vector2( 62.7531, 143.673 )
 script = ExtResource( 39 )
+staircase = true
 target_scene = "res://Areas/Pivot Town/Pivot_Inn_2.tscn"
 exit_name = "Pivot_Inn_2"
 

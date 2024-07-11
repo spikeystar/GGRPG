@@ -671,10 +671,13 @@ text = "You got a Flummery Flambe!"
 align = 1
 
 [node name="Cheribo" parent="." instance=ExtResource( 41 )]
-position = Vector2( 45, -50 )
+position = Vector2( 11, -96 )
+
+[node name="Cheribo2" parent="." instance=ExtResource( 41 )]
+position = Vector2( 278, 76 )
 
 [node name="Flutterbie" parent="." instance=ExtResource( 7 )]
-position = Vector2( 249, -89 )
+position = Vector2( 13, 28 )
 spawn_z = 0
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

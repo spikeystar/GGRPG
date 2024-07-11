@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Drama Shock SE.mp3-a67c63f26ce89c6194d94894ad113865.mp3str"
+
+[deps]
+
+source_file="res://SE/Drama Shock SE.mp3"
+dest_files=[ "res://.import/Drama Shock SE.mp3-a67c63f26ce89c6194d94894ad113865.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

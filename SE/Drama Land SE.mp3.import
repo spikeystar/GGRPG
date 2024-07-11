@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Drama Land SE.mp3-380b5471ba24c9e68de2bab6770640ba.mp3str"
+
+[deps]
+
+source_file="res://SE/Drama Land SE.mp3"
+dest_files=[ "res://.import/Drama Land SE.mp3-380b5471ba24c9e68de2bab6770640ba.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,10 +1,60 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://SE/Item Get SE.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Misc/SE.gd" type="Script" id=2]
 [ext_resource path="res://SE/Sleep SE.mp3" type="AudioStream" id=3]
 [ext_resource path="res://SE/Present SE.mp3" type="AudioStream" id=4]
 [ext_resource path="res://SE/Full Heal SE.mp3" type="AudioStream" id=5]
+[ext_resource path="res://SE/Defend SE.mp3" type="AudioStream" id=6]
+[ext_resource path="res://SE/Buff SE.mp3" type="AudioStream" id=7]
+[ext_resource path="res://SE/Chest SE.mp3" type="AudioStream" id=8]
+[ext_resource path="res://SE/Boss Death SE.mp3" type="AudioStream" id=9]
+[ext_resource path="res://SE/Bubble Pop SE.mp3" type="AudioStream" id=10]
+[ext_resource path="res://SE/Bubble Enter SE.mp3" type="AudioStream" id=11]
+[ext_resource path="res://SE/Drama Descend SE.mp3" type="AudioStream" id=12]
+[ext_resource path="res://SE/Debuff SE.mp3" type="AudioStream" id=13]
+[ext_resource path="res://SE/Drama Jump SE.mp3" type="AudioStream" id=14]
+[ext_resource path="res://SE/Door SE.mp3" type="AudioStream" id=15]
+[ext_resource path="res://SE/Drama Flash SE.mp3" type="AudioStream" id=16]
+[ext_resource path="res://SE/Drama Blast SE.mp3" type="AudioStream" id=17]
+[ext_resource path="res://SE/Bouncy SE.mp3" type="AudioStream" id=18]
+[ext_resource path="res://SE/Drama Ascend SE.mp3" type="AudioStream" id=19]
+[ext_resource path="res://SE/Cancel SE.mp3" type="AudioStream" id=20]
+[ext_resource path="res://SE/Enemy Death SE.mp3" type="AudioStream" id=21]
+[ext_resource path="res://SE/Item Use SE.mp3" type="AudioStream" id=22]
+[ext_resource path="res://SE/Game Over SE.mp3" type="AudioStream" id=23]
+[ext_resource path="res://SE/Drama Land SE.mp3" type="AudioStream" id=24]
+[ext_resource path="res://SE/Fall SE.mp3" type="AudioStream" id=25]
+[ext_resource path="res://SE/Flee SE.mp3" type="AudioStream" id=26]
+[ext_resource path="res://SE/Drown 2 SE.mp3" type="AudioStream" id=27]
+[ext_resource path="res://SE/Item Shop SE.mp3" type="AudioStream" id=28]
+[ext_resource path="res://SE/Drama Shock SE.mp3" type="AudioStream" id=29]
+[ext_resource path="res://SE/Heal SE.mp3" type="AudioStream" id=30]
+[ext_resource path="res://SE/Jewel Seeds SE.wav" type="AudioStream" id=31]
+[ext_resource path="res://SE/Drown SE.mp3" type="AudioStream" id=32]
+[ext_resource path="res://SE/Drama Thud SE.mp3" type="AudioStream" id=33]
+[ext_resource path="res://SE/Party Joined SE.mp3" type="AudioStream" id=34]
+[ext_resource path="res://SE/Save Star SE.mp3" type="AudioStream" id=35]
+[ext_resource path="res://SE/Poof SE.mp3" type="AudioStream" id=36]
+[ext_resource path="res://SE/Select SE.mp3" type="AudioStream" id=37]
+[ext_resource path="res://SE/Menu Open SE.mp3" type="AudioStream" id=38]
+[ext_resource path="res://SE/Battle/Basic SE.mp3" type="AudioStream" id=39]
+[ext_resource path="res://SE/Unable SE.mp3" type="AudioStream" id=40]
+[ext_resource path="res://SE/Player Death SE.mp3" type="AudioStream" id=41]
+[ext_resource path="res://SE/Revive SE.mp3" type="AudioStream" id=42]
+[ext_resource path="res://SE/Success SE.mp3" type="AudioStream" id=43]
+[ext_resource path="res://SE/Battle/Barrage SE.mp3" type="AudioStream" id=44]
+[ext_resource path="res://SE/Ouch SE.mp3" type="AudioStream" id=45]
+[ext_resource path="res://SE/Switch SE.mp3" type="AudioStream" id=46]
+[ext_resource path="res://SE/Jump SE.mp3" type="AudioStream" id=47]
+[ext_resource path="res://SE/Marble SE.mp3" type="AudioStream" id=48]
+[ext_resource path="res://SE/Battle/Beat Down SE.mp3" type="AudioStream" id=49]
+[ext_resource path="res://SE/Whammy! SE.mp3" type="AudioStream" id=50]
+[ext_resource path="res://SE/Staircase SE.mp3" type="AudioStream" id=51]
+[ext_resource path="res://SE/Move Between SE.mp3" type="AudioStream" id=52]
+[ext_resource path="res://SE/Menu Close SE.mp3" type="AudioStream" id=53]
+[ext_resource path="res://SE/Metal Door SE.mp3" type="AudioStream" id=54]
+[ext_resource path="res://SE/Battle/Splat SE.mp3" type="AudioStream" id=55]
 
 [node name="SE" type="Node"]
 pause_mode = 2
@@ -21,3 +71,159 @@ stream = ExtResource( 5 )
 
 [node name="Sleep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+
+[node name="Boss_Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="Bouncy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[node name="Bubble_Enter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="Bubble_Pop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="Buff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="Cancel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 20 )
+
+[node name="Chest" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="Debuff" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="Defend" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="Door" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+
+[node name="Drama_Ascend" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 19 )
+
+[node name="Drama_Blast" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[node name="Drama_Descend" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="Drama_Flash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+
+[node name="Drama_Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+
+[node name="Drama_Land" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+
+[node name="Drama_Shock" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+
+[node name="Drama_Thud" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 33 )
+
+[node name="Drown_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 27 )
+
+[node name="Drown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 32 )
+
+[node name="Enemy_Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 21 )
+
+[node name="Fall" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 25 )
+
+[node name="Flee" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 26 )
+
+[node name="Game_Over" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 23 )
+
+[node name="Heal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+
+[node name="Item_Shop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+volume_db = 12.44
+
+[node name="Item_Use" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 22 )
+volume_db = 1.493
+
+[node name="Jewel_Seeds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 31 )
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 47 )
+
+[node name="Marble" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 48 )
+
+[node name="Menu_Close" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 53 )
+volume_db = 10.0
+
+[node name="Menu_Open" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 38 )
+volume_db = 10.0
+
+[node name="Metal_Door" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 54 )
+
+[node name="Move_Between" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 52 )
+volume_db = 1.0
+
+[node name="Ouch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 45 )
+volume_db = 1.0
+
+[node name="Party_Joined" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 34 )
+
+[node name="Player_Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 41 )
+
+[node name="Poof" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 36 )
+
+[node name="Revive" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 42 )
+
+[node name="Save_Star" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 35 )
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 37 )
+
+[node name="Staircase" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 51 )
+
+[node name="Success" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 43 )
+
+[node name="Switch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 46 )
+
+[node name="Unable" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 40 )
+
+[node name="Whammy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 50 )
+
+[node name="Barrage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 44 )
+
+[node name="Basic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 39 )
+
+[node name="Beat_Down" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 49 )
+
+[node name="Splat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 55 )

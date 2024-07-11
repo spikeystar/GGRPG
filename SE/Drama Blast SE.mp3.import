@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Drama Blast SE.mp3-29bf64bcdd599ae630bd9d79c70be73d.mp3str"
+
+[deps]
+
+source_file="res://SE/Drama Blast SE.mp3"
+dest_files=[ "res://.import/Drama Blast SE.mp3-29bf64bcdd599ae630bd9d79c70be73d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

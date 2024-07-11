@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Basic SE.mp3-f15ad8d5018d5d30172e62ce27190ad2.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Basic SE.mp3"
+dest_files=[ "res://.import/Basic SE.mp3-f15ad8d5018d5d30172e62ce27190ad2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

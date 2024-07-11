@@ -5,6 +5,8 @@ extends Area2D
 var entered = false
 var transitioning = false
 
+export var staircase : bool
+
 const TransitionPlayer = preload("res://Objects/SceneTransition/TransitionPlayer.tscn")
 
 # If you change the numeric values of this enum, you WILL break every scene that uses it.
@@ -28,6 +30,8 @@ func _on_body_entered(body):
 		transitioning = true
 		_on_touch_area()
 		
+		if staircase:
+			SE.effect("Staircase")
 	
 func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Drama Descend SE.mp3-0689735e2dbb1cd4f4966598d2f8e109.mp3str"
+
+[deps]
+
+source_file="res://SE/Drama Descend SE.mp3"
+dest_files=[ "res://.import/Drama Descend SE.mp3-0689735e2dbb1cd4f4966598d2f8e109.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

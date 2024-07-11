@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Party Joined SE.mp3-e08c240e7be1df4410a49665273a9647.mp3str"
+
+[deps]
+
+source_file="res://SE/Party Joined SE.mp3"
+dest_files=[ "res://.import/Party Joined SE.mp3-e08c240e7be1df4410a49665273a9647.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

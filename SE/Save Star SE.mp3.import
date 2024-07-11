@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Save Star SE.mp3-51cc22c31006e3924a0700566370eb5a.mp3str"
+
+[deps]
+
+source_file="res://SE/Save Star SE.mp3"
+dest_files=[ "res://.import/Save Star SE.mp3-51cc22c31006e3924a0700566370eb5a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

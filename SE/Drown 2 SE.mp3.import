@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Drown 2 SE.mp3-9f1773503807d2914547088153d7f4d2.mp3str"
+
+[deps]
+
+source_file="res://SE/Drown 2 SE.mp3"
+dest_files=[ "res://.import/Drown 2 SE.mp3-9f1773503807d2914547088153d7f4d2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

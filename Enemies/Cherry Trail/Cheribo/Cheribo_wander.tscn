@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/Objects/EnemyMotionRoot.gd" type="Script" id=1]
 [ext_resource path="res://NPC/NPC_ShadowAreaCheck.gd" type="Script" id=2]
 [ext_resource path="res://Enemies/PlayerDetection.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Objects/EnemyTest.gd" type="Script" id=5]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=7]
@@ -194,11 +195,12 @@ modulate = Color( 1, 1, 1, 0.75 )
 position = Vector2( 2, -1 )
 scale = Vector2( 0.914288, 0.918545 )
 texture = ExtResource( 6 )
-script = ExtResource( 7 )
+script = ExtResource( 4 )
 alpha_clip = 0.01
-depth_test_offset = Vector2( 0, -30 )
+always_update = true
 use_dithering = false
 use_dither_blending = false
+use_transparency = true
 
 [node name="BodyYSort" type="Node2D" parent="."]
 

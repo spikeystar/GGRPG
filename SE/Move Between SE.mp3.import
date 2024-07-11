@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Move Between SE.mp3-501e5624ca7d14f6222419fe13c4d339.mp3str"
+
+[deps]
+
+source_file="res://SE/Move Between SE.mp3"
+dest_files=[ "res://.import/Move Between SE.mp3-501e5624ca7d14f6222419fe13c4d339.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

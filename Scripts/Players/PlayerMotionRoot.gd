@@ -93,6 +93,8 @@ func _physics_process(delta):
 		jumping = true
 		vel.z = jump_velocity
 		
+		SE.effect("Jump")
+		
 	if Input.is_action_pressed("ui_push") and sleep and not ongoing:
 		PlayerManager.freeze = false
 	

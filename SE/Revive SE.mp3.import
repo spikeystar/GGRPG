@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Revive SE.mp3-74e58a208c6640d0b2abc04c210a03ef.mp3str"
+
+[deps]
+
+source_file="res://SE/Revive SE.mp3"
+dest_files=[ "res://.import/Revive SE.mp3-74e58a208c6640d0b2abc04c210a03ef.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

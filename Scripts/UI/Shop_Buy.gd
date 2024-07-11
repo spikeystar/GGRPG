@@ -52,13 +52,13 @@ func set_id():
 		$Display.frame = 6
 		$Cost.text = "1,500 Mb"
 		item_cost = 1500
-		$Info.text = "Increases holder's Attack by 20%\n\nWhammy! chance +5"
+		$Info.text = "Increases holder's Attack by 20%\nWhammy! chance +5"
 	if item_id == "Gold Chain":
 		$Display.show()
 		$Display.frame = 7
 		$Cost.text = "1,500 Mb"
 		item_cost = 1500
-		$Info.text = "Increases holder's Defense by 20%\n\nWhammy! chance +5"
+		$Info.text = "Increases holder's Defense by 20%\nWhammy! chance +5"
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and buying and able and Party.marbles >= item_cost:

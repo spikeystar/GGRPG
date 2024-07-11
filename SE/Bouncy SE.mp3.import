@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Bouncy SE.mp3-6b74d412a51d58af8c4364b62ad253ef.mp3str"
+
+[deps]
+
+source_file="res://SE/Bouncy SE.mp3"
+dest_files=[ "res://.import/Bouncy SE.mp3-6b74d412a51d58af8c4364b62ad253ef.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

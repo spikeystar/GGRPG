@@ -7,6 +7,8 @@ const TransitionPlayer = preload("res://Objects/SceneTransition/TransitionPlayer
 
 var gary_entered = false
 
+export var metal : bool
+
 # If you change the numeric values of this enum, you WILL break every scene that uses it.
 # Only add new values, do not modify.
 enum TransitionType {
@@ -38,6 +40,12 @@ func _input(event):
 		PlayerManager.freeze = true
 		_on_touch_area()
 		gary_entered = false
+		
+		if metal:
+			SE.effect("Metal Door")
+		else:
+			SE.effect("Door")
+		
 		yield(get_tree().create_timer(1.5), "timeout")
 		
 	

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Flee SE.mp3-7e19eae04512d1b6812503d7f466d16a.mp3str"
+
+[deps]
+
+source_file="res://SE/Flee SE.mp3"
+dest_files=[ "res://.import/Flee SE.mp3-7e19eae04512d1b6812503d7f466d16a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

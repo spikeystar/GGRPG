@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Barrage SE.mp3-bf8a6d90e665237a98a280650f8cadcb.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Barrage SE.mp3"
+dest_files=[ "res://.import/Barrage SE.mp3-bf8a6d90e665237a98a280650f8cadcb.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

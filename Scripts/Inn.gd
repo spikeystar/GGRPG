@@ -58,6 +58,7 @@ func _input(event):
 		$ShopOptions/MenuCursor.cursor_index = 0
 		menu_name = ""
 		PlayerManager.freeze = false
+		SE.effect("Cancel")
 		emit_signal("restart")
 	
 	elif Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and not able and not complete and $Dialogue/Name/Talk.percent_visible == 1:
@@ -94,9 +95,13 @@ func _input(event):
 		Party.marbles = Party.marbles - cost
 		PartyStats.full_heal()
 		PlayerManager.ongoing = true
-		$Dialogue.hide()
-		$Dialogue/DialogueCursor.hide()
 		$ShopOptions.hide()
+		$Dialogue/DialogueCursor.hide()
+		$Dialogue.show()
+		sleep_text()
+		tween_go()
+		yield(get_tree().create_timer((length/25)), "timeout")
+		$Dialogue/DialogueCursor.show()
 		welcome = true
 		dialogue_cursor = false
 		options = false
@@ -147,4 +152,6 @@ func text_2():
 	if inn_name == "Freya":
 		$Dialogue/Name/Talk.text = "I wish they would come visit sometime. It's a bit lonely without them."
 	
-
+func sleep_text():
+	if inn_name == "Freya":
+		$Dialogue/Name/Talk.text = "Please enjoy your stay!"

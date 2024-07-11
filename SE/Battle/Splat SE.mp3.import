@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Splat SE.mp3-954d81075a1c53071ac17198e00214f9.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Splat SE.mp3"
+dest_files=[ "res://.import/Splat SE.mp3-954d81075a1c53071ac17198e00214f9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

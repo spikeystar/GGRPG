@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Whammy! SE.mp3-5ffd43ffb92959a53c2e2169b6b0af4f.mp3str"
+
+[deps]
+
+source_file="res://SE/Whammy! SE.mp3"
+dest_files=[ "res://.import/Whammy! SE.mp3-5ffd43ffb92959a53c2e2169b6b0af4f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

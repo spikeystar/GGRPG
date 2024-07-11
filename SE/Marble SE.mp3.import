@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Marble SE.mp3-ad98c49a1909e5e17163ffa8133aa480.mp3str"
+
+[deps]
+
+source_file="res://SE/Marble SE.mp3"
+dest_files=[ "res://.import/Marble SE.mp3-ad98c49a1909e5e17163ffa8133aa480.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

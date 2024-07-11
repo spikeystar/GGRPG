@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Poof SE.mp3-613d88b2bbb46ae735f6d3d150597c50.mp3str"
+
+[deps]
+
+source_file="res://SE/Poof SE.mp3"
+dest_files=[ "res://.import/Poof SE.mp3-613d88b2bbb46ae735f6d3d150597c50.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Drama Jump SE.mp3-3ca18b3173f724eff83d71cdeef986cc.mp3str"
+
+[deps]
+
+source_file="res://SE/Drama Jump SE.mp3"
+dest_files=[ "res://.import/Drama Jump SE.mp3-3ca18b3173f724eff83d71cdeef986cc.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
