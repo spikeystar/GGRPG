@@ -32,20 +32,25 @@ func _process(delta):
 	#item_index = clamp(item_index, 0, inventory.size() - 1)
 	var inventory_max = (inventory.size() -1)
 	if Input.is_action_just_pressed("ui_down") and item_active and item_index < inventory_max:
+		SE.effect("Move Between")
 		item_index += 1
 	if Input.is_action_just_pressed("ui_up") and item_active and item_index > 0:
+		SE.effect("Move Between")
 		item_index -= 1
 		
 func _input(event):
 	var inventory_max = (inventory.size() -1)
 	if Input.is_action_just_pressed("ui_down") and item_active and item_index == inventory_max:
+		SE.effect("Move Between")
 		emit_signal("go_to_Defend")
 		item_active = false
 		#item_index = 0
 	if Input.is_action_just_pressed("ui_down") and item_active and empty_items:
+		SE.effect("Move Between")
 		emit_signal("go_to_Defend")
 		item_active = false
 	if Input.is_action_just_pressed("ui_select") and item_active:
+		SE.effect("Select")
 		get_id()
 		if item_id == "Yummy Cake" or item_id == "Bounty Herb" or item_id == "Sugar Pill" or item_id == "Ginger Tea":
 			emit_signal("heal_item_chosen")

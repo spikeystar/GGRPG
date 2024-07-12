@@ -96,6 +96,7 @@ func _on_Fighters_BB_move():
 func _input(event):
 	var fighter_turn_used = $Fighters.get_turn_value()
 	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting:
+		SE.effect("Select")
 		$BattleButtons.show()
 		$BattleButtons/AttackX.hide()
 		$BattleButtons/MagicX.hide()
@@ -114,6 +115,7 @@ func _input(event):
 		BB_active = true
 		
 	if (Input.is_action_just_pressed("ui_down")) and BB_active and not defend_show and not magic_show and not item_show and not enemy_selecting:
+		SE.effect("Move Between")
 		defend_show = true
 		attack_show = false
 		magic_show = false
@@ -148,6 +150,7 @@ func _input(event):
 		$ItemWindow.hide()
 		
 	if (Input.is_action_just_pressed("ui_right")) and BB_active and not attack_show and not ongoing and not wimpy:
+		SE.effect("Move Between")
 		attack_show = true
 		magic_show = false
 		defend_show = false
@@ -170,6 +173,7 @@ func _input(event):
 			window_open = true
 			
 	if (Input.is_action_just_pressed("ui_select")) and BB_active and attack_show and not fighter_turn_used and not ongoing:
+		SE.effect("Select")
 		$BattleButtons/DiamondB.show()
 		$BattleButtons.hide()
 		$Enemies/EnemyInfo.hide()
@@ -180,6 +184,7 @@ func _input(event):
 		emit_signal("attack_chosen")
 			
 	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show and not dizzy:
+		SE.effect("Move Between")
 		magic_show = true
 		item_halt = true
 		attack_show = false
@@ -204,6 +209,7 @@ func _input(event):
 			window_open = true
 		
 	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt and not item_stolen:
+		SE.effect("Move Between")
 		item_show = true
 		attack_show = false
 		defend_show = false
@@ -257,6 +263,7 @@ func _input(event):
 ##### RETURN BUTTON ########
 
 	if (Input.is_action_just_pressed("ui_accept")) and BB_active and not ongoing:
+		SE.effect("Cancel")
 		$Fighters.idle()
 		$BattleButtons/CloverB.show()
 		$BattleButtons/SpadeB.show()
@@ -381,6 +388,7 @@ func _on_Defend_cursor_selected():
 		#enemies_enabled = true
 	
 func _on_Flee_cursor_selected():
+	SE.effect("Flee")
 	if defend_show:
 		$Fighters/HUDS.hide()
 		$DefenseWindow.hide()
@@ -484,6 +492,7 @@ func _on_Enemies_victory():
 	
 func _on_Fighters_game_over():
 	ongoing = true
+	SE.effect("Game Over")
 	yield(get_tree().create_timer(1.5), "timeout")
 	#BattleMusic.fade_out()
 	var transition = TransitionPlayer.instance()

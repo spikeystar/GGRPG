@@ -147,10 +147,12 @@ func enemy_info_update():
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_right") and enemy_selecting and BB_active:
+		SE.effect("Move Between")
 		select_next_enemy(+1)
 		enemy_info_update()
 	
 	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active:
+		#SE.effect("Move Between")
 		enemy_selecting = false
 		enemy_info_update()
 	
@@ -160,16 +162,19 @@ func _process(delta):
 		
 	######## Item Selecting ########
 	if Input.is_action_just_pressed("ui_right") and item_selecting:
+		SE.effect("Move Between")
 		select_next_enemy(+1)
 		enemy_info_update()
 		#print(enemy_index)
 		
 	if Input.is_action_just_pressed("ui_left") and item_selecting:
+		SE.effect("Move Between")
 		select_next_enemy(-1)
 		enemy_info_update()
 		#print(enemy_index)
 	
 	if Input.is_action_just_pressed("ui_select") and item_selecting:
+		SE.effect("Select")
 		emit_signal("jinx_doll")
 		hide_cursors()
 		target_index = enemy_index
@@ -181,14 +186,17 @@ func _process(delta):
 		enemy_info_update()
 	
 	if Input.is_action_just_pressed("ui_right") and magic_selecting:
+		SE.effect("Move Between")
 		select_next_enemy(+1)
 		enemy_info_update()
 		
 	if Input.is_action_just_pressed("ui_left") and magic_selecting:
+		SE.effect("Move Between")
 		select_next_enemy(-1)
 		enemy_info_update()
 	
 	if Input.is_action_just_pressed("ui_select") and magic_selecting:
+		SE.effect("Select")
 		emit_signal("single_enemy_spell")
 		hide_cursors()
 		target_index = enemy_index

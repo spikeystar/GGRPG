@@ -187,12 +187,22 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen and not ongoing and not item_selecting and not enemies_active and not enemy_item and not magic_selecting and not halt and fighters_active:
 		#print(fighter_index)
 		select_next_fighter(+1)
+		if fighters.size() >1:
+			SE.effect("Move Between")
+		else:
+			pass
+			
+		
 		#fighters_active = true
 		#emit_signal("fighters_active")
 		
 	if Input.is_action_just_pressed("ui_left") and not BB_active and not attack_chosen and not ongoing and fighters_active and not item_selecting and not enemies_active and not enemy_item and not magic_selecting and not halt:
 		print(fighter_index)
 		select_next_fighter(-1)
+		if fighters.size() >1:
+			SE.effect("Move Between")
+		else:
+			pass
 	
 	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen and not ongoing and fighters_active and not item_selecting and not enemies_active and not enemy_item and not magic_selecting and not halt:
 		emit_signal("BB_move")
@@ -218,15 +228,18 @@ func _process(delta):
 		####### Item Selection ##########
 		
 	if Input.is_action_just_pressed("ui_right") and item_selecting and not attack_chosen and not magic_selecting and not halt:
+		SE.effect("Move Between")
 		select_next_fighter2(+1)
 		emit_signal("fighters_active")
 		print(fighter_index)
 		
 	if Input.is_action_just_pressed("ui_left") and item_selecting and not attack_chosen and not magic_selecting and not halt:
+		SE.effect("Move Between")
 		select_next_fighter2(-1)
 		print(fighter_index)
 	
 	if Input.is_action_just_pressed("ui_select") and item_selecting and not attack_chosen and not magic_selecting and not halt:
+		SE.effect("Select")
 		emit_signal("item_chosen")
 		hide_cursors2(fighter_index)
 		target_index = fighter_index
@@ -235,15 +248,18 @@ func _process(delta):
 		######### Magic Selection ##########
 		
 	if Input.is_action_just_pressed("ui_right") and magic_selecting and not attack_chosen and not item_selecting and not halt:
+		SE.effect("Move Between")
 		select_next_fighter2(+1)
 		emit_signal("fighters_active")
 		print(fighter_index)
 		
 	if Input.is_action_just_pressed("ui_left") and magic_selecting and not attack_chosen and not item_selecting and not halt:
+		SE.effect("Move Between")
 		select_next_fighter2(-1)
 		print(fighter_index)
 	
 	if Input.is_action_just_pressed("ui_select") and magic_selecting and not attack_chosen and not item_selecting and not halt:
+		SE.effect("Select")
 		emit_signal("ally_spell_chosen")
 		hide_cursors2(fighter_index)
 		target_index = fighter_index

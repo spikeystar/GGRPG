@@ -8,26 +8,32 @@ func spell_check():
 	if spell_id == "Thunderstorm":
 		$SpellInfo.text = "Strikes all with lightning bolts\n\n20% chance to stun"
 		$SpellCost.text = "SP: 5"
+		$MagicWindowPanel/SpellList.spell_cost = 5
 		$SpellTypeIcon.frame = 4
 	if spell_id == "Earthslide":
 		$SpellInfo.text = "Hurls a chunk of ruptured earth at one enemy\n\nInflicts attack debuff"
 		$SpellCost.text = "SP: 5"
+		$MagicWindowPanel/SpellList.spell_cost = 5
 		$SpellTypeIcon.frame = 5
 	if spell_id == "Icicle":
 		$SpellInfo.text = "Drops a large icicle on one enemy\n\nInflicts defense debuff"
 		$SpellCost.text = "SP: 3"
+		$MagicWindowPanel/SpellList.spell_cost = 3
 		$SpellTypeIcon.frame = 1
 	if spell_id == "Prism Snow":
 		$SpellInfo.text = "Pelts all enemies with multicolored snow\n\nInflicts random debuffs"
 		$SpellCost.text = "SP: 7"
+		$MagicWindowPanel/SpellList.spell_cost = 7
 		$SpellTypeIcon.frame = 1
 	if spell_id == "Sweet Gift":
 		$SpellInfo.text = "Heals and fully revives one party member, removes all ailments"
 		$SpellCost.text = "SP: 10"
+		$MagicWindowPanel/SpellList.spell_cost = 10
 		$SpellTypeIcon.frame = 16
 	if spell_id == "Precious Beam":
 		$SpellInfo.text = "Singes one enemy with a ray of heavenly light\n\nDoes more damage for each enemy buff, inflicts magic debuff"
 		$SpellCost.text = "SP: 12"
+		$MagicWindowPanel/SpellList.spell_cost = 12
 		$SpellTypeIcon.frame = 0
 	
 func get_spell_id():

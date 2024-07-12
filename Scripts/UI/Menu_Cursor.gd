@@ -20,22 +20,26 @@ signal go_to_Item()
 func _process(delta):
 	var input := Vector2.ZERO
 	
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_up") and cursor_active:
 		flicker_control()
 		input.y -= 1
 		emit_signal("item_active")
 		emit_signal("magic_active")
 		if defend_active:
+			SE.effect("Move Between")
 			up_count += 1
 		if magic_active:
+			SE.effect("Move Between")
 			up_count += 1
-	if Input.is_action_just_pressed("ui_down"):
+	if Input.is_action_just_pressed("ui_down") and cursor_active:
 		input.y += 1
 		emit_signal("item_active")
 		emit_signal("magic_active")
 		if defend_active and up_count >-2:
+			SE.effect("Move Between")
 			up_count -= 1
 		if magic_active:
+			SE.effect("Move Between")
 			up_count -= 1
 			
 	if Input.is_action_just_pressed("ui_left"):
@@ -62,10 +66,12 @@ func _process(delta):
 				current_menu_item.cursor_select()
 				
 	if Input.is_action_just_pressed("ui_up") and defend_active and up_count == 0 or up_count == 2:
+		SE.effect("Move Between")
 		emit_signal("go_to_Item")
 		up_count = 0
 		
 	if Input.is_action_just_pressed("ui_up") and magic_active and up_count == 1 and not spell_selected:
+		SE.effect("Move Between")
 		emit_signal("go_to_Item")
 		up_count = 0
 		
@@ -127,11 +133,16 @@ func _on_WorldRoot_item_inactive():
 
 func _on_SpellList_spell_chosen():
 	spell_selected = true
+	cursor_active = false
 
 func _on_SpellList_ally_spell_chosen():
 	spell_selected = true
+	cursor_active = false
 
 func flicker_control():
 	modulate.a = 0
 	yield(get_tree().create_timer(0.05), "timeout")
 	modulate.a = 1
+
+func _on_WorldRoot_action_ongoing():
+	cursor_active = false

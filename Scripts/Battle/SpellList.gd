@@ -6,6 +6,7 @@ var spell_type : String
 var magic_active = false
 var spell_selected = false
 var fighter_name : String
+var spell_cost : int
 
 signal go_to_Defend()
 signal spell_chosen()
@@ -26,9 +27,11 @@ func _process(delta):
 	#spell_index = clamp(spell_index, 0, spell_list.size() - 1)
 	var list_max = (spell_list.size() -1)
 	if Input.is_action_just_pressed("ui_down") and magic_active and spell_index < list_max and not spell_selected:
+		SE.effect("Move Between")
 		spell_index += 1
 		get_id()
 	if Input.is_action_just_pressed("ui_up") and magic_active and spell_index > 0 and not spell_selected:
+		SE.effect("Move Between")
 		spell_index -= 1
 		get_id()
 		
@@ -36,24 +39,37 @@ func _input(event):
 	var list_max = (spell_list.size() -1)
 	spell_type = get_spell_type()
 	if Input.is_action_just_pressed("ui_down") and magic_active and spell_index == list_max and not spell_selected:
+		SE.effect("Move Between")
 		magic_active = false
 		emit_signal("go_to_Defend")
 		
-	if Input.is_action_just_pressed("ui_select") and magic_active and spell_type == "single_enemy_spell" and not spell_selected:
+	if Input.is_action_just_pressed("ui_select") and magic_active and spell_type == "single_enemy_spell" and not spell_selected and PartyStats.party_sp >= spell_cost:
+		SE.effect("Select")
+		PartyStats.party_sp -= spell_cost
 		emit_signal("spell_chosen")
 		emit_signal("single_enemy_spell")
 		
-	if Input.is_action_just_pressed("ui_select") and magic_active and spell_type == "all_enemy_spell" and not spell_selected:
+	if Input.is_action_just_pressed("ui_select") and magic_active and spell_type == "all_enemy_spell" and not spell_selected and PartyStats.party_sp >= spell_cost:
+		SE.effect("Select")
+		PartyStats.party_sp -= spell_cost
 		emit_signal("spell_chosen")
 		emit_signal("all_enemy_spell")
 		
-	if Input.is_action_just_pressed("ui_select") and magic_active and spell_type == "single_ally_spell" and not spell_selected:
+	if Input.is_action_just_pressed("ui_select") and magic_active and spell_type == "single_ally_spell" and not spell_selected and PartyStats.party_sp >= spell_cost:
+		SE.effect("Select")
+		PartyStats.party_sp -= spell_cost
 		emit_signal("ally_spell_chosen")
 		emit_signal("single_ally_spell")
 		
-	if Input.is_action_just_pressed("ui_select") and magic_active and spell_type == "all_ally_spell" and not spell_selected:
+	if Input.is_action_just_pressed("ui_select") and magic_active and spell_type == "all_ally_spell" and not spell_selected and PartyStats.party_sp >= spell_cost:
+		SE.effect("Select")
+		PartyStats.party_sp -= spell_cost
 		emit_signal("ally_spell_chosen")
 		emit_signal("all_ally_spell")
+		
+	if Input.is_action_just_pressed("ui_select") and not spell_selected and magic_active and PartyStats.party_sp < spell_cost:
+		SE.effect("Unable")
+		return
 		
 func get_id():
 	if magic_active:

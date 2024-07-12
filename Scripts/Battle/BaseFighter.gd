@@ -166,6 +166,7 @@ func turn():
 	$AnimationPlayer.play("Fighter_Turn")
 	
 func defend():
+	SE.effect("Defend")
 	$AnimationPlayer.play("Fighter_Defend")
 	$AnimationPlayer.playback_speed = 1
 	defend = true
@@ -174,6 +175,7 @@ func defend():
 	
 func item_used():
 	able = false
+	SE.effect("Item Use")
 	$AnimationPlayer.play("Fighter_Item")
 	yield(get_tree().create_timer(1.3), "timeout")
 	$AnimationPlayer.play("Fighter_BattleReady")
@@ -181,6 +183,7 @@ func item_used():
 func heal(HP_amount):
 	if dead:
 		yield(get_tree().create_timer(0.2), "timeout")
+		SE.effect("Heal")
 		$Effect.show()
 		$EffectPlayer.play("Heal")
 		yield(get_tree().create_timer(0.2), "timeout")
@@ -190,6 +193,7 @@ func heal(HP_amount):
 	else:
 		health = clamp(health + HP_amount, 0, f_health)
 		yield(get_tree().create_timer(0.2), "timeout")
+		SE.effect("Heal")
 		$Effect.show()
 		$EffectPlayer.play("Heal")
 		yield(get_tree().create_timer(0.2), "timeout")
@@ -201,6 +205,7 @@ func restore(id : String):
 	if id == "Bounty Herb":
 		if dead:
 			health = int(f_health / 2)
+			SE.effect("Revive")
 			$Effect.show()
 			$EffectPlayer.play("Restore")
 			dead = false
@@ -213,6 +218,7 @@ func restore(id : String):
 			$AnimationPlayer.play("Fighter_BattleReady")
 		else:
 			yield(get_tree().create_timer(0.2), "timeout")
+			SE.effect("Revive")
 			$Effect.show()
 			$EffectPlayer.play("Restore")
 	elif id == "Sweet Gift":
@@ -236,11 +242,13 @@ func restore(id : String):
 	elif id == "Ginger Tea":
 		yield(get_tree().create_timer(0.2), "timeout")
 		status_restore()
+		SE.effect("Revive")
 		$Effect.show()
 		$EffectPlayer.play("Restore")
 	elif id == "Remedy Bouquet":
 		yield(get_tree().create_timer(0.2), "timeout")
 		status_restore()
+		SE.effect("Revive")
 		$Effect.show()
 		$EffectPlayer.play("Restore")
 	elif id == "Perfect Panacea":
@@ -312,6 +320,7 @@ func restore(id : String):
 		
 func SP(SP_amount: int):
 	yield(get_tree().create_timer(0.2), "timeout")
+	SE.effect("Revive")
 	$Effect.show()
 	$EffectPlayer.play("SP")
 	yield(get_tree().create_timer(0.2), "timeout")
@@ -414,11 +423,13 @@ func type_damage(damage_type):
 	
 func buff():
 	yield(get_tree().create_timer(1.4), "timeout")
+	SE.effect("Buff")
 	$AnimationPlayer.playback_speed = 0.7
 	$AnimationPlayer.play("Fighter_Buff")
 	
 func debuff():
 	yield(get_tree().create_timer(1.7), "timeout")
+	SE.effect("Debuff")
 	$AnimationPlayer.playback_speed = 0.7
 	$AnimationPlayer.play("Fighter_Debuff")
 	

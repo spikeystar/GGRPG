@@ -1661,6 +1661,7 @@ visible = false
 [connection signal="action_ended" from="." to="Fighters" method="_on_WorldRoot_action_ended"]
 [connection signal="action_ongoing" from="." to="Enemies" method="_on_WorldRoot_action_ongoing"]
 [connection signal="action_ongoing" from="." to="Fighters" method="_on_WorldRoot_action_ongoing"]
+[connection signal="action_ongoing" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_action_ongoing"]
 [connection signal="attack_active" from="." to="Enemies" method="_on_WorldRoot_attack_active"]
 [connection signal="attack_active" from="." to="Enemies/EnemyInfo/EnemyStatus" method="_on_WorldRoot_attack_active"]
 [connection signal="attack_active" from="." to="Enemies/EnemyInfo/EnemyName" method="_on_WorldRoot_attack_active"]

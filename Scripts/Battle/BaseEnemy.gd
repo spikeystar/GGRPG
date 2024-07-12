@@ -102,12 +102,14 @@ func get_e_defense():
 	
 func buff():
 	yield(get_tree().create_timer(0.1), "timeout")
+	SE.effect("Buff")
 	$AnimationPlayer.play("buff")
 	yield(get_tree().create_timer(1.6), "timeout")
 	reset_animation()
 	
 func debuff():
 	yield(get_tree().create_timer(0.1), "timeout")
+	SE.effect("Debuff")
 	$AnimationPlayer.play("debuff")
 	yield(get_tree().create_timer(1.6), "timeout")
 	reset_animation()
@@ -128,6 +130,7 @@ func attack():
 	$AnimationPlayer.playback_speed = 0.8
 	
 func heal(amount : int):
+	SE.effect("Revive")
 	var heal_text = text(TEXT_HEAL)
 	if heal_text:
 		heal_text.label.text = str(amount)
@@ -202,6 +205,7 @@ func type_damage(damage_type):
 		
 	
 func death():
+		SE.effect("Enemy Death")
 		$AnimationPlayer.play("enemy_death")
 		$AnimationPlayer.playback_speed = 0.8
 		yield(get_tree().create_timer(0.1), "timeout")
