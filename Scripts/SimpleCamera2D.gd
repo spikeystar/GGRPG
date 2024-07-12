@@ -75,6 +75,7 @@ func _process(delta):
 
 func _input(event):
 		if Input.is_action_pressed("ui_pause") and not PlayerManager.freeze and not able:
+			Music.quiet()
 			SE.effect("Menu Open")
 			PlayerManager.freeze = true
 			get_tree().paused = true
@@ -84,6 +85,7 @@ func _input(event):
 			able = true
 		
 		if Input.is_action_pressed("ui_pause") and PlayerManager.freeze and able:
+			Music.loud()
 			SE.effect("Menu Open")
 			var transition = TransitionPlayer.instance()
 			get_tree().get_root().add_child(transition)

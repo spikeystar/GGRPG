@@ -27,7 +27,6 @@ func _process(delta):
 		input.y += 0
 		
 	if Input.is_action_just_pressed("ui_accept") and item_selecting or Input.is_action_just_pressed("ui_left") and item_selecting:
-		SE.effect("Move Between")
 		item_selecting = false
 		self.modulate.a = 0
 		emit_signal("retread")

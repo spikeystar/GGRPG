@@ -346,6 +346,7 @@ __meta__ = {
 [node name="Downstairs" parent="Node2D/CollisionRoot" instance=ExtResource( 23 )]
 position = Vector2( -133.459, 103.7 )
 script = ExtResource( 1 )
+staircase = true
 target_scene = "res://Areas/Pivot Town/Edgar_House_1.tscn"
 exit_name = "Edgar2_Edgar1"
 

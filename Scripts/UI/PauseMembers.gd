@@ -110,6 +110,7 @@ func _process(delta):
 		member_index = -1
 		
 	if Input.is_action_just_pressed("ui_accept") and item_selecting:
+		SE.silence("Move Between")
 		SE.effect("Cancel")
 		Cursors[member_index].hide()
 		member_index = -1
@@ -120,6 +121,7 @@ func _process(delta):
 		
 		
 	if Input.is_action_just_pressed("ui_accept") and trinket_selecting:
+		SE.silence("Move Between")
 		SE.effect("Cancel")
 		Cursors[member_index].hide()
 		member_index = -1

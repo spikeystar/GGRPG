@@ -42,3 +42,8 @@ func set_id():
 		$ItemInventory.show()
 		$ItemInventory.frame = 5
 		$ItemInfo.text = "Revives a fallen party member to half health"
+
+
+func _on_Members_main_retread():
+	$ItemPanel/ItemInventoryBox.item_index = 0
+	$ItemPanel/ItemMenuCursor.cursor_index = 0

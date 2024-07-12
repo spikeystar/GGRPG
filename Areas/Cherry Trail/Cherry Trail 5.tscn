@@ -671,7 +671,7 @@ text = "You got a Flummery Flambe!"
 align = 1
 
 [node name="Flutterbie" parent="." instance=ExtResource( 7 )]
-position = Vector2( 13, 28 )
+position = Vector2( 178, -65 )
 spawn_z = 0
 
 [node name="Sapling" parent="." instance=ExtResource( 32 )]

@@ -42,3 +42,7 @@ func set_id():
 		$TrinketInventory.frame = 0
 		$TrinketInfo.text = "Remove the trinket from a party member"
 		set_trinket_holder()
+
+func _on_Members_main_retread():
+	$TrinketsNode/TrinketsInventory.trinket_index = 0
+	$TrinketsNode/TrinketsCursor.cursor_index = 0

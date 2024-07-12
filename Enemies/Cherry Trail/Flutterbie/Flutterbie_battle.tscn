@@ -84,7 +84,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -5 ) ]
+"values": [ Vector2( 0, -20 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("CircleShadowSmall:self_modulate")
@@ -220,7 +220,19 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 2, 1, 0, 1, 2, 1, 0, 1 ]
+"values": [ 1, 2, 0, 2, 2, 1, 2, 0, 2 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CircleShadowSmall:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 74 ) ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -260,7 +272,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 2, 1, 0, 1, 2, 1, 0, 1 ]
+"values": [ 1, 2, 0, 2, 1, 2, 0, 2, 2 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("AnimationPlayer:playback_speed")
@@ -273,6 +285,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.5 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CircleShadowSmall:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 74 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -288,7 +312,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 6, 7, 8 ]
+"values": [ 1, 2, 0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:offset")
@@ -297,10 +321,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, -7 ), Vector2( 0, -18 ), Vector2( 0, -5 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, -22 ), Vector2( 0, -27 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:position")
@@ -324,7 +348,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, -2 ), Vector2( 2, -2 ) ]
+"values": [ Vector2( -1, 74 ), Vector2( -1, 74 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -362,9 +386,9 @@ tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 0.5, 1, 0.5, 1, 0.5 ),
+"transitions": PoolRealArray( 0.5, 1, 1, 1, 0.5 ),
 "update": 1,
-"values": [ Vector2( 1, 70 ), Vector2( 9.5, 70.5 ), Vector2( 12, 74 ), Vector2( 4.5, -3.5 ), Vector2( 2, -2 ) ]
+"values": [ Vector2( -1, 72 ), Vector2( 8, 64 ), Vector2( 11, 60 ), Vector2( 5, 66 ), Vector2( -1, 72 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:offset")
@@ -376,7 +400,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -5 ) ]
+"values": [ Vector2( 0, -20 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -392,7 +416,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 2, -2 ) ]
+"values": [ Vector2( -1, 74 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:frame")
@@ -404,7 +428,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 9 ]
+"values": [ 6 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:position")
@@ -452,7 +476,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -5 ) ]
+"values": [ Vector2( 0, -20 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Sprite:visible")
@@ -493,7 +517,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 2, 1, 0 ]
+"values": [ 1, 2, 0, 2 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CircleShadowSmall:position")
@@ -505,7 +529,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, -2 ), Vector2( 2, -2 ) ]
+"values": [ Vector2( -1, 74 ), Vector2( -1, 74 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:offset")
@@ -517,7 +541,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -5 ) ]
+"values": [ Vector2( 0, -20 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("AnimationPlayer:playback_speed")
@@ -1007,8 +1031,17 @@ tracks/1/keys = {
 
 [node name="Flutterbie_battle" type="Node2D"]
 script = ExtResource( 1 )
+ID = "Flutterbie"
+e_health = 50
+e_attack = 7
+e_magic = 10
+e_defense = 2
+initial_type = "neutral"
 TEXT_DAMAGE = ExtResource( 8 )
 TEXT_HEAL = ExtResource( 4 )
+move1 = "Basic"
+move2 = "Asphyxiate"
+move3 = "Aero Bullet"
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -1020,7 +1053,7 @@ texture = ExtResource( 3 )
 position = Vector2( 2, -25 )
 scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 11 )
-offset = Vector2( 0, -5 )
+offset = Vector2( 0, -20 )
 hframes = 9
 vframes = 3
 frame = 1

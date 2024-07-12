@@ -62,12 +62,14 @@ script = ExtResource( 2 )
 
 [node name="Item_Get" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+volume_db = -2.0
 
 [node name="Present" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 
 [node name="Full_Heal" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = 1.0
 
 [node name="Sleep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
@@ -101,6 +103,7 @@ stream = ExtResource( 6 )
 
 [node name="Door" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+volume_db = -1.0
 
 [node name="Drama_Ascend" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
@@ -203,6 +206,7 @@ stream = ExtResource( 37 )
 
 [node name="Staircase" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 51 )
+volume_db = 2.0
 
 [node name="Success" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 43 )

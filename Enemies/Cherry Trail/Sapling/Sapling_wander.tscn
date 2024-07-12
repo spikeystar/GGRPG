@@ -247,7 +247,7 @@ use_transparency = true
 
 [node name="Enemy" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
 modulate = Color( 0.972549, 0.988235, 1, 1 )
-self_modulate = Color( 0.88, 0.88, 0.88, 1 )
+self_modulate = Color( 0.870588, 0.87451, 0.886275, 1 )
 position = Vector2( 3, -24 )
 texture = ExtResource( 6 )
 hframes = 9

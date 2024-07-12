@@ -2168,6 +2168,29 @@ scale_amount = 0.55
 scale_amount_random = 0.2
 color_ramp = SubResource( 11 )
 
+[node name="Particles2D8" type="CPUParticles2D" parent="."]
+position = Vector2( -714, -69 )
+rotation = 0.999572
+z_index = 5
+amount = 10
+lifetime = 7.0
+speed_scale = 0.5
+explosiveness = 0.08
+randomness = 0.04
+lifetime_randomness = 0.09
+fixed_fps = 10
+fract_delta = false
+texture = ExtResource( 58 )
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2( -10, -10 )
+spread = 180.0
+gravity = Vector2( 50, -70 )
+damping = 4.73
+scale_amount = 0.55
+scale_amount_random = 0.2
+color_ramp = SubResource( 11 )
+
 [node name="Particles2D7" type="CPUParticles2D" parent="."]
 position = Vector2( 253, 110 )
 rotation = 0.999572
@@ -2291,7 +2314,7 @@ position = Vector2( 170, -415 )
 scale = Vector2( 1.6, 1.6 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 2
+frame = 4
 speed_scale = 0.7
 playing = true
 

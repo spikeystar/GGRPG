@@ -242,8 +242,10 @@ func enemy_damage():
 	
 	damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
 	if attack_bonus:
+		SE.effect("Success")
 		damage += (damage * 0.3)
 	if whammy:
+		SE.effect("Whammy")
 		damage += damage
 		target_enemy.whammy = true
 	target_enemy.damage(damage)

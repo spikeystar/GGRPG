@@ -92,6 +92,7 @@ func _input(event):
 		emit_signal("restart")
 		
 	elif Input.is_action_just_pressed("ui_select") and menu_name == "Sleep" and Party.marbles >= cost:
+		Music.quiet()
 		Party.marbles = Party.marbles - cost
 		PartyStats.full_heal()
 		PlayerManager.ongoing = true
@@ -109,6 +110,8 @@ func _input(event):
 		menu_name = ""
 		ongoing = false
 		yield(get_tree().create_timer(0.1), "timeout")
+		Music.stopped()
+		Music.loud()
 		Global.door_name = "Sleep"
 		SE.effect("Sleep")
 		yield(get_tree().create_timer(0.7), "timeout")

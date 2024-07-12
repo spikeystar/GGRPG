@@ -4,6 +4,7 @@ var id : String
 var active : AudioStreamPlayer
 var saved_time : float
 var is_playing = false
+var stopped = false
 
 func music():
 	if id == "Garys_House":
@@ -12,11 +13,18 @@ func music():
 	if id == "Cherry_Trail":
 		active = $Cherry_Trail
 		active.play(0)
+	if id == "Pivot_Town":
+		active = $Pivot_Town
+		active.play(0)
 	is_playing = true
 	
 func switch_songs():
 	if is_playing:
 		active.stop()
+
+func stopped():
+	is_playing = false
+	active.stop()
 
 func pause():
 	saved_time = active.get_playback_position()
@@ -27,7 +35,7 @@ func unpause():
 	active.seek(saved_time)
 	
 func quiet():
-	active.volume_db -= 4
+	active.volume_db -= 5
 	
 func loud():
-	active.volume_db += 4
+	active.volume_db += 5

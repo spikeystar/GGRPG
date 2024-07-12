@@ -1,5 +1,11 @@
 extends Node
 
+func silence(id : String):
+	if id == "Move Between":
+		$Move_Between.volume_db = -80
+		yield(get_tree().create_timer(0.1), "timeout")
+		$Move_Between.volume_db = 0
+
 func effect(id : String):
 	if id == "Item_Get":
 		$Item_Get.play()

@@ -1179,7 +1179,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource( 26 )
 menu_parent_path = NodePath("..")
-cursor_offset = Vector2( 17, 2.5 )
+cursor_offset = Vector2( 8, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
@@ -1221,10 +1221,13 @@ anims/open = SubResource( 21 )
 [connection signal="jacques" from="Members" to="Items/ItemPanel/ItemInventoryBox" method="_on_Members_jacques"]
 [connection signal="jacques" from="Members" to="Trinkets/TrinketsNode/TrinketsInventory" method="_on_Members_jacques"]
 [connection signal="main_retread" from="Members" to="MainSelection/MenuCursor" method="_on_Members_main_retread"]
+[connection signal="main_retread" from="Members" to="Items" method="_on_Members_main_retread"]
+[connection signal="main_retread" from="Members" to="Trinkets" method="_on_Members_main_retread"]
 [connection signal="member_options" from="Members" to="MemberOptions" method="_on_Members_member_options"]
 [connection signal="suzy" from="Members" to="Stats" method="_on_Members_suzy"]
 [connection signal="suzy" from="Members" to="Items/ItemPanel/ItemInventoryBox" method="_on_Members_suzy"]
 [connection signal="suzy" from="Members" to="Trinkets/TrinketsNode/TrinketsInventory" method="_on_Members_suzy"]
+[connection signal="switched" from="Members" to="MainSelection/MenuCursor" method="_on_Members_switched"]
 [connection signal="trinket_equipped" from="Members" to="Trinkets/TrinketsNode/TrinketsInventory" method="_on_Members_trinket_equipped"]
 [connection signal="empty_items" from="Items/ItemPanel/ItemInventoryBox" to="MainSelection/MenuCursor" method="_on_ItemInventoryBox_empty_items"]
 [connection signal="empty_items" from="Items/ItemPanel/ItemInventoryBox" to="Items" method="_on_ItemInventoryBox_empty_items"]
@@ -1260,5 +1263,6 @@ anims/open = SubResource( 21 )
 [connection signal="show_stats" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="." method="_on_MemberOptionsCursor_show_stats"]
 [connection signal="show_stats" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="MainSelection/MenuCursor" method="_on_MemberOptionsCursor_show_stats"]
 [connection signal="show_stats" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="Members" method="_on_MemberOptionsCursor_show_stats"]
+[connection signal="switch_selecting" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="MainSelection/MenuCursor" method="_on_MemberOptionsCursor_switch_selecting"]
 [connection signal="switch_selecting" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="Members" method="_on_MemberOptionsCursor_switch_selecting"]
 [connection signal="switch_selecting" from="MemberOptions/VBoxOptions/MemberOptionsCursor" to="MemberOptions" method="_on_MemberOptionsCursor_switch_selecting"]

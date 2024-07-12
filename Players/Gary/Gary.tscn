@@ -1622,6 +1622,7 @@ script = ExtResource( 8 )
 position = Vector2( -1, -60 )
 scale = Vector2( 1.07111, 0.981815 )
 shape = SubResource( 215 )
+disabled = true
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
 collision_mask = 2

@@ -622,6 +622,7 @@ polygon = PoolVector2Array( -28, -23, 2, -36, 63, -6, 32, 6 )
 [node name="Upstairs" parent="Node2D/CollisionRoot" instance=ExtResource( 3 )]
 position = Vector2( 88.7632, -45.4654 )
 script = ExtResource( 10 )
+staircase = true
 target_scene = "res://Areas/Pivot Town/Edgar_House_2.tscn"
 exit_name = "Edgar1_Edgar2"
 
