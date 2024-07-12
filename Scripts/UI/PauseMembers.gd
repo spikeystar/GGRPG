@@ -15,6 +15,7 @@ signal member_options
 signal item_usage
 signal trinket_equipped
 signal main_retread
+signal switched
 
 signal gary
 signal jacques
@@ -38,44 +39,53 @@ func _process(delta):
 	set_labels()
 	PartyStats.party_id = (member_index + 1)
 	if Input.is_action_just_pressed("ui_right") and party_selecting:
+		SE.effect("Move Between")
 		select_next_member(+1)
 		print(member_index)
 		
 	if Input.is_action_just_pressed("ui_left") and party_selecting:
+		SE.effect("Move Between")
 		select_next_member(-1)
 		print(member_index)
 		
 	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members >= 4 and member_index == 0:
+		SE.effect("Move Between")
 		member_index = 3
 		Cursors[0].hide()
 		Cursors[3].show()
 		
 	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members >= 4 and member_index == 1:
+		SE.effect("Move Between")
 		member_index = 3
 		Cursors[1].hide()
 		Cursors[3].show()
 		
 	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members == 4 and member_index == 2:
+		SE.effect("Move Between")
 		member_index = 3
 		Cursors[2].hide()
 		Cursors[3].show()
 		
 	if Input.is_action_just_pressed("ui_up") and party_selecting and member_index == 3 and PartyStats.party_members >= 4:
+		SE.effect("Move Between")
 		member_index = 0
 		Cursors[3].hide()
 		Cursors[0].show()
 		
 	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members == 5 and member_index == 2:
+		SE.effect("Move Between")
 		member_index = 4
 		Cursors[2].hide()
 		Cursors[4].show()
 		
 	if Input.is_action_just_pressed("ui_up") and party_selecting and PartyStats.party_members == 5 and member_index == 4:
+		SE.effect("Move Between")
 		member_index = 1
 		Cursors[4].hide()
 		Cursors[1].show()
 
 	if Input.is_action_just_pressed("ui_select") and party_selecting and able and not switching:
+		SE.effect("Select")
 		emit_signal("member_options")
 		party_selecting = false
 		current_id = (member_index + 1)
@@ -93,12 +103,14 @@ func _process(delta):
 		print(member_index)
 		
 	if Input.is_action_just_pressed("ui_accept") and party_selecting and not stats_active:
+		SE.effect("Cancel")
 		$Cursors.hide()
 		Cursors[member_index].hide()
 		able = false
 		member_index = -1
 		
 	if Input.is_action_just_pressed("ui_accept") and item_selecting:
+		SE.effect("Cancel")
 		Cursors[member_index].hide()
 		member_index = -1
 		$Cursors.hide()
@@ -108,6 +120,7 @@ func _process(delta):
 		
 		
 	if Input.is_action_just_pressed("ui_accept") and trinket_selecting:
+		SE.effect("Cancel")
 		Cursors[member_index].hide()
 		member_index = -1
 		$Cursors.hide()
@@ -119,7 +132,8 @@ func _process(delta):
 		
 		
 	if Input.is_action_just_pressed("ui_select") and party_selecting and able and switching:
-		print("switch")
+		SE.effect("Switch")
+		emit_signal("switched")
 		switching = false
 		member_name = get_name()
 		if selector_name == "Gary":
@@ -139,12 +153,15 @@ func _process(delta):
 		##########
 		
 	if Input.is_action_just_pressed("ui_right") and item_selecting:
+		SE.effect("Move Between")
 		select_next_member(+1)
 		
 	if Input.is_action_just_pressed("ui_left") and item_selecting:
+		SE.effect("Move Between")
 		select_next_member(-1)
 
 	if Input.is_action_just_pressed("ui_select") and item_selecting and able:
+		SE.effect("Heal")
 		selector_name = get_name()
 		if selector_name == "Gary":
 			emit_signal("gary")
@@ -161,31 +178,37 @@ func _process(delta):
 		able = false
 		
 	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members >= 4 and member_index == 0:
+		SE.effect("Move Between")
 		member_index = 3
 		Cursors[0].hide()
 		Cursors[3].show()
 		
 	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members >= 4 and member_index == 1:
+		SE.effect("Move Between")
 		member_index = 3
 		Cursors[1].hide()
 		Cursors[3].show()
 		
 	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members == 4 and member_index == 2:
+		SE.effect("Move Between")
 		member_index = 3
 		Cursors[2].hide()
 		Cursors[3].show()
 		
 	if Input.is_action_just_pressed("ui_up") and item_selecting and member_index == 3 and PartyStats.party_members >= 4:
+		SE.effect("Move Between")
 		member_index = 0
 		Cursors[3].hide()
 		Cursors[0].show()
 		
 	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members == 5 and member_index == 2:
+		SE.effect("Move Between")
 		member_index = 4
 		Cursors[2].hide()
 		Cursors[4].show()
 		
 	if Input.is_action_just_pressed("ui_up") and item_selecting and PartyStats.party_members == 5 and member_index == 4:
+		SE.effect("Move Between")
 		member_index = 1
 		Cursors[4].hide()
 		Cursors[1].show()
@@ -193,12 +216,15 @@ func _process(delta):
 		##############
 		
 	if Input.is_action_just_pressed("ui_right") and trinket_selecting:
+		SE.effect("Move Between")
 		select_next_member(+1)
 		
 	if Input.is_action_just_pressed("ui_left") and trinket_selecting:
+		SE.effect("Move Between")
 		select_next_member(-1)
 
 	if Input.is_action_just_pressed("ui_select") and trinket_selecting and able:
+		SE.effect("Switch")
 		selector_name = get_name()
 		if selector_name == "Gary":
 			emit_signal("gary")
@@ -215,31 +241,37 @@ func _process(delta):
 		able = false
 		
 	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members >= 4 and member_index == 0:
+		SE.effect("Move Between")
 		member_index = 3
 		Cursors[0].hide()
 		Cursors[3].show()
 		
 	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members >= 4 and member_index == 1:
+		SE.effect("Move Between")
 		member_index = 3
 		Cursors[1].hide()
 		Cursors[3].show()
 		
 	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members == 4 and member_index == 2:
+		SE.effect("Move Between")
 		member_index = 3
 		Cursors[2].hide()
 		Cursors[3].show()
 		
 	if Input.is_action_just_pressed("ui_up") and trinket_selecting and member_index == 3 and PartyStats.party_members >= 4:
+		SE.effect("Move Between")
 		member_index = 0
 		Cursors[3].hide()
 		Cursors[0].show()
 		
 	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members == 5 and member_index == 2:
+		SE.effect("Move Between")
 		member_index = 4
 		Cursors[2].hide()
 		Cursors[4].show()
 		
 	if Input.is_action_just_pressed("ui_up") and trinket_selecting and PartyStats.party_members == 5 and member_index == 4:
+		SE.effect("Move Between")
 		member_index = 1
 		Cursors[4].hide()
 		Cursors[1].show()

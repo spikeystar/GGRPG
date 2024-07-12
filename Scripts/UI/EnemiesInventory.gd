@@ -34,12 +34,16 @@ func _process(delta):
 	var size_max = inventory.size()
 	var inventory_max = (inventory.size() -1)
 	if Input.is_action_just_pressed("ui_down") and enemies_active and enemy_index < inventory_max:
+		SE.effect("Move Between")
 		enemy_index += 1
 	if Input.is_action_just_pressed("ui_up") and enemies_active and enemy_index > 0:
+		SE.effect("Move Between")
 		enemy_index -= 1
 	if Input.is_action_just_pressed("ui_down") and enemy_index >=15:
+		SE.effect("Move Between")
 		scroll_down()
 	if Input.is_action_just_pressed("ui_up") and enemy_index >=14:
+		SE.effect("Move Between")
 		scroll_up()
 	
 func get_id():

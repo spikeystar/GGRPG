@@ -40,6 +40,7 @@ func _process(delta):
 		input.y += 0
 		
 	if Input.is_action_just_pressed("ui_accept") and trinket_selecting or Input.is_action_just_pressed("ui_left") and trinket_selecting:
+		SE.effect("Move Between")
 		trinket_selecting = false
 		self.modulate.a = 0
 		emit_signal("retread")

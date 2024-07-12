@@ -31,6 +31,7 @@
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Cherry Trail/sprout.png" type="Texture" id=30]
 [ext_resource path="res://Scripts/Objects/SceneTransition/PlayerSpawnLocation.gd" type="Script" id=31]
+[ext_resource path="res://Enemies/Cherry Trail/Sapling/Sapling_wander.tscn" type="PackedScene" id=32]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=33]
 [ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=35]
@@ -39,7 +40,6 @@
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=38]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=39]
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=40]
-[ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_wander.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Scripts/Area_Specific/Cherry Trail.gd" type="Script" id=42]
 
 [sub_resource type="TileSet" id=1]
@@ -670,14 +670,14 @@ custom_fonts/font = ExtResource( 39 )
 text = "You got a Flummery Flambe!"
 align = 1
 
-[node name="Cheribo" parent="." instance=ExtResource( 41 )]
-position = Vector2( 11, -96 )
-
-[node name="Cheribo2" parent="." instance=ExtResource( 41 )]
-position = Vector2( 278, 76 )
-
 [node name="Flutterbie" parent="." instance=ExtResource( 7 )]
 position = Vector2( 13, 28 )
 spawn_z = 0
+
+[node name="Sapling" parent="." instance=ExtResource( 32 )]
+position = Vector2( 261, 78 )
+
+[node name="Sapling2" parent="." instance=ExtResource( 32 )]
+position = Vector2( -32, -105 )
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

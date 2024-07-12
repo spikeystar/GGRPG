@@ -43,12 +43,16 @@ func _process(delta):
 	var size_max = inventory.size()
 	inventory_max = (inventory.size() -1)
 	if Input.is_action_just_pressed("ui_down") and active and item_index < inventory_max:
+		SE.effect("Move Between")
 		item_index += 1
 	if Input.is_action_just_pressed("ui_up") and active and item_index > 0:
+		SE.effect("Move Between")
 		item_index -= 1
 	if Input.is_action_just_pressed("ui_down") and active and item_index >=10:
+		SE.effect("Move Between")
 		scroll_down()
 	if Input.is_action_just_pressed("ui_up") and active and item_index >=9:
+		SE.effect("Move Between")
 		scroll_up()
 	if Input.is_action_just_pressed("ui_accept") and active or Input.is_action_just_pressed("ui_left") and active:
 		pass

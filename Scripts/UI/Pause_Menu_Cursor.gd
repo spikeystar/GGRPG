@@ -14,6 +14,7 @@ var stats_active = false
 var items_empty = false
 var trinkets_empty = false
 var key_empty = false
+var switching = false
 
 signal party_selecting
 signal item_selecting
@@ -29,37 +30,45 @@ func _process(delta):
 	menu_name = current_menu_item.get_id()
 	
 	if Input.is_action_just_pressed("ui_up") and main_active:
+		SE.effect("Move Between")
 		input.y -= 1
 		if down_count >=1:
 			down_count -= 1
 	if Input.is_action_just_pressed("ui_down") and down_count <5 and main_active:
+		SE.effect("Move Between")
 		input.y += 1
 		down_count += 1	
 	else:
 		input.y += 0
 		
 	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Party":
+		SE.effect("Move Between")
 		self.hide()
 		main_active = false
 		stats_active = false
 		emit_signal("party_selecting")
 		
 	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Items" and not items_empty:
+		SE.effect("Move Between")
 		self.hide()
 		main_active = false
 		emit_signal("item_selecting")
 		
 	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Trinkets" and not trinkets_empty:
+		SE.effect("Move Between")
 		self.hide()
 		main_active = false
 		emit_signal("trinket_selecting")
 		
 	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Enemies":
-		self.hide()
-		main_active = false
-		emit_signal("enemy_selecting")
+		if Party.EnemyList.size() > 0:
+			SE.effect("Move Between")
+			self.hide()
+			main_active = false
+			emit_signal("enemy_selecting")
 		
 	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Key" and not key_empty:
+		SE.effect("Move Between")
 		self.hide()
 		main_active = false
 		emit_signal("key_selecting")
@@ -68,8 +77,14 @@ func _process(delta):
 		self.show()
 		main_active = true
 		emit_signal("retread")
+		if switching:
+			SE.effect("Cancel")
+			switching = false
+		else:
+			SE.effect("Move Between")
 		
 	if Input.is_action_just_pressed("ui_accept") and not main_active and stats_active:
+		SE.effect("Move Between")
 		self.hide()
 		emit_signal("mini_retread")
 		
@@ -171,3 +186,10 @@ func _on_EnemiesCursor_retread():
 func _on_Members_main_retread():
 	cursor_index = 0
 	down_count = 0
+
+
+func _on_MemberOptionsCursor_switch_selecting():
+	switching = true
+
+func _on_Members_switched():
+	switching = false

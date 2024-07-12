@@ -63,6 +63,7 @@ func set_id():
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and buying and able and Party.marbles >= item_cost:
 		if item_id == "Gold Bracelet" or item_id == "Gold Chain":
+			SE.effect("Select")
 			Party.marbles = Party.marbles - item_cost
 			Party.add_trinket_name = item_id
 			Party.add_trinket()
@@ -75,9 +76,13 @@ func _input(event):
 			$Buy_Inventory.item_removed()
 			$MenuCursor.item_selecting = true
 		else:
+			SE.effect("Select")
 			Party.marbles = Party.marbles - item_cost
 			Party.add_item_name = item_id
 			Party.add_item()
+	if Input.is_action_just_pressed("ui_select") and Party.marbles < item_cost:
+		SE.effect("Unable")
+		return
 
 func _on_Interaction_buying():
 	buying = true

@@ -66,18 +66,23 @@ func _process(delta):
 	var size_max = inventory.size()
 	var inventory_max = (inventory.size() -1)
 	if Input.is_action_just_pressed("ui_down") and trinkets_active and trinket_index < inventory_max:
+		SE.effect("Move Between")
 		trinket_index += 1
 	if Input.is_action_just_pressed("ui_up") and trinkets_active and trinket_index > 0:
+		SE.effect("Move Between")
 		trinket_index -= 1
 	if Input.is_action_just_pressed("ui_down") and trinket_index >=15:
+		SE.effect("Move Between")
 		scroll_down()
 	if Input.is_action_just_pressed("ui_up") and trinket_index >=14:
+		SE.effect("Move Between")
 		scroll_up()
 	
 		
 func _input(event):
 	var inventory_max = (inventory.size() -1)
 	if Input.is_action_just_pressed("ui_select") and trinkets_active:
+		SE.effect("Select")
 		get_id()
 		emit_signal("trinket_chosen")
 		trinkets_active = false

@@ -44,6 +44,8 @@ func _input(event):
 		emit_signal("option_selecting")
 		
 	if Input.is_action_just_pressed("ui_accept") and dialogue_cursor and not item_selecting and not ongoing or Input.is_action_just_pressed("ui_left") and dialogue_cursor and not item_selecting and not ongoing:
+		SE.effect("Cancel")
+		$ShopOptions/MenuCursor.option_selecting = false
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
 		$ShopOptions.hide()
@@ -86,6 +88,7 @@ func _input(event):
 		emit_signal("restart")
 
 	if Input.is_action_just_pressed("ui_select") and menu_name == "Buy" and not item_selecting and not ongoing:
+		SE.effect("Select")
 		emit_signal("buying")
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
@@ -98,6 +101,7 @@ func _input(event):
 		options = false
 		
 	if Input.is_action_just_pressed("ui_select") and menu_name == "Sell" and not item_selecting and not ongoing:
+		SE.effect("Select")
 		emit_signal("selling")
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
@@ -110,6 +114,7 @@ func _input(event):
 		options = false
 		
 	if Input.is_action_just_pressed("ui_select") and menu_name == "Deposit" and not item_selecting and not ongoing:
+		SE.effect("Select")
 		emit_signal("deposit")
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
@@ -122,6 +127,7 @@ func _input(event):
 		options = false
 		
 	if Input.is_action_just_pressed("ui_select") and menu_name == "Withdraw" and not item_selecting and not ongoing:
+		SE.effect("Select")
 		emit_signal("withdraw")
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
@@ -134,6 +140,7 @@ func _input(event):
 		options = false
 		
 	if Input.is_action_just_pressed("ui_accept") and item_selecting or Input.is_action_just_pressed("ui_left") and item_selecting:
+		SE.effect("Cancel")
 		$Buy.hide()
 		$Sell.hide()
 		$Deposit.hide()

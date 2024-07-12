@@ -65,6 +65,7 @@ func set_id():
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and deposit and able:
+			SE.effect("Select")
 			Party.item_index = $Deposit_Inventory.item_index
 			Party.add_item_name = item_id
 			Party.remove_item()

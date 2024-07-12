@@ -58,14 +58,14 @@ func _ready():
 	
 	
 	
-	add_enemy_name = "Cheribo"
-	add_enemy()
-	add_enemy_name = "Flutterbie"
-	add_enemy()
-	add_enemy_name = "Sapling"
-	add_enemy()
-	add_enemy_name = "Tindrum"
-	add_enemy()
+	#add_enemy_name = "Cheribo"
+	#add_enemy()
+	#add_enemy_name = "Flutterbie"
+	#add_enemy()
+	#add_enemy_name = "Sapling"
+	#add_enemy()
+	#add_enemy_name = "Tindrum"
+	#add_enemy()
 	
 	
 	spell_name = "Thunderstorm"
