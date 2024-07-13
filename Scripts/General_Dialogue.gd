@@ -21,6 +21,7 @@ func _on_NPC2_general_dialogue():
 	
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and cursor_ready:
+		SE.effect("Select")
 		emit_signal("text_ready")
 	
 func tween_go():

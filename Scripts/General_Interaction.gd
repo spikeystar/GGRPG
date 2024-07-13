@@ -23,6 +23,7 @@ func _on_start_checking_body_entered():
 
 func _input(event):
 	if event.is_action_pressed("ui_select") and get_overlapping_bodies().size() > 0 and not PlayerManager.freeze and SceneManager.ready_again and this_body:
+		SE.effect("Select")
 		PlayerManager.freeze = true
 		_on_touch_area()
 		SceneManager.ready_again = false

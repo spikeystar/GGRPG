@@ -5,6 +5,7 @@ var withdraw = false
 var able = false
 var bag_number : int
 var bag_name : String
+var delay
 
 func _ready():
 	item_id = $MenuCursor.menu_name
@@ -62,7 +63,7 @@ func set_id():
 		$Info.text = "No items"
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_select") and withdraw and able:
+	if Input.is_action_just_pressed("ui_select") and withdraw and able and Party.Inventory.size() < 10:
 			SE.effect("Select")
 			Party.storage_index = $Withdraw_Inventory.item_index
 			Party.add_item_name = item_id
@@ -73,6 +74,12 @@ func _input(event):
 				$MenuCursor.cursor_index -= 1
 			$Withdraw_Inventory.item_removed()
 			$MenuCursor.item_selecting = true
+			delay = true
+			yield(get_tree().create_timer(0.05), "timeout")
+			delay = false
+	if Input.is_action_just_pressed("ui_select") and withdraw and able and Party.Inventory.size() == 10 and not delay:
+		SE.effect("Unable")
+		return
 
 func _on_Interaction_option_selecting():
 	withdraw = false

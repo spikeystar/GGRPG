@@ -203,10 +203,11 @@ stream = ExtResource( 35 )
 
 [node name="Select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 37 )
+volume_db = -1.5
 
 [node name="Staircase" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 51 )
-volume_db = 2.0
+volume_db = 4.0
 
 [node name="Success" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 43 )
@@ -216,6 +217,8 @@ stream = ExtResource( 46 )
 
 [node name="Unable" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 40 )
+volume_db = 1.5
+pitch_scale = 1.08
 
 [node name="Whammy" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 50 )

@@ -104,3 +104,17 @@ func _on_Item_Interact_item_get():
 	var item_name = Party.add_item_name
 	$Info_Window/First_Text.text = "You got a " + item_name + "!"
 	item_window()
+
+func _on_Buy_shop_check():
+	if Party.sent_storage:
+		Party.sent_storage = false
+		$Info_Window/First_Text.text = "Sent to storage"
+		$Info_Window.show()
+		tween = create_tween()
+		tween.tween_property($Info_Window, "modulate:a", 1, 0.2)
+		yield(get_tree().create_timer(0.5), "timeout")
+		var tween = create_tween()
+		tween.tween_property($Info_Window, "modulate:a", 0, 0.2)
+		yield(get_tree().create_timer(0.5), "timeout")
+		$Info_Window.hide()
+		

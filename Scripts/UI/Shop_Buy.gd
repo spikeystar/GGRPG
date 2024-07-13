@@ -4,6 +4,8 @@ var buying = false
 var able = false
 var item_cost : int
 
+signal shop_check
+
 func _ready():
 	item_id = $MenuCursor.menu_name
 	set_id()
@@ -80,7 +82,8 @@ func _input(event):
 			Party.marbles = Party.marbles - item_cost
 			Party.add_item_name = item_id
 			Party.add_item()
-	if Input.is_action_just_pressed("ui_select") and Party.marbles < item_cost:
+			emit_signal("shop_check")
+	if Input.is_action_just_pressed("ui_select") and buying and Party.marbles < item_cost:
 		SE.effect("Unable")
 		return
 

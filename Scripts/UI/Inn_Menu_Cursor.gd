@@ -24,8 +24,10 @@ func _process(delta):
 		menu_name = current_menu_item.get_id()
 	
 	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and option_selecting:
+		SE.effect("Move Between")
 		input.y -= 1
-	if Input.is_action_just_pressed("ui_down") and option_selecting:
+	if Input.is_action_just_pressed("ui_down") and option_selecting and cursor_index <1:
+		SE.effect("Move Between")
 		input.y += 1
 	#else:
 		#input.y += 0
@@ -37,6 +39,7 @@ func _process(delta):
 		#self.modulate.a = 0
 		
 	if Input.is_action_just_pressed("ui_select") and able:
+		SE.effect("Select")
 		able = false
 		option_selecting = false
 		self.modulate.a = 0

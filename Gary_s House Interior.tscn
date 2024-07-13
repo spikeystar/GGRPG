@@ -140,7 +140,6 @@ visible = false
 position = Vector2( 19, -77 )
 z_index = 1
 frames = SubResource( 174 )
-frame = 2
 playing = true
 
 [node name="MatA" type="Sprite" parent="Node2D/YSort"]

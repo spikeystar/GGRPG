@@ -36,6 +36,7 @@ func _process(delta):
 	
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and dialogue_cursor and welcome and $Dialogue/Name/Talk.percent_visible == 1:
+		SE.effect("Select")
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
 		$ShopOptions.show()
@@ -58,6 +59,7 @@ func _input(event):
 		emit_signal("restart")
 	
 	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and not able and not complete and not item_selecting and $Dialogue/Name/Talk.percent_visible == 1:
+		SE.effect("Select")
 		ongoing = true
 		$ShopOptions.hide()
 		$Dialogue.show()
@@ -67,6 +69,7 @@ func _input(event):
 		$Dialogue/DialogueCursor.show()
 		able = true
 	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and able and $Dialogue/Name/Talk.percent_visible == 1:
+		SE.effect("Select")
 		$Dialogue/DialogueCursor.hide()
 		text_2()
 		tween_go()
@@ -75,6 +78,7 @@ func _input(event):
 		able = false
 		complete = true
 	if Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and complete and $Dialogue/Name/Talk.percent_visible == 1:
+		SE.effect("Select")
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
 		welcome = true

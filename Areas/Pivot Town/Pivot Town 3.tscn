@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=2]
@@ -45,6 +45,7 @@
 [ext_resource path="res://Assets/Pivot Town/White Dandelion B.png" type="Texture" id=43]
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Scripts/Objects/Collision/Boundary.gd" type="Script" id=45]
+[ext_resource path="res://Scripts/Area_Specific/Pivot_Town.gd" type="Script" id=46]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -497,6 +498,7 @@ offsets = PoolRealArray( 0, 0.059633, 0.807339, 0.981651, 1 )
 colors = PoolColorArray( 1, 1, 1, 0.470588, 1, 1, 1, 1, 1, 1, 1, 0, 0.910604, 0.910604, 0.910604, 0.0853976, 0.849814, 0.849814, 0.849814, 0.143468 )
 
 [node name="WorldRoot" type="Node2D"]
+script = ExtResource( 46 )
 
 [node name="YSort" type="YSort" parent="."]
 

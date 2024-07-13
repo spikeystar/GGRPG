@@ -41,6 +41,7 @@ func _process(delta):
 	
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and dialogue_cursor and welcome and $Dialogue/Name/Talk.percent_visible == 1:
+		SE.effect("Select")
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
 		$ShopOptions.show()
@@ -62,6 +63,7 @@ func _input(event):
 		emit_signal("restart")
 	
 	elif Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and not able and not complete and $Dialogue/Name/Talk.percent_visible == 1:
+		SE.effect("Select")
 		ongoing = true
 		$ShopOptions.hide()
 		$Dialogue.show()
@@ -71,6 +73,7 @@ func _input(event):
 		$Dialogue/DialogueCursor.show()
 		able = true
 	elif Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and able and $Dialogue/Name/Talk.percent_visible == 1:
+		SE.effect("Select")
 		$Dialogue/DialogueCursor.hide()
 		text_2()
 		tween_go()
@@ -79,6 +82,7 @@ func _input(event):
 		able = false
 		complete = true
 	elif Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and complete and $Dialogue/Name/Talk.percent_visible == 1:
+		SE.effect("Select")
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
 		welcome = true
@@ -92,6 +96,7 @@ func _input(event):
 		emit_signal("restart")
 		
 	elif Input.is_action_just_pressed("ui_select") and menu_name == "Sleep" and Party.marbles >= cost:
+		ongoing = true
 		Music.quiet()
 		Party.marbles = Party.marbles - cost
 		PartyStats.full_heal()
@@ -108,7 +113,6 @@ func _input(event):
 		options = false
 		complete = false
 		menu_name = ""
-		ongoing = false
 		yield(get_tree().create_timer(0.1), "timeout")
 		Music.stopped()
 		Music.loud()
