@@ -38,7 +38,7 @@ var applied_type = false
 var changing_type : String
 var whammy_chance = 3
 var stored_damage = false
-var stored_amount : int
+var stored_amount : int = 0
 
 var a_buff = false
 var a_debuff = false
@@ -411,10 +411,11 @@ func stored_damage():
 		lose_buffs()
 		turn_used = true
 		hide = true
+		yield(get_tree().create_timer(0.6), "timeout")
 		SE.effect("Player Death")
 		$AnimationPlayer.play("Fighter_Dead")
 	else:
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(0.6), "timeout")
 		$AnimationPlayer.play("Fighter_BattleReady")
 	stored_damage = false
 	stored_amount = 0

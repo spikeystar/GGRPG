@@ -400,6 +400,7 @@ func _on_Flee_cursor_selected():
 		emit_signal("defend_inactive")
 		$WindowPlayer.play("flee_dia_open")
 		$FadeRect/AnimationPlayer.play("Flee")
+		Party.marbles -= (Party.marbles * 0.05)
 		yield(get_tree().create_timer(2), "timeout")
 		#BattleMusic.fade_out()
 		#BattleMusic.switch_songs()
@@ -962,6 +963,7 @@ func _on_Enemies_update_move_window():
 	$Fighters/HUDS.hiding()
 	
 func _on_Enemies_Basic():
+	SE.effect("Basic")
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.move_spread = "single"
@@ -981,6 +983,7 @@ func _on_Enemies_Barrage():
 	$Fighters.e_move_base = 5
 	$Fighters.e_attack = $Enemies.e_attack
 	$MovePlayer.position = fighter_OG_position + Vector2(30, -5)
+	SE.effect("Barrage")
 	$MovePlayer/AnimPlayer.play("Barrage")
 	yield(get_tree().create_timer(1.1), "timeout")
 	$Fighters.damage()

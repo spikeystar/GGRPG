@@ -589,18 +589,25 @@ func _on_SpellList_all_enemy_spell():
 
 func _on_Fighters_enemies_enabled():
 	#yield(get_tree().create_timer(0.5), "timeout")
+	var poison_wait = false
+	var sd_wait = false
 	enemies_active = true
 
 	for x in range (enemies.size()):
 		var poisoned = enemies[x].get_status("poison")
 		if poisoned:
+			poison_wait = true
 			enemies[x].poison_damage()
 			
 	for y in range (enemies.size()):
 		var stored_damage = enemies[y].get_status("stored_damage")
 		if stored_damage:
+			sd_wait = true
 			enemies[y].stored_damage()
-			
+	
+	if poison_wait or sd_wait:
+		yield(get_tree().create_timer(0.7), "timeout")
+	
 	yield(get_tree().create_timer(0.3), "timeout")
 	for x in range(enemies.size()):
 		if enemies[x].is_dead():

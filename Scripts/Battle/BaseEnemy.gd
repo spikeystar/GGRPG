@@ -22,7 +22,7 @@ var applied_type = false
 var changing_type : String
 var whammy
 var stored_damage = false
-var stored_amount : int
+var stored_amount : int = 0
 
 var a_buff = false
 var a_debuff = false
@@ -187,7 +187,7 @@ func poison_damage():
 	#$AnimationPlayer.play("enemy_idle")
 	
 func stored_damage():
-	yield(get_tree().create_timer(0.1), "timeout")
+	yield(get_tree().create_timer(0.3), "timeout")
 	$AnimationPlayer.play("enemy_damage")
 	var damage_text = text(TEXT_STORED)
 	if damage_text:
@@ -195,7 +195,7 @@ func stored_damage():
 	health = max(0, health - stored_amount)
 	stored_damage = false
 	stored_amount = 0
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(0.6), "timeout")
 	$AnimationPlayer.playback_speed = 0.5
 	$AnimationPlayer.play("enemy_idle")
 		

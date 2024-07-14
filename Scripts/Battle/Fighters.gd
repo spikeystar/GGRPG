@@ -90,6 +90,9 @@ func _ready():
 	set_positions()
 	fighters2 = fighters.duplicate()
 	#show_cursors(fighter_index)
+	for x in range (fighters.size()):
+		fighter_index = x
+		huds_update()
 	yield(get_tree().create_timer(1), "timeout")
 	fighters_active = true
 	emit_signal("fighters_active")
