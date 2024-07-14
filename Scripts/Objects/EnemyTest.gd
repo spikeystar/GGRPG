@@ -17,9 +17,13 @@ onready var sprite = $BodyYSort/BodyVisualRoot/Enemy
 
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
 export var target_scene : PackedScene
+export var alt_scene : PackedScene
+export var alt_chance : int
+export var alternate : bool
 
 var freeze = PlayerManager.freeze
 onready var battle_arena = target_scene.instance()
+onready var alt_arena = alt_scene.instance()
 
 onready var motion_root: KinematicBody2D = $MotionRoot
 onready var world_collider = $MotionRoot/CollisionShape2D
@@ -71,7 +75,10 @@ func _physics_process(delta):
 	if Global.battle_ended:
 		Music.unpause()
 		SceneManager.SceneEnemies = []
-		get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(battle_arena)
+		if alternate:
+			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(alt_arena)
+		if not alternate:
+			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(battle_arena)
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)
 		transition.ease_in()
@@ -104,9 +111,29 @@ func _physics_process(delta):
 func _on_BattleTrigger_triggered():
 	Music.pause()
 	get_tree().paused = true
-	var transition = TransitionPlayer.instance()
-	get_tree().get_root().add_child(transition)
-	transition.transition()
-	yield(get_tree().create_timer(0.9), "timeout")
-	transition.queue_free()
-	get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(battle_arena)
+	if alternate:
+		randomize()
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var chance = rng.randi_range(1, 100)
+		if chance <= alt_chance:
+			var transition = TransitionPlayer.instance()
+			get_tree().get_root().add_child(transition)
+			transition.transition()
+			yield(get_tree().create_timer(0.9), "timeout")
+			transition.queue_free()
+			get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(alt_arena)
+		else:
+			var transition = TransitionPlayer.instance()
+			get_tree().get_root().add_child(transition)
+			transition.transition()
+			yield(get_tree().create_timer(0.9), "timeout")
+			transition.queue_free()
+			get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(battle_arena)
+	else:
+		var transition = TransitionPlayer.instance()
+		get_tree().get_root().add_child(transition)
+		transition.transition()
+		yield(get_tree().create_timer(0.9), "timeout")
+		transition.queue_free()
+		get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(battle_arena)

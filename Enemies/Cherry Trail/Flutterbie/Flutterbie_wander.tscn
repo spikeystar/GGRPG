@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://NPC/NPC_ShadowAreaCheck.gd" type="Script" id=8]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=10]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CircleShape2D" id=180]
 
@@ -149,6 +150,7 @@ spawn_z = 100
 min_speed = 0.5
 max_speed = 0.65
 target_scene = ExtResource( 9 )
+alt_scene = ExtResource( 11 )
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
 position = Vector2( 0, 1 )

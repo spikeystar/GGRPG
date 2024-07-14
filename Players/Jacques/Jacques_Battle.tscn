@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Enemies/Battle Animations/Damage Star SS.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Misc/Shader/Buff Material.tres" type="Material" id=7]
 [ext_resource path="res://Assets/General/Item Usage Animations SS.png" type="Texture" id=8]
 [ext_resource path="res://Misc/Shader/Debuff_Material.tres" type="Material" id=9]
+[ext_resource path="res://UI/PoisonText.tscn" type="PackedScene" id=10]
+[ext_resource path="res://UI/StoredText.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=14]
 resource_name = "Fighter_Attack"
@@ -1361,6 +1363,8 @@ tracks/1/keys = {
 scale = Vector2( 1.35, 1.35 )
 script = ExtResource( 6 )
 party_id = 1
+TEXT_STORED = ExtResource( 11 )
+TEXT_POISON = ExtResource( 10 )
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )

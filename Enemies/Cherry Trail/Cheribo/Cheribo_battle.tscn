@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Misc/Shader/Buff Material.tres" type="Material" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://UI/HealText.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Misc/Shader/Debuff_Material.tres" type="Material" id=9]
 [ext_resource path="res://Assets/General/Item Usage Animations SS.png" type="Texture" id=10]
+[ext_resource path="res://UI/PoisonText.tscn" type="PackedScene" id=11]
+[ext_resource path="res://UI/StoredText.tscn" type="PackedScene" id=12]
 
 [sub_resource type="StreamTexture" id=17]
 load_path = "res://.import/Cheribo.png-e8cf9f1ea2a21d1830bd0476fd329cfd.stex"
@@ -1011,6 +1013,8 @@ tracks/1/keys = {
 script = ExtResource( 3 )
 TEXT_DAMAGE = ExtResource( 7 )
 TEXT_HEAL = ExtResource( 8 )
+TEXT_STORED = ExtResource( 12 )
+TEXT_POISON = ExtResource( 11 )
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )

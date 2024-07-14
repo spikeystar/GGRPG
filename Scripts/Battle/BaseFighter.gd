@@ -15,6 +15,8 @@ export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
 export(PackedScene) var TEXT_SP: PackedScene = null
 export(PackedScene) var TEXT_LOSS: PackedScene = null
+export(PackedScene) var TEXT_STORED: PackedScene = null
+export(PackedScene) var TEXT_POISON: PackedScene = null
 var OG_position : Vector2
 var BB_position : Vector2
 var able = true
@@ -35,6 +37,8 @@ var anxious = false
 var applied_type = false
 var changing_type : String
 var whammy_chance = 3
+var stored_damage = false
+var stored_amount : int
 
 var a_buff = false
 var a_debuff = false
@@ -142,6 +146,8 @@ func get_status(id : String):
 		return dizzy
 	if id == "type":
 		return current_type
+	if id == "stored_damage":
+		return stored_damage
 		
 	if id == "a_buff":
 		return a_buff
@@ -374,13 +380,14 @@ func damage(amount: int, damage_type: String):
 		lose_buffs()
 		turn_used = true
 		hide = true
+		SE.effect("Player Death")
 		$AnimationPlayer.play("Fighter_Dead")
 	else:
 		$AnimationPlayer.play("Fighter_BattleReady")
 		
 func poison_damage():
 	var amount = int(f_health / 10)
-	var damage_text = text(TEXT_DAMAGE)
+	var damage_text = text(TEXT_POISON)
 	if damage_text:
 		damage_text.label.text = str(amount)
 	health = max(0, health - amount)
@@ -389,7 +396,29 @@ func poison_damage():
 		lose_buffs()
 		turn_used = true
 		hide = true
+		SE.effect("Player Death")
 		$AnimationPlayer.play("Fighter_Dead")
+		
+func stored_damage():
+	yield(get_tree().create_timer(0.2), "timeout")
+	$AnimationPlayer.play("Fighter_Damage")
+	var damage_text = text(TEXT_STORED)
+	if damage_text:
+		damage_text.label.text = str(stored_amount)
+	health = max(0, health - stored_amount)
+	if health == 0:
+		dead = true
+		lose_buffs()
+		turn_used = true
+		hide = true
+		SE.effect("Player Death")
+		$AnimationPlayer.play("Fighter_Dead")
+	else:
+		yield(get_tree().create_timer(0.5), "timeout")
+		$AnimationPlayer.play("Fighter_BattleReady")
+	stored_damage = false
+	stored_amount = 0
+
 		
 func lose_buffs():
 	if a_buff:

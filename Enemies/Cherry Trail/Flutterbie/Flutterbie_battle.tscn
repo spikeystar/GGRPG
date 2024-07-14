@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Scripts/Battle/BaseEnemy.gd" type="Script" id=1]
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Assets/General/Item Usage Animations SS.png" type="Texture" id=9]
 [ext_resource path="res://Misc/Shader/Buff Material.tres" type="Material" id=10]
 [ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie.png" type="Texture" id=11]
+[ext_resource path="res://UI/PoisonText.tscn" type="PackedScene" id=12]
+[ext_resource path="res://UI/StoredText.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -324,7 +326,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, -22 ), Vector2( 0, -27 ) ]
+"values": [ Vector2( 0, -20 ), Vector2( 0, -22 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:position")
@@ -1039,6 +1041,8 @@ e_defense = 2
 initial_type = "neutral"
 TEXT_DAMAGE = ExtResource( 8 )
 TEXT_HEAL = ExtResource( 4 )
+TEXT_STORED = ExtResource( 13 )
+TEXT_POISON = ExtResource( 12 )
 move1 = "Basic"
 move2 = "Asphyxiate"
 move3 = "Aero Bullet"

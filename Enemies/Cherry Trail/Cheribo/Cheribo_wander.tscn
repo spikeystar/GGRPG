@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/Objects/EnemyMotionRoot.gd" type="Script" id=1]
 [ext_resource path="res://NPC/NPC_ShadowAreaCheck.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 1.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo.png" type="Texture" id=9]
 [ext_resource path="res://Enemies/BattleTrigger.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CircleShape2D" id=180]
 
@@ -137,6 +138,9 @@ ground_enemy = true
 min_speed = 0.4
 max_speed = 0.5
 target_scene = ExtResource( 8 )
+alt_scene = ExtResource( 11 )
+alt_chance = 50
+alternate = true
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
 position = Vector2( 0, 1 )

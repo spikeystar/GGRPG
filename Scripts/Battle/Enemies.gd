@@ -60,6 +60,7 @@ var poison = false
 var stun_chance : int
 var poison_chance : int
 
+
 var random_debuff
 var multi_debuff
 var a_debuff
@@ -594,6 +595,12 @@ func _on_Fighters_enemies_enabled():
 		var poisoned = enemies[x].get_status("poison")
 		if poisoned:
 			enemies[x].poison_damage()
+			
+	for y in range (enemies.size()):
+		var stored_damage = enemies[y].get_status("stored_damage")
+		if stored_damage:
+			enemies[y].stored_damage()
+			
 	yield(get_tree().create_timer(0.3), "timeout")
 	for x in range(enemies.size()):
 		if enemies[x].is_dead():

@@ -906,6 +906,19 @@ func _on_Enemies_fighters_active():
 			fighters[y].poison_damage()
 			fighter_index = y
 			huds_update()
+			
+	var sd_check = false
+	for a in range (fighters.size()):
+		var is_sd = fighters[a].get_status("stored_damage")
+		if is_sd and not sd_check:
+			sd_check = true
+			yield(get_tree().create_timer(1), "timeout")
+	for z in range (fighters.size()):
+		var stored_damage = fighters[z].get_status("stored_damage")
+		if stored_damage:
+			fighters[z].stored_damage()
+			fighter_index = z
+			huds_update()
 	
 	max_turns = 0
 	for x in range (fighters2.size()):
