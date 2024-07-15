@@ -906,7 +906,7 @@ func Precious_Beam():
 	rng.randomize()
 	var fighter_node = $Fighters.get_f_current()
 	var fighter_position = $Fighters.get_f_OG_position()
-	var enemy_position = $Enemies.get_e_position() + Vector2(-140, 18)
+	var enemy_position = $Enemies.get_e_position() + Vector2(-150, 12)
 	var buff_counter = $Enemies.get_status("buff_counter")
 	$Enemies.damage_type = "fire"
 	$Enemies.move_type = "fire"
@@ -914,6 +914,7 @@ func Precious_Beam():
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
+	SE.effect("Precious Beam")
 	$Fighters.spell_2()
 	yield(get_tree().create_timer(3.5), "timeout")
 	$Enemies.m_debuff = true

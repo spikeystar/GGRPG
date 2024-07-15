@@ -118,3 +118,5 @@ func effect(id : String):
 		$Beat_Down.play()
 	if id == "Splat":
 		$Splat.play()
+	if id == "Precious Beam":
+		$Precious_Beam.play()

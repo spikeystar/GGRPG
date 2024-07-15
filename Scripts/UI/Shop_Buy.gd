@@ -74,18 +74,26 @@ func _input(event):
 			Shops.remove_item()
 			$MenuCursor.item_selecting = false
 			if $Buy_Inventory.item_index == $Buy_Inventory.inventory_max:
+				$Buy_Inventory.item_index -=1
 				$MenuCursor.cursor_index -= 1
 			$Buy_Inventory.item_removed()
 			$MenuCursor.item_selecting = true
+			able = false
+			yield(get_tree().create_timer(0.1), "timeout")
+			able = true
 		else:
 			SE.effect("Select")
 			Party.marbles = Party.marbles - item_cost
 			Party.add_item_name = item_id
 			Party.add_item()
 			emit_signal("shop_check")
-	if Input.is_action_just_pressed("ui_select") and buying and Party.marbles < item_cost:
-		SE.effect("Unable")
-		return
+			able = false
+			yield(get_tree().create_timer(0.1), "timeout")
+			able = true
+	if Input.is_action_just_pressed("ui_select") and able and buying:
+		if Party.marbles < item_cost:
+			SE.effect("Unable")
+			return
 
 func _on_Interaction_buying():
 	buying = true

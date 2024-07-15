@@ -1655,6 +1655,10 @@ visible = false
 
 [node name="MovePlayer" parent="." instance=ExtResource( 58 )]
 
+[node name="Position2D" type="Position2D" parent="."]
+visible = false
+position = Vector2( -155, -21 )
+
 [connection signal="BB_active" from="." to="Enemies" method="_on_WorldRoot_BB_active"]
 [connection signal="BB_active" from="." to="Fighters" method="_on_WorldRoot_BB_active"]
 [connection signal="action_ended" from="." to="Enemies" method="_on_WorldRoot_action_ended"]

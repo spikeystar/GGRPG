@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://SE/Item Get SE.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Misc/SE.gd" type="Script" id=2]
@@ -55,6 +55,7 @@
 [ext_resource path="res://SE/Menu Close SE.mp3" type="AudioStream" id=53]
 [ext_resource path="res://SE/Metal Door SE.mp3" type="AudioStream" id=54]
 [ext_resource path="res://SE/Battle/Splat SE.mp3" type="AudioStream" id=55]
+[ext_resource path="res://SE/Battle/Precious Beam SE.mp3" type="AudioStream" id=56]
 
 [node name="SE" type="Node"]
 pause_mode = 2
@@ -217,7 +218,7 @@ stream = ExtResource( 46 )
 
 [node name="Unable" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 40 )
-volume_db = 1.5
+volume_db = 2.0
 pitch_scale = 1.08
 
 [node name="Whammy" type="AudioStreamPlayer" parent="."]
@@ -234,3 +235,6 @@ stream = ExtResource( 49 )
 
 [node name="Splat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 55 )
+
+[node name="Precious_Beam" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 56 )
