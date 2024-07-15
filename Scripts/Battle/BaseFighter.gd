@@ -401,6 +401,7 @@ func poison_damage():
 		
 func stored_damage():
 	yield(get_tree().create_timer(0.2), "timeout")
+	$AnimationPlayer.playback_speed = 0.65
 	$AnimationPlayer.play("Fighter_Damage")
 	var damage_text = text(TEXT_STORED)
 	if damage_text:
@@ -411,11 +412,13 @@ func stored_damage():
 		lose_buffs()
 		turn_used = true
 		hide = true
-		yield(get_tree().create_timer(0.6), "timeout")
+		yield(get_tree().create_timer(0.8), "timeout")
 		SE.effect("Player Death")
+		$AnimationPlayer.playback_speed = 0.5
 		$AnimationPlayer.play("Fighter_Dead")
 	else:
-		yield(get_tree().create_timer(0.6), "timeout")
+		yield(get_tree().create_timer(0.8), "timeout")
+		$AnimationPlayer.playback_speed = 0.5
 		$AnimationPlayer.play("Fighter_BattleReady")
 	stored_damage = false
 	stored_amount = 0

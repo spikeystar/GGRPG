@@ -95,7 +95,7 @@ func _on_Fighters_BB_move():
 
 func _input(event):
 	var fighter_turn_used = $Fighters.get_turn_value()
-	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting:
+	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory:
 		SE.effect("Select")
 		$BattleButtons.show()
 		$BattleButtons/AttackX.hide()
@@ -233,6 +233,7 @@ func _input(event):
 			window_open = true
 
 	if Input.is_action_just_pressed("ui_select") and victory_ended:
+		victory_ended = false
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)
 		transition.ease_out()

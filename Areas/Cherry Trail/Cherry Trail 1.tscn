@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie_wander.tscn" type="PackedScene" id=39]
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_wander.tscn" type="PackedScene" id=40]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=41]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 5.tscn" type="PackedScene" id=42]
 
 [sub_resource type="TileSet" id=1]
 7/name = "Grass Tile.png 7"
@@ -164,11 +165,14 @@ position = Vector2( -14, -27 )
 
 [node name="Cheribo2" parent="." instance=ExtResource( 40 )]
 position = Vector2( 253, 12 )
+target_scene = ExtResource( 41 )
+alt_scene = ExtResource( 42 )
+alt_chance = 25
 
 [node name="Flutterbie" parent="." instance=ExtResource( 39 )]
 position = Vector2( 638, -67 )
 spawn_z = 0
-alt_scene = ExtResource( 41 )
+target_scene = ExtResource( 41 )
 
 [node name="YSort" type="YSort" parent="."]
 

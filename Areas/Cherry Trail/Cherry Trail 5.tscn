@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -40,8 +40,9 @@
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=38]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=39]
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=40]
-[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=41]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 4.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Scripts/Area_Specific/Cherry Trail.gd" type="Script" id=42]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 6.tscn" type="PackedScene" id=43]
 
 [sub_resource type="TileSet" id=1]
 7/name = "Grass Tile.png 7"
@@ -674,14 +675,15 @@ align = 1
 [node name="Flutterbie" parent="." instance=ExtResource( 7 )]
 position = Vector2( 178, -65 )
 spawn_z = 0
-alt_scene = ExtResource( 41 )
+target_scene = ExtResource( 41 )
 
 [node name="Sapling" parent="." instance=ExtResource( 32 )]
 position = Vector2( 261, 78 )
+target_scene = ExtResource( 43 )
 alt_scene = ExtResource( 41 )
 
 [node name="Sapling2" parent="." instance=ExtResource( 32 )]
 position = Vector2( -32, -105 )
-alt_scene = ExtResource( 41 )
+target_scene = ExtResource( 43 )
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

@@ -2684,7 +2684,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.85 ]
+"values": [ 0.9 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Splat/Sprite:rotation_degrees")
@@ -3678,8 +3678,10 @@ color = Color( 1, 0.972549, 0.952941, 1 )
 
 [node name="Splat" type="Node2D" parent="."]
 visible = false
+modulate = Color( 1, 1, 1, 0.823529 )
 position = Vector2( -7, 2 )
 rotation = 0.105539
+scale = Vector2( 1.2, 1.2 )
 
 [node name="Sprite" type="Sprite" parent="Splat"]
 texture = ExtResource( 18 )

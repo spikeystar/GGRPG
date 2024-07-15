@@ -246,7 +246,7 @@ func enemy_damage():
 		SE.effect("Success")
 		damage += (damage * 0.3)
 	if whammy:
-		SE.effect("Whammy")
+		SE.effect("Whammy!")
 		damage += damage
 		target_enemy.whammy = true
 	target_enemy.damage(damage)
@@ -313,6 +313,7 @@ func magic_damage():
 	if type_bonus == "none":
 		pass
 	if whammy:
+		SE.effect("Whammy!")
 		damage += damage
 	
 	target_enemy.magic_damage(damage, damage_type)
@@ -410,6 +411,7 @@ func all_magic_damage():
 			pass
 		
 		if whammy:
+			SE.effect("Whammy!")
 			damage += damage
 		
 		enemies[x].magic_damage(damage, damage_type)

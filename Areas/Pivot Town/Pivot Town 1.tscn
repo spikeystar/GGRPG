@@ -775,6 +775,12 @@ position = Vector2( -120.381, -323.996 )
 rotation = 0.0521012
 texture = ExtResource( 57 )
 
+[node name="SquareShadow11" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( -211.478, -669.027 )
+rotation = 0.0252857
+texture = ExtResource( 57 )
+
 [node name="SquareShadow4" type="Sprite" parent="YSort/Floor"]
 modulate = Color( 1, 1, 1, 0.392157 )
 position = Vector2( -56.8099, -509.328 )
@@ -1095,7 +1101,7 @@ rotation = 0.335116
 scale = Vector2( 1.61617, 1.54281 )
 texture = ExtResource( 19 )
 script = ExtResource( 29 )
-depth_test_offset = Vector2( 0, 90 )
+depth_test_offset = Vector2( 0, 125 )
 
 [node name="Ledge2" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
 position = Vector2( -331, -270 )
@@ -1961,7 +1967,7 @@ item_name = "Pretty Gem"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Item_Get"]
 position = Vector2( 184, -34 )
-polygon = PoolVector2Array( -78, -110, -34, -92, -51, -76, -96, -96 )
+polygon = PoolVector2Array( -73, -103, -34, -85, -75, -62, -111, -77 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
@@ -2305,7 +2311,7 @@ position = Vector2( -429, -740 )
 scale = Vector2( 1.7, 1.7 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 1
+frame = 5
 speed_scale = 0.8
 playing = true
 

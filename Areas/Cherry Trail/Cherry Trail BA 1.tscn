@@ -638,7 +638,7 @@ e_attack = 15
 e_magic = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Barrage"
+move1 = "Basic"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
