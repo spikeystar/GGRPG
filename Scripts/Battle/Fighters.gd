@@ -631,7 +631,7 @@ func f_turn_used():
 	fighters[selector_index].turn_used()
 	max_turns += 1
 	
-func fighters_active_check():
+func fighters_active_check():	
 	var array_size = fighters2.size()
 	for x in range (fighters2.size()):
 		var dead = fighters2[x].death_count()
@@ -641,6 +641,12 @@ func fighters_active_check():
 		var stun = fighters2[x].get_status("stun")
 		if stun:
 			array_size - 1
+			
+	#for x in range (fighters2.size()):
+		#var turn_used = fighters2[x].get_turn_value()
+		#if turn_used:
+			#array_size - 1
+			
 	if max_turns == array_size:
 		emit_signal ("enemies_enabled")
 		enemies_active = true
@@ -780,7 +786,7 @@ func item_used():
 		if revive:
 			dead = fighters2[target_index].death_count()
 			if dead:
-				max_turns -=1
+				#max_turns -=1
 				fighters2[target_index].restore(item_name)
 				yield(get_tree().create_timer(0.25), "timeout")
 				huds_heal_update()
@@ -950,7 +956,7 @@ func _on_Enemies_fighters_active():
 		
 	yield(get_tree().create_timer(0.8), "timeout")
 	#fighter_index = -1
-	if not SceneManager.victory:
+	if not SceneManager.victory and not SceneManager.game_over:
 		select_next_fighter(+1)
 		fighters_active = true
 		emit_signal("fighters_active")

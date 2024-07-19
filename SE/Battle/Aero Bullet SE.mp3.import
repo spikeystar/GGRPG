@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Aero Bullet SE.mp3-225a2bb0a862f6b065184b73bd99d003.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Aero Bullet SE.mp3"
+dest_files=[ "res://.import/Aero Bullet SE.mp3-225a2bb0a862f6b065184b73bd99d003.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

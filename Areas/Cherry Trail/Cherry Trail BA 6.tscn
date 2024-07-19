@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://UI/Battle/Defense Window.png" type="Texture" id=1]
 [ext_resource path="res://UI/Battle/Magic Window.png" type="Texture" id=2]
@@ -28,7 +28,7 @@
 [ext_resource path="res://Scripts/Battle/HUDS.gd" type="Script" id=26]
 [ext_resource path="res://UI/HealText.tscn" type="PackedScene" id=27]
 [ext_resource path="res://UI/DamageText.tscn" type="PackedScene" id=28]
-[ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_battle.tscn" type="PackedScene" id=29]
+[ext_resource path="res://Enemies/Cherry Trail/Tindrum/Tindrum_battle.tscn" type="PackedScene" id=29]
 [ext_resource path="res://Players/Gary/Gary_Battle.tscn" type="PackedScene" id=30]
 [ext_resource path="res://Players/Jacques/Jacques_Battle.tscn" type="PackedScene" id=31]
 [ext_resource path="res://Players/Irina/Irina_Battle.tscn" type="PackedScene" id=32]
@@ -58,7 +58,6 @@
 [ext_resource path="res://UI/Battle/Status/Status Icons.png" type="Texture" id=56]
 [ext_resource path="res://Assets/Cherry Trail/Cherry Trail BA 1.jpg" type="Texture" id=57]
 [ext_resource path="res://BattleSystem/MovePlayer.tscn" type="PackedScene" id=58]
-[ext_resource path="res://Enemies/Cherry Trail/Sapling/Sapling_battle.tscn" type="PackedScene" id=59]
 
 [sub_resource type="Theme" id=14]
 
@@ -611,18 +610,8 @@ script = ExtResource( 41 )
 
 [node name="Field" type="Node2D" parent="Enemies"]
 
-[node name="Cheribo_battle" parent="Enemies/Field" instance=ExtResource( 29 )]
-position = Vector2( 3, 14 )
-ID = "Cheribo"
-e_health = 70
-e_attack = 15
-e_magic = 15
-e_defense = 1
-initial_type = "neutral"
-move1 = "Basic"
-
-[node name="Sapling_battle" parent="Enemies/Field" instance=ExtResource( 59 )]
-position = Vector2( 137, 66 )
+[node name="Tindrum_battle" parent="Enemies/Field" instance=ExtResource( 29 )]
+position = Vector2( 67, 13 )
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
@@ -1601,7 +1590,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1618,6 +1606,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Prism Snow SE.mp3-8a0bf0a9f5581d9e3c845438a4b62a61.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Prism Snow SE.mp3"
+dest_files=[ "res://.import/Prism Snow SE.mp3-8a0bf0a9f5581d9e3c845438a4b62a61.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

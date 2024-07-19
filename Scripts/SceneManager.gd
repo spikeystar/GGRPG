@@ -13,4 +13,5 @@ var new_file = true
 var npc_name : String
 var ready_again = false
 var victory = false
+var game_over = false
 var targeted_applied = false

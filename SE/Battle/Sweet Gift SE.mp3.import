@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sweet Gift SE.mp3-87a6717276c2d84b14688afba94bab51.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Sweet Gift SE.mp3"
+dest_files=[ "res://.import/Sweet Gift SE.mp3-87a6717276c2d84b14688afba94bab51.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

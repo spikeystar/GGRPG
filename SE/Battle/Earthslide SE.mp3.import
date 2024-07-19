@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Earthslide SE.mp3-ec5536430ba8bba23f77bbd3227cf633.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Earthslide SE.mp3"
+dest_files=[ "res://.import/Earthslide SE.mp3-ec5536430ba8bba23f77bbd3227cf633.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

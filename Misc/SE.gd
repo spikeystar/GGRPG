@@ -114,9 +114,53 @@ func effect(id : String):
 		$Barrage.play()
 	if id == "Basic":
 		$Basic.play()
-	if id == "Beat_Down":
+	if id == "Beat Down":
 		$Beat_Down.play()
 	if id == "Splat":
 		$Splat.play()
 	if id == "Precious Beam":
 		$Precious_Beam.play()
+	if id == "Aero Bullet":
+		$Aero_Bullet.play()
+	if id == "Asphyxiate":
+		$Asphyxiate.play()
+	if id == "Bubble Ring":
+		$Bubble_Ring.play()
+	if id == "Earthslide":
+		$Earthslide.play()
+	if id == "Extort":
+		$Extort.play()
+	if id == "Friction":
+		$Friction.play()
+	if id == "Gravel Spat":
+		$Gravel_Spat.play()
+	if id == "Icicle":
+		$Icicle.play()
+	if id == "Pester":
+		$Pester.play()
+	if id == "Prism Snow":
+		$Prism_Snow.play()
+	if id == "Red Fender":
+		$Red_Fender.play()
+	if id == "Sabotage":
+		$Sabotage.play()
+	if id == "Skateboard":
+		$Skateboard.play()
+	if id == "Slash":
+		$Slash.play()
+	if id == "Squall":
+		$Squall.play()
+	if id == "Star Wand":
+		$Star_Wand.play()
+	if id == "Sting":
+		$Sting.play()
+	if id == "Stream Strike":
+		$Stream_Strike.play()
+	if id == "Sweet Gift":
+		$Sweet_Gift.play()
+	if id == "Terra Arrow":
+		$Terra_Arrow.play()
+	if id == "Thunderstorm":
+		$Thunderstorm.play()
+	if id == "Zap":
+		$Zap.play()

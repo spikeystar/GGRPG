@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/hill c.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Pivot Town/Windmill.tscn" type="PackedScene" id=2]
@@ -47,6 +47,7 @@
 [ext_resource path="res://Assets/Pivot Town/boulder a.png" type="Texture" id=45]
 [ext_resource path="res://Assets/Pivot Town/boulder b.png" type="Texture" id=46]
 [ext_resource path="res://Scripts/Item_Interact.gd" type="Script" id=47]
+[ext_resource path="res://Scripts/Area_Specific/Pivot_Town.gd" type="Script" id=48]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -485,6 +486,7 @@ offsets = PoolRealArray( 0, 0.059633, 0.807339, 0.981651, 1 )
 colors = PoolColorArray( 1, 1, 1, 0.470588, 1, 1, 1, 1, 1, 1, 1, 0, 0.910604, 0.910604, 0.910604, 0.0853976, 0.849814, 0.849814, 0.849814, 0.143468 )
 
 [node name="WorldRoot" type="Node2D"]
+script = ExtResource( 48 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -822,6 +824,21 @@ rotation = 3.1133
 scale = Vector2( 0.870714, -0.769878 )
 texture = ExtResource( 44 )
 
+[node name="StoneC" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
+modulate = Color( 0.96, 0.9312, 0.9528, 1 )
+position = Vector2( -446, -284 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 1.7, 1.7 )
+texture = ExtResource( 45 )
+texture_scale = Vector2( -1.3, 1.4 )
+texture_offset = Vector2( 3, 15 )
+height = 80.0
+preview_collision_box = false
+use_collision = false
+
 [node name="StoneA" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
 position = Vector2( -438, -236 )
 __meta__ = {
@@ -836,7 +853,8 @@ height = 80.0
 preview_collision_box = false
 
 [node name="StoneB" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
-position = Vector2( -370, -258 )
+modulate = Color( 0.960784, 0.945098, 0.960784, 1 )
+position = Vector2( -369, -257 )
 __meta__ = {
 "_editor_description_": ""
 }

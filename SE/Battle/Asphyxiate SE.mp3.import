@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Asphyxiate SE.mp3-b2089c89d37e29265620e9add078b188.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Asphyxiate SE.mp3"
+dest_files=[ "res://.import/Asphyxiate SE.mp3-b2089c89d37e29265620e9add078b188.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

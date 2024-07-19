@@ -49,7 +49,17 @@ var damage_type : String
 export(String) var move1 = ""
 export(String) var move2 = ""
 export(String) var move3 = ""
-onready var move_list : Array = [move1, move2, move3]
+export(String) var move4 = ""
+export(String) var move5 = ""
+export(String) var move6 = ""
+export(String) var move7 = ""
+export(String) var move8 = ""
+export(String) var move9 = ""
+export(String) var move10 = ""
+export(String) var move11 = ""
+export(String) var move12 = ""
+export(String) var move13 = ""
+onready var move_list : Array = [move1, move2, move3, move4, move5, move6, move7, move8, move9, move10, move11, move12, move13]
 var check_name : String
 
 signal enemy_dead

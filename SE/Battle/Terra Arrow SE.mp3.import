@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Terra Arrow SE.mp3-64785090b98d2778377147361cbdba5e.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Terra Arrow SE.mp3"
+dest_files=[ "res://.import/Terra Arrow SE.mp3-64785090b98d2778377147361cbdba5e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

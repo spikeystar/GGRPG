@@ -1008,6 +1008,7 @@ tracks/1/keys = {
 }
 
 [node name="Tindrum_battle" type="Node2D"]
+scale = Vector2( 1.4, 1.4 )
 script = ExtResource( 10 )
 ID = "Flutterbie"
 e_health = 50
@@ -1020,8 +1021,10 @@ TEXT_HEAL = ExtResource( 1 )
 TEXT_STORED = ExtResource( 13 )
 TEXT_POISON = ExtResource( 12 )
 move1 = "Basic"
-move2 = "Asphyxiate"
-move3 = "Aero Bullet"
+move2 = "Sabotage"
+move3 = "Barrage"
+move4 = "Beat Down"
+move5 = "Extort"
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -1062,7 +1065,8 @@ hframes = 9
 vframes = 3
 
 [node name="Cursor" type="Sprite" parent="."]
-position = Vector2( -57, -74 )
+position = Vector2( -59.2857, -80.7143 )
+scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 2 )
 
 [node name="DamageText" parent="." instance=ExtResource( 7 )]

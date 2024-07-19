@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Friction SE.mp3-1a17a266f17139e54518b896b67f6f7a.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Friction SE.mp3"
+dest_files=[ "res://.import/Friction SE.mp3-1a17a266f17139e54518b896b67f6f7a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pester SE.mp3-ffb922598e0991904f4ea53c575c1d6f.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Pester SE.mp3"
+dest_files=[ "res://.import/Pester SE.mp3-ffb922598e0991904f4ea53c575c1d6f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

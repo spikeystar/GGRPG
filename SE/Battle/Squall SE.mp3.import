@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Squall SE.mp3-35736ad946b9ba1622b95b0580a414aa.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Squall SE.mp3"
+dest_files=[ "res://.import/Squall SE.mp3-35736ad946b9ba1622b95b0580a414aa.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -11,7 +11,7 @@ font_path = "res://Misc/Font/Greenscr.ttf"
 [sub_resource type="DynamicFont" id=5]
 size = 14
 outline_size = 2
-outline_color = Color( 0, 0.454902, 0.227451, 1 )
+outline_color = Color( 0, 0.39, 0.195, 1 )
 font_data = SubResource( 4 )
 
 [sub_resource type="Animation" id=2]

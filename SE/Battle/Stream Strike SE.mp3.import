@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Stream Strike SE.mp3-550964ff27c3ed878f3b4abd88d98f05.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Stream Strike SE.mp3"
+dest_files=[ "res://.import/Stream Strike SE.mp3-550964ff27c3ed878f3b4abd88d98f05.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

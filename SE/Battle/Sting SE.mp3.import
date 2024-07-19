@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sting SE.mp3-66d61be0a73253a908d2400210a0e346.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Sting SE.mp3"
+dest_files=[ "res://.import/Sting SE.mp3-66d61be0a73253a908d2400210a0e346.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

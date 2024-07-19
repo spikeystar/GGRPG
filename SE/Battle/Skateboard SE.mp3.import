@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Skateboard SE.mp3-78a416910c1eb8024ca36bfd66a54e4a.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Skateboard SE.mp3"
+dest_files=[ "res://.import/Skateboard SE.mp3-78a416910c1eb8024ca36bfd66a54e4a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

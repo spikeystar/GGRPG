@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://SE/Item Get SE.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Misc/SE.gd" type="Script" id=2]
@@ -56,6 +56,28 @@
 [ext_resource path="res://SE/Metal Door SE.mp3" type="AudioStream" id=54]
 [ext_resource path="res://SE/Battle/Splat SE.mp3" type="AudioStream" id=55]
 [ext_resource path="res://SE/Battle/Precious Beam SE.mp3" type="AudioStream" id=56]
+[ext_resource path="res://SE/Battle/Star Wand SE.mp3" type="AudioStream" id=57]
+[ext_resource path="res://SE/Battle/Prism Snow SE.mp3" type="AudioStream" id=58]
+[ext_resource path="res://SE/Battle/Asphyxiate SE.mp3" type="AudioStream" id=59]
+[ext_resource path="res://SE/Battle/Extort SE.mp3" type="AudioStream" id=60]
+[ext_resource path="res://SE/Battle/Skateboard SE.mp3" type="AudioStream" id=61]
+[ext_resource path="res://SE/Battle/Squall SE.mp3" type="AudioStream" id=62]
+[ext_resource path="res://SE/Battle/Sweet Gift SE.mp3" type="AudioStream" id=63]
+[ext_resource path="res://SE/Battle/Aero Bullet SE.mp3" type="AudioStream" id=64]
+[ext_resource path="res://SE/Battle/Gravel Spat SE.mp3" type="AudioStream" id=65]
+[ext_resource path="res://SE/Battle/Icicle SE.mp3" type="AudioStream" id=66]
+[ext_resource path="res://SE/Battle/Earthslide SE.mp3" type="AudioStream" id=67]
+[ext_resource path="res://SE/Battle/Sabotage SE.mp3" type="AudioStream" id=68]
+[ext_resource path="res://SE/Battle/Friction SE.mp3" type="AudioStream" id=69]
+[ext_resource path="res://SE/Battle/Stream Strike SE.mp3" type="AudioStream" id=70]
+[ext_resource path="res://SE/Battle/Terra Arrow SE.mp3" type="AudioStream" id=71]
+[ext_resource path="res://SE/Battle/Thunderstorm SE.mp3" type="AudioStream" id=72]
+[ext_resource path="res://SE/Battle/Bubble Ring SE.mp3" type="AudioStream" id=73]
+[ext_resource path="res://SE/Battle/Pester SE.mp3" type="AudioStream" id=74]
+[ext_resource path="res://SE/Battle/Red Fender SE.mp3" type="AudioStream" id=75]
+[ext_resource path="res://SE/Battle/Sting SE.mp3" type="AudioStream" id=76]
+[ext_resource path="res://SE/Battle/Slash SE.mp3" type="AudioStream" id=77]
+[ext_resource path="res://SE/Battle/Zap SE.mp3" type="AudioStream" id=78]
 
 [node name="SE" type="Node"]
 pause_mode = 2
@@ -74,6 +96,7 @@ volume_db = 1.0
 
 [node name="Sleep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -2.0
 
 [node name="Boss_Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
@@ -101,6 +124,8 @@ stream = ExtResource( 13 )
 
 [node name="Defend" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+volume_db = -1.0
+pitch_scale = 0.84
 
 [node name="Door" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
@@ -223,6 +248,7 @@ pitch_scale = 1.08
 
 [node name="Whammy" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 50 )
+volume_db = -4.0
 
 [node name="Barrage" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 44 )
@@ -232,9 +258,94 @@ stream = ExtResource( 39 )
 
 [node name="Beat_Down" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 49 )
+volume_db = -4.0
 
 [node name="Splat" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 55 )
+volume_db = -2.0
 
 [node name="Precious_Beam" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 56 )
+volume_db = -7.0
+
+[node name="Aero_Bullet" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 64 )
+volume_db = -3.0
+
+[node name="Asphyxiate" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 59 )
+volume_db = -8.0
+
+[node name="Bubble_Ring" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 73 )
+volume_db = -4.0
+
+[node name="Earthslide" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 67 )
+
+[node name="Extort" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 60 )
+volume_db = -8.0
+
+[node name="Friction" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 69 )
+volume_db = -4.0
+
+[node name="Gravel_Spat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 65 )
+volume_db = -6.0
+
+[node name="Icicle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 66 )
+
+[node name="Pester" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 74 )
+volume_db = -10.0
+
+[node name="Prism_Snow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 58 )
+volume_db = -8.0
+
+[node name="Red_Fender" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 75 )
+
+[node name="Sabotage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 68 )
+pitch_scale = 0.9
+
+[node name="Skateboard" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 61 )
+
+[node name="Slash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 77 )
+volume_db = -4.0
+
+[node name="Squall" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 62 )
+volume_db = -5.0
+
+[node name="Star_Wand" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 57 )
+
+[node name="Sting" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 76 )
+volume_db = -3.0
+
+[node name="Stream_Strike" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 70 )
+volume_db = -6.0
+
+[node name="Sweet_Gift" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 63 )
+
+[node name="Terra_Arrow" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 71 )
+volume_db = -7.0
+
+[node name="Thunderstorm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 72 )
+volume_db = 3.0
+
+[node name="Zap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 78 )
+volume_db = -10.0

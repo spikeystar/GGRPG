@@ -412,12 +412,19 @@ func _on_Enemies_enemy_chosen():
 	emit_signal("f_turn_used")
 	tween = create_tween()
 	var fighter_node = $Fighters.get_f_current()
+	var fighter_name = $Fighters.get_f_name()
 	var enemy_position = $Enemies.get_e_position() + Vector2(-55, -8)
+	if fighter_name == "jacques":
+		SE.effect("Skateboard")
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
 	emit_signal("start_attack_timer")
 	$Fighters.fighter_attack()
 	fighter_selection = false
+	if fighter_name == "gary":
+		SE.effect("Red Fender")
+	if fighter_name == "irina":
+		SE.effect("Star Wand")
 	
 func _on_Fighters_anim_finish():
 	var f_name = $Fighters.get_f_name()
@@ -493,9 +500,10 @@ func _on_Enemies_victory():
 		victory_ended = true
 	
 func _on_Fighters_game_over():
+	SceneManager.game_over = true
 	ongoing = true
-	SE.effect("Game Over")
 	yield(get_tree().create_timer(1.5), "timeout")
+	SE.effect("Game Over")
 	#BattleMusic.fade_out()
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
@@ -511,6 +519,7 @@ func _on_Fighters_game_over():
 	yield(get_tree().create_timer(3.5), "timeout")
 	transition.queue_free()
 	pixelation.queue_free()
+	SceneManager.game_over = false
 	get_tree().paused = false
 	Global.battle_ended = true
 	get_tree().change_scene(main_menu)
@@ -853,11 +862,13 @@ func Sweet_Gift():
 	$Fighters.fighter_index = $Fighters.selector_index
 	$Fighters.spell_1()
 	yield(get_tree().create_timer(0.8), "timeout")
+	SE.effect("Sweet Gift")
 	$MovePlayer/AnimPlayer.play("Sweet_Gift")
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters.battle_ready()
 	yield(get_tree().create_timer(0.4), "timeout")
 	$Fighters.Sweet_gift()
+	yield(get_tree().create_timer(0.55), "timeout")
 	$Fighters.fighters_active_check()
 	
 	
@@ -874,6 +885,7 @@ func Earthslide():
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
+	SE.effect("Earthslide")
 	$Fighters.spell_2()
 	yield(get_tree().create_timer(0.7), "timeout")
 	$WindowPlayer.play("little_shake")
@@ -894,6 +906,7 @@ func Icicle():
 	$Fighters.spell_1()
 	yield(get_tree().create_timer(0.5), "timeout")
 	$MovePlayer.position = enemy_position + Vector2(-30, -120)
+	SE.effect("Icicle")
 	$MovePlayer/AnimPlayer.play("Icicle")
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters.battle_ready()
@@ -936,6 +949,8 @@ func Thunderstorm():
 	$Enemies.stun_chance = 20
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Fighters.spell_1()
+	yield(get_tree().create_timer(0.1), "timeout")
+	SE.effect("Thunderstorm")
 	yield(get_tree().create_timer(1), "timeout")
 	$MovePlayer/AnimPlayer.playback_speed = 0.6
 	$MovePlayer/AnimPlayer.play("Thunderstorm")
@@ -954,6 +969,7 @@ func Prism_Snow():
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Fighters.spell_2()
 	yield(get_tree().create_timer(0.5), "timeout")
+	SE.effect("Prism Snow")
 	$MovePlayer/AnimPlayer.play("Prism_Snow")
 	yield(get_tree().create_timer(1.6), "timeout")
 	$WindowPlayer.playback_speed = 1
@@ -1003,6 +1019,7 @@ func _on_Enemies_Beat_Down():
 		$Fighters.e_move_base += 5
 	$Fighters.e_attack = $Enemies.e_attack
 	$MovePlayer.position = fighter_OG_position + Vector2(-2, -12)
+	SE.effect("Beat Down")
 	$MovePlayer/AnimPlayer.play("Beat_Down")
 	yield(get_tree().create_timer(1.1), "timeout")
 	$Fighters.damage()
@@ -1020,6 +1037,7 @@ func _on_Enemies_Sting():
 	$Fighters.e_move_base = 10
 	$Fighters.e_attack = $Enemies.e_attack
 	$MovePlayer.position = fighter_OG_position + Vector2(240, -97)
+	SE.effect("Sting")
 	$MovePlayer/AnimPlayer.play("Sting")
 	yield(get_tree().create_timer(1.2), "timeout")
 	$Fighters.damage()
@@ -1037,6 +1055,7 @@ func _on_Enemies_Sabotage():
 	$Fighters.e_move_base = 10
 	$Fighters.e_attack = $Enemies.e_attack
 	$MovePlayer.position = fighter_OG_position + Vector2(24, -9)
+	SE.effect("Sabotage")
 	$MovePlayer/AnimPlayer.play("Sabotage")
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters.damage()
@@ -1054,6 +1073,7 @@ func _on_Enemies_Pester():
 	$Fighters.e_move_base = 10
 	$Fighters.e_attack = $Enemies.e_attack
 	$MovePlayer.position = fighter_OG_position + Vector2(20, -60)
+	SE.effect("Pester")
 	$MovePlayer/AnimPlayer.play("Pester")
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters.damage()
@@ -1072,6 +1092,7 @@ func _on_Enemies_Extort():
 	$Fighters.sp_loss = true
 	$Fighters.SP_amount = int(PartyStats.party_max_sp * 0.1)
 	$MovePlayer.position = fighter_OG_position + Vector2(0, -10)
+	SE.effect("Extort")
 	$MovePlayer/AnimPlayer.play("Extort")
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters.damage()
@@ -1084,6 +1105,7 @@ func _on_Enemies_Slash():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	$MovePlayer.position = Vector2(0, 0)
+	SE.effect("Slash")
 	$MovePlayer/AnimPlayer.play("Slash")
 	yield(get_tree().create_timer(1), "timeout")
 	for x in range ($Fighters.fighters.size()):
@@ -1113,6 +1135,7 @@ func _on_Enemies_Splat():
 	$Fighters.e_move_base = 10
 	$Fighters.e_magic = $Enemies.e_magic
 	$MovePlayer.position = fighter_OG_position + Vector2(125, -82)
+	SE.effect("Splat")
 	$MovePlayer/AnimPlayer.play("Splat")
 	yield(get_tree().create_timer(1.2), "timeout")
 	$Fighters.damage()
@@ -1130,6 +1153,7 @@ func _on_Enemies_Asphyxiate():
 	$Fighters.e_move_base = 10
 	$Fighters.e_magic = $Enemies.e_magic
 	$MovePlayer.position = fighter_OG_position + Vector2(-6, -27)
+	SE.effect("Asphyxiate")
 	$MovePlayer/AnimPlayer.play("Asphyxiate")
 	yield(get_tree().create_timer(1.8), "timeout")
 	$Fighters.damage()
@@ -1152,6 +1176,7 @@ func _on_Enemies_Bubble_Ring():
 	$Fighters.e_move_base = 10
 	$Fighters.e_magic = $Enemies.e_magic
 	$MovePlayer.position = fighter_OG_position + Vector2(260, -154)
+	SE.effect("Bubble Ring")
 	$MovePlayer/AnimPlayer.play("Bubble_Ring")
 	yield(get_tree().create_timer(2), "timeout")
 	$Fighters.damage()
@@ -1174,6 +1199,7 @@ func _on_Enemies_Stream_Strike():
 	$Fighters.e_move_base = 15
 	$Fighters.e_attack = $Enemies.e_attack
 	$MovePlayer.position = fighter_OG_position + Vector2(247, -95)
+	SE.effect("Stream Strike")
 	$MovePlayer/AnimPlayer.play("Stream_Strike")
 	yield(get_tree().create_timer(2), "timeout")
 	$Fighters.damage()
@@ -1197,6 +1223,7 @@ func _on_Enemies_Friction():
 	$Fighters.e_move_base = 10
 	$Fighters.e_attack = $Enemies.e_attack
 	$MovePlayer.position = fighter_OG_position + Vector2(5, -35)
+	SE.effect("Friction")
 	$MovePlayer/AnimPlayer.play("Friction")
 	var og_color : Color
 	og_color.r = 1
@@ -1231,7 +1258,8 @@ func _on_Enemies_Aero_Bullet():
 	$Fighters.enemy_type = $Enemies.get_type()
 	$Fighters.e_move_base = 10
 	$Fighters.e_attack = $Enemies.e_attack
-	$MovePlayer.position = fighter_OG_position + Vector2(240, -93)
+	$MovePlayer.position = fighter_OG_position + Vector2(250, -85)
+	SE.effect("Aero Bullet")
 	$MovePlayer/AnimPlayer.play("Aero_Bullet")
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters.damage()
@@ -1244,6 +1272,7 @@ func _on_Enemies_Squall():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	$MovePlayer.position = Vector2(0, 0)
+	SE.effect("Squall")
 	$MovePlayer/AnimPlayer.play("Squall")
 	yield(get_tree().create_timer(1.5), "timeout")
 	for x in range ($Fighters.fighters.size()):
@@ -1278,6 +1307,7 @@ func _on_Enemies_Zap():
 	$Fighters.e_move_base = 10
 	$Fighters.e_magic = $Enemies.e_magic
 	$MovePlayer.position = fighter_OG_position + Vector2(240, -90)
+	SE.effect("Zap")
 	$MovePlayer/AnimPlayer.play("Zap")
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters.damage()
@@ -1301,6 +1331,7 @@ func _on_Enemies_Terra_Arrow():
 	$Fighters.e_move_base = 10
 	$Fighters.e_attack = $Enemies.e_attack
 	$MovePlayer.position = fighter_OG_position + Vector2(240, -93)
+	SE.effect("Terra Arrow")
 	$MovePlayer/AnimPlayer.play("Terra_Arrow")
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters.damage()
@@ -1313,6 +1344,7 @@ func _on_Enemies_Gravel_Spat():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	$MovePlayer.position = Vector2(0, 0)
+	SE.effect("Gravel Spat")
 	$MovePlayer/AnimPlayer.play("Gravel_Spat")
 	$WindowPlayer.play("Gravel_Spat")
 	yield(get_tree().create_timer(1.5), "timeout")

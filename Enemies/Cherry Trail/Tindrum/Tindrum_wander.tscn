@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=2]
@@ -45,7 +45,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 2, -1 ) ]
+"values": [ Vector2( 4, 0 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("BodyVisualRoot/Enemy:position")
@@ -69,7 +69,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1.08, 1.08 ) ]
+"values": [ Vector2( 1.15, 1.15 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("AnimationPlayer:playback_speed")
@@ -113,36 +113,65 @@ tracks/1/keys = {
 "values": [ Vector2( 3, -24 ), Vector2( 3, -24 ), Vector2( 3, -24 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
+tracks/2/path = NodePath("AnimationPlayer:playback_speed")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.350449 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 2, 0 ), Vector2( 2, 0 ) ]
+"values": [ 0.6 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("BodyVisualRoot/Enemy:scale")
+tracks/3/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 5, 4 ), Vector2( 4, 5 ), Vector2( 4, 5 ), Vector2( 5, 5 ) ]
+}
+
+[sub_resource type="Animation" id=181]
+resource_name = "fall"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Enemy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
+"update": 1,
+"values": [ 5 ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisualRoot/Enemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 3, -24 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer:playback_speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -164,30 +193,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 1, 2, 1, 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 3, -2 ), Vector2( 3, -2 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Enemy:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1.08, 1.08 ) ]
 }
 
 [node name="Tindrum" type="YSort"]
@@ -225,6 +230,7 @@ script = ExtResource( 7 )
 shape = SubResource( 172 )
 
 [node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 9 )]
+visible = false
 position = Vector2( 6, 11 )
 collision_layer = 0
 collision_mask = 1
@@ -241,6 +247,7 @@ scale = Vector2( 0.972756, 0.936889 )
 collision_layer = 3
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
+visible = false
 position = Vector2( -3.08402, -9.60626 )
 scale = Vector2( 1.60839, -1.51859 )
 shape = SubResource( 179 )
@@ -251,8 +258,8 @@ shape = SubResource( 179 )
 
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
 modulate = Color( 1, 1, 1, 0.75 )
-position = Vector2( 2, -1 )
-scale = Vector2( 0.914288, 0.918545 )
+position = Vector2( 4, 0 )
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 alpha_clip = 0.01
@@ -267,7 +274,7 @@ use_dither_blending = false
 [node name="Enemy" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
 modulate = Color( 0.972549, 0.988235, 1, 1 )
 position = Vector2( 3, -24 )
-scale = Vector2( 1.08, 1.08 )
+scale = Vector2( 1.15, 1.15 )
 texture = ExtResource( 6 )
 hframes = 9
 vframes = 3
@@ -281,6 +288,7 @@ use_dither_blending = false
 playback_speed = 0.6
 anims/RESET = SubResource( 173 )
 anims/drama = SubResource( 176 )
+anims/fall = SubResource( 181 )
 anims/walk_front = SubResource( 177 )
 
 [node name="Timer" type="Timer" parent="."]

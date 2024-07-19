@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Slash SE.mp3-d25abeaa00d1e11899095fa1d895df23.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Slash SE.mp3"
+dest_files=[ "res://.import/Slash SE.mp3-d25abeaa00d1e11899095fa1d895df23.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
