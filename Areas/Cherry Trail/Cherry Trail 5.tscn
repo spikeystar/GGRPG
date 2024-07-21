@@ -42,7 +42,7 @@
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=40]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 4.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Scripts/Area_Specific/Cherry Trail.gd" type="Script" id=42]
-[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 6.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 7.tscn" type="PackedScene" id=43]
 
 [sub_resource type="TileSet" id=1]
 7/name = "Grass Tile.png 7"

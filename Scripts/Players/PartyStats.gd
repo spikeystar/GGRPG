@@ -55,7 +55,7 @@ var new_spell_2 = false
 
 func _ready():
 	set_stats()
-	gary_current_health = gary_health
+	gary_current_health = 14 #gary_health
 	jacques_current_health = jacques_health
 	irina_current_health = irina_health
 

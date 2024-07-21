@@ -533,6 +533,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 0.5 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite:material")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ null ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 0.001
@@ -1064,6 +1076,9 @@ vframes = 3
 [node name="Cursor" type="Sprite" parent="."]
 position = Vector2( -57, -74 )
 texture = ExtResource( 2 )
+
+[node name="TextOffset" type="Position2D" parent="."]
+visible = false
 
 [node name="DamageText" parent="." instance=ExtResource( 6 )]
 visible = false

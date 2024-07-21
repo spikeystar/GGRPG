@@ -38,7 +38,7 @@ func _ready():
 	add_item()
 	add_item_name = "Sugar Pill"
 	add_item()
-	add_item_name = "Sugar Pill"
+	add_item_name = "Yummy Cake"
 	add_item()
 	add_item_name = "Sugar Pill"
 	add_item()
@@ -58,14 +58,9 @@ func _ready():
 	
 	
 	
-	#add_enemy_name = "Cheribo"
-	#add_enemy()
-	#add_enemy_name = "Flutterbie"
-	#add_enemy()
-	#add_enemy_name = "Sapling"
-	#add_enemy()
-	#add_enemy_name = "Tindrum"
-	#add_enemy()
+	add_enemy_name = "Cheribo"
+	add_enemy()
+
 	
 	
 	spell_name = "Thunderstorm"

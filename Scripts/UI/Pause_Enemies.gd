@@ -48,12 +48,3 @@ func _process(delta):
 		$Magic_info.text = "4"
 		$Defense_info.text = "10"
 		$EnemyInfo.text = "Tindrum is always looking for a fight and angry about something"
-	else:
-		$EnemyDisplay.hide()
-		$EnemyDisplay.frame = 3
-		$TypeDisplay.frame = 17
-		$HP_info.text = "-"
-		$Attack_info.text = "-"
-		$Magic_info.text = "-"
-		$Defense_info.text = "-"
-		$EnemyInfo.text = ""

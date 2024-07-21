@@ -9,6 +9,7 @@ var cursor_index : int = 0
 var trinket_selecting = false
 var down_count = 0
 var inventory_max : int
+var ongoing = false
 
 signal trinket_selecting
 signal retread
@@ -45,7 +46,7 @@ func _process(delta):
 		self.modulate.a = 0
 		emit_signal("retread")
 		
-	if Input.is_action_just_pressed("ui_select") and trinket_selecting:
+	if Input.is_action_just_pressed("ui_select") and trinket_selecting and not ongoing:
 		trinket_selecting = false
 		self.modulate.a = 0
 		
@@ -97,3 +98,8 @@ func _on_TrinketsInventory_return_to_trinkets():
 	self.modulate.a = 1
 	set_cursor_from_index(0)
 	trinket_selecting = true
+	ongoing = false
+
+
+func _on_TrinketsInventory_ongoing():
+	ongoing = true

@@ -322,7 +322,7 @@ volume_db = -4.0
 
 [node name="Squall" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 62 )
-volume_db = -5.0
+volume_db = -8.0
 
 [node name="Star_Wand" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 57 )

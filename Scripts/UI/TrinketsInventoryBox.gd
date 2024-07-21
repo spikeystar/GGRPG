@@ -16,6 +16,7 @@ signal empty_trinkets()
 signal return_to_trinkets()
 signal size_max()
 signal size_ready()
+signal ongoing
 
 onready var inventory : Array = []
 var trinket_index : int
@@ -104,7 +105,8 @@ func get_holder_name():
 	trinket_id = inventory[trinket_index].get_id()
 	if not empty_trinkets:
 		if PartyStats.gary_trinket == trinket_id or PartyStats.jacques_trinket == trinket_id or PartyStats.irina_trinket == trinket_id or PartyStats.suzy_trinket == trinket_id or PartyStats.damien_trinket == trinket_id:
-			trinket_holder = inventory[trinket_index].get_holder_name()
+			#trinket_holder = inventory[trinket_index].get_holder_name()
+			trinket_holder = Party.Trinkets[trinket_index].get_holder_name()
 			return trinket_holder
 		else:
 			return "-"
@@ -122,16 +124,22 @@ func _on_MenuCursor_trinket_selecting():
 	trinkets_active = true
 
 func _on_Members_trinket_equipped():
+	emit_signal("ongoing")
 	#var selector_name = Members.selector_name
 	PartyStats.holder_name = selector_name
-	var equipped = inventory[trinket_index].get_trinket()
+	#var equipped = inventory[trinket_index].get_trinket()
+	var equipped = Party.Trinkets[trinket_index].get_trinket()
 	var trinket_name = inventory[trinket_index].get_id()
 	if trinket_name == "-":
+		Party.Trinkets[trinket_index].trinket_unequip()
 		inventory[trinket_index].trinket_unequip()
 	if equipped:
+		Party.Trinkets[trinket_index].trinket_relocate()
 		inventory[trinket_index].trinket_relocate()
+		Party.Trinkets[trinket_index].trinket_equip()
 		inventory[trinket_index].trinket_equip()
 	else:
+		Party.Trinkets[trinket_index].trinket_equip()
 		inventory[trinket_index].trinket_equip()
 	if selector_name == "Gary":
 		PartyStats.gary_trinket = trinket_name

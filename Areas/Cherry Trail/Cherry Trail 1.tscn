@@ -574,6 +574,6 @@ align = 1
 [node name="PresentBase" parent="." instance=ExtResource( 38 )]
 position = Vector2( 180, -252 )
 item_name = "Yummy Cake"
-shadow_color = Color( 0.2142, 0.39942, 0.42, 1 )
+shadow_color = Color( 0.137255, 0.254902, 0.270588, 1 )
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

@@ -868,8 +868,8 @@ func Sweet_Gift():
 	$Fighters.battle_ready()
 	yield(get_tree().create_timer(0.4), "timeout")
 	$Fighters.Sweet_gift()
-	yield(get_tree().create_timer(0.55), "timeout")
-	$Fighters.fighters_active_check()
+	#yield(get_tree().create_timer(0.55), "timeout")
+	#$Fighters.fighters_active_check()
 	
 	
 func Earthslide():

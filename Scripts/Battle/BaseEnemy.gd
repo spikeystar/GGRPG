@@ -248,7 +248,7 @@ func text(TEXT: PackedScene, text_position: Vector2 = global_position):
 	if TEXT:
 		var text = TEXT.instance()
 		get_tree().current_scene.add_child(text)
-		text.position = text_position + Vector2(4, -44)
+		text.position = $TextOffset.global_position + Vector2(4, -54)
 		return text
 
 func stun():

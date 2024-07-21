@@ -64,10 +64,12 @@ func _process(delta):
 func item_removed():
 	for x in self.get_children():
 		self.remove_child(x)
-	item_index = clamp(item_index, 0, inventory.size() - 1)
-	inventory = Shops.Tom.duplicate()
-	for item_index in inventory.size():
-		add_slot(item_index)
+	_ready()
+		
+	#item_index = clamp(item_index, 0, inventory.size() - 1)
+	#inventory = Shops.Tom.duplicate()
+	#for item_index in inventory.size():
+		#add_slot(item_index)
 	#if inventory.size() == 0:
 		#empty_items = true
 		#emit_signal("empty_items")

@@ -7,6 +7,7 @@ onready var menu_parent := get_node(menu_parent_path)
 
 var cursor_index : int = 0
 var item_selecting = false
+var ongoing = false
 
 signal item_selecting
 signal retread
@@ -32,7 +33,7 @@ func _process(delta):
 		self.modulate.a = 0
 		emit_signal("retread")
 		
-	if Input.is_action_just_pressed("ui_select") and item_selecting:
+	if Input.is_action_just_pressed("ui_select") and item_selecting and not ongoing:
 		item_selecting = false
 		self.modulate.a = 0
 		
@@ -85,8 +86,12 @@ func _on_ItemInventoryBox_return_to_item():
 	self.modulate.a = 1
 	set_cursor_from_index(0)
 	item_selecting = true
+	ongoing = false
 
 func _on_ItemInventoryBox_not_usable():
 	yield(get_tree().create_timer(0.01), "timeout")
 	item_selecting = true
 	self.modulate.a = 1
+
+func _on_ItemInventoryBox_ongoing():
+	ongoing = true

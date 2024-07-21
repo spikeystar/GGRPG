@@ -15,6 +15,7 @@ var items_empty = false
 var trinkets_empty = false
 var key_empty = false
 var switching = false
+var ongoing = false
 
 signal party_selecting
 signal item_selecting
@@ -73,7 +74,8 @@ func _process(delta):
 		main_active = false
 		emit_signal("key_selecting")
 		
-	if Input.is_action_just_pressed("ui_accept") and not main_active and not stats_active:
+	if Input.is_action_just_pressed("ui_accept") and not main_active and not stats_active and not ongoing:
+		print("top")
 		self.show()
 		main_active = true
 		emit_signal("retread")
@@ -146,6 +148,7 @@ func _on_ItemInventoryBox_heal_item_chosen():
 
 func _on_ItemInventoryBox_return_to_item():
 	cursor_index = 1
+	ongoing = false
 
 func _on_TrinketsCursor_retread():
 	self.show()
@@ -159,6 +162,7 @@ func _on_TrinketsInventory_trinket_chosen():
 
 func _on_TrinketsInventory_return_to_trinkets():
 	cursor_index = 2
+	ongoing = false
 
 func _on_KeyCursor_retread():
 	self.show()
@@ -187,9 +191,14 @@ func _on_Members_main_retread():
 	cursor_index = 0
 	down_count = 0
 
-
 func _on_MemberOptionsCursor_switch_selecting():
 	switching = true
 
 func _on_Members_switched():
 	switching = false
+
+func _on_ItemInventoryBox_ongoing():
+	ongoing = true
+
+func _on_TrinketsInventory_ongoing():
+	ongoing = true

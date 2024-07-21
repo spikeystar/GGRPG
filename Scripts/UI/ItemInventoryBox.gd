@@ -5,6 +5,7 @@ onready var Members = get_tree().get_root().get_node("PauseMenu/Members")
 var item_active = false
 var empty_items = false
 var item_id : String
+var selected_id : String
 var amount : int
 var selector_name : String
 
@@ -12,6 +13,7 @@ signal heal_item_chosen()
 signal empty_items()
 signal return_to_item()
 signal not_usable()
+signal ongoing
 
 onready var inventory : Array = []
 var item_index : int
@@ -42,6 +44,7 @@ func _input(event):
 	var inventory_max = (inventory.size() -1)
 	if Input.is_action_just_pressed("ui_select") and item_active:
 		get_id()
+		selected_id = item_id
 		if item_id == "Yummy Cake" or item_id == "Sugar Pill":
 			emit_signal("heal_item_chosen")
 			item_active = false
@@ -86,16 +89,17 @@ func _on_ItemMenuCursor_retread():
 	item_index = 0
 
 func _on_Members_item_usage():
-	if item_id == "Yummy Cake":
+	emit_signal("ongoing")
+	if selected_id == "Yummy Cake":
 		amount = 50
 		set_member_target()
-	if item_id == "Sugar Pill":
-		amount = 20
+	if selected_id == "Sugar Pill":
+		amount = 30
 		set_member_target()
-	if item_id == "Picnic Pie":
+	if selected_id == "Picnic Pie":
 		amount = 100
 		all_heal()
-	if item_id == "Pretty Gem":
+	if selected_id == "Pretty Gem":
 		amount = 20
 		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
 	

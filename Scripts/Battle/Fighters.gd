@@ -1040,6 +1040,7 @@ func Sweet_gift():
 		revive_healing()
 		yield(get_tree().create_timer(0.5), "timeout")
 		fighter_index = -1
+	fighters_active_check()
 	BB_active = false
 	
 func Blossom():	

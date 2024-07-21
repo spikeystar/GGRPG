@@ -43,6 +43,5 @@ func add_item():
 
 func remove_item():
 	if shop_name == "Tom":
-		this_shop = Tom
-	this_shop.remove(item_index)
-	item_index = clamp(item_index, 0, this_shop.size() - 1)
+		Tom.remove(item_index)
+		item_index = clamp(item_index, 0, Tom.size() - 1)
