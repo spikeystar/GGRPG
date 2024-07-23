@@ -45,14 +45,16 @@ const VEL_ANIM_MAX = 30
 
 export var dead = false
 
+export var printer : bool
+
 func _ready():
+	$MotionRoot/BattleTrigger.printer = printer
 	$MotionRoot/BattleTrigger.ground_enemy = ground_enemy
 	$MotionRoot.ground_enemy = ground_enemy
 	anim_player.play("walk_front")
 	motion_root_z = motion_root.pos_z
 	yield(get_tree().create_timer(0.01), "timeout")
 	SceneManager.SceneEnemies.append(self)
-	print($MotionRoot/BattleTrigger.height)
 
 func _physics_process(delta):
 	var draw_pos_z = motion_root.pos_z
@@ -130,7 +132,7 @@ func _on_BattleTrigger_triggered():
 			yield(get_tree().create_timer(0.9), "timeout")
 			transition.queue_free()
 			get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(battle_arena)
-	else:
+	if not alternate:
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)
 		transition.transition()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Assets/Gary's House/Exterior/ledge 1.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Cherry Trail/dirt d.png" type="Texture" id=2]
@@ -43,7 +43,6 @@
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_wander.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie_wander.tscn" type="PackedScene" id=42]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=43]
-[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 6.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 5.tscn" type="PackedScene" id=45]
 
 [sub_resource type="StreamTexture" id=2]
@@ -758,7 +757,7 @@ target_scene = ExtResource( 43 )
 
 [node name="Cheribo" parent="." instance=ExtResource( 41 )]
 position = Vector2( 37, -101 )
-target_scene = ExtResource( 44 )
+target_scene = ExtResource( 45 )
 alt_scene = ExtResource( 45 )
 alternate = false
 

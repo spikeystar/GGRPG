@@ -29,6 +29,9 @@ onready var shadow_sprite = $ShadowYSort/ShadowVisualRoot/ShadowCircle
 func _physics_process(delta):
 	var freeze = PlayerManager.freeze
 	var sleep = PlayerManager.sleep
+	
+	$JumpShape.shape_origin = body_visual_root.global_position
+	$JumpShape.origin_z = motion_root.pos_z
 
 	var last_dir = motion_root.last_dir
 	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1:

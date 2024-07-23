@@ -17,6 +17,7 @@ export var WANDER_RADIUS = 30
 export var MAX_CHASE_DISTANCE = 50
 export var MAX_Z_DIFF = 10
 
+
 #Movement
 var floor_z : float = LOWEST_Z
 var ceiling_z : float = HIGHEST_Z
@@ -62,6 +63,10 @@ func _ready():
 	pos_z = spawn_z
 	initial_z = pos_z
 	state = ENEMY_STATE.IDLE
+	
+	WANDER_RADIUS += rng.randi_range(0,5)
+	MIN_WANDER_TIME += rng.randi_range(0,3)
+	MAX_WANDER_TIME += rng.randi_range(0,3)
 	
 func _physics_process(delta):
 	var player = PlayerManager.player_motion_root
@@ -187,7 +192,7 @@ func apply_friction2(delta):
 	velocity *= exp(delta * (-FRICTION/2))
 	
 func lower_height(delta):
-	pos_z *= exp(delta * -1.5)
+	pos_z *= exp(delta * -1.2)
 	
 func raise_height(delta):
 	pos_z *= exp(delta * 1.5)

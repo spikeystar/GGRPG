@@ -93,6 +93,7 @@ func _physics_process(delta):
 		jumping = true
 		vel.z = jump_velocity
 		
+		
 		SE.effect("Jump")
 		
 	if Input.is_action_pressed("ui_push") and sleep and not ongoing:
@@ -108,10 +109,10 @@ func _physics_process(delta):
 	
 	if not is_on_ground:
 		vel.z -= gravity * delta
+		#$CollisionShape2D.global_position += Vector2(0, -(vel.z * delta * 1.2))
 	else:
 		vel.z = 0
 		pos_z = floor_z
-		
 	
 	pos_z += vel.z * delta
 	

@@ -614,12 +614,11 @@ script = ExtResource( 21 )
 [node name="Cheribo_battle" parent="Enemies/Field" instance=ExtResource( 17 )]
 position = Vector2( -7, 17 )
 ID = "Cheribo"
-e_health = 70
+e_health = 30
 e_attack = 15
 e_magic = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Basic"
 
 [node name="Sapling_battle" parent="Enemies/Field" instance=ExtResource( 55 )]
 position = Vector2( 132, 70 )

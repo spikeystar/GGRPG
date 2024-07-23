@@ -146,7 +146,7 @@ tracks/2/keys = {
 [node name="Flutterbie" type="YSort"]
 position = Vector2( 0, -2 )
 script = ExtResource( 4 )
-spawn_z = 100
+spawn_z = 95
 min_speed = 0.5
 max_speed = 0.65
 target_scene = ExtResource( 9 )
@@ -159,15 +159,16 @@ collision/safe_margin = 0.5
 script = ExtResource( 3 )
 spawn_z = 100
 ACCELERATION = 65
-CHASE_SPEED = 45
+CHASE_SPEED = 35
 WANDER_SPEED = 30
 FRICTION = 1.0
 MIN_IDLE_TIME = 3
 MAX_IDLE_TIME = 5
 MIN_WANDER_TIME = 2
 MAX_WANDER_TIME = 5
-WANDER_RADIUS = 20
-MAX_CHASE_DISTANCE = 100
+WANDER_RADIUS = 5
+MAX_CHASE_DISTANCE = 175
+MAX_Z_DIFF = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
 position = Vector2( 2, 0.0728853 )
@@ -181,28 +182,27 @@ script = ExtResource( 8 )
 shape = SubResource( 172 )
 
 [node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 5 )]
-position = Vector2( 6, 11 )
-scale = Vector2( 1.68984, 1.68085 )
-collision_layer = 0
+position = Vector2( 4, 12 )
+scale = Vector2( 0.872995, 1.17761 )
+collision_layer = 4
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot/PlayerDetection"]
 modulate = Color( 1, 1, 1, 0.254902 )
-position = Vector2( -1, -17 )
-scale = Vector2( 0.927677, 0.881874 )
+position = Vector2( -3.43644, -25.4754 )
+scale = Vector2( 1.03351, 0.873578 )
 shape = SubResource( 178 )
 disabled = true
 
 [node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 6 )]
-position = Vector2( 5, -8 )
-scale = Vector2( 0.972756, 0.936889 )
+position = Vector2( 4, -10 )
+scale = Vector2( 0.918882, 0.860568 )
 collision_layer = 7
 collision_mask = 6
-height = 100.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
-position = Vector2( -3.08402, -7.47154 )
-scale = Vector2( 1.28638, -2.57621 )
+position = Vector2( -2.17656, -19.7544 )
+scale = Vector2( 1.02475, -1.67904 )
 shape = SubResource( 179 )
 
 [node name="ShadowYSort" type="Node2D" parent="."]

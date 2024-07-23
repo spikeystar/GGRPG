@@ -12,7 +12,12 @@ func _ready():
 
 
 func _physics_process(delta):
-	pass
+	if get_overlapping_bodies().size() > 0 and detected:
+		emit_signal("start_chase")
+		
+	if not detected:
+		emit_signal("stop_chase")
+
 
 func player_check():
 	return player !=null
@@ -21,10 +26,17 @@ func _on_PlayerDetection_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root:
 		player = body
 		detected = true
-		emit_signal("start_chase")
+		#emit_signal("start_chase")
+	if "is_player_jump_shape" in body and body.is_player_jump_shape:
+		player = body
+		detected = true
 
 func _on_PlayerDetection_body_exited(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root:
 		player = null
 		detected = false
-		emit_signal("stop_chase")
+		
+	if "is_player_jump_shape" in body and body.is_player_jump_shape:
+		player = null
+		detected = false
+		#emit_signal("stop_chase")

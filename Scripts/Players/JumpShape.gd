@@ -26,10 +26,12 @@ var floor_layers : Array = []
 var is_on_ground = true
 var is_falling = true
 var is_just_teleported = false
+var shape_origin : Vector2
+var origin_z : float
 
 func _ready():
 	floor_z = spawn_z
-	pos_z = spawn_z + 15
+	pos_z = spawn_z
 
 func teleport_2d(tp_pos : Vector2, height : int = 0):
 	self.global_position = tp_pos
@@ -106,9 +108,12 @@ func _physics_process(delta):
 	
 	if not is_on_ground:
 		vel.z -= gravity * delta
+		$CollisionShape2D.global_position += Vector2(0, -(vel.z * delta * 2.3))
 	else:
 		vel.z = 0
-		pos_z = floor_z
+		#pos_z = floor_z
+		$CollisionShape2D.global_position = shape_origin
+		#pos_z = origin_z
 		
 	
 	pos_z += vel.z * delta
@@ -119,6 +124,7 @@ func _physics_process(delta):
 	
 	if pos_z == current_max_z and vel.z > 0:
 		vel.z = 0
+	
 	
 	var delta2D = Vector2(vel.x, -vel.y * 0.5)
 	move_and_slide(delta2D)

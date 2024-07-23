@@ -46,7 +46,7 @@
 [ext_resource path="res://Enemies/Cherry Trail/Sapling/Sapling_wander.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie_wander.tscn" type="PackedScene" id=45]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 4.tscn" type="PackedScene" id=46]
-[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 6.tscn" type="PackedScene" id=47]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 7.tscn" type="PackedScene" id=47]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -1056,26 +1056,24 @@ floor_height = 45.0
 shadow_color = Color( 0.188235, 0.552941, 0.298039, 1 )
 
 [node name="Flutterbie" parent="." instance=ExtResource( 45 )]
-position = Vector2( 294, -228 )
+position = Vector2( 360, -213 )
 spawn_z = 0
 target_scene = ExtResource( 46 )
 alt_chance = 50
-alternate = true
 
 [node name="Sapling" parent="." instance=ExtResource( 44 )]
-position = Vector2( 525, -164 )
-target_scene = ExtResource( 47 )
+position = Vector2( -43, -47 )
 
 [node name="Sapling2" parent="." instance=ExtResource( 44 )]
 position = Vector2( 90, -108 )
 target_scene = ExtResource( 47 )
 
 [node name="Flutterbie2" parent="." instance=ExtResource( 45 )]
-position = Vector2( 464, -81 )
+position = Vector2( 416, -64 )
 spawn_z = 0
 target_scene = ExtResource( 46 )
 alt_chance = 50
-alternate = true
+printer = true
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase2_item_get"]
