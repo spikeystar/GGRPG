@@ -5,6 +5,7 @@ var able = false
 var item_cost : int
 
 signal shop_check
+signal not_enough
 
 func _ready():
 	item_id = $MenuCursor.menu_name
@@ -65,7 +66,7 @@ func set_id():
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and buying and able and Party.marbles >= item_cost:
 		if item_id == "Gold Bracelet" or item_id == "Gold Chain":
-			SE.effect("Select")
+			SE.effect("Marble")
 			Party.marbles = Party.marbles - item_cost
 			Party.add_trinket_name = item_id
 			Party.add_trinket()
@@ -82,7 +83,7 @@ func _input(event):
 			yield(get_tree().create_timer(0.1), "timeout")
 			able = true
 		else:
-			SE.effect("Select")
+			SE.effect("Marble")
 			Party.marbles = Party.marbles - item_cost
 			Party.add_item_name = item_id
 			Party.add_item()
@@ -93,6 +94,7 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_select") and able and buying:
 		if Party.marbles < item_cost:
 			SE.effect("Unable")
+			emit_signal("not_enough")
 			return
 
 func _on_Interaction_buying():

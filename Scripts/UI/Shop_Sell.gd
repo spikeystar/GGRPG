@@ -64,7 +64,7 @@ func set_id():
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and selling and able and Party.Inventory.size() > 0:
-			SE.effect("Select")
+			SE.effect("Marble")
 			Party.marbles = Party.marbles + item_cost
 			Party.item_index = $Sell_Inventory.item_index
 			Party.remove_item()

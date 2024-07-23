@@ -108,13 +108,33 @@ func _on_Item_Interact_item_get():
 func _on_Buy_shop_check():
 	if Party.sent_storage:
 		Party.sent_storage = false
-		$Info_Window/First_Text.text = "Sent to storage"
+		var showing = true
+		if showing:
+			$Info_Window.modulate.a = 0.6
+			$Info_Window/First_Text.text = "Sent to storage"
+			$Info_Window.show()
+			tween = create_tween()
+			tween.tween_property($Info_Window, "modulate:a", 1, 0.2)
+			yield(get_tree().create_timer(1), "timeout")
+			var tween = create_tween()
+			tween.tween_property($Info_Window, "modulate:a", 0, 0.2)
+			yield(get_tree().create_timer(1), "timeout")
+			$Info_Window.modulate.a = 0.6
+			$Info_Window.hide()
+			showing = false
+
+func _on_Buy_not_enough():
+	var showing = true
+	if showing:
+		$Info_Window.modulate.a = 0.6
+		$Info_Window/First_Text.text = "Not enough Marbles"
 		$Info_Window.show()
 		tween = create_tween()
 		tween.tween_property($Info_Window, "modulate:a", 1, 0.2)
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(1), "timeout")
 		var tween = create_tween()
 		tween.tween_property($Info_Window, "modulate:a", 0, 0.2)
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(1), "timeout")
+		$Info_Window.modulate.a = 0.6
 		$Info_Window.hide()
-		
+		showing = false

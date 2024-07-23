@@ -1218,5 +1218,6 @@ align = 1
 [connection signal="withdraw" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw" method="_on_Interaction_withdraw"]
 [connection signal="withdraw" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw/Withdraw_Inventory" method="_on_Interaction_withdraw"]
 [connection signal="withdraw" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw/MenuCursor" method="_on_Interaction_withdraw"]
+[connection signal="not_enough" from="Camera2D/Shop/Buy" to="Camera2D" method="_on_Buy_not_enough"]
 [connection signal="shop_check" from="Camera2D/Shop/Buy" to="Camera2D" method="_on_Buy_shop_check"]
 [connection signal="empty_items" from="Camera2D/Shop/Sell/Sell_Inventory" to="Camera2D/Shop/Sell/MenuCursor" method="_on_Sell_Inventory_empty_items"]

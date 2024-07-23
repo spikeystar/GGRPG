@@ -192,6 +192,7 @@ stream = ExtResource( 47 )
 
 [node name="Marble" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 48 )
+volume_db = 2.0
 
 [node name="Menu_Close" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 53 )

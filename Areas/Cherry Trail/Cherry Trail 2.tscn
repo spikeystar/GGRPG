@@ -1062,7 +1062,7 @@ target_scene = ExtResource( 46 )
 alt_chance = 50
 
 [node name="Sapling" parent="." instance=ExtResource( 44 )]
-position = Vector2( -43, -47 )
+position = Vector2( 605, -129 )
 
 [node name="Sapling2" parent="." instance=ExtResource( 44 )]
 position = Vector2( 90, -108 )
