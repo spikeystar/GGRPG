@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Pivot Town/misc shelf b.png" type="Texture" id=2]
@@ -60,6 +60,7 @@
 [ext_resource path="res://Scripts/UI/Withdraw_Inventory.gd" type="Script" id=58]
 [ext_resource path="res://Scripts/Shop_Withdraw.gd" type="Script" id=59]
 [ext_resource path="res://Scripts/UI/Talk_Adjusting.gd" type="Script" id=60]
+[ext_resource path="res://UI/Shop/Marble Display.png" type="Texture" id=61]
 
 [sub_resource type="TileSet" id=1]
 0/name = "wood tile a.png 0"
@@ -993,6 +994,32 @@ text = "50 HP"
 align = 1
 autowrap = true
 
+[node name="Marbles" type="Sprite" parent="Camera2D/Shop/Buy"]
+position = Vector2( -105.001, -140 )
+texture = ExtResource( 61 )
+
+[node name="Bag" type="Label" parent="Camera2D/Shop/Buy"]
+margin_left = -182.0
+margin_top = -147.0
+margin_right = -105.0
+margin_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "Bag:"
+align = 1
+
+[node name="Bag_Marbles" type="Label" parent="Camera2D/Shop/Buy"]
+margin_left = -125.001
+margin_top = -147.0
+margin_right = -47.6666
+margin_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "497 Mb"
+align = 1
+
 [node name="Sell" type="Sprite" parent="Camera2D/Shop"]
 visible = false
 position = Vector2( 109.997, 76.0209 )
@@ -1043,6 +1070,32 @@ custom_fonts/font = ExtResource( 52 )
 text = "50 HP"
 align = 1
 autowrap = true
+
+[node name="Marbles" type="Sprite" parent="Camera2D/Shop/Sell"]
+position = Vector2( -105.001, -140 )
+texture = ExtResource( 61 )
+
+[node name="Bag" type="Label" parent="Camera2D/Shop/Sell"]
+margin_left = -182.0
+margin_top = -147.0
+margin_right = -105.0
+margin_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "Bag:"
+align = 1
+
+[node name="Bag_Marbles" type="Label" parent="Camera2D/Shop/Sell"]
+margin_left = -125.001
+margin_top = -147.0
+margin_right = -47.6666
+margin_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "497 Mb"
+align = 1
 
 [node name="Deposit" type="Sprite" parent="Camera2D/Shop"]
 visible = false

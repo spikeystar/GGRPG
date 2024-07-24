@@ -106,22 +106,25 @@ func _on_Item_Interact_item_get():
 	item_window()
 
 func _on_Buy_shop_check():
+	var showing = false
+	if showing:
+			return
 	if Party.sent_storage:
+		$Info_Window.modulate.a = 0.6
+		$Info_Window/First_Text.text = "Sent to storage"
+		$Info_Window.show()
+		tween = create_tween()
+		tween.tween_property($Info_Window, "modulate:a", 1, 0.2)
+		yield(get_tree().create_timer(1), "timeout")
+		showing = true
+		var tween = create_tween()
+		tween.tween_property($Info_Window, "modulate:a", 0, 0.2)
+		yield(get_tree().create_timer(1), "timeout")
+		$Info_Window.modulate.a = 0.6
+		$Info_Window.hide()
+		showing = false
 		Party.sent_storage = false
-		var showing = true
-		if showing:
-			$Info_Window.modulate.a = 0.6
-			$Info_Window/First_Text.text = "Sent to storage"
-			$Info_Window.show()
-			tween = create_tween()
-			tween.tween_property($Info_Window, "modulate:a", 1, 0.2)
-			yield(get_tree().create_timer(1), "timeout")
-			var tween = create_tween()
-			tween.tween_property($Info_Window, "modulate:a", 0, 0.2)
-			yield(get_tree().create_timer(1), "timeout")
-			$Info_Window.modulate.a = 0.6
-			$Info_Window.hide()
-			showing = false
+	
 
 func _on_Buy_not_enough():
 	var showing = true

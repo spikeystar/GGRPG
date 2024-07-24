@@ -13,6 +13,7 @@ func _process(delta):
 	if selling:
 		item_id = $MenuCursor.menu_name
 		set_id()
+	$Bag_Marbles.text = str(Party.marbles) + " Mb"
 	
 func set_id():
 	if item_id == "Yummy Cake":
@@ -64,7 +65,7 @@ func set_id():
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and selling and able and Party.Inventory.size() > 0:
-			SE.effect("Marble")
+			SE.effect("Select")
 			Party.marbles = Party.marbles + item_cost
 			Party.item_index = $Sell_Inventory.item_index
 			Party.remove_item()
