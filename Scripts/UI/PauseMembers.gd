@@ -617,12 +617,16 @@ func _on_ItemInventoryBox_return_to_item():
 	yield(get_tree().create_timer(0.2), "timeout")
 	member_index = -1
 	$Cursors.hide()
+	for x in Cursors.size():
+		Cursors[x].hide()
 
 func _on_TrinketsInventory_return_to_trinkets():
 	yield(get_tree().create_timer(0.2), "timeout")
 	Cursors[member_index].hide()
 	member_index = -1
 	$Cursors.hide()
+	for x in Cursors.size():
+		Cursors[x].hide()
 
 func _on_MemberOptionsCursor_show_stats():
 	stats_active = true
