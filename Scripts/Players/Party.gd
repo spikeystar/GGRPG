@@ -1,7 +1,7 @@
 extends Node
 
 var f_turns : int = 0
-var marbles : int = 4067
+var marbles : int = 0
 var jewel_seeds : int = 0
 var spell_name : String
 var remove_item_name: String
@@ -30,6 +30,8 @@ var Suzy_Spells : Array = []
 var Damien_Spells : Array = []
 
 func _ready():
+	marbles = 4067
+	
 	add_item_name = "Bounty Herb"
 	add_item()
 	add_item_name = "Pretty Gem"

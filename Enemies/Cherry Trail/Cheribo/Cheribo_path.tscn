@@ -132,6 +132,7 @@ tracks/1/keys = {
 
 [node name="Cheribo" type="YSort"]
 script = ExtResource( 5 )
+ground_enemy = true
 target_scene = ExtResource( 8 )
 front = true
 right = true

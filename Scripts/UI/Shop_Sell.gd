@@ -13,8 +13,25 @@ func _process(delta):
 	if selling:
 		item_id = $MenuCursor.menu_name
 		set_id()
-	$Bag_Marbles.text = str(Party.marbles) + " Mb"
+	$Bag_Marbles.text = thousands_sep(Party.marbles) + " Mb"
 	
+	
+static func thousands_sep(number, prefix=''):
+	var neg = false
+	if number < 0:
+		number = -number
+		neg = true
+	var string = str(number)
+	var mod = string.length() % 3
+	var res = ""
+	for i in range(0, string.length()):
+		if i != 0 && i % 3 == mod:
+			res += ","
+		res += string[i]
+	if neg: res = '-'+prefix+res
+	else: res = prefix+res
+	return res
+
 func set_id():
 	if item_id == "Yummy Cake":
 		$Display.show()
@@ -66,7 +83,8 @@ func set_id():
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and selling and able and Party.Inventory.size() > 0:
 			SE.effect("Select")
-			Party.marbles = Party.marbles + item_cost
+			#Party.marbles = Party.marbles + item_cost
+			Party.marbles = clamp(Party.marbles + item_cost, 0, 999999)
 			Party.item_index = $Sell_Inventory.item_index
 			Party.remove_item()
 			$MenuCursor.item_selecting = false

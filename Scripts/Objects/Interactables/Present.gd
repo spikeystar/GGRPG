@@ -92,7 +92,8 @@ func item_get():
 func marbles_get():
 	if not Global.Collected.has(global_position):
 		SE.effect("Present")
-		Party.marbles += marbles_amount
+		#Party.marbles += marbles_amount
+		Party.marbles = clamp(Party.marbles + marbles_amount, 0, 999999)
 		Party.marbles_get = true
 		Party.add_item_name = str(marbles_amount) + " Marbles"
 		emit_signal("item_get")

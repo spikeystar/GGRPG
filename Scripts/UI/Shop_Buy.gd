@@ -18,7 +18,23 @@ func reset():
 func _process(delta):
 	item_id = $MenuCursor.menu_name
 	set_id()
-	$Bag_Marbles.text = str(Party.marbles) + " Mb"
+	$Bag_Marbles.text = thousands_sep(Party.marbles) + " Mb"
+	
+static func thousands_sep(number, prefix=''):
+	var neg = false
+	if number < 0:
+		number = -number
+		neg = true
+	var string = str(number)
+	var mod = string.length() % 3
+	var res = ""
+	for i in range(0, string.length()):
+		if i != 0 && i % 3 == mod:
+			res += ","
+		res += string[i]
+	if neg: res = '-'+prefix+res
+	else: res = prefix+res
+	return res
 	
 func set_id():
 	if item_id == "Yummy Cake":

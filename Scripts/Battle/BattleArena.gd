@@ -93,6 +93,22 @@ func _on_Fighters_BB_move():
 	$BattleButtons.position = BB_position
 		
 
+static func thousands_sep(number, prefix=''):
+	var neg = false
+	if number < 0:
+		number = -number
+		neg = true
+	var string = str(number)
+	var mod = string.length() % 3
+	var res = ""
+	for i in range(0, string.length()):
+		if i != 0 && i % 3 == mod:
+			res += ","
+		res += string[i]
+	if neg: res = '-'+prefix+res
+	else: res = prefix+res
+	return res
+
 func _input(event):
 	var fighter_turn_used = $Fighters.get_turn_value()
 	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory:
@@ -466,7 +482,8 @@ func _on_Enemies_victory():
 	var EXP_reward = int(EXP_base + (rand_range(0.05, 0.2) * EXP_base))
 	var marbles_reward = int(marbles_base + (rand_range(0.05, 0.2) * marbles_base))
 	PartyStats.party_exp += EXP_reward
-	Party.marbles += marbles_reward
+	#Party.marbles += marbles_reward
+	Party.marbles = clamp(Party.marbles + marbles_reward, 0, 999999)
 	yield(get_tree().create_timer(1.2), "timeout")
 	BattleMusic.switch_songs()
 	BattleMusic.id = "Victory"
@@ -476,8 +493,8 @@ func _on_Enemies_victory():
 	$Fighters.ongoing = true
 	$Fighters.halt = true
 	$Fighters/HUDS.hide()
-	$VictoryWindow/MarblesReward.text = str(marbles_reward)
-	$VictoryWindow/EXPReward.text = str(EXP_reward)
+	$VictoryWindow/MarblesReward.text = thousands_sep(marbles_reward)
+	$VictoryWindow/EXPReward.text = thousands_sep(EXP_reward)
 	$VictoryWindow.show()
 	$WindowPlayer.play("victory_open")
 	

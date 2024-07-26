@@ -16,10 +16,11 @@ func _ready():
 	position.y += height
 
 func _physics_process(delta):
-	player_height = PlayerManager.player_motion_root.pos_z
-	if height < player_height and ground_enemy:
+	player_height = int(PlayerManager.player_motion_root.pos_z)
+	print(height)
+	if int(height) < player_height and ground_enemy:
 		able = false
-	if height == player_height and ground_enemy:
+	if int(height) == player_height and ground_enemy:
 		able = true
 	#if not ground_enemy and int(player_height) >= int(height-70) or int(player_height) == int(height):
 		#able = true
@@ -41,9 +42,10 @@ func _on_body_entered(body):
 		#_on_touch_area()
 		#detected = true
 		
-	if "is_player_jump_shape" in body and body.is_player_jump_shape and not Global.battle_ended and able:
+	if "is_player_jump_shape" in body and body.is_player_jump_shape and not Global.battle_ended and able and not PlayerManager.freeze:
 		_on_touch_area()
 		detected = true
+		
 	
 func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")
