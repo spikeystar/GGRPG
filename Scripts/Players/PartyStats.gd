@@ -90,7 +90,7 @@ func level_up():
 	full_heal()
 		
 func set_stats():
-	gary_health = 44 + int(party_level * 6)
+	gary_health = 45 + int(party_level * 5)
 	gary_attack = 20 + int(party_level * 7)
 	gary_magic = 15 + int(party_level * 7)
 	gary_defense = 5 + int(party_level * 6)
@@ -110,7 +110,7 @@ func set_stats():
 	suzy_magic = 20 + int(party_level * 6)
 	suzy_defense = 5 + int(party_level * 5)
 	
-	damien_health = 45 + int(party_level * 5)
+	damien_health = 51 + int(party_level * 5)
 	damien_attack = 10 + int(party_level * 4)
 	damien_magic = 30 + int(party_level * 8)
 	damien_defense = 7 + int(party_level * 6)

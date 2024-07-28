@@ -186,7 +186,10 @@ func select_next_fighter2(index_offset):
 	fighter_index = new_fighter_index
 
 func _process(delta):
-	#fighter_turn_used = fighters[fighter_index].get_turn_value()
+	#if SceneManager.victory:
+		#for x in fighters2.size():
+			#fighters2[x].unfocus()
+	
 	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen and not ongoing and not item_selecting and not enemies_active and not enemy_item and not magic_selecting and not halt and fighters_active:
 		#print(fighter_index)
 		select_next_fighter(+1)

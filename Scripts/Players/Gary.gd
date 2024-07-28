@@ -29,6 +29,7 @@ onready var shadow_sprite = $ShadowYSort/ShadowVisualRoot/ShadowCircle
 func _physics_process(delta):
 	var freeze = PlayerManager.freeze
 	var sleep = PlayerManager.sleep
+	var ouch = PlayerManager.ouch
 	
 	$JumpShape.shape_origin = body_visual_root.global_position
 	$JumpShape.origin_z = motion_root.pos_z
@@ -58,6 +59,10 @@ func _physics_process(delta):
 		anim_tree.active = false
 		anim_player.playback_speed = 0.3
 		anim_player.play("sleep")
+		
+	if ouch:
+		anim_tree.active = false
+		anim_player.play("ouch")
 		
 	
 	var draw_pos_z = motion_root.pos_z

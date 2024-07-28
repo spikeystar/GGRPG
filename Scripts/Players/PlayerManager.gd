@@ -12,6 +12,7 @@ var freeze = false
 var sleep = false
 var ongoing = false
 var jumping = false
+var ouch = false
 
 func _ready():
 	spawn_player()
