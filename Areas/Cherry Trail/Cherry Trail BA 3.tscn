@@ -623,9 +623,11 @@ initial_type = "neutral"
 
 [node name="Sapling_battle" parent="Enemies/Field" instance=ExtResource( 60 )]
 position = Vector2( 199, 53 )
+move4 = "Basic"
 
 [node name="Flutterbie_battle" parent="Enemies/Field" instance=ExtResource( 59 )]
 position = Vector2( 42, -103 )
+move4 = "Basic"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
@@ -1604,6 +1606,7 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1620,7 +1623,6 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
-frame = 1
 speed_scale = 0.6
 playing = true
 

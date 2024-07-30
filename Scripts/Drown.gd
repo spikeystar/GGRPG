@@ -5,6 +5,7 @@ var transitioning = false
 var player_height
 
 const TransitionPlayer = preload("res://Objects/SceneTransition/TransitionPlayer.tscn")
+const PixelationPlayer = preload("res://UI/PixelationTransition.tscn")
 
 # If you change the numeric values of this enum, you WILL break every scene that uses it.
 # Only add new values, do not modify.
@@ -38,23 +39,24 @@ func _on_body_entered(body):
 	
 func _on_touch_area():
 	body_check = false
-	SE.effect("Ouch")
-	PlayerManager.ouch = true
+	SE.effect("Drown 2")
+	PlayerManager.drown = true
 	disconnect("body_entered", self, "_on_body_entered")
 	PlayerManager.freeze = true
-	yield(get_tree().create_timer(0.5), "timeout")
-	SE.effect("Poof")
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(0.3), "timeout")
+	var pixelation = PixelationPlayer.instance()
+	get_tree().get_root().add_child(pixelation)
+	pixelation.pixelate2()
+	yield(get_tree().create_timer(0.7), "timeout")
 	Global.door_name = exit_name
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.transition_in(target_scene, _get_animation_name())
 	yield(get_tree().create_timer(0.6), "timeout")
-	PlayerManager.ouch = false
+	pixelation.queue_free()
+	PlayerManager.drown = false
 	yield(get_tree().create_timer(2), "timeout")
 	transitioning = false
-	
-	
 	
 	
 

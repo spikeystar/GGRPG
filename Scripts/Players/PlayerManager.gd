@@ -13,6 +13,7 @@ var sleep = false
 var ongoing = false
 var jumping = false
 var ouch = false
+var drown = false
 
 func _ready():
 	spawn_player()

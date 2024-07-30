@@ -30,6 +30,7 @@ func _physics_process(delta):
 	var freeze = PlayerManager.freeze
 	var sleep = PlayerManager.sleep
 	var ouch = PlayerManager.ouch
+	var drown = PlayerManager.drown
 	
 	$JumpShape.shape_origin = body_visual_root.global_position
 	$JumpShape.origin_z = motion_root.pos_z
@@ -63,6 +64,18 @@ func _physics_process(delta):
 	if ouch:
 		anim_tree.active = false
 		anim_player.play("ouch")
+		
+	if not ouch:
+		anim_player.stop()
+		anim_tree.active = true
+		
+	if drown:
+		anim_tree.active = false
+		anim_player.play("drown")
+		
+	if not drown:
+		anim_player.stop()
+		anim_tree.active = true
 		
 	
 	var draw_pos_z = motion_root.pos_z

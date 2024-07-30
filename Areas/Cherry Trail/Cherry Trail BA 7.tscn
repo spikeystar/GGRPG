@@ -622,6 +622,7 @@ initial_type = "neutral"
 
 [node name="Sapling_battle" parent="Enemies/Field" instance=ExtResource( 55 )]
 position = Vector2( 132, 70 )
+move4 = "Basic"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false

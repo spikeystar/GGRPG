@@ -618,7 +618,6 @@ e_attack = 15
 e_magic = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Squall"
 
 [node name="Cheribo_battle2" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 190, 44 )
@@ -628,7 +627,6 @@ e_attack = 15
 e_magic = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Squall"
 
 [node name="Cheribo_battle3" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 16, -23 )
@@ -638,7 +636,6 @@ e_attack = 15
 e_magic = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Squall"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
