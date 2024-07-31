@@ -91,10 +91,10 @@ func _physics_process(delta):
 	if input_dir.length_squared() > 1:
 		input_dir = input_dir.normalized()
 		
-	if bouncy:
-		is_on_ground = false
-		jumping = true
-		gravity = 350
+	#if bouncy:
+		#is_on_ground = false
+		#jumping = true
+		#gravity = 350
 		
 	if not bouncy:
 		gravity = 940

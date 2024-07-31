@@ -22,6 +22,7 @@ var body_check = false
 func _ready():
 	yield(get_tree().create_timer(0.5), "timeout")
 	connect("body_entered", self, "_on_body_entered")
+	connect("body_exited", self, "_on_body_exited")
 	position.y += height
 	
 func _process(delta):
@@ -33,12 +34,15 @@ func _process(delta):
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root and not transitioning:
 		body_check = true
-		transitioning = true
 		#_on_touch_area()
 			
+func _on_body_exited(body):
+	if "is_player_motion_root" in body and body.is_player_motion_root:
+		body_check = false
 	
 func _on_touch_area():
 	body_check = false
+	transitioning = true
 	SE.effect("Drown 2")
 	PlayerManager.drown = true
 	disconnect("body_entered", self, "_on_body_entered")
