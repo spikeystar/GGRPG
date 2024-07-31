@@ -65,7 +65,7 @@ func _physics_process(delta):
 		anim_tree.active = false
 		anim_player.play("ouch")
 		
-	if not ouch:
+	if not ouch and not drown:
 		anim_player.stop()
 		anim_tree.active = true
 		
@@ -73,9 +73,6 @@ func _physics_process(delta):
 		anim_tree.active = false
 		anim_player.play("drown")
 		
-	if not drown:
-		anim_player.stop()
-		anim_tree.active = true
 		
 	
 	var draw_pos_z = motion_root.pos_z

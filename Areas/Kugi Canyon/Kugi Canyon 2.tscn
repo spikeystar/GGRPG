@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Assets/Kugi Canyon/Canyon C.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/box.png" type="Texture" id=2]
@@ -37,7 +37,8 @@
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=37]
-[ext_resource path="res://Scripts/Drown.gd" type="Script" id=38]
+[ext_resource path="res://Scripts/Spikes.gd" type="Script" id=38]
+[ext_resource path="res://Scripts/Bouncy.gd" type="Script" id=39]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -677,7 +678,7 @@ depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
 
 [node name="Box2" parent="YSort/MiddleGround" instance=ExtResource( 31 )]
-position = Vector2( -307, -123 )
+position = Vector2( -165, -24 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -771,5 +772,12 @@ exit_name = "KugiCanyon2"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes"]
 polygon = PoolVector2Array( -12, 29, 6, 41, 30, 30, 38, 32, 88, 11, 54, -11, 25, -21, -33, -13, -43, 24, -26, 35 )
+
+[node name="Bouncy" type="Area2D" parent="."]
+script = ExtResource( 39 )
+height = 28.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bouncy"]
+polygon = PoolVector2Array( -187, -48, -166, -58, -143, -48, -165, -37 )
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

@@ -58,6 +58,7 @@ func _physics_process(delta):
 	var sleep = PlayerManager.sleep
 	var ongoing = PlayerManager.ongoing
 	var jumping = PlayerManager.jumping
+	var bouncy = PlayerManager.bouncy
 	jumping = false
 	# Floor height could change at any time with movable platforms
 	update_floor()
@@ -93,8 +94,18 @@ func _physics_process(delta):
 		jumping = true
 		vel.z = jump_velocity
 		
+		if not bouncy:
+			SE.effect("Jump")
 		
-		SE.effect("Jump")
+	if bouncy:
+		is_on_ground = false
+		jumping = true
+		gravity = 300
+		jump_velocity = 350
+		
+	if not bouncy:
+		gravity = 940
+		jump_velocity = 300
 		
 	if Input.is_action_pressed("ui_push") and sleep and not ongoing:
 		PlayerManager.freeze = false
