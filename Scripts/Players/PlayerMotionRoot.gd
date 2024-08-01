@@ -100,7 +100,7 @@ func _physics_process(delta):
 	if bouncy:
 		is_on_ground = false
 		jumping = true
-		gravity = 800
+		gravity = 890
 		jump_velocity = 300
 		vel.z = jump_velocity
 		

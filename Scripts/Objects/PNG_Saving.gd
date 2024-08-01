@@ -9,6 +9,8 @@ func _ready():
 func _input(event):
 	if Input.is_action_just_pressed("ui_push"):
 		#get_viewport().transparent_bg = true
+		SE.effect("Marble")
+		print("saved")
 		var vpt = get_viewport()
 		var txt = vpt.get_texture()
 		var image = txt.get_data()
