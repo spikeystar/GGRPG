@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Assets/Kugi Canyon/Canyon B.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Canyon Tile.png" type="Texture" id=2]
@@ -35,8 +35,12 @@
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=33]
 [ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=34]
 [ext_resource path="res://Assets/Kugi Canyon/Prickly Pear.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Kugi Canyon/KugiCanyon1 Ledge.png" type="Texture" id=36]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=37]
 [ext_resource path="res://Assets/Kugi Canyon/Orange Ledge A.png" type="Texture" id=38]
+[ext_resource path="res://Enemies/Kugi Canyon/Wander/Bramby_wander.tscn" type="PackedScene" id=39]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion B.png" type="Texture" id=40]
+[ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie_wander.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Assets/General/Tiles/Orange Grass Tile.png" type="Texture" id=43]
 
 [sub_resource type="StreamTexture" id=2]
@@ -291,7 +295,7 @@
 z_index = -20
 
 [node name="KCBckgd" type="Sprite" parent="YSort/Background"]
-position = Vector2( -34, -162 )
+position = Vector2( -30, -216 )
 scale = Vector2( -0.758, 0.575388 )
 texture = ExtResource( 12 )
 
@@ -321,7 +325,7 @@ texture = ExtResource( 6 )
 
 [node name="Canyon4" type="Sprite" parent="YSort/Floor"]
 modulate = Color( 1, 0.996078, 0.94902, 1 )
-position = Vector2( 170, -375 )
+position = Vector2( 170, -388 )
 rotation = 3.15276
 scale = Vector2( -2.23494, -2.28227 )
 texture = ExtResource( 6 )
@@ -391,6 +395,7 @@ depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
 
 [node name="Node2D" type="Node2D" parent="YSort/Floor"]
+visible = false
 position = Vector2( 589, 74 )
 
 [node name="Tile Map9" type="TileMap" parent="YSort/Floor/Node2D"]
@@ -445,12 +450,43 @@ tile_data = PoolIntArray( -655366, 13, 0, -655358, 13, 0, -393220, 13, 0, -26213
 [node name="MiddleGround" type="Node2D" parent="YSort"]
 
 [node name="Spike Map2" type="TileMap" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.972549, 0.870588, 1 )
 position = Vector2( -71, -79 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
 tile_data = PoolIntArray( -196615, 23, 0, -196600, 22, 0, 65527, 21, 0, 262137, 23, 0 )
+
+[node name="Ledge3" parent="YSort/MiddleGround" instance=ExtResource( 11 )]
+modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
+position = Vector2( 238, -176 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 61, 25 )
+grid_size = Vector2( 5, 5 )
+texture = ExtResource( 36 )
+texture_scale = Vector2( 0.7, 0.7 )
+texture_offset = Vector2( 20, 1 )
+height = 40.0
+preview_collision_box = false
+
+[node name="Cactus2" parent="YSort/MiddleGround" instance=ExtResource( 11 )]
+modulate = Color( 1, 0.968627, 0.984314, 1 )
+position = Vector2( 266, -286 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.6, 0.7 )
+texture = ExtResource( 21 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 5 )
+height = 30.0
+floor_height = 40.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
 
 [node name="Aloe2" type="Sprite" parent="YSort/MiddleGround"]
 position = Vector2( -455, -50 )
@@ -466,6 +502,20 @@ scale = Vector2( -2.22515, 2.36797 )
 texture = ExtResource( 4 )
 script = ExtResource( 16 )
 depth_test_offset = Vector2( 0, 200 )
+
+[node name="SquareShadow2" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( -36, -188 )
+rotation = 0.0341947
+scale = Vector2( 0.974559, 0.775427 )
+texture = ExtResource( 37 )
+
+[node name="SquareShadow3" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( -5, -182 )
+rotation = 0.0341947
+scale = Vector2( 0.974559, 0.775427 )
+texture = ExtResource( 37 )
 
 [node name="Ledge1" parent="YSort/MiddleGround" instance=ExtResource( 11 )]
 modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
@@ -710,7 +760,7 @@ script = ExtResource( 16 )
 
 [node name="Canyon6" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 1, 0.996078, 0.94902, 1 )
-position = Vector2( 363, 19 )
+position = Vector2( 363, 29 )
 rotation = 3.14159
 scale = Vector2( 2.11, -2.225 )
 texture = ExtResource( 8 )
@@ -725,6 +775,41 @@ scale = Vector2( 1.91446, -2.04926 )
 texture = ExtResource( 5 )
 script = ExtResource( 16 )
 depth_test_offset = Vector2( 0, 350 )
+
+[node name="Spike" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( 102, -267 )
+scale = Vector2( 0.970677, 0.950036 )
+texture = ExtResource( 17 )
+script = ExtResource( 16 )
+depth_test_offset = Vector2( 0, 5 )
+height = 40.0
+
+[node name="Spike2" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( 277, -236 )
+scale = Vector2( 0.970677, 0.950036 )
+texture = ExtResource( 18 )
+script = ExtResource( 16 )
+depth_test_offset = Vector2( 0, 5 )
+height = 40.0
+
+[node name="Spike3" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( 241, -319 )
+scale = Vector2( 0.970677, 0.950036 )
+texture = ExtResource( 19 )
+script = ExtResource( 16 )
+depth_test_offset = Vector2( 0, 10 )
+height = 40.0
+
+[node name="Spike4" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( 398, -280 )
+scale = Vector2( -0.971, 0.95 )
+texture = ExtResource( 19 )
+script = ExtResource( 16 )
+height = 40.0
 
 [node name="Aloe5" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 1, 0.984314, 0.792157, 1 )
@@ -742,13 +827,22 @@ script = ExtResource( 16 )
 depth_test_offset = Vector2( 0, 320 )
 
 [node name="Spike Map" type="TileMap" parent="YSort/MiddleGround"]
-modulate = Color( 0.988235, 0.976471, 0.984314, 1 )
+modulate = Color( 1, 0.972549, 0.870588, 1 )
 position = Vector2( -74, -96 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
 tile_data = PoolIntArray( -720896, 23, 0, -655360, 21, 0 )
+
+[node name="Bramby" parent="YSort/MiddleGround" instance=ExtResource( 39 )]
+position = Vector2( -108, -136 )
+
+[node name="Bramby2" parent="YSort/MiddleGround" instance=ExtResource( 39 )]
+position = Vector2( 225, -113 )
+
+[node name="Flutterbie" parent="YSort/MiddleGround" instance=ExtResource( 41 )]
+position = Vector2( 53, -91 )
 
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
@@ -763,8 +857,13 @@ polygon = PoolVector2Array( -377, -70, -400, -82, -373, -93, -403, -103, -346, -
 
 [node name="NavmeshLayer2" parent="CollisionRoot/Navmesh2" instance=ExtResource( 31 )]
 position = Vector2( -174, 94 )
-polygon = PoolVector2Array( -262, -139, -51, -202, 93, -148, -124, -67, -221, -92 )
+polygon = PoolVector2Array( -263, -147, -56, -211, 93, -148, -124, -67, -221, -92 )
 height = 110.0
+
+[node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 31 )]
+position = Vector2( 360, -123 )
+polygon = PoolVector2Array( -271, -142, -88, -207, -50, -194, -12, -206, 61, -180, 28, -166, 61, -154, -124, -86 )
+height = 40.0
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 34 )]
 position = Vector2( -283, -34 )
@@ -783,7 +882,8 @@ script = ExtResource( 3 )
 exit_name = "PivotTown3_KugiCanyon1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon2"]
-polygon = PoolVector2Array( 27, -45, 131, -12, 111, -3, 6, -39 )
+position = Vector2( 177, -31 )
+polygon = PoolVector2Array( 27, -45, 103, -19, 76, -8, 2, -37 )
 
 [node name="PivotTown3" parent="." instance=ExtResource( 32 )]
 position = Vector2( -363, -29 )

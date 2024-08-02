@@ -47,7 +47,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, -8 ) ]
+"values": [ Vector2( 2, -12 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("BodyVisualRoot/Enemy:position")
@@ -100,7 +100,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 3, -6 ), Vector2( 3.33333, -6 ), Vector2( 3, -6 ), Vector2( 4, -6 ) ]
+"values": [ Vector2( 3, -10 ), Vector2( 3, -9 ), Vector2( 3, -10 ), Vector2( 4, -10 ) ]
 }
 
 [sub_resource type="Animation" id=177]
@@ -126,10 +126,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 2, -8 ), Vector2( 2, -8 ), Vector2( 2, -8 ), Vector2( 2, -8 ), Vector2( 2, -8 ) ]
+"values": [ Vector2( 2, -12 ), Vector2( 3, -12 ), Vector2( 3, -12 ), Vector2( 3, -13 ) ]
 }
 
 [node name="Bramby" type="YSort"]
@@ -148,9 +148,8 @@ position = Vector2( 0, 1 )
 collision_mask = 2
 collision/safe_margin = 0.5
 script = ExtResource( 8 )
-ACCELERATION = 50
-CHASE_SPEED = 200
-WANDER_SPEED = 25
+ACCELERATION = 40
+CHASE_SPEED = 180
 FRICTION = 1.0
 MIN_IDLE_TIME = 3
 MAX_IDLE_TIME = 5
@@ -186,7 +185,8 @@ disabled = true
 visible = false
 position = Vector2( 5, 5 )
 scale = Vector2( 0.972756, 0.936889 )
-collision_layer = 3
+collision_layer = 7
+collision_mask = 6
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
 position = Vector2( -3.08402, -9.60626 )
@@ -199,8 +199,8 @@ shape = SubResource( 179 )
 
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
 modulate = Color( 1, 1, 1, 0.75 )
-position = Vector2( 1, -8 )
-scale = Vector2( 0.914288, 0.918545 )
+position = Vector2( 2, -12 )
+scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 4 )
 script = ExtResource( 6 )
 alpha_clip = 0.01
@@ -214,9 +214,9 @@ use_transparency = true
 [node name="BodyVisualRoot" type="Node2D" parent="BodyYSort"]
 
 [node name="Enemy" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
-modulate = Color( 0.972549, 0.988235, 1, 1 )
+modulate = Color( 1, 0.968627, 0.984314, 1 )
 position = Vector2( 3, -24 )
-scale = Vector2( 0.95, 0.95 )
+scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 10 )
 hframes = 9
 script = ExtResource( 5 )

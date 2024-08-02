@@ -17,7 +17,6 @@ func _ready():
 
 func _physics_process(delta):
 	player_height = int(PlayerManager.player_motion_root.pos_z)
-	print(height)
 	if int(height) < player_height and ground_enemy:
 		able = false
 	if int(height) == player_height and ground_enemy:
