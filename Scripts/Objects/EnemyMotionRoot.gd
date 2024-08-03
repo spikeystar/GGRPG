@@ -64,7 +64,7 @@ func _ready():
 	initial_z = pos_z
 	state = ENEMY_STATE.IDLE
 	
-	WANDER_RADIUS += rng.randi_range(0,5)
+	WANDER_RADIUS += rng.randi_range(-5,5)
 	MIN_WANDER_TIME += rng.randi_range(0,3)
 	MAX_WANDER_TIME += rng.randi_range(0,3)
 	
