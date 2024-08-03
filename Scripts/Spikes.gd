@@ -27,17 +27,26 @@ func _ready():
 func _process(delta):
 	player_height = int(PlayerManager.player_motion_root.pos_z)
 	
+	
 	if body_check and int(height) == player_height:
 		_on_touch_area()
+		
 
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root and not transitioning:
 		body_check = true
-		#_on_touch_area()
+		print("spikes")
+		
+	#if "is_player_jump_shape" in body and body.is_player_jump_shape and not transitioning:
+		#body_check = true
+		#print("spikes")
 			
 func _on_body_exited(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root:
 		body_check = false
+		
+	#if "is_player_jump_shape" in body and body.is_player_jump_shape:
+		#body_check = false
 	
 func _on_touch_area():
 	body_check = false

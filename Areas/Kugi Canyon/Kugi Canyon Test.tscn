@@ -664,7 +664,7 @@ preview_collision_box = false
 
 [node name="Ledge" parent="YSort/MiddleGround" instance=ExtResource( 31 )]
 modulate = Color( 0.96, 0.9408, 0.95232, 1 )
-position = Vector2( -106, -30 )
+position = Vector2( 0, 63 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -693,6 +693,7 @@ height = 28.0
 z_index = 20
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 35 )]
 
@@ -767,8 +768,7 @@ align = 1
 [node name="Spikes" type="Area2D" parent="."]
 position = Vector2( -8, -61 )
 script = ExtResource( 38 )
-target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 2.tscn"
-exit_name = "KugiCanyon2"
+target_scene = "res://Areas/Kugi Canyon/Kugi Canyon Test.tscn"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes"]
 polygon = PoolVector2Array( -12, 29, 6, 41, 30, 30, 38, 32, 88, 11, 54, -11, 25, -21, -33, -13, -43, 24, -26, 35 )

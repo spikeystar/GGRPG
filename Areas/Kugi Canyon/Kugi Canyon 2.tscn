@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=31]
 [ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Enemies/Kugi Canyon/Wander/Scorpus_wander.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Scripts/Area_Specific/Kugi_Canyon.gd" type="Script" id=34]
 [ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=35]
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=36]
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=37]
@@ -287,6 +288,7 @@
 23/z_index = 0
 
 [node name="WorldRoot" type="Node2D"]
+script = ExtResource( 34 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -414,6 +416,27 @@ texture_offset = Vector2( 0, 5 )
 height = 30.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
+
+[node name="SquareShadow" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( -333, -159 )
+rotation = -0.0292936
+scale = Vector2( 2.29511, 1.9169 )
+texture = ExtResource( 24 )
+
+[node name="SquareShadow2" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( -16, -107 )
+rotation = -0.0292936
+scale = Vector2( 2.29511, 1.9169 )
+texture = ExtResource( 24 )
+
+[node name="SquareShadow3" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 354, -57 )
+rotation = -0.0292936
+scale = Vector2( 2.29511, 1.9169 )
+texture = ExtResource( 24 )
 
 [node name="Grass Map" type="TileMap" parent="YSort/Floor"]
 modulate = Color( 1, 0.109804, 0.109804, 0.215686 )
@@ -897,7 +920,6 @@ position = Vector2( 44, -202 )
 position = Vector2( 224, -80 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 31 )]
 
@@ -910,38 +932,37 @@ polygon = PoolVector2Array( -236, -154, -88, -207, -50, -194, -12, -206, 60, -18
 height = 40.0
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 35 )]
-position = Vector2( -283, -34 )
-door_name = "PivotTown3_KugiCanyon1"
+position = Vector2( -259, 50 )
+door_name = "KugiCanyon1_KugiCanyon2"
 direction = Vector2( 1, 1 )
-height = 110
 
 [node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 35 )]
-position = Vector2( 300, -272 )
-door_name = "KugiCanyon2_KugiCanyon1"
+position = Vector2( 275, -284 )
+door_name = "KugiCanyon3_KugiCanyon2"
 direction = Vector2( -1, -1 )
+height = 40
 
-[node name="KugiCanyon2" parent="." instance=ExtResource( 36 )]
-visible = false
+[node name="KugiCanyon3" parent="." instance=ExtResource( 36 )]
 position = Vector2( 142, -253 )
 script = ExtResource( 11 )
-exit_name = "PivotTown3_KugiCanyon1"
+target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 3.tscn"
+exit_name = "KugiCanyon2_KugiCanyon3"
+height = 40.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon3"]
 position = Vector2( 173, -36 )
 polygon = PoolVector2Array( 27, -45, 103, -19, 77, -10, 2, -37 )
 
-[node name="PivotTown3" parent="." instance=ExtResource( 36 )]
-visible = false
+[node name="KugiCanyon1" parent="." instance=ExtResource( 36 )]
 position = Vector2( -363, -29 )
 rotation = 0.0231584
 script = ExtResource( 11 )
-target_scene = "res://Areas/Pivot Town/Pivot Town 3.tscn"
-exit_name = "KugiCanyon1_PivotTown3"
-height = 110.0
+target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 1.tscn"
+exit_name = "KugiCanyon2_KugiCanyon1"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PivotTown3"]
-position = Vector2( -0.185272, -7.99784 )
-polygon = PoolVector2Array( -57.4479, -18.6747, 78.1835, 50.203, 66.3025, 55.4796, -31.2505, 32.7324, -70.3518, -14.3748 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon1"]
+position = Vector2( 66.4143, 103.49 )
+polygon = PoolVector2Array( -51.5421, -22.8126, 47.1958, 7.90923, 20.4346, 18.5318, -71.3052, -12.3522 )
 
 [node name="PresentBase" parent="." instance=ExtResource( 37 )]
 position = Vector2( 1, -213 )

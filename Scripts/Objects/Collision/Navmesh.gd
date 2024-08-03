@@ -160,7 +160,6 @@ func _ready():
 	yield(get_tree().create_timer(0.01), "timeout")
 	if SceneManager.SceneEnemies.size() > 0:	
 		for x in range (SceneManager.SceneEnemies.size()):
-			print("hello")
 			for layer in layers:
 				SceneManager.SceneEnemies[x].motion_root.add_collision_exception_with(layer)
 			

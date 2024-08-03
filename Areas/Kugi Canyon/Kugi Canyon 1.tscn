@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Assets/Kugi Canyon/Canyon B.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Canyon Tile.png" type="Texture" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://Enemies/Kugi Canyon/Wander/Bramby_wander.tscn" type="PackedScene" id=39]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion B.png" type="Texture" id=40]
 [ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie_wander.tscn" type="PackedScene" id=41]
+[ext_resource path="res://Scripts/Area_Specific/Kugi_Canyon.gd" type="Script" id=42]
 [ext_resource path="res://Assets/General/Tiles/Orange Grass Tile.png" type="Texture" id=43]
 
 [sub_resource type="StreamTexture" id=2]
@@ -288,6 +289,7 @@
 23/z_index = 0
 
 [node name="WorldRoot" type="Node2D"]
+script = ExtResource( 42 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -446,6 +448,20 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
 tile_data = PoolIntArray( -655366, 13, 0, -655358, 13, 0, -393220, 13, 0, -262136, 13, 0, -131078, 13, 0, -196600, 12, 0, 196607, 16, 0, 262138, 12, 0, 196613, 12, 0, 327689, 13, 0, 524287, 13, 0 )
+
+[node name="SquareShadow" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( -225, -160 )
+rotation = -0.0292936
+scale = Vector2( 2.29511, 1.9169 )
+texture = ExtResource( 37 )
+
+[node name="SquareShadow2" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( -81, -217 )
+rotation = -0.0292936
+scale = Vector2( 2.29511, 1.9169 )
+texture = ExtResource( 37 )
 
 [node name="MiddleGround" type="Node2D" parent="YSort"]
 
@@ -848,7 +864,6 @@ position = Vector2( 53, -91 )
 z_index = 20
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 30 )]
 
@@ -872,14 +887,17 @@ direction = Vector2( 1, 1 )
 height = 110
 
 [node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 34 )]
-position = Vector2( 300, -272 )
+position = Vector2( 272, -277 )
 door_name = "KugiCanyon2_KugiCanyon1"
 direction = Vector2( -1, -1 )
+height = 40
 
 [node name="KugiCanyon2" parent="." instance=ExtResource( 32 )]
 position = Vector2( 142, -253 )
 script = ExtResource( 3 )
-exit_name = "PivotTown3_KugiCanyon1"
+target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 2.tscn"
+exit_name = "KugiCanyon1_KugiCanyon2"
+height = 40.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon2"]
 position = Vector2( 177, -31 )
