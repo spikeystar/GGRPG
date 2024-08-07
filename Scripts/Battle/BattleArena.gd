@@ -63,6 +63,7 @@ signal magic_enemy_update
 
 func _ready():
 	SceneManager.victory = false
+	SceneManager.flee = false
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.ease_in()
@@ -418,6 +419,7 @@ func _on_Flee_cursor_selected():
 		$WindowPlayer.play("flee_dia_open")
 		$FadeRect/AnimationPlayer.play("Flee")
 		Party.marbles -= (Party.marbles * 0.05)
+		SceneManager.flee = true
 		yield(get_tree().create_timer(2), "timeout")
 		#BattleMusic.fade_out()
 		#BattleMusic.switch_songs()

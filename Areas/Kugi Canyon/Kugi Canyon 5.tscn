@@ -1,0 +1,1324 @@
+[gd_scene load_steps=48 format=2]
+
+[ext_resource path="res://Assets/Kugi Canyon/Aloe Large A.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Kugi Canyon/Spikes A.png" type="Texture" id=2]
+[ext_resource path="res://Assets/General/box.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Cherry Trail/Clover Tile B.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Pivot Town/Orange Brick A.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Kugi Canyon/Canyon F.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Kugi Canyon/Canyon B.png" type="Texture" id=7]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass A.png" type="Texture" id=8]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=9]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=10]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion B.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=12]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/Kugi Canyon/KugiCanyon5A Ledge.png" type="Texture" id=16]
+[ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Assets/Kugi Canyon/KugiCanyon5B Ledge.png" type="Texture" id=19]
+[ext_resource path="res://Scripts/Area_Specific/Kugi_Canyon.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=21]
+[ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=22]
+[ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Kugi Canyon/Prickly Pear.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Kugi Canyon/Spikes B.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Kugi Canyon/Cactus.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Kugi Canyon/Canyon E.png" type="Texture" id=27]
+[ext_resource path="res://Assets/General/Backgrounds/Kugi Canyon BCKGD.png" type="Texture" id=28]
+[ext_resource path="res://Assets/General/Tiles/Orange Grass Tile.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Kugi Canyon/Spikes C.png" type="Texture" id=30]
+[ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=31]
+[ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=32]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=33]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=34]
+[ext_resource path="res://Assets/Kugi Canyon/KugiCanyon5_Extra Ledge.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=36]
+[ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=37]
+[ext_resource path="res://Assets/General/Tiles/Canyon Tile.png" type="Texture" id=38]
+[ext_resource path="res://Assets/Kugi Canyon/Aloe Large B.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Kugi Canyon/Canyon G.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Kugi Canyon/Aloe.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Kugi Canyon/Orange Ledge A.png" type="Texture" id=42]
+[ext_resource path="res://Assets/Kugi Canyon/Canyon H.png" type="Texture" id=43]
+[ext_resource path="res://Enemies/Kugi Canyon/Wander/Thorvern_wander.tscn" type="PackedScene" id=44]
+
+[sub_resource type="StreamTexture" id=2]
+
+[sub_resource type="StreamTexture" id=3]
+
+[sub_resource type="TileSet" id=1]
+7/name = "Grass Tile.png 7"
+7/texture = ExtResource( 37 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 64, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+8/name = "Clover Tile A.png 8"
+8/texture = ExtResource( 36 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 0, 64, 32 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
+9/name = "Clover Tile B.png 9"
+9/texture = ExtResource( 4 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 0, 0, 64, 32 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape_one_way = false
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
+10/name = "White Flower Tile A.png 10"
+10/texture = SubResource( 2 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 0, 0, 64, 32 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape_one_way = false
+10/shape_one_way_margin = 0.0
+10/shapes = [  ]
+10/z_index = 0
+11/name = "White Flower Tile B.png 11"
+11/texture = SubResource( 3 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 0, 0, 64, 32 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
+12/name = "Tall Grass A.png 12"
+12/texture = ExtResource( 8 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 0, 0, 64, 32 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shape_offset = Vector2( 0, 0 )
+12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+12/shape_one_way = false
+12/shape_one_way_margin = 0.0
+12/shapes = [  ]
+12/z_index = 0
+13/name = "Tall Grass B.png 13"
+13/texture = ExtResource( 9 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 0, 0, 64, 32 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shape_offset = Vector2( 0, 0 )
+13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+13/shape_one_way = false
+13/shape_one_way_margin = 0.0
+13/shapes = [  ]
+13/z_index = 0
+14/name = "Orange Brick B.png 14"
+14/texture = ExtResource( 12 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 0, 0, 64, 32 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 0, 0 )
+14/navigation_offset = Vector2( 0, 0 )
+14/shape_offset = Vector2( 0, 0 )
+14/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+14/shape_one_way = false
+14/shape_one_way_margin = 0.0
+14/shapes = [  ]
+14/z_index = 0
+15/name = "Orange Brick A.png 15"
+15/texture = ExtResource( 5 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 0, 0, 64, 32 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 0, 0 )
+15/navigation_offset = Vector2( 0, 0 )
+15/shape_offset = Vector2( 0, 0 )
+15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+15/shape_one_way = false
+15/shape_one_way_margin = 0.0
+15/shapes = [  ]
+15/z_index = 0
+16/name = "Dandelion A.png 16"
+16/texture = ExtResource( 10 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 0, 0, 64, 32 )
+16/tile_mode = 0
+16/occluder_offset = Vector2( 0, 0 )
+16/navigation_offset = Vector2( 0, 0 )
+16/shape_offset = Vector2( 0, 0 )
+16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+16/shape_one_way = false
+16/shape_one_way_margin = 0.0
+16/shapes = [  ]
+16/z_index = 0
+17/name = "Dandelion B.png 17"
+17/texture = ExtResource( 11 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 0, 0, 64, 32 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shape_offset = Vector2( 0, 0 )
+17/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+17/shape_one_way = false
+17/shape_one_way_margin = 0.0
+17/shapes = [  ]
+17/z_index = 0
+18/name = "Orange Grass Tile.png 18"
+18/texture = ExtResource( 29 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 0, 0, 64, 32 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shape_offset = Vector2( 0, 0 )
+18/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+18/shape_one_way = false
+18/shape_one_way_margin = 0.0
+18/shapes = [  ]
+18/z_index = 0
+19/name = "Canyon Tile.png 19"
+19/texture = ExtResource( 38 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 0, 0, 64, 32 )
+19/tile_mode = 0
+19/occluder_offset = Vector2( 0, 0 )
+19/navigation_offset = Vector2( 0, 0 )
+19/shape_offset = Vector2( 0, 0 )
+19/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+19/shape_one_way = false
+19/shape_one_way_margin = 0.0
+19/shapes = [  ]
+19/z_index = 0
+20/name = "Spike Tile.png 20"
+20/texture = ExtResource( 23 )
+20/tex_offset = Vector2( 0, 0 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 0, 0, 64, 64 )
+20/tile_mode = 0
+20/occluder_offset = Vector2( 0, 0 )
+20/navigation_offset = Vector2( 0, 0 )
+20/shape_offset = Vector2( 0, 0 )
+20/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+20/shape_one_way = false
+20/shape_one_way_margin = 0.0
+20/shapes = [  ]
+20/z_index = 0
+21/name = "Spikes A.png 21"
+21/texture = ExtResource( 2 )
+21/tex_offset = Vector2( 0, 0 )
+21/modulate = Color( 1, 1, 1, 1 )
+21/region = Rect2( 0, 0, 64, 64 )
+21/tile_mode = 0
+21/occluder_offset = Vector2( 0, 0 )
+21/navigation_offset = Vector2( 0, 0 )
+21/shape_offset = Vector2( 0, 0 )
+21/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+21/shape_one_way = false
+21/shape_one_way_margin = 0.0
+21/shapes = [  ]
+21/z_index = 0
+22/name = "Spikes B.png 22"
+22/texture = ExtResource( 25 )
+22/tex_offset = Vector2( 0, 0 )
+22/modulate = Color( 1, 1, 1, 1 )
+22/region = Rect2( 0, 0, 64, 64 )
+22/tile_mode = 0
+22/occluder_offset = Vector2( 0, 0 )
+22/navigation_offset = Vector2( 0, 0 )
+22/shape_offset = Vector2( 0, 0 )
+22/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+22/shape_one_way = false
+22/shape_one_way_margin = 0.0
+22/shapes = [  ]
+22/z_index = 0
+23/name = "Spikes C.png 23"
+23/texture = ExtResource( 30 )
+23/tex_offset = Vector2( 0, 0 )
+23/modulate = Color( 1, 1, 1, 1 )
+23/region = Rect2( 0, 0, 64, 64 )
+23/tile_mode = 0
+23/occluder_offset = Vector2( 0, 0 )
+23/navigation_offset = Vector2( 0, 0 )
+23/shape_offset = Vector2( 0, 0 )
+23/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+23/shape_one_way = false
+23/shape_one_way_margin = 0.0
+23/shapes = [  ]
+23/z_index = 0
+
+[node name="WorldRoot" type="Node2D"]
+script = ExtResource( 20 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Thorvern" parent="YSort" instance=ExtResource( 44 )]
+position = Vector2( 32, -66 )
+
+[node name="Background" type="Node2D" parent="YSort"]
+z_index = -20
+
+[node name="KCBckgd" type="Sprite" parent="YSort/Background"]
+position = Vector2( 33, -420 )
+scale = Vector2( -1.07572, 0.819696 )
+texture = ExtResource( 28 )
+
+[node name="Floor" type="Node2D" parent="YSort"]
+z_index = -10
+
+[node name="Aloe7" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( 498, -342 )
+rotation = 3.27259
+scale = Vector2( 2.16672, -2.44334 )
+texture = ExtResource( 1 )
+
+[node name="Canyon" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( -364, -549 )
+rotation = 3.13379
+scale = Vector2( 2.11009, -2.22523 )
+texture = ExtResource( 6 )
+
+[node name="Canyon3" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 0.988235, 1, 0.964706, 1 )
+position = Vector2( -157, -433 )
+rotation = -0.00780526
+scale = Vector2( 2.08451, 2.38025 )
+texture = ExtResource( 6 )
+
+[node name="Canyon6" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 0.988235, 1, 0.964706, 1 )
+position = Vector2( 566, -312 )
+rotation = -0.00780526
+scale = Vector2( 2.35613, 2.89184 )
+texture = ExtResource( 6 )
+
+[node name="Canyon2" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( -661, -427 )
+rotation = 3.13379
+scale = Vector2( -2.38084, -2.45225 )
+texture = ExtResource( 40 )
+
+[node name="Canyon4" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( 14, -474 )
+rotation = 3.15276
+scale = Vector2( -2.4529, -2.51408 )
+texture = ExtResource( 40 )
+
+[node name="Canyon5" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 1, 0.93, 0.9685, 1 )
+position = Vector2( 177, -380 )
+rotation = 3.15276
+scale = Vector2( -2.16481, -2.05685 )
+texture = ExtResource( 40 )
+flip_h = true
+
+[node name="Aloe5" type="Sprite" parent="YSort/Floor"]
+position = Vector2( -297, -440 )
+rotation = 3.15839
+scale = Vector2( 2.29775, -2.6364 )
+texture = ExtResource( 39 )
+
+[node name="Aloe6" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( -50, -422 )
+rotation = 3.13379
+scale = Vector2( 2.35389, -2.67642 )
+texture = ExtResource( 1 )
+
+[node name="Aloe4" type="Sprite" parent="YSort/Floor"]
+position = Vector2( 178, -350 )
+rotation = 3.19161
+scale = Vector2( 2.14225, -2.4017 )
+texture = ExtResource( 39 )
+
+[node name="Tile Map3" type="TileMap" parent="YSort/Floor"]
+modulate = Color( 0.883, 0.61, 1, 1 )
+position = Vector2( 0, 15 )
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -851969, 19, 0, -917502, 19, 0, -786433, 19, 0, -851968, 19, 0, -851965, 19, 0, -786432, 19, 0, -786431, 19, 0, -786426, 19, 0, -720895, 19, 0, -720894, 19, 0, -720890, 19, 0, -720889, 19, 0, -589834, 19, 0, -589833, 19, 0, -589832, 19, 0, -589831, 19, 0, -589830, 19, 0, -589829, 19, 0, -589828, 19, 0, -589827, 19, 0, -589826, 19, 0, -589825, 19, 0, -655360, 19, 0, -655358, 19, 0, -655357, 19, 0, -655353, 19, 0, -524299, 19, 0, -524298, 19, 0, -524297, 19, 0, -524296, 19, 0, -524295, 19, 0, -524294, 19, 0, -524293, 19, 0, -524292, 19, 0, -524291, 19, 0, -524290, 19, 0, -524289, 19, 0, -589824, 19, 0, -589823, 19, 0, -589822, 19, 0, -589821, 19, 0, -589817, 19, 0, -458764, 19, 0, -458763, 19, 0, -458762, 19, 0, -458761, 19, 0, -458760, 19, 0, -458759, 19, 0, -458758, 19, 0, -458757, 19, 0, -458756, 19, 0, -458755, 19, 0, -458754, 19, 0, -458753, 19, 0, -524288, 19, 0, -524287, 19, 0, -524286, 19, 0, -524285, 19, 0, -524284, 19, 0, -524282, 19, 0, -524281, 19, 0, -393228, 19, 0, -393227, 19, 0, -393226, 19, 0, -393225, 19, 0, -393224, 19, 0, -393223, 19, 0, -393222, 19, 0, -393221, 19, 0, -393220, 19, 0, -393219, 19, 0, -393218, 19, 0, -393217, 19, 0, -458752, 19, 0, -458751, 19, 0, -458750, 19, 0, -458749, 19, 0, -458748, 19, 0, -458747, 19, 0, -458746, 19, 0, -458745, 19, 0, -327692, 19, 0, -327691, 19, 0, -327690, 19, 0, -327689, 19, 0, -327688, 19, 0, -327687, 19, 0, -327686, 19, 0, -327685, 19, 0, -327684, 19, 0, -327683, 19, 0, -327682, 19, 0, -327681, 19, 0, -393216, 19, 0, -393215, 19, 0, -393214, 19, 0, -393213, 19, 0, -393212, 19, 0, -393211, 19, 0, -393210, 19, 0, -393209, 19, 0, -262156, 19, 0, -262155, 19, 0, -262154, 19, 0, -262153, 19, 0, -262152, 19, 0, -262151, 19, 0, -262150, 19, 0, -262149, 19, 0, -262148, 19, 0, -262147, 19, 0, -262146, 19, 0, -262145, 19, 0, -327680, 19, 0, -327679, 19, 0, -327678, 19, 0, -327677, 19, 0, -327676, 19, 0, -327675, 19, 0, -327674, 19, 0, -327673, 19, 0, -196620, 19, 0, -196619, 19, 0, -196618, 19, 0, -196617, 19, 0, -196616, 19, 0, -196615, 19, 0, -196614, 19, 0, -196613, 19, 0, -196612, 19, 0, -196611, 19, 0, -196610, 19, 0, -196609, 19, 0, -262144, 19, 0, -262143, 19, 0, -262142, 19, 0, -262141, 19, 0, -262140, 19, 0, -262139, 19, 0, -262138, 19, 0, -262137, 19, 0, -131084, 19, 0, -131083, 19, 0, -131082, 19, 0, -131081, 19, 0, -131080, 19, 0, -131079, 19, 0, -131078, 19, 0, -131077, 19, 0, -131076, 19, 0, -131075, 19, 0, -131074, 19, 0, -131073, 19, 0, -196608, 19, 0, -196607, 19, 0, -196606, 19, 0, -196605, 19, 0, -196604, 19, 0, -196603, 19, 0, -196602, 19, 0, -196601, 19, 0, -65548, 19, 0, -65547, 19, 0, -65546, 19, 0, -65545, 19, 0, -65544, 19, 0, -65543, 19, 0, -65542, 19, 0, -65541, 19, 0, -65540, 19, 0, -65539, 19, 0, -65538, 19, 0, -65537, 19, 0, -131072, 19, 0, -131071, 19, 0, -131070, 19, 0, -131069, 19, 0, -131068, 19, 0, -131067, 19, 0, -131066, 19, 0, -131065, 19, 0, -14, 19, 0, -13, 19, 0, -12, 19, 0, -11, 19, 0, -10, 19, 0, -9, 19, 0, -8, 19, 0, -7, 19, 0, -6, 19, 0, -5, 19, 0, -4, 19, 0, -3, 19, 0, -2, 19, 0, -1, 19, 0, -65536, 19, 0, -65535, 19, 0, -65534, 19, 0, -65533, 19, 0, -65532, 19, 0, -65531, 19, 0, -65530, 19, 0, -65529, 19, 0, 65523, 19, 0, 65525, 19, 0, 65526, 19, 0, 65527, 19, 0, 65528, 19, 0, 65529, 19, 0, 65530, 19, 0, 65531, 19, 0, 65532, 19, 0, 65533, 19, 0, 65534, 19, 0, 65535, 19, 0, 0, 19, 0, 1, 19, 0, 2, 19, 0, 3, 19, 0, 4, 19, 0, 5, 19, 0, 6, 19, 0, 7, 19, 0, 131060, 19, 0, 131061, 19, 0, 131062, 19, 0, 131063, 19, 0, 131064, 19, 0, 131065, 19, 0, 131066, 19, 0, 131067, 19, 0, 131068, 19, 0, 131069, 19, 0, 131070, 19, 0, 131071, 19, 0, 65536, 19, 0, 65537, 19, 0, 65538, 19, 0, 65539, 19, 0, 65540, 19, 0, 65541, 19, 0, 65542, 19, 0, 65543, 19, 0, 196597, 19, 0, 196598, 19, 0, 196599, 19, 0, 196600, 19, 0, 196601, 19, 0, 196602, 19, 0, 196603, 19, 0, 196604, 19, 0, 196605, 19, 0, 196606, 19, 0, 196607, 19, 0, 131072, 19, 0, 131073, 19, 0, 131074, 19, 0, 131075, 19, 0, 131076, 19, 0, 131077, 19, 0, 131078, 19, 0, 131079, 19, 0, 262134, 19, 0, 262135, 19, 0, 262136, 19, 0, 262137, 19, 0, 262138, 19, 0, 262139, 19, 0, 262140, 19, 0, 262141, 19, 0, 262142, 19, 0, 262143, 19, 0, 196608, 19, 0, 196609, 19, 0, 196610, 19, 0, 196611, 19, 0, 196612, 19, 0, 196613, 19, 0, 196614, 19, 0, 196615, 19, 0 )
+
+[node name="Tile Map2" type="TileMap" parent="YSort/Floor"]
+modulate = Color( 0.952941, 0.839216, 1, 1 )
+position = Vector2( 0, 7 )
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -851969, 19, 0, -917503, 19, 0, -917502, 19, 0, -786433, 19, 0, -851968, 19, 0, -851966, 19, 0, -851965, 19, 0, -786432, 19, 0, -786431, 19, 0, -786429, 19, 0, -786428, 19, 0, -786427, 19, 0, -786426, 19, 0, -720895, 19, 0, -720894, 19, 0, -720889, 19, 0, -589834, 19, 0, -589833, 19, 0, -589832, 19, 0, -589831, 19, 0, -589830, 19, 0, -589829, 19, 0, -589828, 19, 0, -589827, 19, 0, -589826, 19, 0, -589825, 19, 0, -655360, 19, 0, -655358, 19, 0, -655353, 19, 0, -524299, 19, 0, -524298, 19, 0, -524297, 19, 0, -524296, 19, 0, -524295, 19, 0, -524294, 19, 0, -524293, 19, 0, -524292, 19, 0, -524291, 19, 0, -524290, 19, 0, -524289, 19, 0, -589824, 19, 0, -589823, 19, 0, -589822, 19, 0, -589821, 19, 0, -589820, 19, 0, -589817, 19, 0, -458764, 19, 0, -458763, 19, 0, -458762, 19, 0, -458761, 19, 0, -458760, 19, 0, -458759, 19, 0, -458758, 19, 0, -458757, 19, 0, -458756, 19, 0, -458755, 19, 0, -458754, 19, 0, -458753, 19, 0, -524288, 19, 0, -524287, 19, 0, -524286, 19, 0, -524285, 19, 0, -524284, 19, 0, -524282, 19, 0, -524281, 19, 0, -393228, 19, 0, -393227, 19, 0, -393226, 19, 0, -393225, 19, 0, -393224, 19, 0, -393223, 19, 0, -393222, 19, 0, -393221, 19, 0, -393220, 19, 0, -393219, 19, 0, -393218, 19, 0, -393217, 19, 0, -458752, 19, 0, -458751, 19, 0, -458750, 19, 0, -458749, 19, 0, -458748, 19, 0, -458747, 19, 0, -458746, 19, 0, -458745, 19, 0, -327692, 19, 0, -327691, 19, 0, -327690, 19, 0, -327689, 19, 0, -327688, 19, 0, -327687, 19, 0, -327686, 19, 0, -327685, 19, 0, -327684, 19, 0, -327683, 19, 0, -327682, 19, 0, -327681, 19, 0, -393216, 19, 0, -393215, 19, 0, -393214, 19, 0, -393213, 19, 0, -393212, 19, 0, -393211, 19, 0, -393210, 19, 0, -393209, 19, 0, -262156, 19, 0, -262155, 19, 0, -262154, 19, 0, -262153, 19, 0, -262152, 19, 0, -262151, 19, 0, -262150, 19, 0, -262149, 19, 0, -262148, 19, 0, -262147, 19, 0, -262146, 19, 0, -262145, 19, 0, -327680, 19, 0, -327679, 19, 0, -327678, 19, 0, -327677, 19, 0, -327676, 19, 0, -327675, 19, 0, -327674, 19, 0, -327673, 19, 0, -196620, 19, 0, -196619, 19, 0, -196618, 19, 0, -196617, 19, 0, -196616, 19, 0, -196615, 19, 0, -196614, 19, 0, -196613, 19, 0, -196612, 19, 0, -196611, 19, 0, -196610, 19, 0, -196609, 19, 0, -262144, 19, 0, -262143, 19, 0, -262142, 19, 0, -262141, 19, 0, -262140, 19, 0, -262139, 19, 0, -262138, 19, 0, -262137, 19, 0, -131084, 19, 0, -131083, 19, 0, -131082, 19, 0, -131081, 19, 0, -131080, 19, 0, -131079, 19, 0, -131078, 19, 0, -131077, 19, 0, -131076, 19, 0, -131075, 19, 0, -131074, 19, 0, -131073, 19, 0, -196608, 19, 0, -196607, 19, 0, -196606, 19, 0, -196605, 19, 0, -196604, 19, 0, -196603, 19, 0, -196602, 19, 0, -196601, 19, 0, -65548, 19, 0, -65547, 19, 0, -65546, 19, 0, -65545, 19, 0, -65544, 19, 0, -65543, 19, 0, -65542, 19, 0, -65541, 19, 0, -65540, 19, 0, -65539, 19, 0, -65538, 19, 0, -65537, 19, 0, -131072, 19, 0, -131071, 19, 0, -131070, 19, 0, -131069, 19, 0, -131068, 19, 0, -131067, 19, 0, -131066, 19, 0, -131065, 19, 0, -14, 19, 0, -12, 19, 0, -11, 19, 0, -10, 19, 0, -9, 19, 0, -8, 19, 0, -7, 19, 0, -6, 19, 0, -5, 19, 0, -4, 19, 0, -3, 19, 0, -2, 19, 0, -1, 19, 0, -65536, 19, 0, -65535, 19, 0, -65534, 19, 0, -65533, 19, 0, -65532, 19, 0, -65531, 19, 0, -65530, 19, 0, -65529, 19, 0, 65523, 19, 0, 65525, 19, 0, 65526, 19, 0, 65527, 19, 0, 65528, 19, 0, 65529, 19, 0, 65530, 19, 0, 65531, 19, 0, 65532, 19, 0, 65533, 19, 0, 65534, 19, 0, 65535, 19, 0, 0, 19, 0, 1, 19, 0, 2, 19, 0, 3, 19, 0, 4, 19, 0, 5, 19, 0, 6, 19, 0, 7, 19, 0, 131060, 19, 0, 131061, 19, 0, 131062, 19, 0, 131063, 19, 0, 131064, 19, 0, 131065, 19, 0, 131066, 19, 0, 131067, 19, 0, 131068, 19, 0, 131069, 19, 0, 131070, 19, 0, 131071, 19, 0, 65536, 19, 0, 65537, 19, 0, 65538, 19, 0, 65539, 19, 0, 65540, 19, 0, 65541, 19, 0, 65542, 19, 0, 65543, 19, 0, 196597, 19, 0, 196598, 19, 0, 196599, 19, 0, 196600, 19, 0, 196601, 19, 0, 196602, 19, 0, 196603, 19, 0, 196604, 19, 0, 196605, 19, 0, 196606, 19, 0, 196607, 19, 0, 131072, 19, 0, 131073, 19, 0, 131074, 19, 0, 131075, 19, 0, 131076, 19, 0, 131077, 19, 0, 131078, 19, 0, 131079, 19, 0, 262134, 19, 0, 262135, 19, 0, 262136, 19, 0, 262137, 19, 0, 262138, 19, 0, 262139, 19, 0, 262140, 19, 0, 262141, 19, 0, 262142, 19, 0, 262143, 19, 0, 196608, 19, 0, 196609, 19, 0, 196610, 19, 0, 196611, 19, 0, 196612, 19, 0, 196613, 19, 0, 196614, 19, 0, 196615, 19, 0 )
+
+[node name="Tile Map" type="TileMap" parent="YSort/Floor"]
+modulate = Color( 1, 0.99, 0.99, 1 )
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -851980, 19, 0, -851979, 19, 0, -851978, 19, 0, -851977, 19, 0, -851976, 19, 0, -851975, 19, 0, -851974, 19, 0, -851973, 19, 0, -851972, 19, 0, -851971, 19, 0, -851970, 19, 0, -851969, 19, 0, -917504, 19, 0, -917503, 19, 0, -917502, 19, 0, -786445, 19, 0, -786444, 19, 0, -786443, 19, 0, -786442, 19, 0, -786441, 19, 0, -786440, 19, 0, -786439, 19, 0, -786438, 19, 0, -786437, 19, 0, -786436, 19, 0, -786435, 19, 0, -786434, 19, 0, -786433, 19, 0, -851968, 19, 0, -851967, 19, 0, -851966, 19, 0, -851965, 19, 0, -720910, 19, 0, -720909, 19, 0, -720908, 19, 0, -720907, 19, 0, -720906, 19, 0, -720905, 19, 0, -720904, 19, 0, -720903, 19, 0, -720902, 19, 0, -720901, 19, 0, -720900, 19, 0, -720899, 19, 0, -720898, 19, 0, -720897, 19, 0, -786432, 19, 0, -786431, 19, 0, -786430, 19, 0, -786429, 19, 0, -786428, 19, 0, -786427, 19, 0, -786426, 19, 0, -655374, 19, 0, -655373, 19, 0, -655372, 19, 0, -655371, 19, 0, -655370, 19, 0, -655369, 19, 0, -655368, 19, 0, -655367, 19, 0, -655366, 19, 0, -655365, 19, 0, -655364, 19, 0, -655363, 19, 0, -655362, 19, 0, -655361, 19, 0, -720896, 19, 0, -720895, 19, 0, -720894, 19, 0, -720893, 19, 0, -720892, 19, 0, -720891, 19, 0, -720890, 19, 0, -720889, 19, 0, -589838, 19, 0, -589837, 19, 0, -589836, 19, 0, -589835, 19, 0, -589834, 19, 0, -589833, 19, 0, -589832, 19, 0, -589831, 19, 0, -589830, 19, 0, -589829, 19, 0, -589828, 19, 0, -589827, 19, 0, -589826, 19, 0, -589825, 19, 0, -655360, 19, 0, -655359, 19, 0, -655358, 19, 0, -655357, 19, 0, -655356, 19, 0, -655355, 19, 0, -655354, 19, 0, -655353, 19, 0, -524302, 19, 0, -524301, 19, 0, -524300, 19, 0, -524299, 19, 0, -524298, 19, 0, -524297, 19, 0, -524296, 19, 0, -524295, 19, 0, -524294, 19, 0, -524293, 19, 0, -524292, 19, 0, -524291, 19, 0, -524290, 19, 0, -524289, 19, 0, -589824, 19, 0, -589823, 19, 0, -589822, 19, 0, -589821, 19, 0, -589820, 19, 0, -589819, 19, 0, -589818, 19, 0, -589817, 19, 0, -458766, 19, 0, -458765, 19, 0, -458764, 19, 0, -458763, 19, 0, -458762, 19, 0, -458761, 19, 0, -458760, 19, 0, -458759, 19, 0, -458758, 19, 0, -458757, 19, 0, -458756, 19, 0, -458755, 19, 0, -458754, 19, 0, -458753, 19, 0, -524288, 19, 0, -524287, 19, 0, -524286, 19, 0, -524285, 19, 0, -524284, 19, 0, -524283, 19, 0, -524282, 19, 0, -524281, 19, 0, -393230, 19, 0, -393229, 19, 0, -393228, 19, 0, -393227, 19, 0, -393226, 19, 0, -393225, 19, 0, -393224, 19, 0, -393223, 19, 0, -393222, 19, 0, -393221, 19, 0, -393220, 19, 0, -393219, 19, 0, -393218, 19, 0, -393217, 19, 0, -458752, 19, 0, -458751, 19, 0, -458750, 19, 0, -458749, 19, 0, -458748, 19, 0, -458747, 19, 0, -458746, 19, 0, -458745, 19, 0, -327694, 19, 0, -327693, 19, 0, -327692, 19, 0, -327691, 19, 0, -327690, 19, 0, -327689, 19, 0, -327688, 19, 0, -327687, 19, 0, -327686, 19, 0, -327685, 19, 0, -327684, 19, 0, -327683, 19, 0, -327682, 19, 0, -327681, 19, 0, -393216, 19, 0, -393215, 19, 0, -393214, 19, 0, -393213, 19, 0, -393212, 19, 0, -393211, 19, 0, -393210, 19, 0, -393209, 19, 0, -262158, 19, 0, -262157, 19, 0, -262156, 19, 0, -262155, 19, 0, -262154, 19, 0, -262153, 19, 0, -262152, 19, 0, -262151, 19, 0, -262150, 19, 0, -262149, 19, 0, -262148, 19, 0, -262147, 19, 0, -262146, 19, 0, -262145, 19, 0, -327680, 19, 0, -327679, 19, 0, -327678, 19, 0, -327677, 19, 0, -327676, 19, 0, -327675, 19, 0, -327674, 19, 0, -327673, 19, 0, -196622, 19, 0, -196621, 19, 0, -196620, 19, 0, -196619, 19, 0, -196618, 19, 0, -196617, 19, 0, -196616, 19, 0, -196615, 19, 0, -196614, 19, 0, -196613, 19, 0, -196612, 19, 0, -196611, 19, 0, -196610, 19, 0, -196609, 19, 0, -262144, 19, 0, -262143, 19, 0, -262142, 19, 0, -262141, 19, 0, -262140, 19, 0, -262139, 19, 0, -262138, 19, 0, -262137, 19, 0, -131086, 19, 0, -131085, 19, 0, -131084, 19, 0, -131083, 19, 0, -131082, 19, 0, -131081, 19, 0, -131080, 19, 0, -131079, 19, 0, -131078, 19, 0, -131077, 19, 0, -131076, 19, 0, -131075, 19, 0, -131074, 19, 0, -131073, 19, 0, -196608, 19, 0, -196607, 19, 0, -196606, 19, 0, -196605, 19, 0, -196604, 19, 0, -196603, 19, 0, -196602, 19, 0, -196601, 19, 0, -65550, 19, 0, -65549, 19, 0, -65548, 19, 0, -65547, 19, 0, -65546, 19, 0, -65545, 19, 0, -65544, 19, 0, -65543, 19, 0, -65542, 19, 0, -65541, 19, 0, -65540, 19, 0, -65539, 19, 0, -65538, 19, 0, -65537, 19, 0, -131072, 19, 0, -131071, 19, 0, -131070, 19, 0, -131069, 19, 0, -131068, 19, 0, -131067, 19, 0, -131066, 19, 0, -131065, 19, 0, -14, 19, 0, -13, 19, 0, -12, 19, 0, -11, 19, 0, -10, 19, 0, -9, 19, 0, -8, 19, 0, -7, 19, 0, -6, 19, 0, -5, 19, 0, -4, 19, 0, -3, 19, 0, -2, 19, 0, -1, 19, 0, -65536, 19, 0, -65535, 19, 0, -65534, 19, 0, -65533, 19, 0, -65532, 19, 0, -65531, 19, 0, -65530, 19, 0, -65529, 19, 0, 65523, 19, 0, 65524, 19, 0, 65525, 19, 0, 65526, 19, 0, 65527, 19, 0, 65528, 19, 0, 65529, 19, 0, 65530, 19, 0, 65531, 19, 0, 65532, 19, 0, 65533, 19, 0, 65534, 19, 0, 65535, 19, 0, 0, 19, 0, 1, 19, 0, 2, 19, 0, 3, 19, 0, 4, 19, 0, 5, 19, 0, 6, 19, 0, 7, 19, 0, 131060, 19, 0, 131061, 19, 0, 131062, 19, 0, 131063, 19, 0, 131064, 19, 0, 131065, 19, 0, 131066, 19, 0, 131067, 19, 0, 131068, 19, 0, 131069, 19, 0, 131070, 19, 0, 131071, 19, 0, 65536, 19, 0, 65537, 19, 0, 65538, 19, 0, 65539, 19, 0, 65540, 19, 0, 65541, 19, 0, 65542, 19, 0, 65543, 19, 0, 196597, 19, 0, 196598, 19, 0, 196599, 19, 0, 196600, 19, 0, 196601, 19, 0, 196602, 19, 0, 196603, 19, 0, 196604, 19, 0, 196605, 19, 0, 196606, 19, 0, 196607, 19, 0, 131072, 19, 0, 131073, 19, 0, 131074, 19, 0, 131075, 19, 0, 131076, 19, 0, 131077, 19, 0, 131078, 19, 0, 131079, 19, 0, 262134, 19, 0, 262135, 19, 0, 262136, 19, 0, 262137, 19, 0, 262138, 19, 0, 262139, 19, 0, 262140, 19, 0, 262141, 19, 0, 262142, 19, 0, 262143, 19, 0, 196608, 19, 0, 196609, 19, 0, 196610, 19, 0, 196611, 19, 0, 196612, 19, 0, 196613, 19, 0, 196614, 19, 0, 196615, 19, 0 )
+
+[node name="SquareShadow" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( -351.486, -124.835 )
+rotation = -0.0292936
+scale = Vector2( 2.29511, 1.9169 )
+texture = ExtResource( 33 )
+
+[node name="SquareShadow2" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 20, -251 )
+rotation = -0.0815983
+scale = Vector2( 2.46673, 1.95511 )
+texture = ExtResource( 33 )
+
+[node name="SquareShadow4" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 391, -99 )
+rotation = 0.0148698
+scale = Vector2( 2.46673, 1.95511 )
+texture = ExtResource( 33 )
+
+[node name="SquareShadow3" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( -137.487, -2.835 )
+rotation = -0.0292936
+scale = Vector2( 2.29511, 1.9169 )
+texture = ExtResource( 33 )
+
+[node name="Grass Map" type="TileMap" parent="YSort/Floor"]
+modulate = Color( 1, 0.109804, 0.109804, 0.215686 )
+position = Vector2( -71, -79 )
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+format = 1
+tile_data = PoolIntArray( -720902, 13, 0, -786430, 12, 0, -655366, 13, 0, -720894, 13, 0, -589833, 12, 0, -458754, 12, 0, -458749, 13, 0, -327687, 13, 0, -327671, 13, 0, -65540, 13, 0, -131063, 13, 0, -65531, 12, 0, 131067, 12, 0, 131074, 12, 0, 131080, 13, 0, 262138, 13, 0, 262143, 13, 0, 327687, 12, 0, 327689, 13, 0, 524287, 13, 0 )
+
+[node name="MiddleGround" type="Node2D" parent="YSort"]
+
+[node name="LilAloe2" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 0.960784, 0.980392, 0.862745, 1 )
+position = Vector2( 351, -151 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 1, 1.1 )
+texture = ExtResource( 41 )
+texture_scale = Vector2( 1.1, 1.2 )
+texture_offset = Vector2( 0, 14 )
+height = 30.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Prickly" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 1, 0.968627, 0.984314, 1 )
+position = Vector2( 343, -121 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.6, 0.7 )
+texture = ExtResource( 24 )
+texture_scale = Vector2( 0.9, 0.9 )
+texture_offset = Vector2( 3, 5 )
+height = 55.0
+preview_collision_box = false
+
+[node name="Ledge3" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
+position = Vector2( -164.972, 13.33 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 58, 32 )
+grid_size = Vector2( 2.5, 3 )
+texture = ExtResource( 42 )
+texture_scale = Vector2( 1.75, 1.65 )
+texture_offset = Vector2( 14, 102 )
+height = 40.0
+preview_collision_box = false
+
+[node name="LilAloe4" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 0.960784, 0.980392, 0.862745, 1 )
+position = Vector2( -257, -45 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 1, 1.1 )
+texture = ExtResource( 41 )
+texture_scale = Vector2( 1.1, 1.2 )
+texture_offset = Vector2( 0, 14 )
+height = 30.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="LilAloe6" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 1, 0.968627, 0.984314, 1 )
+position = Vector2( -77, -278 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 1, 1.1 )
+texture = ExtResource( 41 )
+texture_scale = Vector2( -1.1, 1.2 )
+texture_offset = Vector2( 0, 14 )
+height = 30.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Canyon13" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( 710.529, -255 )
+rotation = 3.14159
+scale = Vector2( 2.04317, -2.11762 )
+texture = ExtResource( 27 )
+flip_h = true
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 250 )
+
+[node name="SquareShadow5" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 31.6702, 74.9974 )
+rotation = 0.0341947
+scale = Vector2( 0.831603, 0.651898 )
+texture = ExtResource( 33 )
+
+[node name="SquareShadow2" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 65.6028, 81.95 )
+rotation = 0.0341947
+scale = Vector2( 0.974559, 0.775427 )
+texture = ExtResource( 33 )
+
+[node name="Box7" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+position = Vector2( 35.6702, 72.9974 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 3 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 28.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Box2" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+position = Vector2( 69.6952, 80.412 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 3 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 28.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Box5" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+position = Vector2( 70.6028, 80.95 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 3 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 28.0
+floor_height = 28.0
+depth_test_offset = Vector3( 0, 400, 0 )
+preview_collision_box = false
+
+[node name="MedLedge4" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 0.96, 0.9408, 0.95232, 1 )
+position = Vector2( 174, 120 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+texture_scale = Vector2( 1.75, 1.62 )
+texture_offset = Vector2( 0, 55 )
+height = 100.0
+depth_test_offset = Vector3( 0, 300, 0 )
+
+[node name="Canyon7" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 0.816575, 0.8099, 0.89, 1 )
+position = Vector2( -703, -174 )
+rotation = 3.14159
+scale = Vector2( 1.8334, -1.84111 )
+texture = ExtResource( 27 )
+script = ExtResource( 34 )
+
+[node name="LilAloe7" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 1, 0.968627, 0.984314, 1 )
+position = Vector2( 165, -251 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 1, 1.1 )
+texture = ExtResource( 41 )
+texture_scale = Vector2( 1.1, 1.1 )
+texture_offset = Vector2( 0, 14 )
+height = 30.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Ledge_Extra" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
+position = Vector2( 298, -185 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 58, 25 )
+grid_size = Vector2( 4.5, 5 )
+texture = ExtResource( 35 )
+texture_scale = Vector2( 0.65, 0.7 )
+texture_offset = Vector2( -10, -4 )
+height = 40.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Spike2" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( 274, -307 )
+scale = Vector2( 0.970677, 0.950036 )
+texture = ExtResource( 25 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 5 )
+height = 40.0
+
+[node name="ExtraBlock" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 0.96, 0.9408, 0.95232, 1 )
+position = Vector2( 297, -207 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 3, 3 )
+texture = ExtResource( 7 )
+texture_scale = Vector2( 1.75, 1.6 )
+texture_offset = Vector2( 0, 55 )
+height = 200.0
+floor_height = 40.0
+depth_test_offset = Vector3( 0, 300, 0 )
+preview_collision_box = false
+
+[node name="TallLedge" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 0.99, 0.9504, 0.9768, 1 )
+position = Vector2( 430, -86 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 70, 35 )
+grid_size = Vector2( 3.1, 2.7 )
+texture = ExtResource( 43 )
+texture_scale = Vector2( -1.6, 1.5 )
+texture_offset = Vector2( 0, 11 )
+height = 160.0
+depth_test_offset = Vector3( 0, 200, 0 )
+preview_collision_box = false
+
+[node name="Aloe5" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( 573, -193 )
+rotation = 3.14099
+scale = Vector2( 2.74848, -2.91578 )
+texture = ExtResource( 1 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 200 )
+
+[node name="Canyon14" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( 676, -61 )
+rotation = 3.14159
+scale = Vector2( 1.78777, -2.04323 )
+texture = ExtResource( 40 )
+script = ExtResource( 34 )
+
+[node name="Left" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
+position = Vector2( -377, -167 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 74, 25 )
+grid_size = Vector2( 6.5, 7.5 )
+texture = ExtResource( 16 )
+texture_scale = Vector2( 0.7, 0.7 )
+texture_offset = Vector2( 2, 10 )
+height = 110.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Right" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
+position = Vector2( 460, 163 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 74, 25 )
+grid_size = Vector2( 6.5, 7.5 )
+texture = ExtResource( 19 )
+texture_scale = Vector2( 0.7, 0.7 )
+texture_offset = Vector2( 2, 8 )
+height = 120.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Canyon8" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( -532, -232 )
+rotation = -0.00780264
+scale = Vector2( 2.11, 2.225 )
+texture = ExtResource( 40 )
+
+[node name="Box8" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+position = Vector2( 479, 18 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 3 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 28.0
+floor_height = 120.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Box10" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+position = Vector2( 460, 34 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 3 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 28.0
+floor_height = 120.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Box9" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+position = Vector2( 480, 18 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 3 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 28.0
+floor_height = 148.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Ledge1" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
+position = Vector2( -365.486, -108.835 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 32 )
+grid_size = Vector2( 2.5, 3 )
+texture = ExtResource( 42 )
+texture_scale = Vector2( -1.75, 1.65 )
+texture_offset = Vector2( 0, 100 )
+height = 40.0
+preview_collision_box = false
+
+[node name="Prickly2" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 1, 0.968627, 0.984314, 1 )
+position = Vector2( -322, -102 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.6, 0.7 )
+texture = ExtResource( 24 )
+texture_scale = Vector2( 0.9, 0.9 )
+texture_offset = Vector2( 3, 5 )
+height = 55.0
+preview_collision_box = false
+
+[node name="Canyon10" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 0.816575, 0.8099, 0.89, 1 )
+position = Vector2( -341, 2 )
+rotation = 3.14159
+scale = Vector2( 1.8334, -1.84111 )
+texture = ExtResource( 27 )
+script = ExtResource( 34 )
+
+[node name="SquareShadow3" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( -90.1035, -243.658 )
+rotation = 0.0341947
+scale = Vector2( 0.931965, 0.775427 )
+texture = ExtResource( 33 )
+
+[node name="Box3" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+position = Vector2( -87.1035, -245.658 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 3 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 28.0
+depth_test_offset = Vector3( 0, 800, 0 )
+preview_collision_box = false
+
+[node name="Box6" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+position = Vector2( -350, -161 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 3 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 28.0
+floor_height = 40.0
+depth_test_offset = Vector3( 0, 400, 0 )
+preview_collision_box = false
+
+[node name="Cactus3" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 1, 0.968627, 0.984314, 1 )
+position = Vector2( 110, 108 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.6, 0.7 )
+texture = ExtResource( 26 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 5 )
+height = 30.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Aloe6" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( -5, 154 )
+rotation = 3.14159
+scale = Vector2( 2.44303, -2.64828 )
+texture = ExtResource( 1 )
+script = ExtResource( 34 )
+
+[node name="TallLedge2" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 0.99, 0.9504, 0.9768, 1 )
+position = Vector2( 41, -225 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 64, 35 )
+grid_size = Vector2( 3.1, 2.7 )
+texture = ExtResource( 43 )
+texture_scale = Vector2( 1.6, 1.5 )
+texture_offset = Vector2( -3, 3 )
+height = 170.0
+preview_collision_box = false
+
+[node name="Cactus2" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 1, 0.968627, 0.984314, 1 )
+position = Vector2( 52, -214 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.6, 0.7 )
+texture = ExtResource( 26 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 5 )
+height = 33.0
+depth_test_offset = Vector3( 0, 800, 0 )
+preview_collision_box = false
+
+[node name="Cactus4" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 1, 0.968627, 0.984314, 1 )
+position = Vector2( -144, -250 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.6, 0.7 )
+texture = ExtResource( 26 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 5 )
+height = 30.0
+floor_height = 110.0
+depth_test_offset = Vector3( 0, 500, 0 )
+
+[node name="Cactus5" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 1, 0.968627, 0.984314, 1 )
+position = Vector2( 628, 65 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.6, 0.7 )
+texture = ExtResource( 26 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 2 )
+height = 33.0
+floor_height = 120.0
+depth_test_offset = Vector3( 0, 800, 0 )
+
+[node name="Aloe3" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( -636, -362.556 )
+rotation = 2.9369
+scale = Vector2( 2.35638, -2.5071 )
+texture = ExtResource( 1 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 350 )
+
+[node name="SquareShadow4" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( -102.816, 26.1624 )
+rotation = 0.0341947
+scale = Vector2( 0.831603, 0.651898 )
+texture = ExtResource( 33 )
+
+[node name="Box4" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+position = Vector2( -98.8163, 22.1624 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 3 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 28.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Canyon9" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( -118, 173 )
+rotation = 3.14159
+scale = Vector2( 1.82195, -2.13879 )
+texture = ExtResource( 40 )
+flip_h = true
+script = ExtResource( 34 )
+
+[node name="Spike" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( 198, -276 )
+scale = Vector2( 0.970677, 0.950036 )
+texture = ExtResource( 2 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 2 )
+height = 40.0
+
+[node name="LilAloe5" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 0.960784, 0.980392, 0.862745, 1 )
+position = Vector2( 379, 140 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 1, 1.1 )
+texture = ExtResource( 41 )
+texture_scale = Vector2( 1.1, 1.2 )
+texture_offset = Vector2( 0, 14 )
+height = 30.0
+floor_height = 110.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Canyon12" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( 488, 160 )
+rotation = -0.00780264
+scale = Vector2( 2.38084, 2.45225 )
+texture = ExtResource( 40 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 10 )
+
+[node name="Canyon5" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( -411, -20 )
+rotation = 3.14159
+scale = Vector2( 1.78777, -2.04323 )
+texture = ExtResource( 40 )
+script = ExtResource( 34 )
+
+[node name="Spike4" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( 310, -237 )
+scale = Vector2( 0.971, 0.95 )
+texture = ExtResource( 30 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 10 )
+height = 40.0
+
+[node name="Spike6" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( 670, -32 )
+scale = Vector2( 0.971, 0.95 )
+texture = ExtResource( 30 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 20 )
+height = 110.0
+
+[node name="Spike3" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( 512, -93 )
+scale = Vector2( 0.970677, 0.950036 )
+texture = ExtResource( 25 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 17 )
+height = 110.0
+
+[node name="Spike5" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( -59, -258 )
+scale = Vector2( 0.971, 0.95 )
+texture = ExtResource( 30 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 10 )
+
+[node name="Canyon6" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( 6, 198 )
+rotation = 3.14159
+scale = Vector2( 2.00788, -2.11762 )
+texture = ExtResource( 27 )
+flip_h = true
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 250 )
+
+[node name="Canyon15" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( -268, 178 )
+rotation = 3.14159
+scale = Vector2( 2.00788, -2.11762 )
+texture = ExtResource( 27 )
+flip_h = true
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 250 )
+
+[node name="Canyon16" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( -440, 169 )
+rotation = 3.14159
+scale = Vector2( 2.00788, -2.11762 )
+texture = ExtResource( 27 )
+flip_h = true
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 250 )
+
+[node name="Canyon11" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( 179, 230 )
+rotation = 3.14159
+scale = Vector2( 2.15717, -2.61074 )
+texture = ExtResource( 40 )
+flip_h = true
+script = ExtResource( 34 )
+
+[node name="Aloe4" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( 41, 266 )
+rotation = 3.22243
+scale = Vector2( 2.91268, -3.23681 )
+texture = ExtResource( 1 )
+flip_h = true
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 350 )
+
+[node name="Grass Map2" type="TileMap" parent="YSort/MiddleGround"]
+visible = false
+modulate = Color( 1, 0.109804, 0.109804, 0.215686 )
+position = Vector2( -71, -79 )
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+format = 1
+tile_data = PoolIntArray( -720902, 13, 0, -786430, 12, 0, -655366, 13, 0, -720894, 13, 0, -589833, 12, 0, -458754, 12, 0, -458749, 13, 0, -327687, 13, 0, -327671, 13, 0, -65540, 13, 0, -131063, 13, 0, -65531, 12, 0, 131067, 12, 0, 131074, 12, 0, 131080, 13, 0, 262138, 13, 0, 262143, 13, 0, 327687, 12, 0, 327689, 13, 0, 524287, 13, 0 )
+
+[node name="Prickly3" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
+modulate = Color( 1, 0.968627, 0.984314, 1 )
+position = Vector2( -363, -325 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.6, 0.7 )
+texture = ExtResource( 24 )
+texture_scale = Vector2( -0.9, 0.9 )
+height = 55.0
+floor_height = 110.0
+preview_collision_box = false
+
+[node name="Spike7" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( -329, -420 )
+scale = Vector2( 0.970677, 0.950036 )
+texture = ExtResource( 25 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 5 )
+height = 110.0
+
+[node name="Spike8" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( -400, -308 )
+scale = Vector2( 0.970677, 0.950036 )
+texture = ExtResource( 2 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 5 )
+height = 110.0
+
+[node name="Spike9" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 0.984314, 0.792157, 1 )
+position = Vector2( -121, -353 )
+rotation = 3.14159
+scale = Vector2( 0.971, -0.95 )
+texture = ExtResource( 30 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 5 )
+height = 110.0
+
+[node name="Spike Map" type="TileMap" parent="YSort/MiddleGround"]
+visible = false
+modulate = Color( 1, 0.972549, 0.870588, 1 )
+position = Vector2( -689, -48 )
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+format = 1
+
+[node name="Foreground" type="Node2D" parent="YSort"]
+z_index = 20
+
+[node name="Aloe2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( -470, -210 )
+rotation = 0.228078
+scale = Vector2( 2.19937, 2.4958 )
+texture = ExtResource( 39 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 10 )
+
+[node name="Aloe3" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( -244.36, 51.373 )
+rotation = -0.0990382
+scale = Vector2( 2.21264, 2.56658 )
+texture = ExtResource( 39 )
+flip_h = true
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 10 )
+
+[node name="Canyon15" type="Sprite" parent="YSort/Foreground"]
+modulate = Color( 0.816575, 0.8099, 0.89, 1 )
+position = Vector2( -402, 136 )
+rotation = 3.14159
+scale = Vector2( 1.8334, -1.84111 )
+texture = ExtResource( 27 )
+script = ExtResource( 34 )
+
+[node name="Canyon16" type="Sprite" parent="YSort/Foreground"]
+modulate = Color( 0.816575, 0.8099, 0.89, 1 )
+position = Vector2( -588, -54 )
+rotation = 3.14159
+scale = Vector2( 1.8334, -1.84111 )
+texture = ExtResource( 27 )
+script = ExtResource( 34 )
+
+[node name="Aloe6" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 799, -57 )
+rotation = -0.0990382
+scale = Vector2( 2.21264, 2.56658 )
+texture = ExtResource( 39 )
+flip_h = true
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 10 )
+
+[node name="Canyon13" type="Sprite" parent="YSort/Foreground"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( 336, 303 )
+rotation = 3.14159
+scale = Vector2( 1.78777, -2.04323 )
+texture = ExtResource( 40 )
+script = ExtResource( 34 )
+
+[node name="Aloe4" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 311, 98 )
+rotation = -0.0990382
+scale = Vector2( 2.39682, 2.77778 )
+texture = ExtResource( 39 )
+flip_h = true
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 10 )
+
+[node name="Aloe" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( -516, 6.00001 )
+rotation = 0.0643884
+scale = Vector2( 2.43218, 2.7899 )
+texture = ExtResource( 1 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 320 )
+
+[node name="Aloe5" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 487, 222 )
+rotation = -0.00349133
+scale = Vector2( 2.85971, 3.40611 )
+texture = ExtResource( 1 )
+flip_h = true
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 320 )
+
+[node name="CollisionRoot" type="Node2D" parent="."]
+
+[node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 14 )]
+visible = false
+
+[node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 15 )]
+polygon = PoolVector2Array( -435, -72, -405, -83, -436, -92, -404, -103, -437, -115, -409, -125, -436, -136, -428, -159, -98, -279, -61, -291, -28, -279, 1, -291, 33, -281, 63, -293, 338, -194, 527, -127, 500, -115, 558, -91, 500, -52, 416, 0, 395, 30, 291, 96, 201, 101, 158, 119, 123, 128 )
+
+[node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 15 )]
+position = Vector2( 403, -116 )
+polygon = PoolVector2Array( -231, -156, -131, -194, -94, -184, -60, -195, 8, -169, -23, -156, 12, -144, -94, -102 )
+height = 40.0
+
+[node name="NavmeshLayer5" parent="CollisionRoot/Navmesh2" instance=ExtResource( 15 )]
+visible = false
+position = Vector2( 531, 120 )
+polygon = PoolVector2Array( -297, -141, -106.241, -214.311, -42, -239, 187, -144, 103, -110, 188, -79, 114, -45, 25, -82, -52, -54, -210.838, -110.404 )
+height = 120.0
+
+[node name="NavmeshLayer6" parent="CollisionRoot/Navmesh2" instance=ExtResource( 15 )]
+position = Vector2( -322, -209 )
+polygon = PoolVector2Array( -297, -141, -188, -179, -220, -194, -150, -218, -110, -206, -39, -233, 185, -152, -74, -66 )
+disabled = true
+height = 110.0
+
+[node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 17 )]
+position = Vector2( -259, 50 )
+door_name = "KugiCanyon1_KugiCanyon2"
+direction = Vector2( 1, 1 )
+
+[node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 17 )]
+position = Vector2( 275, -284 )
+door_name = "KugiCanyon3_KugiCanyon2"
+direction = Vector2( -1, -1 )
+height = 40
+
+[node name="KugiCanyon3" parent="." instance=ExtResource( 18 )]
+position = Vector2( 142, -253 )
+script = ExtResource( 21 )
+target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 3.tscn"
+exit_name = "KugiCanyon2_KugiCanyon3"
+height = 40.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon3"]
+position = Vector2( 173, -36 )
+polygon = PoolVector2Array( 27, -45, 103, -19, 77, -10, 2, -37 )
+
+[node name="KugiCanyon1" parent="." instance=ExtResource( 18 )]
+position = Vector2( -363, -29 )
+rotation = 0.0231584
+script = ExtResource( 21 )
+target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 1.tscn"
+exit_name = "KugiCanyon2_KugiCanyon1"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon1"]
+position = Vector2( 66.4143, 103.49 )
+polygon = PoolVector2Array( -51.5421, -22.8126, 47.1958, 7.90923, 20.4346, 18.5318, -71.3052, -12.3522 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
+position = Vector2( -235, -234 )
+z_index = 4096
+current = true
+script = ExtResource( 22 )
+minPos = Vector2( -220, -280 )
+maxPos = Vector2( 400, -150 )
+follow_player = true
+
+[node name="Info_Window" type="Sprite" parent="Camera2D"]
+visible = false
+modulate = Color( 1, 1, 1, 0.6 )
+position = Vector2( -186, -232 )
+scale = Vector2( 0.7, 0.8 )
+z_index = 3
+texture = ExtResource( 32 )
+
+[node name="First_Text" type="Label" parent="Camera2D/Info_Window"]
+margin_left = -147.143
+margin_top = -11.0
+margin_right = 98.857
+margin_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1.2, 1.1 )
+custom_fonts/font = ExtResource( 31 )
+text = "You got a Flummery Flambe!"
+align = 1

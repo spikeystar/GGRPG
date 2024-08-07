@@ -26,7 +26,7 @@ func _physics_process(delta):
 	#if not ground_enemy and int(player_height) <= int(height-80):
 		#able = false
 		
-	if not ground_enemy and int(player_height) in range (int(height-60), int(height)):
+	if not ground_enemy and int(player_height) in range (int(height-30), int(height)):
 		able = true
 	
 

@@ -1,16 +1,16 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/Objects/EnemyMotionRoot.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/Objects/EnemyTest.gd" type="Script" id=4]
-[ext_resource path="res://Enemies/PlayerDetection.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/BattleTrigger.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie.png" type="Texture" id=7]
-[ext_resource path="res://NPC/NPC_ShadowAreaCheck.gd" type="Script" id=8]
-[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 1.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=10]
-[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Enemies/Kugi Canyon/Thorvern SS.png" type="Texture" id=1]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
+[ext_resource path="res://NPC/NPC_ShadowAreaCheck.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Objects/EnemyMotionRoot.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Objects/EnemyTest.gd" type="Script" id=5]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 1.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=9]
+[ext_resource path="res://Enemies/BattleTrigger.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Enemies/PlayerDetection.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CircleShape2D" id=180]
 
@@ -58,7 +58,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 4, -24 ) ]
+"values": [ Vector2( 14, -17 ) ]
 }
 
 [sub_resource type="Animation" id=176]
@@ -75,7 +75,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 4, 5, 3, 5 ]
+"values": [ 3, 4, 5, 4 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Enemy:position")
@@ -87,7 +87,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 1, -24 ) ]
+"values": [ Vector2( 6, -9 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
@@ -116,7 +116,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 2, 0, 2 ]
+"values": [ 0, 1, 2, 1 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
@@ -140,24 +140,24 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 4, -24 ) ]
+"values": [ Vector2( 14, -15 ) ]
 }
 
-[node name="Flutterbie" type="YSort"]
+[node name="Thorvern" type="YSort"]
 position = Vector2( 0, -2 )
-script = ExtResource( 4 )
-spawn_z = 100
+script = ExtResource( 5 )
+spawn_z = 160
 min_speed = 0.5
 max_speed = 0.65
-target_scene = ExtResource( 9 )
-alt_scene = ExtResource( 11 )
+target_scene = ExtResource( 6 )
+alt_scene = ExtResource( 7 )
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
 position = Vector2( 0, 1 )
 collision_mask = 2
 collision/safe_margin = 0.5
-script = ExtResource( 3 )
-spawn_z = 100
+script = ExtResource( 4 )
+spawn_z = 160
 ACCELERATION = 65
 CHASE_SPEED = 35
 WANDER_SPEED = 30
@@ -166,7 +166,7 @@ MIN_IDLE_TIME = 3
 MAX_IDLE_TIME = 5
 MIN_WANDER_TIME = 2
 MAX_WANDER_TIME = 5
-WANDER_RADIUS = 5
+WANDER_RADIUS = 35
 MAX_CHASE_DISTANCE = 175
 MAX_Z_DIFF = 50
 
@@ -176,12 +176,12 @@ scale = Vector2( 1.42294, 0.314577 )
 shape = SubResource( 180 )
 
 [node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
-script = ExtResource( 8 )
+script = ExtResource( 3 )
 
 [node name="ShadowCheck" type="CollisionShape2D" parent="MotionRoot/ShadowAreaCheck"]
 shape = SubResource( 172 )
 
-[node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 5 )]
+[node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 11 )]
 position = Vector2( 4, 12 )
 scale = Vector2( 0.872995, 1.17761 )
 collision_layer = 4
@@ -190,19 +190,19 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot/PlayerDetection"]
 modulate = Color( 1, 1, 1, 0.254902 )
 position = Vector2( -3.43644, -25.4754 )
-scale = Vector2( 1.03351, 0.873578 )
+scale = Vector2( 1.28021, 0.979603 )
 shape = SubResource( 178 )
 disabled = true
 
-[node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 6 )]
+[node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 10 )]
 position = Vector2( 4, -10 )
 scale = Vector2( 0.918882, 0.860568 )
 collision_layer = 7
 collision_mask = 6
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
-position = Vector2( -2.17656, -19.7544 )
-scale = Vector2( 1.02475, -1.67904 )
+position = Vector2( -3.26484, -22.0784 )
+scale = Vector2( 1.35457, -1.35654 )
 shape = SubResource( 179 )
 
 [node name="ShadowYSort" type="Node2D" parent="."]
@@ -213,8 +213,8 @@ shape = SubResource( 179 )
 modulate = Color( 1, 1, 1, 0.6 )
 position = Vector2( 2, -1 )
 scale = Vector2( 0.914288, 0.918545 )
-texture = ExtResource( 1 )
-script = ExtResource( 10 )
+texture = ExtResource( 2 )
+script = ExtResource( 9 )
 alpha_clip = 0.01
 always_update = true
 use_dithering = false
@@ -227,20 +227,21 @@ position = Vector2( -1, 0 )
 [node name="BodyVisualRoot" type="Node2D" parent="BodyYSort"]
 
 [node name="Enemy" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
-modulate = Color( 0.972549, 0.988235, 1, 1 )
-position = Vector2( 4, -24 )
-texture = ExtResource( 7 )
+modulate = Color( 0.988235, 0.988235, 0.976471, 1 )
+position = Vector2( 14, -17 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 1 )
 offset = Vector2( 0, -12 )
-hframes = 9
-vframes = 3
-script = ExtResource( 2 )
+hframes = 5
+vframes = 2
+script = ExtResource( 8 )
 depth_test_offset = Vector2( -8, 28 )
 feet_height = 10.0
 use_dithering = false
 use_dither_blending = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
-playback_speed = 0.5
+playback_speed = 0.3
 anims/RESET = SubResource( 173 )
 anims/walk_back = SubResource( 176 )
 anims/walk_front = SubResource( 177 )
