@@ -745,14 +745,13 @@ depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
 
 [node name="Grass Map" type="TileMap" parent="YSort/Floor"]
-visible = false
 modulate = Color( 1, 0.109804, 0.109804, 0.215686 )
 position = Vector2( -71, -79 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
-tile_data = PoolIntArray( -1114114, 13, 0, -1179646, 12, 0, -851966, 12, 0, -524289, 13, 0, -458747, 12, 0, -131078, 13, 0, -131075, 12, 0, -196600, 12, 0, -65532, 12, 0, 65536, 13, 0, 196607, 16, 0, 262138, 12, 0, 524287, 13, 0, 458758, 12, 0 )
+tile_data = PoolIntArray( -1114114, 13, 0, -1179642, 13, 0, -1048574, 13, 0, -917506, 12, 0, -655360, 13, 0, -655351, 12, 0, -131078, 13, 0, -196600, 12, 0, 7, 12, 0, 131071, 12, 0, 65538, 13, 0, 196607, 16, 0, 262138, 12, 0, 196615, 13, 0, 327684, 12, 0, 393225, 12, 0, 524287, 13, 0, 458758, 12, 0 )
 
 [node name="SquareShadow" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 1, 1, 0.235294 )

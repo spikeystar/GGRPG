@@ -296,9 +296,9 @@
 23/shapes = [  ]
 23/z_index = 0
 
-[sub_resource type="StreamTexture" id=13]
+[sub_resource type="StreamTexture" id=16]
 
-[sub_resource type="StreamTexture" id=14]
+[sub_resource type="StreamTexture" id=17]
 
 [sub_resource type="TileSet" id=6]
 7/name = "Grass Tile.png 7"
@@ -344,7 +344,7 @@
 9/shapes = [  ]
 9/z_index = 0
 10/name = "White Flower Tile A.png 10"
-10/texture = SubResource( 13 )
+10/texture = SubResource( 16 )
 10/tex_offset = Vector2( 0, 0 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 0, 0, 64, 32 )
@@ -358,7 +358,7 @@
 10/shapes = [  ]
 10/z_index = 0
 11/name = "White Flower Tile B.png 11"
-11/texture = SubResource( 14 )
+11/texture = SubResource( 17 )
 11/tex_offset = Vector2( 0, 0 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 0, 0, 64, 32 )
