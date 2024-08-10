@@ -64,6 +64,7 @@ func _on_touch_area():
 	yield(get_tree().create_timer(0.6), "timeout")
 	PlayerManager.ouch = false
 	yield(get_tree().create_timer(2), "timeout")
+	transition.queue_free()
 	transitioning = false
 	
 	

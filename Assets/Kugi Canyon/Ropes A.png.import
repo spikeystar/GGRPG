@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Bridge.png-7db1d106237064cbc29445b4001cabcb.stex"
+path="res://.import/Ropes A.png-457027260eeee99e5ebb87037199a568.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Kugi Canyon/Bridge.png"
-dest_files=[ "res://.import/Bridge.png-7db1d106237064cbc29445b4001cabcb.stex" ]
+source_file="res://Assets/Kugi Canyon/Ropes A.png"
+dest_files=[ "res://.import/Ropes A.png-457027260eeee99e5ebb87037199a568.stex" ]
 
 [params]
 

@@ -32,7 +32,7 @@ func _process(delta):
 		_on_touch_area()
 
 func _on_body_entered(body):
-	if "is_player_motion_root" in body and body.is_player_motion_root and not transitioning:
+	if "is_player_motion_root" in body and body.is_player_motion_root and not transitioning and not body_check:
 		body_check = true
 		#_on_touch_area()
 			
@@ -60,6 +60,7 @@ func _on_touch_area():
 	pixelation.queue_free()
 	PlayerManager.drown = false
 	yield(get_tree().create_timer(2), "timeout")
+	transition.queue_free()
 	transitioning = false
 	
 	
