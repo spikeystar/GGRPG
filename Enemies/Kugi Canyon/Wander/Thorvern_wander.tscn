@@ -212,7 +212,7 @@ shape = SubResource( 179 )
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
 modulate = Color( 1, 1, 1, 0.6 )
 position = Vector2( 2, -1 )
-scale = Vector2( 0.914288, 0.918545 )
+scale = Vector2( 1.87237, 1.36712 )
 texture = ExtResource( 2 )
 script = ExtResource( 9 )
 alpha_clip = 0.01

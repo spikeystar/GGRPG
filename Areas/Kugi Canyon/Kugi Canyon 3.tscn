@@ -1302,16 +1302,16 @@ always_update = true
 
 [node name="Big Ledge" parent="YSort/MiddleGround" instance=ExtResource( 40 )]
 modulate = Color( 0.99, 0.9801, 0.9801, 1 )
-position = Vector2( 392, -275 )
+position = Vector2( 401, -277 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 63, 30 )
-grid_size = Vector2( 8.3, 7 )
+grid_size = Vector2( 8.3, 6 )
 texture = ExtResource( 41 )
 texture_scale = Vector2( -1.9, 1.55 )
-texture_offset = Vector2( -10, 10 )
-height = 110.0
+texture_offset = Vector2( -15, 5 )
+height = 130.0
 floor_height = 40.0
 depth_test_offset = Vector3( 0, -400, 0 )
 preview_collision_box = false
@@ -1431,7 +1431,7 @@ preview_collision_box = false
 
 [node name="LilAloe3" parent="YSort/MiddleGround" instance=ExtResource( 40 )]
 modulate = Color( 0.960784, 0.980392, 0.862745, 1 )
-position = Vector2( 319, -451 )
+position = Vector2( 315, -441 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1441,7 +1441,7 @@ texture = ExtResource( 45 )
 texture_scale = Vector2( -1.1, 1.2 )
 texture_offset = Vector2( 0, 14 )
 height = 30.0
-floor_height = 150.0
+floor_height = 170.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
 
@@ -1500,10 +1500,9 @@ modulate = Color( 1, 0.996078, 0.94902, 1 )
 position = Vector2( 242, 170 )
 rotation = 3.14159
 scale = Vector2( 2.42859, -2.73429 )
+z_index = 1
 texture = ExtResource( 15 )
 flip_h = true
-script = ExtResource( 3 )
-depth_test_offset = Vector2( 0, 320 )
 
 [node name="Aloe7" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 1, 0.984314, 0.792157, 1 )
@@ -1646,7 +1645,7 @@ scale = Vector2( 2.442, -2.53333 )
 texture = ExtResource( 36 )
 flip_h = true
 script = ExtResource( 3 )
-depth_test_offset = Vector2( 0, 450 )
+depth_test_offset = Vector2( 0, 400 )
 
 [node name="Aloe2" type="Sprite" parent="YSort/MiddleGround"]
 position = Vector2( -165, 103 )
@@ -1661,9 +1660,8 @@ modulate = Color( 1, 0.984314, 0.792157, 1 )
 position = Vector2( 59, 150 )
 rotation = 3.14159
 scale = Vector2( 2.42446, -2.81135 )
+z_index = 2
 texture = ExtResource( 37 )
-script = ExtResource( 3 )
-depth_test_offset = Vector2( 0, 350 )
 
 [node name="Aloe8" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 1, 0.984314, 0.792157, 1 )
@@ -1751,7 +1749,7 @@ depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
 
 [node name="Box7" parent="YSort/MiddleGround" instance=ExtResource( 40 )]
-position = Vector2( 215, -415 )
+position = Vector2( 226, -412 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1761,13 +1759,13 @@ texture = ExtResource( 10 )
 texture_scale = Vector2( 0.8, 0.8 )
 texture_offset = Vector2( 0, 15 )
 height = 28.0
-floor_height = 150.0
+floor_height = 170.0
 depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
 
 [node name="ArrowSign" parent="YSort/MiddleGround" instance=ExtResource( 40 )]
 modulate = Color( 1, 0.968627, 0.984314, 1 )
-position = Vector2( 423, -425 )
+position = Vector2( 421, -407 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1777,7 +1775,7 @@ texture = ExtResource( 50 )
 texture_scale = Vector2( 1.1, 1.05 )
 texture_offset = Vector2( -3, 5 )
 height = 55.0
-floor_height = 150.0
+floor_height = 170.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
 
@@ -1813,7 +1811,7 @@ height = 40
 position = Vector2( 400, -543 )
 door_name = "KugiCanyon4_KugiCanyon3"
 direction = Vector2( -1, -1 )
-height = 150
+height = 170
 
 [node name="Entrance" parent="CollisionRoot" instance=ExtResource( 16 )]
 position = Vector2( -321, -15 )
@@ -1828,18 +1826,18 @@ position = Vector2( -78, -277 )
 position = Vector2( 99, -48 )
 
 [node name="Hercules" parent="." instance=ExtResource( 48 )]
-position = Vector2( 261, -330 )
-spawn_z = 40
+position = Vector2( 223, -311 )
 
 [node name="KugiCanyon4" parent="." instance=ExtResource( 17 )]
 position = Vector2( 261, -470 )
 script = ExtResource( 8 )
+target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 4.tscn"
 exit_name = "KugiCanyon3_KugiCanyon4"
-height = 150.0
+height = 170.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon4"]
 position = Vector2( 177, -31 )
-polygon = PoolVector2Array( 65, -58, 106, -48, 63, -2, -11, 19, -51, 9 )
+polygon = PoolVector2Array( 65, -58, 93, -52, 54, -5, -13, 13, -24, 1 )
 
 [node name="KugiCanyon2" parent="." instance=ExtResource( 17 )]
 position = Vector2( -363, -29 )

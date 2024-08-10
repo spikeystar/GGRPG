@@ -115,6 +115,14 @@ func _on_PresentBase_item_get():
 		$Info_Window/First_Text.text = "You got " + item_name + "!"
 		item_window()
 		Party.marbles_get = false
+	elif Party.trinket_get:
+		var item_name = Party.add_trinket_name
+		if item_name == "Overdrive":
+			$Info_Window/First_Text.text = "You got an " + item_name + "!"
+		else:
+			$Info_Window/First_Text.text = "You got a " + item_name + "!"
+		item_window()
+		Party.trinket_get = false
 	else:
 		var item_name = Party.add_item_name
 		$Info_Window/First_Text.text = "You got a " + item_name + "!"

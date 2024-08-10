@@ -11,11 +11,13 @@ func _ready():
 		Music.music()
 	yield(get_tree().create_timer(0.3), "timeout")
 	ready = true
+	
+	if EventManager.kugi_canyon_extra:
+		$YSort/MiddleGround/ExtraBlock.queue_free()
 		
 func _physics_process(delta):
-	#and not SceneManager.flee
 	
-	if ready and SceneManager.SceneEnemies.size() == 0 and not EventManager.kugi_canyon_extra:
+	if ready and SceneManager.SceneEnemies.size() == 0 and not EventManager.kugi_canyon_extra and not SceneManager.flee:
 		reveal_extra()
 		
 func reveal_extra():
@@ -27,10 +29,11 @@ func reveal_extra():
 	var tween = create_tween()
 	tween.tween_property($Camera2D, "position", Vector2(259, -229), 1.5)
 	yield(tween, "finished")
-	var tween2 = create_tween()
-	tween2.tween_property($YSort/MiddleGround/ExtraBlock, "modulate:a", 0, 0.7)
-	yield(tween2, "finished")
+	SE.effect("Poof")
+	$PoofPlayer.play("Poof")
+	yield(get_tree().create_timer(0.2), "timeout")
 	$YSort/MiddleGround/ExtraBlock.queue_free()
+	yield(get_tree().create_timer(1), "timeout")
 	var tween3 = create_tween()
 	tween3.tween_property($Camera2D, "position", current_position, 1.5)
 	yield(tween3, "finished")

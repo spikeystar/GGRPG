@@ -920,6 +920,7 @@ position = Vector2( 44, -202 )
 position = Vector2( 224, -80 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 31 )]
 

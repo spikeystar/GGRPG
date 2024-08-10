@@ -88,6 +88,17 @@ func item_get():
 		Global.Collected.append(global_position)
 	else:
 		return
+		
+func trinket_get():
+	if not Global.Collected.has(global_position):
+		SE.effect("Present")
+		Party.trinket_get = true
+		Party.add_trinket_name = item_name
+		Party.add_trinket()
+		emit_signal("item_get")
+		Global.Collected.append(global_position)
+	else:
+		return
 	
 func marbles_get():
 	if not Global.Collected.has(global_position):
@@ -130,3 +141,6 @@ func set_item():
 	if item_name == "Full Heal":
 		$ItemUsage/Item.frame = 10
 		full_heal()
+	if item_name == "Gold Earring":
+		$ItemUsage/Item.frame = 8
+		trinket_get()

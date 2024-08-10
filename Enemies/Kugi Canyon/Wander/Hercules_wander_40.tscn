@@ -146,6 +146,7 @@ tracks/1/keys = {
 
 [node name="Hercules" type="YSort"]
 script = ExtResource( 6 )
+spawn_z = 40
 ground_enemy = true
 min_speed = 0.4
 max_speed = 0.5
@@ -160,20 +161,21 @@ collision_mask = 2
 collision/safe_margin = 0.5
 script = ExtResource( 1 )
 spawn_z = 40
-ACCELERATION = 45
-CHASE_SPEED = 500
+ACCELERATION = 55
+CHASE_SPEED = 800
 WANDER_SPEED = 27
 FRICTION = 1.0
 MIN_IDLE_TIME = 3
 MAX_IDLE_TIME = 6
 MIN_WANDER_TIME = 3
 MAX_WANDER_TIME = 6
-WANDER_RADIUS = 10
+WANDER_RADIUS = 5
+MAX_CHASE_DISTANCE = 100
+MAX_Z_DIFF = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
-visible = false
-position = Vector2( 5, -1 )
-scale = Vector2( 1.42294, 0.714577 )
+position = Vector2( 5, -3 )
+scale = Vector2( 0.940873, 0.948056 )
 shape = SubResource( 180 )
 
 [node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
@@ -184,6 +186,7 @@ shape = SubResource( 172 )
 
 [node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 10 )]
 position = Vector2( 6, 11 )
+scale = Vector2( 1.10149, 1.08409 )
 collision_layer = 0
 collision_mask = 7
 

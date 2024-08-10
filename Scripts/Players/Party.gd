@@ -6,6 +6,7 @@ var jewel_seeds : int = 0
 var spell_name : String
 var remove_item_name: String
 var marbles_get = false
+var trinket_get = false
 var sent_storage = false
 
 const menu_slot = preload("res://UI/Slot.tscn")
