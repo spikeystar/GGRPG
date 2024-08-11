@@ -69,6 +69,7 @@ func _physics_process(delta):
 		anim_player.stop()
 		anim_tree.active = true
 		
+		
 	if drown:
 		anim_tree.active = false
 		anim_player.play("drown")

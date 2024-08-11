@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Scripts/Objects/PNG_Saving.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://Assets/Kugi Canyon/Spikes C.png" type="Texture" id=22]
 [ext_resource path="res://Assets/General/Tiles/Orange Grass Tile.png" type="Texture" id=23]
 [ext_resource path="res://Assets/General/Tiles/Canyon Tile.png" type="Texture" id=24]
+[ext_resource path="res://Scripts/Rendering/DepthTestTileMap.gd" type="Script" id=25]
 
 [sub_resource type="StreamTexture" id=12]
 
@@ -1909,6 +1910,208 @@
 23/shapes = [  ]
 23/z_index = 0
 
+[sub_resource type="StreamTexture" id=43]
+
+[sub_resource type="StreamTexture" id=14]
+
+[sub_resource type="TileSet" id=44]
+7/name = "Grass Tile.png 7"
+7/texture = ExtResource( 2 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 64, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
+8/name = "Clover Tile A.png 8"
+8/texture = ExtResource( 4 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 0, 64, 32 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
+9/name = "Clover Tile B.png 9"
+9/texture = ExtResource( 3 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 0, 0, 64, 32 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape_one_way = false
+9/shape_one_way_margin = 0.0
+9/shapes = [  ]
+9/z_index = 0
+10/name = "White Flower Tile A.png 10"
+10/texture = SubResource( 43 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 0, 0, 64, 32 )
+10/tile_mode = 0
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shape_offset = Vector2( 0, 0 )
+10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+10/shape_one_way = false
+10/shape_one_way_margin = 0.0
+10/shapes = [  ]
+10/z_index = 0
+11/name = "White Flower Tile B.png 11"
+11/texture = SubResource( 14 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 0, 0, 64, 32 )
+11/tile_mode = 0
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shape_offset = Vector2( 0, 0 )
+11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+11/shape_one_way = false
+11/shape_one_way_margin = 0.0
+11/shapes = [  ]
+11/z_index = 0
+12/name = "Tall Grass A.png 12"
+12/texture = ExtResource( 8 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 0, 0, 64, 32 )
+12/tile_mode = 0
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shape_offset = Vector2( 0, 0 )
+12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+12/shape_one_way = false
+12/shape_one_way_margin = 0.0
+12/shapes = [  ]
+12/z_index = 0
+13/name = "Tall Grass B.png 13"
+13/texture = ExtResource( 9 )
+13/tex_offset = Vector2( 0, 0 )
+13/modulate = Color( 1, 1, 1, 1 )
+13/region = Rect2( 0, 0, 64, 32 )
+13/tile_mode = 0
+13/occluder_offset = Vector2( 0, 0 )
+13/navigation_offset = Vector2( 0, 0 )
+13/shape_offset = Vector2( 0, 0 )
+13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+13/shape_one_way = false
+13/shape_one_way_margin = 0.0
+13/shapes = [  ]
+13/z_index = 0
+14/name = "Orange Brick B.png 14"
+14/texture = ExtResource( 6 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 0, 0, 64, 32 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 0, 0 )
+14/navigation_offset = Vector2( 0, 0 )
+14/shape_offset = Vector2( 0, 0 )
+14/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+14/shape_one_way = false
+14/shape_one_way_margin = 0.0
+14/shapes = [  ]
+14/z_index = 0
+15/name = "Orange Brick A.png 15"
+15/texture = ExtResource( 5 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 0, 0, 64, 32 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 0, 0 )
+15/navigation_offset = Vector2( 0, 0 )
+15/shape_offset = Vector2( 0, 0 )
+15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+15/shape_one_way = false
+15/shape_one_way_margin = 0.0
+15/shapes = [  ]
+15/z_index = 0
+16/name = "Dandelion A.png 16"
+16/texture = ExtResource( 10 )
+16/tex_offset = Vector2( 0, 0 )
+16/modulate = Color( 1, 1, 1, 1 )
+16/region = Rect2( 0, 0, 64, 32 )
+16/tile_mode = 0
+16/occluder_offset = Vector2( 0, 0 )
+16/navigation_offset = Vector2( 0, 0 )
+16/shape_offset = Vector2( 0, 0 )
+16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+16/shape_one_way = false
+16/shape_one_way_margin = 0.0
+16/shapes = [  ]
+16/z_index = 0
+17/name = "Dandelion B.png 17"
+17/texture = ExtResource( 12 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 0, 0, 64, 32 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shape_offset = Vector2( 0, 0 )
+17/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+17/shape_one_way = false
+17/shape_one_way_margin = 0.0
+17/shapes = [  ]
+17/z_index = 0
+18/name = "Orange Grass Tile.png 18"
+18/texture = ExtResource( 23 )
+18/tex_offset = Vector2( 0, 0 )
+18/modulate = Color( 1, 1, 1, 1 )
+18/region = Rect2( 0, 0, 64, 32 )
+18/tile_mode = 0
+18/occluder_offset = Vector2( 0, 0 )
+18/navigation_offset = Vector2( 0, 0 )
+18/shape_offset = Vector2( 0, 0 )
+18/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+18/shape_one_way = false
+18/shape_one_way_margin = 0.0
+18/shapes = [  ]
+18/z_index = 0
+19/name = "Canyon Tile.png 19"
+19/texture = ExtResource( 24 )
+19/tex_offset = Vector2( 0, 0 )
+19/modulate = Color( 1, 1, 1, 1 )
+19/region = Rect2( 0, 0, 64, 32 )
+19/tile_mode = 0
+19/occluder_offset = Vector2( 0, 0 )
+19/navigation_offset = Vector2( 0, 0 )
+19/shape_offset = Vector2( 0, 0 )
+19/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+19/shape_one_way = false
+19/shape_one_way_margin = 0.0
+19/shapes = [  ]
+19/z_index = 0
+20/name = "Spike Tile.png 20"
+20/texture = ExtResource( 19 )
+20/tex_offset = Vector2( 0, 0 )
+20/modulate = Color( 1, 1, 1, 1 )
+20/region = Rect2( 0, 0, 64, 64 )
+20/tile_mode = 0
+20/occluder_offset = Vector2( 0, 0 )
+20/navigation_offset = Vector2( 0, 0 )
+20/shape_offset = Vector2( 0, 0 )
+20/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+20/shape_one_way = false
+20/shape_one_way_margin = 0.0
+20/shapes = [  ]
+20/z_index = 0
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -2458,6 +2661,7 @@ format = 1
 tile_data = PoolIntArray( 65533, 19, 0, 65534, 19, 0, 131068, 19, 0, 131069, 19, 0, 131070, 19, 0, 131071, 19, 0, 196604, 19, 0, 196605, 19, 0, 196606, 19, 0, 196607, 19, 0, 262140, 19, 0, 262141, 19, 0, 262142, 19, 0, 262143, 19, 0 )
 
 [node name="KugiCanyon7" type="Node2D" parent="."]
+visible = false
 position = Vector2( 628, 567 )
 
 [node name="Tile Map15" type="TileMap" parent="KugiCanyon7"]
@@ -2559,3 +2763,26 @@ cell_size = Vector2( 62, 22 )
 centered_textures = true
 format = 1
 tile_data = PoolIntArray( -4, 19, 0, -3, 19, 0, -2, 19, 0, 65530, 19, 0, 65531, 19, 0, 65532, 19, 0, 65533, 19, 0, 65534, 19, 0, 65535, 19, 0, 0, 19, 0, 1, 19, 0, 2, 19, 0, 131066, 19, 0, 131067, 19, 0, 131068, 19, 0, 131069, 19, 0, 131070, 19, 0, 131071, 19, 0, 65536, 19, 0, 65537, 19, 0, 65538, 19, 0, 196602, 19, 0, 196603, 19, 0, 196604, 19, 0, 196605, 19, 0, 196606, 19, 0, 196607, 19, 0, 131072, 19, 0, 131073, 19, 0, 131074, 19, 0, 262138, 19, 0, 262139, 19, 0, 262140, 19, 0, 262141, 19, 0, 262142, 19, 0, 262143, 19, 0, 196608, 19, 0, 196609, 19, 0, 196610, 19, 0, 327674, 19, 0, 327675, 19, 0, 327676, 19, 0, 327677, 19, 0, 327678, 19, 0, 327679, 19, 0, 262144, 19, 0, 262145, 19, 0, 262146, 19, 0, 393210, 19, 0, 393211, 19, 0, 393212, 19, 0, 393213, 19, 0, 393214, 19, 0, 393215, 19, 0, 327680, 19, 0, 327681, 19, 0, 327682, 19, 0, 458746, 19, 0, 458747, 19, 0, 458748, 19, 0, 458749, 19, 0, 458750, 19, 0, 458751, 19, 0, 393216, 19, 0, 393217, 19, 0, 393218, 19, 0, 524282, 19, 0, 524283, 19, 0, 524284, 19, 0, 524285, 19, 0, 524286, 19, 0, 524287, 19, 0, 458752, 19, 0, 458753, 19, 0, 458754, 19, 0 )
+
+[node name="Spike Map 1" type="TileMap" parent="KugiCanyon7"]
+position = Vector2( -744, -227 )
+mode = 1
+tile_set = SubResource( 44 )
+cell_size = Vector2( 62, 22 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -851958, 20, 0, -851957, 20, 0, -851956, 20, 0, -786422, 20, 0, -786421, 20, 0, -786420, 20, 0, -786419, 20, 0, -720886, 20, 0, -720885, 20, 0, -720884, 20, 0, -720883, 20, 0, -655350, 20, 0, -655349, 20, 0, -655348, 20, 0, -655347, 20, 0, -589814, 20, 0, -589813, 20, 0, -589812, 20, 0, -589811, 20, 0, -524278, 20, 0, -524277, 20, 0, -524276, 20, 0, -524275, 20, 0, -458742, 20, 0, -458741, 20, 0, -458740, 20, 0, -458739, 20, 0, -393206, 20, 0, -393205, 20, 0, -393204, 20, 0, -393203, 20, 0, -327670, 20, 0, -327669, 20, 0, -327668, 20, 0, -327667, 20, 0, -262134, 20, 0, -262133, 20, 0, -262132, 20, 0, -262131, 20, 0 )
+script = ExtResource( 25 )
+height = -45.0
+
+[node name="Spike Map 2" type="TileMap" parent="KugiCanyon7"]
+modulate = Color( 0.84672, 0.8448, 0.96, 1 )
+position = Vector2( -744, -226 )
+mode = 1
+tile_set = SubResource( 44 )
+cell_size = Vector2( 62, 22 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -851958, 20, 0, -786420, 20, 0, -720886, 20, 0, -655347, 20, 0, -589813, 20, 0, -589811, 20, 0, -458742, 20, 0, -458739, 20, 0, -393204, 20, 0, -262134, 20, 0, -262132, 20, 0 )
+script = ExtResource( 25 )
+height = -45.0
