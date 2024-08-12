@@ -2,6 +2,9 @@ extends CanvasLayer
 
 func pixelate():
 	$AnimationPlayer.play("pixelate")
+	$TextureRect.hide()
+	yield(get_tree().create_timer(0.1), "timeout")
+	$TextureRect.show()
 
 func pixelate2():
 	$AnimationPlayer.play("pixelate2")

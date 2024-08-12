@@ -65,9 +65,7 @@ func _on_touch_area():
 		if priority == 1:
 			Global.door_name = exit_name
 		else:
-			pixelation.reset()
-			pixelation.queue_free()
-			return
+			pass
 	else:
 		Global.door_name = exit_name
 	var transition = TransitionPlayer.instance()
