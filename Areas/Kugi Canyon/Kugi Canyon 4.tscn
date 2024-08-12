@@ -1076,6 +1076,97 @@ floor_height = 20.0
 depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
 
+[node name="BBox" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
+position = Vector2( 531, -246 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 20.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox2" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
+position = Vector2( 505, -258 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 20.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox3" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
+position = Vector2( 478, -269 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 20.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox4" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
+position = Vector2( 449, -279 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 20.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox5" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
+position = Vector2( 612, -173 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 20.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox6" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
+position = Vector2( 585, -184 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 20.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox7" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
+position = Vector2( 640, -164 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 20.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
 [node name="Box6" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
 position = Vector2( -189, 68 )
 __meta__ = {
@@ -1174,13 +1265,13 @@ visible = false
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 36 )]
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 31 )]
-visible = false
-polygon = PoolVector2Array( -93, -129, 148, -218, 402, -306, 590, -237, 563, -224, 589, -215, 563, -201, 687, -158, 587, -123, 463, -168, 403, -147, 436, -136, 404, -125, 435, -115, 349, -79, 372, -70, -93, 98, -180, 62, -295, -11, -298, -30, -296, -52, -292, -61 )
+polygon = PoolVector2Array( -93, -129, 148, -218, 396, -305, 586, -236, 563, -224, 586, -215, 559, -202, 680, -159, 587, -123, 463, -168, 403, -147, 436, -136, 404, -125, 435, -115, 349, -79, 372, -70, -93, 98, -180, 62, -295, -11, -298, -30, -296, -52, -292, -61 )
 disabled = true
 height = 20.0
 
 [node name="NavmeshLayer2" parent="CollisionRoot/Navmesh2" instance=ExtResource( 31 )]
-polygon = PoolVector2Array( -134, -131, -196, -252, 89, -343, 232, -401, 403, -302, 590, -237, 563, -224, 589, -215, 563, -201, 687, -158, 587, -123, 463, -168, 403, -147, 436, -136, 404, -125, 435, -115, 349, -79, 372, -70, -93, 98, -231, 19, -309, -31, -290, -61 )
+visible = false
+polygon = PoolVector2Array( -134, -131, -196, -252, 89, -343, 232, -401, 403, -302, 590, -237, 563, -224, 571, -214, 554, -201, 677, -157, 587, -123, 463, -168, 403, -147, 436, -136, 404, -125, 435, -115, 349, -79, 372, -70, -93, 98, -231, 19, -309, -31, -290, -61 )
 
 [node name="NavmeshLayer4" parent="CollisionRoot/Navmesh2" instance=ExtResource( 31 )]
 visible = false
@@ -1197,14 +1288,14 @@ height = 110.0
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 3 )]
 position = Vector2( -323, -209 )
-door_name = "KugiCanyon3_Kugicanyon4"
+door_name = "KugiCanyon3_KugiCanyon4"
 direction = Vector2( 1, 1 )
 height = 120
 
 [node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 3 )]
 position = Vector2( 570, -172 )
 door_name = "KugiCanyon5_KugiCanyon4"
-direction = Vector2( -1, -1 )
+direction = Vector2( -1, 1 )
 height = 20
 
 [node name="StaticBody2D" type="StaticBody2D" parent="CollisionRoot"]
@@ -1240,13 +1331,13 @@ height = 120
 [node name="KugiCanyon5" parent="." instance=ExtResource( 1 )]
 position = Vector2( 142, -253 )
 script = ExtResource( 26 )
-target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 2.tscn"
+target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 5.tscn"
 exit_name = "KugiCanyon4_KugiCanyon5"
-height = 40.0
+height = 20.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon5"]
 position = Vector2( 371, 135 )
-polygon = PoolVector2Array( 141, -51, 170, -41, 76, -8, 44, -19 )
+polygon = PoolVector2Array( 134, -55, 170, -41, 76, -8, 40, -21 )
 
 [node name="KugiCanyon3" parent="." instance=ExtResource( 1 )]
 position = Vector2( -363, -29 )

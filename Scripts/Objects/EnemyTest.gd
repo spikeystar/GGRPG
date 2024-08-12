@@ -20,6 +20,8 @@ export var target_scene : PackedScene
 export var alt_scene : PackedScene
 export var alt_chance : int
 export var alternate : bool
+var alt_chosen = false
+var alt_not_chosen = false
 
 var freeze = PlayerManager.freeze
 onready var battle_arena = target_scene.instance()
@@ -75,11 +77,14 @@ func _physics_process(delta):
 	
 	
 	if Global.battle_ended:
+		#after_battle()
 		Music.unpause()
 		SceneManager.SceneEnemies = []
-		if alternate:
+		if alt_chosen:
 			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(alt_arena)
 		if not alternate:
+			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(battle_arena)
+		if alt_not_chosen:
 			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(battle_arena)
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)
@@ -92,6 +97,7 @@ func _physics_process(delta):
 			self.queue_free()
 		else:
 			SceneManager.SceneEnemies.append(self)
+			
 	
 	#if motion_root.velocity.x > 0:
 		#sprite.flip_h = true
@@ -109,6 +115,14 @@ func _physics_process(delta):
 	anim_player.playback_speed = lerp(min_speed, max_speed, clamp(abs(motion_root.velocity.length() / VEL_ANIM_MAX), 0, 1));
 	#if motion_root.velocity.y == 0:
 		#anim_player.play("walk_front")
+		
+func after_battle():
+	self.hide()
+	$MotionRoot/CollisionShape2D.disabled = true
+	$MotionRoot/PlayerDetection/CollisionShape2D.disabled = true
+	$MotionRoot/BattleTrigger/CollisionShape2D2.disabled = true
+	$BodyYSort/BodyVisualRoot/Enemy.hide()
+	$ShadowYSort/ShadowVisualRoot/ShadowCircle.hide()
 	
 func _on_BattleTrigger_triggered():
 	Music.pause()
@@ -119,6 +133,8 @@ func _on_BattleTrigger_triggered():
 		rng.randomize()
 		var chance = rng.randi_range(1, 100)
 		if chance <= alt_chance:
+			print("alternate")
+			alt_chosen = true
 			var transition = TransitionPlayer.instance()
 			get_tree().get_root().add_child(transition)
 			transition.transition()
@@ -126,6 +142,7 @@ func _on_BattleTrigger_triggered():
 			transition.queue_free()
 			get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(alt_arena)
 		else:
+			alt_not_chosen = true
 			var transition = TransitionPlayer.instance()
 			get_tree().get_root().add_child(transition)
 			transition.transition()

@@ -492,6 +492,8 @@ func _on_Enemies_victory():
 	BattleMusic.music()
 	yield(get_tree().create_timer(0.2), "timeout")
 	ongoing = true
+	$Enemies.BB_active = false
+	$Enemies.enemy_selecting = false
 	$Fighters.ongoing = true
 	$Fighters.halt = true
 	$Fighters/HUDS.hide()

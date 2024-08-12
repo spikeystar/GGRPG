@@ -15,6 +15,7 @@ var jumping = false
 var ouch = false
 var drown = false
 var bouncy = false
+var jump_disabled = false
 
 func _ready():
 	spawn_player()

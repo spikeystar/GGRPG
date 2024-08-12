@@ -16,6 +16,9 @@ func music():
 	if id == "Pivot_Town":
 		active = $Pivot_Town
 		active.play(0)
+	if id == "Kugi_Canyon":
+		active = $Kugi_Canyon
+		active.play(0)
 	is_playing = true
 	
 func switch_songs():

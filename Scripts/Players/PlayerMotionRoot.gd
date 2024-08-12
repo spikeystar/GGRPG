@@ -26,6 +26,8 @@ var floor_layers : Array = []
 var is_on_ground = true
 var is_falling = true
 var is_just_teleported = false
+var jumping = false
+var jump_disabled = false
 
 func _ready():
 	floor_z = spawn_z
@@ -57,9 +59,7 @@ func _physics_process(delta):
 	var freeze = PlayerManager.freeze
 	var sleep = PlayerManager.sleep
 	var ongoing = PlayerManager.ongoing
-	var jumping = PlayerManager.jumping
 	var bouncy = PlayerManager.bouncy
-	jumping = false
 	# Floor height could change at any time with movable platforms
 	update_floor()
 	
@@ -73,7 +73,7 @@ func _physics_process(delta):
 		floor_z = teleport_z
 		shadow_z = teleport_z
 
-	is_on_ground = pos_z <= floor_z + 4
+	is_on_ground = pos_z <= floor_z + 2
 	
 	# Input direction
 	var input_dir = Vector2.ZERO
@@ -88,11 +88,12 @@ func _physics_process(delta):
 	if input_dir.length_squared() > 1:
 		input_dir = input_dir.normalized()
 	
-	if Input.is_action_pressed("ui_push") and is_on_ground and not freeze:
+	if Input.is_action_just_pressed("ui_push") and is_on_ground and not freeze and not jump_disabled:
 		is_on_ground = false
 		PlayerManager.sleep = false
 		jumping = true
 		vel.z = jump_velocity
+		#jump_disabled = true
 		
 		if not bouncy:
 			SE.effect("Jump")
@@ -108,7 +109,7 @@ func _physics_process(delta):
 		gravity = 940
 		jump_velocity = 300
 		
-	if Input.is_action_pressed("ui_push") and sleep and not ongoing:
+	if Input.is_action_just_pressed("ui_push") and sleep and not ongoing:
 		PlayerManager.freeze = false
 	
 	vel.x += input_dir.x * player_acceleration * delta
@@ -125,6 +126,7 @@ func _physics_process(delta):
 	else:
 		vel.z = 0
 		pos_z = floor_z
+		#jumping = false
 	
 	pos_z += vel.z * delta
 	
@@ -137,3 +139,7 @@ func _physics_process(delta):
 	
 	var delta2D = Vector2(vel.x, -vel.y * 0.5)
 	move_and_slide(delta2D)
+		
+	#if is_on_ground:
+		#yield(get_tree().create_timer(0.3), "timeout")
+		#jumping = false

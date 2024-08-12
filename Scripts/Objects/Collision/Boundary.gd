@@ -8,6 +8,5 @@ func _process(delta):
 	if int(PlayerManager.player_instance.body_sprite.height) == height:
 		$Boundary.disabled = false
 		
-	print(int(PlayerManager.player_instance.body_sprite.height))
 
 	#print(int(PlayerManager.player_instance.body_sprite.height))

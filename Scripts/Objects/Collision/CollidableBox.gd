@@ -231,6 +231,7 @@ func _ready():
 	set_always_update(always_update)
 	
 	_initialize_nodes()
+	
 
 func _enter_tree():
 	if is_ready:
@@ -241,6 +242,7 @@ func _exit_tree():
 		_clear_depth_test_meshes()
 
 func _physics_process(delta):
+	
 	for mesh in meshes:
 		if mesh != null:
 			mesh.position = Vector2(

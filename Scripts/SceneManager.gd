@@ -16,3 +16,4 @@ var victory = false
 var game_over = false
 var targeted_applied = false
 var flee = false
+var counter : int = 0

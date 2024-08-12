@@ -131,28 +131,31 @@ func select_next_enemy(index_offset):
 	enemy_index = new_enemy_index
 	
 func enemy_info_update():
-	$EnemyInfo/EnemyStatus.type = enemies[enemy_index].get_type()
-	$EnemyInfo/EnemyName.enemy_name = get_name()
-	$EnemyInfo/EnemyStatus.stun = get_status("stun")
-	$EnemyInfo/EnemyStatus.poison = get_status("poison")
-	$EnemyInfo/EnemyStatus.a_buff = enemies[enemy_index].get_status("a_buff")
-	$EnemyInfo/EnemyStatus.a_debuff = enemies[enemy_index].get_status("a_debuff")
-	$EnemyInfo/EnemyStatus.m_buff = enemies[enemy_index].get_status("m_buff")
-	$EnemyInfo/EnemyStatus.m_debuff = enemies[enemy_index].get_status("m_debuff")
-	$EnemyInfo/EnemyStatus.d_buff = enemies[enemy_index].get_status("d_buff")
-	$EnemyInfo/EnemyStatus.d_debuff = enemies[enemy_index].get_status("d_debuff")
-	if not boss_battle:
-		Party.add_enemy_name = get_name()
-		Party.add_enemy()
+	if not SceneManager.victory:
+		$EnemyInfo/EnemyStatus.type = enemies[enemy_index].get_type()
+		$EnemyInfo/EnemyName.enemy_name = get_name()
+		$EnemyInfo/EnemyStatus.stun = get_status("stun")
+		$EnemyInfo/EnemyStatus.poison = get_status("poison")
+		$EnemyInfo/EnemyStatus.a_buff = enemies[enemy_index].get_status("a_buff")
+		$EnemyInfo/EnemyStatus.a_debuff = enemies[enemy_index].get_status("a_debuff")
+		$EnemyInfo/EnemyStatus.m_buff = enemies[enemy_index].get_status("m_buff")
+		$EnemyInfo/EnemyStatus.m_debuff = enemies[enemy_index].get_status("m_debuff")
+		$EnemyInfo/EnemyStatus.d_buff = enemies[enemy_index].get_status("d_buff")
+		$EnemyInfo/EnemyStatus.d_debuff = enemies[enemy_index].get_status("d_debuff")
+		if not boss_battle:
+			Party.add_enemy_name = get_name()
+			Party.add_enemy()
 
 	
 func _process(delta):
-	if Input.is_action_just_pressed("ui_right") and enemy_selecting and BB_active:
+	var victory = SceneManager.victory
+	
+	if Input.is_action_just_pressed("ui_right") and enemy_selecting and BB_active and not victory:
 		SE.effect("Move Between")
 		select_next_enemy(+1)
 		enemy_info_update()
 	
-	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active:
+	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active and not victory:
 		#SE.effect("Move Between")
 		enemy_selecting = false
 		enemy_info_update()

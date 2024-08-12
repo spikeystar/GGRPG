@@ -3,17 +3,19 @@ extends Node
 var ready = false
 
 func _ready():
+	if EventManager.kugi_canyon_extra:
+		$YSort/MiddleGround/ExtraBlock.queue_free()
+	
 	SceneManager.SceneEnemies = []
 	pass
-	if Music.id != "Pivot_Town" or not Music.is_playing:
+	if Music.id != "Kugi_Canyon" or not Music.is_playing:
 		Music.switch_songs()
-		Music.id = "Pivot_Town"
+		Music.id = "Kugi_Canyon"
 		Music.music()
 	yield(get_tree().create_timer(0.3), "timeout")
 	ready = true
 	
-	if EventManager.kugi_canyon_extra:
-		$YSort/MiddleGround/ExtraBlock.queue_free()
+
 		
 func _physics_process(delta):
 	

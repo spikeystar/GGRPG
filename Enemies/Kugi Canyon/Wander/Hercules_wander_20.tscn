@@ -66,12 +66,24 @@ tracks/3/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=176]
@@ -112,7 +124,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 5, 3 ), Vector2( 6, 3 ), Vector2( 5, 3 ), Vector2( 6, 4 ) ]
+"values": [ Vector2( 4, 3 ), Vector2( 4, 3 ), Vector2( 4, 3 ), Vector2( 4, 4 ) ]
 }
 
 [sub_resource type="Animation" id=177]
@@ -138,10 +150,22 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 8, 2 ), Vector2( 9, 2 ), Vector2( 8, 2 ), Vector2( 7, 2 ) ]
+"values": [ Vector2( 3, 3 ), Vector2( 4, 3 ), Vector2( 4, 3 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [node name="Hercules" type="YSort"]
@@ -169,7 +193,8 @@ MIN_IDLE_TIME = 3
 MAX_IDLE_TIME = 6
 MIN_WANDER_TIME = 3
 MAX_WANDER_TIME = 6
-MAX_CHASE_DISTANCE = 100
+WANDER_RADIUS = 15
+MAX_CHASE_DISTANCE = 150
 MAX_Z_DIFF = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
@@ -185,7 +210,7 @@ shape = SubResource( 172 )
 
 [node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 9 )]
 position = Vector2( 6, 11 )
-scale = Vector2( 1.10149, 1.08409 )
+scale = Vector2( 1.06216, 1.04191 )
 collision_layer = 0
 collision_mask = 7
 

@@ -47,7 +47,7 @@ func _physics_process(delta):
 		anim_tree.get("parameters/playback").travel("Fall")
 		anim_tree.set("parameters/Fall/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
 	
-	if Input.is_action_pressed("ui_push") and not freeze:
+	if Input.is_action_just_pressed("ui_push") and not freeze:
 		shadow_sprite.show()
 		$BodyYSort/BodyVisualRoot/Gary.z_index = 0
 		anim_player.stop()

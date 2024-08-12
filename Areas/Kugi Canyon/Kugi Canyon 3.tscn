@@ -883,6 +883,13 @@ rotation = -0.00780264
 scale = Vector2( 2.11, 2.225 )
 texture = ExtResource( 38 )
 
+[node name="Canyon7" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 1, 0.996078, 0.94902, 1 )
+position = Vector2( -688, -113 )
+rotation = -0.00780264
+scale = Vector2( 2.11, 2.225 )
+texture = ExtResource( 38 )
+
 [node name="Canyon3" type="Sprite" parent="YSort/Floor"]
 modulate = Color( 0.988235, 1, 0.964706, 1 )
 position = Vector2( -334, -353 )
@@ -919,14 +926,14 @@ texture = ExtResource( 36 )
 
 [node name="Aloe6" type="Sprite" parent="YSort/Floor"]
 modulate = Color( 1, 0.984314, 0.792157, 1 )
-position = Vector2( -341, -389 )
+position = Vector2( -341, -390 )
 rotation = 3.13379
 scale = Vector2( 2.276, -2.62597 )
 texture = ExtResource( 37 )
 
 [node name="Canyon6" type="Sprite" parent="YSort/Floor"]
 modulate = Color( 0.988235, 1, 0.964706, 1 )
-position = Vector2( -549, -246 )
+position = Vector2( -530, -243 )
 rotation = -0.00780526
 scale = Vector2( 1.88445, 2.17891 )
 texture = ExtResource( 15 )
@@ -1297,7 +1304,6 @@ texture_offset = Vector2( 6, 110 )
 height = 40.0
 depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
-detect_touches = true
 always_update = true
 
 [node name="Big Ledge" parent="YSort/MiddleGround" instance=ExtResource( 40 )]
@@ -1455,9 +1461,9 @@ script = ExtResource( 3 )
 
 [node name="Aloe3" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 1, 0.984314, 0.792157, 1 )
-position = Vector2( -543, -174 )
-rotation = 2.93258
-scale = Vector2( 1.91446, -2.04926 )
+position = Vector2( -560, -184 )
+rotation = 2.96998
+scale = Vector2( 2.36671, -2.46677 )
 texture = ExtResource( 37 )
 script = ExtResource( 3 )
 depth_test_offset = Vector2( 0, 350 )
@@ -1783,7 +1789,6 @@ preview_collision_box = false
 z_index = 20
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 7 )]
 
@@ -1801,6 +1806,11 @@ position = Vector2( 305, -227 )
 polygon = PoolVector2Array( -271, -142, -262, -186, -188, -209, -126, -214, -112, -228, -55, -260, 17, -261, 190, -206, 212, -174, 154, -128, 199, -108, 11, -41 )
 height = 40.0
 
+[node name="NavmeshLayer4" parent="CollisionRoot/Navmesh2" instance=ExtResource( 19 )]
+position = Vector2( 429, -422 )
+polygon = PoolVector2Array( -272, -144, -171, -176, -129, -193, -106, -197, -43, -172, 101, -135, 99, -125, 61, -88, 7, -59, -76, -72, -116, -79 )
+height = 170.0
+
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 16 )]
 position = Vector2( -321, -15 )
 door_name = "KugiCanyon2_KugiCanyon3"
@@ -1808,9 +1818,9 @@ direction = Vector2( 1, 1 )
 height = 40
 
 [node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 16 )]
-position = Vector2( 400, -543 )
+position = Vector2( 422, -535 )
 door_name = "KugiCanyon4_KugiCanyon3"
-direction = Vector2( -1, -1 )
+direction = Vector2( -1, 1 )
 height = 170
 
 [node name="Entrance" parent="CollisionRoot" instance=ExtResource( 16 )]

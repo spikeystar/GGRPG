@@ -1433,7 +1433,6 @@ script = ExtResource( 1 )
 depth_test_offset = Vector2( 0, 10 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 37 )]
 

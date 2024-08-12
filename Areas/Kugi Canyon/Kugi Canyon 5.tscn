@@ -395,6 +395,9 @@ tracks/3/keys = {
 
 [node name="WorldRoot" type="Node2D"]
 script = ExtResource( 20 )
+__meta__ = {
+"_edit_vertical_guides_": [ 702.0 ]
+}
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -1343,7 +1346,6 @@ depth_test_offset = Vector2( 0, 320 )
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 14 )]
-visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 15 )]
 polygon = PoolVector2Array( -435, -72, -405, -83, -436, -92, -404, -103, -437, -115, -409, -125, -436, -136, -428, -159, -98, -279, -61, -291, -28, -279, 1, -291, 33, -281, 63, -293, 338, -194, 386, -205, 447, -216, 502, -204, 492, -162, 513, -130, 508, -113, 558, -91, 708, -16, 633, 14, 627, 65, 566, 42, 489, 129, 291, 96, 201, 101, 158, 119, 123, 128 )
@@ -1366,37 +1368,57 @@ disabled = true
 height = 110.0
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 17 )]
-position = Vector2( -259, 50 )
-door_name = "KugiCanyon1_KugiCanyon2"
-direction = Vector2( 1, 1 )
+position = Vector2( 594, 18 )
+door_name = "KugiCanyon6_KugiCanyon5"
+direction = Vector2( -1, 1 )
+height = 125
+
+[node name="PlayerSpawnFromCherryTrail3" parent="CollisionRoot" instance=ExtResource( 17 )]
+position = Vector2( -440, -390 )
+door_name = "KugiCanyon4_KugiCanyon5"
+direction = Vector2( 1, -1 )
+height = 110
 
 [node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 17 )]
-position = Vector2( 275, -284 )
-door_name = "KugiCanyon3_KugiCanyon2"
+position = Vector2( 322, -271 )
+door_name = "KugiCanyonExtra_KugiCanyon5"
 direction = Vector2( -1, -1 )
 height = 40
 
-[node name="KugiCanyon3" parent="." instance=ExtResource( 18 )]
+[node name="KugiCanyonExtra" parent="." instance=ExtResource( 18 )]
 position = Vector2( 142, -253 )
 script = ExtResource( 21 )
-target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 3.tscn"
-exit_name = "KugiCanyon2_KugiCanyon3"
+target_scene = "res://Areas/Kugi Canyon/Kugi Canyon Extra.tscn"
+exit_name = "KugiCanyon5_KugiCanyonExtra"
 height = 40.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon3"]
-position = Vector2( 173, -36 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyonExtra"]
+position = Vector2( 171, -12 )
 polygon = PoolVector2Array( 27, -45, 103, -19, 77, -10, 2, -37 )
 
-[node name="KugiCanyon1" parent="." instance=ExtResource( 18 )]
-position = Vector2( -363, -29 )
+[node name="KugiCanyon4" parent="." instance=ExtResource( 18 )]
+position = Vector2( -533, -494 )
 rotation = 0.0231584
 script = ExtResource( 21 )
-target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 1.tscn"
-exit_name = "KugiCanyon2_KugiCanyon1"
+target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 4.tscn"
+exit_name = "KugiCanyon5_KugiCanyon4"
+height = 110.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon1"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon4"]
 position = Vector2( 66.4143, 103.49 )
-polygon = PoolVector2Array( -51.5421, -22.8126, 47.1958, 7.90923, 20.4346, 18.5318, -71.3052, -12.3522 )
+polygon = PoolVector2Array( 1.07303, -40.0358, 21.2761, -31.5013, -50.1257, -4.84076, -71.3052, -12.3522 )
+
+[node name="KugiCanyon6" parent="." instance=ExtResource( 18 )]
+position = Vector2( 614, -33 )
+rotation = 0.0231584
+script = ExtResource( 21 )
+target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 6.tscn"
+exit_name = "KugiCanyon5_KugiCanyon6"
+height = 125.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon6"]
+position = Vector2( 66.4143, 103.49 )
+polygon = PoolVector2Array( -1.97229, -41.9657, 22.2528, -32.5242, -50.1257, -4.84076, -75.3273, -13.2594 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
