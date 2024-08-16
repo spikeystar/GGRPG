@@ -157,7 +157,8 @@ MIN_IDLE_TIME = 3
 MAX_IDLE_TIME = 5
 MIN_WANDER_TIME = 2
 WANDER_RADIUS = 15
-MAX_CHASE_DISTANCE = 160
+MAX_CHASE_DISTANCE = 125
+MAX_Z_DIFF = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
 position = Vector2( 2, 0.0728853 )

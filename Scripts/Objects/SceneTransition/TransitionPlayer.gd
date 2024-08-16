@@ -16,6 +16,9 @@ func _ready():
 func fade_speed():
 	animation_player.playback_speed = 0.9
 	
+func spike_speed():
+	animation_player.playback_speed = 1
+	
 func kill():
 	queue_free()
 	

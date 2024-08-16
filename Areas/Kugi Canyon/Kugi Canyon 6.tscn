@@ -581,7 +581,6 @@ position = Vector2( -129, -411 )
 rotation = 0.0885145
 scale = Vector2( 2.17749, 2.17805 )
 frames = SubResource( 9 )
-frame = 2
 speed_scale = 0.6
 playing = true
 
@@ -1813,7 +1812,7 @@ height = 140.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon7"]
 position = Vector2( -158, 26 )
-polygon = PoolVector2Array( 141, -51, 170, -41, 197, -24, 250, -12, 267, -4, 248, 4, 230, 9, 183, -15, 140, -32, 96, -44, 109, -49 )
+polygon = PoolVector2Array( 141, -51, 170, -41, 197, -24, 250, -12, 267, -4, 254, 2, 239, -6, 191, -18, 151, -40, 108, -46, 109, -49 )
 
 [node name="KugiCanyon5" parent="." instance=ExtResource( 45 )]
 position = Vector2( -363, -29 )
@@ -1864,7 +1863,6 @@ text = "You got a Flummery Flambe!"
 align = 1
 
 [node name="Water" type="Area2D" parent="."]
-visible = false
 position = Vector2( -90, -176 )
 script = ExtResource( 12 )
 target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 6.tscn"
@@ -1875,7 +1873,6 @@ position = Vector2( 1, 1 )
 polygon = PoolVector2Array( -174, -44, -4, 49, 401, 191, 400, 217, 466, 256, 607, 209, 89, 4, 48, -17, -96, -125, -162, -112 )
 
 [node name="Water2" type="Area2D" parent="."]
-visible = false
 position = Vector2( -90, -176 )
 priority = 1.0
 script = ExtResource( 12 )

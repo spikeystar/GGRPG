@@ -911,7 +911,7 @@ position = Vector2( 84, 27 )
 position = Vector2( -248, -35 )
 
 [node name="Scorpus3" parent="YSort" instance=ExtResource( 33 )]
-position = Vector2( -157, -140 )
+position = Vector2( -138, -117 )
 
 [node name="Scorpus4" parent="YSort" instance=ExtResource( 33 )]
 position = Vector2( 44, -202 )

@@ -7,6 +7,7 @@ var current_camera : Camera2D setget _set_current_camera
 var depth_buffer : Node2D
 var door_name : String
 var battle_ended = false
+var battling = false
 var Collected : Array = []
 
 func _init():

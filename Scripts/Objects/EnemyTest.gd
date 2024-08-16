@@ -92,6 +92,7 @@ func _physics_process(delta):
 		yield(get_tree().create_timer(0.01), "timeout")
 		dead = true
 		Global.battle_ended = false
+		Global.battling = false
 		
 		if $MotionRoot/BattleTrigger.detected:
 			self.queue_free()
@@ -126,6 +127,7 @@ func after_battle():
 	
 func _on_BattleTrigger_triggered():
 	Music.pause()
+	Global.battling = true
 	get_tree().paused = true
 	if alternate:
 		randomize()

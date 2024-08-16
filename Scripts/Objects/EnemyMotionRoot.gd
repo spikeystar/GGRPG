@@ -58,13 +58,14 @@ CHASE
 func _ready():
 	origin = self.global_position
 	rng = RandomNumberGenerator.new()
+	rng.randomize()
 	#print(origin)
 	floor_z = spawn_z
 	pos_z = spawn_z
 	initial_z = pos_z
 	state = ENEMY_STATE.IDLE
 	
-	WANDER_RADIUS += rng.randi_range(-5,5)
+	WANDER_RADIUS += rng.randi_range(-3,4)
 	MIN_WANDER_TIME += rng.randi_range(0,3)
 	MAX_WANDER_TIME += rng.randi_range(0,3)
 	

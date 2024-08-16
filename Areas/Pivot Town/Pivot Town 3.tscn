@@ -881,7 +881,6 @@ scale = Vector2( 1.85577, 1.67568 )
 texture = ExtResource( 14 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 28 )]
 
@@ -900,7 +899,7 @@ door_name = "PivotTown1_PivotTown2"
 direction = Vector2( -1, 1 )
 
 [node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 30 )]
-position = Vector2( 139, -242 )
+position = Vector2( 140, -242 )
 door_name = "KugiCanyon1_PivotTown3"
 direction = Vector2( -1, -1 )
 height = 75

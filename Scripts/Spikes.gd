@@ -63,10 +63,12 @@ func _on_touch_area():
 	Global.door_name = exit_name
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
+	transition.spike_speed()
 	transition.transition_in(target_scene, _get_animation_name())
 	yield(get_tree().create_timer(0.6), "timeout")
 	PlayerManager.ouch = false
 	yield(get_tree().create_timer(2), "timeout")
+	transition.fade_speed()
 	transition.queue_free()
 	transitioning = false
 	

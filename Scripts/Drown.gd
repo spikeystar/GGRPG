@@ -34,7 +34,7 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root and not transitioning and not body_check and not PlayerManager.drown:
-		Global.door_name = "Entrance"
+		#Global.door_name = "Entrance"
 		SceneManager.counter += 1
 		body_check = true
 		
@@ -65,7 +65,7 @@ func _on_touch_area():
 		if priority == 1:
 			Global.door_name = exit_name
 		else:
-			pass
+			return
 	else:
 		Global.door_name = exit_name
 	var transition = TransitionPlayer.instance()
