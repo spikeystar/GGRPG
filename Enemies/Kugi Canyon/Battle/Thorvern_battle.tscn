@@ -1,16 +1,16 @@
 [gd_scene load_steps=38 format=2]
 
-[ext_resource path="res://Scripts/Battle/BaseEnemy.gd" type="Script" id=1]
-[ext_resource path="res://UI/Cursor.png" type="Texture" id=2]
-[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=3]
-[ext_resource path="res://UI/HealText.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Misc/Shader/Debuff_Material.tres" type="Material" id=5]
-[ext_resource path="res://Enemies/Battle Animations/Damage Star SS.png" type="Texture" id=6]
+[ext_resource path="res://Enemies/Battle Animations/Damage Star SS.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Battle/BaseEnemy.gd" type="Script" id=2]
+[ext_resource path="res://UI/HealText.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Misc/Shader/Debuff_Material.tres" type="Material" id=4]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=5]
+[ext_resource path="res://UI/Cursor.png" type="Texture" id=6]
 [ext_resource path="res://Enemies/Battle Animations/Battle Animations SS.png" type="Texture" id=7]
-[ext_resource path="res://UI/DamageText.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Assets/General/Item Usage Animations SS.png" type="Texture" id=9]
-[ext_resource path="res://Misc/Shader/Buff Material.tres" type="Material" id=10]
-[ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie.png" type="Texture" id=11]
+[ext_resource path="res://Assets/General/Item Usage Animations SS.png" type="Texture" id=8]
+[ext_resource path="res://UI/DamageText.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/Kugi Canyon/Thorvern SS.png" type="Texture" id=10]
+[ext_resource path="res://Misc/Shader/Buff Material.tres" type="Material" id=11]
 [ext_resource path="res://UI/PoisonText.tscn" type="PackedScene" id=12]
 [ext_resource path="res://UI/StoredText.tscn" type="PackedScene" id=13]
 
@@ -38,7 +38,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 1 ]
+"values": [ 0 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CircleShadowSmall:position")
@@ -198,7 +198,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ null, ExtResource( 10 ), null ]
+"values": [ null, ExtResource( 11 ), null ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:material:shader_param/flash_modifier")
@@ -222,7 +222,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 2, 0, 2, 1, 2, 0, 2 ]
+"values": [ 0, 1, 2, 1, 0, 1, 2, 1 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CircleShadowSmall:position")
@@ -250,7 +250,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ null, ExtResource( 5 ), null ]
+"values": [ null, ExtResource( 4 ), null ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:material:shader_param/flash_modifier")
@@ -271,10 +271,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 2, 0, 2, 1, 2, 0, 2 ]
+"values": [ 0, 1, 2, 1, 0, 1, 2, 1, 0 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("AnimationPlayer:playback_speed")
@@ -311,10 +311,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 2, 0 ]
+"values": [ 1, 2, 1, 7 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:offset")
@@ -366,7 +366,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 6 ]
+"values": [ 8 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -430,7 +430,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 6 ]
+"values": [ 8 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:position")
@@ -519,7 +519,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 1, 2, 0, 2 ]
+"values": [ 0, 1, 2, 1 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CircleShadowSmall:position")
@@ -901,7 +901,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 9 ), null ]
+"values": [ ExtResource( 8 ), null ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -929,7 +929,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 9 ), null ]
+"values": [ ExtResource( 8 ), null ]
 }
 
 [sub_resource type="Animation" id=22]
@@ -956,7 +956,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ ExtResource( 9 ) ]
+"values": [ ExtResource( 8 ) ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -984,7 +984,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 9 ), null ]
+"values": [ ExtResource( 8 ), null ]
 }
 
 [sub_resource type="Animation" id=24]
@@ -1012,7 +1012,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 9 ), null ]
+"values": [ ExtResource( 8 ), null ]
 }
 
 [sub_resource type="Animation" id=25]
@@ -1040,44 +1040,46 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 9 ), null ]
+"values": [ ExtResource( 8 ), null ]
 }
 
-[node name="Flutterbie_battle" type="Node2D"]
-script = ExtResource( 1 )
-ID = "Flutterbie"
-e_health = 50
-e_attack = 7
-e_magic = 10
-e_defense = 2
-initial_type = "neutral"
-TEXT_DAMAGE = ExtResource( 8 )
-TEXT_HEAL = ExtResource( 4 )
+[node name="Thorvern_battle" type="Node2D"]
+script = ExtResource( 2 )
+ID = "Thorvern"
+e_health = 130
+e_attack = 11
+e_magic = 7
+e_defense = 7
+initial_type = "air"
+TEXT_DAMAGE = ExtResource( 9 )
+TEXT_HEAL = ExtResource( 3 )
 TEXT_STORED = ExtResource( 13 )
 TEXT_POISON = ExtResource( 12 )
-move1 = "Basic"
-move2 = "Asphyxiate"
+move1 = "Slash"
+move2 = "Terra Arrow"
 move3 = "Aero Bullet"
+move4 = "Asphyxiate"
+move5 = "Gravel Spat"
+move6 = "Basic"
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )
 position = Vector2( -1, 74 )
-scale = Vector2( 1.09549, 0.706501 )
-texture = ExtResource( 3 )
+scale = Vector2( 2.07061, 0.979566 )
+texture = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 2, -25 )
-scale = Vector2( 1.2, 1.2 )
-texture = ExtResource( 11 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 10 )
 offset = Vector2( 0, -20 )
-hframes = 9
-vframes = 3
-frame = 1
+hframes = 5
+vframes = 2
 
 [node name="DamageStar" type="Sprite" parent="."]
 visible = false
 position = Vector2( 1, -42 )
-texture = ExtResource( 6 )
+texture = ExtResource( 1 )
 hframes = 6
 vframes = 6
 frame = 24
@@ -1085,7 +1087,7 @@ frame = 24
 [node name="Effect" type="Sprite" parent="."]
 visible = false
 position = Vector2( 1, -43 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 hframes = 5
 vframes = 5
 
@@ -1100,12 +1102,12 @@ vframes = 3
 [node name="Cursor" type="Sprite" parent="."]
 visible = false
 position = Vector2( -60, -86 )
-texture = ExtResource( 2 )
+texture = ExtResource( 6 )
 
 [node name="TextOffset" type="Position2D" parent="."]
 position = Vector2( -1, -34 )
 
-[node name="DamageText" parent="." instance=ExtResource( 8 )]
+[node name="DamageText" parent="." instance=ExtResource( 9 )]
 visible = false
 position = Vector2( -1, -57 )
 
