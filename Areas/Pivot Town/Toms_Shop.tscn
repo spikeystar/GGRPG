@@ -984,6 +984,17 @@ theme = SubResource( 2 )
 text = "100 Mb"
 align = 1
 
+[node name="Carrying" type="Label" parent="Camera2D/Shop/Buy"]
+margin_left = 48.3326
+margin_top = 103.333
+margin_right = 125.333
+margin_bottom = 117.333
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "Bag: 5"
+align = 1
+
 [node name="Info" type="Label" parent="Camera2D/Shop/Buy"]
 margin_left = 34.9992
 margin_top = 26.6667
