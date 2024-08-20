@@ -22,6 +22,7 @@ var is_in_editor = Engine.is_editor_hint()
 var tween
 
 func _ready():
+	current = true
 	Global.current_camera = self
 	z_index = 4096
 	pause_mode = Node.PAUSE_MODE_PROCESS

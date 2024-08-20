@@ -768,24 +768,12 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Poof:position")
+tracks/2/path = NodePath("Poof:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 3, -30 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Poof:self_modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -1043,7 +1031,7 @@ texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 3, -19 )
-scale = Vector2( 1.15, 1.155 )
+scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 13 )
 offset = Vector2( 0, -5 )
 hframes = 9
@@ -1065,7 +1053,7 @@ vframes = 5
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false
-position = Vector2( 3, -30 )
+position = Vector2( 2, -31 )
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 10 )
 hframes = 9

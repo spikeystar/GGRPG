@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=2]
@@ -58,6 +58,10 @@
 [ext_resource path="res://Assets/Kugi Canyon/waterfall 3.png" type="Texture" id=56]
 [ext_resource path="res://Enemies/Kugi Canyon/Wander/Hercules_wander_20.tscn" type="PackedScene" id=57]
 [ext_resource path="res://Enemies/Kugi Canyon/Wander/Scorpus_wander_20.tscn" type="PackedScene" id=58]
+[ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 3.tscn" type="PackedScene" id=59]
+[ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 1.tscn" type="PackedScene" id=60]
+[ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 7.tscn" type="PackedScene" id=61]
+[ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 8.tscn" type="PackedScene" id=62]
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
@@ -1685,12 +1689,20 @@ z_index = 20
 
 [node name="Hercules" parent="." instance=ExtResource( 57 )]
 position = Vector2( 445, -187 )
+target_scene = ExtResource( 61 )
+alt_chance = 30
+alternate = false
 
 [node name="Scorpus" parent="." instance=ExtResource( 58 )]
 position = Vector2( 22, -11 )
+target_scene = ExtResource( 62 )
+alt_scene = ExtResource( 59 )
+alt_chance = 20
 
 [node name="Bramby" parent="." instance=ExtResource( 53 )]
 position = Vector2( 217, -277 )
+target_scene = ExtResource( 60 )
+alternate = false
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 visible = false
@@ -1836,7 +1848,6 @@ shadow_color = Color( 0.54, 0.3078, 0.3078, 1 )
 pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
-current = true
 script = ExtResource( 27 )
 minPos = Vector2( -95, -470 )
 maxPos = Vector2( 380, -90 )

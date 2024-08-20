@@ -1098,7 +1098,6 @@ hframes = 9
 vframes = 3
 
 [node name="Cursor" type="Sprite" parent="."]
-visible = false
 position = Vector2( -60, -86 )
 texture = ExtResource( 2 )
 

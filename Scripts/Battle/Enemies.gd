@@ -66,6 +66,7 @@ var multi_debuff
 var a_debuff
 var m_debuff
 var d_debuff
+var debuffing = false
 
 signal Basic
 signal Barrage
@@ -347,12 +348,15 @@ func magic_damage():
 		target_enemy.poison()
 	if a_debuff and not immune and not dead:
 		target_enemy.apply_debuff("attack")
+		debuffing = true
 		yield(get_tree().create_timer(0.7), "timeout")
 	if m_debuff and not immune and not dead:
 		target_enemy.apply_debuff("magic")
+		debuffing = true
 		yield(get_tree().create_timer(0.7), "timeout")
 	if d_debuff and not immune and not dead:
 		target_enemy.apply_debuff("defense")
+		debuffing = true
 		yield(get_tree().create_timer(0.7), "timeout")
 		
 	if random_debuff:
@@ -365,6 +369,7 @@ func magic_damage():
 				target_immune = true
 			if random_debuff and not target_immune and not target_dead:
 				target_enemy.random_debuff()
+				debuffing = true
 		
 		
 	emit_signal("e_magic_damage_finish")
@@ -432,12 +437,15 @@ func all_magic_damage():
 				enemies[x].poison()
 		if a_debuff and not immune and not dead:
 			enemies[x].apply_debuff("attack")
+			debuffing = true
 			yield(get_tree().create_timer(0.7), "timeout")
 		if m_debuff and not immune and not dead:
 			enemies[x].apply_debuff("magic")
+			debuffing = true
 			yield(get_tree().create_timer(0.7), "timeout")
 		if d_debuff and not immune and not dead:
 			enemies[x].apply_debuff("defense")
+			debuffing = true
 			yield(get_tree().create_timer(0.7), "timeout")
 			
 	yield(get_tree().create_timer(1.7), "timeout")
@@ -466,6 +474,7 @@ func all_magic_damage():
 				immune = true
 			if random_debuff and not immune and not dead:
 				enemies[x].random_debuff()
+		debuffing = true
 				
 	if multi_debuff:
 		for x in range(enemies.size()):
@@ -479,9 +488,8 @@ func all_magic_damage():
 				immune = true
 			if multi_debuff and not immune and not dead:
 				enemies[x].multi_random_debuff()
+		debuffing = true
 		
-		
-	#yield(get_tree().create_timer(0.4), "timeout")
 	emit_signal("e_magic_damage_finish")
 	stun = false
 	poison = false
@@ -597,6 +605,10 @@ func _on_Fighters_enemies_enabled():
 	var poison_wait = false
 	var sd_wait = false
 	enemies_active = true
+	
+	if debuffing:
+		yield(get_tree().create_timer(1), "timeout")
+		debuffing = false
 
 	for x in range (enemies.size()):
 		var poisoned = enemies[x].get_status("poison")

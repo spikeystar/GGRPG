@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=2]
@@ -42,6 +42,8 @@
 [ext_resource path="res://Assets/Kugi Canyon/Aloe Large B.png" type="Texture" id=40]
 [ext_resource path="res://Assets/Kugi Canyon/Aloe Large A.png" type="Texture" id=41]
 [ext_resource path="res://Assets/Kugi Canyon/Canyon G.png" type="Texture" id=42]
+[ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 3.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 4.tscn" type="PackedScene" id=44]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -906,18 +908,28 @@ depth_test_offset = Vector2( 0, 320 )
 
 [node name="Scorpus" parent="YSort" instance=ExtResource( 33 )]
 position = Vector2( 84, 27 )
+target_scene = ExtResource( 44 )
+alternate = false
 
 [node name="Scorpus2" parent="YSort" instance=ExtResource( 33 )]
 position = Vector2( -248, -35 )
+target_scene = ExtResource( 43 )
+alternate = false
 
 [node name="Scorpus3" parent="YSort" instance=ExtResource( 33 )]
 position = Vector2( -138, -117 )
+target_scene = ExtResource( 44 )
+alternate = false
 
 [node name="Scorpus4" parent="YSort" instance=ExtResource( 33 )]
 position = Vector2( 44, -202 )
+target_scene = ExtResource( 43 )
+alternate = false
 
 [node name="Scorpus5" parent="YSort" instance=ExtResource( 33 )]
 position = Vector2( 224, -80 )
+target_scene = ExtResource( 43 )
+alternate = false
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 visible = false
