@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=2]
@@ -45,6 +45,8 @@
 [ext_resource path="res://Scripts/Spikes.gd" type="Script" id=43]
 [ext_resource path="res://Scripts/Rendering/DepthTestTileMap.gd" type="Script" id=44]
 [ext_resource path="res://Assets/Kugi Canyon/Saguarotel OW.png" type="Texture" id=45]
+[ext_resource path="res://Enemies/Kugi Canyon/Wander/Bramby_wander.tscn" type="PackedScene" id=46]
+[ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 11.tscn" type="PackedScene" id=47]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -1448,6 +1450,11 @@ flip_h = true
 script = ExtResource( 1 )
 depth_test_offset = Vector2( 0, 10 )
 
+[node name="Bramby" parent="YSort" instance=ExtResource( 46 )]
+position = Vector2( -211, -14 )
+target_scene = ExtResource( 47 )
+alternate = false
+
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 37 )]
@@ -1514,7 +1521,6 @@ shadow_color = Color( 0.541176, 0.317647, 0.235294, 1 )
 pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
-current = true
 script = ExtResource( 13 )
 minPos = Vector2( -220, -260 )
 maxPos = Vector2( 130, -150 )

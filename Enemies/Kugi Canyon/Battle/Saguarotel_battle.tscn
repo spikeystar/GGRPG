@@ -38,7 +38,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 4 ]
+"values": [ 2 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CircleShadowSmall:position")
@@ -349,7 +349,7 @@ tracks/1/path = NodePath("Sprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 0.5, 1, 1, 1, 1 ),
@@ -361,7 +361,7 @@ tracks/2/path = NodePath("CircleShadowSmall:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
 "transitions": PoolRealArray( 0.5, 1, 0.5, 1, 0.5 ),
@@ -447,7 +447,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "enemy_idle"
-length = 0.4
+length = 0.2
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
@@ -468,10 +468,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 2 ]
+"values": [ 2, 3 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CircleShadowSmall:position")
@@ -1031,12 +1031,12 @@ texture = ExtResource( 7 )
 offset = Vector2( 0, -5 )
 hframes = 5
 vframes = 2
-frame = 4
+frame = 2
 
 [node name="DamageStar" type="Sprite" parent="."]
 visible = false
-position = Vector2( -3, -75 )
-scale = Vector2( 1.2, 1.2 )
+position = Vector2( -4.76191, -76.1905 )
+scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 2 )
 hframes = 6
 vframes = 6
@@ -1044,8 +1044,8 @@ frame = 24
 
 [node name="Effect" type="Sprite" parent="."]
 visible = false
-position = Vector2( -1, -72 )
-scale = Vector2( 1.2, 1.2 )
+position = Vector2( -3.80952, -74.2857 )
+scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 10 )
 hframes = 5
 vframes = 5
@@ -1058,11 +1058,12 @@ hframes = 4
 vframes = 2
 
 [node name="Cursor" type="Sprite" parent="."]
-position = Vector2( -62, -202 )
+position = Vector2( -55.2381, -196.19 )
 texture = ExtResource( 4 )
 
 [node name="TextOffset" type="Position2D" parent="."]
 visible = false
+position = Vector2( -5.71429, -141.905 )
 
 [node name="DamageText" parent="." instance=ExtResource( 9 )]
 visible = false
@@ -1091,7 +1092,7 @@ anims/water = SubResource( 15 )
 anims/whammy = SubResource( 16 )
 
 [node name="PoofPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 0.75
+playback_speed = 0.6
 anims/RESET = SubResource( 7 )
 anims/poof = SubResource( 8 )
 

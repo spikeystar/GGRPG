@@ -3912,6 +3912,7 @@ hframes = 6
 [node name="Prism_Snow" type="Node2D" parent="."]
 visible = false
 modulate = Color( 1, 1, 1, 0.4 )
+z_index = 4
 
 [node name="TextureRect" type="TextureRect" parent="Prism_Snow"]
 self_modulate = Color( 1, 1, 1, 0.9 )
