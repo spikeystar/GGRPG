@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=2]
@@ -44,6 +44,7 @@
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=42]
 [ext_resource path="res://Scripts/Spikes.gd" type="Script" id=43]
 [ext_resource path="res://Scripts/Rendering/DepthTestTileMap.gd" type="Script" id=44]
+[ext_resource path="res://Assets/Kugi Canyon/Saguarotel OW.png" type="Texture" id=45]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -1254,6 +1255,21 @@ texture = ExtResource( 24 )
 texture_scale = Vector2( -0.8, 0.8 )
 texture_offset = Vector2( 0, 3 )
 height = 30.0
+floor_height = 130.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Saguarotel" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
+modulate = Color( 1, 0.968627, 0.984314, 1 )
+position = Vector2( 294, -157 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+texture = ExtResource( 45 )
+texture_scale = Vector2( 1.2, 1.15 )
+texture_offset = Vector2( 0, 3 )
+height = 150.0
 floor_height = 130.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
