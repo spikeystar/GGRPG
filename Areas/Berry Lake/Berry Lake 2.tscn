@@ -1,56 +1,57 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
-[ext_resource path="res://Assets/General/Tiles/Berry Grass.png" type="Texture" id=1]
-[ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=3]
-[ext_resource path="res://Assets/Berry Lake/Ledge.png" type="Texture" id=4]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Berry Lake/Ledge.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Kugi Canyon/Spikes B.png" type="Texture" id=5]
-[ext_resource path="res://Assets/General/Backgrounds/SkyBlue BCKGD.png" type="Texture" id=6]
-[ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=7]
-[ext_resource path="res://Assets/General/Tiles/Water.tres" type="Texture" id=8]
-[ext_resource path="res://Assets/Kugi Canyon/Spikes A.png" type="Texture" id=9]
-[ext_resource path="res://Assets/Berry Lake/Tree A.png" type="Texture" id=10]
-[ext_resource path="res://Assets/Cherry Trail/Clover Tile B.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Pivot Town/Orange Brick A.png" type="Texture" id=12]
-[ext_resource path="res://Assets/Berry Lake/Grass A.png" type="Texture" id=13]
-[ext_resource path="res://Assets/General/Tiles/Flowers/Pink Flower A.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Kugi Canyon/Spikes C.png" type="Texture" id=15]
-[ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=16]
-[ext_resource path="res://Assets/General/Tiles/Orange Grass Tile.png" type="Texture" id=17]
-[ext_resource path="res://Assets/General/Tiles/Flowers/Pink Flower B.png" type="Texture" id=18]
-[ext_resource path="res://Assets/General/Tiles/Flowers/Blue Flower.png" type="Texture" id=19]
-[ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=20]
-[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=21]
-[ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion B.png" type="Texture" id=22]
-[ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass A.png" type="Texture" id=23]
-[ext_resource path="res://Assets/Berry Lake/Tree B.png" type="Texture" id=24]
-[ext_resource path="res://Assets/Berry Lake/Hill B.png" type="Texture" id=25]
-[ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=26]
-[ext_resource path="res://Scripts/Area_Specific/Kugi_Canyon.gd" type="Script" id=27]
-[ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=28]
-[ext_resource path="res://Assets/Berry Lake/Hill A.png" type="Texture" id=29]
-[ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=30]
-[ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=31]
-[ext_resource path="res://Assets/Berry Lake/Grass B.png" type="Texture" id=32]
-[ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=33]
-[ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=34]
-[ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=35]
-[ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=36]
-[ext_resource path="res://Assets/Berry Lake/Tree C.png" type="Texture" id=37]
-[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=38]
-[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=39]
-[ext_resource path="res://Assets/General/Tiles/Canyon Tile.png" type="Texture" id=40]
-[ext_resource path="res://Assets/Berry Lake/Flower A.png" type="Texture" id=41]
-[ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=42]
-[ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=43]
-[ext_resource path="res://Assets/General/Backgrounds/Berry Lake BCKGD.png" type="Texture" id=44]
-[ext_resource path="res://Assets/Cherry Trail/bush a.png" type="Texture" id=45]
-[ext_resource path="res://Assets/Berry Lake/berries a.png" type="Texture" id=46]
-[ext_resource path="res://Assets/Berry Lake/little stars a.png" type="Texture" id=47]
-[ext_resource path="res://Assets/Berry Lake/berries b.png" type="Texture" id=48]
-[ext_resource path="res://Assets/Berry Lake/lilypad small.png" type="Texture" id=49]
-[ext_resource path="res://Assets/Berry Lake/little stars b.png" type="Texture" id=50]
-[ext_resource path="res://Assets/Berry Lake/Tree D.png" type="Texture" id=51]
+[ext_resource path="res://Assets/General/Tiles/Berry Grass.png" type="Texture" id=6]
+[ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Area_Specific/Kugi_Canyon.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=10]
+[ext_resource path="res://Assets/General/Backgrounds/SkyBlue BCKGD.png" type="Texture" id=11]
+[ext_resource path="res://Assets/General/Tiles/Water.tres" type="Texture" id=12]
+[ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assets/Berry Lake/Tree A.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Kugi Canyon/Spikes A.png" type="Texture" id=15]
+[ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Assets/Cherry Trail/Clover Tile B.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Pivot Town/Orange Brick A.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Berry Lake/Grass A.png" type="Texture" id=22]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Pink Flower A.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Kugi Canyon/Spikes C.png" type="Texture" id=24]
+[ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=25]
+[ext_resource path="res://Assets/General/Tiles/Orange Grass Tile.png" type="Texture" id=26]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Pink Flower B.png" type="Texture" id=27]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Blue Flower.png" type="Texture" id=28]
+[ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=29]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion B.png" type="Texture" id=30]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass A.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Berry Lake/Tree B.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Berry Lake/Hill B.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Berry Lake/Hill A.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Berry Lake/Grass B.png" type="Texture" id=35]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=36]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=37]
+[ext_resource path="res://Assets/Berry Lake/Tree C.png" type="Texture" id=38]
+[ext_resource path="res://Assets/General/Tiles/Canyon Tile.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Berry Lake/Flower A.png" type="Texture" id=40]
+[ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=42]
+[ext_resource path="res://Assets/General/Backgrounds/Berry Lake BCKGD.png" type="Texture" id=43]
+[ext_resource path="res://Assets/Cherry Trail/bush a.png" type="Texture" id=44]
+[ext_resource path="res://Assets/Berry Lake/berries a.png" type="Texture" id=45]
+[ext_resource path="res://Assets/Berry Lake/little stars a.png" type="Texture" id=46]
+[ext_resource path="res://Assets/Berry Lake/berries b.png" type="Texture" id=47]
+[ext_resource path="res://Assets/Berry Lake/lilypad small.png" type="Texture" id=48]
+[ext_resource path="res://Assets/Berry Lake/little stars b.png" type="Texture" id=49]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=50]
+[ext_resource path="res://Scripts/Bouncy.gd" type="Script" id=51]
+[ext_resource path="res://Assets/Berry Lake/BouncyFlower.tscn" type="PackedScene" id=52]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -58,7 +59,7 @@
 
 [sub_resource type="TileSet" id=6]
 7/name = "Grass Tile.png 7"
-7/texture = ExtResource( 42 )
+7/texture = ExtResource( 41 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 0, 0, 64, 32 )
@@ -72,7 +73,7 @@
 7/shapes = [  ]
 7/z_index = 0
 8/name = "Clover Tile A.png 8"
-8/texture = ExtResource( 43 )
+8/texture = ExtResource( 42 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 0, 64, 32 )
@@ -86,7 +87,7 @@
 8/shapes = [  ]
 8/z_index = 0
 9/name = "Clover Tile B.png 9"
-9/texture = ExtResource( 11 )
+9/texture = ExtResource( 20 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 0, 0, 64, 32 )
@@ -128,7 +129,7 @@
 11/shapes = [  ]
 11/z_index = 0
 12/name = "Tall Grass A.png 12"
-12/texture = ExtResource( 23 )
+12/texture = ExtResource( 31 )
 12/tex_offset = Vector2( 0, 0 )
 12/modulate = Color( 1, 1, 1, 1 )
 12/region = Rect2( 0, 0, 64, 32 )
@@ -142,7 +143,7 @@
 12/shapes = [  ]
 12/z_index = 0
 13/name = "Tall Grass B.png 13"
-13/texture = ExtResource( 36 )
+13/texture = ExtResource( 37 )
 13/tex_offset = Vector2( 0, 0 )
 13/modulate = Color( 1, 1, 1, 1 )
 13/region = Rect2( 0, 0, 64, 32 )
@@ -156,7 +157,7 @@
 13/shapes = [  ]
 13/z_index = 0
 14/name = "Orange Brick B.png 14"
-14/texture = ExtResource( 3 )
+14/texture = ExtResource( 4 )
 14/tex_offset = Vector2( 0, 0 )
 14/modulate = Color( 1, 1, 1, 1 )
 14/region = Rect2( 0, 0, 64, 32 )
@@ -170,7 +171,7 @@
 14/shapes = [  ]
 14/z_index = 0
 15/name = "Orange Brick A.png 15"
-15/texture = ExtResource( 12 )
+15/texture = ExtResource( 21 )
 15/tex_offset = Vector2( 0, 0 )
 15/modulate = Color( 1, 1, 1, 1 )
 15/region = Rect2( 0, 0, 64, 32 )
@@ -184,7 +185,7 @@
 15/shapes = [  ]
 15/z_index = 0
 16/name = "Dandelion A.png 16"
-16/texture = ExtResource( 7 )
+16/texture = ExtResource( 50 )
 16/tex_offset = Vector2( 0, 0 )
 16/modulate = Color( 1, 1, 1, 1 )
 16/region = Rect2( 0, 0, 64, 32 )
@@ -198,7 +199,7 @@
 16/shapes = [  ]
 16/z_index = 0
 17/name = "Dandelion B.png 17"
-17/texture = ExtResource( 22 )
+17/texture = ExtResource( 30 )
 17/tex_offset = Vector2( 0, 0 )
 17/modulate = Color( 1, 1, 1, 1 )
 17/region = Rect2( 0, 0, 64, 32 )
@@ -212,7 +213,7 @@
 17/shapes = [  ]
 17/z_index = 0
 18/name = "Orange Grass Tile.png 18"
-18/texture = ExtResource( 17 )
+18/texture = ExtResource( 26 )
 18/tex_offset = Vector2( 0, 0 )
 18/modulate = Color( 1, 1, 1, 1 )
 18/region = Rect2( 0, 0, 64, 32 )
@@ -226,7 +227,7 @@
 18/shapes = [  ]
 18/z_index = 0
 19/name = "Canyon Tile.png 19"
-19/texture = ExtResource( 40 )
+19/texture = ExtResource( 39 )
 19/tex_offset = Vector2( 0, 0 )
 19/modulate = Color( 1, 1, 1, 1 )
 19/region = Rect2( 0, 0, 64, 32 )
@@ -240,7 +241,7 @@
 19/shapes = [  ]
 19/z_index = 0
 20/name = "Spike Tile.png 20"
-20/texture = ExtResource( 2 )
+20/texture = ExtResource( 7 )
 20/tex_offset = Vector2( 0, 0 )
 20/modulate = Color( 1, 1, 1, 1 )
 20/region = Rect2( 0, 0, 64, 64 )
@@ -254,7 +255,7 @@
 20/shapes = [  ]
 20/z_index = 0
 22/name = "Water.tres 22"
-22/texture = ExtResource( 8 )
+22/texture = ExtResource( 12 )
 22/tex_offset = Vector2( 0, 0 )
 22/modulate = Color( 1, 1, 1, 1 )
 22/region = Rect2( 0, 0, 64, 32 )
@@ -270,7 +271,7 @@
 
 [sub_resource type="TileSet" id=1]
 7/name = "Grass Tile.png 7"
-7/texture = ExtResource( 42 )
+7/texture = ExtResource( 41 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 0, 0, 64, 32 )
@@ -284,7 +285,7 @@
 7/shapes = [  ]
 7/z_index = 0
 8/name = "Clover Tile A.png 8"
-8/texture = ExtResource( 43 )
+8/texture = ExtResource( 42 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 0, 0, 64, 32 )
@@ -298,7 +299,7 @@
 8/shapes = [  ]
 8/z_index = 0
 9/name = "Clover Tile B.png 9"
-9/texture = ExtResource( 11 )
+9/texture = ExtResource( 20 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 0, 0, 64, 32 )
@@ -312,7 +313,7 @@
 9/shapes = [  ]
 9/z_index = 0
 12/name = "Tall Grass A.png 12"
-12/texture = ExtResource( 23 )
+12/texture = ExtResource( 31 )
 12/tex_offset = Vector2( 0, 0 )
 12/modulate = Color( 1, 1, 1, 1 )
 12/region = Rect2( 0, 0, 64, 32 )
@@ -326,7 +327,7 @@
 12/shapes = [  ]
 12/z_index = 0
 13/name = "Tall Grass B.png 13"
-13/texture = ExtResource( 36 )
+13/texture = ExtResource( 37 )
 13/tex_offset = Vector2( 0, 0 )
 13/modulate = Color( 1, 1, 1, 1 )
 13/region = Rect2( 0, 0, 64, 32 )
@@ -340,7 +341,7 @@
 13/shapes = [  ]
 13/z_index = 0
 14/name = "Orange Brick B.png 14"
-14/texture = ExtResource( 3 )
+14/texture = ExtResource( 4 )
 14/tex_offset = Vector2( 0, 0 )
 14/modulate = Color( 1, 1, 1, 1 )
 14/region = Rect2( 0, 0, 64, 32 )
@@ -354,7 +355,7 @@
 14/shapes = [  ]
 14/z_index = 0
 15/name = "Orange Brick A.png 15"
-15/texture = ExtResource( 12 )
+15/texture = ExtResource( 21 )
 15/tex_offset = Vector2( 0, 0 )
 15/modulate = Color( 1, 1, 1, 1 )
 15/region = Rect2( 0, 0, 64, 32 )
@@ -368,7 +369,7 @@
 15/shapes = [  ]
 15/z_index = 0
 16/name = "Dandelion A.png 16"
-16/texture = ExtResource( 7 )
+16/texture = ExtResource( 50 )
 16/tex_offset = Vector2( 0, 0 )
 16/modulate = Color( 1, 1, 1, 1 )
 16/region = Rect2( 0, 0, 64, 32 )
@@ -382,7 +383,7 @@
 16/shapes = [  ]
 16/z_index = 0
 17/name = "Dandelion B.png 17"
-17/texture = ExtResource( 22 )
+17/texture = ExtResource( 30 )
 17/tex_offset = Vector2( 0, 0 )
 17/modulate = Color( 1, 1, 1, 1 )
 17/region = Rect2( 0, 0, 64, 32 )
@@ -396,7 +397,7 @@
 17/shapes = [  ]
 17/z_index = 0
 18/name = "Orange Grass Tile.png 18"
-18/texture = ExtResource( 17 )
+18/texture = ExtResource( 26 )
 18/tex_offset = Vector2( 0, 0 )
 18/modulate = Color( 1, 1, 1, 1 )
 18/region = Rect2( 0, 0, 64, 32 )
@@ -410,7 +411,7 @@
 18/shapes = [  ]
 18/z_index = 0
 19/name = "Canyon Tile.png 19"
-19/texture = ExtResource( 40 )
+19/texture = ExtResource( 39 )
 19/tex_offset = Vector2( 0, 0 )
 19/modulate = Color( 1, 1, 1, 1 )
 19/region = Rect2( 0, 0, 64, 32 )
@@ -424,7 +425,7 @@
 19/shapes = [  ]
 19/z_index = 0
 21/name = "Spikes A.png 21"
-21/texture = ExtResource( 9 )
+21/texture = ExtResource( 15 )
 21/tex_offset = Vector2( 0, 0 )
 21/modulate = Color( 1, 1, 1, 1 )
 21/region = Rect2( 0, 0, 64, 64 )
@@ -452,7 +453,7 @@
 22/shapes = [  ]
 22/z_index = 0
 23/name = "Spikes C.png 23"
-23/texture = ExtResource( 15 )
+23/texture = ExtResource( 24 )
 23/tex_offset = Vector2( 0, 0 )
 23/modulate = Color( 1, 1, 1, 1 )
 23/region = Rect2( 0, 0, 64, 64 )
@@ -466,7 +467,7 @@
 23/shapes = [  ]
 23/z_index = 0
 24/name = "Berry Grass.png 24"
-24/texture = ExtResource( 1 )
+24/texture = ExtResource( 6 )
 24/tex_offset = Vector2( 0, 0 )
 24/modulate = Color( 1, 1, 1, 1 )
 24/region = Rect2( 0, 0, 64, 32 )
@@ -480,7 +481,7 @@
 24/shapes = [  ]
 24/z_index = 0
 25/name = "Blue Flower.png 25"
-25/texture = ExtResource( 19 )
+25/texture = ExtResource( 28 )
 25/tex_offset = Vector2( 0, 0 )
 25/modulate = Color( 1, 1, 1, 1 )
 25/region = Rect2( 0, 0, 64, 32 )
@@ -494,7 +495,7 @@
 25/shapes = [  ]
 25/z_index = 0
 26/name = "Pink Flower A.png 26"
-26/texture = ExtResource( 14 )
+26/texture = ExtResource( 23 )
 26/tex_offset = Vector2( 0, 0 )
 26/modulate = Color( 1, 1, 1, 1 )
 26/region = Rect2( 0, 0, 64, 32 )
@@ -508,7 +509,7 @@
 26/shapes = [  ]
 26/z_index = 0
 27/name = "Pink Flower B.png 27"
-27/texture = ExtResource( 18 )
+27/texture = ExtResource( 27 )
 27/tex_offset = Vector2( 0, 0 )
 27/modulate = Color( 1, 1, 1, 1 )
 27/region = Rect2( 0, 0, 64, 32 )
@@ -523,7 +524,7 @@
 27/z_index = 0
 
 [node name="WorldRoot" type="Node2D"]
-script = ExtResource( 27 )
+script = ExtResource( 9 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -536,66 +537,65 @@ modulate = Color( 0.921569, 0.772549, 1, 1 )
 position = Vector2( -143, -160 )
 rotation = 3.14159
 scale = Vector2( 1.02429, -0.819242 )
-texture = ExtResource( 44 )
+texture = ExtResource( 43 )
 
 [node name="Bckgd" type="Sprite" parent="YSort/Background"]
 modulate = Color( 1, 0.72549, 1, 1 )
 position = Vector2( 4, -297 )
 scale = Vector2( -1.02429, 0.819242 )
-texture = ExtResource( 6 )
+texture = ExtResource( 11 )
 
 [node name="HillB" type="Sprite" parent="YSort/Background"]
 position = Vector2( -428, -315 )
 scale = Vector2( 2.56984, 2.37309 )
-texture = ExtResource( 25 )
+texture = ExtResource( 33 )
 
 [node name="HillB2" type="Sprite" parent="YSort/Background"]
 position = Vector2( 50, -365 )
 scale = Vector2( 2.56984, 2.37309 )
-texture = ExtResource( 25 )
+texture = ExtResource( 33 )
 
 [node name="TreeA5" type="Sprite" parent="YSort/Background"]
 modulate = Color( 1, 0.823529, 0.913725, 1 )
 position = Vector2( -233, -366 )
 scale = Vector2( 2.61778, 2.46623 )
-texture = ExtResource( 24 )
+texture = ExtResource( 32 )
 
 [node name="TreeA6" type="Sprite" parent="YSort/Background"]
-modulate = Color( 0.988235, 0.988235, 1, 1 )
-position = Vector2( -504, -319 )
-scale = Vector2( 2.4808, 2.53616 )
-texture = ExtResource( 37 )
+position = Vector2( -476, -262 )
+scale = Vector2( 2.54826, 2.55232 )
+texture = ExtResource( 38 )
 
 [node name="TreeA4" type="Sprite" parent="YSort/Background"]
 position = Vector2( 6, -349 )
 scale = Vector2( 2.61778, 2.46623 )
-texture = ExtResource( 10 )
+texture = ExtResource( 14 )
 
 [node name="HillA" type="Sprite" parent="YSort/Background"]
 position = Vector2( -604, -109 )
 scale = Vector2( 2.04673, 2.10868 )
-texture = ExtResource( 29 )
+texture = ExtResource( 34 )
 
 [node name="HillA2" type="Sprite" parent="YSort/Background"]
 modulate = Color( 0.964706, 0.972549, 1, 1 )
 position = Vector2( 460, -194 )
 rotation = 0.0578264
 scale = Vector2( 2.1907, 2.20924 )
-texture = ExtResource( 29 )
+texture = ExtResource( 34 )
 
 [node name="Floor" type="Node2D" parent="YSort"]
 z_index = -10
 
 [node name="Grass2" type="Sprite" parent="YSort/Floor"]
-position = Vector2( -134, -187 )
+position = Vector2( -137, -202 )
 rotation = -0.0742491
-scale = Vector2( 2.6089, 3.10468 )
-texture = ExtResource( 13 )
+scale = Vector2( 2.02068, 2.21455 )
+texture = ExtResource( 22 )
 
 [node name="Grass3" type="Sprite" parent="YSort/Floor"]
-position = Vector2( -507, -140 )
-scale = Vector2( 2.48361, 3.00009 )
-texture = ExtResource( 32 )
+position = Vector2( -509, -116 )
+scale = Vector2( 2.02068, 2.21455 )
+texture = ExtResource( 35 )
 
 [node name="Water Map" type="TileMap" parent="YSort/Floor"]
 modulate = Color( 1, 0.988235, 0.996078, 1 )
@@ -647,62 +647,65 @@ tile_data = PoolIntArray( -589836, 12, 0, -589833, 9, 0, -589828, 13, 0, -589827
 self_modulate = Color( 1, 1, 1, 0.941176 )
 position = Vector2( 62, -69 )
 scale = Vector2( 1.05, 1 )
-texture = ExtResource( 48 )
+texture = ExtResource( 47 )
 
 [node name="BerriesB2" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 1, 1, 0.941176 )
 position = Vector2( 276, 18 )
 scale = Vector2( 1.05, 1 )
-texture = ExtResource( 48 )
+texture = ExtResource( 47 )
 
 [node name="LilypadSmall" type="Sprite" parent="YSort/Floor"]
 modulate = Color( 0.666667, 1, 1, 0.921569 )
 position = Vector2( 124, -58 )
 scale = Vector2( 1.1, 1.1 )
-texture = ExtResource( 49 )
+texture = ExtResource( 48 )
 
 [node name="LilypadSmall2" type="Sprite" parent="YSort/Floor"]
 modulate = Color( 0.666667, 1, 1, 0.921569 )
 position = Vector2( 117, 88 )
 scale = Vector2( 1.1, 1.1 )
-texture = ExtResource( 49 )
+texture = ExtResource( 48 )
 flip_h = true
 
 [node name="LittleStarsA" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 0.996078, 1, 0.980392 )
 position = Vector2( -39, -14 )
 rotation = -0.0265483
-texture = ExtResource( 47 )
+texture = ExtResource( 46 )
 
 [node name="LittleStarsB" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 0.996078, 1, 0.980392 )
 position = Vector2( 162, -50 )
 rotation = -0.0265483
-texture = ExtResource( 50 )
+texture = ExtResource( 49 )
 
 [node name="BerriesA" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 1, 1, 0.941176 )
 position = Vector2( 15, 57 )
 scale = Vector2( 1.05, 1 )
-texture = ExtResource( 46 )
+texture = ExtResource( 45 )
 
 [node name="MiddleGround" type="Node2D" parent="YSort"]
+
+[node name="BouncyFlower" parent="YSort/MiddleGround" instance=ExtResource( 52 )]
+position = Vector2( -102, -113 )
 
 [node name="Ledge2" type="Sprite" parent="YSort/MiddleGround"]
 position = Vector2( -261, -198 )
 rotation = -0.00251221
 scale = Vector2( 1.22254, 1.10469 )
-texture = ExtResource( 4 )
-script = ExtResource( 21 )
+texture = ExtResource( 3 )
+script = ExtResource( 2 )
 feet_height = 72.0
 
 [node name="CircleShadowSmall" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.392157 )
 position = Vector2( -17, -213 )
 scale = Vector2( 1.28856, 1.11324 )
-texture = ExtResource( 38 )
+texture = ExtResource( 1 )
 
-[node name="Flower" parent="YSort/MiddleGround" instance=ExtResource( 39 )]
+[node name="Flower" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
 modulate = Color( 1, 0.968627, 0.984314, 1 )
 position = Vector2( -15, -226 )
 __meta__ = {
@@ -710,12 +713,12 @@ __meta__ = {
 }
 tile_size = Vector2( 64, 22 )
 grid_size = Vector2( 1.3, 1.2 )
-texture = ExtResource( 41 )
+texture = ExtResource( 40 )
 texture_offset = Vector2( 0, 21 )
 height = 35.0
 preview_collision_box = false
 
-[node name="BushA" parent="YSort/MiddleGround" instance=ExtResource( 39 )]
+[node name="BushA" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
 modulate = Color( 0.478431, 0.968627, 1, 1 )
 position = Vector2( -347, -149 )
 __meta__ = {
@@ -723,13 +726,13 @@ __meta__ = {
 }
 tile_size = Vector2( 62, 30 )
 grid_size = Vector2( 0.9, 0.77 )
-texture = ExtResource( 45 )
+texture = ExtResource( 44 )
 texture_scale = Vector2( 0.8, 0.8 )
 texture_offset = Vector2( 0, 15 )
 height = 24.0
 preview_collision_box = false
 
-[node name="BushA2" parent="YSort/MiddleGround" instance=ExtResource( 39 )]
+[node name="BushA2" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
 modulate = Color( 0.478431, 0.968627, 1, 1 )
 position = Vector2( 245, -127 )
 __meta__ = {
@@ -737,7 +740,7 @@ __meta__ = {
 }
 tile_size = Vector2( 62, 30 )
 grid_size = Vector2( 0.9, 0.77 )
-texture = ExtResource( 45 )
+texture = ExtResource( 44 )
 texture_scale = Vector2( 0.8, 0.8 )
 texture_offset = Vector2( 0, 15 )
 height = 24.0
@@ -750,71 +753,66 @@ z_index = 20
 position = Vector2( 309, -135 )
 rotation = -0.0519958
 scale = Vector2( 2.02068, 2.21455 )
-texture = ExtResource( 32 )
+texture = ExtResource( 35 )
 flip_h = true
 
 [node name="TreeA3" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( 388, 0 )
 scale = Vector2( 2.47089, 2.53997 )
-texture = ExtResource( 37 )
+texture = ExtResource( 38 )
 
 [node name="HillB3" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( 283, 223 )
 scale = Vector2( 2.56984, 2.37309 )
-texture = ExtResource( 25 )
+texture = ExtResource( 33 )
 
 [node name="HillA" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( 76, 287 )
 scale = Vector2( 2.34102, 2.46073 )
-texture = ExtResource( 29 )
-
-[node name="TreeA4" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 296, 300 )
-scale = Vector2( 3.21137, 3.1987 )
-texture = ExtResource( 51 )
+texture = ExtResource( 34 )
 
 [node name="Grass" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( -59, 210 )
 scale = Vector2( 2.19767, 2.2075 )
-texture = ExtResource( 13 )
+texture = ExtResource( 22 )
 
 [node name="TreeA" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( -472, -30 )
 scale = Vector2( 2.61778, 2.46623 )
-texture = ExtResource( 10 )
+texture = ExtResource( 14 )
 
 [node name="TreeA2" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( -166, 222 )
-scale = Vector2( 2.48951, 2.49979 )
-texture = ExtResource( 24 )
+position = Vector2( -147, 213 )
+scale = Vector2( 2.16568, 2.23958 )
+texture = ExtResource( 32 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 visible = false
 
-[node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 30 )]
+[node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 17 )]
 
-[node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 31 )]
+[node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 16 )]
 polygon = PoolVector2Array( -435, -72, -405, -83, -436, -92, -404, -103, -437, -115, -409, -125, -436, -136, -411, -148, -436, -159, -411, -170, -399, -194, -359, -211, -315, -223, -268, -217, -62, -290, -28, -279, 1, -291, 33, -281, 64, -291, 303, -208, 436, -159, 406, -147, 436, -137, 405, -128, 438, -114, 418, -102, 436, -93, 423, -75, 435, -48, 399, -30, 441, -10, 61, 129, 30, 118, -1, 127, -187, 62, -280, 95, -374, 61, -285, 29, -435, -26, -410, -37, -436, -49 )
 
-[node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 31 )]
+[node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 16 )]
 position = Vector2( 359, -128 )
 polygon = PoolVector2Array( -236, -154, -88, -207, -50, -194, -12, -206, 60, -180, 28, -166, 61, -154, -87, -100 )
 height = 40.0
 
-[node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 33 )]
+[node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 19 )]
 position = Vector2( -259, 50 )
 door_name = "KugiCanyon1_KugiCanyon2"
 direction = Vector2( 1, 1 )
 
-[node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 33 )]
+[node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 19 )]
 position = Vector2( 275, -284 )
 door_name = "KugiCanyon3_KugiCanyon2"
 direction = Vector2( -1, -1 )
 height = 40
 
-[node name="KugiCanyon3" parent="." instance=ExtResource( 34 )]
+[node name="KugiCanyon3" parent="." instance=ExtResource( 13 )]
 position = Vector2( 142, -253 )
-script = ExtResource( 26 )
+script = ExtResource( 8 )
 target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 3.tscn"
 exit_name = "KugiCanyon2_KugiCanyon3"
 height = 40.0
@@ -823,10 +821,10 @@ height = 40.0
 position = Vector2( 173, -36 )
 polygon = PoolVector2Array( 27, -45, 103, -19, 77, -10, 2, -37 )
 
-[node name="KugiCanyon1" parent="." instance=ExtResource( 34 )]
+[node name="KugiCanyon1" parent="." instance=ExtResource( 13 )]
 position = Vector2( -363, -29 )
 rotation = 0.0231584
-script = ExtResource( 26 )
+script = ExtResource( 8 )
 target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 1.tscn"
 exit_name = "KugiCanyon2_KugiCanyon1"
 
@@ -834,7 +832,15 @@ exit_name = "KugiCanyon2_KugiCanyon1"
 position = Vector2( 66.4143, 103.49 )
 polygon = PoolVector2Array( -51.5421, -22.8126, 47.1958, 7.90923, 20.4346, 18.5318, -71.3052, -12.3522 )
 
-[node name="PresentBase" parent="." instance=ExtResource( 35 )]
+[node name="Bouncy" type="Area2D" parent="."]
+position = Vector2( 62, -87 )
+script = ExtResource( 51 )
+height = 30.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bouncy"]
+polygon = PoolVector2Array( -181, -48, -184, -53, -180, -57, -166, -55, -158, -56, -148, -57, -145, -53, -147, -48, -146, -45, -141, -39, -150, -35, -157, -40, -164, -41, -169, -40, -175, -37, -181, -37, -185, -39, -185, -43, -180, -45 )
+
+[node name="PresentBase" parent="." instance=ExtResource( 18 )]
 position = Vector2( -263, -232 )
 item_name = "Ginger Tea"
 floor_height = 100.0
@@ -845,7 +851,7 @@ pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
 current = true
-script = ExtResource( 28 )
+script = ExtResource( 10 )
 minPos = Vector2( -220, -260 )
 maxPos = Vector2( 130, -150 )
 follow_player = true
@@ -856,7 +862,7 @@ modulate = Color( 1, 1, 1, 0.6 )
 position = Vector2( -186, -232 )
 scale = Vector2( 0.7, 0.8 )
 z_index = 3
-texture = ExtResource( 20 )
+texture = ExtResource( 29 )
 
 [node name="First_Text" type="Label" parent="Camera2D/Info_Window"]
 margin_left = -147.143
@@ -866,8 +872,9 @@ margin_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 1.2, 1.1 )
-custom_fonts/font = ExtResource( 16 )
+custom_fonts/font = ExtResource( 25 )
 text = "You got a Flummery Flambe!"
 align = 1
 
+[connection signal="bouncy" from="Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

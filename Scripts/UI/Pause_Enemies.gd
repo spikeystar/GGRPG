@@ -48,3 +48,75 @@ func _process(delta):
 		$Magic_info.text = "4"
 		$Defense_info.text = "10"
 		$EnemyInfo.text = "Tindrum is always looking for a fight and angry about something"
+	if key_id == "Bramby":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 4
+		$TypeDisplay.frame = 16
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "They blend into their canyon surroundings for protection"
+	if key_id == "Scorpus":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 5
+		$TypeDisplay.frame = 5
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "Poisonous critters that often travel in swarms"
+	if key_id == "Hercules":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 6
+		$TypeDisplay.frame = 16
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "They use Kugi Canyon as their training ground. They hit hard"
+	if key_id == "Cactmouse":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 7
+		$TypeDisplay.frame = 5
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "They like to rough-house and throw their cactus spines at people"
+	if key_id == "Thorvern":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 8
+		$TypeDisplay.frame = 4
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "Thorvern fly around one area as if they are guarding something"
+	if key_id == "Saguarotel":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 9
+		$TypeDisplay.frame = 5
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "A large cactus that houses some mischevious little birds"
+	if key_id == "Tenant A":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 10
+		$TypeDisplay.frame = 0
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "This bird with a temper is always causing a ruckus for its neighbors"
+	if key_id == "Tenant B":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 11
+		$TypeDisplay.frame = 4
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "A chatty bird with a bad habit of spitting at those who pass by"

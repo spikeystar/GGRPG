@@ -949,3 +949,6 @@ func _generate_collision_box_preview():
 		if collision_preview_mesh != null and weakref(collision_preview_mesh).get_ref():
 			collision_preview_mesh.queue_free()
 			collision_preview_mesh = null
+
+func _on_Bouncy_bouncy():
+	$AnimationPlayer.play("bouncy")

@@ -1231,3 +1231,8 @@ func _on_WorldRoot_update_party():
 			PartyStats.suzy_current_health = health
 		if fighter_name == "damien":
 			PartyStats.damien_current_health = health
+
+
+func _on_Enemies_victory():
+	yield(get_tree().create_timer(0.3), "timeout")
+	hide_all_cursors()

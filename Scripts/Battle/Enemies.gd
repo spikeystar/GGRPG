@@ -290,6 +290,7 @@ func enemy_damage():
 	if enemies.size() == 0:
 		emit_signal("victory")
 		SceneManager.victory = true
+		finale_check()
 	emit_signal("e_damage_finish")
 		
 func magic_damage():
@@ -356,6 +357,7 @@ func magic_damage():
 	if enemies.size() == 0:
 		SceneManager.victory = true
 		emit_signal("victory")
+		finale_check()
 		
 	if stun and not immune and not dead:
 		target_enemy.stun()
@@ -478,7 +480,6 @@ func all_magic_damage():
 				enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
 	yield(get_tree().create_timer(0.8), "timeout")
 	if not SceneManager.victory:
-		finale_check()
 		victory_check()
 		
 	if random_debuff:
@@ -548,6 +549,7 @@ func victory_check():
 	if enemies.size() == 0:
 		emit_signal("victory")
 		SceneManager.victory = true
+		finale_check()
 		
 func item_damage():
 	BB_active = false
@@ -581,7 +583,6 @@ func item_damage():
 				enemy_index = clamp(enemy_index, 0, enemies.size())
 	yield(get_tree().create_timer(0.8), "timeout")
 	if not SceneManager.victory:
-		finale_check()
 		victory_check()
 	yield(get_tree().create_timer(0.4), "timeout")
 	emit_signal("e_item_finished")
@@ -591,16 +592,21 @@ func boss_check():
 	if battle_name == "Saguarotel":
 		if current_enemy == "Saguarotel" and enemies.size() > 1:
 			enemies[enemy_index].stall()
-		elif current_enemy == "Saguarotel" and enemies.size() == 1:
-			#enemies[enemy_index].boss_death()
 			enemies[enemy_index].death_tagged = true
-		#elif current_enemy not "Saguarotel" and enemies.size() > 0:
-			#enemies[enemy_index].death()
-			#enemies[enemy_index].death_tagged = true
+		elif current_enemy == "Saguarotel" and enemies.size() == 1:
+			#yield(get_tree().create_timer(0.5), "timeout")
+			#enemies[enemy_index].boss_death()
+			enemies[enemy_index].stall()
+			enemies[enemy_index].death_tagged = true
+		else:
+			enemies[enemy_index].death()
+			enemies[enemy_index].death_tagged = true
 			
 			
 func finale_check():
+	#print(str(enemies.size()) + "size") 
 	if battle_name == "Saguarotel" and enemies.size() == 0:
+			yield(get_tree().create_timer(1), "timeout")
 			$Field/Saguarotel_battle.boss_death()
 			
 func jinx_doll():
@@ -677,7 +683,6 @@ func _on_Fighters_enemies_enabled():
 				enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
 	yield(get_tree().create_timer(1), "timeout")
 	if not SceneManager.victory:
-		finale_check()
 		victory_check()
 	#yield(get_tree().create_timer(0.2), "timeout")
 	

@@ -6,6 +6,7 @@ var player_height
 export var height = 0.0
 var body_check = false
 var able = false
+signal bouncy
 
 func _ready():
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -35,9 +36,10 @@ func _on_body_exited(body):
 		#able = false
 	
 func _on_touch_area():
-	body_check = false
+	#body_check = false
 	SE.effect("Bouncy")
 	PlayerManager.bouncy = true
+	emit_signal("bouncy")
 	yield(get_tree().create_timer(1), "timeout")
 	PlayerManager.bouncy = false
 	#yield(get_tree().create_timer(1), "timeout")

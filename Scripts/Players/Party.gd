@@ -8,6 +8,7 @@ var remove_item_name: String
 var marbles_get = false
 var trinket_get = false
 var sent_storage = false
+var event_name : String
 
 const menu_slot = preload("res://UI/Slot.tscn")
 onready var slot = menu_slot.instance()
@@ -162,3 +163,12 @@ func initial_items():
 	add_item()
 	add_item_name = "Pretty Gem"
 	add_item()
+
+func boss_event():
+	if event_name == "Saguarotel":
+		add_enemy_name = "Saguarotel"
+		add_enemy()
+		add_enemy_name = "Tenant A"
+		add_enemy()
+		add_enemy_name = "Tenant B"
+		add_enemy()

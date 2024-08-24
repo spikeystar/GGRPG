@@ -79,20 +79,24 @@ func _ready():
 	$Enemies/EnemyMove.hide()
 	$FleeDialogue.hide()
 	$Enemies.battle_name = battle_name
+	boss_specific()
+	yield(get_tree().create_timer(1.3), "timeout")
+	transition.queue_free()
+	#player_instance.queue_free()
+
+func boss_specific():
 	if battle_name == "Saguarotel":
 		$Enemies/Field/Tenant_A_battle.hide()
 		$Enemies/Field/Tenant_B_battle.hide()
-		yield(get_tree().create_timer(1.3), "timeout")
-		transition.queue_free()
 		yield(get_tree().create_timer(2), "timeout")
 		$Enemies/Field/Tenant_A_battle.show()
 		$Enemies/Field/Tenant_B_battle.show()
-	else:
-		yield(get_tree().create_timer(1.3), "timeout")
-		transition.queue_free()
-	#player_instance.queue_free()
-
 	
+func boss_event():
+	if battle_name == "Saguarotel":
+		Party.event_name = battle_name
+		EventManager.Saguarotel = true
+		
 #Window Display
 func hide_cursors():
 	if BB_active:
@@ -499,7 +503,7 @@ func _on_Enemies_victory():
 	#Party.marbles += marbles_reward
 	Party.marbles = clamp(Party.marbles + marbles_reward, 0, 999999)
 	if boss_battle:
-		yield(get_tree().create_timer(2.5), "timeout")
+		yield(get_tree().create_timer(4), "timeout")
 	else:
 		yield(get_tree().create_timer(1.2), "timeout")
 	BattleMusic.switch_songs()
@@ -530,6 +534,8 @@ func _on_Enemies_victory():
 	$Fighters.hide_cursors_remote()
 	$Fighters.victory()
 	emit_signal("update_party")
+	boss_event()
+	Party.boss_event()
 	if PartyStats.new_spell_2:	
 		new_spell = true
 	else:
