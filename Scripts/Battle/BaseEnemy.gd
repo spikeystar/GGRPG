@@ -232,7 +232,6 @@ func type_damage(damage_type):
 	if damage_type == "whammy":
 		$DamagePlayer.play("whammy")
 		
-	
 func death():
 		SE.effect("Enemy Death")
 		$AnimationPlayer.play("enemy_death")
@@ -240,6 +239,17 @@ func death():
 		yield(get_tree().create_timer(0.1), "timeout")
 		$Poof.show()
 		$PoofPlayer.play("poof")
+		
+func boss_death():
+	$AnimationPlayer.play("enemy_death")
+	$AnimationPlayer.playback_speed = 0.8
+	yield(get_tree().create_timer(0.3), "timeout")
+	SE.effect("Boss Death")
+	$Poof.show()
+	$PoofPlayer.play("poof")
+		
+func stall():
+	$AnimationPlayer.play("waiting")
 
 func get_position(enemy_position: Vector2 = position):
 	return enemy_position

@@ -28,6 +28,7 @@ var move_type : String = "neutral"
 var fighter_type : String = "neutral"
 
 export var boss_battle : bool
+var battle_name : String
 
 var f_attack
 var f_attack_base
@@ -270,9 +271,16 @@ func enemy_damage():
 		target_enemy.poison()
 	yield(get_tree().create_timer(1.7), "timeout")
 	target_enemy.unfocus()
-	if target_enemy.is_dead():
+	if target_enemy.is_dead() and not boss_battle:
 		ongoing = true
 		target_enemy.death()
+		enemies.remove(enemy_index)
+		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
+		yield(get_tree().create_timer(0.5), "timeout")
+		ongoing = false
+	elif target_enemy.is_dead() and boss_battle:
+		ongoing = true
+		boss_check()
 		enemies.remove(enemy_index)
 		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
 		yield(get_tree().create_timer(0.5), "timeout")
@@ -328,9 +336,16 @@ func magic_damage():
 	yield(get_tree().create_timer(1.7), "timeout")
 	
 	target_enemy.unfocus()
-	if target_enemy.is_dead():
+	if target_enemy.is_dead() and not boss_battle:
 		ongoing = true
 		target_enemy.death()
+		enemies.remove(enemy_index)
+		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
+		yield(get_tree().create_timer(0.5), "timeout")
+		ongoing = false
+	elif target_enemy.is_dead() and boss_battle:
+		ongoing = true
+		boss_check()
 		enemies.remove(enemy_index)
 		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
 		yield(get_tree().create_timer(0.5), "timeout")
@@ -450,9 +465,12 @@ func all_magic_damage():
 			
 	yield(get_tree().create_timer(1.7), "timeout")
 	for x in range(enemies.size()):
-		if enemies[x].is_dead():
+		if enemies[x].is_dead() and not boss_battle:
 			enemies[x].death()
 			enemies[x].death_tagged = true
+		elif enemies[x].is_dead() and boss_battle:
+			enemy_index = x
+			boss_check()
 	for x in range(enemies.size() -1, -1, -1):
 			var death_tagged = enemies[x].get_death_tag()
 			if death_tagged == true:
@@ -460,6 +478,7 @@ func all_magic_damage():
 				enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
 	yield(get_tree().create_timer(0.8), "timeout")
 	if not SceneManager.victory:
+		finale_check()
 		victory_check()
 		
 	if random_debuff:
@@ -549,9 +568,12 @@ func item_damage():
 			enemies[x].apply_type(move_type)
 	yield(get_tree().create_timer(1.5), "timeout")
 	for x in range(enemies.size()):
-		if enemies[x].is_dead():
+		if enemies[x].is_dead() and not boss_battle:
 			enemies[x].death()
 			enemies[x].death_tagged = true
+		elif enemies[x].is_dead() and boss_battle:
+			enemy_index = x
+			boss_check()
 	for x in range(enemies.size() -1, -1, -1):
 			var death_tagged = enemies[x].get_death_tag()
 			if death_tagged == true:
@@ -559,10 +581,28 @@ func item_damage():
 				enemy_index = clamp(enemy_index, 0, enemies.size())
 	yield(get_tree().create_timer(0.8), "timeout")
 	if not SceneManager.victory:
+		finale_check()
 		victory_check()
 	yield(get_tree().create_timer(0.4), "timeout")
 	emit_signal("e_item_finished")
 	
+func boss_check():
+	var current_enemy = get_name()
+	if battle_name == "Saguarotel":
+		if current_enemy == "Saguarotel" and enemies.size() > 1:
+			enemies[enemy_index].stall()
+		elif current_enemy == "Saguarotel" and enemies.size() == 1:
+			#enemies[enemy_index].boss_death()
+			enemies[enemy_index].death_tagged = true
+		#elif current_enemy not "Saguarotel" and enemies.size() > 0:
+			#enemies[enemy_index].death()
+			#enemies[enemy_index].death_tagged = true
+			
+			
+func finale_check():
+	if battle_name == "Saguarotel" and enemies.size() == 0:
+			$Field/Saguarotel_battle.boss_death()
+			
 func jinx_doll():
 	pass
 	emit_signal("e_item_finished")
@@ -607,7 +647,7 @@ func _on_Fighters_enemies_enabled():
 	enemies_active = true
 	
 	if debuffing:
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(1.5), "timeout")
 		debuffing = false
 
 	for x in range (enemies.size()):
@@ -637,6 +677,7 @@ func _on_Fighters_enemies_enabled():
 				enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
 	yield(get_tree().create_timer(1), "timeout")
 	if not SceneManager.victory:
+		finale_check()
 		victory_check()
 	#yield(get_tree().create_timer(0.2), "timeout")
 	

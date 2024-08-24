@@ -1891,6 +1891,7 @@ shadow_color = Color( 0.54, 0.3078, 0.3078, 1 )
 pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
+current = true
 script = ExtResource( 28 )
 minPos = Vector2( -320, -470 )
 maxPos = Vector2( 250, -100 )

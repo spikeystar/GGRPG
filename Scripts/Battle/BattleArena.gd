@@ -8,6 +8,8 @@ export(String, FILE, "*.tscn,*.scn") var main_menu
 #onready var player_instance = PlayerManager.player_instance
 export(int) var EXP_base
 export(int) var marbles_base
+export(String) var battle_name
+export(bool) var boss_battle
 var window_open = false
 var defend_show = false
 var attack_show = false
@@ -76,8 +78,18 @@ func _ready():
 	$Enemies/EnemyInfo.hide()
 	$Enemies/EnemyMove.hide()
 	$FleeDialogue.hide()
-	yield(get_tree().create_timer(1.3), "timeout")
-	transition.queue_free()
+	$Enemies.battle_name = battle_name
+	if battle_name == "Saguarotel":
+		$Enemies/Field/Tenant_A_battle.hide()
+		$Enemies/Field/Tenant_B_battle.hide()
+		yield(get_tree().create_timer(1.3), "timeout")
+		transition.queue_free()
+		yield(get_tree().create_timer(2), "timeout")
+		$Enemies/Field/Tenant_A_battle.show()
+		$Enemies/Field/Tenant_B_battle.show()
+	else:
+		yield(get_tree().create_timer(1.3), "timeout")
+		transition.queue_free()
 	#player_instance.queue_free()
 
 	
@@ -486,7 +498,10 @@ func _on_Enemies_victory():
 	PartyStats.party_exp += EXP_reward
 	#Party.marbles += marbles_reward
 	Party.marbles = clamp(Party.marbles + marbles_reward, 0, 999999)
-	yield(get_tree().create_timer(1.2), "timeout")
+	if boss_battle:
+		yield(get_tree().create_timer(2.5), "timeout")
+	else:
+		yield(get_tree().create_timer(1.2), "timeout")
 	BattleMusic.switch_songs()
 	BattleMusic.id = "Victory"
 	BattleMusic.music()

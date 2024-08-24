@@ -641,6 +641,8 @@ script = ExtResource( 14 )
 main_menu = "res://UI/MainMenu.tscn"
 EXP_base = 36
 marbles_base = 23
+battle_name = "Saguarotel"
+boss_battle = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -658,6 +660,7 @@ texture = ExtResource( 4 )
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource( 17 )
+boss_battle = true
 
 [node name="Field" type="Node2D" parent="Enemies"]
 
@@ -1651,7 +1654,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1668,6 +1670,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
