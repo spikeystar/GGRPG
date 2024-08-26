@@ -79,6 +79,8 @@ export var detect_touches: bool = false setget set_detect_touches
 # Set to true in order to make the box respond to position / height updates
 export var always_update: bool = false setget set_always_update
 
+export var bubble_flower: bool = false
+
 #------------#
 # Properties #
 #------------#
@@ -273,6 +275,12 @@ func _physics_process(delta):
 			)
 		):
 			is_bumpable_from_bottom = true
+			
+	if bubble_flower:
+		if not SceneManager.bubble:
+			$AnimationPlayer.play("bubble")
+		if SceneManager.bubble:
+			$AnimationPlayer.play("RESET")
 
 #---------#
 # Methods #

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Berry Grass.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=2]
@@ -26,7 +26,7 @@
 [ext_resource path="res://Assets/Berry Lake/Tree B.png" type="Texture" id=24]
 [ext_resource path="res://Assets/Berry Lake/Hill B.png" type="Texture" id=25]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=26]
-[ext_resource path="res://Scripts/Area_Specific/Kugi_Canyon.gd" type="Script" id=27]
+[ext_resource path="res://Scripts/Area_Specific/Berry_Lake.gd" type="Script" id=27]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=28]
 [ext_resource path="res://Assets/Berry Lake/Hill A.png" type="Texture" id=29]
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=30]
@@ -51,6 +51,7 @@
 [ext_resource path="res://Assets/Berry Lake/lilypad small.png" type="Texture" id=49]
 [ext_resource path="res://Assets/Berry Lake/little stars b.png" type="Texture" id=50]
 [ext_resource path="res://Assets/Berry Lake/Tree D.png" type="Texture" id=51]
+[ext_resource path="res://Assets/Berry Lake/Sunbeam.png" type="Texture" id=52]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -522,6 +523,62 @@
 27/shapes = [  ]
 27/z_index = 0
 
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sunbeam2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0588235 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sunbeam:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0784314 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "sunbeams"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sunbeam2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0588235 ), Color( 1, 1, 1, 0.0941176 ), Color( 1, 1, 1, 0.027451 ), Color( 1, 1, 1, 0.0588235 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sunbeam:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9, 1.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.0196078 ), Color( 1, 1, 1, 0.0941176 ), Color( 1, 1, 1, 0.0745098 ) ]
+}
+
 [node name="WorldRoot" type="Node2D"]
 script = ExtResource( 27 )
 
@@ -545,14 +602,26 @@ scale = Vector2( -1.02429, 0.819242 )
 texture = ExtResource( 6 )
 
 [node name="HillB" type="Sprite" parent="YSort/Background"]
-position = Vector2( -428, -315 )
+position = Vector2( -425, -332 )
 scale = Vector2( 2.56984, 2.37309 )
 texture = ExtResource( 25 )
 
 [node name="HillB2" type="Sprite" parent="YSort/Background"]
-position = Vector2( 50, -365 )
+position = Vector2( 48, -365 )
 scale = Vector2( 2.56984, 2.37309 )
 texture = ExtResource( 25 )
+
+[node name="TreeA7" type="Sprite" parent="YSort/Background"]
+modulate = Color( 1, 0.823529, 0.913725, 1 )
+position = Vector2( -195, -504 )
+scale = Vector2( 2.61778, 2.46623 )
+texture = ExtResource( 51 )
+
+[node name="TreeA8" type="Sprite" parent="YSort/Background"]
+modulate = Color( 1, 0.823529, 0.913725, 1 )
+position = Vector2( -709, -217 )
+scale = Vector2( 2.61778, 2.46623 )
+texture = ExtResource( 51 )
 
 [node name="TreeA5" type="Sprite" parent="YSort/Background"]
 modulate = Color( 1, 0.823529, 0.913725, 1 )
@@ -562,7 +631,7 @@ texture = ExtResource( 24 )
 
 [node name="TreeA6" type="Sprite" parent="YSort/Background"]
 modulate = Color( 0.988235, 0.988235, 1, 1 )
-position = Vector2( -504, -319 )
+position = Vector2( -504, -321 )
 scale = Vector2( 2.4808, 2.53616 )
 texture = ExtResource( 37 )
 
@@ -743,6 +812,22 @@ texture_offset = Vector2( 0, 15 )
 height = 24.0
 preview_collision_box = false
 
+[node name="Sunbeam" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.0784314 )
+self_modulate = Color( 1, 1, 1, 0.9 )
+position = Vector2( -90, -297 )
+rotation = 0.0631034
+scale = Vector2( 1.23254, 1.37029 )
+texture = ExtResource( 52 )
+
+[node name="Sunbeam2" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.0588235 )
+self_modulate = Color( 1, 1, 1, 0.9 )
+position = Vector2( -357, -199 )
+rotation = 0.0758988
+scale = Vector2( 0.972703, 1.14664 )
+texture = ExtResource( 52 )
+
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
@@ -779,7 +864,7 @@ scale = Vector2( 2.19767, 2.2075 )
 texture = ExtResource( 13 )
 
 [node name="TreeA" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( -472, -30 )
+position = Vector2( -479, -89 )
 scale = Vector2( 2.61778, 2.46623 )
 texture = ExtResource( 10 )
 
@@ -787,6 +872,13 @@ texture = ExtResource( 10 )
 position = Vector2( -166, 222 )
 scale = Vector2( 2.48951, 2.49979 )
 texture = ExtResource( 24 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../YSort/MiddleGround")
+autoplay = "sunbeams"
+playback_speed = 0.5
+anims/RESET = SubResource( 7 )
+anims/sunbeams = SubResource( 8 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 visible = false

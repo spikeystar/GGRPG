@@ -19,6 +19,9 @@ func music():
 	if id == "Kugi_Canyon":
 		active = $Kugi_Canyon
 		active.play(0)
+	if id == "Berry_Lake":
+		active = $Berry_Lake
+		active.play(0)
 	is_playing = true
 	
 func switch_songs():

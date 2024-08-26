@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/Objects/Collision/CollidableBox.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Berry Lake/Bubble Flower SS.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation_frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 4 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "bubble"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation_frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[node name="BBubbleFlower" type="YSort"]
+script = ExtResource( 1 )
+texture = ExtResource( 2 )
+texture_scale = Vector2( -1.1, 1.1 )
+texture_offset = Vector2( -4, 17 )
+height = 60.0
+preview_collision_box = false
+animation_hframes = 6
+animation_frame = 4
+always_update = true
+bubble_flower = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.3
+anims/RESET = SubResource( 1 )
+anims/bubble = SubResource( 2 )

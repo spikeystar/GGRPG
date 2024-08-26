@@ -23,7 +23,7 @@ func kill():
 	queue_free()
 	
 func declare():
-	print("done")
+	PlayerManager.bubble_reset()
 
 func transition_in(target_scene, animation_name = "FadeToBlack"):
 	self.animation_name = animation_name

@@ -58,3 +58,16 @@ func notify_navmesh_ready():
 	
 func hide_shadow():
 	player_shadow.hide()
+
+func bubble():
+	player_instance.bubble()
+	
+func pop():
+	if SceneManager.bubble:
+		player_instance.pop()
+		SceneManager.bubble = false
+		
+func bubble_reset():
+	if SceneManager.bubble:
+		player_instance.bubble_reset()
+		SceneManager.bubble = false

@@ -671,7 +671,7 @@ e_attack = 12
 e_defense = 8
 
 [node name="Tenant_A_battle" parent="Enemies/Field" instance=ExtResource( 59 )]
-position = Vector2( 11, -60 )
+position = Vector2( 11, -61 )
 z_index = 3
 e_health = 1
 

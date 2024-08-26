@@ -11,6 +11,7 @@ export var jump_velocity = 10
 const PauseMenu = preload("res://UI/PauseMenu.tscn")
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
 var pause_menu
+var in_bubble = false
 
 onready var motion_root: KinematicBody2D = $MotionRoot
 onready var world_collider = $MotionRoot/CollisionShape2D
@@ -23,6 +24,7 @@ onready var shadow_y_sort = $ShadowYSort
 onready var shadow_visual_root = $ShadowYSort/ShadowVisualRoot
 
 onready var body_sprite = $BodyYSort/BodyVisualRoot/Gary
+onready var bubble_sprite = $BodyYSort/BodyVisualRoot/Bubble
 onready var shadow_sprite = $ShadowYSort/ShadowVisualRoot/ShadowCircle
 
 
@@ -55,6 +57,15 @@ func _physics_process(delta):
 		anim_tree.get("parameters/playback").travel("Jump")
 		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
 		
+	if Input.is_action_just_pressed("ui_push") and not freeze and in_bubble:
+		SE.effect("Bubble Pop")
+		in_bubble = false
+		SceneManager.bubble = false
+		$BubblePlayer.play("pop")
+		motion_root.bubble = false
+		motion_root.popped = true
+		
+		
 	if sleep:
 		shadow_sprite.hide()
 		anim_tree.active = false
@@ -82,6 +93,7 @@ func _physics_process(delta):
 	var draw_shadow_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.shadow_z))
 	
 	body_sprite.height = motion_root.pos_z
+	bubble_sprite.height = motion_root.pos_z
 	shadow_sprite.height = motion_root.shadow_z + 1
 	
 	body_y_sort.global_position = Vector2(motion_root.global_position.x, draw_y_sort)
@@ -89,3 +101,27 @@ func _physics_process(delta):
 	shadow_y_sort.global_position = Vector2(motion_root.global_position.x, draw_shadow_y_sort)
 	shadow_visual_root.global_position = motion_root.global_position + Vector2(0.0, -draw_shadow_z)
 
+func bubble():
+	SE.effect("Bubble Enter")
+	in_bubble = true
+	motion_root.bubble = true
+	$JumpShape.gravity = 0
+	$BubblePlayer.play("enter")
+	yield(get_tree().create_timer(0.4), "timeout")
+	$BubblePlayer.play("idle")
+
+func pop():
+	SE.effect("Bubble Pop")
+	in_bubble = false
+	SceneManager.bubble = false
+	$BubblePlayer.play("pop")
+	motion_root.bubble = false
+	motion_root.popped = true
+	$JumpShape.gravity = 940
+	
+func bubble_reset():
+	in_bubble = false
+	SceneManager.bubble = false
+	$BubblePlayer.play("RESET")
+	motion_root.gravity = 940
+	$JumpShape.gravity = 940

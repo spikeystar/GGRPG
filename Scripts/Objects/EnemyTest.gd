@@ -49,6 +49,9 @@ export var dead = false
 
 export var printer : bool
 
+export var miniboss : bool
+export var boss : bool
+
 func _ready():
 	$MotionRoot/BattleTrigger.printer = printer
 	$MotionRoot/BattleTrigger.ground_enemy = ground_enemy
@@ -79,6 +82,7 @@ func _physics_process(delta):
 	if Global.battle_ended:
 		#after_battle()
 		Music.unpause()
+		PlayerManager.pop()
 		SceneManager.SceneEnemies = []
 		if alt_chosen:
 			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(alt_arena)
@@ -127,6 +131,13 @@ func after_battle():
 	
 func _on_BattleTrigger_triggered():
 	Music.pause()
+	if miniboss:
+		BattleMusic.id = "Miniboss_Battle"
+	elif boss:
+		BattleMusic.id = "Boss_Battle"
+	else:
+		pass
+	BattleMusic.music()
 	Global.battling = true
 	get_tree().paused = true
 	if alternate:

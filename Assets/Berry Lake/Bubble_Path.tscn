@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Berry Lake/Bubble_full.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Objects/Bubble Path.gd" type="Script" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -1, 4, 0, 0, 0, 0, 1374, 573 )
+}
+
+[node name="Bubble_Path" type="Path2D"]
+curve = SubResource( 1 )
+script = ExtResource( 2 )
+spawn_time = 5.0
+follower = ExtResource( 1 )

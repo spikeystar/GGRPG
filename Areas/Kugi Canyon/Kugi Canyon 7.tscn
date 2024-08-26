@@ -714,7 +714,7 @@ scale = Vector2( 0.931965, 0.775427 )
 texture = ExtResource( 21 )
 
 [node name="Box3" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
-position = Vector2( -359, -3 )
+position = Vector2( -353, -9 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1454,6 +1454,7 @@ depth_test_offset = Vector2( 0, 10 )
 position = Vector2( -211, -14 )
 target_scene = ExtResource( 47 )
 alternate = false
+miniboss = true
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 

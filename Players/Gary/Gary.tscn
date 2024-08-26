@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=2]
+[gd_scene load_steps=126 format=2]
 
 [ext_resource path="res://Scripts/Players/Gary.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scripts/Players/JumpShape.gd" type="Script" id=8]
 [ext_resource path="res://Assets/Present Box/Present Animations SS.png" type="Texture" id=9]
 [ext_resource path="res://Assets/General/Shadows/empty.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Berry Lake/Bubble SS.png" type="Texture" id=11]
 
 [sub_resource type="RectangleShape2D" id=215]
 extents = Vector2( 13.0706, 7.60187 )
@@ -1908,6 +1909,166 @@ tracks/2/keys = {
 "values": [ 5 ]
 }
 
+[sub_resource type="Animation" id=218]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyYSort/BodyVisualRoot/Bubble:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BubblePlayer:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.35 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyYSort/BodyVisualRoot/Bubble:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=219]
+resource_name = "enter"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyYSort/BodyVisualRoot/Bubble:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BubblePlayer:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.75 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyYSort/BodyVisualRoot/Bubble:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=220]
+resource_name = "idle"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyYSort/BodyVisualRoot/Bubble:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BubblePlayer:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.35 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyYSort/BodyVisualRoot/Bubble:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=221]
+resource_name = "pop"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyYSort/BodyVisualRoot/Bubble:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BubblePlayer:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyYSort/BodyVisualRoot/Bubble:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
 [node name="Gary" type="YSort"]
 script = ExtResource( 1 )
 
@@ -1987,6 +2148,19 @@ hframes = 9
 vframes = 3
 frame = 19
 
+[node name="Bubble" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
+visible = false
+position = Vector2( 1, -35 )
+scale = Vector2( 1.35, 1.37 )
+z_index = 1
+texture = ExtResource( 11 )
+hframes = 6
+script = ExtResource( 5 )
+depth_test_offset = Vector2( -8, 28 )
+feet_height = 10.0
+use_dithering = false
+use_dither_blending = false
+
 [node name="AnimationTree" type="AnimationTree" parent="BodyYSort"]
 tree_root = SubResource( 37 )
 anim_player = NodePath("../AnimationPlayer")
@@ -2043,3 +2217,10 @@ anims/side_r_jump = SubResource( 58 )
 anims/side_r_walk = SubResource( 53 )
 anims/side_walk = SubResource( 22 )
 anims/sleep = SubResource( 214 )
+
+[node name="BubblePlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.35
+anims/RESET = SubResource( 218 )
+anims/enter = SubResource( 219 )
+anims/idle = SubResource( 220 )
+anims/pop = SubResource( 221 )

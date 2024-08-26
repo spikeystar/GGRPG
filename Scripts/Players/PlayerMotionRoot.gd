@@ -28,6 +28,8 @@ var is_falling = true
 var is_just_teleported = false
 var jumping = false
 var jump_disabled = false
+var bubble = false
+var popped = false
 
 func _ready():
 	floor_z = spawn_z
@@ -102,7 +104,7 @@ func _physics_process(delta):
 		is_on_ground = false
 		jumping = true
 		gravity = 890
-		jump_velocity = 300
+		jump_velocity = 220
 		vel.z = jump_velocity
 		
 	if not bouncy:
@@ -111,6 +113,7 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("ui_push") and sleep and not ongoing:
 		PlayerManager.freeze = false
+		
 	
 	vel.x += input_dir.x * player_acceleration * delta
 	vel.y += input_dir.y * player_acceleration * delta
@@ -119,10 +122,18 @@ func _physics_process(delta):
 	
 	if vel.length_squared() > 5:
 		last_dir = Vector2(vel.x, vel.y).normalized()
+		
 	
-	if not is_on_ground:
+	if not is_on_ground and not bubble:
 		vel.z -= gravity * delta
 		#$CollisionShape2D.global_position += Vector2(0, -(vel.z * delta * 1.2))
+	elif bubble:
+		vel.z = 0
+		#pos_z = floor_z
+	elif popped:
+		is_on_ground = false
+		vel.z -= gravity * delta
+		popped = false
 	else:
 		vel.z = 0
 		pos_z = floor_z
