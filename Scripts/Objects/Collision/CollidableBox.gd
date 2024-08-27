@@ -960,3 +960,9 @@ func _generate_collision_box_preview():
 
 func _on_Bouncy_bouncy():
 	$AnimationPlayer.play("bouncy")
+
+func _on_Bouncy2_bouncy():
+	$AnimationPlayer.play("bouncy")
+
+func _on_Bouncy3_bouncy():
+	$AnimationPlayer.play("bouncy")

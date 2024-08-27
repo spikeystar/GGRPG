@@ -456,7 +456,7 @@ texture = ExtResource( 43 )
 
 [node name="Bckgd" type="Sprite" parent="YSort/Background"]
 modulate = Color( 1, 0.72549, 1, 1 )
-position = Vector2( 94, -201 )
+position = Vector2( 91, -202 )
 scale = Vector2( -1.15478, 0.91677 )
 texture = ExtResource( 11 )
 
@@ -631,6 +631,7 @@ texture = ExtResource( 48 )
 
 [node name="BouncyFlower" parent="YSort/MiddleGround" instance=ExtResource( 52 )]
 position = Vector2( 381, -395 )
+texture_scale = Vector2( 0.7, 0.8 )
 
 [node name="Ledge2" type="Sprite" parent="YSort/MiddleGround"]
 position = Vector2( 274, -79 )
@@ -1010,13 +1011,13 @@ position = Vector2( 32.1455, 92.2804 )
 polygon = PoolVector2Array( -49.4963, -20.8594, 48.2187, 8.88583, 26.433, 18.3929, -71.3052, -12.3522 )
 
 [node name="Bouncy" type="Area2D" parent="."]
-visible = false
 position = Vector2( 547, -374 )
 script = ExtResource( 51 )
 height = 30.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bouncy"]
-polygon = PoolVector2Array( -181, -48, -184, -53, -180, -57, -166, -55, -158, -56, -148, -57, -145, -53, -147, -48, -146, -45, -141, -39, -150, -35, -157, -40, -164, -41, -169, -40, -175, -37, -181, -37, -185, -39, -185, -43, -180, -45 )
+position = Vector2( -1, 7 )
+polygon = PoolVector2Array( -181, -48, -184, -53, -180, -57, -166, -55, -158, -56, -155, -57, -147, -53, -149, -48, -149, -45, -146, -38, -154, -35, -159, -39, -164, -41, -169, -40, -175, -37, -181, -36, -185, -39, -185, -43, -180, -45 )
 
 [node name="PresentBase" parent="." instance=ExtResource( 18 )]
 position = Vector2( 83, -391 )
