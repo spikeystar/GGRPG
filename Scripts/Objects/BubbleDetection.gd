@@ -14,6 +14,7 @@ func _physics_process(delta):
 		SceneManager.bubble = true
 		PlayerManager.bubble()
 		
+		
 
 func player_check():
 	return player !=null

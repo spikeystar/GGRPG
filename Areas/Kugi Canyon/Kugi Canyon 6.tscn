@@ -1708,6 +1708,7 @@ alternate = false
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 39 )]
+visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 40 )]
 visible = false
@@ -1723,7 +1724,6 @@ disabled = true
 height = 20.0
 
 [node name="NavmeshLayer2" parent="CollisionRoot/Navmesh2" instance=ExtResource( 40 )]
-visible = false
 polygon = PoolVector2Array( -434, -248, -333, -277, -288, -280, -275, -281, -246, -293, -220, -303, -194, -320, 17.9073, -390.315, 26, -393, 67, -421, 240, -481, 295, -458, 364, -428, 357, -348, 356, -295, 398, -294, 712, -177, 704, -143, 396, -11, 4, 128, -184, 65, -276, 27, -288, -47, -289, -94, -301, -168, -399, -198, -428.717, -227.368 )
 
 [node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 40 )]

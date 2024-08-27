@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Assets/Gary's House/Exterior/ledge 1.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Cherry Trail/dirt d.png" type="Texture" id=2]
@@ -43,6 +43,7 @@
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_wander.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie_wander.tscn" type="PackedScene" id=42]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Assets/General/Shadows/circle shadow large.png" type="Texture" id=44]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 5.tscn" type="PackedScene" id=45]
 
 [sub_resource type="StreamTexture" id=2]
@@ -324,6 +325,13 @@ position = Vector2( -25, -105 )
 rotation = -0.0188673
 scale = Vector2( 2.57173, 2.01671 )
 texture = ExtResource( 2 )
+
+[node name="CircleShadowLarge" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 1, 1, 1, 0.117647 )
+position = Vector2( -137, -145 )
+rotation = 0.0216831
+scale = Vector2( 1.31217, 0.971629 )
+texture = ExtResource( 44 )
 
 [node name="MiddleGround" type="Node2D" parent="YSort"]
 

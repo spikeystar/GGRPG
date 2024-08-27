@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Berry Grass.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=2]
@@ -58,6 +58,8 @@
 [ext_resource path="res://Assets/Berry Lake/BouncyFlower.tscn" type="PackedScene" id=56]
 [ext_resource path="res://Assets/Berry Lake/Starfruit M.png" type="Texture" id=57]
 [ext_resource path="res://Assets/Berry Lake/Starfruit S.png" type="Texture" id=58]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=59]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=60]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -585,6 +587,86 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 0.0784314 ), Color( 1, 1, 1, 0.0196078 ), Color( 1, 1, 1, 0.0941176 ), Color( 1, 1, 1, 0.0745098 ) ]
 }
 
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/MiddleGround/Sunbeam:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0784314 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/MiddleGround/Sunbeam2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0588235 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/MiddleGround/Sunbeam3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0901961 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "sunbeams"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/MiddleGround/Sunbeam:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0745098 ), Color( 1, 1, 1, 0.0313726 ), Color( 1, 1, 1, 0.0823529 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YSort/MiddleGround/Sunbeam2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0392157 ), Color( 1, 1, 1, 0.0862745 ), Color( 1, 1, 1, 0.0235294 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("YSort/MiddleGround/Sunbeam3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0901961 ), Color( 1, 1, 1, 0.0352941 ), Color( 1, 1, 1, 0.12549 ) ]
+}
+
 [node name="WorldRoot" type="Node2D"]
 script = ExtResource( 11 )
 
@@ -603,7 +685,7 @@ texture = ExtResource( 18 )
 
 [node name="Bckgd" type="Sprite" parent="YSort/Background"]
 modulate = Color( 1, 0.72549, 1, 1 )
-position = Vector2( -44, -300 )
+position = Vector2( -34, -281 )
 scale = Vector2( -1.02429, 0.819242 )
 texture = ExtResource( 15 )
 
@@ -703,6 +785,11 @@ position = Vector2( -675, -395 )
 scale = Vector2( 2.56984, 2.37309 )
 texture = ExtResource( 29 )
 
+[node name="Grass7" type="Sprite" parent="YSort/Floor"]
+position = Vector2( 69, -225 )
+scale = Vector2( 1.84797, 2.17688 )
+texture = ExtResource( 42 )
+
 [node name="Tile Map5" type="TileMap" parent="YSort/Floor"]
 position = Vector2( 0, 16 )
 mode = 1
@@ -747,48 +834,116 @@ tile_data = PoolIntArray( -1310743, 12, 0, -1310741, 27, 0, -1310738, 25, 0, -12
 
 [node name="BerriesB" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 1, 1, 0.941176 )
-position = Vector2( -460.977, -161 )
+position = Vector2( -440, -190 )
 scale = Vector2( 1.05, 1 )
 texture = ExtResource( 48 )
 
 [node name="BerriesB2" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 1, 1, 0.941176 )
-position = Vector2( -357.977, -133 )
+position = Vector2( 468, 60 )
+scale = Vector2( 1.05, 1 )
+texture = ExtResource( 48 )
+
+[node name="BerriesB3" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.941176 )
+position = Vector2( 515, -85 )
 scale = Vector2( 1.05, 1 )
 texture = ExtResource( 48 )
 
 [node name="LilypadSmall" type="Sprite" parent="YSort/Floor"]
 modulate = Color( 0.666667, 1, 1, 0.921569 )
-position = Vector2( -398.977, -150 )
+position = Vector2( -458, -213 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 49 )
 
+[node name="LilypadSmall3" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 0.666667, 1, 1, 0.921569 )
+position = Vector2( 340, -106 )
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 49 )
+
+[node name="LilypadSmall4" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 0.666667, 1, 1, 0.921569 )
+position = Vector2( 551, -92 )
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 49 )
+flip_h = true
+
+[node name="LilypadSmall5" type="Sprite" parent="YSort/Floor"]
+modulate = Color( 0.666667, 1, 1, 0.921569 )
+position = Vector2( 268, -2 )
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 49 )
+flip_h = true
+
 [node name="LilypadSmall2" type="Sprite" parent="YSort/Floor"]
 modulate = Color( 0.666667, 1, 1, 0.921569 )
-position = Vector2( -340, -102 )
+position = Vector2( -652, -193 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 49 )
 flip_h = true
 
 [node name="LittleStarsA" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 0.996078, 1, 0.980392 )
-position = Vector2( -561.977, -106 )
+position = Vector2( -557, -234 )
+rotation = -0.0265483
+texture = ExtResource( 47 )
+
+[node name="LittleStarsA2" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 0.996078, 1, 0.980392 )
+position = Vector2( 270, -81 )
 rotation = -0.0265483
 texture = ExtResource( 47 )
 
 [node name="LittleStarsB" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 0.996078, 1, 0.980392 )
-position = Vector2( -360.977, -142 )
+position = Vector2( -326, -126 )
+rotation = -0.0265483
+texture = ExtResource( 50 )
+
+[node name="LittleStarsB2" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 0.996078, 1, 0.980392 )
+position = Vector2( 544, -6 )
+rotation = -0.0265483
+texture = ExtResource( 50 )
+
+[node name="LittleStarsB3" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 0.996078, 1, 0.980392 )
+position = Vector2( -626, -124 )
 rotation = -0.0265483
 texture = ExtResource( 50 )
 
 [node name="BerriesA" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 1, 1, 0.941176 )
-position = Vector2( -507.977, -35 )
-scale = Vector2( 1.05, 1 )
+position = Vector2( -327, -92 )
+scale = Vector2( 1, 0.95 )
+texture = ExtResource( 20 )
+
+[node name="BerriesA2" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.941176 )
+position = Vector2( 259, -23 )
+scale = Vector2( 1, 0.95 )
 texture = ExtResource( 20 )
 
 [node name="MiddleGround" type="Node2D" parent="YSort"]
+
+[node name="CircleShadowSmall4" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.313726 )
+position = Vector2( -358, -203 )
+scale = Vector2( 0.894998, 0.964735 )
+texture = ExtResource( 22 )
+
+[node name="CircleShadowSmall5" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.313726 )
+position = Vector2( -99, -86 )
+scale = Vector2( 0.894998, 0.964735 )
+texture = ExtResource( 22 )
+
+[node name="CircleShadowSmall6" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.313726 )
+position = Vector2( 210, -82 )
+scale = Vector2( 0.894998, 0.964735 )
+texture = ExtResource( 22 )
 
 [node name="CircleShadowSmall" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.392157 )
@@ -814,12 +969,16 @@ modulate = Color( 1, 0.823529, 0.913725, 1 )
 position = Vector2( -105, -245 )
 scale = Vector2( 1.79821, 1.80148 )
 texture = ExtResource( 51 )
+script = ExtResource( 60 )
+depth_test_offset = Vector2( 0, 80 )
 
 [node name="TreeA8" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 1, 0.823529, 0.913725, 1 )
 position = Vector2( 71, -251 )
 scale = Vector2( 1.69051, 1.67485 )
 texture = ExtResource( 4 )
+script = ExtResource( 60 )
+depth_test_offset = Vector2( 0, 85 )
 
 [node name="CircleShadowSmall2" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.392157 )
@@ -893,6 +1052,13 @@ scale = Vector2( 1.23254, 1.37029 )
 texture = ExtResource( 52 )
 flip_h = true
 
+[node name="SquareShadow2" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( -38, -130 )
+rotation = -0.000779056
+scale = Vector2( 2.8302, 2.2693 )
+texture = ExtResource( 59 )
+
 [node name="Ledge3" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
 modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
 position = Vector2( -41, -97 )
@@ -904,7 +1070,7 @@ grid_size = Vector2( 3.5, 4 )
 texture = ExtResource( 53 )
 texture_scale = Vector2( 1.4, 1.4 )
 texture_offset = Vector2( 0, 12 )
-height = 50.0
+height = 60.0
 preview_collision_box = false
 
 [node name="BouncyFlower" parent="YSort/MiddleGround" instance=ExtResource( 56 )]
@@ -921,7 +1087,7 @@ texture_scale = Vector2( 0.7, 0.8 )
 
 [node name="StarfruitM" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
 modulate = Color( 0.94902, 0.952941, 0.960784, 1 )
-position = Vector2( -570, -92 )
+position = Vector2( -567, -96 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -951,7 +1117,7 @@ use_collision = false
 
 [node name="StarfruitS" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
 modulate = Color( 0.94902, 0.952941, 0.960784, 1 )
-position = Vector2( -415, -67 )
+position = Vector2( -409, -73 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -965,7 +1131,7 @@ use_collision = false
 
 [node name="StarfruitS2" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
 modulate = Color( 0.94902, 0.952941, 0.960784, 1 )
-position = Vector2( -499, -74 )
+position = Vector2( -493, -80 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1196,7 +1362,7 @@ floor_height = 100.0
 shadow_color = Color( 0.227451, 0.490196, 0.392157, 1 )
 
 [node name="PresentBase3" parent="." instance=ExtResource( 28 )]
-position = Vector2( -571, -177 )
+position = Vector2( -566, -182 )
 item_name = "Full Heal"
 floor_height = 100.0
 shadow_color = Color( 0.705882, 0.596078, 0.203922, 1 )
@@ -1236,6 +1402,11 @@ rect_scale = Vector2( 1.2, 1.1 )
 custom_fonts/font = ExtResource( 41 )
 text = "You got a Flummery Flambe!"
 align = 1
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+autoplay = "sunbeams"
+anims/RESET = SubResource( 9 )
+anims/sunbeams = SubResource( 10 )
 
 [connection signal="bouncy" from="Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="bouncy" from="Bouncy2" to="YSort/MiddleGround/BouncyFlower2" method="_on_Bouncy2_bouncy"]
