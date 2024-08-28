@@ -1,0 +1,248 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Enemies/BattleTrigger.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/Berry Lake/Kerobi SS.png" type="Texture" id=2]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/EnemyPostDetection.gd" type="Script" id=6]
+[ext_resource path="res://Enemies/PlayerDetection.tscn" type="PackedScene" id=7]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 130.0
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Enemy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisualRoot/Enemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -13, -26 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../BattleTrigger/CollisionShape2D2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3.08402, -9.60626 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../PlayerDetection/AnimationPlayer:playback_speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.4 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BodyVisualRoot/Enemy:offset")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "attack"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Enemy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 8, 8, 9, 10, 11, 10, 9 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../BattleTrigger/CollisionShape2D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -3.08402, -9.60626 ), Vector2( -5.14003, -21.3472 ), Vector2( -10.2801, -27.7514 ), Vector2( -32.8962, -50.166 ), Vector2( -42.1483, -58.7049 ), Vector2( -63.7364, -73.648 ), Vector2( -43.1763, -57.6376 ), Vector2( -32.8962, -52.3008 ), Vector2( -22.6162, -46.9639 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../PlayerDetection/AnimationPlayer:playback_speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.6 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyVisualRoot/Enemy:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0.5 ), Vector2( 0, 1 ), Vector2( 0, 0.833333 ), Vector2( 0, 0.666667 ), Vector2( -0.5, 0.5 ), Vector2( 0, 0.333333 ), Vector2( 0, 0.166667 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Enemy:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../PlayerDetection/AnimationPlayer:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/Enemy:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -12, -25 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyVisualRoot/Enemy:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 0, 0.666667 ), Vector2( 0, 0.333333 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 8.94814
+
+[node name="Kerobi_post" type="YSort"]
+
+[node name="PlayerDetection" parent="." instance=ExtResource( 7 )]
+position = Vector2( 6, 11 )
+collision_layer = 0
+collision_mask = 1
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+modulate = Color( 1, 1, 1, 0.254902 )
+position = Vector2( -1, -17 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerDetection"]
+root_node = NodePath("../../BodyYSort")
+playback_speed = 0.4
+anims/RESET = SubResource( 3 )
+anims/attack = SubResource( 6 )
+anims/idle = SubResource( 5 )
+
+[node name="BattleTrigger" parent="." instance=ExtResource( 1 )]
+position = Vector2( 5, 5 )
+scale = Vector2( 0.972756, 0.936889 )
+collision_layer = 7
+collision_mask = 6
+height = 40.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BattleTrigger"]
+position = Vector2( -3.08402, -9.60626 )
+scale = Vector2( 1.60839, -1.51859 )
+shape = SubResource( 2 )
+
+[node name="BodyYSort" type="Node2D" parent="."]
+
+[node name="BodyVisualRoot" type="Node2D" parent="BodyYSort"]
+scale = Vector2( 1.1, 1.1 )
+
+[node name="ShadowCircle" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
+modulate = Color( 1, 1, 1, 0.75 )
+position = Vector2( 0, -2 )
+scale = Vector2( 1.44161, 1.06453 )
+texture = ExtResource( 3 )
+script = ExtResource( 5 )
+alpha_clip = 0.01
+always_update = true
+height = 40.0
+use_dithering = false
+use_dither_blending = false
+use_transparency = true
+
+[node name="Enemy" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
+modulate = Color( 0.972549, 0.988235, 1, 1 )
+position = Vector2( -13, -26 )
+rotation = 0.0706531
+texture = ExtResource( 2 )
+hframes = 12
+frame = 8
+script = ExtResource( 4 )
+depth_test_offset = Vector2( -8, 28 )
+feet_height = 10.0
+height = 40.0
+use_dithering = false
+use_dither_blending = false

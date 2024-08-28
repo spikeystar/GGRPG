@@ -131,3 +131,9 @@ func _on_PresentBase_item_get():
 
 func _on_PresentBase2_item_get():
 	_on_PresentBase_item_get()
+
+func _on_PresentBase3_item_get():
+	_on_PresentBase_item_get()
+
+func _on_PresentBase4_item_get():
+	_on_PresentBase_item_get()

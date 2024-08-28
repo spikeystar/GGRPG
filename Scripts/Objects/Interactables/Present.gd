@@ -132,8 +132,14 @@ func set_item():
 	if item_name == "Ginger Tea":
 		$ItemUsage/Item.frame = 4
 		item_get()
+	if item_name == "Sugar Pill":
+		$ItemUsage/Item.frame = 3
+		item_get()
 	if item_name == "Bounty Herb":
 		$ItemUsage/Item.frame = 5
+		item_get()
+	if item_name == "Picnic Pie":
+		$ItemUsage/Item.frame = 2
 		item_get()
 	if item_name == "Marbles":
 		$ItemUsage/Item.frame = 11

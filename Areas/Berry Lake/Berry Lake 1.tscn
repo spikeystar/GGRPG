@@ -991,7 +991,7 @@ polygon = PoolVector2Array( -51.5421, -22.8126, 47.1958, 7.90923, 20.4346, 18.53
 
 [node name="PresentBase" parent="." instance=ExtResource( 35 )]
 position = Vector2( -257, -233 )
-item_name = "Ginger Tea"
+item_name = "Bounty Herb"
 floor_height = 60.0
 shadow_color = Color( 0.611765, 0.372549, 0.45098, 1 )
 
