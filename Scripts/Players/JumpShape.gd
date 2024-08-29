@@ -12,6 +12,9 @@ export var max_vertical_speed = 20
 export var jump_velocity = 10
 export var player_height = 64
 
+var bubble = false
+var popped = false
+
 var is_player_jump_shape = true
 
 #Movement
@@ -47,6 +50,7 @@ func teleport_2d(tp_pos : Vector2, height : int = 0):
 
 func set_facing_direction(direction : Vector2):
 	last_dir = direction.normalized()
+	
 	
 
 func update_floor():
@@ -119,14 +123,22 @@ func _physics_process(delta):
 	if vel.length_squared() > 5:
 		last_dir = Vector2(vel.x, vel.y).normalized()
 	
-	if not is_on_ground:
+	if not is_on_ground and not bubble:
 		vel.z -= gravity * delta
 		$CollisionShape2D.global_position += Vector2(0, -(vel.z * delta * 2.3))
-	else:
+	elif bubble:
 		vel.z = 0
 		#pos_z = floor_z
+	elif popped:
+		is_on_ground = false
+		vel.z -= gravity * delta
+		popped = false
+	else:
+		vel.z = 0
 		$CollisionShape2D.global_position = shape_origin
-		#pos_z = origin_z
+		
+		
+		
 		
 	
 	pos_z += vel.z * delta
@@ -150,3 +162,6 @@ func _physics_process(delta):
 	#if is_on_ground:
 		#yield(get_tree().create_timer(0.3), "timeout")
 		#jumping = false
+
+func reset_shape():
+	$CollisionShape2D.global_position = shape_origin

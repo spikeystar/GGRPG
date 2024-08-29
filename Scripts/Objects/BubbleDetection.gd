@@ -13,6 +13,7 @@ func _physics_process(delta):
 	if get_overlapping_bodies().size() > 0 and detected:
 		SceneManager.bubble = true
 		PlayerManager.bubble()
+		detected = false
 		
 		
 

@@ -58,12 +58,14 @@ func _physics_process(delta):
 		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
 		
 	if Input.is_action_just_pressed("ui_push") and not freeze and in_bubble:
-		SE.effect("Bubble Pop")
-		in_bubble = false
-		SceneManager.bubble = false
-		$BubblePlayer.play("pop")
-		motion_root.bubble = false
-		motion_root.popped = true
+		pop()
+		
+		#SE.effect("Bubble Pop")
+		#in_bubble = false
+		#SceneManager.bubble = false
+		#$BubblePlayer.play("pop")
+		#motion_root.bubble = false
+		#motion_root.popped = true
 		
 		
 	if sleep:
@@ -105,6 +107,8 @@ func bubble():
 	SE.effect("Bubble Enter")
 	in_bubble = true
 	motion_root.bubble = true
+	$JumpShape.bubble = true
+	$JumpShape.reset_shape()
 	$BubblePlayer.play("enter")
 	yield(get_tree().create_timer(0.4), "timeout")
 	$BubblePlayer.play("idle")
@@ -116,11 +120,18 @@ func pop():
 	$BubblePlayer.play("pop")
 	motion_root.bubble = false
 	motion_root.popped = true
-	#$JumpShape.gravity = 940
+	$JumpShape.bubble = false
+	$JumpShape.popped = true
+	$JumpShape.reset_shape()
+	bubble_check()
 	
 func bubble_reset():
 	in_bubble = false
 	SceneManager.bubble = false
 	$BubblePlayer.play("RESET")
-	#motion_root.gravity = 940
-	#$JumpShape.gravity = 940
+	$JumpShape.reset_shape()
+	
+func bubble_check():
+	yield(get_tree().create_timer(0.2), "timeout")
+	if not SceneManager.bubble:
+		bubble_reset()

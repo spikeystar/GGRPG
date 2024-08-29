@@ -60,6 +60,7 @@ func hide_shadow():
 	player_shadow.hide()
 
 func bubble():
+	print("bubble")
 	player_instance.bubble()
 	
 func pop():
