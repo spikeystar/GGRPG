@@ -105,7 +105,6 @@ func bubble():
 	SE.effect("Bubble Enter")
 	in_bubble = true
 	motion_root.bubble = true
-	$JumpShape.gravity = 0
 	$BubblePlayer.play("enter")
 	yield(get_tree().create_timer(0.4), "timeout")
 	$BubblePlayer.play("idle")
@@ -117,11 +116,11 @@ func pop():
 	$BubblePlayer.play("pop")
 	motion_root.bubble = false
 	motion_root.popped = true
-	$JumpShape.gravity = 940
+	#$JumpShape.gravity = 940
 	
 func bubble_reset():
 	in_bubble = false
 	SceneManager.bubble = false
 	$BubblePlayer.play("RESET")
-	motion_root.gravity = 940
-	$JumpShape.gravity = 940
+	#motion_root.gravity = 940
+	#$JumpShape.gravity = 940

@@ -1064,6 +1064,8 @@ spawn_time = 4.0
 position = Vector2( 19, 40 )
 
 [node name="Bubble" parent="YSort/MiddleGround/BubbleMaster/Bubble_Path" instance=ExtResource( 53 )]
+position = Vector2( 1032, 153 )
+rotation = 2.44611
 
 [node name="Bubble_Path2" parent="YSort/MiddleGround/BubbleMaster" instance=ExtResource( 52 )]
 position = Vector2( -275, -43 )

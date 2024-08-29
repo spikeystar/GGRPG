@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Enemies/Berry Lake/Kerobi SS.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://Scripts/EnemyPostDetection.gd" type="Script" id=5]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/EnemyPost.gd" type="Script" id=8]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 1.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/PostEnemyMotionRoot.gd" type="Script" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 130.0
@@ -88,7 +91,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3, 0.4, 0.5, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( -3.08402, -9.60626 ), Vector2( 13.3641, -30.9535 ), Vector2( 31.8682, -23.482 ), Vector2( 43.1763, -17.0778 ), Vector2( 31.8682, -23.482 ), Vector2( 14.3921, -29.8861 ) ]
+"values": [ Vector2( -3.08402, -9.60626 ), Vector2( 13.3641, -30.9535 ), Vector2( 27.7562, -25.6167 ), Vector2( 38.0363, -20.2799 ), Vector2( 29.8122, -23.482 ), Vector2( 14.3921, -29.8861 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../PlayerDetection/AnimationPlayer:playback_speed")
@@ -135,45 +138,60 @@ tracks/1/keys = {
 [sub_resource type="CircleShape2D" id=2]
 radius = 8.94814
 
-[node name="Kerobi_post" type="YSort"]
+[sub_resource type="CircleShape2D" id=7]
 
-[node name="PlayerDetection" parent="." instance=ExtResource( 3 )]
-position = Vector2( 6, 11 )
+[node name="Kerobi_post" type="YSort"]
+script = ExtResource( 8 )
+ground_enemy = true
+target_scene = ExtResource( 9 )
+alt_scene = ExtResource( 9 )
+
+[node name="MotionRoot" type="KinematicBody2D" parent="."]
+position = Vector2( 0, 1 )
+collision_mask = 2
+collision/safe_margin = 0.5
+script = ExtResource( 10 )
+spawn_z = 40
+
+[node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 6, 10 )
 collision_layer = 0
 collision_mask = 1
 script = ExtResource( 5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot/PlayerDetection"]
 modulate = Color( 1, 1, 1, 0.254902 )
-position = Vector2( -1, -17 )
+position = Vector2( 34, -6 )
+scale = Vector2( 0.57519, 0.56803 )
 shape = SubResource( 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerDetection"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MotionRoot/PlayerDetection"]
 root_node = NodePath("../../BodyYSort")
 playback_speed = 0.4
 anims/RESET = SubResource( 3 )
 anims/attack = SubResource( 6 )
 anims/idle = SubResource( 5 )
 
-[node name="BattleTrigger" parent="." instance=ExtResource( 4 )]
-position = Vector2( 5, 5 )
+[node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 4 )]
+position = Vector2( 5, 4 )
 scale = Vector2( 0.972756, 0.936889 )
-collision_layer = 7
-collision_mask = 6
+collision_layer = 3
 height = 40.0
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="BattleTrigger"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
 position = Vector2( -3.08402, -9.60626 )
 scale = Vector2( 1.60839, -1.51859 )
 shape = SubResource( 2 )
 
-[node name="BodyYSort" type="Node2D" parent="."]
+[node name="BodyYSort" type="Node2D" parent="MotionRoot"]
+position = Vector2( 0, -1 )
 
-[node name="BodyVisualRoot" type="Node2D" parent="BodyYSort"]
+[node name="BodyVisualRoot" type="Node2D" parent="MotionRoot/BodyYSort"]
 
-[node name="ShadowCircle" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
+[node name="ShadowCircle" type="Sprite" parent="MotionRoot/BodyYSort/BodyVisualRoot"]
 modulate = Color( 1, 1, 1, 0.75 )
-position = Vector2( 0, -2 )
+position = Vector2( 0, -3 )
 scale = Vector2( 1.44161, 1.06453 )
 texture = ExtResource( 6 )
 script = ExtResource( 7 )
@@ -184,7 +202,7 @@ use_dithering = false
 use_dither_blending = false
 use_transparency = true
 
-[node name="Enemy" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
+[node name="Enemy" type="Sprite" parent="MotionRoot/BodyYSort/BodyVisualRoot"]
 modulate = Color( 0.972549, 0.988235, 1, 1 )
 position = Vector2( 3, -24 )
 rotation = 0.0706531
@@ -197,3 +215,11 @@ feet_height = 10.0
 height = 40.0
 use_dithering = false
 use_dither_blending = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
+visible = false
+position = Vector2( 1, -12 )
+scale = Vector2( 2.02595, 1.91197 )
+shape = SubResource( 7 )
+
+[connection signal="triggered" from="MotionRoot/BattleTrigger" to="." method="_on_BattleTrigger_triggered"]
