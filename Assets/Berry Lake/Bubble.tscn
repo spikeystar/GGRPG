@@ -291,8 +291,8 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 modulate = Color( 1, 1, 1, 0.254902 )
-position = Vector2( -7.25, -36 )
-scale = Vector2( 0.489825, 0.439702 )
+position = Vector2( -8.5, -44.75 )
+scale = Vector2( 0.37359, 0.371272 )
 shape = SubResource( 5 )
 disabled = true
 

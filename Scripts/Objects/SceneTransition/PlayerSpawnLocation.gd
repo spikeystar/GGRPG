@@ -21,6 +21,7 @@ func _position_player():
 	if Global.door_name == door_name:
 		var motion_root = PlayerManager.player_motion_root
 		if motion_root:
+			motion_root.set_facing_direction(direction)
 			motion_root.teleport_2d(global_position + Vector2(0.0, height), height)
 			motion_root.set_facing_direction(direction)
 			is_current_spawn = true

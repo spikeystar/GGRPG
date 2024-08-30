@@ -82,7 +82,6 @@ func _physics_process(delta):
 	if Global.battle_ended:
 		#after_battle()
 		Music.unpause()
-		PlayerManager.pop()
 		SceneManager.SceneEnemies = []
 		if alt_chosen:
 			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(alt_arena)
@@ -103,7 +102,8 @@ func _physics_process(delta):
 		else:
 			SceneManager.SceneEnemies.append(self)
 			
-	
+		yield(get_tree().create_timer(0.6), "timeout")
+		PlayerManager.pop()
 	#if motion_root.velocity.x > 0:
 		#sprite.flip_h = true
 	#else:

@@ -51,7 +51,6 @@ func _ready():
 	origin = self.global_position
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
-	#print(origin)
 	floor_z = spawn_z
 	pos_z = spawn_z
 	initial_z = pos_z

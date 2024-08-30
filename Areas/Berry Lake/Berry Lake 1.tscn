@@ -791,7 +791,6 @@ scale = Vector2( 1.22254, 1.10469 )
 texture = ExtResource( 4 )
 script = ExtResource( 21 )
 depth_test_offset = Vector2( 0, -8 )
-height = 20.0
 
 [node name="CircleShadowSmall" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.392157 )

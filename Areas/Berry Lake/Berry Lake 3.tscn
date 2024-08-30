@@ -555,7 +555,7 @@ texture = ExtResource( 28 )
 
 [node name="Bckgd" type="Sprite" parent="YSort/Background"]
 modulate = Color( 1, 0.72549, 1, 1 )
-position = Vector2( 415, 74 )
+position = Vector2( 415, 73 )
 scale = Vector2( -1.57977, 1.17765 )
 texture = ExtResource( 4 )
 flip_h = true
@@ -1064,8 +1064,6 @@ spawn_time = 4.0
 position = Vector2( 19, 40 )
 
 [node name="Bubble" parent="YSort/MiddleGround/BubbleMaster/Bubble_Path" instance=ExtResource( 53 )]
-position = Vector2( 1032, 153 )
-rotation = 2.44611
 
 [node name="Bubble_Path2" parent="YSort/MiddleGround/BubbleMaster" instance=ExtResource( 52 )]
 position = Vector2( -275, -43 )
@@ -1302,6 +1300,7 @@ scale = Vector2( 3.24909, 2.98758 )
 texture = ExtResource( 21 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 9 )]
 
@@ -1320,12 +1319,12 @@ height = 40.0
 
 [node name="NavmeshLayer5" parent="CollisionRoot/Navmesh2" instance=ExtResource( 8 )]
 position = Vector2( 51, 334 )
-polygon = PoolVector2Array( -258, -202, -252, -206, -211, -210, -199, -223, -191, -224, -164, -217, -122, -219, -119, -215, -129, -206, -129, -201, -102, -186, -104, -180, -163, -182, -209, -164, -223, -168, -221, -187, -223, -192 )
+polygon = PoolVector2Array( -261, -202, -255, -207, -214, -211, -199, -227, -191, -226, -163, -219, -122, -220, -115, -216, -127, -205, -128, -201, -100, -186, -101, -179, -163, -181, -209, -164, -221, -163, -226, -168, -224, -187, -222, -191, -251, -197 )
 height = 40.0
 
 [node name="NavmeshLayer6" parent="CollisionRoot/Navmesh2" instance=ExtResource( 8 )]
 position = Vector2( 1082, 314 )
-polygon = PoolVector2Array( -260, -201, -255, -206, -212, -212, -200, -225, -191, -225, -164, -217, -126, -220, -118, -217, -130, -205, -127, -201, -104, -188, -103, -182, -165, -184, -211, -167, -220, -167, -226, -172, -221, -187, -224, -193 )
+polygon = PoolVector2Array( -260, -201, -257, -207, -213, -213, -201, -226, -190, -227, -163, -219, -126, -220, -115, -217, -120, -210, -128, -205, -126, -201, -103, -188, -99, -183, -101, -180, -115, -179, -165, -182, -210, -163, -220, -165, -224, -165, -226, -172, -224, -185, -224, -192, -250, -196, -258, -197 )
 height = 40.0
 
 [node name="NavmeshLayer2" parent="CollisionRoot/Navmesh2" instance=ExtResource( 8 )]
