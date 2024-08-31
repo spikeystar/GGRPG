@@ -843,6 +843,26 @@ rotation = -0.00780264
 scale = Vector2( 2.11, 2.225 )
 texture = ExtResource( 40 )
 
+[node name="SquareShadow17" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 464, -91 )
+rotation = 0.0341947
+scale = Vector2( 0.810536, 0.702232 )
+texture = ExtResource( 33 )
+script = ExtResource( 48 )
+height = 123.0
+use_transparency = true
+
+[node name="SquareShadow18" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 484, -106 )
+rotation = 0.0341947
+scale = Vector2( 0.810536, 0.702232 )
+texture = ExtResource( 33 )
+script = ExtResource( 48 )
+height = 123.0
+use_transparency = true
+
 [node name="Box8" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
 position = Vector2( 484, 11 )
 __meta__ = {
@@ -915,6 +935,16 @@ texture_scale = Vector2( 0.9, 0.9 )
 texture_offset = Vector2( 3, 5 )
 height = 55.0
 preview_collision_box = false
+
+[node name="SquareShadow16" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( -350, -199 )
+rotation = 0.0341947
+scale = Vector2( 0.810536, 0.702232 )
+texture = ExtResource( 33 )
+script = ExtResource( 48 )
+height = 41.0
+use_transparency = true
 
 [node name="Canyon10" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 0.816575, 0.8099, 0.89, 1 )
@@ -1218,7 +1248,7 @@ format = 1
 tile_data = PoolIntArray( -720902, 13, 0, -786430, 12, 0, -655366, 13, 0, -720894, 13, 0, -589833, 12, 0, -458754, 12, 0, -458749, 13, 0, -327687, 13, 0, -327671, 13, 0, -65540, 13, 0, -131063, 13, 0, -65531, 12, 0, 131067, 12, 0, 131074, 12, 0, 131080, 13, 0, 262138, 13, 0, 262143, 13, 0, 327687, 12, 0, 327689, 13, 0, 524287, 13, 0 )
 
 [node name="CircleShadowSmall" type="Sprite" parent="YSort/MiddleGround"]
-self_modulate = Color( 1, 1, 1, 0.392157 )
+self_modulate = Color( 1, 1, 1, 0.47 )
 position = Vector2( -357, -430 )
 scale = Vector2( 0.686252, 0.660371 )
 texture = ExtResource( 47 )
@@ -1227,7 +1257,7 @@ height = 115.0
 use_transparency = true
 
 [node name="CircleShadowSmall2" type="Sprite" parent="YSort/MiddleGround"]
-self_modulate = Color( 1, 1, 1, 0.392157 )
+self_modulate = Color( 1, 1, 1, 0.47 )
 position = Vector2( -143, -353 )
 scale = Vector2( 0.908169, 0.889174 )
 texture = ExtResource( 47 )
@@ -1236,7 +1266,7 @@ height = 115.0
 use_transparency = true
 
 [node name="CircleShadowSmall3" type="Sprite" parent="YSort/MiddleGround"]
-self_modulate = Color( 1, 1, 1, 0.392157 )
+self_modulate = Color( 1, 1, 1, 0.47 )
 position = Vector2( 629, -52 )
 scale = Vector2( 0.935749, 0.904412 )
 texture = ExtResource( 47 )
@@ -1294,6 +1324,38 @@ mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
+
+[node name="CircleShadowSmall17" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 53, -206 )
+scale = Vector2( 0.959305, 0.804396 )
+texture = ExtResource( 47 )
+script = ExtResource( 48 )
+use_transparency = true
+
+[node name="CircleShadowSmall18" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 167, -244 )
+scale = Vector2( 0.959305, 0.804396 )
+texture = ExtResource( 47 )
+script = ExtResource( 48 )
+use_transparency = true
+
+[node name="CircleShadowSmall20" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( -74, -273 )
+scale = Vector2( 0.959305, 0.804396 )
+texture = ExtResource( 47 )
+script = ExtResource( 48 )
+use_transparency = true
+
+[node name="CircleShadowSmall19" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 342, -108 )
+scale = Vector2( 0.717818, 0.696672 )
+texture = ExtResource( 47 )
+script = ExtResource( 48 )
+use_transparency = true
 
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20

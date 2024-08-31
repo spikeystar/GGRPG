@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=1]
 [ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=2]
@@ -58,6 +58,8 @@
 [ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=56]
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=57]
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=58]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=59]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=60]
 
 [sub_resource type="TileSet" id=1]
 0/name = "wood tile a.png 0"
@@ -419,6 +421,42 @@ texture_offset = Vector2( 4, 5 )
 height = 55.0
 preview_collision_box = false
 
+[node name="CircleShadowSmall15" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 123.18, 34.3569 )
+scale = Vector2( 1.41225, 1.54114 )
+texture = ExtResource( 60 )
+script = ExtResource( 59 )
+height = 60.0
+use_transparency = true
+
+[node name="CircleShadowSmall17" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 389.053, 14.958 )
+scale = Vector2( 0.536532, 0.594656 )
+texture = ExtResource( 60 )
+script = ExtResource( 59 )
+height = 75.0
+use_transparency = true
+
+[node name="CircleShadowSmall18" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 249.776, -43.3083 )
+scale = Vector2( 0.735026, 0.748441 )
+texture = ExtResource( 60 )
+script = ExtResource( 59 )
+height = 85.0
+use_transparency = true
+
+[node name="CircleShadowSmall16" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.705882 )
+position = Vector2( 361.146, 27.1104 )
+scale = Vector2( 0.971807, 1.07079 )
+texture = ExtResource( 60 )
+script = ExtResource( 59 )
+height = 50.0
+use_transparency = true
+
 [node name="Cake" parent="Node2D/YSort" instance=ExtResource( 5 )]
 modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
 position = Vector2( 124.611, 116.349 )
@@ -514,11 +552,29 @@ preview_collision_box = false
 use_collision = false
 always_update = true
 
+[node name="CircleShadowSmall14" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 163.773, 147.145 )
+scale = Vector2( 0.545767, 0.560957 )
+texture = ExtResource( 60 )
+script = ExtResource( 59 )
+height = 70.0
+use_transparency = true
+
 [node name="Marjorie" parent="Node2D/YSort" instance=ExtResource( 50 )]
 position = Vector2( 284.473, 89.5117 )
 
 [node name="Derek" parent="Node2D/YSort" instance=ExtResource( 51 )]
 position = Vector2( 76.8052, -37.4027 )
+
+[node name="CircleShadowSmall13" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( -189.028, -5.01032 )
+scale = Vector2( 0.662025, 0.606836 )
+texture = ExtResource( 60 )
+script = ExtResource( 59 )
+height = 55.0
+use_transparency = true
 
 [node name="Daisy Pot" parent="Node2D" instance=ExtResource( 5 )]
 modulate = Color( 0.917647, 0.901961, 0.921569, 1 )

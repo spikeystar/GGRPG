@@ -112,8 +112,8 @@ func _physics_process(delta):
 		#jump_disabled = true
 		vel.z = jump_velocity
 		
-	if Input.is_action_just_pressed("ui_push") and sleep and not ongoing:
-		PlayerManager.freeze = false
+	#if Input.is_action_just_pressed("ui_push") and sleep and not ongoing:
+		#PlayerManager.freeze = false
 	
 	vel.x += input_dir.x * player_acceleration * delta
 	vel.y += input_dir.y * player_acceleration * delta

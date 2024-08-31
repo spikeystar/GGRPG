@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Assets/Kugi Canyon/Prickly Pear.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=2]
@@ -55,6 +55,8 @@
 [ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 1.tscn" type="PackedScene" id=53]
 [ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 6.tscn" type="PackedScene" id=54]
 [ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 7.tscn" type="PackedScene" id=55]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=56]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=57]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -1047,7 +1049,7 @@ texture = ExtResource( 12 )
 
 [node name="SquareShadow8" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.235294 )
-position = Vector2( 10, -36 )
+position = Vector2( 16, -37 )
 rotation = 0.0184925
 scale = Vector2( 2.42807, 2.36719 )
 texture = ExtResource( 12 )
@@ -1142,24 +1144,16 @@ floor_height = 40.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
 
-[node name="SquareShadow2" type="Sprite" parent="YSort/MiddleGround"]
-visible = false
-modulate = Color( 1, 1, 1, 0.392157 )
-position = Vector2( -36, -188 )
-rotation = 0.0341947
-scale = Vector2( 0.974559, 0.775427 )
-texture = ExtResource( 12 )
-
 [node name="SquareShadow11" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 1, 1, 1, 0.392157 )
-position = Vector2( -104, -272 )
+position = Vector2( -98, -272 )
 rotation = 0.0341947
 scale = Vector2( 0.831603, 0.651898 )
 texture = ExtResource( 12 )
 
 [node name="SquareShadow12" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 1, 1, 1, 0.392157 )
-position = Vector2( -56, -230 )
+position = Vector2( -47, -231 )
 rotation = 0.0341947
 scale = Vector2( 0.831603, 0.651898 )
 texture = ExtResource( 12 )
@@ -1575,6 +1569,46 @@ centered_textures = true
 format = 1
 tile_data = PoolIntArray( -524297, 20, 0, -262143, 20, 0, 6, 20, 0 )
 
+[node name="SquareShadow13" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 162, -361 )
+rotation = 0.0341947
+scale = Vector2( 0.821491, 0.732548 )
+texture = ExtResource( 12 )
+script = ExtResource( 57 )
+height = 41.0
+use_transparency = true
+
+[node name="SquareShadow16" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 255, -98 )
+rotation = 0.0341947
+scale = Vector2( 0.810536, 0.702232 )
+texture = ExtResource( 12 )
+script = ExtResource( 57 )
+height = 44.0
+use_transparency = true
+
+[node name="SquareShadow14" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 191, -382 )
+rotation = 0.0341947
+scale = Vector2( 0.821491, 0.732548 )
+texture = ExtResource( 12 )
+script = ExtResource( 57 )
+height = 41.0
+use_transparency = true
+
+[node name="SquareShadow15" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 224, -580 )
+rotation = 0.0341947
+scale = Vector2( 0.821491, 0.732548 )
+texture = ExtResource( 12 )
+script = ExtResource( 57 )
+height = 171.0
+use_transparency = true
+
 [node name="Spike" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 1, 0.984314, 0.792157, 1 )
 position = Vector2( -331, -57 )
@@ -1773,6 +1807,15 @@ floor_height = 170.0
 depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
 
+[node name="CircleShadowSmall17" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.470588 )
+position = Vector2( 414, -579 )
+scale = Vector2( 0.717114, 0.703608 )
+texture = ExtResource( 56 )
+script = ExtResource( 57 )
+height = 171.0
+use_transparency = true
+
 [node name="ArrowSign" parent="YSort/MiddleGround" instance=ExtResource( 40 )]
 modulate = Color( 1, 0.968627, 0.984314, 1 )
 position = Vector2( 421, -407 )
@@ -1789,10 +1832,38 @@ floor_height = 170.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
 
+[node name="CircleShadowSmall14" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.470588 )
+position = Vector2( 58, -367 )
+scale = Vector2( 0.717114, 0.703608 )
+texture = ExtResource( 56 )
+script = ExtResource( 57 )
+height = 41.0
+use_transparency = true
+
+[node name="CircleShadowSmall16" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.470588 )
+position = Vector2( 318, -605 )
+scale = Vector2( 0.717114, 0.703608 )
+texture = ExtResource( 56 )
+script = ExtResource( 57 )
+height = 171.0
+use_transparency = true
+
+[node name="CircleShadowSmall15" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.470588 )
+position = Vector2( 379, -301 )
+scale = Vector2( 0.912959, 0.810041 )
+texture = ExtResource( 56 )
+script = ExtResource( 57 )
+height = 41.0
+use_transparency = true
+
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 7 )]
 

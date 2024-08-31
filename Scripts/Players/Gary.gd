@@ -50,7 +50,6 @@ func _physics_process(delta):
 		anim_tree.set("parameters/Fall/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
 	
 	if Input.is_action_just_pressed("ui_push") and not freeze:
-		shadow_sprite.show()
 		$BodyYSort/BodyVisualRoot/Gary.z_index = 0
 		anim_player.stop()
 		anim_tree.active = true
@@ -69,16 +68,17 @@ func _physics_process(delta):
 		
 		
 	if sleep:
-		shadow_sprite.hide()
+		shadow_sprite.offset.y = -1000
 		anim_tree.active = false
 		anim_player.playback_speed = 0.3
 		anim_player.play("sleep")
+		
 		
 	if ouch:
 		anim_tree.active = false
 		anim_player.play("ouch")
 		
-	if not ouch and not drown:
+	if not ouch and not drown and not sleep:
 		anim_player.stop()
 		anim_tree.active = true
 		
@@ -86,6 +86,9 @@ func _physics_process(delta):
 	if drown:
 		anim_tree.active = false
 		anim_player.play("drown")
+		
+	if not sleep:
+		shadow_sprite.offset.y = 0
 		
 		
 	

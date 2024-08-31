@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Assets/Pivot Town/pink rug.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Pivot Town/flower pot.png" type="Texture" id=2]
@@ -9,10 +9,12 @@
 [ext_resource path="res://Assets/Pivot Town/painting 4.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Pivot Town/bed b.png" type="Texture" id=8]
 [ext_resource path="res://Assets/General/Tiles/wood tile b.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Pivot Town/wall a.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Pivot Town/small bookshelf.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Pivot Town/wall b.png" type="Texture" id=13]
 [ext_resource path="res://Assets/Pivot Town/pothos.png" type="Texture" id=14]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Pivot Town/wood dresser a 1.png" type="Texture" id=16]
 [ext_resource path="res://Assets/Pivot Town/staircase b.png" type="Texture" id=23]
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=24]
@@ -198,6 +200,15 @@ texture_offset = Vector2( 2.766, 24 )
 height = 40.0
 preview_collision_box = false
 
+[node name="CircleShadowSmall15" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 231.851, -29.2139 )
+scale = Vector2( 0.580682, 0.535794 )
+texture = ExtResource( 15 )
+script = ExtResource( 10 )
+height = 60.0
+use_transparency = true
+
 [node name="Begonia" parent="Node2D/YSort" instance=ExtResource( 24 )]
 modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
 position = Vector2( 232.17, 31.7848 )
@@ -218,8 +229,27 @@ texture_scale = Vector2( 0.81, 0.8 )
 texture_offset = Vector2( 3, 20 )
 height = 25.0
 floor_height = 55.0
+preview_collision_box = false
 use_collision = false
 use_dither_blending = false
+use_transparency = true
+
+[node name="CircleShadowSmall13" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 92.5327, -89.4857 )
+scale = Vector2( 0.580682, 0.535794 )
+texture = ExtResource( 15 )
+script = ExtResource( 10 )
+height = 45.0
+use_transparency = true
+
+[node name="CircleShadowSmall13" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( -209.154, -28.9053 )
+scale = Vector2( 0.673033, 0.709216 )
+texture = ExtResource( 15 )
+script = ExtResource( 10 )
+height = 60.0
 use_transparency = true
 
 [node name="Sunflowers" parent="Node2D" instance=ExtResource( 24 )]
@@ -231,6 +261,7 @@ texture_scale = Vector2( 1.25, 1.25 )
 texture_offset = Vector2( 0, 40 )
 height = 32.0
 floor_height = 55.0
+preview_collision_box = false
 use_collision = false
 
 [node name="Violet Pot" parent="Node2D" instance=ExtResource( 24 )]
@@ -241,9 +272,9 @@ texture_scale = Vector2( 0.95, 0.95 )
 texture_offset = Vector2( 2, 27 )
 height = 30.0
 floor_height = 40.0
+preview_collision_box = false
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
-visible = false
 position = Vector2( 3.99995, -0.0209439 )
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 45 )]
@@ -267,7 +298,7 @@ position = Vector2( 52.947, -10.2772 )
 polygon = PoolVector2Array( 15.9946, -1.08376, 48.9208, -15.2564, 63, -6, 32, 6 )
 
 [node name="Sleep" parent="Node2D/CollisionRoot" instance=ExtResource( 48 )]
-position = Vector2( 17.4657, -102.093 )
+position = Vector2( 12.4657, -102.067 )
 door_name = "Sleep"
 direction = Vector2( -1, -1 )
 height = 40

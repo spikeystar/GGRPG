@@ -124,10 +124,10 @@ func _input(event):
 		transition.fade_speed()
 		yield(get_tree().create_timer(0.5), "timeout")
 		transition.transition_in(target_scene, _get_animation_name())
-		yield(get_tree().create_timer(0.8), "timeout")
+		yield(get_tree().create_timer(0.7), "timeout")
 		PlayerManager.sleep = true
-		yield(get_tree().create_timer(0.5), "timeout")
-		PlayerManager.ongoing = false
+		#yield(get_tree().create_timer(0.5), "timeout")
+		#PlayerManager.ongoing = false
 		
 		
 func _get_animation_name():

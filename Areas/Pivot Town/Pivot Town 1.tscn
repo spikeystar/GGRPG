@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=2]
+[gd_scene load_steps=94 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/plant b.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=2]
@@ -81,6 +81,7 @@
 [ext_resource path="res://Assets/Pivot Town/inn ledge 1.png" type="Texture" id=79]
 [ext_resource path="res://Assets/Pivot Town/inn ledge 2.png" type="Texture" id=80]
 [ext_resource path="res://Scripts/Item_Get.gd" type="Script" id=81]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=82]
 
 [sub_resource type="StreamTexture" id=20]
 
@@ -908,6 +909,16 @@ texture_offset = Vector2( 1, 40 )
 height = 64.0
 preview_collision_box = false
 
+[node name="CircleShadowSmall13" type="Sprite" parent="YSort/Topleft"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 177, -791 )
+rotation = 0.0570669
+scale = Vector2( 0.673033, 0.709216 )
+texture = ExtResource( 7 )
+script = ExtResource( 82 )
+height = 50.0
+use_transparency = true
+
 [node name="PotBOnBox4" parent="YSort/Topleft" instance=ExtResource( 10 )]
 position = Vector2( 176, -763 )
 grid_size = Vector2( 0.5, 0.6 )
@@ -1115,6 +1126,7 @@ texture_scale = Vector2( 0.6, 0.6 )
 texture_offset = Vector2( 20, 8 )
 height = 50.0
 depth_test_offset = Vector3( 0, 700, 0 )
+preview_collision_box = false
 
 [node name="Ledge1" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
 position = Vector2( -625, -286 )
@@ -1130,6 +1142,17 @@ height = 20.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
 
+[node name="RectangleShadowSmall6" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.65098 )
+position = Vector2( -250, -407 )
+rotation = -0.0239336
+scale = Vector2( 1.67447, 1.69852 )
+texture = ExtResource( 46 )
+flip_h = true
+script = ExtResource( 82 )
+height = 55.0
+use_transparency = true
+
 [node name="Inn" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
 position = Vector2( -329, -347 )
 __meta__ = {
@@ -1143,6 +1166,7 @@ texture_offset = Vector2( 10, 36 )
 height = 250.0
 floor_height = 50.0
 depth_test_offset = Vector3( 0, -200, 0 )
+preview_collision_box = false
 
 [node name="Plantbox" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
 position = Vector2( -278, -340 )
@@ -1171,6 +1195,16 @@ texture = ExtResource( 30 )
 texture_offset = Vector2( 1, 20 )
 height = 60.0
 preview_collision_box = false
+
+[node name="CircleShadowSmall6" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( -291, -292 )
+rotation = 0.0570669
+scale = Vector2( 0.673033, 0.709216 )
+texture = ExtResource( 7 )
+script = ExtResource( 82 )
+height = 50.0
+use_transparency = true
 
 [node name="PotBOnBox3" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
 position = Vector2( -290, -250 )
@@ -1238,6 +1272,15 @@ position = Vector2( 412, -162 )
 rotation = 0.161373
 scale = Vector2( 1.13263, 0.900418 )
 texture = ExtResource( 7 )
+
+[node name="CircleShadowSmall5" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.54902 )
+position = Vector2( -203, -425 )
+scale = Vector2( 1.13263, 0.900418 )
+texture = ExtResource( 7 )
+script = ExtResource( 82 )
+height = 55.0
+use_transparency = true
 
 [node name="PotBOnBox6" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
 modulate = Color( 0.7, 0.7, 0.7, 1 )
@@ -1366,6 +1409,7 @@ texture_offset = Vector2( 3, 40 )
 height = 35.0
 floor_height = 50.0
 depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
 
 [node name="BushA23" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
 position = Vector2( -91, -378 )
@@ -2320,7 +2364,7 @@ position = Vector2( 170, -415 )
 scale = Vector2( 1.6, 1.6 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 1
+frame = 4
 speed_scale = 0.7
 playing = true
 

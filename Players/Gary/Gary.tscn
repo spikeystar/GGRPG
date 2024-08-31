@@ -492,6 +492,30 @@ tracks/11/keys = {
 "update": 0,
 "values": [ ExtResource( 2 ) ]
 }
+tracks/12/type = "value"
+tracks/12/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:self_modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.686275 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=189]
 resource_name = "back_fall"

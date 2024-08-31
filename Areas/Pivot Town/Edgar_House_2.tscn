@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Pivot Town/flower pot.png" type="Texture" id=2]
@@ -35,6 +35,8 @@
 [ext_resource path="res://Assets/Gary's House/Interior/lamp.png" type="Texture" id=33]
 [ext_resource path="res://Assets/Pivot Town/painting 5.png" type="Texture" id=34]
 [ext_resource path="res://Assets/Pivot Town/staircase c.png" type="Texture" id=35]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=36]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=37]
 
 [sub_resource type="TileSet" id=1]
 0/name = "wood tile a.png 0"
@@ -155,6 +157,24 @@ height = 55.0
 depth_test_offset = Vector3( 0, -20, 0 )
 preview_collision_box = false
 
+[node name="CircleShadowSmall13" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 10.34, -126.056 )
+scale = Vector2( 0.67171, 0.682818 )
+texture = ExtResource( 37 )
+script = ExtResource( 36 )
+height = 55.0
+use_transparency = true
+
+[node name="CircleShadowSmall14" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( -70.462, -87.6323 )
+scale = Vector2( 0.52559, 0.604738 )
+texture = ExtResource( 37 )
+script = ExtResource( 36 )
+height = 55.0
+use_transparency = true
+
 [node name="Globe" parent="Node2D/YSort" instance=ExtResource( 7 )]
 position = Vector2( -185.024, -4.03128 )
 grid_size = Vector2( 0.55, 0.45 )
@@ -239,6 +259,7 @@ texture = ExtResource( 6 )
 texture_scale = Vector2( 0.8, 0.8 )
 height = 20.0
 floor_height = 55.0
+preview_collision_box = false
 use_collision = false
 
 [node name="Bookshelf 1" parent="Node2D/YSort" instance=ExtResource( 7 )]
@@ -306,6 +327,7 @@ texture_scale = Vector2( 0.55, 0.55 )
 height = 32.0
 floor_height = 55.0
 depth_test_offset = Vector3( 0, 100, 0 )
+preview_collision_box = false
 use_transparency = true
 
 [node name="Lamp" parent="Node2D/YSort" instance=ExtResource( 7 )]
@@ -329,6 +351,15 @@ height = 32.0
 floor_height = 40.0
 preview_collision_box = false
 use_collision = false
+
+[node name="CircleShadowSmall16" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( -219.343, -64.8525 )
+scale = Vector2( 0.520895, 0.515713 )
+texture = ExtResource( 37 )
+script = ExtResource( 36 )
+height = 85.0
+use_transparency = true
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
 visible = false

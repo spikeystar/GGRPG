@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://Assets/General/Backgrounds/Inside BCKGD.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=2]
@@ -51,9 +51,11 @@
 [ext_resource path="res://Assets/Pivot Town/flower pot.png" type="Texture" id=49]
 [ext_resource path="res://NPC/Pivot Town/Edgar.tscn" type="PackedScene" id=50]
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=51]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=52]
 [ext_resource path="res://Assets/Pivot Town/wood pile.png" type="Texture" id=53]
 [ext_resource path="res://Assets/Pivot Town/Pivot Town Place SS.png" type="Texture" id=54]
 [ext_resource path="res://Assets/Pivot Town/dish cabinet.png" type="Texture" id=55]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=56]
 [ext_resource path="res://Assets/Pivot Town/oil lamp.png" type="Texture" id=57]
 [ext_resource path="res://Assets/Gary's House/Interior/window.png" type="Texture" id=58]
 [ext_resource path="res://Assets/Pivot Town/curtains b.png" type="Texture" id=59]
@@ -259,6 +261,15 @@ position = Vector2( 201.851, 161.945 )
 rotation = 0.00796762
 scale = Vector2( 0.862488, 0.846162 )
 texture = ExtResource( 51 )
+
+[node name="CircleShadowSmall15" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 391.084, 14.952 )
+scale = Vector2( 0.548986, 0.501748 )
+texture = ExtResource( 56 )
+script = ExtResource( 52 )
+height = 75.0
+use_transparency = true
 
 [node name="Bookshelf 1" parent="Node2D/YSort" instance=ExtResource( 18 )]
 position = Vector2( 386.429, 80.9778 )
@@ -469,23 +480,25 @@ preview_collision_box = false
 
 [node name="Teaset" parent="Node2D/YSort" instance=ExtResource( 18 )]
 modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
-position = Vector2( 26.5023, 95.8626 )
-grid_size = Vector2( 0.3, 0.3 )
+position = Vector2( 22.3191, 60.884 )
+grid_size = Vector2( 0.9, 0.9 )
 texture = ExtResource( 4 )
 texture_scale = Vector2( 0.9, 0.9 )
+texture_offset = Vector2( 3, 25 )
 height = 15.0
-floor_height = 65.0
+floor_height = 55.0
 preview_collision_box = false
 use_collision = false
 
 [node name="Fruit" parent="Node2D/YSort" instance=ExtResource( 18 )]
 modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
-position = Vector2( -16.5233, 91.0877 )
-grid_size = Vector2( 0.3, 0.3 )
+position = Vector2( -15.7851, 41.0832 )
+grid_size = Vector2( 0.7, 0.7 )
 texture = ExtResource( 8 )
 texture_scale = Vector2( 1.2, 1.18 )
+texture_offset = Vector2( 0, 35 )
 height = 32.0
-floor_height = 70.0
+floor_height = 55.0
 preview_collision_box = false
 use_collision = false
 
@@ -525,6 +538,24 @@ texture_offset = Vector2( 0, 18 )
 height = 50.0
 depth_test_offset = Vector3( 0, -200, 0 )
 preview_collision_box = false
+
+[node name="CircleShadowSmall14" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 301.854, -28.5814 )
+scale = Vector2( 0.642964, 0.591124 )
+texture = ExtResource( 56 )
+script = ExtResource( 52 )
+height = 75.0
+use_transparency = true
+
+[node name="CircleShadowSmall16" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( -17.083, -15.9114 )
+scale = Vector2( 1.0005, 0.90005 )
+texture = ExtResource( 56 )
+script = ExtResource( 52 )
+height = 60.0
+use_transparency = true
 
 [node name="Violet Pot2" parent="Node2D/YSort" instance=ExtResource( 18 )]
 position = Vector2( 200.966, 183.95 )
@@ -567,6 +598,15 @@ height = 32.0
 floor_height = 70.0
 depth_test_offset = Vector3( 0, 100, 0 )
 preview_collision_box = false
+
+[node name="CircleShadowSmall13" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( -28.418, -79.8523 )
+scale = Vector2( 0.642964, 0.591124 )
+texture = ExtResource( 56 )
+script = ExtResource( 52 )
+height = 45.0
+use_transparency = true
 
 [node name="OilLamp" parent="Node2D" instance=ExtResource( 18 )]
 modulate = Color( 0.91632, 0.9016, 0.92, 0.960784 )

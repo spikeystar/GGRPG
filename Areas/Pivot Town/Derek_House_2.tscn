@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=2]
@@ -20,9 +20,11 @@
 [ext_resource path="res://Assets/Pivot Town/wall a.png" type="Texture" id=18]
 [ext_resource path="res://Assets/Pivot Town/small bookshelf.png" type="Texture" id=19]
 [ext_resource path="res://Assets/Pivot Town/wall b.png" type="Texture" id=20]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=21]
 [ext_resource path="res://Assets/Pivot Town/book stack.png" type="Texture" id=22]
 [ext_resource path="res://Assets/Pivot Town/begonia.png" type="Texture" id=23]
 [ext_resource path="res://Assets/Pivot Town/flower pot.png" type="Texture" id=24]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=25]
 [ext_resource path="res://Assets/Pivot Town/End Table.png" type="Texture" id=26]
 [ext_resource path="res://Assets/General/Backgrounds/Inside BCKGD.png" type="Texture" id=27]
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=28]
@@ -237,10 +239,11 @@ preview_collision_box = false
 
 [node name="Begonia" parent="Node2D/YSort" instance=ExtResource( 4 )]
 modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
-position = Vector2( -154.019, -3.19361 )
+position = Vector2( -158.014, -2.17268 )
 grid_size = Vector2( 0.6, 0.6 )
 texture = ExtResource( 23 )
 texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 4, 0 )
 height = 55.0
 floor_height = 55.0
 depth_test_offset = Vector3( 0, -30, 0 )
@@ -283,14 +286,14 @@ preview_collision_box = false
 always_update = true
 
 [node name="Oil Lamp" parent="Node2D/YSort" instance=ExtResource( 4 )]
-position = Vector2( -185.992, 1.97388 )
+position = Vector2( -184.961, 7.96856 )
 tile_size = Vector2( 63, 28 )
 grid_size = Vector2( 0.6, 0.5 )
 texture = ExtResource( 11 )
 texture_scale = Vector2( 0.8, 0.8 )
 texture_offset = Vector2( 1, 25 )
 height = 45.0
-floor_height = 55.0
+floor_height = 60.0
 depth_test_offset = Vector3( 0, 20, 0 )
 preview_collision_box = false
 use_collision = false
@@ -308,6 +311,24 @@ modulate = Color( 1, 0.996078, 1, 1 )
 position = Vector2( 31.3818, 72.8367 )
 rotation = -0.0314344
 texture = ExtResource( 10 )
+
+[node name="CircleShadowSmall13" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 93.3491, -127.491 )
+scale = Vector2( 0.580682, 0.535794 )
+texture = ExtResource( 25 )
+script = ExtResource( 21 )
+height = 85.0
+use_transparency = true
+
+[node name="CircleShadowSmall14" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( -154.286, -54.1929 )
+scale = Vector2( 0.637011, 0.652609 )
+texture = ExtResource( 25 )
+script = ExtResource( 21 )
+height = 55.0
+use_transparency = true
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
 visible = false

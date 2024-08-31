@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=2]
@@ -62,6 +62,8 @@
 [ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 1.tscn" type="PackedScene" id=60]
 [ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 7.tscn" type="PackedScene" id=61]
 [ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 8.tscn" type="PackedScene" id=62]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=63]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=64]
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
@@ -585,6 +587,7 @@ position = Vector2( -129, -411 )
 rotation = 0.0885145
 scale = Vector2( 2.17749, 2.17805 )
 frames = SubResource( 9 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -963,7 +966,7 @@ texture = ExtResource( 5 )
 
 [node name="SquareShadow8" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.235294 )
-position = Vector2( 268, -218 )
+position = Vector2( 265, -218 )
 rotation = 0.030219
 scale = Vector2( 0.863388, 0.640207 )
 texture = ExtResource( 5 )
@@ -1684,6 +1687,96 @@ flip_h = true
 script = ExtResource( 1 )
 depth_test_offset = Vector2( 0, 200 )
 
+[node name="CircleShadowSmall17" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 373, -293 )
+scale = Vector2( 0.959305, 0.804396 )
+texture = ExtResource( 63 )
+script = ExtResource( 64 )
+use_transparency = true
+
+[node name="CircleShadowSmall18" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 403, -290 )
+scale = Vector2( 0.959305, 0.804396 )
+texture = ExtResource( 63 )
+script = ExtResource( 64 )
+use_transparency = true
+
+[node name="CircleShadowSmall20" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 187, -187 )
+scale = Vector2( 0.826581, 0.645899 )
+texture = ExtResource( 63 )
+script = ExtResource( 64 )
+use_transparency = true
+
+[node name="CircleShadowSmall21" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 19, -246 )
+scale = Vector2( 0.826581, 0.645899 )
+texture = ExtResource( 63 )
+script = ExtResource( 64 )
+use_transparency = true
+
+[node name="CircleShadowSmall23" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( -88, -81 )
+scale = Vector2( 0.826581, 0.645899 )
+texture = ExtResource( 63 )
+script = ExtResource( 64 )
+use_transparency = true
+
+[node name="CircleShadowSmall24" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 246, 7 )
+scale = Vector2( 0.826581, 0.645899 )
+texture = ExtResource( 63 )
+script = ExtResource( 64 )
+use_transparency = true
+
+[node name="CircleShadowSmall25" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( -1.99995, 115 )
+scale = Vector2( 0.826581, 0.645899 )
+texture = ExtResource( 63 )
+script = ExtResource( 64 )
+use_transparency = true
+
+[node name="CircleShadowSmall22" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 53, -236 )
+scale = Vector2( 0.656211, 0.633652 )
+texture = ExtResource( 63 )
+script = ExtResource( 64 )
+use_transparency = true
+
+[node name="CircleShadowSmall19" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 435, -285 )
+scale = Vector2( 0.598885, 0.637043 )
+texture = ExtResource( 63 )
+script = ExtResource( 64 )
+use_transparency = true
+
+[node name="CircleShadowSmall16" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.470588 )
+position = Vector2( -412, -245 )
+scale = Vector2( 0.743476, 0.750663 )
+texture = ExtResource( 63 )
+script = ExtResource( 64 )
+height = 141.0
+use_transparency = true
+
+[node name="CircleShadowSmall26" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.470588 )
+position = Vector2( -303, -279 )
+scale = Vector2( 0.987118, 1.01467 )
+texture = ExtResource( 63 )
+script = ExtResource( 64 )
+height = 141.0
+use_transparency = true
+
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
@@ -1851,7 +1944,7 @@ position = Vector2( -235, -234 )
 z_index = 4096
 current = true
 script = ExtResource( 27 )
-minPos = Vector2( -95, -470 )
+minPos = Vector2( -100, -470 )
 maxPos = Vector2( 380, -90 )
 follow_player = true
 
