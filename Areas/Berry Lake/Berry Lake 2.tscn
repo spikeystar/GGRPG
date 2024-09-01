@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=2]
@@ -55,6 +55,7 @@
 [ext_resource path="res://Assets/Cherry Trail/bush b.png" type="Texture" id=53]
 [ext_resource path="res://Assets/Kugi Canyon/Arrow Sign.png" type="Texture" id=54]
 [ext_resource path="res://Assets/Berry Lake/Sunbeam.png" type="Texture" id=55]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=56]
 
 [sub_resource type="TileSet" id=1]
 7/name = "Grass Tile.png 7"
@@ -784,6 +785,33 @@ height = 140.0
 depth_test_offset = Vector3( 0, -400, 0 )
 preview_collision_box = false
 
+[node name="CircleShadowSmall5" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.46 )
+position = Vector2( 551, -589 )
+scale = Vector2( 0.711765, 0.772635 )
+texture = ExtResource( 1 )
+script = ExtResource( 56 )
+height = 175.0
+use_transparency = true
+
+[node name="CircleShadowSmall6" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.47 )
+position = Vector2( 522, -593 )
+scale = Vector2( 1.11564, 0.893947 )
+texture = ExtResource( 1 )
+script = ExtResource( 56 )
+height = 145.0
+use_transparency = true
+
+[node name="CircleShadowSmall7" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.47 )
+position = Vector2( 582, -591 )
+scale = Vector2( 1.11564, 0.893947 )
+texture = ExtResource( 1 )
+script = ExtResource( 56 )
+height = 145.0
+use_transparency = true
+
 [node name="BushA3" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
 modulate = Color( 0.478431, 0.952941, 1, 1 )
 position = Vector2( 525, -453 )
@@ -827,7 +855,7 @@ texture_scale = Vector2( 1.1, 1.05 )
 texture_offset = Vector2( -3, 5 )
 height = 55.0
 floor_height = 140.0
-depth_test_offset = Vector3( 0, 500, 0 )
+depth_test_offset = Vector3( 0, 550, 0 )
 preview_collision_box = false
 
 [node name="DecoGrass" type="Sprite" parent="YSort/MiddleGround"]
@@ -961,6 +989,7 @@ scale = Vector2( 3.08211, 3.15823 )
 texture = ExtResource( 47 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 17 )]
 
