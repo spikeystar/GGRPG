@@ -7,7 +7,7 @@
 [ext_resource path="res://Assets/Kugi Canyon/Spikes B.png" type="Texture" id=5]
 [ext_resource path="res://Assets/General/Backgrounds/SkyBlue BCKGD.png" type="Texture" id=6]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=7]
-[ext_resource path="res://Assets/General/Tiles/Water.tres" type="Texture" id=8]
+[ext_resource path="res://Assets/General/Tiles/Water/Water.tres" type="Texture" id=8]
 [ext_resource path="res://Assets/Kugi Canyon/Spikes A.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Berry Lake/Tree A.png" type="Texture" id=10]
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile B.png" type="Texture" id=11]

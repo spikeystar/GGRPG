@@ -14,7 +14,7 @@
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Assets/General/Tiles/Water.tres" type="Texture" id=15]
+[ext_resource path="res://Assets/General/Tiles/Water/Water.tres" type="Texture" id=15]
 [ext_resource path="res://Assets/Kugi Canyon/Spikes A.png" type="Texture" id=16]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=17]
 [ext_resource path="res://Assets/Berry Lake/Tree A.png" type="Texture" id=18]
@@ -1591,11 +1591,13 @@ texture = ExtResource( 50 )
 [node name="BouncyFlower" parent="YSort/MiddleGround" instance=ExtResource( 55 )]
 position = Vector2( -25.4052, -257.395 )
 texture_scale = Vector2( 0.7, 0.8 )
+height = 25.0
 floor_height = 20.0
 
 [node name="BouncyFlower2" parent="YSort/MiddleGround" instance=ExtResource( 55 )]
 position = Vector2( 559.595, -242.395 )
 texture_scale = Vector2( 0.7, 0.8 )
+height = 25.0
 floor_height = 20.0
 
 [node name="Foreground" type="Node2D" parent="YSort"]
@@ -1705,7 +1707,7 @@ anims/sunbeams = SubResource( 8 )
 visible = false
 position = Vector2( 141, -256 )
 script = ExtResource( 42 )
-height = 50.0
+height = 45.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bouncy"]
 position = Vector2( -1, 7 )
@@ -1715,7 +1717,7 @@ polygon = PoolVector2Array( -181, -48, -184, -53, -180, -57, -166, -55, -158, -5
 visible = false
 position = Vector2( 726, -241 )
 script = ExtResource( 42 )
-height = 50.0
+height = 45.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bouncy2"]
 position = Vector2( -1, 7 )

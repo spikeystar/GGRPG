@@ -633,6 +633,7 @@ texture = ExtResource( 48 )
 [node name="BouncyFlower" parent="YSort/MiddleGround" instance=ExtResource( 52 )]
 position = Vector2( 381, -395 )
 texture_scale = Vector2( 0.7, 0.8 )
+height = 25.0
 
 [node name="Ledge2" type="Sprite" parent="YSort/MiddleGround"]
 position = Vector2( 274, -79 )
@@ -1043,7 +1044,7 @@ polygon = PoolVector2Array( -49.4963, -20.8594, 48.2187, 8.88583, 26.433, 18.392
 [node name="Bouncy" type="Area2D" parent="."]
 position = Vector2( 547, -374 )
 script = ExtResource( 51 )
-height = 30.0
+height = 25.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bouncy"]
 position = Vector2( -1, 7 )

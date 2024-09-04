@@ -338,9 +338,8 @@ use_dithering = false
 use_dither_blending = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
-visible = false
-position = Vector2( 2, -15 )
-scale = Vector2( 1.94951, 1.87464 )
+position = Vector2( 1, -12 )
+scale = Vector2( 1.47356, 1.37327 )
 shape = SubResource( 7 )
 
 [connection signal="triggered" from="MotionRoot/BattleTrigger" to="." method="_on_BattleTrigger_triggered"]

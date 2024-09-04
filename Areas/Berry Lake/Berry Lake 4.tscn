@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Berry Grass.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=2]
@@ -39,7 +39,7 @@
 [ext_resource path="res://Assets/Berry Lake/Tree A.png" type="Texture" id=37]
 [ext_resource path="res://Assets/Kugi Canyon/Spikes A.png" type="Texture" id=38]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Pink Flower B.png" type="Texture" id=39]
-[ext_resource path="res://Assets/General/Tiles/Water.tres" type="Texture" id=40]
+[ext_resource path="res://Assets/General/Tiles/Water/Water.tres" type="Texture" id=40]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=41]
 [ext_resource path="res://Assets/Berry Lake/Grass B.png" type="Texture" id=42]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=43]
@@ -63,6 +63,7 @@
 [ext_resource path="res://Scripts/Drown.gd" type="Script" id=61]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=62]
 [ext_resource path="res://Scripts/Rendering/DepthTestTileMap.gd" type="Script" id=63]
+[ext_resource path="res://Assets/General/Shadows/circle shadow large.png" type="Texture" id=64]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -851,6 +852,36 @@ script = ExtResource( 62 )
 height = 40.0
 use_transparency = true
 
+[node name="CircleShadowSmall9" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.25 )
+position = Vector2( -562, -141 )
+scale = Vector2( 0.957541, 0.500206 )
+texture = ExtResource( 64 )
+
+[node name="CircleShadowSmall11" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.25 )
+position = Vector2( 464, -8 )
+scale = Vector2( 0.957541, 0.500206 )
+texture = ExtResource( 64 )
+
+[node name="CircleShadowSmall17" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 404, -82 )
+scale = Vector2( 1.45493, 1.12218 )
+texture = ExtResource( 22 )
+
+[node name="CircleShadowSmall18" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( -409, -79 )
+scale = Vector2( 1.45493, 1.12218 )
+texture = ExtResource( 22 )
+
+[node name="CircleShadowSmall19" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( -491, -86 )
+scale = Vector2( 1.45493, 1.12218 )
+texture = ExtResource( 22 )
+
 [node name="BerriesB" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 1, 1, 0.941176 )
 position = Vector2( -440, -190 )
@@ -1229,16 +1260,19 @@ preview_collision_box = false
 [node name="BouncyFlower" parent="YSort/MiddleGround" instance=ExtResource( 56 )]
 position = Vector2( -358, -166 )
 texture_scale = Vector2( 0.7, 0.8 )
+height = 25.0
 floor_height = 40.0
 
 [node name="BouncyFlower2" parent="YSort/MiddleGround" instance=ExtResource( 56 )]
 position = Vector2( -99, -49 )
 texture_scale = Vector2( 0.7, 0.8 )
+height = 25.0
 floor_height = 40.0
 
 [node name="BouncyFlower3" parent="YSort/MiddleGround" instance=ExtResource( 56 )]
 position = Vector2( 210, -44 )
 texture_scale = Vector2( 0.7, 0.8 )
+height = 25.0
 floor_height = 40.0
 
 [node name="StarfruitM" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
@@ -1460,7 +1494,7 @@ anims/sunbeams = SubResource( 8 )
 visible = false
 position = Vector2( -195, -178 )
 script = ExtResource( 55 )
-height = 70.0
+height = 65.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bouncy"]
 position = Vector2( 1, 0 )
@@ -1470,7 +1504,7 @@ polygon = PoolVector2Array( -181, -48, -182, -53, -178, -58, -166, -55, -158, -5
 visible = false
 position = Vector2( 69, -58 )
 script = ExtResource( 55 )
-height = 70.0
+height = 65.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bouncy2"]
 position = Vector2( -2, -3 )
@@ -1480,22 +1514,22 @@ polygon = PoolVector2Array( -181, -48, -184, -53, -180, -57, -166, -55, -158, -5
 visible = false
 position = Vector2( 375, -57 )
 script = ExtResource( 55 )
-height = 70.0
+height = 65.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Bouncy3"]
 polygon = PoolVector2Array( -181, -48, -183, -53, -178, -58, -166, -55, -158, -56, -148, -57, -145, -53, -147, -48, -146, -45, -144, -39, -150, -35, -157, -40, -164, -41, -169, -40, -175, -37, -181, -37, -185, -39, -185, -43, -180, -45 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 24 )]
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 25 )]
 position = Vector2( -30, -7 )
-polygon = PoolVector2Array( -279, -101, -252, -110, -280, -121, -252, -134, -310, -155, -276, -167, -401, -207, -221, -264, -102, -316, -102, -330, -183, -354, -156, -364, -217, -386, -186, -397, -209, -408, -31, -471, 140, -407, 127, -399, 145, -384, 99, -343, 134, -295, 213, -248, 308, -283, 386, -255, 299, -218, 579, -121, 525, -101, 433, -134, 401, -123, 370, -134, 244, -90, 277, -78, 245, -67, 275, -55, 244, -45, 277, -34, 243, -24, 275, -12, 246, 1, 336, 31, 61, 129, 30, 118, -1, 127, -190, 58, -282, 92, -359, 63, -281, 33, -422, -22, -253, -85 )
+polygon = PoolVector2Array( -279, -101, -252, -110, -280, -121, -252, -134, -310, -155, -276, -167, -401, -207, -221, -264, -102, -316, -102, -330, -183, -354, -156, -364, -217, -386, -186, -397, -209, -408, -31, -471, 140, -407, 127, -399, 145, -384, 99, -343, 134, -295, 213, -248, 308, -283, 386, -255, 299, -218, 579, -121, 525, -101, 433, -134, 401, -123, 370, -134, 244, -90, 277, -78, 245, -67, 275, -55, 244, -45, 277, -34, 243, -24, 275, -12, 246, 1, 336, 31, 61, 129, 30, 118, -1, 127, -190, 58, -282, 92, -359, 63, -281, 33, -423, -24, -253, -85 )
 height = 40.0
 
 [node name="NavmeshLayer2" parent="CollisionRoot/Navmesh2" instance=ExtResource( 25 )]
+visible = false
 position = Vector2( -30, -7 )
 polygon = PoolVector2Array( -383, -204, -356, -197, -209, -242, -68, -304, -71, -333, -144, -367, -125, -393, -31, -431, 49, -408, 90, -380, 78, -360, 77, -287, 191, -231, 257, -214, 555, -106, 678, -69, 629, 37, 510, 85, 429, 82, 350, 56, 317, 59, 61, 129, 30, 118, 3, 122, -190, 45, -254, 56, -275, 46, -268, 24, -407, -29, -588, -34, -609, -95, -633, -179, -584, -225, -528, -236, -455, -218 )
 
@@ -1534,7 +1568,6 @@ direction = Vector2( -1, -1 )
 height = 40
 
 [node name="Water" type="Area2D" parent="."]
-visible = false
 position = Vector2( -585, -248 )
 script = ExtResource( 61 )
 target_scene = "res://Areas/Berry Lake/Berry Lake 4.tscn"
@@ -1542,7 +1575,7 @@ exit_name = "Left"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Water"]
 position = Vector2( 122, 109 )
-polygon = PoolVector2Array( -239, -44, -246, -3, -234, 69, -187, 105, -149, 128, -99, 132, -52, 140, 17, 116, 180, 53, 179, 42, 177, 23, 176, -3, 137, -21, 144, -34, 39, -75, 50, -89, 22, -95, -25, -88, -94, -124, -182, -91 )
+polygon = PoolVector2Array( -239, -44, -246, -3, -234, 69, -187, 105, -149, 128, -99, 132, -52, 140, 23, 125, 187, 55, 179, 42, 177, 23, 176, -3, 137, -21, 144, -34, 39, -75, 50, -89, 22, -95, -25, -88, -94, -124, -182, -91 )
 
 [node name="Water2" type="Area2D" parent="."]
 visible = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Kugi Canyon/Spikes B.png" type="Texture" id=2]
@@ -49,7 +49,7 @@
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=47]
 [ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=48]
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=49]
-[ext_resource path="res://Assets/General/Tiles/Water.tres" type="Texture" id=50]
+[ext_resource path="res://Assets/General/Tiles/Water/Water.tres" type="Texture" id=50]
 [ext_resource path="res://Assets/General/Tiles/Orange Grass Tile.png" type="Texture" id=51]
 [ext_resource path="res://Assets/General/Backgrounds/SkyBlue BCKGD.png" type="Texture" id=52]
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=53]
@@ -68,6 +68,8 @@
 [ext_resource path="res://Enemies/Berry Lake/Kerobi_post_B.tscn" type="PackedScene" id=66]
 [ext_resource path="res://Scripts/Objects/Collision/Boundary.gd" type="Script" id=67]
 [ext_resource path="res://Assets/Berry Lake/BerryLake5.png" type="Texture" id=68]
+[ext_resource path="res://Assets/General/Shadows/circle shadow large.png" type="Texture" id=69]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=70]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -760,6 +762,81 @@ format = 1
 tile_data = PoolIntArray( -1376253, 27, 0, -1376252, 12, 0, -1376250, 8, 0, -1376244, 13, 0, -1376241, 27, 0, -1310719, 13, 0, -1310710, 25, 0, -1310705, 9, 0, -1245183, 9, 0, -1179648, 25, 0, -1179635, 8, 0, -1179630, 12, 0, -1114110, 26, 0, -1114107, 13, 0, -1114100, 27, 0, -1114094, 8, 0, -1048567, 9, 0, -1048558, 25, 0, -983038, 12, 0, -983035, 8, 0, -983028, 13, 0, 917527, 13, 0, 983047, 8, 0, 983057, 9, 0, 983062, 25, 0, 983064, 9, 0, 1048588, 13, 0, 1048594, 27, 0, 1048600, 12, 0, 1114119, 12, 0, 1114136, 27, 0, 1179660, 26, 0, 1179671, 8, 0, 1245193, 25, 0, 1245204, 12, 0, 1310730, 9, 0, 1310731, 13, 0, 1310733, 8, 0, 1310742, 27, 0, 1376273, 25, 0 )
 script = ExtResource( 25 )
 height = 40.0
+
+[node name="CircleShadowSmall11" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.25 )
+position = Vector2( 224.754, 190.021 )
+scale = Vector2( 0.957541, 0.500206 )
+texture = ExtResource( 69 )
+
+[node name="CircleShadowSmall12" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.25 )
+position = Vector2( 398.754, 134.021 )
+scale = Vector2( 0.957541, 0.500206 )
+texture = ExtResource( 69 )
+
+[node name="CircleShadowSmall13" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.25 )
+position = Vector2( 559, 78 )
+scale = Vector2( 0.957541, 0.500206 )
+texture = ExtResource( 69 )
+
+[node name="CircleShadowSmall14" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.1 )
+position = Vector2( 322, 57 )
+scale = Vector2( 0.451825, 0.434247 )
+texture = ExtResource( 69 )
+
+[node name="CircleShadowSmall15" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.1 )
+position = Vector2( 288, 246 )
+scale = Vector2( 0.451825, 0.434247 )
+texture = ExtResource( 69 )
+
+[node name="CircleShadowSmall16" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.1 )
+position = Vector2( 613, 132 )
+scale = Vector2( 0.451825, 0.434247 )
+texture = ExtResource( 69 )
+
+[node name="SquareShadow" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.15 )
+position = Vector2( 150, 125 )
+rotation = 0.0337013
+scale = Vector2( 1.38986, 1.01517 )
+texture = ExtResource( 70 )
+
+[node name="SquareShadow2" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.15 )
+position = Vector2( 473, 190 )
+rotation = 0.0337013
+scale = Vector2( 1.38986, 1.01517 )
+texture = ExtResource( 70 )
+
+[node name="SquareShadow3" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.15 )
+position = Vector2( 479, 8 )
+rotation = 0.0337013
+scale = Vector2( 1.38986, 1.01517 )
+texture = ExtResource( 70 )
+
+[node name="CircleShadowSmall9" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.117647 )
+position = Vector2( 14, -35 )
+scale = Vector2( 1.01271, 0.543725 )
+texture = ExtResource( 69 )
+
+[node name="CircleShadowSmall10" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.117647 )
+position = Vector2( 1018, 244 )
+scale = Vector2( 1.01271, 0.543725 )
+texture = ExtResource( 69 )
+
+[node name="CircleShadowSmall17" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 676, 12 )
+scale = Vector2( 1.57349, 1.15878 )
+texture = ExtResource( 4 )
 
 [node name="BerriesB" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 1, 1, 0.941176 )
@@ -1707,6 +1784,7 @@ visible = false
 position = Vector2( 1232, 304 )
 rotation = 0.0231584
 script = ExtResource( 28 )
+target_scene = "res://Areas/Berry Lake/Berry Lake 6.tscn"
 exit_name = "BerryLake5_BerryLake6"
 height = 40.0
 
