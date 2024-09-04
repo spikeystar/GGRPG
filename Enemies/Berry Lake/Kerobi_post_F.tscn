@@ -215,8 +215,8 @@ script = ExtResource( 10 )
 spawn_z = 40
 
 [node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 3 )]
-visible = false
-position = Vector2( -14, 0 )
+position = Vector2( -9, 0 )
+scale = Vector2( 0.888637, 0.885135 )
 collision_layer = 0
 collision_mask = 1
 script = ExtResource( 5 )

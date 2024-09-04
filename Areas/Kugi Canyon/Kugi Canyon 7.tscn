@@ -1683,7 +1683,7 @@ direction = Vector2( 1, 1 )
 
 [node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 40 )]
 visible = false
-position = Vector2( 286, -301 )
+position = Vector2( 288, -290 )
 door_name = "BerryLake1_KugiCanyon7"
 direction = Vector2( -1, -1 )
 height = 130
