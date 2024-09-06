@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Pivot Town/Orange Brick A.png" type="Texture" id=2]
@@ -73,6 +73,10 @@
 [ext_resource path="res://Assets/Cherry Trail/bush b.png" type="Texture" id=71]
 [ext_resource path="res://Assets/General/Save Star.png" type="Texture" id=72]
 [ext_resource path="res://Assets/Berry Lake/Flower B.png" type="Texture" id=73]
+[ext_resource path="res://Assets/General/Shadows/rectangle shadow large.png" type="Texture" id=74]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=75]
+[ext_resource path="res://Assets/Gary's House/Exterior/cloud a.png" type="Texture" id=76]
+[ext_resource path="res://Assets/Gary's House/Exterior/cloud b.png" type="Texture" id=77]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -544,6 +548,10 @@
 27/shapes = [  ]
 27/z_index = 0
 
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0, 0.059633, 0.807339, 0.981651, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.470588, 1, 1, 1, 1, 1, 1, 1, 0, 0.910604, 0.910604, 0.910604, 0.0853976, 0.849814, 0.849814, 0.849814, 0.143468 )
+
 [sub_resource type="Animation" id=7]
 length = 0.001
 
@@ -860,6 +868,50 @@ position = Vector2( -174, -437 )
 scale = Vector2( 1.05, 1 )
 texture = ExtResource( 54 )
 
+[node name="SquareShadow" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 0, 0, 0, 0.121569 )
+position = Vector2( -363, -305 )
+rotation = 0.0682982
+scale = Vector2( 0.930755, 0.721107 )
+texture = ExtResource( 75 )
+
+[node name="RectangleShadowLarge" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.2 )
+position = Vector2( -229, -275 )
+rotation = 0.0888928
+scale = Vector2( 1.4495, 1.28507 )
+texture = ExtResource( 74 )
+
+[node name="RectangleShadowLarge2" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.3 )
+position = Vector2( 421, 31 )
+rotation = 0.0207545
+scale = Vector2( 1.29225, 1.14098 )
+texture = ExtResource( 74 )
+script = ExtResource( 69 )
+height = 15.0
+use_transparency = true
+
+[node name="RectangleShadowLarge3" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.3 )
+position = Vector2( 524, 32 )
+rotation = 0.0207545
+scale = Vector2( 1.29225, 1.14098 )
+texture = ExtResource( 74 )
+script = ExtResource( 69 )
+height = 10.0
+use_transparency = true
+
+[node name="RectangleShadowLarge4" type="Sprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.3 )
+position = Vector2( 843, 36 )
+rotation = 0.0515469
+scale = Vector2( 3.52703, 2.60274 )
+texture = ExtResource( 74 )
+script = ExtResource( 69 )
+height = 7.0
+use_transparency = true
+
 [node name="MiddleGround" type="Node2D" parent="YSort"]
 
 [node name="BigPlatform3" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
@@ -895,6 +947,105 @@ height = 155.0
 self_modulate = Color( 1, 1, 1, 0.392157 )
 position = Vector2( -434.786, -21.169 )
 scale = Vector2( 1.28856, 1.11324 )
+texture = ExtResource( 4 )
+script = ExtResource( 69 )
+height = 25.0
+use_transparency = true
+
+[node name="CircleShadowSmall3" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( -498, -35 )
+scale = Vector2( 1.28856, 1.11324 )
+texture = ExtResource( 4 )
+script = ExtResource( 69 )
+height = 25.0
+use_transparency = true
+
+[node name="CircleShadowSmall4" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 311, -113 )
+scale = Vector2( 1.50658, 1.08835 )
+texture = ExtResource( 4 )
+script = ExtResource( 69 )
+height = 25.0
+use_transparency = true
+
+[node name="CircleShadowSmall10" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 153, -424 )
+scale = Vector2( 1.53708, 1.32131 )
+texture = ExtResource( 4 )
+script = ExtResource( 69 )
+height = 25.0
+use_transparency = true
+
+[node name="CircleShadowSmall11" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.627451 )
+position = Vector2( 461, -167 )
+scale = Vector2( 1.53708, 1.32131 )
+texture = ExtResource( 4 )
+script = ExtResource( 69 )
+height = 125.0
+use_transparency = true
+
+[node name="CircleShadowSmall12" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.509804 )
+position = Vector2( 655, -115 )
+scale = Vector2( 0.856866, 0.803328 )
+texture = ExtResource( 4 )
+script = ExtResource( 69 )
+height = 125.0
+use_transparency = true
+
+[node name="CircleShadowSmall13" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 551, -147 )
+scale = Vector2( 0.856866, 0.803328 )
+texture = ExtResource( 4 )
+script = ExtResource( 69 )
+height = 125.0
+use_transparency = true
+
+[node name="CircleShadowSmall5" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 351, -110 )
+scale = Vector2( 1.50658, 1.08835 )
+texture = ExtResource( 4 )
+script = ExtResource( 69 )
+height = 25.0
+use_transparency = true
+
+[node name="CircleShadowSmall6" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 288, -206 )
+scale = Vector2( 1.50658, 1.08835 )
+texture = ExtResource( 4 )
+script = ExtResource( 69 )
+height = 25.0
+use_transparency = true
+
+[node name="CircleShadowSmall7" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 334, -156 )
+scale = Vector2( 2.47132, 2.66508 )
+texture = ExtResource( 4 )
+script = ExtResource( 69 )
+height = 16.0
+use_transparency = true
+
+[node name="CircleShadowSmall8" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 247, -259 )
+scale = Vector2( 2.47132, 2.66508 )
+texture = ExtResource( 4 )
+script = ExtResource( 69 )
+height = 25.0
+use_transparency = true
+
+[node name="CircleShadowSmall9" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 114, -455 )
+scale = Vector2( 2.47132, 2.66508 )
 texture = ExtResource( 4 )
 script = ExtResource( 69 )
 height = 25.0
@@ -1196,15 +1347,15 @@ preview_collision_box = false
 
 [node name="Dock A" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
 modulate = Color( 0.988235, 0.988235, 0.992157, 1 )
-position = Vector2( -196, -207 )
+position = Vector2( -157, -212 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 25 )
-grid_size = Vector2( 6, 5 )
+grid_size = Vector2( 7, 2.5 )
 texture = ExtResource( 66 )
 texture_scale = Vector2( 1.45, 1.35 )
-texture_offset = Vector2( -7, -6 )
+texture_offset = Vector2( 9, -1 )
 height = 20.0
 floor_height = 20.0
 preview_collision_box = false
@@ -1247,6 +1398,24 @@ texture_offset = Vector2( 0, -2 )
 height = 48.0
 floor_height = 52.0
 preview_collision_box = false
+
+[node name="CircleShadowSmall14" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 459, -213 )
+scale = Vector2( 0.705443, 0.739016 )
+texture = ExtResource( 4 )
+script = ExtResource( 69 )
+height = 180.0
+use_transparency = true
+
+[node name="CircleShadowSmall15" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 340, -9.00002 )
+scale = Vector2( 0.705443, 0.739016 )
+texture = ExtResource( 4 )
+script = ExtResource( 69 )
+height = 55.0
+use_transparency = true
 
 [node name="BBox" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
 visible = false
@@ -1562,6 +1731,49 @@ position = Vector2( -560, -144 )
 scale = Vector2( 2.17902, 2.23935 )
 texture = ExtResource( 20 )
 
+[node name="Smoke1" type="CPUParticles2D" parent="YSort"]
+position = Vector2( 759, -377 )
+z_index = 1
+amount = 3
+lifetime = 7.0
+speed_scale = 0.6
+explosiveness = 0.11
+randomness = 0.03
+lifetime_randomness = 0.04
+fixed_fps = 8
+fract_delta = false
+texture = ExtResource( 76 )
+direction = Vector2( 10, 10 )
+spread = 83.92
+gravity = Vector2( 50, -70 )
+damping = 4.73
+scale_amount = 0.55
+scale_amount_random = 0.2
+color_ramp = SubResource( 9 )
+
+[node name="Smoke2" type="CPUParticles2D" parent="YSort"]
+position = Vector2( 790, -381 )
+scale = Vector2( 1, 1.05 )
+z_index = 1
+amount = 2
+lifetime = 6.0
+speed_scale = 0.6
+explosiveness = 0.11
+randomness = 0.12
+lifetime_randomness = 0.06
+fixed_fps = 8
+fract_delta = false
+texture = ExtResource( 77 )
+direction = Vector2( 10, 10 )
+spread = 83.92
+gravity = Vector2( 80, -80 )
+damping = 10.14
+angle = 0.1
+angle_random = 0.1
+scale_amount = 0.65
+scale_amount_random = 0.2
+color_ramp = SubResource( 9 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../YSort/MiddleGround")
 autoplay = "sunbeams"
@@ -1599,7 +1811,7 @@ direction = Vector2( -1, -1 )
 height = 120
 
 [node name="Entrance" parent="CollisionRoot" instance=ExtResource( 31 )]
-position = Vector2( -145, -260 )
+position = Vector2( -142, -260 )
 door_name = "Entrance"
 direction = Vector2( 1, -1 )
 height = 40
