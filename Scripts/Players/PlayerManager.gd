@@ -72,3 +72,4 @@ func bubble_reset():
 	if SceneManager.bubble:
 		player_instance.bubble_reset()
 		SceneManager.bubble = false
+		

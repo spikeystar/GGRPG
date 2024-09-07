@@ -37,6 +37,7 @@ func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")
 	PlayerManager.freeze = true
 	Global.door_name = exit_name
+	PlayerManager.pop()
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.transition_in(target_scene, _get_animation_name())

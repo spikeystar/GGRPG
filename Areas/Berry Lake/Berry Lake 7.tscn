@@ -2097,7 +2097,6 @@ position = Vector2( -23.7, 6.2 )
 polygon = PoolVector2Array( -183, -48, -185, -53, -181, -58, -173, -59, -166, -56, -158, -59, -149, -58, -144, -53, -146, -48, -149, -45, -145, -42, -146, -38, -154, -35, -159, -39, -164, -41, -169, -40, -175, -37, -181, -36, -185, -39, -185, -43, -180, -45 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 24 )]
 
@@ -2144,9 +2143,9 @@ direction = Vector2( 1, -1 )
 height = 40
 
 [node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 25 )]
-position = Vector2( 426, 70 )
+position = Vector2( 426, 74 )
 door_name = "BerryLake8_BerryLake7"
-direction = Vector2( -1, -1 )
+direction = Vector2( -1, 1 )
 height = 40
 
 [node name="Entrance" parent="CollisionRoot" instance=ExtResource( 25 )]
@@ -2181,7 +2180,7 @@ polygon = PoolVector2Array( 212, -47, 224, -44, 226, -54, 374, -105, 383, -126, 
 [node name="BerryLake8" parent="." instance=ExtResource( 26 )]
 position = Vector2( 225, 170 )
 script = ExtResource( 8 )
-target_scene = "res://Areas/Berry Lake/Berry Lake 2.tscn"
+target_scene = "res://Areas/Berry Lake/Berry Lake 8.tscn"
 exit_name = "BerryLake7_BerryLake8"
 height = 40.0
 

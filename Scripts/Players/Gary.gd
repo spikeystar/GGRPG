@@ -138,3 +138,4 @@ func bubble_check():
 	yield(get_tree().create_timer(0.2), "timeout")
 	if not SceneManager.bubble:
 		bubble_reset()
+		

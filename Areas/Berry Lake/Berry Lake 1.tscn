@@ -791,6 +791,7 @@ scale = Vector2( 1.22254, 1.10469 )
 texture = ExtResource( 4 )
 script = ExtResource( 21 )
 depth_test_offset = Vector2( 0, -8 )
+height = 18.0
 
 [node name="CircleShadowSmall" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.392157 )
@@ -932,8 +933,8 @@ scale = Vector2( 0.957289, 0.966071 )
 polygon = PoolVector2Array( -351, -15, -366.66, -23.8078, -343.679, -38.2995, -371, -46, -392, -82, -414, -115, -404.267, -123.179, -340.545, -132.495, -126.399, -220.481, -97.1494, -232.902, -62.677, -220.481, -33.4277, -220.481, 85.6586, -183.216, 194.299, -221.516, 261.154, -198.743, 166.094, -163.549, 350.991, -89.0204, 282, -37, 370, 15, 319, 65, 175, 124, 85, 116, 63, 98, 58, 81, -68, 126, -201.611, 53.8263, -296.671, 90.0555, -357.259, 64.1775, -269.511, 33.1239 )
 
 [node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 31 )]
-position = Vector2( -88, -170 )
-polygon = PoolVector2Array( -208, -86, -159, -89, -117, -83, -96, -73, -83, -58, -84, -50, -88, -40, -98, -33, -119, -26, -164, -18, -206, -20, -232, -31, -245, -42, -253, -49, -252, -60, -243, -74 )
+position = Vector2( -86, -172 )
+polygon = PoolVector2Array( -208, -86, -159, -89, -117, -84, -95, -74, -83, -58, -84, -50, -88, -40, -98, -33, -119, -26, -164, -18, -206, -20, -232, -31, -245, -42, -253, -49, -252, -60, -243, -74 )
 height = 60.0
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 33 )]
