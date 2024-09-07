@@ -11,6 +11,12 @@ export var ground_enemy : bool
 export var min_speed : float
 export var max_speed : float
 
+export var shadow_front_x : float
+export var shadow_front_y : float
+
+export var shadow_back_x : float
+export var shadow_back_y : float
+
 onready var PlayerDetection = $MotionRoot/PlayerDetection
 onready var Trigger = $MotionRoot/BattleTrigger
 onready var sprite = $BodyYSort/BodyVisualRoot/Enemy
@@ -109,13 +115,29 @@ func _physics_process(delta):
 	#else:
 		#sprite.flip_h = false
 	
-	if abs(motion_root.velocity.x) > VEL_EPSILON:
-		sprite.flip_h = motion_root.velocity.x > 0
+	#if abs(motion_root.velocity.x) > VEL_EPSILON:
+		#sprite.flip_h = motion_root.velocity.x > 0
 	
-	if motion_root.velocity.y < VEL_EPSILON:
+	if motion_root.velocity.y < VEL_EPSILON and abs(motion_root.velocity.x) < VEL_EPSILON:
+		shadow_sprite.offset.x = 0
+		shadow_sprite.offset.y = 0
 		anim_player.play("walk_back")
-	if motion_root.velocity.y > VEL_EPSILON:
+	if motion_root.velocity.y > VEL_EPSILON and abs(motion_root.velocity.x) < VEL_EPSILON:
+		shadow_sprite.offset.x = 0
+		shadow_sprite.offset.y = 0
 		anim_player.play("walk_front")
+		
+	if motion_root.velocity.y < VEL_EPSILON and abs(motion_root.velocity.x) > VEL_EPSILON:
+		anim_player.play("walk_back")
+		sprite.flip_h = motion_root.velocity.x > 0
+		shadow_sprite.offset.x = shadow_back_x
+		shadow_sprite.offset.y = shadow_back_y
+	if motion_root.velocity.y > VEL_EPSILON and abs(motion_root.velocity.x) > VEL_EPSILON:
+		anim_player.play("walk_front")
+		sprite.flip_h = motion_root.velocity.x > 0
+		shadow_sprite.offset.x = shadow_front_x
+		shadow_sprite.offset.y = shadow_front_y
+		
 	
 	anim_player.playback_speed = lerp(min_speed, max_speed, clamp(abs(motion_root.velocity.length() / VEL_ANIM_MAX), 0, 1));
 	#if motion_root.velocity.y == 0:

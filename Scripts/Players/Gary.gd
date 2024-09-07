@@ -35,8 +35,6 @@ func _physics_process(delta):
 	var ouch = PlayerManager.ouch
 	var drown = PlayerManager.drown
 	
-	print(motion_root.jumping)
-	
 	$JumpShape.shape_origin = body_visual_root.global_position
 	$JumpShape.origin_z = motion_root.pos_z
 
