@@ -1,0 +1,463 @@
+[gd_scene load_steps=39 format=2]
+
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=3]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Pivot Town/book stack.png" type="Texture" id=6]
+[ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assets/General/Backgrounds/SkyBlue BCKGD.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Gary's House/Interior/lamp.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Pivot Town/wood dresser a 2.png" type="Texture" id=10]
+[ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/ScaledCamera2D.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/Area_Specific/Berry_Lake.gd" type="Script" id=15]
+[ext_resource path="res://Assets/General/Shadows/rectangle shadow small.png" type="Texture" id=16]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Pivot Town/flower pot.png" type="Texture" id=18]
+[ext_resource path="res://Assets/General/Rugs/pink rug.png" type="Texture" id=19]
+[ext_resource path="res://Assets/General/Rugs/yellow rug a.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Pivot Town/bed a.png" type="Texture" id=21]
+[ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Pivot Town/End Table.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Pivot Town/staircase b.png" type="Texture" id=24]
+[ext_resource path="res://Assets/General/Tiles/wood tile b.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Gary's House/Interior/window.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Pivot Town/wall a.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Pivot Town/small bookshelf.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Pivot Town/wall b.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Pivot Town/pothos.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Pivot Town/begonia.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Berry Lake/berry deco.png" type="Texture" id=32]
+[ext_resource path="res://Assets/General/Rugs/blue mat.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Berry Lake/wood beam b.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Berry Lake/wood beam a.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Berry Lake/painting b.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Berry Lake/flower vase a.png" type="Texture" id=37]
+
+[sub_resource type="TileSet" id=1]
+0/name = "wood tile a.png 0"
+0/texture = ExtResource( 22 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "wood tile b.png 1"
+1/texture = ExtResource( 25 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[node name="WorldRoot" type="Node2D"]
+script = ExtResource( 15 )
+
+[node name="WoodBeamA" type="Sprite" parent="."]
+position = Vector2( 100, -126 )
+rotation = 0.22676
+scale = Vector2( 1.01024, 1.0245 )
+z_index = -4
+texture = ExtResource( 35 )
+
+[node name="WoodBeamA2" type="Sprite" parent="."]
+position = Vector2( 242, -63 )
+rotation = 0.422127
+scale = Vector2( 1.01024, 1.0245 )
+z_index = -4
+texture = ExtResource( 34 )
+
+[node name="Node2D" type="Node2D" parent="."]
+rotation = 0.00523599
+
+[node name="BlackBckgd" type="Sprite" parent="Node2D"]
+position = Vector2( -157.859, 178.188 )
+scale = Vector2( 0.804624, 0.700275 )
+z_index = -100
+texture = ExtResource( 8 )
+
+[node name="Painting4" type="Sprite" parent="Node2D"]
+position = Vector2( -196.467, -88.9737 )
+rotation = -0.0344159
+scale = Vector2( 1.164, 1.04958 )
+texture = ExtResource( 36 )
+flip_h = true
+
+[node name="Pothos" type="Sprite" parent="Node2D"]
+visible = false
+position = Vector2( 224.5, -96.1768 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 30 )
+
+[node name="Pothos2" type="Sprite" parent="Node2D"]
+visible = false
+position = Vector2( 45.4138, -171.927 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 30 )
+
+[node name="YellowRug" type="Sprite" parent="Node2D"]
+position = Vector2( 236.206, 38.7638 )
+rotation = 0.00110076
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 20 )
+flip_h = true
+
+[node name="YellowRug2" type="Sprite" parent="Node2D"]
+position = Vector2( -10.3925, -74.9466 )
+rotation = 0.00110076
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 20 )
+flip_h = true
+
+[node name="WallA" type="Sprite" parent="Node2D"]
+modulate = Color( 0.980392, 0.980392, 0.980392, 1 )
+position = Vector2( 181.497, -95.9658 )
+rotation = 0.105979
+scale = Vector2( 1.33359, 0.8351 )
+z_index = -5
+texture = ExtResource( 27 )
+
+[node name="Shadow2" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0.360784 )
+position = Vector2( 121.794, -39.6379 )
+rotation = 0.00796762
+scale = Vector2( 0.862488, 0.846162 )
+texture = ExtResource( 17 )
+
+[node name="RectangleShadowSmall2" type="Sprite" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.8 )
+position = Vector2( -189.804, 1.48378 )
+rotation = -0.0856009
+scale = Vector2( 1.24857, 1.15885 )
+texture = ExtResource( 16 )
+flip_h = true
+
+[node name="RectangleShadowSmall3" type="Sprite" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.8 )
+position = Vector2( -168.09, -18.1294 )
+rotation = -0.08241
+scale = Vector2( 1.24857, 1.15885 )
+texture = ExtResource( 16 )
+flip_h = true
+
+[node name="WallB" type="Sprite" parent="Node2D"]
+modulate = Color( 0.980392, 0.980392, 0.980392, 1 )
+position = Vector2( -105.601, -114.449 )
+rotation = -0.0551209
+scale = Vector2( 1.06859, 0.808537 )
+z_index = -5
+texture = ExtResource( 29 )
+
+[node name="YSort" type="YSort" parent="Node2D"]
+
+[node name="FloorTiles" type="TileMap" parent="Node2D/YSort"]
+modulate = Color( 0.98, 0.9506, 0.9506, 1 )
+position = Vector2( -55.5, 41.5 )
+z_index = -5
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 63, 28 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -327684, 0, 0, -327683, 1, 0, -327682, 0, 0, -327681, 0, 0, -393216, 1, 0, -393215, 0, 0, -393214, 0, 0, -393213, 0, 0, -393212, 0, 0, -393211, 0, 0, -262148, 0, 0, -262147, 0, 0, -262146, 0, 0, -262145, 1, 0, -327680, 0, 0, -327679, 1, 0, -327678, 0, 0, -327677, 1, 0, -327676, 0, 0, -327675, 0, 0, -196612, 0, 0, -196611, 0, 0, -196610, 1, 0, -196609, 0, 0, -262144, 1, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 1, 0, -196608, 0, 0, -196607, 1, 0, -196606, 0, 0, -196605, 1, 0, -196604, 0, 0, -196603, 0, 0, -65540, 1, 0, -65539, 0, 0, -65538, 1, 0, -65537, 0, 0, -131072, 1, 0, -131071, 0, 0, -131070, 1, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -4, 0, 0, -3, 1, 0, -2, 0, 0, -1, 1, 0, -65536, 0, 0, -65535, 1, 0, -65534, 0, 0, -65533, 1, 0, -65532, 0, 0, -65531, 0, 0, 65532, 1, 0, 65533, 0, 0, 65534, 1, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 131068, 0, 0, 131069, 1, 0, 131070, 0, 0, 131071, 1, 0, 65536, 0, 0, 65537, 1, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0 )
+
+[node name="Dresser" parent="Node2D/YSort" instance=ExtResource( 4 )]
+position = Vector2( -212.756, 10.5985 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1, 2 )
+texture = ExtResource( 10 )
+texture_scale = Vector2( 1.3, 1.3 )
+texture_offset = Vector2( 0, 22 )
+height = 55.0
+depth_test_offset = Vector3( 0, 50, 0 )
+preview_collision_box = false
+
+[node name="Misc A3" parent="Node2D/YSort" instance=ExtResource( 4 )]
+position = Vector2( 163.883, -22.8584 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.8, 0.8 )
+texture = ExtResource( 28 )
+texture_scale = Vector2( 1.2, 1.2 )
+texture_offset = Vector2( 1, 30 )
+height = 55.0
+preview_collision_box = false
+use_dithering = false
+use_dither_blending = false
+
+[node name="Misc A4" parent="Node2D/YSort" instance=ExtResource( 4 )]
+position = Vector2( -153.94, -24.71 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.8, 0.8 )
+texture = ExtResource( 28 )
+texture_scale = Vector2( -1.2, 1.2 )
+texture_offset = Vector2( 1, 30 )
+height = 55.0
+preview_collision_box = false
+use_dithering = false
+use_dither_blending = false
+
+[node name="SideTable" parent="Node2D/YSort" instance=ExtResource( 4 )]
+position = Vector2( 118.82, -34.6226 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1, 1.3 )
+texture = ExtResource( 23 )
+texture_scale = Vector2( 1.15, 1.15 )
+texture_offset = Vector2( -1, 21 )
+height = 80.0
+preview_collision_box = false
+
+[node name="Lamp" parent="Node2D/YSort" instance=ExtResource( 4 )]
+modulate = Color( 0.91632, 0.9016, 0.92, 0.960784 )
+position = Vector2( 123.878, -23.6489 )
+grid_size = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+texture_scale = Vector2( 0.75, 0.75 )
+texture_offset = Vector2( 0, 17 )
+height = 50.0
+floor_height = 50.0
+depth_test_offset = Vector3( 0, -200, 0 )
+preview_collision_box = false
+use_collision = false
+use_transparency = true
+
+[node name="Staircase" parent="Node2D/YSort" instance=ExtResource( 4 )]
+position = Vector2( 66.062, 202.657 )
+rotation = -0.0184242
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1.5, 1.5 )
+texture = ExtResource( 24 )
+texture_scale = Vector2( -1.8, 1.8 )
+texture_offset = Vector2( 1, 42 )
+height = 65.0
+preview_collision_box = false
+
+[node name="Bed" parent="Node2D/YSort" instance=ExtResource( 4 )]
+position = Vector2( 214.327, 61.8786 )
+rotation = 0.0189685
+tile_size = Vector2( 60.35, 27.708 )
+grid_size = Vector2( 1.7, 3.4 )
+texture = ExtResource( 21 )
+texture_scale = Vector2( 1.6, 1.65 )
+texture_offset = Vector2( 2.766, 24 )
+height = 30.0
+preview_collision_box = false
+
+[node name="Bed2" parent="Node2D/YSort" instance=ExtResource( 4 )]
+position = Vector2( -37.2822, -53.8055 )
+rotation = 0.0189685
+tile_size = Vector2( 60.35, 27.708 )
+grid_size = Vector2( 1.7, 3.4 )
+texture = ExtResource( 21 )
+texture_scale = Vector2( 1.6, 1.65 )
+texture_offset = Vector2( 2.766, 24 )
+height = 30.0
+preview_collision_box = false
+
+[node name="Violet Pot" parent="Node2D/YSort" instance=ExtResource( 4 )]
+position = Vector2( 162.909, -17.8532 )
+z_index = 1
+grid_size = Vector2( 0.5, 0.5 )
+texture = ExtResource( 18 )
+texture_scale = Vector2( 0.95, 0.95 )
+texture_offset = Vector2( 3, 28 )
+height = 32.0
+floor_height = 40.0
+preview_collision_box = false
+use_collision = false
+
+[node name="Bookstack" parent="Node2D/YSort" instance=ExtResource( 4 )]
+position = Vector2( -214.667, 27.6087 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.6, 0.5 )
+texture = ExtResource( 6 )
+texture_scale = Vector2( 0.9, 0.9 )
+texture_offset = Vector2( 1, 25 )
+height = 45.0
+floor_height = 55.0
+preview_collision_box = false
+always_update = true
+
+[node name="Ivy5" type="Sprite" parent="Node2D/YSort"]
+position = Vector2( 111.25, -143.584 )
+scale = Vector2( 1.15, 1.15 )
+texture = ExtResource( 30 )
+script = ExtResource( 2 )
+
+[node name="Ivy6" type="Sprite" parent="Node2D/YSort"]
+position = Vector2( 241.515, -93.2658 )
+scale = Vector2( 1.15, 1.15 )
+texture = ExtResource( 30 )
+script = ExtResource( 2 )
+
+[node name="YellowRugA" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 0.996078, 1, 1 )
+position = Vector2( 95.6061, 115.501 )
+rotation = -0.0438186
+texture = ExtResource( 33 )
+flip_h = true
+
+[node name="CircleShadowSmall13" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 165.726, -52.8684 )
+scale = Vector2( 0.580682, 0.535794 )
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+height = 35.0
+use_transparency = true
+
+[node name="CircleShadowSmall15" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( -186.222, -42.0255 )
+scale = Vector2( 0.550306, 0.531479 )
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+height = 60.0
+use_transparency = true
+
+[node name="Begonia" parent="Node2D/YSort" instance=ExtResource( 4 )]
+modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
+position = Vector2( -151.103, -19.2091 )
+grid_size = Vector2( 0.3, 0.3 )
+texture = ExtResource( 31 )
+texture_scale = Vector2( -0.8, 0.8 )
+height = 30.0
+floor_height = 40.0
+depth_test_offset = Vector3( 0, 75, 0 )
+preview_collision_box = false
+use_collision = false
+
+[node name="CircleShadowSmall14" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( -151.666, -55.9493 )
+scale = Vector2( 0.662025, 0.606836 )
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+height = 55.0
+use_transparency = true
+
+[node name="FlowerVase" parent="Node2D/YSort" instance=ExtResource( 4 )]
+modulate = Color( 1, 0.996078, 1, 1 )
+position = Vector2( -187.94, 11.9842 )
+grid_size = Vector2( 0.55, 0.55 )
+texture = ExtResource( 37 )
+texture_scale = Vector2( 0.8, 0.78 )
+texture_offset = Vector2( 2, 0 )
+height = 120.0
+floor_height = 55.0
+preview_collision_box = false
+
+[node name="CollisionRoot" type="Node2D" parent="Node2D"]
+position = Vector2( 3.99995, -0.0209439 )
+
+[node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 7 )]
+
+[node name="NavmeshLayer" parent="Node2D/CollisionRoot/Navmesh" instance=ExtResource( 12 )]
+position = Vector2( -49, 35.1 )
+polygon = PoolVector2Array( 63.45, -140.177, 364.21, 4.25011, 147.711, 100.385, 110.627, 84.579, 81.7064, 99.7306, -68.4242, 31.9573, -198.955, -25.8016 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Downstairs" parent="Node2D/CollisionRoot" instance=ExtResource( 5 )]
+position = Vector2( -73.444, 106.386 )
+script = ExtResource( 13 )
+staircase = true
+target_scene = "res://Areas/Berry Lake/BerryLake_Inn_1.tscn"
+exit_name = "BerryLakeInn2_BerryLakeInn1"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Downstairs"]
+position = Vector2( 117.082, 15.3872 )
+polygon = PoolVector2Array( 14.9997, -0.0786819, 22.9787, -4.12052, 56.062, 11.7065, 50.0882, 16.7378 )
+
+[node name="Sleep" parent="Node2D/CollisionRoot" instance=ExtResource( 11 )]
+position = Vector2( 14.3819, -118.077 )
+door_name = "Sleep"
+direction = Vector2( -1, -1 )
+height = 40
+
+[node name="PlayerSpawnFromOutsideHouse2" parent="Node2D/CollisionRoot" instance=ExtResource( 11 )]
+position = Vector2( 95.6008, 114.501 )
+door_name = "BerryLakeInn1_BerryLakeInn2"
+direction = Vector2( 1, 1 )
+
+[node name="Ivy4" type="Sprite" parent="Node2D"]
+position = Vector2( -42.811, -154.778 )
+scale = Vector2( 1.15, 1.15 )
+texture = ExtResource( 30 )
+flip_h = true
+script = ExtResource( 2 )
+
+[node name="Window" type="Sprite" parent="Node2D"]
+position = Vector2( -117.621, -118.387 )
+rotation = -0.0498656
+scale = Vector2( 1.64093, 1.31056 )
+z_index = -3
+texture = ExtResource( 26 )
+
+[node name="Window3" type="Sprite" parent="Node2D"]
+position = Vector2( 172.403, -114.904 )
+rotation = 0.0715242
+scale = Vector2( 1.5955, 1.28478 )
+z_index = -3
+texture = ExtResource( 26 )
+flip_h = true
+
+[node name="BerryDeco3" type="Sprite" parent="Node2D"]
+position = Vector2( 41.1355, -165.218 )
+rotation = 0.0215611
+scale = Vector2( 0.9, 0.9 )
+z_index = -3
+texture = ExtResource( 32 )
+
+[node name="BerryDeco4" type="Sprite" parent="Node2D"]
+position = Vector2( 297.729, -52.5596 )
+rotation = 0.0215611
+scale = Vector2( 0.9, 0.9 )
+z_index = -3
+texture = ExtResource( 32 )
+
+[node name="RedRug2" type="Sprite" parent="Node2D"]
+modulate = Color( 0.760185, 0.7371, 0.81, 1 )
+position = Vector2( 11.2164, 27.0112 )
+rotation = -0.00450502
+scale = Vector2( 1.6, 1.7 )
+texture = ExtResource( 19 )
+flip_h = true
+
+[node name="RedRug4" type="Sprite" parent="Node2D"]
+modulate = Color( 0.98, 0.98, 0.98, 1 )
+position = Vector2( 11.2888, 27.0856 )
+rotation = -0.00450502
+scale = Vector2( 1.6, 1.7 )
+texture = ExtResource( 19 )
+flip_h = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
+position = Vector2( 6.00346, 0.97905 )
+z_index = 4096
+offset = Vector2( 0, -20 )
+current = true
+zoom = Vector2( 0.655, 0.65 )
+script = ExtResource( 14 )
+minPos = Vector2( -55, -57 )
+maxPos = Vector2( 110, 45 )
+follow_player = true

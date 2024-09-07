@@ -170,13 +170,19 @@ func welcome_text():
 	$Dialogue/Name.text = shop_name + ":"
 	if shop_name == "Tom":
 		$Dialogue/Name/Talk.text = "Hey. What do you need?"
+	if shop_name == "Cranston":
+		$Dialogue/Name/Talk.text = "Hello, these are the items we have for sale."
 	
 func text_1():
 	if shop_name == "Tom":
 		$Dialogue/Name/Talk.text = "Someday I'm gonna leave this town."
+	if shop_name == "Cranston":
+		$Dialogue/Name/Talk.text = "Thank you for stopping by our inn. We know it's a little out of the way for most folks."
 	
 func text_2():
 	if shop_name == "Tom":
 		$Dialogue/Name/Talk.text = "There's gotta be somewhere more interesting to live than here."
+	if shop_name == "Cranston":
+		$Dialogue/Name/Talk.text = "But we hope the beautiful scenery makes the trip worth it."
 	
 	

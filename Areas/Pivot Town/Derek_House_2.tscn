@@ -239,13 +239,13 @@ preview_collision_box = false
 
 [node name="Begonia" parent="Node2D/YSort" instance=ExtResource( 4 )]
 modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
-position = Vector2( -158.014, -2.17268 )
+position = Vector2( -158.092, -17.1725 )
 grid_size = Vector2( 0.6, 0.6 )
 texture = ExtResource( 23 )
 texture_scale = Vector2( 0.8, 0.8 )
 texture_offset = Vector2( 4, 0 )
 height = 55.0
-floor_height = 55.0
+floor_height = 40.0
 depth_test_offset = Vector3( 0, -30, 0 )
 preview_collision_box = false
 use_collision = false
@@ -327,7 +327,7 @@ position = Vector2( -154.286, -54.1929 )
 scale = Vector2( 0.637011, 0.652609 )
 texture = ExtResource( 25 )
 script = ExtResource( 21 )
-height = 55.0
+height = 50.0
 use_transparency = true
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
@@ -375,7 +375,7 @@ height = 250.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
-position = Vector2( 6.00346, 0.97905 )
+position = Vector2( 6, 1 )
 z_index = 4096
 offset = Vector2( 0, -20 )
 current = true

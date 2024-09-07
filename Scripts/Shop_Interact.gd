@@ -40,3 +40,6 @@ func _on_Interaction_restart():
 	
 func _on_Shop_body_exited(body):
 	gary_entered = false
+
+func _on_Shop_restart():
+	gary_entered = true

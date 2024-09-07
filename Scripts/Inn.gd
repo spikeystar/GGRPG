@@ -150,15 +150,23 @@ func welcome_text():
 	$Dialogue/Name.text = inn_name + ":"
 	if inn_name == "Freya":
 		$Dialogue/Name/Talk.text = "Welcome to the Pivot Town Inn! One stay is 50 Marbles."
+	if inn_name == "Loqua":
+		$Dialogue/Name/Talk.text = "Welcome to the Berry Lake Inn! One stay is 75 Marbles, would you like a room?"
 	
 func text_1():
 	if inn_name == "Freya":
 		$Dialogue/Name/Talk.text = "Our children both moved to Tower Town a while ago."
+	if inn_name == "Loqua":
+		$Dialogue/Name/Talk.text = "My grandpa and I have been running this inn together for a long time."
 	
 func text_2():
 	if inn_name == "Freya":
 		$Dialogue/Name/Talk.text = "I wish they would come visit sometime. It's a bit lonely without them."
+	if inn_name == "Loqua":
+		$Dialogue/Name/Talk.text = "I love it here, but it would be nice to get to explore somewhere else sometime..."
 	
 func sleep_text():
 	if inn_name == "Freya":
 		$Dialogue/Name/Talk.text = "Please enjoy your stay!"
+	if inn_name == "Loqua":
+		$Dialogue/Name/Talk.text = "I hope you have a good rest!"

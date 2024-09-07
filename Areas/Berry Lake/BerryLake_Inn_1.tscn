@@ -1,0 +1,1607 @@
+[gd_scene load_steps=85 format=2]
+
+[ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=3]
+[ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Gary's House/Exterior/pot b.png" type="Texture" id=5]
+[ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Pivot Town/large bookshelf.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Pivot Town/wood cabinet b 1.png" type="Texture" id=12]
+[ext_resource path="res://Assets/General/Tiles/wood tile b.png" type="Texture" id=13]
+[ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/General_Dialogue.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/General_Interaction.gd" type="Script" id=16]
+[ext_resource path="res://Scripts/Inn.gd" type="Script" id=17]
+[ext_resource path="res://Scripts/UI/Inn_Menu_Cursor.gd" type="Script" id=18]
+[ext_resource path="res://Scripts/Area_Specific/Berry_Lake.gd" type="Script" id=19]
+[ext_resource path="res://Scripts/ScaledCamera2D.gd" type="Script" id=20]
+[ext_resource path="res://Scripts/UI/Talk_Adjusting.gd" type="Script" id=21]
+[ext_resource path="res://Assets/General/Rugs/yellow rug a.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Pivot Town/dinner chair a 1.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Pivot Town/dinner chair a 2.png" type="Texture" id=24]
+[ext_resource path="res://Assets/General/Rugs/pink rug.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Pivot Town/dinner table a.png" type="Texture" id=26]
+[ext_resource path="res://Assets/General/Rugs/mat b.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Pivot Town/pothos.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Pivot Town/End Table.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Pivot Town/cupboard.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Berry Lake/painting a.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Pivot Town/apples bowl.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Berry Lake/Sunbeam.png" type="Texture" id=33]
+[ext_resource path="res://UI/Interaction Window.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Pivot Town/dish cabinet.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Berry Lake/inn counter.png" type="Texture" id=36]
+[ext_resource path="res://Assets/Pivot Town/bucket.png" type="Texture" id=37]
+[ext_resource path="res://Assets/Berry Lake/flower vase b.png" type="Texture" id=38]
+[ext_resource path="res://Assets/General/Shadows/rectangle shadow small.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Gary's House/Interior/window.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Pivot Town/staircase b.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Pivot Town/flower pot.png" type="Texture" id=42]
+[ext_resource path="res://Assets/General/Backgrounds/SkyBlue BCKGD.png" type="Texture" id=43]
+[ext_resource path="res://Assets/Pivot Town/grandfather clock.png" type="Texture" id=44]
+[ext_resource path="res://Assets/Pivot Town/begonia.png" type="Texture" id=45]
+[ext_resource path="res://Assets/Pivot Town/door interior.png" type="Texture" id=46]
+[ext_resource path="res://Assets/Pivot Town/wood cabinet a 1.png" type="Texture" id=47]
+[ext_resource path="res://Assets/Berry Lake/berry deco.png" type="Texture" id=48]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=49]
+[ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=50]
+[ext_resource path="res://Assets/Berry Lake/wood beam c.png" type="Texture" id=51]
+[ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=52]
+[ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=53]
+[ext_resource path="res://NPC/Berry Lake/Loqua.tscn" type="PackedScene" id=54]
+[ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=55]
+[ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=56]
+[ext_resource path="res://Assets/Pivot Town/cookies basket.png" type="Texture" id=57]
+[ext_resource path="res://Assets/Pivot Town/small bookshelf.png" type="Texture" id=58]
+[ext_resource path="res://Assets/Pivot Town/wall b.png" type="Texture" id=59]
+[ext_resource path="res://Assets/Pivot Town/wall a.png" type="Texture" id=60]
+[ext_resource path="res://NPC/Berry Lake/Cranston.tscn" type="PackedScene" id=61]
+[ext_resource path="res://Scripts/Shop_Interact.gd" type="Script" id=62]
+[ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=63]
+[ext_resource path="res://Misc/Font/Trinket Held.tres" type="DynamicFont" id=64]
+[ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=65]
+[ext_resource path="res://Scripts/UI/Buy_Cursor.gd" type="Script" id=66]
+[ext_resource path="res://Scripts/UI/Buy_Inventory.gd" type="Script" id=67]
+[ext_resource path="res://Scripts/UI/Deposit_Inventory.gd" type="Script" id=68]
+[ext_resource path="res://Scripts/Interaction.gd" type="Script" id=69]
+[ext_resource path="res://Scripts/UI/Sell_Inventory.gd" type="Script" id=70]
+[ext_resource path="res://Scripts/UI/Shop_Menu_Cursor.gd" type="Script" id=71]
+[ext_resource path="res://Scripts/UI/Shop_Sell.gd" type="Script" id=72]
+[ext_resource path="res://Scripts/UI/Shop_Buy.gd" type="Script" id=73]
+[ext_resource path="res://Scripts/Shop_Deposit.gd" type="Script" id=74]
+[ext_resource path="res://Scripts/Shop_Withdraw.gd" type="Script" id=75]
+[ext_resource path="res://Scripts/UI/Withdraw_Inventory.gd" type="Script" id=76]
+[ext_resource path="res://UI/Shop/Options Window.png" type="Texture" id=77]
+[ext_resource path="res://UI/Shop/Shop Window.png" type="Texture" id=78]
+[ext_resource path="res://UI/Shop/Marble Display.png" type="Texture" id=79]
+
+[sub_resource type="TileSet" id=1]
+0/name = "wood tile a.png 0"
+0/texture = ExtResource( 4 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "wood tile b.png 1"
+1/texture = ExtResource( 13 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="Theme" id=2]
+default_font = ExtResource( 64 )
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends TextureRect
+
+export var menu_parent_path : NodePath
+export var cursor_offset : Vector2
+
+onready var menu_parent := get_node(menu_parent_path)
+
+var cursor_index : int = 0
+var item_selecting = false
+var menu_name : String
+var empty = false
+
+
+func _ready():
+	self.modulate.a = 0
+
+func _process(delta):
+	var child_count = menu_parent.get_child_count()
+	var input := Vector2.ZERO
+	var current_menu_item := get_menu_item_at_index(cursor_index)
+	if item_selecting and child_count > 0:
+		menu_name = current_menu_item.get_id()
+	
+	if Input.is_action_just_pressed(\"ui_up\") and cursor_index >0 and item_selecting:
+		input.y -= 1
+		self.modulate.a = 0
+		yield(get_tree().create_timer(0.01), \"timeout\")
+		self.modulate.a = 1
+	if Input.is_action_just_pressed(\"ui_down\") and item_selecting:
+		input.y += 1
+		self.modulate.a = 0
+		yield(get_tree().create_timer(0.01), \"timeout\")
+		self.modulate.a = 1
+	else:
+		input.y += 0
+		
+	if child_count == 0:
+		empty = true
+		self.modulate.a = 0
+		
+	if child_count > 0:
+		empty = false
+		
+	#if Input.is_action_just_pressed(\"ui_accept\") and item_selecting or Input.is_action_just_pressed(\"ui_left\") and item_selecting:
+		#item_selecting = false
+		#self.modulate.a = 0
+		#emit_signal(\"retread\")
+		#cursor_index = 0
+		
+		
+	if menu_parent is VBoxContainer:
+		set_cursor_from_index(cursor_index + input.y)
+	elif menu_parent is HBoxContainer:
+		set_cursor_from_index(cursor_index + input.x)
+	elif menu_parent is GridContainer:
+		set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
+	
+#	if Input.is_action_just_pressed(\"ui_select\") and cursor_active:
+		#var current_menu_item := get_menu_item_at_index(cursor_index)
+		
+		#if current_menu_item != null:
+			#if current_menu_item.has_method(\"cursor_select\"):
+				#current_menu_item.cursor_select()
+				
+		
+
+func get_menu_item_at_index(index : int) -> Control:
+	if menu_parent == null:
+		return null
+	
+	if index >= menu_parent.get_child_count() or index < 0:
+		return null
+		
+	
+	return menu_parent.get_child(index) as Control
+
+func set_cursor_from_index(index : int) -> void:
+	var menu_item := get_menu_item_at_index(index)
+	
+	if menu_item == null:
+		return
+	
+	var position = menu_item.rect_global_position
+	var size = menu_item.rect_size
+	
+	rect_global_position = Vector2(position.x, position.y + size.y / 2.0) - (rect_size / 2.0) - cursor_offset
+	
+	cursor_index = index
+
+
+func _on_Interaction_buying():
+	self.modulate.a = 1
+	cursor_index = 0
+	item_selecting = true
+	
+func _on_Interaction_selling():
+	self.modulate.a = 1
+	cursor_index = 0
+	item_selecting = true
+	
+func _on_Interaction_deposit():
+	self.modulate.a = 1
+	cursor_index = 0
+	item_selecting = true
+
+func _on_Interaction_retread():
+	item_selecting = false
+
+func _on_Interaction_option_selecting():
+	item_selecting = false
+	cursor_index = 0
+
+
+"
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends TextureRect
+
+export var menu_parent_path : NodePath
+export var cursor_offset : Vector2
+
+onready var menu_parent := get_node(menu_parent_path)
+
+var cursor_index : int = 0
+var item_selecting = false
+var menu_name : String
+var empty = false
+
+
+func _ready():
+	self.modulate.a = 0
+
+func _process(delta):
+	var child_count = menu_parent.get_child_count()
+	var input := Vector2.ZERO
+	var current_menu_item := get_menu_item_at_index(cursor_index)
+	if item_selecting and child_count > 0:
+		menu_name = current_menu_item.get_id()
+	
+	if Input.is_action_just_pressed(\"ui_up\") and cursor_index >0 and item_selecting:
+		input.y -= 1
+		self.modulate.a = 0
+		yield(get_tree().create_timer(0.01), \"timeout\")
+		self.modulate.a = 1
+	if Input.is_action_just_pressed(\"ui_down\") and item_selecting:
+		input.y += 1
+		self.modulate.a = 0
+		yield(get_tree().create_timer(0.01), \"timeout\")
+		self.modulate.a = 1
+	else:
+		input.y += 0
+		
+	if child_count == 0:
+		empty = true
+		self.modulate.a = 0
+		
+	if child_count > 0:
+		empty = false
+		
+	#if Input.is_action_just_pressed(\"ui_accept\") and item_selecting or Input.is_action_just_pressed(\"ui_left\") and item_selecting:
+		#item_selecting = false
+		#self.modulate.a = 0
+		#emit_signal(\"retread\")
+		#cursor_index = 0
+		
+		
+	if menu_parent is VBoxContainer:
+		set_cursor_from_index(cursor_index + input.y)
+	elif menu_parent is HBoxContainer:
+		set_cursor_from_index(cursor_index + input.x)
+	elif menu_parent is GridContainer:
+		set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
+	
+#	if Input.is_action_just_pressed(\"ui_select\") and cursor_active:
+		#var current_menu_item := get_menu_item_at_index(cursor_index)
+		
+		#if current_menu_item != null:
+			#if current_menu_item.has_method(\"cursor_select\"):
+				#current_menu_item.cursor_select()
+				
+		
+
+func get_menu_item_at_index(index : int) -> Control:
+	if menu_parent == null:
+		return null
+	
+	if index >= menu_parent.get_child_count() or index < 0:
+		return null
+		
+	
+	return menu_parent.get_child(index) as Control
+
+func set_cursor_from_index(index : int) -> void:
+	var menu_item := get_menu_item_at_index(index)
+	
+	if menu_item == null:
+		return
+	
+	var position = menu_item.rect_global_position
+	var size = menu_item.rect_size
+	
+	rect_global_position = Vector2(position.x, position.y + size.y / 2.0) - (rect_size / 2.0) - cursor_offset
+	
+	cursor_index = index
+
+
+func _on_Interaction_buying():
+	self.modulate.a = 1
+	cursor_index = 0
+	item_selecting = true
+	
+func _on_Interaction_selling():
+	self.modulate.a = 1
+	cursor_index = 0
+	item_selecting = true
+	
+func _on_Interaction_deposit():
+	self.modulate.a = 1
+	cursor_index = 0
+	item_selecting = true
+
+func _on_Interaction_retread():
+	item_selecting = false
+
+func _on_Interaction_option_selecting():
+	item_selecting = false
+	cursor_index = 0
+
+
+"
+
+[sub_resource type="GDScript" id=5]
+script/source = "extends TextureRect
+
+export var menu_parent_path : NodePath
+export var cursor_offset : Vector2
+
+onready var menu_parent := get_node(menu_parent_path)
+
+var cursor_index : int = 0
+var item_selecting = false
+var menu_name : String
+var empty = false
+
+
+func _ready():
+	self.modulate.a = 0
+
+func _process(delta):
+	var child_count = menu_parent.get_child_count()
+	var input := Vector2.ZERO
+	var current_menu_item := get_menu_item_at_index(cursor_index)
+	if item_selecting and child_count > 0:
+		menu_name = current_menu_item.get_id()
+	
+	if Input.is_action_just_pressed(\"ui_up\") and cursor_index >0 and item_selecting:
+		input.y -= 1
+		self.modulate.a = 0
+		yield(get_tree().create_timer(0.01), \"timeout\")
+		self.modulate.a = 1
+	if Input.is_action_just_pressed(\"ui_down\") and item_selecting:
+		input.y += 1
+		self.modulate.a = 0
+		yield(get_tree().create_timer(0.01), \"timeout\")
+		self.modulate.a = 1
+	else:
+		input.y += 0
+		
+	if child_count == 0:
+		empty = true
+		self.modulate.a = 0
+		
+	if child_count > 0:
+		empty = false
+		
+	#if Input.is_action_just_pressed(\"ui_accept\") and item_selecting or Input.is_action_just_pressed(\"ui_left\") and item_selecting:
+		#item_selecting = false
+		#self.modulate.a = 0
+		#emit_signal(\"retread\")
+		#cursor_index = 0
+		
+		
+	if menu_parent is VBoxContainer:
+		set_cursor_from_index(cursor_index + input.y)
+	elif menu_parent is HBoxContainer:
+		set_cursor_from_index(cursor_index + input.x)
+	elif menu_parent is GridContainer:
+		set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
+	
+#	if Input.is_action_just_pressed(\"ui_select\") and cursor_active:
+		#var current_menu_item := get_menu_item_at_index(cursor_index)
+		
+		#if current_menu_item != null:
+			#if current_menu_item.has_method(\"cursor_select\"):
+				#current_menu_item.cursor_select()
+				
+		
+
+func get_menu_item_at_index(index : int) -> Control:
+	if menu_parent == null:
+		return null
+	
+	if index >= menu_parent.get_child_count() or index < 0:
+		return null
+		
+	
+	return menu_parent.get_child(index) as Control
+
+func set_cursor_from_index(index : int) -> void:
+	var menu_item := get_menu_item_at_index(index)
+	
+	if menu_item == null:
+		return
+	
+	var position = menu_item.rect_global_position
+	var size = menu_item.rect_size
+	
+	rect_global_position = Vector2(position.x, position.y + size.y / 2.0) - (rect_size / 2.0) - cursor_offset
+	
+	cursor_index = index
+
+
+func _on_Interaction_buying():
+	self.modulate.a = 1
+	cursor_index = 0
+	item_selecting = true
+	
+func _on_Interaction_selling():
+	self.modulate.a = 1
+	cursor_index = 0
+	item_selecting = true
+	
+func _on_Interaction_deposit():
+	self.modulate.a = 1
+	cursor_index = 0
+	item_selecting = true
+	
+func _on_Interaction_withdraw():
+	self.modulate.a = 1
+	cursor_index = 0
+	item_selecting = true
+
+func _on_Interaction_retread():
+	item_selecting = false
+
+func _on_Interaction_option_selecting():
+	item_selecting = false
+	cursor_index = 0
+
+
+
+"
+
+[node name="WorldRoot" type="Node2D"]
+script = ExtResource( 19 )
+
+[node name="Sunbeam" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -50, -41 )
+rotation = 0.0297477
+scale = Vector2( 0.553477, 0.539721 )
+z_index = 1
+texture = ExtResource( 33 )
+
+[node name="WoodBeamC" type="Sprite" parent="."]
+modulate = Color( 0.784314, 0.788235, 0.74902, 0.968627 )
+position = Vector2( 187, -68 )
+scale = Vector2( 0.786331, 0.729154 )
+texture = ExtResource( 51 )
+
+[node name="Node2D" type="Node2D" parent="."]
+rotation = 0.00523599
+
+[node name="Shadow2" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0.360784 )
+position = Vector2( 8.53396, 101.957 )
+rotation = 0.0406731
+scale = Vector2( 0.815313, 0.774064 )
+texture = ExtResource( 49 )
+
+[node name="Shadow" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0.27451 )
+position = Vector2( 78.6744, -62.4129 )
+rotation = 0.0320543
+scale = Vector2( 0.85324, 0.84218 )
+texture = ExtResource( 49 )
+
+[node name="YellowRugA" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 0.996078, 1, 1 )
+position = Vector2( 93.6794, 129.511 )
+rotation = -0.0173949
+texture = ExtResource( 22 )
+
+[node name="YellowRugA2" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 0.996078, 1, 1 )
+position = Vector2( 123.983, -27.673 )
+rotation = -0.00775916
+texture = ExtResource( 27 )
+flip_h = true
+
+[node name="BlackBckgd" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 0.952941, 0.992157, 1 )
+position = Vector2( 102.445, 38.5696 )
+scale = Vector2( 0.682534, 0.531464 )
+z_index = -100
+texture = ExtResource( 43 )
+
+[node name="RectangleShadowSmall2" type="Sprite" parent="Node2D"]
+self_modulate = Color( 1, 1, 1, 0.509804 )
+position = Vector2( 280.52, 98.5326 )
+rotation = 0.0283525
+scale = Vector2( 1.67971, 1.61001 )
+texture = ExtResource( 39 )
+
+[node name="RedRug2" type="Sprite" parent="Node2D"]
+modulate = Color( 0.760185, 0.7371, 0.81, 1 )
+position = Vector2( -71.0674, -12.6281 )
+rotation = -0.00450502
+scale = Vector2( 1.6, 1.7 )
+texture = ExtResource( 25 )
+
+[node name="RedRug4" type="Sprite" parent="Node2D"]
+modulate = Color( 0.98, 0.98, 0.98, 1 )
+position = Vector2( -70.9951, -12.5537 )
+rotation = -0.00450502
+scale = Vector2( 1.6, 1.7 )
+texture = ExtResource( 25 )
+
+[node name="WallA3" type="Sprite" parent="Node2D"]
+modulate = Color( 0.980392, 0.980392, 0.980392, 1 )
+position = Vector2( 153.785, -102.506 )
+rotation = 0.0392726
+scale = Vector2( 0.922651, 0.772856 )
+z_index = -5
+texture = ExtResource( 60 )
+
+[node name="WallA2" type="Sprite" parent="Node2D"]
+modulate = Color( 0.980392, 0.980392, 0.980392, 1 )
+position = Vector2( 311.485, -31.0293 )
+rotation = 0.0287211
+scale = Vector2( 0.93861, 0.786189 )
+z_index = -5
+texture = ExtResource( 60 )
+
+[node name="WallB" type="Sprite" parent="Node2D"]
+modulate = Color( 0.980392, 0.980392, 0.980392, 1 )
+position = Vector2( -79.5144, -97.5851 )
+rotation = -0.0666605
+scale = Vector2( 1.046, 0.81 )
+z_index = -5
+texture = ExtResource( 59 )
+
+[node name="YSort" type="YSort" parent="Node2D"]
+
+[node name="FloorTiles" type="TileMap" parent="Node2D/YSort"]
+modulate = Color( 0.98, 0.9506, 0.9506, 1 )
+position = Vector2( -55.5, 41.5 )
+z_index = -5
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 63, 28 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -327683, 1, 0, -327682, 0, 0, -327681, 0, 0, -393216, 1, 0, -393215, 0, 0, -393214, 0, 0, -393213, 0, 0, -393212, 1, 0, -393211, 0, 0, -393210, 1, 0, -393209, 0, 0, -393208, 1, 0, -262147, 0, 0, -262146, 0, 0, -262145, 1, 0, -327680, 0, 0, -327679, 1, 0, -327678, 0, 0, -327677, 1, 0, -327676, 0, 0, -327675, 1, 0, -327674, 0, 0, -327673, 1, 0, -327672, 0, 0, -196611, 0, 0, -196610, 1, 0, -196609, 0, 0, -262144, 1, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 1, 0, -262139, 0, 0, -262138, 1, 0, -262137, 0, 0, -262136, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 1, 0, -196608, 0, 0, -196607, 1, 0, -196606, 0, 0, -196605, 1, 0, -196604, 0, 0, -196603, 1, 0, -196602, 0, 0, -196601, 1, 0, -196600, 0, 0, -65539, 0, 0, -65538, 1, 0, -65537, 0, 0, -131072, 1, 0, -131071, 0, 0, -131070, 1, 0, -131069, 0, 0, -131068, 1, 0, -131067, 0, 0, -131066, 1, 0, -131065, 0, 0, -131064, 1, 0, -3, 1, 0, -2, 0, 0, -1, 1, 0, -65536, 0, 0, -65535, 1, 0, -65534, 0, 0, -65533, 1, 0, -65532, 0, 0, -65531, 1, 0, -65530, 0, 0, -65529, 1, 0, -65528, 0, 0, 65533, 0, 0, 65534, 1, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 1, 0, 3, 0, 0, 4, 1, 0, 5, 0, 0, 6, 1, 0, 7, 0, 0, 8, 1, 0, 131069, 1, 0, 131070, 0, 0, 131071, 1, 0, 65536, 0, 0, 65537, 1, 0, 65538, 0, 0, 65539, 1, 0, 65540, 0, 0, 65541, 1, 0, 65542, 0, 0, 65543, 1, 0, 65544, 0, 0, 131077, 0, 0, 131078, 0, 0 )
+
+[node name="DoorInterior" type="Sprite" parent="Node2D/YSort"]
+position = Vector2( 145.642, -68.7635 )
+rotation = 0.00711084
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 46 )
+
+[node name="CircleShadowSmall16" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 323.357, 64.3443 )
+scale = Vector2( 0.634703, 0.713551 )
+texture = ExtResource( 7 )
+script = ExtResource( 9 )
+height = 55.0
+use_transparency = true
+
+[node name="Bookshelf 1" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( 81.6952, -58.4286 )
+tile_size = Vector2( 60, 25 )
+grid_size = Vector2( 0.8, 0.9 )
+texture = ExtResource( 11 )
+texture_scale = Vector2( 1.2, 1.2 )
+texture_offset = Vector2( -2, 22 )
+height = 70.0
+depth_test_offset = Vector3( 0, 100, 10 )
+preview_collision_box = false
+
+[node name="Vase" parent="Node2D/YSort" instance=ExtResource( 2 )]
+modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
+position = Vector2( 324.608, 115.302 )
+grid_size = Vector2( 0.7, 0.7 )
+texture = ExtResource( 38 )
+texture_scale = Vector2( 0.7, 0.6 )
+height = 32.0
+floor_height = 55.0
+preview_collision_box = false
+use_collision = false
+
+[node name="Grandfather Clock" parent="Node2D/YSort" instance=ExtResource( 2 )]
+modulate = Color( 0.937255, 0.913725, 0.937255, 1 )
+position = Vector2( 394.429, 80.9359 )
+tile_size = Vector2( 60, 25 )
+grid_size = Vector2( 0.8, 0.9 )
+texture = ExtResource( 44 )
+texture_scale = Vector2( 1.33, 1.23 )
+texture_offset = Vector2( -2, 5 )
+height = 90.0
+depth_test_offset = Vector3( 0, 100, 10 )
+preview_collision_box = false
+
+[node name="Cupholder" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( 203.259, 48.9364 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.8, 0.8 )
+texture = ExtResource( 30 )
+texture_offset = Vector2( 2, 27 )
+height = 25.0
+floor_height = 124.0
+depth_test_offset = Vector3( 0, 55, 0 )
+preview_collision_box = false
+always_update = true
+
+[node name="Cabinet" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( 236.06, 10.7641 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.8, 0.8 )
+texture = ExtResource( 12 )
+texture_scale = Vector2( 1.1, 1.1 )
+texture_offset = Vector2( 2, 27 )
+height = 40.0
+preview_collision_box = false
+always_update = true
+
+[node name="Cabinet2" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( 237.123, 22.7587 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.8, 0.8 )
+texture = ExtResource( 47 )
+texture_scale = Vector2( 1.1, 1.1 )
+texture_offset = Vector2( 2, 27 )
+height = 40.0
+floor_height = 40.0
+depth_test_offset = Vector3( 0, 100, 0 )
+preview_collision_box = false
+always_update = true
+
+[node name="SideTable2" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( 3.3118, 111.205 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1, 1.3 )
+texture = ExtResource( 29 )
+texture_scale = Vector2( 1.2, 1.2 )
+texture_offset = Vector2( -1, 21 )
+height = 65.0
+preview_collision_box = false
+
+[node name="China Dish" parent="Node2D/YSort" instance=ExtResource( 2 )]
+modulate = Color( 1, 0.996078, 0.992157, 1 )
+position = Vector2( 198.961, -8.04187 )
+tile_size = Vector2( 60, 25 )
+grid_size = Vector2( 0.8, 0.9 )
+texture = ExtResource( 35 )
+texture_scale = Vector2( 1.3, 1.3 )
+texture_offset = Vector2( 2, 22 )
+height = 124.0
+depth_test_offset = Vector3( 0, 20, 0 )
+preview_collision_box = false
+
+[node name="Misc A2" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( -190.908, 17.9998 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.8, 0.8 )
+texture = ExtResource( 58 )
+texture_scale = Vector2( -1.1, 1.1 )
+texture_offset = Vector2( 3, 32 )
+height = 50.0
+preview_collision_box = false
+use_dithering = false
+use_dither_blending = false
+
+[node name="Misc A3" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( 272.106, 19.5755 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 0.8, 0.8 )
+texture = ExtResource( 58 )
+texture_scale = Vector2( 1.1, 1.1 )
+texture_offset = Vector2( 3, 32 )
+height = 50.0
+preview_collision_box = false
+use_dithering = false
+use_dither_blending = false
+
+[node name="Cookies" parent="Node2D/YSort" instance=ExtResource( 2 )]
+modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
+position = Vector2( 274.216, 40.5648 )
+grid_size = Vector2( 0.6, 0.7 )
+texture = ExtResource( 57 )
+texture_scale = Vector2( 1.2, 1.2 )
+texture_offset = Vector2( 2, 34 )
+height = 50.0
+floor_height = 43.0
+depth_test_offset = Vector3( 0, -20, 0 )
+preview_collision_box = false
+use_collision = false
+
+[node name="Chair4" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( -85.8109, 36.161 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1, 0.6 )
+texture = ExtResource( 24 )
+texture_scale = Vector2( 1.4, 1.35 )
+texture_offset = Vector2( 0, 26 )
+height = 55.0
+preview_collision_box = false
+
+[node name="Chair1" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( -134.926, 14.4185 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1, 0.6 )
+texture = ExtResource( 24 )
+texture_scale = Vector2( 1.4, 1.35 )
+texture_offset = Vector2( 0, 26 )
+height = 55.0
+preview_collision_box = false
+
+[node name="Chair2" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( -62.2086, -39.6748 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1, 0.6 )
+texture = ExtResource( 23 )
+texture_scale = Vector2( 1.4, 1.3 )
+texture_offset = Vector2( 3, 26 )
+height = 55.0
+preview_collision_box = false
+
+[node name="Chair3" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( -22.0749, -14.1729 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1, 0.6 )
+texture = ExtResource( 23 )
+texture_scale = Vector2( 1.4, 1.3 )
+texture_offset = Vector2( 3, 26 )
+height = 55.0
+preview_collision_box = false
+
+[node name="Dining Table" parent="Node2D/YSort" instance=ExtResource( 2 )]
+modulate = Color( 0.992157, 0.976471, 1, 1 )
+position = Vector2( -56.8589, 27.009 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 3, 1.5 )
+texture = ExtResource( 26 )
+texture_scale = Vector2( 1.56, 1.44 )
+texture_offset = Vector2( 4, 5 )
+height = 55.0
+preview_collision_box = false
+
+[node name="CircleShadowSmall15" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( -76.2239, -42.5949 )
+scale = Vector2( 1.1504, 1.24466 )
+texture = ExtResource( 7 )
+script = ExtResource( 9 )
+height = 60.0
+use_transparency = true
+
+[node name="CircleShadowSmall17" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 83.3421, -125.438 )
+scale = Vector2( 0.536532, 0.594656 )
+texture = ExtResource( 7 )
+script = ExtResource( 9 )
+height = 75.0
+use_transparency = true
+
+[node name="CircleShadowSmall18" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 239.755, -47.2569 )
+scale = Vector2( 0.735026, 0.748441 )
+texture = ExtResource( 7 )
+script = ExtResource( 9 )
+height = 80.0
+use_transparency = true
+
+[node name="Fruit" parent="Node2D/YSort" instance=ExtResource( 2 )]
+modulate = Color( 0.90636, 0.8918, 0.91, 1 )
+position = Vector2( -76.9361, 12.403 )
+grid_size = Vector2( 0.6, 0.6 )
+texture = ExtResource( 32 )
+texture_scale = Vector2( 1.15, 1.12 )
+texture_offset = Vector2( 3, 38 )
+height = 32.0
+floor_height = 55.0
+preview_collision_box = false
+use_collision = false
+
+[node name="Begonia" parent="Node2D/YSort" instance=ExtResource( 2 )]
+modulate = Color( 0.976471, 0.960784, 0.980392, 1 )
+position = Vector2( -188.783, 41.989 )
+grid_size = Vector2( 0.3, 0.3 )
+texture = ExtResource( 45 )
+texture_scale = Vector2( -0.8, 0.8 )
+height = 30.0
+floor_height = 50.0
+depth_test_offset = Vector3( 0, 75, 0 )
+preview_collision_box = false
+use_collision = false
+
+[node name="Violet Pot2" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( 84.8102, -36.4441 )
+z_index = 1
+grid_size = Vector2( 0.3, 0.3 )
+texture = ExtResource( 42 )
+texture_scale = Vector2( 0.95, 0.95 )
+height = 32.0
+floor_height = 65.0
+depth_test_offset = Vector3( 0, 100, 0 )
+preview_collision_box = false
+
+[node name="Staircase" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( 35.6644, -64.1876 )
+rotation = -0.0184242
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 1.5, 1.5 )
+texture = ExtResource( 41 )
+texture_scale = Vector2( -1.8, 1.8 )
+texture_offset = Vector2( 1, 42 )
+height = 65.0
+preview_collision_box = false
+
+[node name="Bucket" parent="Node2D/YSort" instance=ExtResource( 2 )]
+position = Vector2( 238.16, 29.7534 )
+grid_size = Vector2( 0.5, 0.5 )
+texture = ExtResource( 37 )
+texture_scale = Vector2( 1.05, 1.05 )
+texture_offset = Vector2( 4, 34 )
+height = 35.0
+floor_height = 80.0
+depth_test_offset = Vector3( 0, 100, 0 )
+preview_collision_box = false
+use_collision = false
+
+[node name="CircleShadowSmall14" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( 7.39056, 74.962 )
+scale = Vector2( 0.545767, 0.560957 )
+texture = ExtResource( 7 )
+script = ExtResource( 9 )
+height = 70.0
+use_transparency = true
+
+[node name="Window" type="Sprite" parent="Node2D/YSort"]
+position = Vector2( -129.48, -91.3233 )
+rotation = -0.0498656
+scale = Vector2( 1.29135, 1.08968 )
+z_index = -3
+texture = ExtResource( 40 )
+
+[node name="Window2" type="Sprite" parent="Node2D/YSort"]
+position = Vector2( -34.6847, -130.823 )
+rotation = -0.0498656
+scale = Vector2( 1.29135, 1.08968 )
+z_index = -3
+texture = ExtResource( 40 )
+
+[node name="BerryDeco" type="Sprite" parent="Node2D/YSort"]
+position = Vector2( -80.6272, -119.579 )
+rotation = 0.0156403
+scale = Vector2( 0.9, 0.9 )
+z_index = -3
+texture = ExtResource( 48 )
+flip_h = true
+
+[node name="BerryDeco2" type="Sprite" parent="Node2D/YSort"]
+position = Vector2( 10.1935, -154.055 )
+rotation = 0.0156403
+scale = Vector2( 0.9, 0.9 )
+z_index = -3
+texture = ExtResource( 48 )
+flip_h = true
+
+[node name="BerryDeco3" type="Sprite" parent="Node2D/YSort"]
+position = Vector2( 117.271, -139.616 )
+rotation = 0.0215611
+scale = Vector2( 0.9, 0.9 )
+z_index = -3
+texture = ExtResource( 48 )
+
+[node name="BerryDeco4" type="Sprite" parent="Node2D/YSort"]
+position = Vector2( 244.541, -88.2816 )
+rotation = 0.0215611
+scale = Vector2( 0.9, 0.9 )
+z_index = -3
+texture = ExtResource( 48 )
+
+[node name="Counter" parent="Node2D/YSort" instance=ExtResource( 2 )]
+modulate = Color( 1, 0.992157, 1, 1 )
+position = Vector2( 314.603, 114.354 )
+tile_size = Vector2( 63, 28 )
+grid_size = Vector2( 2.7, 1.1 )
+texture = ExtResource( 36 )
+texture_scale = Vector2( 1.12, 1.1 )
+texture_offset = Vector2( 0, 3 )
+height = 55.0
+preview_collision_box = false
+
+[node name="Painting4" type="Sprite" parent="Node2D/YSort"]
+position = Vector2( 338.891, -21.7767 )
+rotation = 0.0464618
+scale = Vector2( 1.14611, 1.06199 )
+texture = ExtResource( 31 )
+
+[node name="Loqua" parent="Node2D/YSort" instance=ExtResource( 54 )]
+position = Vector2( 204.39, 73.9308 )
+
+[node name="Cranston" parent="Node2D/YSort" instance=ExtResource( 61 )]
+position = Vector2( 301.383, 72.423 )
+
+[node name="CircleShadowSmall13" type="Sprite" parent="Node2D"]
+modulate = Color( 1, 1, 1, 0.784314 )
+position = Vector2( -189.028, -5.01032 )
+scale = Vector2( 0.662025, 0.606836 )
+texture = ExtResource( 7 )
+script = ExtResource( 9 )
+height = 55.0
+use_transparency = true
+
+[node name="Daisy Pot" parent="Node2D" instance=ExtResource( 2 )]
+modulate = Color( 0.917647, 0.901961, 0.921569, 1 )
+position = Vector2( 8.4538, 138.179 )
+grid_size = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+texture_scale = Vector2( 0.55, 0.55 )
+height = 32.0
+floor_height = 70.0
+depth_test_offset = Vector3( 0, 100, 0 )
+preview_collision_box = false
+
+[node name="Ivy" type="Sprite" parent="Node2D"]
+position = Vector2( 154.375, -119.81 )
+scale = Vector2( 1.15, 1.15 )
+texture = ExtResource( 28 )
+script = ExtResource( 8 )
+height = 250.0
+
+[node name="Ivy2" type="Sprite" parent="Node2D"]
+position = Vector2( 280.672, -63.4705 )
+scale = Vector2( 1.15, 1.15 )
+texture = ExtResource( 28 )
+script = ExtResource( 8 )
+height = 250.0
+
+[node name="Ivy3" type="Sprite" parent="Node2D"]
+position = Vector2( -186.374, -71.0251 )
+scale = Vector2( 1.15, 1.15 )
+texture = ExtResource( 28 )
+flip_h = true
+script = ExtResource( 8 )
+height = 250.0
+
+[node name="Ivy4" type="Sprite" parent="Node2D"]
+visible = false
+position = Vector2( -37.6959, -132.804 )
+scale = Vector2( 1.15, 1.15 )
+texture = ExtResource( 28 )
+flip_h = true
+script = ExtResource( 8 )
+height = 250.0
+
+[node name="CollisionRoot" type="Node2D" parent="Node2D"]
+position = Vector2( 3.99995, -0.0209439 )
+
+[node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 53 )]
+visible = false
+
+[node name="NavmeshLayer" parent="Node2D/CollisionRoot/Navmesh" instance=ExtResource( 56 )]
+position = Vector2( -49, 35.1 )
+polygon = PoolVector2Array( 88.523, -126.308, 456.434, 46.7678, 209.998, 155.06, 146.847, 126.39, 115.926, 141.552, 55.7801, 113.867, 87.7168, 101.699, -166.887, -12.9693 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Outside" parent="Node2D/CollisionRoot" instance=ExtResource( 52 )]
+position = Vector2( -160.553, 85.8418 )
+script = ExtResource( 14 )
+target_scene = "res://Areas/Berry Lake/Berry Lake 8.tscn"
+exit_name = "BerryLakeInn1_BerryLake8"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Outside"]
+position = Vector2( 194.453, 85.9831 )
+polygon = PoolVector2Array( -30.1146, -21.8427, -4.16736, -31.9787, 55.9837, -3.2932, 32, 6 )
+
+[node name="Upstairs" parent="Node2D/CollisionRoot" instance=ExtResource( 52 )]
+position = Vector2( 4.78001, -42.0256 )
+script = ExtResource( 14 )
+staircase = true
+target_scene = "res://Areas/Berry Lake/BerryLake_Inn_2.tscn"
+exit_name = "BerryLakeInn1_BerryLakeInn2"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Upstairs"]
+position = Vector2( 1.98951, -2.01045 )
+polygon = PoolVector2Array( -22.0885, -26.8165, -11.1306, -34.874, 19.9055, -18.1045, 10.9423, -11.0574 )
+
+[node name="PlayerSpawnDefault" parent="Node2D/CollisionRoot" instance=ExtResource( 50 )]
+position = Vector2( 28.8582, -27.1515 )
+door_name = "BerryLakeInn2_BerryLakeInn1"
+direction = Vector2( 1, -1 )
+
+[node name="PlayerSpawnFromOutsideHouse2" parent="Node2D/CollisionRoot" instance=ExtResource( 50 )]
+position = Vector2( 87.7004, 133.543 )
+door_name = "BerryLake8_BerryLakeInn1"
+direction = Vector2( 1, 1 )
+
+[node name="NPC" type="Area2D" parent="Node2D/CollisionRoot"]
+script = ExtResource( 16 )
+npc_name = "Derek"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/NPC"]
+position = Vector2( 64.8001, -38.3398 )
+polygon = PoolVector2Array( -6.00998, -1.96857, 26.0576, 10.8637, 12.1102, 20.9369, -19.9679, 6.10462 )
+
+[node name="Inn" parent="Node2D/CollisionRoot" instance=ExtResource( 52 )]
+position = Vector2( 172.437, 83.0983 )
+script = ExtResource( 62 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Inn"]
+position = Vector2( 2.1047, 19.9893 )
+polygon = PoolVector2Array( -7.10989, -20.9631, 8.84801, -29.0468, 38.9052, -18.204, 17.9526, -9.09418 )
+
+[node name="Shop" parent="Node2D/CollisionRoot" instance=ExtResource( 52 )]
+position = Vector2( 172.437, 83.0983 )
+script = ExtResource( 62 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Shop"]
+position = Vector2( 51.1982, 37.7324 )
+polygon = PoolVector2Array( -7.10989, -20.9631, 8.84801, -29.0468, 61.9625, -7.32454, 45.0046, 0.764359 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
+position = Vector2( 6.00346, 0.97905 )
+z_index = 4096
+offset = Vector2( 0, -20 )
+current = true
+zoom = Vector2( 0.655, 0.65 )
+script = ExtResource( 20 )
+minPos = Vector2( -38, -110 )
+maxPos = Vector2( 227, 41 )
+follow_player = true
+
+[node name="Interaction" type="Node2D" parent="Camera2D"]
+script = ExtResource( 17 )
+inn_name = "Loqua"
+cost = 75
+target_scene = "res://Areas/Berry Lake/BerryLake_Inn_2.tscn"
+
+[node name="Dialogue" type="Sprite" parent="Camera2D/Interaction"]
+visible = false
+position = Vector2( -76.8348, -158.579 )
+scale = Vector2( 0.7, 0.7 )
+z_index = 3
+texture = ExtResource( 3 )
+script = ExtResource( 15 )
+
+[node name="DialogueCursor" parent="Camera2D/Interaction/Dialogue" instance=ExtResource( 55 )]
+visible = false
+position = Vector2( 154.045, 25.1428 )
+
+[node name="Name" type="Label" parent="Camera2D/Interaction/Dialogue"]
+margin_left = -158.813
+margin_top = -30.5715
+margin_right = 162.0
+margin_bottom = 20.4285
+custom_fonts/font = ExtResource( 1 )
+text = "Tom:"
+autowrap = true
+script = ExtResource( 21 )
+
+[node name="Talk" type="Label" parent="Camera2D/Interaction/Dialogue/Name"]
+margin_left = 47.0
+margin_top = -0.00012207
+margin_right = 310.384
+margin_bottom = 50.9999
+custom_fonts/font = ExtResource( 1 )
+text = "Hey. What do you need?"
+autowrap = true
+percent_visible = 0.1
+
+[node name="ShopOptions" type="Sprite" parent="Camera2D/Interaction"]
+visible = false
+position = Vector2( 138.997, 99.021 )
+scale = Vector2( 0.65, 0.6 )
+texture = ExtResource( 34 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Interaction/ShopOptions"]
+margin_left = -21.5385
+margin_top = -21.6667
+margin_right = 61.4615
+margin_bottom = 93.3333
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1, 1.05 )
+custom_constants/separation = 10
+
+[node name="Sleep" type="Label" parent="Camera2D/Interaction/ShopOptions/VBoxContainer"]
+margin_right = 83.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 1 )
+text = "Sleep"
+autowrap = true
+script = ExtResource( 10 )
+
+[node name="Talk" type="Label" parent="Camera2D/Interaction/ShopOptions/VBoxContainer"]
+margin_top = 25.0
+margin_right = 83.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 1 )
+text = "Talk"
+autowrap = true
+script = ExtResource( 10 )
+
+[node name="MenuCursor" parent="Camera2D/Interaction/ShopOptions" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -38.4623
+margin_top = 52.0832
+margin_right = 42.5377
+margin_bottom = 77.0832
+rect_scale = Vector2( 1, 1.05 )
+script = ExtResource( 18 )
+menu_parent_path = NodePath("../VBoxContainer")
+cursor_offset = Vector2( -21, 0 )
+
+[node name="Shop" type="Node2D" parent="Camera2D"]
+script = ExtResource( 69 )
+shop_name = "Cranston"
+
+[node name="Dialogue" type="Sprite" parent="Camera2D/Shop"]
+visible = false
+position = Vector2( -76.8348, -158.579 )
+scale = Vector2( 0.7, 0.7 )
+z_index = 3
+texture = ExtResource( 3 )
+
+[node name="DialogueCursor" parent="Camera2D/Shop/Dialogue" instance=ExtResource( 55 )]
+visible = false
+position = Vector2( 154.045, 25.1428 )
+
+[node name="Name" type="Label" parent="Camera2D/Shop/Dialogue"]
+margin_left = -158.813
+margin_top = -30.5715
+margin_right = 162.0
+margin_bottom = 20.4285
+custom_fonts/font = ExtResource( 1 )
+text = "Tom:"
+autowrap = true
+script = ExtResource( 21 )
+
+[node name="Talk" type="Label" parent="Camera2D/Shop/Dialogue/Name"]
+margin_left = 47.0
+margin_top = -0.00012207
+margin_right = 310.384
+margin_bottom = 50.9999
+custom_fonts/font = ExtResource( 1 )
+text = "Hey. What do you need?"
+autowrap = true
+percent_visible = 0.1
+
+[node name="ShopOptions" type="Sprite" parent="Camera2D/Shop"]
+visible = false
+position = Vector2( 138.997, 88.021 )
+scale = Vector2( 0.65, 0.6 )
+texture = ExtResource( 77 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Shop/ShopOptions"]
+margin_left = -24.616
+margin_top = -59.5
+margin_right = 58.384
+margin_bottom = 55.5
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1, 1.05 )
+custom_constants/separation = 10
+
+[node name="Buy" type="Label" parent="Camera2D/Shop/ShopOptions/VBoxContainer"]
+margin_right = 83.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 1 )
+text = "Buy"
+autowrap = true
+script = ExtResource( 10 )
+
+[node name="Sell" type="Label" parent="Camera2D/Shop/ShopOptions/VBoxContainer"]
+margin_top = 25.0
+margin_right = 83.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 1 )
+text = "Sell"
+autowrap = true
+script = ExtResource( 10 )
+
+[node name="Deposit" type="Label" parent="Camera2D/Shop/ShopOptions/VBoxContainer"]
+margin_top = 50.0
+margin_right = 83.0
+margin_bottom = 65.0
+custom_fonts/font = ExtResource( 1 )
+text = "Deposit"
+autowrap = true
+script = ExtResource( 10 )
+
+[node name="Withdraw" type="Label" parent="Camera2D/Shop/ShopOptions/VBoxContainer"]
+margin_top = 75.0
+margin_right = 83.0
+margin_bottom = 90.0
+custom_fonts/font = ExtResource( 1 )
+text = "Withdraw"
+autowrap = true
+script = ExtResource( 10 )
+
+[node name="Talk" type="Label" parent="Camera2D/Shop/ShopOptions/VBoxContainer"]
+margin_top = 100.0
+margin_right = 83.0
+margin_bottom = 115.0
+custom_fonts/font = ExtResource( 1 )
+text = "Talk"
+autowrap = true
+script = ExtResource( 10 )
+
+[node name="MenuCursor" parent="Camera2D/Shop/ShopOptions" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -38.4623
+margin_top = 52.0832
+margin_right = 42.5377
+margin_bottom = 77.0832
+rect_scale = Vector2( 1, 1.05 )
+script = ExtResource( 71 )
+menu_parent_path = NodePath("../VBoxContainer")
+cursor_offset = Vector2( -21, 0 )
+
+[node name="Buy" type="Sprite" parent="Camera2D/Shop"]
+visible = false
+position = Vector2( 109.997, 76.0209 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 78 )
+script = ExtResource( 73 )
+
+[node name="Buy_Inventory" type="VBoxContainer" parent="Camera2D/Shop/Buy"]
+margin_left = -145.0
+margin_top = -111.0
+margin_right = 14.9997
+margin_bottom = -71.0
+grow_horizontal = 2
+rect_min_size = Vector2( 160, 0 )
+size_flags_vertical = 0
+custom_constants/separation = 9
+alignment = 1
+script = ExtResource( 67 )
+shop_name = "Cranston"
+
+[node name="MenuCursor" parent="Camera2D/Shop/Buy" instance=ExtResource( 6 )]
+script = ExtResource( 66 )
+menu_parent_path = NodePath("../Buy_Inventory")
+cursor_offset = Vector2( -12, 0 )
+
+[node name="Display" type="Sprite" parent="Camera2D/Shop/Buy"]
+position = Vector2( 84.9992, -81.6665 )
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 63 )
+hframes = 3
+vframes = 4
+
+[node name="Cost" type="Label" parent="Camera2D/Shop/Buy"]
+margin_left = 47.0
+margin_top = -13.333
+margin_right = 124.0
+margin_bottom = 0.667
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "100 Mb"
+align = 1
+
+[node name="Carrying" type="Label" parent="Camera2D/Shop/Buy"]
+margin_left = 48.3326
+margin_top = 103.333
+margin_right = 125.333
+margin_bottom = 117.333
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "Bag: 5"
+align = 1
+
+[node name="Info" type="Label" parent="Camera2D/Shop/Buy"]
+margin_left = 34.9992
+margin_top = 26.6667
+margin_right = 136.999
+margin_bottom = 98.6663
+custom_fonts/font = ExtResource( 65 )
+text = "50 HP"
+align = 1
+autowrap = true
+
+[node name="Marbles" type="Sprite" parent="Camera2D/Shop/Buy"]
+position = Vector2( -105.001, -140 )
+texture = ExtResource( 79 )
+
+[node name="Bag" type="Label" parent="Camera2D/Shop/Buy"]
+margin_left = -182.0
+margin_top = -147.0
+margin_right = -105.0
+margin_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "Bag:"
+align = 1
+
+[node name="Bag_Marbles" type="Label" parent="Camera2D/Shop/Buy"]
+margin_left = -125.001
+margin_top = -147.0
+margin_right = -47.6666
+margin_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "497 Mb"
+align = 1
+
+[node name="Sell" type="Sprite" parent="Camera2D/Shop"]
+visible = false
+position = Vector2( 109.997, 76.0209 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 78 )
+script = ExtResource( 72 )
+
+[node name="Sell_Inventory" type="VBoxContainer" parent="Camera2D/Shop/Sell"]
+margin_left = -145.0
+margin_top = -111.0
+margin_right = 15.0
+margin_bottom = -51.0
+grow_horizontal = 2
+rect_min_size = Vector2( 0, 60 )
+custom_constants/separation = 9
+alignment = 1
+script = ExtResource( 70 )
+
+[node name="MenuCursor" parent="Camera2D/Shop/Sell" instance=ExtResource( 6 )]
+script = SubResource( 3 )
+menu_parent_path = NodePath("../Sell_Inventory")
+cursor_offset = Vector2( -12, 0 )
+
+[node name="Display" type="Sprite" parent="Camera2D/Shop/Sell"]
+position = Vector2( 84.9992, -81.6665 )
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 63 )
+hframes = 3
+vframes = 4
+
+[node name="Cost" type="Label" parent="Camera2D/Shop/Sell"]
+margin_left = 47.0
+margin_top = -13.333
+margin_right = 124.0
+margin_bottom = 0.667
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "100 Mb"
+align = 1
+
+[node name="Info" type="Label" parent="Camera2D/Shop/Sell"]
+margin_left = 34.9992
+margin_top = 26.6667
+margin_right = 136.999
+margin_bottom = 98.6663
+custom_fonts/font = ExtResource( 65 )
+text = "50 HP"
+align = 1
+autowrap = true
+
+[node name="Marbles" type="Sprite" parent="Camera2D/Shop/Sell"]
+position = Vector2( -105.001, -140 )
+texture = ExtResource( 79 )
+
+[node name="Bag" type="Label" parent="Camera2D/Shop/Sell"]
+margin_left = -182.0
+margin_top = -147.0
+margin_right = -105.0
+margin_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "Bag:"
+align = 1
+
+[node name="Bag_Marbles" type="Label" parent="Camera2D/Shop/Sell"]
+margin_left = -125.001
+margin_top = -147.0
+margin_right = -47.6666
+margin_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "497 Mb"
+align = 1
+
+[node name="Deposit" type="Sprite" parent="Camera2D/Shop"]
+visible = false
+position = Vector2( 109.997, 76.0209 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 78 )
+script = ExtResource( 74 )
+
+[node name="Deposit_Inventory" type="VBoxContainer" parent="Camera2D/Shop/Deposit"]
+margin_left = -145.0
+margin_top = -111.0
+margin_right = 15.0
+margin_bottom = -51.0
+grow_horizontal = 2
+rect_min_size = Vector2( 0, 60 )
+custom_constants/separation = 9
+alignment = 1
+script = ExtResource( 68 )
+
+[node name="MenuCursor" parent="Camera2D/Shop/Deposit" instance=ExtResource( 6 )]
+script = SubResource( 4 )
+menu_parent_path = NodePath("../Deposit_Inventory")
+cursor_offset = Vector2( -12, 0 )
+
+[node name="Display" type="Sprite" parent="Camera2D/Shop/Deposit"]
+position = Vector2( 84.9992, -81.6665 )
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 63 )
+hframes = 3
+vframes = 4
+
+[node name="Storage" type="Label" parent="Camera2D/Shop/Deposit"]
+margin_left = 38.3326
+margin_top = -13.3332
+margin_right = 115.333
+margin_bottom = 0.666763
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "Storage:"
+align = 1
+
+[node name="Storage_info" type="Label" parent="Camera2D/Shop/Deposit/Storage"]
+margin_left = 41.0
+margin_right = 118.0
+margin_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "0"
+align = 1
+
+[node name="Info" type="Label" parent="Camera2D/Shop/Deposit"]
+margin_left = 34.9992
+margin_top = 26.6667
+margin_right = 136.999
+margin_bottom = 98.6663
+custom_fonts/font = ExtResource( 65 )
+text = "50 HP"
+align = 1
+autowrap = true
+
+[node name="Withdraw" type="Sprite" parent="Camera2D/Shop"]
+visible = false
+position = Vector2( 109.997, 76.0209 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 78 )
+script = ExtResource( 75 )
+
+[node name="Withdraw_Inventory" type="VBoxContainer" parent="Camera2D/Shop/Withdraw"]
+margin_left = -145.0
+margin_top = -111.0
+margin_right = 15.0
+margin_bottom = -51.0
+grow_horizontal = 2
+rect_min_size = Vector2( 0, 60 )
+custom_constants/separation = 9
+alignment = 1
+script = ExtResource( 76 )
+
+[node name="MenuCursor" parent="Camera2D/Shop/Withdraw" instance=ExtResource( 6 )]
+script = SubResource( 5 )
+menu_parent_path = NodePath("../Withdraw_Inventory")
+cursor_offset = Vector2( -12, 0 )
+
+[node name="Display" type="Sprite" parent="Camera2D/Shop/Withdraw"]
+position = Vector2( 84.9992, -81.6665 )
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 63 )
+hframes = 3
+vframes = 4
+
+[node name="Bag" type="Label" parent="Camera2D/Shop/Withdraw"]
+margin_left = 34.9992
+margin_top = -13.3332
+margin_right = 111.999
+margin_bottom = 0.666763
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "Bag:"
+align = 1
+
+[node name="Bag_info" type="Label" parent="Camera2D/Shop/Withdraw/Bag"]
+margin_left = 33.3333
+margin_right = 110.333
+margin_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource( 2 )
+text = "0"
+align = 1
+
+[node name="Info" type="Label" parent="Camera2D/Shop/Withdraw"]
+margin_left = 34.9992
+margin_top = 26.6667
+margin_right = 136.999
+margin_bottom = 98.6663
+custom_fonts/font = ExtResource( 65 )
+text = "50 HP"
+align = 1
+autowrap = true
+
+[node name="Info_Window" type="Sprite" parent="Camera2D"]
+visible = false
+modulate = Color( 1, 1, 1, 0.6 )
+position = Vector2( -112.003, -163.979 )
+scale = Vector2( 0.5, 0.6 )
+z_index = 3
+texture = ExtResource( 3 )
+
+[node name="First_Text" type="Label" parent="Camera2D/Info_Window"]
+margin_left = -147.143
+margin_top = -11.0
+margin_right = 98.857
+margin_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1.2, 1.1 )
+custom_fonts/font = ExtResource( 1 )
+text = "You got a Flummery Flambe!"
+align = 1
+
+[connection signal="body_exited" from="Node2D/CollisionRoot/NPC" to="Node2D/CollisionRoot/NPC" method="_on_NPC_body_exited"]
+[connection signal="general_dialogue" from="Node2D/CollisionRoot/NPC" to="Camera2D/Interaction" method="_on_NPC_general_dialogue"]
+[connection signal="general_dialogue" from="Node2D/CollisionRoot/NPC" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]
+[connection signal="body_exited" from="Node2D/CollisionRoot/Inn" to="Node2D/CollisionRoot/Inn" method="_on_Shop_body_exited"]
+[connection signal="interaction" from="Node2D/CollisionRoot/Inn" to="Camera2D/Interaction" method="_on_Shop_interaction"]
+[connection signal="body_exited" from="Node2D/CollisionRoot/Shop" to="Node2D/CollisionRoot/Shop" method="_on_Shop_body_exited"]
+[connection signal="interaction" from="Node2D/CollisionRoot/Shop" to="Camera2D/Shop" method="_on_Shop_interaction"]
+[connection signal="option_selecting" from="Camera2D/Interaction" to="Camera2D/Interaction/ShopOptions/MenuCursor" method="_on_Interaction_option_selecting"]
+[connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy" method="_on_Interaction_buying"]
+[connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/Buy_Inventory" method="_on_Interaction_buying"]
+[connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/MenuCursor" method="_on_Interaction_buying"]
+[connection signal="deposit" from="Camera2D/Shop" to="Camera2D/Shop/Deposit" method="_on_Interaction_deposit"]
+[connection signal="deposit" from="Camera2D/Shop" to="Camera2D/Shop/Deposit/Deposit_Inventory" method="_on_Interaction_deposit"]
+[connection signal="deposit" from="Camera2D/Shop" to="Camera2D/Shop/Deposit/MenuCursor" method="_on_Interaction_deposit"]
+[connection signal="option_selecting" from="Camera2D/Shop" to="Camera2D/Shop/ShopOptions/MenuCursor" method="_on_Interaction_option_selecting"]
+[connection signal="option_selecting" from="Camera2D/Shop" to="Camera2D/Shop/Buy" method="_on_Interaction_option_selecting"]
+[connection signal="option_selecting" from="Camera2D/Shop" to="Camera2D/Shop/Buy/Buy_Inventory" method="_on_Interaction_option_selecting"]
+[connection signal="option_selecting" from="Camera2D/Shop" to="Camera2D/Shop/Buy/MenuCursor" method="_on_Interaction_option_selecting"]
+[connection signal="option_selecting" from="Camera2D/Shop" to="Camera2D/Shop/Sell" method="_on_Interaction_option_selecting"]
+[connection signal="option_selecting" from="Camera2D/Shop" to="Camera2D/Shop/Sell/Sell_Inventory" method="_on_Interaction_option_selecting"]
+[connection signal="option_selecting" from="Camera2D/Shop" to="Camera2D/Shop/Sell/MenuCursor" method="_on_Interaction_option_selecting"]
+[connection signal="option_selecting" from="Camera2D/Shop" to="Camera2D/Shop/Deposit" method="_on_Interaction_option_selecting"]
+[connection signal="option_selecting" from="Camera2D/Shop" to="Camera2D/Shop/Deposit/Deposit_Inventory" method="_on_Interaction_option_selecting"]
+[connection signal="option_selecting" from="Camera2D/Shop" to="Camera2D/Shop/Deposit/MenuCursor" method="_on_Interaction_option_selecting"]
+[connection signal="option_selecting" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw" method="_on_Interaction_option_selecting"]
+[connection signal="option_selecting" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw/Withdraw_Inventory" method="_on_Interaction_option_selecting"]
+[connection signal="option_selecting" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw/MenuCursor" method="_on_Interaction_option_selecting"]
+[connection signal="restart" from="Camera2D/Shop" to="Node2D/CollisionRoot/Shop" method="_on_Shop_restart"]
+[connection signal="retread" from="Camera2D/Shop" to="Camera2D/Shop/Buy/MenuCursor" method="_on_Interaction_retread"]
+[connection signal="retread" from="Camera2D/Shop" to="Camera2D/Shop/Sell/MenuCursor" method="_on_Interaction_retread"]
+[connection signal="retread" from="Camera2D/Shop" to="Camera2D/Shop/Deposit/MenuCursor" method="_on_Interaction_retread"]
+[connection signal="retread" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw/MenuCursor" method="_on_Interaction_retread"]
+[connection signal="selling" from="Camera2D/Shop" to="Camera2D/Shop/Sell" method="_on_Interaction_selling"]
+[connection signal="selling" from="Camera2D/Shop" to="Camera2D/Shop/Sell/Sell_Inventory" method="_on_Interaction_selling"]
+[connection signal="selling" from="Camera2D/Shop" to="Camera2D/Shop/Sell/MenuCursor" method="_on_Interaction_selling"]
+[connection signal="withdraw" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw" method="_on_Interaction_withdraw"]
+[connection signal="withdraw" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw/Withdraw_Inventory" method="_on_Interaction_withdraw"]
+[connection signal="withdraw" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw/MenuCursor" method="_on_Interaction_withdraw"]
+[connection signal="empty_items" from="Camera2D/Shop/Sell/Sell_Inventory" to="Camera2D/Shop/Sell/MenuCursor" method="_on_Sell_Inventory_empty_items"]
