@@ -126,6 +126,7 @@ func _physics_process(delta):
 	
 	if not is_on_ground and not bubble:
 		vel.z -= gravity * delta
+		jumping = true
 		#$CollisionShape2D.global_position += Vector2(0, -(vel.z * delta * 1.2))
 	elif bubble:
 		vel.z = 0
@@ -137,7 +138,7 @@ func _physics_process(delta):
 	else:
 		vel.z = 0
 		pos_z = floor_z
-		#jumping = false
+		jumping = false
 	
 	pos_z += vel.z * delta
 	

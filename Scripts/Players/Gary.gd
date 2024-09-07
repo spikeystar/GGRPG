@@ -12,6 +12,7 @@ const PauseMenu = preload("res://UI/PauseMenu.tscn")
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
 var pause_menu
 var in_bubble = false
+var jumping = false
 
 onready var motion_root: KinematicBody2D = $MotionRoot
 onready var world_collider = $MotionRoot/CollisionShape2D
@@ -34,27 +35,44 @@ func _physics_process(delta):
 	var ouch = PlayerManager.ouch
 	var drown = PlayerManager.drown
 	
+	print(motion_root.jumping)
+	
 	$JumpShape.shape_origin = body_visual_root.global_position
 	$JumpShape.origin_z = motion_root.pos_z
 
 	var last_dir = motion_root.last_dir
-	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1:
+	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1 && abs(motion_root.vel.z) == 0 and not motion_root.jumping:
 		anim_tree.get("parameters/playback").travel("Idle")
 		anim_tree.set("parameters/Idle/blend_position", Vector2(last_dir.x, -last_dir.y))
-	else:
+	elif abs(motion_root.vel.z) == 0 and not motion_root.jumping:
 		anim_tree.get("parameters/playback").travel("Walk")
 		anim_tree.set("parameters/Walk/blend_position", Vector2(last_dir.x, -last_dir.y))
 		
-	if abs(motion_root.vel.z) >1:
-		anim_tree.get("parameters/playback").travel("Fall")
-		anim_tree.set("parameters/Fall/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
-	
+	#and motion_root.is_on_ground and not abs(motion_root.vel.z) > 0 and not abs(motion_root.vel.z) < 0 and not PlayerManager.bouncy
+		
+
 	if Input.is_action_just_pressed("ui_push") and not freeze:
+		#jumping = true
 		$BodyYSort/BodyVisualRoot/Gary.z_index = 0
 		anim_player.stop()
 		anim_tree.active = true
 		anim_tree.get("parameters/playback").travel("Jump")
 		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
+		
+	if motion_root.jumping:
+		$BodyYSort/BodyVisualRoot/Gary.z_index = 0
+		anim_player.stop()
+		anim_tree.active = true
+		anim_tree.get("parameters/playback").travel("Jump")
+		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
+		
+	#if abs(motion_root.vel.z) >1:
+	if motion_root.vel.z <0:
+		anim_tree.get("parameters/playback").travel("Fall")
+		anim_tree.set("parameters/Fall/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
+		
+	#if motion_root.is_on_ground:
+		#jumping = false
 		
 	if Input.is_action_just_pressed("ui_push") and not freeze and in_bubble:
 		pop()
