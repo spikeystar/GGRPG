@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://Scripts/Drown.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Tiles/Berry Grass.png" type="Texture" id=2]
@@ -58,6 +58,9 @@
 [ext_resource path="res://Scripts/Rendering/DepthTestTileMap.gd" type="Script" id=56]
 [ext_resource path="res://Assets/Berry Lake/Tree E.png" type="Texture" id=57]
 [ext_resource path="res://Enemies/Berry Lake/Beezle_wander.tscn" type="PackedScene" id=58]
+[ext_resource path="res://Enemies/Berry Lake/Smush_wander_20.tscn" type="PackedScene" id=59]
+[ext_resource path="res://Enemies/Berry Lake/Druplet_wander_20.tscn" type="PackedScene" id=60]
+[ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=61]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -686,6 +689,12 @@ script = ExtResource( 7 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
+
+[node name="Smush" parent="." instance=ExtResource( 59 )]
+position = Vector2( -221, -162 )
+
+[node name="Smush2" parent="." instance=ExtResource( 59 )]
+position = Vector2( 745, -383 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -1725,11 +1734,11 @@ position = Vector2( -1, 7 )
 polygon = PoolVector2Array( -181, -48, -184, -53, -180, -57, -166, -55, -158, -56, -155, -57, -151, -57, -148, -53, -152, -48, -149, -45, -146, -38, -154, -35, -159, -39, -164, -41, -169, -40, -175, -37, -181, -36, -185, -39, -185, -43, -180, -45 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 12 )]
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 13 )]
-visible = false
 position = Vector2( -29, -11 )
 polygon = PoolVector2Array( -351, -15, -375, -28, -386, -38, -372, -53, -394, -61, -375, -75, -392, -82, -372, -93, -396, -105, -381, -108, -376, -119, -398, -126, -376, -133, -375, -139, -396, -148, -373, -157, -376, -163, -391, -170, -371, -182, -392, -194, -355, -207, -65, -311, -30, -297, -2, -311, 548, -116, 514, -106, 542, -93, 457, -61, 483, -48, 28, 113, -5, 101, -33, 114, -191, 63, -280, 95, -374, 61, -285, 29, -376, -5 )
 height = 20.0
@@ -1849,6 +1858,22 @@ position = Vector2( 257, -96 )
 
 [node name="Beezle2" parent="." instance=ExtResource( 58 )]
 position = Vector2( 495, -460 )
+
+[node name="Druplet" parent="." instance=ExtResource( 60 )]
+position = Vector2( -7, -51 )
+
+[node name="Druplet2" parent="." instance=ExtResource( 60 )]
+position = Vector2( 302, -438 )
+
+[node name="Enemy_Boundary" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 61 )
+
+[node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+position = Vector2( 5, -186 )
+polygon = PoolVector2Array( 557, 105, 711, 89, 713, -27, 587, -46, 579, -106, 536, -116, 517, -61, 97, -219, 89, -286, 38, -295, -137, -138, -68, -118, -40, -75, 3, -99 )
 
 [connection signal="bouncy" from="Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="bouncy" from="Bouncy2" to="YSort/MiddleGround/BouncyFlower2" method="_on_Bouncy2_bouncy"]

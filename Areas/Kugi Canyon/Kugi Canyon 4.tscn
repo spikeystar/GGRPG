@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie_wander_230.tscn" type="PackedScene" id=2]
@@ -54,6 +54,7 @@
 [ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 8.tscn" type="PackedScene" id=52]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=53]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=54]
+[ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=55]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -1442,5 +1443,14 @@ exit_name = "Entrance"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes"]
 polygon = PoolVector2Array( 9, 48, 513, -132, 310, -211, -31, -95, -121, -62 )
+
+[node name="Enemy_Boundary" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 55 )
+
+[node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+polygon = PoolVector2Array( -80, -117, 421, -294, 412, -309, -108, -128 )
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=76 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Berry Grass.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=2]
@@ -64,6 +64,9 @@
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=62]
 [ext_resource path="res://Scripts/Rendering/DepthTestTileMap.gd" type="Script" id=63]
 [ext_resource path="res://Assets/General/Shadows/circle shadow large.png" type="Texture" id=64]
+[ext_resource path="res://Enemies/Berry Lake/Smush_wander_40.tscn" type="PackedScene" id=65]
+[ext_resource path="res://Enemies/Berry Lake/Druplet_wander_40.tscn" type="PackedScene" id=66]
+[ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=67]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -1673,6 +1676,29 @@ align = 1
 autoplay = "sunbeams"
 anims/RESET = SubResource( 9 )
 anims/sunbeams = SubResource( 10 )
+
+[node name="Smush" parent="." instance=ExtResource( 65 )]
+position = Vector2( -256, -203 )
+
+[node name="Smush2" parent="." instance=ExtResource( 65 )]
+position = Vector2( 90, -222 )
+
+[node name="Druplet" parent="." instance=ExtResource( 66 )]
+position = Vector2( 23, 8 )
+
+[node name="Enemy_Boundary" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 67 )
+
+[node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+position = Vector2( -509, -19 )
+polygon = PoolVector2Array( 231, -56, 217, -156, 175, -172, 169, -220, 88, -221, 60, -187, 58, -27, 75, -6 )
+
+[node name="Repel2" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+position = Vector2( 178, 90 )
+polygon = PoolVector2Array( 135, -40, 126, -179, 323, -185, 387, -216, 254, -239, 190, -244, 88, -221, 7, -206, 14, -80, 58, -27, 75, -6 )
 
 [connection signal="bouncy" from="Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="bouncy" from="Bouncy2" to="YSort/MiddleGround/BouncyFlower2" method="_on_Bouncy2_bouncy"]

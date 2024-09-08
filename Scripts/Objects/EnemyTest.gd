@@ -62,7 +62,7 @@ func _ready():
 	$MotionRoot/BattleTrigger.printer = printer
 	$MotionRoot/BattleTrigger.ground_enemy = ground_enemy
 	$MotionRoot.ground_enemy = ground_enemy
-	anim_player.play("walk_front")
+	#anim_player.play("walk_front")
 	motion_root_z = motion_root.pos_z
 	yield(get_tree().create_timer(0.01), "timeout")
 	SceneManager.SceneEnemies.append(self)
@@ -118,14 +118,16 @@ func _physics_process(delta):
 	#if abs(motion_root.velocity.x) > VEL_EPSILON:
 		#sprite.flip_h = motion_root.velocity.x > 0
 	
-	if motion_root.velocity.y < VEL_EPSILON and abs(motion_root.velocity.x) < VEL_EPSILON:
-		shadow_sprite.offset.x = 0
-		shadow_sprite.offset.y = 0
-		anim_player.play("walk_back")
-	if motion_root.velocity.y > VEL_EPSILON and abs(motion_root.velocity.x) < VEL_EPSILON:
-		shadow_sprite.offset.x = 0
-		shadow_sprite.offset.y = 0
-		anim_player.play("walk_front")
+	#if motion_root.velocity.y < VEL_EPSILON and abs(motion_root.velocity.x) < VEL_EPSILON:
+		#print(shadow_sprite.offset.x)
+		#shadow_sprite.offset.x -= shadow_back_x
+		#shadow_sprite.offset.y -= shadow_back_y
+		#anim_player.play("walk_back")
+	#if motion_root.velocity.y > VEL_EPSILON and abs(motion_root.velocity.x) < VEL_EPSILON:
+		#pass
+		#shadow_sprite.offset.x -= shadow_back_x
+		#shadow_sprite.offset.y -= shadow_back_y
+		#anim_player.play("walk_front")
 		
 	if motion_root.velocity.y < VEL_EPSILON and abs(motion_root.velocity.x) > VEL_EPSILON:
 		anim_player.play("walk_back")
@@ -137,6 +139,9 @@ func _physics_process(delta):
 		sprite.flip_h = motion_root.velocity.x > 0
 		shadow_sprite.offset.x = shadow_front_x
 		shadow_sprite.offset.y = shadow_front_y
+	if not sprite.flip_h:
+		shadow_sprite.offset.x = 0
+		shadow_sprite.offset.y = 0
 		
 	
 	anim_player.playback_speed = lerp(min_speed, max_speed, clamp(abs(motion_root.velocity.length() / VEL_ANIM_MAX), 0, 1));

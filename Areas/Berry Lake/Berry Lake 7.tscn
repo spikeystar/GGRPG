@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Berry Lake/Flower B.png" type="Texture" id=2]
@@ -50,6 +50,7 @@
 [ext_resource path="res://Assets/Berry Lake/lilypad small.png" type="Texture" id=48]
 [ext_resource path="res://Assets/Berry Lake/little stars b.png" type="Texture" id=49]
 [ext_resource path="res://Assets/Berry Lake/Tree D.png" type="Texture" id=50]
+[ext_resource path="res://Enemies/Berry Lake/Smush_wander_40.tscn" type="PackedScene" id=51]
 [ext_resource path="res://Assets/Berry Lake/BerryLake7B.png" type="Texture" id=52]
 [ext_resource path="res://Assets/Berry Lake/Waterfall A.tscn" type="PackedScene" id=53]
 [ext_resource path="res://Assets/General/Tiles/Berry Grass.png" type="Texture" id=54]
@@ -62,6 +63,8 @@
 [ext_resource path="res://Assets/Berry Lake/Tree E.png" type="Texture" id=61]
 [ext_resource path="res://Assets/Cherry Trail/bush b.png" type="Texture" id=62]
 [ext_resource path="res://Assets/Berry Lake/Waterfall B.tscn" type="PackedScene" id=63]
+[ext_resource path="res://Enemies/Berry Lake/Druplet_wander_40.tscn" type="PackedScene" id=64]
+[ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=65]
 
 [sub_resource type="StreamTexture" id=9]
 
@@ -2097,6 +2100,7 @@ position = Vector2( -23.7, 6.2 )
 polygon = PoolVector2Array( -183, -48, -185, -53, -181, -58, -173, -59, -166, -56, -158, -59, -149, -58, -144, -53, -146, -48, -149, -45, -145, -42, -146, -38, -154, -35, -159, -39, -164, -41, -169, -40, -175, -37, -181, -36, -185, -39, -185, -43, -180, -45 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 24 )]
 
@@ -2229,6 +2233,29 @@ rect_scale = Vector2( 1.2, 1.1 )
 custom_fonts/font = ExtResource( 34 )
 text = "You got a Flummery Flambe!"
 align = 1
+
+[node name="Smush" parent="." instance=ExtResource( 51 )]
+position = Vector2( 268, 64 )
+
+[node name="Druplet" parent="." instance=ExtResource( 64 )]
+position = Vector2( -147, -94 )
+
+[node name="Enemy_Boundary" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 65 )
+
+[node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+polygon = PoolVector2Array( 154, -31, 229, -34, 366, -82, 417, -100, 68, -223, -3, -184, -5, -153, -29, -128, -33, -105, -30, -69, -271, 18, -148, 38, 3, -20, 66, -39 )
+
+[node name="Repel2" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+position = Vector2( -155, -104 )
+polygon = PoolVector2Array( 174, -136, 92, -180, 29, -143, 93, -113 )
+
+[node name="Repel3" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+position = Vector2( 419, 99 )
+polygon = PoolVector2Array( 174, -136, 92, -180, 29, -143, 93, -108 )
 
 [connection signal="bouncy" from="YSort/Bouncy" to="YSort/Foreground/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="bouncy" from="YSort/Bouncy2" to="YSort/Foreground/BouncyFlower2" method="_on_Bouncy2_bouncy"]

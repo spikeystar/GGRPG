@@ -545,11 +545,6 @@ position = Vector2( -158, -420 )
 scale = Vector2( 2.57778, 2.58406 )
 texture = ExtResource( 14 )
 
-[node name="HillA" type="Sprite" parent="YSort/Background"]
-position = Vector2( -999.911, -418.377 )
-scale = Vector2( 2.04673, 2.10868 )
-texture = ExtResource( 34 )
-
 [node name="Floor" type="Node2D" parent="YSort"]
 z_index = -10
 
@@ -1097,11 +1092,12 @@ anims/sunbeams = SubResource( 3 )
 [node name="Smush" parent="." instance=ExtResource( 57 )]
 position = Vector2( -158, -64 )
 
-[node name="Druplet" parent="." instance=ExtResource( 58 )]
-position = Vector2( 174, -189 )
-
 [node name="Smush2" parent="." instance=ExtResource( 57 )]
-position = Vector2( 507, -222 )
+position = Vector2( 499, -231 )
+shadow_front_x = -10.0
+
+[node name="Druplet" parent="." instance=ExtResource( 58 )]
+position = Vector2( 193, -199 )
 
 [connection signal="bouncy" from="Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

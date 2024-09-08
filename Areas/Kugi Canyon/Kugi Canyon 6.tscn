@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=2]
@@ -64,6 +64,7 @@
 [ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 8.tscn" type="PackedScene" id=62]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=63]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=64]
+[ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=65]
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
@@ -587,7 +588,7 @@ position = Vector2( -129, -411 )
 rotation = 0.0885145
 scale = Vector2( 2.17749, 2.17805 )
 frames = SubResource( 9 )
-frame = 1
+frame = 2
 speed_scale = 0.6
 playing = true
 
@@ -1991,5 +1992,14 @@ polygon = PoolVector2Array( -220, -61, -151, -6, -99, 29, -72, 50, -31, 71, 390,
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 92, -104 )
+
+[node name="Enemy_Boundary" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 65 )
+
+[node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+visible = false
+polygon = PoolVector2Array( 418, 70, 673, -21, 4, -261, -137, -138, -36, -98 )
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

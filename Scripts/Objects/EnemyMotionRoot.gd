@@ -129,6 +129,9 @@ func _physics_process(delta):
 			if not ground_enemy:
 				lower_height(delta)
 				pos_z = max(player.floor_z, pos_z)
+				
+			if SceneManager.enemy_repel:
+				state = ENEMY_STATE.RETURN
 
 
 

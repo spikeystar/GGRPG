@@ -423,6 +423,7 @@ func _on_Defend_cursor_selected():
 	
 func _on_Flee_cursor_selected():
 	SE.effect("Flee")
+	ongoing = true
 	if defend_show:
 		$Fighters/HUDS.hide()
 		$DefenseWindow.hide()

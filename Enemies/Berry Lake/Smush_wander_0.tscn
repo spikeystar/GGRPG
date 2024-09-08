@@ -143,7 +143,7 @@ tracks/3/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -196,7 +196,7 @@ tracks/3/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -217,7 +217,8 @@ alt_scene = ExtResource( 11 )
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
 position = Vector2( 0, 1 )
-collision_mask = 2
+collision_layer = 9
+collision_mask = 10
 collision/safe_margin = 0.5
 script = ExtResource( 5 )
 ACCELERATION = 50
@@ -232,9 +233,8 @@ WANDER_RADIUS = 60
 MAX_CHASE_DISTANCE = 130
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
-visible = false
-position = Vector2( 2, 0.0728853 )
-scale = Vector2( 1.42294, 0.314577 )
+position = Vector2( 12, -19 )
+scale = Vector2( 0.959211, 0.893717 )
 shape = SubResource( 180 )
 
 [node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
@@ -272,7 +272,7 @@ shape = SubResource( 179 )
 [node name="ShadowVisualRoot" type="Node2D" parent="ShadowYSort"]
 
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
-self_modulate = Color( 1, 1, 1, 0.5 )
+self_modulate = Color( 1, 1, 1, 0.35 )
 position = Vector2( 12, -13 )
 scale = Vector2( 1.05361, 1.01128 )
 texture = ExtResource( 1 )
@@ -288,7 +288,7 @@ use_transparency = true
 [node name="BodyVisualRoot" type="Node2D" parent="BodyYSort"]
 
 [node name="Enemy" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
-self_modulate = Color( 0.870588, 0.835294, 0.886275, 1 )
+self_modulate = Color( 0.9329, 0.893, 0.95, 1 )
 position = Vector2( 3, -24 )
 texture = ExtResource( 4 )
 hframes = 12
