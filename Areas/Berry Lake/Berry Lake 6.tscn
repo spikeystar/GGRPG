@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://Scripts/Drown.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Tiles/Berry Grass.png" type="Texture" id=2]
@@ -57,6 +57,7 @@
 [ext_resource path="res://Assets/Berry Lake/BouncyFlower.tscn" type="PackedScene" id=55]
 [ext_resource path="res://Scripts/Rendering/DepthTestTileMap.gd" type="Script" id=56]
 [ext_resource path="res://Assets/Berry Lake/Tree E.png" type="Texture" id=57]
+[ext_resource path="res://Enemies/Berry Lake/Beezle_wander.tscn" type="PackedScene" id=58]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -1842,6 +1843,12 @@ align = 1
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 75, 167 )
+
+[node name="Beezle" parent="." instance=ExtResource( 58 )]
+position = Vector2( 257, -96 )
+
+[node name="Beezle2" parent="." instance=ExtResource( 58 )]
+position = Vector2( 495, -460 )
 
 [connection signal="bouncy" from="Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="bouncy" from="Bouncy2" to="YSort/MiddleGround/BouncyFlower2" method="_on_Bouncy2_bouncy"]

@@ -1520,6 +1520,7 @@ height = 65.0
 polygon = PoolVector2Array( -181, -48, -183, -53, -178, -58, -166, -55, -158, -56, -148, -57, -145, -53, -147, -48, -146, -45, -144, -39, -150, -35, -157, -40, -164, -41, -169, -40, -175, -37, -181, -37, -185, -39, -185, -43, -180, -45 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 24 )]
 
@@ -1568,6 +1569,7 @@ direction = Vector2( -1, -1 )
 height = 40
 
 [node name="Water" type="Area2D" parent="."]
+visible = false
 position = Vector2( -585, -248 )
 script = ExtResource( 61 )
 target_scene = "res://Areas/Berry Lake/Berry Lake 4.tscn"
@@ -1589,6 +1591,7 @@ position = Vector2( 122, 109 )
 polygon = PoolVector2Array( -242, -22, -217, -11, -241, 0, -220, 12, -241, 21, -217, 34, -238, 46, -165, 81, -177, 110, -153, 143, -53, 184, 44, 171, 217, 79, 220, -24, 145, -80, 76, -67, 28, -45, -40, -69, -65, -78, -95, -69, -125, -75, -148, -72, -233, -44 )
 
 [node name="BerryLake5" parent="." instance=ExtResource( 27 )]
+visible = false
 position = Vector2( 78, -214 )
 script = ExtResource( 12 )
 target_scene = "res://Areas/Berry Lake/Berry Lake 5.tscn"
@@ -1600,6 +1603,7 @@ position = Vector2( 173, -36 )
 polygon = PoolVector2Array( 27, -45, 121, -12, 95, -2, 2, -37 )
 
 [node name="BerryLake3" parent="." instance=ExtResource( 27 )]
+visible = false
 position = Vector2( -363, -29 )
 rotation = 0.0231584
 script = ExtResource( 12 )

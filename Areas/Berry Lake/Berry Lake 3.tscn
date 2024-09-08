@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Berry Lake/BBubbleFlower.tscn" type="PackedScene" id=2]
@@ -62,6 +62,7 @@
 [ext_resource path="res://Scripts/Rendering/DepthTestTileMap.gd" type="Script" id=60]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=61]
 [ext_resource path="res://Assets/General/Shadows/circle shadow large.png" type="Texture" id=62]
+[ext_resource path="res://Enemies/Berry Lake/Beezle_wander.tscn" type="PackedScene" id=63]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -1448,6 +1449,18 @@ align = 1
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( -399, 315 )
+
+[node name="Beezle" parent="." instance=ExtResource( 63 )]
+position = Vector2( 355, -70 )
+
+[node name="Beezle2" parent="." instance=ExtResource( 63 )]
+position = Vector2( 15, 202 )
+
+[node name="Beezle3" parent="." instance=ExtResource( 63 )]
+position = Vector2( 454, 326 )
+
+[node name="Beezle4" parent="." instance=ExtResource( 63 )]
+position = Vector2( 919, 167 )
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]

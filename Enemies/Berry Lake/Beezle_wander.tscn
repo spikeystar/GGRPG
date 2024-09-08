@@ -1,16 +1,16 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=3]
-[ext_resource path="res://Enemies/Berry Lake/Smush SS.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/Objects/EnemyMotionRoot.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/Objects/EnemyTest.gd" type="Script" id=6]
-[ext_resource path="res://NPC/NPC_ShadowAreaCheck.gd" type="Script" id=7]
-[ext_resource path="res://Enemies/PlayerDetection.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Enemies/BattleTrigger.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 3.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Enemies/PlayerDetection.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/BattleTrigger.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Objects/EnemyMotionRoot.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Objects/EnemyTest.gd" type="Script" id=9]
+[ext_resource path="res://NPC/NPC_ShadowAreaCheck.gd" type="Script" id=10]
+[ext_resource path="res://Enemies/Berry Lake/Beezle SS.png" type="Texture" id=11]
 
 [sub_resource type="CircleShape2D" id=180]
 
@@ -18,10 +18,9 @@
 radius = 1.0
 
 [sub_resource type="CircleShape2D" id=178]
-radius = 130.0
+radius = 81.0062
 
 [sub_resource type="CircleShape2D" id=179]
-radius = 8.94814
 
 [sub_resource type="Animation" id=173]
 length = 0.001
@@ -47,7 +46,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 12, -13 ) ]
+"values": [ Vector2( 2, -1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("BodyVisualRoot/Enemy:position")
@@ -59,48 +58,12 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 3, -24 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("BodyVisualRoot/Enemy:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:flip_h")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 4, -24 ) ]
 }
 
 [sub_resource type="Animation" id=176]
 resource_name = "walk_back"
-length = 0.4
+length = 0.2
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyVisualRoot/Enemy:frame")
@@ -109,10 +72,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 4, 3, 4, 5 ]
+"values": [ 3, 2 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Enemy:position")
@@ -121,10 +84,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 3, -24 ), Vector2( 3, -24 ), Vector2( 3, -24 ) ]
+"values": [ Vector2( 8, -25 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
@@ -136,24 +99,12 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 7, -9 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 2, 0 ) ]
 }
 
 [sub_resource type="Animation" id=177]
 resource_name = "walk_front"
-length = 0.4
+length = 0.2
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyVisualRoot/Enemy:frame")
@@ -162,10 +113,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 1, 2, 1, 0 ]
+"values": [ 1, 0 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
@@ -176,11 +127,11 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ Vector2( 12, -13 ) ]
+"update": 0,
+"values": [ Vector2( 0, -1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Enemy:scale")
+tracks/2/path = NodePath("BodyVisualRoot/Enemy:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -189,47 +140,35 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( 4, -24 ) ]
 }
 
-[node name="Smush" type="YSort"]
-script = ExtResource( 6 )
-ground_enemy = true
-min_speed = 0.4
-max_speed = 0.5
-shadow_front_x = -15.0
-shadow_front_y = -2.0
-shadow_back_x = -7.0
-target_scene = ExtResource( 10 )
-alt_scene = ExtResource( 11 )
+[node name="Beezle" type="YSort"]
+position = Vector2( 0, -2 )
+script = ExtResource( 9 )
+spawn_z = 100
+min_speed = 0.5
+max_speed = 0.65
+target_scene = ExtResource( 4 )
+alt_scene = ExtResource( 3 )
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
 position = Vector2( 0, 1 )
 collision_mask = 2
 collision/safe_margin = 0.5
-script = ExtResource( 5 )
-ACCELERATION = 50
-CHASE_SPEED = 190
-WANDER_SPEED = 25
+script = ExtResource( 8 )
+spawn_z = 100
+ACCELERATION = 65
+CHASE_SPEED = 35
+WANDER_SPEED = 30
 FRICTION = 1.0
 MIN_IDLE_TIME = 3
 MAX_IDLE_TIME = 5
 MIN_WANDER_TIME = 2
 MAX_WANDER_TIME = 5
-WANDER_RADIUS = 60
-MAX_CHASE_DISTANCE = 130
+WANDER_RADIUS = 100
+MAX_CHASE_DISTANCE = 175
+MAX_Z_DIFF = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
 visible = false
@@ -238,33 +177,34 @@ scale = Vector2( 1.42294, 0.314577 )
 shape = SubResource( 180 )
 
 [node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
-script = ExtResource( 7 )
+script = ExtResource( 10 )
 
 [node name="ShadowCheck" type="CollisionShape2D" parent="MotionRoot/ShadowAreaCheck"]
 shape = SubResource( 172 )
 
-[node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 8 )]
-position = Vector2( 6, 11 )
-collision_layer = 0
-collision_mask = 1
+[node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 1 )]
+position = Vector2( 7, 34 )
+scale = Vector2( 1.22228, 1.24337 )
+collision_layer = 4
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot/PlayerDetection"]
 modulate = Color( 1, 1, 1, 0.254902 )
-position = Vector2( -1, -27 )
-scale = Vector2( 0.645707, 0.622624 )
+position = Vector2( -3.43644, -25.4754 )
+scale = Vector2( 1.39019, 1.12396 )
 shape = SubResource( 178 )
 disabled = true
 
-[node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 9 )]
+[node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 2 )]
 visible = false
-position = Vector2( 5, 5 )
-scale = Vector2( 0.972756, 0.936889 )
+position = Vector2( 5, -7 )
+scale = Vector2( 0.918882, 0.860568 )
 collision_layer = 7
 collision_mask = 6
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
-position = Vector2( -3.08402, -9.60626 )
-scale = Vector2( 1.60839, -1.51859 )
+position = Vector2( -2.17656, -19.7544 )
+scale = Vector2( 1.02475, -1.67904 )
 shape = SubResource( 179 )
 
 [node name="ShadowYSort" type="Node2D" parent="."]
@@ -272,11 +212,11 @@ shape = SubResource( 179 )
 [node name="ShadowVisualRoot" type="Node2D" parent="ShadowYSort"]
 
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
-self_modulate = Color( 1, 1, 1, 0.5 )
-position = Vector2( 12, -13 )
-scale = Vector2( 1.05361, 1.01128 )
-texture = ExtResource( 1 )
-script = ExtResource( 3 )
+self_modulate = Color( 1, 1, 1, 0.6 )
+position = Vector2( 2, -1 )
+scale = Vector2( 0.914288, 0.918545 )
+texture = ExtResource( 5 )
+script = ExtResource( 7 )
 alpha_clip = 0.01
 always_update = true
 use_dithering = false
@@ -284,22 +224,23 @@ use_dither_blending = false
 use_transparency = true
 
 [node name="BodyYSort" type="Node2D" parent="."]
+position = Vector2( -1, 0 )
 
 [node name="BodyVisualRoot" type="Node2D" parent="BodyYSort"]
 
 [node name="Enemy" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
-self_modulate = Color( 0.870588, 0.835294, 0.886275, 1 )
-position = Vector2( 3, -24 )
-texture = ExtResource( 4 )
+modulate = Color( 0.972549, 0.988235, 1, 1 )
+position = Vector2( 4, -24 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 11 )
+offset = Vector2( 0, -12 )
 hframes = 12
-script = ExtResource( 2 )
+script = ExtResource( 6 )
 depth_test_offset = Vector2( -8, 28 )
 feet_height = 10.0
-use_dithering = false
-use_dither_blending = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
-playback_speed = 0.3
+playback_speed = 0.5
 anims/RESET = SubResource( 173 )
 anims/walk_back = SubResource( 176 )
 anims/walk_front = SubResource( 177 )
