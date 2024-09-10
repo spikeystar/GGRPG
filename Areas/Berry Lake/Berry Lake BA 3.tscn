@@ -1,0 +1,1758 @@
+[gd_scene load_steps=86 format=2]
+
+[ext_resource path="res://UI/Battle/New Spell 1.png" type="Texture" id=1]
+[ext_resource path="res://UI/Battle/Gary Alive HUD.png" type="Texture" id=2]
+[ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/Cursor.png" type="Texture" id=4]
+[ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=5]
+[ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://UI/Battle/Status/Status Icons.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=8]
+[ext_resource path="res://Misc/Font/Move Select Theme.tres" type="Theme" id=9]
+[ext_resource path="res://Misc/Font/Move Select.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Scripts/Battle/AttackTimer.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/Battle/BattleArena.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/Battle/Enemies.gd" type="Script" id=13]
+[ext_resource path="res://Scripts/Battle/EnemyMoveWindow.gd" type="Script" id=14]
+[ext_resource path="res://Scripts/Battle/EnemyName.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/Battle/HUDS.gd" type="Script" id=16]
+[ext_resource path="res://Scripts/Battle/EnemyStatus.gd" type="Script" id=17]
+[ext_resource path="res://Scripts/Battle/Fighters.gd" type="Script" id=18]
+[ext_resource path="res://UI/Battle/Gary Dead HUD.png" type="Texture" id=19]
+[ext_resource path="res://UI/Battle/Magic Window.png" type="Texture" id=20]
+[ext_resource path="res://UI/Battle/New Spell 2.png" type="Texture" id=21]
+[ext_resource path="res://UI/Battle/Irina Dead HUD.png" type="Texture" id=22]
+[ext_resource path="res://Scripts/Battle/ItemInventory_Battle.gd" type="Script" id=23]
+[ext_resource path="res://Scripts/Battle/ItemWindow.gd" type="Script" id=24]
+[ext_resource path="res://Scripts/Battle/MagicWindow.gd" type="Script" id=25]
+[ext_resource path="res://Scripts/Battle/PartySP.gd" type="Script" id=26]
+[ext_resource path="res://Scripts/Battle/SpellList.gd" type="Script" id=27]
+[ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=28]
+[ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=29]
+[ext_resource path="res://UI/Battle/Jacques Dead HUD.png" type="Texture" id=30]
+[ext_resource path="res://Misc/Font/HUD.tres" type="DynamicFont" id=31]
+[ext_resource path="res://Assets/Berry Lake/Berry Lake BA 3.jpg" type="Texture" id=32]
+[ext_resource path="res://UI/Battle/Item Window.png" type="Texture" id=33]
+[ext_resource path="res://UI/LossText.tscn" type="PackedScene" id=34]
+[ext_resource path="res://UI/Battle/Enemy Info.png" type="Texture" id=35]
+[ext_resource path="res://Misc/Font/Enemy Move.tres" type="DynamicFont" id=36]
+[ext_resource path="res://UI/SPText.tscn" type="PackedScene" id=37]
+[ext_resource path="res://UI/Battle/Jacques Alive HUD.png" type="Texture" id=38]
+[ext_resource path="res://UI/Battle/Enemy Move.png" type="Texture" id=39]
+[ext_resource path="res://Misc/Font/Victory.tres" type="DynamicFont" id=40]
+[ext_resource path="res://UI/Battle/Level Up 1.png" type="Texture" id=41]
+[ext_resource path="res://UI/Battle/Level Up Text.png" type="Texture" id=42]
+[ext_resource path="res://UI/HealText.tscn" type="PackedScene" id=43]
+[ext_resource path="res://UI/Battle/Victory Window.png" type="Texture" id=44]
+[ext_resource path="res://UI/Battle/Enemy Status.png" type="Texture" id=45]
+[ext_resource path="res://Misc/Font/Enemy Name Theme.tres" type="Theme" id=46]
+[ext_resource path="res://UI/DamageText.tscn" type="PackedScene" id=47]
+[ext_resource path="res://UI/Battle/Irina Alive HUD.png" type="Texture" id=48]
+[ext_resource path="res://Misc/Font/Enemy Name.tres" type="DynamicFont" id=49]
+[ext_resource path="res://UI/Battle/Defense Window.png" type="Texture" id=50]
+[ext_resource path="res://UI/Battle/Level Up 2.png" type="Texture" id=51]
+[ext_resource path="res://BattleSystem/ItemUsage.tscn" type="PackedScene" id=52]
+[ext_resource path="res://Players/Gary/Gary_Battle.tscn" type="PackedScene" id=53]
+[ext_resource path="res://Enemies/Kugi Canyon/Battle/Bramby_battle.tscn" type="PackedScene" id=54]
+[ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie_battle.tscn" type="PackedScene" id=55]
+[ext_resource path="res://Players/Jacques/Jacques_Battle.tscn" type="PackedScene" id=56]
+[ext_resource path="res://Players/Irina/Irina_Battle.tscn" type="PackedScene" id=57]
+[ext_resource path="res://UI/Battle/BattleButtons/BattleButtons.tscn" type="PackedScene" id=58]
+[ext_resource path="res://BattleSystem/MovePlayer.tscn" type="PackedScene" id=59]
+
+[sub_resource type="Theme" id=14]
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 29 )
+region_rect = Rect2( 0, 0, 400, 125 )
+margin_left = 2.0
+margin_bottom = 7.0
+
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 50 )
+region_rect = Rect2( 0, 0, 150, 150 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+texture = ExtResource( 33 )
+region_rect = Rect2( 0, 0, 350, 300 )
+margin_left = 60.0
+margin_top = 39.0
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 20 )
+region_rect = Rect2( 0, 0, 350, 300 )
+margin_left = 62.0
+margin_top = 61.0
+
+[sub_resource type="Theme" id=18]
+
+[sub_resource type="DynamicFontData" id=4]
+antialiased = false
+font_path = "res://Misc/Font/Greenscr.ttf"
+
+[sub_resource type="DynamicFont" id=23]
+size = 11
+outline_size = 2
+outline_color = Color( 0.47, 0.29892, 0.2256, 1 )
+extra_spacing_space = -3
+font_data = SubResource( 4 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "Flee"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "Gravel_Spat"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -4, -14 ), Vector2( 1, 10 ), Vector2( 1, -13 ), Vector2( -4, 11 ), Vector2( 4, -12 ), Vector2( -2, 11 ), Vector2( 1, -12 ), Vector2( 4, 13 ), Vector2( -2, -11 ), Vector2( -1, 12 ), Vector2( -1, -11 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "Level_up_text"
+length = 1.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../LevelUpWindow/Window/LevelUpText:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 4.091, 2.4 ), Vector2( 4.09095, 1.76881 ), Vector2( 4.09091, 1.13762 ), Vector2( 4.09091, 0.449547 ), Vector2( 4.09091, -0.238522 ), Vector2( 4.09091, -0.92659 ), Vector2( 4.09093, -0.169943 ), Vector2( 4.09095, 0.586705 ), Vector2( 4.09098, 1.34335 ), Vector2( 4.091, 2.1 ), Vector2( 4.091, 2.36667 ), Vector2( 4.091, 2.63333 ), Vector2( 4.091, 2.9 ), Vector2( 4.091, 2.73333 ), Vector2( 4.091, 2.56667 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 144, 150 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 35, 37 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../FleeDialogue:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../BattleDialogue:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:rect_min_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../Enemies/EnemyInfo:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../ItemWindow:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../MagicWindow:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../VictoryWindow/VictoryWindow:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.15, 1.15 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../LevelUpWindow/Window/LevelUpText:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4.09091, 1.82568 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../NewSpellWindow:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.985, 0.985 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("../NewSpellWindow/NewSpell:self_modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("../Arena:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("../Camera2D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "battle_dia_open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../BattleDialogue:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.985, 0.985 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../BattleDialogue:rect_pivot_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 199, 60 ) ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "cursor_idle"
+length = 1.9
+loop = true
+
+[sub_resource type="Animation" id=28]
+resource_name = "darken"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Arena:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.5 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "defense_open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.985, 0.985 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_pivot_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 72, 75 ), Vector2( 72, 75 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_min_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "enemyinfo_open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Enemies/EnemyInfo:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.985, 0.985 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "flee_dia_open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../FleeDialogue:rect_pivot_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 200, 70 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../FleeDialogue:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.985, 0.985 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "item_open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../ItemWindow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.985, 0.985 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "little_shake"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -9, -8 ), Vector2( 12, 11 ), Vector2( -10, 12 ), Vector2( 16, -11 ), Vector2( -6, 8 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "magic_open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../MagicWindow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.985, 0.985 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "new_spell_open"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("../NewSpellWindow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0.985, 0.985 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../NewSpellWindow/NewSpell:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.313726 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "victory_open"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../VictoryWindow/VictoryWindow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1.1, 1.1 ), Vector2( 1.15, 1.15 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=27]
+animations = [ {
+"frames": [ ExtResource( 41 ), ExtResource( 51 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=26]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="WorldRoot" type="Control"]
+pause_mode = 2
+script = ExtResource( 12 )
+main_menu = "res://UI/MainMenu.tscn"
+EXP_base = 36
+marbles_base = 23
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -350.0
+margin_right = 400.0
+margin_bottom = 350.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Arena" type="Sprite" parent="."]
+texture = ExtResource( 32 )
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource( 13 )
+
+[node name="Field" type="Node2D" parent="Enemies"]
+
+[node name="Bramby_battle" parent="Enemies/Field" instance=ExtResource( 54 )]
+position = Vector2( -8, 20 )
+
+[node name="Flutterbie_battle" parent="Enemies/Field" instance=ExtResource( 55 )]
+position = Vector2( 136, -12 )
+
+[node name="EnemyInfo" type="Sprite" parent="Enemies"]
+visible = false
+position = Vector2( 165, 225 )
+texture = ExtResource( 35 )
+
+[node name="EnemyStatus" type="Sprite" parent="Enemies/EnemyInfo"]
+position = Vector2( -37, 16 )
+texture = ExtResource( 45 )
+script = ExtResource( 17 )
+
+[node name="Icons" type="Node2D" parent="Enemies/EnemyInfo/EnemyStatus"]
+position = Vector2( -126, -229 )
+
+[node name="Types" type="Node2D" parent="Enemies/EnemyInfo/EnemyStatus/Icons"]
+
+[node name="Fire" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Types"]
+visible = false
+position = Vector2( 51, 229 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+
+[node name="Water" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Types"]
+visible = false
+position = Vector2( 51, 229 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 1
+
+[node name="Air" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Types"]
+visible = false
+position = Vector2( 51, 229 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 4
+
+[node name="Earth" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Types"]
+visible = false
+position = Vector2( 51, 229 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 5
+
+[node name="Neutral" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Types"]
+visible = false
+position = Vector2( 51, 229 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 16
+
+[node name="Statuses" type="Node2D" parent="Enemies/EnemyInfo/EnemyStatus/Icons"]
+
+[node name="Attack_D" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 81, 229 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 12
+
+[node name="Attack_B" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 81, 229 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 8
+
+[node name="Magic_D" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 111, 229 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 13
+
+[node name="Magic_B" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 111, 229 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 9
+
+[node name="Defense_D" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 141, 229 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 14
+
+[node name="Defense_B" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 141, 229 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 10
+
+[node name="Poison" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 171, 229 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 7
+
+[node name="Stun" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
+visible = false
+position = Vector2( 201, 229 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 11
+
+[node name="EnemyName" type="Label" parent="Enemies/EnemyInfo"]
+margin_left = -127.0
+margin_top = -29.0
+margin_right = 35.0
+margin_bottom = -8.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 46 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.196078 )
+custom_fonts/font = ExtResource( 49 )
+text = "Cheribo"
+script = ExtResource( 15 )
+
+[node name="EnemyMove" type="Sprite" parent="Enemies"]
+visible = false
+position = Vector2( -163, -233 )
+scale = Vector2( 0.976667, 1 )
+texture = ExtResource( 39 )
+script = ExtResource( 14 )
+
+[node name="Move_Name" type="Label" parent="Enemies/EnemyMove"]
+margin_left = -118.259
+margin_top = -10.0
+margin_right = 87.7406
+margin_bottom = 11.0
+size_flags_horizontal = 2
+size_flags_vertical = 0
+theme = SubResource( 14 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.196078 )
+custom_fonts/font = ExtResource( 36 )
+text = "Sublimate"
+
+[node name="Fighters" type="Node2D" parent="."]
+script = ExtResource( 18 )
+
+[node name="HUDS" type="VBoxContainer" parent="Fighters"]
+margin_left = -209.0
+margin_top = -242.0
+margin_right = -169.0
+margin_bottom = -202.0
+script = ExtResource( 16 )
+
+[node name="GaryHud" type="Sprite" parent="Fighters/HUDS"]
+position = Vector2( 120, 13 )
+texture = ExtResource( 2 )
+
+[node name="Dead" type="Sprite" parent="Fighters/HUDS/GaryHud"]
+visible = false
+texture = ExtResource( 19 )
+
+[node name="Health" type="Label" parent="Fighters/HUDS/GaryHud"]
+margin_left = 2.0
+margin_top = -5.0
+margin_right = 47.0
+margin_bottom = 10.0
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_fonts/font = ExtResource( 31 )
+text = "88/88"
+align = 1
+valign = 1
+
+[node name="Icons" type="Node2D" parent="Fighters/HUDS/GaryHud"]
+position = Vector2( -1, -1 )
+scale = Vector2( 0.95, 0.95 )
+
+[node name="Attack" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -34.7368, -28.421 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 8
+
+[node name="Attack_D" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -34.7368, -28.421 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 12
+
+[node name="Magic" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -54.7369, -37.8947 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 9
+
+[node name="Magic_D" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -54.7369, -37.8947 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 13
+
+[node name="Defense" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -76.8421, -37.8947 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 10
+
+[node name="Defense_D" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -76.8421, -37.8947 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 14
+
+[node name="Wimpy" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -95.7895, -25.2632 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 2
+
+[node name="Dizzy" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -95.7895, -25.2632 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 6
+
+[node name="Stun" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -104.211, -3.15788 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 11
+
+[node name="Targeted" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -98.9474, 18.9474 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 15
+
+[node name="Anxious" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -83.1579, 35.7895 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 3
+
+[node name="Poison" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -60, 40 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 7
+
+[node name="Type" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
+visible = false
+position = Vector2( -38.9474, 31.5789 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 5
+
+[node name="JacquesHud" type="Sprite" parent="Fighters/HUDS"]
+position = Vector2( 59, 92 )
+texture = ExtResource( 38 )
+
+[node name="Dead" type="Sprite" parent="Fighters/HUDS/JacquesHud"]
+visible = false
+texture = ExtResource( 30 )
+
+[node name="Health" type="Label" parent="Fighters/HUDS/JacquesHud"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -79.0
+margin_top = -41.0
+margin_right = -74.0
+margin_bottom = -27.0
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_fonts/font = ExtResource( 31 )
+text = "97/97"
+align = 1
+valign = 1
+
+[node name="Icons" type="Node2D" parent="Fighters/HUDS/JacquesHud"]
+position = Vector2( -1, -1 )
+scale = Vector2( 0.95, 0.95 )
+
+[node name="Attack" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -34.7368, -28.421 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 8
+
+[node name="Attack_D" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -34.7368, -28.421 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 12
+
+[node name="Magic" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -54.7369, -37.8947 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 9
+
+[node name="Magic_D" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -54.7369, -37.8947 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 13
+
+[node name="Defense" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -76.8421, -37.8947 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 10
+
+[node name="Defense_D" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -76.8421, -37.8947 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 14
+
+[node name="Wimpy" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -95.7895, -25.2632 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 2
+
+[node name="Dizzy" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -95.7895, -25.2632 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 6
+
+[node name="Stun" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -104.211, -3.15788 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 11
+
+[node name="Targeted" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -98.9474, 18.9474 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 15
+
+[node name="Anxious" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -83.1579, 35.7895 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 3
+
+[node name="Poison" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -60, 40 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 7
+
+[node name="Type" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
+visible = false
+position = Vector2( -38.9474, 31.5789 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 1
+
+[node name="IrinaHud" type="Sprite" parent="Fighters/HUDS"]
+position = Vector2( 2, 174 )
+texture = ExtResource( 48 )
+
+[node name="Dead" type="Sprite" parent="Fighters/HUDS/IrinaHud"]
+visible = false
+texture = ExtResource( 22 )
+
+[node name="Health" type="Label" parent="Fighters/HUDS/IrinaHud"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -85.0
+margin_top = -42.0
+margin_right = -62.0
+margin_bottom = -28.0
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_fonts/font = ExtResource( 31 )
+text = "113/113"
+align = 1
+valign = 1
+
+[node name="Icons" type="Node2D" parent="Fighters/HUDS/IrinaHud"]
+position = Vector2( -1, -1 )
+scale = Vector2( 0.95, 0.95 )
+
+[node name="Attack" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -34.7368, -28.421 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 8
+
+[node name="Attack_D" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -34.7368, -28.421 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 12
+
+[node name="Magic" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -54.7369, -37.8947 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 9
+
+[node name="Magic_D" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -54.7369, -37.8947 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 13
+
+[node name="Defense" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -76.8421, -37.8947 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 10
+
+[node name="Defense_D" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -76.8421, -37.8947 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 14
+
+[node name="Wimpy" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -95.7895, -25.2632 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 2
+
+[node name="Dizzy" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -95.7895, -25.2632 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 6
+
+[node name="Stun" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -104.211, -3.15788 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 11
+
+[node name="Targeted" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -98.9474, 18.9474 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 15
+
+[node name="Anxious" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -83.1579, 35.7895 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 3
+
+[node name="Poison" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -60, 40 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 7
+
+[node name="Type" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
+visible = false
+position = Vector2( -38.9474, 31.5789 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 1
+
+[node name="Gary_Battle" parent="Fighters" instance=ExtResource( 53 )]
+position = Vector2( -240, 86 )
+fighter_name = "gary"
+f_health = 88
+f_attack = 70
+f_attack_base = 3
+f_magic = 30
+f_magic_base = 10
+f_defense = 20
+TEXT_DAMAGE = ExtResource( 47 )
+TEXT_SP = ExtResource( 37 )
+TEXT_LOSS = ExtResource( 34 )
+
+[node name="Jacques_Battle" parent="Fighters" instance=ExtResource( 56 )]
+position = Vector2( -135, 144 )
+fighter_name = "jacques"
+f_health = 97
+f_attack = 55
+f_attack_base = 5
+f_magic = 40
+TEXT_DAMAGE = ExtResource( 47 )
+TEXT_HEAL = ExtResource( 43 )
+TEXT_SP = ExtResource( 37 )
+TEXT_LOSS = ExtResource( 34 )
+
+[node name="Irina_Battle" parent="Fighters" instance=ExtResource( 57 )]
+position = Vector2( -23, 194 )
+fighter_name = "irina"
+f_health = 113
+f_attack = 55
+f_attack_base = 10
+f_magic = 10
+f_defense = 10
+TEXT_DAMAGE = ExtResource( 47 )
+TEXT_HEAL = ExtResource( 43 )
+TEXT_SP = ExtResource( 37 )
+TEXT_LOSS = ExtResource( 34 )
+
+[node name="AttackTimer" type="Node2D" parent="Fighters"]
+script = ExtResource( 11 )
+
+[node name="Timer" type="Timer" parent="Fighters/AttackTimer"]
+wait_time = 1.5
+one_shot = true
+
+[node name="BattleButtons" parent="." instance=ExtResource( 58 )]
+visible = false
+position = Vector2( -23, 156 )
+
+[node name="FleeDialogue" type="PanelContainer" parent="."]
+visible = false
+anchor_bottom = 0.245
+margin_left = -333.0
+margin_top = -284.0
+margin_right = 67.0
+margin_bottom = -145.0
+rect_pivot_offset = Vector2( 200, 70 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_styles/panel = SubResource( 8 )
+
+[node name="Flee Message" type="Label" parent="FleeDialogue"]
+margin_left = 36.0
+margin_top = 58.0
+margin_right = 366.0
+margin_bottom = 73.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.192157 )
+custom_constants/line_spacing = 0
+custom_fonts/font = ExtResource( 28 )
+text = "You ran away and lost some marbles!"
+align = 1
+valign = 1
+
+[node name="DefenseWindow" type="PanelContainer" parent="."]
+margin_left = 126.0
+margin_top = 112.0
+margin_right = 270.0
+margin_bottom = 262.0
+rect_min_size = Vector2( 1, 0 )
+rect_pivot_offset = Vector2( 35, 37 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 9 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DefenseWindow"]
+margin_left = 44.0
+margin_top = 55.0
+margin_right = 100.0
+margin_bottom = 95.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_constants/separation = 10
+alignment = 1
+
+[node name="Defend" type="Label" parent="DefenseWindow/VBoxContainer"]
+margin_right = 56.0
+margin_bottom = 15.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme = ExtResource( 9 )
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.156863 )
+custom_fonts/font = ExtResource( 10 )
+text = "Defend"
+align = 1
+valign = 1
+script = ExtResource( 8 )
+
+[node name="Flee" type="Label" parent="DefenseWindow/VBoxContainer"]
+margin_left = 10.0
+margin_top = 25.0
+margin_right = 46.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 30, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource( 9 )
+custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.156863 )
+custom_fonts/font = ExtResource( 10 )
+text = "Flee"
+align = 1
+valign = 1
+script = ExtResource( 8 )
+
+[node name="Menu Cursor" parent="DefenseWindow" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 59.0
+margin_top = 62.0
+margin_right = 84.0
+margin_bottom = 87.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+menu_parent_path = NodePath("../VBoxContainer")
+cursor_offset = Vector2( 17, 2.5 )
+
+[node name="ItemWindow" type="Node2D" parent="."]
+visible = false
+script = ExtResource( 24 )
+
+[node name="ItemWindowPanel" type="PanelContainer" parent="ItemWindow"]
+margin_left = -19.0
+margin_top = -10.0
+margin_right = 331.0
+margin_bottom = 289.0
+rect_pivot_offset = Vector2( 175, 150 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_styles/panel = SubResource( 16 )
+
+[node name="ItemInventory" type="VBoxContainer" parent="ItemWindow/ItemWindowPanel"]
+margin_left = 60.0
+margin_top = 39.0
+margin_right = 60.0
+margin_bottom = 39.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_constants/separation = 9
+script = ExtResource( 23 )
+
+[node name="MenuCursor" parent="ItemWindow/ItemWindowPanel" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 60.0
+margin_top = 39.0
+margin_right = 85.0
+margin_bottom = 64.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+menu_parent_path = NodePath("../ItemInventory")
+cursor_offset = Vector2( 17, 2.5 )
+
+[node name="ItemInfo" type="Label" parent="ItemWindow"]
+margin_left = 195.0
+margin_top = 121.0
+margin_right = 297.0
+margin_bottom = 193.0
+custom_fonts/font = ExtResource( 3 )
+text = "20 HP"
+align = 1
+autowrap = true
+
+[node name="ItemInventory" type="Sprite" parent="ItemWindow"]
+position = Vector2( 243, 62 )
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 5 )
+hframes = 3
+vframes = 4
+
+[node name="MagicWindow" type="Node2D" parent="."]
+visible = false
+position = Vector2( -1, -2 )
+script = ExtResource( 25 )
+
+[node name="MagicWindowPanel" type="PanelContainer" parent="MagicWindow"]
+margin_left = -17.0
+margin_top = -18.0
+margin_right = 333.0
+margin_bottom = 282.0
+custom_styles/panel = SubResource( 17 )
+
+[node name="SpellList" type="VBoxContainer" parent="MagicWindow/MagicWindowPanel"]
+margin_left = 62.0
+margin_top = 61.0
+margin_right = 168.0
+margin_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 106, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_constants/separation = 12
+alignment = 1
+script = ExtResource( 27 )
+
+[node name="Menu Cursor" parent="MagicWindow/MagicWindowPanel" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 62.0
+margin_top = 61.0
+margin_right = 87.0
+margin_bottom = 86.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+menu_parent_path = NodePath("../SpellList")
+cursor_offset = Vector2( 17, 2.5 )
+
+[node name="PartySP" type="Label" parent="MagicWindow"]
+margin_left = 33.0
+margin_top = 2.0
+margin_right = 120.0
+margin_bottom = 16.0
+theme = SubResource( 18 )
+custom_fonts/font = ExtResource( 3 )
+text = "SP: 30/30"
+script = ExtResource( 26 )
+
+[node name="SpellInfo" type="Label" parent="MagicWindow"]
+margin_left = 194.0
+margin_top = 121.0
+margin_right = 296.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 23 )
+text = "Strikes all with lightning bolts
+
+20% chance to stun"
+align = 1
+autowrap = true
+
+[node name="SpellCost" type="Label" parent="MagicWindow"]
+margin_left = 224.0
+margin_top = 40.0
+margin_right = 264.0
+margin_bottom = 54.0
+custom_fonts/font = ExtResource( 3 )
+text = "SP: 5"
+
+[node name="SpellType" type="Label" parent="MagicWindow"]
+margin_left = 210.0
+margin_top = 83.0
+margin_right = 250.0
+margin_bottom = 97.0
+custom_fonts/font = ExtResource( 3 )
+text = "Type:"
+
+[node name="SpellTypeIcon" type="Sprite" parent="MagicWindow"]
+position = Vector2( 266, 89 )
+texture = ExtResource( 7 )
+hframes = 4
+vframes = 5
+frame = 4
+
+[node name="BattleDialogue" type="Sprite" parent="."]
+visible = false
+position = Vector2( -134, -223 )
+texture = ExtResource( 29 )
+
+[node name="DialogueCursor" parent="BattleDialogue" instance=ExtResource( 6 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 142.0
+margin_top = 11.0
+margin_right = 167.0
+margin_bottom = 36.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = null
+
+[node name="FadeRect" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -396.0
+margin_top = -346.0
+margin_right = 404.0
+margin_bottom = 354.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeRect"]
+playback_speed = 1.3
+anims/Flee = SubResource( 5 )
+anims/RESET = SubResource( 6 )
+
+[node name="WindowPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../DefenseWindow")
+autoplay = "Level_up_text"
+anims/Gravel_Spat = SubResource( 30 )
+anims/Level_up_text = SubResource( 24 )
+anims/RESET = SubResource( 10 )
+anims/battle_dia_open = SubResource( 13 )
+anims/cursor_idle = SubResource( 21 )
+anims/darken = SubResource( 28 )
+anims/defense_open = SubResource( 11 )
+anims/enemyinfo_open = SubResource( 15 )
+anims/flee_dia_open = SubResource( 12 )
+anims/item_open = SubResource( 19 )
+anims/little_shake = SubResource( 29 )
+anims/magic_open = SubResource( 20 )
+anims/new_spell_open = SubResource( 25 )
+anims/victory_open = SubResource( 22 )
+
+[node name="PartyFormation3" type="Node2D" parent="."]
+visible = false
+
+[node name="Fighter0" type="Position2D" parent="PartyFormation3"]
+position = Vector2( -240, 86 )
+
+[node name="Fighter1" type="Position2D" parent="PartyFormation3"]
+position = Vector2( -135, 144 )
+
+[node name="Fighter2" type="Position2D" parent="PartyFormation3"]
+position = Vector2( -23, 194 )
+
+[node name="BBLocation3" type="Node2D" parent="."]
+visible = false
+
+[node name="Location0" type="Position2D" parent="BBLocation3"]
+position = Vector2( -240, 48 )
+
+[node name="Location1" type="Position2D" parent="BBLocation3"]
+position = Vector2( -135, 106 )
+
+[node name="Location2" type="Position2D" parent="BBLocation3"]
+position = Vector2( -23, 156 )
+
+[node name="TC" type="Sprite" parent="."]
+visible = false
+position = Vector2( -141, 62 )
+texture = ExtResource( 4 )
+
+[node name="TC2" type="Sprite" parent="."]
+visible = false
+position = Vector2( 139, -186 )
+texture = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="VictoryWindow" type="Node2D" parent="."]
+visible = false
+position = Vector2( 0, -49 )
+
+[node name="VictoryWindow" type="Sprite" parent="VictoryWindow"]
+scale = Vector2( 1.15, 1.15 )
+texture = ExtResource( 44 )
+
+[node name="Marbles" type="Label" parent="VictoryWindow"]
+margin_left = -134.0
+margin_top = -23.0
+margin_right = -58.0
+margin_bottom = -6.0
+custom_colors/font_color = Color( 1, 0.998, 0.99, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0156863 )
+custom_fonts/font = ExtResource( 40 )
+text = "Marbles"
+
+[node name="MarblesReward" type="Label" parent="VictoryWindow"]
+margin_left = 19.0
+margin_top = -24.0
+margin_right = 95.0
+margin_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 1, 0.998, 0.99, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0156863 )
+custom_fonts/font = ExtResource( 40 )
+text = "100"
+align = 1
+
+[node name="EXP" type="Label" parent="VictoryWindow"]
+margin_left = -140.0
+margin_top = 26.0
+margin_right = -64.0
+margin_bottom = 43.0
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 1, 0.998, 0.99, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0156863 )
+custom_fonts/font = ExtResource( 40 )
+text = "EXP"
+align = 1
+
+[node name="EXPReward" type="Label" parent="VictoryWindow"]
+margin_left = 20.0
+margin_top = 27.0
+margin_right = 96.0
+margin_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 1, 0.998, 0.99, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0156863 )
+custom_fonts/font = ExtResource( 40 )
+text = "382"
+align = 1
+
+[node name="LevelUpWindow" type="Node2D" parent="."]
+visible = false
+position = Vector2( 3, -21 )
+scale = Vector2( 1.1, 1.09 )
+
+[node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
+position = Vector2( -5, -111 )
+frames = SubResource( 27 )
+frame = 1
+speed_scale = 0.6
+playing = true
+
+[node name="LevelUpText" type="Sprite" parent="LevelUpWindow/Window"]
+position = Vector2( 4.09091, 1.82568 )
+texture = ExtResource( 42 )
+offset = Vector2( -1, 0.25 )
+
+[node name="NewSpellWindow" type="Node2D" parent="."]
+visible = false
+position = Vector2( 0, -49 )
+scale = Vector2( 0.985, 0.985 )
+
+[node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
+scale = Vector2( 1.1, 1.09 )
+frames = SubResource( 26 )
+speed_scale = 0.6
+playing = true
+
+[node name="NewSpell" type="Label" parent="NewSpellWindow"]
+margin_left = -137.0
+margin_top = -11.0
+margin_right = 134.0
+margin_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 1, 0.998, 0.99, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0156863 )
+custom_fonts/font = ExtResource( 40 )
+text = "Gary learned \"Earthslide\"!"
+align = 1
+
+[node name="ItemUsage" parent="." instance=ExtResource( 52 )]
+visible = false
+
+[node name="MovePlayer" parent="." instance=ExtResource( 59 )]
+
+[node name="Position2D" type="Position2D" parent="."]
+visible = false
+position = Vector2( -130, -17 )
+
+[connection signal="BB_active" from="." to="Enemies" method="_on_WorldRoot_BB_active"]
+[connection signal="BB_active" from="." to="Fighters" method="_on_WorldRoot_BB_active"]
+[connection signal="action_ended" from="." to="Enemies" method="_on_WorldRoot_action_ended"]
+[connection signal="action_ended" from="." to="Fighters" method="_on_WorldRoot_action_ended"]
+[connection signal="action_ongoing" from="." to="Enemies" method="_on_WorldRoot_action_ongoing"]
+[connection signal="action_ongoing" from="." to="Fighters" method="_on_WorldRoot_action_ongoing"]
+[connection signal="action_ongoing" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_action_ongoing"]
+[connection signal="attack_active" from="." to="Enemies" method="_on_WorldRoot_attack_active"]
+[connection signal="attack_active" from="." to="Enemies/EnemyInfo/EnemyStatus" method="_on_WorldRoot_attack_active"]
+[connection signal="attack_active" from="." to="Enemies/EnemyInfo/EnemyName" method="_on_WorldRoot_attack_active"]
+[connection signal="attack_chosen" from="." to="Enemies" method="_on_WorldRoot_attack_chosen"]
+[connection signal="attack_inactive" from="." to="Enemies" method="_on_WorldRoot_attack_inactive"]
+[connection signal="defend_active" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_defend_active"]
+[connection signal="defend_chosen" from="." to="Fighters" method="_on_WorldRoot_defend_chosen"]
+[connection signal="defend_inactive" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_defend_inactive"]
+[connection signal="f_index_reset" from="." to="Fighters" method="_on_WorldRoot_f_index_reset"]
+[connection signal="f_turn_used" from="." to="." method="_on_WorldRoot_f_turn_used"]
+[connection signal="f_turn_used" from="." to="Fighters" method="_on_WorldRoot_f_turn_used"]
+[connection signal="flee_chosen" from="." to="Fighters" method="_on_WorldRoot_flee_chosen"]
+[connection signal="hide_enemy_cursor" from="." to="Enemies" method="_on_WorldRoot_hide_enemy_cursor"]
+[connection signal="index_reset" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_index_reset"]
+[connection signal="index_reset" from="." to="ItemWindow/ItemWindowPanel/MenuCursor" method="_on_WorldRoot_index_reset"]
+[connection signal="index_reset" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_index_reset"]
+[connection signal="index_resetzero" from="." to="ItemWindow/ItemWindowPanel/MenuCursor" method="_on_WorldRoot_index_resetzero"]
+[connection signal="index_resetzero" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
+[connection signal="item_active" from="." to="ItemWindow/ItemWindowPanel/ItemInventory" method="_on_WorldRoot_item_active"]
+[connection signal="item_active" from="." to="ItemWindow/ItemWindowPanel/MenuCursor" method="_on_WorldRoot_item_active"]
+[connection signal="item_inactive" from="." to="ItemWindow/ItemWindowPanel/ItemInventory" method="_on_WorldRoot_item_inactive"]
+[connection signal="item_inactive" from="." to="ItemWindow/ItemWindowPanel/MenuCursor" method="_on_WorldRoot_item_inactive"]
+[connection signal="item_removed" from="." to="ItemWindow/ItemWindowPanel/ItemInventory" method="_on_WorldRoot_item_removed"]
+[connection signal="magic_active" from="." to="MagicWindow" method="_on_WorldRoot_magic_active"]
+[connection signal="magic_active" from="." to="MagicWindow/MagicWindowPanel/SpellList" method="_on_WorldRoot_magic_active"]
+[connection signal="magic_active" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_magic_active"]
+[connection signal="magic_enemy_update" from="." to="Enemies/EnemyInfo/EnemyStatus" method="_on_WorldRoot_magic_enemy_update"]
+[connection signal="magic_inactive" from="." to="MagicWindow/MagicWindowPanel/SpellList" method="_on_WorldRoot_magic_inactive"]
+[connection signal="magic_inactive" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_magic_inactive"]
+[connection signal="start_attack_timer" from="." to="Fighters/AttackTimer" method="_on_WorldRoot_start_attack_timer"]
+[connection signal="update_party" from="." to="Fighters" method="_on_WorldRoot_update_party"]
+[connection signal="Aero_Bullet" from="Enemies" to="." method="_on_Enemies_Aero_Bullet"]
+[connection signal="Asphyxiate" from="Enemies" to="." method="_on_Enemies_Asphyxiate"]
+[connection signal="Barrage" from="Enemies" to="." method="_on_Enemies_Barrage"]
+[connection signal="Basic" from="Enemies" to="." method="_on_Enemies_Basic"]
+[connection signal="Beat_Down" from="Enemies" to="." method="_on_Enemies_Beat_Down"]
+[connection signal="Bubble_Ring" from="Enemies" to="." method="_on_Enemies_Bubble_Ring"]
+[connection signal="Extort" from="Enemies" to="." method="_on_Enemies_Extort"]
+[connection signal="Friction" from="Enemies" to="." method="_on_Enemies_Friction"]
+[connection signal="Gravel_Spat" from="Enemies" to="." method="_on_Enemies_Gravel_Spat"]
+[connection signal="Pester" from="Enemies" to="." method="_on_Enemies_Pester"]
+[connection signal="Sabotage" from="Enemies" to="." method="_on_Enemies_Sabotage"]
+[connection signal="Slash" from="Enemies" to="." method="_on_Enemies_Slash"]
+[connection signal="Splat" from="Enemies" to="." method="_on_Enemies_Splat"]
+[connection signal="Squall" from="Enemies" to="." method="_on_Enemies_Squall"]
+[connection signal="Sting" from="Enemies" to="." method="_on_Enemies_Sting"]
+[connection signal="Stream_Strike" from="Enemies" to="." method="_on_Enemies_Stream_Strike"]
+[connection signal="Terra_Arrow" from="Enemies" to="." method="_on_Enemies_Terra_Arrow"]
+[connection signal="Zap" from="Enemies" to="." method="_on_Enemies_Zap"]
+[connection signal="all_enemy_spell" from="Enemies" to="." method="_on_Enemies_all_enemy_spell"]
+[connection signal="attack_f_index_reset" from="Enemies" to="Fighters" method="_on_Enemies_attack_f_index_reset"]
+[connection signal="e_damage_finish" from="Enemies" to="." method="_on_Enemies_e_damage_finish"]
+[connection signal="e_item_finished" from="Enemies" to="." method="_on_Enemies_e_item_finished"]
+[connection signal="e_magic_damage_finish" from="Enemies" to="." method="_on_Enemies_e_magic_damage_finish"]
+[connection signal="enemy_chosen" from="Enemies" to="." method="_on_Enemies_enemy_chosen"]
+[connection signal="enemy_chosen" from="Enemies" to="Enemies/EnemyInfo/EnemyStatus" method="_on_Enemies_enemy_chosen"]
+[connection signal="enemy_chosen" from="Enemies" to="Enemies/EnemyInfo/EnemyName" method="_on_Enemies_enemy_chosen"]
+[connection signal="enemy_chosen" from="Enemies" to="Fighters" method="_on_Enemies_enemy_chosen"]
+[connection signal="fighters_active" from="Enemies" to="Fighters" method="_on_Enemies_fighters_active"]
+[connection signal="item_chosen" from="Enemies" to="." method="_on_Enemies_item_chosen"]
+[connection signal="jinx_doll" from="Enemies" to="." method="_on_Enemies_jinx_doll"]
+[connection signal="jinx_doll" from="Enemies" to="Enemies/EnemyInfo/EnemyStatus" method="_on_Enemies_jinx_doll"]
+[connection signal="jinx_doll" from="Enemies" to="Enemies/EnemyInfo/EnemyName" method="_on_Enemies_jinx_doll"]
+[connection signal="single_enemy_spell" from="Enemies" to="." method="_on_Enemies_single_enemy_spell"]
+[connection signal="update_move_window" from="Enemies" to="." method="_on_Enemies_update_move_window"]
+[connection signal="update_move_window" from="Enemies" to="Enemies/EnemyMove" method="_on_Enemies_update_move_window"]
+[connection signal="victory" from="Enemies" to="." method="_on_Enemies_victory"]
+[connection signal="move_window_done" from="Enemies/EnemyMove" to="Enemies" method="_on_EnemyMove_move_window_done"]
+[connection signal="BB_move" from="Fighters" to="." method="_on_Fighters_BB_move"]
+[connection signal="ally_spell_chosen" from="Fighters" to="." method="_on_Fighters_ally_spell_chosen"]
+[connection signal="anim_finish" from="Fighters" to="." method="_on_Fighters_anim_finish"]
+[connection signal="damien" from="Fighters" to="MagicWindow/MagicWindowPanel/SpellList" method="_on_Fighters_damien"]
+[connection signal="enemies_enabled" from="Fighters" to="Enemies" method="_on_Fighters_enemies_enabled"]
+[connection signal="fighter_damage_over" from="Fighters" to="Enemies" method="_on_Fighters_fighter_damage_over"]
+[connection signal="fighters_active" from="Fighters" to="." method="_on_Fighters_fighters_active"]
+[connection signal="game_over" from="Fighters" to="." method="_on_Fighters_game_over"]
+[connection signal="game_over" from="Fighters" to="Enemies" method="_on_Fighters_game_over"]
+[connection signal="gary" from="Fighters" to="MagicWindow/MagicWindowPanel/SpellList" method="_on_Fighters_gary"]
+[connection signal="irina" from="Fighters" to="MagicWindow/MagicWindowPanel/SpellList" method="_on_Fighters_irina"]
+[connection signal="item_chosen" from="Fighters" to="." method="_on_Fighters_item_chosen"]
+[connection signal="jacques" from="Fighters" to="MagicWindow/MagicWindowPanel/SpellList" method="_on_Fighters_jacques"]
+[connection signal="suzy" from="Fighters" to="MagicWindow/MagicWindowPanel/SpellList" method="_on_Fighters_suzy"]
+[connection signal="attack_bonus" from="Fighters/AttackTimer" to="Enemies" method="_on_AttackTimer_attack_bonus"]
+[connection signal="timeout" from="Fighters/AttackTimer/Timer" to="Fighters/AttackTimer" method="_on_Timer_timeout"]
+[connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Defend" to="." method="_on_Defend_cursor_selected"]
+[connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Flee" to="." method="_on_Flee_cursor_selected"]
+[connection signal="go_to_Item" from="DefenseWindow/Menu Cursor" to="." method="_on_Menu_Cursor_go_to_Item"]
+[connection signal="all_battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_all_battle_item_chosen"]
+[connection signal="all_battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Enemies" method="_on_ItemInventory_all_battle_item_chosen"]
+[connection signal="all_battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_all_battle_item_chosen"]
+[connection signal="all_heal_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_all_heal_item_chosen"]
+[connection signal="battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_battle_item_chosen"]
+[connection signal="battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Enemies" method="_on_ItemInventory_battle_item_chosen"]
+[connection signal="battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_battle_item_chosen"]
+[connection signal="empty_items" from="ItemWindow/ItemWindowPanel/ItemInventory" to="ItemWindow" method="_on_ItemInventory_empty_items"]
+[connection signal="go_to_Defend" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_go_to_Defend"]
+[connection signal="heal_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_heal_item_chosen"]
+[connection signal="item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_item_chosen"]
+[connection signal="item_active" from="ItemWindow/ItemWindowPanel/MenuCursor" to="ItemWindow" method="_on_Menu_Cursor_item_active"]
+[connection signal="all_ally_spell" from="MagicWindow/MagicWindowPanel/SpellList" to="Fighters" method="_on_SpellList_all_ally_spell"]
+[connection signal="all_enemy_spell" from="MagicWindow/MagicWindowPanel/SpellList" to="Enemies" method="_on_SpellList_all_enemy_spell"]
+[connection signal="ally_spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="." method="_on_SpellList_ally_spell_chosen"]
+[connection signal="ally_spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="MagicWindow/MagicWindowPanel/SpellList" method="_on_SpellList_ally_spell_chosen"]
+[connection signal="ally_spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_SpellList_ally_spell_chosen"]
+[connection signal="go_to_Defend" from="MagicWindow/MagicWindowPanel/SpellList" to="." method="_on_SpellList_go_to_Defend"]
+[connection signal="single_ally_spell" from="MagicWindow/MagicWindowPanel/SpellList" to="Fighters" method="_on_SpellList_single_ally_spell"]
+[connection signal="single_enemy_spell" from="MagicWindow/MagicWindowPanel/SpellList" to="Enemies" method="_on_SpellList_single_enemy_spell"]
+[connection signal="spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="." method="_on_SpellList_spell_chosen"]
+[connection signal="spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="Fighters" method="_on_SpellList_spell_chosen"]
+[connection signal="spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="MagicWindow/MagicWindowPanel/SpellList" method="_on_SpellList_spell_chosen"]
+[connection signal="spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_SpellList_spell_chosen"]
+[connection signal="go_to_Item" from="MagicWindow/MagicWindowPanel/Menu Cursor" to="." method="_on_Menu_Cursor_go_to_Item"]
+[connection signal="magic_active" from="MagicWindow/MagicWindowPanel/Menu Cursor" to="MagicWindow" method="_on_Menu_Cursor_magic_active"]

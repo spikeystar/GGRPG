@@ -143,8 +143,8 @@ texture = ExtResource( 38 )
 flip_v = true
 
 [node name="BlackBckgd" type="Sprite" parent="Node2D"]
-position = Vector2( 173.288, 247.047 )
-scale = Vector2( 0.804624, 0.700275 )
+position = Vector2( -33.9252, -228.66 )
+scale = Vector2( 0.788186, 0.671488 )
 z_index = -100
 texture = ExtResource( 53 )
 
