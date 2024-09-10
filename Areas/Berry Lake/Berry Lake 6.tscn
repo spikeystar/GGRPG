@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Scripts/Drown.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Tiles/Berry Grass.png" type="Texture" id=2]
@@ -61,6 +61,11 @@
 [ext_resource path="res://Enemies/Berry Lake/Smush_wander_20.tscn" type="PackedScene" id=59]
 [ext_resource path="res://Enemies/Berry Lake/Druplet_wander_20.tscn" type="PackedScene" id=60]
 [ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=61]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 7.tscn" type="PackedScene" id=62]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 5.tscn" type="PackedScene" id=63]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 4.tscn" type="PackedScene" id=64]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 6.tscn" type="PackedScene" id=65]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 15.tscn" type="PackedScene" id=66]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -692,9 +697,11 @@ __meta__ = {
 
 [node name="Smush" parent="." instance=ExtResource( 59 )]
 position = Vector2( -221, -162 )
+target_scene = ExtResource( 62 )
 
 [node name="Smush2" parent="." instance=ExtResource( 59 )]
 position = Vector2( 745, -383 )
+target_scene = ExtResource( 62 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -1824,7 +1831,6 @@ shadow_color = Color( 0.862745, 0.447059, 0.584314, 1 )
 pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
-current = true
 script = ExtResource( 9 )
 minPos = Vector2( -220, -550 )
 maxPos = Vector2( 825, -50 )
@@ -1855,15 +1861,31 @@ position = Vector2( 75, 167 )
 
 [node name="Beezle" parent="." instance=ExtResource( 58 )]
 position = Vector2( 257, -96 )
+target_scene = ExtResource( 63 )
+alt_scene = ExtResource( 62 )
+alt_chance = 50
+alternate = true
 
 [node name="Beezle2" parent="." instance=ExtResource( 58 )]
 position = Vector2( 495, -460 )
+target_scene = ExtResource( 63 )
+alt_scene = ExtResource( 64 )
+alt_chance = 50
+alternate = true
 
 [node name="Druplet" parent="." instance=ExtResource( 60 )]
 position = Vector2( -7, -51 )
+target_scene = ExtResource( 64 )
+alt_scene = ExtResource( 65 )
+alt_chance = 50
+alternate = true
 
 [node name="Druplet2" parent="." instance=ExtResource( 60 )]
 position = Vector2( 302, -438 )
+target_scene = ExtResource( 64 )
+alt_scene = ExtResource( 66 )
+alt_chance = 50
+alternate = true
 
 [node name="Enemy_Boundary" type="Area2D" parent="."]
 visible = false

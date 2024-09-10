@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Berry Grass.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Spike Tile.png" type="Texture" id=2]
@@ -67,6 +67,11 @@
 [ext_resource path="res://Enemies/Berry Lake/Smush_wander_40.tscn" type="PackedScene" id=65]
 [ext_resource path="res://Enemies/Berry Lake/Druplet_wander_40.tscn" type="PackedScene" id=66]
 [ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=67]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 3.tscn" type="PackedScene" id=68]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 4.tscn" type="PackedScene" id=69]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 7.tscn" type="PackedScene" id=70]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 15.tscn" type="PackedScene" id=71]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 6.tscn" type="PackedScene" id=72]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -1646,7 +1651,6 @@ shadow_color = Color( 0.705882, 0.596078, 0.203922, 1 )
 pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
-current = true
 script = ExtResource( 14 )
 minPos = Vector2( -400, -440 )
 maxPos = Vector2( 250, -140 )
@@ -1679,12 +1683,21 @@ anims/sunbeams = SubResource( 10 )
 
 [node name="Smush" parent="." instance=ExtResource( 65 )]
 position = Vector2( -256, -203 )
+target_scene = ExtResource( 69 )
+alt_scene = ExtResource( 70 )
+alt_chance = 30
+alternate = true
 
 [node name="Smush2" parent="." instance=ExtResource( 65 )]
 position = Vector2( 90, -222 )
+target_scene = ExtResource( 68 )
 
 [node name="Druplet" parent="." instance=ExtResource( 66 )]
 position = Vector2( 23, 8 )
+target_scene = ExtResource( 71 )
+alt_scene = ExtResource( 72 )
+alt_chance = 30
+alternate = true
 
 [node name="Enemy_Boundary" type="Area2D" parent="."]
 visible = false

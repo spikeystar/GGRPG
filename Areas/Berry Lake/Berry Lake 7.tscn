@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Berry Lake/Flower B.png" type="Texture" id=2]
@@ -65,6 +65,9 @@
 [ext_resource path="res://Assets/Berry Lake/Waterfall B.tscn" type="PackedScene" id=63]
 [ext_resource path="res://Enemies/Berry Lake/Druplet_wander_40.tscn" type="PackedScene" id=64]
 [ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=65]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 3.tscn" type="PackedScene" id=66]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 1.tscn" type="PackedScene" id=67]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 6.tscn" type="PackedScene" id=68]
 
 [sub_resource type="StreamTexture" id=9]
 
@@ -2208,7 +2211,6 @@ polygon = PoolVector2Array( -7.83173, -35.8283, 18.3697, -27.4327, -43.0348, -1.
 pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
-current = true
 script = ExtResource( 9 )
 minPos = Vector2( -195, -280 )
 maxPos = Vector2( 350, -100 )
@@ -2236,9 +2238,17 @@ align = 1
 
 [node name="Smush" parent="." instance=ExtResource( 51 )]
 position = Vector2( 268, 64 )
+target_scene = ExtResource( 67 )
+alt_scene = ExtResource( 66 )
+alt_chance = 50
+alternate = true
 
 [node name="Druplet" parent="." instance=ExtResource( 64 )]
 position = Vector2( -147, -94 )
+target_scene = ExtResource( 67 )
+alt_scene = ExtResource( 68 )
+alt_chance = 75
+alternate = true
 
 [node name="Enemy_Boundary" type="Area2D" parent="."]
 visible = false

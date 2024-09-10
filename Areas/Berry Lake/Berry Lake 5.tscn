@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Kugi Canyon/Spikes B.png" type="Texture" id=2]
@@ -71,6 +71,13 @@
 [ext_resource path="res://Assets/General/Shadows/circle shadow large.png" type="Texture" id=69]
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=70]
 [ext_resource path="res://Enemies/Berry Lake/Beezle_wander.tscn" type="PackedScene" id=71]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 12.tscn" type="PackedScene" id=72]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 11.tscn" type="PackedScene" id=73]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 10.tscn" type="PackedScene" id=74]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 9.tscn" type="PackedScene" id=75]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 13.tscn" type="PackedScene" id=76]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 14.tscn" type="PackedScene" id=77]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 8.tscn" type="PackedScene" id=78]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -1816,7 +1823,6 @@ shadow_color = Color( 0.796078, 0.521569, 0.6, 1 )
 pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
-current = true
 script = ExtResource( 29 )
 minPos = Vector2( -220, -260 )
 maxPos = Vector2( 1150, 550 )
@@ -1850,24 +1856,51 @@ position = Vector2( 148, 110 )
 
 [node name="Kerobi_post2" parent="." instance=ExtResource( 65 )]
 position = Vector2( 323, 61 )
+target_scene = ExtResource( 73 )
+alt_scene = ExtResource( 74 )
+alt_chance = 30
+alternate = true
 
 [node name="Kerobi_post3" parent="." instance=ExtResource( 65 )]
 position = Vector2( 477, -6 )
+target_scene = ExtResource( 76 )
+alt_scene = ExtResource( 77 )
+alt_chance = 50
+alternate = true
 
 [node name="Kerobi_post4" parent="." instance=ExtResource( 66 )]
 position = Vector2( 297, 240 )
+target_scene = ExtResource( 77 )
+alt_scene = ExtResource( 78 )
+alt_chance = 50
 
 [node name="Kerobi_post5" parent="." instance=ExtResource( 66 )]
 position = Vector2( 468, 181 )
+target_scene = ExtResource( 76 )
+alt_scene = ExtResource( 77 )
+alt_chance = 50
+alternate = true
 
 [node name="Kerobi_post6" parent="." instance=ExtResource( 66 )]
 position = Vector2( 622, 124 )
+target_scene = ExtResource( 73 )
+alt_scene = ExtResource( 74 )
+alt_chance = 30
+alternate = true
 
 [node name="Beezle" parent="." instance=ExtResource( 71 )]
 position = Vector2( -143, 59 )
+target_scene = ExtResource( 72 )
+alt_scene = ExtResource( 75 )
+alt_chance = 30
+alternate = true
 
 [node name="Beezle2" parent="." instance=ExtResource( 71 )]
 position = Vector2( 869, 182 )
+target_scene = ExtResource( 73 )
+alt_scene = ExtResource( 75 )
+alt_chance = 30
+alternate = true
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]

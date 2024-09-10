@@ -31,7 +31,7 @@
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=29]
 [ext_resource path="res://UI/Battle/Jacques Dead HUD.png" type="Texture" id=30]
 [ext_resource path="res://Misc/Font/HUD.tres" type="DynamicFont" id=31]
-[ext_resource path="res://Assets/Berry Lake/Berry Lake BA 3.jpg" type="Texture" id=32]
+[ext_resource path="res://Assets/Berry Lake/Berry Lake BA 1.jpg" type="Texture" id=32]
 [ext_resource path="res://UI/Battle/Item Window.png" type="Texture" id=33]
 [ext_resource path="res://UI/LossText.tscn" type="PackedScene" id=34]
 [ext_resource path="res://UI/Battle/Enemy Info.png" type="Texture" id=35]
@@ -53,8 +53,8 @@
 [ext_resource path="res://UI/Battle/Level Up 2.png" type="Texture" id=51]
 [ext_resource path="res://BattleSystem/ItemUsage.tscn" type="PackedScene" id=52]
 [ext_resource path="res://Players/Gary/Gary_Battle.tscn" type="PackedScene" id=53]
-[ext_resource path="res://Enemies/Kugi Canyon/Battle/Bramby_battle.tscn" type="PackedScene" id=54]
-[ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie_battle.tscn" type="PackedScene" id=55]
+[ext_resource path="res://Enemies/Berry Lake/Battle/Smush_battle.tscn" type="PackedScene" id=54]
+[ext_resource path="res://Enemies/Berry Lake/Battle/Druplet_battle.tscn" type="PackedScene" id=55]
 [ext_resource path="res://Players/Jacques/Jacques_Battle.tscn" type="PackedScene" id=56]
 [ext_resource path="res://Players/Irina/Irina_Battle.tscn" type="PackedScene" id=57]
 [ext_resource path="res://UI/Battle/BattleButtons/BattleButtons.tscn" type="PackedScene" id=58]
@@ -320,7 +320,7 @@ tracks/12/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("../Arena:modulate")
+tracks/13/path = NodePath("../CherryTrailArena:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -381,7 +381,7 @@ loop = true
 resource_name = "darken"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("../Arena:modulate")
+tracks/0/path = NodePath("../CherryTrailArena:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -603,7 +603,7 @@ margin_right = 400.0
 margin_bottom = 350.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="Arena" type="Sprite" parent="."]
+[node name="CherryTrailArena" type="Sprite" parent="."]
 texture = ExtResource( 32 )
 
 [node name="Enemies" type="Node2D" parent="."]
@@ -611,11 +611,14 @@ script = ExtResource( 13 )
 
 [node name="Field" type="Node2D" parent="Enemies"]
 
-[node name="Bramby_battle" parent="Enemies/Field" instance=ExtResource( 54 )]
-position = Vector2( -8, 20 )
+[node name="Smush_battle" parent="Enemies/Field" instance=ExtResource( 54 )]
+position = Vector2( -13, 18 )
 
-[node name="Flutterbie_battle" parent="Enemies/Field" instance=ExtResource( 55 )]
-position = Vector2( 136, -12 )
+[node name="Druplet_battle" parent="Enemies/Field" instance=ExtResource( 55 )]
+position = Vector2( 98, -10 )
+
+[node name="Smush_battle2" parent="Enemies/Field" instance=ExtResource( 54 )]
+position = Vector2( 124, 78 )
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false

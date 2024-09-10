@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=2]
@@ -51,8 +51,7 @@
 [ext_resource path="res://Scripts/Battle/SpellList.gd" type="Script" id=49]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=50]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=51]
-[ext_resource path="res://Enemies/Kugi Canyon/Battle/Bramby_battle.tscn" type="PackedScene" id=52]
-[ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie_battle.tscn" type="PackedScene" id=53]
+[ext_resource path="res://Enemies/Berry Lake/Battle/Beezle_battle.tscn" type="PackedScene" id=52]
 [ext_resource path="res://Players/Gary/Gary_Battle.tscn" type="PackedScene" id=54]
 [ext_resource path="res://Players/Jacques/Jacques_Battle.tscn" type="PackedScene" id=55]
 [ext_resource path="res://BattleSystem/ItemUsage.tscn" type="PackedScene" id=56]
@@ -611,11 +610,14 @@ script = ExtResource( 38 )
 
 [node name="Field" type="Node2D" parent="Enemies"]
 
-[node name="Bramby_battle" parent="Enemies/Field" instance=ExtResource( 52 )]
-position = Vector2( -8, 20 )
+[node name="Beezle_battle" parent="Enemies/Field" instance=ExtResource( 52 )]
+position = Vector2( 13, -42 )
 
-[node name="Flutterbie_battle" parent="Enemies/Field" instance=ExtResource( 53 )]
-position = Vector2( 136, -12 )
+[node name="Beezle_battle2" parent="Enemies/Field" instance=ExtResource( 52 )]
+position = Vector2( 168, -67 )
+
+[node name="Beezle_battle3" parent="Enemies/Field" instance=ExtResource( 52 )]
+position = Vector2( 129, 34 )
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false

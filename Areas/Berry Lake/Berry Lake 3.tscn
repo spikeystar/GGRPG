@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Berry Lake/BBubbleFlower.tscn" type="PackedScene" id=2]
@@ -63,6 +63,10 @@
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=61]
 [ext_resource path="res://Assets/General/Shadows/circle shadow large.png" type="Texture" id=62]
 [ext_resource path="res://Enemies/Berry Lake/Beezle_wander.tscn" type="PackedScene" id=63]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 9.tscn" type="PackedScene" id=64]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 2.tscn" type="PackedScene" id=65]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 13.tscn" type="PackedScene" id=66]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 8.tscn" type="PackedScene" id=67]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -1421,7 +1425,6 @@ shadow_color = Color( 0.705882, 0.596078, 0.203922, 1 )
 pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
-current = true
 script = ExtResource( 49 )
 minPos = Vector2( -220, -260 )
 maxPos = Vector2( 1150, 550 )
@@ -1452,15 +1455,30 @@ position = Vector2( -399, 315 )
 
 [node name="Beezle" parent="." instance=ExtResource( 63 )]
 position = Vector2( 355, -70 )
+target_scene = ExtResource( 66 )
+alt_scene = ExtResource( 64 )
+alt_chance = 50
+alternate = true
 
 [node name="Beezle2" parent="." instance=ExtResource( 63 )]
 position = Vector2( 15, 202 )
+target_scene = ExtResource( 66 )
+alt_scene = ExtResource( 64 )
+alt_chance = 50
+alternate = true
 
 [node name="Beezle3" parent="." instance=ExtResource( 63 )]
 position = Vector2( 454, 326 )
+target_scene = ExtResource( 67 )
+alt_scene = ExtResource( 65 )
+alt_chance = 30
+alternate = true
 
 [node name="Beezle4" parent="." instance=ExtResource( 63 )]
 position = Vector2( 919, 167 )
+target_scene = ExtResource( 65 )
+alt_scene = ExtResource( 67 )
+alt_chance = 30
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
