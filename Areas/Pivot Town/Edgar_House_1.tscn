@@ -268,7 +268,7 @@ position = Vector2( 391.084, 14.952 )
 scale = Vector2( 0.548986, 0.501748 )
 texture = ExtResource( 56 )
 script = ExtResource( 52 )
-height = 75.0
+height = 70.0
 use_transparency = true
 
 [node name="Bookshelf 1" parent="Node2D/YSort" instance=ExtResource( 18 )]
@@ -420,6 +420,7 @@ preview_collision_box = false
 animation_hframes = 9
 animation_vframes = 3
 animation_frame = 10
+always_update = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/YSort/Fireplace"]
 autoplay = "idle"
@@ -545,7 +546,7 @@ position = Vector2( 301.854, -28.5814 )
 scale = Vector2( 0.642964, 0.591124 )
 texture = ExtResource( 56 )
 script = ExtResource( 52 )
-height = 75.0
+height = 77.0
 use_transparency = true
 
 [node name="CircleShadowSmall16" type="Sprite" parent="Node2D/YSort"]

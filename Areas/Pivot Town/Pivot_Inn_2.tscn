@@ -249,7 +249,7 @@ position = Vector2( -209.154, -28.9053 )
 scale = Vector2( 0.673033, 0.709216 )
 texture = ExtResource( 15 )
 script = ExtResource( 10 )
-height = 60.0
+height = 55.0
 use_transparency = true
 
 [node name="Sunflowers" parent="Node2D" instance=ExtResource( 24 )]

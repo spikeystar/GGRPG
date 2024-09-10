@@ -592,7 +592,7 @@ position = Vector2( 323.357, 64.3443 )
 scale = Vector2( 0.634703, 0.713551 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
-height = 55.0
+height = 57.0
 use_transparency = true
 
 [node name="Bookshelf 1" parent="Node2D/YSort" instance=ExtResource( 2 )]
@@ -825,6 +825,7 @@ floor_height = 50.0
 depth_test_offset = Vector3( 0, 75, 0 )
 preview_collision_box = false
 use_collision = false
+always_update = true
 
 [node name="Violet Pot2" parent="Node2D/YSort" instance=ExtResource( 2 )]
 position = Vector2( 84.8102, -36.4441 )
@@ -942,7 +943,7 @@ position = Vector2( -189.028, -5.01032 )
 scale = Vector2( 0.662025, 0.606836 )
 texture = ExtResource( 7 )
 script = ExtResource( 9 )
-height = 55.0
+height = 50.0
 use_transparency = true
 
 [node name="Daisy Pot" parent="Node2D" instance=ExtResource( 2 )]

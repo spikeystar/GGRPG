@@ -184,6 +184,7 @@ texture_offset = Vector2( 0, 6 )
 height = 32.0
 floor_height = 41.0
 preview_collision_box = false
+always_update = true
 
 [node name="Misc A2" parent="Node2D/YSort" instance=ExtResource( 7 )]
 position = Vector2( 194.955, -9.0209 )
@@ -261,6 +262,7 @@ height = 20.0
 floor_height = 55.0
 preview_collision_box = false
 use_collision = false
+always_update = true
 
 [node name="Bookshelf 1" parent="Node2D/YSort" instance=ExtResource( 7 )]
 position = Vector2( 228.065, 11.806 )

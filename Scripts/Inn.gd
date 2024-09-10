@@ -95,7 +95,7 @@ func _input(event):
 		yield(get_tree().create_timer(0.1), "timeout")
 		emit_signal("restart")
 		
-	elif Input.is_action_just_pressed("ui_select") and menu_name == "Sleep" and Party.marbles >= cost:
+	elif Input.is_action_just_pressed("ui_select") and menu_name == "Sleep" and Party.marbles >= cost and not ongoing:
 		ongoing = true
 		Music.quiet()
 		Party.marbles = Party.marbles - cost

@@ -491,6 +491,7 @@ floor_height = 50.0
 depth_test_offset = Vector3( 0, 75, 0 )
 preview_collision_box = false
 use_collision = false
+always_update = true
 
 [node name="Violet Pot2" parent="Node2D/YSort" instance=ExtResource( 5 )]
 position = Vector2( 390.55, 103.957 )

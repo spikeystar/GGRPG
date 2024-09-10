@@ -228,7 +228,7 @@ MAX_IDLE_TIME = 5
 MIN_WANDER_TIME = 2
 MAX_WANDER_TIME = 5
 WANDER_RADIUS = 15
-MAX_CHASE_DISTANCE = 100
+MAX_CHASE_DISTANCE = 130
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
 visible = false

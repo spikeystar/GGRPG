@@ -231,7 +231,7 @@ MIN_IDLE_TIME = 3
 MAX_IDLE_TIME = 5
 MIN_WANDER_TIME = 2
 MAX_WANDER_TIME = 5
-WANDER_RADIUS = 10
+WANDER_RADIUS = 15
 MAX_CHASE_DISTANCE = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
@@ -301,6 +301,7 @@ use_dithering = false
 use_dither_blending = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
+autoplay = "walk_front"
 playback_speed = 0.3
 anims/RESET = SubResource( 173 )
 anims/walk_back = SubResource( 176 )
