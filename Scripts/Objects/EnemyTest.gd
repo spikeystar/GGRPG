@@ -160,7 +160,7 @@ func _on_BattleTrigger_triggered():
 	Music.pause()
 	if miniboss:
 		BattleMusic.id = "Miniboss_Battle"
-	elif boss:
+	if boss:
 		BattleMusic.id = "Boss_Battle"
 	else:
 		pass

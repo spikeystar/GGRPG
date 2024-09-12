@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Pivot Town/Orange Brick A.png" type="Texture" id=2]
@@ -78,6 +78,9 @@
 [ext_resource path="res://Assets/Gary's House/Exterior/cloud a.png" type="Texture" id=76]
 [ext_resource path="res://Assets/Gary's House/Exterior/cloud b.png" type="Texture" id=77]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Doorway.gd" type="Script" id=78]
+[ext_resource path="res://NPC/Berry Lake/Reeler.tscn" type="PackedScene" id=79]
+[ext_resource path="res://Areas/Berry Lake/Berry Lake BA 16.tscn" type="PackedScene" id=80]
+[ext_resource path="res://Enemies/Berry Lake/Smush_wander_20.tscn" type="PackedScene" id=81]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -1859,6 +1862,9 @@ playback_speed = 0.5
 anims/RESET = SubResource( 7 )
 anims/sunbeams = SubResource( 8 )
 
+[node name="Reeler" parent="." instance=ExtResource( 79 )]
+position = Vector2( -310, -289 )
+
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 30 )]
@@ -1931,7 +1937,6 @@ polygon = PoolVector2Array( 53.619, -60.2578, 76.8212, -51.7928, -40.0588, -2.07
 pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
-current = true
 script = ExtResource( 44 )
 minPos = Vector2( -575, -500 )
 maxPos = Vector2( 650, 55 )
@@ -1959,3 +1964,8 @@ align = 1
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 0, 224 )
+
+[node name="Smush" parent="." instance=ExtResource( 81 )]
+position = Vector2( 64, -154 )
+target_scene = ExtResource( 80 )
+boss = true
