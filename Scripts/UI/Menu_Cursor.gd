@@ -13,6 +13,7 @@ var cursor_active = false
 var item_active = false
 var empty_items = false
 var spell_selected = false
+var item_stolen
 signal item_active()
 signal magic_active()
 signal go_to_Item()

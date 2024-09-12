@@ -2211,6 +2211,7 @@ polygon = PoolVector2Array( -7.83173, -35.8283, 18.3697, -27.4327, -43.0348, -1.
 pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
+current = true
 script = ExtResource( 9 )
 minPos = Vector2( -195, -280 )
 maxPos = Vector2( 350, -100 )

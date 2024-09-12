@@ -26,6 +26,7 @@ var move_name : String
 var whammy_chance
 var move_type : String = "neutral"
 var fighter_type : String = "neutral"
+var event_counter = 0
 
 export var boss_battle : bool
 var battle_name : String
@@ -55,6 +56,8 @@ signal single_enemy_spell
 signal all_enemy_spell
 signal fighters_active
 signal update_move_window
+
+signal Reeler_Event
 
 var stun = false
 var poison = false
@@ -608,6 +611,9 @@ func finale_check():
 	if battle_name == "Saguarotel" and enemies.size() == 0:
 			yield(get_tree().create_timer(1), "timeout")
 			$Field/Saguarotel_battle.boss_death()
+	if battle_name == "Reeler" and enemies.size() == 0:
+			yield(get_tree().create_timer(1), "timeout")
+			$Field/Reeler_battle.boss_death()
 			
 func jinx_doll():
 	pass
@@ -651,6 +657,12 @@ func _on_Fighters_enemies_enabled():
 	var poison_wait = false
 	var sd_wait = false
 	enemies_active = true
+	event_counter += 1
+	
+	if battle_name == "Reeler" and event_counter == 4:
+		emit_signal("Reeler_Event")
+		yield(get_tree().create_timer(5), "timeout")
+		
 	
 	if debuffing:
 		yield(get_tree().create_timer(1.5), "timeout")

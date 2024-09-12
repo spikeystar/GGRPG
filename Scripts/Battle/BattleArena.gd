@@ -377,6 +377,7 @@ func _on_ItemInventory_go_to_Defend():
 		window_open = true
 
 func _on_Menu_Cursor_go_to_Item():
+	if not item_stolen:
 		item_show = true
 		attack_show = false
 		defend_show = false
@@ -897,6 +898,22 @@ func _on_Enemies_e_magic_damage_finish():
 	
 	#$Fighters.fighters_active_check()
 	
+	###### Special Events #######
+	
+func _on_Enemies_Reeler_Event():
+	item_stolen = true
+	$Fighters/HUDS.hiding()
+	yield(get_tree().create_timer(0.5), "timeout")
+	$BattleDialogue.Reeler_Event()
+	yield(get_tree().create_timer(1), "timeout")
+	$Enemies/Field/Reeler_battle/AnimationPlayer.play("special")
+	yield(get_tree().create_timer(0.5), "timeout")
+	SE.effect("Basic")
+	yield(get_tree().create_timer(0.5), "timeout")
+	$WindowPlayer.play("Reeler_Event")
+	SE.effect("Drama Ascend")
+	yield(get_tree().create_timer(1), "timeout")
+	$Enemies/Field/Reeler_battle/AnimationPlayer.play("enemy_idle")
 	
 	##### Magic Spells ######
 func Sweet_Gift():
@@ -1406,3 +1423,4 @@ func _on_Enemies_Gravel_Spat():
 	$Fighters/HUDS.showing()
 	yield(get_tree().create_timer(0.7), "timeout")
 	$Fighters.damage_end()
+

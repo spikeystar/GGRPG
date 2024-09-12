@@ -1575,6 +1575,7 @@ align = 1
 [connection signal="body_exited" from="Node2D/CollisionRoot/Shop" to="Node2D/CollisionRoot/Shop" method="_on_Shop_body_exited"]
 [connection signal="interaction" from="Node2D/CollisionRoot/Shop" to="Camera2D/Shop" method="_on_Shop_interaction"]
 [connection signal="option_selecting" from="Camera2D/Interaction" to="Camera2D/Interaction/ShopOptions/MenuCursor" method="_on_Interaction_option_selecting"]
+[connection signal="restart" from="Camera2D/Interaction" to="Node2D/CollisionRoot/Inn" method="_on_Interaction_restart"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy" method="_on_Interaction_buying"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/Buy_Inventory" method="_on_Interaction_buying"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/MenuCursor" method="_on_Interaction_buying"]

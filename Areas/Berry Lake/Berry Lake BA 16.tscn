@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=88 format=2]
 
 [ext_resource path="res://UI/Battle/New Spell 1.png" type="Texture" id=1]
 [ext_resource path="res://UI/Battle/Gary Alive HUD.png" type="Texture" id=2]
@@ -54,10 +54,12 @@
 [ext_resource path="res://BattleSystem/ItemUsage.tscn" type="PackedScene" id=52]
 [ext_resource path="res://Players/Gary/Gary_Battle.tscn" type="PackedScene" id=53]
 [ext_resource path="res://Enemies/Berry Lake/Battle/Reeler_battle.tscn" type="PackedScene" id=54]
+[ext_resource path="res://Scripts/Battle/BattleDialogue.gd" type="Script" id=55]
 [ext_resource path="res://Players/Jacques/Jacques_Battle.tscn" type="PackedScene" id=56]
 [ext_resource path="res://Players/Irina/Irina_Battle.tscn" type="PackedScene" id=57]
 [ext_resource path="res://UI/Battle/BattleButtons/BattleButtons.tscn" type="PackedScene" id=58]
 [ext_resource path="res://BattleSystem/MovePlayer.tscn" type="PackedScene" id=59]
+[ext_resource path="res://Scripts/UI/Talk_Adjusting.gd" type="Script" id=60]
 
 [sub_resource type="Theme" id=14]
 
@@ -342,6 +344,106 @@ tracks/14/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("../ItemBag:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("../ItemBag:self_modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.5 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("../ItemBag:position")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -53, 47 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("../WindowPlayer:playback_speed")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "Reeler_Event"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("../ItemBag:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ItemBag:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7, 0.8, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0.243137 ), Color( 1, 1, 1, 0.1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ItemBag:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -53, 47 ), Vector2( -53, -25 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../WindowPlayer:playback_speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.2, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.35, 1.35, 1.0 ]
+}
 
 [sub_resource type="Animation" id=13]
 resource_name = "battle_dia_open"
@@ -609,6 +711,7 @@ texture = ExtResource( 32 )
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource( 13 )
+boss_battle = true
 
 [node name="Field" type="Node2D" parent="Enemies"]
 
@@ -1442,8 +1545,10 @@ frame = 4
 visible = false
 position = Vector2( -134, -223 )
 texture = ExtResource( 29 )
+script = ExtResource( 55 )
 
 [node name="DialogueCursor" parent="BattleDialogue" instance=ExtResource( 6 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 142.0
@@ -1453,6 +1558,24 @@ margin_bottom = 36.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 script = null
+
+[node name="Name" type="Label" parent="BattleDialogue"]
+margin_left = -158.813
+margin_top = -30.5715
+margin_right = 162.0
+margin_bottom = 20.4285
+custom_fonts/font = ExtResource( 28 )
+autowrap = true
+script = ExtResource( 60 )
+
+[node name="Talk" type="Label" parent="BattleDialogue/Name"]
+margin_left = 47.0
+margin_top = -0.00012207
+margin_right = 310.384
+margin_bottom = 50.9999
+custom_fonts/font = ExtResource( 28 )
+autowrap = true
+percent_visible = 0.1
 
 [node name="FadeRect" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -1477,6 +1600,7 @@ autoplay = "Level_up_text"
 anims/Gravel_Spat = SubResource( 30 )
 anims/Level_up_text = SubResource( 24 )
 anims/RESET = SubResource( 10 )
+anims/Reeler_Event = SubResource( 31 )
 anims/battle_dia_open = SubResource( 13 )
 anims/cursor_idle = SubResource( 21 )
 anims/darken = SubResource( 28 )
@@ -1592,7 +1716,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1609,6 +1732,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1633,6 +1757,16 @@ visible = false
 [node name="Position2D" type="Position2D" parent="."]
 visible = false
 position = Vector2( -130, -17 )
+
+[node name="ItemBag" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.5 )
+position = Vector2( -53, 47 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 5 )
+hframes = 3
+vframes = 4
+frame = 9
 
 [connection signal="BB_active" from="." to="Enemies" method="_on_WorldRoot_BB_active"]
 [connection signal="BB_active" from="." to="Fighters" method="_on_WorldRoot_BB_active"]
@@ -1682,6 +1816,7 @@ position = Vector2( -130, -17 )
 [connection signal="Friction" from="Enemies" to="." method="_on_Enemies_Friction"]
 [connection signal="Gravel_Spat" from="Enemies" to="." method="_on_Enemies_Gravel_Spat"]
 [connection signal="Pester" from="Enemies" to="." method="_on_Enemies_Pester"]
+[connection signal="Reeler_Event" from="Enemies" to="." method="_on_Enemies_Reeler_Event"]
 [connection signal="Sabotage" from="Enemies" to="." method="_on_Enemies_Sabotage"]
 [connection signal="Slash" from="Enemies" to="." method="_on_Enemies_Slash"]
 [connection signal="Splat" from="Enemies" to="." method="_on_Enemies_Splat"]

@@ -631,7 +631,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.7 ]
+"values": [ 0.65 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:position")
@@ -1201,7 +1201,7 @@ position = Vector2( -87.619, -141.905 )
 texture = ExtResource( 2 )
 
 [node name="TextOffset" type="Position2D" parent="."]
-position = Vector2( 20, -118.095 )
+position = Vector2( 21.9047, -112.381 )
 
 [node name="DamageText" parent="." instance=ExtResource( 8 )]
 visible = false

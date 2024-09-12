@@ -262,7 +262,7 @@ func text(TEXT: PackedScene, text_position: Vector2 = global_position):
 		return text
 
 func stun():
-	if not stun:
+	if not stun and not boss:
 		stun = true
 		stun_timer = 1
 	else:
