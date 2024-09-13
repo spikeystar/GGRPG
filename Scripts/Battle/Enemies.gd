@@ -156,9 +156,10 @@ func _process(delta):
 	var victory = SceneManager.victory
 	
 	if Input.is_action_just_pressed("ui_right") and enemy_selecting and BB_active and not victory:
-		SE.effect("Move Between")
 		select_next_enemy(+1)
 		enemy_info_update()
+		if enemies.size() > 1:
+			SE.effect("Move Between")
 	
 	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active and not victory:
 		#SE.effect("Move Between")
@@ -604,6 +605,10 @@ func boss_check():
 		else:
 			enemies[enemy_index].death()
 			enemies[enemy_index].death_tagged = true
+	if battle_name == "Reeler":
+		if $Field/Reeler_battle.health == 0:
+			enemies[enemy_index].death_tagged = true
+			enemies[enemy_index].stall()
 			
 			
 func finale_check():
@@ -612,6 +617,7 @@ func finale_check():
 			yield(get_tree().create_timer(1), "timeout")
 			$Field/Saguarotel_battle.boss_death()
 	if battle_name == "Reeler" and enemies.size() == 0:
+			$Field/Reeler_battle.stall()
 			yield(get_tree().create_timer(1), "timeout")
 			$Field/Reeler_battle.boss_death()
 			
@@ -661,9 +667,8 @@ func _on_Fighters_enemies_enabled():
 	
 	if battle_name == "Reeler" and event_counter == 4:
 		emit_signal("Reeler_Event")
-		yield(get_tree().create_timer(5), "timeout")
+		yield(get_tree().create_timer(4), "timeout")
 		
-	
 	if debuffing:
 		yield(get_tree().create_timer(1.5), "timeout")
 		debuffing = false

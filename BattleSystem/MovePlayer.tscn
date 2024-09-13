@@ -3869,6 +3869,7 @@ position = Vector2( -125, -44 )
 rotation = 0.0356923
 scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 26 )
+offset = Vector2( 4, -17 )
 flip_h = true
 hframes = 3
 frame = 2

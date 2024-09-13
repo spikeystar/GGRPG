@@ -1234,5 +1234,5 @@ func _on_WorldRoot_update_party():
 
 
 func _on_Enemies_victory():
-	yield(get_tree().create_timer(0.3), "timeout")
+	yield(get_tree().create_timer(0.4), "timeout")
 	hide_all_cursors()

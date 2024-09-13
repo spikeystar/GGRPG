@@ -19,6 +19,7 @@ var defending = false
 var BB_active = false
 var item_halt = false
 var fighter_selection = false
+var fighter_turn_used = false
 var fighter0_active = false
 var fighter1_active = false
 var fighter2_active = false
@@ -105,6 +106,9 @@ func hide_cursors():
 func _on_Fighters_fighters_active():
 		fighter_selection = true
 		
+		if $Fighters/HUDS.modulate.a == 0:
+			$Fighters/HUDS.showing()
+		
 func _on_Fighters_BB_move():
 	var BB_position = $Fighters.get_BB_position()
 	$BattleButtons.position = BB_position
@@ -126,8 +130,11 @@ static func thousands_sep(number, prefix=''):
 	else: res = prefix+res
 	return res
 
+func _process(delta):
+	fighter_turn_used = $Fighters.get_turn_value()
+
 func _input(event):
-	var fighter_turn_used = $Fighters.get_turn_value()
+	#var fighter_turn_used = $Fighters.get_turn_value()
 	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory:
 		SE.effect("Select")
 		$BattleButtons.show()
@@ -167,6 +174,7 @@ func _input(event):
 		emit_signal("attack_inactive")
 		emit_signal("magic_inactive")
 		emit_signal("defend_active")
+		$MagicWindow/MagicWindowPanel/MenuCursor.magic_active = false
 		if defend_show and not window_open:
 			window_open = true
 			
@@ -205,6 +213,9 @@ func _input(event):
 		if attack_show and not window_open:
 			window_open = true
 			
+	if (Input.is_action_just_pressed("ui_right")) and BB_active and not attack_show and not ongoing and wimpy:
+		SE.effect("Unable")
+			
 	if (Input.is_action_just_pressed("ui_select")) and BB_active and attack_show and not fighter_turn_used and not ongoing:
 		SE.effect("Select")
 		$BattleButtons/DiamondB.show()
@@ -240,6 +251,9 @@ func _input(event):
 		$DefenseWindow.hide()
 		if magic_show and not window_open:
 			window_open = true
+			
+	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show and dizzy:
+		SE.effect("Unable")
 		
 	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt and not item_stolen:
 		SE.effect("Move Between")
@@ -264,6 +278,9 @@ func _input(event):
 		$MagicWindow.hide()
 		if item_show and not window_open:
 			window_open = true
+			
+	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt and item_stolen:
+		SE.effect("Unable")
 
 	if Input.is_action_just_pressed("ui_select") and victory_ended:
 		victory_ended = false
@@ -348,6 +365,7 @@ func _on_SpellList_go_to_Defend():
 	$WindowPlayer.play("defense_open")
 	$MagicWindow.hide()
 	$Enemies/EnemyInfo.hide()
+	$MagicWindow/MagicWindowPanel/MenuCursor.magic_active = false
 	emit_signal("hide_enemy_cursor")
 	emit_signal("index_reset")
 	emit_signal("attack_inactive")
@@ -373,11 +391,14 @@ func _on_ItemInventory_go_to_Defend():
 	emit_signal("attack_inactive")
 	emit_signal("magic_inactive")
 	emit_signal("defend_active")
+	$MagicWindow/MagicWindowPanel/MenuCursor.magic_active = false
 	if defend_show and not window_open:
 		window_open = true
 
 func _on_Menu_Cursor_go_to_Item():
-	if not item_stolen:
+	if item_stolen:
+		SE.effect("Unable")
+	else:
 		item_show = true
 		attack_show = false
 		defend_show = false
@@ -388,10 +409,17 @@ func _on_Menu_Cursor_go_to_Item():
 		emit_signal("attack_inactive")
 		emit_signal("defend_inactive")
 		emit_signal("magic_inactive")
+		$ItemWindow.item_check()
 		$BattleButtons/CloverB.hide()
 		$BattleButtons/SpadeB.show()
 		$BattleButtons/StarB.show()
 		$BattleButtons/DiamondB.show()
+		$MagicWindow/MagicWindowPanel/MenuCursor.item_active = false
+		$DefenseWindow/MenuCursor.item_active = false
+		$MagicWindow/MagicWindowPanel/MenuCursor.defend_active = false
+		$DefenseWindow/MenuCursor.defend_active = false
+		$MagicWindow/MagicWindowPanel/MenuCursor.magic_active = false
+		$DefenseWindow/MenuCursor.magic_active = false
 		$ItemWindow.show()
 		$WindowPlayer.play("item_open")
 		$Enemies/EnemyInfo.hide()
@@ -410,6 +438,8 @@ func _on_Defend_cursor_selected():
 		emit_signal("f_turn_used")
 		emit_signal("defend_chosen")
 		emit_signal("defend_inactive")
+		$MagicWindow/MagicWindowPanel/MenuCursor.defend_active = false
+		$ItemWindow/ItemWindowPanel/MenuCursor.defend_active = false
 		defend_show = false
 		item_halt = false
 		BB_active = false
@@ -423,26 +453,29 @@ func _on_Defend_cursor_selected():
 		#enemies_enabled = true
 	
 func _on_Flee_cursor_selected():
-	SE.effect("Flee")
-	ongoing = true
-	if defend_show:
-		$Fighters/HUDS.hide()
-		$DefenseWindow.hide()
-		$BattleButtons.hide()
-		$FleeDialogue.show()
-		defend_show = false
-		BB_active = false
-		emit_signal("flee_chosen")
-		emit_signal("defend_inactive")
-		$WindowPlayer.play("flee_dia_open")
-		$FadeRect/AnimationPlayer.play("Flee")
-		Party.marbles -= (Party.marbles * 0.05)
-		SceneManager.flee = true
-		yield(get_tree().create_timer(2), "timeout")
-		#BattleMusic.fade_out()
-		#BattleMusic.switch_songs()
-		get_tree().paused = false
-		Global.battle_ended = true
+	if boss_battle:
+			SE.effect("Unable")
+	else:
+		SE.effect("Flee")
+		ongoing = true
+		if defend_show:
+			$Fighters/HUDS.hide()
+			$DefenseWindow.hide()
+			$BattleButtons.hide()
+			$FleeDialogue.show()
+			defend_show = false
+			BB_active = false
+			emit_signal("flee_chosen")
+			emit_signal("defend_inactive")
+			$WindowPlayer.play("flee_dia_open")
+			$FadeRect/AnimationPlayer.play("Flee")
+			Party.marbles -= (Party.marbles * 0.05)
+			SceneManager.flee = true
+			yield(get_tree().create_timer(2), "timeout")
+			#BattleMusic.fade_out()
+			#BattleMusic.switch_songs()
+			get_tree().paused = false
+			Global.battle_ended = true
 	
 func _on_Enemies_enemy_chosen():
 	emit_signal("f_turn_used")
@@ -497,6 +530,9 @@ func _on_Enemies_e_damage_finish():
 
 func _on_WorldRoot_f_turn_used():
 	f_turns += 1
+	#$MagicWindow/MagicWindowPanel/MenuCursor.magic_active = false
+	#$DefenseWindow/MenuCursor.defend_active = false
+	#$ItemWindow/ItemWindowPanel/MenuCursor.item_active = false
 	
 func _on_Enemies_victory():
 	var EXP_reward = int(EXP_base + (rand_range(0.05, 0.2) * EXP_base))
@@ -579,6 +615,8 @@ func _on_ItemInventory_item_chosen():
 	$ItemWindow.hide()
 	$BattleButtons/CloverB.show()
 	$BattleButtons.hide()
+	$MagicWindow/MagicWindowPanel/MenuCursor.item_active = false
+	$DefenseWindow/MenuCursor.item_active = false
 	item_show = false
 	item_halt = false
 	BB_active = false
@@ -596,6 +634,8 @@ func _on_ItemInventory_battle_item_chosen():
 	attack_show = true
 	magic_show = false
 	defend_show = false
+	$MagicWindow/MagicWindowPanel/MenuCursor.item_active = false
+	$DefenseWindow/MenuCursor.item_active = false
 	$BattleButtons/SpadeB.show()
 	$BattleButtons/CloverB.show()
 	$BattleButtons/StarB.show()
@@ -624,6 +664,8 @@ func _on_ItemInventory_all_battle_item_chosen():
 	attack_show = true
 	magic_show = false
 	defend_show = false
+	$MagicWindow/MagicWindowPanel/MenuCursor.item_active = false
+	$DefenseWindow/MenuCursor.item_active = false
 	$BattleButtons/SpadeB.show()
 	$BattleButtons/CloverB.show()
 	$BattleButtons/StarB.show()
@@ -820,6 +862,8 @@ func _on_Enemies_single_enemy_spell():
 	$Enemies.magic_damage()
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
+	$ItemWindow/ItemWindowPanel/MenuCursor.magic_active = false
+	$DefenseWindow/MenuCursor.magic_active = false
 	emit_signal("f_index_reset")
 	if debuff_move:
 		yield(get_tree().create_timer(1.7), "timeout")
@@ -851,7 +895,9 @@ func _on_Enemies_all_enemy_spell():
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
 	emit_signal("f_index_reset")
-	yield(get_tree().create_timer(2), "timeout")
+	$ItemWindow/ItemWindowPanel/MenuCursor.magic_active = false
+	$DefenseWindow/MenuCursor.magic_active = false
+	yield(get_tree().create_timer(2.5), "timeout")
 	$Fighters.fighters_active_check()
 	
 	
@@ -872,6 +918,9 @@ func _on_Fighters_ally_spell_chosen():
 	$Fighters.ongoing = false
 	$Fighters.BB_active = false
 	$Fighters.magic_selecting = false
+	emit_signal("magic_inactive")
+	$ItemWindow/ItemWindowPanel/MenuCursor.magic_active = false
+	$DefenseWindow/MenuCursor.magic_active = false
 	item_halt = false
 	BB_active = false
 	
@@ -901,9 +950,12 @@ func _on_Enemies_e_magic_damage_finish():
 	###### Special Events #######
 	
 func _on_Enemies_Reeler_Event():
+	yield(get_tree().create_timer(0.7), "timeout")
 	item_stolen = true
+	$DefenseWindow/MenuCursor.item_stolen = true
+	$MagicWindow/MagicWindowPanel/MenuCursor.item_stolen = true
 	$Fighters/HUDS.hiding()
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(1), "timeout")
 	$BattleDialogue.Reeler_Event()
 	yield(get_tree().create_timer(1), "timeout")
 	$Enemies/Field/Reeler_battle/AnimationPlayer.play("special")
@@ -914,6 +966,7 @@ func _on_Enemies_Reeler_Event():
 	SE.effect("Drama Ascend")
 	yield(get_tree().create_timer(1), "timeout")
 	$Enemies/Field/Reeler_battle/AnimationPlayer.play("enemy_idle")
+	$Fighters/HUDS.hide()
 	
 	##### Magic Spells ######
 func Sweet_Gift():

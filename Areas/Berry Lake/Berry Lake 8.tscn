@@ -2060,6 +2060,6 @@ align = 1
 position = Vector2( 0, 224 )
 
 [node name="Smush" parent="." instance=ExtResource( 81 )]
-position = Vector2( 64, -154 )
+position = Vector2( 112, -15 )
 target_scene = ExtResource( 80 )
 boss = true

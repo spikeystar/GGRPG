@@ -618,7 +618,6 @@ e_attack = 15
 e_magic = 15
 e_defense = 1
 initial_type = "neutral"
-move1 = "Basic"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
@@ -1295,7 +1294,7 @@ align = 1
 valign = 1
 script = ExtResource( 48 )
 
-[node name="Menu Cursor" parent="DefenseWindow" instance=ExtResource( 32 )]
+[node name="MenuCursor" parent="DefenseWindow" instance=ExtResource( 32 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 59.0
@@ -1386,7 +1385,7 @@ custom_constants/separation = 12
 alignment = 1
 script = ExtResource( 44 )
 
-[node name="Menu Cursor" parent="MagicWindow/MagicWindowPanel" instance=ExtResource( 32 )]
+[node name="MenuCursor" parent="MagicWindow/MagicWindowPanel" instance=ExtResource( 32 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 62.0
@@ -1641,25 +1640,25 @@ visible = false
 [connection signal="action_ended" from="." to="Fighters" method="_on_WorldRoot_action_ended"]
 [connection signal="action_ongoing" from="." to="Enemies" method="_on_WorldRoot_action_ongoing"]
 [connection signal="action_ongoing" from="." to="Fighters" method="_on_WorldRoot_action_ongoing"]
-[connection signal="action_ongoing" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_action_ongoing"]
+[connection signal="action_ongoing" from="." to="DefenseWindow/MenuCursor" method="_on_WorldRoot_action_ongoing"]
 [connection signal="attack_active" from="." to="Enemies" method="_on_WorldRoot_attack_active"]
 [connection signal="attack_active" from="." to="Enemies/EnemyInfo/EnemyStatus" method="_on_WorldRoot_attack_active"]
 [connection signal="attack_active" from="." to="Enemies/EnemyInfo/EnemyName" method="_on_WorldRoot_attack_active"]
 [connection signal="attack_chosen" from="." to="Enemies" method="_on_WorldRoot_attack_chosen"]
 [connection signal="attack_inactive" from="." to="Enemies" method="_on_WorldRoot_attack_inactive"]
-[connection signal="defend_active" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_defend_active"]
+[connection signal="defend_active" from="." to="DefenseWindow/MenuCursor" method="_on_WorldRoot_defend_active"]
 [connection signal="defend_chosen" from="." to="Fighters" method="_on_WorldRoot_defend_chosen"]
-[connection signal="defend_inactive" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_defend_inactive"]
+[connection signal="defend_inactive" from="." to="DefenseWindow/MenuCursor" method="_on_WorldRoot_defend_inactive"]
 [connection signal="f_index_reset" from="." to="Fighters" method="_on_WorldRoot_f_index_reset"]
 [connection signal="f_turn_used" from="." to="." method="_on_WorldRoot_f_turn_used"]
 [connection signal="f_turn_used" from="." to="Fighters" method="_on_WorldRoot_f_turn_used"]
 [connection signal="flee_chosen" from="." to="Fighters" method="_on_WorldRoot_flee_chosen"]
 [connection signal="hide_enemy_cursor" from="." to="Enemies" method="_on_WorldRoot_hide_enemy_cursor"]
-[connection signal="index_reset" from="." to="DefenseWindow/Menu Cursor" method="_on_WorldRoot_index_reset"]
+[connection signal="index_reset" from="." to="DefenseWindow/MenuCursor" method="_on_WorldRoot_index_reset"]
 [connection signal="index_reset" from="." to="ItemWindow/ItemWindowPanel/MenuCursor" method="_on_WorldRoot_index_reset"]
-[connection signal="index_reset" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_index_reset"]
+[connection signal="index_reset" from="." to="MagicWindow/MagicWindowPanel/MenuCursor" method="_on_WorldRoot_index_reset"]
 [connection signal="index_resetzero" from="." to="ItemWindow/ItemWindowPanel/MenuCursor" method="_on_WorldRoot_index_resetzero"]
-[connection signal="index_resetzero" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_index_resetzero"]
+[connection signal="index_resetzero" from="." to="MagicWindow/MagicWindowPanel/MenuCursor" method="_on_WorldRoot_index_resetzero"]
 [connection signal="item_active" from="." to="ItemWindow/ItemWindowPanel/ItemInventory" method="_on_WorldRoot_item_active"]
 [connection signal="item_active" from="." to="ItemWindow/ItemWindowPanel/MenuCursor" method="_on_WorldRoot_item_active"]
 [connection signal="item_inactive" from="." to="ItemWindow/ItemWindowPanel/ItemInventory" method="_on_WorldRoot_item_inactive"]
@@ -1667,10 +1666,10 @@ visible = false
 [connection signal="item_removed" from="." to="ItemWindow/ItemWindowPanel/ItemInventory" method="_on_WorldRoot_item_removed"]
 [connection signal="magic_active" from="." to="MagicWindow" method="_on_WorldRoot_magic_active"]
 [connection signal="magic_active" from="." to="MagicWindow/MagicWindowPanel/SpellList" method="_on_WorldRoot_magic_active"]
-[connection signal="magic_active" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_magic_active"]
+[connection signal="magic_active" from="." to="MagicWindow/MagicWindowPanel/MenuCursor" method="_on_WorldRoot_magic_active"]
 [connection signal="magic_enemy_update" from="." to="Enemies/EnemyInfo/EnemyStatus" method="_on_WorldRoot_magic_enemy_update"]
 [connection signal="magic_inactive" from="." to="MagicWindow/MagicWindowPanel/SpellList" method="_on_WorldRoot_magic_inactive"]
-[connection signal="magic_inactive" from="." to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_WorldRoot_magic_inactive"]
+[connection signal="magic_inactive" from="." to="MagicWindow/MagicWindowPanel/MenuCursor" method="_on_WorldRoot_magic_inactive"]
 [connection signal="start_attack_timer" from="." to="Fighters/AttackTimer" method="_on_WorldRoot_start_attack_timer"]
 [connection signal="update_party" from="." to="Fighters" method="_on_WorldRoot_update_party"]
 [connection signal="Aero_Bullet" from="Enemies" to="." method="_on_Enemies_Aero_Bullet"]
@@ -1728,7 +1727,7 @@ visible = false
 [connection signal="timeout" from="Fighters/AttackTimer/Timer" to="Fighters/AttackTimer" method="_on_Timer_timeout"]
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Defend" to="." method="_on_Defend_cursor_selected"]
 [connection signal="cursor_selected" from="DefenseWindow/VBoxContainer/Flee" to="." method="_on_Flee_cursor_selected"]
-[connection signal="go_to_Item" from="DefenseWindow/Menu Cursor" to="." method="_on_Menu_Cursor_go_to_Item"]
+[connection signal="go_to_Item" from="DefenseWindow/MenuCursor" to="." method="_on_Menu_Cursor_go_to_Item"]
 [connection signal="all_battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="." method="_on_ItemInventory_all_battle_item_chosen"]
 [connection signal="all_battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Enemies" method="_on_ItemInventory_all_battle_item_chosen"]
 [connection signal="all_battle_item_chosen" from="ItemWindow/ItemWindowPanel/ItemInventory" to="Fighters" method="_on_ItemInventory_all_battle_item_chosen"]
@@ -1745,13 +1744,13 @@ visible = false
 [connection signal="all_enemy_spell" from="MagicWindow/MagicWindowPanel/SpellList" to="Enemies" method="_on_SpellList_all_enemy_spell"]
 [connection signal="ally_spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="." method="_on_SpellList_ally_spell_chosen"]
 [connection signal="ally_spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="MagicWindow/MagicWindowPanel/SpellList" method="_on_SpellList_ally_spell_chosen"]
-[connection signal="ally_spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_SpellList_ally_spell_chosen"]
+[connection signal="ally_spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="MagicWindow/MagicWindowPanel/MenuCursor" method="_on_SpellList_ally_spell_chosen"]
 [connection signal="go_to_Defend" from="MagicWindow/MagicWindowPanel/SpellList" to="." method="_on_SpellList_go_to_Defend"]
 [connection signal="single_ally_spell" from="MagicWindow/MagicWindowPanel/SpellList" to="Fighters" method="_on_SpellList_single_ally_spell"]
 [connection signal="single_enemy_spell" from="MagicWindow/MagicWindowPanel/SpellList" to="Enemies" method="_on_SpellList_single_enemy_spell"]
 [connection signal="spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="." method="_on_SpellList_spell_chosen"]
 [connection signal="spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="Fighters" method="_on_SpellList_spell_chosen"]
 [connection signal="spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="MagicWindow/MagicWindowPanel/SpellList" method="_on_SpellList_spell_chosen"]
-[connection signal="spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="MagicWindow/MagicWindowPanel/Menu Cursor" method="_on_SpellList_spell_chosen"]
-[connection signal="go_to_Item" from="MagicWindow/MagicWindowPanel/Menu Cursor" to="." method="_on_Menu_Cursor_go_to_Item"]
-[connection signal="magic_active" from="MagicWindow/MagicWindowPanel/Menu Cursor" to="MagicWindow" method="_on_Menu_Cursor_magic_active"]
+[connection signal="spell_chosen" from="MagicWindow/MagicWindowPanel/SpellList" to="MagicWindow/MagicWindowPanel/MenuCursor" method="_on_SpellList_spell_chosen"]
+[connection signal="go_to_Item" from="MagicWindow/MagicWindowPanel/MenuCursor" to="." method="_on_Menu_Cursor_go_to_Item"]
+[connection signal="magic_active" from="MagicWindow/MagicWindowPanel/MenuCursor" to="MagicWindow" method="_on_Menu_Cursor_magic_active"]

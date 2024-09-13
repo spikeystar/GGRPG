@@ -73,8 +73,9 @@ func _ready():
 	
 func focus():
 	#if able:
-	$Cursor.show()
-	$CursorPlayer.play("cursor_idle")
+	if not SceneManager.victory:
+		$Cursor.show()
+		$CursorPlayer.play("cursor_idle")
 
 func unfocus():
 	$Cursor.hide()

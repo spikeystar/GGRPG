@@ -13,7 +13,7 @@ var cursor_active = false
 var item_active = false
 var empty_items = false
 var spell_selected = false
-var item_stolen
+var item_stolen = false
 signal item_active()
 signal magic_active()
 signal go_to_Item()
@@ -22,24 +22,34 @@ func _process(delta):
 	var input := Vector2.ZERO
 	
 	if Input.is_action_just_pressed("ui_up") and cursor_active:
-		flicker_control()
+		#flicker_control()
 		input.y -= 1
 		emit_signal("item_active")
 		emit_signal("magic_active")
 		if defend_active:
+			if up_count == -1 and item_stolen:
+				SE.effect("Unable")
+			else:
+				flicker_control()
+				SE.effect("Move Between")
+				up_count += 1
+		if magic_active and not up_count == 1 and not item_stolen:
+			flicker_control()
 			SE.effect("Move Between")
 			up_count += 1
-		if magic_active:
-			SE.effect("Move Between")
-			up_count += 1
+		if magic_active and not up_count == 1 and item_stolen:
+			SE.effect("Unable")
+		#if item_active and up_count == 0:
+			#return
 	if Input.is_action_just_pressed("ui_down") and cursor_active:
 		input.y += 1
 		emit_signal("item_active")
-		emit_signal("magic_active")
-		if defend_active and up_count >-2:
+		#emit_signal("magic_active")
+		if defend_active and up_count >-2 and not magic_active:
 			SE.effect("Move Between")
 			up_count -= 1
-		if magic_active:
+		if magic_active and not defend_active:
+			emit_signal("magic_active")
 			SE.effect("Move Between")
 			up_count -= 1
 			
@@ -67,14 +77,20 @@ func _process(delta):
 				current_menu_item.cursor_select()
 				
 	if Input.is_action_just_pressed("ui_up") and defend_active and up_count == 0 or up_count == 2:
-		SE.effect("Move Between")
 		emit_signal("go_to_Item")
 		up_count = 0
+		if item_stolen:
+			SE.effect("Unable")
+		else:
+			SE.effect("Move Between")
 		
 	if Input.is_action_just_pressed("ui_up") and magic_active and up_count == 1 and not spell_selected:
-		SE.effect("Move Between")
 		emit_signal("go_to_Item")
 		up_count = 0
+		if item_stolen:
+			SE.effect("Unable")
+		else:
+			SE.effect("Move Between")
 		
 
 func get_menu_item_at_index(index : int) -> Control:
@@ -111,6 +127,7 @@ func _on_WorldRoot_defend_active():
 	up_count = 0
 	defend_active = true
 	cursor_active = true
+	magic_active = false
 
 func _on_WorldRoot_defend_inactive():
 	defend_active = false
@@ -119,6 +136,7 @@ func _on_WorldRoot_defend_inactive():
 func _on_WorldRoot_magic_active():
 	up_count = 0
 	magic_active = true
+	defend_active = false
 	cursor_active = true
 	spell_selected = false
 
@@ -127,7 +145,10 @@ func _on_WorldRoot_magic_inactive():
 	cursor_active = true
 
 func _on_WorldRoot_item_active():
+	#up_count = 0
 	cursor_active = true
+	#magic_active = false
+	#defend_active = false
 
 func _on_WorldRoot_item_inactive():
 	cursor_active = false

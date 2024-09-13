@@ -1,7 +1,8 @@
 extends Node2D
 
 func _ready():
-	$ItemWindowPanel/MenuCursor.show()
+	pass
+	#$ItemWindowPanel/MenuCursor.show()
 
 func item_check():
 	var item_id = $ItemWindowPanel/ItemInventory.get_id()
