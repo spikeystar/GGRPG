@@ -7,6 +7,9 @@ export var npc_name : String
 signal general_dialogue
 
 var this_body = false
+var able = false
+export var right : bool
+export var left : bool
 
 func _ready():
 	var timer = Timer.new()
@@ -17,6 +20,14 @@ func _ready():
 	connect("body_entered", self, "_on_body_entered")
 	
 	position.y += height
+	
+#func _process(delta):
+	#if right and PlayerManager.player_instance.motion_root.last_dir.y >= 0 and PlayerManager.player_instance.motion_root.last_dir.x >= 0:
+		#able = true
+	#elif left and abs(PlayerManager.player_instance.motion_root.last_dir.x) <= 0:
+		#able = true
+	#else:
+		#able = false
 
 func _on_start_checking_body_entered():
 	connect("body_entered", self, "_on_body_entered")
@@ -30,6 +41,9 @@ func _input(event):
 		SceneManager.npc_name = npc_name
 		emit_signal("general_dialogue")
 		#yield(get_tree().create_timer(1.5), "timeout")
+	
+	#if event.is_action_pressed("ui_select"):
+		#print(PlayerManager.player_instance.motion_root.last_dir)
 	
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root:

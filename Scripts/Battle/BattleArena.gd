@@ -94,12 +94,14 @@ func boss_specific():
 		$Enemies/Field/Tenant_B_battle.show()
 	
 func boss_event():
-	if battle_name == "Saguarotel":
+	if battle_name == "Saguarotel" and not EventManager.Saguarotel:
 		Party.event_name = battle_name
 		EventManager.Saguarotel = true
-	if battle_name == "Reeler":
+		Party.boss_event()
+	if battle_name == "Reeler" and not EventManager.Reeler:
 		Party.event_name = battle_name
 		EventManager.Reeler = true
+		Party.boss_event()
 		
 #Window Display
 func hide_cursors():
@@ -576,7 +578,6 @@ func _on_Enemies_victory():
 	$Fighters.victory()
 	emit_signal("update_party")
 	boss_event()
-	Party.boss_event()
 	if PartyStats.new_spell_2:	
 		new_spell = true
 	else:
