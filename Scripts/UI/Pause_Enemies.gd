@@ -120,3 +120,75 @@ func _process(delta):
 		$Magic_info.text = "4"
 		$Defense_info.text = "10"
 		$EnemyInfo.text = "A chatty bird with a bad habit of spitting at those who pass by"
+	if key_id == "Smush":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 12
+		$TypeDisplay.frame = 5
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "They wander the forest looking for shady places to rest and protect their mushroom"
+	if key_id == "Druplet":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 13
+		$TypeDisplay.frame = 5
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "Their bodies are made up of berries that are incredibly sour"
+	if key_id == "Beezle":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 14
+		$TypeDisplay.frame = 4
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "Beezles love music and often swarm areas where it can be heard playing"
+	if key_id == "Raznor":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 15
+		$TypeDisplay.frame = 1
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "They like to push people into the water and are generally quite mischevious"
+	if key_id == "Bushel":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 16
+		$TypeDisplay.frame = 16
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "Bushels like to throw their sticky berries wherever they can to make a mess"
+	if key_id == "Kerobi":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 17
+		$TypeDisplay.frame = 1
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "Once something is caught by its tongue, it will refuse to let go no matter what it is"
+	if key_id == "Trocodile":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 18
+		$TypeDisplay.frame = 1
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "Watch out for Trocodiles lurking in the water, their tail slash is deadly"
+	if key_id == "Reeler":
+		$EnemyDisplay.show()
+		$EnemyDisplay.frame = 19
+		$TypeDisplay.frame = 1
+		$HP_info.text = "60"
+		$Attack_info.text = "10"
+		$Magic_info.text = "4"
+		$Defense_info.text = "10"
+		$EnemyInfo.text = "An eel with a bad attitude who frequents Berry Lake to fish for other's lost items"

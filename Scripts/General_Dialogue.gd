@@ -62,6 +62,8 @@ func talk():
 		Edgar()
 	if npc_name == "Henry":
 		Henry()
+	if npc_name == "Reeler":
+		Reeler()
 		
 func Victor():
 	if js < 2 and not alternate:
@@ -173,3 +175,9 @@ func Henry():
 		yield(self, "talk_done")
 		done()
 		alternate = false
+
+func Reeler():
+		$Name/Talk.text = "Get lost, I'm busy!"
+		talking()
+		yield(self, "talk_done")
+		done()

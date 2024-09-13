@@ -97,6 +97,9 @@ func boss_event():
 	if battle_name == "Saguarotel":
 		Party.event_name = battle_name
 		EventManager.Saguarotel = true
+	if battle_name == "Reeler":
+		Party.event_name = battle_name
+		EventManager.Reeler = true
 		
 #Window Display
 func hide_cursors():

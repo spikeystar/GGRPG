@@ -172,3 +172,6 @@ func boss_event():
 		add_enemy()
 		add_enemy_name = "Tenant B"
 		add_enemy()
+	if event_name == "Reeler":
+		add_enemy_name = "Reeler"
+		add_enemy()
