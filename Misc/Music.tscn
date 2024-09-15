@@ -18,6 +18,7 @@ volume_db = -0.5
 
 [node name="Cherry_Trail" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+volume_db = -2.0
 script = ExtResource( 4 )
 end_time = 134.5
 loop_time = 67.73

@@ -337,10 +337,11 @@ func SP(SP_amount: int):
 	PartyStats.party_sp = clamp(PartyStats.party_sp + SP_amount, 0, PartyStats.party_max_sp)
 	
 func weapon_SP(SP_amount: int):
-	var sp_text = text(TEXT_SP)
-	if sp_text:
-		sp_text.label.text = str(SP_amount)
-	PartyStats.party_sp = clamp(PartyStats.party_sp + SP_amount, 0, PartyStats.party_max_sp)
+	if not anxious:
+		var sp_text = text(TEXT_SP)
+		if sp_text:
+			sp_text.label.text = str(SP_amount)
+		PartyStats.party_sp = clamp(PartyStats.party_sp + SP_amount, 0, PartyStats.party_max_sp)
 	
 func anxious_SP(SP_amount: int):
 	var sp_text = text(TEXT_LOSS)

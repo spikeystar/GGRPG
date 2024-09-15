@@ -2,7 +2,7 @@ extends Node2D
 
 onready var player_instance = PlayerManager.player_instance
 var save_path = "user://save.dat"
-
+var save_name : int
 
 func _ready():
 	player_instance.queue_free()
@@ -16,15 +16,15 @@ func save_file():
 	var file = File.new()
 	var error = file.open_encrypted_with_pass(save_path, File.WRITE, "samantha")
 	if error == OK:
-		file.store_var(data)
+		file.store_var(save_name)
 		file.close()
 		
 func load_file():
 	var file = File.new()
 	if file.file_exists(save_path):
-		var error = file.open_encrypted_with_pass(save_path, File.READ, "samantha")
+		var error = file.open_encrypted_with_pass(save_path, File.READ, "P#ableDH")
 		if error == OK:
-			var player_data = file.get_var()
+			var player_data = file.get_var(save_name)
 			file.close()
 			PartyStats.party_members = player_data["party_members"]
 			PartyStats.party_level = player_data["party_level"]
@@ -39,16 +39,22 @@ func _input(event):
 		print(PartyStats.party_members)
 		
 	if Input.is_action_just_pressed("ui_accept"):
+		SE.effect("Select")
 		load_file()
+		print(PartyStats.party_members)
 	
 	if Input.is_action_just_pressed("ui_select") and file_name == "1":
+		SE.effect("Select")
+		save_name = 1
 		save1_update()
 		save_file()
 		
 	if Input.is_action_just_pressed("ui_select") and file_name == "2":
+		SE.effect("Select")
 		save2_update()
 		
 	if Input.is_action_just_pressed("ui_select") and file_name == "3":
+		SE.effect("Select")
 		save3_update()
 		
 func save1_update():

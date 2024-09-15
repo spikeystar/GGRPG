@@ -181,3 +181,15 @@ func Reeler():
 		talking()
 		yield(self, "talk_done")
 		done()
+
+
+func _on_SaveStarIntro_area_event():
+		show()
+		$Name.text = "This is a Save Star. You can use it to save your game or fast travel to places you've been before."
+		$Name/Talk.text = ""
+		talking()
+		yield(self, "talk_done")
+		$Name.text = "It's a good idea to save whenever you see one of these!"
+		talking()
+		yield(self, "talk_done")
+		done()

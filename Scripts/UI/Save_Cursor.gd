@@ -21,12 +21,14 @@ func _process(delta):
 	menu_name = current_menu_item.get_id()
 	
 	if Input.is_action_just_pressed("ui_up") and cursor_index >0:
+		SE.effect("Move Between")
 		input.y -= 1
 		self.modulate.a = 0
 		yield(get_tree().create_timer(0.01), "timeout")
 		self.modulate.a = 1
 		down_count -= 1
 	if Input.is_action_just_pressed("ui_down") and down_count <2:
+		SE.effect("Move Between")
 		input.y += 1
 		self.modulate.a = 0
 		yield(get_tree().create_timer(0.01), "timeout")
