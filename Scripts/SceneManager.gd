@@ -7,9 +7,12 @@ var height : int
 
 var SceneEnemies = []
 
-var location : String
 var new_file = true
 
+var loading = false
+var saving = true
+
+var location : String
 var npc_name : String
 var ready_again = false
 var victory = false

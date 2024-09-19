@@ -24,11 +24,12 @@ func spawn_player():
 	if weakref(player_instance).get_ref():
 		player_instance.queue_free()
 	
-	player_instance = player_scene.instance()
-	player_motion_root = player_instance.find_node("MotionRoot")
-	player_jump_shape = player_instance.find_node("JumpShape")
-	player_shadow = player_instance.find_node("ShadowYSort")
-	add_player_to_scene()
+	if not SceneManager.loading:
+		player_instance = player_scene.instance()
+		player_motion_root = player_instance.find_node("MotionRoot")
+		player_jump_shape = player_instance.find_node("JumpShape")
+		player_shadow = player_instance.find_node("ShadowYSort")
+		add_player_to_scene()
 
 func remove_player_from_scene():
 	is_navmesh_ready = false

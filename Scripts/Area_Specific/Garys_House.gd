@@ -19,6 +19,7 @@ func _get_animation_name():
 
 func _ready():
 	SceneManager.SceneEnemies = []
+	SceneManager.location = "Gary's House"
 	if Music.id != "Garys_House":
 		Music.switch_songs()
 		Music.id = "Garys_House"

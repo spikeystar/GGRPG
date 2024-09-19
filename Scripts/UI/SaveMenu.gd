@@ -1,22 +1,25 @@
 extends Node2D
 
-onready var player_instance = PlayerManager.player_instance
-var save_path = "user://save.dat"
+#onready var player_instance = PlayerManager.player_instance
+#var save_path = "res://save.dat"
+var save_path : String
 var save_name : int
 
-func _ready():
-	player_instance.queue_free()
-	
-func save_file():
-	var data = {
+var data = {
 		"party_members" : PartyStats.party_members,
 		"party_level" : PartyStats.party_level,
 	}
+
+func _ready():
+	#player_instance.queue_free()
+	SceneManager.loading = true
 	
+func save_file():
 	var file = File.new()
-	var error = file.open_encrypted_with_pass(save_path, File.WRITE, "samantha")
+	file.open_encrypted_with_pass(save_path, File.WRITE, "P#ableDH")
+	var error = file.open_encrypted_with_pass(save_path, File.WRITE, "P#ableDH")
 	if error == OK:
-		file.store_var(save_name)
+		file.store_var(data)
 		file.close()
 		
 func load_file():
@@ -24,7 +27,7 @@ func load_file():
 	if file.file_exists(save_path):
 		var error = file.open_encrypted_with_pass(save_path, File.READ, "P#ableDH")
 		if error == OK:
-			var player_data = file.get_var(save_name)
+			var player_data = file.get_var(true)
 			file.close()
 			PartyStats.party_members = player_data["party_members"]
 			PartyStats.party_level = player_data["party_level"]
@@ -32,33 +35,44 @@ func load_file():
 func _input(event):
 	var file_name : String = $SaveSelection/MenuCursor.menu_name
 	
-	if Input.is_action_just_pressed("ui_left"):
-		PartyStats.party_members += 1
-	
-	if Input.is_action_just_pressed("ui_right"):
-		print(PartyStats.party_members)
-		
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.saving:
 		SE.effect("Select")
-		load_file()
-		print(PartyStats.party_members)
-	
-	if Input.is_action_just_pressed("ui_select") and file_name == "1":
-		SE.effect("Select")
-		save_name = 1
+		save_path = "res://save.dat_1"
 		save1_update()
 		save_file()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "2":
+	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.saving:
 		SE.effect("Select")
+		save_path = "res://save.dat_2"
 		save2_update()
+		save_file()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "3":
+	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.saving:
 		SE.effect("Select")
+		save_path = "res://save.dat_3"
 		save3_update()
+		save_file()
+		
+	#####################################################
+		
+	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.loading:
+		SE.effect("Select")
+		save_path = "res://save.dat_1"
+		load_file()
+		
+	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading:
+		SE.effect("Select")
+		save_path = "res://save.dat_2"
+		load_file()
+		
+	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading:
+		SE.effect("Select")
+		save_path = "res://save.dat_3"
+		load_file()
 		
 func save1_update():
 	$Save1/Location.text = "Gary's House"
+	#$Save1/Location.text = Global.current_location
 	$Save1/Level_info.text = str(PartyStats.party_level)
 	$Save1/Initial.hide()
 	$Save1/Display.show()
@@ -107,6 +121,7 @@ func save1_update():
 		$Save1/Seed5.show()
 		$Save1/Seed6.show()
 		$Save1/Seed7.show()
+	save_file()
 		
 func save2_update():
 	$Save2/Location.text = "Gary's House"
@@ -158,6 +173,7 @@ func save2_update():
 		$Save2/Seed5.show()
 		$Save2/Seed6.show()
 		$Save2/Seed7.show()
+	save_file()
 	
 func save3_update():
 	$Save3/Location.text = "Gary's House"
@@ -209,3 +225,4 @@ func save3_update():
 		$Save3/Seed5.show()
 		$Save3/Seed6.show()
 		$Save3/Seed7.show()
+	save_file()
