@@ -42,7 +42,6 @@ func _process(delta):
 		able = false
 		option_selecting = false
 		self.modulate.a = 0
-		SE.effect("Select")
 		
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)
@@ -89,4 +88,3 @@ func _on_Interaction_option_selecting():
 	self.modulate.a = 1
 	yield(get_tree().create_timer(0.2), "timeout")
 	able = true
-

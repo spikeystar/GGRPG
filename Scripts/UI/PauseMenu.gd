@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var player_instance = PlayerManager.player_instance
+#onready var player_instance = PlayerManager.player_instance
 var stats_showing = false
 var able = false
 

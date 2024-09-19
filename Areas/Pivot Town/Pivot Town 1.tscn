@@ -85,7 +85,7 @@
 [ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=83]
 [ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=84]
 [ext_resource path="res://Scripts/Objects/StarOptions.gd" type="Script" id=85]
-[ext_resource path="res://Scripts/UI/Inn_Menu_Cursor.gd" type="Script" id=86]
+[ext_resource path="res://Scripts/UI/StarOptionsCursor.gd" type="Script" id=86]
 [ext_resource path="res://UI/Interaction Window.png" type="Texture" id=87]
 [ext_resource path="res://Scripts/Objects/SaveStar.gd" type="Script" id=88]
 
@@ -2409,7 +2409,7 @@ position = Vector2( -429, -740 )
 scale = Vector2( 1.7, 1.7 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 2
+frame = 3
 speed_scale = 0.8
 playing = true
 
@@ -2418,7 +2418,7 @@ position = Vector2( 170, -415 )
 scale = Vector2( 1.6, 1.6 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 1
+frame = 2
 speed_scale = 0.7
 playing = true
 
@@ -2435,5 +2435,6 @@ polygon = PoolVector2Array( -17, -13, 0, -7, 21, -13, 17, -2, 30, 5, 11, 6, 0, 1
 [connection signal="body_exited" from="CollisionRoot/NPC2" to="CollisionRoot/NPC2" method="_on_NPC_body_exited"]
 [connection signal="general_dialogue" from="CollisionRoot/NPC2" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]
 [connection signal="item_get" from="CollisionRoot/Item_Get" to="Camera2D" method="_on_Item_Get_item_get"]
+[connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
 [connection signal="star_options" from="SaveStar" to="Camera2D/StarOptions" method="_on_SaveStar_star_options"]
 [connection signal="star_options" from="SaveStar" to="Camera2D/StarOptions/MenuCursor" method="_on_SaveStar_star_options"]

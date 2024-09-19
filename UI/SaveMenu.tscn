@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Misc/Font/SaveStar.tres" type="DynamicFont" id=1]
 [ext_resource path="res://UI/Pause/Save Menu Base.png" type="Texture" id=2]
@@ -10,6 +10,37 @@
 [ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/UI/SaveMenu.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/UI/SaveSlot.gd" type="Script" id=10]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 
 [node name="SaveMenu" type="Node2D"]
 script = ExtResource( 9 )
@@ -366,4 +397,15 @@ hframes = 10
 vframes = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
-current = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -320.0
+margin_top = -280.0
+margin_right = 320.0
+margin_bottom = 280.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "open"
+anims/RESET = SubResource( 1 )
+anims/open = SubResource( 2 )

@@ -38,6 +38,7 @@ func _process(delta):
 		input.y += 0
 		
 	if Input.is_action_just_pressed("ui_accept"):
+		return
 		self.modulate.a = 0
 		emit_signal("retread")
 		cursor_index = 0

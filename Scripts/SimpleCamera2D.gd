@@ -11,9 +11,12 @@ export var maxPos : Vector2
 export var follow_player = false
 
 const PauseMenu = preload("res://UI/PauseMenu.tscn")
+const SaveMenu = preload("res://UI/SaveMenu.tscn")
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
 onready var pause_menu = PauseMenu.instance()
+onready var save_menu = SaveMenu.instance()
 var new_pause_menu
+var new_save_menu
 var able = false
 
 var motion_root
@@ -97,6 +100,35 @@ func _input(event):
 			get_tree().paused = false
 			yield(get_tree().create_timer(0.6), "timeout")
 			able = false
+			
+		if Input.is_action_pressed("ui_select") and PlayerManager.freeze and able and SceneManager.saving:
+			SceneManager.saving = false
+			yield(get_tree().create_timer(1.3), "timeout")
+			Music.loud()
+			var transition = TransitionPlayer.instance()
+			get_tree().get_root().add_child(transition)
+			transition.speed_up()
+			transition.ease_in()
+			remove_child(new_save_menu)
+			PlayerManager.freeze = false
+			get_tree().paused = false
+			yield(get_tree().create_timer(0.6), "timeout")
+			able = false
+			
+		if Input.is_action_pressed("ui_accept") and PlayerManager.freeze and able and SceneManager.saving or Input.is_action_pressed("ui_left") and PlayerManager.freeze and able and SceneManager.saving:
+			SceneManager.saving = false
+			SE.effect("Cancel")
+			yield(get_tree().create_timer(0.2), "timeout")
+			Music.loud()
+			var transition = TransitionPlayer.instance()
+			get_tree().get_root().add_child(transition)
+			transition.speed_up()
+			transition.ease_in()
+			remove_child(new_save_menu)
+			PlayerManager.freeze = false
+			get_tree().paused = false
+			yield(get_tree().create_timer(0.6), "timeout")
+			able = false
 		
 			
 
@@ -138,3 +170,14 @@ func _on_PresentBase3_item_get():
 func _on_PresentBase4_item_get():
 	_on_PresentBase_item_get()
 
+
+func _on_StarOptions_save_menu():
+	Music.quiet()
+	PlayerManager.freeze = true
+	SceneManager.loading = false
+	SceneManager.saving = true
+	get_tree().paused = true
+	new_save_menu = save_menu.duplicate()
+	add_child(new_save_menu)
+	yield(get_tree().create_timer(0.3), "timeout")
+	able = true

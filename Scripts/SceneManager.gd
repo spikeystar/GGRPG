@@ -10,7 +10,7 @@ var SceneEnemies = []
 var new_file = true
 
 var loading = false
-var saving = true
+var saving = false
 
 var location : String
 var npc_name : String

@@ -3,6 +3,8 @@ extends Sprite
 var menu_name : String
 var star_options = false
 
+signal save_menu
+
 func _process(delta):
 	if star_options:
 		menu_name = $MenuCursor.menu_name
@@ -12,6 +14,14 @@ func _input(event):
 		star_options = false
 		PlayerManager.freeze = false
 		SE.effect("Cancel")
+		$MenuCursor.option_selecting = false
+		$MenuCursor.able = false
+		self.hide()
+		
+	if Input.is_action_just_pressed("ui_select") and star_options and menu_name == "Save":
+		SE.effect("Select")
+		star_options = false
+		emit_signal("save_menu")
 		$MenuCursor.option_selecting = false
 		$MenuCursor.able = false
 		self.hide()
