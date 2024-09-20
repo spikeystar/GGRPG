@@ -229,7 +229,7 @@ func load_base_file():
 		if error == OK:
 			var player_data = file.get_var(true)
 			file.close()
-			EventManager.saved = player_data["saved"]
+			#EventManager.saved = player_data["saved"]
 			save1 = player_data["save1"]
 			save1_location = player_data["save1_location"]
 			save1_level = player_data["save1_level"]

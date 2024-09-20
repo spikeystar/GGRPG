@@ -12,11 +12,14 @@ export var follow_player = false
 
 const PauseMenu = preload("res://UI/PauseMenu.tscn")
 const SaveMenu = preload("res://UI/SaveMenu.tscn")
+const Overworld = preload("res://UI/Overworld.tscn")
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
 onready var pause_menu = PauseMenu.instance()
 onready var save_menu = SaveMenu.instance()
+onready var overworld_menu = Overworld.instance()
 var new_pause_menu
 var new_save_menu
+var new_overworld_menu
 var able = false
 
 var motion_root
@@ -181,3 +184,18 @@ func _on_StarOptions_save_menu():
 	add_child(new_save_menu)
 	yield(get_tree().create_timer(0.3), "timeout")
 	able = true
+
+
+func _on_StarOptions_overworld():
+	Music.stopped()
+	var transition = TransitionPlayer.instance()
+	get_tree().get_root().add_child(transition)
+	transition.speed_up()
+	transition.ease_out()
+	PlayerManager.freeze = true
+	yield(get_tree().create_timer(0.8), "timeout")
+	new_overworld_menu = overworld_menu.duplicate()
+	add_child(new_overworld_menu)
+	transition.ease_in()
+	able = true
+	get_tree().paused = true

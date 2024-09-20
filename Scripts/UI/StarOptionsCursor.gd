@@ -38,10 +38,10 @@ func _process(delta):
 		#cursor_index = 0
 		#self.modulate.a = 0
 		
-	if Input.is_action_just_pressed("ui_select") and able:
-		able = false
-		option_selecting = false
-		self.modulate.a = 0
+	#if Input.is_action_just_pressed("ui_select") and able:
+		#able = false
+		#option_selecting = false
+		#self.modulate.a = 0
 		
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)

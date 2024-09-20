@@ -4,6 +4,7 @@ var menu_name : String
 var star_options = false
 
 signal save_menu
+signal overworld
 
 func _process(delta):
 	if star_options:
@@ -16,6 +17,7 @@ func _input(event):
 		SE.effect("Cancel")
 		$MenuCursor.option_selecting = false
 		$MenuCursor.able = false
+		menu_name = ""
 		self.hide()
 		
 	if Input.is_action_just_pressed("ui_select") and star_options and menu_name == "Save":
@@ -24,6 +26,16 @@ func _input(event):
 		emit_signal("save_menu")
 		$MenuCursor.option_selecting = false
 		$MenuCursor.able = false
+		menu_name = ""
+		self.hide()
+		
+	if Input.is_action_just_pressed("ui_select") and star_options and menu_name == "Travel":
+		SE.effect("Save Star")
+		star_options = false
+		emit_signal("overworld")
+		$MenuCursor.option_selecting = false
+		$MenuCursor.able = false
+		menu_name = ""
 		self.hide()
 
 func _on_SaveStar_star_options():
