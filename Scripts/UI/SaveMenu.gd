@@ -3,6 +3,7 @@ extends Node2D
 #onready var player_instance = PlayerManager.player_instance
 #var save_path = "res://save.dat"
 var save_path : String
+var base_path = "res://save.dat"
 var save_name : int
 var save1 = false
 var save2 = false
@@ -65,8 +66,9 @@ var menu_data = {
 	
 func _ready():
 	load_base_file()
+	set_menu()
 	
-func _process(delta):
+func set_menu():
 	if save1:
 		$Save1/Initial.hide()
 		$Save1/Display.show()
@@ -201,6 +203,15 @@ func save_file():
 		file.store_var(data)
 		file.close()
 		
+		
+func save_base_file():
+	var file = File.new()
+	file.open_encrypted_with_pass(base_path, File.WRITE, "P#ableDH")
+	var error = file.open_encrypted_with_pass(base_path, File.WRITE, "P#ableDH")
+	if error == OK:
+		file.store_var(menu_data)
+		file.close()
+		
 func load_file():
 	var file = File.new()
 	if file.file_exists(save_path):
@@ -213,13 +224,12 @@ func load_file():
 			
 func load_base_file():
 	var file = File.new()
-	if file.file_exists(save_path):
-		var error = file.open_encrypted_with_pass(save_path, File.READ, "P#ableDH")
+	if file.file_exists(base_path):
+		var error = file.open_encrypted_with_pass(base_path, File.READ, "P#ableDH")
 		if error == OK:
 			var player_data = file.get_var(true)
 			file.close()
-			PartyStats.party_members = player_data["party_members"]
-			PartyStats.party_level = player_data["party_level"]
+			EventManager.saved = player_data["saved"]
 			save1 = player_data["save1"]
 			save1_location = player_data["save1_location"]
 			save1_level = player_data["save1_level"]
@@ -246,18 +256,21 @@ func _input(event):
 		save_path = "res://save.dat_1"
 		save1_update()
 		save_file()
+		save_base_file()
 		
 	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.saving:
 		SE.effect("Switch")
 		save_path = "res://save.dat_2"
 		save2_update()
 		save_file()
+		save_base_file()
 		
 	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.saving:
 		SE.effect("Switch")
 		save_path = "res://save.dat_3"
 		save3_update()
 		save_file()
+		save_base_file()
 		
 	#####################################################
 		

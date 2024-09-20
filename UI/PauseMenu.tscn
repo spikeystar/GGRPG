@@ -1004,7 +1004,7 @@ texture = ExtResource( 47 )
 [node name="Marker" type="Sprite" parent="Map"]
 visible = false
 position = Vector2( 37, -120 )
-scale = Vector2( 0.55, 0.55 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 48 )
 
 [node name="Location_Paper" type="Sprite" parent="Map"]
