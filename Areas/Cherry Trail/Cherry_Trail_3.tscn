@@ -32,7 +32,7 @@
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=30]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass A.png" type="Texture" id=31]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=32]
-[ext_resource path="res://Scripts/Area_Specific/Cherry Trail.gd" type="Script" id=33]
+[ext_resource path="res://Scripts/Area_Specific/Cherry_Trail_3.gd" type="Script" id=33]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=34]
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=35]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=36]

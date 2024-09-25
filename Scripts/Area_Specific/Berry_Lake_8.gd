@@ -1,6 +1,8 @@
 extends Node
 
 func _ready():
+	EventManager.Berry_Lake = true
+	
 	SceneManager.SceneEnemies = []
 	SceneManager.location = "Berry Lake"
 	if Music.id != "Berry_Lake" or not Music.is_playing:

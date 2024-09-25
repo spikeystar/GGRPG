@@ -113,6 +113,7 @@ position = Vector2( 0, -1 )
 texture = ExtResource( 5 )
 
 [node name="Cherry_Trail" type="Sprite" parent="."]
+visible = false
 self_modulate = Color( 0.368627, 0.368627, 0.368627, 1 )
 position = Vector2( 189, 341 )
 texture = ExtResource( 5 )
@@ -122,6 +123,7 @@ position = Vector2( 0, -1 )
 texture = ExtResource( 5 )
 
 [node name="Pivot_Town" type="Sprite" parent="."]
+visible = false
 self_modulate = Color( 0.368627, 0.368627, 0.368627, 1 )
 position = Vector2( 345, 335 )
 texture = ExtResource( 5 )
@@ -131,6 +133,7 @@ position = Vector2( 0, -1 )
 texture = ExtResource( 5 )
 
 [node name="Kugi_Canyon" type="Sprite" parent="."]
+visible = false
 self_modulate = Color( 0.368627, 0.368627, 0.368627, 1 )
 position = Vector2( 377, 217 )
 texture = ExtResource( 5 )
@@ -140,6 +143,7 @@ position = Vector2( 0, -1 )
 texture = ExtResource( 5 )
 
 [node name="Berry_Lake" type="Sprite" parent="."]
+visible = false
 self_modulate = Color( 0.368627, 0.368627, 0.368627, 1 )
 position = Vector2( 457, 220 )
 texture = ExtResource( 5 )
@@ -152,6 +156,7 @@ texture = ExtResource( 5 )
 position = Vector2( 174, 259 )
 scale = Vector2( 1.1, 1.1 )
 frames = SubResource( 4 )
+frame = 3
 playing = true
 
 [node name="ColorRect" type="ColorRect" parent="."]

@@ -11,7 +11,7 @@
 [ext_resource path="res://Assets/Kugi Canyon/Canyon F.png" type="Texture" id=9]
 [ext_resource path="res://Assets/Kugi Canyon/Canyon B.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=11]
-[ext_resource path="res://Scripts/Area_Specific/Kugi_Canyon.gd" type="Script" id=12]
+[ext_resource path="res://Scripts/Area_Specific/Kugi_Canyon_7.gd" type="Script" id=12]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=13]
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=15]

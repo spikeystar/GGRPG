@@ -37,7 +37,7 @@ func _ready():
 	
 	
 func _input(event):
-	if SceneManager.location == "Gary's House" and Input.is_action_just_pressed("ui_right") and not moving or SceneManager.location == "Gary's House" and Input.is_action_just_pressed("ui_down") and not moving:
+	if SceneManager.location == "Gary's House" and Input.is_action_just_pressed("ui_right") and not moving and EventManager.Cherry_Trail or SceneManager.location == "Gary's House" and Input.is_action_just_pressed("ui_down") and not moving and EventManager.Cherry_Trail:
 		SE.effect("Move Between")
 		moving = true
 		var tween = create_tween()
@@ -57,7 +57,7 @@ func _input(event):
 		$Location.text = SceneManager.location
 		moving = false
 		
-	if SceneManager.location == "Cherry Trail" and Input.is_action_just_pressed("ui_right") and not moving:
+	if SceneManager.location == "Cherry Trail" and Input.is_action_just_pressed("ui_right") and not moving and EventManager.Pivot_Town:
 		SE.effect("Move Between")
 		moving = true
 		var tween = create_tween()
@@ -67,7 +67,7 @@ func _input(event):
 		$Location.text = SceneManager.location
 		moving = false
 		
-	if SceneManager.location == "Pivot Town" and Input.is_action_just_pressed("ui_left") and not moving:
+	if SceneManager.location == "Pivot Town" and Input.is_action_just_pressed("ui_left") and not moving and EventManager.Cherry_Trail:
 		SE.effect("Move Between")
 		moving = true
 		var tween = create_tween()
@@ -77,7 +77,7 @@ func _input(event):
 		$Location.text = SceneManager.location
 		moving = false
 		
-	if SceneManager.location == "Pivot Town" and Input.is_action_just_pressed("ui_up") and not moving or SceneManager.location == "Pivot Town" and Input.is_action_just_pressed("ui_right") and not moving:
+	if SceneManager.location == "Pivot Town" and Input.is_action_just_pressed("ui_up") and not moving and EventManager.Kugi_Canyon or SceneManager.location == "Pivot Town" and Input.is_action_just_pressed("ui_right") and not moving and EventManager.Kugi_Canyon:
 		SE.effect("Move Between")
 		moving = true
 		var tween = create_tween()
@@ -87,7 +87,7 @@ func _input(event):
 		$Location.text = SceneManager.location
 		moving = false
 		
-	if SceneManager.location == "Kugi Canyon" and Input.is_action_just_pressed("ui_left") and not moving or SceneManager.location == "Kugi Canyon" and Input.is_action_just_pressed("ui_down") and not moving:
+	if SceneManager.location == "Kugi Canyon" and Input.is_action_just_pressed("ui_left") and not moving and EventManager.Pivot_Town or SceneManager.location == "Kugi Canyon" and Input.is_action_just_pressed("ui_down") and not moving and EventManager.Pivot_Town:
 		SE.effect("Move Between")
 		moving = true
 		var tween = create_tween()
@@ -97,7 +97,7 @@ func _input(event):
 		$Location.text = SceneManager.location
 		moving = false
 		
-	if SceneManager.location == "Kugi Canyon" and Input.is_action_just_pressed("ui_right") and not moving:
+	if SceneManager.location == "Kugi Canyon" and Input.is_action_just_pressed("ui_right") and not moving and EventManager.Berry_Lake:
 		SE.effect("Move Between")
 		moving = true
 		var tween = create_tween()
@@ -107,7 +107,7 @@ func _input(event):
 		$Location.text = SceneManager.location
 		moving = false
 		
-	if SceneManager.location == "Berry Lake" and Input.is_action_just_pressed("ui_left") and not moving:
+	if SceneManager.location == "Berry Lake" and Input.is_action_just_pressed("ui_left") and not moving and EventManager.Kugi_Canyon:
 		SE.effect("Move Between")
 		moving = true
 		var tween = create_tween()
@@ -126,6 +126,18 @@ func _input(event):
 	
 	
 func set_location():
+	if EventManager.Cherry_Trail:
+		$Cherry_Trail.show()
+		
+	if EventManager.Pivot_Town:
+		$Pivot_Town.show()
+		
+	if EventManager.Kugi_Canyon:
+		$Kugi_Canyon.show()
+		
+	if EventManager.Berry_Lake:
+		$Berry_Lake.show()
+	
 	if SceneManager.location == "Gary's House":
 		$Gary.position = Vector2(174, 261)
 		
