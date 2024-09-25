@@ -505,7 +505,6 @@ scale = Vector2( 1.84945, 1.66965 )
 texture = ExtResource( 3 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 26 )]
 

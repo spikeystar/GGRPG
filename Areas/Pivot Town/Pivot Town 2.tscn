@@ -1148,7 +1148,7 @@ polygon = PoolVector2Array( 23, -44, 49, -35, -39, -1, -59, -12 )
 position = Vector2( 480, 138 )
 rotation = 0.0231584
 script = ExtResource( 19 )
-target_scene = "res://Areas/Pivot Town/Pivot Town 1.tscn"
+target_scene = "res://Areas/Pivot Town/Pivot_Town_1.tscn"
 exit_name = "PivotTown2_PivotTown1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PivotTown1"]

@@ -133,6 +133,12 @@ func _input(event):
 			yield(get_tree().create_timer(0.6), "timeout")
 			able = false
 		
+		if Input.is_action_pressed("ui_select") and PlayerManager.freeze and able and SceneManager.overworld:
+			SceneManager.overworld = false
+			yield(get_tree().create_timer(1.3), "timeout")
+			remove_child(new_overworld_menu)
+			yield(get_tree().create_timer(0.6), "timeout")
+			able = false
 			
 
 func _on_Item_Get_item_get():
@@ -185,9 +191,9 @@ func _on_StarOptions_save_menu():
 	yield(get_tree().create_timer(0.3), "timeout")
 	able = true
 
-
 func _on_StarOptions_overworld():
 	Music.stopped()
+	SceneManager.overworld = true
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.speed_up()

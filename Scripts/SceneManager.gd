@@ -11,6 +11,7 @@ var new_file = true
 
 var loading = false
 var saving = false
+var overworld = false
 
 var location : String
 var npc_name : String

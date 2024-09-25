@@ -560,7 +560,7 @@ polygon = PoolVector2Array( 11, -32, 23, -28, -40, -5, -51, -10 )
 [node name="DoorwayToCherryTrail4" parent="CollisionRoot" instance=ExtResource( 32 )]
 position = Vector2( -222, 83 )
 script = ExtResource( 22 )
-target_scene = "res://Areas/Cherry Trail/Cherry Trail 3.tscn"
+target_scene = "res://Areas/Cherry Trail/Cherry_Trail_3.tscn"
 exit_name = "CherryTrail3_4"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToCherryTrail4"]

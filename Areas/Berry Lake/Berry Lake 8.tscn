@@ -2015,6 +2015,11 @@ door_name = "Entrance"
 direction = Vector2( 1, -1 )
 height = 40
 
+[node name="SaveStar" parent="CollisionRoot" instance=ExtResource( 31 )]
+position = Vector2( -363, -12 )
+door_name = "Berry Lake"
+height = 20
+
 [node name="Water" type="Area2D" parent="CollisionRoot"]
 visible = false
 position = Vector2( -14, -95 )

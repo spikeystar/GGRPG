@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=2]
@@ -49,6 +49,12 @@
 [ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 11.tscn" type="PackedScene" id=47]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=48]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=49]
+[ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=50]
+[ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=51]
+[ext_resource path="res://Scripts/Objects/SaveStar.gd" type="Script" id=52]
+[ext_resource path="res://Scripts/Objects/StarOptions.gd" type="Script" id=53]
+[ext_resource path="res://Scripts/UI/StarOptionsCursor.gd" type="Script" id=54]
+[ext_resource path="res://UI/Interaction Window.png" type="Texture" id=55]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -1694,6 +1700,19 @@ position = Vector2( -260, 48 )
 door_name = "Entrance"
 direction = Vector2( 1, 1 )
 
+[node name="SaveStar" parent="CollisionRoot" instance=ExtResource( 40 )]
+position = Vector2( -280, -140 )
+door_name = "Kugi Canyon"
+
+[node name="SaveStar" type="Area2D" parent="."]
+position = Vector2( -46, -115 )
+script = ExtResource( 52 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SaveStar"]
+position = Vector2( -234, -25 )
+scale = Vector2( 0.646507, 0.714489 )
+polygon = PoolVector2Array( -17, -13, 0, -7, 21, -13, 17, -2, 30, 5, 11, 6, 0, 16, -9, 8, -29, 5, -17, -1 )
+
 [node name="BerryLake1" parent="." instance=ExtResource( 41 )]
 visible = false
 position = Vector2( 142, -253 )
@@ -1754,6 +1773,52 @@ custom_fonts/font = ExtResource( 22 )
 text = "You got a Flummery Flambe!"
 align = 1
 
+[node name="StarOptions" type="Sprite" parent="Camera2D"]
+visible = false
+position = Vector2( 226, 201 )
+scale = Vector2( 1.05, 1 )
+texture = ExtResource( 55 )
+script = ExtResource( 53 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/StarOptions"]
+margin_left = -21.5385
+margin_top = -21.6667
+margin_right = 61.4615
+margin_bottom = 93.3333
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1, 1.05 )
+custom_constants/separation = 10
+
+[node name="Save" type="Label" parent="Camera2D/StarOptions/VBoxContainer"]
+margin_right = 83.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 22 )
+text = "Save"
+autowrap = true
+script = ExtResource( 51 )
+
+[node name="Travel" type="Label" parent="Camera2D/StarOptions/VBoxContainer"]
+margin_top = 25.0
+margin_right = 83.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 22 )
+text = "Travel"
+autowrap = true
+script = ExtResource( 51 )
+
+[node name="MenuCursor" parent="Camera2D/StarOptions" instance=ExtResource( 50 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -38.4623
+margin_top = 52.0832
+margin_right = 42.5377
+margin_bottom = 77.0832
+rect_scale = Vector2( 1, 1.05 )
+script = ExtResource( 54 )
+menu_parent_path = NodePath("../VBoxContainer")
+cursor_offset = Vector2( -9, 3 )
+
 [node name="Spikes" type="Area2D" parent="."]
 visible = false
 position = Vector2( -128, -129 )
@@ -1774,4 +1839,7 @@ exit_name = "Entrance"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes2"]
 polygon = PoolVector2Array( 3, -15, 281, -112, 293, -134, 194, -186, -34, -98, -114, -65 )
 
+[connection signal="star_options" from="SaveStar" to="Camera2D/StarOptions" method="_on_SaveStar_star_options"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
+[connection signal="overworld" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_overworld"]
+[connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]

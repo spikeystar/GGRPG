@@ -994,7 +994,7 @@ height = 45
 [node name="DoorwayToCherryTrail3" parent="CollisionRoot" instance=ExtResource( 5 )]
 position = Vector2( 664, -347 )
 script = ExtResource( 39 )
-target_scene = "res://Areas/Cherry Trail/Cherry Trail 3.tscn"
+target_scene = "res://Areas/Cherry Trail/Cherry_Trail_3.tscn"
 exit_name = "CherryTrail2_3"
 height = 45.0
 

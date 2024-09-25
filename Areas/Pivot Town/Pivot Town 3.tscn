@@ -932,7 +932,7 @@ direction = Vector2( 1, 1 )
 position = Vector2( -334, 87 )
 rotation = 0.0231584
 script = ExtResource( 2 )
-target_scene = "res://Areas/Pivot Town/Pivot Town 1.tscn"
+target_scene = "res://Areas/Pivot Town/Pivot_Town_1.tscn"
 exit_name = "PivotTown3_PivotTown1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PivotTown1"]

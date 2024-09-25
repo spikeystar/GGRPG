@@ -10,7 +10,7 @@ func _ready():
 	var timer = Timer.new()
 	timer.connect("timeout", self, "_on_start_checking_body_entered")
 	add_child(timer)
-	timer.start(0.3)
+	timer.start(0.5)
 	connect("body_entered", self, "_on_body_entered")
 	connect("body_exited", self, "_on_body_exited")
 
