@@ -9,8 +9,7 @@ enum TransitionType {
 const TransitionPlayer = preload("res://Objects/SceneTransition/TransitionPlayer.tscn")
 export(TransitionType) var transition_type = TransitionType.FADE_TO_BLACK;
 
-var target_scene : PackedScene
-export(PackedScene) var Garys_House
+var Garys_House = "res://Gary_sHouse.tscn"
 #export(PackedScene) var Cherry_Trail
 #export(PackedScene) var Pivot_Town
 #export(PackedScene) var Kugi_Canyon
@@ -143,10 +142,13 @@ func travel():
 	SE.effect("Select")
 	SE.effect("Save Star")
 	Global.door_name = SceneManager.location
-	var transition = TransitionPlayer.instance()
-	get_tree().get_root().add_child(transition)
 	if SceneManager.location == "Gary's House":
-		target_scene = Garys_House
+		get_tree().paused = false
+		var transition = TransitionPlayer.instance()
+		get_tree().get_root().add_child(transition)
+		transition.transition_in(Garys_House, _get_animation_name())
+		yield(get_tree().create_timer(1), "timeout")
+		self.queue_free()
 	#if SceneManager.location == "Cherry Trail":
 	#	transition.transition_in(Cherry_Trail, _get_animation_name())
 	#if SceneManager.location == "Pivot Town":
@@ -155,7 +157,6 @@ func travel():
 	#	transition.transition_in(Kugi_Canyon, _get_animation_name())
 	#if SceneManager.location == "Berry Lake":
 	#	transition.transition_in(Berry_Lake, _get_animation_name())
-	transition.transition_in(target_scene, _get_animation_name())
 	
 
 func _get_animation_name():

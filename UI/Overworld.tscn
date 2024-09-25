@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://UI/Pause/Pause Map.png" type="Texture" id=1]
 [ext_resource path="res://UI/Pause/Demo Overworld.png" type="Texture" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=5]
 [ext_resource path="res://Players/Gary/Gary Overworld.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/UI/Overworld.gd" type="Script" id=7]
-[ext_resource path="res://Gary_s House.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFontData" id=5]
 antialiased = false
@@ -73,7 +72,6 @@ tracks/0/keys = {
 [node name="Node2D" type="Node2D"]
 position = Vector2( -320, -280 )
 script = ExtResource( 7 )
-Garys_House = ExtResource( 8 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 320, 280 )
@@ -154,6 +152,7 @@ texture = ExtResource( 5 )
 position = Vector2( 174, 259 )
 scale = Vector2( 1.1, 1.1 )
 frames = SubResource( 4 )
+frame = 2
 playing = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
