@@ -19,6 +19,9 @@ var Berry_Lake = "res://Areas/Berry Lake/Berry Lake 8.tscn"
 
 
 func _ready():
+	if not SceneManager.overworld:
+		self.queue_free()
+	
 	$Location.text = SceneManager.location
 	set_location()
 	
@@ -158,12 +161,12 @@ func travel():
 	if SceneManager.location == "Pivot Town":
 		get_tree().paused = false
 		transition.transition_in(Pivot_Town, _get_animation_name())
-		yield(get_tree().create_timer(0.7), "timeout")
+		yield(get_tree().create_timer(0.8), "timeout")
 		self.queue_free()
 	if SceneManager.location == "Kugi Canyon":
 		get_tree().paused = false
 		transition.transition_in(Kugi_Canyon, _get_animation_name())
-		yield(get_tree().create_timer(0.7), "timeout")
+		yield(get_tree().create_timer(0.8), "timeout")
 		self.queue_free()
 	if SceneManager.location == "Berry Lake":
 		get_tree().paused = false

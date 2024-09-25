@@ -135,7 +135,10 @@ func _input(event):
 		
 		if Input.is_action_pressed("ui_select") and PlayerManager.freeze and able and SceneManager.overworld:
 			SceneManager.overworld = false
-			yield(get_tree().create_timer(1.3), "timeout")
+			var transition = TransitionPlayer.instance()
+			yield(get_tree().create_timer(0.7), "timeout")
+			get_tree().get_root().add_child(transition)
+			transition.ease_in()
 			remove_child(new_overworld_menu)
 			yield(get_tree().create_timer(0.6), "timeout")
 			able = false

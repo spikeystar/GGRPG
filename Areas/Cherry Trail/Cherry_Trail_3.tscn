@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Assets/Gary's House/Exterior/ledge 1.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Cherry Trail/dirt d.png" type="Texture" id=2]
@@ -47,6 +47,12 @@
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 5.tscn" type="PackedScene" id=45]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=46]
 [ext_resource path="res://Assets/General/Save Star.png" type="Texture" id=47]
+[ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=48]
+[ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=49]
+[ext_resource path="res://Scripts/Objects/SaveStar.gd" type="Script" id=50]
+[ext_resource path="res://Scripts/Objects/StarOptions.gd" type="Script" id=51]
+[ext_resource path="res://Scripts/UI/StarOptionsCursor.gd" type="Script" id=52]
+[ext_resource path="res://UI/Interaction Window.png" type="Texture" id=53]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -669,6 +675,15 @@ texture = ExtResource( 3 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 
+[node name="SaveStar" type="Area2D" parent="CollisionRoot"]
+position = Vector2( 418, 71 )
+script = ExtResource( 50 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/SaveStar"]
+position = Vector2( -234, -25 )
+scale = Vector2( 0.646507, 0.714489 )
+polygon = PoolVector2Array( -17, -13, 0, -7, 21, -13, 17, -2, 30, 5, 11, 6, 0, 16, -9, 8, -29, 5, -17, -1 )
+
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 13 )]
 
 [node name="NavmeshLayer5" parent="CollisionRoot/Navmesh2" instance=ExtResource( 14 )]
@@ -766,6 +781,52 @@ custom_fonts/font = ExtResource( 39 )
 text = "You got a Flummery Flambe!"
 align = 1
 
+[node name="StarOptions" type="Sprite" parent="Camera2D"]
+visible = false
+position = Vector2( 226, 201 )
+scale = Vector2( 1.05, 1 )
+texture = ExtResource( 53 )
+script = ExtResource( 51 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/StarOptions"]
+margin_left = -21.5385
+margin_top = -21.6667
+margin_right = 61.4615
+margin_bottom = 93.3333
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1, 1.05 )
+custom_constants/separation = 10
+
+[node name="Save" type="Label" parent="Camera2D/StarOptions/VBoxContainer"]
+margin_right = 83.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 39 )
+text = "Save"
+autowrap = true
+script = ExtResource( 49 )
+
+[node name="Travel" type="Label" parent="Camera2D/StarOptions/VBoxContainer"]
+margin_top = 25.0
+margin_right = 83.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 39 )
+text = "Travel"
+autowrap = true
+script = ExtResource( 49 )
+
+[node name="MenuCursor" parent="Camera2D/StarOptions" instance=ExtResource( 48 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -38.4623
+margin_top = 52.0832
+margin_right = 42.5377
+margin_bottom = 77.0832
+rect_scale = Vector2( 1, 1.05 )
+script = ExtResource( 52 )
+menu_parent_path = NodePath("../VBoxContainer")
+cursor_offset = Vector2( -9, 3 )
+
 [node name="PresentBase" parent="." instance=ExtResource( 40 )]
 position = Vector2( -275, -341 )
 item_name = "Yummy Cake"
@@ -783,4 +844,7 @@ target_scene = ExtResource( 45 )
 alt_scene = ExtResource( 45 )
 alternate = false
 
+[connection signal="star_options" from="CollisionRoot/SaveStar" to="Camera2D/StarOptions" method="_on_SaveStar_star_options"]
+[connection signal="overworld" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_overworld"]
+[connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

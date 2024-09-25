@@ -23,7 +23,7 @@ func _on_body_exited(body):
 		this_body = false
 		
 func _input(event):
-	if Input.is_action_just_pressed("ui_select") and this_body:
+	if Input.is_action_just_pressed("ui_select") and this_body and not SceneManager.overworld:
 		SE.effect("Select")
 		PlayerManager.freeze = true
 		emit_signal("star_options")

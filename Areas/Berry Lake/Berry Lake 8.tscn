@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Pivot Town/Orange Brick A.png" type="Texture" id=2]
@@ -87,6 +87,12 @@
 [ext_resource path="res://Scripts/Inn.gd" type="Script" id=85]
 [ext_resource path="res://Scripts/UI/Talk_Adjusting.gd" type="Script" id=86]
 [ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=87]
+[ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=88]
+[ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=89]
+[ext_resource path="res://Scripts/Objects/SaveStar.gd" type="Script" id=90]
+[ext_resource path="res://Scripts/Objects/StarOptions.gd" type="Script" id=91]
+[ext_resource path="res://Scripts/UI/StarOptionsCursor.gd" type="Script" id=92]
+[ext_resource path="res://UI/Interaction Window.png" type="Texture" id=93]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -2031,6 +2037,16 @@ exit_name = "Entrance"
 position = Vector2( -269, -169 )
 polygon = PoolVector2Array( -534, -46, -427, 17, -334, -5, -82, 78, -46, 81, 43, 78, 97, 41, 106, 26, 110, -6, 144, -13, 174, -2, 198, 28, 267, 1, 309, -41, 231, -139, 174, -170, 173, -203, 139, -232, 167, -243, 255, -247, 317, -267, 200, -328, 5, -291, -401, -130 )
 
+[node name="SaveStar" type="Area2D" parent="."]
+position = Vector2( -131, 13 )
+script = ExtResource( 90 )
+height = 20.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SaveStar"]
+position = Vector2( -234, -25 )
+scale = Vector2( 0.646507, 0.714489 )
+polygon = PoolVector2Array( -17, -13, 0, -7, 21, -13, 17, -2, 30, 5, 11, 6, 0, 16, -9, 8, -29, 5, -17, -1 )
+
 [node name="BerryLakeInn" parent="." instance=ExtResource( 36 )]
 position = Vector2( 441, -39 )
 script = ExtResource( 78 )
@@ -2121,6 +2137,52 @@ text = "Hey. What do you need?"
 autowrap = true
 percent_visible = 0.1
 
+[node name="StarOptions" type="Sprite" parent="Camera2D"]
+visible = false
+position = Vector2( 226, 201 )
+scale = Vector2( 1.05, 1 )
+texture = ExtResource( 93 )
+script = ExtResource( 91 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/StarOptions"]
+margin_left = -21.5385
+margin_top = -21.6667
+margin_right = 61.4615
+margin_bottom = 93.3333
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1, 1.05 )
+custom_constants/separation = 10
+
+[node name="Save" type="Label" parent="Camera2D/StarOptions/VBoxContainer"]
+margin_right = 83.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 51 )
+text = "Save"
+autowrap = true
+script = ExtResource( 89 )
+
+[node name="Travel" type="Label" parent="Camera2D/StarOptions/VBoxContainer"]
+margin_top = 25.0
+margin_right = 83.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 51 )
+text = "Travel"
+autowrap = true
+script = ExtResource( 89 )
+
+[node name="MenuCursor" parent="Camera2D/StarOptions" instance=ExtResource( 88 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -38.4623
+margin_top = 52.0832
+margin_right = 42.5377
+margin_bottom = 77.0832
+rect_scale = Vector2( 1, 1.05 )
+script = ExtResource( 92 )
+menu_parent_path = NodePath("../VBoxContainer")
+cursor_offset = Vector2( -9, 3 )
+
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 0, 224 )
 
@@ -2131,3 +2193,6 @@ boss = true
 
 [connection signal="body_exited" from="NPC" to="NPC" method="_on_NPC_body_exited"]
 [connection signal="general_dialogue" from="NPC" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]
+[connection signal="star_options" from="SaveStar" to="Camera2D/StarOptions" method="_on_SaveStar_star_options"]
+[connection signal="overworld" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_overworld"]
+[connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
