@@ -57,6 +57,7 @@ func _input(event):
 		dialogue_cursor = false
 		options = false
 		$ShopOptions/MenuCursor.cursor_index = 0
+		$ShopOptions/MenuCursor.option_selecting = false
 		menu_name = ""
 		PlayerManager.freeze = false
 		SE.effect("Cancel")

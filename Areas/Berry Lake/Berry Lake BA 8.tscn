@@ -613,13 +613,13 @@ script = ExtResource( 5 )
 [node name="Field" type="Node2D" parent="Enemies"]
 
 [node name="Beezle_battle" parent="Enemies/Field" instance=ExtResource( 50 )]
-position = Vector2( 10, -40 )
+position = Vector2( 21, -54 )
 
 [node name="Kerobi_battle" parent="Enemies/Field" instance=ExtResource( 60 )]
-position = Vector2( 147, 33 )
+position = Vector2( 158, 19 )
 
 [node name="Raznor_battle" parent="Enemies/Field" instance=ExtResource( 59 )]
-position = Vector2( 24, 78 )
+position = Vector2( 35, 64 )
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false

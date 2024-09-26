@@ -183,7 +183,7 @@ shape = SubResource( 172 )
 
 [node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 1 )]
 position = Vector2( 7, 34 )
-scale = Vector2( 1.22228, 1.24337 )
+scale = Vector2( 1.35781, 1.35711 )
 collision_layer = 4
 collision_mask = 5
 
@@ -195,8 +195,7 @@ shape = SubResource( 178 )
 disabled = true
 
 [node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 2 )]
-visible = false
-position = Vector2( 5, -7 )
+position = Vector2( 5, -10 )
 scale = Vector2( 0.918882, 0.860568 )
 collision_layer = 7
 collision_mask = 6

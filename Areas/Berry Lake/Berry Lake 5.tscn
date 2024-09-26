@@ -1823,6 +1823,7 @@ shadow_color = Color( 0.796078, 0.521569, 0.6, 1 )
 pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
+current = true
 script = ExtResource( 29 )
 minPos = Vector2( -220, -260 )
 maxPos = Vector2( 1150, 550 )
@@ -1853,6 +1854,10 @@ position = Vector2( -399, 315 )
 
 [node name="Kerobi_post" parent="." instance=ExtResource( 65 )]
 position = Vector2( 148, 110 )
+target_scene = ExtResource( 73 )
+alt_scene = ExtResource( 74 )
+alt_chance = 25
+alternate = true
 
 [node name="Kerobi_post2" parent="." instance=ExtResource( 65 )]
 position = Vector2( 323, 61 )

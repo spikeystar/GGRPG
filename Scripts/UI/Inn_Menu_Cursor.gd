@@ -42,7 +42,7 @@ func _process(delta):
 		able = false
 		option_selecting = false
 		self.modulate.a = 0
-		SE.effect("Select")
+		#SE.effect("Select")
 		
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)

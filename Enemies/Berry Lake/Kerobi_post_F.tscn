@@ -215,8 +215,8 @@ script = ExtResource( 10 )
 spawn_z = 40
 
 [node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 3 )]
-position = Vector2( -9, 0 )
-scale = Vector2( 0.888637, 0.885135 )
+position = Vector2( -12, 12 )
+scale = Vector2( 0.970655, 0.871656 )
 collision_layer = 0
 collision_mask = 1
 script = ExtResource( 5 )
@@ -279,8 +279,8 @@ use_dithering = false
 use_dither_blending = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
-position = Vector2( -1, -13 )
-scale = Vector2( 1.39629, 1.36879 )
+position = Vector2( -1, -8 )
+scale = Vector2( 1.25731, 1.2487 )
 shape = SubResource( 7 )
 
 [connection signal="triggered" from="MotionRoot/BattleTrigger" to="." method="_on_BattleTrigger_triggered"]

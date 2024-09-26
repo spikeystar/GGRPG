@@ -2,6 +2,8 @@ extends Area2D
 
 var player = null
 var detected = false
+var player_z : int
+var gary = null
 
 signal start_chase
 signal stop_chase
@@ -12,6 +14,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	gary = PlayerManager.player_motion_root
 	if get_overlapping_bodies().size() > 0 and detected:
 		emit_signal("start_chase")
 		
@@ -26,8 +29,10 @@ func _on_PlayerDetection_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root and not PlayerManager.freeze:
 		player = body
 		detected = true
+		player_z = gary.pos_z
 		#emit_signal("start_chase")
 	if "is_player_jump_shape" in body and body.is_player_jump_shape and not PlayerManager.freeze:
+		player_z = gary.pos_z
 		player = body
 		detected = true
 

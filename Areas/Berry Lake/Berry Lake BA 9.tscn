@@ -612,10 +612,10 @@ script = ExtResource( 5 )
 [node name="Field" type="Node2D" parent="Enemies"]
 
 [node name="Beezle_battle" parent="Enemies/Field" instance=ExtResource( 51 )]
-position = Vector2( 10, -29 )
+position = Vector2( 22, -43 )
 
 [node name="Raznor_battle" parent="Enemies/Field" instance=ExtResource( 25 )]
-position = Vector2( 120, 75 )
+position = Vector2( 132, 61 )
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
@@ -1594,7 +1594,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1611,6 +1610,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 

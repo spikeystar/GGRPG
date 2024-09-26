@@ -476,9 +476,9 @@ func _on_Flee_cursor_selected():
 			$FadeRect/AnimationPlayer.play("Flee")
 			Party.marbles -= (Party.marbles * 0.05)
 			SceneManager.flee = true
+			BattleMusic.fade_out()
 			yield(get_tree().create_timer(2), "timeout")
-			#BattleMusic.fade_out()
-			#BattleMusic.switch_songs()
+			BattleMusic.switch_songs()
 			get_tree().paused = false
 			Global.battle_ended = true
 	

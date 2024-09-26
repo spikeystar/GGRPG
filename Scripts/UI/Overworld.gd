@@ -121,6 +121,8 @@ func _input(event):
 	############## Location Loading ######################
 	if Input.is_action_just_pressed("ui_select") and not moving and ready:
 		moving = true
+		SE.effect("Select")
+		SE.effect("Save Star")
 		yield(get_tree().create_timer(0.3), "timeout")
 		travel()
 	
@@ -155,8 +157,6 @@ func set_location():
 		
 		
 func travel():
-	SE.effect("Select")
-	SE.effect("Save Star")
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	Global.door_name = SceneManager.location

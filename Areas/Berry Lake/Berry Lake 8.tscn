@@ -1072,7 +1072,7 @@ script = ExtResource( 56 )
 height = 200.0
 
 [node name="TreeA13" type="Sprite" parent="YSort/MiddleGround"]
-position = Vector2( 354, -278 )
+position = Vector2( 348, -280 )
 scale = Vector2( 2.50851, 2.50123 )
 texture = ExtResource( 20 )
 script = ExtResource( 56 )

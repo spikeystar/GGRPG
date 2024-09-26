@@ -11,6 +11,7 @@ func _ready():
 	add_child(timer)
 	timer.start(0.1)
 	connect("body_entered", self, "_on_body_entered")
+	connect("body_exited", self, "_on_body_exited")
 	position.y += height
 	
 

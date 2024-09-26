@@ -196,6 +196,7 @@ func _on_StarOptions_save_menu():
 
 func _on_StarOptions_overworld():
 	Music.stopped()
+	SE.effect("Select")
 	SceneManager.overworld = true
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)

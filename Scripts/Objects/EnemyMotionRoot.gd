@@ -128,7 +128,8 @@ func _physics_process(delta):
 			
 			if not ground_enemy:
 				lower_height(delta)
-				pos_z = max(player.floor_z, pos_z)
+				var player_z = $PlayerDetection.player_z
+				pos_z = max(player_z, pos_z)
 				
 			if SceneManager.enemy_repel:
 				state = ENEMY_STATE.RETURN
@@ -199,7 +200,7 @@ func lower_height(delta):
 	pos_z *= exp(delta * -1.2)
 	
 func raise_height(delta):
-	pos_z *= exp(delta * 1.5)
+	pos_z *= exp(delta * 1.4)
 	
 func check_chase():
 	var player = PlayerManager.player_motion_root
