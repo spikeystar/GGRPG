@@ -193,3 +193,12 @@ func _on_SaveStarIntro_area_event():
 		talking()
 		yield(self, "talk_done")
 		done()
+
+
+func _on_SaveStarIntro2_area_event():
+		show()
+		$Name.text = "Use the Save Star first!"
+		$Name/Talk.text = ""
+		talking()
+		yield(self, "talk_done")
+		done()

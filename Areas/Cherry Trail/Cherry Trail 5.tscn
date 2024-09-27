@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -41,8 +41,14 @@
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=39]
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=40]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 4.tscn" type="PackedScene" id=41]
-[ext_resource path="res://Scripts/Area_Specific/Cherry Trail.gd" type="Script" id=42]
+[ext_resource path="res://Scripts/Area_Specific/Cherry_Trail_5.gd" type="Script" id=42]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 7.tscn" type="PackedScene" id=43]
+[ext_resource path="res://NPC/Pivot Town/Tindrum.tscn" type="PackedScene" id=44]
+[ext_resource path="res://Scripts/General_Dialogue.gd" type="Script" id=45]
+[ext_resource path="res://Scripts/Inn.gd" type="Script" id=46]
+[ext_resource path="res://Scripts/UI/Talk_Adjusting.gd" type="Script" id=47]
+[ext_resource path="res://Scripts/Area_Event.gd" type="Script" id=48]
+[ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=49]
 
 [sub_resource type="TileSet" id=1]
 7/name = "Grass Tile.png 7"
@@ -189,12 +195,15 @@ script = ExtResource( 42 )
 
 [node name="YSort" type="YSort" parent="."]
 
+[node name="Tindrum" parent="YSort" instance=ExtResource( 44 )]
+position = Vector2( 473, -559 )
+
 [node name="Background" type="Node2D" parent="YSort"]
 z_index = -20
 
 [node name="BlueBckgd" type="Sprite" parent="YSort/Background"]
-position = Vector2( 288, -72 )
-scale = Vector2( 1.9595, 1.3055 )
+position = Vector2( 205.125, -72 )
+scale = Vector2( 1.79375, 1.3055 )
 texture = ExtResource( 10 )
 
 [node name="HillB3" type="Sprite" parent="YSort/Background"]
@@ -601,6 +610,7 @@ floor_height = 45.0
 shadow_color = Color( 0.188235, 0.552941, 0.298039, 1 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 38 )]
 
@@ -631,7 +641,7 @@ polygon = PoolVector2Array( 117.6, 1.7, 144.6, 10.7, 17.6, 58.7, -8.40002, 47.7 
 [node name="DoorwayToPivotTown" parent="CollisionRoot" instance=ExtResource( 35 )]
 position = Vector2( 304, -192 )
 script = ExtResource( 1 )
-target_scene = "res://Areas/Pivot Town/Pivot Town 1.tscn"
+target_scene = "res://Areas/Pivot Town/Pivot_Town_1.tscn"
 exit_name = "CherryTrail5_PivotTown1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToPivotTown"]
@@ -672,6 +682,43 @@ custom_fonts/font = ExtResource( 39 )
 text = "You got a Flummery Flambe!"
 align = 1
 
+[node name="Interaction" type="Node2D" parent="Camera2D"]
+script = ExtResource( 46 )
+inn_name = "Freya"
+cost = 50
+target_scene = "res://Areas/Pivot Town/Pivot_Inn_2.tscn"
+
+[node name="Dialogue" type="Sprite" parent="Camera2D/Interaction"]
+visible = false
+position = Vector2( -130, -221 )
+z_index = 3
+texture = ExtResource( 33 )
+script = ExtResource( 45 )
+
+[node name="DialogueCursor" parent="Camera2D/Interaction/Dialogue" instance=ExtResource( 49 )]
+visible = false
+position = Vector2( 154.045, 25.1428 )
+
+[node name="Name" type="Label" parent="Camera2D/Interaction/Dialogue"]
+margin_left = -158.813
+margin_top = -30.5715
+margin_right = 162.0
+margin_bottom = 20.4285
+custom_fonts/font = ExtResource( 39 )
+text = "Tom:"
+autowrap = true
+script = ExtResource( 47 )
+
+[node name="Talk" type="Label" parent="Camera2D/Interaction/Dialogue/Name"]
+margin_left = 47.0
+margin_top = -0.00012207
+margin_right = 310.384
+margin_bottom = 50.9999
+custom_fonts/font = ExtResource( 39 )
+text = "Hey. What do you need?"
+autowrap = true
+percent_visible = 0.1
+
 [node name="Flutterbie" parent="." instance=ExtResource( 7 )]
 position = Vector2( 183, -39 )
 spawn_z = 0
@@ -686,4 +733,18 @@ alt_scene = ExtResource( 41 )
 position = Vector2( -32, -105 )
 target_scene = ExtResource( 43 )
 
+[node name="Event" type="Area2D" parent="."]
+script = ExtResource( 48 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Event"]
+position = Vector2( 127, -158 )
+polygon = PoolVector2Array( 201, -95, 270, -121, 355, -86, 298, -61 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 391, -239 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 476, -275 )
+
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
+[connection signal="area_event" from="Event" to="." method="_on_Event_area_event"]

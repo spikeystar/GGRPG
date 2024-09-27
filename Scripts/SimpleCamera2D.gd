@@ -106,6 +106,7 @@ func _input(event):
 			
 		if Input.is_action_pressed("ui_select") and PlayerManager.freeze and able and SceneManager.saving:
 			SceneManager.saving = false
+			current = true
 			yield(get_tree().create_timer(1.3), "timeout")
 			Music.loud()
 			var transition = TransitionPlayer.instance()
@@ -120,6 +121,7 @@ func _input(event):
 			
 		if Input.is_action_pressed("ui_accept") and PlayerManager.freeze and able and SceneManager.saving or Input.is_action_pressed("ui_left") and PlayerManager.freeze and able and SceneManager.saving:
 			SceneManager.saving = false
+			current = true
 			SE.effect("Cancel")
 			yield(get_tree().create_timer(0.2), "timeout")
 			Music.loud()

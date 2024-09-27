@@ -10,6 +10,7 @@ export(int) var EXP_base
 export(int) var marbles_base
 export(String) var battle_name
 export(bool) var boss_battle
+export(bool) var event_battle
 var window_open = false
 var defend_show = false
 var attack_show = false
@@ -458,7 +459,7 @@ func _on_Defend_cursor_selected():
 		#enemies_enabled = true
 	
 func _on_Flee_cursor_selected():
-	if boss_battle:
+	if boss_battle or event_battle:
 			SE.effect("Unable")
 	else:
 		SE.effect("Flee")

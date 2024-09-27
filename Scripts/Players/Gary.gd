@@ -34,23 +34,25 @@ func _physics_process(delta):
 	var sleep = PlayerManager.sleep
 	var ouch = PlayerManager.ouch
 	var drown = PlayerManager.drown
+	var loading = SceneManager.loading
+	var cutscene = PlayerManager.cutscene
 	
 	$JumpShape.shape_origin = body_visual_root.global_position
 	$JumpShape.origin_z = motion_root.pos_z
 
 	var last_dir = motion_root.last_dir
-	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1 && abs(motion_root.vel.z) == 0 and not motion_root.jumping:
+	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1 && abs(motion_root.vel.z) == 0 and not motion_root.jumping and not cutscene:
 		anim_tree.get("parameters/playback").travel("Idle")
 		anim_tree.set("parameters/Idle/blend_position", Vector2(last_dir.x, -last_dir.y))
-	elif abs(motion_root.vel.z) == 0 and not motion_root.jumping:
+	elif abs(motion_root.vel.z) == 0 and not motion_root.jumping and not cutscene:
 		anim_tree.get("parameters/playback").travel("Walk")
 		anim_tree.set("parameters/Walk/blend_position", Vector2(last_dir.x, -last_dir.y))
 		
 		
-	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1 && abs(motion_root.vel.z) == 0 and SceneManager.bubble:
+	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1 && abs(motion_root.vel.z) == 0 and SceneManager.bubble and not cutscene:
 		anim_tree.get("parameters/playback").travel("Idle")
 		anim_tree.set("parameters/Idle/blend_position", Vector2(last_dir.x, -last_dir.y))
-	elif abs(motion_root.vel.z) == 0 and SceneManager.bubble:
+	elif abs(motion_root.vel.z) == 0 and SceneManager.bubble and not cutscene:
 		anim_tree.get("parameters/playback").travel("Walk")
 		anim_tree.set("parameters/Walk/blend_position", Vector2(last_dir.x, -last_dir.y))
 		
@@ -102,7 +104,7 @@ func _physics_process(delta):
 		anim_tree.active = false
 		anim_player.play("ouch")
 		
-	if not ouch and not drown and not sleep:
+	if not ouch and not drown and not sleep and not cutscene:
 		anim_player.stop()
 		anim_tree.active = true
 		
@@ -114,6 +116,13 @@ func _physics_process(delta):
 	if not sleep:
 		shadow_sprite.offset.y = 0
 		
+	if loading:
+		body_sprite.offset.y = -100000
+		shadow_sprite.offset.y = -100000
+		
+	if not loading:
+		body_sprite.offset.y = 0
+		shadow_sprite.offset.y = 0
 		
 	
 	var draw_pos_z = motion_root.pos_z
@@ -163,3 +172,16 @@ func bubble_check():
 	if not SceneManager.bubble:
 		bubble_reset()
 		
+func anim_reset():
+	anim_player.play("RESET")
+	anim_tree.active = true
+	anim_tree.get("parameters/playback").travel("Idle")
+		
+func walk_right():
+	anim_tree.get("parameters/playback").travel("Walk")
+	anim_tree.set("parameters/Walk/blend_position", Vector2(1, -1))
+	motion_root.last_dir = Vector2(1, 1)
+	
+func battle_ready():
+	anim_tree.active = false
+	anim_player.play("battle_ready")

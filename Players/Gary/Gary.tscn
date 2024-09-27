@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=2]
+[gd_scene load_steps=127 format=2]
 
 [ext_resource path="res://Scripts/Players/Gary.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -181,7 +181,7 @@ nodes/Animation/position = Vector2( 60, 150 )
 nodes/TimeScale/node = SubResource( 84 )
 nodes/TimeScale/position = Vector2( 260, 130 )
 nodes/output/position = Vector2( 460, 140 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=107]
 animation = "d_down_r_walk"
@@ -195,7 +195,7 @@ nodes/Animation/position = Vector2( -10, 130 )
 nodes/TimeScale/node = SubResource( 108 )
 nodes/TimeScale/position = Vector2( 231.99, 171.183 )
 nodes/output/position = Vector2( 410, 100 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=87]
 animation = "side_r_walk"
@@ -208,7 +208,7 @@ nodes/Animation/node = SubResource( 87 )
 nodes/Animation/position = Vector2( -120, 120 )
 nodes/TimeScale/node = SubResource( 88 )
 nodes/TimeScale/position = Vector2( 100, 120 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=90]
 animation = "d_up_r_walk"
@@ -221,7 +221,7 @@ nodes/Animation/node = SubResource( 90 )
 nodes/Animation/position = Vector2( -110, 150 )
 nodes/TimeScale/node = SubResource( 91 )
 nodes/TimeScale/position = Vector2( 80, 140 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=93]
 animation = "back_walk"
@@ -234,7 +234,7 @@ nodes/Animation/node = SubResource( 93 )
 nodes/Animation/position = Vector2( -160, 150 )
 nodes/TimeScale/node = SubResource( 94 )
 nodes/TimeScale/position = Vector2( 60, 140 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=96]
 animation = "d_up_walk"
@@ -247,7 +247,7 @@ nodes/Animation/node = SubResource( 96 )
 nodes/Animation/position = Vector2( -60, 130 )
 nodes/TimeScale/node = SubResource( 97 )
 nodes/TimeScale/position = Vector2( 100, 120 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=99]
 animation = "side_walk"
@@ -261,7 +261,7 @@ nodes/Animation/position = Vector2( 20, 140 )
 nodes/TimeScale/node = SubResource( 100 )
 nodes/TimeScale/position = Vector2( 200, 120 )
 nodes/output/position = Vector2( 370, 150 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=102]
 animation = "front_idle"
@@ -284,7 +284,7 @@ nodes/Animation/position = Vector2( 310, 130 )
 nodes/TimeScale/node = SubResource( 105 )
 nodes/TimeScale/position = Vector2( 530, 110 )
 nodes/output/position = Vector2( 700, 130 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=50]
 blend_point_0/node = SubResource( 148 )
@@ -653,6 +653,57 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 7, 6, 8, 6 ]
+}
+
+[sub_resource type="Animation" id=222]
+resource_name = "battle_ready"
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 43 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5, -4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/Gary:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyVisualRoot/Gary:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=190]
@@ -2239,9 +2290,9 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 38 )
 parameters/Fall/blend_position = Vector2( 0.00385606, 0.708154 )
-parameters/Idle/blend_position = Vector2( 0.00128531, 0.00429177 )
+parameters/Idle/blend_position = Vector2( 0.0094229, -0.00429189 )
 parameters/Jump/blend_position = Vector2( -0.00222963, -0.00858366 )
-parameters/Walk/blend_position = Vector2( -0.00297326, 1.06034 )
+parameters/Walk/blend_position = Vector2( 0.997644, 0.00858366 )
 parameters/Walk/1/TimeScale/scale = 5.5
 parameters/Walk/2/TimeScale/scale = 5.5
 parameters/Walk/3/TimeScale/scale = 5.5
@@ -2258,6 +2309,7 @@ anims/back_fall = SubResource( 189 )
 anims/back_idle = SubResource( 14 )
 anims/back_jump = SubResource( 23 )
 anims/back_walk = SubResource( 15 )
+anims/battle_ready = SubResource( 222 )
 anims/d_down_fall = SubResource( 190 )
 anims/d_down_idle = SubResource( 16 )
 anims/d_down_jump = SubResource( 27 )

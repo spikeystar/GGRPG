@@ -590,6 +590,7 @@ script = ExtResource( 40 )
 main_menu = "res://UI/MainMenu.tscn"
 EXP_base = 15
 marbles_base = 24
+event_battle = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -617,6 +618,7 @@ e_health = 100
 e_attack = 10
 e_magic = 2
 e_defense = 5
+boss = true
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false

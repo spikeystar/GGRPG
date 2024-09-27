@@ -6,9 +6,7 @@ onready var transition = TransitionPlayer.instance()
 enum TransitionType {
 	FADE_TO_BLACK = 0,
 }
-
 export(TransitionType) var transition_type = TransitionType.FADE_TO_BLACK;
-
 
 func _get_animation_name():
 	var animation_name = "FadeToBlack" # default
@@ -25,16 +23,13 @@ func _ready():
 		Music.id = "Garys_House"
 		#Music.id = "Cherry_Trail"
 		Music.music()
+		
+	if EventManager.first_save:
+		$SaveStarIntro2/CollisionPolygon2D.disabled = true
+		$CollisionRoot/DoorwayToCherryTrail1/CollisionPolygon2D.disabled = false
 	
-	if EventManager.new_file:
-		PlayerManager.sleep = true
-		PlayerManager.ongoing = true
-		add_child(transition)
-		transition.slow_down_alot()
-		transition.ease_in()
-		EventManager.new_file = false
-		yield(get_tree().create_timer(1.8), "timeout")
-		PlayerManager.ongoing = false
-	
-	
+func _process(delta):
+	if EventManager.first_save:
+		$SaveStarIntro2/CollisionPolygon2D.disabled = true
+		$CollisionRoot/DoorwayToCherryTrail1/CollisionPolygon2D.disabled = false
 	

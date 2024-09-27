@@ -68,6 +68,12 @@ func _ready():
 	load_base_file()
 	set_menu()
 	
+	if SceneManager.loading:
+		if Music.id != "Overworld" or not Music.is_playing:
+			Music.switch_songs()
+			Music.id = "Overworld"
+			Music.music()
+	
 func set_menu():
 	if save1:
 		$Save1/Initial.hide()
@@ -253,6 +259,8 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.saving:
 		SE.effect("Switch")
+		EventManager.first_save = true
+		EventManager.save_1 = true
 		save_path = "res://save.dat_1"
 		save1_update()
 		save_file()
@@ -260,6 +268,8 @@ func _input(event):
 		
 	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.saving:
 		SE.effect("Switch")
+		EventManager.first_save = true
+		EventManager.save_2 = true
 		save_path = "res://save.dat_2"
 		save2_update()
 		save_file()
@@ -267,6 +277,8 @@ func _input(event):
 		
 	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.saving:
 		SE.effect("Switch")
+		EventManager.first_save = true
+		EventManager.save_3 = true
 		save_path = "res://save.dat_3"
 		save3_update()
 		save_file()
@@ -274,20 +286,39 @@ func _input(event):
 		
 	#####################################################
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.loading:
+	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.loading and EventManager.save_1:
 		SE.effect("Select")
 		save_path = "res://save.dat_1"
 		load_file()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading:
+	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading and EventManager.save_2:
 		SE.effect("Select")
 		save_path = "res://save.dat_2"
 		load_file()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading:
+	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading and EventManager.save_3:
 		SE.effect("Select")
 		save_path = "res://save.dat_3"
 		load_file()
+		
+	####################################################
+	
+	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.loading and not EventManager.save_1:
+		SE.effect("Select")
+		save_path = "res://save.dat_1"
+		load_file()
+		
+	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading and not EventManager.save_2:
+		SE.effect("Select")
+		save_path = "res://save.dat_2"
+		load_file()
+		
+	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading and not EventManager.save_3:
+		SE.effect("Select")
+		save_path = "res://save.dat_3"
+		load_file()
+		
+		
 		
 func save1_update():
 	save1 = true

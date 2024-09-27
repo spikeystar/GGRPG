@@ -5,7 +5,15 @@ var Pivot_Town = true
 var Kugi_Canyon = true
 var Berry_Lake = true
 
+var new_file = true
+var first_save = false
+var save_1 = false
+var save_2 = false
+var save_3 = false
+
 var jewel_seeds : int = 1
+
+var Tindrum = false
 var kugi_canyon_extra = false
 var Saguarotel = false
 var Reeler = false

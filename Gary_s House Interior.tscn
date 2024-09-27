@@ -265,7 +265,7 @@ __meta__ = {
 [node name="OutsideHouse" parent="Node2D/CollisionRoot" instance=ExtResource( 21 )]
 position = Vector2( -130, 106 )
 script = ExtResource( 24 )
-target_scene = "res://Gary_s House.tscn"
+target_scene = "res://Gary_sHouse.tscn"
 exit_name = "OutsideHouse"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/OutsideHouse"]

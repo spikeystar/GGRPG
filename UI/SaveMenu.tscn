@@ -397,6 +397,7 @@ hframes = 10
 vframes = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
+current = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -320.0

@@ -1,11 +1,11 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Area_Event.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Gary's House/Exterior/plant 4.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/Area_Specific/Garys_House.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Area_Specific/Gary_sHouse_Exterior.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/General_Dialogue.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/Inn.gd" type="Script" id=8]
 [ext_resource path="res://Scripts/Item_Get.gd" type="Script" id=9]
@@ -53,6 +53,7 @@
 [ext_resource path="res://Scripts/Objects/StarOptions.gd" type="Script" id=51]
 [ext_resource path="res://Scripts/UI/StarOptionsCursor.gd" type="Script" id=52]
 [ext_resource path="res://UI/Interaction Window.png" type="Texture" id=53]
+[ext_resource path="res://Scripts/Repeat_Event.gd" type="Script" id=54]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.059633, 0.807339, 0.981651, 1 )
@@ -600,6 +601,7 @@ exit_name = "GarysHouse_CherryTrail1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToCherryTrail1"]
 polygon = PoolVector2Array( -33, 16, 37, -13, 29, -24, -52, 9 )
+disabled = true
 
 [node name="PlayerSpawnDefault" parent="CollisionRoot" instance=ExtResource( 19 )]
 position = Vector2( -59, -31 )
@@ -749,6 +751,14 @@ script = ExtResource( 3 )
 position = Vector2( -518, 111 )
 polygon = PoolVector2Array( -110, -18, -58, -51, 59, -72, 127, -64, 128, -32, 84, 8, 11, 48, -63, 40, -106, 35 )
 
+[node name="SaveStarIntro2" type="Area2D" parent="."]
+position = Vector2( 520, 251 )
+script = ExtResource( 54 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SaveStarIntro2"]
+position = Vector2( -518, 111 )
+polygon = PoolVector2Array( -110, -18, -58, -51, -9, -65, 50, -24, 36, -2, -14, 12, -80, -3, -97, -6 )
+
 [node name="SaveStar" type="Area2D" parent="."]
 position = Vector2( -297, 108 )
 script = ExtResource( 50 )
@@ -762,4 +772,5 @@ polygon = PoolVector2Array( -17, -13, 0, -7, 21, -13, 17, -2, 30, 5, 11, 6, 0, 1
 [connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
 [connection signal="item_get" from="Item_Get" to="Camera2D" method="_on_Item_Get_item_get"]
 [connection signal="area_event" from="SaveStarIntro" to="Camera2D/Interaction/Dialogue" method="_on_SaveStarIntro_area_event"]
+[connection signal="area_event" from="SaveStarIntro2" to="Camera2D/Interaction/Dialogue" method="_on_SaveStarIntro2_area_event"]
 [connection signal="star_options" from="SaveStar" to="Camera2D/StarOptions" method="_on_SaveStar_star_options"]

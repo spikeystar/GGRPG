@@ -7,8 +7,6 @@ var height : int
 
 var SceneEnemies = []
 
-var new_file = true
-
 var loading = false
 var saving = false
 var overworld = false

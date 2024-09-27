@@ -16,9 +16,16 @@ var ouch = false
 var drown = false
 var bouncy = false
 var jump_disabled = false
+var cutscene = false
 
 func _ready():
 	spawn_player()
+	
+func hide_player():
+	player_instance.modulate.a = 0
+		
+func show_player():
+	player_instance.modulate.a = 1
 
 func spawn_player():
 	if weakref(player_instance).get_ref():
