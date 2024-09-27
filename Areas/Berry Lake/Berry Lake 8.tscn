@@ -1473,7 +1473,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 0.9, 1 )
+grid_size = Vector2( 0.95, 1 )
 texture = ExtResource( 64 )
 texture_offset = Vector2( 1, 21 )
 height = 32.0

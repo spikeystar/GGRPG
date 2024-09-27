@@ -48,5 +48,5 @@ loop_time = 95.55
 stream = ExtResource( 8 )
 volume_db = -7.0
 script = ExtResource( 4 )
-end_time = 49.8
-loop_time = 39.0
+end_time = 60.295
+loop_time = 40.25
