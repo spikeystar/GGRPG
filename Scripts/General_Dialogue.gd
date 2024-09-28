@@ -19,6 +19,11 @@ func _on_NPC2_general_dialogue():
 	show()
 	talk()
 	
+func _on_NPC3_general_dialogue():
+	npc_name = SceneManager.npc_name
+	show()
+	talk()
+	
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and cursor_ready:
 		SE.effect("Select")
@@ -146,7 +151,12 @@ func Penelope():
 		alternate = false
 
 func Edgar():
-	if js < 1:
+	if not EventManager.Jacques_Meetup_CS:
+		$Name/Talk.text = "Good afternoon, young man."
+		talking()
+		yield(self, "talk_done")
+		done()
+	if js < 1 and EventManager.Edgar_Tea_CS:
 		$Name/Talk.text = "Let me know if you find anything at the lake."
 		talking()
 		yield(self, "talk_done")
@@ -202,3 +212,6 @@ func _on_SaveStarIntro2_area_event():
 		talking()
 		yield(self, "talk_done")
 		done()
+
+
+

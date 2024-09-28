@@ -2133,10 +2133,9 @@ texture = ExtResource( 1 )
 hframes = 9
 vframes = 3
 script = ExtResource( 4 )
+alpha_clip = 0.01
 depth_test_offset = Vector2( -8, 28 )
 feet_height = 10.0
-use_dithering = false
-use_dither_blending = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
 playback_speed = 0.35

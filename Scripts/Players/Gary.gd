@@ -175,7 +175,22 @@ func bubble_check():
 func anim_reset():
 	#anim_player.play("RESET")
 	anim_tree.active = true
+	motion_root.last_dir = Vector2(0, 0)
 	anim_tree.get("parameters/playback").travel("Idle")
+	
+func set_right():
+	#motion_root.last_dir = Vector2(1, 1)
+	anim_tree.get("parameters/playback").travel("Idle")
+	anim_tree.set("parameters/Idle/blend_position", Vector2(1, -1))
+	
+func set_right_f():
+	#motion_root.last_dir = Vector2(1, 1)
+	anim_tree.get("parameters/playback").travel("Idle")
+	anim_tree.set("parameters/Idle/blend_position", Vector2(-1, -1))
+	
+func walk():
+	anim_tree.get("parameters/playback").travel("Walk")
+	anim_tree.set("parameters/Walk/blend_position", Vector2(motion_root.last_dir.x, -motion_root.last_dir.y))
 		
 func walk_right():
 	anim_tree.get("parameters/playback").travel("Walk")
@@ -185,3 +200,7 @@ func walk_right():
 func battle_ready():
 	anim_tree.active = false
 	anim_player.play("battle_ready")
+	
+func smile():
+	anim_tree.active = false
+	anim_player.play("smile")

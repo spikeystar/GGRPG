@@ -4,6 +4,7 @@ export var height = 0.0
 #export var event_name : String
 signal area_event
 var used = false
+export var cutscene = false
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
@@ -15,8 +16,10 @@ func _on_body_entered(body):
 		area_event()
 		
 func area_event():
-	if not Global.Collected.has(global_position):
+	if not cutscene:
 		SE.effect("Select")
+	
+	if not Global.Collected.has(global_position):
 		PlayerManager.freeze = true
 		emit_signal("area_event")
 		Global.Collected.append(global_position)

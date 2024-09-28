@@ -58,7 +58,15 @@ func _ready():
 		PlayerManager.freeze = true
 		
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Oh! That ruckus sure woke us up alright! It seems like something fell straight into the lake."
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Oh! That ruckus sure woke us up alright!"
+		$Camera2D/Interaction/Dialogue/Name.text = "Cranston:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "It seems like something fell straight into the lake."
 		$Camera2D/Interaction/Dialogue/Name.text = "Cranston:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")

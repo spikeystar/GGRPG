@@ -57,6 +57,7 @@ func _process(delta):
 func _on_Event_area_event():
 	event = true
 	PlayerManager.freeze = true
+	SE.effect("Select")
 	$Camera2D/Interaction/Dialogue.show()
 	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Hey! Wait a minute!"
 	$Camera2D/Interaction/Dialogue/Name.text = "Tindrum:"
@@ -80,6 +81,7 @@ func _on_Event_area_event():
 	$YSort/Tindrum/BodyYSort/AnimationPlayer.play("idle")
 	
 	yield(get_tree().create_timer(0.6), "timeout")
+	SE.effect("Select")
 	$Camera2D/Interaction/Dialogue.show()
 	$Camera2D/Interaction/Dialogue/Name/Talk.text = "If you wanna pass through here, you're gonna have to pay a fee!"
 	$Camera2D/Interaction/Dialogue/Name.text = "Tindrum:"

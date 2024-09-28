@@ -36,6 +36,7 @@ func _ready():
 func item_window():
 	PlayerManager.freeze = true
 	$Info_Window.show()
+	$Info_Window/First_Text.rect_position = Vector2(-147, -11)
 	tween = create_tween()
 	tween.tween_property($Info_Window, "modulate:a", 1, 0.2)
 	yield(get_tree().create_timer(1.7), "timeout")
@@ -211,3 +212,14 @@ func _on_StarOptions_overworld():
 	transition.ease_in()
 	able = true
 	get_tree().paused = true
+
+func announcement():
+	$Info_Window/First_Text.rect_position = Vector2(-150, -13)
+	$Info_Window.show()
+	tween = create_tween()
+	tween.tween_property($Info_Window, "modulate:a", 1, 0.2)
+	yield(get_tree().create_timer(1.5), "timeout")
+	var tween = create_tween()
+	tween.tween_property($Info_Window, "modulate:a", 0, 0.2)
+	yield(get_tree().create_timer(0.2), "timeout")
+	$Info_Window.hide()

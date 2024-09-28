@@ -171,3 +171,4 @@ func sleep_text():
 		$Dialogue/Name/Talk.text = "Please enjoy your stay!"
 	if inn_name == "Loqua":
 		$Dialogue/Name/Talk.text = "I hope you have a good rest!"
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=2]
+[gd_scene load_steps=103 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/plant b.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=2]
@@ -76,7 +76,7 @@
 [ext_resource path="res://Scripts/Objects/SceneTransition/Doorway.gd" type="Script" id=74]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=75]
 [ext_resource path="res://NPC/Pivot Town/Henry.tscn" type="PackedScene" id=76]
-[ext_resource path="res://Scripts/Area_Specific/Pivot_Town.gd" type="Script" id=77]
+[ext_resource path="res://Scripts/Area_Specific/Pivot_Town_1.gd" type="Script" id=77]
 [ext_resource path="res://Assets/Pivot Town/Fountain.tscn" type="PackedScene" id=78]
 [ext_resource path="res://Assets/Pivot Town/inn ledge 1.png" type="Texture" id=79]
 [ext_resource path="res://Assets/Pivot Town/inn ledge 2.png" type="Texture" id=80]
@@ -88,6 +88,9 @@
 [ext_resource path="res://Scripts/UI/StarOptionsCursor.gd" type="Script" id=86]
 [ext_resource path="res://UI/Interaction Window.png" type="Texture" id=87]
 [ext_resource path="res://Scripts/Objects/SaveStar.gd" type="Script" id=88]
+[ext_resource path="res://Scripts/Area_Event.gd" type="Script" id=89]
+[ext_resource path="res://Players/Jacques/Jacques.tscn" type="PackedScene" id=90]
+[ext_resource path="res://NPC/Pivot Town/Edgar.tscn" type="PackedScene" id=91]
 
 [sub_resource type="StreamTexture" id=20]
 
@@ -1707,6 +1710,9 @@ height = 32.0
 position = Vector2( -233, -24 )
 texture = ExtResource( 59 )
 
+[node name="Edgar" parent="YSort/MiddleGround" instance=ExtResource( 91 )]
+position = Vector2( 246, -693 )
+
 [node name="Henry" parent="YSort/MiddleGround" instance=ExtResource( 76 )]
 position = Vector2( 90, -196 )
 
@@ -1717,6 +1723,9 @@ position = Vector2( 779, -442 )
 position = Vector2( 298, -486 )
 use_dithering = false
 use_dither_blending = false
+
+[node name="Jacques" parent="YSort/MiddleGround" instance=ExtResource( 90 )]
+position = Vector2( 243, -479 )
 
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
@@ -2015,6 +2024,16 @@ right = true
 position = Vector2( 772, -444 )
 polygon = PoolVector2Array( -6.00998, -1.96857, 26.0576, 10.8637, 12.1102, 20.9369, -19.9679, 6.10462 )
 
+[node name="NPC3" type="Area2D" parent="CollisionRoot"]
+position = Vector2( -532, -254 )
+script = ExtResource( 69 )
+npc_name = "Edgar"
+right = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/NPC3"]
+position = Vector2( 772, -444 )
+polygon = PoolVector2Array( -6.00998, -1.96857, 26.0576, 10.8637, 12.1102, 20.9369, -19.9679, 6.10462 )
+
 [node name="Item_Get" type="Area2D" parent="CollisionRoot"]
 position = Vector2( 894, -347 )
 script = ExtResource( 81 )
@@ -2053,9 +2072,9 @@ position = Vector2( 154.045, 25.1428 )
 
 [node name="Name" type="Label" parent="Camera2D/Interaction/Dialogue"]
 margin_left = -158.813
-margin_top = -30.5715
+margin_top = -33.5715
 margin_right = 162.0
-margin_bottom = 20.4285
+margin_bottom = 17.4285
 custom_fonts/font = ExtResource( 66 )
 text = "Tom:"
 autowrap = true
@@ -2080,15 +2099,15 @@ z_index = 3
 texture = ExtResource( 67 )
 
 [node name="First_Text" type="Label" parent="Camera2D/Info_Window"]
-margin_left = -147.143
-margin_top = -11.0
-margin_right = 98.857
-margin_bottom = 4.0
+margin_left = -149.929
+margin_top = -12.25
+margin_right = 96.0713
+margin_bottom = 2.75
 grow_horizontal = 2
 grow_vertical = 2
 rect_scale = Vector2( 1.2, 1.1 )
 custom_fonts/font = ExtResource( 66 )
-text = "You got a Flummery Flambe!"
+text = "Jaques joined your party!"
 align = 1
 
 [node name="StarOptions" type="Sprite" parent="Camera2D"]
@@ -2412,7 +2431,7 @@ position = Vector2( -429, -740 )
 scale = Vector2( 1.7, 1.7 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 5
+frame = 3
 speed_scale = 0.8
 playing = true
 
@@ -2421,7 +2440,7 @@ position = Vector2( 170, -415 )
 scale = Vector2( 1.6, 1.6 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 2
+frame = 5
 speed_scale = 0.7
 playing = true
 
@@ -2433,12 +2452,43 @@ position = Vector2( -234, -25 )
 scale = Vector2( 0.646507, 0.714489 )
 polygon = PoolVector2Array( -17, -13, 0, -7, 21, -13, 17, -2, 30, 5, 11, 6, 0, 16, -9, 8, -29, 5, -17, -1 )
 
+[node name="Jacques_Meetup" type="Area2D" parent="."]
+position = Vector2( -174, -225 )
+script = ExtResource( 89 )
+cutscene = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Jacques_Meetup"]
+visible = false
+position = Vector2( 127, -158 )
+polygon = PoolVector2Array( 210, -91, 243, -110, 286, -105, 311, -96, 328, -59, 296, -50, 241, -66 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 195, -459 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 44, -592 )
+
+[node name="Position2D3" type="Position2D" parent="."]
+position = Vector2( 166, -525 )
+
+[node name="Position2D4" type="Position2D" parent="."]
+position = Vector2( 224, -686 )
+
+[node name="Position2D5" type="Position2D" parent="."]
+position = Vector2( 323, -637 )
+
+[node name="Position2D6" type="Position2D" parent="."]
+position = Vector2( 376, -664 )
+
 [connection signal="body_exited" from="CollisionRoot/NPC" to="CollisionRoot/NPC" method="_on_NPC_body_exited"]
 [connection signal="general_dialogue" from="CollisionRoot/NPC" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]
 [connection signal="body_exited" from="CollisionRoot/NPC2" to="CollisionRoot/NPC2" method="_on_NPC_body_exited"]
 [connection signal="general_dialogue" from="CollisionRoot/NPC2" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]
+[connection signal="body_exited" from="CollisionRoot/NPC3" to="CollisionRoot/NPC3" method="_on_NPC_body_exited"]
+[connection signal="general_dialogue" from="CollisionRoot/NPC3" to="Camera2D/Interaction/Dialogue" method="_on_NPC3_general_dialogue"]
 [connection signal="item_get" from="CollisionRoot/Item_Get" to="Camera2D" method="_on_Item_Get_item_get"]
 [connection signal="overworld" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_overworld"]
 [connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
 [connection signal="star_options" from="SaveStar" to="Camera2D/StarOptions" method="_on_SaveStar_star_options"]
 [connection signal="star_options" from="SaveStar" to="Camera2D/StarOptions/MenuCursor" method="_on_SaveStar_star_options"]
+[connection signal="area_event" from="Jacques_Meetup" to="." method="_on_Jacques_Meetup_area_event"]

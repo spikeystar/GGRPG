@@ -222,6 +222,8 @@ volume_db = 3.0
 
 [node name="Party_Joined" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 34 )
+volume_db = -1.0
+pitch_scale = 0.89
 
 [node name="Player_Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 41 )
