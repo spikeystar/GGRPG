@@ -21,6 +21,7 @@ onready var shadow_visual_root = $ShadowYSort/ShadowVisualRoot
 onready var body_sprite = $BodyYSort/BodyVisualRoot/NPC
 onready var shadow_sprite = $ShadowYSort/ShadowVisualRoot/ShadowCircle
 
+
 func _physics_process(delta):
 
 	var draw_pos_z = motion_root.pos_z

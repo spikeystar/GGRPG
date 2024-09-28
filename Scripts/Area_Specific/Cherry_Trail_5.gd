@@ -35,6 +35,7 @@ func _process(delta):
 		Gary.anim_reset()
 		$YSort/Tindrum.queue_free()
 		yield(get_tree().create_timer(1), "timeout")
+		SE.effect("Select")
 		$Camera2D/Interaction/Dialogue.show()
 		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Sheesh. Well I hope that bully learned his lesson..."
 		$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
@@ -49,6 +50,7 @@ func _process(delta):
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
 		$Camera2D/Interaction/Dialogue.done()
 		
+		event = false
 		PlayerManager.cutscene = false
 		PlayerManager.freeze = false
 

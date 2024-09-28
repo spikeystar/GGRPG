@@ -59,7 +59,7 @@ func _physics_process(delta):
 	#and motion_root.is_on_ground and not abs(motion_root.vel.z) > 0 and not abs(motion_root.vel.z) < 0 and not PlayerManager.bouncy
 		
 
-	if Input.is_action_just_pressed("ui_push") and not freeze:
+	if Input.is_action_just_pressed("ui_push") and not freeze and not cutscene:
 		#jumping = true
 		$BodyYSort/BodyVisualRoot/Gary.z_index = 0
 		anim_player.stop()
@@ -173,7 +173,7 @@ func bubble_check():
 		bubble_reset()
 		
 func anim_reset():
-	anim_player.play("RESET")
+	#anim_player.play("RESET")
 	anim_tree.active = true
 	anim_tree.get("parameters/playback").travel("Idle")
 		

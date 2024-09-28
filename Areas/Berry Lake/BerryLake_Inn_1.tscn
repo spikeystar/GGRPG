@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=2]
@@ -18,7 +18,7 @@
 [ext_resource path="res://Scripts/General_Interaction.gd" type="Script" id=16]
 [ext_resource path="res://Scripts/Inn.gd" type="Script" id=17]
 [ext_resource path="res://Scripts/UI/Inn_Menu_Cursor.gd" type="Script" id=18]
-[ext_resource path="res://Scripts/Area_Specific/Berry_Lake.gd" type="Script" id=19]
+[ext_resource path="res://Scripts/Area_Specific/BerryLake_Inn_1.gd" type="Script" id=19]
 [ext_resource path="res://Scripts/ScaledCamera2D.gd" type="Script" id=20]
 [ext_resource path="res://Scripts/UI/Talk_Adjusting.gd" type="Script" id=21]
 [ext_resource path="res://Assets/General/Rugs/yellow rug a.png" type="Texture" id=22]
@@ -79,6 +79,7 @@
 [ext_resource path="res://UI/Shop/Options Window.png" type="Texture" id=77]
 [ext_resource path="res://UI/Shop/Shop Window.png" type="Texture" id=78]
 [ext_resource path="res://UI/Shop/Marble Display.png" type="Texture" id=79]
+[ext_resource path="res://Players/Jacques/Jacques.tscn" type="PackedScene" id=80]
 
 [sub_resource type="TileSet" id=1]
 0/name = "wood tile a.png 0"
@@ -931,6 +932,9 @@ rotation = 0.0464618
 scale = Vector2( 1.14611, 1.06199 )
 texture = ExtResource( 31 )
 
+[node name="Jacques" parent="Node2D/YSort" instance=ExtResource( 80 )]
+position = Vector2( 143.805, 535.254 )
+
 [node name="Loqua" parent="Node2D/YSort" instance=ExtResource( 54 )]
 position = Vector2( 204.39, 73.9308 )
 
@@ -1566,6 +1570,12 @@ rect_scale = Vector2( 1.2, 1.1 )
 custom_fonts/font = ExtResource( 1 )
 text = "You got a Flummery Flambe!"
 align = 1
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 192, 146 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 144, 124 )
 
 [connection signal="body_exited" from="Node2D/CollisionRoot/NPC" to="Node2D/CollisionRoot/NPC" method="_on_NPC_body_exited"]
 [connection signal="general_dialogue" from="Node2D/CollisionRoot/NPC" to="Camera2D/Interaction" method="_on_NPC_general_dialogue"]

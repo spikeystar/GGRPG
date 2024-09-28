@@ -62,6 +62,7 @@ func _physics_process(delta):
 	var sleep = PlayerManager.sleep
 	var ongoing = PlayerManager.ongoing
 	var bouncy = PlayerManager.bouncy
+	var cutscene = PlayerManager.cutscene
 	# Floor height could change at any time with movable platforms
 	update_floor()
 	
@@ -90,7 +91,7 @@ func _physics_process(delta):
 	if input_dir.length_squared() > 1:
 		input_dir = input_dir.normalized()
 	
-	if Input.is_action_just_pressed("ui_push") and is_on_ground and not freeze and not jump_disabled:
+	if Input.is_action_just_pressed("ui_push") and is_on_ground and not freeze and not jump_disabled and not cutscene:
 		is_on_ground = false
 		PlayerManager.sleep = false
 		jumping = true
