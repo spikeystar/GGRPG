@@ -8,6 +8,8 @@ export var gravity = 9.8
 export var max_vertical_speed = 20
 export var jump_velocity = 10
 
+onready var tween
+
 const PauseMenu = preload("res://UI/PauseMenu.tscn")
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
 var pause_menu
@@ -180,22 +182,30 @@ func anim_reset():
 	
 func set_right():
 	#motion_root.last_dir = Vector2(1, 1)
+	anim_tree.active = true
 	anim_tree.get("parameters/playback").travel("Idle")
 	anim_tree.set("parameters/Idle/blend_position", Vector2(1, -1))
 	
 func set_right_f():
 	#motion_root.last_dir = Vector2(1, 1)
+	anim_tree.active = true
 	anim_tree.get("parameters/playback").travel("Idle")
 	anim_tree.set("parameters/Idle/blend_position", Vector2(-1, -1))
 	
 func walk():
+	anim_tree.active = true
 	anim_tree.get("parameters/playback").travel("Walk")
 	anim_tree.set("parameters/Walk/blend_position", Vector2(motion_root.last_dir.x, -motion_root.last_dir.y))
 		
 func walk_right():
+	anim_tree.active = true
 	anim_tree.get("parameters/playback").travel("Walk")
 	anim_tree.set("parameters/Walk/blend_position", Vector2(1, -1))
 	motion_root.last_dir = Vector2(1, 1)
+	
+func animation(var name: String):
+	anim_tree.active = false
+	anim_player.play(name)
 	
 func battle_ready():
 	anim_tree.active = false
@@ -204,3 +214,16 @@ func battle_ready():
 func smile():
 	anim_tree.active = false
 	anim_player.play("smile")
+	
+func shock_back_jump():
+	anim_tree.active = false
+	anim_player.play("shock_back_jump")
+	
+func back_hop():
+	anim_tree.active = false
+	anim_player.play("back_hop")
+	
+func back_hop_f():
+	anim_tree.active = false
+	anim_player.play("back_hop_f")
+

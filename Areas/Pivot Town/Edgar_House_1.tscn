@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Assets/General/Backgrounds/Inside BCKGD.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=2]
@@ -14,7 +14,7 @@
 [ext_resource path="res://Scripts/General_Interaction.gd" type="Script" id=12]
 [ext_resource path="res://Scripts/Inn.gd" type="Script" id=13]
 [ext_resource path="res://Scripts/UI/Inn_Menu_Cursor.gd" type="Script" id=14]
-[ext_resource path="res://Scripts/Area_Specific/Pivot_Inn.gd" type="Script" id=15]
+[ext_resource path="res://Scripts/Area_Specific/Edgar_House_1.gd" type="Script" id=15]
 [ext_resource path="res://Assets/Pivot Town/dinner table b.png" type="Texture" id=16]
 [ext_resource path="res://Scripts/UI/Talk_Adjusting.gd" type="Script" id=17]
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=18]
@@ -61,6 +61,7 @@
 [ext_resource path="res://Assets/Pivot Town/curtains b.png" type="Texture" id=59]
 [ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=60]
 [ext_resource path="res://Assets/Pivot Town/End Table.png" type="Texture" id=61]
+[ext_resource path="res://Players/Jacques/Jacques.tscn" type="PackedScene" id=62]
 
 [sub_resource type="TileSet" id=1]
 0/name = "wood tile a.png 0"
@@ -703,6 +704,10 @@ rotation = -0.0841739
 scale = Vector2( 1.63298, 1.2507 )
 z_index = -2
 texture = ExtResource( 59 )
+
+[node name="Jacques" parent="Node2D" instance=ExtResource( 62 )]
+position = Vector2( 136.375, 71.2869 )
+rotation = -0.00523599
 
 [node name="Edgar" parent="Node2D" instance=ExtResource( 50 )]
 position = Vector2( 229.217, 40.8004 )

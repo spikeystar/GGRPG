@@ -528,6 +528,18 @@ tracks/14/keys = {
 "update": 0,
 "values": [ Vector2( 8, -28 ) ]
 }
+tracks/15/type = "value"
+tracks/15/path = NodePath("../MotionRoot:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = false
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=189]
 resource_name = "back_fall"
@@ -556,10 +568,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -3.33333 ), Vector2( 0, -6.66667 ), Vector2( 0, -10 ), Vector2( 0, -6.66667 ), Vector2( 0, -3.33333 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -604,10 +616,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 8, -28 ) ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 8, -28 ), Vector2( 8, -31.3333 ), Vector2( 8, -34.6667 ), Vector2( 8, -38 ), Vector2( 8, -34.6667 ), Vector2( 8, -31.3333 ), Vector2( 8, -28 ) ]
 }
 
 [sub_resource type="Animation" id=224]
@@ -620,10 +632,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -3.33333 ), Vector2( 0, -6.66667 ), Vector2( 0, -10 ), Vector2( 0, -6.66667 ), Vector2( 0, -3.33333 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( -15, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -668,10 +680,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -7, -28 ) ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 8, -28 ), Vector2( 8, -31.333 ), Vector2( 8, -34.667 ), Vector2( 8, -38 ), Vector2( 8, -34.667 ), Vector2( 8, -31.333 ), Vector2( 8, -28 ) ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -964,6 +976,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyVisualRoot/Gary:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, -28 ) ]
+}
 
 [sub_resource type="Animation" id=27]
 resource_name = "d_down_jump"
@@ -1084,6 +1108,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyVisualRoot/Gary:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, -28 ) ]
 }
 
 [sub_resource type="Animation" id=56]
@@ -1264,6 +1300,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 3 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyVisualRoot/Gary:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, -28 ) ]
+}
 
 [sub_resource type="Animation" id=25]
 resource_name = "d_up_jump"
@@ -1383,6 +1431,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 3 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyVisualRoot/Gary:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, -28 ) ]
 }
 
 [sub_resource type="Animation" id=57]
@@ -2567,10 +2627,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -3.33333 ), Vector2( 0, -6.66667 ), Vector2( 0, -10 ), Vector2( 0, -6.66667 ), Vector2( 0, -3.33333 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -2615,10 +2675,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 8, -28 ) ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 8, -28 ), Vector2( 8, -31.3333 ), Vector2( 8, -34.6667 ), Vector2( 8, -38 ), Vector2( 8, -34.6667 ), Vector2( 8, -31.3333 ), Vector2( 8, -28 ) ]
 }
 
 [sub_resource type="Animation" id=231]
@@ -2631,10 +2691,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -3.33333 ), Vector2( 0, -6.66667 ), Vector2( 0, -10 ), Vector2( 0, -6.66667 ), Vector2( 0, -3.33333 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( -15, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -2679,10 +2739,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -8, -27 ) ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 7, -27 ), Vector2( 7, -30.333 ), Vector2( 7, -33.667 ), Vector2( 7, -37 ), Vector2( 7, -33.667 ), Vector2( 7, -30.333 ), Vector2( 7, -27 ) ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -2722,6 +2782,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 22 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyVisualRoot/Gary:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, -28 ) ]
 }
 
 [sub_resource type="Animation" id=24]
@@ -3115,7 +3187,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( -15, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -3283,7 +3355,7 @@ tracks/14/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 4, -21 ) ]
+"values": [ Vector2( 19, -21 ) ]
 }
 
 [sub_resource type="Animation" id=234]
@@ -3299,7 +3371,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( -15, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -3467,26 +3539,26 @@ tracks/14/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -3, -22 ) ]
+"values": [ Vector2( 12, -22 ) ]
 }
 
 [sub_resource type="Animation" id=235]
 resource_name = "shock_back_jump"
 length = 0.8
 tracks/0/type = "value"
-tracks/0/path = NodePath("BodyVisualRoot/Gary:offset")
+tracks/0/path = NodePath("BodyVisualRoot/Gary:flip_h")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -2.5 ), Vector2( 0, -5 ), Vector2( 0, -7.5 ), Vector2( 0, -10 ), Vector2( 0, -7.5 ), Vector2( 0, -5 ), Vector2( 0, -2.5 ), Vector2( 0, 0 ) ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
+tracks/1/path = NodePath("BodyVisualRoot/Gary:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -3495,10 +3567,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ 42 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("BodyVisualRoot/Gary:frame")
+tracks/2/path = NodePath("BodyVisualRoot/Gary:z_index")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -3507,10 +3579,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 42 ]
+"values": [ 0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("BodyVisualRoot/Gary:z_index")
+tracks/3/path = NodePath("BodyVisualRoot/Poof:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -3519,10 +3591,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0 ]
+"values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("BodyVisualRoot/Poof:visible")
+tracks/4/path = NodePath("BodyVisualRoot/Poof:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -3531,10 +3603,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ 19 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/Poof:frame")
+tracks/5/path = NodePath("AnimationPlayer:playback_speed")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -3543,10 +3615,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 19 ]
+"values": [ 2.5 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("AnimationPlayer:playback_speed")
+tracks/6/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -3555,10 +3627,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 2.5 ]
+"values": [ true ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:visible")
+tracks/7/path = NodePath("BodyVisualRoot/Poof:flip_h")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -3567,10 +3639,10 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("BodyVisualRoot/Poof:flip_h")
+tracks/8/path = NodePath("../ShadowYSort:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -3579,79 +3651,91 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("../ShadowYSort:visible")
+tracks/9/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
-tracks/9/enabled = true
+tracks/9/enabled = false
 tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ true ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( -2.38419e-07, -2 ) ]
 }
-tracks/11/type = "value"
-tracks/11/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:texture")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = false
-tracks/11/keys = {
+tracks/10/type = "value"
+tracks/10/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:texture")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = false
+tracks/10/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ ExtResource( 2 ) ]
 }
-tracks/12/type = "value"
-tracks/12/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:self_modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/keys = {
+tracks/11/type = "value"
+tracks/11/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:self_modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.686275 ) ]
 }
-tracks/13/type = "value"
-tracks/13/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/keys = {
+tracks/12/type = "value"
+tracks/12/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = false
+tracks/12/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/13/type = "value"
+tracks/13/path = NodePath("BodyVisualRoot/Gary:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 4, -21 ), Vector2( 4, -23.5 ), Vector2( 4, -26 ), Vector2( 4, -28.5 ), Vector2( 4, -31 ), Vector2( 4, -28.5 ), Vector2( 4, -26 ), Vector2( 4, -23.5 ), Vector2( 4, -21 ) ]
+}
 tracks/14/type = "value"
-tracks/14/path = NodePath("BodyVisualRoot/Gary:position")
+tracks/14/path = NodePath("../MotionRoot:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
-tracks/14/enabled = true
+tracks/14/enabled = false
 tracks/14/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -2.5 ), Vector2( 0, -5 ), Vector2( 0, -7.5 ), Vector2( 0, -10 ), Vector2( 0, -7.5 ), Vector2( 0, -5 ), Vector2( 0, -2.5 ), Vector2( 0, 0 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("BodyVisualRoot/Gary:offset")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 4, -21 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=236]
@@ -3664,10 +3748,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -2.5 ), Vector2( 0, -5 ), Vector2( 0, -7.5 ), Vector2( 0, -10 ), Vector2( 0, -7.5 ), Vector2( 0, -5 ), Vector2( 0, -2.5 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -3832,10 +3916,10 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -3, -21 ) ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -3, -21 ), Vector2( -3, -23.5 ), Vector2( -3, -26 ), Vector2( -3, -28.5 ), Vector2( -3, -31 ), Vector2( -3, -28.5 ), Vector2( -3, -26 ), Vector2( -3, -23.5 ), Vector2( -3, -21 ) ]
 }
 
 [sub_resource type="Animation" id=237]
@@ -4216,10 +4300,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -2.5 ), Vector2( 0, -5 ), Vector2( 0, -7.5 ), Vector2( 0, -10 ), Vector2( 0, -7.5 ), Vector2( 0, -5 ), Vector2( 0, -2.5 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -4384,10 +4468,10 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 11, -23 ) ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 2,
+"values": [ Vector2( 11, -23 ), Vector2( 11, -25.5 ), Vector2( 11, -28 ), Vector2( 11, -30.5 ), Vector2( 11, -33 ), Vector2( 11, -30.5 ), Vector2( 11, -28 ), Vector2( 11, -25.5 ), Vector2( 11, -23 ) ]
 }
 
 [sub_resource type="Animation" id=240]
@@ -4400,10 +4484,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -2.5 ), Vector2( 0, -5 ), Vector2( 0, -7.5 ), Vector2( 0, -10 ), Vector2( 0, -7.5 ), Vector2( 0, -5 ), Vector2( 0, -2.5 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("BodyVisualRoot/Gary:flip_h")
@@ -4568,10 +4652,10 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -11, -23 ) ]
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -11, -23 ), Vector2( -11, -25.5 ), Vector2( -11, -28 ), Vector2( -11, -30.5 ), Vector2( -11, -33 ), Vector2( -11, -30.5 ), Vector2( -11, -28 ), Vector2( -11, -25.5 ), Vector2( -11, -23 ) ]
 }
 
 [sub_resource type="Animation" id=194]
@@ -6453,8 +6537,6 @@ frame = 22
 script = ExtResource( 5 )
 depth_test_offset = Vector2( -8, 28 )
 feet_height = 10.0
-use_dithering = false
-use_dither_blending = false
 
 [node name="Poof" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
 visible = false
@@ -6483,7 +6565,6 @@ use_dither_blending = false
 [node name="AnimationTree" type="AnimationTree" parent="BodyYSort"]
 tree_root = SubResource( 37 )
 anim_player = NodePath("../AnimationPlayer")
-active = true
 parameters/playback = SubResource( 38 )
 parameters/Fall/blend_position = Vector2( 0.00385606, 0.708154 )
 parameters/Idle/blend_position = Vector2( 0.0094229, -0.00429189 )

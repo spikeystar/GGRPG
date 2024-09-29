@@ -23,6 +23,15 @@ func _ready():
 		$YSort/MiddleGround/Edgar.queue_free()
 		$Jacques_Meetup.queue_free()
 		$CollisionRoot/NPC3.queue_free()
+		$CollisionRoot/Edgar_Door/CollisionPolygon2D.disabled = false
+		
+	if EventManager.Edgar_Tea_CS:
+		$YSort/MiddleGround/Edgar.queue_free()
+		$YSort/Backarea/Fence5.queue_free()
+		$YSort/Backarea/Fence6.queue_free()
+		$YSort/Backarea/Fence7.position = Vector2(763, -775)
+		$YSort/Backarea/Fence8.position = Vector2(851, -734)
+		$CollisionRoot/PivotTown3/CollisionPolygon2D.disabled = false
 
 func _on_Jacques_Meetup_area_event():
 	EventManager.Jacques_Meetup_CS = true
@@ -150,6 +159,7 @@ func _on_Jacques_Meetup_area_event():
 	PlayerManager.freeze = true
 	
 	EdgarPlayer.play("front_hop")
+	SE.effect("Drama Jump")
 	yield(get_tree().create_timer(0.5), "timeout")
 	
 	EdgarPlayer.play("idle")
@@ -239,6 +249,7 @@ func _on_Jacques_Meetup_area_event():
 	PlayerManager.freeze = true
 	
 	EdgarPlayer.play("front_hop_f")
+	SE.effect("Drama Jump")
 	$Camera2D/Interaction/Dialogue.show()
 	$Camera2D/Interaction/Dialogue/Name/Talk.text = "I'll go on ahead and get that tea started."
 	$Camera2D/Interaction/Dialogue/Name.text = "Edgar:"
@@ -266,6 +277,7 @@ func _on_Jacques_Meetup_area_event():
 	var tween7 = create_tween()
 	tween7.tween_property(Edgar, "global_position", $Position2D6.position, 0.7)
 	yield(tween7, "finished")
+	SE.effect("Door")
 	Edgar.queue_free()
 
 	Gary.set_right()
@@ -293,13 +305,13 @@ func _on_Jacques_Meetup_area_event():
 	Jacques.queue_free()
 	yield(get_tree().create_timer(0.3), "timeout")
 	Gary.smile()
-	Music.quiet()
+	Music.pause()
 	SE.effect("Party Joined")
 	$Camera2D/Info_Window/First_Text.text = "Jacques joined your party!"
 	$Camera2D.announcement()
 	PartyStats.party_members = 2
 	yield(get_tree().create_timer(1.8), "timeout")
-	Music.loud()
+	Music.unpause()
 	Gary.anim_reset()
 	PlayerManager.freeze = false
 	PlayerManager.cutscene = false
