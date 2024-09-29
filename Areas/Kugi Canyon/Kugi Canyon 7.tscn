@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=2]
@@ -45,8 +45,6 @@
 [ext_resource path="res://Scripts/Spikes.gd" type="Script" id=43]
 [ext_resource path="res://Scripts/Rendering/DepthTestTileMap.gd" type="Script" id=44]
 [ext_resource path="res://Assets/Kugi Canyon/Saguarotel OW.png" type="Texture" id=45]
-[ext_resource path="res://Enemies/Kugi Canyon/Wander/Bramby_wander.tscn" type="PackedScene" id=46]
-[ext_resource path="res://Areas/Kugi Canyon/Kugi Canyon BA 11.tscn" type="PackedScene" id=47]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=48]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=49]
 [ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=50]
@@ -1383,6 +1381,8 @@ height = 150.0
 floor_height = 130.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
+use_transparency = true
+always_update = true
 
 [node name="CircleShadowSmall45" type="Sprite" parent="YSort/MiddleGround/Saguarotel"]
 self_modulate = Color( 1, 1, 1, 0.470588 )
@@ -1754,12 +1754,6 @@ flip_h = true
 script = ExtResource( 1 )
 depth_test_offset = Vector2( 0, 10 )
 
-[node name="Bramby" parent="YSort" instance=ExtResource( 46 )]
-position = Vector2( -211, -14 )
-target_scene = ExtResource( 47 )
-alternate = false
-miniboss = true
-
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 37 )]
@@ -1983,6 +1977,15 @@ polygon = PoolVector2Array( 228, -80, 263, -97, 284, -100, 313, -90, 329, -85, 3
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 227, -118 )
+
+[node name="Position2D3" type="Position2D" parent="."]
+position = Vector2( 149, -156 )
+
+[node name="Position2D4" type="Position2D" parent="."]
+position = Vector2( 180, -174 )
+
+[node name="Position2D5" type="Position2D" parent="."]
+position = Vector2( 251, -133 )
 
 [node name="Position2D2" type="Position2D" parent="."]
 position = Vector2( 186, -135 )

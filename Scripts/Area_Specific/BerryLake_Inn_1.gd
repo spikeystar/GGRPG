@@ -156,7 +156,7 @@ func _ready():
 		
 		JacquesPlayer.play("front_walk_f")
 		var tween3 = create_tween()
-		tween3.tween_property(Jacques, "global_position", $Position2D.position, 0.4)
+		tween3.tween_property(Jacques, "global_position", $Position2D.position, 0.7)
 		yield(tween3, "finished")
 		Jacques.queue_free()
 		

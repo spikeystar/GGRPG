@@ -21,7 +21,7 @@ func _ready():
 func _process(delta):
 	if Global.battle_ended and event:
 		EventManager.Tindrum = true
-		#after_battle()
+		event = false
 		Music.unpause()
 		SceneManager.SceneEnemies = []
 		get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(target_scene)
@@ -50,7 +50,6 @@ func _process(delta):
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
 		$Camera2D/Interaction/Dialogue.done()
 		
-		event = false
 		PlayerManager.cutscene = false
 		PlayerManager.freeze = false
 

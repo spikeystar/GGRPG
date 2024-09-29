@@ -2103,7 +2103,6 @@ position = Vector2( -23.7, 6.2 )
 polygon = PoolVector2Array( -183, -48, -185, -53, -181, -58, -173, -59, -166, -56, -158, -59, -149, -58, -144, -53, -146, -48, -149, -45, -145, -42, -146, -38, -154, -35, -159, -39, -164, -41, -169, -40, -175, -37, -181, -36, -185, -39, -185, -43, -180, -45 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 24 )]
 
@@ -2169,7 +2168,7 @@ exit_name = "Entrance"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Water"]
 position = Vector2( -60, 93 )
-polygon = PoolVector2Array( -148, 9, -182, 13, -208, 29, -176, 73, -104, 90, -90, 68, 137, -35, 169, -33, 244, -24, 287, -25, 332, -30, 448, -77, 457, -97, 499, -113, 688, -256, 547, -312, 194, -403, 175, -214, 81, -182, 53, -128, 52, -79, 74, -66 )
+polygon = PoolVector2Array( -148, 9, -182, 13, -208, 29, -176, 73, -104, 90, -90, 68, 137, -20, 170, -14, 243, -15, 288, -15, 332, -30, 448, -77, 457, -97, 499, -113, 688, -256, 547, -312, 194, -403, 175, -214, 81, -182, 45, -131, 38, -125, 36, -103, 37, -77, 61, -66 )
 
 [node name="Water2" type="Area2D" parent="CollisionRoot"]
 visible = false
