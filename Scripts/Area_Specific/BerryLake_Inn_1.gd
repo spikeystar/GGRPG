@@ -24,9 +24,9 @@ func _ready():
 		tween.tween_property(Gary.motion_root, "global_position", $Position2D.position, 1)
 		yield(tween, "finished")
 		PlayerManager.freeze = true
-		Gary.anim_reset()
+		Gary.set_right()
 		Jacques.position = Gary.motion_root.global_position
-		JacquesPlayer.play("back_walk_f")
+		JacquesPlayer.play("back_walk")
 		var tween2 = create_tween()
 		tween2.tween_property(Jacques, "global_position", $Position2D2.position, 0.5)
 		yield(tween2, "finished")
@@ -154,7 +154,7 @@ func _ready():
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
 		
-		JacquesPlayer.play("back_walk_f")
+		JacquesPlayer.play("front_walk_f")
 		var tween3 = create_tween()
 		tween3.tween_property(Jacques, "global_position", $Position2D.position, 0.4)
 		yield(tween3, "finished")

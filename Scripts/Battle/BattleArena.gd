@@ -461,9 +461,12 @@ func _on_Defend_cursor_selected():
 func _on_Flee_cursor_selected():
 	if boss_battle or event_battle:
 			SE.effect("Unable")
+			$DefenseWindow/MenuCursor.cursor_active = false
+			return
 	else:
 		SE.effect("Flee")
 		ongoing = true
+		$DefenseWindow/MenuCursor.cursor_active = false
 		if defend_show:
 			$Fighters/HUDS.hide()
 			$DefenseWindow.hide()

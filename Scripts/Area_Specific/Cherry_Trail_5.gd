@@ -32,7 +32,7 @@ func _process(delta):
 		Global.battle_ended = false
 		Global.battling = false
 		
-		Gary.anim_reset()
+		Gary.set_right()
 		$YSort/Tindrum.queue_free()
 		yield(get_tree().create_timer(1), "timeout")
 		SE.effect("Select")
@@ -70,14 +70,14 @@ func _on_Event_area_event():
 	var tween = create_tween()
 	tween.tween_property(Gary.motion_root, "global_position", $Position2D.position, 0.5)
 	yield(tween, "finished")
-	Gary.anim_reset()
+	Gary.set_right()
 	PlayerManager.cutscene = false
 	SE.effect("Drama Descend")
 	$YSort/Tindrum/BodyYSort/AnimationPlayer.play("fall")
 	var tween2 = create_tween()
 	tween2.tween_property($YSort/Tindrum, "global_position", $Position2D2.position, 1)
 	yield(tween2, "finished")
-	SE.effect("Drama Land")
+	SE.effect("Drama Thud")
 	$YSort/Tindrum/BodyYSort/AnimationPlayer.play("idle")
 	
 	yield(get_tree().create_timer(0.6), "timeout")

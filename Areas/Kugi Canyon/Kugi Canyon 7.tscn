@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=2]
@@ -59,6 +59,8 @@
 [ext_resource path="res://Scripts/Inn.gd" type="Script" id=57]
 [ext_resource path="res://Scripts/UI/Talk_Adjusting.gd" type="Script" id=58]
 [ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=59]
+[ext_resource path="res://Scripts/Area_Event.gd" type="Script" id=60]
+[ext_resource path="res://Players/Jacques/Jacques_130.tscn" type="PackedScene" id=61]
 
 [sub_resource type="StreamTexture" id=2]
 
@@ -506,6 +508,90 @@
 20/shapes = [  ]
 20/z_index = 0
 
+[sub_resource type="Animation" id=18]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/MiddleGround/Saguarotel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 294, -157 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 3.0 ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "wiggle"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/MiddleGround/Saguarotel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 294, -157 ), Vector2( 293.333, -157 ), Vector2( 292.667, -157 ), Vector2( 292, -157 ), Vector2( 292.667, -157 ), Vector2( 293.333, -157 ), Vector2( 294, -157 ), Vector2( 294.667, -157 ), Vector2( 295.333, -157 ), Vector2( 296, -157 ), Vector2( 295.333, -157 ), Vector2( 294.667, -157 ), Vector2( 294, -157 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.0 ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "wiggle2"
+length = 1.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("YSort/MiddleGround/Saguarotel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 294, -157 ), Vector2( 293.333, -157 ), Vector2( 292.667, -157 ), Vector2( 292, -157 ), Vector2( 292.667, -157 ), Vector2( 293.333, -157 ), Vector2( 294, -157 ), Vector2( 294.667, -157 ), Vector2( 295.333, -157 ), Vector2( 296, -157 ), Vector2( 295.333, -157 ), Vector2( 294.667, -157 ), Vector2( 294, -157 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer:playback_speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.0 ]
+}
+
 [node name="WorldRoot" type="Node2D"]
 script = ExtResource( 12 )
 
@@ -683,6 +769,9 @@ format = 1
 tile_data = PoolIntArray( -786430, 12, 0, -655366, 13, 0, -524285, 12, 0, -393220, 13, 0, -327679, 13, 0, -327671, 13, 0, -131068, 12, 0, 65533, 12, 0, 196601, 13, 0, 131080, 12, 0, 262138, 13, 0, 327687, 13, 0, 524284, 13, 0, 458756, 13, 0 )
 
 [node name="MiddleGround" type="Node2D" parent="YSort"]
+
+[node name="Jacques" parent="YSort/MiddleGround" instance=ExtResource( 61 )]
+position = Vector2( 151, -874 )
 
 [node name="Spike Map 3" type="TileMap" parent="YSort/MiddleGround"]
 position = Vector2( -224, -115 )
@@ -1728,6 +1817,7 @@ height = 130.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BerryLake1"]
 position = Vector2( 107, -39 )
 polygon = PoolVector2Array( 27, -45, 138, -6, 110, 4, 2, -37 )
+disabled = true
 
 [node name="KugiCanyon6" parent="." instance=ExtResource( 41 )]
 visible = false
@@ -1880,7 +1970,31 @@ exit_name = "Entrance"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes2"]
 polygon = PoolVector2Array( 3, -15, 281, -112, 293, -134, 194, -186, -34, -98, -114, -65 )
 
+[node name="Boss_Battle" type="Area2D" parent="."]
+position = Vector2( -174, -225 )
+script = ExtResource( 60 )
+height = 130.0
+cutscene = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boss_Battle"]
+visible = false
+position = Vector2( 93, -10 )
+polygon = PoolVector2Array( 228, -80, 263, -97, 284, -100, 313, -90, 329, -85, 366, -97, 474, -57, 444, -44, 472, -30, 454, -14, 432, -5, 409, -1, 377, -3, 287, -37, 248, -53, 243, -70 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 227, -118 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 186, -135 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 3.0
+anims/RESET = SubResource( 18 )
+anims/wiggle = SubResource( 19 )
+anims/wiggle2 = SubResource( 20 )
+
 [connection signal="star_options" from="SaveStar" to="Camera2D/StarOptions" method="_on_SaveStar_star_options"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="overworld" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_overworld"]
 [connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
+[connection signal="area_event" from="Boss_Battle" to="." method="_on_Boss_Battle_area_event"]

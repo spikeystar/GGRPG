@@ -186,6 +186,7 @@ func _ready():
 		yield(get_tree().create_timer(1), "timeout")
 		JacquesPlayer.play("back_idle_f")
 		Gary.animation("back_hop_f")
+		SE.effect("Drama Jump")
 		$Camera2D/Interaction/Dialogue.show()
 		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Of course! If it's the Jewel Seeds then someone has to put them back where they belong!"
 		$Camera2D/Interaction/Dialogue/Name.text = "Gary:"

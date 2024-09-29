@@ -97,6 +97,7 @@ func _input(event):
 		emit_signal("restart")
 		
 	elif Input.is_action_just_pressed("ui_select") and menu_name == "Sleep" and Party.marbles >= cost and not ongoing:
+		SE.effect("Select")
 		ongoing = true
 		Music.quiet()
 		Party.marbles = Party.marbles - cost
