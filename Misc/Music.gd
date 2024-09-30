@@ -25,6 +25,9 @@ func music():
 	if id == "Overworld":
 		active = $Overworld
 		active.play(0)
+	if id == "High_Tension":
+		active = $High_Tension
+		active.play(0)
 	is_playing = true
 	
 func switch_songs():

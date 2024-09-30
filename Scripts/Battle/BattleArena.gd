@@ -255,6 +255,7 @@ func _input(event):
 		$Enemies/EnemyInfo.hide()
 		$ItemWindow.hide()
 		$DefenseWindow.hide()
+		$DefenseWindow/MenuCursor.cursor_active = false
 		if magic_show and not window_open:
 			window_open = true
 			
@@ -281,6 +282,7 @@ func _input(event):
 		$WindowPlayer.play("item_open")
 		$Enemies/EnemyInfo.hide()
 		$DefenseWindow.hide()
+		$DefenseWindow/MenuCursor.cursor_active = false
 		$MagicWindow.hide()
 		if item_show and not window_open:
 			window_open = true
@@ -426,6 +428,7 @@ func _on_Menu_Cursor_go_to_Item():
 		$DefenseWindow/MenuCursor.defend_active = false
 		$MagicWindow/MagicWindowPanel/MenuCursor.magic_active = false
 		$DefenseWindow/MenuCursor.magic_active = false
+		$DefenseWindow/MenuCursor.cursor_active = false
 		$ItemWindow.show()
 		$WindowPlayer.play("item_open")
 		$Enemies/EnemyInfo.hide()
@@ -461,7 +464,6 @@ func _on_Defend_cursor_selected():
 func _on_Flee_cursor_selected():
 	if boss_battle or event_battle:
 			SE.effect("Unable")
-			$DefenseWindow/MenuCursor.cursor_active = false
 			return
 	else:
 		SE.effect("Flee")

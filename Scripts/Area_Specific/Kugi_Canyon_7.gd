@@ -167,7 +167,7 @@ func _on_Boss_Battle_area_event():
 	PlayerManager.freeze = true
 	
 	Music.pause()
-	BattleMusic.id = "Standard_Battle"
+	BattleMusic.id = "Miniboss_Battle"
 	BattleMusic.music()
 	Global.battling = true
 	get_tree().paused = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://NPC/NPC_MotionRoot.gd" type="Script" id=2]
@@ -50,7 +50,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 6, -29 ) ]
+"values": [ Vector2( 6, -28 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("BodyVisualRoot/NPC:flip_h")
@@ -87,6 +87,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.45 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=176]
@@ -138,7 +150,120 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.65 ]
+"values": [ 0.7 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BodyVisualRoot/NPC:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, -41 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BodyVisualRoot/NPC:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=181]
+resource_name = "flee"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/NPC:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisualRoot/NPC:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/NPC:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -8 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.45 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BodyVisualRoot/NPC:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, -30 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -5000 ) ]
 }
 
 [sub_resource type="Animation" id=178]
@@ -168,6 +293,142 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 2, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyVisualRoot/NPC:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BodyVisualRoot/NPC:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, -42 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BodyVisualRoot/NPC:flip_h")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=179]
+resource_name = "hop"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/NPC:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisualRoot/NPC:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/NPC:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -8 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.5 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BodyVisualRoot/NPC:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 4, -30 ), Vector2( 4, -33.3333 ), Vector2( 4, -36.6667 ), Vector2( 4, -40 ), Vector2( 4, -36.6667 ), Vector2( 4, -33.3333 ), Vector2( 4, -30 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=174]
@@ -234,6 +495,106 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 0.35 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("BodyVisualRoot/NPC:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 6, -28 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=180]
+resource_name = "ouch"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/NPC:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisualRoot/NPC:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 3, 3 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2.5 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BodyVisualRoot/NPC:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 4, -41 ), Vector2( 4, -44.3333 ), Vector2( 4, -47.6667 ), Vector2( 4, -51 ), Vector2( 4, -47.6667 ), Vector2( 4, -44.3333 ), Vector2( 4, -41 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("BodyVisualRoot/NPC:offset")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=177]
 resource_name = "walk"
@@ -299,6 +660,30 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector2( 4, 1 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("BodyVisualRoot/NPC:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, -30 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:offset")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [node name="Reeler" type="YSort"]
 script = ExtResource( 4 )
@@ -341,7 +726,7 @@ use_transparency = true
 [node name="BodyVisualRoot" type="Node2D" parent="BodyYSort"]
 
 [node name="NPC" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
-position = Vector2( 6, -29 )
+position = Vector2( 6, -28 )
 scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 7 )
 offset = Vector2( 0, -10 )
@@ -349,9 +734,9 @@ hframes = 3
 vframes = 3
 frame = 4
 script = ExtResource( 6 )
-alpha_clip = 0.0
-depth_test_offset = Vector2( 0, 40 )
-feet_height = 40.0
+alpha_clip = 0.01
+depth_test_offset = Vector2( 0, 53 )
+feet_height = 53.0
 height = 40.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
@@ -359,8 +744,11 @@ autoplay = "idle"
 playback_speed = 0.45
 anims/RESET = SubResource( 173 )
 anims/attack = SubResource( 176 )
+anims/flee = SubResource( 181 )
 anims/hold = SubResource( 178 )
+anims/hop = SubResource( 179 )
 anims/idle = SubResource( 174 )
+anims/ouch = SubResource( 180 )
 anims/walk = SubResource( 177 )
 
 [node name="CollidableBox" parent="." instance=ExtResource( 1 )]
