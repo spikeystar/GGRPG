@@ -5,6 +5,9 @@ onready var Gary = PlayerManager.player_instance
 onready var Jacques = $YSort/MiddleGround/Jacques
 onready var JacquesPlayer = $YSort/MiddleGround/Jacques/BodyYSort/AnimationPlayer
 
+onready var Irina = $YSort/MiddleGround/Irina
+onready var IrinaPlayer = $YSort/MiddleGround/Irina/BodyYSort/AnimationPlayer
+
 onready var Edgar = $YSort/MiddleGround/Edgar
 onready var EdgarPlayer = $YSort/MiddleGround/Edgar/BodyYSort/AnimationPlayer
 
@@ -19,7 +22,7 @@ func _ready():
 		Music.music()
 		
 	if EventManager.Jacques_Meetup_CS:
-		$YSort/MiddleGround/Jacques.queue_free()
+		$YSort/MiddleGround/Jacques.position = Vector2(5000, 5000)
 		$YSort/MiddleGround/Edgar.queue_free()
 		$Jacques_Meetup.queue_free()
 		$CollisionRoot/NPC3.queue_free()
@@ -32,6 +35,35 @@ func _ready():
 		$YSort/Backarea/Fence7.position = Vector2(763, -775)
 		$YSort/Backarea/Fence8.position = Vector2(851, -734)
 		$CollisionRoot/PivotTown3/CollisionPolygon2D.disabled = false
+		
+	if EventManager.Reeler:
+		$Irina_Meetup/CollisionPolygon2D.disabled = false
+		PlayerManager.freeze = true
+		PlayerManager.cutscene = true
+		yield(get_tree().create_timer(0.3), "timeout")
+		$Camera2D.follow_player = false
+		var og_position = $Camera2D.position
+		Irina.position = $Position2D7.position
+		IrinaPlayer.play("worry_front")
+		var tween = create_tween()
+		tween.tween_property($Camera2D, "position", $Position2D7.position, 3)
+		yield(tween, "finished")
+		
+		SE.effect("Select")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Oh, what should I do... I really need someone's help..."
+		$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		var tween2 = create_tween()
+		tween2.tween_property($Camera2D, "position", og_position, 3)
+		yield(tween2, "finished")
+		$Camera2D.follow_player = true
+		PlayerManager.freeze = false
+		PlayerManager.cutscene = false
 
 func _on_Jacques_Meetup_area_event():
 	EventManager.Jacques_Meetup_CS = true

@@ -20,7 +20,7 @@ func _input(event):
 		menu_name = ""
 		self.hide()
 		
-	if Input.is_action_just_pressed("ui_select") and star_options and menu_name == "Save":
+	if Input.is_action_just_pressed("ui_select") and star_options and menu_name == "Save" and not PlayerManager.cutscene:
 		SE.effect("Select")
 		star_options = false
 		emit_signal("save_menu")
@@ -29,7 +29,7 @@ func _input(event):
 		menu_name = ""
 		self.hide()
 		
-	if Input.is_action_just_pressed("ui_select") and star_options and menu_name == "Travel":
+	if Input.is_action_just_pressed("ui_select") and star_options and menu_name == "Travel" and not PlayerManager.cutscene:
 		SE.effect("Save Star")
 		star_options = false
 		emit_signal("overworld")

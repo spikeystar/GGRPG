@@ -14,10 +14,10 @@ var save_3 = false
 var jewel_seeds : int = 1
 
 var Tindrum = false
-var Jacques_Meetup_CS = false
-var Edgar_Tea_CS = false
+var Jacques_Meetup_CS = true
+var Edgar_Tea_CS = true
 var kugi_canyon_extra = false
 var Saguarotel_Intro = false
 var Saguarotel = false
-var Reeler = false
-var BL_Inn_CS = true
+var Reeler = true
+var BL_Inn_CS = false

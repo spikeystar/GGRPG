@@ -394,7 +394,7 @@ polygon = PoolVector2Array( 14.9997, -0.0786819, 22.9787, -4.12052, 56.062, 11.7
 position = Vector2( 14.3819, -118.077 )
 door_name = "Sleep"
 direction = Vector2( -1, -1 )
-height = 40
+height = 30
 
 [node name="PlayerSpawnFromOutsideHouse2" parent="Node2D/CollisionRoot" instance=ExtResource( 11 )]
 position = Vector2( 95.6008, 114.501 )
