@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Players/Jacques/Jacques Sprites SS.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -14,7 +14,7 @@
 [sub_resource type="CircleShape2D" id=172]
 radius = 1.0
 
-[sub_resource type="Animation" id=173]
+[sub_resource type="Animation" id=206]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("BodyVisualRoot/NPC:frame")
@@ -65,7 +65,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -74,22 +74,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.35 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=193]
+[sub_resource type="Animation" id=207]
 resource_name = "back_hop"
 length = 0.6
 tracks/0/type = "value"
@@ -129,7 +117,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, -28 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -137,35 +125,23 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 2.5 ]
+"update": 1,
+"values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:offset")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -3.33333 ), Vector2( 0, -6.66667 ), Vector2( 0, -10 ), Vector2( 0, -6.66667 ), Vector2( 0, -3.33333 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=194]
+[sub_resource type="Animation" id=208]
 resource_name = "back_hop_f"
 length = 0.6
 tracks/0/type = "value"
@@ -205,7 +181,7 @@ tracks/2/keys = {
 "values": [ Vector2( 7, -28 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -213,35 +189,23 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 2.5 ]
+"update": 1,
+"values": [ true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:offset")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -3.33333 ), Vector2( 0, -6.66667 ), Vector2( 0, -10 ), Vector2( 0, -6.66667 ), Vector2( 0, -3.33333 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=201]
+[sub_resource type="Animation" id=209]
 resource_name = "back_idle"
 length = 0.1
 loop = true
@@ -282,7 +246,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, -28 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -290,23 +254,11 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.35 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=202]
+[sub_resource type="Animation" id=210]
 resource_name = "back_idle_f"
 length = 0.1
 loop = true
@@ -347,7 +299,7 @@ tracks/2/keys = {
 "values": [ Vector2( 7, -29 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -355,23 +307,11 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.35 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=176]
+[sub_resource type="Animation" id=211]
 resource_name = "back_walk"
 length = 0.4
 loop = true
@@ -412,7 +352,7 @@ tracks/2/keys = {
 "values": [ Vector2( 0, -29 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -420,23 +360,11 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.5 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=177]
+[sub_resource type="Animation" id=212]
 resource_name = "back_walk_f"
 length = 0.4
 loop = true
@@ -477,7 +405,7 @@ tracks/2/keys = {
 "values": [ Vector2( 7, -29 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -485,23 +413,11 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.5 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=178]
+[sub_resource type="Animation" id=213]
 resource_name = "battle_ready"
 length = 0.001
 tracks/0/type = "value"
@@ -553,7 +469,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -561,23 +477,11 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.35 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=179]
+[sub_resource type="Animation" id=214]
 resource_name = "battle_ready_f"
 length = 0.001
 tracks/0/type = "value"
@@ -629,7 +533,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -637,23 +541,11 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.35 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=180]
+[sub_resource type="Animation" id=215]
 resource_name = "dead"
 length = 0.001
 tracks/0/type = "value"
@@ -705,7 +597,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -713,23 +605,11 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.35 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=181]
+[sub_resource type="Animation" id=216]
 resource_name = "dead_f"
 length = 0.001
 tracks/0/type = "value"
@@ -781,7 +661,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -789,23 +669,11 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.35 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=195]
+[sub_resource type="Animation" id=217]
 resource_name = "exhaust"
 length = 0.001
 tracks/0/type = "value"
@@ -857,7 +725,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=196]
+[sub_resource type="Animation" id=218]
 resource_name = "exhaust_f"
 length = 0.001
 tracks/0/type = "value"
@@ -909,7 +777,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=197]
+[sub_resource type="Animation" id=219]
 resource_name = "front_hop"
 length = 0.6
 tracks/0/type = "value"
@@ -949,7 +817,7 @@ tracks/2/keys = {
 "values": [ Vector2( 3, -32 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -957,35 +825,23 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 2.5 ]
+"update": 1,
+"values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:offset")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -3.33333 ), Vector2( 0, -6.66667 ), Vector2( 0, -10 ), Vector2( 0, -6.66667 ), Vector2( 0, -3.33333 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=198]
+[sub_resource type="Animation" id=220]
 resource_name = "front_hop_f"
 length = 0.6
 tracks/0/type = "value"
@@ -1025,7 +881,7 @@ tracks/2/keys = {
 "values": [ Vector2( 4, -31 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1033,35 +889,23 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 2.5 ]
+"update": 1,
+"values": [ true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:offset")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:offset")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 0, 0 ), Vector2( 0, -3.33333 ), Vector2( 0, -6.66667 ), Vector2( 0, -10 ), Vector2( 0, -6.66667 ), Vector2( 0, -3.33333 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=203]
+[sub_resource type="Animation" id=221]
 resource_name = "front_idle"
 length = 0.1
 loop = true
@@ -1102,7 +946,7 @@ tracks/2/keys = {
 "values": [ Vector2( 3, -31 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1110,23 +954,11 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.35 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=204]
+[sub_resource type="Animation" id=222]
 resource_name = "front_idle_f"
 length = 0.1
 loop = true
@@ -1167,7 +999,7 @@ tracks/2/keys = {
 "values": [ Vector2( 3, -31 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1175,23 +1007,11 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.35 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=174]
+[sub_resource type="Animation" id=223]
 resource_name = "front_walk"
 length = 0.4
 loop = true
@@ -1232,7 +1052,7 @@ tracks/2/keys = {
 "values": [ Vector2( 3, -31 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1240,23 +1060,11 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.5 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=182]
+[sub_resource type="Animation" id=224]
 resource_name = "front_walk_f"
 length = 0.4
 loop = true
@@ -1297,7 +1105,7 @@ tracks/2/keys = {
 "values": [ Vector2( 4, -31 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1305,23 +1113,11 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.5 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=199]
+[sub_resource type="Animation" id=225]
 resource_name = "hand"
 length = 0.001
 tracks/0/type = "value"
@@ -1373,7 +1169,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1382,22 +1178,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.35 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=200]
+[sub_resource type="Animation" id=226]
 resource_name = "hand_f"
 length = 0.001
 tracks/0/type = "value"
@@ -1449,7 +1233,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1458,22 +1242,138 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.35 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=183]
+[sub_resource type="Animation" id=227]
+resource_name = "shock_back"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/NPC:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 17 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/NPC:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2, -32 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyVisualRoot/NPC:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=228]
+resource_name = "shock_back_f"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/NPC:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 17 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/NPC:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 8, -34 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyVisualRoot/NPC:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=229]
 resource_name = "shock_back_jump"
 length = 0.8
 tracks/0/type = "value"
@@ -1525,7 +1425,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -2.5 ), Vector2( 0, -5 ), Vector2( 0, -7.5 ), Vector2( 0, -10 ), Vector2( 0, -7.5 ), Vector2( 0, -5 ), Vector2( 0, -2.5 ), Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1533,23 +1433,11 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 2.5 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=184]
+[sub_resource type="Animation" id=230]
 resource_name = "shock_back_jump_f"
 length = 0.8
 tracks/0/type = "value"
@@ -1601,7 +1489,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -2.5 ), Vector2( 0, -5 ), Vector2( 0, -7.5 ), Vector2( 0, -10 ), Vector2( 0, -7.5 ), Vector2( 0, -5 ), Vector2( 0, -2.5 ), Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1609,23 +1497,11 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 2.5 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=185]
+[sub_resource type="Animation" id=231]
 resource_name = "shock_front"
 length = 0.001
 tracks/0/type = "value"
@@ -1677,7 +1553,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=186]
+[sub_resource type="Animation" id=232]
 resource_name = "shock_front_f"
 length = 0.001
 tracks/0/type = "value"
@@ -1729,7 +1605,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=187]
+[sub_resource type="Animation" id=233]
 resource_name = "shock_front_jump"
 length = 0.8
 tracks/0/type = "value"
@@ -1766,7 +1642,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 7, -28 ) ]
+"values": [ Vector2( 7, -29 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("BodyVisualRoot/NPC:offset")
@@ -1781,7 +1657,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -2.5 ), Vector2( 0, -5 ), Vector2( 0, -7.5 ), Vector2( 0, -10 ), Vector2( 0, -7.5 ), Vector2( 0, -5 ), Vector2( 0, -2.5 ), Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1789,23 +1665,11 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 2.5 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=188]
+[sub_resource type="Animation" id=234]
 resource_name = "shock_front_jump_f"
 length = 0.8
 tracks/0/type = "value"
@@ -1842,7 +1706,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -28 ) ]
+"values": [ Vector2( 0, -29 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("BodyVisualRoot/NPC:offset")
@@ -1857,7 +1721,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, -2.5 ), Vector2( 0, -5 ), Vector2( 0, -7.5 ), Vector2( 0, -10 ), Vector2( 0, -7.5 ), Vector2( 0, -5 ), Vector2( 0, -2.5 ), Vector2( 0, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AnimationPlayer:playback_speed")
+tracks/4/path = NodePath("BodyVisualRoot/NPC:flip_h")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1865,23 +1729,11 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 2.5 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("BodyVisualRoot/NPC:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=189]
+[sub_resource type="Animation" id=235]
 resource_name = "suggest_back"
 length = 0.001
 tracks/0/type = "value"
@@ -1933,7 +1785,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=190]
+[sub_resource type="Animation" id=236]
 resource_name = "suggest_back_f"
 length = 0.001
 tracks/0/type = "value"
@@ -1985,7 +1837,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=191]
+[sub_resource type="Animation" id=237]
 resource_name = "suggest_front"
 length = 0.001
 tracks/0/type = "value"
@@ -2037,7 +1889,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=192]
+[sub_resource type="Animation" id=238]
 resource_name = "suggest_front_f"
 length = 0.001
 tracks/0/type = "value"
@@ -2143,38 +1995,40 @@ depth_test_offset = Vector2( -8, 28 )
 feet_height = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
-playback_speed = 0.35
-anims/RESET = SubResource( 173 )
-anims/back_hop = SubResource( 193 )
-anims/back_hop_f = SubResource( 194 )
-anims/back_idle = SubResource( 201 )
-anims/back_idle_f = SubResource( 202 )
-anims/back_walk = SubResource( 176 )
-anims/back_walk_f = SubResource( 177 )
-anims/battle_ready = SubResource( 178 )
-anims/battle_ready_f = SubResource( 179 )
-anims/dead = SubResource( 180 )
-anims/dead_f = SubResource( 181 )
-anims/exhaust = SubResource( 195 )
-anims/exhaust_f = SubResource( 196 )
-anims/front_hop = SubResource( 197 )
-anims/front_hop_f = SubResource( 198 )
-anims/front_idle = SubResource( 203 )
-anims/front_idle_f = SubResource( 204 )
-anims/front_walk = SubResource( 174 )
-anims/front_walk_f = SubResource( 182 )
-anims/hand = SubResource( 199 )
-anims/hand_f = SubResource( 200 )
-anims/shock_back_jump = SubResource( 183 )
-anims/shock_back_jump_f = SubResource( 184 )
-anims/shock_front = SubResource( 185 )
-anims/shock_front_f = SubResource( 186 )
-anims/shock_front_jump = SubResource( 187 )
-anims/shock_front_jump_f = SubResource( 188 )
-anims/suggest_back = SubResource( 189 )
-anims/suggest_back_f = SubResource( 190 )
-anims/suggest_front = SubResource( 191 )
-anims/suggest_front_f = SubResource( 192 )
+playback_speed = 2.5
+anims/RESET = SubResource( 206 )
+anims/back_hop = SubResource( 207 )
+anims/back_hop_f = SubResource( 208 )
+anims/back_idle = SubResource( 209 )
+anims/back_idle_f = SubResource( 210 )
+anims/back_walk = SubResource( 211 )
+anims/back_walk_f = SubResource( 212 )
+anims/battle_ready = SubResource( 213 )
+anims/battle_ready_f = SubResource( 214 )
+anims/dead = SubResource( 215 )
+anims/dead_f = SubResource( 216 )
+anims/exhaust = SubResource( 217 )
+anims/exhaust_f = SubResource( 218 )
+anims/front_hop = SubResource( 219 )
+anims/front_hop_f = SubResource( 220 )
+anims/front_idle = SubResource( 221 )
+anims/front_idle_f = SubResource( 222 )
+anims/front_walk = SubResource( 223 )
+anims/front_walk_f = SubResource( 224 )
+anims/hand = SubResource( 225 )
+anims/hand_f = SubResource( 226 )
+anims/shock_back = SubResource( 227 )
+anims/shock_back_f = SubResource( 228 )
+anims/shock_back_jump = SubResource( 229 )
+anims/shock_back_jump_f = SubResource( 230 )
+anims/shock_front = SubResource( 231 )
+anims/shock_front_f = SubResource( 232 )
+anims/shock_front_jump = SubResource( 233 )
+anims/shock_front_jump_f = SubResource( 234 )
+anims/suggest_back = SubResource( 235 )
+anims/suggest_back_f = SubResource( 236 )
+anims/suggest_front = SubResource( 237 )
+anims/suggest_front_f = SubResource( 238 )
 
 [node name="CollidableBox" parent="." instance=ExtResource( 7 )]
 modulate = Color( 0.988235, 0.988235, 0.992157, 1 )

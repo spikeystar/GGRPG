@@ -21,3 +21,5 @@ var Saguarotel_Intro = false
 var Saguarotel = false
 var Reeler = true
 var BL_Inn_CS = false
+var Irina_Intro_CS = false
+var Irina_Meetup_CS = true

@@ -36,7 +36,8 @@ func _ready():
 		$YSort/Backarea/Fence8.position = Vector2(851, -734)
 		$CollisionRoot/PivotTown3/CollisionPolygon2D.disabled = false
 		
-	if EventManager.Reeler:
+	if EventManager.Reeler and not EventManager.Irina_Intro_CS:
+		EventManager.Irina_Intro_CS = true
 		$Irina_Meetup/CollisionPolygon2D.disabled = false
 		PlayerManager.freeze = true
 		PlayerManager.cutscene = true
@@ -348,3 +349,472 @@ func _on_Jacques_Meetup_area_event():
 	PlayerManager.freeze = false
 	PlayerManager.cutscene = false
 	$CollisionRoot/NPC3.queue_free()
+
+
+func _on_Irina_Meetup_area_event():
+	EventManager.Irina_Meetup_CS = true
+	PlayerManager.freeze = true
+	PlayerManager.cutscene = true
+	
+	SE.effect("Drama Jump")
+	IrinaPlayer.play("front_hop")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Oh, excuse me!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	Gary.walk()
+	var tween = create_tween()
+	tween.tween_property(Gary.motion_root, "global_position", $Position2D8.position, 1)
+	yield(tween, "finished")
+	Gary.set_right()
+	Jacques.position = Gary.motion_root.position
+	JacquesPlayer.play("front_walk_f")
+	var tween2 = create_tween()
+	tween2.tween_property(Jacques, "global_position", $Position2D9.position, 0.8)
+	yield(tween2, "finished")
+	JacquesPlayer.play("back_idle_f")
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "I'm sorry this is so out of the blue, but do you have some time?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	JacquesPlayer.play("suggest_back")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Ah, that's ok. What's the problem?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	JacquesPlayer.play("back_idle_f")
+	SE.effect("Drama Jump")
+	IrinaPlayer.play("front_hop")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "I came here from Tower Town and there's been a huge disaster!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	IrinaPlayer.play("worry")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "All of the robots have suddenly started attacking everyone! I ran here to get some help."
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	IrinaPlayer.play("worry_back")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "And what's more is..."
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	SE.effect("Drama Shock")
+	IrinaPlayer.play("shock_front_jump")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "The Jewel Seeds have been scattered from the Inner Garden!!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield(get_tree().create_timer(0.4), "timeout")
+	SE.effect("Drama Land")
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	IrinaPlayer.play("front_idle")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "W-why don't you look more surprised!?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	SE.effect("Drama Jump")
+	IrinaPlayer.play("front_hop")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Did you not hear me? The Jewel Seeds are gone from the Inner Garden!!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+
+	Gary.set_left()
+	JacquesPlayer.play("back_idle")
+	yield(get_tree().create_timer(1), "timeout")
+	Gary.set_right()
+	JacquesPlayer.play("back_idle_f")
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Oh sorry, we heard you. It's just that we picked one of them up a bit ago."
+	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	IrinaPlayer.play("shock_front")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "O-one of the Jewel Seeds!?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Yeah, here we can show you!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	Gary.animation("suggest")
+	$YSort/JewelSeed.position = $Position2D10.position
+	yield(get_tree().create_timer(0.5), "timeout")
+	
+	SE.effect("Drama Shock")
+	IrinaPlayer.play("shock_front_jump")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "!!!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield(get_tree().create_timer(0.4), "timeout")
+	SE.effect("Drama Land")
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	IrinaPlayer.play("shock_front")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Oh my…!!!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "I can't believe it! It's one of the Jewel Seeds!!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	SE.effect("Drama Jump")
+	IrinaPlayer.play("front_hop")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "You're planning to take it back to the Inner Garden, aren't you?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	Gary.set_right()
+	$YSort/JewelSeed.position = Vector2(5000, 5000)
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Of course!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Oh, that's a relief to hear. It would be a disaster for them to fall into the wrong hands."
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "What were you saying about the trouble in Tower Town?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	SE.effect("Drama Jump")
+	IrinaPlayer.play("front_hop")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "That's right, I nearly forgot!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "The robot situation might not be related to the Jewel Seeds, but it's definitely suspicious..."
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "In any case, I was hoping to find some help here."
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	SE.effect("Drama Jump")
+	IrinaPlayer.play("front_hop")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "But right after I arrived there was a big landslide and now I can't even get back to Tower Town!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "But you have wings, don't you? Couldn't you just fly?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	IrinaPlayer.play("worry_back")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "..."
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "I..."
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "I don't know how to fly..."
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "You have wings but you can't fly?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	SE.effect("Drama Jump")
+	IrinaPlayer.play("cry_hop")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Yes, that's right!! I don't know how to fly!!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield(get_tree().create_timer(0.2), "timeout")
+	IrinaPlayer.play("cry")
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Oh, everything is such a mess! I'm so stressed and worried!!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	SE.effect("Drama Jump")
+	Gary.animation("back_hop_f")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Hey, hey, it's ok! This gives me an idea."
+	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "How about you come along with us to find the rest of the Jewel Seeds?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "And once the landslide is cleared away we can help you out in Tower Town!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+
+	Gary.set_left()
+	JacquesPlayer.play("back_idle")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Wait Gary..."
+	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Do you really think we can handle finding -all- of the Jewel Seeds ourselves?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Of course we can! And look, now we have some more help!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	Gary.set_right()
+	JacquesPlayer.play("back_idle_f")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "So what do you say?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	IrinaPlayer.play("worry_front")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Well... I do think it's the right thing to try and find all of the Jewel Seeds..."
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "And since it doesn't seem like we'll be getting back to Tower Town anytime soon..."
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	SE.effect("Drama Jump")
+	IrinaPlayer.play("front_hop")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Alright, I'll join you!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	JacquesPlayer.play("suggest_back")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "What is your name by the way?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	JacquesPlayer.play("back_idle_f")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "I'm Irina! It's nice to meet you!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Thanks for coming with us! We're glad to have you!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Alright, I'm on board too."
+	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	Gary.set_left()
+	JacquesPlayer.play("back_idle")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Let's go talk to Edgar before we make any other plans though, ok?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Maybe he'll know more about where the other Jewels Seeds are by now too!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	JacquesPlayer.play("back_walk")
+	var tween3 = create_tween()
+	tween3.tween_property(Jacques, "global_position", $Position2D8.position, 0.7)
+	yield(tween3, "finished")
+	Jacques.queue_free()
+	
+	IrinaPlayer.play("front_walk")
+	var tween4 = create_tween()
+	tween4.tween_property(Irina, "global_position", $Position2D8.position, 0.7)
+	yield(tween4, "finished")
+	Irina.queue_free()
+	
+	yield(get_tree().create_timer(0.3), "timeout")
+	Gary.smile()
+	Music.pause()
+	SE.effect("Party Joined")
+	$Camera2D/Info_Window/First_Text.text = "Irina joined your party!"
+	$Camera2D.announcement()
+	PartyStats.party_members = 3
+	yield(get_tree().create_timer(1.8), "timeout")
+	Music.unpause()
+	Gary.anim_reset()
+	PlayerManager.freeze = false
+	PlayerManager.cutscene = false
+	
