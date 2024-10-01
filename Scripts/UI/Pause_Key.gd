@@ -2,6 +2,9 @@ extends Sprite
 
 func _ready():
 	var key_id = $KeyPanel/KeyInventory.get_id()
+	
+	if Party.jewel_seeds == 1:
+		$Key/Seed1.show()
 
 func _process(delta):
 	var key_id = $KeyPanel/KeyInventory.get_id()

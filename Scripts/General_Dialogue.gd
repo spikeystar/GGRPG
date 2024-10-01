@@ -156,7 +156,7 @@ func Edgar():
 		talking()
 		yield(self, "talk_done")
 		done()
-	if js < 1 and EventManager.Edgar_Tea_CS:
+	if js == 0 and EventManager.Edgar_Tea_CS:
 		$Name/Talk.text = "Let me know if you find anything at the lake."
 		talking()
 		yield(self, "talk_done")
@@ -165,7 +165,15 @@ func Edgar():
 		yield(self, "talk_done")
 		done()
 		alternate = true
-
+	if js == 1 and EventManager.Edgar_Check_In_CS:
+		$Name/Talk.text = "I will be rooting for you all!"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "I hope the rest of your journey goes well."
+		talking()
+		yield(self, "talk_done")
+		done()
+		
 func Henry():
 	if js < 2 and not alternate:
 		$Name/Talk.text = "I've been working on all the fences around town."

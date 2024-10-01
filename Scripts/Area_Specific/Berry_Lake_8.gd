@@ -147,6 +147,7 @@ func _process(delta):
 		yield(tween6, "finished")
 		Jacques.queue_free()
 		
+		Party.jewel_seeds = 1
 		PlayerManager.freeze = false
 		PlayerManager.cutscene = false
 

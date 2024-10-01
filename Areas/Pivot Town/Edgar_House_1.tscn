@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Assets/General/Backgrounds/Inside BCKGD.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=2]
@@ -62,6 +62,11 @@
 [ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=60]
 [ext_resource path="res://Assets/Pivot Town/End Table.png" type="Texture" id=61]
 [ext_resource path="res://Players/Jacques/Jacques.tscn" type="PackedScene" id=62]
+[ext_resource path="res://Assets/General/Jewel_Seeds/Pink_Seed.tscn" type="PackedScene" id=63]
+[ext_resource path="res://Players/Irina/Irina.tscn" type="PackedScene" id=64]
+[ext_resource path="res://UI/Pause/Pause Map.png" type="Texture" id=65]
+[ext_resource path="res://Scripts/UI/Blurb.gd" type="Script" id=66]
+[ext_resource path="res://UI/Spikey! Text.png" type="Texture" id=67]
 
 [sub_resource type="TileSet" id=1]
 0/name = "wood tile a.png 0"
@@ -130,6 +135,9 @@ script = ExtResource( 15 )
 
 [node name="Node2D" type="Node2D" parent="."]
 rotation = 0.00523599
+
+[node name="JewelSeed" parent="Node2D" instance=ExtResource( 63 )]
+position = Vector2( 242.169, -350.273 )
 
 [node name="YellowRugA" type="Sprite" parent="Node2D"]
 modulate = Color( 1, 0.996078, 1, 1 )
@@ -705,6 +713,9 @@ scale = Vector2( 1.63298, 1.2507 )
 z_index = -2
 texture = ExtResource( 59 )
 
+[node name="Irina" parent="Node2D" instance=ExtResource( 64 )]
+position = Vector2( 171.317, -321.901 )
+
 [node name="Jacques" parent="Node2D" instance=ExtResource( 62 )]
 position = Vector2( 136.375, 71.2869 )
 rotation = -0.00523599
@@ -806,6 +817,70 @@ rect_scale = Vector2( 1, 1.05 )
 script = ExtResource( 14 )
 menu_parent_path = NodePath("../VBoxContainer")
 cursor_offset = Vector2( -21, 0 )
+
+[node name="Blurb" type="Sprite" parent="Camera2D"]
+visible = false
+position = Vector2( 0, -19 )
+scale = Vector2( 1, 0.85 )
+texture = ExtResource( 65 )
+script = ExtResource( 66 )
+
+[node name="Label" type="Label" parent="Camera2D/Blurb"]
+anchor_right = 0.01
+margin_left = -142.003
+margin_top = -137.622
+margin_right = 129.0
+margin_bottom = -104.622
+custom_fonts/font = ExtResource( 19 )
+text = "Thank you for playing the Gary Goat RPG! Demo"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="Camera2D/Blurb"]
+anchor_right = 0.01
+margin_left = -141.003
+margin_top = -83.5048
+margin_right = 130.0
+margin_bottom = -32.5048
+custom_fonts/font = ExtResource( 19 )
+text = "Follow me for updates on the full game release
+(Goal is end of 2025)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Label3" type="Label" parent="Camera2D/Blurb"]
+anchor_right = 0.01
+margin_left = -162.003
+margin_top = -14.093
+margin_right = 154.0
+margin_bottom = 54.907
+custom_fonts/font = ExtResource( 19 )
+text = "Special thanks:
+Antonin Francoeur - Coding support
+Giwayume - Coding support
+"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Spikey" type="Sprite" parent="Camera2D/Blurb"]
+position = Vector2( -2.00346, 96.4952 )
+scale = Vector2( 0.8, 0.95 )
+texture = ExtResource( 67 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 179, 73 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 142, 53 )
+
+[node name="Position2D3" type="Position2D" parent="."]
+position = Vector2( 216, 90 )
+
+[node name="Position2D4" type="Position2D" parent="."]
+position = Vector2( 202, -9 )
 
 [connection signal="body_exited" from="Node2D/CollisionRoot/NPC" to="Node2D/CollisionRoot/NPC" method="_on_NPC_body_exited"]
 [connection signal="general_dialogue" from="Node2D/CollisionRoot/NPC" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]

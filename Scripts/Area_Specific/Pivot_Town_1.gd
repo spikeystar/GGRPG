@@ -38,6 +38,7 @@ func _ready():
 		
 	if EventManager.Reeler and not EventManager.Irina_Intro_CS:
 		EventManager.Irina_Intro_CS = true
+		$CollisionRoot/Edgar_Door/CollisionPolygon2D.disabled = true
 		$Irina_Meetup/CollisionPolygon2D.disabled = false
 		PlayerManager.freeze = true
 		PlayerManager.cutscene = true
@@ -817,4 +818,5 @@ func _on_Irina_Meetup_area_event():
 	Gary.anim_reset()
 	PlayerManager.freeze = false
 	PlayerManager.cutscene = false
+	$CollisionRoot/Edgar_Door/CollisionPolygon2D.disabled = false
 	
