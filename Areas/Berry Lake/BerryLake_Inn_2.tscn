@@ -367,7 +367,6 @@ preview_collision_box = false
 always_update = true
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
-visible = false
 position = Vector2( 3.99995, -0.0209439 )
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 7 )]
@@ -391,7 +390,7 @@ position = Vector2( 117.082, 15.3872 )
 polygon = PoolVector2Array( 14.9997, -0.0786819, 22.9787, -4.12052, 56.062, 11.7065, 50.0882, 16.7378 )
 
 [node name="Sleep" parent="Node2D/CollisionRoot" instance=ExtResource( 11 )]
-position = Vector2( 14.3819, -118.077 )
+position = Vector2( 15.4291, -109.082 )
 door_name = "Sleep"
 direction = Vector2( -1, -1 )
 height = 30

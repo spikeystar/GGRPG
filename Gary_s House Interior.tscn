@@ -154,7 +154,6 @@ visible = false
 position = Vector2( 19, -77 )
 z_index = 1
 frames = SubResource( 174 )
-frame = 1
 playing = true
 
 [node name="MatA" type="Sprite" parent="Node2D/YSort"]
@@ -281,12 +280,12 @@ position = Vector2( -13, 10 )
 polygon = PoolVector2Array( -28, -23, 2, -36, 63, -6, 32, 6 )
 
 [node name="PlayerSpawnDefault" parent="Node2D/CollisionRoot" instance=ExtResource( 17 )]
-position = Vector2( 8.73284, -51.0464 )
+position = Vector2( 24.7117, -55.1301 )
 height = 24
 
 [node name="SleepSpawn" parent="Node2D/CollisionRoot" instance=ExtResource( 17 )]
 visible = false
-position = Vector2( 20.6908, -59.1091 )
+position = Vector2( 29.8111, -36.1566 )
 door_name = "Sleep"
 height = 24
 

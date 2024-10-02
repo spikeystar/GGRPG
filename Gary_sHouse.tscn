@@ -561,7 +561,6 @@ scale_amount_random = 0.2
 color_ramp = SubResource( 1 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 13 )]
 
@@ -611,8 +610,7 @@ polygon = PoolVector2Array( -33, 16, 37, -13, 29, -24, -52, 9 )
 disabled = true
 
 [node name="PlayerSpawnDefault" parent="CollisionRoot" instance=ExtResource( 19 )]
-position = Vector2( -59, -31 )
-height = 96
+position = Vector2( -319, 234 )
 
 [node name="PlayerSpawnFromInsideHouse" parent="CollisionRoot" instance=ExtResource( 19 )]
 position = Vector2( -7, -52 )
@@ -842,6 +840,9 @@ polygon = PoolVector2Array( 328, 33, 369, 28, 409, 23, 444, 13, 461, 3, 488, -39
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( -128, 277 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 40, -146 )
 
 [connection signal="overworld" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_overworld"]
 [connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
