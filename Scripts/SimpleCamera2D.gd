@@ -223,3 +223,5 @@ func announcement():
 	tween.tween_property($Info_Window, "modulate:a", 0, 0.2)
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Info_Window.hide()
+
+

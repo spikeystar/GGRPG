@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=73 format=2]
 
 [ext_resource path="res://Assets/General/Backgrounds/Inside BCKGD.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=2]
@@ -128,6 +128,36 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 10, 11, 12, 10, 11, 12, 11, 10, 11, 12 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D/Blurb:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 0.65 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D/Blurb:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.8, 0.65 ), Vector2( 1, 0.85 ) ]
 }
 
 [node name="WorldRoot" type="Node2D"]
@@ -821,7 +851,7 @@ cursor_offset = Vector2( -21, 0 )
 [node name="Blurb" type="Sprite" parent="Camera2D"]
 visible = false
 position = Vector2( 0, -19 )
-scale = Vector2( 1, 0.85 )
+scale = Vector2( 0.8, 0.65 )
 texture = ExtResource( 65 )
 script = ExtResource( 66 )
 
@@ -881,6 +911,11 @@ position = Vector2( 216, 90 )
 
 [node name="Position2D4" type="Position2D" parent="."]
 position = Vector2( 202, -9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.8
+anims/RESET = SubResource( 8 )
+anims/open = SubResource( 9 )
 
 [connection signal="body_exited" from="Node2D/CollisionRoot/NPC" to="Node2D/CollisionRoot/NPC" method="_on_NPC_body_exited"]
 [connection signal="general_dialogue" from="Node2D/CollisionRoot/NPC" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]

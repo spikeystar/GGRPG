@@ -29,7 +29,7 @@ func _input(event):
 		menu_name = ""
 		self.hide()
 		
-	if Input.is_action_just_pressed("ui_select") and star_options and menu_name == "Travel" and not PlayerManager.cutscene:
+	if Input.is_action_just_pressed("ui_select") and star_options and menu_name == "Travel" and not PlayerManager.cutscene and EventManager.first_save:
 		SE.effect("Save Star")
 		star_options = false
 		emit_signal("overworld")
@@ -37,6 +37,11 @@ func _input(event):
 		$MenuCursor.able = false
 		menu_name = ""
 		self.hide()
+		
+	if Input.is_action_just_pressed("ui_select") and star_options and menu_name == "Travel" and not PlayerManager.cutscene and not EventManager.first_save:
+		SE.silence("Select")
+		SE.effect("Unable")
+		return
 
 func _on_SaveStar_star_options():
 	$MenuCursor.cursor_index = 0

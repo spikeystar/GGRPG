@@ -96,7 +96,7 @@ func _physics_process(delta):
 		
 		
 	if sleep:
-		shadow_sprite.offset.y = -1000
+		shadow_sprite.offset.x = -500
 		anim_tree.active = false
 		anim_player.playback_speed = 0.3
 		anim_player.play("sleep")
@@ -116,7 +116,7 @@ func _physics_process(delta):
 		anim_player.play("drown")
 		
 	if not sleep:
-		shadow_sprite.offset.y = 0
+		shadow_sprite.offset.x = 0
 		
 	if loading:
 		body_sprite.offset.y = -100000
@@ -230,8 +230,8 @@ func walk_right_f():
 func walk_left():
 	anim_tree.active = true
 	anim_tree.get("parameters/playback").travel("Walk")
-	anim_tree.set("parameters/Walk/blend_position", Vector2(1, -1))
-	motion_root.last_dir = Vector2(1, 1)
+	anim_tree.set("parameters/Walk/blend_position", Vector2(1, 1))
+	motion_root.last_dir = Vector2(1, -1)
 	
 func animation(var name: String):
 	anim_tree.active = false

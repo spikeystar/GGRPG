@@ -3,8 +3,12 @@ extends Node
 func silence(id : String):
 	if id == "Move Between":
 		$Move_Between.volume_db = -80
-		yield(get_tree().create_timer(0.1), "timeout")
-		$Move_Between.volume_db = 0
+		yield(get_tree().create_timer(0.2), "timeout")
+		$Move_Between.volume_db = 1
+	if id == "Select":
+		$Select.volume_db = -80
+		yield(get_tree().create_timer(0.3), "timeout")
+		$Select.volume_db = -1.5
 
 func effect(id : String):
 	if id == "Item_Get":

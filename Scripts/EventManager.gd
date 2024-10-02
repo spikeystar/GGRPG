@@ -13,6 +13,7 @@ var save_3 = false
 
 var jewel_seeds : int = 1
 
+var Michael_Meetup_CS = false
 var Tindrum = false
 var Jacques_Meetup_CS = true
 var Edgar_Tea_CS = true

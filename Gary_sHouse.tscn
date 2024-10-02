@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=2]
@@ -54,6 +54,9 @@
 [ext_resource path="res://Scripts/UI/StarOptionsCursor.gd" type="Script" id=52]
 [ext_resource path="res://UI/Interaction Window.png" type="Texture" id=53]
 [ext_resource path="res://Scripts/Repeat_Event.gd" type="Script" id=54]
+[ext_resource path="res://Scripts/UI/TutorialOptions.gd" type="Script" id=55]
+[ext_resource path="res://Scripts/UI/TutorialCursor.gd" type="Script" id=56]
+[ext_resource path="res://NPC/Michael.tscn" type="PackedScene" id=57]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.059633, 0.807339, 0.981651, 1 )
@@ -65,8 +68,12 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
+target_scene = "res://Gary_s House Interior.tscn"
 
 [node name="YSort" type="YSort" parent="."]
+
+[node name="Michael" parent="YSort" instance=ExtResource( 57 )]
+position = Vector2( -87, 250 )
 
 [node name="SaveStar" type="Sprite" parent="YSort"]
 modulate = Color( 1, 0.980392, 0.980392, 1 )
@@ -79,8 +86,8 @@ texture = ExtResource( 38 )
 z_index = -20
 
 [node name="BlueBckgd2" type="Sprite" parent="YSort/Background"]
-position = Vector2( -72, 46 )
-scale = Vector2( 1.68875, 1.17025 )
+position = Vector2( 9, -92 )
+scale = Vector2( 1.94138, 1.42813 )
 texture = ExtResource( 22 )
 
 [node name="Plant12" type="Sprite" parent="YSort/Background"]
@@ -624,7 +631,7 @@ door_name = "Gary's House"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
-position = Vector2( 74, -131 )
+position = Vector2( 22, -180 )
 z_index = 4096
 current = true
 script = ExtResource( 47 )
@@ -735,6 +742,54 @@ script = ExtResource( 52 )
 menu_parent_path = NodePath("../VBoxContainer")
 cursor_offset = Vector2( -9, 3 )
 
+[node name="TutorialOptions" type="Sprite" parent="Camera2D"]
+visible = false
+position = Vector2( 226, 201 )
+scale = Vector2( 1.05, 1 )
+texture = ExtResource( 53 )
+script = ExtResource( 55 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/TutorialOptions"]
+margin_left = -41.9048
+margin_top = -22.0
+margin_right = 41.0952
+margin_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1, 1.05 )
+custom_constants/separation = 10
+
+[node name="Yes" type="Label" parent="Camera2D/TutorialOptions/VBoxContainer"]
+margin_right = 83.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 43 )
+text = "Yes"
+align = 1
+autowrap = true
+script = ExtResource( 49 )
+
+[node name="No" type="Label" parent="Camera2D/TutorialOptions/VBoxContainer"]
+margin_top = 25.0
+margin_right = 83.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 43 )
+text = "No"
+align = 1
+autowrap = true
+script = ExtResource( 49 )
+
+[node name="MenuCursor" parent="Camera2D/TutorialOptions" instance=ExtResource( 48 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -38.4623
+margin_top = 52.0832
+margin_right = 42.5377
+margin_bottom = 77.0832
+rect_scale = Vector2( 1, 1.05 )
+script = ExtResource( 56 )
+menu_parent_path = NodePath("../VBoxContainer")
+cursor_offset = Vector2( -37, 3 )
+
 [node name="Item_Get" type="Area2D" parent="."]
 script = ExtResource( 9 )
 height = 96.0
@@ -749,7 +804,7 @@ script = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SaveStarIntro"]
 position = Vector2( -518, 111 )
-polygon = PoolVector2Array( -110, -18, -58, -51, 59, -72, 127, -64, 128, -32, 84, 8, 11, 48, -63, 40, -106, 35 )
+polygon = PoolVector2Array( -110, -18, -58, -51, 59, -72, 85, -60, 93, -31, 60, -2, -14, 31, -63, 40, -106, 35 )
 
 [node name="SaveStarIntro2" type="Area2D" parent="."]
 position = Vector2( 520, 251 )
@@ -758,6 +813,14 @@ script = ExtResource( 54 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SaveStarIntro2"]
 position = Vector2( -518, 111 )
 polygon = PoolVector2Array( -110, -18, -58, -51, -9, -65, 50, -24, 36, -2, -14, 12, -80, -3, -97, -6 )
+
+[node name="Michael_Stall" type="Area2D" parent="."]
+position = Vector2( 60, 52 )
+script = ExtResource( 54 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Michael_Stall"]
+position = Vector2( -518, 111 )
+polygon = PoolVector2Array( -127, -15, -58, -51, -9, -65, 28, -120, 80, -127, 124, -77, 42, -8, -105, 38, -114, 6 )
 
 [node name="SaveStar" type="Area2D" parent="."]
 position = Vector2( -297, 108 )
@@ -768,9 +831,25 @@ position = Vector2( -234, -25 )
 scale = Vector2( 0.646507, 0.714489 )
 polygon = PoolVector2Array( -17, -13, 0, -7, 21, -13, 17, -2, 30, 5, 11, 6, 0, 16, -9, 8, -29, 5, -17, -1 )
 
+[node name="Michael_Meetup" type="Area2D" parent="."]
+position = Vector2( -326, 202 )
+script = ExtResource( 3 )
+cutscene = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Michael_Meetup"]
+position = Vector2( -233, 39 )
+polygon = PoolVector2Array( 328, 33, 369, 28, 409, 23, 444, 13, 461, 3, 488, -39, 515, -31, 573, 6, 561, 47, 510, 67, 437, 109, 366, 112, 308, 98, 294, 66 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -128, 277 )
+
 [connection signal="overworld" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_overworld"]
 [connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
+[connection signal="no" from="Camera2D/TutorialOptions" to="." method="_on_TutorialOptions_no"]
+[connection signal="yes" from="Camera2D/TutorialOptions" to="." method="_on_TutorialOptions_yes"]
 [connection signal="item_get" from="Item_Get" to="Camera2D" method="_on_Item_Get_item_get"]
 [connection signal="area_event" from="SaveStarIntro" to="Camera2D/Interaction/Dialogue" method="_on_SaveStarIntro_area_event"]
 [connection signal="area_event" from="SaveStarIntro2" to="Camera2D/Interaction/Dialogue" method="_on_SaveStarIntro2_area_event"]
+[connection signal="area_event" from="Michael_Stall" to="Camera2D/Interaction/Dialogue" method="_on_Michael_Stall_area_event"]
 [connection signal="star_options" from="SaveStar" to="Camera2D/StarOptions" method="_on_SaveStar_star_options"]
+[connection signal="area_event" from="Michael_Meetup" to="." method="_on_Michael_Meetup_area_event"]

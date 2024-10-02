@@ -33,7 +33,7 @@ func _ready():
 		PlayerManager.cutscene = true
 		Gary.walk_right()
 		var tween = create_tween()
-		tween.tween_property(Gary.motion_root, "global_position", $Position2D.position, 2)
+		tween.tween_property(Gary.motion_root, "global_position", $Position2D.position, 1.7)
 		yield(tween, "finished")
 		PlayerManager.freeze = true
 		Gary.set_right()
@@ -60,6 +60,8 @@ func _ready():
 		
 		Gary.animation("suggest")
 		$Node2D/JewelSeed.position = $Position2D4.position
+		
+		yield(get_tree().create_timer(0.5), "timeout")
 		EdgarPlayer.play("front_hop")
 		SE.effect("Drama Jump")
 		$Camera2D/Interaction/Dialogue.show()
@@ -133,7 +135,7 @@ func _ready():
 		
 		JacquesPlayer.play("suggest_back")
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Yeah, we were just talking about bit ago..."
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Yeah, we were just talking about it a bit ago..."
 		$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
@@ -222,6 +224,8 @@ func _ready():
 		PlayerManager.freeze = true
 		
 		$Camera2D/Blurb.show()
+		$AnimationPlayer.play("open")
+		SE.effect("Menu Open")
 		yield($Camera2D/Blurb, "done")
 		
 		$Camera2D/Interaction/Dialogue.show()

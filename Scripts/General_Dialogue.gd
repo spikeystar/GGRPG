@@ -9,6 +9,8 @@ var length : int
 var alternate = false
 var js = Party.jewel_seeds
 
+onready var Gary = PlayerManager.player_instance
+
 func _on_NPC_general_dialogue():
 	npc_name = SceneManager.npc_name
 	show()
@@ -222,4 +224,19 @@ func _on_SaveStarIntro2_area_event():
 		done()
 
 
-
+func _on_Michael_Stall_area_event():
+	show()
+	$Name.text = "Talk to Michael first!"
+	$Name/Talk.text = ""
+	talking()
+	yield(self, "talk_done")
+	done()
+	
+	PlayerManager.freeze = true
+	PlayerManager.cutscene = true
+	Gary.walk_left()
+	var tween = create_tween()
+	tween.tween_property(Gary.motion_root, "global_position", Vector2(-379, 175), 0.8)
+	yield(tween, "finished")
+	PlayerManager.freeze = false
+	PlayerManager.cutscene = false
