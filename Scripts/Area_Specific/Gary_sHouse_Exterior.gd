@@ -36,6 +36,20 @@ func _ready():
 		#Music.id = "Cherry_Trail"
 		Music.music()
 		
+	yield(get_tree().create_timer(1), "timeout")
+	Music.pause()
+	BattleMusic.id = "Standard_Battle"
+	BattleMusic.music()
+	Global.battling = true
+	get_tree().paused = true
+	var transition2 = TransitionPlayer2.instance()
+	get_tree().get_root().add_child(transition2)
+	transition2.transition()
+	yield(get_tree().create_timer(0.9), "timeout")
+	transition2.queue_free()
+	get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(tutorial_scene)
+		
+		
 	if EventManager.new_file:
 		PlayerManager.freeze = true
 		PlayerManager.cutscene = true

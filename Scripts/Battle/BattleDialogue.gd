@@ -7,6 +7,8 @@ signal text_ready
 signal talk_done
 signal section_done
 
+var section_ready = false
+
 func tween_go():
 	length = $Name/Talk.text.length()
 	if length <= 25:
@@ -33,6 +35,11 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_select") and cursor_ready:
 		SE.effect("Select")
 		emit_signal("text_ready")
+		
+	if Input.is_action_just_pressed("ui_select") and section_ready:
+		SE.effect("Select")
+		emit_signal("section_done")
+		section_ready = false
 	
 func window_show():
 	show()
@@ -70,7 +77,8 @@ func Tutorial_1():
 	talking()
 	yield(self, "talk_done")
 	window_hide()
-	emit_signal("section_done")
+	section_ready = true
+	
 	
 func Tutorial_2():
 	SE.effect("Select")
@@ -82,16 +90,15 @@ func Tutorial_2():
 	#window_hide()
 	
 	#window_show()
-	$Name/Talk.text = "This will be more helpful once your party has grown!"
+	$Name/Talk.text = "That will be more helpful once your party has grown!"
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "First, let’s Attack by pressing the “Right Arrow” to use the Diamond button."
+	$Name/Talk.text = "First, let's Attack by pressing the (Right Arrow) to use the Diamond button."
 	talking()
 	yield(self, "talk_done")
-	
 	window_hide()
-	emit_signal("section_done")
+	section_ready = true
 	
 func Tutorial_3():
 	SE.effect("Select")
@@ -102,7 +109,7 @@ func Tutorial_3():
 	#window_hide()
 	
 	#window_show()
-	$Name/Talk.text = "If you press the “Shift” button with the correct timing while attacking you'll do extra damage!"
+	$Name/Talk.text = "If you press the (Shift) button with the correct timing while attacking you'll do extra damage!"
 	talking()
 	yield(self, "talk_done")
 	
@@ -117,9 +124,8 @@ func Tutorial_3():
 	$Name/Talk.text = "Give it a try by pressing (Shift) now to start the attack!"
 	talking()
 	yield(self, "talk_done")
-	
 	window_hide()
-	emit_signal("section_done")
+	section_ready = true
 
 func Tutorial_4():
 	SE.effect("Select")
@@ -145,4 +151,141 @@ func Tutorial_4():
 	yield(self, "talk_done")
 	
 	window_hide()
-	emit_signal("section_done")
+	section_ready = true
+
+func Tutorial_5():
+	SE.effect("Select")
+	window_show()
+	$Name/Talk.text = "Now, let's talk about typing."
+	talking()
+	yield(self, "talk_done")
+	
+	SE.effect("Menu Open")
+	$Typing.show()
+	$Name/Talk.text = "There are 5 types."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "Water & Fire and Air & Earth are paired types, meaning they do 1.5X damage to the other type."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "If you use magic with a type the same as the enemy you are attacking you will do 0.5X damage."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "All party members are Neutral, but in the future you might see moves or items that will change your typing."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "You can use this to your advantage!"
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "When you are the same type as a move, that move will be powered up by 20%."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "When you are the same type as a move you are also immune to any secondary effects from those moves."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "You can see what type an enemy is by looking under its name in the info window."
+	talking()
+	yield(self, "talk_done")
+	SE.effect("Menu Open")
+	$Typing.hide()
+	
+	$Name/Talk.text = "You're running a bit low on SP now."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "Let's try using an item now to fix that."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "Let's try using an item now to fix that."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "Go to the Clover button by using the (Up Arrow) and then use the Pretty Gem."
+	talking()
+	yield(self, "talk_done")
+	
+	window_hide()
+	section_ready = true
+
+func Tutorial_6():
+	SE.effect("Select")
+	window_show()
+	$Name/Talk.text = "You can only have 10 items on you at a time."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "If you get items when you're at max capacity, they'll be sent to your Storage which can be accessed at any item store."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "Items can also be helpful for dealing with statuses. Here's a list of them."
+	talking()
+	yield(self, "talk_done")
+	
+	SE.effect("Menu Open")
+	$Statuses.show()
+	
+	$Name/Talk.text = "All statuses last for 3 turns, except Stun which lasts for 1 turn."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "Some statuses are good like buffs, which increase your stats and Whammy! chance."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "A Whammy! is when you get really lucky and your attack does 2X damage."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "Other statuses like Wimpy or Anxious can make battle pretty difficult."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "You can see what statuses you have by looking at your fighter's health bar in the top left corner."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "You'll be able to afflict some statuses on enemies too though, so strategize wisely!"
+	talking()
+	yield(self, "talk_done")
+	
+	SE.effect("Menu Open")
+	$Statuses.hide()
+	
+	$Name/Talk.text = "Finally, let's go over what you can do with the Spade button. Use the (Down Arrow) to get there."
+	talking()
+	yield(self, "talk_done")
+	
+	window_hide()
+	section_ready = true
+	
+func Tutorial_7():
+	SE.effect("Select")
+	window_show()
+	$Name/Talk.text = "Defend will increase your defense by 20% for that turn."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "Flee let's you run away from battle- but you'll lose some of your marbles!"
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "Alright, we've gone over the basics."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "Go ahead and select Flee and we'll wrap this up!"
+	talking()
+	yield(self, "talk_done")
+	
+	window_hide()
+	section_ready = true
+	

@@ -39,7 +39,7 @@ var dizzy = false
 var item_stolen = false
 var new_spell = false
 
-var tutorial_1 = true
+var tutorial_1 = false
 var tutorial_2 = false
 var tutorial_3 = false
 var tutorial_4 = false
@@ -104,6 +104,7 @@ func _ready():
 	if tutorial:
 		$BattleDialogue.Tutorial_1()
 		yield($BattleDialogue, "section_done")
+		yield(get_tree().create_timer(0.5), "timeout")
 		tutorial_1 = true
 	#player_instance.queue_free()
 
@@ -135,6 +136,24 @@ func _on_Fighters_fighters_active():
 		
 		if $Fighters/HUDS.modulate.a == 0:
 			$Fighters/HUDS.showing()
+			
+		if tutorial and tutorial_3:
+			tutorial_3 = false
+			$BattleDialogue.Tutorial_4()
+			yield($BattleDialogue, "section_done")
+			tutorial_4 = true
+			
+		if tutorial and tutorial_5:
+			tutorial_5 = false
+			$BattleDialogue.Tutorial_5()
+			yield($BattleDialogue, "section_done")
+			tutorial_6 = true
+			
+		if tutorial and tutorial_7:
+			tutorial_7 = false
+			$BattleDialogue.Tutorial_6()
+			yield($BattleDialogue, "section_done")
+			tutorial_8 = true
 		
 func _on_Fighters_BB_move():
 	var BB_position = $Fighters.get_BB_position()
@@ -381,14 +400,8 @@ func _input(event):
 ##### RETURN BUTTON END ########
 
 ##### TUTORIAL ########
-	if (Input.is_action_just_pressed("ui_select")) and tutorial and tutorial_1:
-		$BattleDialogue.Tutorial_2()
-		yield($BattleDialogue, "section_done")
-		tutorial_1 = false
-		tutorial_2 = true
 
-	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and tutorial_2:
-		SE.effect("Select")
+	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and tutorial_1 or not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and tutorial_4 or not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and tutorial_6 or not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and tutorial_8:
 		$BattleButtons.show()
 		$BattleButtons/AttackX.hide()
 		$BattleButtons/MagicX.hide()
@@ -405,6 +418,11 @@ func _input(event):
 			$BattleButtons/ItemX.show()
 		yield(get_tree().create_timer(0.1), "timeout")
 		BB_active = true
+		
+		tutorial_1 = false
+		$BattleDialogue.Tutorial_2()
+		yield($BattleDialogue, "section_done")
+		tutorial_2 = true
 
 	if (Input.is_action_just_pressed("ui_right")) and tutorial and BB_active and not attack_show and not ongoing and not wimpy and tutorial_2:
 		SE.effect("Move Between")
@@ -429,12 +447,25 @@ func _input(event):
 		if attack_show and not window_open:
 			window_open = true
 			
+		#yield(get_tree().create_timer(0.2), "timeout")
 		$BattleDialogue.Tutorial_3()
 		yield($BattleDialogue, "section_done")
 		tutorial_2 = false
+		tutorial_3 = true
 		$Enemies.tutorial_wait = false
 		
-	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show and not dizzy and tutorial and tutorial_3:
+	if (Input.is_action_just_pressed("ui_select")) and BB_active and attack_show and not fighter_turn_used and not ongoing and tutorial_3:
+		SE.effect("Select")
+		$BattleButtons/DiamondB.show()
+		$BattleButtons.hide()
+		$Enemies/EnemyInfo.hide()
+		BB_active = false
+		attack_show = false
+		window_open = false
+		attack_ended = false
+		emit_signal("attack_chosen")
+		
+	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show and not dizzy and tutorial and tutorial_4:
 		SE.effect("Move Between")
 		magic_show = true
 		item_halt = true
@@ -459,8 +490,66 @@ func _input(event):
 		$DefenseWindow/MenuCursor.cursor_active = false
 		if magic_show and not window_open:
 			window_open = true
+		$Enemies.tutorial_wait = false
+		tutorial_4 = false
+		tutorial_5 = true
 		
+	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt and not item_stolen and tutorial_6:
+		SE.effect("Move Between")
+		item_show = true
+		attack_show = false
+		defend_show = false
+		magic_show = false
+		emit_signal("index_resetzero")
+		emit_signal("hide_enemy_cursor")
+		emit_signal("item_active")
+		emit_signal("magic_inactive")
+		emit_signal("attack_inactive")
+		emit_signal("defend_inactive")
+		$BattleButtons/CloverB.hide()
+		$BattleButtons/SpadeB.show()
+		$BattleButtons/StarB.show()
+		$BattleButtons/DiamondB.show()
+		$ItemWindow.show()
+		$WindowPlayer.play("item_open")
+		$Enemies/EnemyInfo.hide()
+		$DefenseWindow.hide()
+		$DefenseWindow/MenuCursor.cursor_active = false
+		$MagicWindow.hide()
+		if item_show and not window_open:
+			window_open = true
+			
+		tutorial_6 = false
+		tutorial_7 = true
 		
+	if (Input.is_action_just_pressed("ui_down")) and BB_active and not defend_show and not magic_show and not item_show and not enemy_selecting and tutorial_8:
+		SE.effect("Move Between")
+		defend_show = true
+		attack_show = false
+		magic_show = false
+		item_show = false
+		item_halt = true
+		$BattleButtons/SpadeB.hide()
+		$BattleButtons/DiamondB.show()
+		$BattleButtons/CloverB.show()
+		$BattleButtons/StarB.show()
+		$DefenseWindow.show()
+		$WindowPlayer.play("defense_open")
+		$Enemies/EnemyInfo.hide()
+		emit_signal("hide_enemy_cursor")
+		emit_signal("index_reset")
+		emit_signal("item_inactive")
+		emit_signal("attack_inactive")
+		emit_signal("magic_inactive")
+		emit_signal("defend_active")
+		$MagicWindow/MagicWindowPanel/MenuCursor.magic_active = false
+		if defend_show and not window_open:
+			window_open = true
+			
+		tutorial_8 = false
+		$BattleDialogue.Tutorial_7()
+		yield($BattleDialogue, "section_done")
+		tutorial_9 = true
 ##### TUTORIAL END ########
 	
 func _on_SpellList_go_to_Defend():
@@ -543,24 +632,28 @@ func _on_Menu_Cursor_go_to_Item():
 
 #Defend Actions
 func _on_Defend_cursor_selected():
-	emit_signal("action_ongoing")
-	if defend_show:
-		$DefenseWindow.hide()
-		$BattleButtons/SpadeB.show()
-		$BattleButtons.hide()
-		emit_signal("f_turn_used")
-		emit_signal("defend_chosen")
-		emit_signal("defend_inactive")
-		$MagicWindow/MagicWindowPanel/MenuCursor.defend_active = false
-		$ItemWindow/ItemWindowPanel/MenuCursor.defend_active = false
-		defend_show = false
-		item_halt = false
-		BB_active = false
-		fighter_selection = false
-		attack_ended = true
-		yield(get_tree().create_timer(0.7), "timeout")
-		emit_signal("action_ended")
-		$Fighters.fighters_active_check()
+	if tutorial:
+			SE.effect("Unable")
+			return
+	else:
+		emit_signal("action_ongoing")
+		if defend_show:
+			$DefenseWindow.hide()
+			$BattleButtons/SpadeB.show()
+			$BattleButtons.hide()
+			emit_signal("f_turn_used")
+			emit_signal("defend_chosen")
+			emit_signal("defend_inactive")
+			$MagicWindow/MagicWindowPanel/MenuCursor.defend_active = false
+			$ItemWindow/ItemWindowPanel/MenuCursor.defend_active = false
+			defend_show = false
+			item_halt = false
+			BB_active = false
+			fighter_selection = false
+			attack_ended = true
+			yield(get_tree().create_timer(0.7), "timeout")
+			emit_signal("action_ended")
+			$Fighters.fighters_active_check()
 	#if f_turns == f_array_size:
 		#fighters_enabled = false
 		#enemies_enabled = true
@@ -591,6 +684,8 @@ func _on_Flee_cursor_selected():
 			BattleMusic.switch_songs()
 			get_tree().paused = false
 			Global.battle_ended = true
+		if tutorial:
+			PartyStats.full_heal()
 	
 func _on_Enemies_enemy_chosen():
 	emit_signal("f_turn_used")
@@ -643,18 +738,6 @@ func _on_Enemies_e_damage_finish():
 	$Fighters.fighters_active_check()
 	#emit_signal("f_index_reset")
 	
-	if tutorial and tutorial_2:
-		tutorial_2 = false
-		$BattleDialogue.Tutorial_4()
-		yield($BattleDialogue, "section_done")
-		tutorial_3 = true
-		$Enemies.tutorial_wait = false
-		
-	if tutorial and tutorial_3:
-		tutorial_3 = false
-		$BattleDialogue.Tutorial_5()
-		yield($BattleDialogue, "section_done")
-		tutorial_4 = true
 
 func _on_WorldRoot_f_turn_used():
 	f_turns += 1
@@ -1185,8 +1268,9 @@ func Thunderstorm():
 	$Enemies.damage_type = "air"
 	$Enemies.move_type = "air"
 	$Enemies.f_magic_base = 20
-	$Enemies.stun = true
-	$Enemies.stun_chance = 20
+	if not tutorial:
+		$Enemies.stun = true
+		$Enemies.stun_chance = 20
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Fighters.spell_1()
 	yield(get_tree().create_timer(0.1), "timeout")

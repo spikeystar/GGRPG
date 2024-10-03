@@ -20,6 +20,7 @@ var item_index : int
 var storage_index : int
 var spell_index : int
 
+var Tutorial : Array = []
 var Inventory : Array = []
 var Storage : Array = []
 var Trinkets : Array = []
@@ -32,49 +33,26 @@ var Suzy_Spells : Array = []
 var Damien_Spells : Array = []
 
 func _ready():
-	marbles = 4067
+	marbles = 0
 	
-	add_item_name = "Bounty Herb"
+	add_item_name = "Yummy Cake"
 	add_item()
 	add_item_name = "Pretty Gem"
 	add_item()
-	add_item_name = "Picnic Pie"
-	add_item()
-	add_item_name = "Sugar Pill"
-	add_item()
 	add_item_name = "Yummy Cake"
 	add_item()
-	add_item_name = "Sugar Pill"
+	add_item_name = "Pretty Gem"
 	add_item()
-	add_item_name = "Ginger Tea"
-	add_item()
-	add_item_name = "Ginger Tea"
-	add_item()
-
-
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()
-	add_trinket_name = "Gold Chain"
-	add_trinket()
-	add_trinket_name = "Gold Earring"
-	add_trinket()
 	
-	
-	
-	
-	add_enemy_name = "Cheribo"
-	add_enemy()
-
+	add_item_name = "Pretty Gem"
+	add_tutorial_item()
 	
 	
 	spell_name = "Thunderstorm"
 	populate_Gary()
-	spell_name = "Earthslide"
-	populate_Gary()
 	spell_name = "Icicle"
 	populate_Jacques()
-	spell_name = "Prism Snow"
-	populate_Jacques()
+
 	spell_name = "Sweet Gift"
 	populate_Irina()
 	spell_name = "Precious Beam"
@@ -91,6 +69,11 @@ func add_item():
 		var new_slot = slot.duplicate()
 		new_slot.text = add_item_name
 		Inventory.append(new_slot)
+		
+func add_tutorial_item():
+	var new_slot = slot.duplicate()
+	new_slot.text = add_item_name
+	Tutorial.append(new_slot)
 		
 	
 func add_trinket():
@@ -158,11 +141,6 @@ func remove_storage():
 	Storage.remove(storage_index)
 	storage_index = clamp(storage_index, 0, Storage.size() - 1)
 	
-func initial_items():
-	add_item_name = "Yummy Cake"
-	add_item()
-	add_item_name = "Pretty Gem"
-	add_item()
 
 func boss_event():
 	if event_name == "Saguarotel":

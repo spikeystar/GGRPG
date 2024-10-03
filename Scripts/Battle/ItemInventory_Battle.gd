@@ -4,6 +4,8 @@ var item_active = false
 var empty_items = false
 var item_id : String
 
+export var tutorial : bool
+
 signal go_to_Defend()
 signal item_chosen()
 signal heal_item_chosen()
@@ -16,13 +18,20 @@ onready var inventory : Array = []
 var item_index : int
 
 func _ready():
-	for x in range (Party.Inventory.size()):
+	if tutorial:
+		for x in range (Party.Tutorial.size()):
+			inventory.append(Party.Tutorial[x].duplicate())
+		for item_index in inventory.size():
+			add_slot(item_index)
+	
+	if not tutorial:
+		for x in range (Party.Inventory.size()):
 			inventory.append(Party.Inventory[x].duplicate())
-	for item_index in inventory.size():
-		add_slot(item_index)
-	if inventory.size() == 0:
-		empty_items = true
-		emit_signal("empty_items")
+		for item_index in inventory.size():
+			add_slot(item_index)
+		if inventory.size() == 0:
+			empty_items = true
+			emit_signal("empty_items")
 		
 func add_slot(item_index):
 	var item_slot = inventory[item_index]
