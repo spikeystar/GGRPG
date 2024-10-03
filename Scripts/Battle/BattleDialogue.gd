@@ -81,7 +81,6 @@ func Tutorial_1():
 	
 	
 func Tutorial_2():
-	SE.effect("Select")
 	window_show()
 	$Name.text = "Michael:"
 	$Name/Talk.text = "If you press (Return) before you've selected a move you can return to fighter selection."
@@ -166,7 +165,7 @@ func Tutorial_5():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "Water & Fire and Air & Earth are paired types, meaning they do 1.5X damage to the other type."
+	$Name/Talk.text = "Water & Fire and Air & Earth are paired types, they do 1.5X damage to the other type."
 	talking()
 	yield(self, "talk_done")
 	
@@ -174,7 +173,7 @@ func Tutorial_5():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "All party members are Neutral, but in the future you might see moves or items that will change your typing."
+	$Name/Talk.text = "You start Neutral, but eventually you'll see moves or items that will change your typing."
 	talking()
 	yield(self, "talk_done")
 	
@@ -186,21 +185,17 @@ func Tutorial_5():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "When you are the same type as a move you are also immune to any secondary effects from those moves."
+	$Name/Talk.text = "If you're the same type as an enemy attack, you're immune to any of its secondary effects."
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "You can see what type an enemy is by looking under its name in the info window."
+	$Name/Talk.text = "If you want to know what type an enemy is, look under its name in the info window."
 	talking()
 	yield(self, "talk_done")
 	SE.effect("Menu Open")
 	$Typing.hide()
 	
 	$Name/Talk.text = "You're running a bit low on SP now."
-	talking()
-	yield(self, "talk_done")
-	
-	$Name/Talk.text = "Let's try using an item now to fix that."
 	talking()
 	yield(self, "talk_done")
 	
@@ -222,7 +217,7 @@ func Tutorial_6():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "If you get items when you're at max capacity, they'll be sent to your Storage which can be accessed at any item store."
+	$Name/Talk.text = "Extra items you get are sent to your Storage, which can be accessed at any item store."
 	talking()
 	yield(self, "talk_done")
 	
@@ -241,7 +236,7 @@ func Tutorial_6():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "A Whammy! is when you get really lucky and your attack does 2X damage."
+	$Name/Talk.text = "A Whammy! is when you get really lucky and your attack does 2X damage!"
 	talking()
 	yield(self, "talk_done")
 	
@@ -249,18 +244,18 @@ func Tutorial_6():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "You can see what statuses you have by looking at your fighter's health bar in the top left corner."
+	$Name/Talk.text = "You can see what statuses you have by looking at your fighter's health bar."
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "You'll be able to afflict some statuses on enemies too though, so strategize wisely!"
+	$Name/Talk.text = "You'll be able to afflict some statuses on enemies too, so strategize wisely!"
 	talking()
 	yield(self, "talk_done")
 	
 	SE.effect("Menu Open")
 	$Statuses.hide()
 	
-	$Name/Talk.text = "Finally, let's go over what you can do with the Spade button. Use the (Down Arrow) to get there."
+	$Name/Talk.text = "Finally, let's go over what you can do with the Spade button. Use the (Down Arrow)."
 	talking()
 	yield(self, "talk_done")
 	

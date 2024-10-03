@@ -1336,6 +1336,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 menu_parent_path = NodePath("../VBoxContainer")
 cursor_offset = Vector2( 17, 2.5 )
+tutorial = true
 
 [node name="ItemWindow" type="Node2D" parent="."]
 visible = false
@@ -1373,6 +1374,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 menu_parent_path = NodePath("../ItemInventory")
 cursor_offset = Vector2( 17, 2.5 )
+tutorial = true
 
 [node name="ItemInfo" type="Label" parent="ItemWindow"]
 margin_left = 195.0
@@ -1380,7 +1382,7 @@ margin_top = 121.0
 margin_right = 297.0
 margin_bottom = 193.0
 custom_fonts/font = ExtResource( 5 )
-text = "20 HP"
+text = "20 SP"
 align = 1
 autowrap = true
 
@@ -1390,6 +1392,7 @@ scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 7 )
 hframes = 3
 vframes = 4
+frame = 1
 
 [node name="MagicWindow" type="Node2D" parent="."]
 visible = false
@@ -1416,6 +1419,7 @@ size_flags_vertical = 2
 custom_constants/separation = 12
 alignment = 1
 script = ExtResource( 28 )
+tutorial = true
 
 [node name="MenuCursor" parent="MagicWindow/MagicWindowPanel" instance=ExtResource( 8 )]
 anchor_right = 0.0
@@ -1428,6 +1432,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 menu_parent_path = NodePath("../SpellList")
 cursor_offset = Vector2( 17, 2.5 )
+tutorial = true
 
 [node name="PartySP" type="Label" parent="MagicWindow"]
 margin_left = 33.0
@@ -2021,6 +2026,7 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -2037,7 +2043,6 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
-frame = 1
 speed_scale = 0.6
 playing = true
 

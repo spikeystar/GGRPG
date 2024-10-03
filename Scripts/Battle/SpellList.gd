@@ -16,6 +16,8 @@ signal all_enemy_spell()
 signal single_ally_spell()
 signal all_ally_spell()
 
+export var tutorial : bool
+
 func _ready():
 	pass
 	
@@ -26,11 +28,11 @@ func add_slot(spell_index):
 func _process(delta):
 	#spell_index = clamp(spell_index, 0, spell_list.size() - 1)
 	var list_max = (spell_list.size() -1)
-	if Input.is_action_just_pressed("ui_down") and magic_active and spell_index < list_max and not spell_selected:
+	if Input.is_action_just_pressed("ui_down") and magic_active and spell_index < list_max and not spell_selected and not tutorial:
 		SE.effect("Move Between")
 		spell_index += 1
 		get_id()
-	if Input.is_action_just_pressed("ui_up") and magic_active and spell_index > 0 and not spell_selected:
+	if Input.is_action_just_pressed("ui_up") and magic_active and spell_index > 0 and not spell_selected and not tutorial:
 		SE.effect("Move Between")
 		spell_index -= 1
 		get_id()
@@ -38,7 +40,7 @@ func _process(delta):
 func _input(event):
 	var list_max = (spell_list.size() -1)
 	spell_type = get_spell_type()
-	if Input.is_action_just_pressed("ui_down") and magic_active and spell_index == list_max and not spell_selected:
+	if Input.is_action_just_pressed("ui_down") and magic_active and spell_index == list_max and not spell_selected and not tutorial:
 		SE.effect("Move Between")
 		magic_active = false
 		emit_signal("go_to_Defend")

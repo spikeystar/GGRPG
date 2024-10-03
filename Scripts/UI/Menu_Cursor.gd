@@ -18,10 +18,14 @@ signal item_active()
 signal magic_active()
 signal go_to_Item()
 
+var cursor_ready = true
+
+export var tutorial : bool
+
 func _process(delta):
 	var input := Vector2.ZERO
 	
-	if Input.is_action_just_pressed("ui_up") and cursor_active:
+	if Input.is_action_just_pressed("ui_up") and cursor_active and not tutorial:
 		#flicker_control()
 		input.y -= 1
 		emit_signal("item_active")
@@ -41,7 +45,7 @@ func _process(delta):
 			SE.effect("Unable")
 		#if item_active and up_count == 0:
 			#return
-	if Input.is_action_just_pressed("ui_down") and cursor_active:
+	if Input.is_action_just_pressed("ui_down") and cursor_active and not tutorial:
 		input.y += 1
 		emit_signal("item_active")
 		#emit_signal("magic_active")
@@ -53,7 +57,7 @@ func _process(delta):
 			SE.effect("Move Between")
 			up_count -= 1
 			
-	if Input.is_action_just_pressed("ui_left"):
+	if Input.is_action_just_pressed("ui_left") and not tutorial:
 		emit_signal("magic_active")
 			
 			
@@ -69,14 +73,14 @@ func _process(delta):
 	elif menu_parent is GridContainer:
 		set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
 	
-	if Input.is_action_just_pressed("ui_select") and cursor_active:
+	if Input.is_action_just_pressed("ui_select") and cursor_active and cursor_ready:
 		var current_menu_item := get_menu_item_at_index(cursor_index)
 		
 		if current_menu_item != null:
 			if current_menu_item.has_method("cursor_select"):
 				current_menu_item.cursor_select()
 				
-	if Input.is_action_just_pressed("ui_up") and defend_active and up_count == 0 or up_count == 2:
+	if Input.is_action_just_pressed("ui_up") and defend_active and up_count == 0 or up_count == 2 and not tutorial:
 		emit_signal("go_to_Item")
 		up_count = 0
 		if item_stolen:
@@ -84,7 +88,7 @@ func _process(delta):
 		else:
 			SE.effect("Move Between")
 		
-	if Input.is_action_just_pressed("ui_up") and magic_active and up_count == 1 and not spell_selected:
+	if Input.is_action_just_pressed("ui_up") and magic_active and up_count == 1 and not spell_selected and not tutorial:
 		emit_signal("go_to_Item")
 		up_count = 0
 		if item_stolen:

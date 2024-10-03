@@ -36,19 +36,6 @@ func _ready():
 		#Music.id = "Cherry_Trail"
 		Music.music()
 		
-	yield(get_tree().create_timer(1), "timeout")
-	Music.pause()
-	BattleMusic.id = "Standard_Battle"
-	BattleMusic.music()
-	Global.battling = true
-	get_tree().paused = true
-	var transition2 = TransitionPlayer2.instance()
-	get_tree().get_root().add_child(transition2)
-	transition2.transition()
-	yield(get_tree().create_timer(0.9), "timeout")
-	transition2.queue_free()
-	get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(tutorial_scene)
-		
 		
 	if EventManager.new_file:
 		PlayerManager.freeze = true
@@ -115,11 +102,13 @@ func _process(delta):
 		$CollisionRoot/DoorwayToCherryTrail1/CollisionPolygon2D.disabled = false
 	
 	if Global.battle_ended and event:
+		$Camera2D.current = true
+		$Camera2D.follow_player = true
 		event = false
 		Music.unpause()
 		SceneManager.SceneEnemies = []
-		get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(target_scene)
-		var transition = TransitionPlayer.instance()
+		get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(tutorial_scene)
+		var transition = TransitionPlayer2.instance()
 		get_tree().get_root().add_child(transition)
 		transition.ease_in()
 		yield(get_tree().create_timer(0.01), "timeout")
@@ -127,6 +116,8 @@ func _process(delta):
 		Global.battling = false
 		
 		Gary.set_right()
+		
+		yield(get_tree().create_timer(1), "timeout")
 		SE.effect("Select")
 		$Camera2D/Interaction/Dialogue.show()
 		$Camera2D/Interaction/Dialogue/Name/Talk.text = "I think you should be all set now!"
@@ -172,6 +163,7 @@ func _process(delta):
 	
 
 func _on_Michael_Meetup_area_event():
+	event = true
 	PlayerManager.freeze = true
 	PlayerManager.cutscene = true
 	Gary.walk_left()

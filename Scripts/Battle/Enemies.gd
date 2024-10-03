@@ -166,7 +166,7 @@ func _process(delta):
 		if enemies.size() > 1:
 			SE.effect("Move Between")
 	
-	if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active and not victory:
+	if Input.is_action_just_pressed("ui_left") and enemy_selecting and BB_active and not victory and not tutorial or Input.is_action_just_pressed("ui_down") and enemy_selecting and BB_active and not victory and not tutorial or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active and not victory and not tutorial:
 		#SE.effect("Move Between")
 		enemy_selecting = false
 		enemy_info_update()
