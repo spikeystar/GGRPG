@@ -30,7 +30,9 @@ var event_counter = 0
 
 export var boss_battle : bool
 var battle_name : String
+export var tutorial : bool
 
+var tutorial_wait = true
 var f_attack
 var f_attack_base
 var f_magic
@@ -93,6 +95,9 @@ signal Gravel_Spat
 
 func _ready():
 	enemies = $Field.get_children()
+	
+	if not tutorial:
+		tutorial_wait = false
 	
 func get_name():
 	var enemy_name = enemies[enemy_index].get_name()
@@ -166,7 +171,7 @@ func _process(delta):
 		enemy_selecting = false
 		enemy_info_update()
 	
-	if Input.is_action_just_pressed("ui_select") and enemy_selecting:
+	if Input.is_action_just_pressed("ui_select") and enemy_selecting and not tutorial_wait:
 		emit_signal("enemy_chosen")
 		enemy_selecting = false
 		
@@ -790,6 +795,9 @@ func _on_Fighters_enemies_enabled():
 		
 func enemies_active_check():
 	if enemy_turns == (enemies.size()):
+		if tutorial:
+			tutorial_wait = true
+		
 		enemies_active = false
 		yield(get_tree().create_timer(0.2), "timeout")
 		emit_signal("fighters_active")

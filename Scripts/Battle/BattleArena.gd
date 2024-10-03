@@ -11,6 +11,7 @@ export(int) var marbles_base
 export(String) var battle_name
 export(bool) var boss_battle
 export(bool) var event_battle
+export(bool) var tutorial
 var window_open = false
 var defend_show = false
 var attack_show = false
@@ -37,6 +38,18 @@ var wimpy = false
 var dizzy = false
 var item_stolen = false
 var new_spell = false
+
+var tutorial_1 = true
+var tutorial_2 = false
+var tutorial_3 = false
+var tutorial_4 = false
+var tutorial_5 = false
+var tutorial_6 = false
+var tutorial_7 = false
+var tutorial_8 = false
+var tutorial_9 = false
+var tutorial_10 = false
+
 
 onready var party_members : int
 onready var party_id : int
@@ -84,6 +97,14 @@ func _ready():
 	boss_specific()
 	yield(get_tree().create_timer(1.3), "timeout")
 	transition.queue_free()
+	
+	if not tutorial:
+		tutorial_1 = false
+	
+	if tutorial:
+		$BattleDialogue.Tutorial_1()
+		yield($BattleDialogue, "section_done")
+		tutorial_1 = true
 	#player_instance.queue_free()
 
 func boss_specific():
@@ -141,7 +162,7 @@ func _process(delta):
 
 func _input(event):
 	#var fighter_turn_used = $Fighters.get_turn_value()
-	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory:
+	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and not tutorial:
 		SE.effect("Select")
 		$BattleButtons.show()
 		$BattleButtons/AttackX.hide()
@@ -160,7 +181,7 @@ func _input(event):
 		yield(get_tree().create_timer(0.1), "timeout")
 		BB_active = true
 		
-	if (Input.is_action_just_pressed("ui_down")) and BB_active and not defend_show and not magic_show and not item_show and not enemy_selecting:
+	if (Input.is_action_just_pressed("ui_down")) and BB_active and not defend_show and not magic_show and not item_show and not enemy_selecting and not tutorial:
 		SE.effect("Move Between")
 		defend_show = true
 		attack_show = false
@@ -184,19 +205,19 @@ func _input(event):
 		if defend_show and not window_open:
 			window_open = true
 			
-	if (Input.is_action_just_pressed("ui_down")) and BB_active and magic_show or item_show:
+	if (Input.is_action_just_pressed("ui_down")) and BB_active and magic_show or item_show and not tutorial:
 		defend_show = false
 		emit_signal("defend_inactive")
 		$BattleButtons/SpadeB.show()
 		$DefenseWindow.hide()
 		
-	if (Input.is_action_just_pressed("ui_up")) and BB_active and magic_show or defend_show:
+	if (Input.is_action_just_pressed("ui_up")) and BB_active and magic_show or defend_show and not tutorial:
 		item_show = false
 		item_halt = true
 		$BattleButtons/CloverB.show()
 		$ItemWindow.hide()
 		
-	if (Input.is_action_just_pressed("ui_right")) and BB_active and not attack_show and not ongoing and not wimpy:
+	if (Input.is_action_just_pressed("ui_right")) and BB_active and not attack_show and not ongoing and not wimpy and not tutorial:
 		SE.effect("Move Between")
 		attack_show = true
 		magic_show = false
@@ -219,10 +240,10 @@ func _input(event):
 		if attack_show and not window_open:
 			window_open = true
 			
-	if (Input.is_action_just_pressed("ui_right")) and BB_active and not attack_show and not ongoing and wimpy:
+	if (Input.is_action_just_pressed("ui_right")) and BB_active and not attack_show and not ongoing and wimpy and not tutorial:
 		SE.effect("Unable")
 			
-	if (Input.is_action_just_pressed("ui_select")) and BB_active and attack_show and not fighter_turn_used and not ongoing:
+	if (Input.is_action_just_pressed("ui_select")) and BB_active and attack_show and not fighter_turn_used and not ongoing and not tutorial:
 		SE.effect("Select")
 		$BattleButtons/DiamondB.show()
 		$BattleButtons.hide()
@@ -233,7 +254,7 @@ func _input(event):
 		attack_ended = false
 		emit_signal("attack_chosen")
 			
-	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show and not dizzy:
+	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show and not dizzy and not tutorial:
 		SE.effect("Move Between")
 		magic_show = true
 		item_halt = true
@@ -259,10 +280,10 @@ func _input(event):
 		if magic_show and not window_open:
 			window_open = true
 			
-	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show and dizzy:
+	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show and dizzy and not tutorial:
 		SE.effect("Unable")
 		
-	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt and not item_stolen:
+	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt and not item_stolen and not tutorial:
 		SE.effect("Move Between")
 		item_show = true
 		attack_show = false
@@ -287,7 +308,7 @@ func _input(event):
 		if item_show and not window_open:
 			window_open = true
 			
-	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt and item_stolen:
+	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt and item_stolen and not tutorial:
 		SE.effect("Unable")
 
 	if Input.is_action_just_pressed("ui_select") and victory_ended:
@@ -321,7 +342,7 @@ func _input(event):
 
 ##### RETURN BUTTON ########
 
-	if (Input.is_action_just_pressed("ui_accept")) and BB_active and not ongoing:
+	if (Input.is_action_just_pressed("ui_accept")) and BB_active and not ongoing and not tutorial:
 		SE.effect("Cancel")
 		$Fighters.idle()
 		$BattleButtons/CloverB.show()
@@ -358,6 +379,89 @@ func _input(event):
 		
 		
 ##### RETURN BUTTON END ########
+
+##### TUTORIAL ########
+	if (Input.is_action_just_pressed("ui_select")) and tutorial and tutorial_1:
+		$BattleDialogue.Tutorial_2()
+		yield($BattleDialogue, "section_done")
+		tutorial_1 = false
+		tutorial_2 = true
+
+	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and tutorial_2:
+		SE.effect("Select")
+		$BattleButtons.show()
+		$BattleButtons/AttackX.hide()
+		$BattleButtons/MagicX.hide()
+		$BattleButtons/ItemX.hide()
+		$BattleButtons/AnimationPlayer.play("Initial")
+		emit_signal("BB_active")
+		wimpy = $Fighters.get_wimpy()
+		if wimpy:
+			$BattleButtons/AttackX.show()
+		dizzy = $Fighters.get_dizzy()
+		if dizzy:
+			$BattleButtons/MagicX.show()
+		if item_stolen:
+			$BattleButtons/ItemX.show()
+		yield(get_tree().create_timer(0.1), "timeout")
+		BB_active = true
+
+	if (Input.is_action_just_pressed("ui_right")) and tutorial and BB_active and not attack_show and not ongoing and not wimpy and tutorial_2:
+		SE.effect("Move Between")
+		attack_show = true
+		magic_show = false
+		defend_show = false
+		item_show = false
+		item_halt = false
+		$BattleButtons/DiamondB.hide()
+		$BattleButtons/SpadeB.show()
+		$BattleButtons/CloverB.show()
+		$BattleButtons/StarB.show()
+		$Enemies/EnemyInfo.show()
+		$WindowPlayer.play("enemyinfo_open")
+		$MagicWindow.hide()
+		$ItemWindow.hide()
+		$DefenseWindow.hide()
+		emit_signal("index_resetzero")
+		emit_signal("attack_active")
+		emit_signal("item_inactive")
+		emit_signal("magic_inactive")
+		if attack_show and not window_open:
+			window_open = true
+			
+		$BattleDialogue.Tutorial_3()
+		yield($BattleDialogue, "section_done")
+		tutorial_2 = false
+		$Enemies.tutorial_wait = false
+		
+	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show and not dizzy and tutorial and tutorial_3:
+		SE.effect("Move Between")
+		magic_show = true
+		item_halt = true
+		attack_show = false
+		defend_show = false
+		item_show = false
+		emit_signal("index_resetzero")
+		emit_signal("hide_enemy_cursor")
+		emit_signal("magic_active")
+		emit_signal("item_inactive")
+		emit_signal("attack_inactive")
+		emit_signal("defend_inactive")
+		$BattleButtons/StarB.hide()
+		$BattleButtons/SpadeB.show()
+		$BattleButtons/CloverB.show()
+		$BattleButtons/DiamondB.show()
+		$MagicWindow.show()
+		$WindowPlayer.play("magic_open")
+		$Enemies/EnemyInfo.hide()
+		$ItemWindow.hide()
+		$DefenseWindow.hide()
+		$DefenseWindow/MenuCursor.cursor_active = false
+		if magic_show and not window_open:
+			window_open = true
+		
+		
+##### TUTORIAL END ########
 	
 func _on_SpellList_go_to_Defend():
 	defend_show = true
@@ -538,6 +642,19 @@ func _on_Enemies_e_damage_finish():
 	emit_signal("f_index_reset")
 	$Fighters.fighters_active_check()
 	#emit_signal("f_index_reset")
+	
+	if tutorial and tutorial_2:
+		tutorial_2 = false
+		$BattleDialogue.Tutorial_4()
+		yield($BattleDialogue, "section_done")
+		tutorial_3 = true
+		$Enemies.tutorial_wait = false
+		
+	if tutorial and tutorial_3:
+		tutorial_3 = false
+		$BattleDialogue.Tutorial_5()
+		yield($BattleDialogue, "section_done")
+		tutorial_4 = true
 
 func _on_WorldRoot_f_turn_used():
 	f_turns += 1

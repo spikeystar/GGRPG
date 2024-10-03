@@ -5,7 +5,7 @@ var Pivot_Town = false
 var Kugi_Canyon = false
 var Berry_Lake = false
 
-var new_file = true
+var new_file = false
 var first_save = false
 var save_1 = false
 var save_2 = false

@@ -6,6 +6,10 @@ export(String, FILE, "*.tscn,*.scn") var target_scene
 const TransitionPlayer2 = preload("res://UI/BattleTransition.tscn")
 onready var transition2 = TransitionPlayer2.instance()
 
+const event_battle = preload("res://Areas/Cherry Trail/Tutorial BA.tscn")
+onready var tutorial_scene = event_battle.instance()
+var event = false
+
 onready var Gary = PlayerManager.player_instance
 
 onready var Michael = $YSort/Michael
@@ -95,6 +99,62 @@ func _process(delta):
 	if EventManager.first_save:
 		$SaveStarIntro2/CollisionPolygon2D.disabled = true
 		$CollisionRoot/DoorwayToCherryTrail1/CollisionPolygon2D.disabled = false
+	
+	if Global.battle_ended and event:
+		event = false
+		Music.unpause()
+		SceneManager.SceneEnemies = []
+		get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(target_scene)
+		var transition = TransitionPlayer.instance()
+		get_tree().get_root().add_child(transition)
+		transition.ease_in()
+		yield(get_tree().create_timer(0.01), "timeout")
+		Global.battle_ended = false
+		Global.battling = false
+		
+		Gary.set_right()
+		SE.effect("Select")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "I think you should be all set now!"
+		$Camera2D/Interaction/Dialogue/Name.text = "Michael:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Don’t forget you can always check the pause menu by pressing (Option)"
+		$Camera2D/Interaction/Dialogue/Name.text = "Michael:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Thanks, Michael!"
+		$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "See you later!"
+		$Camera2D/Interaction/Dialogue/Name.text = "Michael:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		SE.effect("Drama Ascend")
+		MichaelPlayer.play("exit")
+		yield(get_tree().create_timer(0.7), "timeout")
+		SE.effect("Drama Thud")
+		EventManager.Michael_Meetup_CS = true
+		$Michael_Stall.queue_free()
+	
+		PlayerManager.freeze = false
+		PlayerManager.cutscene = false
 	
 
 func _on_Michael_Meetup_area_event():
@@ -236,3 +296,15 @@ func _on_TutorialOptions_yes():
 	yield($Camera2D/Interaction/Dialogue, "talk_done")
 	$Camera2D/Interaction/Dialogue.done()
 	PlayerManager.freeze = true
+	
+	Music.pause()
+	BattleMusic.id = "Standard_Battle"
+	BattleMusic.music()
+	Global.battling = true
+	get_tree().paused = true
+	var transition = TransitionPlayer2.instance()
+	get_tree().get_root().add_child(transition2)
+	transition2.transition()
+	yield(get_tree().create_timer(0.9), "timeout")
+	transition2.queue_free()
+	get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(tutorial_scene)
