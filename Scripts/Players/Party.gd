@@ -44,24 +44,6 @@ func _ready():
 	add_item_name = "Pretty Gem"
 	add_item()
 	
-	add_item_name = "Yummy Cake"
-	add_item()
-	add_item_name = "Pretty Gem"
-	add_item()
-	add_item_name = "Yummy Cake"
-	add_item()
-	add_item_name = "Pretty Gem"
-	add_item()
-	
-	add_item_name = "Yummy Cake"
-	add_item()
-	add_item_name = "Pretty Gem"
-	add_item()
-	add_item_name = "Yummy Cake"
-	add_item()
-	add_item_name = "Pretty Gem"
-	add_item()
-	
 	
 	add_item_name = "Pretty Gem"
 	add_tutorial_item()
@@ -78,39 +60,6 @@ func _ready():
 	populate_Irina()
 	
 	add_enemy_name = "Cheribo"
-	add_enemy()
-	
-	add_enemy_name = "Bramby"
-	add_enemy()
-	add_enemy_name = "Scorpus"
-	add_enemy()
-	add_enemy_name = "Hercules"
-	add_enemy()
-	add_enemy_name = "Cactmouse"
-	add_enemy()
-	add_enemy_name = "Thorvern"
-	add_enemy()
-	add_enemy_name = "Saguarotel"
-	add_enemy()
-	add_enemy_name = "Tenant A"
-	add_enemy()
-	add_enemy_name = "Tenant B"
-	add_enemy()
-	add_enemy_name = "Smush"
-	add_enemy()
-	add_enemy_name = "Druplet"
-	add_enemy()
-	add_enemy_name = "Beezle"
-	add_enemy()
-	add_enemy_name = "Raznor"
-	add_enemy()
-	add_enemy_name = "Kerobi"
-	add_enemy()
-	add_enemy_name = "Bushel"
-	add_enemy()
-	add_enemy_name = "Trocodile"
-	add_enemy()
-	add_enemy_name = "Reeler"
 	add_enemy()
 	
 		

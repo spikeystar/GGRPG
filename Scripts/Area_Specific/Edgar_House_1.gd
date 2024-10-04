@@ -394,7 +394,7 @@ func _ready():
 		EdgarPlayer.play("front_hop")
 		SE.effect("Drama Jump")
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "My joints just aren’t what they used to be, hah!"
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "My joints just aren't what they used to be, hah!"
 		$Camera2D/Interaction/Dialogue/Name.text = "Edgar:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
@@ -425,7 +425,7 @@ func _ready():
 		Gary.animation("back_hop_f")
 		SE.effect("Drama Jump")
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Of course! If it's the Jewel Seeds then someone has to put them back where they belong!"
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Of course! If it's a Jewel Seed then someone has to put it back where it belongs!"
 		$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")

@@ -287,11 +287,12 @@ func _on_TutorialOptions_no():
 	yield(get_tree().create_timer(0.7), "timeout")
 	SE.effect("Drama Thud")
 	EventManager.Michael_Meetup_CS = true
-	Gary.set_right()
+	
 	$Michael_Stall.queue_free()
 	
 	PlayerManager.freeze = false
 	PlayerManager.cutscene = false
+	Gary.set_right()
 
 
 func _on_TutorialOptions_yes():

@@ -201,8 +201,8 @@ collision_layer = 7
 collision_mask = 6
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
-position = Vector2( -2.17656, -19.7544 )
-scale = Vector2( 1.02475, -1.67904 )
+position = Vector2( -3.26484, -16.2683 )
+scale = Vector2( 0.896027, -0.911186 )
 shape = SubResource( 179 )
 
 [node name="ShadowYSort" type="Node2D" parent="."]
@@ -240,6 +240,7 @@ use_dithering = false
 use_dither_blending = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
+autoplay = "walk_front"
 playback_speed = 0.5
 anims/RESET = SubResource( 173 )
 anims/walk_back = SubResource( 176 )

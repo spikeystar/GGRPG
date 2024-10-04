@@ -165,7 +165,7 @@ func Tutorial_5():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "Water & Fire and Air & Earth are paired types, they do 1.5X damage to the other type."
+	$Name/Talk.text = "Water & Fire and Air & Earth are paired types, they do 1.5X damage to each other."
 	talking()
 	yield(self, "talk_done")
 	

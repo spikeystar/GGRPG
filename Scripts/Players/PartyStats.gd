@@ -49,7 +49,7 @@ var party_sp = 20
 var party_max_sp = 20
 var party_level = 1
 var party_exp = 0
-var next_level = int((200) * (party_level/1.5) + (party_level * 100))
+var next_level = int((100) * (party_level/1.5) + (party_level * 100))
 
 var new_spell_2 = false
 
@@ -82,7 +82,11 @@ func full_heal():
 func level_check():
 	set_stats()
 	level_up()
-	if party_level == 5:
+	if party_level == 3:
+		Party.spell_name = "Earthslide"
+		Party.populate_Gary()
+		Party.spell_name = "Prism Snow"
+		Party.populate_Jacques()
 		new_spell_2 = true
 		
 func level_up():
@@ -98,7 +102,7 @@ func set_stats():
 	jacques_health = 54 + int(party_level * 6)
 	jacques_attack = 20 + int(party_level * 5)
 	jacques_magic = 20 + int(party_level * 5)
-	jacques_defense = 10 + int(party_level * 8)
+	jacques_defense = 8 + int(party_level * 7)
 
 	irina_health = 62 + int(party_level * 8)
 	irina_attack = 12 + int(party_level * 5)
@@ -113,4 +117,4 @@ func set_stats():
 	damien_health = 51 + int(party_level * 5)
 	damien_attack = 10 + int(party_level * 4)
 	damien_magic = 30 + int(party_level * 8)
-	damien_defense = 7 + int(party_level * 6)
+	damien_defense = 6 + int(party_level * 6)
