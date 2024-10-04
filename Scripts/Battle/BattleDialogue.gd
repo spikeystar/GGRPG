@@ -269,7 +269,7 @@ func Tutorial_7():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "Flee let's you run away from battle- but you'll lose some of your marbles!"
+	$Name/Talk.text = "Flee lets you run away from battle- but you'll lose some of your marbles!"
 	talking()
 	yield(self, "talk_done")
 	

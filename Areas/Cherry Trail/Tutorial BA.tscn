@@ -1530,21 +1530,21 @@ text = "Typing"
 autowrap = true
 
 [node name="Label13" type="Label" parent="BattleDialogue/Typing"]
-margin_left = -100.0
+margin_left = -96.0
 margin_top = -62.2223
-margin_right = 163.384
+margin_right = 167.384
 margin_bottom = -11.2222
 custom_fonts/font = SubResource( 34 )
-text = "["
+text = "<"
 autowrap = true
 
 [node name="Label14" type="Label" parent="BattleDialogue/Typing"]
-margin_left = -100.0
+margin_left = -96.0
 margin_top = 17.7777
-margin_right = 163.384
+margin_right = 167.384
 margin_bottom = 68.7778
 custom_fonts/font = SubResource( 34 )
-text = "["
+text = "<"
 autowrap = true
 
 [node name="Label2" type="Label" parent="BattleDialogue/Typing"]
@@ -1563,30 +1563,6 @@ margin_right = 237.384
 margin_bottom = -24.5555
 custom_fonts/font = ExtResource( 29 )
 text = "Fire"
-autowrap = true
-
-[node name="Label15" type="Label" parent="BattleDialogue/Typing"]
-visible = false
-margin_left = -266.0
-margin_top = -60.0
-margin_right = -2.616
-margin_bottom = -9.00001
-custom_fonts/font = ExtResource( 29 )
-text = "Paired
-"
-align = 1
-autowrap = true
-
-[node name="Label16" type="Label" parent="BattleDialogue/Typing"]
-visible = false
-margin_left = -267.0
-margin_top = 20.0
-margin_right = -3.616
-margin_bottom = 71.0
-custom_fonts/font = ExtResource( 29 )
-text = "Paired
-"
-align = 1
 autowrap = true
 
 [node name="Label4" type="Label" parent="BattleDialogue/Typing"]
@@ -1665,18 +1641,18 @@ text = "1X Damage"
 autowrap = true
 
 [node name="Label8" type="Label" parent="BattleDialogue/Typing"]
-margin_left = -62.0
+margin_left = -61.0
 margin_top = 88.8889
-margin_right = 201.384
+margin_right = 202.384
 margin_bottom = 139.889
 custom_fonts/font = ExtResource( 29 )
 text = "1.5X Damage"
 autowrap = true
 
 [node name="Label9" type="Label" parent="BattleDialogue/Typing"]
-margin_left = 53.0
+margin_left = 54.0
 margin_top = 88.8889
-margin_right = 316.384
+margin_right = 317.384
 margin_bottom = 139.889
 custom_fonts/font = ExtResource( 29 )
 text = "0.5X Damage"
@@ -1707,23 +1683,23 @@ vframes = 5
 frame = 4
 
 [node name="Sprite8" type="Sprite" parent="BattleDialogue/Typing"]
-position = Vector2( -40, 133.333 )
+position = Vector2( -38, 133.333 )
 scale = Vector2( 1.5, 1.6 )
 texture = ExtResource( 11 )
 hframes = 4
 vframes = 5
 
 [node name="Label11" type="Label" parent="BattleDialogue/Typing"]
-margin_left = -17.0
+margin_left = -15.0
 margin_top = 127.778
-margin_right = 246.384
+margin_right = 248.384
 margin_bottom = 178.778
 custom_fonts/font = ExtResource( 29 )
 text = "x"
 autowrap = true
 
 [node name="Sprite9" type="Sprite" parent="BattleDialogue/Typing"]
-position = Vector2( 18, 133.333 )
+position = Vector2( 20, 133.333 )
 scale = Vector2( 1.5, 1.6 )
 texture = ExtResource( 11 )
 hframes = 4
@@ -2026,7 +2002,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -2043,6 +2018,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 

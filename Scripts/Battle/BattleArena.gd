@@ -554,11 +554,13 @@ func _input(event):
 		if defend_show and not window_open:
 			window_open = true
 			
+		SE.mega_silence("Move Between")
 		tutorial_8 = false
 		$BattleDialogue.Tutorial_7()
 		yield($BattleDialogue, "section_done")
 		$DefenseWindow/MenuCursor.cursor_ready = true
-		tutorial_9 = true
+		
+			
 ##### TUTORIAL END ########
 	
 func _on_SpellList_go_to_Defend():

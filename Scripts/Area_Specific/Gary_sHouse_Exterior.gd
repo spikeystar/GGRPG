@@ -102,6 +102,7 @@ func _process(delta):
 		$CollisionRoot/DoorwayToCherryTrail1/CollisionPolygon2D.disabled = false
 	
 	if Global.battle_ended and event:
+		SE.silence("Move Between")
 		$Camera2D.current = true
 		$Camera2D.follow_player = true
 		event = false
@@ -128,7 +129,7 @@ func _process(delta):
 		PlayerManager.freeze = true
 		
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Don’t forget you can always check the pause menu by pressing (Option)"
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "And don't forget you can always check the pause menu by pressing (Option)"
 		$Camera2D/Interaction/Dialogue/Name.text = "Michael:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
