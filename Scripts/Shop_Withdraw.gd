@@ -63,7 +63,7 @@ func set_id():
 		$Info.text = "No items"
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_select") and withdraw and able and Party.Inventory.size() < 10:
+	if Input.is_action_just_pressed("ui_select") and withdraw and able and Party.Inventory.size() < 10 and $Withdraw_Inventory.size_max >0:
 			SE.effect("Select")
 			Party.storage_index = $Withdraw_Inventory.item_index
 			Party.add_item_name = item_id

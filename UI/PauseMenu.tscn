@@ -871,6 +871,7 @@ position = Vector2( 86, -126 )
 texture = ExtResource( 36 )
 hframes = 9
 vframes = 3
+frame = 19
 
 [node name="TypeDisplay" type="Sprite" parent="Enemies"]
 position = Vector2( 120, -47 )
@@ -1001,9 +1002,9 @@ position = Vector2( -3, 20 )
 scale = Vector2( 1.12, 1.12 )
 texture = ExtResource( 47 )
 
-[node name="Marker" type="Sprite" parent="Map"]
+[node name="Marker1" type="Sprite" parent="Map"]
 visible = false
-position = Vector2( 37, -120 )
+position = Vector2( 23, -38 )
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 48 )
 

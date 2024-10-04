@@ -9,6 +9,7 @@ onready var inventory : Array = []
 var enemy_index : int
 
 func _ready():
+	inventory = []
 	for x in range (Party.EnemyList.size()):
 		inventory.append(Party.EnemyList[x].duplicate())
 	for enemy_index in inventory.size():
@@ -16,9 +17,10 @@ func _ready():
 	if inventory.size() > 15:
 		for x in range(15, inventory.size()):
 			inventory[x].hide()
+	
 		
 func add_slot(enemy_index):
-	var enemy_slot = inventory[enemy_index].duplicate()
+	var enemy_slot = inventory[enemy_index]
 	self.add_child(enemy_slot)
 	
 func scroll_down():
@@ -40,10 +42,10 @@ func _process(delta):
 		SE.effect("Move Between")
 		enemy_index -= 1
 	if Input.is_action_just_pressed("ui_down") and enemy_index >=15:
-		SE.effect("Move Between")
+		#SE.effect("Move Between")
 		scroll_down()
 	if Input.is_action_just_pressed("ui_up") and enemy_index >=14:
-		SE.effect("Move Between")
+		#SE.effect("Move Between")
 		scroll_up()
 	
 func get_id():

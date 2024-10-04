@@ -73,10 +73,10 @@ func _process(delta):
 		SE.effect("Move Between")
 		trinket_index -= 1
 	if Input.is_action_just_pressed("ui_down") and trinket_index >=15:
-		SE.effect("Move Between")
+		#SE.effect("Move Between")
 		scroll_down()
 	if Input.is_action_just_pressed("ui_up") and trinket_index >=14:
-		SE.effect("Move Between")
+		#SE.effect("Move Between")
 		scroll_up()
 	
 		

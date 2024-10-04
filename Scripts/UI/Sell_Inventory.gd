@@ -98,6 +98,7 @@ func reset():
 func _on_Interaction_selling():
 	active = true
 	item_index = 0
+	refresh()
 	
 
 func _on_Interaction_option_selecting():

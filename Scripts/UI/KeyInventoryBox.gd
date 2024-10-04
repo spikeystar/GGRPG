@@ -26,7 +26,7 @@ func _ready():
 			
 		
 func add_slot(key_index):
-	var key_slot = inventory[key_index].duplicate()
+	var key_slot = inventory[key_index]
 	self.add_child(key_slot)
 	
 func scroll_down():
@@ -49,10 +49,10 @@ func _process(delta):
 		key_index -= 1
 		print(key_index)
 	if Input.is_action_just_pressed("ui_down") and key_index >=8:
-		SE.effect("Move Between")
+		#SE.effect("Move Between")
 		scroll_down()
 	if Input.is_action_just_pressed("ui_up") and key_index >=7:
-		SE.effect("Move Between")
+		#SE.effect("Move Between")
 		scroll_up()
 		
 		

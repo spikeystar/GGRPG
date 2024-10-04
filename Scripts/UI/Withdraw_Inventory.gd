@@ -10,6 +10,7 @@ onready var slot = menu_slot.instance()
 onready var inventory : Array = []
 var item_index : int
 var new_name : String
+var size_max : int
 
 func _ready():
 	for x in range (Party.Storage.size()):
@@ -40,7 +41,7 @@ func scroll_up():
 	inventory[item_index + 1].hide()
 	
 func _process(delta):
-	var size_max = inventory.size()
+	size_max = inventory.size()
 	inventory_max = (inventory.size() -1)
 	if Input.is_action_just_pressed("ui_down") and active and item_index < inventory_max:
 		SE.effect("Move Between")
@@ -109,8 +110,9 @@ func reset():
 func _on_Interaction_option_selecting():
 	active = false
 	refresh()
-	reset()
+	#reset()
 
 func _on_Interaction_withdraw():
 	active = true
 	item_index = 0
+	refresh()

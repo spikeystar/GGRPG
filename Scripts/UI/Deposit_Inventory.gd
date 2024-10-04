@@ -87,3 +87,4 @@ func _on_Interaction_option_selecting():
 func _on_Interaction_deposit():
 	active = true
 	item_index = 0
+	refresh()
