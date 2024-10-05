@@ -102,6 +102,10 @@ func Tutorial_2():
 func Tutorial_3():
 	SE.effect("Select")
 	window_show()
+	$Name/Talk.text = "If there are multiple enemies, you can keep using the (Right Arrow) to select one."
+	talking()
+	yield(self, "talk_done")
+	
 	$Name/Talk.text = "Each fighter has a different way of attacking enemies."
 	talking()
 	yield(self, "talk_done")

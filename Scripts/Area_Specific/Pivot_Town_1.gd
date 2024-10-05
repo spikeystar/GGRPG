@@ -41,8 +41,8 @@ func _ready():
 		$CollisionRoot/Edgar_Door/CollisionPolygon2D.disabled = true
 		$Irina_Meetup/CollisionPolygon2D.disabled = false
 		PlayerManager.freeze = true
-		PlayerManager.cutscene = true
 		yield(get_tree().create_timer(0.3), "timeout")
+		PlayerManager.cutscene = true
 		$Camera2D.follow_player = false
 		var og_position = $Camera2D.position
 		Irina.position = $Position2D7.position
@@ -582,8 +582,6 @@ func _on_Irina_Meetup_area_event():
 	$Camera2D/Interaction/Dialogue.done()
 	PlayerManager.freeze = true
 	
-	SE.effect("Drama Jump")
-	IrinaPlayer.play("front_hop")
 	$Camera2D/Interaction/Dialogue.show()
 	$Camera2D/Interaction/Dialogue/Name/Talk.text = "But right after I arrived there was a big landslide and now I can't even get back to Tower Town!"
 	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"

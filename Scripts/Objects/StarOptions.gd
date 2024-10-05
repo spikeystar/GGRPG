@@ -23,6 +23,7 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_select") and star_options and menu_name == "Save" and not PlayerManager.cutscene:
 		SE.effect("Select")
 		star_options = false
+		Global.door_name = SceneManager.location
 		emit_signal("save_menu")
 		$MenuCursor.option_selecting = false
 		$MenuCursor.able = false

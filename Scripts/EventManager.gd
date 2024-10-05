@@ -11,7 +11,7 @@ var save_1 = false
 var save_2 = false
 var save_3 = false
 
-var jewel_seeds : int = 1
+var jewel_seeds : int = 0
 
 var Michael_Meetup_CS = false
 var Tindrum = false

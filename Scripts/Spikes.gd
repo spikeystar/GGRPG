@@ -72,9 +72,6 @@ func _on_touch_area():
 	transition.queue_free()
 	transitioning = false
 	
-	
-	
-	
 
 func _get_animation_name():
 	var animation_name = "FadeToBlack" # default

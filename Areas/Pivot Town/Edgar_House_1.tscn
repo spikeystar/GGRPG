@@ -858,9 +858,9 @@ script = ExtResource( 66 )
 [node name="Label" type="Label" parent="Camera2D/Blurb"]
 anchor_right = 0.01
 margin_left = -142.003
-margin_top = -137.622
+margin_top = -151.468
 margin_right = 129.0
-margin_bottom = -104.622
+margin_bottom = -118.468
 custom_fonts/font = ExtResource( 19 )
 text = "Thank you for playing the Gary Goat RPG! Demo"
 align = 1
@@ -870,9 +870,9 @@ autowrap = true
 [node name="Label2" type="Label" parent="Camera2D/Blurb"]
 anchor_right = 0.01
 margin_left = -141.003
-margin_top = -83.5048
+margin_top = -100.428
 margin_right = 130.0
-margin_bottom = -32.5048
+margin_bottom = -49.4279
 custom_fonts/font = ExtResource( 19 )
 text = "Follow me for updates on the full game release
 (Goal is end of 2025)"
@@ -880,12 +880,24 @@ align = 1
 valign = 1
 autowrap = true
 
+[node name="Label4" type="Label" parent="Camera2D/Blurb"]
+anchor_right = 0.01
+margin_left = -141.003
+margin_top = -38.8895
+margin_right = 130.0
+margin_bottom = 12.1105
+custom_fonts/font = ExtResource( 19 )
+text = "All art, music & coding by Spikey!"
+align = 1
+valign = 1
+autowrap = true
+
 [node name="Label3" type="Label" parent="Camera2D/Blurb"]
 anchor_right = 0.01
 margin_left = -162.003
-margin_top = -14.093
+margin_top = 18.2147
 margin_right = 154.0
-margin_bottom = 54.907
+margin_bottom = 87.2147
 custom_fonts/font = ExtResource( 19 )
 text = "Special thanks:
 Antonin Francoeur - Coding support
@@ -896,7 +908,7 @@ valign = 1
 autowrap = true
 
 [node name="Spikey" type="Sprite" parent="Camera2D/Blurb"]
-position = Vector2( -2.00346, 96.4952 )
+position = Vector2( -2.00346, 119.572 )
 scale = Vector2( 0.8, 0.95 )
 texture = ExtResource( 67 )
 

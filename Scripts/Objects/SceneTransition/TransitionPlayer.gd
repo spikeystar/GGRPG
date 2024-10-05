@@ -14,7 +14,7 @@ func _ready():
 	animation_player.play("RESET")
 	
 func fade_speed():
-	animation_player.playback_speed = 0.9
+	animation_player.playback_speed = 0.8
 	
 func spike_speed():
 	animation_player.playback_speed = 1
