@@ -1,5 +1,9 @@
 extends Node
 
+var save_1 = false
+var save_2 = false
+var save_3 = false
+
 var Cherry_Trail = false
 var Pivot_Town = false
 var Kugi_Canyon = false
@@ -7,11 +11,6 @@ var Berry_Lake = false
 
 var new_file = false
 var first_save = false
-var save_1 = false
-var save_2 = false
-var save_3 = false
-
-var jewel_seeds : int = 0
 
 var Michael_Meetup_CS = false
 var Tindrum = false

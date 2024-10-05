@@ -9,6 +9,8 @@ var cursor_index : int = 0
 var down_count = 0
 var menu_name : String
 
+var ongoing = false
+
 signal retread
 
 func _ready():
@@ -20,14 +22,14 @@ func _process(delta):
 	var current_menu_item := get_menu_item_at_index(cursor_index)
 	menu_name = current_menu_item.get_id()
 	
-	if Input.is_action_just_pressed("ui_up") and cursor_index >0:
+	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and not ongoing:
 		SE.effect("Move Between")
 		input.y -= 1
 		self.modulate.a = 0
 		yield(get_tree().create_timer(0.01), "timeout")
 		self.modulate.a = 1
 		down_count -= 1
-	if Input.is_action_just_pressed("ui_down") and down_count <2:
+	if Input.is_action_just_pressed("ui_down") and down_count <2 and not ongoing:
 		SE.effect("Move Between")
 		input.y += 1
 		self.modulate.a = 0
@@ -37,7 +39,7 @@ func _process(delta):
 	else:
 		input.y += 0
 		
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") and not ongoing:
 		return
 		self.modulate.a = 0
 		emit_signal("retread")

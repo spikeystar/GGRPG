@@ -103,7 +103,7 @@ func Derek():
 		done()
 		alternate = true
 	elif js < 2 and alternate:
-		$Name/Talk.text = "Henry and Tom live next door to us. They're nice to have as neighbors since they're so quiet"
+		$Name/Talk.text = "Henry and Tom live next door to us. They're nice to have as neighbors since they're so quiet."
 		talking()
 		yield(self, "talk_done")
 		$Name/Talk.text = "I hope they don't mind how loud Penelope can be..."

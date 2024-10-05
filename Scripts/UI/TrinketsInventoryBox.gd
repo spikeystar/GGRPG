@@ -104,9 +104,24 @@ func initial_id():
 func get_holder_name():
 	trinket_id = inventory[trinket_index].get_id()
 	if not empty_trinkets:
-		if PartyStats.gary_trinket == trinket_id or PartyStats.jacques_trinket == trinket_id or PartyStats.irina_trinket == trinket_id or PartyStats.suzy_trinket == trinket_id or PartyStats.damien_trinket == trinket_id:
+		#if PartyStats.gary_trinket == trinket_id or PartyStats.jacques_trinket == trinket_id or PartyStats.irina_trinket == trinket_id or PartyStats.suzy_trinket == trinket_id or PartyStats.damien_trinket == trinket_id:
 			#trinket_holder = inventory[trinket_index].get_holder_name()
-			trinket_holder = Party.Trinkets[trinket_index].get_holder_name()
+			#trinket_holder = Party.Trinkets[trinket_index].get_holder_name()
+			#return trinket_holder
+		if PartyStats.gary_trinket == trinket_id:
+			trinket_holder = "Gary"
+			return trinket_holder
+		if PartyStats.jacques_trinket == trinket_id:
+			trinket_holder = "Jacques"
+			return trinket_holder
+		if PartyStats.irina_trinket == trinket_id:
+			trinket_holder = "Irina"
+			return trinket_holder
+		if PartyStats.suzy_trinket == trinket_id:
+			trinket_holder = "Suzy"
+			return trinket_holder
+		if PartyStats.damien_trinket == trinket_id:
+			trinket_holder = "Damien"
 			return trinket_holder
 		else:
 			return "-"

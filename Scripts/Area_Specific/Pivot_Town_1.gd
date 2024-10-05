@@ -21,6 +21,9 @@ func _ready():
 		Music.id = "Pivot_Town"
 		Music.music()
 		
+	if not EventManager.Jacques_Meetup_CS:
+		$CollisionRoot/Edgar_Door/CollisionPolygon2D.disabled = true
+		
 	if EventManager.Jacques_Meetup_CS:
 		$YSort/MiddleGround/Jacques.position = Vector2(5000, 5000)
 		$YSort/MiddleGround/Edgar.queue_free()
@@ -350,6 +353,7 @@ func _on_Jacques_Meetup_area_event():
 	PlayerManager.freeze = false
 	PlayerManager.cutscene = false
 	$CollisionRoot/NPC3.queue_free()
+	$CollisionRoot/Edgar_Door/CollisionPolygon2D.disabled = false
 
 
 func _on_Irina_Meetup_area_event():

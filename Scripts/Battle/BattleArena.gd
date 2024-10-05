@@ -352,7 +352,13 @@ func _input(event):
 		$NewSpellWindow.show()
 		$WindowPlayer.playback_speed = 0.9
 		$WindowPlayer.play("new_spell_open")
-		if PartyStats.new_spell_2:
+		if PartyStats.new_spell_2 and PartyStats.party_members == 1:
+			$NewSpellWindow/NewSpell.text = "Gary learned \"Earthslide\"!"
+			yield(get_tree().create_timer(2), "timeout")
+			PartyStats.new_spell_2 = false
+			victory_ended = true
+			
+		if PartyStats.new_spell_2 and PartyStats.party_members > 1:
 			$NewSpellWindow/NewSpell.text = "Gary learned \"Earthslide\"!"
 			yield(get_tree().create_timer(2.5), "timeout")
 			$WindowPlayer.play("new_spell_open")
@@ -360,7 +366,7 @@ func _input(event):
 			yield(get_tree().create_timer(2), "timeout")
 			PartyStats.new_spell_2 = false
 			victory_ended = true
-		
+			
 
 ##### RETURN BUTTON ########
 

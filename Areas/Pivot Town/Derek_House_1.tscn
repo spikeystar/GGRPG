@@ -687,7 +687,7 @@ current = true
 zoom = Vector2( 0.655, 0.65 )
 script = ExtResource( 7 )
 minPos = Vector2( -70, -110 )
-maxPos = Vector2( 300, 5 )
+maxPos = Vector2( 300, 30 )
 follow_player = true
 
 [node name="Interaction" type="Node2D" parent="Camera2D"]
