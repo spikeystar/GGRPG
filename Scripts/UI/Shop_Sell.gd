@@ -37,43 +37,43 @@ func set_id():
 		$Display.show()
 		$Cost.show()
 		$Display.frame = 0
-		$Cost.text = "75 Mb"
-		item_cost = 75
+		$Cost.text = "30 Mb"
+		item_cost = 30
 		$Info.text = "50 HP"
 	if item_id == "Pretty Gem":
 		$Display.show()
 		$Cost.show()
 		$Display.frame = 1
-		$Cost.text = "100 Mb"
-		item_cost = 100
+		$Cost.text = "30 Mb"
+		item_cost = 30
 		$Info.text = "20 SP"
 	if item_id == "Picnic Pie":
 		$Display.show()
 		$Cost.show()
 		$Display.frame = 2
-		$Cost.text = "400 Mb"
-		item_cost = 400
+		$Cost.text = "200 Mb"
+		item_cost = 200
 		$Info.text = "100 HP for all"
 	if item_id == "Sugar Pill":
 		$Display.show()
 		$Cost.show()
 		$Display.frame = 3
-		$Cost.text = "150 Mb"
-		item_cost = 150
+		$Cost.text = "75 Mb"
+		item_cost = 75
 		$Info.text = "20 HP and grants a random buff"
 	if item_id == "Ginger Tea":
 		$Display.show()
 		$Cost.show()
 		$Display.frame = 4
-		$Cost.text = "150 Mb"
-		item_cost = 150
+		$Cost.text = "75 Mb"
+		item_cost = 75
 		$Info.text = "Recovers from all debuffs and statuses"
 	if item_id == "Bounty Herb":
 		$Display.show()
 		$Cost.show()
 		$Display.frame = 5
-		$Cost.text = "300 Mb"
-		item_cost = 300
+		$Cost.text = "150 Mb"
+		item_cost = 150
 		$Info.text = "Revives a fallen party member to 50% health"
 	if $MenuCursor.empty:
 		$Display.hide()

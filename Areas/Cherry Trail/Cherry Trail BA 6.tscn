@@ -588,8 +588,8 @@ animations = [ {
 pause_mode = 2
 script = ExtResource( 40 )
 main_menu = "res://UI/MainMenu.tscn"
-EXP_base = 15
-marbles_base = 24
+EXP_base = 100
+marbles_base = 500
 event_battle = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -615,9 +615,9 @@ script = ExtResource( 41 )
 position = Vector2( 67, 13 )
 ID = "Tindrum"
 e_health = 100
-e_attack = 10
-e_magic = 2
-e_defense = 5
+e_attack = 20
+e_magic = 0
+e_defense = 12
 boss = true
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
@@ -1194,7 +1194,6 @@ TEXT_LOSS = ExtResource( 18 )
 
 [node name="Irina_Battle" parent="Fighters" instance=ExtResource( 32 )]
 position = Vector2( -23, 194 )
-fighter_name = "irina"
 f_health = 113
 f_attack = 55
 f_attack_base = 10
@@ -1597,7 +1596,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1614,6 +1612,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 

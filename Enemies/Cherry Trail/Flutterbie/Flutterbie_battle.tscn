@@ -1046,10 +1046,10 @@ tracks/1/keys = {
 [node name="Flutterbie_battle" type="Node2D"]
 script = ExtResource( 1 )
 ID = "Flutterbie"
-e_health = 50
-e_attack = 7
+e_health = 35
+e_attack = 12
 e_magic = 10
-e_defense = 2
+e_defense = 8
 initial_type = "neutral"
 TEXT_DAMAGE = ExtResource( 8 )
 TEXT_HEAL = ExtResource( 4 )
@@ -1058,6 +1058,7 @@ TEXT_POISON = ExtResource( 12 )
 move1 = "Basic"
 move2 = "Asphyxiate"
 move3 = "Aero Bullet"
+move4 = "Basic"
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )

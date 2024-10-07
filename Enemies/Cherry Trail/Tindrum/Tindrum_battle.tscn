@@ -1022,11 +1022,10 @@ tracks/1/keys = {
 [node name="Tindrum_battle" type="Node2D"]
 scale = Vector2( 1.4, 1.4 )
 script = ExtResource( 10 )
-ID = "Flutterbie"
-e_health = 50
-e_attack = 7
-e_magic = 10
-e_defense = 2
+ID = "Tindrum"
+e_health = 100
+e_attack = 15
+e_defense = 12
 initial_type = "neutral"
 TEXT_DAMAGE = ExtResource( 7 )
 TEXT_HEAL = ExtResource( 1 )
@@ -1083,7 +1082,6 @@ texture = ExtResource( 2 )
 
 [node name="TextOffset" type="Position2D" parent="."]
 visible = false
-scale = Vector2( 1, 1 )
 
 [node name="DamageText" parent="." instance=ExtResource( 7 )]
 visible = false

@@ -589,8 +589,8 @@ animations = [ {
 pause_mode = 2
 script = ExtResource( 34 )
 main_menu = "res://UI/MainMenu.tscn"
-EXP_base = 15
-marbles_base = 24
+EXP_base = 21
+marbles_base = 30
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -613,6 +613,10 @@ script = ExtResource( 35 )
 
 [node name="Sapling_battle" parent="Enemies/Field" instance=ExtResource( 54 )]
 position = Vector2( -31, -1 )
+e_health = 25
+e_attack = 13
+e_magic = 0
+e_defense = 10
 move4 = "Basic"
 
 [node name="Flutterbie_battle" parent="Enemies/Field" instance=ExtResource( 55 )]
@@ -1197,7 +1201,6 @@ TEXT_LOSS = ExtResource( 18 )
 
 [node name="Irina_Battle" parent="Fighters" instance=ExtResource( 59 )]
 position = Vector2( -23, 194 )
-fighter_name = "irina"
 f_health = 113
 f_attack = 55
 f_attack_base = 10
@@ -1600,7 +1603,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1617,6 +1619,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 

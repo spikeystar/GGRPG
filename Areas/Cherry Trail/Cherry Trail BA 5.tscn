@@ -588,8 +588,8 @@ animations = [ {
 pause_mode = 2
 script = ExtResource( 34 )
 main_menu = "res://UI/MainMenu.tscn"
-EXP_base = 15
-marbles_base = 24
+EXP_base = 5
+marbles_base = 10
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -613,10 +613,9 @@ script = ExtResource( 35 )
 [node name="Cheribo_battle" parent="Enemies/Field" instance=ExtResource( 53 )]
 position = Vector2( 57, 34 )
 ID = "Cheribo"
-e_health = 70
-e_attack = 15
-e_magic = 15
-e_defense = 1
+e_health = 20
+e_attack = 12
+e_defense = 7
 initial_type = "neutral"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
@@ -1193,7 +1192,6 @@ TEXT_LOSS = ExtResource( 18 )
 
 [node name="Irina_Battle" parent="Fighters" instance=ExtResource( 59 )]
 position = Vector2( -23, 194 )
-fighter_name = "irina"
 f_health = 113
 f_attack = 55
 f_attack_base = 10
@@ -1596,7 +1594,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1613,6 +1610,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 

@@ -589,8 +589,8 @@ animations = [ {
 pause_mode = 2
 script = ExtResource( 31 )
 main_menu = "res://UI/MainMenu.tscn"
-EXP_base = 36
-marbles_base = 23
+EXP_base = 27
+marbles_base = 37
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -1194,7 +1194,6 @@ TEXT_LOSS = ExtResource( 20 )
 
 [node name="Irina_Battle" parent="Fighters" instance=ExtResource( 37 )]
 position = Vector2( -23, 194 )
-fighter_name = "irina"
 f_health = 113
 f_attack = 55
 f_attack_base = 10

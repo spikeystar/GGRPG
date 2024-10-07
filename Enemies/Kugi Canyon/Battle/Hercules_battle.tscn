@@ -1010,10 +1010,9 @@ tracks/1/keys = {
 [node name="Hercules_battle" type="Node2D"]
 script = ExtResource( 4 )
 ID = "Hercules"
-e_health = 55
-e_attack = 9
-e_magic = 1
-e_defense = 6
+e_health = 70
+e_attack = 20
+e_defense = 12
 initial_type = "neutral"
 TEXT_DAMAGE = ExtResource( 8 )
 TEXT_HEAL = ExtResource( 1 )

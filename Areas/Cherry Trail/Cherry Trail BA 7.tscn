@@ -589,7 +589,7 @@ animations = [ {
 pause_mode = 2
 script = ExtResource( 2 )
 main_menu = "res://UI/MainMenu.tscn"
-EXP_base = 15
+EXP_base = 13
 marbles_base = 24
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -614,14 +614,17 @@ script = ExtResource( 21 )
 [node name="Cheribo_battle" parent="Enemies/Field" instance=ExtResource( 17 )]
 position = Vector2( -7, 17 )
 ID = "Cheribo"
-e_health = 30
-e_attack = 15
-e_magic = 15
-e_defense = 1
+e_health = 20
+e_attack = 12
+e_defense = 7
 initial_type = "neutral"
 
 [node name="Sapling_battle" parent="Enemies/Field" instance=ExtResource( 55 )]
 position = Vector2( 132, 70 )
+e_health = 25
+e_attack = 13
+e_magic = 0
+e_defense = 10
 move4 = "Basic"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
@@ -1198,7 +1201,6 @@ TEXT_LOSS = ExtResource( 47 )
 
 [node name="Irina_Battle" parent="Fighters" instance=ExtResource( 59 )]
 position = Vector2( -23, 194 )
-fighter_name = "irina"
 f_health = 113
 f_attack = 55
 f_attack_base = 10
@@ -1601,7 +1603,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1618,6 +1619,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 

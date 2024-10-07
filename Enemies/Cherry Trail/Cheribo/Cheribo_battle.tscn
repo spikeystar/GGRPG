@@ -1023,6 +1023,11 @@ tracks/1/keys = {
 
 [node name="Cheribo_battle" type="Node2D"]
 script = ExtResource( 3 )
+ID = "Cheribo"
+e_health = 20
+e_attack = 10
+e_defense = 7
+initial_type = "neutral"
 TEXT_DAMAGE = ExtResource( 7 )
 TEXT_HEAL = ExtResource( 8 )
 TEXT_STORED = ExtResource( 12 )

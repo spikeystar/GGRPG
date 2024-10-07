@@ -1022,10 +1022,9 @@ tracks/1/keys = {
 [node name="Sapling_battle" type="Node2D"]
 script = ExtResource( 9 )
 ID = "Sapling"
-e_health = 35
-e_attack = 5
-e_magic = 2
-e_defense = 5
+e_health = 25
+e_attack = 10
+e_defense = 10
 initial_type = "earth"
 TEXT_DAMAGE = ExtResource( 6 )
 TEXT_HEAL = ExtResource( 1 )

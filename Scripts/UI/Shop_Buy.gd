@@ -51,50 +51,50 @@ func set_id():
 	if item_id == "Yummy Cake":
 		$Display.show()
 		$Display.frame = 0
-		$Cost.text = "100 Mb"
-		item_cost = 100
+		$Cost.text = "50 Mb"
+		item_cost = 50
 		$Info.text = "50 HP"
 		$Carrying.show()
 	if item_id == "Pretty Gem":
 		$Display.show()
 		$Display.frame = 1
-		$Cost.text = "150 Mb"
-		item_cost = 150
+		$Cost.text = "50 Mb"
+		item_cost = 50
 		$Info.text = "20 SP"
 		$Carrying.show()
 	if item_id == "Sugar Pill":
 		$Display.show()
 		$Display.frame = 3
-		$Cost.text = "200 Mb"
-		item_cost = 200
+		$Cost.text = "100 Mb"
+		item_cost = 100
 		$Info.text = "20 HP and grants a random buff"
 		$Carrying.show()
 	if item_id == "Ginger Tea":
 		$Display.show()
 		$Display.frame = 4
-		$Cost.text = "200 Mb"
-		item_cost = 200
+		$Cost.text = "100 Mb"
+		item_cost = 100
 		$Info.text = "Recovers from all debuffs and statuses"
 		$Carrying.show()
 	if item_id == "Bounty Herb":
 		$Display.show()
 		$Display.frame = 5
-		$Cost.text = "400 Mb"
-		item_cost = 400
+		$Cost.text = "200 Mb"
+		item_cost = 200
 		$Info.text = "Revives a fallen party member to 50% health"
 		$Carrying.show()
 	if item_id == "Gold Bracelet":
 		$Display.show()
 		$Display.frame = 6
-		$Cost.text = "1,500 Mb"
-		item_cost = 1500
+		$Cost.text = "1,000 Mb"
+		item_cost = 1000
 		$Info.text = "Increases holder's Attack by 20%\nWhammy! chance +5"
 		$Carrying.hide()
 	if item_id == "Gold Chain":
 		$Display.show()
 		$Display.frame = 7
-		$Cost.text = "1,500 Mb"
-		item_cost = 1500
+		$Cost.text = "1,000 Mb"
+		item_cost = 1000
 		$Info.text = "Increases holder's Defense by 20%\nWhammy! chance +5"
 		$Carrying.hide()
 

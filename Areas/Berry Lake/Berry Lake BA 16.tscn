@@ -690,8 +690,8 @@ animations = [ {
 pause_mode = 2
 script = ExtResource( 12 )
 main_menu = "res://UI/MainMenu.tscn"
-EXP_base = 36
-marbles_base = 23
+EXP_base = 200
+marbles_base = 500
 battle_name = "Reeler"
 boss_battle = true
 

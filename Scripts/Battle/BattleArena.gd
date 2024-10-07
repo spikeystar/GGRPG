@@ -1223,7 +1223,7 @@ func Earthslide():
 	var enemy_position = $Enemies.get_e_position() + Vector2(-175, 40)
 	$Enemies.damage_type = "earth"
 	$Enemies.move_type = "earth"
-	$Enemies.f_magic_base = 50
+	$Enemies.f_magic_base = 50 + int((50 * PartyStats.party_level) / 15)
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
@@ -1243,7 +1243,7 @@ func Icicle():
 	var enemy_position = $Enemies.get_e_position()
 	$Enemies.damage_type = "water"
 	$Enemies.move_type = "water"
-	$Enemies.f_magic_base = 30
+	$Enemies.f_magic_base = 35 + int((35 * PartyStats.party_level) / 15)
 	$Enemies.d_debuff = true
 	$Fighters.spell_1()
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -1265,7 +1265,7 @@ func Precious_Beam():
 	var buff_counter = $Enemies.get_status("buff_counter")
 	$Enemies.damage_type = "fire"
 	$Enemies.move_type = "fire"
-	$Enemies.f_magic_base = 50 + (buff_counter * 20)
+	$Enemies.f_magic_base = 50 + (buff_counter * 20) + int((50 * PartyStats.party_level) / 15)
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
@@ -1286,7 +1286,7 @@ func Thunderstorm():
 	$MovePlayer.position = Vector2(0,0)
 	$Enemies.damage_type = "air"
 	$Enemies.move_type = "air"
-	$Enemies.f_magic_base = 20
+	$Enemies.f_magic_base = 30 + int((30 * PartyStats.party_level) / 15)
 	if not tutorial:
 		$Enemies.stun = true
 		$Enemies.stun_chance = 20
@@ -1307,7 +1307,7 @@ func Prism_Snow():
 	$MovePlayer.position = Vector2(0,0)
 	$Enemies.damage_type = "water"
 	$Enemies.move_type = "water"
-	$Enemies.f_magic_base = 30
+	$Enemies.f_magic_base = 40 + int((40 * PartyStats.party_level) / 15)
 	$Enemies.multi_debuff = true
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Fighters.spell_2()
