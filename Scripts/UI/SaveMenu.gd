@@ -141,7 +141,6 @@ var menu_data = {
 func _ready():
 	load_base_file()
 	set_menu()
-	print(menu_data)
 	
 	if SceneManager.loading:
 		if Music.id != "Overworld" or not Music.is_playing:
@@ -524,7 +523,7 @@ func _input(event):
 		save_path = "user://save.dat_1"
 		save1_update()
 		save_file()
-		save_base_file()
+		#save_base_file()
 		
 	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.saving and able:
 		$SaveSelection/MenuCursor.ongoing = true
@@ -535,7 +534,7 @@ func _input(event):
 		save_path = "user://save.dat_2"
 		save2_update()
 		save_file()
-		save_base_file()
+		#save_base_file()
 		
 	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.saving and able:
 		$SaveSelection/MenuCursor.ongoing = true
@@ -546,62 +545,83 @@ func _input(event):
 		save_path = "user://save.dat_3"
 		save3_update()
 		save_file()
-		save_base_file()
+		#save_base_file()
 		
 	#####################################################
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.loading and save1 and able:
-		$SaveSelection/MenuCursor.ongoing = true
-		able = false
-		SE.effect("Switch")
-		save_path = "user://save.dat_1"
-		load_file()
-		PartyStats.set_stats()
-		yield(get_tree().create_timer(0.6), "timeout")
-		load_scene()
+	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.loading and able:
+		if save1:
+			$SaveSelection/MenuCursor.ongoing = true
+			able = false
+			SE.effect("Switch")
+			save_path = "user://save.dat_1"
+			load_file()
+			PartyStats.set_stats()
+			yield(get_tree().create_timer(0.6), "timeout")
+			load_scene()
+		else:
+			$SaveSelection/MenuCursor.ongoing = true
+			able = false
+			SE.effect("Switch")
+			yield(get_tree().create_timer(0.6), "timeout")
+			opening()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading and save2 and able:
-		$SaveSelection/MenuCursor.ongoing = true
-		able = false
-		SE.effect("Switch")
-		save_path = "user://save.dat_2"
-		load_file()
-		PartyStats.set_stats()
-		yield(get_tree().create_timer(0.6), "timeout")
-		load_scene()
+	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading and able:
+		if save2:
+			$SaveSelection/MenuCursor.ongoing = true
+			able = false
+			SE.effect("Switch")
+			save_path = "user://save.dat_2"
+			load_file()
+			PartyStats.set_stats()
+			yield(get_tree().create_timer(0.6), "timeout")
+			load_scene()
+		else:
+			$SaveSelection/MenuCursor.ongoing = true
+			able = false
+			SE.effect("Switch")
+			yield(get_tree().create_timer(0.6), "timeout")
+			opening()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading and save3 and able:
-		$SaveSelection/MenuCursor.ongoing = true
-		able = false
-		SE.effect("Switch")
-		save_path = "user://save.dat_3"
-		load_file()
-		PartyStats.set_stats()
-		yield(get_tree().create_timer(0.6), "timeout")
-		load_scene()
+	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading and able:
+		if save3:
+			$SaveSelection/MenuCursor.ongoing = true
+			able = false
+			SE.effect("Switch")
+			save_path = "user://save.dat_3"
+			load_file()
+			PartyStats.set_stats()
+			yield(get_tree().create_timer(0.6), "timeout")
+			load_scene()
+		else:
+			$SaveSelection/MenuCursor.ongoing = true
+			able = false
+			SE.effect("Switch")
+			yield(get_tree().create_timer(0.6), "timeout")
+			opening()
 		
 	####################################################
 	
-	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.loading and not save1 and able:
-		$SaveSelection/MenuCursor.ongoing = true
-		able = false
-		SE.effect("Switch")
-		save_path = "user://save.dat_1"
-		load_file()
+	#if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.loading and not save1 and able:
+		#$SaveSelection/MenuCursor.ongoing = true
+		#able = false
+		#SE.effect("Switch")
+		#save_path = "user://save.dat_1"
+		#load_file()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading and not save2 and able:
-		$SaveSelection/MenuCursor.ongoing = true
-		able = false
-		SE.effect("Switch")
-		save_path = "user://save.dat_2"
-		load_file()
+	#if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading and not save2 and able:
+		#$SaveSelection/MenuCursor.ongoing = true
+		#able = false
+		#SE.effect("Switch")
+		#save_path = "user://save.dat_2"
+		#load_file()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading and not save3 and able:
-		$SaveSelection/MenuCursor.ongoing = true
-		able = false
-		SE.effect("Switch")
-		save_path = "user://save.dat_3"
-		load_file()
+	#if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading and not save3 and able:
+		#$SaveSelection/MenuCursor.ongoing = true
+		#able = false
+		#SE.effect("Switch")
+		#save_path = "user://save.dat_3"
+		#load_file()
 		
 		
 		
@@ -800,3 +820,6 @@ func load_scene():
 		transition.transition_in(Berry_Lake, _get_animation_name())
 		yield(get_tree().create_timer(0.7), "timeout")
 		SceneManager.loading = false
+
+func opening():
+	pass

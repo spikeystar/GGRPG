@@ -15,6 +15,10 @@ func _ready():
 	SceneManager.loading = true
 	PlayerManager.hide_player()
 	
+	yield(get_tree().create_timer(0.8), "timeout")
+	$AnimationPlayer2.play("Intro")
+	yield(get_tree().create_timer(2.6), "timeout")
+	
 	var transition = TransitionPlayer.instance()
 	add_child(transition)
 	transition.backwards_star()
