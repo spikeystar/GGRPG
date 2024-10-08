@@ -11,6 +11,8 @@ export(String, FILE, "*.tscn,*.scn") var target_scene
 export var exit_name : String;
 export(TransitionType) var transition_type = TransitionType.FADE_TO_BLACK;
 
+var able = false
+
 func _ready():
 	SceneManager.loading = true
 	PlayerManager.hide_player()
@@ -24,9 +26,10 @@ func _ready():
 	transition.backwards_star()
 	yield(get_tree().create_timer(0.9), "timeout")
 	transition.queue_free()
+	able = true
 	
 func _input(event):
-	if Input.is_action_just_pressed("ui_select"):
+	if Input.is_action_just_pressed("ui_select") and able:
 		var transition = TransitionPlayer2.instance()
 		get_tree().get_root().add_child(transition)
 		transition.transition_in(target_scene, _get_animation_name())
