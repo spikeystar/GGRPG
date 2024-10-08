@@ -163,27 +163,27 @@ func travel():
 	if SceneManager.location == "Gary's House":
 		get_tree().paused = false
 		transition.transition_in(Garys_House, _get_animation_name())
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(1.4), "timeout")
 		self.queue_free()
 	if SceneManager.location == "Cherry Trail":
 		get_tree().paused = false
 		transition.transition_in(Cherry_Trail, _get_animation_name())
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(1.4), "timeout")
 		self.queue_free()
 	if SceneManager.location == "Pivot Town":
 		get_tree().paused = false
 		transition.transition_in(Pivot_Town, _get_animation_name())
-		yield(get_tree().create_timer(0.8), "timeout")
+		yield(get_tree().create_timer(1.4), "timeout")
 		self.queue_free()
 	if SceneManager.location == "Kugi Canyon":
 		get_tree().paused = false
 		transition.transition_in(Kugi_Canyon, _get_animation_name())
-		yield(get_tree().create_timer(0.8), "timeout")
+		yield(get_tree().create_timer(1.4), "timeout")
 		self.queue_free()
 	if SceneManager.location == "Berry Lake":
 		get_tree().paused = false
 		transition.transition_in(Berry_Lake, _get_animation_name())
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(1.4), "timeout")
 		self.queue_free()
 	
 

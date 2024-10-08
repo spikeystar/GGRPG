@@ -16,6 +16,7 @@ var Kugi_Canyon = "res://Areas/Kugi Canyon/Kugi Canyon 7.tscn"
 var Berry_Lake = "res://Areas/Berry Lake/Berry Lake 8.tscn"
 
 var ongoing = false
+var able = true
 
 var save_path : String
 var base_path = "user://save.dat"
@@ -136,7 +137,6 @@ var menu_data = {
 		"save3_frame" : save3_frame,
 		"save3_js" : save3_js,
 	}
-	
 	
 func _ready():
 	load_base_file()
@@ -361,7 +361,6 @@ func save_file():
 		file.store_var(data, true)
 		file.close()
 		
-		
 func save_base_file():
 	var file = File.new()
 	file.open_encrypted_with_pass(base_path, File.WRITE, "P#ableDH")
@@ -475,8 +474,8 @@ func load_file():
 			
 func load_base_file():
 	var file = File.new()
-	if file.file_exists(base_path):
-		var error = file.open_encrypted_with_pass(base_path, File.READ, "P#ableDH")
+	if file.file_exists("user://save.dat_1"):
+		var error = file.open_encrypted_with_pass("user://save.dat_1", File.READ, "P#ableDH")
 		if error == OK:
 			menu_data = file.get_var(true)
 			
@@ -486,11 +485,23 @@ func load_base_file():
 			save1_frame = menu_data["save1_frame"]
 			save1_js = menu_data["save1_js"]
 			
+	file = File.new()
+	if file.file_exists("user://save.dat_2"):
+		var error = file.open_encrypted_with_pass("user://save.dat_2", File.READ, "P#ableDH")
+		if error == OK:
+			menu_data = file.get_var(true)
+			
 			save2 = menu_data["save2"]
 			save2_location = menu_data["save2_location"]
 			save2_level = menu_data["save2_level"]
 			save2_frame = menu_data["save2_frame"]
 			save2_js = menu_data["save2_js"]
+			
+	file = File.new()
+	if file.file_exists("user://save.dat_3"):
+		var error = file.open_encrypted_with_pass("user://save.dat_3", File.READ, "P#ableDH")
+		if error == OK:
+			menu_data = file.get_var(true)
 			
 			save3 = menu_data["save3"]
 			save3_location = menu_data["save3_location"]
@@ -498,13 +509,16 @@ func load_base_file():
 			save3_frame = menu_data["save3_frame"]
 			save3_js = menu_data["save3_js"]
 			
+			
 			file.close()
 	
 func _input(event):
 	var file_name : String = $SaveSelection/MenuCursor.menu_name
 	
-	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.saving:
+	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.saving and able:
+		$SaveSelection/MenuCursor.ongoing = true
 		SE.effect("Switch")
+		able = false
 		EventManager.first_save = true
 		save1 = true
 		save_path = "user://save.dat_1"
@@ -512,8 +526,10 @@ func _input(event):
 		save_file()
 		save_base_file()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.saving:
+	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.saving and able:
+		$SaveSelection/MenuCursor.ongoing = true
 		SE.effect("Switch")
+		able = false
 		EventManager.first_save = true
 		save2 = true
 		save_path = "user://save.dat_2"
@@ -521,8 +537,10 @@ func _input(event):
 		save_file()
 		save_base_file()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.saving:
+	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.saving and able:
+		$SaveSelection/MenuCursor.ongoing = true
 		SE.effect("Switch")
+		able = false
 		EventManager.first_save = true
 		save3 = true
 		save_path = "user://save.dat_3"
@@ -532,8 +550,9 @@ func _input(event):
 		
 	#####################################################
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.loading and save1:
+	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.loading and save1 and able:
 		$SaveSelection/MenuCursor.ongoing = true
+		able = false
 		SE.effect("Switch")
 		save_path = "user://save.dat_1"
 		load_file()
@@ -541,8 +560,9 @@ func _input(event):
 		yield(get_tree().create_timer(0.6), "timeout")
 		load_scene()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading and save2:
+	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading and save2 and able:
 		$SaveSelection/MenuCursor.ongoing = true
+		able = false
 		SE.effect("Switch")
 		save_path = "user://save.dat_2"
 		load_file()
@@ -550,8 +570,9 @@ func _input(event):
 		yield(get_tree().create_timer(0.6), "timeout")
 		load_scene()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading and save3:
+	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading and save3 and able:
 		$SaveSelection/MenuCursor.ongoing = true
+		able = false
 		SE.effect("Switch")
 		save_path = "user://save.dat_3"
 		load_file()
@@ -561,20 +582,23 @@ func _input(event):
 		
 	####################################################
 	
-	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.loading and not save1:
+	if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.loading and not save1 and able:
 		$SaveSelection/MenuCursor.ongoing = true
+		able = false
 		SE.effect("Switch")
 		save_path = "user://save.dat_1"
 		load_file()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading and not save2:
+	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading and not save2 and able:
 		$SaveSelection/MenuCursor.ongoing = true
+		able = false
 		SE.effect("Switch")
 		save_path = "user://save.dat_2"
 		load_file()
 		
-	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading and not save3:
+	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading and not save3 and able:
 		$SaveSelection/MenuCursor.ongoing = true
+		able = false
 		SE.effect("Switch")
 		save_path = "user://save.dat_3"
 		load_file()
@@ -758,21 +782,21 @@ func load_scene():
 	get_tree().get_root().add_child(transition)
 	if SceneManager.location == "Gary's House":
 		transition.transition_in(Garys_House, _get_animation_name())
-		yield(get_tree().create_timer(0.8), "timeout")
+		yield(get_tree().create_timer(0.7), "timeout")
 		SceneManager.loading = false
 	if SceneManager.location == "Cherry Trail":
 		transition.transition_in(Cherry_Trail, _get_animation_name())
-		yield(get_tree().create_timer(0.8), "timeout")
+		yield(get_tree().create_timer(0.7), "timeout")
 		SceneManager.loading = false
 	if SceneManager.location == "Pivot Town":
 		transition.transition_in(Pivot_Town, _get_animation_name())
-		yield(get_tree().create_timer(0.8), "timeout")
+		yield(get_tree().create_timer(0.7), "timeout")
 		SceneManager.loading = false
 	if SceneManager.location == "Kugi Canyon":
 		transition.transition_in(Kugi_Canyon, _get_animation_name())
-		yield(get_tree().create_timer(0.8), "timeout")
+		yield(get_tree().create_timer(0.7), "timeout")
 		SceneManager.loading = false
 	if SceneManager.location == "Berry Lake":
 		transition.transition_in(Berry_Lake, _get_animation_name())
-		yield(get_tree().create_timer(0.8), "timeout")
+		yield(get_tree().create_timer(0.7), "timeout")
 		SceneManager.loading = false
