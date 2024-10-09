@@ -20,8 +20,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Gary Goat RPG!"
-run/main_scene="res://Areas/Pivot Town/Pivot_Town_1.tscn"
+config/name="Gary Goat RPG! Demo"
+run/main_scene="res://UI/MainMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="GGRPGSaveSystem"
 boot_splash/show_image=false
@@ -51,6 +51,7 @@ settings/fps/force_fps=40
 
 window/size/width=640
 window/size/height=560
+window/size/fullscreen=true
 window/size/test_width=1024
 window/size/test_height=600
 window/per_pixel_transparency/allowed=true

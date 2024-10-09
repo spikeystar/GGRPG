@@ -557,13 +557,13 @@ func _input(event):
 			save_path = "user://save.dat_1"
 			load_file()
 			PartyStats.set_stats()
-			yield(get_tree().create_timer(0.6), "timeout")
+			yield(get_tree().create_timer(0.3), "timeout")
 			load_scene()
 		else:
 			$SaveSelection/MenuCursor.ongoing = true
 			able = false
 			SE.effect("Switch")
-			yield(get_tree().create_timer(0.6), "timeout")
+			yield(get_tree().create_timer(0.3), "timeout")
 			opening()
 		
 	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading and able:
@@ -574,13 +574,13 @@ func _input(event):
 			save_path = "user://save.dat_2"
 			load_file()
 			PartyStats.set_stats()
-			yield(get_tree().create_timer(0.6), "timeout")
+			yield(get_tree().create_timer(0.3), "timeout")
 			load_scene()
 		else:
 			$SaveSelection/MenuCursor.ongoing = true
 			able = false
 			SE.effect("Switch")
-			yield(get_tree().create_timer(0.6), "timeout")
+			yield(get_tree().create_timer(0.3), "timeout")
 			opening()
 		
 	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading and able:
@@ -591,13 +591,13 @@ func _input(event):
 			save_path = "user://save.dat_3"
 			load_file()
 			PartyStats.set_stats()
-			yield(get_tree().create_timer(0.6), "timeout")
+			yield(get_tree().create_timer(0.3), "timeout")
 			load_scene()
 		else:
 			$SaveSelection/MenuCursor.ongoing = true
 			able = false
 			SE.effect("Switch")
-			yield(get_tree().create_timer(0.6), "timeout")
+			yield(get_tree().create_timer(0.3), "timeout")
 			opening()
 		
 	####################################################

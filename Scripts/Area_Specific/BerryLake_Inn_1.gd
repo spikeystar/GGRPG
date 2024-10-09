@@ -153,6 +153,7 @@ func _ready():
 		$Camera2D/Interaction/Dialogue/Name.text = "Loqua:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
 		
 		JacquesPlayer.play("front_walk_f")
 		var tween3 = create_tween()
@@ -160,7 +161,7 @@ func _ready():
 		yield(tween3, "finished")
 		Jacques.queue_free()
 		
-		$Camera2D/Interaction/Dialogue.done()
+		
 		PlayerManager.cutscene = false
 		
 		

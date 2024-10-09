@@ -1049,16 +1049,16 @@ position = Vector2( 172.437, 83.0983 )
 script = ExtResource( 62 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Inn"]
-position = Vector2( 2.1047, 19.9893 )
-polygon = PoolVector2Array( -7.10989, -20.9631, 8.84801, -29.0468, 38.9052, -18.204, 17.9526, -9.09418 )
+position = Vector2( 2.09992, 18.9892 )
+polygon = PoolVector2Array( -2.10992, -20.9893, 9.85849, -27.052, 38.9052, -18.204, 21.9369, -12.115 )
 
 [node name="Shop" parent="Node2D/CollisionRoot" instance=ExtResource( 52 )]
 position = Vector2( 172.437, 83.0983 )
 script = ExtResource( 62 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Shop"]
-position = Vector2( 51.1982, 37.7324 )
-polygon = PoolVector2Array( -7.10989, -20.9631, 8.84801, -29.0468, 61.9625, -7.32454, 45.0046, 0.764359 )
+position = Vector2( 66.2299, 43.6538 )
+polygon = PoolVector2Array( -6.11511, -21.9683, 8.84801, -29.0468, 58.9573, -8.30882, 44.9994, -0.235619 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
