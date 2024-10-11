@@ -1690,25 +1690,24 @@ alt_chance = 30
 alternate = true
 
 [node name="Smush2" parent="." instance=ExtResource( 65 )]
-position = Vector2( 90, -222 )
+position = Vector2( 183, -186 )
 target_scene = ExtResource( 68 )
 
 [node name="Druplet" parent="." instance=ExtResource( 66 )]
-position = Vector2( 23, 8 )
+position = Vector2( 34, 5 )
 target_scene = ExtResource( 71 )
 alt_scene = ExtResource( 72 )
 alt_chance = 30
 alternate = true
 
 [node name="Enemy_Boundary" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 8
 script = ExtResource( 67 )
 
 [node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
 position = Vector2( -509, -19 )
-polygon = PoolVector2Array( 231, -56, 217, -156, 175, -172, 169, -220, 88, -221, 60, -187, 58, -27, 75, -6 )
+polygon = PoolVector2Array( 231, -56, 238, -106, 217, -156, 185, -176, 144, -255, 56, -223, 60, -187, 58, -27, 75, -6 )
 
 [node name="Repel2" type="CollisionPolygon2D" parent="Enemy_Boundary"]
 position = Vector2( 178, 90 )

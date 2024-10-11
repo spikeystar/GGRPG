@@ -19,6 +19,7 @@ var Berry_Lake = "res://Areas/Berry Lake/Berry Lake 8.tscn"
 
 var ongoing = false
 var able = true
+var delete_option = false
 
 var save_path : String
 var base_path = "user://save.dat"
@@ -276,6 +277,44 @@ func set_menu():
 			$Save3/Seed5.show()
 			$Save3/Seed6.show()
 			$Save3/Seed7.show()
+	
+func reset_menu():
+	if not save1:
+		$Save1/Initial.show()
+		$Save1/Display.hide()
+		$Save1/Location.text = "-"
+		$Save1/Level_info.text = "-"
+		$Save1/Seed1.hide()
+		$Save1/Seed2.hide()
+		$Save1/Seed3.hide()
+		$Save1/Seed4.hide()
+		$Save1/Seed5.hide()
+		$Save1/Seed6.hide()
+		$Save1/Seed7.hide()
+	if not save2:
+		$Save2/Initial.show()
+		$Save2/Display.hide()
+		$Save2/Location.text = "-"
+		$Save2/Level_info.text = "-"
+		$Save2/Seed1.hide()
+		$Save2/Seed2.hide()
+		$Save2/Seed3.hide()
+		$Save2/Seed4.hide()
+		$Save2/Seed5.hide()
+		$Save2/Seed6.hide()
+		$Save2/Seed7.hide()
+	if not save3:
+		$Save3/Initial.show()
+		$Save3/Display.hide()
+		$Save3/Location.text = "-"
+		$Save3/Level_info.text = "-"
+		$Save3/Seed1.hide()
+		$Save3/Seed2.hide()
+		$Save3/Seed3.hide()
+		$Save3/Seed4.hide()
+		$Save3/Seed5.hide()
+		$Save3/Seed6.hide()
+		$Save3/Seed7.hide()
 	
 func save_file():
 	var file = File.new()
@@ -604,28 +643,73 @@ func _input(event):
 		
 	####################################################
 	
-	#if Input.is_action_just_pressed("ui_select") and file_name == "1" and SceneManager.loading and not save1 and able:
-		#$SaveSelection/MenuCursor.ongoing = true
-		#able = false
-		#SE.effect("Switch")
-		#save_path = "user://save.dat_1"
-		#load_file()
+	if Input.is_action_just_pressed("ui_accept") and SceneManager.loading and able:
+		if file_name == "1" and save1:
+			$SaveSelection/MenuCursor.ongoing = true
+			able = false
+			SE.effect("Select")
+			$Delete.position.y = -68
+			$Delete.show()
+			yield(get_tree().create_timer(0.2), "timeout")
+			delete_option = true
+		if file_name == "2" and save2:
+			$SaveSelection/MenuCursor.ongoing = true
+			able = false
+			SE.effect("Select")
+			$Delete.position.y = 69
+			$Delete.show()
+			yield(get_tree().create_timer(0.2), "timeout")
+			delete_option = true
+		if file_name == "3" and save3:
+			$SaveSelection/MenuCursor.ongoing = true
+			able = false
+			SE.effect("Select")
+			$Delete.position.y = 206
+			$Delete.show()
+			yield(get_tree().create_timer(0.2), "timeout")
+			delete_option = true
 		
-	#if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.loading and not save2 and able:
-		#$SaveSelection/MenuCursor.ongoing = true
-		#able = false
-		#SE.effect("Switch")
-		#save_path = "user://save.dat_2"
-		#load_file()
-		
-	#if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.loading and not save3 and able:
-		#$SaveSelection/MenuCursor.ongoing = true
-		#able = false
-		#SE.effect("Switch")
-		#save_path = "user://save.dat_3"
-		#load_file()
-		
-		
+	if Input.is_action_just_pressed("ui_select") and SceneManager.loading and delete_option:
+			if file_name == "1":
+				SE.effect("Switch")
+				var dir = Directory.new()
+				dir.remove("user://save.dat_1")
+				save1 = false
+				delete_option = false
+				reset_menu()
+				yield(get_tree().create_timer(0.2), "timeout")
+				$Delete.hide()
+				$SaveSelection/MenuCursor.ongoing = false
+				able = true
+			if file_name == "2":
+				SE.effect("Switch")
+				var dir = Directory.new()
+				dir.remove("user://save.dat_2")
+				save2 = false
+				delete_option = false
+				reset_menu()
+				yield(get_tree().create_timer(0.2), "timeout")
+				$Delete.hide()
+				$SaveSelection/MenuCursor.ongoing = false
+				able = true
+			if file_name == "3":
+				SE.effect("Switch")
+				var dir = Directory.new()
+				dir.remove("user://save.dat_3")
+				save3 = false
+				delete_option = false
+				reset_menu()
+				yield(get_tree().create_timer(0.2), "timeout")
+				$Delete.hide()
+				$SaveSelection/MenuCursor.ongoing = false
+				able = true
+				
+	if Input.is_action_just_pressed("ui_accept") and delete_option or Input.is_action_just_pressed("ui_up") and delete_option or Input.is_action_just_pressed("ui_down") and delete_option or Input.is_action_just_pressed("ui_left") and delete_option or Input.is_action_just_pressed("ui_right") and delete_option:
+		SE.effect("Cancel")
+		delete_option = false
+		$Delete.hide()
+		$SaveSelection/MenuCursor.ongoing = false
+		able = true
 		
 func save1_update():
 	$Save1/Location.text = SceneManager.location
