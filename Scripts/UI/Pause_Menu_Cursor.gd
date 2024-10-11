@@ -31,9 +31,9 @@ func _process(delta):
 	menu_name = current_menu_item.get_id()
 	
 	if Input.is_action_just_pressed("ui_up") and main_active:
-		SE.effect("Move Between")
 		input.y -= 1
 		if down_count >=1:
+			SE.effect("Move Between")
 			down_count -= 1
 	if Input.is_action_just_pressed("ui_down") and down_count <5 and main_active:
 		SE.effect("Move Between")

@@ -402,7 +402,6 @@ vframes = 3
 current = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 margin_left = -320.0
 margin_top = -280.0
 margin_right = 320.0

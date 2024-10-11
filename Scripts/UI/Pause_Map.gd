@@ -19,9 +19,12 @@ func _process(delta):
 	if SceneManager.location == "Berry Lake":
 		$Gary.position = Vector2(102, -48)
 		
-	if not EventManager.Jacques_Meetup_CS:
+	if EventManager.Michael_Meetup_CS and not EventManager.Jacques_Meetup_CS:
 		$Marker1.show()
 		$Marker1.position = Vector2(23, -38)
+		
+	if EventManager.Jacques_Meetup_CS and not EventManager.Edgar_Tea_CS:
+		$Marker1.hide()
 		
 	if EventManager.Edgar_Tea_CS and not EventManager.Saguarotel:
 		$Marker1.show()
