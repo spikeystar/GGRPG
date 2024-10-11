@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Legend of the Jewel Seeds.wav-f2c8a84b72dc2a7f495d6a3d842c283a.sample"
+
+[deps]
+
+source_file="res://Music/Legend of the Jewel Seeds.wav"
+dest_files=[ "res://.import/Legend of the Jewel Seeds.wav-f2c8a84b72dc2a7f495d6a3d842c283a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

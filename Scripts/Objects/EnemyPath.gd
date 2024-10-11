@@ -135,7 +135,7 @@ func _on_BattleTrigger_triggered():
 	elif boss:
 		BattleMusic.id = "Boss_Battle"
 	else:
-		pass
+		BattleMusic.id = "Standard_Battle"
 	BattleMusic.music()
 	Global.battling = true
 	get_tree().paused = true

@@ -9,6 +9,8 @@ enum TransitionType {
 const TransitionPlayer = preload("res://Objects/SceneTransition/TransitionPlayer.tscn")
 export(TransitionType) var transition_type = TransitionType.FADE_TO_BLACK;
 
+var Intro = "res://UI/Intro.tscn"
+
 var Garys_House = "res://Gary_sHouse.tscn"
 var Cherry_Trail = "res://Areas/Cherry Trail/Cherry_Trail_3.tscn"
 var Pivot_Town = "res://Areas/Pivot Town/Pivot_Town_1.tscn"
@@ -822,4 +824,6 @@ func load_scene():
 		SceneManager.loading = false
 
 func opening():
-	pass
+	var transition = TransitionPlayer.instance()
+	get_tree().get_root().add_child(transition)
+	transition.transition_in(Intro, _get_animation_name())

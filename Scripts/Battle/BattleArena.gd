@@ -824,13 +824,17 @@ func _on_Fighters_game_over():
 	transition.ease_out()
 	yield(get_tree().create_timer(0.05), "timeout")
 	transition.show()
+	BattleMusic.stopped()
 	yield(get_tree().create_timer(3.5), "timeout")
 	transition.queue_free()
 	pixelation.queue_free()
 	SceneManager.game_over = false
 	get_tree().paused = false
 	Global.battle_ended = true
+	PlayerManager.remove_player_from_scene()
 	get_tree().change_scene(main_menu)
+	PlayerManager.call_deferred("add_player_to_scene")
+	
 	#PlayerManager.remove_player_from_scene()
 	#PlayerManager.call_deferred("add_player_to_scene")
 

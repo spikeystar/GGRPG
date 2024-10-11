@@ -139,6 +139,7 @@ stream = ExtResource( 19 )
 
 [node name="Drama_Blast" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 17 )
+volume_db = 2.0
 
 [node name="Drama_Descend" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
@@ -182,6 +183,7 @@ stream = ExtResource( 26 )
 
 [node name="Game_Over" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 23 )
+volume_db = -1.0
 
 [node name="Heal" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 30 )

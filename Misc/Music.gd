@@ -7,6 +7,9 @@ var is_playing = false
 var stopped = false
 
 func music():
+	if id == "Jewel_Seeds":
+		active = $Jewel_Seeds
+		active.play()
 	if id == "Garys_House":
 		active = $Garys_House
 		active.play()
@@ -51,3 +54,78 @@ func quiet():
 	
 func loud():
 	active.volume_db += 5
+
+func fade_out():
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 0.5
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 1
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 1
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 1
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 1
+	yield(get_tree().create_timer(0.1), "timeout")
+	active.volume_db -= 100

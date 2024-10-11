@@ -9,7 +9,7 @@ var Pivot_Town = false
 var Kugi_Canyon = false
 var Berry_Lake = false
 
-var new_file = false
+var new_file = true
 var first_save = false
 
 var Michael_Meetup_CS = false
