@@ -35,8 +35,8 @@ export var tutorial : bool
 var tutorial_wait = true
 var f_attack
 var f_attack_base
-var f_magic
-var f_magic_base
+var f_magic = 0
+var f_magic_base = 0
 var e_attack
 var e_magic
 
@@ -173,6 +173,7 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("ui_select") and enemy_selecting and not tutorial_wait:
 		emit_signal("enemy_chosen")
+		hide_cursors()
 		enemy_selecting = false
 		
 	######## Item Selecting ########
@@ -221,6 +222,10 @@ func _process(delta):
 func hide_cursors():
 		enemies[enemy_index].unfocus()
 		
+func hide_all_cursors():
+	for x in range (enemies.size()):
+		enemies[x].unfocus()
+		
 func show_cursors():
 		enemies[enemy_index].focus()
 		
@@ -255,7 +260,7 @@ func enemy_damage():
 	if whammy_hit <= whammy_chance:
 		whammy = true
 	
-	damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
+	damage = clamp(((((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)), 0, 999)
 	if attack_bonus:
 		SE.effect("Success")
 		damage += (damage * 0.3)
@@ -325,7 +330,7 @@ func magic_damage():
 		whammy = true
 		damage_type = "whammy"
 	
-	damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
+	damage = clamp((((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense), 0, 999)
 	if fighter_type == move_type:
 		damage += (damage * 0.2)
 	if type_bonus == "adv":
@@ -417,6 +422,9 @@ func all_magic_damage():
 	randomize()
 	var set_type = damage_type
 	var f_total = f_magic + f_magic_base
+	
+	print(f_magic_base)
+	
 	for x in range(enemies.size()):
 		enemy_index = x
 		var type_bonus : String = type_matchup()
@@ -433,7 +441,7 @@ func all_magic_damage():
 		if enemy_type != "neutral" and enemy_type == move_type:
 			immune = true
 		var damage : int
-		damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
+		damage = clamp((((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense), 0, 999)
 		
 		if fighter_type == move_type:
 			damage += (damage * 0.2)

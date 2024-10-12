@@ -270,6 +270,7 @@ func _input(event):
 		$BattleButtons/DiamondB.show()
 		$BattleButtons.hide()
 		$Enemies/EnemyInfo.hide()
+		#$Enemies.enemy_selecting = false
 		BB_active = false
 		attack_show = false
 		window_open = false
@@ -764,10 +765,17 @@ func _on_WorldRoot_f_turn_used():
 	#$ItemWindow/ItemWindowPanel/MenuCursor.item_active = false
 	
 func _on_Enemies_victory():
-	var EXP_reward = int(EXP_base + (rand_range(0.05, 0.2) * EXP_base))
-	var marbles_reward = int(marbles_base + (rand_range(0.05, 0.2) * marbles_base))
+	var EXP_reward : int
+	var marbles_reward : int
+	
+	if not boss_battle and not event_battle:
+		EXP_reward =	int(EXP_base + (rand_range(0.05, 0.2) * EXP_base))
+		marbles_reward = int(marbles_base + (rand_range(0.05, 0.2) * marbles_base))
+	else:
+		EXP_reward = EXP_base
+		marbles_reward = marbles_base
+		
 	PartyStats.party_exp += EXP_reward
-	#Party.marbles += marbles_reward
 	Party.marbles = clamp(Party.marbles + marbles_reward, 0, 999999)
 	if boss_battle:
 		yield(get_tree().create_timer(4), "timeout")
@@ -789,8 +797,8 @@ func _on_Enemies_victory():
 	$WindowPlayer.play("victory_open")
 	
 	if PartyStats.party_exp >= PartyStats.next_level:
-		PartyStats.party_level += 1
 		PartyStats.party_exp -= PartyStats.next_level
+		PartyStats.party_level += 1
 		PartyStats.level_check()
 		$LevelUpWindow.show()
 		$LevelUpWindow.scale = Vector2(1.05, 1.04)
@@ -1090,7 +1098,7 @@ func _on_Enemies_single_enemy_spell():
 	$Fighters.idle()
 	$Enemies.whammy_chance = $Fighters.get_status("whammy_chance")
 	$Enemies.f_magic = $Fighters.get_f_magic()
-	$Enemies.f_magic_base = $Fighters.get_f_magic_base()
+	#$Enemies.f_magic_base = $Fighters.get_f_magic_base()
 	$Enemies.fighter_type = $Fighters.get_status("type")
 	$Enemies.magic_damage()
 	emit_signal("f_turn_used")
@@ -1122,7 +1130,7 @@ func _on_Enemies_all_enemy_spell():
 	$Fighters.idle()
 	$Enemies.whammy_chance = $Fighters.get_status("whammy_chance")
 	$Enemies.f_magic = $Fighters.get_f_magic()
-	$Enemies.f_magic_base = $Fighters.get_f_magic_base()
+	#$Enemies.f_magic_base = $Fighters.get_f_magic_base()
 	$Enemies.fighter_type = $Fighters.get_status("type")
 	$Enemies.all_magic_damage()
 	emit_signal("f_turn_used")
@@ -1227,7 +1235,7 @@ func Earthslide():
 	var enemy_position = $Enemies.get_e_position() + Vector2(-175, 40)
 	$Enemies.damage_type = "earth"
 	$Enemies.move_type = "earth"
-	$Enemies.f_magic_base = 50 + int((50 * PartyStats.party_level) / 15)
+	$Enemies.f_magic_base = 45 + int((45 * PartyStats.party_level) / 15)
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
@@ -1247,7 +1255,7 @@ func Icicle():
 	var enemy_position = $Enemies.get_e_position()
 	$Enemies.damage_type = "water"
 	$Enemies.move_type = "water"
-	$Enemies.f_magic_base = 35 + int((35 * PartyStats.party_level) / 15)
+	$Enemies.f_magic_base = 25 + int((25 * PartyStats.party_level) / 15)
 	$Enemies.d_debuff = true
 	$Fighters.spell_1()
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -1269,7 +1277,7 @@ func Precious_Beam():
 	var buff_counter = $Enemies.get_status("buff_counter")
 	$Enemies.damage_type = "fire"
 	$Enemies.move_type = "fire"
-	$Enemies.f_magic_base = 50 + (buff_counter * 20) + int((50 * PartyStats.party_level) / 15)
+	$Enemies.f_magic_base = 45 + (buff_counter * 20) + int((45 * PartyStats.party_level) / 15)
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
@@ -1290,7 +1298,7 @@ func Thunderstorm():
 	$MovePlayer.position = Vector2(0,0)
 	$Enemies.damage_type = "air"
 	$Enemies.move_type = "air"
-	$Enemies.f_magic_base = 30 + int((30 * PartyStats.party_level) / 15)
+	$Enemies.f_magic_base = 15 + int((15 * PartyStats.party_level) / 15)
 	if not tutorial:
 		$Enemies.stun = true
 		$Enemies.stun_chance = 20
@@ -1311,7 +1319,7 @@ func Prism_Snow():
 	$MovePlayer.position = Vector2(0,0)
 	$Enemies.damage_type = "water"
 	$Enemies.move_type = "water"
-	$Enemies.f_magic_base = 40 + int((40 * PartyStats.party_level) / 15)
+	$Enemies.f_magic_base = 20 + int((20 * PartyStats.party_level) / 15)
 	$Enemies.multi_debuff = true
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Fighters.spell_2()

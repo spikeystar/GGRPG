@@ -92,29 +92,35 @@ func level_check():
 func level_up():
 	party_max_sp += 5
 	full_heal()
+	next_level = int((100) * (party_level/1.5) + (party_level * 50))
 		
-func set_stats():
-	gary_health = 45 + int(party_level * 5)
+func set_stats():	
+	gary_health = 50 + int(party_level * 12)
 	gary_attack = 20 + int(party_level * 7)
 	gary_magic = 15 + int(party_level * 7)
 	gary_defense = 5 + int(party_level * 6)
 	
-	jacques_health = 54 + int(party_level * 6)
+	jacques_health = 60 + int(party_level * 14)
 	jacques_attack = 20 + int(party_level * 5)
 	jacques_magic = 20 + int(party_level * 5)
 	jacques_defense = 8 + int(party_level * 7)
 
-	irina_health = 62 + int(party_level * 8)
+	irina_health = 70 + int(party_level * 16)
 	irina_attack = 12 + int(party_level * 5)
 	irina_magic = 24 + int(party_level * 6)
 	irina_defense = 4 + int(party_level * 4)
 	
-	suzy_health = 33 + int(party_level * 4)
+	suzy_health = 40 + int(party_level * 11)
 	suzy_attack = 27 + int(party_level * 8)
 	suzy_magic = 20 + int(party_level * 6)
 	suzy_defense = 5 + int(party_level * 5)
 	
-	damien_health = 51 + int(party_level * 5)
+	damien_health = 55 + int(party_level * 13)
 	damien_attack = 10 + int(party_level * 4)
 	damien_magic = 30 + int(party_level * 8)
 	damien_defense = 6 + int(party_level * 6)
+	
+	if party_level == 1:
+		gary_health = 50
+		jacques_health = 60
+		irina_health = 70

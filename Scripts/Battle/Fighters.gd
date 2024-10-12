@@ -213,6 +213,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen and not ongoing and fighters_active and not item_selecting and not enemies_active and not enemy_item and not magic_selecting and not halt:
 		emit_signal("BB_move")
 		fighters[fighter_index].turn()
+		hide_all_cursors()
 		fighters_active = false
 		fighter_name = get_f_name()
 		if fighter_name == "gary":

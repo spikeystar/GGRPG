@@ -1,10 +1,12 @@
 extends Sprite
 
+var next_needed : int = PartyStats.next_level - PartyStats.party_exp
+
 func _ready():
 	$SP_amount.text = str(PartyStats.party_sp) + "/" + str(PartyStats.party_max_sp)
 	$Marbles_amount.text = thousands_sep(Party.marbles)
 	$Level_amount.text = str(PartyStats.party_level)
-	$Next_amount.text = thousands_sep(PartyStats.next_level)
+	$Next_amount.text = thousands_sep(clamp(next_needed, 0, 999999))
 	
 static func thousands_sep(number, prefix=''):
 	var neg = false
