@@ -107,7 +107,7 @@ use_dither_blending = false
 
 [node name="NPC" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
 position = Vector2( 8, -28 )
-scale = Vector2( 1.15, 1.12 )
+scale = Vector2( 1.15, 1.13 )
 texture = ExtResource( 1 )
 hframes = 9
 vframes = 3

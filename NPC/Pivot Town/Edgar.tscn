@@ -525,7 +525,7 @@ shape = SubResource( 172 )
 
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
 position = Vector2( 3, 0 )
-scale = Vector2( 1.0983, 1.13844 )
+scale = Vector2( 1.05, 1.05 )
 texture = ExtResource( 5 )
 script = ExtResource( 6 )
 alpha_clip = 0.01
@@ -539,7 +539,7 @@ use_dither_blending = false
 
 [node name="NPC" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
 position = Vector2( 8, -29 )
-scale = Vector2( 1.1, 1.07 )
+scale = Vector2( 1.04, 1.03 )
 texture = ExtResource( 7 )
 hframes = 9
 vframes = 3
