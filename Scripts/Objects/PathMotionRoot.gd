@@ -34,6 +34,7 @@ var velocity = Vector2.ZERO
 var origin = Vector2()
 var ground_enemy
 var initial_z
+var path = true
 
 
 

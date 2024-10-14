@@ -100,7 +100,7 @@ func _physics_process(delta):
 			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(battle_arena)
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)
-		transition.ease_in()
+		transition.ease_in()	
 		yield(get_tree().create_timer(0.01), "timeout")
 		dead = true
 		Global.battle_ended = false
@@ -108,8 +108,9 @@ func _physics_process(delta):
 		
 		if $MotionRoot/BattleTrigger.detected:
 			self.queue_free()
-		else:
-			SceneManager.SceneEnemies.append(self)
+
+		#else:
+			#SceneManager.SceneEnemies.append(self)
 	
 	#if motion_root.velocity.x > 0:
 		#sprite.flip_h = true
@@ -145,7 +146,6 @@ func _on_BattleTrigger_triggered():
 		rng.randomize()
 		var chance = rng.randi_range(1, 100)
 		if chance <= alt_chance:
-			print("alternate")
 			alt_chosen = true
 			var transition = TransitionPlayer.instance()
 			get_tree().get_root().add_child(transition)

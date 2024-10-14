@@ -1,7 +1,7 @@
 extends Area2D
 
 var player = null
-var detected = false
+export var detected = false
 export var height = 0.0
 export var able : bool = false
 var player_height
@@ -49,5 +49,4 @@ func _on_body_entered(body):
 func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")
 	emit_signal("triggered")
-	print("hello")
 

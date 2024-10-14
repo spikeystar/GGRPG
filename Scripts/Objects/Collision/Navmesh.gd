@@ -183,6 +183,7 @@ func _physics_process(delta):
 				
 	if SceneManager.SceneEnemies.size() > 0:	
 		for x in range (SceneManager.SceneEnemies.size()):
+			
 			var player_z = SceneManager.SceneEnemies[x].motion_root.pos_z
 			for layer in layers:
 				if layer.get_child(0).height <= player_z:
