@@ -42,7 +42,7 @@
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=40]
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_wander.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Enemies/Cherry Trail/Flutterbie/Flutterbie_wander.tscn" type="PackedScene" id=42]
-[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 3.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Assets/General/Shadows/circle shadow large.png" type="Texture" id=44]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 5.tscn" type="PackedScene" id=45]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=46]
@@ -755,7 +755,6 @@ polygon = PoolVector2Array( -42, -15, 52, 17, 38, 23, -59, -12 )
 pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
-current = true
 script = ExtResource( 17 )
 minPos = Vector2( -220, -280 )
 maxPos = Vector2( 400, 0 )
@@ -837,6 +836,7 @@ shadow_color = Color( 0.427451, 0.521569, 0.458824, 1 )
 position = Vector2( 282, -46 )
 spawn_z = 0
 target_scene = ExtResource( 43 )
+alt_scene = ExtResource( 43 )
 
 [node name="Cheribo" parent="." instance=ExtResource( 41 )]
 position = Vector2( 37, -101 )

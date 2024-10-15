@@ -86,6 +86,8 @@ func _input(event):
 		SE.effect("Select")
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
+		$ShopOptions/MenuCursor.option_selecting = false
+		$ShopOptions/MenuCursor.able = false
 		welcome = true
 		dialogue_cursor = false
 		options = false
@@ -104,6 +106,8 @@ func _input(event):
 		PartyStats.full_heal()
 		PlayerManager.ongoing = true
 		$ShopOptions.hide()
+		$ShopOptions/MenuCursor.option_selecting = false
+		$ShopOptions/MenuCursor.able = false
 		$Dialogue/DialogueCursor.hide()
 		$Dialogue.show()
 		sleep_text()
@@ -130,6 +134,10 @@ func _input(event):
 		PlayerManager.sleep = true
 		#yield(get_tree().create_timer(0.5), "timeout")
 		#PlayerManager.ongoing = false
+		
+	elif Input.is_action_just_pressed("ui_select") and menu_name == "Sleep" and Party.marbles < cost and not ongoing:
+		SE.effect("Unable")
+		return
 		
 		
 func _get_animation_name():

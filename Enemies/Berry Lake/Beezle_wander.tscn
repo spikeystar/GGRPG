@@ -171,8 +171,8 @@ MAX_CHASE_DISTANCE = 175
 MAX_Z_DIFF = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
-position = Vector2( 2, -3 )
-scale = Vector2( 0.840968, 0.83725 )
+position = Vector2( 1, -17 )
+scale = Vector2( 1.41928, 1.13549 )
 shape = SubResource( 180 )
 
 [node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
@@ -183,25 +183,25 @@ shape = SubResource( 172 )
 
 [node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 1 )]
 position = Vector2( 7, 34 )
-scale = Vector2( 1.35781, 1.35711 )
+scale = Vector2( 0.873, 1.178 )
 collision_layer = 4
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot/PlayerDetection"]
 modulate = Color( 1, 1, 1, 0.254902 )
-position = Vector2( -3.43644, -25.4754 )
-scale = Vector2( 1.39019, 1.12396 )
+position = Vector2( -6.87285, -48.3871 )
+scale = Vector2( 1.11835, 0.956308 )
 shape = SubResource( 178 )
 disabled = true
 
 [node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 2 )]
-position = Vector2( 5, -10 )
-scale = Vector2( 0.918882, 0.860568 )
+position = Vector2( 3, 2 )
+scale = Vector2( 1.44987, 0.878718 )
 collision_layer = 7
 collision_mask = 6
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
-position = Vector2( -2.17656, -19.7544 )
+position = Vector2( -1.37944, -19.3464 )
 scale = Vector2( 1.02475, -1.67904 )
 shape = SubResource( 179 )
 
