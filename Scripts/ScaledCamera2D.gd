@@ -71,7 +71,7 @@ func _process(delta):
 				global_position.y = clamp(motion_root.global_position.y - z_offset + player_offset.y, minPos.y, maxPos.y)
 
 func _input(event):
-		if Input.is_action_pressed("ui_pause") and not PlayerManager.freeze:
+		if Input.is_action_pressed("ui_pause") and not PlayerManager.freeze and not PlayerManager.sleep:
 			SE.effect("Menu Open")
 			Music.quiet()
 			PlayerManager.freeze = true
@@ -81,7 +81,7 @@ func _input(event):
 			yield(get_tree().create_timer(0.3), "timeout")
 			able = true
 		
-		if Input.is_action_pressed("ui_pause") and PlayerManager.freeze and able:
+		if Input.is_action_pressed("ui_pause") and PlayerManager.freeze and able and not PlayerManager.sleep:
 			SE.effect("Menu Open")
 			Music.loud()
 			var transition = TransitionPlayer.instance()
@@ -124,6 +124,7 @@ func _on_Buy_shop_check():
 		$Info_Window.hide()
 		showing = false
 		Party.sent_storage = false
+		
 	
 
 func _on_Buy_not_enough():

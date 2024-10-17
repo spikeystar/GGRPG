@@ -1,7 +1,7 @@
 extends Node
 
 var party_id : int
-var party_members = 2
+var party_members = 1
 var member_name : String
 var holder_name : String
 
@@ -47,7 +47,7 @@ var damien_trinket : String = "-"
 
 var party_sp = 20
 var party_max_sp = 20
-var party_level = 2
+var party_level = 1
 var party_exp = 0
 var next_level = int((100) * (party_level/1.5) + (party_level * 100))
 
@@ -95,7 +95,7 @@ func level_up():
 	next_level = int((100) * (party_level/1.5) + (party_level * 50))
 		
 func set_stats():	
-	gary_health = 51 + int(party_level * 11)
+	gary_health = 51 + int(party_level * 10.5)
 	gary_attack = 20 + int(party_level * 7)
 	gary_magic = 15 + int(party_level * 7)
 	gary_defense = 5 + int(party_level * 2)
@@ -105,17 +105,17 @@ func set_stats():
 	jacques_magic = 20 + int(party_level * 5)
 	jacques_defense = 8 + int(party_level * 3)
 
-	irina_health = 60 + int(party_level * 13)
+	irina_health = 60 + int(party_level * 14)
 	irina_attack = 12 + int(party_level * 5)
 	irina_magic = 24 + int(party_level * 6)
 	irina_defense = 4 + int(party_level * 1)
 	
-	suzy_health = 43 + int(party_level * 11)
+	suzy_health = 43 + int(party_level * 9.5)
 	suzy_attack = 27 + int(party_level * 8)
 	suzy_magic = 20 + int(party_level * 6)
 	suzy_defense = 5 + int(party_level * 1)
 	
-	damien_health = 50 + int(party_level * 12)
+	damien_health = 50 + int(party_level * 11.5)
 	damien_attack = 10 + int(party_level * 4)
 	damien_magic = 30 + int(party_level * 8)
 	damien_defense = 6 + int(party_level * 2)
