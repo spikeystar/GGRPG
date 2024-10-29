@@ -1264,6 +1264,7 @@ anims/open = SubResource( 21 )
 [connection signal="main_retread" from="Members" to="MainSelection/MenuCursor" method="_on_Members_main_retread"]
 [connection signal="main_retread" from="Members" to="Items" method="_on_Members_main_retread"]
 [connection signal="main_retread" from="Members" to="Trinkets" method="_on_Members_main_retread"]
+[connection signal="member_options" from="Members" to="MainSelection/MenuCursor" method="_on_Members_member_options"]
 [connection signal="member_options" from="Members" to="MemberOptions" method="_on_Members_member_options"]
 [connection signal="suzy" from="Members" to="Stats" method="_on_Members_suzy"]
 [connection signal="suzy" from="Members" to="Items/ItemPanel/ItemInventoryBox" method="_on_Members_suzy"]

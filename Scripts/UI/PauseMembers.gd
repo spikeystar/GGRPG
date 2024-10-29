@@ -11,6 +11,8 @@ var member_name : String
 var selector_name : String
 var stats_active = false
 
+var reverse = false
+
 signal member_options
 signal item_usage
 signal trinket_equipped
@@ -39,14 +41,30 @@ func _process(delta):
 	set_labels()
 	PartyStats.party_id = (member_index + 1)
 	if Input.is_action_just_pressed("ui_right") and party_selecting:
-		SE.effect("Move Between")
 		select_next_member(+1)
+		reverse = false
 		print(member_index)
 		
-	if Input.is_action_just_pressed("ui_left") and party_selecting:
-		SE.effect("Move Between")
+		if PartyStats.party_members > 1:
+			SE.effect("Move Between")
+		
+	if Input.is_action_just_pressed("ui_left") and party_selecting and not member_index == 0:
 		select_next_member(-1)
 		print(member_index)
+		
+		if PartyStats.party_members > 1:
+			SE.effect("Move Between")
+			
+		yield(get_tree().create_timer(0.1), "timeout")
+		reverse = true
+			
+	if Input.is_action_just_pressed("ui_left") and party_selecting and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting:
+		SE.effect("Move Between")
+		Cursors[member_index].hide()
+		member_index = -1
+		able = false
+		party_selecting = false
+		emit_signal("main_retread")
 		
 	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members >= 4 and member_index == 0:
 		SE.effect("Move Between")
@@ -102,12 +120,12 @@ func _process(delta):
 			emit_signal("damien")
 		print(member_index)
 		
-	if Input.is_action_just_pressed("ui_accept") and party_selecting and not stats_active:
-		SE.effect("Cancel")
-		$Cursors.hide()
-		Cursors[member_index].hide()
-		able = false
-		member_index = -1
+	#if Input.is_action_just_pressed("ui_accept") and party_selecting and not stats_active:
+		#SE.effect("Cancel")
+		#$Cursors.hide()
+		#Cursors[member_index].hide()
+		#able = false
+		#member_index = -1
 		
 	if Input.is_action_just_pressed("ui_accept") and item_selecting:
 		SE.silence("Move Between")
@@ -298,6 +316,7 @@ func _on_MenuCursor_party_selecting():
 	$Cursors.show()
 	yield(get_tree().create_timer(0.2), "timeout")
 	able = true
+	reverse = true
 	#Cursors[].show()
 
 func _on_MenuCursor_retread():

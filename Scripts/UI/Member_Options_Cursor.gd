@@ -8,6 +8,7 @@ onready var menu_parent := get_node(menu_parent_path)
 var cursor_index : int = 0
 var cursor_active = false
 var down_count = 0
+var up_count = 0
 var menu_name : String
 var member_options = false
 var stats_active = false
@@ -23,14 +24,23 @@ func _process(delta):
 	menu_name = current_menu_item.get_id()
 	
 	if Input.is_action_just_pressed("ui_up") and member_options:
-		SE.effect("Move Between")
+		if up_count == -1:
+			SE.effect("Move Between")
+			up_count = 0
+		
 		input.y -= 1
 		if down_count >=1:
 			down_count -= 1
+		
+			
 	if Input.is_action_just_pressed("ui_down") and down_count <1 and member_options:
 		SE.effect("Move Between")
 		input.y += 1
-		down_count += 1	
+		down_count += 1
+		
+		if up_count == 0:
+			up_count -= 1
+		
 	else:
 		input.y += 0
 		
@@ -41,6 +51,8 @@ func _process(delta):
 		member_options = false
 		cursor_index = 0
 		down_count = 0
+		emit_signal("party_selecting")
+		emit_signal("retread")
 		
 	if Input.is_action_just_pressed("ui_select") and member_options and down_count ==0:
 		SE.effect("Select")
@@ -59,6 +71,8 @@ func _process(delta):
 		stats_active = true
 		
 	if Input.is_action_just_pressed("ui_accept") and stats_active:
+		SE.effect("Cancel")
+		SE.silence("Move Between")
 		emit_signal("party_selecting")
 		emit_signal("retread")
 		stats_active = false

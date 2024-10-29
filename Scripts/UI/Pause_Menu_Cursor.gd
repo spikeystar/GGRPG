@@ -16,6 +16,7 @@ var trinkets_empty = false
 var key_empty = false
 var switching = false
 var ongoing = false
+var members = false
 
 signal party_selecting
 signal item_selecting
@@ -75,15 +76,32 @@ func _process(delta):
 		emit_signal("key_selecting")
 		
 	if Input.is_action_just_pressed("ui_accept") and not main_active and not stats_active and not ongoing:
-		print("top")
-		self.show()
-		main_active = true
-		emit_signal("retread")
+		#self.show()
+		#main_active = true
+		#emit_signal("retread")
+		
 		if switching:
 			SE.effect("Cancel")
 			switching = false
+			
+			self.hide()
+			emit_signal("mini_retread")
+			
+		if members:
+			SE.effect("Cancel")
+			self.hide()
+			emit_signal("mini_retread")
+			members = false
+			
 		else:
-			SE.effect("Move Between")
+			SE.silence("Move Between")
+			SE.effect("Cancel")
+			
+			self.show()
+			main_active = true
+			members = false
+			emit_signal("retread")
+		
 		
 	if Input.is_action_just_pressed("ui_accept") and not main_active and stats_active:
 		SE.effect("Move Between")
@@ -135,6 +153,7 @@ func _on_MemberOptionsCursor_show_stats():
 func _on_MemberOptionsCursor_retread():
 	stats_active = false
 	main_active = false
+	members = false
 
 func _on_ItemMenuCursor_retread():
 	self.show()
@@ -190,15 +209,22 @@ func _on_EnemiesCursor_retread():
 func _on_Members_main_retread():
 	cursor_index = 0
 	down_count = 0
+	self.show()
+	main_active = true
+	members = false
 
 func _on_MemberOptionsCursor_switch_selecting():
 	switching = true
 
 func _on_Members_switched():
 	switching = false
+	members = false
 
 func _on_ItemInventoryBox_ongoing():
 	ongoing = true
 
 func _on_TrinketsInventory_ongoing():
 	ongoing = true
+
+func _on_Members_member_options():
+	members = true
