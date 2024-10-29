@@ -26,12 +26,12 @@ func player_check():
 	return player !=null
 
 func _on_PlayerDetection_body_entered(body):
-	if "is_player_motion_root" in body and body.is_player_motion_root and not PlayerManager.freeze:
+	if "is_player_motion_root" in body and body.is_player_motion_root and not PlayerManager.freeze and not PlayerManager.bouncy:
 		player = body
 		detected = true
 		player_z = gary.pos_z
 		#emit_signal("start_chase")
-	if "is_player_jump_shape" in body and body.is_player_jump_shape and not PlayerManager.freeze:
+	if "is_player_jump_shape" in body and body.is_player_jump_shape and not PlayerManager.freeze and not PlayerManager.bouncy:
 		player_z = gary.pos_z
 		player = body
 		detected = true

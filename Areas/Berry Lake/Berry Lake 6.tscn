@@ -696,7 +696,7 @@ __meta__ = {
 }
 
 [node name="Smush" parent="." instance=ExtResource( 59 )]
-position = Vector2( -221, -162 )
+position = Vector2( -205, -138 )
 target_scene = ExtResource( 62 )
 
 [node name="Smush2" parent="." instance=ExtResource( 59 )]
@@ -1896,7 +1896,7 @@ script = ExtResource( 61 )
 
 [node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
 position = Vector2( 5, -186 )
-polygon = PoolVector2Array( 557, 105, 711, 89, 713, -27, 587, -46, 579, -106, 536, -116, 517, -61, 97, -219, 89, -286, 38, -295, -137, -138, -68, -118, -40, -75, 3, -99 )
+polygon = PoolVector2Array( 557, 105, 711, 89, 713, -27, 587, -46, 579, -106, 536, -116, 517, -61, 97, -219, 89, -286, 38, -295, -137, -138, -78, -111, -40, -75, 3, -99 )
 
 [connection signal="bouncy" from="Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="bouncy" from="Bouncy2" to="YSort/MiddleGround/BouncyFlower2" method="_on_Bouncy2_bouncy"]

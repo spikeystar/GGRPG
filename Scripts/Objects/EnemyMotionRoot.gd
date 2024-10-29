@@ -43,6 +43,7 @@ var direction = Vector2.ZERO
 var player_in_radius = false
 var chase_fatigued = false
 var initial_z
+var bouncy
 
 enum ENEMY_STATE {
 IDLE,
@@ -71,6 +72,7 @@ func _ready():
 	
 func _physics_process(delta):
 	var player = PlayerManager.player_motion_root
+	var bouncy = PlayerManager.bouncy
 	freeze = PlayerManager.freeze
 	
 	$BattleTrigger.height = pos_z
@@ -126,10 +128,10 @@ func _physics_process(delta):
 			velocity = velocity.move_toward(direction * CHASE_SPEED, ACCELERATION * delta)
 			apply_friction2(delta)
 			
-			if not ground_enemy:
+			if not ground_enemy and not bouncy:
 				lower_height(delta)
-				var player_z = $PlayerDetection.player_z
-				pos_z = max(player_z, pos_z)
+				#player_z = $PlayerDetection.player_z
+				#pos_z = max(player_z, pos_z)
 				
 			if SceneManager.enemy_repel:
 				state = ENEMY_STATE.RETURN
@@ -197,10 +199,14 @@ func apply_friction2(delta):
 	velocity *= exp(delta * (-FRICTION/2))
 	
 func lower_height(delta):
+	var player_z = $PlayerDetection.player_z
 	pos_z *= exp(delta * -1.2)
+	pos_z = max(player_z, pos_z)
 	
 func raise_height(delta):
+	#var player_z = $PlayerDetection.player_z
 	pos_z *= exp(delta * 1.4)
+	#pos_z = max(initial_z, pos_z)
 	
 func check_chase():
 	var player = PlayerManager.player_motion_root
