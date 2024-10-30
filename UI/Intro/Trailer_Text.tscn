@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/Base.jpg" type="Texture" id=1]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=2]
@@ -47,6 +47,61 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 483, 399 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Node2D4:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -492, -382 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "stars"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.7, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 483, 380 ), Vector2( 483, 380 ), Vector2( 437, 380 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Node2D4:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.7, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -484, -366 ), Vector2( -484, -366 ), Vector2( -442, -366 ) ]
+}
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -57,14 +112,14 @@ texture = ExtResource( 1 )
 current = true
 
 [node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 1, -2 )
+position = Vector2( 0, -2 )
 scale = Vector2( 1.35, 1.35 )
 texture = ExtResource( 2 )
 
 [node name="Intro" type="Label" parent="Sprite2"]
-margin_left = -155.833
+margin_left = -156.574
 margin_top = -12.0
-margin_right = 158.167
+margin_right = 157.426
 margin_bottom = 5.0
 custom_fonts/font = SubResource( 11 )
 text = "Explore Gary's colorful world!"
@@ -75,7 +130,7 @@ modulate = Color( 1, 0.635294, 1, 1 )
 position = Vector2( 7, -2 )
 
 [node name="Sprite6" type="Sprite" parent="Node2D6"]
-modulate = Color( 0.431373, 0.411765, 1, 1 )
+modulate = Color( 0.286275, 0.603922, 1, 1 )
 position = Vector2( -321, 125 )
 rotation = 0.844421
 scale = Vector2( 0.15, 0.15 )
@@ -96,19 +151,6 @@ texture = ExtResource( 3 )
 [node name="Sprite8" type="Sprite" parent="Node2D6"]
 position = Vector2( -273, 222 )
 scale = Vector2( 0.45, 0.45 )
-texture = ExtResource( 5 )
-
-[node name="Sprite4" type="Sprite" parent="Node2D6"]
-modulate = Color( 1, 0.894118, 0.262745, 1 )
-position = Vector2( -149, 246 )
-rotation = 0.483301
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 3 )
-
-[node name="Sprite9" type="Sprite" parent="Node2D6"]
-position = Vector2( -149, 246 )
-rotation = 0.483301
-scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 5 )
 
 [node name="Sprite5" type="Sprite" parent="Node2D6"]
@@ -145,6 +187,19 @@ position = Vector2( -273, 222 )
 scale = Vector2( 0.45, 0.45 )
 texture = ExtResource( 5 )
 
+[node name="Sprite11" type="Sprite" parent="Node2D2"]
+modulate = Color( 1, 0.568627, 0.262745, 1 )
+position = Vector2( -142, 244 )
+rotation = 0.483301
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+
+[node name="Sprite12" type="Sprite" parent="Node2D2"]
+position = Vector2( -142, 244 )
+rotation = 0.483301
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 5 )
+
 [node name="Sprite4" type="Sprite" parent="Node2D2"]
 modulate = Color( 1, 0.94902, 0.262745, 1 )
 position = Vector2( -149, 246 )
@@ -156,6 +211,20 @@ texture = ExtResource( 3 )
 position = Vector2( -149, 246 )
 rotation = 0.483301
 scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 5 )
+
+[node name="Sprite13" type="Sprite" parent="Node2D2"]
+modulate = Color( 0.243137, 0.85098, 0.843137, 1 )
+position = Vector2( -262.702, 219.605 )
+rotation = -0.275532
+scale = Vector2( 0.17, 0.17 )
+texture = ExtResource( 3 )
+
+[node name="Sprite14" type="Sprite" parent="Node2D2"]
+modulate = Color( 0.243137, 0.85098, 0.843137, 1 )
+position = Vector2( -262.702, 219.605 )
+rotation = -0.275532
+scale = Vector2( 0.17, 0.17 )
 texture = ExtResource( 5 )
 
 [node name="Sprite5" type="Sprite" parent="Node2D2"]
@@ -176,19 +245,6 @@ texture = ExtResource( 5 )
 modulate = Color( 1, 0.635294, 1, 1 )
 position = Vector2( -6, 5 )
 
-[node name="Sprite7" type="Sprite" parent="Node2D7"]
-modulate = Color( 0.45098, 0.392157, 1, 1 )
-position = Vector2( 142, -251 )
-rotation = 0.844421
-scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 3 )
-
-[node name="Sprite11" type="Sprite" parent="Node2D7"]
-position = Vector2( 142, -251 )
-rotation = 0.844421
-scale = Vector2( 0.15, 0.15 )
-texture = ExtResource( 5 )
-
 [node name="Sprite8" type="Sprite" parent="Node2D7"]
 modulate = Color( 0.952941, 0.243137, 0.407843, 1 )
 position = Vector2( 256, -223 )
@@ -200,19 +256,6 @@ position = Vector2( 256, -223 )
 scale = Vector2( 0.45, 0.45 )
 texture = ExtResource( 5 )
 
-[node name="Sprite9" type="Sprite" parent="Node2D7"]
-modulate = Color( 1, 0.886275, 0.262745, 1 )
-position = Vector2( 319, -165 )
-rotation = 0.483301
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 3 )
-
-[node name="Sprite13" type="Sprite" parent="Node2D7"]
-position = Vector2( 319, -165 )
-rotation = 0.483301
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 5 )
-
 [node name="Sprite10" type="Sprite" parent="Node2D7"]
 modulate = Color( 0.286275, 1, 0.827451, 1 )
 position = Vector2( 279, -273 )
@@ -222,6 +265,19 @@ texture = ExtResource( 3 )
 
 [node name="Node2D5" type="Node2D" parent="."]
 position = Vector2( 0, -7.62939e-06 )
+
+[node name="Sprite17" type="Sprite" parent="Node2D5"]
+modulate = Color( 0.309804, 0.380392, 1, 1 )
+position = Vector2( 136, -246 )
+rotation = 0.844421
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 3 )
+
+[node name="Sprite18" type="Sprite" parent="Node2D5"]
+position = Vector2( 136, -246 )
+rotation = 0.844421
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 5 )
 
 [node name="Sprite7" type="Sprite" parent="Node2D5"]
 modulate = Color( 0.509804, 0.435294, 1, 1 )
@@ -242,6 +298,19 @@ position = Vector2( 256, -227 )
 scale = Vector2( 0.45, 0.45 )
 texture = ExtResource( 3 )
 
+[node name="Sprite15" type="Sprite" parent="Node2D5"]
+modulate = Color( 1, 0.568627, 0.262745, 1 )
+position = Vector2( 313, -160 )
+rotation = 0.483301
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+
+[node name="Sprite16" type="Sprite" parent="Node2D5"]
+position = Vector2( 313, -160 )
+rotation = 0.483301
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 5 )
+
 [node name="Sprite13" type="Sprite" parent="Node2D5"]
 position = Vector2( 256, -227 )
 scale = Vector2( 0.45, 0.45 )
@@ -258,6 +327,20 @@ texture = ExtResource( 3 )
 position = Vector2( 320, -164 )
 rotation = 0.483301
 scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 5 )
+
+[node name="Sprite19" type="Sprite" parent="Node2D5"]
+modulate = Color( 0.243137, 0.85098, 0.843137, 1 )
+position = Vector2( 271.298, -273.395 )
+rotation = -0.275532
+scale = Vector2( 0.17, 0.17 )
+texture = ExtResource( 3 )
+
+[node name="Sprite20" type="Sprite" parent="Node2D5"]
+modulate = Color( 0.243137, 0.85098, 0.843137, 1 )
+position = Vector2( 271.298, -273.395 )
+rotation = -0.275532
+scale = Vector2( 0.17, 0.17 )
 texture = ExtResource( 5 )
 
 [node name="Sprite10" type="Sprite" parent="Node2D5"]
@@ -302,6 +385,19 @@ texture = ExtResource( 3 )
 position = Vector2( -492, -382 )
 rotation = -0.0541188
 
+[node name="Sprite21" type="Sprite" parent="Node2D4"]
+modulate = Color( 0.607843, 0.313726, 0.988235, 1 )
+position = Vector2( 200.112, 193.098 )
+rotation = -0.22201
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )
+
+[node name="Sprite22" type="Sprite" parent="Node2D4"]
+position = Vector2( 200.112, 193.098 )
+rotation = -0.22201
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
 [node name="Sprite15" type="Sprite" parent="Node2D4"]
 modulate = Color( 1, 0.329412, 0.403922, 1 )
 position = Vector2( 214.032, 191.997 )
@@ -342,7 +438,20 @@ scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 5 )
 
 [node name="Node2D3" type="Node2D" parent="."]
-position = Vector2( 486, 402 )
+position = Vector2( 483, 399 )
+
+[node name="Sprite15" type="Sprite" parent="Node2D3"]
+position = Vector2( -204.86, -195.923 )
+rotation = -0.22201
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 5 )
+
+[node name="Sprite18" type="Sprite" parent="Node2D3"]
+modulate = Color( 0.607843, 0.313726, 0.988235, 1 )
+position = Vector2( -193.86, -195.923 )
+rotation = -0.22201
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 3 )
 
 [node name="Sprite14" type="Sprite" parent="Node2D3"]
 modulate = Color( 1, 0.329412, 0.403922, 1 )
@@ -351,8 +460,8 @@ rotation = -0.22201
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )
 
-[node name="Sprite15" type="Sprite" parent="Node2D3"]
-position = Vector2( -205.86, -195.923 )
+[node name="Sprite19" type="Sprite" parent="Node2D3"]
+position = Vector2( -194.86, -195.923 )
 rotation = -0.22201
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 5 )
@@ -394,3 +503,8 @@ color = Color( 0, 0, 0, 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 12 )
 anims/intro = SubResource( 13 )
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+playback_speed = 0.85
+anims/RESET = SubResource( 14 )
+anims/stars = SubResource( 15 )
