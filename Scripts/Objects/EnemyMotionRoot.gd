@@ -130,8 +130,8 @@ func _physics_process(delta):
 			
 			if not ground_enemy and not bouncy:
 				lower_height(delta)
-				#player_z = $PlayerDetection.player_z
-				#pos_z = max(player_z, pos_z)
+				var player_z = $PlayerDetection.player_z
+				pos_z = max(player_z, pos_z)
 				
 			if SceneManager.enemy_repel:
 				state = ENEMY_STATE.RETURN
@@ -201,7 +201,7 @@ func apply_friction2(delta):
 func lower_height(delta):
 	var player_z = $PlayerDetection.player_z
 	pos_z *= exp(delta * -1.2)
-	pos_z = max(player_z, pos_z)
+	#pos_z = max(player_z, pos_z)
 	
 func raise_height(delta):
 	#var player_z = $PlayerDetection.player_z

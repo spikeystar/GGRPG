@@ -695,14 +695,6 @@ __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 
-[node name="Smush" parent="." instance=ExtResource( 59 )]
-position = Vector2( -205, -138 )
-target_scene = ExtResource( 62 )
-
-[node name="Smush2" parent="." instance=ExtResource( 59 )]
-position = Vector2( 745, -383 )
-target_scene = ExtResource( 62 )
-
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Background" type="Node2D" parent="YSort"]
@@ -1859,6 +1851,14 @@ align = 1
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 75, 167 )
+
+[node name="Smush" parent="." instance=ExtResource( 59 )]
+position = Vector2( -205, -138 )
+target_scene = ExtResource( 62 )
+
+[node name="Smush2" parent="." instance=ExtResource( 59 )]
+position = Vector2( 745, -383 )
+target_scene = ExtResource( 62 )
 
 [node name="Beezle" parent="." instance=ExtResource( 58 )]
 position = Vector2( 257, -96 )
