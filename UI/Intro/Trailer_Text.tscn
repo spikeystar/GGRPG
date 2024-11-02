@@ -117,12 +117,12 @@ scale = Vector2( 1.35, 1.35 )
 texture = ExtResource( 2 )
 
 [node name="Intro" type="Label" parent="Sprite2"]
-margin_left = -156.574
+margin_left = -166.204
 margin_top = -12.0
-margin_right = 157.426
+margin_right = 163.796
 margin_bottom = 5.0
 custom_fonts/font = SubResource( 11 )
-text = "Explore Gary's colorful world!"
+text = "Discover treasures and secrets!"
 align = 1
 
 [node name="Node2D6" type="Node2D" parent="."]

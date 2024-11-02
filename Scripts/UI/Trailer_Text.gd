@@ -9,7 +9,6 @@ func _ready():
 	
 	yield(get_tree().create_timer(1.5), "timeout")
 	$AnimationPlayer.play("intro")
-	$AnimationPlayer2.play("stars")
 	yield(get_tree().create_timer(2.6), "timeout")
 	
 	var transition = TransitionPlayer.instance()
