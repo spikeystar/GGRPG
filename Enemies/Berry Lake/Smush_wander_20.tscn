@@ -235,8 +235,8 @@ WANDER_RADIUS = 60
 MAX_CHASE_DISTANCE = 130
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
-position = Vector2( 10, -20 )
-scale = Vector2( 2.02425, 1.02399 )
+position = Vector2( 11, -19 )
+scale = Vector2( 1.63359, 1.29134 )
 shape = SubResource( 180 )
 
 [node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]

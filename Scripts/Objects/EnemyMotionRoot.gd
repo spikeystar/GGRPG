@@ -121,6 +121,9 @@ func _physics_process(delta):
 				state = ENEMY_STATE.RETURN
 				apply_friction(delta)
 				
+			if SceneManager.enemy_repel:
+				state = ENEMY_STATE.RETURN
+				
 				
 		ENEMY_STATE.CHASE:
 			var diffToTarget = (player.global_position) - self.global_position;
