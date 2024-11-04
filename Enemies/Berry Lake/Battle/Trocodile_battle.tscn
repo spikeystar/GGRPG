@@ -1089,6 +1089,7 @@ texture = ExtResource( 2 )
 
 [node name="TextOffset" type="Position2D" parent="."]
 visible = false
+position = Vector2( 0, -5 )
 
 [node name="DamageText" parent="." instance=ExtResource( 9 )]
 visible = false

@@ -218,7 +218,7 @@ func check_chase():
 	var diffToOrigin = self.global_position - origin
 	
 	
-	if PlayerManager.jumping:
+	if PlayerManager.jumping or PlayerManager.bouncy:
 		pass
 	else:
 		playerTooHigh = (player.floor_z - floor_z) > MAX_Z_DIFF

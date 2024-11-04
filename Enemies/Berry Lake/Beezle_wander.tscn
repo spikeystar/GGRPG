@@ -168,7 +168,7 @@ MIN_WANDER_TIME = 2
 MAX_WANDER_TIME = 5
 WANDER_RADIUS = 100
 MAX_CHASE_DISTANCE = 175
-MAX_Z_DIFF = 50
+MAX_Z_DIFF = 45
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
 position = Vector2( 1, -17 )
@@ -182,7 +182,7 @@ script = ExtResource( 10 )
 shape = SubResource( 172 )
 
 [node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 1 )]
-position = Vector2( 7, 34 )
+position = Vector2( 7, 32 )
 scale = Vector2( 0.873, 1.178 )
 collision_layer = 4
 collision_mask = 5
@@ -190,7 +190,7 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot/PlayerDetection"]
 modulate = Color( 1, 1, 1, 0.254902 )
 position = Vector2( -6.87285, -48.3871 )
-scale = Vector2( 1.11835, 0.956308 )
+scale = Vector2( 1.034, 0.874 )
 shape = SubResource( 178 )
 disabled = true
 

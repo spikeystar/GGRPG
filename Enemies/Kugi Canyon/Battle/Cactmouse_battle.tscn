@@ -1063,7 +1063,7 @@ frame = 1
 
 [node name="DamageStar" type="Sprite" parent="."]
 visible = false
-position = Vector2( 2, -31 )
+position = Vector2( 2, -12 )
 texture = ExtResource( 7 )
 hframes = 6
 vframes = 6
@@ -1090,6 +1090,7 @@ texture = ExtResource( 5 )
 
 [node name="TextOffset" type="Position2D" parent="."]
 visible = false
+position = Vector2( 0, -11 )
 
 [node name="DamageText" parent="." instance=ExtResource( 8 )]
 visible = false

@@ -140,7 +140,7 @@ scale = Vector2( 0.794248, 0.837242 )
 texture = ExtResource( 24 )
 
 [node name="BlackBckgd" type="Sprite" parent="Node2D"]
-position = Vector2( 173.288, 247.047 )
+position = Vector2( 113.759, 129.453 )
 scale = Vector2( 0.804624, 0.700275 )
 z_index = -100
 texture = ExtResource( 2 )
