@@ -1717,7 +1717,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 0.9, 0.77 )
+grid_size = Vector2( 0.92, 0.85 )
 texture = ExtResource( 62 )
 texture_scale = Vector2( -0.8, 0.8 )
 texture_offset = Vector2( 0, 15 )
