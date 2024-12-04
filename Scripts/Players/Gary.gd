@@ -43,18 +43,23 @@ func _physics_process(delta):
 	$JumpShape.origin_z = motion_root.pos_z
 
 	var last_dir = motion_root.last_dir
-	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1 && abs(motion_root.vel.z) == 0 and not motion_root.jumping and not cutscene:
+	
+	if freeze:
 		anim_tree.get("parameters/playback").travel("Idle")
 		anim_tree.set("parameters/Idle/blend_position", Vector2(last_dir.x, -last_dir.y))
-	elif abs(motion_root.vel.z) == 0 and not motion_root.jumping and not cutscene:
+	
+	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1 && abs(motion_root.vel.z) == 0 and not motion_root.jumping and not cutscene and not freeze:
+		anim_tree.get("parameters/playback").travel("Idle")
+		anim_tree.set("parameters/Idle/blend_position", Vector2(last_dir.x, -last_dir.y))
+	elif abs(motion_root.vel.z) == 0 and not motion_root.jumping and not cutscene and not freeze:
 		anim_tree.get("parameters/playback").travel("Walk")
 		anim_tree.set("parameters/Walk/blend_position", Vector2(last_dir.x, -last_dir.y))
 		
 		
-	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1 && abs(motion_root.vel.z) == 0 and SceneManager.bubble and not cutscene:
+	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1 && abs(motion_root.vel.z) == 0 and SceneManager.bubble and not cutscene and not freeze:
 		anim_tree.get("parameters/playback").travel("Idle")
 		anim_tree.set("parameters/Idle/blend_position", Vector2(last_dir.x, -last_dir.y))
-	elif abs(motion_root.vel.z) == 0 and SceneManager.bubble and not cutscene:
+	elif abs(motion_root.vel.z) == 0 and SceneManager.bubble and not cutscene and not freeze:
 		anim_tree.get("parameters/playback").travel("Walk")
 		anim_tree.set("parameters/Walk/blend_position", Vector2(last_dir.x, -last_dir.y))
 		
@@ -69,7 +74,7 @@ func _physics_process(delta):
 		anim_tree.get("parameters/playback").travel("Jump")
 		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
 		
-	if motion_root.jumping and not SceneManager.bubble:
+	if motion_root.jumping and not SceneManager.bubble and not freeze:
 		$BodyYSort/BodyVisualRoot/Gary.z_index = 0
 		anim_player.stop()
 		anim_tree.active = true
@@ -77,9 +82,15 @@ func _physics_process(delta):
 		anim_tree.set("parameters/Jump/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
 		
 	#if abs(motion_root.vel.z) >1:
-	if motion_root.vel.z <0:
+	if motion_root.vel.z <0 and freeze:
+		anim_tree.get("parameters/playback").travel("Idle")
+		anim_tree.set("parameters/Idle/blend_position", Vector2(last_dir.x, -last_dir.y))
+	
+	if motion_root.vel.z <0 and not freeze:
 		anim_tree.get("parameters/playback").travel("Fall")
 		anim_tree.set("parameters/Fall/blend_position", Vector2(last_dir.x, -last_dir.y) * 2)
+		
+
 		
 	#if motion_root.is_on_ground:
 		#jumping = false

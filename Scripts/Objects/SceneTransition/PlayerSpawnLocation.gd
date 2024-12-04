@@ -15,7 +15,7 @@ func _ready():
 	else:
 		call_deferred("_position_player")
 		
-	yield(get_tree().create_timer(0.5), "timeout")
+	yield(get_tree().create_timer(0.3), "timeout")
 	if not PlayerManager.cutscene:
 		PlayerManager.freeze = false
 
