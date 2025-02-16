@@ -1,7 +1,7 @@
 extends Node
 
 var party_id : int
-var party_members = 2
+var party_members = 1
 var member_name : String
 var holder_name : String
 
@@ -47,7 +47,7 @@ var damien_trinket : String = "-"
 
 var party_sp = 20
 var party_max_sp = 20
-var party_level = 2
+var party_level = 1
 var party_exp = 0
 var next_level = int((100) * (party_level/1.5) + (party_level * 100))
 

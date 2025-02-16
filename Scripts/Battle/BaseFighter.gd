@@ -65,6 +65,9 @@ var d_debuff_timer = 0
 var hocus_potion
 var hocus_potion_timer = 0
 
+onready var Congeal = preload("res://Misc/Shader/Congeal_Shader.tres")
+
+
 func _ready():
 	SceneManager.targeted_applied = false
 	set_stats()
@@ -82,6 +85,15 @@ func unfocus():
 	
 func get_name():
 	return fighter_name
+	
+func attack_shader(id : String):
+	if id == "Congeal":
+		$Sprite.material = Congeal
+		
+func reset_shader():
+	$Sprite.material = ShaderMaterial.new()
+
+	
 	
 func set_stats():
 	if fighter_name == "gary":

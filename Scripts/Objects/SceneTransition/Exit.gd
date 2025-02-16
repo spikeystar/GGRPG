@@ -35,14 +35,16 @@ func _on_body_entered(body):
 	
 func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")
-	PlayerManager.freeze = true
+	#PlayerManager.freeze = true
 	Global.door_name = exit_name
 	PlayerManager.pop()
 	SceneManager.height = height
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.transition_in(target_scene, _get_animation_name())
-	yield(get_tree().create_timer(2), "timeout")
+	yield(get_tree().create_timer(0.2), "timeout")
+	PlayerManager.freeze = true
+	yield(get_tree().create_timer(1.8), "timeout")
 	transitioning = false
 	
 	

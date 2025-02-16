@@ -643,7 +643,7 @@ modulate = Color( 1, 0.996078, 0.996078, 1 )
 self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -1, 0 )
 frames = SubResource( 19 )
-frame = 3
+frame = 4
 speed_scale = 0.6
 playing = true
 
@@ -678,6 +678,20 @@ anims/Inner_Garden = SubResource( 15 )
 anims/RESET = SubResource( 9 )
 anims/Spin = SubResource( 16 )
 
+[node name="BlackBckgd2" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 14, 9 )
+scale = Vector2( 0.657167, 0.538 )
+z_index = -100
+texture = ExtResource( 24 )
+
+[node name="BlackBckgd" type="Sprite" parent="."]
+modulate = Color( 0.8, 0.8, 0.8, 1 )
+position = Vector2( 0.499999, 3.05176e-05 )
+scale = Vector2( 0.427333, 0.373333 )
+z_index = -100
+texture = ExtResource( 24 )
+
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -369.0
 margin_top = -305.0
@@ -685,20 +699,13 @@ margin_right = 351.0
 margin_bottom = 338.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="BlackBckgd" type="Sprite" parent="."]
-modulate = Color( 0.8, 0.8, 0.8, 1 )
-position = Vector2( -138, -24 )
-scale = Vector2( 0.804624, 0.700275 )
-z_index = -100
-texture = ExtResource( 24 )
-
 [node name="Spin" type="AnimatedSprite" parent="."]
 visible = false
 self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -8 )
 scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 10 )
-frame = 1
+frame = 11
 speed_scale = 0.9
 playing = true
 

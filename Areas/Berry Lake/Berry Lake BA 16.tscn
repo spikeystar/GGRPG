@@ -709,6 +709,9 @@ color = Color( 0, 0, 0, 1 )
 [node name="Arena" type="Sprite" parent="."]
 texture = ExtResource( 32 )
 
+[node name="Attack_Arena" type="Sprite" parent="Arena"]
+visible = false
+
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource( 13 )
 boss_battle = true

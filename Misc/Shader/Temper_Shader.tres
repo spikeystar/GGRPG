@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Misc/Shader/Temper_Shader.gdshader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/wave_count = 20.0
+shader_param/speed = 3.3
+shader_param/height = 0.004

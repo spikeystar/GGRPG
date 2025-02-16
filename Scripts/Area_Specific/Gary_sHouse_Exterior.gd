@@ -167,10 +167,12 @@ func _process(delta):
 func _on_Michael_Meetup_area_event():
 	event = true
 	PlayerManager.freeze = true
+	yield(get_tree().create_timer(0.01), "timeout")
 	PlayerManager.cutscene = true
 	Gary.walk_left()
 	var tween = create_tween()
 	tween.tween_property(Gary.motion_root, "global_position", $Position2D.position, 1.2)
+	PlayerManager.freeze = true
 	yield(tween, "finished")
 	Gary.set_right()
 	

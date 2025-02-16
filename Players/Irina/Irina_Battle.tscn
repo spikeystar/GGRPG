@@ -1873,7 +1873,7 @@ position = Vector2( -2.222, -10.36 )
 texture = ExtResource( 1 )
 offset = Vector2( 8, 2 )
 hframes = 9
-vframes = 4
+vframes = 6
 frame = 19
 
 [node name="DamageStar" type="Sprite" parent="."]

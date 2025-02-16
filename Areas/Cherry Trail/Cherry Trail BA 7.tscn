@@ -320,7 +320,7 @@ tracks/12/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("../CherryTrailArena:modulate")
+tracks/13/path = NodePath("../Arena:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -381,7 +381,7 @@ loop = true
 resource_name = "darken"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("../CherryTrailArena:modulate")
+tracks/0/path = NodePath("../Arena:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -603,8 +603,11 @@ margin_right = 400.0
 margin_bottom = 350.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="CherryTrailArena" type="Sprite" parent="."]
+[node name="Arena" type="Sprite" parent="."]
 texture = ExtResource( 3 )
+
+[node name="Attack_Arena" type="Sprite" parent="Arena"]
+visible = false
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource( 21 )
@@ -613,18 +616,11 @@ script = ExtResource( 21 )
 
 [node name="Cheribo_battle" parent="Enemies/Field" instance=ExtResource( 17 )]
 position = Vector2( -7, 17 )
-ID = "Cheribo"
-e_health = 20
 e_attack = 12
-e_defense = 7
-initial_type = "neutral"
 
 [node name="Sapling_battle" parent="Enemies/Field" instance=ExtResource( 55 )]
 position = Vector2( 132, 70 )
-e_health = 25
 e_attack = 13
-e_magic = 0
-e_defense = 10
 move4 = "Basic"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]

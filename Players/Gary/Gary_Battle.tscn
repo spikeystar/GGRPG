@@ -1341,7 +1341,7 @@ texture = ExtResource( 2 )
 texture = ExtResource( 1 )
 offset = Vector2( 8, 2 )
 hframes = 9
-vframes = 3
+vframes = 7
 frame = 11
 
 [node name="DamageStar" type="Sprite" parent="."]

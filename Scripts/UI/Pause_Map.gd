@@ -21,7 +21,7 @@ func _process(delta):
 		
 	if EventManager.Michael_Meetup_CS and not EventManager.Jacques_Meetup_CS:
 		$Marker1.show()
-		$Marker1.position = Vector2(23, -38)
+		$Marker1.position = Vector2(24, -20)
 		
 	if EventManager.Jacques_Meetup_CS and not EventManager.Edgar_Tea_CS:
 		$Marker1.hide()
@@ -36,7 +36,7 @@ func _process(delta):
 		
 	if EventManager.Reeler:
 		$Marker1.show()
-		$Marker1.position = Vector2(23, -38)
+		$Marker1.position = Vector2(24, -20)
 		
 	if EventManager.Edgar_Check_In_CS:
 		$Marker1.hide()

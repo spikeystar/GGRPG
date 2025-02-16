@@ -44,7 +44,7 @@ func _physics_process(delta):
 
 	var last_dir = motion_root.last_dir
 	
-	if freeze:
+	if freeze and not cutscene:
 		anim_tree.get("parameters/playback").travel("Idle")
 		anim_tree.set("parameters/Idle/blend_position", Vector2(last_dir.x, -last_dir.y))
 	

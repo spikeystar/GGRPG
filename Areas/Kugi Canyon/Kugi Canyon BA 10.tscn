@@ -319,7 +319,7 @@ tracks/12/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("../CherryTrailArena:modulate")
+tracks/13/path = NodePath("../Arena:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -380,7 +380,7 @@ loop = true
 resource_name = "darken"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("../CherryTrailArena:modulate")
+tracks/0/path = NodePath("../Arena:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -602,8 +602,11 @@ margin_right = 400.0
 margin_bottom = 350.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="CherryTrailArena" type="Sprite" parent="."]
+[node name="Arena" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+
+[node name="Attack_Arena" type="Sprite" parent="Arena"]
+visible = false
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource( 38 )
@@ -1589,6 +1592,7 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1605,7 +1609,6 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
-frame = 1
 speed_scale = 0.6
 playing = true
 

@@ -321,7 +321,7 @@ tracks/12/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("../CherryTrailArena:modulate")
+tracks/13/path = NodePath("../Arena:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -382,7 +382,7 @@ loop = true
 resource_name = "darken"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("../CherryTrailArena:modulate")
+tracks/0/path = NodePath("../Arena:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -604,8 +604,11 @@ margin_right = 400.0
 margin_bottom = 350.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="CherryTrailArena" type="Sprite" parent="."]
+[node name="Arena" type="Sprite" parent="."]
 texture = ExtResource( 40 )
+
+[node name="Attack_Arena" type="Sprite" parent="Arena"]
+visible = false
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource( 3 )
@@ -621,7 +624,6 @@ move4 = "Basic"
 
 [node name="Flutterbie_battle" parent="Enemies/Field" instance=ExtResource( 59 )]
 position = Vector2( 42, -103 )
-move4 = "Basic"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false

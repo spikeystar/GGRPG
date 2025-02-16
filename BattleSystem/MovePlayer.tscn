@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://BattleSystem/BattleMoves/Sweet_Gift/Sweet Gift SS.png" type="Texture" id=1]
 [ext_resource path="res://Test/Testing Screenshot.png" type="Texture" id=2]
@@ -31,6 +31,14 @@
 [ext_resource path="res://BattleSystem/BattleMoves/Gravel_Spat/Gravel Spat SS.png" type="Texture" id=29]
 [ext_resource path="res://BattleSystem/BattleMoves/Prism_Snow/Prism Snow Texture.png" type="Texture" id=30]
 [ext_resource path="res://Misc/Shader/Prism_Snow Material.tres" type="Material" id=31]
+[ext_resource path="res://BattleSystem/BattleMoves/Hay_Fever/Hay Fever Texture.png" type="Texture" id=32]
+[ext_resource path="res://BattleSystem/BattleMoves/Nightmare_Powder/Nightmare Powder Texture.png" type="Texture" id=33]
+[ext_resource path="res://BattleSystem/BattleMoves/Faerie Dust/Faerie Dust Texture.png" type="Texture" id=34]
+[ext_resource path="res://Misc/Shader/Invert_Shader.tres" type="Shader" id=35]
+[ext_resource path="res://Misc/Shader/Shifty_Shader.tres" type="Material" id=36]
+[ext_resource path="res://Misc/Shader/Flow_Shader.tres" type="Material" id=37]
+[ext_resource path="res://BattleSystem/BattleMoves/Congeal/Congeal_Frame.png" type="Texture" id=38]
+[ext_resource path="res://Misc/Shader/Temper_Shader.tres" type="Material" id=39]
 
 [sub_resource type="Animation" id=19]
 resource_name = "Aero_Bullet"
@@ -3431,6 +3439,9 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="ShaderMaterial" id=25]
+shader = ExtResource( 35 )
+
 [node name="MovePlayer" type="Node2D"]
 
 [node name="AnimPlayer" type="AnimationPlayer" parent="."]
@@ -3926,3 +3937,119 @@ rect_scale = Vector2( 0.87, 0.87 )
 rect_pivot_offset = Vector2( 450, 400 )
 texture = ExtResource( 30 )
 stretch_mode = 2
+
+[node name="Nightmare_Powder" type="Node2D" parent="."]
+visible = false
+z_index = 4
+
+[node name="TextureRect" type="TextureRect" parent="Nightmare_Powder"]
+self_modulate = Color( 1, 1, 1, 0.9 )
+material = ExtResource( 31 )
+margin_left = -450.0
+margin_top = -400.0
+margin_right = 450.0
+margin_bottom = 400.0
+rect_scale = Vector2( 0.87, 0.87 )
+rect_pivot_offset = Vector2( 450, 400 )
+texture = ExtResource( 33 )
+stretch_mode = 2
+
+[node name="Hay_Fever" type="Node2D" parent="."]
+visible = false
+z_index = 4
+
+[node name="TextureRect" type="TextureRect" parent="Hay_Fever"]
+self_modulate = Color( 1, 1, 1, 0.9 )
+material = ExtResource( 31 )
+margin_left = -450.0
+margin_top = -400.0
+margin_right = 450.0
+margin_bottom = 400.0
+rect_scale = Vector2( 0.87, 0.87 )
+rect_pivot_offset = Vector2( 450, 400 )
+texture = ExtResource( 32 )
+stretch_mode = 2
+flip_h = true
+
+[node name="Faerie_Dust" type="Node2D" parent="."]
+visible = false
+z_index = 4
+
+[node name="TextureRect" type="TextureRect" parent="Faerie_Dust"]
+self_modulate = Color( 1, 1, 1, 0.9 )
+material = ExtResource( 31 )
+margin_left = -450.0
+margin_top = -400.0
+margin_right = 450.0
+margin_bottom = 400.0
+rect_scale = Vector2( 0.87, 0.87 )
+rect_pivot_offset = Vector2( 450, 400 )
+texture = ExtResource( 34 )
+stretch_mode = 2
+flip_h = true
+
+[node name="Catastrophe" type="Node2D" parent="."]
+visible = false
+z_index = 4
+
+[node name="Invert" type="ColorRect" parent="Catastrophe"]
+self_modulate = Color( 1, 1, 1, 0.9 )
+material = SubResource( 25 )
+margin_left = -451.0
+margin_top = -383.0
+margin_right = 449.0
+margin_bottom = 417.0
+rect_scale = Vector2( 0.87, 0.87 )
+rect_pivot_offset = Vector2( 450, 400 )
+
+[node name="Laminar_Flow" type="Node2D" parent="."]
+visible = false
+z_index = 4
+
+[node name="Flow" type="ColorRect" parent="Laminar_Flow"]
+visible = false
+material = ExtResource( 37 )
+margin_left = -457.0
+margin_top = -389.0
+margin_right = 443.0
+margin_bottom = 411.0
+rect_scale = Vector2( 0.87, 0.87 )
+rect_pivot_offset = Vector2( 450, 400 )
+
+[node name="Temper" type="Node2D" parent="."]
+visible = false
+z_index = 4
+
+[node name="Temper" type="ColorRect" parent="Temper"]
+material = ExtResource( 39 )
+margin_left = -457.0
+margin_top = -389.0
+margin_right = 443.0
+margin_bottom = 411.0
+rect_scale = Vector2( 0.87, 0.87 )
+rect_pivot_offset = Vector2( 450, 400 )
+
+[node name="Congeal" type="Node2D" parent="."]
+visible = false
+z_index = 4
+
+[node name="Sprite" type="Sprite" parent="Congeal"]
+self_modulate = Color( 0.941176, 1, 1, 0.352941 )
+position = Vector2( -0.500001, 0.500011 )
+scale = Vector2( 0.181944, 0.159167 )
+texture = ExtResource( 38 )
+
+[node name="Shifty" type="Node2D" parent="."]
+visible = false
+z_index = 4
+
+[node name="Shifty" type="ColorRect" parent="Shifty"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.313726 )
+material = ExtResource( 36 )
+margin_left = -457.0
+margin_top = -389.0
+margin_right = 443.0
+margin_bottom = 411.0
+rect_scale = Vector2( 0.87, 0.87 )
+rect_pivot_offset = Vector2( 450, 400 )
