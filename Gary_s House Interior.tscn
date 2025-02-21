@@ -154,7 +154,7 @@ visible = false
 position = Vector2( 19, -77 )
 z_index = 1
 frames = SubResource( 174 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="MatA" type="Sprite" parent="Node2D/YSort"]
@@ -296,6 +296,7 @@ door_name = "InsideHouse"
 direction = Vector2( 1, 1 )
 
 [node name="Item_Interact" type="Area2D" parent="Node2D"]
+position = Vector2( -6.9266, 14.0365 )
 script = ExtResource( 26 )
 item_name = "Yummy Cake"
 

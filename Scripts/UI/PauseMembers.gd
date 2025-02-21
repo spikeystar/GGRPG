@@ -173,12 +173,14 @@ func _process(delta):
 		##########
 		
 	if Input.is_action_just_pressed("ui_right") and item_selecting:
-		SE.effect("Move Between")
-		select_next_member(+1)
+		if PartyStats.party_members > 1:
+			SE.effect("Move Between")
+			select_next_member(+1)
 		
 	if Input.is_action_just_pressed("ui_left") and item_selecting:
-		SE.effect("Move Between")
-		select_next_member(-1)
+		if PartyStats.party_members > 1:
+			SE.effect("Move Between")
+			select_next_member(-1)
 
 	if Input.is_action_just_pressed("ui_select") and item_selecting and able:
 		SE.effect("Heal")

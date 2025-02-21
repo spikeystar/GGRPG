@@ -244,7 +244,7 @@ func Tutorial_6():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "Other statuses like Wimpy or Anxious can make battle pretty difficult."
+	$Name/Talk.text = "Other statuses like Wimpy or Anxious can make battles pretty difficult."
 	talking()
 	yield(self, "talk_done")
 	

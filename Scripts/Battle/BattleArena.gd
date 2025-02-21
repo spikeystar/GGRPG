@@ -795,6 +795,7 @@ func _on_Enemies_victory():
 	$VictoryWindow/EXPReward.text = thousands_sep(EXP_reward)
 	$VictoryWindow.show()
 	$WindowPlayer.play("victory_open")
+	emit_signal("update_party")
 	
 	if PartyStats.party_exp >= PartyStats.next_level:
 		PartyStats.party_exp -= PartyStats.next_level
@@ -808,7 +809,7 @@ func _on_Enemies_victory():
 	
 	$Fighters.hide_cursors_remote()
 	$Fighters.victory()
-	emit_signal("update_party")
+	#emit_signal("update_party")
 	boss_event()
 	if PartyStats.new_spell_2:	
 		new_spell = true
