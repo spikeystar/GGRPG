@@ -48,14 +48,14 @@ var damien_trinket : String = "-"
 var party_sp = 20
 var party_max_sp = 20
 var party_level = 1
-var party_exp = 155
+var party_exp = 0
 var next_level = int((100) * (party_level/1.5) + (party_level * 100))
 
 var new_spell_2 = false
 
 func _ready():
 	set_stats()
-	gary_current_health = 23
+	gary_current_health = gary_health
 	jacques_current_health = jacques_health
 	irina_current_health = irina_health
 

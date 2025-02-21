@@ -17,6 +17,7 @@ func _ready():
 	
 	if EventManager.Tindrum:
 		$YSort/Tindrum.queue_free()
+		$Event.queue_free()
 	
 func _process(delta):
 	if Global.battle_ended and event:

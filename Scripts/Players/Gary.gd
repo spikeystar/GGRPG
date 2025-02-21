@@ -10,9 +10,9 @@ export var jump_velocity = 10
 
 onready var tween
 
-const PauseMenu = preload("res://UI/PauseMenu.tscn")
+#const PauseMenu = preload("res://UI/PauseMenu.tscn")
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
-var pause_menu
+#var pause_menu
 var in_bubble = false
 var jumping = false
 

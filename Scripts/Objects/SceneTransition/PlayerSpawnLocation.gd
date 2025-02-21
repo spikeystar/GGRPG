@@ -10,6 +10,7 @@ export var height : int
 var is_current_spawn = false
 
 func _ready():
+	PlayerManager.pause_delay = true
 	if PlayerManager.player_motion_root:
 		_position_player()
 	else:
@@ -18,6 +19,9 @@ func _ready():
 	yield(get_tree().create_timer(0.3), "timeout")
 	if not PlayerManager.cutscene:
 		PlayerManager.freeze = false
+	yield(get_tree().create_timer(0.6), "timeout")
+	PlayerManager.pause_delay = false
+	
 
 func _position_player():
 	if Global.door_name == door_name:

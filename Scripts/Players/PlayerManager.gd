@@ -17,6 +17,7 @@ var drown = false
 var bouncy = false
 var jump_disabled = false
 var cutscene = false
+var pause_delay = false
 
 func _ready():
 	spawn_player()

@@ -30,6 +30,7 @@ func _ready():
 	
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and able:
+		SE.effect("Switch")
 		var transition = TransitionPlayer2.instance()
 		get_tree().get_root().add_child(transition)
 		transition.transition_in(target_scene, _get_animation_name())

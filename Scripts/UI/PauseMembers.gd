@@ -36,6 +36,9 @@ func select_next_member(index_offset):
 	Cursors[last_member_index].hide()
 	Cursors[new_member_index].show()
 	member_index = new_member_index
+	
+	if PartyStats.party_members > 1 and member_index < Cursors.size():
+		SE.effect("Move Between")
 
 func _process(delta):
 	set_labels()
@@ -173,14 +176,10 @@ func _process(delta):
 		##########
 		
 	if Input.is_action_just_pressed("ui_right") and item_selecting:
-		if PartyStats.party_members > 1:
-			SE.effect("Move Between")
-			select_next_member(+1)
+		select_next_member(+1)
 		
 	if Input.is_action_just_pressed("ui_left") and item_selecting:
-		if PartyStats.party_members > 1:
-			SE.effect("Move Between")
-			select_next_member(-1)
+		select_next_member(-1)
 
 	if Input.is_action_just_pressed("ui_select") and item_selecting and able:
 		SE.effect("Heal")
@@ -238,11 +237,9 @@ func _process(delta):
 		##############
 		
 	if Input.is_action_just_pressed("ui_right") and trinket_selecting:
-		SE.effect("Move Between")
 		select_next_member(+1)
 		
 	if Input.is_action_just_pressed("ui_left") and trinket_selecting:
-		SE.effect("Move Between")
 		select_next_member(-1)
 
 	if Input.is_action_just_pressed("ui_select") and trinket_selecting and able:

@@ -102,6 +102,7 @@ var data = {
 		
 		"new_file" : EventManager.new_file,
 		"first_save" : EventManager.first_save,
+		"Collected" : Global.Collected,
 		
 		"Cherry_Trail" : EventManager.Cherry_Trail,
 		"Pivot_Town" : EventManager.Pivot_Town,
@@ -379,6 +380,7 @@ func save_file():
 		
 		data["new_file"] = EventManager.new_file
 		data["first_save"] = EventManager.first_save
+		data["Collected"] = Global.Collected
 		
 		data["Cherry_Trail"] = EventManager.Cherry_Trail
 		data["Pivot_Town"] = EventManager.Pivot_Town
@@ -491,6 +493,7 @@ func load_file():
 		
 			EventManager.new_file = data["new_file"]
 			EventManager.first_save = data["first_save"]
+			Global.Collected = data["Collected"]
 		
 			EventManager.Cherry_Trail = data["Cherry_Trail"]
 			EventManager.Pivot_Town = data["Pivot_Town"]
