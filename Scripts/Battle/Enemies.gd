@@ -178,15 +178,19 @@ func _process(delta):
 		
 	######## Item Selecting ########
 	if Input.is_action_just_pressed("ui_right") and item_selecting:
-		SE.effect("Move Between")
 		select_next_enemy(+1)
 		enemy_info_update()
+		
+		if enemies.size() > 1:
+			SE.effect("Move Between")
 		#print(enemy_index)
 		
 	if Input.is_action_just_pressed("ui_left") and item_selecting:
-		SE.effect("Move Between")
 		select_next_enemy(-1)
 		enemy_info_update()
+		
+		if enemies.size() > 1:
+			SE.effect("Move Between")
 		#print(enemy_index)
 	
 	if Input.is_action_just_pressed("ui_select") and item_selecting:
@@ -202,14 +206,18 @@ func _process(delta):
 		enemy_info_update()
 	
 	if Input.is_action_just_pressed("ui_right") and magic_selecting:
-		SE.effect("Move Between")
 		select_next_enemy(+1)
 		enemy_info_update()
 		
+		if enemies.size() > 1:
+			SE.effect("Move Between")
+		
 	if Input.is_action_just_pressed("ui_left") and magic_selecting:
-		SE.effect("Move Between")
 		select_next_enemy(-1)
 		enemy_info_update()
+		
+		if enemies.size() > 1:
+			SE.effect("Move Between")
 	
 	if Input.is_action_just_pressed("ui_select") and magic_selecting:
 		SE.effect("Select")

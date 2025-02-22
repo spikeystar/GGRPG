@@ -1010,7 +1010,7 @@ tracks/1/keys = {
 [node name="Hercules_battle" type="Node2D"]
 script = ExtResource( 4 )
 ID = "Hercules"
-e_health = 70
+e_health = 90
 e_attack = 20
 e_defense = 12
 initial_type = "neutral"

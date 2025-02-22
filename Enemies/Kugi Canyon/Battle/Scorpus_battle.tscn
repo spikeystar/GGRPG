@@ -1022,7 +1022,7 @@ tracks/1/keys = {
 [node name="Scorpus_battle" type="Node2D"]
 script = ExtResource( 3 )
 ID = "Scorpus"
-e_health = 40
+e_health = 70
 e_attack = 15
 e_magic = 10
 e_defense = 8

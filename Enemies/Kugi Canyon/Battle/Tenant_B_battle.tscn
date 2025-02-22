@@ -961,7 +961,7 @@ tracks/1/keys = {
 [node name="Tenant_B_battle" type="Node2D"]
 script = ExtResource( 4 )
 ID = "Tenant B"
-e_health = 100
+e_health = 175
 e_attack = 12
 e_magic = 15
 e_defense = 8

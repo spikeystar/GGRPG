@@ -4,8 +4,12 @@ var enemy_selecting = false
 var enemy_name : String
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_right") and enemy_selecting:
-		text = enemy_name
+	text = enemy_name
+	#if Input.is_action_just_pressed("ui_right") and enemy_selecting:
+		#text = enemy_name
+		
+	#if Input.is_action_just_pressed("ui_left") and enemy_selecting:
+		#text = enemy_name
 
 func _on_WorldRoot_attack_active():
 	enemy_selecting = true

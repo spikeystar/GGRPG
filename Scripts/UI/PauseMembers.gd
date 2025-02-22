@@ -45,11 +45,11 @@ func _process(delta):
 	PartyStats.party_id = (member_index + 1)
 	if Input.is_action_just_pressed("ui_right") and party_selecting:
 		select_next_member(+1)
-		reverse = false
-		print(member_index)
+		#reverse = false
 		
 		if PartyStats.party_members > 1:
 			SE.effect("Move Between")
+			reverse = false
 		
 	if Input.is_action_just_pressed("ui_left") and party_selecting and not member_index == 0:
 		select_next_member(-1)
@@ -59,6 +59,9 @@ func _process(delta):
 			SE.effect("Move Between")
 			
 		yield(get_tree().create_timer(0.1), "timeout")
+		reverse = true
+		
+	if Input.is_action_just_pressed("ui_left") and party_selecting and member_index == 0:
 		reverse = true
 			
 	if Input.is_action_just_pressed("ui_left") and party_selecting and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting:

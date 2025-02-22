@@ -1,7 +1,7 @@
 extends Node
 
 var party_id : int
-var party_members = 1
+var party_members = 2
 var member_name : String
 var holder_name : String
 
@@ -95,30 +95,30 @@ func level_up():
 	next_level = int((100) * (party_level/1.5) + (party_level * 50))
 		
 func set_stats():	
-	gary_health = 51 + int(party_level * 10.5)
-	gary_attack = 20 + int(party_level * 7)
-	gary_magic = 15 + int(party_level * 7)
-	gary_defense = 5 + int(party_level * 2)
+	gary_health = 51 + int((party_level / 1.5) * 10.5)
+	gary_attack = 20 + int((party_level / 1.5) * 7)
+	gary_magic = 15 + int((party_level / 1.5)  * 7)
+	gary_defense = 5 + int((party_level / 2)  * 2)
 	
-	jacques_health = 55 + int(party_level * 12)
-	jacques_attack = 20 + int(party_level * 5)
-	jacques_magic = 20 + int(party_level * 5)
-	jacques_defense = 7 + int(party_level * 3)
+	jacques_health = 55 + int((party_level / 1.5)  * 14)
+	jacques_attack = 20 + int((party_level / 1.5)  * 5)
+	jacques_magic = 20 + int((party_level / 1.5) * 5)
+	jacques_defense = 7 + int((party_level / 2)  * 3)
 
-	irina_health = 60 + int(party_level * 14)
-	irina_attack = 12 + int(party_level * 5)
-	irina_magic = 24 + int(party_level * 6)
-	irina_defense = 4 + int(party_level * 1.5)
+	irina_health = 60 + int((party_level / 1.5)  * 18)
+	irina_attack = 12 + int((party_level / 1.5)  * 5)
+	irina_magic = 24 + int((party_level / 1.5)  * 6)
+	irina_defense = 4 + int((party_level / 2)  * 1.5)
 	
-	suzy_health = 43 + int(party_level * 9.5)
-	suzy_attack = 27 + int(party_level * 8)
-	suzy_magic = 20 + int(party_level * 6)
-	suzy_defense = 5 + int(party_level * 1)
+	suzy_health = 43 + int((party_level / 1.5) * 8)
+	suzy_attack = 27 + int((party_level / 1.5) * 8)
+	suzy_magic = 20 + int((party_level / 1.5)  * 6)
+	suzy_defense = 5 + int((party_level / 2)  * 1)
 	
-	damien_health = 50 + int(party_level * 11.5)
-	damien_attack = 10 + int(party_level * 4)
-	damien_magic = 30 + int(party_level * 8)
-	damien_defense = 6 + int(party_level * 2)
+	damien_health = 50 + int((party_level / 1.5)  * 11.5)
+	damien_attack = 10 + int((party_level / 1.5)  * 4)
+	damien_magic = 30 + int((party_level / 1.5) * 8)
+	damien_defense = 6 + int((party_level / 2)  * 2)
 	
 	if party_level == 1:
 		gary_health = 50

@@ -12,7 +12,7 @@ var d_buff
 var d_debuff
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_right") and enemy_selecting or Input.is_action_just_pressed("ui_select") and enemy_selecting:
+	if Input.is_action_just_pressed("ui_right") and enemy_selecting or Input.is_action_just_pressed("ui_select") and enemy_selecting or Input.is_action_just_pressed("ui_left") and enemy_selecting:
 		$Icons/Statuses.show()
 		$Icons/Statuses/Attack_D.hide()
 		$Icons/Statuses/Attack_B.hide()
@@ -39,7 +39,7 @@ func _process(delta):
 		if d_debuff:
 			$Icons/Statuses/Defense_D.show()
 
-	if Input.is_action_just_pressed("ui_right") and enemy_selecting or Input.is_action_just_pressed("ui_select") and enemy_selecting:
+	if Input.is_action_just_pressed("ui_right") and enemy_selecting or Input.is_action_just_pressed("ui_select") and enemy_selecting or Input.is_action_just_pressed("ui_left") and enemy_selecting:
 		if type == "neutral":
 			$Icons/Types/Neutral.show()
 			$Icons/Types/Fire.hide()
