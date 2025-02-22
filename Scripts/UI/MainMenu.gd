@@ -15,7 +15,7 @@ var able = false
 
 func _ready():
 	SceneManager.loading = true
-	PlayerManager.hide_player()
+	#PlayerManager.hide_player()
 	
 	yield(get_tree().create_timer(1.5), "timeout")
 	$AnimationPlayer2.play("Intro")
@@ -31,6 +31,7 @@ func _ready():
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and able:
 		SE.effect("Switch")
+		able = false
 		var transition = TransitionPlayer2.instance()
 		get_tree().get_root().add_child(transition)
 		transition.transition_in(target_scene, _get_animation_name())

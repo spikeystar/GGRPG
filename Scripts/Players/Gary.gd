@@ -112,7 +112,6 @@ func _physics_process(delta):
 		anim_player.playback_speed = 0.3
 		anim_player.play("sleep")
 		
-		
 	if ouch:
 		anim_tree.active = false
 		anim_player.play("ouch")
@@ -120,7 +119,6 @@ func _physics_process(delta):
 	if not ouch and not drown and not sleep and not cutscene:
 		anim_player.stop()
 		anim_tree.active = true
-		
 		
 	if drown:
 		anim_tree.active = false

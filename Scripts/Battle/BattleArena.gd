@@ -1410,7 +1410,7 @@ func _on_Enemies_Sabotage():
 	$Fighters.enemy_type = $Enemies.get_type()
 	$Fighters.e_move_base = 10
 	$Fighters.e_attack = $Enemies.e_attack
-	$MovePlayer.position = fighter_OG_position + Vector2(24, -9)
+	$MovePlayer.position = fighter_OG_position + Vector2(22, -12)
 	SE.effect("Sabotage")
 	$MovePlayer/AnimPlayer.play("Sabotage")
 	yield(get_tree().create_timer(1), "timeout")
