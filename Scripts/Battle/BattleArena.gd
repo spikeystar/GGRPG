@@ -1341,6 +1341,7 @@ func _on_Enemies_Basic():
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.move_spread = "single"
+	$Fighters.pick_fighter()
 	$Fighters.e_move_base = 1
 	$Fighters.e_attack = $Enemies.e_attack
 	$Fighters.e_magic = $Enemies.e_magic
