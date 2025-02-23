@@ -14,6 +14,8 @@ onready var EdgarPlayer = $YSort/MiddleGround/Edgar/BodyYSort/AnimationPlayer
 func _ready():
 	EventManager.Pivot_Town = true
 	
+	print(EventManager.Reeler)
+	
 	SceneManager.SceneEnemies = []
 	SceneManager.location = "Pivot Town"
 	if Music.id != "Pivot_Town" or not Music.is_playing:
@@ -44,8 +46,9 @@ func _ready():
 		$CollisionRoot/Edgar_Door/CollisionPolygon2D.disabled = true
 		$Irina_Meetup/CollisionPolygon2D.disabled = false
 		PlayerManager.freeze = true
-		yield(get_tree().create_timer(0.3), "timeout")
+		yield(get_tree().create_timer(0.05), "timeout")
 		PlayerManager.cutscene = true
+		yield(get_tree().create_timer(0.3), "timeout")
 		$Camera2D.follow_player = false
 		var og_position = $Camera2D.position
 		Irina.position = $Position2D7.position
@@ -571,7 +574,7 @@ func _on_Irina_Meetup_area_event():
 	PlayerManager.freeze = true
 	
 	$Camera2D/Interaction/Dialogue.show()
-	$Camera2D/Interaction/Dialogue/Name/Talk.text = "The robot situation might not be related to the Jewel Seeds, but it's definitely suspicious..."
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "The situation there might not be related to the Jewel Seeds, but it's definitely suspicious..."
 	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
 	$Camera2D/Interaction/Dialogue.talking()
 	yield($Camera2D/Interaction/Dialogue, "talk_done")
@@ -594,6 +597,7 @@ func _on_Irina_Meetup_area_event():
 	$Camera2D/Interaction/Dialogue.done()
 	PlayerManager.freeze = true
 	
+	Gary.animation("suggest")
 	$Camera2D/Interaction/Dialogue.show()
 	$Camera2D/Interaction/Dialogue/Name/Talk.text = "But you have wings, don't you? Couldn't you just fly?"
 	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
@@ -603,6 +607,7 @@ func _on_Irina_Meetup_area_event():
 	PlayerManager.freeze = true
 	
 	IrinaPlayer.play("worry_back")
+	Gary.set_right()
 	$Camera2D/Interaction/Dialogue.show()
 	$Camera2D/Interaction/Dialogue/Name/Talk.text = "..."
 	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
@@ -665,6 +670,7 @@ func _on_Irina_Meetup_area_event():
 	$Camera2D/Interaction/Dialogue.done()
 	PlayerManager.freeze = true
 	
+	Gary.animation("suggest")
 	$Camera2D/Interaction/Dialogue.show()
 	$Camera2D/Interaction/Dialogue/Name/Talk.text = "How about you come along with us to find the rest of the Jewel Seeds?"
 	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
@@ -673,6 +679,7 @@ func _on_Irina_Meetup_area_event():
 	$Camera2D/Interaction/Dialogue.done()
 	PlayerManager.freeze = true
 	
+	Gary.set_right()
 	$Camera2D/Interaction/Dialogue.show()
 	$Camera2D/Interaction/Dialogue/Name/Talk.text = "And once the landslide is cleared away we can help you out in Tower Town!"
 	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"

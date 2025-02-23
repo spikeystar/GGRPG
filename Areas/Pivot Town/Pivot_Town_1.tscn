@@ -2467,7 +2467,6 @@ position = Vector2( -429, -740 )
 scale = Vector2( 1.7, 1.7 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 5
 speed_scale = 0.8
 playing = true
 
@@ -2476,7 +2475,7 @@ position = Vector2( 170, -415 )
 scale = Vector2( 1.6, 1.6 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 3
+frame = 4
 speed_scale = 0.7
 playing = true
 
@@ -2499,7 +2498,7 @@ position = Vector2( 127, -158 )
 polygon = PoolVector2Array( 210, -91, 243, -110, 286, -105, 311, -96, 328, -59, 296, -50, 241, -66 )
 
 [node name="Irina_Meetup" type="Area2D" parent="."]
-position = Vector2( -174, -225 )
+position = Vector2( -174, -228 )
 script = ExtResource( 89 )
 cutscene = true
 

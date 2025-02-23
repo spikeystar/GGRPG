@@ -32,6 +32,7 @@ func _ready():
 		$YSort/JewelSeed.position = Vector2(-303.5, -445)
 		
 	if EventManager.Reeler:
+		$YSort/JewelSeed.position = Vector2(-279, -1148)
 		$NPC.queue_free()
 		$YSort/MiddleGround/Reeler.queue_free()
 		
@@ -149,6 +150,7 @@ func _process(delta):
 		Jacques.queue_free()
 		
 		Party.jewel_seeds = 1
+		EventManager.Reeler
 		PlayerManager.freeze = false
 		PlayerManager.cutscene = false
 

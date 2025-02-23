@@ -11,5 +11,6 @@ func _process(delta):
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and able:
 		SE.effect("Select")
+		able = false
 		visible = false
 		emit_signal("done")
