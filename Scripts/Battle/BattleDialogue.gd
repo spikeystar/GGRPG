@@ -165,11 +165,15 @@ func Tutorial_5():
 	
 	SE.effect("Menu Open")
 	$Typing.show()
-	$Name/Talk.text = "There are 5 types."
+	$Name/Talk.text = "There are 5 types. Each enemy has one."
 	talking()
 	yield(self, "talk_done")
 	
 	$Name/Talk.text = "Water & Fire and Air & Earth are paired types, they do 1.5X damage to each other."
+	talking()
+	yield(self, "talk_done")
+	
+	$Name/Talk.text = "If you want to know what type an enemy is, look under its name in the info window."
 	talking()
 	yield(self, "talk_done")
 	
@@ -189,11 +193,7 @@ func Tutorial_5():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "If you're the same type as an enemy attack, you're immune to any of its secondary effects."
-	talking()
-	yield(self, "talk_done")
-	
-	$Name/Talk.text = "If you want to know what type an enemy is, look under its name in the info window."
+	$Name/Talk.text = "And if you're the same type as an enemy attack, you're immune to its secondary effects."
 	talking()
 	yield(self, "talk_done")
 	SE.effect("Menu Open")
@@ -203,7 +203,7 @@ func Tutorial_5():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "Let's try using an item now to fix that."
+	$Name/Talk.text = "Let's try using an item now to fix that!"
 	talking()
 	yield(self, "talk_done")
 	
@@ -269,7 +269,7 @@ func Tutorial_6():
 func Tutorial_7():
 	SE.effect("Select")
 	window_show()
-	$Name/Talk.text = "Defend will increase your defense by 20% for that turn."
+	$Name/Talk.text = "Defend will increase your defense by 50% for that turn."
 	talking()
 	yield(self, "talk_done")
 	

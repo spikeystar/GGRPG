@@ -331,7 +331,7 @@ func _input(event):
 		if item_show and not window_open:
 			window_open = true
 			
-	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt and item_stolen and not tutorial:
+	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt and item_stolen and not tutorial and not magic_show:
 		SE.effect("Unable")
 
 	if Input.is_action_just_pressed("ui_select") and victory_ended:
@@ -1208,7 +1208,7 @@ func _on_Enemies_Reeler_Event():
 	SE.effect("Drama Ascend")
 	yield(get_tree().create_timer(1), "timeout")
 	$Enemies/Field/Reeler_battle/AnimationPlayer.play("enemy_idle")
-	$Fighters/HUDS.hide()
+	#$Fighters/HUDS.hide()
 	
 	##### Magic Spells ######
 func Sweet_Gift():
@@ -1236,7 +1236,7 @@ func Earthslide():
 	var enemy_position = $Enemies.get_e_position() + Vector2(-175, 40)
 	$Enemies.damage_type = "earth"
 	$Enemies.move_type = "earth"
-	$Enemies.f_magic_base = 45 + int((45 * PartyStats.party_level) / 15)
+	$Enemies.f_magic_base = 45 + int((30 * PartyStats.party_level) / 7)
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
@@ -1256,7 +1256,7 @@ func Icicle():
 	var enemy_position = $Enemies.get_e_position()
 	$Enemies.damage_type = "water"
 	$Enemies.move_type = "water"
-	$Enemies.f_magic_base = 25 + int((25 * PartyStats.party_level) / 15)
+	$Enemies.f_magic_base = 25 + int((25 * PartyStats.party_level) / 5)
 	$Enemies.d_debuff = true
 	$Fighters.spell_1()
 	yield(get_tree().create_timer(0.5), "timeout")
@@ -1299,7 +1299,7 @@ func Thunderstorm():
 	$MovePlayer.position = Vector2(0,0)
 	$Enemies.damage_type = "air"
 	$Enemies.move_type = "air"
-	$Enemies.f_magic_base = 15 + int((15 * PartyStats.party_level) / 15)
+	$Enemies.f_magic_base = 15 + int((15 * PartyStats.party_level) / 5)
 	if not tutorial:
 		$Enemies.stun = true
 		$Enemies.stun_chance = 20
@@ -1320,7 +1320,7 @@ func Prism_Snow():
 	$MovePlayer.position = Vector2(0,0)
 	$Enemies.damage_type = "water"
 	$Enemies.move_type = "water"
-	$Enemies.f_magic_base = 20 + int((20 * PartyStats.party_level) / 15)
+	$Enemies.f_magic_base = 20 + int((20 * PartyStats.party_level) / 5)
 	$Enemies.multi_debuff = true
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Fighters.spell_2()
@@ -1410,7 +1410,7 @@ func _on_Enemies_Sabotage():
 	$Fighters.enemy_type = $Enemies.get_type()
 	$Fighters.e_move_base = 10
 	$Fighters.e_attack = $Enemies.e_attack
-	$MovePlayer.position = fighter_OG_position + Vector2(22, -12)
+	$MovePlayer.position = fighter_OG_position + Vector2(24, -16)
 	SE.effect("Sabotage")
 	$MovePlayer/AnimPlayer.play("Sabotage")
 	yield(get_tree().create_timer(1), "timeout")

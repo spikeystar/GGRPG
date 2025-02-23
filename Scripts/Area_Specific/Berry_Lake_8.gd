@@ -106,6 +106,7 @@ func _process(delta):
 		SE.effect("Jewel Seeds")
 		Gary.animation("hold_seed")
 		JacquesPlayer.play("front_idle")
+		$YSort/JewelSeed/WorldEnvironment.environment.glow_enabled = true
 		$YSort/JewelSeed.position = $Position2D5.position
 		var tween5 = create_tween()
 		tween5.tween_property($YSort/JewelSeed, "position", $Position2D6.position, 3)
@@ -301,6 +302,7 @@ func _on_Reeler_Battle_area_event():
 	yield($Camera2D/Interaction/Dialogue, "talk_done")
 	$Camera2D/Interaction/Dialogue.done()
 	PlayerManager.freeze = true
+	$YSort/JewelSeed/WorldEnvironment.environment.glow_enabled = false
 	
 	ReelerPlayer.play("attack")
 	yield(get_tree().create_timer(0.6), "timeout")

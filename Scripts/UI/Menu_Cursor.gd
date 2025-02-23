@@ -41,7 +41,11 @@ func _process(delta):
 			flicker_control()
 			SE.effect("Move Between")
 			up_count += 1
-		if magic_active and not up_count == 1 and item_stolen:
+
+		#if magic_active and up_count == 0 and item_stolen:
+		#	SE.effect("Unable")
+			
+		if magic_active and cursor_index == 0 and item_stolen:
 			SE.effect("Unable")
 		#if item_active and up_count == 0:
 			#return
@@ -84,6 +88,7 @@ func _process(delta):
 		emit_signal("go_to_Item")
 		up_count = 0
 		if item_stolen:
+			#print("defend")
 			SE.effect("Unable")
 		else:
 			SE.effect("Move Between")
@@ -92,6 +97,7 @@ func _process(delta):
 		emit_signal("go_to_Item")
 		up_count = 0
 		if item_stolen:
+			#print("magic")
 			SE.effect("Unable")
 		else:
 			SE.effect("Move Between")

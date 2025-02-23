@@ -55,9 +55,16 @@ var new_spell_2 = false
 
 func _ready():
 	set_stats()
-	gary_current_health = gary_health
+	gary_current_health = 1
 	jacques_current_health = jacques_health
 	irina_current_health = irina_health
+	
+	if party_level >= 3:
+		Party.spell_name = "Earthslide"
+		Party.populate_Gary()
+		Party.spell_name = "Prism Snow"
+		Party.populate_Jacques()
+		new_spell_2 = true
 
 func set_id():
 	if member_name == "gary":

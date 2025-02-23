@@ -2214,10 +2214,10 @@ position = Vector2( -313, -386 )
 position = Vector2( 596, -2 )
 
 [node name="Position2D5" type="Position2D" parent="."]
-position = Vector2( -239, -329 )
+position = Vector2( -239, -326 )
 
 [node name="Position2D6" type="Position2D" parent="."]
-position = Vector2( -239, -378 )
+position = Vector2( -239, -374 )
 
 [connection signal="body_exited" from="NPC" to="NPC" method="_on_NPC_body_exited"]
 [connection signal="general_dialogue" from="NPC" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]

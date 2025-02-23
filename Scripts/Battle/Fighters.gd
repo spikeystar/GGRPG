@@ -637,20 +637,30 @@ func f_turn_used():
 	
 func fighters_active_check():	
 	var array_size = fighters2.size()
-	for x in range (fighters2.size()):
-		var dead = fighters2[x].death_count()
-		if dead:
-			array_size - 1
-	for x in range (fighters2.size()):
-		var stun = fighters2[x].get_status("stun")
-		if stun:
-			array_size - 1
+	
+	print("max_turns")
+	print(max_turns)
+	print("size")
+	print(fighters2.size())
+	
+#	for x in range (fighters2.size()):
+	#	var dead = fighters2[x].death_count()
+	#	if dead:
+	#		array_size - 1
+	#for x in range (fighters2.size()):
+	#	var stun = fighters2[x].get_status("stun")
+	#	if stun:
+	#		array_size - 1
+			
+	#^Testing out from restor bugs
+	########
 			
 	#for x in range (fighters2.size()):
 		#var turn_used = fighters2[x].get_turn_value()
 		#if turn_used:
 			#array_size - 1
 			
+	#if max_turns == array_size:
 	if max_turns == array_size:
 		emit_signal ("enemies_enabled")
 		enemies_active = true
@@ -797,8 +807,8 @@ func item_used():
 				for x in range (fighters2.size() -1, -1, -1):
 					fighters.remove(x)
 				set_positions()
-				for x in range (fighters.size() -1, -1, -1):
-					turn_used = fighters[x].get_turn_value()
+				for x in range (fighters2.size() -1, -1, -1):
+					turn_used = fighters2[x].get_turn_value()
 					if turn_used:
 						fighters.remove(x)
 						fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
@@ -898,6 +908,7 @@ func _on_SpellList_all_ally_spell():
 	emit_signal("ally_spell_chosen")
 	
 func _on_Enemies_fighters_active():
+	#max_turns = 0
 	yield(get_tree().create_timer(0.3), "timeout")
 	for x in range (fighters.size() -1, -1, -1):
 		var dead = fighters[x].death_count()
@@ -919,6 +930,14 @@ func _on_Enemies_fighters_active():
 			fighters[y].poison_damage()
 			fighter_index = y
 			huds_update()
+			
+			#for z in range (fighters.size() -1, -1, -1):
+				#var dead = fighters[z].death_count()
+				#if dead:
+				#	fighters.remove(z)
+				#	fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
+			#yield(get_tree().create_timer(0.3), "timeout")
+			#game_over_check()
 			
 	var sd_check = false
 	for a in range (fighters.size()):
@@ -950,7 +969,7 @@ func _on_Enemies_fighters_active():
 		if dead:
 			fighters.remove(x)
 			fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
-			max_turns += 1
+			#max_turns += 1
 	enemies_active = false
 	fighter_index = -1
 	
@@ -969,6 +988,7 @@ func _on_Enemies_fighters_active():
 func revive_healing():
 	var dead = fighters2[target_index].death_count()
 	if dead:
+		#max_turns -= 1
 		fighter_name = fighters2[target_index].get_name()
 		fighters2[target_index].restore(item_name)
 		health = fighters2[target_index].get_health()

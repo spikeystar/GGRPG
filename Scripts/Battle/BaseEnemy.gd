@@ -24,6 +24,10 @@ var whammy
 var stored_damage = false
 var stored_amount : int = 0
 
+var og_attack = 0
+var og_magic = 0
+var og_defense = 0
+
 var a_buff = false
 var a_debuff = false
 var m_buff = false
@@ -74,6 +78,10 @@ func _ready():
 		if check_name == "":
 			move_list.remove(x)
 			x = clamp(x, 0, move_list.size() - 1)
+			
+	og_attack = e_attack
+	og_magic = e_magic
+	og_defense = e_defense
 		
 func get_name():
 	return ID
@@ -272,7 +280,7 @@ func poison():
 	if not poison:
 		poison = true
 		poison_timer = 3
-		e_defense -= (e_defense * 0.1)
+		e_defense -= (og_defense * 0.1)
 	else:
 		pass
 
@@ -286,7 +294,7 @@ func countdown():
 		poison_timer -= 1
 		if poison_timer == 0:
 			poison = false
-			e_defense += (e_defense * 0.1)
+			e_defense += (og_defense * 0.1)
 	
 	if applied_type:
 		type_timer -= 1
@@ -298,43 +306,43 @@ func countdown():
 		a_buff_timer -= 1
 		if a_buff_timer == 0:
 			a_buff = false
-			e_attack -= (e_attack * 0.2)
+			e_attack -= (og_attack * 0.2)
 			buff_counter -= 1
 	if a_debuff:
 		a_debuff_timer -= 1
 		if a_debuff_timer == 0:
 			a_debuff = false	
-			e_attack += (e_attack * 0.2)
+			e_attack += (og_attack * 0.2)
 			debuff_counter -= 1
 	if m_buff:
 		m_buff_timer -= 1
 		if m_buff_timer == 0:
 			m_buff = false
-			e_magic -= (e_magic * 0.2)
+			e_magic -= (og_magic * 0.2)
 			buff_counter -= 1
 	if m_debuff:
 		m_debuff_timer -= 1
 		if m_debuff_timer == 0:
 			m_debuff = false	
-			e_magic += (e_magic * 0.2)
+			e_magic += (og_magic * 0.2)
 			debuff_counter -= 1
 	if d_buff:
 		d_buff_timer -= 1
 		if d_buff_timer == 0:
 			d_buff = false
-			e_defense -= (e_defense * 0.2)
+			e_defense -= (og_defense * 0.2)
 			buff_counter -= 1
 	if d_debuff:
 		d_debuff_timer -= 1
 		if d_debuff_timer == 0:
 			d_debuff = false	
-			e_defense += (e_defense * 0.2)
+			e_defense += (og_defense * 0.2)
 			debuff_counter -= 1
 			
 func enemy_restore():
 	if poison:
 		poison = false
-		e_defense += (e_defense * 0.1)
+		e_defense += (og_defense * 0.1)
 	current_type = initial_type
 	
 func apply_type(id : String):
@@ -349,7 +357,7 @@ func apply_buff(id : String):
 	if id == "attack" and not a_buff and not a_debuff:
 		a_buff = true
 		a_buff_timer = 4
-		e_attack += (e_attack * 0.2)
+		e_attack += (og_attack * 0.2)
 		buff_counter += 1
 		buff()
 	elif id == "attack" and a_debuff:
@@ -359,15 +367,15 @@ func apply_buff(id : String):
 		a_debuff_timer = 0
 		if a_buff_timer > 0:
 			a_buff = true
-			e_attack += (e_attack * 0.2)
+			e_attack += (og_attack * 0.2)
 			buff_counter += 1
-		e_attack += (e_attack * 0.2)
+		e_attack += (og_attack * 0.2)
 		buff()
 		
 	if id == "magic" and not m_buff and not m_debuff:
 		m_buff = true
 		m_buff_timer = 4
-		e_magic += (e_magic * 0.2)
+		e_magic += (og_magic * 0.2)
 		buff_counter += 1
 		buff()
 	elif id == "magic" and m_debuff:
@@ -377,16 +385,16 @@ func apply_buff(id : String):
 		debuff_counter -= 1
 		if m_buff_timer > 0:
 			m_buff = true
-			e_magic += (e_magic * 0.2)
+			e_magic += (og_magic * 0.2)
 			buff_counter += 1
-		e_magic += (e_magic * 0.2)
+		e_magic += (og_magic * 0.2)
 		buff()
 		
 		
 	if id == "defense" and not d_buff and not d_debuff:
 		d_buff = true
 		d_buff_timer = 4
-		e_defense += (e_defense * 0.2)
+		e_defense += (og_defense * 0.2)
 		buff_counter += 1
 		buff()
 	elif id == "defense" and d_debuff:
@@ -396,9 +404,9 @@ func apply_buff(id : String):
 		debuff_counter -= 1
 		if d_buff_timer > 0:
 			d_buff = true
-			e_defense += (e_defense * 0.2)
+			e_defense += (og_defense * 0.2)
 			buff_counter += 1
-		e_defense += (e_defense * 0.2)
+		e_defense += (og_defense * 0.2)
 		buff()	
 		
 		
@@ -406,7 +414,7 @@ func apply_debuff(id : String):
 	if id == "attack" and not a_debuff and not a_buff:
 		a_debuff = true
 		a_debuff_timer = 3
-		e_attack -= (e_attack * 0.2)
+		e_attack -= (og_attack * 0.2)
 		debuff_counter += 1
 		debuff()
 	if id == "attack" and a_buff:
@@ -416,16 +424,16 @@ func apply_debuff(id : String):
 		buff_counter -= 1
 		if a_debuff_timer > 0:
 			a_debuff = true
-			e_attack -= (e_attack * 0.2)
+			e_attack -= (og_attack * 0.2)
 			debuff_counter += 1
-		e_attack -= (e_attack * 0.2)
+		e_attack -= (og_attack * 0.2)
 		debuff()
 		
 		
 	if id == "magic" and not m_debuff and not m_buff:
 		m_debuff = true
 		m_debuff_timer = 3
-		e_magic -= (e_magic * 0.2)
+		e_magic -= (og_magic * 0.2)
 		debuff_counter += 1
 		debuff()
 	if id == "magic" and m_buff:
@@ -435,16 +443,16 @@ func apply_debuff(id : String):
 		buff_counter -= 1
 		if m_debuff_timer > 0:
 			m_debuff = true
-			e_magic -= (e_magic * 0.2)
+			e_magic -= (og_magic * 0.2)
 			debuff_counter += 1
-		e_magic -= (e_magic * 0.2)
+		e_magic -= (og_magic * 0.2)
 		debuff()
 		
 		
 	if id == "defense" and not d_debuff and not d_buff:
 		d_debuff = true
 		d_debuff_timer = 4
-		e_defense -= (e_defense * 0.2)
+		e_defense -= (og_defense * 0.2)
 		debuff_counter += 1
 		debuff()
 	if id == "defense" and d_buff:
@@ -454,9 +462,9 @@ func apply_debuff(id : String):
 		buff_counter -= 1
 		if d_debuff_timer > 0:
 			d_debuff = true
-			e_defense -= (e_defense * 0.2)
+			e_defense -= (og_defense * 0.2)
 			debuff_counter += 1
-		e_defense -= (e_defense * 0.2)
+		e_defense -= (og_defense * 0.2)
 		debuff()
 
 

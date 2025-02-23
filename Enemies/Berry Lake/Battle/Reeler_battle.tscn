@@ -1174,7 +1174,7 @@ frame = 2
 
 [node name="DamageStar" type="Sprite" parent="."]
 visible = false
-position = Vector2( -4.7619, -49.5238 )
+position = Vector2( -0.952381, -40 )
 scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 9 )
 hframes = 6
@@ -1191,7 +1191,7 @@ vframes = 5
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false
-position = Vector2( -1.90476, -48.5714 )
+position = Vector2( -0.952381, -46.6667 )
 texture = ExtResource( 13 )
 hframes = 4
 vframes = 2
