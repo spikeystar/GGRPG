@@ -14,8 +14,6 @@ onready var EdgarPlayer = $YSort/MiddleGround/Edgar/BodyYSort/AnimationPlayer
 func _ready():
 	EventManager.Pivot_Town = true
 	
-	print(EventManager.Reeler)
-	
 	SceneManager.SceneEnemies = []
 	SceneManager.location = "Pivot Town"
 	if Music.id != "Pivot_Town" or not Music.is_playing:

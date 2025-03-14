@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Objects/Collision/CollidableBox.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Puzzle Pier/Circus SS.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Day"
+length = 2.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation_frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Night"
+length = 2.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation_frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:animation_frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[node name="Circus" type="YSort"]
+script = ExtResource( 1 )
+grid_size = Vector2( 9, 8.7 )
+texture = ExtResource( 2 )
+texture_scale = Vector2( 1.77, 1.75 )
+texture_offset = Vector2( -4, 50 )
+height = 500.0
+preview_collision_box = false
+animation_hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Night"
+playback_speed = 0.5
+anims/Day = SubResource( 1 )
+anims/Night = SubResource( 3 )
+anims/RESET = SubResource( 2 )
