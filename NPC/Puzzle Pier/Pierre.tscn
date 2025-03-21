@@ -419,7 +419,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 15, 16, 15, 17 ]
+"values": [ 3, 4, 3, 5 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
@@ -443,7 +443,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -34 ) ]
+"values": [ Vector2( 2, -50 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("AnimationPlayer:playback_speed")
@@ -484,7 +484,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 15, 16, 15, 17 ]
+"values": [ 3, 4, 3, 5 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
@@ -508,7 +508,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1, -34 ) ]
+"values": [ Vector2( 5.96046e-08, -50 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("AnimationPlayer:playback_speed")

@@ -3583,7 +3583,7 @@ position = Vector2( 1047, 230 )
 position = Vector2( 1291, 338 )
 
 [node name="Pierre" parent="YSort/MiddleGround" instance=ExtResource( 66 )]
-position = Vector2( -414, -378 )
+position = Vector2( -1389, -1045 )
 
 [node name="Terrence" parent="YSort/MiddleGround" instance=ExtResource( 53 )]
 position = Vector2( 434, -80 )
