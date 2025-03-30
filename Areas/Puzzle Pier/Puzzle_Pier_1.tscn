@@ -4482,6 +4482,17 @@ texture_scale = Vector2( 0.8, 0.8 )
 texture_offset = Vector2( 0, 15 )
 height = 300.0
 
+[node name="BBox9" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
+position = Vector2( 1147, 245 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 1, 2 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+
 [node name="BBox7" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
 position = Vector2( 1604, 481 )
 __meta__ = {

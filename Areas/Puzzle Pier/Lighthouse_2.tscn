@@ -85,7 +85,7 @@ position = Vector2( -21, 4 )
 rotation = 0.00523599
 
 [node name="JewelSeed" parent="Node2D" instance=ExtResource( 32 )]
-position = Vector2( 47.57, -82.2502 )
+position = Vector2( 48.5648, -83.2555 )
 
 [node name="BlackBckgd" type="Sprite" parent="Node2D"]
 position = Vector2( 148.473, -78.9445 )
