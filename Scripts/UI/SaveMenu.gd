@@ -729,6 +729,14 @@ func save1_update():
 		$Save1/Display.frame = 3
 	if PartyStats.damien_id == 1:
 		$Save1/Display.frame = 4
+	if Party.jewel_seeds == 0:
+		$Save1/Seed1.hide()
+		$Save1/Seed2.hide()
+		$Save1/Seed3.hide()
+		$Save1/Seed4.hide()
+		$Save1/Seed5.hide()
+		$Save1/Seed6.hide()
+		$Save1/Seed7.hide()
 	if Party.jewel_seeds == 1:
 		$Save1/Seed1.show()
 	if Party.jewel_seeds == 2:
@@ -784,6 +792,14 @@ func save2_update():
 		$Save2/Display.frame = 3
 	if PartyStats.damien_id == 1:
 		$Save2/Display.frame = 4
+	if Party.jewel_seeds == 0:
+		$Save2/Seed1.hide()
+		$Save2/Seed2.hide()
+		$Save2/Seed3.hide()
+		$Save2/Seed4.hide()
+		$Save2/Seed5.hide()
+		$Save2/Seed6.hide()
+		$Save2/Seed7.hide()
 	if Party.jewel_seeds == 1:
 		$Save2/Seed1.show()
 	if Party.jewel_seeds == 2:
@@ -839,6 +855,14 @@ func save3_update():
 		$Save3/Display.frame = 3
 	if PartyStats.damien_id == 1:
 		$Save3/Display.frame = 4
+	if Party.jewel_seeds == 0:
+		$Save3/Seed1.hide()
+		$Save3/Seed2.hide()
+		$Save3/Seed3.hide()
+		$Save3/Seed4.hide()
+		$Save3/Seed5.hide()
+		$Save3/Seed6.hide()
+		$Save3/Seed7.hide()
 	if Party.jewel_seeds == 1:
 		$Save3/Seed1.show()
 	if Party.jewel_seeds == 2:

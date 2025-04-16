@@ -1,7 +1,7 @@
 extends Node
 
 var party_id : int
-var party_members = 2
+var party_members = 1
 var member_name : String
 var holder_name : String
 

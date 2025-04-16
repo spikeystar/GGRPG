@@ -1046,7 +1046,7 @@ tracks/1/keys = {
 [node name="Flutterbie_battle" type="Node2D"]
 script = ExtResource( 1 )
 ID = "Flutterbie"
-e_health = 65
+e_health = 40
 e_attack = 12
 e_magic = 6
 e_defense = 8

@@ -561,6 +561,7 @@ scale_amount_random = 0.2
 color_ramp = SubResource( 1 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 13 )]
 
