@@ -8,7 +8,9 @@ var gary_entered = false
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
+	connect("body_exited", self, "_on_body_exited")
 	position.y += height
+
 	
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and gary_entered:
@@ -17,6 +19,10 @@ func _input(event):
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root and not gary_entered:
 		gary_entered = true
+		
+func _on_body_exited(body):
+	if "is_player_motion_root" in body and body.is_player_motion_root and gary_entered:
+		gary_entered = false
 		
 		
 func item_get():

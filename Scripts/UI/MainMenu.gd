@@ -2,6 +2,7 @@ extends Node2D
 
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
 const TransitionPlayer2 = preload("res://Objects/SceneTransition/TransitionPlayer.tscn")
+onready var Gary = PlayerManager.player_instance
 
 enum TransitionType {
 	FADE_TO_BLACK = 0,
@@ -15,6 +16,14 @@ var able = false
 
 func _ready():
 	SceneManager.loading = true
+
+	Global.battle_ended = false
+	Global.battling = false
+	PlayerManager.cutscene = false
+	PlayerManager.freeze = false
+	Gary.set_right()
+	
+
 	#PlayerManager.hide_player()
 	
 	yield(get_tree().create_timer(1.5), "timeout")

@@ -1024,7 +1024,7 @@ scale = Vector2( 1.4, 1.4 )
 script = ExtResource( 10 )
 ID = "Tindrum"
 e_health = 150
-e_attack = 15
+e_attack = 14
 e_defense = 12
 initial_type = "neutral"
 TEXT_DAMAGE = ExtResource( 7 )
@@ -1036,6 +1036,8 @@ move2 = "Sabotage"
 move3 = "Barrage"
 move4 = "Beat Down"
 move5 = "Extort"
+move6 = "Basic"
+move7 = "Basic"
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )

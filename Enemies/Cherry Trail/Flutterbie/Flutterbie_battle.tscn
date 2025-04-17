@@ -1048,7 +1048,7 @@ script = ExtResource( 1 )
 ID = "Flutterbie"
 e_health = 40
 e_attack = 12
-e_magic = 6
+e_magic = 4
 e_defense = 8
 initial_type = "neutral"
 TEXT_DAMAGE = ExtResource( 8 )
@@ -1059,6 +1059,7 @@ move1 = "Basic"
 move2 = "Asphyxiate"
 move3 = "Aero Bullet"
 move4 = "Basic"
+move5 = "Basic"
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )
