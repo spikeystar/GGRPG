@@ -978,6 +978,9 @@ func _on_Enemies_fighters_active():
 		enemies_active = true
 		
 	yield(get_tree().create_timer(0.8), "timeout")
+	
+	SceneManager.enemy_turn = false
+	
 	#fighter_index = -1
 	if not SceneManager.victory and not SceneManager.game_over:
 		select_next_fighter(+1)

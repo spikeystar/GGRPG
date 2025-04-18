@@ -183,8 +183,8 @@ func _process(delta):
 	fighter_turn_used = $Fighters.get_turn_value()
 
 func _input(event):
-	#var fighter_turn_used = $Fighters.get_turn_value()
-	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and not tutorial:
+	#fighter_turn_used = $Fighters.get_turn_value()
+	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and not tutorial and not SceneManager.enemy_turn:
 		SE.effect("Select")
 		$BattleButtons.show()
 		$BattleButtons/AttackX.hide()
@@ -335,6 +335,7 @@ func _input(event):
 		SE.effect("Unable")
 
 	if Input.is_action_just_pressed("ui_select") and victory_ended:
+		SceneManager.enemy_turn = false
 		victory_ended = false
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)
@@ -669,8 +670,8 @@ func _on_Defend_cursor_selected():
 			item_halt = false
 			BB_active = false
 			fighter_selection = false
-			attack_ended = true
 			yield(get_tree().create_timer(0.7), "timeout")
+			attack_ended = true
 			emit_signal("action_ended")
 			$Fighters.fighters_active_check()
 	#if f_turns == f_array_size:

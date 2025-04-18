@@ -681,6 +681,7 @@ func _on_SpellList_all_enemy_spell():
 
 func _on_Fighters_enemies_enabled():
 	#yield(get_tree().create_timer(0.5), "timeout")
+	SceneManager.enemy_turn = true
 	var poison_wait = false
 	var sd_wait = false
 	enemies_active = true
