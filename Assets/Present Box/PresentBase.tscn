@@ -92,7 +92,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -99 ) ]
+"values": [ 8 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CollidableBox:use_collision")
@@ -132,6 +132,7 @@ floor_height = 95.0
 preview_collision_box = false
 animation_hframes = 9
 animation_vframes = 3
+animation_frame = 8
 detect_touches = true
 always_update = true
 

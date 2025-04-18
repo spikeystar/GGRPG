@@ -6813,7 +6813,6 @@ gravity = 940.0
 jump_velocity = 300
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpShape"]
-visible = false
 position = Vector2( -1, -60 )
 scale = Vector2( 1.07111, 0.999104 )
 shape = SubResource( 215 )

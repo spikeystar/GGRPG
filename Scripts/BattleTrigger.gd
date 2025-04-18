@@ -13,6 +13,7 @@ signal triggered
 
 func _ready():
 	connect("body_entered", self, "_on_body_entered")
+	#connect("body_exited", self, "_on_body_exited")
 	position.y += height
 
 func _physics_process(delta):
@@ -45,8 +46,12 @@ func _on_body_entered(body):
 		_on_touch_area()
 		detected = true
 		
+		
 	
 func _on_touch_area():
 	disconnect("body_entered", self, "_on_body_entered")
 	emit_signal("triggered")
-
+	
+#func _on_body_exited(body):
+	#if "is_player_jump_shape" in body and body.is_player_jump_shape and not Global.battle_ended and able and not PlayerManager.freeze:
+		#detected = false

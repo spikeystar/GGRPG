@@ -1010,7 +1010,7 @@ tracks/1/keys = {
 [node name="Bramby_battle" type="Node2D"]
 script = ExtResource( 1 )
 ID = "Bramby"
-e_health = 50
+e_health = 40
 e_attack = 12
 e_defense = 10
 initial_type = "neutral"

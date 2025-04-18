@@ -1917,7 +1917,7 @@ exit_name = "KugiCanyon6_KugiCanyon7"
 height = 140.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon7"]
-position = Vector2( -158, 26 )
+position = Vector2( -160, 30 )
 polygon = PoolVector2Array( 141, -51, 170, -41, 197, -24, 250, -12, 267, -4, 254, 2, 239, -6, 191, -18, 151, -40, 108, -46, 109, -49 )
 
 [node name="KugiCanyon5" parent="." instance=ExtResource( 45 )]

@@ -2155,7 +2155,7 @@ direction = Vector2( -1, 1 )
 height = 40
 
 [node name="Entrance" parent="CollisionRoot" instance=ExtResource( 25 )]
-position = Vector2( -126, -124 )
+position = Vector2( -181, -104 )
 door_name = "Entrance"
 direction = Vector2( 1, -1 )
 height = 40
@@ -2244,7 +2244,7 @@ alt_chance = 50
 alternate = true
 
 [node name="Druplet" parent="." instance=ExtResource( 64 )]
-position = Vector2( -147, -94 )
+position = Vector2( -27, -148 )
 target_scene = ExtResource( 67 )
 alt_scene = ExtResource( 68 )
 alt_chance = 75
