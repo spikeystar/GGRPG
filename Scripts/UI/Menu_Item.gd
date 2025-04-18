@@ -15,8 +15,9 @@ func cursor_select() ->void:
 	emit_signal("cursor_selected")
 
 func get_id():
-	if text == "Unequip Trinket":
+	if text == "Unequip Trinket" or text == "-":
 		return "-"
+		print("hello")
 	else:
 		return text
 	
@@ -30,6 +31,7 @@ func trinket_scan():
 	if text != PartyStats.gary_trinket and text != PartyStats.jacques_trinket and text != PartyStats.irina_trinket and text != PartyStats.suzy_trinket and text != PartyStats.damien_trinket:
 		equipped = false
 		holder_name = "-"
+
 		
 func trinket_equip():
 	equipped = true

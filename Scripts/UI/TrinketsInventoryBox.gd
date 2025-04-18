@@ -108,6 +108,9 @@ func get_holder_name():
 			#trinket_holder = inventory[trinket_index].get_holder_name()
 			#trinket_holder = Party.Trinkets[trinket_index].get_holder_name()
 			#return trinket_holder
+		if trinket_id == "-":
+			trinket_holder = "-"
+			return trinket_holder
 		if PartyStats.gary_trinket == trinket_id:
 			trinket_holder = "Gary"
 			return trinket_holder
