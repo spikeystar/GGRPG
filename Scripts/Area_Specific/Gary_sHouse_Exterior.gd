@@ -160,8 +160,13 @@ func _process(delta):
 		EventManager.Michael_Meetup_CS = true
 		$Michael_Stall.queue_free()
 	
+		Gary.set_right()
 		PlayerManager.freeze = false
 		PlayerManager.cutscene = false
+	
+		
+		yield(get_tree().create_timer(0.2), "timeout")
+		$YSort/Michael.position = Vector2(-1000, -1000)
 	
 
 func _on_Michael_Meetup_area_event():
@@ -293,9 +298,12 @@ func _on_TutorialOptions_no():
 	
 	$Michael_Stall.queue_free()
 	
+	Gary.set_right()
 	PlayerManager.freeze = false
 	PlayerManager.cutscene = false
-	Gary.set_right()
+	
+	yield(get_tree().create_timer(0.2), "timeout")
+	$YSort/Michael.position = Vector2(-1000, -1000)
 
 
 func _on_TutorialOptions_yes():

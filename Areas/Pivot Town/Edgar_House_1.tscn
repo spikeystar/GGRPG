@@ -882,9 +882,9 @@ autowrap = true
 [node name="Label4" type="Label" parent="Camera2D/Blurb"]
 anchor_right = 0.01
 margin_left = -141.003
-margin_top = -38.8895
+margin_top = -41.9664
 margin_right = 130.0
-margin_bottom = 12.1105
+margin_bottom = 9.03358
 custom_fonts/font = ExtResource( 19 )
 text = "Art, music & coding by Spikey!"
 align = 1

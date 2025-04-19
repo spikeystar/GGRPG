@@ -1542,7 +1542,7 @@ floor_height = 52.0
 preview_collision_box = false
 
 [node name="Reeler" parent="YSort/MiddleGround" instance=ExtResource( 79 )]
-position = Vector2( -299, -284 )
+position = Vector2( -299, -285 )
 
 [node name="BBox19" parent="YSort/MiddleGround/Reeler" instance=ExtResource( 12 )]
 position = Vector2( -66, 6 )

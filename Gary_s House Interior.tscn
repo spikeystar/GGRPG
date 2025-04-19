@@ -154,7 +154,6 @@ visible = false
 position = Vector2( 19, -77 )
 z_index = 1
 frames = SubResource( 174 )
-frame = 2
 playing = true
 
 [node name="MatA" type="Sprite" parent="Node2D/YSort"]
@@ -203,13 +202,14 @@ z_index = -2
 texture = ExtResource( 15 )
 
 [node name="Sink" parent="Node2D/YSort" instance=ExtResource( 4 )]
-position = Vector2( -118, 55 )
+position = Vector2( -117.7, 57.6171 )
 tile_size = Vector2( 63, 28 )
 grid_size = Vector2( 1.9, 0.8 )
 texture = ExtResource( 7 )
 texture_scale = Vector2( 1.2, 1.2 )
 texture_offset = Vector2( -2, 16 )
 height = 64.0
+preview_collision_box = false
 
 [node name="Cabinets" type="Sprite" parent="Node2D/YSort"]
 position = Vector2( -141, -32 )
@@ -260,6 +260,7 @@ preview_collision_box = false
 always_update = true
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
+visible = false
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 25 )]
 
