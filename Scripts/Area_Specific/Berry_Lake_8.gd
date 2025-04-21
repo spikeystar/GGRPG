@@ -291,7 +291,7 @@ func _on_Reeler_Battle_area_event():
 	JacquesPlayer.play("battle_ready_f")
 	$Camera2D/Interaction/Dialogue.show()
 	$Camera2D/Interaction/Dialogue/Name/Talk.text = "He's right. I hope you're ready for a fight!"
-	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
 	$Camera2D/Interaction/Dialogue.talking()
 	yield($Camera2D/Interaction/Dialogue, "talk_done")
 	$Camera2D/Interaction/Dialogue.done()
