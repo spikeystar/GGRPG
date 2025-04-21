@@ -271,7 +271,7 @@ func enemy_damage():
 	damage = clamp(((((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)), 0, 999)
 	if attack_bonus:
 		SE.effect("Success")
-		damage += (damage * 0.3)
+		damage += (damage * 0.5)
 	if whammy:
 		SE.effect("Whammy!")
 		damage += damage
@@ -431,8 +431,6 @@ func all_magic_damage():
 	var set_type = damage_type
 	var f_total = f_magic + f_magic_base
 	
-	print(f_magic_base)
-	
 	for x in range(enemies.size()):
 		enemy_index = x
 		var type_bonus : String = type_matchup()
@@ -450,6 +448,7 @@ func all_magic_damage():
 			immune = true
 		var damage : int
 		damage = clamp((((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense), 0, 999)
+		
 		
 		if fighter_type == move_type:
 			damage += (damage * 0.2)

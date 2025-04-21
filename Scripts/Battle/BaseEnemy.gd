@@ -109,6 +109,8 @@ func get_status(parameter: String):
 		return debuff_counter
 	if parameter == "stored_damage":
 		return stored_damage
+	if parameter == "type":
+		return current_type
 	
 func get_type():
 	return initial_type

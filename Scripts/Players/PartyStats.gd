@@ -48,7 +48,7 @@ var damien_trinket : String = "-"
 var party_sp = 20
 var party_max_sp = 20
 var party_level = 1
-var party_exp = 0
+var party_exp = 400
 var next_level = int((100) * (party_level/1.5) + (party_level * 150))
 
 var new_spell_2 = false
@@ -97,7 +97,9 @@ func level_check():
 		new_spell_2 = true
 		
 func level_up():
-	party_max_sp += 5
+	if party_level % 2 == 0:
+		party_max_sp += 5
+		
 	full_heal()
 	next_level = int((100) * (party_level/1.5) + (party_level * 50))
 		

@@ -1025,7 +1025,7 @@ script = ExtResource( 10 )
 ID = "Tindrum"
 e_health = 125
 e_attack = 10
-e_defense = 12
+e_defense = 15
 initial_type = "neutral"
 TEXT_DAMAGE = ExtResource( 7 )
 TEXT_HEAL = ExtResource( 1 )
@@ -1037,7 +1037,6 @@ move3 = "Barrage"
 move4 = "Beat Down"
 move5 = "Extort"
 move6 = "Basic"
-move7 = "Basic"
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )
