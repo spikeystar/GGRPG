@@ -1010,7 +1010,7 @@ tracks/1/keys = {
 [node name="Smush_battle" type="Node2D"]
 script = ExtResource( 4 )
 ID = "Smush"
-e_health = 60
+e_health = 80
 e_attack = 14
 e_magic = 18
 e_defense = 26

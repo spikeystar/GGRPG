@@ -331,6 +331,7 @@ func _input(event):
 		if item_show and not window_open:
 			window_open = true
 			
+			
 	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt and item_stolen and not tutorial and not magic_show:
 		SE.effect("Unable")
 
@@ -1197,6 +1198,7 @@ func _on_Enemies_Reeler_Event():
 	item_stolen = true
 	$DefenseWindow/MenuCursor.item_stolen = true
 	$MagicWindow/MagicWindowPanel/MenuCursor.item_stolen = true
+	$Enemies.item_stolen = true
 	$Fighters/HUDS.hiding()
 	yield(get_tree().create_timer(1), "timeout")
 	$BattleDialogue.Reeler_Event()
@@ -1237,7 +1239,7 @@ func Earthslide():
 	var enemy_position = $Enemies.get_e_position() + Vector2(-175, 40)
 	$Enemies.damage_type = "earth"
 	$Enemies.move_type = "earth"
-	$Enemies.f_magic_base = 45 + int((30 * PartyStats.party_level) / 7)
+	$Enemies.f_magic_base = 35 + int((30 * PartyStats.party_level) / 7)
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
@@ -1279,7 +1281,7 @@ func Precious_Beam():
 	var buff_counter = $Enemies.get_status("buff_counter")
 	$Enemies.damage_type = "fire"
 	$Enemies.move_type = "fire"
-	$Enemies.f_magic_base = 45 + (buff_counter * 20) + int((45 * PartyStats.party_level) / 15)
+	$Enemies.f_magic_base = 40 + (buff_counter * 20) + int((30 * PartyStats.party_level) / 15)
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")

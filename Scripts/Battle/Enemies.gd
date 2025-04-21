@@ -27,6 +27,7 @@ var whammy_chance
 var move_type : String = "neutral"
 var fighter_type : String = "neutral"
 var event_counter = 0
+var item_stolen = false
 
 export var boss_battle : bool
 var battle_name : String
@@ -166,7 +167,7 @@ func _process(delta):
 		if enemies.size() > 1:
 			SE.effect("Move Between")
 	
-	if Input.is_action_just_pressed("ui_left") and enemy_selecting and BB_active and not victory and not tutorial or Input.is_action_just_pressed("ui_down") and enemy_selecting and BB_active and not victory and not tutorial or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active and not victory and not tutorial:
+	if Input.is_action_just_pressed("ui_left") and enemy_selecting and BB_active and not victory and not tutorial or Input.is_action_just_pressed("ui_down") and enemy_selecting and BB_active and not victory and not tutorial or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active and not victory and not tutorial and not item_stolen:
 		#SE.effect("Move Between")
 		enemy_selecting = false
 		enemy_info_update()

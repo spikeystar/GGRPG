@@ -4,17 +4,22 @@ export var height = 0.0
 #export var event_name : String
 signal area_event
 var used = false
+var gary = null
 #var activated = false
 export var cutscene = false
 
 func _ready():
 	#activated = false
+	position.y += height
 	yield(get_tree().create_timer(0.3), "timeout")
 	connect("body_entered", self, "_on_body_entered")
-	position.y += height
+	
+func _process(delta):
+	gary = PlayerManager.player_motion_root
+	
 
 func _on_body_entered(body):
-	if "is_player_motion_root" in body and body.is_player_motion_root and not used:
+	if "is_player_motion_root" in body and body.is_player_motion_root and not used and gary.pos_z == height:
 		used = true
 		#activated = true
 		area_event()
