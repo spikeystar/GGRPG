@@ -146,18 +146,35 @@ func _on_Members_trinket_equipped():
 	#var selector_name = Members.selector_name
 	PartyStats.holder_name = selector_name
 	#var equipped = inventory[trinket_index].get_trinket()
-	var equipped = Party.Trinkets[trinket_index].get_trinket()
+	#inventory[trinket_index].trinket_check()
+	var equipped = inventory[trinket_index].get_trinket()
 	var trinket_name = inventory[trinket_index].get_id()
+	
+	#if trinket_name == PartyStats.gary_trinket:
+		#inventory[trinket_index].holder_name = "Gary"
+	#if trinket_name == PartyStats.jacques_trinket:
+		#inventory[trinket_index].holder_name = "Jacques"
+	#if trinket_name == PartyStats.irina_trinket:
+		#inventory[trinket_index].holder_name = "Irina"
+	#if trinket_name == PartyStats.suzy_trinket:
+		#inventory[trinket_index].holder_name = "Suzy"
+	#if trinket_name == PartyStats.damien_trinket:
+		#inventory[trinket_index].holder_name = "Damien"
+	#else:
+		#inventory[trinket_index].holder_name = "-"
+	
+	if trinket_name == PartyStats.gary_trinket or trinket_name == PartyStats.jacques_trinket or trinket_name == PartyStats.irina_trinket or trinket_name == PartyStats.suzy_trinket or trinket_name == PartyStats.damien_trinket:
+		equipped = true
 	if trinket_name == "-":
-		Party.Trinkets[trinket_index].trinket_unequip()
+		#Party.Trinkets[trinket_index].trinket_unequip()
 		inventory[trinket_index].trinket_unequip()
 	if equipped:
-		Party.Trinkets[trinket_index].trinket_relocate()
+		#Party.Trinkets[trinket_index].trinket_relocate()
 		inventory[trinket_index].trinket_relocate()
-		Party.Trinkets[trinket_index].trinket_equip()
+	#	Party.Trinkets[trinket_index].trinket_equip()
 		inventory[trinket_index].trinket_equip()
-	else:
-		Party.Trinkets[trinket_index].trinket_equip()
+	if not equipped:
+		#Party.Trinkets[trinket_index].trinket_equip()
 		inventory[trinket_index].trinket_equip()
 	if selector_name == "Gary":
 		PartyStats.gary_trinket = trinket_name
@@ -172,7 +189,6 @@ func _on_Members_trinket_equipped():
 	for x in range(inventory.size()):
 		inventory[x].trinket_scan()
 
-	print(trinket_id)
 	yield(get_tree().create_timer(0.9), "timeout")
 	emit_signal("return_to_trinkets")
 	trinket_index = 0

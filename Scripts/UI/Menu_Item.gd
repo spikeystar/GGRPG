@@ -7,7 +7,24 @@ signal cursor_selected()
 signal go_to_Item()
 
 func _ready():
-	#print("ok")
+	if text == PartyStats.gary_trinket:
+		holder_name = "Gary"
+		equipped = true
+	if text == PartyStats.jacques_trinket:
+		holder_name = "Jacques"
+		equipped = true
+	if text == PartyStats.irina_trinket:
+		holder_name = "Irina"
+		equipped = true
+	if text == PartyStats.suzy_trinket:
+		holder_name = "Suzy"
+		equipped = true
+	if text == PartyStats.damien_trinket:
+		holder_name = "Damien"
+		equipped = true
+	if text != PartyStats.gary_trinket and text != PartyStats.jacques_trinket and text != PartyStats.irina_trinket and text != PartyStats.suzy_trinket and text != PartyStats.damien_trinket:
+		holder_name = "-"
+		equipped = false
 	pass
 	
 
@@ -25,13 +42,20 @@ func get_holder_name():
 	return holder_name
 	
 func get_trinket():
+	if text == PartyStats.gary_trinket or text == PartyStats.jacques_trinket or text == PartyStats.irina_trinket or text == PartyStats.suzy_trinket or text == PartyStats.damien_trinket:
+		equipped = true
+	if text != PartyStats.gary_trinket and text != PartyStats.jacques_trinket and text != PartyStats.irina_trinket and text != PartyStats.suzy_trinket and text != PartyStats.damien_trinket:
+		equipped = false
 	return equipped
 	
 func trinket_scan():
 	if text != PartyStats.gary_trinket and text != PartyStats.jacques_trinket and text != PartyStats.irina_trinket and text != PartyStats.suzy_trinket and text != PartyStats.damien_trinket:
 		equipped = false
 		holder_name = "-"
-
+		
+func trinket_check():
+	if text == PartyStats.gary_trinket or text == PartyStats.jacques_trinket or text == PartyStats.irina_trinket or text == PartyStats.suzy_trinket or text == PartyStats.damien_trinket:
+		equipped = true
 		
 func trinket_equip():
 	equipped = true

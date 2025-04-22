@@ -174,7 +174,6 @@ func _process(delta):
 			PartyStats.jacques_id = current_id
 		if member_name == "Irina":
 			PartyStats.irina_id = current_id
-		print(member_index)
 		
 		##########
 		
@@ -633,6 +632,7 @@ func set_labels():
 		$Display5.frame = 4
 		$HP/HP5.text = str(PartyStats.damien_current_health) + "/" + str(PartyStats.damien_health)
 		$Trinkets/Trinket5.text = PartyStats.damien_trinket
+		
 
 func _on_ItemInventoryBox_return_to_item():
 	yield(get_tree().create_timer(0.2), "timeout")
