@@ -246,6 +246,7 @@ use_dithering = false
 use_dither_blending = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
+autoplay = "walk_front"
 playback_speed = 0.4
 anims/RESET = SubResource( 173 )
 anims/walk_back = SubResource( 176 )

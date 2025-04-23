@@ -2337,5 +2337,6 @@ preview_collision_box = false
 animation_hframes = 9
 animation_vframes = 3
 animation_frame = 6
+use_collision = false
 use_transparency = true
 always_update = true

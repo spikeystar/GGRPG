@@ -646,7 +646,10 @@ func _input(event):
 		
 	####################################################
 	
-	if Input.is_action_just_pressed("ui_accept") and SceneManager.loading and able:
+	###DELETING###
+	
+	
+	if Input.is_action_just_pressed("ui_delete") and SceneManager.loading and able:
 		if file_name == "1" and save1:
 			$SaveSelection/MenuCursor.ongoing = true
 			able = false
@@ -672,7 +675,7 @@ func _input(event):
 			yield(get_tree().create_timer(0.2), "timeout")
 			delete_option = true
 		
-	if Input.is_action_just_pressed("ui_select") and SceneManager.loading and delete_option:
+	if Input.is_action_just_pressed("ui_select") and SceneManager.loading and delete_option or Input.is_action_just_pressed("ui_delete") and SceneManager.loading and delete_option:
 			if file_name == "1":
 				SE.effect("Switch")
 				var dir = Directory.new()

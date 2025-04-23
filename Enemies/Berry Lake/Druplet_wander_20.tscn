@@ -295,6 +295,7 @@ depth_test_offset = Vector2( -8, 28 )
 feet_height = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
+autoplay = "walk_front"
 playback_speed = 0.4
 anims/RESET = SubResource( 173 )
 anims/walk_back = SubResource( 176 )

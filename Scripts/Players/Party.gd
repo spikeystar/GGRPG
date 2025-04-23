@@ -61,6 +61,13 @@ func _ready():
 	add_enemy_name = "Cheribo"
 	add_enemy()
 	
+	#add_trinket_name = "Gold Bracelet"
+	#add_trinket()	
+	#add_trinket_name = "Gold Chain"
+	#add_trinket()	
+	#add_trinket_name = "Gold Earring"
+	#add_trinket()	
+	
 		
 func add_item():
 	if Inventory.size() == 10:

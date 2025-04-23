@@ -26,6 +26,7 @@ func _ready():
 		
 	if EventManager.Jacques_Meetup_CS:
 		$YSort/MiddleGround/Jacques.position = Vector2(5000, 5000)
+		$YSort/MiddleGround/BBox.position = Vector2(5000, 5000)
 		$YSort/MiddleGround/Edgar.queue_free()
 		$Jacques_Meetup.queue_free()
 		$CollisionRoot/NPC3.queue_free()
@@ -43,6 +44,7 @@ func _ready():
 		EventManager.Irina_Intro_CS = true
 		$CollisionRoot/Edgar_Door/CollisionPolygon2D.disabled = true
 		$Irina_Meetup/CollisionPolygon2D.disabled = false
+		$YSort/MiddleGround/BBox.position = Vector2(248, -477)
 		PlayerManager.freeze = true
 		yield(get_tree().create_timer(0.05), "timeout")
 		PlayerManager.cutscene = true
@@ -355,6 +357,7 @@ func _on_Jacques_Meetup_area_event():
 	PlayerManager.cutscene = false
 	$CollisionRoot/NPC3.queue_free()
 	$CollisionRoot/Edgar_Door/CollisionPolygon2D.disabled = false
+	$YSort/MiddleGround/BBox.position = Vector2(5000, 5000)
 
 
 func _on_Irina_Meetup_area_event():
@@ -826,4 +829,5 @@ func _on_Irina_Meetup_area_event():
 	PlayerManager.freeze = false
 	PlayerManager.cutscene = false
 	$CollisionRoot/Edgar_Door/CollisionPolygon2D.disabled = false
+	$YSort/MiddleGround/BBox.position = Vector2(5000, 5000)
 	
