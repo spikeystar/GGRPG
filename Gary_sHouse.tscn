@@ -837,7 +837,7 @@ cutscene = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Michael_Meetup"]
 position = Vector2( -233, 39 )
-polygon = PoolVector2Array( 328, 33, 369, 28, 409, 23, 444, 13, 461, 3, 488, -39, 515, -31, 573, 6, 561, 47, 510, 67, 437, 109, 366, 112, 308, 98, 294, 66 )
+polygon = PoolVector2Array( 328, 33, 369, 28, 406, 19, 433, 20, 448, 23, 470, 7, 493, -37, 519, -36, 573, 6, 561, 47, 510, 67, 437, 109, 366, 112, 308, 98, 294, 66 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( -128, 277 )
