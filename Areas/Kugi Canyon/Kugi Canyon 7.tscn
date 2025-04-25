@@ -1970,6 +1970,7 @@ position = Vector2( -174, -225 )
 script = ExtResource( 60 )
 height = 130.0
 cutscene = true
+unavoid = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boss_Battle"]
 position = Vector2( 93, -10 )

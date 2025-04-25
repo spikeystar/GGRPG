@@ -31,6 +31,9 @@ func music():
 	if id == "High_Tension":
 		active = $High_Tension
 		active.play(0)
+	if id == "Puzzle_Pier":
+		active = $Puzzle_Pier
+		active.play(0)
 	is_playing = true
 	
 func switch_songs():

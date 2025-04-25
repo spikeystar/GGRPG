@@ -616,11 +616,9 @@ script = ExtResource( 21 )
 
 [node name="Cheribo_battle" parent="Enemies/Field" instance=ExtResource( 17 )]
 position = Vector2( -7, 17 )
-e_attack = 12
 
 [node name="Sapling_battle" parent="Enemies/Field" instance=ExtResource( 55 )]
 position = Vector2( 132, 70 )
-e_attack = 13
 move4 = "Basic"
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
