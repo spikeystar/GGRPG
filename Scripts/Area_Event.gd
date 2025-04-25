@@ -7,6 +7,7 @@ var used = false
 var gary = null
 var activated = false
 export var cutscene = false
+export var unavoid = false
 
 func _ready():
 	#activated = false
@@ -20,16 +21,20 @@ func _process(delta):
 	
 
 func _on_body_entered(body):
-	if "is_player_motion_root" in body and body.is_player_motion_root and not used and gary.pos_z == height:
+	if "is_player_motion_root" in body and body.is_player_motion_root and not used and gary.pos_z == height and not unavoid:
 		used = true
 		area_event()
 		
-	if "is_player_motion_root" in body and body.is_player_motion_root and not used:
+	if "is_player_motion_root" in body and body.is_player_motion_root and not used and not unavoid:
 		activated = true
+		
+	if "is_player_motion_root" in body and body.is_player_motion_root and not used and unavoid:
+		used = true
+		area_event()
 		
 		
 func _on_body_exited(body):
-	if "is_player_motion_root" in body and body.is_player_motion_root and activated:
+	if "is_player_motion_root" in body and body.is_player_motion_root and activated and not unavoid:
 		activated = false
 		
 func _input(event):

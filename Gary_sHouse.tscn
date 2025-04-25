@@ -800,6 +800,7 @@ polygon = PoolVector2Array( -78, -110, -34, -92, -51, -76, -96, -96 )
 
 [node name="SaveStarIntro" type="Area2D" parent="."]
 script = ExtResource( 3 )
+unavoid = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SaveStarIntro"]
 position = Vector2( -518, 111 )

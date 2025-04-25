@@ -112,7 +112,7 @@ func Tutorial_3():
 	#window_hide()
 	
 	#window_show()
-	$Name/Talk.text = "If you press the (Shift) button with the correct timing while attacking you'll do extra damage!"
+	$Name/Talk.text = "If you press the (Shift) button with the correct timing while attacking, you'll do extra damage!"
 	talking()
 	yield(self, "talk_done")
 	
@@ -177,7 +177,7 @@ func Tutorial_5():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "If you use magic with a type the same as the enemy you are attacking you will do 0.5X damage."
+	$Name/Talk.text = "If you use magic with a type the same as the enemy you're attacking, you will do 0.5X damage."
 	talking()
 	yield(self, "talk_done")
 	
