@@ -436,7 +436,7 @@ func _ready():
 		EdgarPlayer.play("front_hop")
 		SE.effect("Drama Jump")
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "I’m so glad to hear that! Thank you."
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "I'm so glad to hear that! Thank you."
 		$Camera2D/Interaction/Dialogue/Name.text = "Edgar:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
@@ -469,7 +469,7 @@ func _ready():
 		PlayerManager.freeze = true
 		
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Hmm, yes. If this really is true we should try to get there as quick as we can."
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Hmm, yeah... If this really is true we should try to get there as quick as we can."
 		$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")

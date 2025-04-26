@@ -331,8 +331,16 @@ func _on_Jacques_Meetup_area_event():
 	PlayerManager.freeze = true
 	
 	$Camera2D/Interaction/Dialogue.show()
-	$Camera2D/Interaction/Dialogue/Name/Talk.text = "If anything, we might just get a good laugh if he just has some bonkers theory."
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "I hope he doesn't just have some totally bonkers theory though..."
 	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Only one way to find out!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
 	$Camera2D/Interaction/Dialogue.talking()
 	yield($Camera2D/Interaction/Dialogue, "talk_done")
 	$Camera2D/Interaction/Dialogue.done()

@@ -950,7 +950,6 @@ TEXT_POISON = ExtResource( 8 )
 move1 = "Basic"
 move2 = "Pester"
 move3 = "Friction"
-move4 = "Basic"
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 visible = false
