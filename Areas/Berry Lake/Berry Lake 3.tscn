@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Berry Lake/BBubbleFlower.tscn" type="PackedScene" id=2]
@@ -67,6 +67,7 @@
 [ext_resource path="res://Areas/Berry Lake/Berry Lake BA 2.tscn" type="PackedScene" id=65]
 [ext_resource path="res://Areas/Berry Lake/Berry Lake BA 13.tscn" type="PackedScene" id=66]
 [ext_resource path="res://Areas/Berry Lake/Berry Lake BA 8.tscn" type="PackedScene" id=67]
+[ext_resource path="res://Scripts/Objects/Collision/Boundary.gd" type="Script" id=68]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -1110,6 +1111,7 @@ texture_scale = Vector2( 1.65, 1.65 )
 texture_offset = Vector2( 0, 12 )
 height = 40.0
 preview_collision_box = false
+use_collision = false
 
 [node name="StarfruitM" parent="YSort/MiddleGround" instance=ExtResource( 22 )]
 modulate = Color( 0.94902, 0.952941, 0.960784, 1 )
@@ -1324,7 +1326,6 @@ scale = Vector2( 3.24909, 2.98758 )
 texture = ExtResource( 21 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 9 )]
 
@@ -1384,6 +1385,16 @@ exit_name = "Entrance"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Water"]
 position = Vector2( 135, 119 )
 polygon = PoolVector2Array( 263, 547, 951, 299, 1002, 314, 1145, 292, 1256, 172, 323, -177, 197, -209, 164, -199, 148, -197, 160, -179, -463, 39, -475, 58, -515, 208, -293, 342, -88, 455 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CollisionRoot"]
+position = Vector2( 241, 301 )
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 68 )
+
+[node name="Boundary" type="CollisionPolygon2D" parent="CollisionRoot/StaticBody2D"]
+position = Vector2( 1, 17 )
+polygon = PoolVector2Array( 103, -103, 108, -85, 133, -80, 162, -82, 176, -90, 205, -113, 252, -116, 290, -119, 302, -142, 299, -158, 297, -177, 247, -177, 206, -166, 170, -149, 135, -141, 112, -138, 91, -179, 50, -194, 22, -195, 23, -175, 25, -148, 83, -134, 95, -129 )
 
 [node name="BerryLake2" parent="." instance=ExtResource( 6 )]
 position = Vector2( -548, -153 )
