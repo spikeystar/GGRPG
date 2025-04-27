@@ -19,8 +19,10 @@ func fade_speed():
 func spike_speed():
 	animation_player.playback_speed = 1
 	
-func kill():
-	queue_free()
+#func kill():
+	#SceneManager.transitioning = false
+	#queue_free()
+
 	
 func declare():
 	PlayerManager.bubble_reset()

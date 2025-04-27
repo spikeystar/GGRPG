@@ -840,6 +840,7 @@ func _on_Fighters_game_over():
 	transition.queue_free()
 	pixelation.queue_free()
 	SceneManager.game_over = false
+	SceneManager.enemy_turn = false
 	get_tree().paused = false
 	Global.battle_ended = true
 	PlayerManager.remove_player_from_scene()

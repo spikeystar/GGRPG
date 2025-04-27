@@ -384,7 +384,7 @@ func _ready():
 		PlayerManager.freeze = true
 		
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "I wish I could go myself but... I am simply too old for such an excursion."
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "I wish I could go myself but... I'm simply not fit for such an excursion."
 		$Camera2D/Interaction/Dialogue/Name.text = "Edgar:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")

@@ -1793,7 +1793,7 @@ alt_scene = ExtResource( 59 )
 alt_chance = 20
 
 [node name="Bramby" parent="." instance=ExtResource( 53 )]
-position = Vector2( 217, -277 )
+position = Vector2( 196, -271 )
 target_scene = ExtResource( 60 )
 alternate = false
 

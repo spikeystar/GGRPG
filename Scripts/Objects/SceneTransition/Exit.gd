@@ -27,6 +27,7 @@ func _ready():
 
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root and not transitioning:
+		#SceneManager.transitioning = true
 		transitioning = true
 		_on_touch_area()
 		
@@ -46,6 +47,7 @@ func _on_touch_area():
 	PlayerManager.freeze = true
 	yield(get_tree().create_timer(1.8), "timeout")
 	transitioning = false
+	#SceneManager.transitioning = false
 	
 	
 	

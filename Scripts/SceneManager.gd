@@ -22,3 +22,4 @@ var counter : int = 0
 var bubble = false
 var enemy_repel = false
 var enemy_turn = false
+var transitioning = false
