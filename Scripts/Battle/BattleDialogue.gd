@@ -240,7 +240,7 @@ func Tutorial_6():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "A Whammy! is when you get really lucky and your attack does 2X damage!"
+	$Name/Talk.text = "A Whammy! is when you get really lucky and your attack does an extra 1.5X damage!"
 	talking()
 	yield(self, "talk_done")
 	

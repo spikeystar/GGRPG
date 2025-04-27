@@ -277,7 +277,7 @@ func enemy_damage():
 		damage += (damage * 0.5)
 	if whammy:
 		SE.effect("Whammy!")
-		damage += damage
+		damage += int(damage/2)
 		target_enemy.whammy = true
 	target_enemy.damage(damage)
 	is_attack = false
@@ -353,7 +353,7 @@ func magic_damage():
 		pass
 	if whammy:
 		SE.effect("Whammy!")
-		damage += damage
+		damage += int(damage/2)
 	
 	target_enemy.magic_damage(damage, damage_type)
 	var dead = false
@@ -465,7 +465,7 @@ func all_magic_damage():
 		
 		if whammy:
 			SE.effect("Whammy!")
-			damage += damage
+			damage += int(damage/2)
 		
 		enemies[x].magic_damage(damage, damage_type)
 		var dead = false

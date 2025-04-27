@@ -36,7 +36,7 @@ var targeted = false
 var anxious = false
 var applied_type = false
 var changing_type : String
-var whammy_chance = 3
+var whammy_chance = 2
 var stored_damage = false
 var stored_amount : int = 0
 
