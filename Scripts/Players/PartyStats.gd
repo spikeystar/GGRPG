@@ -59,6 +59,10 @@ func _ready():
 	jacques_current_health = jacques_health
 	irina_current_health = irina_health
 	
+	#gary_current_health = 1
+	#jacques_current_health = 1
+	#irina_current_health = 1
+	
 	if party_level >= 3:
 		Party.spell_name = "Earthslide"
 		Party.populate_Gary()

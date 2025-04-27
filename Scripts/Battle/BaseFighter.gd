@@ -252,10 +252,14 @@ func restore(id : String):
 		dead = false
 		hide = false
 		turn_used = false
+		SE.effect("Revive")
 		$Effect.show()
 		$EffectPlayer.play("Heal")
 		status_restore()
 		yield(get_tree().create_timer(0.2), "timeout")
+		var heal_text = text(TEXT_HEAL)
+		if heal_text:
+			heal_text.label.text = str(f_health /2)
 		$AnimationPlayer.play_backwards("Fighter_Dead")
 		yield(get_tree().create_timer(0.2), "timeout")
 		$AnimationPlayer.play("Fighter_BattleReady")
@@ -263,6 +267,7 @@ func restore(id : String):
 	elif id == "Blossom":
 		yield(get_tree().create_timer(0.2), "timeout")
 		status_restore()
+		SE.effect("Revive")
 		$Effect.show()
 		$EffectPlayer.play("Heal")
 	elif id == "Ginger Tea":
