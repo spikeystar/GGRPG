@@ -55,7 +55,7 @@ func _on_body_entered(body):
 		_on_touch_area()
 		detected = true
 		
-	if "is_player_jump_shape" in body and body.is_player_jump_shape and not Global.battle_ended and not PlayerManager.freeze:
+	if "is_player_motion_root" in body and body.is_player_motion_root and not Global.battle_ended and not PlayerManager.freeze:
 		entered = true
 	
 func _on_touch_area():
