@@ -190,7 +190,7 @@ func _process(delta):
 		#for x in fighters2.size():
 			#fighters2[x].unfocus()
 	
-	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen and not ongoing and not item_selecting and not enemies_active and not enemy_item and not magic_selecting and not halt and fighters_active:
+	if Input.is_action_just_pressed("ui_right") and not BB_active and not attack_chosen and not ongoing and not item_selecting and not enemies_active and not enemy_item and not magic_selecting and not halt and fighters_active and not SceneManager.enemy_turn:
 		#print(fighter_index)
 		select_next_fighter(+1)
 		if fighters.size() >1:
