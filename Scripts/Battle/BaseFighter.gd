@@ -36,7 +36,7 @@ var targeted = false
 var anxious = false
 var applied_type = false
 var changing_type : String
-var whammy_chance = 2
+var whammy_chance = 3
 var stored_damage = false
 var stored_amount : int = 0
 
@@ -81,6 +81,7 @@ func _ready():
 	og_attack = f_attack
 	og_magic = f_magic
 	og_defense = f_defense
+	
 	
 func focus():
 	#if able:
@@ -601,6 +602,7 @@ func turn_restored():
 		if defend:
 			f_defense -= (og_defense * 0.5)
 			defend = false
+			
 	
 func get_turn_value():
 	return turn_used

@@ -588,6 +588,7 @@ position = Vector2( -129, -411 )
 rotation = 0.0885145
 scale = Vector2( 2.17749, 2.17805 )
 frames = SubResource( 9 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1801,7 +1802,6 @@ alternate = false
 visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 39 )]
-visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 40 )]
 visible = false
@@ -1821,7 +1821,7 @@ polygon = PoolVector2Array( -434, -248, -333, -277, -288, -280, -275, -281, -246
 
 [node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 40 )]
 position = Vector2( -171, -98 )
-polygon = PoolVector2Array( -275, -147, -168, -178, -115, -188, -85, -194, -45, -204, -28, -211, -24, -223, 209, -296, 225, -310, 229, -328, 238, -332, 306, -346, 393, -380, 422, -388, 468, -363, 534, -345, 554, -333, 478, -303, 431, -294, 414, -284, 400, -282, 368, -272, 353, -266, 330, -263, 300, -271, 286, -280, 275, -279, 270, -269, 64, -168, 41, -166, 29, -174, 15, -168, 1, -158, 8, -136, -2, -120, -55, -91, -129, -70, -236, -101 )
+polygon = PoolVector2Array( -275, -147, -168, -178, -115, -188, -85, -194, -45, -204, -28, -211, -24, -223, 209, -296, 225, -310, 229, -328, 238, -332, 306, -346, 393, -380, 422, -388, 468, -363, 534, -345, 553, -337, 478, -303, 431, -294, 414, -284, 400, -282, 368, -272, 353, -266, 330, -263, 300, -271, 286, -280, 275, -279, 270, -269, 64, -168, 41, -166, 29, -174, 15, -168, 1, -158, 8, -136, -2, -120, -55, -91, -129, -70, -236, -101 )
 height = 140.0
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 44 )]
@@ -1910,6 +1910,7 @@ direction = Vector2( -1, -1 )
 height = 140
 
 [node name="KugiCanyon7" parent="." instance=ExtResource( 45 )]
+visible = false
 position = Vector2( 266, -464 )
 script = ExtResource( 25 )
 target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 7.tscn"
@@ -1918,7 +1919,7 @@ height = 140.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KugiCanyon7"]
 position = Vector2( -160, 30 )
-polygon = PoolVector2Array( 141, -51, 170, -41, 197, -24, 250, -12, 267, -4, 254, 2, 239, -6, 191, -18, 151, -40, 108, -46, 109, -49 )
+polygon = PoolVector2Array( 141, -51, 170, -41, 197, -24, 250, -12, 267, -4, 254, 2, 239, -6, 191, -18, 151, -40, 116, -44, 121, -49 )
 
 [node name="KugiCanyon5" parent="." instance=ExtResource( 45 )]
 position = Vector2( -363, -29 )
@@ -1993,6 +1994,7 @@ polygon = PoolVector2Array( -220, -61, -151, -6, -99, 29, -72, 50, -31, 71, 390,
 position = Vector2( 92, -104 )
 
 [node name="Enemy_Boundary" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 8
 script = ExtResource( 65 )
@@ -2000,5 +2002,10 @@ script = ExtResource( 65 )
 [node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
 visible = false
 polygon = PoolVector2Array( 418, 70, 673, -21, 4, -261, -137, -138, -36, -98 )
+
+[node name="Repel2" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+visible = false
+position = Vector2( 265, -191 )
+polygon = PoolVector2Array( -99, 3, 116, -111, 100, -130, 120, -249, 47, -270, -154, -192, -106, -162, -107, -10 )
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

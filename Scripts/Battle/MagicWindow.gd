@@ -26,7 +26,7 @@ func spell_check():
 		$MagicWindowPanel/SpellList.spell_cost = 10
 		$SpellTypeIcon.frame = 1
 	if spell_id == "Sweet Gift":
-		$SpellInfo.text = "Heals and fully revives one party member, removes all ailments"
+		$SpellInfo.text = "Heals or revives one party member\n\nRemoves all ailments & grants a random buff"
 		$SpellCost.text = "SP: 12"
 		$MagicWindowPanel/SpellList.spell_cost = 12
 		$SpellTypeIcon.frame = 16

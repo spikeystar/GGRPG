@@ -1220,7 +1220,7 @@ func Sweet_Gift():
 	$MovePlayer.position = target_position + Vector2(2, -60)
 	$Fighters.fighter_index = $Fighters.selector_index
 	$Fighters.spell_1()
-	yield(get_tree().create_timer(0.8), "timeout")
+	yield(get_tree().create_timer(0.6), "timeout")
 	SE.effect("Sweet Gift")
 	$MovePlayer/AnimPlayer.play("Sweet_Gift")
 	yield(get_tree().create_timer(1), "timeout")

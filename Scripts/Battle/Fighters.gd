@@ -1052,10 +1052,12 @@ func Sweet_gift():
 		var stun = fighters2[target_index].get_status("stun")
 		fighters2[target_index].heal(50)
 		fighters2[target_index].status_restore()
+		random_buff()
 		health = fighters2[target_index].get_health()
 		f_health = fighters2[target_index].get_f_health()
-		huds_heal_update()
+		#huds_heal_update()
 		yield(get_tree().create_timer(0.5), "timeout")
+		huds_heal_update()
 		fighter_index = selector_index
 		if stun:
 			stun_healing()
