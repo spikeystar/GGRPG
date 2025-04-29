@@ -15,10 +15,11 @@ func _ready():
 	SceneManager.SceneEnemies = []
 	
 	#SceneManager.location = "Pivot Town"
-#	if Music.id != "Pivot_Town" or not Music.is_playing:
-#		Music.switch_songs()
-#		Music.id = "Pivot_Town"
-#		Music.music()
+	
+	if Music.id != "Puzzle_Pier" or not Music.is_playing:
+		Music.switch_songs()
+		Music.id = "Puzzle_Pier"
+		Music.music()
 
 func day():
 	print("day")

@@ -35,7 +35,7 @@ func _physics_process(delta):
 	if not ground_enemy and int(player_height) in range (int(height-30), int(height)):
 		able = true
 		
-	if able and entered and not detected and viable:
+	if able and entered and not detected and viable and ground_enemy:
 		_on_touch_area()
 		
 	

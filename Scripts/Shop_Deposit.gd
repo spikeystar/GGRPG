@@ -47,17 +47,17 @@ func set_id():
 		$Display.show()
 		$Storage.show()
 		$Display.frame = 3
-		$Info.text = "20 HP and grants a random buff"
+		$Info.text = "30 HP and grants a random buff"
 	if item_id == "Ginger Tea":
 		$Display.show()
 		$Storage.show()
 		$Display.frame = 4
-		$Info.text = "Recovers from all debuffs and statuses"
+		$Info.text = "Heals all statuses and debuffs"
 	if item_id == "Bounty Herb":
 		$Display.show()
 		$Storage.show()
 		$Display.frame = 5
-		$Info.text = "Revives a fallen party member to 50% health"
+		$Info.text = "Revives a fallen party member to half health"
 	if $MenuCursor.empty:
 		$Display.hide()
 		$Storage.hide()

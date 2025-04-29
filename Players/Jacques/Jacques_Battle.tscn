@@ -1363,6 +1363,7 @@ tracks/1/keys = {
 scale = Vector2( 1.35, 1.35 )
 script = ExtResource( 6 )
 party_id = 1
+fighter_name = "jacques"
 TEXT_STORED = ExtResource( 11 )
 TEXT_POISON = ExtResource( 10 )
 

@@ -82,7 +82,6 @@ func _ready():
 	og_magic = f_magic
 	og_defense = f_defense
 	
-	
 func focus():
 	#if able:
 	if not SceneManager.victory:
@@ -942,7 +941,6 @@ func random_buff():
 				choices.remove(x)
 	choices.shuffle()
 	index = choices[0]
-	print(index)
 	
 	if index == "attack" and not a_buff:
 		apply_buff("attack")

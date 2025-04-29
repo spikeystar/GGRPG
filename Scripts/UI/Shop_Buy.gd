@@ -67,21 +67,21 @@ func set_id():
 		$Display.frame = 3
 		$Cost.text = "100 Mb"
 		item_cost = 100
-		$Info.text = "20 HP and grants a random buff"
+		$Info.text = "30 HP and grants a random buff"
 		$Carrying.show()
 	if item_id == "Ginger Tea":
 		$Display.show()
 		$Display.frame = 4
 		$Cost.text = "100 Mb"
 		item_cost = 100
-		$Info.text = "Recovers from all debuffs and statuses"
+		$Info.text = "Heals all statuses and debuffs"
 		$Carrying.show()
 	if item_id == "Bounty Herb":
 		$Display.show()
 		$Display.frame = 5
 		$Cost.text = "200 Mb"
 		item_cost = 200
-		$Info.text = "Revives a fallen party member to 50% health"
+		$Info.text = "Revives a fallen party member to half health"
 		$Carrying.show()
 	if item_id == "Gold Bracelet":
 		$Display.show()

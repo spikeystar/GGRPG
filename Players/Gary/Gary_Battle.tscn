@@ -1364,6 +1364,7 @@ tracks/1/keys = {
 [node name="Gary_Battle" type="Node2D"]
 scale = Vector2( 1.35, 1.35 )
 script = ExtResource( 5 )
+fighter_name = "gary"
 TEXT_HEAL = ExtResource( 10 )
 TEXT_STORED = ExtResource( 12 )
 TEXT_POISON = ExtResource( 11 )
