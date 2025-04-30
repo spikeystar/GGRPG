@@ -665,7 +665,7 @@ func fighters_active_check():
 		emit_signal ("enemies_enabled")
 		enemies_active = true
 	else:
-		if not SceneManager.victory:
+		if not SceneManager.victory and not SceneManager.game_over:
 			yield(get_tree().create_timer(0.8), "timeout")
 			fighters_active = true
 			emit_signal("fighters_active")

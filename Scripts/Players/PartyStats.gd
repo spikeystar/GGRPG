@@ -105,7 +105,7 @@ func level_up():
 		party_max_sp += 5
 		
 	full_heal()
-	next_level = int((100) * (party_level/1.5) + (party_level * 50))
+	next_level = int((125) * (party_level/1.5) + (party_level * 75))
 		
 func set_stats():	
 	gary_health = 51 + int((party_level / 1.5) * 10.5)
