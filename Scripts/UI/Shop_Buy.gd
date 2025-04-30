@@ -74,7 +74,7 @@ func set_id():
 		$Display.frame = 4
 		$Cost.text = "100 Mb"
 		item_cost = 100
-		$Info.text = "Heals all statuses and debuffs"
+		$Info.text = "10 HP & 5 SP\n\nHeals all statuses and debuffs"
 		$Carrying.show()
 	if item_id == "Bounty Herb":
 		$Display.show()

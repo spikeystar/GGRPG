@@ -25,7 +25,7 @@ func item_check():
 	if item_id == "Ginger Tea":
 		$ItemInventory.show()
 		$ItemInventory.frame = 4
-		$ItemInfo.text = "Heals all statuses and debuffs"
+		$ItemInfo.text = "10 HP & 5 SP\n\nHeals all statuses and debuffs"
 	if item_id == "Bounty Herb":
 		$ItemInventory.show()
 		$ItemInventory.frame = 5

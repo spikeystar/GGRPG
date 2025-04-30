@@ -271,11 +271,20 @@ func restore(id : String):
 		$Effect.show()
 		$EffectPlayer.play("Heal")
 	elif id == "Ginger Tea":
+		health = clamp(health + 10, 0, f_health)
+		PartyStats.party_sp = clamp(PartyStats.party_sp + 5, 0, PartyStats.party_max_sp)
 		yield(get_tree().create_timer(0.2), "timeout")
+		var heal_text = text(TEXT_HEAL)
+		if heal_text:
+			heal_text.label.text = str(10)
 		status_restore()
 		SE.effect("Revive")
 		$Effect.show()
 		$EffectPlayer.play("Restore")
+		yield(get_tree().create_timer(0.8), "timeout")
+		var sp_text = text(TEXT_SP)
+		if sp_text:
+			sp_text.label.text = str(5)
 	elif id == "Remedy Bouquet":
 		yield(get_tree().create_timer(0.2), "timeout")
 		status_restore()
