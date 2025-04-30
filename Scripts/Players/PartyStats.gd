@@ -101,7 +101,7 @@ func level_check():
 		new_spell_2 = true
 		
 func level_up():
-	if party_level == 4:
+	if party_level == 4 or party_level == 8 or party_level == 12:
 		party_max_sp += 5
 		
 	full_heal()

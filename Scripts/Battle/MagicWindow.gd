@@ -32,8 +32,8 @@ func spell_check():
 		$SpellTypeIcon.frame = 16
 	if spell_id == "Precious Beam":
 		$SpellInfo.text = "Singes one enemy with a ray of heavenly light\n\nDoes more damage for each enemy buff, inflicts magic debuff"
-		$SpellCost.text = "SP: 20"
-		$MagicWindowPanel/SpellList.spell_cost = 20
+		$SpellCost.text = "SP: 16"
+		$MagicWindowPanel/SpellList.spell_cost = 16
 		$SpellTypeIcon.frame = 0
 	
 func get_spell_id():

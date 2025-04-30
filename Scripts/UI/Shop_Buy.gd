@@ -88,14 +88,14 @@ func set_id():
 		$Display.frame = 6
 		$Cost.text = "1,000 Mb"
 		item_cost = 1000
-		$Info.text = "Increases holder's Attack by 20%\nWhammy! chance +5"
+		$Info.text = "Increases holder's Attack by 30%\nWhammy! chance +5"
 		$Carrying.hide()
 	if item_id == "Gold Chain":
 		$Display.show()
 		$Display.frame = 7
 		$Cost.text = "1,000 Mb"
 		item_cost = 1000
-		$Info.text = "Increases holder's Defense by 20%\nWhammy! chance +5"
+		$Info.text = "Increases holder's Defense by 30%\nWhammy! chance +5"
 		$Carrying.hide()
 
 func _input(event):
