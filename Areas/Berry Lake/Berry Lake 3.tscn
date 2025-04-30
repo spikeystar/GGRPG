@@ -1487,7 +1487,7 @@ alt_chance = 30
 alternate = true
 
 [node name="Beezle4" parent="." instance=ExtResource( 63 )]
-position = Vector2( 919, 167 )
+position = Vector2( 839, 307 )
 target_scene = ExtResource( 65 )
 alt_scene = ExtResource( 67 )
 alt_chance = 30

@@ -50,7 +50,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -3.08402, -9.60626 ) ]
+"values": [ Vector2( -41.7853, -34.4357 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("../PlayerDetection/AnimationPlayer:playback_speed")
@@ -127,7 +127,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( -3.08402, -9.60626 ), Vector2( -5.14003, -21.3472 ), Vector2( -10.2801, -27.7514 ), Vector2( -37.0082, -45.8966 ), Vector2( -46.2603, -52.3008 ), Vector2( -66.8204, -69.3786 ), Vector2( -46.2603, -55.5028 ), Vector2( -32.8962, -50.166 ), Vector2( -22.6162, -46.9639 ) ]
+"values": [ Vector2( -39.4886, -40.0052 ), Vector2( -35.6025, -35.6683 ), Vector2( -33.8743, -34.8449 ), Vector2( -29.8466, -22.4581 ), Vector2( -46.2603, -52.3008 ), Vector2( -66.8204, -69.3786 ), Vector2( -46.2603, -55.5028 ), Vector2( -32.8962, -50.166 ), Vector2( -22.6162, -46.9639 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("../PlayerDetection/AnimationPlayer:playback_speed")
@@ -160,10 +160,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 45, 32 ), Vector2( 27, 3 ), Vector2( 19, -3 ), Vector2( 19, -4 ), Vector2( -8, -9 ), Vector2( 20, -3 ), Vector2( 30, 10 ), Vector2( 48, 28 ) ]
+"values": [ Vector2( 45, 32 ), Vector2( 41, 23 ), Vector2( 33, 16 ), Vector2( 24, 10 ), Vector2( 28, 10 ), Vector2( -1, -7 ), Vector2( 20, -3 ), Vector2( 30, 10 ), Vector2( 48, 28 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("../BattleTrigger:scale")
@@ -268,7 +268,8 @@ alt_scene = ExtResource( 9 )
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
 position = Vector2( 0, 1 )
-collision_mask = 2
+collision_layer = 3
+collision_mask = 6
 collision/safe_margin = 0.5
 script = ExtResource( 10 )
 spawn_z = 40
@@ -302,8 +303,8 @@ collision_mask = 6
 height = 40.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
-position = Vector2( -37.0082, -45.8966 )
-scale = Vector2( 2.1555, -2.13323 )
+position = Vector2( -39.4886, -40.0052 )
+scale = Vector2( 2.72669, -2.97096 )
 shape = SubResource( 2 )
 
 [node name="BodyYSort" type="Node2D" parent="MotionRoot"]
@@ -339,8 +340,9 @@ use_dithering = false
 use_dither_blending = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
-position = Vector2( 1, -12 )
-scale = Vector2( 1.47356, 1.37327 )
+position = Vector2( 1, -23 )
+scale = Vector2( 2.44999, 3.00172 )
 shape = SubResource( 7 )
+disabled = true
 
 [connection signal="triggered" from="MotionRoot/BattleTrigger" to="." method="_on_BattleTrigger_triggered"]
