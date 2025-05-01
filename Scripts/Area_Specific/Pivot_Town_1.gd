@@ -425,7 +425,7 @@ func _on_Irina_Meetup_area_event():
 	
 	IrinaPlayer.play("worry")
 	$Camera2D/Interaction/Dialogue.show()
-	$Camera2D/Interaction/Dialogue/Name/Talk.text = "All of the robots have suddenly started attacking everyone! I ran here to get some help."
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Robots have suddenly started attacking everyone! I ran here to get some help."
 	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
 	$Camera2D/Interaction/Dialogue.talking()
 	yield($Camera2D/Interaction/Dialogue, "talk_done")
@@ -582,6 +582,7 @@ func _on_Irina_Meetup_area_event():
 	$Camera2D/Interaction/Dialogue.done()
 	PlayerManager.freeze = true
 	
+	IrinaPlayer.play("worry_front")
 	$Camera2D/Interaction/Dialogue.show()
 	$Camera2D/Interaction/Dialogue/Name/Talk.text = "The situation there might not be related to the Jewel Seeds, but it's definitely suspicious..."
 	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
@@ -590,6 +591,7 @@ func _on_Irina_Meetup_area_event():
 	$Camera2D/Interaction/Dialogue.done()
 	PlayerManager.freeze = true
 	
+	IrinaPlayer.play("front_idle")
 	$Camera2D/Interaction/Dialogue.show()
 	$Camera2D/Interaction/Dialogue/Name/Talk.text = "In any case, I was hoping to find some help here."
 	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"

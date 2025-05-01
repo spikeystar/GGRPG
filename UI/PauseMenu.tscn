@@ -29,7 +29,7 @@
 [ext_resource path="res://Scripts/UI/Pause_Items.gd" type="Script" id=27]
 [ext_resource path="res://Scripts/UI/Pause_Trinkets.gd" type="Script" id=28]
 [ext_resource path="res://Misc/Font/Trinket Held.tres" type="DynamicFont" id=29]
-[ext_resource path="res://Assets/General/Misc Items SS.png" type="Texture" id=30]
+[ext_resource path="res://Assets/General/Jewel_Seeds/Misc Items.png" type="Texture" id=30]
 [ext_resource path="res://Scripts/UI/Trinket_Menu_Cursor.gd" type="Script" id=31]
 [ext_resource path="res://Scripts/UI/TrinketsInventoryBox.gd" type="Script" id=32]
 [ext_resource path="res://Scripts/UI/EnemiesInventory.gd" type="Script" id=33]
@@ -1082,11 +1082,65 @@ vframes = 3
 
 [node name="Seed1" type="Sprite" parent="Key"]
 visible = false
-position = Vector2( -8, 40 )
+position = Vector2( 0, 39.958 )
 scale = Vector2( 0.8, 0.75 )
 texture = ExtResource( 30 )
-hframes = 10
+hframes = 3
 vframes = 3
+
+[node name="Seed2" type="Sprite" parent="Key"]
+visible = false
+position = Vector2( 49, 71.774 )
+scale = Vector2( 0.8, 0.75 )
+texture = ExtResource( 30 )
+hframes = 3
+vframes = 3
+frame = 1
+
+[node name="Seed3" type="Sprite" parent="Key"]
+visible = false
+position = Vector2( 48.962, 117.764 )
+scale = Vector2( 0.8, 0.75 )
+texture = ExtResource( 30 )
+hframes = 3
+vframes = 3
+frame = 2
+
+[node name="Seed4" type="Sprite" parent="Key"]
+visible = false
+position = Vector2( -0.1, 147.902 )
+scale = Vector2( 0.8, 0.75 )
+texture = ExtResource( 30 )
+hframes = 3
+vframes = 3
+frame = 3
+
+[node name="Seed5" type="Sprite" parent="Key"]
+visible = false
+position = Vector2( -50.204, 117.8 )
+scale = Vector2( 0.8, 0.75 )
+texture = ExtResource( 30 )
+hframes = 3
+vframes = 3
+frame = 4
+
+[node name="Seed6" type="Sprite" parent="Key"]
+visible = false
+position = Vector2( -50.058, 71.62 )
+scale = Vector2( 0.8, 0.75 )
+texture = ExtResource( 30 )
+hframes = 3
+vframes = 3
+frame = 5
+
+[node name="Seed7" type="Sprite" parent="Key"]
+visible = false
+position = Vector2( -0.05, 93.96 )
+scale = Vector2( 0.8, 0.75 )
+texture = ExtResource( 30 )
+hframes = 3
+vframes = 3
+frame = 6
 
 [node name="SubMenu" type="Sprite" parent="."]
 position = Vector2( 101, 213 )

@@ -5,7 +5,7 @@
 [ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=3]
 [ext_resource path="res://UI/Pause/Member Display.png" type="Texture" id=4]
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=5]
-[ext_resource path="res://Assets/General/Misc Items SS.png" type="Texture" id=6]
+[ext_resource path="res://Assets/General/Jewel_Seeds/Misc Items.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/UI/Save_Cursor.gd" type="Script" id=7]
 [ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/UI/SaveMenu.gd" type="Script" id=9]
@@ -163,52 +163,58 @@ hframes = 5
 
 [node name="Seed1" type="Sprite" parent="Save1"]
 visible = false
-position = Vector2( -18, -75 )
+position = Vector2( -8, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
 
 [node name="Seed2" type="Sprite" parent="Save1"]
 visible = false
-position = Vector2( 18, -75 )
+position = Vector2( 28, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 1
 
 [node name="Seed3" type="Sprite" parent="Save1"]
 visible = false
-position = Vector2( 54, -75 )
+position = Vector2( 64, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 2
 
 [node name="Seed4" type="Sprite" parent="Save1"]
 visible = false
-position = Vector2( 90, -75 )
+position = Vector2( 100, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 3
 
 [node name="Seed5" type="Sprite" parent="Save1"]
 visible = false
-position = Vector2( 126, -75 )
+position = Vector2( 136, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 4
 
 [node name="Seed6" type="Sprite" parent="Save1"]
 visible = false
-position = Vector2( 162, -75 )
+position = Vector2( 172, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 5
 
 [node name="Seed7" type="Sprite" parent="Save1"]
 visible = false
-position = Vector2( 198, -75 )
+position = Vector2( 208, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 6
 
 [node name="Save2" type="Node2D" parent="."]
 position = Vector2( 0, 137 )
@@ -257,52 +263,58 @@ hframes = 5
 
 [node name="Seed1" type="Sprite" parent="Save2"]
 visible = false
-position = Vector2( -18, -75 )
+position = Vector2( -8, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
 
 [node name="Seed2" type="Sprite" parent="Save2"]
 visible = false
-position = Vector2( 18, -75 )
+position = Vector2( 28, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 1
 
 [node name="Seed3" type="Sprite" parent="Save2"]
 visible = false
-position = Vector2( 54, -75 )
+position = Vector2( 64, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 2
 
 [node name="Seed4" type="Sprite" parent="Save2"]
 visible = false
-position = Vector2( 90, -75 )
+position = Vector2( 100, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 3
 
 [node name="Seed5" type="Sprite" parent="Save2"]
 visible = false
-position = Vector2( 126, -75 )
+position = Vector2( 136, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 4
 
 [node name="Seed6" type="Sprite" parent="Save2"]
 visible = false
-position = Vector2( 162, -75 )
+position = Vector2( 172, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 5
 
 [node name="Seed7" type="Sprite" parent="Save2"]
 visible = false
-position = Vector2( 198, -75 )
+position = Vector2( 208, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 6
 
 [node name="Save3" type="Node2D" parent="."]
 position = Vector2( 0, 274 )
@@ -351,52 +363,58 @@ hframes = 5
 
 [node name="Seed1" type="Sprite" parent="Save3"]
 visible = false
-position = Vector2( -18, -75 )
+position = Vector2( -8, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
 
 [node name="Seed2" type="Sprite" parent="Save3"]
 visible = false
-position = Vector2( 18, -75 )
+position = Vector2( 28, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 1
 
 [node name="Seed3" type="Sprite" parent="Save3"]
 visible = false
-position = Vector2( 54, -75 )
+position = Vector2( 64, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 2
 
 [node name="Seed4" type="Sprite" parent="Save3"]
 visible = false
-position = Vector2( 90, -75 )
+position = Vector2( 100, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 3
 
 [node name="Seed5" type="Sprite" parent="Save3"]
 visible = false
-position = Vector2( 126, -75 )
+position = Vector2( 136, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 4
 
 [node name="Seed6" type="Sprite" parent="Save3"]
 visible = false
-position = Vector2( 162, -75 )
+position = Vector2( 172, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 5
 
 [node name="Seed7" type="Sprite" parent="Save3"]
 visible = false
-position = Vector2( 198, -75 )
+position = Vector2( 208, -75 )
 texture = ExtResource( 6 )
-hframes = 10
+hframes = 3
 vframes = 3
+frame = 6
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

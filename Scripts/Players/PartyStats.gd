@@ -115,7 +115,7 @@ func set_stats():
 	
 	jacques_health = 55 + int((party_level / 1.5)  * 14)
 	jacques_attack = 20 + int((party_level / 1.25)  * 7)
-	jacques_magic = 20 + int((party_level / 1.5) * 5)
+	jacques_magic = 22 + int((party_level / 1.5) * 5)
 	jacques_defense = 7 + int((party_level / 2)  * 3)
 
 	irina_health = 60 + int((party_level / 1.5)  * 18)
