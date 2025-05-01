@@ -244,6 +244,7 @@ size_flags_vertical = 4
 custom_constants/separation = 58
 
 [node name="Party" type="Label" parent="MainSelection"]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 14.0
 margin_right = 15.0
 margin_bottom = 14.0
@@ -254,6 +255,7 @@ clip_text = true
 script = ExtResource( 18 )
 
 [node name="Items" type="Label" parent="MainSelection"]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 14.0
 margin_top = 72.0
 margin_right = 15.0
@@ -265,6 +267,7 @@ clip_text = true
 script = ExtResource( 18 )
 
 [node name="Trinkets" type="Label" parent="MainSelection"]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 14.0
 margin_top = 144.0
 margin_right = 15.0
@@ -276,6 +279,7 @@ clip_text = true
 script = ExtResource( 18 )
 
 [node name="Enemies" type="Label" parent="MainSelection"]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 14.0
 margin_top = 216.0
 margin_right = 15.0
@@ -287,6 +291,7 @@ clip_text = true
 script = ExtResource( 18 )
 
 [node name="Map" type="Label" parent="MainSelection"]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 14.0
 margin_top = 288.0
 margin_right = 15.0
@@ -298,6 +303,7 @@ clip_text = true
 script = ExtResource( 18 )
 
 [node name="Key" type="Label" parent="MainSelection"]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 14.0
 margin_top = 360.0
 margin_right = 15.0
