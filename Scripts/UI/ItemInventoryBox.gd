@@ -45,7 +45,7 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_select") and item_active:
 		get_id()
 		selected_id = item_id
-		if item_id == "Yummy Cake" or item_id == "Sugar Pill":
+		if item_id == "Yummy Cake" or item_id == "Sugar Pill" or item_id == "Ginger Tea":
 			emit_signal("heal_item_chosen")
 			item_active = false
 			SE.effect("Select")
@@ -53,7 +53,7 @@ func _input(event):
 			_on_Members_item_usage()
 			item_active = false
 			SE.effect("Heal")
-		if item_id == "Bounty Herb" or item_id == "Ginger Tea":
+		if item_id == "Bounty Herb":
 			emit_signal("not_usable")
 			SE.effect("Unable")
 		
@@ -96,6 +96,11 @@ func _on_Members_item_usage():
 	if selected_id == "Sugar Pill":
 		amount = 30
 		set_member_target()
+	if selected_id == "Ginger Tea":
+		amount = 10
+		set_member_target()
+		amount = 5
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
 	if selected_id == "Picnic Pie":
 		amount = 100
 		all_heal()

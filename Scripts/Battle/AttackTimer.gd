@@ -19,7 +19,7 @@ func _process(delta):
 	var gary_time3 = hit_time >= 0.2 and hit_time <= 0.46
 	var jacques_time1 = hit_time >= 2.25 and hit_time <= 2.5
 	var jacques_time2 = hit_time >= 0.18 and hit_time <= 0.3
-	var irina_time1 = hit_time >= 0.3 and hit_time <= 0.47
+	var irina_time1 = hit_time >= 0.33 and hit_time <= 0.5
 	if Input.is_action_just_pressed("ui_select") and active:
 		print(hit_time)
 	if Input.is_action_just_pressed("ui_select") and active and fighter_name == "gary" and gary_time1:

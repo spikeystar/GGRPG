@@ -990,7 +990,7 @@ hframes = 9
 vframes = 3
 
 [node name="Cursor" type="Sprite" parent="."]
-position = Vector2( -37, -77 )
+position = Vector2( -25, -68 )
 texture = ExtResource( 4 )
 
 [node name="TextOffset" type="Position2D" parent="."]
