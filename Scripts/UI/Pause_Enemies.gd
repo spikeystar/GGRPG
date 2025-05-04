@@ -124,7 +124,7 @@ func _process(delta):
 		$Magic_info.text = "4"
 		$Defense_info.text = "10"
 		$EnemyInfo.text = "A large cactus that houses some mischevious little birds"
-	if key_id == "Tenant A":
+	if key_id == "Tenant B":
 		$EnemyDisplay.position = Vector2(85, -123)
 		$EnemyDisplay.scale = Vector2(1, 1)
 		$EnemyDisplay.show()
@@ -135,7 +135,7 @@ func _process(delta):
 		$Magic_info.text = "4"
 		$Defense_info.text = "10"
 		$EnemyInfo.text = "This bird with a temper is always causing a ruckus for its neighbors"
-	if key_id == "Tenant B":
+	if key_id == "Tenant A":
 		$EnemyDisplay.position = Vector2(83, -123)
 		$EnemyDisplay.scale = Vector2(1, 1)
 		$EnemyDisplay.show()

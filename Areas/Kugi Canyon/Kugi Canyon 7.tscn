@@ -1063,7 +1063,7 @@ grid_size = Vector2( 1, 1.1 )
 texture = ExtResource( 25 )
 texture_scale = Vector2( 1.1, 1.2 )
 texture_offset = Vector2( 0, 14 )
-height = 30.0
+height = 80.0
 floor_height = 130.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
@@ -1111,7 +1111,7 @@ grid_size = Vector2( 1, 1.1 )
 texture = ExtResource( 25 )
 texture_scale = Vector2( 1.1, 1.2 )
 texture_offset = Vector2( 0, 14 )
-height = 30.0
+height = 80.0
 floor_height = 130.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
@@ -1157,7 +1157,7 @@ grid_size = Vector2( 0.6, 0.7 )
 texture = ExtResource( 29 )
 texture_scale = Vector2( -0.9, 0.9 )
 texture_offset = Vector2( -3, 0 )
-height = 55.0
+height = 80.0
 floor_height = 130.0
 preview_collision_box = false
 
@@ -1232,7 +1232,7 @@ grid_size = Vector2( 0.6, 0.7 )
 texture = ExtResource( 29 )
 texture_scale = Vector2( -0.9, 0.9 )
 texture_offset = Vector2( -3, 0 )
-height = 55.0
+height = 80.0
 floor_height = 130.0
 preview_collision_box = false
 
@@ -1247,7 +1247,7 @@ grid_size = Vector2( 0.6, 0.7 )
 texture = ExtResource( 29 )
 texture_scale = Vector2( 0.9, 0.9 )
 texture_offset = Vector2( -3, 0 )
-height = 55.0
+height = 80.0
 floor_height = 130.0
 preview_collision_box = false
 
@@ -1262,7 +1262,7 @@ grid_size = Vector2( 0.6, 0.7 )
 texture = ExtResource( 29 )
 texture_scale = Vector2( 0.9, 0.9 )
 texture_offset = Vector2( 3, 5 )
-height = 55.0
+height = 80.0
 floor_height = 130.0
 preview_collision_box = false
 
@@ -1314,7 +1314,7 @@ grid_size = Vector2( 0.6, 0.7 )
 texture = ExtResource( 24 )
 texture_scale = Vector2( -0.8, 0.8 )
 texture_offset = Vector2( 0, 3 )
-height = 30.0
+height = 80.0
 floor_height = 130.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
@@ -1346,7 +1346,7 @@ grid_size = Vector2( 0.6, 0.7 )
 texture = ExtResource( 24 )
 texture_scale = Vector2( 0.8, 0.8 )
 texture_offset = Vector2( 0, 3 )
-height = 30.0
+height = 80.0
 floor_height = 130.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
@@ -1362,7 +1362,7 @@ grid_size = Vector2( 0.6, 0.7 )
 texture = ExtResource( 24 )
 texture_scale = Vector2( -0.8, 0.8 )
 texture_offset = Vector2( 0, 3 )
-height = 30.0
+height = 80.0
 floor_height = 130.0
 depth_test_offset = Vector3( 0, 500, 0 )
 preview_collision_box = false
@@ -1687,6 +1687,171 @@ script = ExtResource( 49 )
 height = 131.0
 use_transparency = true
 
+[node name="BBox" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 190, -218 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 130.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox2" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 217, -212 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 130.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox3" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 243, -202 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 130.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox4" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 388, -153 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 130.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox5" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 414, -143 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 130.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox6" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 439, -131 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 130.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox7" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 465, -119 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 130.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox8" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 143, -219 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 130.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox9" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 479, -91 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+floor_height = 130.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox10" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 171, -253 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox11" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 133, -278 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
+[node name="BBox12" parent="YSort/MiddleGround" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 465, -163 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+depth_test_offset = Vector3( 0, 400, 0 )
+
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
@@ -1945,14 +2110,14 @@ menu_parent_path = NodePath("../VBoxContainer")
 cursor_offset = Vector2( -9, 3 )
 
 [node name="Spikes" type="Area2D" parent="."]
-visible = false
 position = Vector2( -128, -129 )
 script = ExtResource( 43 )
 target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 7.tscn"
 exit_name = "Entrance"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes"]
-polygon = PoolVector2Array( 0, -13, 367, -196, 276, -227, -31, -95, -118, -62 )
+visible = false
+polygon = PoolVector2Array( 0, -13, 377, -162, 367, -196, 276, -227, -31, -95, -118, -62 )
 
 [node name="Spikes2" type="Area2D" parent="."]
 visible = false
@@ -1965,7 +2130,6 @@ exit_name = "Entrance"
 polygon = PoolVector2Array( 3, -15, 281, -112, 293, -134, 194, -186, -34, -98, -114, -65 )
 
 [node name="Boss_Battle" type="Area2D" parent="."]
-visible = false
 position = Vector2( -174, -225 )
 script = ExtResource( 60 )
 height = 130.0
@@ -1973,6 +2137,7 @@ cutscene = true
 unavoid = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boss_Battle"]
+visible = false
 position = Vector2( 93, -10 )
 polygon = PoolVector2Array( 228, -80, 263, -97, 276, -104, 313, -91, 328, -90, 366, -99, 474, -57, 444, -44, 472, -30, 454, -14, 432, -5, 409, -1, 377, -3, 287, -37, 248, -53, 243, -70 )
 
