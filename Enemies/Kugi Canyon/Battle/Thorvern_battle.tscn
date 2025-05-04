@@ -86,7 +86,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -20 ) ]
+"values": [ Vector2( 5, 15 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("CircleShadowSmall:self_modulate")
@@ -184,6 +184,18 @@ tracks/13/keys = {
 "update": 0,
 "values": [ true ]
 }
+tracks/14/type = "value"
+tracks/14/path = NodePath("CircleShadowSmall:offset")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3, 30 ) ]
+}
 
 [sub_resource type="Animation" id=18]
 resource_name = "buff"
@@ -229,7 +241,7 @@ tracks/3/path = NodePath("CircleShadowSmall:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -293,7 +305,7 @@ tracks/4/path = NodePath("CircleShadowSmall:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -326,7 +338,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, -20 ), Vector2( 0, -22 ) ]
+"values": [ Vector2( 5, 15 ), Vector2( 5, 13 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:position")
@@ -402,7 +414,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -20 ) ]
+"values": [ Vector2( 5, 15 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -418,7 +430,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -1, 74 ) ]
+"values": [ Vector2( -1, 72 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:frame")
@@ -478,7 +490,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -20 ) ]
+"values": [ Vector2( 5, 15 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Sprite:visible")
@@ -543,7 +555,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -20 ) ]
+"values": [ Vector2( 5, 15 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("AnimationPlayer:playback_speed")
@@ -1056,18 +1068,20 @@ modulate = Color( 1, 1, 1, 0.588235 )
 position = Vector2( -1, 74 )
 scale = Vector2( 2.07061, 0.979566 )
 texture = ExtResource( 5 )
+offset = Vector2( 3, 25 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 2, -25 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 10 )
-offset = Vector2( 0, -20 )
+offset = Vector2( 5, 15 )
 hframes = 5
 vframes = 2
 
 [node name="DamageStar" type="Sprite" parent="."]
 visible = false
-position = Vector2( -7.82609, -62.6087 )
+position = Vector2( 1.13249e-06, -17.3913 )
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 6
@@ -1075,26 +1089,26 @@ frame = 24
 
 [node name="Effect" type="Sprite" parent="."]
 visible = false
-position = Vector2( 1, -43 )
+position = Vector2( -6.08696, -20.8696 )
 texture = ExtResource( 8 )
 hframes = 5
 vframes = 5
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false
-position = Vector2( -10.4348, -74.7826 )
+position = Vector2( -0.869564, -21.7391 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 7 )
 hframes = 9
 vframes = 3
 
 [node name="Cursor" type="Sprite" parent="."]
-position = Vector2( -104.348, -135.652 )
+position = Vector2( -79.1304, -77.3913 )
 texture = ExtResource( 6 )
 
 [node name="TextOffset" type="Position2D" parent="."]
 visible = false
-position = Vector2( -1, -34 )
+position = Vector2( -1.73913, -20.8696 )
 
 [node name="DamageText" parent="." instance=ExtResource( 9 )]
 visible = false

@@ -614,7 +614,7 @@ script = ExtResource( 38 )
 [node name="Field" type="Node2D" parent="Enemies"]
 
 [node name="Thorvern_battle" parent="Enemies/Field" instance=ExtResource( 58 )]
-position = Vector2( 83, -12 )
+position = Vector2( 80, -49 )
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
@@ -1165,7 +1165,6 @@ frame = 1
 
 [node name="Gary_Battle" parent="Fighters" instance=ExtResource( 32 )]
 position = Vector2( -240, 86 )
-fighter_name = "gary"
 f_health = 88
 f_attack = 70
 f_attack_base = 3
@@ -1178,7 +1177,6 @@ TEXT_LOSS = ExtResource( 20 )
 
 [node name="Jacques_Battle" parent="Fighters" instance=ExtResource( 33 )]
 position = Vector2( -135, 144 )
-fighter_name = "jacques"
 f_health = 97
 f_attack = 55
 f_attack_base = 5
@@ -1592,7 +1590,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1609,6 +1606,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
