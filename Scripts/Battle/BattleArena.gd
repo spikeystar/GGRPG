@@ -196,6 +196,7 @@ func _input(event):
 		if wimpy:
 			$BattleButtons/AttackX.show()
 		dizzy = $Fighters.get_dizzy()
+		$Enemies.dizzy = $Fighters.get_dizzy()
 		if dizzy:
 			$BattleButtons/MagicX.show()
 		if item_stolen:
