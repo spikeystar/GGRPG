@@ -445,7 +445,7 @@ func _ready():
 		
 		EdgarPlayer.play("idle")
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "As I'm sure you both know, the Jewel Seeds harbor mysterious power."
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "As I'm sure you both know, the Jewel Seeds harbor mysterious powers."
 		$Camera2D/Interaction/Dialogue/Name.text = "Edgar:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
