@@ -2103,8 +2103,10 @@ position = Vector2( -23.7, 6.2 )
 polygon = PoolVector2Array( -183, -48, -185, -53, -181, -58, -173, -59, -166, -56, -158, -59, -149, -58, -144, -53, -146, -48, -149, -45, -145, -42, -146, -38, -154, -35, -159, -39, -164, -41, -169, -40, -175, -37, -181, -36, -185, -39, -185, -43, -180, -45 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 24 )]
+visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 22 )]
 visible = false

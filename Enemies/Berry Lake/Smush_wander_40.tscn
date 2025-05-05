@@ -235,8 +235,8 @@ WANDER_RADIUS = 15
 MAX_CHASE_DISTANCE = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
-position = Vector2( 12, -17 )
-scale = Vector2( 1.60739, 1.22554 )
+position = Vector2( 10, -14 )
+scale = Vector2( 1.95238, 1.00241 )
 shape = SubResource( 180 )
 
 [node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
@@ -258,14 +258,15 @@ shape = SubResource( 178 )
 disabled = true
 
 [node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 10 )]
-position = Vector2( 5, 5 )
+position = Vector2( 5, 8 )
 scale = Vector2( 0.972756, 0.936889 )
 collision_layer = 7
 collision_mask = 6
+height = 40.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
-position = Vector2( 7.19605, -25.6167 )
-scale = Vector2( 2.10401, -1.72289 )
+position = Vector2( 6.16804, -30.9535 )
+scale = Vector2( 2.14013, -2.14432 )
 shape = SubResource( 179 )
 
 [node name="ShadowYSort" type="Node2D" parent="."]

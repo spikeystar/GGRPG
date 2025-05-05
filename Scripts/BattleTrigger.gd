@@ -39,7 +39,6 @@ func _physics_process(delta):
 	if able and entered and not detected and viable and ground_enemy and not Global.battling:
 		_on_touch_area()
 		
-	
 
 func player_check():
 	return player !=null

@@ -261,8 +261,8 @@ collision_layer = 7
 collision_mask = 6
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
-position = Vector2( -2.05601, -23.482 )
-scale = Vector2( 1.60839, -1.51859 )
+position = Vector2( -2.05601, -29.8861 )
+scale = Vector2( 2.0837, -2.2391 )
 shape = SubResource( 179 )
 
 [node name="ShadowYSort" type="Node2D" parent="."]
