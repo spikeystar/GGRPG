@@ -100,6 +100,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("BodyVisualRoot/NPC:feet_height")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 53.0 ]
+}
 
 [sub_resource type="Animation" id=176]
 resource_name = "attack"
@@ -175,6 +187,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, -2 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("BodyVisualRoot/NPC:feet_height")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 53.0, 40.0 ]
 }
 
 [sub_resource type="Animation" id=181]
@@ -264,6 +288,18 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, -5000 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("BodyVisualRoot/NPC:feet_height")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 53.0 ]
 }
 
 [sub_resource type="Animation" id=178]
@@ -595,6 +631,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("BodyVisualRoot/NPC:feet_height")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 40.0 ]
+}
 
 [sub_resource type="Animation" id=177]
 resource_name = "walk"
@@ -683,6 +731,18 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("BodyVisualRoot/NPC:feet_height")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 53.0, 53.0 ]
 }
 
 [node name="Reeler" type="YSort"]

@@ -940,7 +940,7 @@ use_transparency = true
 
 [node name="LilypadSmall" type="Sprite" parent="YSort/Floor"]
 modulate = Color( 0.666667, 1, 1, 0.921569 )
-position = Vector2( -249, -218 )
+position = Vector2( -249, -219 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 35 )
 script = ExtResource( 69 )

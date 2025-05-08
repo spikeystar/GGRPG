@@ -423,7 +423,7 @@ func _on_Irina_Meetup_area_event():
 	$Camera2D/Interaction/Dialogue.done()
 	PlayerManager.freeze = true
 	
-	IrinaPlayer.play("worry")
+	IrinaPlayer.play("worry_front")
 	$Camera2D/Interaction/Dialogue.show()
 	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Robots have suddenly started attacking everyone! I ran here to get some help."
 	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
@@ -557,7 +557,7 @@ func _on_Irina_Meetup_area_event():
 	PlayerManager.freeze = true
 	
 	$Camera2D/Interaction/Dialogue.show()
-	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Oh, that's a relief to hear. It would be a disaster for them to fall into the wrong hands."
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Oh, that's a relief to hear..."
 	$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
 	$Camera2D/Interaction/Dialogue.talking()
 	yield($Camera2D/Interaction/Dialogue, "talk_done")

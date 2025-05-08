@@ -306,6 +306,8 @@ func _on_Reeler_Battle_area_event():
 	PlayerManager.freeze = true
 	$YSort/JewelSeed/WorldEnvironment.environment.glow_enabled = false
 	
+	#var tween5 = create_tween()
+	#tween5.tween_property(Reeler, "global_position", $Position2D7.position, 0.2)
 	ReelerPlayer.play("attack")
 	yield(get_tree().create_timer(0.6), "timeout")
 	
