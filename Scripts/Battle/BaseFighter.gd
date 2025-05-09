@@ -644,7 +644,11 @@ func status_restore():
 	if poison:
 		poison = false
 		poison_timer = 0
-		f_defense += (og_defense * 0.1)
+		f_attack += (og_attack * 0.1)
+	if anxious:
+		anxious = false
+		anxious_timer = 0
+		f_magic += (og_magic * 0.1)
 	if targeted:
 		targeted = false
 		targeted_timer = 0
@@ -657,8 +661,6 @@ func status_restore():
 	wimpy_timer = 0
 	dizzy = false
 	dizzy_timer = 0
-	anxious = false
-	anxious_timer = 0
 	if a_debuff:
 		a_debuff = false
 		a_debuff_timer = 0
@@ -694,7 +696,7 @@ func status_countdown():
 		poison_timer -= 1
 		if poison_timer == 0:
 			poison = false
-			f_defense += (og_defense * 0.1)
+			f_attack += (og_attack * 0.1)
 	if targeted:
 		targeted_timer -= 1
 		if targeted_timer == 0:
@@ -751,6 +753,7 @@ func status_countdown():
 		anxious_timer -= 1
 		if anxious_timer == 0:
 			anxious = false
+			f_magic += (og_magic * 0.1)
 		yield(get_tree().create_timer(0.7), "timeout")
 		anxious_SP(1)
 
@@ -766,7 +769,7 @@ func poison():
 	if not poison and not hocus_potion:
 		poison = true
 		poison_timer = 3
-		f_defense -= (og_defense * 0.1)
+		f_attack -= (og_attack * 0.1)
 	else:
 		return
 		
@@ -774,7 +777,7 @@ func envenomate():
 	if not poison and not hocus_potion:
 		poison = true
 		poison_timer = 3
-		f_defense -= (og_defense * 0.1)
+		f_attack -= (og_attack * 0.1)
 	if poison:
 		apply_debuff("attack")
 		apply_debuff("magic")
@@ -786,6 +789,7 @@ func anxious():
 	if not anxious and not hocus_potion:
 		anxious = true
 		anxious_timer = 3
+		f_magic -= (og_magic * 0.1)
 	else:
 		return
 		

@@ -71,7 +71,7 @@ func _process(delta):
 				global_position.y = clamp(motion_root.global_position.y - z_offset + player_offset.y, minPos.y, maxPos.y)
 
 func _input(event):
-		if Input.is_action_pressed("ui_pause") and not PlayerManager.freeze and not PlayerManager.sleep and not PlayerManager.pause_delay:
+		if Input.is_action_pressed("ui_pause") and not PlayerManager.freeze and not PlayerManager.sleep and not PlayerManager.jumping and not PlayerManager.pause_delay:
 			SE.effect("Menu Open")
 			Music.quiet()
 			PlayerManager.freeze = true

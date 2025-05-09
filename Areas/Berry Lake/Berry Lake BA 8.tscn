@@ -1173,7 +1173,6 @@ frame = 1
 
 [node name="Gary_Battle" parent="Fighters" instance=ExtResource( 54 )]
 position = Vector2( -240, 86 )
-fighter_name = "gary"
 f_health = 88
 f_attack = 70
 f_attack_base = 3
@@ -1186,7 +1185,6 @@ TEXT_LOSS = ExtResource( 40 )
 
 [node name="Jacques_Battle" parent="Fighters" instance=ExtResource( 55 )]
 position = Vector2( -135, 144 )
-fighter_name = "jacques"
 f_health = 97
 f_attack = 55
 f_attack_base = 5

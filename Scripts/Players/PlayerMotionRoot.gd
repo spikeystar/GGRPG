@@ -64,6 +64,7 @@ func _physics_process(delta):
 	var bouncy = PlayerManager.bouncy
 	var cutscene = PlayerManager.cutscene
 	var loading = SceneManager.loading
+	PlayerManager.jumping = jumping
 	# Floor height could change at any time with movable platforms
 	update_floor()
 	
