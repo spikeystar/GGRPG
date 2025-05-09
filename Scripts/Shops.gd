@@ -16,9 +16,9 @@ func _ready():
 	add_item()
 	item_name = "Pretty Gem"
 	add_item()
-	item_name = "Sugar Pill"
-	add_item()
 	item_name = "Ginger Tea"
+	add_item()
+	item_name = "Sugar Pill"
 	add_item()
 	item_name = "Gold Bracelet"
 	add_item()

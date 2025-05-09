@@ -47,7 +47,7 @@ func set_id():
 		$Display.show()
 		$Storage.show()
 		$Display.frame = 3
-		$Info.text = "30 HP and grants a random buff"
+		$Info.text = "30 HP & 5 SP\nGrants a random buff"
 	if item_id == "Ginger Tea":
 		$Display.show()
 		$Storage.show()

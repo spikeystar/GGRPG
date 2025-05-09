@@ -21,7 +21,7 @@ func item_check():
 	if item_id == "Sugar Pill":
 		$ItemInventory.show()
 		$ItemInventory.frame = 3
-		$ItemInfo.text = "30 HP and grants a random buff"
+		$ItemInfo.text = "30 HP & 5 SP\n\nGrants a random buff"
 	if item_id == "Ginger Tea":
 		$ItemInventory.show()
 		$ItemInventory.frame = 4

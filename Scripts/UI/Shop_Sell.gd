@@ -60,7 +60,7 @@ func set_id():
 		$Display.frame = 3
 		$Cost.text = "75 Mb"
 		item_cost = 75
-		$Info.text = "30 HP and grants a random buff"
+		$Info.text = "30 HP & 5 SP\nGrants a random buff"
 	if item_id == "Ginger Tea":
 		$Display.show()
 		$Cost.show()

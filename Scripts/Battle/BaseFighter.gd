@@ -247,6 +247,10 @@ func restore(id : String):
 			SE.effect("Revive")
 			$Effect.show()
 			$EffectPlayer.play("Restore")
+			health = clamp(health + 30, 0, f_health)
+			var heal_text = text(TEXT_HEAL)
+			if heal_text:
+				heal_text.label.text = str(30)
 	elif id == "Sweet Gift":
 		health = int(f_health / 2)
 		dead = false
@@ -392,8 +396,7 @@ func SP_loss(SP_amount: int):
 	PartyStats.party_sp = clamp(PartyStats.party_sp - SP_amount, 0, PartyStats.party_max_sp)
 		
 func combo_heal(SP_amount : int):
-	yield(get_tree().create_timer(0.2), "timeout")
-	yield(get_tree().create_timer(0.2), "timeout")
+	yield(get_tree().create_timer(1), "timeout")
 	var sp_text = text(TEXT_SP)
 	if sp_text:
 		sp_text.label.text = str(SP_amount)

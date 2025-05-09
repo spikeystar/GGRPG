@@ -952,8 +952,9 @@ func _on_Fighters_item_chosen():
 		$Fighters.HP_amount = 100
 	if item_id == "Sugar Pill":
 		$ItemUsage/Item.frame = 3
-		$Fighters.heal = true
+		$Fighters.combo_heal = true
 		$Fighters.HP_amount = 30
+		$Fighters.SP_amount = 5
 		$Fighters.random_buff()
 	if item_id == "Ginger Tea":
 		$ItemUsage/Item.frame = 4
