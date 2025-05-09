@@ -197,10 +197,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( -2.22222, 19.2592 ), Vector2( -3.7037, 23.7037 ), Vector2( -0.740741, 21.4815 ), Vector2( -5.18518, 6.66667 ) ]
+"values": [ Vector2( -2.222, 23.704 ), Vector2( 1.19209e-07, 21.4815 ), Vector2( -5.92593, 4.44444 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:position")
@@ -212,7 +212,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -2.22222, -10.3704 ) ]
+"values": [ Vector2( -2.222, -6.667 ) ]
 }
 
 [sub_resource type="Animation" id=13]
