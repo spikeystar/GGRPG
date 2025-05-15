@@ -85,7 +85,7 @@ script = ExtResource( 2 )
 
 [node name="Item_Get" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-volume_db = -3.0
+volume_db = -4.0
 
 [node name="Present" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
@@ -191,6 +191,7 @@ volume_db = 1.0
 
 [node name="Heal" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 30 )
+volume_db = 1.0
 
 [node name="Item_Shop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 28 )
@@ -237,6 +238,7 @@ pitch_scale = 0.89
 
 [node name="Player_Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 41 )
+volume_db = 1.0
 
 [node name="Poof" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 36 )

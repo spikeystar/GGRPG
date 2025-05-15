@@ -195,14 +195,15 @@ shape = SubResource( 178 )
 disabled = true
 
 [node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 10 )]
+visible = false
 position = Vector2( 4, -10 )
 scale = Vector2( 0.918882, 0.860568 )
 collision_layer = 7
 collision_mask = 6
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
-position = Vector2( -3.26484, -22.0784 )
-scale = Vector2( 1.35457, -1.35654 )
+position = Vector2( -3.26484, -11.6202 )
+scale = Vector2( 1.48904, -3.02598 )
 shape = SubResource( 179 )
 
 [node name="ShadowYSort" type="Node2D" parent="."]

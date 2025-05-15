@@ -57,8 +57,8 @@ loop_time = 95.55
 stream = ExtResource( 8 )
 volume_db = -7.0
 script = ExtResource( 4 )
-end_time = 60.295
-loop_time = 40.25
+end_time = 60.34
+loop_time = 40.33
 
 [node name="High_Tension" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )

@@ -15,8 +15,8 @@ func _ready():
 func _process(delta):
 	var hit_time = get_time()
 	var gary_time1 = hit_time >= 1.72 and hit_time <= 2.3
-	var gary_time2 = hit_time >= 1.2 and hit_time <= 1.57
-	var gary_time3 = hit_time >= 0.2 and hit_time <= 0.45
+	var gary_time2 = hit_time >= 1.2 and hit_time <= 1.6
+	var gary_time3 = hit_time >= 0.2 and hit_time <= 0.46
 	var jacques_time1 = hit_time >= 2.25 and hit_time <= 2.5
 	var jacques_time2 = hit_time >= 0.18 and hit_time <= 0.3
 	var irina_time1 = hit_time >= 0.33 and hit_time <= 0.5
@@ -51,8 +51,6 @@ func _on_WorldRoot_start_attack_timer():
 
 func _on_Timer_timeout():
 	active = false
-	print(fighter_name)
-	print(max_hits)
 	if fighter_name == "gary" and max_hits ==3:
 		emit_signal("attack_bonus")
 		max_hits = 0
