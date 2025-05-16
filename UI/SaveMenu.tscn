@@ -151,7 +151,7 @@ text = "-"
 align = 1
 
 [node name="Initial" type="Sprite" parent="Save1"]
-modulate = Color( 1, 0.94902, 1, 1 )
+modulate = Color( 1, 0.95, 1, 1 )
 position = Vector2( -203, -70 )
 texture = ExtResource( 5 )
 
@@ -251,7 +251,7 @@ text = "-"
 align = 1
 
 [node name="Initial" type="Sprite" parent="Save2"]
-modulate = Color( 1, 0.94902, 1, 1 )
+modulate = Color( 1, 0.95, 1, 1 )
 position = Vector2( -203, -70 )
 texture = ExtResource( 5 )
 

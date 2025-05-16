@@ -554,6 +554,21 @@ func load_base_file():
 			
 			
 			file.close()
+			
+func cursor_anim():
+	var og_color : Color
+	og_color.r = 1
+	og_color.g = 1
+	og_color.b = 1
+	var modulate_color : Color
+	modulate_color.r = 2
+	modulate_color.g = 1.4
+	modulate_color.b = 1.4
+	var tween = create_tween()
+	tween.tween_property($SaveSelection/MenuCursor, "modulate", modulate_color, 0.5)
+	yield(get_tree().create_timer(0.2), "timeout")
+	var tween2 = create_tween()
+	tween2.tween_property($SaveSelection/MenuCursor, "modulate", og_color, 0.5)
 	
 func _input(event):
 	var file_name : String = $SaveSelection/MenuCursor.menu_name
@@ -567,6 +582,7 @@ func _input(event):
 		save_path = "user://save.dat_1"
 		save1_update()
 		save_file()
+		cursor_anim()
 		#save_base_file()
 		
 	if Input.is_action_just_pressed("ui_select") and file_name == "2" and SceneManager.saving and able:
@@ -578,6 +594,7 @@ func _input(event):
 		save_path = "user://save.dat_2"
 		save2_update()
 		save_file()
+		cursor_anim()
 		#save_base_file()
 		
 	if Input.is_action_just_pressed("ui_select") and file_name == "3" and SceneManager.saving and able:
@@ -589,6 +606,7 @@ func _input(event):
 		save_path = "user://save.dat_3"
 		save3_update()
 		save_file()
+		cursor_anim()
 		#save_base_file()
 		
 	#####################################################
@@ -598,6 +616,7 @@ func _input(event):
 			$SaveSelection/MenuCursor.ongoing = true
 			able = false
 			SE.effect("Switch")
+			cursor_anim()
 			save_path = "user://save.dat_1"
 			load_file()
 			PartyStats.set_stats()
@@ -607,6 +626,7 @@ func _input(event):
 			$SaveSelection/MenuCursor.ongoing = true
 			able = false
 			SE.effect("Switch")
+			cursor_anim()
 			yield(get_tree().create_timer(0.3), "timeout")
 			opening()
 		
@@ -615,6 +635,7 @@ func _input(event):
 			$SaveSelection/MenuCursor.ongoing = true
 			able = false
 			SE.effect("Switch")
+			cursor_anim()
 			save_path = "user://save.dat_2"
 			load_file()
 			PartyStats.set_stats()
@@ -624,6 +645,7 @@ func _input(event):
 			$SaveSelection/MenuCursor.ongoing = true
 			able = false
 			SE.effect("Switch")
+			cursor_anim()
 			yield(get_tree().create_timer(0.3), "timeout")
 			opening()
 		
@@ -632,6 +654,7 @@ func _input(event):
 			$SaveSelection/MenuCursor.ongoing = true
 			able = false
 			SE.effect("Switch")
+			cursor_anim()
 			save_path = "user://save.dat_3"
 			load_file()
 			PartyStats.set_stats()
@@ -641,6 +664,7 @@ func _input(event):
 			$SaveSelection/MenuCursor.ongoing = true
 			able = false
 			SE.effect("Switch")
+			cursor_anim()
 			yield(get_tree().create_timer(0.3), "timeout")
 			opening()
 		
