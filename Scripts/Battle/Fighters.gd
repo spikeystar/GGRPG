@@ -725,6 +725,7 @@ func game_over_check():
 			death_count += 1
 	if death_count == fighters2.size() and not game_over:
 		game_over = true
+		SceneManager.game_over = true
 		emit_signal("game_over")
 		
 
@@ -977,7 +978,10 @@ func _on_Enemies_fighters_active():
 		emit_signal ("enemies_enabled")
 		enemies_active = true
 		
+	
 	yield(get_tree().create_timer(0.8), "timeout")
+	
+	game_over_check()
 	
 	SceneManager.enemy_turn = false
 	
