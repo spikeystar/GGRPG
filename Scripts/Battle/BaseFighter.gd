@@ -82,8 +82,6 @@ func _ready():
 	og_magic = f_magic
 	og_defense = f_defense
 	
-	poison = true
-	
 func focus():
 	#if able:
 	if not SceneManager.victory:

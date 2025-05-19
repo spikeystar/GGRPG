@@ -800,6 +800,9 @@ func item_used():
 	if restore:
 		if revive:
 			dead = fighters2[target_index].death_count()
+#			stun = fighters2[target_index].get_status("stun")
+#			if dead and stun:
+#				max_turns -= 1
 			if dead:
 				#max_turns -=1
 				fighters2[target_index].restore(item_name)
@@ -959,18 +962,22 @@ func _on_Enemies_fighters_active():
 	for x in range (fighters.size()):
 		fighter_index = x
 		huds_update()
-	for x in range (fighters.size() -1, -1, -1):
-		var stun = fighters[x].get_status("stun")
-		if stun:
-			fighters.remove(x)
-			fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
-			max_turns += 1
+			
+			
 	for x in range (fighters.size() -1, -1, -1):
 		var dead = fighters[x].death_count()
 		if dead:
 			fighters.remove(x)
 			fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
 			#max_turns += 1
+			
+	for x in range (fighters.size() -1, -1, -1):
+		var stun = fighters[x].get_status("stun")
+		if stun:
+			fighters.remove(x)
+			fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
+			max_turns += 1
+			
 	enemies_active = false
 	fighter_index = -1
 	
