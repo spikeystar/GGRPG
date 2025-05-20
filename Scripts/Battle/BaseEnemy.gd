@@ -282,7 +282,7 @@ func poison():
 	if not poison:
 		poison = true
 		poison_timer = 3
-		e_defense -= (og_defense * 0.1)
+		e_attack -= (og_attack * 0.1)
 	else:
 		pass
 
@@ -296,7 +296,7 @@ func countdown():
 		poison_timer -= 1
 		if poison_timer == 0:
 			poison = false
-			e_defense += (og_defense * 0.1)
+			e_attack += (og_attack * 0.1)
 	
 	if applied_type:
 		type_timer -= 1
@@ -344,7 +344,7 @@ func countdown():
 func enemy_restore():
 	if poison:
 		poison = false
-		e_defense += (og_defense * 0.1)
+		e_attack += (og_attack * 0.1)
 	current_type = initial_type
 	
 func apply_type(id : String):

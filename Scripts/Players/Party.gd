@@ -47,7 +47,6 @@ func _ready():
 	add_item_name = "Pretty Gem"
 	add_tutorial_item()
 	
-	
 	spell_name = "Thunderstorm"
 	populate_Gary()
 	spell_name = "Icicle"
