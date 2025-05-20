@@ -487,7 +487,11 @@ func random_buff():
 			if choices[x] == "defense":
 				choices.remove(x)
 	choices.shuffle()
-	index = choices[0]
+	
+	if choices.size() > 0:
+		index = choices[0]
+	else:
+		return
 	
 	if index == "attack" and not a_buff:
 		apply_buff("attack")
@@ -513,7 +517,11 @@ func random_debuff():
 			if choices[x] == "defense":
 				choices.remove(x)
 	choices.shuffle()
-	index = choices[0]
+	
+	if choices.size() > 0:
+		index = choices[0]
+	else:
+		return
 	
 	if index == "attack" and not a_debuff:
 		apply_debuff("attack")
@@ -522,7 +530,7 @@ func random_debuff():
 	if index == "defense" and not d_debuff:
 		apply_debuff("defense")
 
-func multi_random_buff():
+func multi_random_buff_old():
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -559,7 +567,21 @@ func multi_random_buff():
 		if index == 3:
 			apply_buff("defense")
 			
-func multi_random_debuff():
+func multi_random_buff():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	random_buff()
+		
+	var chance = rng.randi_range(1, 100)
+	if chance <= 50:
+		random_buff()
+	
+	chance = rng.randi_range(1, 100)
+	if chance <= 25:
+		random_buff()
+		
+func multi_random_debuff_old():
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -595,3 +617,17 @@ func multi_random_debuff():
 			apply_debuff("magic")
 		if index == 3:
 			apply_debuff("defense")
+
+func multi_random_debuff():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	random_debuff()
+		
+	var chance = rng.randi_range(1, 100)
+	if chance <= 50:
+		random_debuff()
+	
+	chance = rng.randi_range(1, 100)
+	if chance <= 25:
+		random_debuff()
