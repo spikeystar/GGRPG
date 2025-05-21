@@ -1194,7 +1194,6 @@ frame = 1
 
 [node name="Gary_Battle" parent="Fighters" instance=ExtResource( 53 )]
 position = Vector2( -122, 150 )
-fighter_name = "gary"
 f_health = 88
 f_attack = 70
 f_attack_base = 3
@@ -1208,7 +1207,6 @@ TEXT_LOSS = ExtResource( 35 )
 [node name="Jacques_Battle" parent="Fighters" instance=ExtResource( 54 )]
 visible = false
 position = Vector2( -135, 144 )
-fighter_name = "jacques"
 f_health = 97
 f_attack = 55
 f_attack_base = 5
@@ -1792,7 +1790,7 @@ margin_top = 68.8888
 margin_right = 161.384
 margin_bottom = 119.889
 custom_fonts/font = ExtResource( 29 )
-text = "Buff - Stat increase 20%, Whammy! chance +1"
+text = "Buff - Stat increase 30%, Whammy! chance +1"
 autowrap = true
 
 [node name="Label8" type="Label" parent="BattleDialogue/Statuses"]
@@ -1801,7 +1799,7 @@ margin_top = 114.444
 margin_right = 161.384
 margin_bottom = 165.444
 custom_fonts/font = ExtResource( 29 )
-text = "Debuff - Stat increase 20%,
+text = "Debuff - Stat decrease 30%,
 Whammy! chance -1"
 autowrap = true
 
@@ -1999,7 +1997,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -2016,6 +2013,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 

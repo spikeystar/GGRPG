@@ -467,17 +467,17 @@ func lose_buffs():
 	if a_buff:
 		a_buff = false
 		a_buff_timer = 0
-		f_attack -= (og_attack * 0.2)
+		f_attack -= (og_attack * 0.3)
 		whammy_chance -= 1
 	if m_buff:
 		m_buff = false
 		m_buff_timer = 0
-		f_magic -= (og_magic * 0.2)
+		f_magic -= (og_magic * 0.3)
 		whammy_chance -= 1
 	if d_buff:
 		d_buff = false
 		d_buff_timer = 0
-		f_defense -= (og_defense * 0.2)
+		f_defense -= (og_defense * 0.3)
 		whammy_chance -= 1
 
 func type_damage(damage_type):
@@ -523,7 +523,7 @@ func text(TEXT: PackedScene, text_position: Vector2 = global_position):
 	if TEXT:
 		var text = TEXT.instance()
 		get_tree().current_scene.add_child(text)
-		text.position = text_position + Vector2(0, -60)
+		text.position = text_position + Vector2(2, -60)
 		return text
 		
 func get_position(fighter_position: Vector2 = position):
@@ -647,11 +647,11 @@ func status_restore():
 	if poison:
 		poison = false
 		poison_timer = 0
-		f_attack += (og_attack * 0.1)
+		f_attack += (og_attack * 0.2)
 	if anxious:
 		anxious = false
 		anxious_timer = 0
-		f_magic += (og_magic * 0.1)
+		f_magic += (og_magic * 0.2)
 	if targeted:
 		targeted = false
 		targeted_timer = 0
@@ -667,17 +667,17 @@ func status_restore():
 	if a_debuff:
 		a_debuff = false
 		a_debuff_timer = 0
-		f_attack += (og_attack * 0.2)
+		f_attack += (og_attack * 0.3)
 		whammy_chance += 1
 	if m_debuff:
 		m_debuff = false
 		m_debuff_timer = 0
-		f_magic += (og_magic * 0.2)
+		f_magic += (og_magic * 0.3)
 		whammy_chance += 1
 	if d_debuff:
 		d_debuff = false
 		d_debuff_timer = 0
-		f_defense += (og_defense * 0.2)
+		f_defense += (og_defense * 0.3)
 		whammy_chance += 1
 		
 
@@ -699,7 +699,7 @@ func status_countdown():
 		poison_timer -= 1
 		if poison_timer == 0:
 			poison = false
-			f_attack += (og_attack * 0.1)
+			f_attack += (og_attack * 0.2)
 	if targeted:
 		targeted_timer -= 1
 		if targeted_timer == 0:
@@ -714,37 +714,37 @@ func status_countdown():
 		a_buff_timer -= 1
 		if a_buff_timer == 0:
 			a_buff = false
-			f_attack -= (og_attack * 0.2)
+			f_attack -= (og_attack * 0.3)
 			whammy_chance -= 1
 	if a_debuff:
 		a_debuff_timer -= 1
 		if a_debuff_timer == 0:
 			a_debuff = false	
-			f_attack += (og_attack * 0.2)
+			f_attack += (og_attack * 0.3)
 			whammy_chance += 1
 	if m_buff:
 		m_buff_timer -= 1
 		if m_buff_timer == 0:
 			m_buff = false
-			f_magic -= (og_magic * 0.2)
+			f_magic -= (og_magic * 0.3)
 			whammy_chance -= 1
 	if m_debuff:
 		m_debuff_timer -= 1
 		if m_debuff_timer == 0:
 			m_debuff = false	
-			f_magic += (og_magic * 0.2)
+			f_magic += (og_magic * 0.3)
 			whammy_chance += 1		
 	if d_buff:
 		d_buff_timer -= 1
 		if d_buff_timer == 0:
 			d_buff = false
-			f_defense -= (og_defense * 0.2)
+			f_defense -= (og_defense * 0.3)
 			whammy_chance -= 1
 	if d_debuff:
 		d_debuff_timer -= 1
 		if d_debuff_timer == 0:
 			d_debuff = false	
-			f_defense += (og_defense * 0.2)
+			f_defense += (og_defense * 0.3)
 			whammy_chance += 1	
 	
 	if hocus_potion:
@@ -756,7 +756,7 @@ func status_countdown():
 		anxious_timer -= 1
 		if anxious_timer == 0:
 			anxious = false
-			f_magic += (og_magic * 0.1)
+			f_magic += (og_magic * 0.2)
 		yield(get_tree().create_timer(0.7), "timeout")
 		anxious_SP(1)
 
@@ -772,7 +772,7 @@ func poison():
 	if not poison and not hocus_potion:
 		poison = true
 		poison_timer = 3
-		f_attack -= (og_attack * 0.1)
+		f_attack -= (og_attack * 0.2)
 	else:
 		return
 		
@@ -780,7 +780,7 @@ func envenomate():
 	if not poison and not hocus_potion:
 		poison = true
 		poison_timer = 3
-		f_attack -= (og_attack * 0.1)
+		f_attack -= (og_attack * 0.2)
 	if poison:
 		apply_debuff("attack")
 		apply_debuff("magic")
@@ -792,7 +792,7 @@ func anxious():
 	if not anxious and not hocus_potion:
 		anxious = true
 		anxious_timer = 3
-		f_magic -= (og_magic * 0.1)
+		f_magic -= (og_magic * 0.2)
 	else:
 		return
 		
@@ -830,7 +830,7 @@ func apply_buff(id : String):
 	if id == "attack" and not a_buff and not a_debuff:
 		a_buff = true
 		a_buff_timer = 4
-		f_attack += (og_attack * 0.2)
+		f_attack += (og_attack * 0.3)
 		whammy_chance += 1
 		buff()
 	elif id == "attack" and a_debuff:
@@ -839,16 +839,16 @@ func apply_buff(id : String):
 		a_debuff_timer = 0
 		if a_buff_timer > 0:
 			a_buff = true
-			f_attack += (og_attack * 0.2)
+			f_attack += (og_attack * 0.3)
 			whammy_chance += 1
-		f_attack += (og_attack * 0.2)
+		f_attack += (og_attack * 0.3)
 		whammy_chance += 1
 		buff()
 		
 	if id == "magic" and not m_buff and not m_debuff:
 		m_buff = true
 		m_buff_timer = 4
-		f_magic += (og_magic * 0.2)
+		f_magic += (og_magic * 0.3)
 		whammy_chance += 1
 		buff()
 	elif id == "magic" and m_debuff:
@@ -857,9 +857,9 @@ func apply_buff(id : String):
 		m_debuff_timer = 0
 		if m_buff_timer > 0:
 			m_buff = true
-			f_magic += (og_magic * 0.2)
+			f_magic += (og_magic * 0.3)
 			whammy_chance += 1
-		f_magic += (og_magic * 0.2)
+		f_magic += (og_magic * 0.3)
 		whammy_chance += 1
 		buff()
 		
@@ -867,7 +867,7 @@ func apply_buff(id : String):
 	if id == "defense" and not d_buff and not d_debuff:
 		d_buff = true
 		d_buff_timer = 3
-		f_defense += (og_defense * 0.2)
+		f_defense += (og_defense * 0.3)
 		whammy_chance += 1
 		buff()
 	elif id == "defense" and d_debuff:
@@ -876,9 +876,9 @@ func apply_buff(id : String):
 		d_debuff_timer = 0
 		if d_buff_timer > 0:
 			d_buff = true
-			f_defense += (og_defense * 0.2)
+			f_defense += (og_defense * 0.3)
 			whammy_chance += 1
-		f_defense += (og_defense * 0.2)
+		f_defense += (og_defense * 0.3)
 		whammy_chance += 1
 		buff()	
 		
@@ -886,7 +886,7 @@ func apply_debuff(id : String):
 	if id == "attack" and not a_debuff and not a_buff and not hocus_potion:
 		a_debuff = true
 		a_debuff_timer = 4
-		f_attack -= (og_attack * 0.2)
+		f_attack -= (og_attack * 0.3)
 		whammy_chance -= 1
 		debuff()
 	if id == "attack" and a_buff and not hocus_potion:
@@ -895,9 +895,9 @@ func apply_debuff(id : String):
 		a_buff_timer = 0
 		if a_debuff_timer > 0:
 			a_debuff = true
-			f_attack -= (og_attack * 0.2)
+			f_attack -= (og_attack * 0.3)
 			whammy_chance -= 1
-		f_attack -= (og_attack * 0.2)
+		f_attack -= (og_attack * 0.3)
 		whammy_chance -= 1
 		debuff()
 		
@@ -905,7 +905,7 @@ func apply_debuff(id : String):
 	if id == "magic" and not m_debuff and not m_buff and not hocus_potion:
 		m_debuff = true
 		m_debuff_timer = 4
-		f_magic -= (og_magic * 0.2)
+		f_magic -= (og_magic * 0.3)
 		whammy_chance -= 1
 		debuff()
 	if id == "magic" and m_buff and not hocus_potion:
@@ -914,9 +914,9 @@ func apply_debuff(id : String):
 		m_buff_timer = 0
 		if m_debuff_timer > 0:
 			m_debuff = true
-			f_magic -= (og_magic * 0.2)
+			f_magic -= (og_magic * 0.3)
 			whammy_chance -= 1
-		f_magic -= (og_magic * 0.2)
+		f_magic -= (og_magic * 0.3)
 		whammy_chance -= 1
 		debuff()
 		
@@ -924,7 +924,7 @@ func apply_debuff(id : String):
 	if id == "defense" and not d_debuff and not d_buff and not hocus_potion:
 		d_debuff = true
 		d_debuff_timer = 4
-		f_defense -= (og_defense * 0.2)
+		f_defense -= (og_defense * 0.3)
 		whammy_chance -= 1
 		debuff()
 	if id == "defense" and d_buff and not hocus_potion:
@@ -933,9 +933,9 @@ func apply_debuff(id : String):
 		d_buff_timer = 0
 		if d_debuff_timer > 0:
 			d_debuff = true
-			f_defense -= (og_defense * 0.2)
+			f_defense -= (og_defense * 0.3)
 			whammy_chance -= 1
-		f_defense -= (og_defense * 0.2)
+		f_defense -= (og_defense * 0.3)
 		whammy_chance -= 1
 		debuff()
 
