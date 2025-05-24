@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://Scripts/Battle/ItemInventory_Battle.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Battle/ItemWindow.gd" type="Script" id=2]
@@ -61,8 +61,9 @@
 [ext_resource path="res://Enemies/Kugi Canyon/Battle/Tenant_B_battle.tscn" type="PackedScene" id=59]
 [ext_resource path="res://Enemies/Kugi Canyon/Battle/Tenant_A_battle.tscn" type="PackedScene" id=60]
 [ext_resource path="res://Assets/Kugi Canyon/Kugi Canyon BA 2 Extra.png" type="Texture" id=61]
+[ext_resource path="res://UI/Battle/Move Icons.png" type="Texture" id=62]
 
-[sub_resource type="Theme" id=14]
+[sub_resource type="Theme" id=31]
 
 [sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 26 )
@@ -811,23 +812,39 @@ text = "Cheribo"
 script = ExtResource( 19 )
 
 [node name="EnemyMove" type="Sprite" parent="Enemies"]
-visible = false
 position = Vector2( -163, -233 )
 scale = Vector2( 0.976667, 1 )
 texture = ExtResource( 42 )
 script = ExtResource( 18 )
 
 [node name="Move_Name" type="Label" parent="Enemies/EnemyMove"]
-margin_left = -118.259
+margin_left = -125.426
 margin_top = -10.0
-margin_right = 87.7406
+margin_right = 80.5733
 margin_bottom = 11.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-theme = SubResource( 14 )
+theme = SubResource( 31 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.196078 )
 custom_fonts/font = ExtResource( 40 )
-text = "Sublimate"
+text = "Sublimates"
+
+[node name="Icons" type="Node2D" parent="Enemies/EnemyMove"]
+position = Vector2( 12.3, -1 )
+
+[node name="Type1" type="Sprite" parent="Enemies/EnemyMove/Icons"]
+position = Vector2( 15.3584, 1 )
+texture = ExtResource( 62 )
+hframes = 4
+vframes = 2
+frame = 1
+
+[node name="Type2" type="Sprite" parent="Enemies/EnemyMove/Icons"]
+position = Vector2( 41.9795, 1 )
+texture = ExtResource( 62 )
+hframes = 4
+vframes = 2
+frame = 6
 
 [node name="Fighters" type="Node2D" parent="."]
 script = ExtResource( 21 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=1]
 [ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=2]
@@ -59,8 +59,9 @@
 [ext_resource path="res://UI/Battle/Item Window.png" type="Texture" id=57]
 [ext_resource path="res://Misc/Font/HUD.tres" type="DynamicFont" id=58]
 [ext_resource path="res://UI/Battle/Jacques Dead HUD.png" type="Texture" id=59]
+[ext_resource path="res://UI/Battle/Move Icons.png" type="Texture" id=60]
 
-[sub_resource type="Theme" id=14]
+[sub_resource type="Theme" id=31]
 
 [sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 22 )
@@ -761,16 +762,33 @@ texture = ExtResource( 36 )
 script = ExtResource( 7 )
 
 [node name="Move_Name" type="Label" parent="Enemies/EnemyMove"]
-margin_left = -118.259
+margin_left = -125.426
 margin_top = -10.0
-margin_right = 87.7406
+margin_right = 10.5737
 margin_bottom = 11.0
 size_flags_horizontal = 2
 size_flags_vertical = 0
-theme = SubResource( 14 )
+theme = SubResource( 31 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.196078 )
 custom_fonts/font = ExtResource( 41 )
-text = "Sublimate"
+text = "Gravel Spat"
+
+[node name="Icons" type="Node2D" parent="Enemies/EnemyMove"]
+position = Vector2( 26.6345, -2 )
+
+[node name="Type1" type="Sprite" parent="Enemies/EnemyMove/Icons"]
+position = Vector2( 15.3584, 1 )
+texture = ExtResource( 60 )
+hframes = 4
+vframes = 2
+frame = 1
+
+[node name="Type2" type="Sprite" parent="Enemies/EnemyMove/Icons"]
+position = Vector2( 41.9795, 1 )
+texture = ExtResource( 60 )
+hframes = 4
+vframes = 2
+frame = 6
 
 [node name="Fighters" type="Node2D" parent="."]
 script = ExtResource( 14 )
@@ -1594,6 +1612,7 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1610,7 +1629,6 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
