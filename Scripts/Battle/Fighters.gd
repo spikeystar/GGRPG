@@ -163,6 +163,82 @@ func set_positions():
 		if PartyStats.irina_id == 3:
 			fighters.append($Irina_Battle)
 			fighters[2].position = Vector2(-23, 194)
+			
+	if PartyStats.party_members >= 3:
+		if PartyStats.gary_id == 1:
+			fighters.append($Gary_Battle)
+			fighters[0].position = Vector2(-240, 86)
+		
+		if PartyStats.jacques_id == 1:
+			fighters.append($Jacques_Battle)
+			fighters[0].position = Vector2(-240, 86)
+		
+		if PartyStats.irina_id == 1:
+			fighters.append($Irina_Battle)
+			fighters[0].position = Vector2(-240, 86)
+			
+		if PartyStats.suzy_id == 1:
+			fighters.append($Suzy_Battle)
+			fighters[0].position = Vector2(-240, 86)
+			
+		if PartyStats.damien_id == 1:
+			fighters.append($Damien_Battle)
+			fighters[0].position = Vector2(-240, 86)
+		
+		if PartyStats.gary_id == 2:
+			fighters.append($Gary_Battle)
+			fighters[1].position = Vector2(-135, 144)
+		
+		if PartyStats.jacques_id == 2:
+			fighters.append($Jacques_Battle)
+			fighters[1].position = Vector2(-135, 144)
+		
+		if PartyStats.irina_id == 2:
+			fighters.append($Irina_Battle)
+			fighters[1].position = Vector2(-135, 144)
+			
+		if PartyStats.suzy_id == 2:
+			fighters.append($Suzy_Battle)
+			fighters[1].position = Vector2(-135, 144)
+			
+		if PartyStats.damien_id == 2:
+			fighters.append($Damien_Battle)
+			fighters[1].position = Vector2(-135, 144)
+		
+		if PartyStats.gary_id == 3:
+			fighters.append($Gary_Battle)
+			fighters[2].position = Vector2(-23, 194)
+		
+		if PartyStats.jacques_id == 3:
+			fighters.append($Jacques_Battle)
+			fighters[2].position = Vector2(-23, 194)
+		
+		if PartyStats.irina_id == 3:
+			fighters.append($Irina_Battle)
+			fighters[2].position = Vector2(-23, 194)
+			
+		if PartyStats.suzy_id == 3:
+			fighters.append($Suzy_Battle)
+			fighters[2].position = Vector2(-23, 194)
+			
+		if PartyStats.damien_id == 3:
+			fighters.append($Damien_Battle)
+			fighters[2].position = Vector2(-23, 194)
+			
+		if PartyStats.gary_id == 4 or PartyStats.gary_id == 5:
+			$Gary_Battle.queue_free()
+			
+		if PartyStats.jacques_id == 4 or PartyStats.jacques_id == 5:
+			$Jacques_Battle.hide()
+			
+		if PartyStats.irina_id == 4 or PartyStats.irina_id == 5:
+			$Irina_Battle.hide()
+			
+		if PartyStats.suzy_id == 4 or PartyStats.suzy_id == 5:
+			$Suzy_Battle.hide()
+			
+		if PartyStats.damien_id == 4 or PartyStats.damien_id == 5:
+			$Damien_Battle.hide()
 		
 		
 func _on_WorldRoot_BB_active():
@@ -555,6 +631,10 @@ func huds_update():
 		$HUDS.jacques_update()
 	if fighter_name == "irina":
 		$HUDS.irina_update()
+	if fighter_name == "suzy":
+		$HUDS.suzy_update()
+	if fighter_name == "damien":
+		$HUDS.damien_update()
 	
 func huds_heal_update():
 	fighter_name = fighters2[target_index].get_name()
@@ -581,6 +661,11 @@ func huds_heal_update():
 		$HUDS.jacques_update()
 	if fighter_name == "irina":
 		$HUDS.irina_update()
+	if fighter_name == "suzy":
+		$HUDS.suzy_update()
+	if fighter_name == "damien":
+		$HUDS.damien_update()
+		
 		
 func all_heal_update():
 	$HUDS.stun = fighters2[fighter_index].get_status("stun")
@@ -603,6 +688,10 @@ func all_heal_update():
 		$HUDS.jacques_update()
 	if fighter_name == "irina":
 		$HUDS.irina_update()
+	if fighter_name == "suzy":
+		$HUDS.suzy_update()
+	if fighter_name == "damien":
+		$HUDS.damien_update()
 		
 func fighter_attack():
 	fighters[fighter_index].attack()

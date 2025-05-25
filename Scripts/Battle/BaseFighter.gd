@@ -127,6 +127,23 @@ func set_stats():
 		f_magic = PartyStats.irina_magic
 		f_defense = PartyStats.irina_defense
 		trinket = PartyStats.irina_trinket
+	if fighter_name == "suzy":
+		party_id = PartyStats.suzy_id
+		health = PartyStats.suzy_current_health
+		f_health = PartyStats.suzy_health
+		f_attack = PartyStats.suzy_attack
+		f_magic = PartyStats.suzy_magic
+		f_defense = PartyStats.suzy_defense
+		trinket = PartyStats.suzy_trinket
+	if fighter_name == "damien":
+		party_id = PartyStats.damien_id
+		health = PartyStats.damien_current_health
+		f_health = PartyStats.damien_health
+		f_attack = PartyStats.damien_attack
+		f_magic = PartyStats.damien_magic
+		f_defense = PartyStats.damien_defense
+		trinket = PartyStats.damien_trinket
+
 		
 func set_formation():
 	if PartyStats.party_members == 1:
@@ -542,7 +559,7 @@ func get_OG_position():
 			OG_position = Vector2(-86, 168)
 		return OG_position
 	
-	if PartyStats.party_members == 3:
+	if PartyStats.party_members >= 3:
 		if party_id == 1:
 			OG_position = Vector2(-240, 86)
 		elif party_id == 2:
@@ -564,7 +581,7 @@ func get_BB_position():
 			BB_position = Vector2(-86, 130)
 		return BB_position
 	
-	if PartyStats.party_members == 3:
+	if PartyStats.party_members >= 3:
 		if party_id == 1:
 			BB_position = Vector2(-240, 48)
 		elif party_id == 2:

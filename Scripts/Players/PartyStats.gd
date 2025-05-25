@@ -1,7 +1,7 @@
 extends Node
 
 var party_id : int
-var party_members = 1
+var party_members = 5
 var member_name : String
 var holder_name : String
 
@@ -13,7 +13,7 @@ var gary_magic = 23
 var gary_defense = 17
 var gary_trinket : String = "-"
 
-var jacques_id = 2
+var jacques_id = 4
 var jacques_health = 60
 var jacques_current_health = 60
 var jacques_attack = 20
@@ -21,7 +21,7 @@ var jacques_magic = 27
 var jacques_defense = 26
 var jacques_trinket : String = "-"
 
-var irina_id = 3
+var irina_id = 5
 var irina_health = 70
 var irina_current_health = 70
 var irina_attack = 17
@@ -29,7 +29,7 @@ var irina_magic = 25
 var irina_defense = 17
 var irina_trinket : String = "-"
 
-var suzy_id = 4
+var suzy_id = 2
 var suzy_health = 122
 var suzy_current_health = 122
 var suzy_attack = 17
@@ -37,7 +37,7 @@ var suzy_magic = 25
 var suzy_defense = 17
 var suzy_trinket : String = "-"
 
-var damien_id = 5
+var damien_id = 3
 var damien_health = 122
 var damien_current_health = 122
 var damien_attack = 17
@@ -58,6 +58,8 @@ func _ready():
 	gary_current_health = gary_health
 	jacques_current_health = jacques_health
 	irina_current_health = irina_health
+	suzy_current_health = suzy_health
+	damien_current_health = damien_health
 	
 	#gary_current_health = 1
 	#jacques_current_health = 1
