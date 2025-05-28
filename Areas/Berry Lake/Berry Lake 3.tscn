@@ -676,7 +676,7 @@ script = ExtResource( 58 )
 depth_test_offset = Vector2( 0, 200 )
 
 [node name="Grass4" type="Sprite" parent="YSort/Floor"]
-position = Vector2( 360, -241 )
+position = Vector2( 360, -237 )
 scale = Vector2( 1.93712, 2.37252 )
 texture = ExtResource( 36 )
 script = ExtResource( 58 )
@@ -1325,6 +1325,30 @@ position = Vector2( -183, 728 )
 scale = Vector2( 3.24909, 2.98758 )
 texture = ExtResource( 21 )
 
+[node name="BBox" parent="YSort" instance=ExtResource( 22 )]
+position = Vector2( 1126, 356 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 1, 2 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 120.0
+floor_height = 40.0
+
+[node name="BBox2" parent="YSort" instance=ExtResource( 22 )]
+position = Vector2( 1187, 329 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 1, 2 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 120.0
+floor_height = 40.0
+
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 9 )]
@@ -1354,7 +1378,7 @@ height = 40.0
 
 [node name="NavmeshLayer2" parent="CollisionRoot/Navmesh2" instance=ExtResource( 8 )]
 position = Vector2( 1053, 591 )
-polygon = PoolVector2Array( -469, -79, -494, -89, -468, -102, -488, -110, 9, -286, 56, -263, 156, -301, 249, -266, 162, -232, 250, -201, 222, -189, 250, -178, 224, -168, 251, -155, -218, 11, -247, 0, -278, 13, -496, -68 )
+polygon = PoolVector2Array( -469, -79, -494, -89, -468, -102, -488, -110, 9, -286, 56, -263, 157, -299, 249, -266, 162, -232, 250, -201, 222, -189, 250, -178, 224, -168, 251, -155, -218, 11, -247, 0, -278, 13, -496, -68 )
 height = 40.0
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 7 )]
@@ -1417,7 +1441,7 @@ height = 40.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BerryLake4"]
 position = Vector2( 25.248, 10.4181 )
-polygon = PoolVector2Array( -51.5421, -22.8126, 39.1749, 7.09479, 12.4138, 17.7173, -73.3508, -14.3052 )
+polygon = PoolVector2Array( -49.5195, -21.8591, 39.1749, 7.09479, 12.4138, 17.7173, -71.3514, -14.3516 )
 
 [node name="PresentBase" parent="." instance=ExtResource( 5 )]
 position = Vector2( 904, 112 )

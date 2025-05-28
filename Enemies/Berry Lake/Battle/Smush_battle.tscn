@@ -1040,7 +1040,7 @@ hframes = 12
 
 [node name="DamageStar" type="Sprite" parent="."]
 visible = false
-position = Vector2( 2, -25 )
+position = Vector2( 1, -22 )
 texture = ExtResource( 8 )
 hframes = 6
 vframes = 6

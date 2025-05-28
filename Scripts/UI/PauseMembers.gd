@@ -168,12 +168,21 @@ func _process(delta):
 			PartyStats.jacques_id = PartyStats.party_id
 		if selector_name == "Irina":
 			PartyStats.irina_id = PartyStats.party_id
+		if selector_name == "Suzy":
+			PartyStats.suzy_id = PartyStats.party_id
+		if selector_name == "Damien":
+			PartyStats.damien_id = PartyStats.party_id
+			
 		if member_name == "Gary":
 			PartyStats.gary_id = current_id
 		if member_name == "Jacques":
 			PartyStats.jacques_id = current_id
 		if member_name == "Irina":
 			PartyStats.irina_id = current_id
+		if member_name == "Suzy":
+			PartyStats.suzy_id = current_id
+		if member_name == "Damien":
+			PartyStats.damien_id = current_id
 		
 		##########
 		
