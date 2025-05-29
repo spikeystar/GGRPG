@@ -96,6 +96,8 @@ func _on_Members_item_usage():
 	if selected_id == "Sugar Pill":
 		amount = 30
 		set_member_target()
+		amount = 5
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
 	if selected_id == "Ginger Tea":
 		amount = 10
 		set_member_target()

@@ -93,7 +93,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 11 ]
+"values": [ 19 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CircleShadowSmall:position")
@@ -117,7 +117,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( -2.963, -2.963 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprite:scale")
@@ -338,17 +338,17 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 11, 11 ]
+"values": [ 19 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CircleShadowSmall:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -500,7 +500,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 21 ]
+"values": [ 45 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CircleShadowSmall:position")
@@ -524,12 +524,12 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -1.48148 ) ]
+"values": [ Vector2( -5.185, -4.7 ) ]
 }
 
 [sub_resource type="Animation" id=15]
 resource_name = "Fighter_Victory"
-length = 0.5
+length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -537,10 +537,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3 ]
+"values": [ 6, 7, 8, 9, 8 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CircleShadowSmall:position")
@@ -559,7 +559,7 @@ tracks/2/path = NodePath("Sprite:offset")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
@@ -576,7 +576,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ) ]
+"values": [ Vector2( -4.44444, -1.48148 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Sprite:scale")

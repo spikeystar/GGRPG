@@ -509,7 +509,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 27.4074 ) ]
+"values": [ Vector2( 0.376, 27.613 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:position")
