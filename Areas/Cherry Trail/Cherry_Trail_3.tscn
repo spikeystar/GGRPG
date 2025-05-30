@@ -647,7 +647,7 @@ scale = Vector2( 1.47306, 1.1387 )
 texture = ExtResource( 9 )
 script = ExtResource( 37 )
 depth_test_offset = Vector2( 0, -25 )
-feet_height = 32.0
+feet_height = 29.0
 use_dithering = false
 use_dither_blending = false
 
@@ -687,6 +687,7 @@ polygon = PoolVector2Array( -17, -13, 0, -7, 21, -13, 17, -2, 30, 5, 11, 6, 0, 1
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 13 )]
 
 [node name="NavmeshLayer5" parent="CollisionRoot/Navmesh2" instance=ExtResource( 14 )]
+visible = false
 position = Vector2( -116.6, -415.1 )
 polygon = PoolVector2Array( -195, 53, -232, 64, -240, 83, -223, 97, -198, 108, -160, 112, -123, 111, -86, 100, -72, 90, -73, 75, -84, 64, -99, 59, -130, 51, -155, 49 )
 __meta__ = {
@@ -831,7 +832,13 @@ cursor_offset = Vector2( -9, 3 )
 position = Vector2( -275, -341 )
 item_name = "Yummy Cake"
 floor_height = 96.0
-shadow_color = Color( 0.427451, 0.521569, 0.458824, 1 )
+shadow_color = Color( 0.427451, 0.521569, 0.533333, 1 )
+
+[node name="PresentBase2" parent="." instance=ExtResource( 40 )]
+position = Vector2( 330, -7 )
+item_name = "Full Heal"
+floor_height = 32.0
+shadow_color = Color( 0.427451, 0.521569, 0.533333, 1 )
 
 [node name="Flutterbie" parent="." instance=ExtResource( 42 )]
 position = Vector2( 282, -46 )
@@ -849,3 +856,4 @@ alternate = false
 [connection signal="overworld" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_overworld"]
 [connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
+[connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
