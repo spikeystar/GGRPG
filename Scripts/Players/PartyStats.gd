@@ -49,7 +49,7 @@ var party_sp = 20
 var party_max_sp = 20
 var party_level = 1
 var party_exp = 0
-var next_level = int((125) * (party_level/1.5) + (party_level * 150))
+var next_level = 200
 
 var new_spell_2 = false
 
@@ -107,7 +107,7 @@ func level_up():
 		party_max_sp += 5
 		
 	full_heal()
-	next_level = int((125) * (party_level/1.5) + (party_level * 75))
+	next_level = int((125) * (party_level/1.5) + (party_level * 125))
 		
 func set_stats():	
 	gary_health = 51 + int((party_level / 1.5) * 10.5)

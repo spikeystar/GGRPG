@@ -45,10 +45,12 @@ func stopped():
 	active.stop()
 
 func pause():
+	is_playing = false
 	saved_time = active.get_playback_position()
 	active.stop()
 	
 func unpause():
+	is_playing = true
 	active.play()
 	active.seek(saved_time)
 	

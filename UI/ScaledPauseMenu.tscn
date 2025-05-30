@@ -1209,7 +1209,7 @@ margin_top = 7.0
 margin_right = 71.0
 margin_bottom = 21.0
 theme = SubResource( 3 )
-text = "Next Lvl"
+text = "EXP Need"
 
 [node name="Next_amount" type="Label" parent="SubMenu"]
 margin_left = 83.0
