@@ -181,7 +181,7 @@ nodes/Animation/position = Vector2( 60, 150 )
 nodes/TimeScale/node = SubResource( 84 )
 nodes/TimeScale/position = Vector2( 260, 130 )
 nodes/output/position = Vector2( 460, 140 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=107]
 animation = "d_down_r_walk"
@@ -195,7 +195,7 @@ nodes/Animation/position = Vector2( -10, 130 )
 nodes/TimeScale/node = SubResource( 108 )
 nodes/TimeScale/position = Vector2( 231.99, 171.183 )
 nodes/output/position = Vector2( 410, 100 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=87]
 animation = "side_r_walk"
@@ -208,7 +208,7 @@ nodes/Animation/node = SubResource( 87 )
 nodes/Animation/position = Vector2( -120, 120 )
 nodes/TimeScale/node = SubResource( 88 )
 nodes/TimeScale/position = Vector2( 100, 120 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=90]
 animation = "d_up_r_walk"
@@ -221,7 +221,7 @@ nodes/Animation/node = SubResource( 90 )
 nodes/Animation/position = Vector2( -110, 150 )
 nodes/TimeScale/node = SubResource( 91 )
 nodes/TimeScale/position = Vector2( 80, 140 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=93]
 animation = "back_walk"
@@ -234,7 +234,7 @@ nodes/Animation/node = SubResource( 93 )
 nodes/Animation/position = Vector2( -160, 150 )
 nodes/TimeScale/node = SubResource( 94 )
 nodes/TimeScale/position = Vector2( 60, 140 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=96]
 animation = "d_up_walk"
@@ -247,7 +247,7 @@ nodes/Animation/node = SubResource( 96 )
 nodes/Animation/position = Vector2( -60, 130 )
 nodes/TimeScale/node = SubResource( 97 )
 nodes/TimeScale/position = Vector2( 100, 120 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=99]
 animation = "side_walk"
@@ -261,7 +261,7 @@ nodes/Animation/position = Vector2( 20, 140 )
 nodes/TimeScale/node = SubResource( 100 )
 nodes/TimeScale/position = Vector2( 200, 120 )
 nodes/output/position = Vector2( 370, 150 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeAnimation" id=102]
 animation = "front_idle"
@@ -284,7 +284,7 @@ nodes/Animation/position = Vector2( 310, 130 )
 nodes/TimeScale/node = SubResource( 105 )
 nodes/TimeScale/position = Vector2( 530, 110 )
 nodes/output/position = Vector2( 700, 130 )
-node_connections = [ "TimeScale", 0, "Animation", "output", 0, "TimeScale" ]
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=50]
 blend_point_0/node = SubResource( 148 )
@@ -575,6 +575,30 @@ tracks/18/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 30 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("BodyVisualRoot/Poof:offset")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -30 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("BodyVisualRoot/Poof:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, -8 ) ]
 }
 
 [sub_resource type="Animation" id=189]
@@ -3268,6 +3292,42 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ Vector2( 8, -28 ), Vector2( 8, -36.3333 ), Vector2( 8, -44.6667 ), Vector2( 8, -53 ), Vector2( 8, -44.6667 ), Vector2( 8, -36.3333 ), Vector2( 8, -28 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("BodyVisualRoot/Gary:z_index")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = false
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 29 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("BodyVisualRoot/Poof:offset")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -30 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("BodyVisualRoot/Poof:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, -8 ) ]
 }
 
 [sub_resource type="Animation" id=249]
@@ -6677,6 +6737,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyYSort/BodyVisualRoot/Bubble:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=219]
 resource_name = "enter"
@@ -6716,6 +6788,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyYSort/BodyVisualRoot/Bubble:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=220]
@@ -6758,6 +6842,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyYSort/BodyVisualRoot/Bubble:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=221]
 resource_name = "pop"
@@ -6797,6 +6893,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("BodyYSort/BodyVisualRoot/Bubble:offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
 }
 
 [node name="Gary" type="YSort"]

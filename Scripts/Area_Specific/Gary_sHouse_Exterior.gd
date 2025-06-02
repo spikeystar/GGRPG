@@ -38,7 +38,7 @@ func _ready():
 		
 		
 	if EventManager.new_file:
-		SceneManager.loading = false
+		#SceneManager.loading = false
 		PlayerManager.freeze = true
 		PlayerManager.cutscene = true
 		add_child(transition2)

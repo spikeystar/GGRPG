@@ -19,7 +19,6 @@ signal done
 
 func _ready():
 	SceneManager.loading = true
-	PlayerManager.hide_player()
 	if Music.id != "Jewel_Seeds" or not Music.is_playing:
 		Music.switch_songs()
 		Music.id = "Jewel_Seeds"
@@ -93,7 +92,9 @@ func _ready():
 	var transition = TransitionPlayer2.instance()
 	get_tree().get_root().add_child(transition)
 	transition.transition_in(target_scene, _get_animation_name())
-	yield(get_tree().create_timer(2), "timeout")
+	#yield(get_tree().create_timer(2), "timeout")
+	yield(get_tree().create_timer(0.7), "timeout")
+	SceneManager.loading = false
 	
 	
 func tween_go():

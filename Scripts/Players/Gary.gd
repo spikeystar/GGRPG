@@ -27,6 +27,7 @@ onready var shadow_y_sort = $ShadowYSort
 onready var shadow_visual_root = $ShadowYSort/ShadowVisualRoot
 
 onready var body_sprite = $BodyYSort/BodyVisualRoot/Gary
+onready var poof_sprite = $BodyYSort/BodyVisualRoot/Poof
 onready var bubble_sprite = $BodyYSort/BodyVisualRoot/Bubble
 onready var shadow_sprite = $ShadowYSort/ShadowVisualRoot/ShadowCircle
 
@@ -134,7 +135,6 @@ func _physics_process(delta):
 	if not loading:
 		body_sprite.offset.y = 0
 		shadow_sprite.offset.y = 0
-		
 	
 	var draw_pos_z = motion_root.pos_z
 	var draw_y_sort = Global.calculate_y_sort(Vector3(motion_root.global_position.x, motion_root.global_position.y, motion_root.floor_z))

@@ -69,4 +69,3 @@ func _ready():
 		PlayerManager.ongoing = false
 	
 	
-	

@@ -23,9 +23,6 @@ func _ready():
 	PlayerManager.freeze = false
 	Gary.set_right()
 	
-
-	#PlayerManager.hide_player()
-	
 	yield(get_tree().create_timer(1.5), "timeout")
 	$AnimationPlayer2.play("Intro")
 	yield(get_tree().create_timer(2.6), "timeout")
