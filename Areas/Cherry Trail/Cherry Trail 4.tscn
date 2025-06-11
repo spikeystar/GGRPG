@@ -218,23 +218,23 @@ scale = Vector2( 1.37, 1.38 )
 texture = ExtResource( 4 )
 
 [node name="HillB" type="Sprite" parent="YSort/Background"]
-position = Vector2( -228, -145 )
-scale = Vector2( 1.57194, 1.50448 )
+position = Vector2( -230, -160 )
+scale = Vector2( 1.60097, 1.54224 )
 texture = ExtResource( 14 )
 
 [node name="FlowerHillA" type="Sprite" parent="YSort/Background"]
-position = Vector2( 522, -212 )
-scale = Vector2( 1.3211, 1.19628 )
+position = Vector2( 526, -214 )
+scale = Vector2( 1.34722, 1.20481 )
 texture = ExtResource( 12 )
 
 [node name="HillB2" type="Sprite" parent="YSort/Background"]
-position = Vector2( 64, -237 )
-scale = Vector2( 1.265, 1.18375 )
+position = Vector2( 65, -257 )
+scale = Vector2( 1.3975, 1.31687 )
 texture = ExtResource( 14 )
 
 [node name="FlowerHillD" type="Sprite" parent="YSort/Background"]
-position = Vector2( 174, -185 )
-scale = Vector2( 1, 0.993037 )
+position = Vector2( 162, -197 )
+scale = Vector2( 1.15667, 1.11326 )
 texture = ExtResource( 11 )
 
 [node name="PlantA2" type="Sprite" parent="YSort/Background"]
@@ -454,8 +454,8 @@ scale = Vector2( 1.47173, 1.56654 )
 texture = ExtResource( 4 )
 
 [node name="FlowerHillB" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 88, 141 )
-scale = Vector2( 1.45148, 1.36639 )
+position = Vector2( 82.361, 137.979 )
+scale = Vector2( 1.48907, 1.38653 )
 texture = ExtResource( 15 )
 
 [node name="PlantA" type="Sprite" parent="YSort/Foreground"]
@@ -481,9 +481,9 @@ z_index = 1
 texture = ExtResource( 4 )
 
 [node name="PlantB4" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 531, -132 )
+position = Vector2( 531.724, -132.965 )
 rotation = 0.0779527
-scale = Vector2( 1.52719, 1.52865 )
+scale = Vector2( 1.53365, 1.53883 )
 texture = ExtResource( 4 )
 
 [node name="HillC3" type="Sprite" parent="YSort/Foreground"]
@@ -513,8 +513,8 @@ scale = Vector2( 1.53, 1.425 )
 texture = ExtResource( 13 )
 
 [node name="HillB4" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 446, 224 )
-scale = Vector2( 2.18422, 2.09159 )
+position = Vector2( 446, 226 )
+scale = Vector2( 2.16211, 2.07579 )
 texture = ExtResource( 12 )
 
 [node name="CheriboPath" type="Path2D" parent="YSort"]
