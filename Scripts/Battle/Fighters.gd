@@ -311,15 +311,19 @@ func _process(delta):
 		####### Item Selection ##########
 		
 	if Input.is_action_just_pressed("ui_right") and item_selecting and not attack_chosen and not magic_selecting and not halt:
-		SE.effect("Move Between")
 		select_next_fighter2(+1)
 		emit_signal("fighters_active")
 		print(fighter_index)
 		
+		if fighters2.size() > 1:
+			SE.effect("Move Between")
+		
 	if Input.is_action_just_pressed("ui_left") and item_selecting and not attack_chosen and not magic_selecting and not halt:
-		SE.effect("Move Between")
 		select_next_fighter2(-1)
 		print(fighter_index)
+		
+		if fighters2.size() > 1:
+			SE.effect("Move Between")
 	
 	if Input.is_action_just_pressed("ui_select") and item_selecting and not attack_chosen and not magic_selecting and not halt:
 		SE.effect("Select")
@@ -331,15 +335,19 @@ func _process(delta):
 		######### Magic Selection ##########
 		
 	if Input.is_action_just_pressed("ui_right") and magic_selecting and not attack_chosen and not item_selecting and not halt:
-		SE.effect("Move Between")
 		select_next_fighter2(+1)
 		emit_signal("fighters_active")
 		print(fighter_index)
 		
+		if fighters2.size() > 1:
+			SE.effect("Move Between")
+		
 	if Input.is_action_just_pressed("ui_left") and magic_selecting and not attack_chosen and not item_selecting and not halt:
-		SE.effect("Move Between")
 		select_next_fighter2(-1)
 		print(fighter_index)
+		
+		if fighters2.size() > 1:
+			SE.effect("Move Between")
 	
 	if Input.is_action_just_pressed("ui_select") and magic_selecting and not attack_chosen and not item_selecting and not halt:
 		SE.effect("Select")
