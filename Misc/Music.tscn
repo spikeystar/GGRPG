@@ -10,7 +10,7 @@
 [ext_resource path="res://Music/Overworld.wav" type="AudioStream" id=8]
 [ext_resource path="res://Music/High Tension.wav" type="AudioStream" id=9]
 [ext_resource path="res://Music/Legend of the Jewel Seeds.wav" type="AudioStream" id=10]
-[ext_resource path="res://Music/Puzzle Pier.mp3" type="AudioStream" id=11]
+[ext_resource path="res://Music/Puzzle Pier.wav" type="AudioStream" id=11]
 
 [node name="Music" type="Node"]
 pause_mode = 2
@@ -69,6 +69,6 @@ loop_time = 8.1
 
 [node name="Puzzle_Pier" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-volume_db = -4.0
+volume_db = -8.0
 script = ExtResource( 4 )
 end_time = 300.0

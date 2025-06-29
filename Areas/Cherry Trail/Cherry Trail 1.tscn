@@ -288,33 +288,37 @@ texture = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }
+use_transparency = true
 
 [node name="DirtD2" parent="YSort/Floor" instance=ExtResource( 31 )]
-position = Vector2( 421, -162 )
+position = Vector2( 422, -161 )
 rotation = 0.0312953
 scale = Vector2( 1.40303, 0.915445 )
 texture = ExtResource( 8 )
 __meta__ = {
 "_editor_description_": ""
 }
+use_transparency = true
 
 [node name="DirtA" parent="YSort/Floor" instance=ExtResource( 31 )]
-position = Vector2( 627, -36 )
+position = Vector2( 629, -35 )
 rotation = -0.0242604
 scale = Vector2( 2.13903, 1.51485 )
 texture = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
 }
+use_transparency = true
 
 [node name="DirtB" parent="YSort/Floor" instance=ExtResource( 31 )]
-position = Vector2( 177, 14 )
+position = Vector2( 171, 11 )
 rotation = 0.0705619
 scale = Vector2( 2.17687, 1.60415 )
 texture = ExtResource( 9 )
 __meta__ = {
 "_editor_description_": ""
 }
+use_transparency = true
 
 [node name="SquareShadow" type="Sprite" parent="YSort/Floor"]
 modulate = Color( 0.211765, 0.470588, 0.227451, 1 )
@@ -458,7 +462,7 @@ scale = Vector2( 2.01642, 1.86307 )
 texture = ExtResource( 17 )
 
 [node name="PlantB4" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( -234, 96 )
+position = Vector2( -232, 96 )
 rotation = -0.0265483
 scale = Vector2( 2.013, 2.2 )
 texture = ExtResource( 12 )
@@ -505,6 +509,7 @@ scale = Vector2( 1.84945, 1.66965 )
 texture = ExtResource( 3 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 26 )]
 
