@@ -1801,6 +1801,7 @@ percent_visible = 0.1
 
 [node name="Typing" type="Sprite" parent="BattleDialogue"]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 134, 254 )
 scale = Vector2( 1, 0.9 )
 texture = ExtResource( 62 )
@@ -2016,6 +2017,7 @@ vframes = 5
 
 [node name="Statuses" type="Sprite" parent="BattleDialogue"]
 visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 134, 254 )
 scale = Vector2( 1, 0.9 )
 texture = ExtResource( 62 )
@@ -2287,7 +2289,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -2304,6 +2305,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 

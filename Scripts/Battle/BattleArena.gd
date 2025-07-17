@@ -979,8 +979,10 @@ func _on_Fighters_item_chosen():
 	emit_signal("action_ended")
 	attack_ended = true
 	ongoing = false
-	Party.remove_item()
-	emit_signal("item_removed")
+	
+	if not tutorial:
+		Party.remove_item()
+		emit_signal("item_removed")
 	#$Fighters.fighters_active_check()
 
 func _on_Enemies_item_chosen():

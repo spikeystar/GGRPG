@@ -69,6 +69,6 @@ loop_time = 8.1
 
 [node name="Puzzle_Pier" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-volume_db = -8.0
+volume_db = -10.0
 script = ExtResource( 4 )
 end_time = 300.0

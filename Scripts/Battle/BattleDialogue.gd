@@ -164,6 +164,8 @@ func Tutorial_5():
 	yield(self, "talk_done")
 	
 	SE.effect("Menu Open")
+	var tween = create_tween()
+	tween.tween_property($Typing, "modulate:a", 1, 0.2)
 	$Typing.show()
 	$Name/Talk.text = "There are 5 types. Each enemy has one."
 	talking()
@@ -197,6 +199,9 @@ func Tutorial_5():
 	talking()
 	yield(self, "talk_done")
 	SE.effect("Menu Open")
+	var tween2 = create_tween()
+	tween2.tween_property($Typing, "modulate:a", 0, 0.2)
+	yield(get_tree().create_timer(0.2), "timeout")
 	$Typing.hide()
 	
 	$Name/Talk.text = "You're running a bit low on SP now."
@@ -230,6 +235,8 @@ func Tutorial_6():
 	yield(self, "talk_done")
 	
 	SE.effect("Menu Open")
+	var tween = create_tween()
+	tween.tween_property($Statuses, "modulate:a", 1, 0.2)
 	$Statuses.show()
 	
 	$Name/Talk.text = "All statuses last for 3 turns, except Stun which lasts for 1 turn."
@@ -257,6 +264,9 @@ func Tutorial_6():
 	yield(self, "talk_done")
 	
 	SE.effect("Menu Open")
+	var tween2 = create_tween()
+	tween2.tween_property($Statuses, "modulate:a", 0, 0.2)
+	yield(get_tree().create_timer(0.2), "timeout")
 	$Statuses.hide()
 	
 	$Name/Talk.text = "Finally, let's go over what you can do with the Spade button. Use the (Down Arrow)."
