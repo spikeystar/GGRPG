@@ -100,6 +100,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [ Vector2( 0.670092, 0.667911 ) ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("../BattleTrigger/CollisionShape2D2:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "attack"
@@ -176,6 +188,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1.13957, 1.07486 ), Vector2( 0.670092, 0.667911 ), Vector2( 0.650755, 0.659191 ), Vector2( 1.20476, 1.15709 ), Vector2( 0.670092, 0.667911 ), Vector2( 1.13957, 1.07486 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../BattleTrigger/CollisionShape2D2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -286,6 +310,7 @@ modulate = Color( 1, 1, 1, 0.254902 )
 position = Vector2( -50, -55 )
 scale = Vector2( 0.48383, 0.438229 )
 shape = SubResource( 1 )
+disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MotionRoot/PlayerDetection"]
 root_node = NodePath("../../BodyYSort")
@@ -306,6 +331,7 @@ height = 40.0
 position = Vector2( -39.4886, -40.0052 )
 scale = Vector2( 2.72669, -2.97096 )
 shape = SubResource( 2 )
+disabled = true
 
 [node name="BodyYSort" type="Node2D" parent="MotionRoot"]
 position = Vector2( 0, -1 )

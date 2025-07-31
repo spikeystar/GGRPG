@@ -1630,7 +1630,6 @@ script = ExtResource( 5 )
 depth_test_offset = Vector2( 0, 200 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 7 )]
 position = Vector2( -8.39999, -15.1 )
@@ -1659,7 +1658,7 @@ height = 40.0
 [node name="NavmeshLayer7" parent="CollisionRoot/Navmesh2" instance=ExtResource( 61 )]
 visible = false
 position = Vector2( 586.4, 308.1 )
-polygon = PoolVector2Array( -258.5, -201.4, -254.5, -208.4, -211.5, -214.4, -200.5, -228.4, -190, -230, -163, -223, -125, -223, -114, -222, -112, -217, -126.5, -204.4, -122.5, -201.4, -100.5, -188.4, -97.5, -182.4, -103.5, -179.4, -165.5, -181.4, -207.5, -163.4, -220.5, -165.4, -223.5, -171.4, -222.5, -187.4, -224, -193, -248.5, -196.4 )
+polygon = PoolVector2Array( -258.5, -201.4, -254.5, -208.4, -211.5, -214.4, -200.5, -228.4, -190, -230, -163, -223, -125, -224, -115, -224, -111, -218, -126.5, -204.4, -122.5, -201.4, -100.5, -188.4, -97.5, -182.4, -103.5, -179.4, -165.5, -181.4, -207.5, -163.4, -220.5, -165.4, -223.5, -171.4, -222.5, -187.4, -224, -193, -248.5, -196.4 )
 height = 40.0
 
 [node name="NavmeshLayer8" parent="CollisionRoot/Navmesh2" instance=ExtResource( 61 )]
