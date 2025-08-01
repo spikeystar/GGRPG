@@ -526,6 +526,27 @@ func debuff():
 func flee():
 	$AnimationPlayer.play("Fighter_Flee")
 	$AnimationPlayer.playback_speed = 1
+	if fighter_name == "gary":
+		PartyStats.gary_current_health = health
+	if fighter_name == "jacques":
+		PartyStats.jacques_current_health = health
+	if fighter_name == "irina":
+		PartyStats.irina_current_health = health
+	if fighter_name == "suzy":
+		PartyStats.suzy_current_health = health
+	if fighter_name == "damien":
+		PartyStats.damien_current_health = health
+	
+	if dead and fighter_name == "gary":
+		PartyStats.gary_current_health = 1
+	if dead and fighter_name == "jacques":
+		PartyStats.jacques_current_health = 1
+	if dead and fighter_name == "irina":
+		PartyStats.irina_current_health = 1
+	if dead and fighter_name == "suzy":
+		PartyStats.suzy_current_health = 1
+	if dead and fighter_name == "damien":
+		PartyStats.damien_current_health = 1
 	
 func pre_attack():
 	$AnimationPlayer.play("Fighter_Pre_Attack")
@@ -638,6 +659,27 @@ func get_turn_value():
 	
 func victory():
 	$AnimationPlayer.play("Fighter_Victory")
+	if fighter_name == "gary":
+		PartyStats.gary_current_health = health
+	if fighter_name == "jacques":
+		PartyStats.jacques_current_health = health
+	if fighter_name == "irina":
+		PartyStats.irina_current_health = health
+	if fighter_name == "suzy":
+		PartyStats.suzy_current_health = health
+	if fighter_name == "damien":
+		PartyStats.damien_current_health = health
+	
+	if dead and fighter_name == "gary":
+		PartyStats.gary_current_health = 1
+	if dead and fighter_name == "jacques":
+		PartyStats.jacques_current_health = 1
+	if dead and fighter_name == "irina":
+		PartyStats.irina_current_health = 1
+	if dead and fighter_name == "suzy":
+		PartyStats.suzy_current_health = 1
+	if dead and fighter_name == "damien":
+		PartyStats.damien_current_health = 1
 	
 func spell_1():
 	$AnimationPlayer.play("Spell_1")
