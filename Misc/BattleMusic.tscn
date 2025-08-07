@@ -1,21 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Misc/BattleMusic.gd" type="Script" id=1]
 [ext_resource path="res://Music/Boss Battle.wav" type="AudioStream" id=2]
 [ext_resource path="res://Music/Victory!.mp3" type="AudioStream" id=3]
 [ext_resource path="res://Misc/MusicPlayer.gd" type="Script" id=4]
 [ext_resource path="res://Music/Miniboss Battle.wav" type="AudioStream" id=5]
+[ext_resource path="res://Music/Standard Battle.wav" type="AudioStream" id=6]
 
 [node name="BattleMusic" type="Node"]
 pause_mode = 2
 script = ExtResource( 1 )
 
 [node name="Standard_Battle" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
-volume_db = -80.0
+stream = ExtResource( 6 )
+volume_db = -14.5
 script = ExtResource( 4 )
-end_time = 176.0
-loop_time = 91.0
+end_time = 185.31
+loop_time = 92.95
 
 [node name="Boss_Battle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
@@ -33,7 +34,7 @@ loop_time = 91.0
 
 [node name="Victory" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -5.0
+volume_db = -8.0
 script = ExtResource( 4 )
 end_time = 13.0
 loop_time = 6.4

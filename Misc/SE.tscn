@@ -85,14 +85,14 @@ script = ExtResource( 2 )
 
 [node name="Item_Get" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-volume_db = -4.0
+volume_db = -5.0
 
 [node name="Present" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+volume_db = -5.0
 
 [node name="Full_Heal" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
-volume_db = 1.0
 
 [node name="Sleep" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
@@ -176,7 +176,7 @@ volume_db = 4.0
 
 [node name="Enemy_Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 21 )
-volume_db = 2.0
+volume_db = -1.0
 pitch_scale = 1.1
 
 [node name="Fall" type="AudioStreamPlayer" parent="."]
@@ -207,6 +207,7 @@ volume_db = -9.0
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 47 )
+volume_db = -1.0
 
 [node name="Marble" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 48 )
@@ -251,7 +252,7 @@ stream = ExtResource( 35 )
 
 [node name="Select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 37 )
-volume_db = -1.5
+volume_db = -3.0
 
 [node name="Staircase" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 51 )

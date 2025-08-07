@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Music/Cherry Trail.wav" type="AudioStream" id=1]
 [ext_resource path="res://Misc/Music.gd" type="Script" id=2]
@@ -11,24 +11,32 @@
 [ext_resource path="res://Music/High Tension.wav" type="AudioStream" id=9]
 [ext_resource path="res://Music/Legend of the Jewel Seeds.wav" type="AudioStream" id=10]
 [ext_resource path="res://Music/Puzzle Pier.wav" type="AudioStream" id=11]
+[ext_resource path="res://Music/Standard Battle.wav" type="AudioStream" id=12]
 
 [node name="Music" type="Node"]
 pause_mode = 2
 script = ExtResource( 2 )
 
+[node name="Standard_Battle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -14.5
+script = ExtResource( 4 )
+end_time = 185.31
+loop_time = 92.95
+
 [node name="Jewel_Seeds" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
-volume_db = -12.0
+volume_db = -14.0
 
 [node name="Garys_House" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-volume_db = -9.0
+volume_db = -14.0
 script = ExtResource( 4 )
 end_time = 145.0
 
 [node name="Cherry_Trail" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
-volume_db = -10.0
+volume_db = -14.0
 script = ExtResource( 4 )
 end_time = 134.5
 loop_time = 67.73
@@ -42,20 +50,20 @@ loop_time = 88.8
 
 [node name="Kugi_Canyon" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -9.0
+volume_db = -13.0
 script = ExtResource( 4 )
 end_time = 70.0
 
 [node name="Berry_Lake" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -9.0
+volume_db = -15.0
 script = ExtResource( 4 )
 end_time = 190.5
 loop_time = 95.55
 
 [node name="Overworld" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -7.0
+volume_db = -10.0
 script = ExtResource( 4 )
 end_time = 60.34
 loop_time = 40.33
@@ -69,6 +77,6 @@ loop_time = 8.1
 
 [node name="Puzzle_Pier" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
-volume_db = -10.0
+volume_db = -11.0
 script = ExtResource( 4 )
 end_time = 300.0

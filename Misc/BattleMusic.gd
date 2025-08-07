@@ -37,6 +37,12 @@ func quiet():
 func loud():
 	active.volume_db += 2
 	
+func quiet_0():
+	active.volume_db -= 2
+	
+func loud_0():
+	active.volume_db += 2
+	
 func fade_out():
 	active.volume_db -= 0.5
 	yield(get_tree().create_timer(0.1), "timeout")

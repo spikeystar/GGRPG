@@ -7,6 +7,9 @@ var is_playing = false
 var stopped = false
 
 func music():
+	if id == "Standard_Battle":
+		active = $Standard_Battle
+		active.play()
 	if id == "Jewel_Seeds":
 		active = $Jewel_Seeds
 		active.play()
@@ -59,6 +62,12 @@ func quiet():
 	
 func loud():
 	active.volume_db += 5
+	
+func quiet_2():
+	active.volume_db -= 2
+	
+func loud_2():
+	active.volume_db += 2
 
 func fade_out():
 	active.volume_db -= 0.5

@@ -1127,6 +1127,7 @@ func _on_Enemies_all_enemy_spell():
 	yield(get_tree().create_timer(0.01), "timeout")
 	$Enemies/EnemyInfo.hide()
 	yield(get_tree().create_timer(0.3), "timeout")
+	BattleMusic.quiet_0()
 	ongoing = true
 	if spell_id == "Thunderstorm":
 		Thunderstorm()
@@ -1135,6 +1136,7 @@ func _on_Enemies_all_enemy_spell():
 		Prism_Snow()
 		yield(get_tree().create_timer(1.2), "timeout")
 	yield(get_tree().create_timer(2), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.idle()
 	$Enemies.whammy_chance = $Fighters.get_status("whammy_chance")
 	$Enemies.f_magic = $Fighters.get_f_magic()
@@ -1155,11 +1157,13 @@ func _on_Fighters_ally_spell_chosen():
 	var target_position = $Fighters.get_target_position() + Vector2(40, -40)
 	var spell_id = $MagicWindow.get_spell_id()
 	yield(get_tree().create_timer(0.3), "timeout")
+	BattleMusic.quiet_0()
 	if spell_id == "Sweet Gift":
 		Sweet_Gift()
 	if spell_id == "Blossom":
 		$Fighters.Blossom()
 	yield(get_tree().create_timer(1.5), "timeout")
+	BattleMusic.loud_0()
 	emit_signal("action_ended")
 	fighter_selection = false
 	attack_ended = true
@@ -1356,6 +1360,7 @@ func _on_Enemies_Basic():
 	$Fighters.damage()
 
 func _on_Enemies_Barrage():
+	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
@@ -1369,11 +1374,14 @@ func _on_Enemies_Barrage():
 	SE.effect("Barrage")
 	$MovePlayer/AnimPlayer.play("Barrage")
 	yield(get_tree().create_timer(1.1), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 func _on_Enemies_Beat_Down():
+	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
@@ -1387,11 +1395,14 @@ func _on_Enemies_Beat_Down():
 	SE.effect("Beat Down")
 	$MovePlayer/AnimPlayer.play("Beat_Down")
 	yield(get_tree().create_timer(1.1), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 func _on_Enemies_Sting():
+	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
@@ -1405,11 +1416,14 @@ func _on_Enemies_Sting():
 	SE.effect("Sting")
 	$MovePlayer/AnimPlayer.play("Sting")
 	yield(get_tree().create_timer(1.2), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 func _on_Enemies_Sabotage():
+	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
@@ -1423,11 +1437,14 @@ func _on_Enemies_Sabotage():
 	SE.effect("Sabotage")
 	$MovePlayer/AnimPlayer.play("Sabotage")
 	yield(get_tree().create_timer(1), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 func _on_Enemies_Pester():
+	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
@@ -1441,11 +1458,14 @@ func _on_Enemies_Pester():
 	SE.effect("Pester")
 	$MovePlayer/AnimPlayer.play("Pester")
 	yield(get_tree().create_timer(1), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 func _on_Enemies_Extort():
+	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
@@ -1460,11 +1480,14 @@ func _on_Enemies_Extort():
 	SE.effect("Extort")
 	$MovePlayer/AnimPlayer.play("Extort")
 	yield(get_tree().create_timer(1), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 func _on_Enemies_Slash():
+	BattleMusic.quiet_0()
 	$Fighters.move_spread = "spread"
 	randomize()
 	var rng = RandomNumberGenerator.new()
@@ -1473,6 +1496,7 @@ func _on_Enemies_Slash():
 	SE.effect("Slash")
 	$MovePlayer/AnimPlayer.play("Slash")
 	yield(get_tree().create_timer(1), "timeout")
+	BattleMusic.loud_0()
 	for x in range ($Fighters.fighters.size()):
 		$Fighters.move_kind = "attack"
 		$Fighters.move_type = "neutral"
@@ -1488,8 +1512,10 @@ func _on_Enemies_Slash():
 	$Fighters/HUDS.showing()
 	yield(get_tree().create_timer(0.7), "timeout")
 	$Fighters.damage_end()
+	
 
 func _on_Enemies_Splat():
+	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
@@ -1503,11 +1529,14 @@ func _on_Enemies_Splat():
 	SE.effect("Splat")
 	$MovePlayer/AnimPlayer.play("Splat")
 	yield(get_tree().create_timer(1.2), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 func _on_Enemies_Asphyxiate():
+	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
@@ -1521,11 +1550,14 @@ func _on_Enemies_Asphyxiate():
 	SE.effect("Asphyxiate")
 	$MovePlayer/AnimPlayer.play("Asphyxiate")
 	yield(get_tree().create_timer(1.8), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 func _on_Enemies_Bubble_Ring():
+	BattleMusic.quiet_0()
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -1544,11 +1576,14 @@ func _on_Enemies_Bubble_Ring():
 	SE.effect("Bubble Ring")
 	$MovePlayer/AnimPlayer.play("Bubble_Ring")
 	yield(get_tree().create_timer(2), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 func _on_Enemies_Stream_Strike():
+	BattleMusic.quiet_0()
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -1567,11 +1602,14 @@ func _on_Enemies_Stream_Strike():
 	SE.effect("Stream Strike")
 	$MovePlayer/AnimPlayer.play("Stream_Strike")
 	yield(get_tree().create_timer(2), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 func _on_Enemies_Friction():
+	BattleMusic.quiet_0()
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -1604,11 +1642,14 @@ func _on_Enemies_Friction():
 	var tween2 = create_tween()
 	tween2.tween_property(fighter, "modulate", og_color, 0.7)
 	yield(get_tree().create_timer(1), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 func _on_Enemies_Aero_Bullet():
+	BattleMusic.quiet_0()
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -1627,11 +1668,14 @@ func _on_Enemies_Aero_Bullet():
 	SE.effect("Aero Bullet")
 	$MovePlayer/AnimPlayer.play("Aero_Bullet")
 	yield(get_tree().create_timer(1), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 func _on_Enemies_Squall():
+	BattleMusic.quiet_0()
 	$Fighters.move_spread = "spread"
 	randomize()
 	var rng = RandomNumberGenerator.new()
@@ -1640,6 +1684,7 @@ func _on_Enemies_Squall():
 	SE.effect("Squall")
 	$MovePlayer/AnimPlayer.play("Squall")
 	yield(get_tree().create_timer(1.5), "timeout")
+	BattleMusic.loud_0()
 	for x in range ($Fighters.fighters.size()):
 		$Fighters.move_kind = "attack"
 		$Fighters.move_type = "air"
@@ -1655,8 +1700,10 @@ func _on_Enemies_Squall():
 	$Fighters/HUDS.showing()
 	yield(get_tree().create_timer(0.7), "timeout")
 	$Fighters.damage_end()
+	
 
 func _on_Enemies_Zap():
+	BattleMusic.quiet_0()
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -1675,12 +1722,15 @@ func _on_Enemies_Zap():
 	SE.effect("Zap")
 	$MovePlayer/AnimPlayer.play("Zap")
 	yield(get_tree().create_timer(1), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 
 func _on_Enemies_Terra_Arrow():
+	BattleMusic.quiet_0()
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -1699,11 +1749,14 @@ func _on_Enemies_Terra_Arrow():
 	SE.effect("Terra Arrow")
 	$MovePlayer/AnimPlayer.play("Terra_Arrow")
 	yield(get_tree().create_timer(1), "timeout")
+	BattleMusic.loud_0()
 	$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")
 	$Fighters/HUDS.showing()
+	
 
 func _on_Enemies_Gravel_Spat():
+	BattleMusic.quiet_0()
 	$Fighters.move_spread = "spread"
 	randomize()
 	var rng = RandomNumberGenerator.new()
@@ -1713,6 +1766,7 @@ func _on_Enemies_Gravel_Spat():
 	$MovePlayer/AnimPlayer.play("Gravel_Spat")
 	$WindowPlayer.play("Gravel_Spat")
 	yield(get_tree().create_timer(1.5), "timeout")
+	BattleMusic.loud_0()
 	for x in range ($Fighters.fighters.size()):
 		$Fighters.move_kind = "attack"
 		$Fighters.move_type = "earth"
@@ -1728,4 +1782,5 @@ func _on_Enemies_Gravel_Spat():
 	$Fighters/HUDS.showing()
 	yield(get_tree().create_timer(0.7), "timeout")
 	$Fighters.damage_end()
+	
 

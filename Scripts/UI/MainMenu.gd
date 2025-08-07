@@ -25,7 +25,14 @@ func _ready():
 	
 	yield(get_tree().create_timer(1.5), "timeout")
 	$AnimationPlayer2.play("Intro")
+	
 	yield(get_tree().create_timer(2.6), "timeout")
+	
+	if Music.id != "Standard_Battle":
+		Music.switch_songs()
+		Music.id = "Standard_Battle"
+		Music.music()
+		Music.loud_2()
 	
 	var transition = TransitionPlayer.instance()
 	add_child(transition)
@@ -37,6 +44,7 @@ func _ready():
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and able:
 		SE.effect("Switch")
+		Music.quiet_2()
 		able = false
 		var transition = TransitionPlayer2.instance()
 		get_tree().get_root().add_child(transition)
