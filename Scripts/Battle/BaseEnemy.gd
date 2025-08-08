@@ -8,6 +8,8 @@ export(int) var e_defense
 export(String) var initial_type = ""
 export(bool) var boss = false
 var current_type = ""
+export(PackedScene) var IMAGE_STUN: PackedScene = null
+export(PackedScene) var IMAGE_POISON: PackedScene = null
 export(PackedScene) var TEXT_DAMAGE: PackedScene = null
 export(PackedScene) var TEXT_HEAL: PackedScene = null
 export(PackedScene) var TEXT_STORED: PackedScene = null
@@ -202,6 +204,7 @@ func poison_damage():
 	var damage_text = text(TEXT_POISON)
 	if damage_text:
 		damage_text.label.text = str(amount)
+		damage_text.position = $TextOffset.global_position + Vector2(0, -47)
 	health = max(0, health - amount)
 	#yield(get_tree().create_timer(2), "timeout")
 	#$AnimationPlayer.play("enemy_idle")
@@ -212,6 +215,7 @@ func stored_damage():
 	var damage_text = text(TEXT_STORED)
 	if damage_text:
 		damage_text.label.text = str(stored_amount)
+		damage_text.position = $TextOffset.global_position + Vector2(0, -47)
 	health = max(0, health - stored_amount)
 	stored_damage = false
 	stored_amount = 0
@@ -268,13 +272,22 @@ func text(TEXT: PackedScene, text_position: Vector2 = global_position):
 	if TEXT:
 		var text = TEXT.instance()
 		get_tree().current_scene.add_child(text)
-		text.position = $TextOffset.global_position + Vector2(4, -54)
+		text.position = $TextOffset.global_position + Vector2(3, -53)
 		return text
+		
+func image(IMAGE: PackedScene, image_position: Vector2 = global_position):
+	if IMAGE:
+		var image = IMAGE.instance()
+		get_tree().current_scene.add_child(image)
+		image.position = $TextOffset.global_position + Vector2(5, -54)
+		return image
 
 func stun():
 	if not stun and not boss:
 		stun = true
 		stun_timer = 1
+		yield(get_tree().create_timer(1.5), "timeout")
+		var stun_image = image(IMAGE_STUN)
 	else:
 		pass
 		

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://UI/HealText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=11]
 [ext_resource path="res://UI/PoisonText.tscn" type="PackedScene" id=12]
 [ext_resource path="res://UI/StoredText.tscn" type="PackedScene" id=13]
+[ext_resource path="res://UI/StunImage.tscn" type="PackedScene" id=14]
+[ext_resource path="res://UI/PoisonImage.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -1027,6 +1029,8 @@ e_health = 125
 e_attack = 10
 e_defense = 15
 initial_type = "neutral"
+IMAGE_STUN = ExtResource( 14 )
+IMAGE_POISON = ExtResource( 15 )
 TEXT_DAMAGE = ExtResource( 7 )
 TEXT_HEAL = ExtResource( 1 )
 TEXT_STORED = ExtResource( 13 )

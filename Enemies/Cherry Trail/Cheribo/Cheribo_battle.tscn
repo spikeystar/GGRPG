@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Misc/Shader/Buff Material.tres" type="Material" id=1]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Assets/General/Item Usage Animations SS.png" type="Texture" id=10]
 [ext_resource path="res://UI/PoisonText.tscn" type="PackedScene" id=11]
 [ext_resource path="res://UI/StoredText.tscn" type="PackedScene" id=12]
+[ext_resource path="res://UI/StunImage.tscn" type="PackedScene" id=13]
+[ext_resource path="res://UI/PoisonImage.tscn" type="PackedScene" id=14]
 
 [sub_resource type="StreamTexture" id=17]
 load_path = "res://.import/Cheribo.png-e8cf9f1ea2a21d1830bd0476fd329cfd.stex"
@@ -1028,6 +1030,8 @@ e_health = 20
 e_attack = 8
 e_defense = 7
 initial_type = "neutral"
+IMAGE_STUN = ExtResource( 13 )
+IMAGE_POISON = ExtResource( 14 )
 TEXT_DAMAGE = ExtResource( 7 )
 TEXT_HEAL = ExtResource( 8 )
 TEXT_STORED = ExtResource( 12 )
@@ -1077,7 +1081,7 @@ position = Vector2( -57, -74 )
 texture = ExtResource( 6 )
 
 [node name="TextOffset" type="Position2D" parent="."]
-visible = false
+position = Vector2( 1, 0 )
 
 [node name="DamageText" parent="." instance=ExtResource( 7 )]
 visible = false
