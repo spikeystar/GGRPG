@@ -63,7 +63,7 @@ loop_time = 95.55
 
 [node name="Overworld" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-volume_db = -10.0
+volume_db = -9.0
 script = ExtResource( 4 )
 end_time = 60.34
 loop_time = 40.33
