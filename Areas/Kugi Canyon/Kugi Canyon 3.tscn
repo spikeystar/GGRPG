@@ -1990,7 +1990,6 @@ text = "You got a Flummery Flambe!"
 align = 1
 
 [node name="Spikes" type="Area2D" parent="."]
-visible = false
 position = Vector2( -106, -67 )
 collision_layer = 5
 collision_mask = 7
@@ -2000,7 +1999,7 @@ exit_name = "Entrance"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes"]
 position = Vector2( 0, 1 )
-polygon = PoolVector2Array( 596, -191, 140, -357, -427, -158, -425, -84, -379, -68, -391, 14, -321, 45, -223, 12, -188, 28, -149, 11, -86, 35, -88, 54, -80, 60, -179, 99, 70, 184, 143, 177, 203, 154, 598, 16 )
+polygon = PoolVector2Array( 596, -191, 140, -357, -427, -158, -425, -84, -379, -68, -391, 14, -316, 51, -224, 20, -191, 38, -152, 21, -97, 42, -106, 56, -81, 64, -179, 99, 70, 184, 143, 177, 203, 154, 598, 16 )
 
 [node name="LedgeMover1" type="AnimationPlayer" parent="."]
 autoplay = "ledge1"
