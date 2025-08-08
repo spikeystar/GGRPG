@@ -800,6 +800,9 @@ func _on_Enemies_victory():
 	$WindowPlayer.play("victory_open")
 	emit_signal("update_party")
 	
+	$Fighters.hide_cursors_remote()
+	$Fighters.victory()
+	
 	if PartyStats.party_exp >= PartyStats.next_level:
 		PartyStats.party_exp -= PartyStats.next_level
 		PartyStats.party_level += 1
@@ -809,9 +812,7 @@ func _on_Enemies_victory():
 		yield(get_tree().create_timer(0.1), "timeout")
 		$LevelUpWindow.scale = Vector2(1.1, 1.09)
 		$WindowPlayer.play("Level_up_text")
-	
-	$Fighters.hide_cursors_remote()
-	$Fighters.victory()
+
 	#emit_signal("update_party")
 	boss_event()
 	if PartyStats.new_spell_2:	
