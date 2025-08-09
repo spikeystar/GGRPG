@@ -16,12 +16,17 @@ var able = false
 
 func _ready():
 	SceneManager.loading = true
+	SceneManager.game_over = false
+	SceneManager.enemy_turn = false
 
 	Global.battle_ended = false
 	Global.battling = false
+	
 	PlayerManager.cutscene = false
 	PlayerManager.freeze = false
 	Gary.set_right()
+	
+	
 	
 	yield(get_tree().create_timer(1.5), "timeout")
 	$AnimationPlayer2.play("Intro")

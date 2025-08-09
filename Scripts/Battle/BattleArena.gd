@@ -844,7 +844,7 @@ func _on_Fighters_game_over():
 	SceneManager.game_over = false
 	SceneManager.enemy_turn = false
 	get_tree().paused = false
-	Global.battle_ended = true
+	Global.battle_ended = false
 	PlayerManager.remove_player_from_scene()
 	get_tree().change_scene(main_menu)
 	PlayerManager.call_deferred("add_player_to_scene")

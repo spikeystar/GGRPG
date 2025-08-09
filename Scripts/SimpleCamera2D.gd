@@ -120,7 +120,7 @@ func _input(event):
 			yield(get_tree().create_timer(0.6), "timeout")
 			able = false
 			
-		if Input.is_action_pressed("ui_accept") and PlayerManager.freeze and able and SceneManager.saving or Input.is_action_pressed("ui_left") and PlayerManager.freeze and able and SceneManager.saving:
+		if Input.is_action_pressed("ui_accept") and PlayerManager.freeze and able and SceneManager.saving or Input.is_action_pressed("ui_left") and PlayerManager.freeze and able and SceneManager.saving or Input.is_action_pressed("ui_cancel") and PlayerManager.freeze and able and SceneManager.saving:
 			SceneManager.saving = false
 			current = true
 			SE.effect("Cancel")

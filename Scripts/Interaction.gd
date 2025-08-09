@@ -44,7 +44,7 @@ func _input(event):
 		options = true
 		emit_signal("option_selecting")
 		
-	if Input.is_action_just_pressed("ui_accept") and dialogue_cursor and not item_selecting and not ongoing or Input.is_action_just_pressed("ui_left") and dialogue_cursor and not item_selecting and not ongoing:
+	if Input.is_action_just_pressed("ui_accept") and dialogue_cursor and not item_selecting and not ongoing or Input.is_action_just_pressed("ui_left") and dialogue_cursor and not item_selecting and not ongoing or Input.is_action_just_pressed("ui_cancel") and dialogue_cursor and not item_selecting and not ongoing:
 		SE.effect("Cancel")
 		$ShopOptions/MenuCursor.option_selecting = false
 		$Dialogue.hide()
@@ -143,7 +143,7 @@ func _input(event):
 		item_selecting = true
 		options = false
 		
-	if Input.is_action_just_pressed("ui_accept") and item_selecting or Input.is_action_just_pressed("ui_left") and item_selecting:
+	if Input.is_action_just_pressed("ui_accept") and item_selecting or Input.is_action_just_pressed("ui_left") and item_selecting or Input.is_action_just_pressed("ui_cancel") and item_selecting:
 		SE.effect("Cancel")
 		$Buy.hide()
 		$Sell.hide()

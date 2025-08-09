@@ -49,7 +49,7 @@ func _input(event):
 		options = true
 		emit_signal("option_selecting")
 		
-	elif Input.is_action_just_pressed("ui_accept") and dialogue_cursor and not ongoing or Input.is_action_just_pressed("ui_left") and dialogue_cursor and not ongoing:
+	elif Input.is_action_just_pressed("ui_accept") and dialogue_cursor and not ongoing or Input.is_action_just_pressed("ui_left") and dialogue_cursor and not ongoing or Input.is_action_just_pressed("ui_cancel") and dialogue_cursor and not ongoing:
 		$Dialogue.hide()
 		$Dialogue/DialogueCursor.hide()
 		$ShopOptions.hide()

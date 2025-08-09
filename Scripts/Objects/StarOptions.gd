@@ -11,7 +11,7 @@ func _process(delta):
 		menu_name = $MenuCursor.menu_name
 		
 func _input(event):
-	if Input.is_action_just_pressed("ui_left") and star_options or Input.is_action_just_pressed("ui_accept") and star_options:
+	if Input.is_action_just_pressed("ui_left") and star_options or Input.is_action_just_pressed("ui_accept") and star_options or Input.is_action_just_pressed("ui_cancel") and star_options:
 		star_options = false
 		PlayerManager.freeze = false
 		SE.effect("Cancel")

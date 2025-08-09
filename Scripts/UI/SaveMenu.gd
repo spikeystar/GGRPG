@@ -734,7 +734,7 @@ func _input(event):
 				$SaveSelection/MenuCursor.ongoing = false
 				able = true
 				
-	if Input.is_action_just_pressed("ui_accept") and delete_option or Input.is_action_just_pressed("ui_up") and delete_option or Input.is_action_just_pressed("ui_down") and delete_option or Input.is_action_just_pressed("ui_left") and delete_option or Input.is_action_just_pressed("ui_right") and delete_option:
+	if Input.is_action_just_pressed("ui_accept") and delete_option or Input.is_action_just_pressed("ui_up") and delete_option or Input.is_action_just_pressed("ui_down") and delete_option or Input.is_action_just_pressed("ui_left") and delete_option or Input.is_action_just_pressed("ui_right") and delete_option or Input.is_action_just_pressed("ui_cancel") and delete_option:
 		SE.effect("Cancel")
 		delete_option = false
 		$Delete.hide()
