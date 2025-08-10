@@ -279,7 +279,7 @@ func image(IMAGE: PackedScene, image_position: Vector2 = global_position):
 	if IMAGE:
 		var image = IMAGE.instance()
 		get_tree().current_scene.add_child(image)
-		image.position = $TextOffset.global_position + Vector2(5, -54)
+		image.position = $TextOffset.global_position + Vector2(4, -53)
 		return image
 
 func stun():
