@@ -13,7 +13,7 @@ script = ExtResource( 1 )
 
 [node name="Standard_Battle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -14.5
+volume_db = -14.0
 script = ExtResource( 4 )
 end_time = 185.31
 loop_time = 92.95

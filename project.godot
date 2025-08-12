@@ -25,6 +25,7 @@ run/main_scene="res://UI/MainMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="GGRPGSaveSystem"
 boot_splash/show_image=false
+boot_splash/image="res://UI/Game Load Icon.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://UI/Game Load Icon.png"
 config/macos_native_icon="res://UI/Start Screen/Game Load Icon.ico"
