@@ -74,9 +74,10 @@ func _on_touch_area():
 	yield(get_tree().create_timer(0.6), "timeout")
 	#pixelation.queue_free()
 	PlayerManager.drown = false
-	yield(get_tree().create_timer(2), "timeout")
-	transition.queue_free()
-	transitioning = false
+	
+	#yield(get_tree().create_timer(2), "timeout")
+	#transition.queue_free()
+	#transitioning = false
 	
 	
 

@@ -35,7 +35,7 @@ onready var alt_arena = alt_scene.instance()
 
 onready var motion_root: KinematicBody2D = $MotionRoot
 onready var world_collider = $MotionRoot/CollisionShape2D
-onready var anim_tree = $BodyYSort/AnimationTree
+#onready var anim_tree = $BodyYSort/AnimationTree
 onready var anim_player = $BodyYSort/AnimationPlayer
 
 onready var body_y_sort = $BodyYSort
@@ -89,16 +89,21 @@ func _physics_process(delta):
 		#after_battle()
 		Music.unpause()
 		SceneManager.SceneEnemies = []
-		if alt_chosen:
+		if $MotionRoot/BattleTrigger.detected and alt_chosen:
 			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(alt_arena)
-		if not alternate:
+		
+		if $MotionRoot/BattleTrigger.detected and alt_not_chosen:
 			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(battle_arena)
-		if alt_not_chosen:
+			
+		if $MotionRoot/BattleTrigger.detected and not alternate:
 			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(battle_arena)
+		
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)
 		transition.ease_in()
+		
 		yield(get_tree().create_timer(0.01), "timeout")
+		
 		dead = true
 		Global.battle_ended = false
 		Global.battling = false
@@ -108,7 +113,9 @@ func _physics_process(delta):
 		else:
 			SceneManager.SceneEnemies.append(self)
 			
-		yield(get_tree().create_timer(0.6), "timeout")
+		
+		#yield(get_tree().create_timer(0.6), "timeout")
+		
 		PlayerManager.pop()
 	#if motion_root.velocity.x > 0:
 		#sprite.flip_h = true

@@ -19,7 +19,7 @@ signal deposit
 signal withdraw
 signal retread
 
-func welcome():
+func _welcome():
 	$Dialogue/Name/Talk.percent_visible = 0.0
 	$Dialogue.show()
 	welcome_text()
@@ -158,7 +158,7 @@ func _input(event):
 		emit_signal("option_selecting")
 
 func _on_Shop_interaction():
-	welcome()
+	_welcome()
 	
 func tween_go():
 	length = $Dialogue/Name/Talk.text.length()

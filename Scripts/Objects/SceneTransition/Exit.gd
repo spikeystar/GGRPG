@@ -45,8 +45,8 @@ func _on_touch_area():
 	transition.transition_in(target_scene, _get_animation_name())
 	yield(get_tree().create_timer(0.2), "timeout")
 	PlayerManager.freeze = true
-	yield(get_tree().create_timer(1.8), "timeout")
-	transitioning = false
+	#yield(get_tree().create_timer(1.8), "timeout")
+	#transitioning = false
 	#SceneManager.transitioning = false
 	
 	

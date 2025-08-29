@@ -227,7 +227,8 @@ func _on_Interaction_option_selecting():
 	item_selecting = false
 	cursor_index = 0
 
-
+func _on_Sell_Inventory_empty_items():
+	pass
 "
 
 [sub_resource type="GDScript" id=4]

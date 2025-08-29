@@ -46,7 +46,7 @@ func _input(event):
 		else:
 			SE.effect("Door")
 		
-		yield(get_tree().create_timer(1.5), "timeout")
+		#yield(get_tree().create_timer(1.5), "timeout")
 		
 	
 func _on_body_entered(body):

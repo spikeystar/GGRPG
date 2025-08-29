@@ -67,10 +67,11 @@ func _on_touch_area():
 	transition.transition_in(target_scene, _get_animation_name())
 	yield(get_tree().create_timer(0.6), "timeout")
 	PlayerManager.ouch = false
-	yield(get_tree().create_timer(2), "timeout")
-	transition.fade_speed()
-	transition.queue_free()
-	transitioning = false
+	
+	#yield(get_tree().create_timer(2), "timeout")
+	#transition.fade_speed()
+	#transition.queue_free()
+	#transitioning = false
 	
 
 func _get_animation_name():
