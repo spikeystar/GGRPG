@@ -24,7 +24,7 @@ signal option_selecting
 signal restart
 signal sleep
 
-func welcome():
+func _welcome():
 	$Dialogue/Name/Talk.percent_visible = 0.0
 	$Dialogue.show()
 	welcome_text()
@@ -148,7 +148,7 @@ func _get_animation_name():
 	return animation_name
 
 func _on_Shop_interaction():
-	welcome()
+	_welcome()
 	
 func tween_go():
 	length = $Dialogue/Name/Talk.text.length()

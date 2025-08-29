@@ -4,7 +4,7 @@ var equipped = false
 var holder_name : String = "-"
 
 signal cursor_selected()
-signal go_to_Item()
+#signal go_to_Item()
 
 func _ready():
 	if text == PartyStats.gary_trinket:

@@ -7,10 +7,13 @@ var this_body = false
 
 func _ready():
 	position.y += height
-	var timer = Timer.new()
-	timer.connect("timeout", self, "_on_start_checking_body_entered")
-	add_child(timer)
-	timer.start(0.5)
+	#var timer = Timer.new()
+	#timer.connect("timeout", self, "_on_start_checking_body_entered")
+	#add_child(timer)
+	#timer.start(0.5)
+	
+	yield(get_tree().create_timer(0.5), "timeout")
+	
 	connect("body_entered", self, "_on_body_entered")
 	connect("body_exited", self, "_on_body_exited")
 

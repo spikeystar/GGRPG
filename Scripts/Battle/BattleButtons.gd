@@ -14,3 +14,5 @@ func reset():
 	$MagicX.hide()
 	$ItemX.hide()
 	
+func _on_AnimationPlayer_animation_finished(_name):
+	pass

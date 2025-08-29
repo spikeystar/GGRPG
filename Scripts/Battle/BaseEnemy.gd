@@ -68,7 +68,7 @@ export(String) var move13 = ""
 onready var move_list : Array = [move1, move2, move3, move4, move5, move6, move7, move8, move9, move10, move11, move12, move13]
 var check_name : String
 
-signal enemy_dead
+#signal enemy_dead
 
 func _ready():
 	reset_animation()
@@ -209,7 +209,7 @@ func poison_damage():
 	#yield(get_tree().create_timer(2), "timeout")
 	#$AnimationPlayer.play("enemy_idle")
 	
-func stored_damage():
+func _stored_damage():
 	yield(get_tree().create_timer(0.3), "timeout")
 	$AnimationPlayer.play("enemy_damage")
 	var damage_text = text(TEXT_STORED)
@@ -282,7 +282,7 @@ func image(IMAGE: PackedScene, image_position: Vector2 = global_position):
 		image.position = $TextOffset.global_position + Vector2(4, -53)
 		return image
 
-func stun():
+func _stun():
 	if not stun and not boss:
 		stun = true
 		stun_timer = 1
@@ -291,7 +291,7 @@ func stun():
 	else:
 		pass
 		
-func poison():
+func _poison():
 	if not poison:
 		poison = true
 		poison_timer = 3

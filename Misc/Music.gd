@@ -4,7 +4,6 @@ var id : String
 var active : AudioStreamPlayer
 var saved_time : float
 var is_playing = false
-var stopped = false
 
 func music():
 	if id == "Standard_Battle":

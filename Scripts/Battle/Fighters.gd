@@ -1,7 +1,7 @@
 extends Node2D
 
 onready var party_members : int
-onready var tween = $Tween
+#onready var tween = $Tween
 var fighters : Array = []
 var fighters2 : Array = []
 var fighter_index : int = -1
@@ -548,15 +548,15 @@ func damage():
 	if apply_type and not is_dead:
 		fighters[fighter_index].apply_type(move_type)
 	if stun and not immune and not is_dead:
-		fighters[fighter_index].stun()
+		fighters[fighter_index]._stun()
 	if poison and not immune and not is_dead:
-		fighters[fighter_index].poison()
+		fighters[fighter_index]._poison()
 	if targeted and not immune and not is_dead:
-		fighters[fighter_index].targeted()
+		fighters[fighter_index]._targeted()
 	if wimpy and not immune and not is_dead:
-		fighters[fighter_index].wimpy()
+		fighters[fighter_index]._wimpy()
 	if dizzy and not immune and not is_dead:
-		fighters[fighter_index].dizzy()
+		fighters[fighter_index]._dizzy()
 	if a_debuff and not immune and not is_dead:
 		fighters[fighter_index].apply_debuff("attack")
 	if m_debuff and not immune and not is_dead:
@@ -568,7 +568,7 @@ func damage():
 	if multi_debuff and not immune and not is_dead:
 		fighters[fighter_index].multi_debuff()
 	if anxious and not immune and not is_dead:
-		fighters[fighter_index].anxious()
+		fighters[fighter_index]._anxious()
 	if sp_loss and not immune:
 		fighters[fighter_index].SP_loss(SP_amount)
 	if move_spread == "single":
@@ -724,12 +724,12 @@ func get_turn_value():
 	
 func _on_WorldRoot_f_turn_used():
 	#var array_size = fighters2.size()
-	fighters[fighter_index].turn_used()
+	fighters[fighter_index]._turn_used()
 	max_turns += 1
 
 func f_turn_used():
 	#var array_size = fighters2.size()
-	fighters[selector_index].turn_used()
+	fighters[selector_index]._turn_used()
 	max_turns += 1
 	
 func fighters_active_check():	
@@ -1049,7 +1049,7 @@ func _on_Enemies_fighters_active():
 	for z in range (fighters.size()):
 		var stored_damage = fighters[z].get_status("stored_damage")
 		if stored_damage:
-			fighters[z].stored_damage()
+			fighters[z]._stored_damage()
 			fighter_index = z
 			huds_update()
 	
@@ -1370,3 +1370,6 @@ func _on_WorldRoot_update_party():
 func _on_Enemies_victory():
 	yield(get_tree().create_timer(0.4), "timeout")
 	hide_all_cursors()
+
+func _on_SpellList_spell_chosen():
+	pass

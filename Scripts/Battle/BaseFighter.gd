@@ -20,7 +20,7 @@ export(PackedScene) var TEXT_POISON: PackedScene = null
 var OG_position : Vector2
 var BB_position : Vector2
 var able = true
-var defend = false
+var defending = false
 var turn_used = false
 var health : int
 var formation : int
@@ -212,7 +212,7 @@ func defend():
 	SE.effect("Defend")
 	$AnimationPlayer.play("Fighter_Defend")
 	$AnimationPlayer.playback_speed = 1
-	defend = true
+	defending = true
 	able = false
 	f_defense = f_defense + (f_defense * 0.5)
 	
@@ -456,7 +456,7 @@ func poison_damage():
 		SE.effect("Player Death")
 		$AnimationPlayer.play("Fighter_Dead")
 		
-func stored_damage():
+func _stored_damage():
 	yield(get_tree().create_timer(0.2), "timeout")
 	$AnimationPlayer.playback_speed = 0.65
 	$AnimationPlayer.play("Fighter_Damage")
@@ -630,28 +630,28 @@ func get_f_defense():
 func get_self(fighter_self: Node2D = self):
 	return fighter_self
 	
-func turn_used():
+func _turn_used():
 	turn_used = true
 	
 func turn_restored():
 	if dead or health == 0:
 		turn_used = true
-		if defend:
+		if defending:
 			f_defense -= (og_defense * 0.5)
-			defend = false
+			defending = false
 	if stun:
 		turn_used = true
 		status_countdown()
-		if defend:
+		if defending:
 			f_defense -= (og_defense * 0.5)
-			defend = false
+			defending = false
 	else:
 		turn_used = false
 		able = true
 		status_countdown()
-		if defend:
+		if defending:
 			f_defense -= (og_defense * 0.5)
-			defend = false
+			defending = false
 			
 	
 func get_turn_value():
@@ -820,7 +820,7 @@ func status_countdown():
 		yield(get_tree().create_timer(0.7), "timeout")
 		anxious_SP(1)
 
-func stun():
+func _stun():
 	if not stun and not hocus_potion:
 		stun = true
 		turn_used = true
@@ -828,7 +828,7 @@ func stun():
 	else:
 		return
 
-func poison():
+func _poison():
 	if not poison and not hocus_potion:
 		poison = true
 		poison_timer = 3
@@ -848,7 +848,7 @@ func envenomate():
 	else:
 		return
 		
-func anxious():
+func _anxious():
 	if not anxious and not hocus_potion:
 		anxious = true
 		anxious_timer = 3
@@ -856,7 +856,7 @@ func anxious():
 	else:
 		return
 		
-func targeted():
+func _targeted():
 	if not targeted and not SceneManager.targeted_applied and not hocus_potion:
 		targeted = true
 		SceneManager.targeted_applied = true
@@ -864,14 +864,14 @@ func targeted():
 	else:
 		return
 	
-func wimpy():
+func _wimpy():
 	if not wimpy and not dizzy and not hocus_potion:
 		wimpy = true
 		wimpy_timer = 4
 	else:
 		return
 		
-func dizzy():
+func _dizzy():
 	if not dizzy and not wimpy and not hocus_potion:
 		dizzy = true
 		dizzy_timer = 4

@@ -295,7 +295,7 @@ func enemy_damage():
 		#is_attack = false
 
 	if poison:
-		target_enemy.poison()
+		target_enemy._poison()
 	yield(get_tree().create_timer(1.7), "timeout")
 	target_enemy.unfocus()
 	if target_enemy.is_dead() and not boss_battle:
@@ -387,9 +387,9 @@ func magic_damage():
 		finale_check()
 		
 	if stun and not immune and not dead:
-		target_enemy.stun()
+		target_enemy._stun()
 	if poison and not immune and not dead:
-		target_enemy.poison()
+		target_enemy._poison()
 	if a_debuff and not immune and not dead:
 		target_enemy.apply_debuff("attack")
 		debuffing = true
@@ -476,11 +476,11 @@ func all_magic_damage():
 		if stun and not immune and not dead:
 			var apply = rng.randi_range(1, 100)
 			if apply <= stun_chance:
-				enemies[x].stun()
+				enemies[x]._stun()
 		if poison and not immune and not dead:
 			var apply = rng.randi_range(1, 100)
 			if apply <= poison_chance:
-				enemies[x].poison()
+				enemies[x]._poison()
 		if a_debuff and not immune and not dead:
 			enemies[x].apply_debuff("attack")
 			debuffing = true
@@ -580,7 +580,7 @@ func victory_check():
 		SceneManager.victory = true
 		finale_check()
 		
-func item_damage():
+func _item_damage():
 	BB_active = false
 	ongoing = true
 	var damage = item_damage
@@ -666,7 +666,7 @@ func _on_ItemInventory_battle_item_chosen():
 
 func battle_item_used():
 	yield(get_tree().create_timer(1.5), "timeout")
-	item_damage()
+	_item_damage()
 
 func _on_ItemInventory_all_battle_item_chosen():
 	show_cursors()
@@ -709,7 +709,7 @@ func _on_Fighters_enemies_enabled():
 		var stored_damage = enemies[y].get_status("stored_damage")
 		if stored_damage:
 			sd_wait = true
-			enemies[y].stored_damage()
+			enemies[y]._stored_damage()
 	
 	if poison_wait or sd_wait:
 		yield(get_tree().create_timer(0.7), "timeout")
@@ -832,3 +832,9 @@ func enemy_countdown():
 
 func _on_Fighters_game_over():
 	enemies_active = false
+	
+func _on_Fighters_fighter_damage_over():
+	pass
+
+func _on_EnemyMove_move_window_done():
+	pass

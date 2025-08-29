@@ -71,3 +71,6 @@ func _on_touch_area():
 #func _on_body_exited(body):
 	#if "is_player_jump_shape" in body and body.is_player_jump_shape and not Global.battle_ended and able and not PlayerManager.freeze:
 		#detected = false
+		
+func _on_BattleTrigger_body_entered(_name):
+	pass
