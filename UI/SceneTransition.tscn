@@ -1,13 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Misc/Shader/TransitionStar.gdshader" type="Shader" id=1]
-[ext_resource path="res://UI/Transition Star.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/UI/BattleTransition.gd" type="Script" id=3]
-
-[sub_resource type="ShaderMaterial" id=6]
-shader = ExtResource( 1 )
-shader_param/scale = 0.0
-shader_param/mask = ExtResource( 2 )
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -16,7 +10,7 @@ tracks/0/path = NodePath(".:material:shader_param/scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -52,7 +46,7 @@ tracks/3/path = NodePath(".:material")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -64,7 +58,7 @@ tracks/4/path = NodePath(".:material:shader")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -76,52 +70,12 @@ tracks/5/path = NodePath(".:rect_rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
-tracks/5/enabled = true
+tracks/5/enabled = false
 tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
-}
-
-[sub_resource type="Animation" id=3]
-resource_name = "StarTransition"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:material:shader_param/scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.2, 1.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:rect_rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0.0, 22.5, 45.0, 67.5, 90.0, 112.5, 135.0, 157.5, 180.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:material")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ SubResource( 6 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -168,7 +122,7 @@ tracks/3/path = NodePath(".:material")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -256,7 +210,6 @@ pause_mode = 2
 script = ExtResource( 3 )
 
 [node name="BattleTransitionRect" type="ColorRect" parent="."]
-material = SubResource( 6 )
 margin_left = -199.0
 margin_top = -170.0
 margin_right = 833.0
@@ -267,6 +220,5 @@ color = Color( 0, 0, 0, 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BattleTransitionRect"]
 playback_speed = 0.8
 anims/RESET = SubResource( 2 )
-anims/StarTransition = SubResource( 3 )
 anims/TransitionIn = SubResource( 4 )
 anims/TransitionOut = SubResource( 5 )

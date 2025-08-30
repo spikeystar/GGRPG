@@ -22,6 +22,15 @@ func spike_speed():
 #func kill():
 	#SceneManager.transitioning = false
 	#queue_free()
+	
+func speed_up():
+	animation_player.playback_speed = 1
+
+func slow_down():
+	animation_player.playback_speed = 0.7
+	
+func slow_down_alot():
+	animation_player.playback_speed = 0.3
 
 	
 func declare():

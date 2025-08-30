@@ -13,7 +13,7 @@ export var follow_player = false
 const PauseMenu = preload("res://UI/PauseMenu.tscn")
 const SaveMenu = preload("res://UI/SaveMenu.tscn")
 const Overworld = preload("res://UI/Overworld.tscn")
-const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
+const TransitionPlayer = preload("res://UI/SceneTransition.tscn")
 onready var pause_menu = PauseMenu.instance()
 onready var save_menu = SaveMenu.instance()
 onready var overworld_menu = Overworld.instance()
@@ -143,8 +143,8 @@ func _input(event):
 			get_tree().get_root().add_child(transition)
 			transition.ease_in()
 			remove_child(new_overworld_menu)
-			yield(get_tree().create_timer(0.6), "timeout")
-			able = false
+			#yield(get_tree().create_timer(0.6), "timeout")
+			#able = false
 			
 
 func _on_Item_Get_item_get():
