@@ -156,6 +156,7 @@ func _ready():
 		for layer in layers:
 			motion_root.add_collision_exception_with(layer)
 			
+	PlayerManager.notify_navmesh_ready()
 	
 	yield(get_tree().create_timer(0.01), "timeout")
 	if SceneManager.SceneEnemies.size() > 0:	
@@ -164,7 +165,7 @@ func _ready():
 				SceneManager.SceneEnemies[x].motion_root.add_collision_exception_with(layer)
 			
 	
-	PlayerManager.notify_navmesh_ready()
+	#PlayerManager.notify_navmesh_ready()
 
 func _physics_process(delta):
 	if not motion_root:

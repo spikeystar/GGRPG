@@ -62,18 +62,35 @@ func _on_touch_area():
 	pixelation.pixelate2()
 	yield(get_tree().create_timer(0.7), "timeout")
 	if SceneManager.counter > 1:
-		if priority == 1:
-			Global.door_name = exit_name
-		else:
+		if priority == 0:
 			return
+			SceneManager.counter = 0
+		if priority == 1:
+			SceneManager.counter = 0
+			yield(get_tree().create_timer(0.01), "timeout")
+			SceneManager.counter += 1
+			Global.door_name = exit_name
+			
 	else:
 		Global.door_name = exit_name
+		SceneManager.counter = 0
+		yield(get_tree().create_timer(0.01), "timeout")
+		SceneManager.counter += 1
 	var transition = TransitionPlayer.instance()
-	get_tree().get_root().add_child(transition)
-	transition.transition_in(target_scene, _get_animation_name())
-	yield(get_tree().create_timer(0.6), "timeout")
-	#pixelation.queue_free()
-	PlayerManager.drown = false
+	
+	print("counter equals " + str(SceneManager.counter))
+	
+	if SceneManager.counter == 1:
+		get_tree().get_root().add_child(transition)
+		transition.transition_in(target_scene, _get_animation_name())
+		
+		#SceneManager.times += 1
+		#print("run " + str(SceneManager.times))
+		
+		yield(get_tree().create_timer(0.6), "timeout")
+		PlayerManager.drown = false
+	else:
+		pass
 	
 	#yield(get_tree().create_timer(2), "timeout")
 	#transition.queue_free()
