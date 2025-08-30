@@ -8,5 +8,5 @@ resource_local_to_scene = true
 shader = ExtResource( 1 )
 shader_param/scroll = Vector2( -0.17, 0.17 )
 shader_param/noiseScale = Vector2( 1, 1 )
-shader_param/flash_modifier = 0.2
+shader_param/flash_modifier = 0.0
 shader_param/NOISE_PATTERN = ExtResource( 2 )

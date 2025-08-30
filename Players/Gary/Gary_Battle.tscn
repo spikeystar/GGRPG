@@ -167,7 +167,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id=22]
 resource_name = "Fighter_Buff"
-length = 0.7
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -199,10 +199,22 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.1, 0.3, 0.5, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.1, 0.3, 0.5, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.2, 1.0, 1.0, 0.2 ]
+"values": [ 0.2, 1.0, 1.0, 0.2, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.5 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -299,7 +311,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=23]
 resource_name = "Fighter_Debuff"
-length = 0.7
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -331,15 +343,15 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.1, 0.3, 0.5, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.1, 0.3, 0.5, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.2, 1.0, 1.0, 0.2 ]
+"values": [ 0.2, 1.0, 1.0, 0.2, 0.0 ]
 }
 
 [sub_resource type="Animation" id=5]
 resource_name = "Fighter_Defend"
-length = 0.7
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -383,10 +395,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.1, 0.3, 0.5, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0.1, 0.3, 0.5, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 0.2, 1.0, 1.0, 0.2 ]
+"values": [ 0.2, 1.0, 1.0, 0.2, 0.0 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("AnimationPlayer:playback_speed")
