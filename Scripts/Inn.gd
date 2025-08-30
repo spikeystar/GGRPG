@@ -181,4 +181,5 @@ func sleep_text():
 	if inn_name == "Loqua":
 		$Dialogue/Name/Talk.text = "I hope you have a good rest!"
 
-
+func _on_NPC_general_dialogue():
+	pass

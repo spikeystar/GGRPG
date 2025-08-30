@@ -23,6 +23,8 @@ export var dead = false
 export var miniboss : bool
 export var boss : bool
 
+var killed = false
+
 func _ready():
 	$MotionRoot/BattleTrigger.ground_enemy = ground_enemy
 	motion_root_z = motion_root.pos_z
@@ -35,12 +37,27 @@ func _physics_process(delta):
 		#after_battle()
 		Music.unpause()
 		SceneManager.SceneEnemies = []
-		if alt_chosen:
-			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(alt_arena)
-		if not alternate:
-			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(battle_arena)
-		if alt_not_chosen:
-			get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(battle_arena)
+		if $MotionRoot/BattleTrigger.detected and alt_chosen and not killed:
+			#get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(alt_arena)
+			
+			var path = get_tree().get_root().get_node("WorldRoot/Camera2D").get_node(str(alt_arena))
+			path.queue_free()
+			killed = true
+			
+		if $MotionRoot/BattleTrigger.detected and not alternate and not killed:
+			#get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(battle_arena)
+			
+			var path = get_tree().get_root().get_node("WorldRoot/Camera2D").get_node(str(battle_arena))
+			path.queue_free()
+			killed = true
+			
+		if $MotionRoot/BattleTrigger.detected and alt_not_chosen and not killed:
+			#get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(battle_arena)
+			
+			var path = get_tree().get_root().get_node("WorldRoot/Camera2D").get_node(str(battle_arena))
+			path.queue_free()
+			killed = true
+			
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)
 		transition.ease_in()
@@ -54,8 +71,8 @@ func _physics_process(delta):
 		else:
 			SceneManager.SceneEnemies.append(self)
 			
-		yield(get_tree().create_timer(0.6), "timeout")
-		PlayerManager.pop()
+		#yield(get_tree().create_timer(0.6), "timeout")
+		PlayerManager.pop_2()
 		
 func after_battle():
 	self.hide()
@@ -66,6 +83,7 @@ func after_battle():
 	#$ShadowYSort/ShadowVisualRoot/ShadowCircle.hide()
 	
 func _on_BattleTrigger_triggered():
+	killed = false
 	Music.pause()
 	if miniboss:
 		BattleMusic.id = "Miniboss_Battle"

@@ -18,7 +18,7 @@ func _ready():
 	#add_child(timer)
 	#timer.start(0.1)
 	
-	yield(get_tree().create_timer(0.1), "timeout")
+	#yield(get_tree().create_timer(0.1), "timeout")
 	connect("body_entered", self, "_on_body_entered")
 	
 	position.y += height
@@ -38,7 +38,7 @@ func _input(event):
 	if event.is_action_pressed("ui_select") and get_overlapping_bodies().size() > 0 and not PlayerManager.freeze and SceneManager.ready_again and this_body:
 		SE.effect("Select")
 		PlayerManager.freeze = true
-		_on_touch_area()
+		#_on_touch_area()
 		SceneManager.ready_again = false
 		SceneManager.npc_name = npc_name
 		emit_signal("general_dialogue")
@@ -52,9 +52,9 @@ func _on_body_entered(body):
 		SceneManager.ready_again = true
 		this_body = true
 	
-func _on_touch_area():
-	disconnect("body_entered", self, "_on_body_entered")
-	emit_signal("interaction")
+#func _on_touch_area():
+	#disconnect("body_entered", self, "_on_body_entered")
+	#emit_signal("interaction")
 	
 func _on_NPC_body_exited(body):
 	SceneManager.ready_again = false

@@ -132,7 +132,7 @@ func _physics_process(delta):
 		
 		#yield(get_tree().create_timer(0.6), "timeout")
 		
-		PlayerManager.pop()
+		PlayerManager.pop_2()
 	#if motion_root.velocity.x > 0:
 		#sprite.flip_h = true
 	#else:

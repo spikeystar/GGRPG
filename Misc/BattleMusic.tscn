@@ -20,7 +20,7 @@ loop_time = 92.95
 
 [node name="Boss_Battle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = -8.0
+volume_db = -9.0
 script = ExtResource( 4 )
 end_time = 132.9
 loop_time = 72.0

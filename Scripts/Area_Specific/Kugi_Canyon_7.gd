@@ -21,6 +21,7 @@ func _ready():
 		Music.music()
 		
 	if EventManager.Saguarotel:
+		$AnimationPlayer.queue_free()
 		$YSort/MiddleGround/Saguarotel.queue_free()
 		$BerryLake1/CollisionPolygon2D.disabled = false
 
@@ -42,6 +43,7 @@ func _process(delta):
 		Gary.motion_root.global_position = $Position2D.position
 		Jacques.global_position = $Position2D2.position
 		JacquesPlayer.play("back_idle_f")
+		$AnimationPlayer.queue_free()
 		$YSort/MiddleGround/Saguarotel.queue_free()
 		yield(get_tree().create_timer(1), "timeout")
 		SE.effect("Select")

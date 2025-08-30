@@ -73,6 +73,11 @@ func bubble():
 	player_instance.bubble()
 	
 func pop():
+	if SceneManager.bubble:
+		player_instance.pop()
+		SceneManager.bubble = false
+		
+func pop_2():
 	yield(get_tree().create_timer(0.6), "timeout")
 	if SceneManager.bubble:
 		player_instance.pop()

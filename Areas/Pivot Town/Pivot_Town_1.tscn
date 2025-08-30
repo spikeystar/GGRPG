@@ -2066,7 +2066,7 @@ right = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/NPC2"]
 position = Vector2( 772, -444 )
-polygon = PoolVector2Array( -6.00998, -1.96857, 26.0576, 10.8637, 12.1102, 20.9369, -19.9679, 6.10462 )
+polygon = PoolVector2Array( -6.00998, -1.96857, 26.0576, 10.8637, 12, 23, -24, 7 )
 
 [node name="NPC3" type="Area2D" parent="CollisionRoot"]
 position = Vector2( -532, -254 )
@@ -2475,6 +2475,7 @@ position = Vector2( -429, -740 )
 scale = Vector2( 1.7, 1.7 )
 z_index = 3
 frames = SubResource( 19 )
+frame = 1
 speed_scale = 0.8
 playing = true
 
