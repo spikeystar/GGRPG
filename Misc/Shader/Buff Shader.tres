@@ -30,6 +30,7 @@ void fragment() {
 	COLOR.rgb = mix(color.rgb, vec4(intensity).rgb, flash_modifier);
 	COLOR.b = .31;
 	COLOR.r = 1.15;
+	
 	}
 	
 	"

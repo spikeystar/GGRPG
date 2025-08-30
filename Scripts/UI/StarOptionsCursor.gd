@@ -88,3 +88,6 @@ func _on_Interaction_option_selecting():
 	self.modulate.a = 1
 	yield(get_tree().create_timer(0.2), "timeout")
 	able = true
+
+func _on_SaveStar_star_options():
+	pass

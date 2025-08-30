@@ -65,3 +65,9 @@ func update_floor():
 			floor_z = max(floor_z, f.height)
 		else:
 			ceiling_z = min(ceiling_z, f.bottom)
+
+func _on_PlayerDetection_stop_chase():
+	pass
+	
+func _on_PlayerDetection_start_chase():
+	pass

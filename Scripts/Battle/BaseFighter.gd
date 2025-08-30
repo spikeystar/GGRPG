@@ -215,6 +215,8 @@ func defend():
 	defending = true
 	able = false
 	f_defense = f_defense + (f_defense * 0.5)
+	yield($AnimationPlayer, "animation_finished")
+	$AnimationPlayer.play("Fighter_BattleReady")
 	
 func item_used():
 	able = false
@@ -516,12 +518,16 @@ func buff():
 	SE.effect("Buff")
 	$AnimationPlayer.playback_speed = 0.7
 	$AnimationPlayer.play("Fighter_Buff")
+	yield($AnimationPlayer, "animation_finished")
+	$AnimationPlayer.play("Fighter_BattleReady")
 	
 func debuff():
 	yield(get_tree().create_timer(1.7), "timeout")
 	SE.effect("Debuff")
 	$AnimationPlayer.playback_speed = 0.7
 	$AnimationPlayer.play("Fighter_Debuff")
+	yield($AnimationPlayer, "animation_finished")
+	$AnimationPlayer.play("Fighter_BattleReady")
 	
 func flee():
 	$AnimationPlayer.play("Fighter_Flee")

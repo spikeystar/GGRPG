@@ -29,7 +29,7 @@ onready var alt_arena = alt_scene.instance()
 
 onready var motion_root: KinematicBody2D = $MotionRoot
 onready var world_collider = $MotionRoot/CollisionShape2D
-onready var anim_tree = $BodyYSort/AnimationTree
+#onready var anim_tree = $BodyYSort/AnimationTree
 onready var anim_player = $BodyYSort/AnimationPlayer
 
 onready var body_y_sort = $BodyYSort

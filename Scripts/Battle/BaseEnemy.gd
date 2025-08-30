@@ -132,14 +132,14 @@ func buff():
 	yield(get_tree().create_timer(0.1), "timeout")
 	SE.effect("Buff")
 	$AnimationPlayer.play("buff")
-	yield(get_tree().create_timer(1.6), "timeout")
+	yield($AnimationPlayer, "animation_finished")
 	reset_animation()
 	
 func debuff():
 	yield(get_tree().create_timer(0.1), "timeout")
 	SE.effect("Debuff")
 	$AnimationPlayer.play("debuff")
-	yield(get_tree().create_timer(1.6), "timeout")
+	yield($AnimationPlayer, "animation_finished")
 	reset_animation()
 	
 func reset_animation():	
