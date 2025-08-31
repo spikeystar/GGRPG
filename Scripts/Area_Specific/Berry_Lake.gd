@@ -7,3 +7,4 @@ func _ready():
 		Music.switch_songs()
 		Music.id = "Berry_Lake"
 		Music.music()
+		

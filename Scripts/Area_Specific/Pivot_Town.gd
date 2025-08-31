@@ -10,4 +10,3 @@ func _ready():
 		Music.id = "Pivot_Town"
 		Music.music()
 		
-	

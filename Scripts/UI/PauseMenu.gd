@@ -68,3 +68,4 @@ func _on_TrinketsInventory_return_to_trinkets():
 	yield(get_tree().create_timer(0.3), "timeout")
 	$Members/HP.show()
 	$Members/Trinkets.hide()
+	SceneManager.transitioning = false

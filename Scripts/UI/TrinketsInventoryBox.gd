@@ -83,6 +83,7 @@ func _process(delta):
 func _input(event):
 	var inventory_max = (inventory.size() -1)
 	if Input.is_action_just_pressed("ui_select") and trinkets_active:
+		SceneManager.transitioning = true
 		SE.effect("Select")
 		get_id()
 		emit_signal("trinket_chosen")

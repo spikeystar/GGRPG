@@ -193,6 +193,7 @@ func _process(delta):
 		select_next_member(-1)
 
 	if Input.is_action_just_pressed("ui_select") and item_selecting and able:
+		SceneManager.transitioning = true
 		SE.effect("Heal")
 		selector_name = get_name()
 		if selector_name == "Gary":
@@ -254,6 +255,7 @@ func _process(delta):
 		select_next_member(-1)
 
 	if Input.is_action_just_pressed("ui_select") and trinket_selecting and able:
+		SceneManager.transitioning = true
 		SE.effect("Switch")
 		selector_name = get_name()
 		if selector_name == "Gary":
@@ -649,6 +651,7 @@ func _on_ItemInventoryBox_return_to_item():
 	$Cursors.hide()
 	for x in Cursors.size():
 		Cursors[x].hide()
+	SceneManager.transitioning = false
 
 func _on_TrinketsInventory_return_to_trinkets():
 	yield(get_tree().create_timer(0.2), "timeout")

@@ -92,7 +92,7 @@ func _input(event):
 			yield(get_tree().create_timer(0.3), "timeout")
 			able = true
 		
-		if Input.is_action_pressed("ui_pause") and PlayerManager.freeze and able and not Global.battling and not SceneManager.overworld:
+		if Input.is_action_pressed("ui_pause") and PlayerManager.freeze and able and not Global.battling and not SceneManager.overworld and not SceneManager.transitioning:
 			Music.loud()
 			SE.effect("Menu Open")
 			var transition = TransitionPlayer.instance()
@@ -137,12 +137,14 @@ func _input(event):
 			able = false
 		
 		if Input.is_action_pressed("ui_select") and PlayerManager.freeze and able and SceneManager.overworld:
-			SceneManager.overworld = false
+			#SceneManager.overworld = false
 			var transition = TransitionPlayer.instance()
 			yield(get_tree().create_timer(0.7), "timeout")
 			get_tree().get_root().add_child(transition)
 			transition.ease_in()
 			remove_child(new_overworld_menu)
+			#yield(get_tree().create_timer(0.6), "timeout")
+			#SceneManager.overworld = false
 			#yield(get_tree().create_timer(0.6), "timeout")
 			#able = false
 			

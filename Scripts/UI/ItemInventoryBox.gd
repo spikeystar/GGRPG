@@ -50,6 +50,7 @@ func _input(event):
 			item_active = false
 			SE.effect("Select")
 		if item_id == "Picnic Pie" or item_id == "Pretty Gem":
+			SceneManager.transitioning = true
 			_on_Members_item_usage()
 			item_active = false
 			SE.effect("Heal")

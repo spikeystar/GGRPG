@@ -83,7 +83,7 @@ func _ready():
 		EdgarPlayer.play("front_hop")
 		SE.effect("Drama Jump")
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "To see one of the Jewel Seeds up close like this... truly such an honor..."
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "To see one of the Jewel Seeds up close like this... truly such an honor!"
 		$Camera2D/Interaction/Dialogue/Name.text = "Edgar:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
@@ -110,7 +110,7 @@ func _ready():
 		PlayerManager.freeze = true
 		
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Hello, I’m Irina! I'm also interested in helping to find the Jewel Seeds."
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Hello, I’m Irina! I'm also interested in the Jewel Seeds."
 		$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
@@ -118,7 +118,7 @@ func _ready():
 		PlayerManager.freeze = true
 		
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "That's great to hear!"
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "That's great to hear."
 		$Camera2D/Interaction/Dialogue/Name.text = "Edgar:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")

@@ -81,7 +81,7 @@ func _input(event):
 			yield(get_tree().create_timer(0.3), "timeout")
 			able = true
 		
-		if Input.is_action_pressed("ui_pause") and PlayerManager.freeze and able and not PlayerManager.sleep:
+		if Input.is_action_pressed("ui_pause") and PlayerManager.freeze and able and not PlayerManager.sleep and not SceneManager.transitioning:
 			SE.effect("Menu Open")
 			Music.loud()
 			var transition = TransitionPlayer.instance()
