@@ -106,6 +106,7 @@ func _input(event):
 			able = false
 			
 		if Input.is_action_pressed("ui_select") and PlayerManager.freeze and able and SceneManager.saving:
+			SceneManager.transitioning = true
 			SceneManager.saving = false
 			current = true
 			yield(get_tree().create_timer(1.3), "timeout")
@@ -119,6 +120,7 @@ func _input(event):
 			get_tree().paused = false
 			yield(get_tree().create_timer(0.6), "timeout")
 			able = false
+			SceneManager.transitioning = false
 			
 		if Input.is_action_pressed("ui_accept") and PlayerManager.freeze and able and SceneManager.saving or Input.is_action_pressed("ui_left") and PlayerManager.freeze and able and SceneManager.saving or Input.is_action_pressed("ui_cancel") and PlayerManager.freeze and able and SceneManager.saving:
 			SceneManager.saving = false

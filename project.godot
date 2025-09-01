@@ -29,7 +29,7 @@ boot_splash/image="res://UI/Game Load Icon.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://UI/Game Load Icon.png"
 config/macos_native_icon="res://UI/Start Screen/Game Load Icon.ico"
-config/windows_native_icon="res://UI/Start Screen/Game Load Icon.ico"
+config/windows_native_icon="res://UI/Start Screen/Windows Icon.ico"
 
 [autoload]
 
