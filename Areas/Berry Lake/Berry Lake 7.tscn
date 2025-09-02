@@ -2253,19 +2253,20 @@ alt_chance = 75
 alternate = true
 
 [node name="Enemy_Boundary" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
-collision_mask = 8
+collision_mask = 15
 script = ExtResource( 65 )
 
 [node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
-polygon = PoolVector2Array( 154, -31, 229, -34, 366, -82, 417, -100, 68, -223, -3, -184, -5, -153, -29, -128, -33, -105, -30, -69, -271, 18, -148, 38, 3, -20, 66, -39 )
+polygon = PoolVector2Array( 165, 30, 249, -1, 413, -49, 468, -83, 68, -223, -3, -184, -5, -153, -33, -134, -53, -120, -33, -105, -55, -87, -35, -74, -278, 12, -133, 51, 18, 7, 83, 26 )
 
 [node name="Repel2" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+visible = false
 position = Vector2( -155, -104 )
 polygon = PoolVector2Array( 174, -136, 92, -180, 29, -143, 93, -113 )
 
 [node name="Repel3" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+visible = false
 position = Vector2( 419, 99 )
 polygon = PoolVector2Array( 174, -136, 92, -180, 29, -143, 93, -108 )
 

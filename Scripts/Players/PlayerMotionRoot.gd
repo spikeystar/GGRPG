@@ -151,9 +151,17 @@ func _physics_process(delta):
 	
 	if pos_z == current_max_z and vel.z > 0:
 		vel.z = 0
+
 	
 	var delta2D = Vector2(vel.x, -vel.y * 0.5)
 	move_and_slide(delta2D)
+	
+	if vel.x > 0 or vel.y > 0 or vel.z > 0 or vel.x < 0 or vel.y < 0 or vel.z < 0:
+		PlayerManager.standing = false
+		
+	if int(vel.x) == 0 and int(vel.y) == 0 and int(vel.z) == 0:
+		PlayerManager.standing = true
+		
 		
 	#if is_on_ground:
 		#yield(get_tree().create_timer(0.3), "timeout")

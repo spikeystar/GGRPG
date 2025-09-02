@@ -1853,7 +1853,7 @@ align = 1
 position = Vector2( 75, 167 )
 
 [node name="Smush" parent="." instance=ExtResource( 59 )]
-position = Vector2( -90, -153 )
+position = Vector2( -112, -169 )
 target_scene = ExtResource( 62 )
 
 [node name="Smush2" parent="." instance=ExtResource( 59 )]
@@ -1861,7 +1861,7 @@ position = Vector2( 745, -383 )
 target_scene = ExtResource( 62 )
 
 [node name="Beezle" parent="." instance=ExtResource( 58 )]
-position = Vector2( 260, -107 )
+position = Vector2( 221, -64 )
 target_scene = ExtResource( 63 )
 alt_scene = ExtResource( 62 )
 alt_chance = 50
@@ -1875,7 +1875,7 @@ alt_chance = 50
 alternate = true
 
 [node name="Druplet" parent="." instance=ExtResource( 60 )]
-position = Vector2( -7, -51 )
+position = Vector2( -45, -46 )
 target_scene = ExtResource( 64 )
 alt_scene = ExtResource( 65 )
 alt_chance = 50
@@ -1889,14 +1889,13 @@ alt_chance = 50
 alternate = true
 
 [node name="Enemy_Boundary" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
-collision_mask = 8
+collision_mask = 15
 script = ExtResource( 61 )
 
 [node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
 position = Vector2( 5, -186 )
-polygon = PoolVector2Array( 557, 105, 711, 89, 713, -27, 587, -46, 579, -106, 536, -116, 517, -61, 97, -219, 89, -286, 38, -295, -137, -138, -78, -111, -40, -75, 3, -99 )
+polygon = PoolVector2Array( 534, 146, 717, 97, 713, -27, 606, -59, 579, -106, 536, -116, 510, -81, 108, -234, 89, -286, 38, -295, -159, -123, -133, -86, -73, -57, -15, -36 )
 
 [connection signal="bouncy" from="Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="bouncy" from="Bouncy2" to="YSort/MiddleGround/BouncyFlower2" method="_on_Bouncy2_bouncy"]

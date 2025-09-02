@@ -64,6 +64,7 @@ func _ready():
 	$MotionRoot/BattleTrigger.printer = printer
 	$MotionRoot/BattleTrigger.ground_enemy = ground_enemy
 	$MotionRoot.ground_enemy = ground_enemy
+	$MotionRoot/PlayerDetection.ground_enemy = ground_enemy
 	#anim_player.play("walk_front")
 	motion_root_z = motion_root.pos_z
 	yield(get_tree().create_timer(0.01), "timeout")

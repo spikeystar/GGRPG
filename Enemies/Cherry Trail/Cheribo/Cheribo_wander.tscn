@@ -148,10 +148,10 @@ collision_layer = 9
 collision_mask = 10
 collision/safe_margin = 0.5
 script = ExtResource( 1 )
-ACCELERATION = 50
+ACCELERATION = 80
 CHASE_SPEED = 200
 WANDER_SPEED = 25
-FRICTION = 1.0
+FRICTION = 2.5
 MIN_IDLE_TIME = 3
 MAX_IDLE_TIME = 5
 MIN_WANDER_TIME = 2
@@ -196,7 +196,7 @@ shape = SubResource( 179 )
 [node name="ShadowVisualRoot" type="Node2D" parent="ShadowYSort"]
 
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
-modulate = Color( 1, 1, 1, 0.75 )
+modulate = Color( 1, 1, 1, 0.74902 )
 position = Vector2( 2, -1 )
 scale = Vector2( 0.914288, 0.918545 )
 texture = ExtResource( 6 )

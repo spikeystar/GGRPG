@@ -18,6 +18,8 @@ var bouncy = false
 var jump_disabled = false
 var cutscene = false
 var pause_delay = false
+var standing = true
+var repel_zone = false
 
 func _ready():
 	spawn_player()

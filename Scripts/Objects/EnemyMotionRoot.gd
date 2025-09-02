@@ -17,6 +17,8 @@ export var WANDER_RADIUS = 30
 export var MAX_CHASE_DISTANCE = 50
 export var MAX_Z_DIFF = 10
 
+export var debug = false
+
 
 #Movement
 var floor_z : float = LOWEST_Z
@@ -45,6 +47,8 @@ var chase_fatigued = false
 var initial_z
 var bouncy
 
+#var patrol = true
+
 enum ENEMY_STATE {
 IDLE,
 RETURN,
@@ -65,6 +69,8 @@ func _ready():
 	pos_z = spawn_z
 	initial_z = pos_z
 	state = ENEMY_STATE.IDLE
+	ACCELERATION = 95
+	FRICTION = 2.5
 	
 	WANDER_RADIUS += rng.randi_range(-3,4)
 	MIN_WANDER_TIME += rng.randi_range(0,3)
@@ -110,6 +116,7 @@ func _physics_process(delta):
 				timer = rng.randf_range(MIN_IDLE_TIME, MAX_IDLE_TIME)
 				apply_friction(delta)
 				
+				
 		ENEMY_STATE.WANDER:
 			if not ground_enemy:
 				raise_height(delta)
@@ -141,7 +148,6 @@ func _physics_process(delta):
 
 
 
-
 	if collided_last_frame && collided_normal.length_squared() > 0.01 && collided_normal.dot(velocity) < 0:
 		collided_normal.normalized()
 		velocity = project_onto_plane(velocity, collided_normal)
@@ -159,7 +165,6 @@ func _physics_process(delta):
 	timer = max(0, timer - delta)
 	
 	##update()
-
 
 ##func _draw():
 	##var p = Vector2.ZERO
@@ -182,10 +187,14 @@ func random_direction():
 	direction = (wander_destination - global_position).normalized()
 
 func _on_PlayerDetection_start_chase():
+	#if patrol:
 	player_in_radius = true
+	#	patrol = false
 
 func _on_PlayerDetection_stop_chase():
 	player_in_radius = false
+
+
 	
 func reflect(vector: Vector2, normal: Vector2) -> Vector2:
 	normal = normal.normalized()
@@ -228,15 +237,32 @@ func check_chase():
 	var should_start_chase = (player_in_radius && !chase_fatigued) && !freeze && !playerTooHigh && !originTooFar
 	var should_end_chase = playerTooFar || freeze || playerTooHigh || originTooFar
 	
+	
 	if state == ENEMY_STATE.CHASE && should_end_chase:
 		if originTooFar:
 			chase_fatigued = true
+			#var cooldown_timer = Timer.new()
+			#add_child(cooldown_timer)
+			#cooldown_timer.start(2)
+			#cooldown_timer.connect("timeout", self, "_on_cooldown_timer_timeout")
 		
-		timer = 0
+		#timer = 0
 		state = ENEMY_STATE.RETURN
 	elif state != ENEMY_STATE.CHASE && should_start_chase:
-		timer = 0
+		#timer = 0
 		state = ENEMY_STATE.CHASE
+		
+		#var patrol_timer = Timer.new()
+		#add_child(patrol_timer)
+		#patrol_timer.start(1)
+		#patrol_timer.connect("timeout", self, "_on_patrol_timer_timeout")
+		
+#func _on_cooldown_timer_timeout():
+	#patrol = true
+	
+#func _on_patrol_timer_timeout():
+	#patrol = false
 
 func _on_Timer_timeout():
 	pass
+

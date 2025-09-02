@@ -954,22 +954,22 @@ texture = ExtResource( 5 )
 
 [node name="SquareShadow6" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.235294 )
-position = Vector2( 216, -198 )
-rotation = 0.030219
+position = Vector2( 215, -197 )
+rotation = -0.0101889
 scale = Vector2( 0.863388, 0.640207 )
 texture = ExtResource( 5 )
 
 [node name="SquareShadow7" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.235294 )
-position = Vector2( 242, -208 )
-rotation = 0.030219
+position = Vector2( 240.519, -208.517 )
+rotation = -0.0101889
 scale = Vector2( 0.863388, 0.640207 )
 texture = ExtResource( 5 )
 
 [node name="SquareShadow8" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.235294 )
-position = Vector2( 265, -218 )
-rotation = 0.030219
+position = Vector2( 267, -220 )
+rotation = -0.0101889
 scale = Vector2( 0.863388, 0.640207 )
 texture = ExtResource( 5 )
 
@@ -1101,7 +1101,7 @@ depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
 
 [node name="Box10" parent="YSort/MiddleGround" instance=ExtResource( 18 )]
-position = Vector2( 261, -201 )
+position = Vector2( 258, -204 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1116,7 +1116,7 @@ depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
 
 [node name="Box11" parent="YSort/MiddleGround" instance=ExtResource( 18 )]
-position = Vector2( 261, -201 )
+position = Vector2( 258, -204 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1131,7 +1131,7 @@ depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
 
 [node name="Box12" parent="YSort/MiddleGround" instance=ExtResource( 18 )]
-position = Vector2( 261, -200 )
+position = Vector2( 258, -203 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1146,7 +1146,7 @@ depth_test_offset = Vector3( 0, 200, 0 )
 preview_collision_box = false
 
 [node name="Box8" parent="YSort/MiddleGround" instance=ExtResource( 18 )]
-position = Vector2( 241, -192 )
+position = Vector2( 238, -195 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1161,7 +1161,7 @@ depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
 
 [node name="Box9" parent="YSort/MiddleGround" instance=ExtResource( 18 )]
-position = Vector2( 241, -192 )
+position = Vector2( 238, -195 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1176,7 +1176,7 @@ depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
 
 [node name="Box5" parent="YSort/MiddleGround" instance=ExtResource( 18 )]
-position = Vector2( 221, -181 )
+position = Vector2( 218, -184 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1814,13 +1814,13 @@ alt_chance = 30
 alternate = false
 
 [node name="Scorpus" parent="." instance=ExtResource( 58 )]
-position = Vector2( 22, -11 )
+position = Vector2( -6, 13 )
 target_scene = ExtResource( 62 )
 alt_scene = ExtResource( 59 )
 alt_chance = 20
 
 [node name="Bramby" parent="." instance=ExtResource( 53 )]
-position = Vector2( 197, -264 )
+position = Vector2( 183, -238 )
 target_scene = ExtResource( 60 )
 alternate = false
 
@@ -1828,6 +1828,7 @@ alternate = false
 visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 39 )]
+visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 40 )]
 visible = false
@@ -1847,7 +1848,7 @@ polygon = PoolVector2Array( -434, -248, -333, -277, -288, -280, -275, -281, -246
 
 [node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 40 )]
 position = Vector2( -171, -98 )
-polygon = PoolVector2Array( -275, -147, -168, -178, -115, -188, -85, -194, -45, -204, -28, -211, -24, -223, 209, -296, 225, -310, 229, -328, 238, -332, 306, -346, 393, -380, 422, -388, 468, -363, 534, -345, 553, -337, 478, -303, 431, -294, 414, -284, 400, -282, 368, -272, 353, -266, 330, -263, 300, -271, 286, -280, 275, -279, 270, -269, 64, -168, 41, -166, 29, -174, 15, -168, 1, -158, 8, -136, -2, -120, -55, -91, -129, -70, -236, -101 )
+polygon = PoolVector2Array( -275, -147, -168, -178, -115, -188, -85, -194, -45, -204, -28, -211, -24, -223, 209, -296, 225, -310, 229, -328, 238, -332, 306, -346, 393, -380, 422, -388, 468, -363, 534, -345, 553, -338, 534, -330, 479, -309, 437, -295, 416, -281, 398, -277, 370, -268, 346, -260, 323, -261, 298, -269, 286, -280, 275, -279, 270, -269, 64, -168, 41, -166, 29, -174, 15, -168, 1, -158, 8, -136, -2, -120, -55, -91, -129, -70, -236, -101 )
 height = 140.0
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 44 )]
@@ -1996,6 +1997,7 @@ text = "You got a Flummery Flambe!"
 align = 1
 
 [node name="Water" type="Area2D" parent="."]
+visible = false
 position = Vector2( -90, -176 )
 script = ExtResource( 12 )
 target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 6.tscn"
@@ -2006,6 +2008,7 @@ position = Vector2( 1, 1 )
 polygon = PoolVector2Array( -174, -44, -4, 49, 401, 191, 400, 217, 466, 256, 605, 211, 89, 4, 48, -17, -96, -125, -162, -112 )
 
 [node name="Water2" type="Area2D" parent="."]
+visible = false
 position = Vector2( -90, -176 )
 priority = 1.0
 script = ExtResource( 12 )
@@ -2020,18 +2023,16 @@ polygon = PoolVector2Array( -220, -61, -149, -9, -99, 29, -71, 48, -29, 69, 390,
 position = Vector2( 92, -104 )
 
 [node name="Enemy_Boundary" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
-collision_mask = 8
+collision_mask = 15
 script = ExtResource( 65 )
 
 [node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
-visible = false
-polygon = PoolVector2Array( 418, 70, 673, -21, 4, -261, -137, -138, -36, -98 )
+polygon = PoolVector2Array( 407, 97, 673, -21, 9, -259, -137, -138, -122, -108, -57, -76 )
 
 [node name="Repel2" type="CollisionPolygon2D" parent="Enemy_Boundary"]
 visible = false
 position = Vector2( 265, -191 )
-polygon = PoolVector2Array( -99, 3, 116, -111, 100, -130, 120, -249, 47, -270, -154, -192, -106, -162, -107, -10 )
+polygon = PoolVector2Array( -85, 10, -45, 16, 151, -89, 107, -131, 120, -249, 30, -277, -166, -216, -150, -196, -134, -161, -137, -62, -107, -10 )
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

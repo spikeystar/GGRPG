@@ -2017,7 +2017,7 @@ anims/ledge2 = SubResource( 12 )
 visible = false
 position = Vector2( -22, -120 )
 collision_layer = 8
-collision_mask = 8
+collision_mask = 15
 script = ExtResource( 58 )
 
 [node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]

@@ -1446,7 +1446,7 @@ polygon = PoolVector2Array( 9, 48, 513, -132, 310, -211, -31, -95, -121, -62 )
 [node name="Enemy_Boundary" type="Area2D" parent="."]
 visible = false
 collision_layer = 8
-collision_mask = 8
+collision_mask = 15
 script = ExtResource( 55 )
 
 [node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
