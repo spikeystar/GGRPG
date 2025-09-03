@@ -1949,13 +1949,13 @@ shadow_color = Color( 0.54, 0.3078, 0.3078, 1 )
 
 [node name="PresentBase3" parent="." instance=ExtResource( 18 )]
 position = Vector2( -190, -367 )
-item_name = "Pretty Gem"
+item_name = "Bounty Herb"
 floor_height = 40.0
 shadow_color = Color( 0.54, 0.3078, 0.3078, 1 )
 
 [node name="PresentBase2" parent="." instance=ExtResource( 18 )]
 position = Vector2( -406, -406 )
-item_name = "Bounty Herb"
+item_name = "Jhumki"
 floor_height = 170.0
 shadow_color = Color( 0.54, 0.3078, 0.3078, 1 )
 

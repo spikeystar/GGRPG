@@ -162,7 +162,7 @@ func _physics_process(delta):
 	if int(vel.x) == 0 and int(vel.y) == 0 and int(vel.z) == 0:
 		PlayerManager.standing = true
 		
-		
+	PlayerManager.height = pos_z
 	#if is_on_ground:
 		#yield(get_tree().create_timer(0.3), "timeout")
 		#jumping = false

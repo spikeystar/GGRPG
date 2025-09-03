@@ -1,7 +1,15 @@
 extends Sprite
+var key_id
 
 func _ready():
-	var key_id = $KeyPanel/KeyInventory.get_id()
+	if Party.KeyItems.size() > 0:
+		key_id = $KeyPanel/KeyInventory.initial_id()
+		set_id()
+	
+	if Party.jhumki_amount > 0:
+		$KeyDisplay.frame = 90
+		$KeyInfo.text = "A small golden ornament that some collect"
+		$Held.text = "Found: " + str(Party.jhumki_amount)
 	
 	if Party.jewel_seeds == 1:
 		$Seed1.show()
@@ -40,15 +48,18 @@ func _ready():
 		$Seed7.show()
 
 func _process(delta):
-	var key_id = $KeyPanel/KeyInventory.get_id()
-	if key_id == "X":
+	key_id = $KeyPanel/KeyInventory.get_id()
+	set_id()
+
+func set_id():
+	if key_id == "Jhumki":
 		$KeyDisplay.show()
 		$KeyDisplay.frame = 90
-		$KeyInfo.text = "A strange stone that some collect"
-		$Held.text = "Held: " + str(Party.x_amount)
+		$KeyInfo.text = "A small golden ornament that some collect"
+		$Held.text = "Found: " + str(Party.jhumki_amount)
 	if key_id == "Lighthouse Key":
 		$KeyDisplay.show()
-		$KeyDisplay.frame = 0
+		$KeyDisplay.frame = 66
 		$KeyInfo.text = "Opens the Puzzle Pier lighthouse"
 		$Held.text = ""
 	if key_id == "Mansion Key":

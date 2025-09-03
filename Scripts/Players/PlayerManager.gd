@@ -20,6 +20,7 @@ var cutscene = false
 var pause_delay = false
 var standing = true
 var repel_zone = false
+var height = 0
 
 func _ready():
 	spawn_player()

@@ -1063,9 +1063,9 @@ menu_parent_path = NodePath("../KeyInventory")
 cursor_offset = Vector2( 17, 2.5 )
 
 [node name="KeyInfo" type="Label" parent="Key"]
-margin_left = 13.0
+margin_left = 14.0
 margin_top = -62.0
-margin_right = 164.0
+margin_right = 165.0
 margin_bottom = 10.0
 grow_horizontal = 2
 custom_fonts/font = ExtResource( 6 )
@@ -1090,6 +1090,7 @@ scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 12 )
 hframes = 3
 vframes = 32
+frame = 66
 
 [node name="Seed1" type="Sprite" parent="Key"]
 visible = false

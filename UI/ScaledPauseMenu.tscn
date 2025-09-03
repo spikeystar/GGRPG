@@ -1036,6 +1036,7 @@ text = "Gary's House"
 align = 1
 
 [node name="Key" type="Sprite" parent="."]
+visible = false
 position = Vector2( 97, -58 )
 texture = ExtResource( 19 )
 script = ExtResource( 30 )
@@ -1061,9 +1062,9 @@ script = ExtResource( 31 )
 menu_parent_path = NodePath("../KeyInventory")
 
 [node name="KeyInfo" type="Label" parent="Key"]
-margin_left = 13.0
+margin_left = 14.5267
 margin_top = -62.0
-margin_right = 164.0
+margin_right = 165.527
 margin_bottom = 10.0
 grow_horizontal = 2
 custom_fonts/font = ExtResource( 10 )

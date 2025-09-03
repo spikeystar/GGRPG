@@ -63,6 +63,11 @@ func get_id():
 	else:
 		pass
 		
+func initial_id():
+	if not empty_key:
+		key_id = inventory[0].get_id()
+		return key_id
+		
 
 func _on_KeyCursor_retread():
 	if inventory.size() > 8:

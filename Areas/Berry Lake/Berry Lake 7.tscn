@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Assets/Pivot Town/Orange Brick B.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Berry Lake/Flower B.png" type="Texture" id=2]
@@ -68,6 +68,7 @@
 [ext_resource path="res://Areas/Berry Lake/Berry Lake BA 3.tscn" type="PackedScene" id=66]
 [ext_resource path="res://Areas/Berry Lake/Berry Lake BA 1.tscn" type="PackedScene" id=67]
 [ext_resource path="res://Areas/Berry Lake/Berry Lake BA 6.tscn" type="PackedScene" id=68]
+[ext_resource path="res://Scripts/Item_Get.gd" type="Script" id=69]
 
 [sub_resource type="StreamTexture" id=9]
 
@@ -2103,7 +2104,6 @@ position = Vector2( -23.7, 6.2 )
 polygon = PoolVector2Array( -183, -48, -185, -53, -181, -58, -173, -59, -166, -56, -158, -59, -149, -58, -144, -53, -146, -48, -149, -45, -145, -42, -146, -38, -154, -35, -159, -39, -164, -41, -169, -40, -175, -37, -181, -36, -185, -39, -185, -43, -180, -45 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 24 )]
 visible = false
@@ -2169,6 +2169,7 @@ target_scene = "res://Areas/Berry Lake/Berry Lake 7.tscn"
 exit_name = "Entrance"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Water"]
+visible = false
 position = Vector2( -60, 93 )
 polygon = PoolVector2Array( -148, 9, -182, 13, -208, 29, -176, 73, -104, 90, -90, 68, 137, -20, 170, -14, 243, -15, 288, -15, 332, -30, 448, -77, 457, -97, 499, -113, 688, -256, 547, -312, 194, -403, 175, -214, 81, -182, 45, -131, 38, -125, 36, -103, 37, -77, 61, -66 )
 
@@ -2184,6 +2185,16 @@ height = 90.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Water2"]
 position = Vector2( -37, 99 )
 polygon = PoolVector2Array( 212, -47, 224, -44, 226, -54, 374, -105, 383, -126, 367, -167, 316, -183, 234, -201, 176, -147, 81, -117, 64, -106, 83, -95, 134, -75, 189, -55 )
+
+[node name="Item_Get" type="Area2D" parent="CollisionRoot"]
+position = Vector2( 248, -182 )
+script = ExtResource( 69 )
+height = 130.0
+item_name = "Jhumki"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Item_Get"]
+position = Vector2( 213, -49 )
+polygon = PoolVector2Array( -73, -103, -5, -76, -70, -47, -135, -77 )
 
 [node name="BerryLake8" parent="." instance=ExtResource( 26 )]
 position = Vector2( 225, 170 )
@@ -2272,3 +2283,4 @@ polygon = PoolVector2Array( 174, -136, 92, -180, 29, -143, 93, -108 )
 
 [connection signal="bouncy" from="YSort/Bouncy" to="YSort/Foreground/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="bouncy" from="YSort/Bouncy2" to="YSort/Foreground/BouncyFlower2" method="_on_Bouncy2_bouncy"]
+[connection signal="item_get" from="CollisionRoot/Item_Get" to="Camera2D" method="_on_Item_Get_item_get"]

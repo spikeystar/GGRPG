@@ -13,7 +13,7 @@ func _ready():
 
 	
 func _input(event):
-	if Input.is_action_just_pressed("ui_select") and gary_entered:
+	if Input.is_action_just_pressed("ui_select") and gary_entered and not PlayerManager.jumping:
 		item_get()
 
 func _on_body_entered(body):
@@ -29,7 +29,7 @@ func item_get():
 	if not Global.Collected.has(global_position):
 		SE.effect("Item_Get")
 		Party.add_item_name = item_name
-		if item_name == "X":
+		if item_name == "Jhumki":
 			Party.add_key_item_name = item_name
 			Party.add_key_item()
 		else:

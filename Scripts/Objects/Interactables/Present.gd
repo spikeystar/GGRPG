@@ -83,7 +83,7 @@ func item_get():
 	if not Global.Collected.has(global_position):
 		SE.effect("Present")
 		Party.add_item_name = item_name
-		if item_name == "X":
+		if item_name == "Jhumki":
 			Party.add_key_item_name = item_name
 			Party.add_key_item()
 		else:
@@ -154,6 +154,6 @@ func set_item():
 	if item_name == "Gold Earring":
 		$ItemUsage/Item.frame = 8
 		trinket_get()
-	if item_name == "X":
+	if item_name == "Jhumki":
 		$ItemUsage/Item.frame = 90
 		item_get()

@@ -341,6 +341,7 @@ func save_file():
 		data["location"] = SceneManager.location
 		data["door_name"] = Global.door_name
 		data["jewel_seeds"] = Party.jewel_seeds
+		data["jhumki_amount"] = Party.jhumki_amount
 		data["marbles"] = Party.marbles
 		data["Tutorial"] = Party.Tutorial
 		data["Inventory"] = Party.Inventory
@@ -454,6 +455,7 @@ func load_file():
 			SceneManager.location = data["location"]
 			Global.door_name = data["door_name"]
 			Party.jewel_seeds = data["jewel_seeds"]
+			Party.jhumki_amount = data["jhumki_amount"]
 			Party.marbles = data["marbles"]
 			Party.Tutorial = data["Tutorial"] 
 			Party.Inventory = data["Inventory"]

@@ -9,7 +9,7 @@ var marbles_get = false
 var trinket_get = false
 var sent_storage = false
 var event_name : String
-var x_amount : int = 0
+var jhumki_amount : int = 0
 
 const menu_slot = preload("res://UI/Slot.tscn")
 onready var slot = menu_slot.instance()
@@ -115,11 +115,11 @@ func new_trinket():
 func add_key_item():
 	var new_slot = slot.duplicate()
 	new_slot.text = add_key_item_name
-	if add_key_item_name == "X" and x_amount > 0:
-		x_amount += 1
-	if add_key_item_name == "X" and x_amount == 0:
+	if add_key_item_name == "Jhumki" and jhumki_amount > 0:
+		jhumki_amount += 1
+	if add_key_item_name == "Jhumki" and jhumki_amount == 0:
 		KeyItems.insert(0, new_slot)
-		x_amount += 1
+		jhumki_amount += 1
 	else:
 		KeyItems.append(new_slot)
 	
