@@ -129,6 +129,7 @@ tracks/1/keys = {
 
 [node name="Item" type="Sprite" parent="."]
 self_modulate = Color( 1, 1, 1, 0.470588 )
+position = Vector2( 1, 0 )
 scale = Vector2( 0.88, 0.88 )
 texture = ExtResource( 2 )
 hframes = 3
@@ -136,7 +137,7 @@ vframes = 32
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false
-position = Vector2( -2.84217e-14, -2 )
+position = Vector2( 2, 3.57628e-07 )
 scale = Vector2( 1.05, 1.05 )
 z_index = 1
 texture = ExtResource( 1 )

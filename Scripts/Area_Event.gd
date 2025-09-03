@@ -19,9 +19,12 @@ func _ready():
 func _process(delta):
 	gary = PlayerManager.player_motion_root
 	
+	#if height == int(gary.pos_z) and activated and not PlayerManager.jumping:
+		#area_event()
+	
 
 func _on_body_entered(body):
-	if "is_player_motion_root" in body and body.is_player_motion_root and not used and gary.pos_z == height and not unavoid:
+	if "is_player_motion_root" in body and body.is_player_motion_root and not used and gary.pos_z == height and not unavoid and not PlayerManager.jumping:
 		used = true
 		area_event()
 		
@@ -38,11 +41,12 @@ func _on_body_exited(body):
 		activated = false
 		
 func _input(event):
-	if Input.is_action_just_pressed("ui_select") and activated and gary.pos_z == height:
+	if Input.is_action_just_pressed("ui_select") and activated and gary.pos_z == height and not PlayerManager.jumping:
 		used = true
 		area_event()
 		
 func area_event():
+	used = true
 	activated = false
 	if not Global.Collected.has(global_position):
 		if not cutscene:
