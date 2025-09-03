@@ -201,6 +201,12 @@ func _input(event):
 			$BattleButtons/MagicX.show()
 		if item_stolen:
 			$BattleButtons/ItemX.show()
+			
+		$Fighters.fighter_turn()
+		var BB_position = $Fighters.get_BB_position()
+		$BattleButtons.position = BB_position
+		
+			
 		yield(get_tree().create_timer(0.1), "timeout")
 		BB_active = true
 		
@@ -280,6 +286,7 @@ func _input(event):
 			
 	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show and not dizzy and not tutorial:
 		SE.effect("Move Between")
+		$MagicWindow/MagicWindowPanel/SpellList.fighter_name = $Fighters.get_f_name()
 		magic_show = true
 		item_halt = true
 		attack_show = false
@@ -416,7 +423,8 @@ func _input(event):
 
 	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and tutorial_1 or (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and tutorial_4 or (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and tutorial_6 or (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and tutorial_8:
 		SE.effect("Select")
-		$Fighters/Gary_Battle.turn()
+	#	$Fighters/Gary_Battle.turn()
+		$Fighters.get_f_name()
 		$BattleButtons.show()
 		$BattleButtons/AttackX.hide()
 		$BattleButtons/MagicX.hide()
@@ -487,6 +495,8 @@ func _input(event):
 		attack_show = false
 		defend_show = false
 		item_show = false
+		
+		
 		emit_signal("index_resetzero")
 		emit_signal("hide_enemy_cursor")
 		emit_signal("magic_active")

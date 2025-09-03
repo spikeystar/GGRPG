@@ -22,8 +22,11 @@ var cursor_ready = true
 
 export var tutorial : bool
 
+var input := Vector2.ZERO
+
 func _process(delta):
-	var input := Vector2.ZERO
+	input = Vector2.ZERO
+	
 	
 	if Input.is_action_just_pressed("ui_up") and cursor_active and not tutorial:
 		#flicker_control()
@@ -69,13 +72,15 @@ func _process(delta):
 		#input.x -= 1
 	#if Input.is_action_just_pressed("ui_right"):
 		#input.x += 1
-	
+		
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)
 	elif menu_parent is HBoxContainer:
 		set_cursor_from_index(cursor_index + input.x)
 	elif menu_parent is GridContainer:
 		set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
+	
+
 	
 	if Input.is_action_just_pressed("ui_select") and cursor_active and cursor_ready:
 		var current_menu_item := get_menu_item_at_index(cursor_index)

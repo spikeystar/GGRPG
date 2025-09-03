@@ -38,7 +38,7 @@ func add_slot(item_index):
 	self.add_child(item_slot)
 	
 func _process(delta):
-	#item_index = clamp(item_index, 0, inventory.size() - 1)
+	item_index = clamp(item_index, 0, inventory.size() - 1)
 	var inventory_max = (inventory.size() -1)
 	if Input.is_action_just_pressed("ui_down") and item_active and item_index < inventory_max and not tutorial:
 		SE.effect("Move Between")
@@ -49,6 +49,16 @@ func _process(delta):
 		
 func _input(event):
 	var inventory_max = (inventory.size() -1)
+	
+	#if Input.is_action_just_pressed("ui_down") and item_active and item_index < inventory_max and not tutorial:
+	#	SE.effect("Move Between")
+	#	item_index += 1
+	#if Input.is_action_just_pressed("ui_up") and item_active and item_index > 0 and not tutorial:
+	#	SE.effect("Move Between")
+	#	item_index -= 1
+	
+	
+	
 	if Input.is_action_just_pressed("ui_down") and item_active and item_index == inventory_max and not tutorial:
 		SE.effect("Move Between")
 		emit_signal("go_to_Defend")

@@ -164,7 +164,7 @@ func set_positions():
 			fighters.append($Irina_Battle)
 			fighters[2].position = Vector2(-23, 194)
 			
-	if PartyStats.party_members >= 3:
+	if PartyStats.party_members > 3:
 		if PartyStats.gary_id == 1:
 			fighters.append($Gary_Battle)
 			fighters[0].position = Vector2(-240, 86)
@@ -261,7 +261,7 @@ func select_next_fighter2(index_offset):
 	fighters2[new_fighter_index].focus()
 	fighter_index = new_fighter_index
 
-func _process(delta):
+func _input(event):
 	#if SceneManager.victory:
 		#for x in fighters2.size():
 			#fighters2[x].unfocus()
@@ -279,7 +279,7 @@ func _process(delta):
 		#emit_signal("fighters_active")
 		
 	if Input.is_action_just_pressed("ui_left") and not BB_active and not attack_chosen and not ongoing and fighters_active and not item_selecting and not enemies_active and not enemy_item and not magic_selecting and not halt:
-		print(fighter_index)
+		#print(fighter_index)
 		select_next_fighter(-1)
 		if fighters.size() >1:
 			SE.effect("Move Between")
@@ -287,8 +287,9 @@ func _process(delta):
 			pass
 	
 	if Input.is_action_just_pressed("ui_select") and BB_active and not attack_chosen and not ongoing and fighters_active and not item_selecting and not enemies_active and not enemy_item and not magic_selecting and not halt:
-		emit_signal("BB_move")
-		fighters[fighter_index].turn()
+		#emit_signal("BB_move")
+		#fighters[fighter_index].turn()
+		
 		hide_all_cursors()
 		fighters_active = false
 		fighter_name = get_f_name()
@@ -737,8 +738,7 @@ func fighters_active_check():
 	
 	print("max_turns")
 	print(max_turns)
-	print("size")
-	print(fighters2.size())
+	print(str(fighters2.size()) + "FIGHTER SIZE")
 	
 #	for x in range (fighters2.size()):
 	#	var dead = fighters2[x].death_count()
@@ -1373,3 +1373,6 @@ func _on_Enemies_victory():
 
 func _on_SpellList_spell_chosen():
 	pass
+	
+func fighter_turn():
+	fighters[fighter_index].turn()

@@ -41,7 +41,9 @@ func get_spell_id():
 	return spell_id
 	
 func _on_Menu_Cursor_magic_active():
+	#yield(get_tree().create_timer(0.01), "timeout")
 	spell_check()
 
 func _on_WorldRoot_magic_active():
+	#yield(get_tree().create_timer(0.01), "timeout")
 	spell_check()
