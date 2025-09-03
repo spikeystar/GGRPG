@@ -11,7 +11,7 @@
 [ext_resource path="res://UI/Cursor.png" type="Texture" id=9]
 [ext_resource path="res://UI/Pause/Member Display.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/UI/ItemInventoryBox.gd" type="Script" id=11]
-[ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=12]
+[ext_resource path="res://Assets/General/All Items.png" type="Texture" id=12]
 [ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scripts/UI/PauseMembers.gd" type="Script" id=14]
 [ext_resource path="res://Scripts/UI/PauseMenu.gd" type="Script" id=15]
@@ -783,7 +783,7 @@ position = Vector2( 90, -121 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 12 )
 hframes = 3
-vframes = 4
+vframes = 32
 
 [node name="Trinkets" type="Sprite" parent="."]
 visible = false
@@ -819,7 +819,7 @@ position = Vector2( 90, -121 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 12 )
 hframes = 3
-vframes = 4
+vframes = 32
 frame = 6
 
 [node name="Held_name" type="Label" parent="Trinkets"]
@@ -1063,13 +1063,24 @@ menu_parent_path = NodePath("../KeyInventory")
 cursor_offset = Vector2( 17, 2.5 )
 
 [node name="KeyInfo" type="Label" parent="Key"]
-margin_left = 39.0
-margin_top = -60.0
-margin_right = 141.0
-margin_bottom = 12.0
+margin_left = 13.0
+margin_top = -62.0
+margin_right = 164.0
+margin_bottom = 10.0
 grow_horizontal = 2
 custom_fonts/font = ExtResource( 6 )
-text = "Opens the Puzzle Pier lighthouse"
+text = "A strange stone that some people collect"
+align = 1
+autowrap = true
+
+[node name="Held" type="Label" parent="Key"]
+margin_left = 13.0
+margin_top = -9.69231
+margin_right = 164.0
+margin_bottom = 62.3077
+grow_horizontal = 2
+custom_fonts/font = ExtResource( 6 )
+text = "Held: 1"
 align = 1
 autowrap = true
 
@@ -1078,7 +1089,7 @@ position = Vector2( 90, -122 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 12 )
 hframes = 3
-vframes = 3
+vframes = 32
 
 [node name="Seed1" type="Sprite" parent="Key"]
 visible = false

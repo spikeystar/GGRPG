@@ -19,7 +19,11 @@ func item_get():
 	if not Global.Collected.has(global_position):
 		SE.effect("Item_Get")
 		Party.add_item_name = item_name
-		Party.add_item()
+		if item_name == "X":
+			Party.add_key_item_name = item_name
+			Party.add_key_item()
+		else:
+			Party.add_item()
 		emit_signal("item_get")
 		Global.Collected.append(global_position)
 	else:

@@ -49,7 +49,7 @@
 [ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=47]
 [ext_resource path="res://Scripts/UI/Buy_Cursor.gd" type="Script" id=48]
 [ext_resource path="res://Scripts/UI/Shop_Buy.gd" type="Script" id=49]
-[ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=50]
+[ext_resource path="res://Assets/General/All Items.png" type="Texture" id=50]
 [ext_resource path="res://Misc/Font/Trinket Held.tres" type="DynamicFont" id=51]
 [ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=52]
 [ext_resource path="res://Scripts/UI/Buy_Inventory.gd" type="Script" id=53]
@@ -973,7 +973,7 @@ position = Vector2( 84.9992, -81.6665 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 50 )
 hframes = 3
-vframes = 4
+vframes = 32
 
 [node name="Cost" type="Label" parent="Camera2D/Shop/Buy"]
 margin_left = 47.0
@@ -1061,7 +1061,7 @@ position = Vector2( 84.9992, -81.6665 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 50 )
 hframes = 3
-vframes = 4
+vframes = 32
 
 [node name="Cost" type="Label" parent="Camera2D/Shop/Sell"]
 margin_left = 47.0
@@ -1138,7 +1138,7 @@ position = Vector2( 84.9992, -81.6665 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 50 )
 hframes = 3
-vframes = 4
+vframes = 32
 
 [node name="Storage" type="Label" parent="Camera2D/Shop/Deposit"]
 margin_left = 38.3326
@@ -1199,7 +1199,7 @@ position = Vector2( 84.9992, -81.6665 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 50 )
 hframes = 3
-vframes = 4
+vframes = 32
 
 [node name="Bag" type="Label" parent="Camera2D/Shop/Withdraw"]
 margin_left = 34.9992

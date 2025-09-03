@@ -62,7 +62,7 @@
 [ext_resource path="res://Assets/Pivot Town/wall a.png" type="Texture" id=60]
 [ext_resource path="res://NPC/Berry Lake/Cranston.tscn" type="PackedScene" id=61]
 [ext_resource path="res://Scripts/Shop_Interact.gd" type="Script" id=62]
-[ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=63]
+[ext_resource path="res://Assets/General/All Items.png" type="Texture" id=63]
 [ext_resource path="res://Misc/Font/Trinket Held.tres" type="DynamicFont" id=64]
 [ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=65]
 [ext_resource path="res://Scripts/UI/Buy_Cursor.gd" type="Script" id=66]
@@ -1293,7 +1293,7 @@ position = Vector2( 84.9992, -81.6665 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 63 )
 hframes = 3
-vframes = 4
+vframes = 32
 
 [node name="Cost" type="Label" parent="Camera2D/Shop/Buy"]
 margin_left = 47.0
@@ -1381,7 +1381,7 @@ position = Vector2( 84.9992, -81.6665 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 63 )
 hframes = 3
-vframes = 4
+vframes = 32
 
 [node name="Cost" type="Label" parent="Camera2D/Shop/Sell"]
 margin_left = 47.0
@@ -1458,7 +1458,7 @@ position = Vector2( 84.9992, -81.6665 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 63 )
 hframes = 3
-vframes = 4
+vframes = 32
 
 [node name="Storage" type="Label" parent="Camera2D/Shop/Deposit"]
 margin_left = 38.3326
@@ -1519,7 +1519,7 @@ position = Vector2( 84.9992, -81.6665 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 63 )
 hframes = 3
-vframes = 4
+vframes = 32
 
 [node name="Bag" type="Label" parent="Camera2D/Shop/Withdraw"]
 margin_left = 34.9992

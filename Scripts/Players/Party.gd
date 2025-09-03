@@ -9,6 +9,7 @@ var marbles_get = false
 var trinket_get = false
 var sent_storage = false
 var event_name : String
+var x_amount : int = 0
 
 const menu_slot = preload("res://UI/Slot.tscn")
 onready var slot = menu_slot.instance()
@@ -59,6 +60,9 @@ func _ready():
 	
 	add_enemy_name = "Cheribo"
 	add_enemy()
+	
+	#add_key_item_name = "Lighthouse Key"
+	#add_key_item()	
 	
 	#add_trinket_name = "Gold Bracelet"
 	#add_trinket()	
@@ -111,7 +115,13 @@ func new_trinket():
 func add_key_item():
 	var new_slot = slot.duplicate()
 	new_slot.text = add_key_item_name
-	KeyItems.append(new_slot)
+	if add_key_item_name == "X" and x_amount > 0:
+		x_amount += 1
+	if add_key_item_name == "X" and x_amount == 0:
+		KeyItems.insert(0, new_slot)
+		x_amount += 1
+	else:
+		KeyItems.append(new_slot)
 	
 func add_enemy():
 	var SearchList : Array = []
