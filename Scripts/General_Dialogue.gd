@@ -5,9 +5,13 @@ var cursor_ready = false
 signal text_ready
 signal talk_done
 signal restart
+signal quest_item
 var length : int
 var alternate = false
 var js = Party.jewel_seeds
+
+var dolly_quest
+
 
 onready var Gary = PlayerManager.player_instance
 
@@ -133,6 +137,22 @@ func Marjorie():
 		alternate = false
 		
 func Penelope():
+	#dolly_quest = true
+	if dolly_quest:
+		$Name/Talk.text = "Yay!! Thank you for finding my dolly!"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "Here, you can have this thingy I found the other day."
+		talking()
+		yield(self, "talk_done")
+		done()
+		PlayerManager.freeze = true
+		PlayerManager.cutscene = true
+		Party.add_item_name = "Jhumki"
+		yield(get_tree().create_timer(0.3), "timeout")
+		emit_signal("quest_item")
+		
+	
 	if js < 2 and not alternate:
 		$Name/Talk.text = "What do you think that strange noise was?"
 		talking()
@@ -142,6 +162,9 @@ func Penelope():
 		yield(self, "talk_done")
 		done()
 		alternate = true
+			
+			
+		
 	elif js < 2 and alternate:
 		$Name/Talk.text = "Mommy and Daddy said that if I'm good they'll take me to Puzzle Pier!"
 		talking()
@@ -151,6 +174,7 @@ func Penelope():
 		yield(self, "talk_done")
 		done()
 		alternate = false
+			
 
 func Edgar():
 	if not EventManager.Jacques_Meetup_CS:

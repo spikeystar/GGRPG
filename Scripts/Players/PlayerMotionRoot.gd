@@ -163,6 +163,7 @@ func _physics_process(delta):
 		PlayerManager.standing = true
 		
 	PlayerManager.height = pos_z
+	PlayerManager.current_position = global_position
 	#if is_on_ground:
 		#yield(get_tree().create_timer(0.3), "timeout")
 		#jumping = false

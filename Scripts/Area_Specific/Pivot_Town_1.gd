@@ -841,3 +841,8 @@ func _on_Irina_Meetup_area_event():
 	$CollisionRoot/Edgar_Door/CollisionPolygon2D.disabled = false
 	$YSort/MiddleGround/BBox.position = Vector2(5000, 5000)
 	
+
+func _on_Camera2D_animate_Gary():
+	PlayerManager.freeze = true
+	PlayerManager.cutscene = true
+	Gary.animation("hold_seed")

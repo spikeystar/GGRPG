@@ -143,14 +143,20 @@ var menu_data = {
 	}
 	
 func _ready():
-	load_base_file()
-	set_menu()
-	
 	if SceneManager.loading:
 		if Music.id != "Overworld" or not Music.is_playing:
 			Music.switch_songs()
 			Music.id = "Overworld"
 			Music.music()
+	
+	var file = File.new()
+	if file.file_exists("user://save.dat_1") or file.file_exists("user://save.dat_2") or file.file_exists("user://save.dat_3"):
+		load_base_file()
+	else:
+		pass
+		
+	set_menu()
+	
 	
 func set_menu():
 	if save1:

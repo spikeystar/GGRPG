@@ -21,6 +21,7 @@ var pause_delay = false
 var standing = true
 var repel_zone = false
 var height = 0
+var current_position = Vector2(0,0)
 
 func _ready():
 	spawn_player()

@@ -27,6 +27,8 @@ var z_offset = 0
 var is_in_editor = Engine.is_editor_hint()
 var tween
 
+signal animate_Gary
+
 func _ready():
 	current = true
 	Global.current_camera = self
@@ -49,6 +51,7 @@ func item_window():
 		sent_storage()
 	else:
 		PlayerManager.freeze = false
+		PlayerManager.cutscene = false
 	
 func sent_storage():
 	$Info_Window/First_Text.text = "Sent to storage"
@@ -228,4 +231,20 @@ func announcement():
 	yield(get_tree().create_timer(0.2), "timeout")
 	$Info_Window.hide()
 
-
+func _on_Dialogue_quest_item():
+	emit_signal("animate_Gary")
+	var item_name = Party.add_item_name
+	$Info_Window/First_Text.text = "You got a " + item_name + "!"
+	SE.effect("Item_Get")
+	Party.add_item_name = item_name
+	if item_name == "Jhumki":
+		Party.add_key_item_name = item_name
+		Party.add_key_item()
+	else:
+			Party.add_item()
+			
+	$QuestItem.show()
+	$QuestItem.item_animation()
+	$QuestItem.global_position = PlayerManager.current_position + Vector2(2.2, -91)
+	item_window()
+	

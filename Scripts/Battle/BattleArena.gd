@@ -431,6 +431,11 @@ func _input(event):
 		$BattleButtons/ItemX.hide()
 		$BattleButtons/AnimationPlayer.play("Initial")
 		emit_signal("BB_active")
+		
+		$Fighters.fighter_turn()
+		var BB_position = $Fighters.get_BB_position()
+		$BattleButtons.position = BB_position
+		
 		wimpy = $Fighters.get_wimpy()
 		if wimpy:
 			$BattleButtons/AttackX.show()
