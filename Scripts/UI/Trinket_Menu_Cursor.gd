@@ -97,6 +97,7 @@ func _on_MenuCursor_trinket_selecting():
 func _on_TrinketsInventory_return_to_trinkets():
 	self.modulate.a = 1
 	set_cursor_from_index(0)
+	yield(get_tree().create_timer(0.3), "timeout")
 	trinket_selecting = true
 	ongoing = false
 

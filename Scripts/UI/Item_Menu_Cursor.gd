@@ -85,6 +85,7 @@ func _on_ItemInventoryBox_return_to_item():
 	yield(get_tree().create_timer(0.05), "timeout")
 	self.modulate.a = 1
 	set_cursor_from_index(0)
+	yield(get_tree().create_timer(0.35), "timeout")
 	item_selecting = true
 	ongoing = false
 
@@ -94,4 +95,11 @@ func _on_ItemInventoryBox_not_usable():
 	self.modulate.a = 1
 
 func _on_ItemInventoryBox_ongoing():
+	self.modulate.a = 0
+	item_selecting = false
 	ongoing = true
+
+func _on_ItemInventoryBox_empty_items():
+	item_selecting = false
+	self.modulate.a = 0
+	#emit_signal("retread")

@@ -64,8 +64,8 @@ func _ready():
 	#add_key_item_name = "Lighthouse Key"
 	#add_key_item()	
 	
-	#add_trinket_name = "Gold Bracelet"
-	#add_trinket()	
+	add_trinket_name = "Gold Bracelet"
+	add_trinket()	
 	#add_trinket_name = "Gold Chain"
 	#add_trinket()	
 	#add_trinket_name = "Gold Earring"

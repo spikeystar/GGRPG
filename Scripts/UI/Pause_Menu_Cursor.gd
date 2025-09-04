@@ -167,6 +167,7 @@ func _on_ItemInventoryBox_heal_item_chosen():
 
 func _on_ItemInventoryBox_return_to_item():
 	cursor_index = 1
+	yield(get_tree().create_timer(0.4), "timeout")
 	ongoing = false
 
 func _on_TrinketsCursor_retread():
@@ -181,6 +182,7 @@ func _on_TrinketsInventory_trinket_chosen():
 
 func _on_TrinketsInventory_return_to_trinkets():
 	cursor_index = 2
+	yield(get_tree().create_timer(0.3), "timeout")
 	ongoing = false
 
 func _on_KeyCursor_retread():
@@ -192,6 +194,11 @@ func _on_KeyCursor_retread():
 
 func _on_ItemInventoryBox_empty_items():
 	items_empty = true
+	self.show()
+	#self.modulate.a = 0
+	#yield(get_tree().create_timer(0.05), "timeout")
+	self.modulate.a = 1
+	main_active = true
 
 func _on_TrinketsInventory_empty_trinkets():
 	trinkets_empty = true

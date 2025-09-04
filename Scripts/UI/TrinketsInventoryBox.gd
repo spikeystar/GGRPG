@@ -190,9 +190,10 @@ func _on_Members_trinket_equipped():
 	for x in range(inventory.size()):
 		inventory[x].trinket_scan()
 
-	yield(get_tree().create_timer(0.9), "timeout")
+	yield(get_tree().create_timer(1), "timeout")
 	emit_signal("return_to_trinkets")
 	trinket_index = 0
+	yield(get_tree().create_timer(0.3), "timeout")
 	trinkets_active = true
 
 

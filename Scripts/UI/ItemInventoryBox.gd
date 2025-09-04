@@ -116,9 +116,17 @@ func _on_Members_item_usage():
 	Party.remove_item()
 	item_removed()
 	yield(get_tree().create_timer(0.8), "timeout")
-	emit_signal("return_to_item")
-	item_index = 0
-	item_active = true
+	if inventory.size() > 0:
+		emit_signal("return_to_item")
+		item_index = 0
+		item_id = ""
+		yield(get_tree().create_timer(0.4), "timeout")
+		item_active = true
+	if inventory.size() == 0:
+		item_id = ""
+		item_active = false
+		empty_items = true
+		emit_signal("empty_items")
 	
 func set_member_target():
 	if selector_name == "Gary":

@@ -54,12 +54,15 @@ func _process(delta):
 		emit_signal("party_selecting")
 		emit_signal("retread")
 		
-	if Input.is_action_just_pressed("ui_select") and member_options and down_count ==0:
+	if Input.is_action_just_pressed("ui_select") and member_options and down_count ==0 and PartyStats.party_members > 1:
 		SE.effect("Select")
 		member_options = false
 		cursor_index = 0
 		down_count = 0
 		emit_signal("switch_selecting")
+		
+	if Input.is_action_just_pressed("ui_select") and member_options and down_count ==0 and PartyStats.party_members == 1:
+		SE.effect("Unable")
 		
 	if Input.is_action_just_pressed("ui_select") and member_options and down_count ==1:
 		SE.effect("Select")
