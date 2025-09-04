@@ -152,11 +152,11 @@ func _ready():
 	var file = File.new()
 	if file.file_exists("user://save.dat_1") or file.file_exists("user://save.dat_2") or file.file_exists("user://save.dat_3"):
 		load_base_file()
+		set_menu()
 	else:
 		pass
 		
-	set_menu()
-	
+	#set_menu()
 	
 func set_menu():
 	if save1:

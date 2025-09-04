@@ -50,8 +50,8 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		PlayerManager.remove_player_from_scene()
 		get_tree().change_scene(target_scene)
 		PlayerManager.call_deferred("add_player_to_scene")
-		emit_signal("transition_in_done")
 		transition_out(animation_name)
+		emit_signal("transition_in_done")
 	elif anim_name.ends_with("_Out"):
 		emit_signal("transition_out_done")
 		queue_free()

@@ -43,8 +43,9 @@ func _ready():
 	add_child(transition)
 	transition.backwards_star()
 	yield(get_tree().create_timer(0.9), "timeout")
-	transition.queue_free()
 	able = true
+	transition.queue_free()
+	
 	
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and able:

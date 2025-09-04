@@ -179,11 +179,13 @@ static func thousands_sep(number, prefix=''):
 	else: res = prefix+res
 	return res
 
-func _process(delta):
-	fighter_turn_used = $Fighters.get_turn_value()
+#func _process(delta):
+	#fighter_turn_used = $Fighters.get_turn_value()
 
 func _input(event):
-	#fighter_turn_used = $Fighters.get_turn_value()
+	if (Input.is_action_just_pressed("ui_select")):
+		fighter_turn_used = $Fighters.get_turn_value()
+	
 	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and not tutorial and not SceneManager.enemy_turn:
 		SE.effect("Select")
 		$BattleButtons.show()
@@ -217,6 +219,7 @@ func _input(event):
 		magic_show = false
 		item_show = false
 		item_halt = true
+		$Enemies._reset()
 		$BattleButtons/SpadeB.hide()
 		$BattleButtons/DiamondB.show()
 		$BattleButtons/CloverB.show()
@@ -253,6 +256,11 @@ func _input(event):
 		defend_show = false
 		item_show = false
 		item_halt = false
+		$Enemies._initial()
+		emit_signal("index_resetzero")
+		emit_signal("attack_active")
+		emit_signal("item_inactive")
+		emit_signal("magic_inactive")
 		$BattleButtons/DiamondB.hide()
 		$BattleButtons/SpadeB.show()
 		$BattleButtons/CloverB.show()
@@ -262,15 +270,12 @@ func _input(event):
 		$MagicWindow.hide()
 		$ItemWindow.hide()
 		$DefenseWindow.hide()
-		emit_signal("index_resetzero")
-		emit_signal("attack_active")
-		emit_signal("item_inactive")
-		emit_signal("magic_inactive")
 		if attack_show and not window_open:
 			window_open = true
 			
 	if (Input.is_action_just_pressed("ui_right")) and BB_active and not attack_show and not ongoing and wimpy and not tutorial:
 		SE.effect("Unable")
+			
 			
 	if (Input.is_action_just_pressed("ui_select")) and BB_active and attack_show and not fighter_turn_used and not ongoing and not tutorial:
 		SE.effect("Select")
@@ -304,6 +309,7 @@ func _input(event):
 		$BattleButtons/DiamondB.show()
 		$MagicWindow.show()
 		$WindowPlayer.play("magic_open")
+		$Enemies._reset()
 		$Enemies/EnemyInfo.hide()
 		$ItemWindow.hide()
 		$DefenseWindow.hide()
@@ -316,6 +322,7 @@ func _input(event):
 		
 	if (Input.is_action_just_pressed("ui_up")) and BB_active and not item_show and not item_halt and not item_stolen and not tutorial:
 		SE.effect("Move Between")
+		$Enemies._reset()
 		item_show = true
 		attack_show = false
 		defend_show = false
@@ -394,6 +401,7 @@ func _input(event):
 		$DefenseWindow.hide()
 		$MagicWindow.hide()
 		$Fighters.BB_active = false
+		$Enemies._reset()
 		$Enemies.BB_active = false
 		$Fighters.fighter_index = -1
 		$Fighters.select_next_fighter(+1)
@@ -495,13 +503,14 @@ func _input(event):
 		
 	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show and not dizzy and tutorial and tutorial_4:
 		SE.effect("Move Between")
+		$MagicWindow/MagicWindowPanel/SpellList.fighter_name = $Fighters.get_f_name()
 		magic_show = true
 		item_halt = true
 		attack_show = false
 		defend_show = false
 		item_show = false
 		
-		
+		$Enemies._reset()
 		emit_signal("index_resetzero")
 		emit_signal("hide_enemy_cursor")
 		emit_signal("magic_active")

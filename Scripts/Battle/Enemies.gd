@@ -29,6 +29,7 @@ var fighter_type : String = "neutral"
 var event_counter = 0
 var item_stolen = false
 var dizzy = false
+var initialized = false
 
 export var boss_battle : bool
 var battle_name : String
@@ -60,6 +61,7 @@ signal single_enemy_spell
 signal all_enemy_spell
 signal fighters_active
 signal update_move_window
+#var victory = false
 
 signal Reeler_Event
 
@@ -129,7 +131,7 @@ func _on_WorldRoot_BB_active():
 	
 func _on_WorldRoot_attack_active():
 	enemy_selecting = true
-	enemy_index = -1 
+	#enemy_index = -1 
 	
 func _on_WorldRoot_attack_inactive():
 	enemy_selecting = false
@@ -159,24 +161,44 @@ func enemy_info_update():
 			Party.add_enemy()
 
 	
-func _process(delta):
-	var victory = SceneManager.victory
+#func _process(delta):
+	#enemy_info_update()
+	#victory = SceneManager.victory
 	
-	if Input.is_action_just_pressed("ui_right") and enemy_selecting and BB_active and not victory:
+func _initial():
+	if not SceneManager.victory and not initialized:
+		enemy_index = -1 
+		enemy_selecting = true
+		select_next_enemy(+1)
+		enemy_info_update()
+		if enemies.size() > 1:
+			SE.effect("Move Between")
+		initialized = true
+		
+func _reset():
+	#enemy_index = -1 
+	enemy_selecting = false
+	initialized = false
+	
+func _input(event):	
+	if Input.is_action_just_pressed("ui_right") and enemy_selecting and BB_active and not SceneManager.victory:
+		print("hello")
 		select_next_enemy(+1)
 		enemy_info_update()
 		if enemies.size() > 1:
 			SE.effect("Move Between")
 	
-	if Input.is_action_just_pressed("ui_left") and enemy_selecting and BB_active and not victory and not tutorial and not dizzy or Input.is_action_just_pressed("ui_down") and enemy_selecting and BB_active and not victory and not tutorial or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active and not victory and not tutorial and not item_stolen:
+	if Input.is_action_just_pressed("ui_left") and enemy_selecting and BB_active and not SceneManager.victory and not tutorial and not dizzy or Input.is_action_just_pressed("ui_down") and enemy_selecting and BB_active and not SceneManager.victory and not tutorial or Input.is_action_just_pressed("ui_up") and enemy_selecting and BB_active and not SceneManager.victory and not tutorial and not item_stolen:
 		#SE.effect("Move Between")
 		enemy_selecting = false
+		initialized = false
 		enemy_info_update()
 	
 	if Input.is_action_just_pressed("ui_select") and enemy_selecting and not tutorial_wait:
 		emit_signal("enemy_chosen")
 		hide_cursors()
 		enemy_selecting = false
+		initialized = false
 		
 	######## Item Selecting ########
 	if Input.is_action_just_pressed("ui_right") and item_selecting:
@@ -201,10 +223,11 @@ func _process(delta):
 		hide_cursors()
 		target_index = enemy_index
 		item_selecting = false
+		initialized = false
 		
 	####### Magic Selecting #######
 	if Input.is_action_just_pressed("ui_select") and initial:
-		select_next_enemy(+1)
+		#select_next_enemy(+1)
 		enemy_info_update()
 	
 	if Input.is_action_just_pressed("ui_right") and magic_selecting:
@@ -227,6 +250,7 @@ func _process(delta):
 		hide_cursors()
 		target_index = enemy_index
 		magic_selecting = false
+		initialized = false
 	
 		
 func hide_cursors():
@@ -673,10 +697,12 @@ func _on_ItemInventory_all_battle_item_chosen():
 	emit_signal("item_chosen")
 	
 func _on_SpellList_single_enemy_spell():
-	enemy_index = -1
-	initial = true
+	enemy_index = -1 
+	select_next_enemy(+1)
 	enemy_info_update()
-	yield(get_tree().create_timer(0.2), "timeout")
+	initial = true
+	yield(get_tree().create_timer(0.1), "timeout")
+	show_cursors()
 	magic_selecting = true
 	initial = false
 
