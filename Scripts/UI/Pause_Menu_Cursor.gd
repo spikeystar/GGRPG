@@ -77,6 +77,7 @@ func _process(delta):
 		emit_signal("key_selecting")
 		
 	if Input.is_action_just_pressed("ui_accept") and not main_active and not stats_active and not ongoing or Input.is_action_just_pressed("ui_cancel") and not main_active and not stats_active and not ongoing:
+		print("gloop")
 		#self.show()
 		#main_active = true
 		#emit_signal("retread")
@@ -230,6 +231,7 @@ func _on_MemberOptionsCursor_switch_selecting():
 func _on_Members_switched():
 	switching = false
 	members = false
+	
 
 func _on_ItemInventoryBox_ongoing():
 	ongoing = true

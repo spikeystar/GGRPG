@@ -85,7 +85,7 @@ func _process(delta):
 				global_position.y = clamp(motion_root.global_position.y - z_offset + player_offset.y, minPos.y, maxPos.y)
 
 func _input(event):
-		if Input.is_action_pressed("ui_pause") and not PlayerManager.freeze and not PlayerManager.jumping and not PlayerManager.sleep and not able and not Global.battling and not SceneManager.overworld and not PlayerManager.pause_delay:
+		if Input.is_action_pressed("ui_pause") and not PlayerManager.freeze and not PlayerManager.jumping and not PlayerManager.sleep and not able and not Global.battling and not SceneManager.overworld and not PlayerManager.pause_delay and not SceneManager.saving:
 			Music.quiet()
 			SE.effect("Menu Open")
 			PlayerManager.freeze = true
@@ -95,7 +95,7 @@ func _input(event):
 			yield(get_tree().create_timer(0.3), "timeout")
 			able = true
 		
-		if Input.is_action_pressed("ui_pause") and PlayerManager.freeze and able and not Global.battling and not SceneManager.overworld and not SceneManager.transitioning:
+		if Input.is_action_pressed("ui_pause") and PlayerManager.freeze and able and not Global.battling and not SceneManager.overworld and not SceneManager.transitioning and not SceneManager.saving:
 			Music.loud()
 			SE.effect("Menu Open")
 			var transition = TransitionPlayer.instance()

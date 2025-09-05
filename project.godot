@@ -155,3 +155,7 @@ ui_delete={
 [physics]
 
 common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/reflections/high_quality_ggx=false

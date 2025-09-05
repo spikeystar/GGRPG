@@ -10,6 +10,8 @@ var current_id : int
 var member_name : String
 var selector_name : String
 var stats_active = false
+var member_selecting = false
+var members_active = false
 
 var reverse = false
 
@@ -61,7 +63,16 @@ func _input(event):
 			SE.effect("Move Between")
 			reverse = false
 		
-	if Input.is_action_just_pressed("ui_left") and party_selecting and not member_index == 0:
+	if Input.is_action_just_pressed("ui_left") and party_selecting and not member_index == 0 and not members_active:
+		select_next_member(-1)
+		
+		if PartyStats.party_members > 1:
+			SE.effect("Move Between")
+			
+		yield(get_tree().create_timer(0.1), "timeout")
+		reverse = true
+		
+	if Input.is_action_just_pressed("ui_left") and party_selecting and not member_index == 0 and members_active and switching:
 		select_next_member(-1)
 		
 		if PartyStats.party_members > 1:
@@ -73,8 +84,9 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_left") and party_selecting and member_index == 0:
 		reverse = true
 			
-	if Input.is_action_just_pressed("ui_left") and party_selecting and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting or Input.is_action_just_pressed("ui_accept") and party_selecting and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting or Input.is_action_just_pressed("ui_cancel") and party_selecting and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting:
+	if Input.is_action_just_pressed("ui_left") and party_selecting and not members_active and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting or Input.is_action_just_pressed("ui_accept") and party_selecting and not members_active and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting or Input.is_action_just_pressed("ui_cancel") and party_selecting and not members_active and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting:
 		SE.effect("Move Between")
+		print("gloop 2")
 		Cursors[member_index].hide()
 		member_index = -1
 		able = false
@@ -117,9 +129,10 @@ func _input(event):
 		Cursors[4].hide()
 		Cursors[1].show()
 
-	if Input.is_action_just_pressed("ui_select") and party_selecting and able and not switching:
+	if Input.is_action_just_pressed("ui_select") and party_selecting and able and not switching and not member_selecting:
 		SE.effect("Select")
 		emit_signal("member_options")
+		members_active = true
 		party_selecting = false
 		current_id = (member_index + 1)
 		selector_name = get_name()
@@ -133,7 +146,6 @@ func _input(event):
 			emit_signal("suzy")
 		if selector_name == "Damien":
 			emit_signal("damien")
-		print(member_index)
 		
 	#if Input.is_action_just_pressed("ui_accept") and party_selecting and not stats_active:
 		#SE.effect("Cancel")
@@ -150,6 +162,7 @@ func _input(event):
 		$Cursors.hide()
 		item_selecting = false
 		able = false
+		members_active = false
 		emit_signal("main_retread")
 		
 		
@@ -163,10 +176,11 @@ func _input(event):
 		$HP.show()
 		trinket_selecting = false
 		able = false
+		members_active = false
 		emit_signal("main_retread")
 		
 		
-	if Input.is_action_just_pressed("ui_select") and party_selecting and able and switching:
+	if Input.is_action_just_pressed("ui_select") and party_selecting and able and switching and member_selecting:
 		SE.effect("Switch")
 		emit_signal("switched")
 		switching = false
@@ -192,6 +206,8 @@ func _input(event):
 			PartyStats.suzy_id = current_id
 		if member_name == "Damien":
 			PartyStats.damien_id = current_id
+			
+		member_selecting = false
 		
 		##########
 		
@@ -337,6 +353,7 @@ func _on_MenuCursor_party_selecting():
 	party_selecting = true
 	$Cursors.show()
 	yield(get_tree().create_timer(0.2), "timeout")
+	#party_selecting = true
 	able = true
 	reverse = true
 	#Cursors[].show()
@@ -348,6 +365,8 @@ func _on_MenuCursor_retread():
 	able = false
 	member_index = -1
 	switching = false
+	member_selecting = false
+	members_active = false
 	
 func _on_MenuCursor_mini_retread():
 	$Cursors.show()
@@ -357,6 +376,8 @@ func _on_MenuCursor_mini_retread():
 	yield(get_tree().create_timer(0.1), "timeout")
 	able = true
 	switching = false
+	member_selecting = false
+	members_active = false
 	
 func _on_MemberOptionsCursor_party_selecting():
 	party_selecting = true
@@ -365,11 +386,13 @@ func _on_MemberOptionsCursor_party_selecting():
 	able = true
 
 func _on_MemberOptionsCursor_switch_selecting():
+	switching = true
 	party_selecting = true
 	$Cursors.show()
 	yield(get_tree().create_timer(0.2), "timeout")
+	member_selecting = true
 	able = true
-	switching = true
+	
 
 func _on_ItemInventoryBox_heal_item_chosen():
 	Cursors[member_index].hide()
@@ -672,7 +695,10 @@ func _on_TrinketsInventory_return_to_trinkets():
 		Cursors[x].hide()
 
 func _on_MemberOptionsCursor_show_stats():
+	print("true")
 	stats_active = true
 
 func _on_MemberOptionsCursor_retread():
 	stats_active = false
+	yield(get_tree().create_timer(0.1), "timeout")
+	members_active = false

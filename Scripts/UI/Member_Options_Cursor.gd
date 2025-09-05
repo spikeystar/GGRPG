@@ -45,39 +45,7 @@ func _process(delta):
 		input.y += 0
 		
 		
-	if Input.is_action_just_pressed("ui_accept") and member_options or Input.is_action_just_pressed("ui_left") and member_options or Input.is_action_just_pressed("ui_cancel") and member_options:
-		print("hello")
-		SE.effect("Cancel")
-		self.hide()
-		member_options = false
-		cursor_index = 0
-		down_count = 0
-		emit_signal("party_selecting")
-		emit_signal("retread")
-		
-	if Input.is_action_just_pressed("ui_select") and member_options and down_count ==0 and PartyStats.party_members > 1:
-		SE.effect("Select")
-		member_options = false
-		cursor_index = 0
-		down_count = 0
-		emit_signal("switch_selecting")
-		
-	if Input.is_action_just_pressed("ui_select") and member_options and down_count ==0 and PartyStats.party_members == 1:
-		SE.effect("Unable")
-		
-	if Input.is_action_just_pressed("ui_select") and member_options and down_count ==1:
-		SE.effect("Select")
-		member_options = false
-		cursor_index = 0
-		emit_signal("show_stats")
-		
-		
-	if Input.is_action_just_pressed("ui_accept") and stats_active or Input.is_action_just_pressed("ui_left") and stats_active or Input.is_action_just_pressed("ui_cancel") and stats_active:
-		SE.effect("Cancel")
-		SE.silence("Move Between")
-		emit_signal("party_selecting")
-		emit_signal("retread")
-		stats_active = false
+
 		
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)
@@ -94,6 +62,39 @@ func _process(delta):
 				current_menu_item.cursor_select()
 				
 		
+func _input(event):
+	if Input.is_action_just_pressed("ui_accept") and member_options or Input.is_action_just_pressed("ui_left") and member_options or Input.is_action_just_pressed("ui_cancel") and member_options:
+		SE.effect("Cancel")
+		self.hide()
+		member_options = false
+		cursor_index = 0
+		down_count = 0
+		emit_signal("party_selecting")
+		emit_signal("retread")
+		
+	if Input.is_action_just_pressed("ui_select") and member_options and down_count == 0 and PartyStats.party_members > 1:
+		SE.effect("Select")
+		member_options = false
+		cursor_index = 0
+		down_count = 0
+		emit_signal("switch_selecting")
+		
+	if Input.is_action_just_pressed("ui_select") and member_options and down_count == 0 and PartyStats.party_members == 1:
+		SE.effect("Unable")
+		
+	if Input.is_action_just_pressed("ui_select") and member_options and down_count == 1:
+		SE.effect("Select")
+		member_options = false
+		cursor_index = 0
+		emit_signal("show_stats")
+		
+		
+	if Input.is_action_just_pressed("ui_accept") and stats_active or Input.is_action_just_pressed("ui_left") and stats_active or Input.is_action_just_pressed("ui_cancel") and stats_active:
+		SE.effect("Cancel")
+		SE.silence("Move Between")
+		emit_signal("party_selecting")
+		emit_signal("retread")
+		stats_active = false
 
 func get_menu_item_at_index(index : int) -> Control:
 	if menu_parent == null:

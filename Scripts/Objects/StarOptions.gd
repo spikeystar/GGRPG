@@ -22,6 +22,7 @@ func _input(event):
 		
 	if Input.is_action_just_pressed("ui_select") and star_options and menu_name == "Save" and not PlayerManager.cutscene:
 		SE.effect("Select")
+		SceneManager.saving = true
 		star_options = false
 		Global.door_name = SceneManager.location
 		emit_signal("save_menu")
@@ -32,6 +33,8 @@ func _input(event):
 		
 	if Input.is_action_just_pressed("ui_select") and star_options and menu_name == "Travel" and not PlayerManager.cutscene and EventManager.first_save:
 		SE.effect("Save Star")
+		SceneManager.overworld = true
+		PlayerManager.freeze = true
 		star_options = false
 		emit_signal("overworld")
 		$MenuCursor.option_selecting = false
