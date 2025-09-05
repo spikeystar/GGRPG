@@ -27,12 +27,12 @@ func _process(delta):
 		#if down_count > 13:
 			#input.y += 1
 		self.modulate.a = 0
-		yield(get_tree().create_timer(0.01), "timeout")
+		#yield(get_tree().create_timer(0.01), "timeout")
 		self.modulate.a = 1
 	if Input.is_action_just_pressed("ui_down") and trinket_selecting:
 		input.y += 1
 		self.modulate.a = 0
-		yield(get_tree().create_timer(0.01), "timeout")
+		#yield(get_tree().create_timer(0.01), "timeout")
 		self.modulate.a = 1
 		#if down_count < inventory_max:
 			#down_count += 1

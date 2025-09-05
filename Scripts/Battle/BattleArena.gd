@@ -388,7 +388,7 @@ func _input(event):
 
 ##### RETURN BUTTON ########
 
-	if (Input.is_action_just_pressed("ui_accept")) and BB_active and not ongoing and not tutorial:
+	if (Input.is_action_just_pressed("ui_accept")) and BB_active and not ongoing and not tutorial or (Input.is_action_just_pressed("ui_cancel")) and BB_active and not ongoing and not tutorial:
 		SE.effect("Cancel")
 		$Fighters.idle()
 		$BattleButtons/CloverB.show()
@@ -468,6 +468,7 @@ func _input(event):
 		defend_show = false
 		item_show = false
 		item_halt = false
+		$Enemies._initial()
 		$BattleButtons/DiamondB.hide()
 		$BattleButtons/SpadeB.show()
 		$BattleButtons/CloverB.show()

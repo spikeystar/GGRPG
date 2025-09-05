@@ -18,18 +18,19 @@ func _process(delta):
 	var child_count = menu_parent.get_child_count()
 	var input := Vector2.ZERO
 	var current_menu_item := get_menu_item_at_index(cursor_index)
+	
 	if item_selecting and child_count > 0:
 		menu_name = current_menu_item.get_id()
 	
 	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and item_selecting:
 		input.y -= 1
 		self.modulate.a = 0
-		yield(get_tree().create_timer(0.01), "timeout")
+		#yield(get_tree().create_timer(0.01), "timeout")
 		self.modulate.a = 1
 	if Input.is_action_just_pressed("ui_down") and item_selecting:
 		input.y += 1
 		self.modulate.a = 0
-		yield(get_tree().create_timer(0.01), "timeout")
+		#yield(get_tree().create_timer(0.01), "timeout")
 		self.modulate.a = 1
 	else:
 		input.y += 0

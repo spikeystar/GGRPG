@@ -29,8 +29,9 @@ signal mini_retread
 func _process(delta):
 	var input := Vector2.ZERO
 	var current_menu_item := get_menu_item_at_index(cursor_index)
-	menu_name = current_menu_item.get_id()
 	
+	menu_name = current_menu_item.get_id()
+
 	if Input.is_action_just_pressed("ui_up") and main_active:
 		input.y -= 1
 		if down_count >=1:
@@ -75,7 +76,7 @@ func _process(delta):
 		main_active = false
 		emit_signal("key_selecting")
 		
-	if Input.is_action_just_pressed("ui_accept") and not main_active and not stats_active and not ongoing:
+	if Input.is_action_just_pressed("ui_accept") and not main_active and not stats_active and not ongoing or Input.is_action_just_pressed("ui_cancel") and not main_active and not stats_active and not ongoing:
 		#self.show()
 		#main_active = true
 		#emit_signal("retread")
@@ -93,21 +94,23 @@ func _process(delta):
 			emit_signal("mini_retread")
 			members = false
 			
-		else:
-			SE.silence("Move Between")
-			SE.effect("Cancel")
+		#else:
+			#SE.silence("Move Between")
+			#SE.effect("Cancel")
 			
-			self.show()
-			main_active = true
-			members = false
-			emit_signal("retread")
+			#self.show()
+			#main_active = true
+			#members = false
+			#emit_signal("retread")
 		
 		
-	if Input.is_action_just_pressed("ui_accept") and not main_active and stats_active:
+	if Input.is_action_just_pressed("ui_accept") and not main_active and stats_active or Input.is_action_just_pressed("ui_cancel") and not main_active and stats_active:
 		SE.effect("Move Between")
 		self.hide()
 		emit_signal("mini_retread")
 		
+		
+			
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)
 	elif menu_parent is HBoxContainer:
@@ -121,6 +124,7 @@ func _process(delta):
 		if current_menu_item != null:
 			if current_menu_item.has_method("cursor_select"):
 				current_menu_item.cursor_select()
+
 				
 		
 

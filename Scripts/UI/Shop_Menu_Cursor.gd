@@ -13,6 +13,8 @@ var able = false
 signal option_selecting
 signal retread
 
+
+
 func _ready():
 	pass
 	#self.modulate.a = 0
@@ -20,9 +22,10 @@ func _ready():
 func _process(delta):
 	var input := Vector2.ZERO
 	var current_menu_item := get_menu_item_at_index(cursor_index)
+	
 	if option_selecting:
 		menu_name = current_menu_item.get_id()
-	
+		
 	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and option_selecting:
 		SE.effect("Move Between")
 		input.y -= 1
@@ -43,6 +46,9 @@ func _process(delta):
 		option_selecting = false
 		self.modulate.a = 0
 		
+	
+
+		
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)
 	elif menu_parent is HBoxContainer:
@@ -57,7 +63,6 @@ func _process(delta):
 			#if current_menu_item.has_method("cursor_select"):
 				#current_menu_item.cursor_select()
 				
-		
 
 func get_menu_item_at_index(index : int) -> Control:
 	if menu_parent == null:

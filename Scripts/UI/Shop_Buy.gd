@@ -14,6 +14,7 @@ func _ready():
 	set_id()
 
 func reset():
+	$MenuCursor.cursor_index = 0
 	item_id = $MenuCursor.menu_name
 	set_id()
 	

@@ -16,6 +16,10 @@ func _process(delta):
 	$Bag_Marbles.text = thousands_sep(Party.marbles) + " Mb"
 	
 	
+func reset():
+	item_id = $MenuCursor.menu_name
+	set_id()
+	
 static func thousands_sep(number, prefix=''):
 	var neg = false
 	if number < 0:

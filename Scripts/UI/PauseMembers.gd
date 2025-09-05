@@ -39,10 +39,20 @@ func select_next_member(index_offset):
 	
 	if PartyStats.party_members > 1 and member_index < Cursors.size():
 		SE.effect("Move Between")
+		
+func initial():
+	select_next_member(+1)
+		#reverse = false
+		
+	if PartyStats.party_members > 1:
+		SE.effect("Move Between")
+		reverse = false
 
 func _process(delta):
 	set_labels()
 	PartyStats.party_id = (member_index + 1)
+
+func _input(event):
 	if Input.is_action_just_pressed("ui_right") and party_selecting:
 		select_next_member(+1)
 		#reverse = false
@@ -53,7 +63,6 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("ui_left") and party_selecting and not member_index == 0:
 		select_next_member(-1)
-		print(member_index)
 		
 		if PartyStats.party_members > 1:
 			SE.effect("Move Between")
@@ -64,7 +73,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_left") and party_selecting and member_index == 0:
 		reverse = true
 			
-	if Input.is_action_just_pressed("ui_left") and party_selecting and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting:
+	if Input.is_action_just_pressed("ui_left") and party_selecting and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting or Input.is_action_just_pressed("ui_accept") and party_selecting and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting or Input.is_action_just_pressed("ui_cancel") and party_selecting and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting:
 		SE.effect("Move Between")
 		Cursors[member_index].hide()
 		member_index = -1
@@ -133,7 +142,7 @@ func _process(delta):
 		#able = false
 		#member_index = -1
 		
-	if Input.is_action_just_pressed("ui_accept") and item_selecting:
+	if Input.is_action_just_pressed("ui_accept") and item_selecting or Input.is_action_just_pressed("ui_cancel") and item_selecting:
 		SE.silence("Move Between")
 		SE.effect("Cancel")
 		Cursors[member_index].hide()
@@ -144,7 +153,7 @@ func _process(delta):
 		emit_signal("main_retread")
 		
 		
-	if Input.is_action_just_pressed("ui_accept") and trinket_selecting:
+	if Input.is_action_just_pressed("ui_accept") and trinket_selecting or Input.is_action_just_pressed("ui_cancel") and trinket_selecting:
 		SE.silence("Move Between")
 		SE.effect("Cancel")
 		Cursors[member_index].hide()
@@ -324,6 +333,7 @@ func get_name():
 	return member_name
 	
 func _on_MenuCursor_party_selecting():
+	initial()
 	party_selecting = true
 	$Cursors.show()
 	yield(get_tree().create_timer(0.2), "timeout")

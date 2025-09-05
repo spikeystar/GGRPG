@@ -13,12 +13,15 @@ var able = false
 signal option_selecting
 signal retread
 
+
+
 func _ready():
 	pass
 	#self.modulate.a = 0
 
 func _process(delta):
 	var input := Vector2.ZERO
+	
 	var current_menu_item := get_menu_item_at_index(cursor_index)
 	if option_selecting:
 		menu_name = current_menu_item.get_id()

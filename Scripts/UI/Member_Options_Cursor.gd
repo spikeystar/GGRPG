@@ -45,8 +45,9 @@ func _process(delta):
 		input.y += 0
 		
 		
-	if Input.is_action_just_pressed("ui_accept") and member_options:
-		#SE.effect("Cancel")
+	if Input.is_action_just_pressed("ui_accept") and member_options or Input.is_action_just_pressed("ui_left") and member_options or Input.is_action_just_pressed("ui_cancel") and member_options:
+		print("hello")
+		SE.effect("Cancel")
 		self.hide()
 		member_options = false
 		cursor_index = 0
@@ -69,11 +70,9 @@ func _process(delta):
 		member_options = false
 		cursor_index = 0
 		emit_signal("show_stats")
-		yield(get_tree().create_timer(0.2), "timeout")
-		down_count = 0
-		stats_active = true
 		
-	if Input.is_action_just_pressed("ui_accept") and stats_active:
+		
+	if Input.is_action_just_pressed("ui_accept") and stats_active or Input.is_action_just_pressed("ui_left") and stats_active or Input.is_action_just_pressed("ui_cancel") and stats_active:
 		SE.effect("Cancel")
 		SE.silence("Move Between")
 		emit_signal("party_selecting")

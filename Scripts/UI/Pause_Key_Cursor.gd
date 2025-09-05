@@ -31,7 +31,7 @@ func _process(delta):
 	else:
 		input.y += 0
 		
-	if Input.is_action_just_pressed("ui_accept") and key_selecting or Input.is_action_just_pressed("ui_left") and key_selecting:
+	if Input.is_action_just_pressed("ui_accept") and key_selecting or Input.is_action_just_pressed("ui_left") and key_selecting or Input.is_action_just_pressed("ui_cancel") and key_selecting:
 		SE.effect("Move Between")
 		key_selecting = false
 		self.modulate.a = 0

@@ -50,6 +50,9 @@ func _on_MemberOptionsCursor_show_stats():
 	$MemberOptions.hide()
 	$Stats.show()
 	stats_showing = true
+	yield(get_tree().create_timer(0.2), "timeout")
+	$MemberOptions/VBoxOptions/MemberOptionsCursor.down_count = 0
+	$MemberOptions/VBoxOptions/MemberOptionsCursor.stats_active = true
 
 func _on_MemberOptionsCursor_retread():
 	$Stats.hide()
