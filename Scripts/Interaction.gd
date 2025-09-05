@@ -99,8 +99,9 @@ func _input(event):
 		$ShopOptions.hide()
 		$ShopOptions/MenuCursor.option_selecting = false
 		$ShopOptions/MenuCursor.able = false
-		$Buy.show()
 		$Buy/MenuCursor.cursor_index = 0
+		yield(get_tree().create_timer(0.08), "timeout")
+		$Buy.show()
 		item_selecting = true
 		options = false
 		
@@ -112,8 +113,9 @@ func _input(event):
 		$ShopOptions.hide()
 		$ShopOptions/MenuCursor.option_selecting = false
 		$ShopOptions/MenuCursor.able = false
-		$Sell.show()
 		$Sell/MenuCursor.cursor_index = 0
+		yield(get_tree().create_timer(0.08), "timeout")
+		$Sell.show()
 		item_selecting = true
 		options = false
 		
@@ -125,8 +127,9 @@ func _input(event):
 		$ShopOptions.hide()
 		$ShopOptions/MenuCursor.option_selecting = false
 		$ShopOptions/MenuCursor.able = false
-		$Deposit.show()
 		$Deposit/MenuCursor.cursor_index = 0
+		yield(get_tree().create_timer(0.08), "timeout")
+		$Deposit.show()
 		item_selecting = true
 		options = false
 		
@@ -138,8 +141,9 @@ func _input(event):
 		$ShopOptions.hide()
 		$ShopOptions/MenuCursor.option_selecting = false
 		$ShopOptions/MenuCursor.able = false
-		$Withdraw.show()
 		$Withdraw/MenuCursor.cursor_index = 0
+		yield(get_tree().create_timer(0.08), "timeout")
+		$Withdraw.show()
 		item_selecting = true
 		options = false
 		
