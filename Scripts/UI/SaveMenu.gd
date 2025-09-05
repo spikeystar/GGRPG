@@ -11,11 +11,11 @@ export(TransitionType) var transition_type = TransitionType.FADE_TO_BLACK;
 
 var Intro = "res://UI/Intro.tscn"
 
-var Garys_House = ""#"res://Gary_sHouse.tscn"
-var Cherry_Trail = ""#"res://Areas/Cherry Trail/Cherry_Trail_3.tscn"
-var Pivot_Town = ""#"res://Areas/Pivot Town/Pivot_Town_1.tscn"
-var Kugi_Canyon = ""#"res://Areas/Kugi Canyon/Kugi Canyon 7.tscn"
-var Berry_Lake = ""#"res://Areas/Berry Lake/Berry Lake 8.tscn"
+var Garys_House = "res://Gary_sHouse.tscn"
+var Cherry_Trail = "res://Areas/Cherry Trail/Cherry_Trail_3.tscn"
+var Pivot_Town = "res://Areas/Pivot Town/Pivot_Town_1.tscn"
+var Kugi_Canyon = "res://Areas/Kugi Canyon/Kugi Canyon 7.tscn"
+var Berry_Lake = "res://Areas/Berry Lake/Berry Lake 8.tscn"
 
 var ongoing = false
 var able = true

@@ -1,7 +1,7 @@
 extends Node2D
 
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
-const TransitionPlayer2 = preload("res://Objects/SceneTransition/TransitionPlayer.tscn")
+const TransitionPlayer2 = preload("res://Objects/SceneTransition/TransitionPlayer2.tscn")
 onready var Gary = PlayerManager.player_instance
 
 enum TransitionType {

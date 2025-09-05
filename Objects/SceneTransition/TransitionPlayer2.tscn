@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scripts/Objects/SceneTransition/TransitionPlayer.gd" type="Script" id=1]
-[ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scripts/Objects/SceneTransition/TransitionPlayer.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FadeToBlack_In"
@@ -63,7 +63,7 @@ tracks/4/path = NodePath("Loading:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = false
+tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -75,7 +75,7 @@ tracks/5/path = NodePath("Loading:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
-tracks/5/enabled = false
+tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0, 0.6, 0.7 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -143,7 +143,7 @@ tracks/4/path = NodePath("Loading:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = false
+tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -204,7 +204,7 @@ tracks/3/keys = {
 
 [node name="TransitionPlayer" type="CanvasLayer"]
 layer = 100
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="BlackTransitionRect" type="ColorRect" parent="."]
 modulate = Color( 1, 1, 1, 0 )
@@ -224,7 +224,7 @@ margin_left = 272.0
 margin_top = 296.0
 margin_right = 380.0
 margin_bottom = 311.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 1 )
 text = "Loading..."
 align = 1
 autowrap = true
