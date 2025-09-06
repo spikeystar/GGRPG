@@ -22,10 +22,10 @@ var cursor_ready = true
 
 export var tutorial : bool
 
-var input := Vector2.ZERO
+
 
 func _process(delta):
-	input = Vector2.ZERO
+	var input := Vector2.ZERO
 	
 	
 	if Input.is_action_just_pressed("ui_up") and cursor_active and not tutorial:
@@ -178,7 +178,7 @@ func _on_SpellList_ally_spell_chosen():
 
 func flicker_control():
 	modulate.a = 0
-	yield(get_tree().create_timer(0.05), "timeout")
+	#yield(get_tree().create_timer(0.05), "timeout")
 	modulate.a = 1
 
 func _on_WorldRoot_action_ongoing():
