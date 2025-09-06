@@ -4,7 +4,8 @@ func _ready():
 	return
 
 func spell_check():
-	var spell_id = $MagicWindowPanel/SpellList.get_id()
+	#var spell_id = $MagicWindowPanel/SpellList.get_id()
+	var spell_id = $MagicWindowPanel/MenuCursor.menu_name
 	if spell_id == "Thunderstorm":
 		$SpellInfo.text = "Strikes all with lightning bolts\n\n20% chance to stun"
 		$SpellCost.text = "SP: 5"

@@ -1,11 +1,19 @@
 extends Node2D
 
+var item_id = ""
+var empty_items = false
+
 func _ready():
 	pass
 	#$ItemWindowPanel/MenuCursor.show()
+	
+func _process(delta):
+	item_id = $ItemWindowPanel/MenuCursor.menu_name
+	if not empty_items:
+		item_check()
 
 func item_check():
-	var item_id = $ItemWindowPanel/ItemInventory.get_id()
+	#var item_id = $ItemWindowPanel/ItemInventory.get_id()
 	if item_id == "Yummy Cake":
 		$ItemInventory.show()
 		$ItemInventory.frame = 0
@@ -39,6 +47,7 @@ func _on_Menu_Cursor_item_active():
 	item_check()
 
 func _on_ItemInventory_empty_items():
+	empty_items = true
 	$ItemInventory.hide()
 	$ItemWindowPanel/MenuCursor.hide()
 	$ItemInfo.text = "No items"

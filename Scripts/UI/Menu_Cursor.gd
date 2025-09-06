@@ -19,6 +19,7 @@ signal magic_active()
 signal go_to_Item()
 
 var cursor_ready = true
+var menu_name = ""
 
 export var tutorial : bool
 
@@ -26,6 +27,11 @@ export var tutorial : bool
 
 func _process(delta):
 	var input := Vector2.ZERO
+	var child_count = menu_parent.get_child_count()
+	var current_menu_item := get_menu_item_at_index(cursor_index)
+	
+	if child_count > 0:
+		menu_name = current_menu_item.get_id()
 	
 	
 	if Input.is_action_just_pressed("ui_up") and cursor_active and not tutorial:
@@ -79,11 +85,13 @@ func _process(delta):
 		set_cursor_from_index(cursor_index + input.x)
 	elif menu_parent is GridContainer:
 		set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
+	elif menu_parent is PanelContainer:
+		set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
 	
 
 	
 	if Input.is_action_just_pressed("ui_select") and cursor_active and cursor_ready:
-		var current_menu_item := get_menu_item_at_index(cursor_index)
+		#var current_menu_item := get_menu_item_at_index(cursor_index)
 		
 		if current_menu_item != null:
 			if current_menu_item.has_method("cursor_select"):
