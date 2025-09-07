@@ -195,6 +195,7 @@ func _input(event):
 		$BattleButtons/AnimationPlayer.play("Initial")
 		emit_signal("BB_active")
 		wimpy = $Fighters.get_wimpy()
+		$DefenseWindow/MenuCursor.wimpy = wimpy
 		if wimpy:
 			$BattleButtons/AttackX.show()
 		dizzy = $Fighters.get_dizzy()
@@ -961,7 +962,7 @@ func item_animation():
 func _on_Fighters_item_chosen():
 	fighter_selection = false
 	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
-	var item_id = $ItemWindow/ItemWindowPanel/MenuCursor.menu_name
+	var item_id = $ItemWindow/ItemWindowPanel/MenuCursor.item_name
 	$ItemUsage.position = selector_position
 	yield(get_tree().create_timer(0.3), "timeout")
 	if item_id == "Yummy Cake":

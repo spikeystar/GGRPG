@@ -8,8 +8,8 @@ func _ready():
 	#$ItemWindowPanel/MenuCursor.show()
 	
 func _process(delta):
-	item_id = $ItemWindowPanel/MenuCursor.menu_name
 	if not empty_items:
+		item_id = $ItemWindowPanel/ItemInventory.get_id()
 		item_check()
 
 func item_check():

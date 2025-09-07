@@ -20,22 +20,35 @@ signal go_to_Item()
 
 var cursor_ready = true
 var menu_name = ""
-
+var item_name = ""
+var defend_name = ""
+var wimpy = false
 
 export var tutorial : bool
-
 
 func _process(delta):
 	var input := Vector2.ZERO
 	var child_count = menu_parent.get_child_count()
+	
 	var current_menu_item := get_menu_item_at_index(cursor_index)
-
+	var defend_selection := get_menu_item_at_index(cursor_index)
 	
-	print(current_menu_item)
+	if child_count > 0 and defend_selection and defend_active:
+			if defend_selection.has_method("get_id"):
+				defend_name = defend_selection.get_id()
+				
 	
-	if child_count > 0 and current_menu_item:
+	if child_count > 0 and current_menu_item and item_active:
+			if current_menu_item.has_method("get_id"):
+				item_name = current_menu_item.get_id()
+				
+	
+	if child_count > 0 and current_menu_item and magic_active:
 			if current_menu_item.has_method("get_id"):
 				menu_name = current_menu_item.get_id()
+				
+				
+	
 	
 	
 	if Input.is_action_just_pressed("ui_up") and cursor_active and not tutorial:
@@ -76,6 +89,9 @@ func _process(delta):
 			
 	if Input.is_action_just_pressed("ui_left") and not tutorial:
 		emit_signal("magic_active")
+		
+	if Input.is_action_just_pressed("ui_right") and defend_active and not wimpy:
+		defend_active = false
 			
 			
 	#if Input.is_action_just_pressed("ui_left"):
@@ -96,9 +112,9 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("ui_select") and cursor_active and cursor_ready and defend_active:
 		
-		if current_menu_item != null:
-			if current_menu_item.has_method("cursor_select"):
-				current_menu_item.cursor_select()
+		if defend_selection != null:
+			if defend_selection.has_method("cursor_select"):
+				defend_selection.cursor_select()
 				
 	if Input.is_action_just_pressed("ui_up") and defend_active and up_count == 0 or up_count == 2 and not tutorial:
 		emit_signal("go_to_Item")
@@ -154,6 +170,7 @@ func _on_WorldRoot_defend_active():
 	defend_active = true
 	cursor_active = true
 	magic_active = false
+	item_active = false
 
 func _on_WorldRoot_defend_inactive():
 	defend_active = false
@@ -173,19 +190,23 @@ func _on_WorldRoot_magic_inactive():
 func _on_WorldRoot_item_active():
 	#up_count = 0
 	cursor_active = true
+	item_active = true
 	#magic_active = false
 	#defend_active = false
 
 func _on_WorldRoot_item_inactive():
 	cursor_active = false
+	item_active = false
 
 func _on_SpellList_spell_chosen():
 	spell_selected = true
 	cursor_active = false
+	magic_active = false
 
 func _on_SpellList_ally_spell_chosen():
 	spell_selected = true
 	cursor_active = false
+	magic_active = false
 
 func flicker_control():
 	modulate.a = 0
@@ -194,3 +215,4 @@ func flicker_control():
 
 func _on_WorldRoot_action_ongoing():
 	cursor_active = false
+	
