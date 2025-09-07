@@ -2,6 +2,9 @@ extends Node2D
 
 func _ready():
 	return
+	
+func _process(delta):
+	spell_check()
 
 func spell_check():
 	#var spell_id = $MagicWindowPanel/SpellList.get_id()

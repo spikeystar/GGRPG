@@ -961,7 +961,7 @@ func item_animation():
 func _on_Fighters_item_chosen():
 	fighter_selection = false
 	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
-	var item_id = $ItemWindow/ItemWindowPanel/ItemInventory.item_id
+	var item_id = $ItemWindow/ItemWindowPanel/MenuCursor.menu_name
 	$ItemUsage.position = selector_position
 	yield(get_tree().create_timer(0.3), "timeout")
 	if item_id == "Yummy Cake":
@@ -1115,7 +1115,7 @@ func _on_Enemies_single_enemy_spell():
 	emit_signal("action_ongoing")
 	$Enemies/EnemyInfo.hide()
 	#var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
-	var spell_id = $MagicWindow.get_spell_id()
+	var spell_id = $MagicWindow/MagicWindowPanel/MenuCursor.menu_name
 	yield(get_tree().create_timer(0.3), "timeout")
 	if spell_id == "Earthslide":
 		Earthslide()
@@ -1149,7 +1149,7 @@ func _on_Enemies_single_enemy_spell():
 func _on_Enemies_all_enemy_spell():
 	$Fighters/HUDS.hiding()
 	emit_signal("action_ongoing")
-	var spell_id = $MagicWindow.get_spell_id()
+	var spell_id = $MagicWindow/MagicWindowPanel/MenuCursor.menu_name
 	yield(get_tree().create_timer(0.01), "timeout")
 	$Enemies/EnemyInfo.hide()
 	yield(get_tree().create_timer(0.3), "timeout")
@@ -1181,7 +1181,7 @@ func _on_Enemies_all_enemy_spell():
 func _on_Fighters_ally_spell_chosen():
 	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
 	var target_position = $Fighters.get_target_position() + Vector2(40, -40)
-	var spell_id = $MagicWindow.get_spell_id()
+	var spell_id = $MagicWindow/MagicWindowPanel/MenuCursor.menu_name
 	yield(get_tree().create_timer(0.3), "timeout")
 	BattleMusic.quiet_0()
 	if spell_id == "Sweet Gift":

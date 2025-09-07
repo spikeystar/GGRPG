@@ -21,17 +21,21 @@ signal go_to_Item()
 var cursor_ready = true
 var menu_name = ""
 
-export var tutorial : bool
 
+export var tutorial : bool
 
 
 func _process(delta):
 	var input := Vector2.ZERO
 	var child_count = menu_parent.get_child_count()
 	var current_menu_item := get_menu_item_at_index(cursor_index)
+
 	
-	if child_count > 0:
-		menu_name = current_menu_item.get_id()
+	print(current_menu_item)
+	
+	if child_count > 0 and current_menu_item:
+			if current_menu_item.has_method("get_id"):
+				menu_name = current_menu_item.get_id()
 	
 	
 	if Input.is_action_just_pressed("ui_up") and cursor_active and not tutorial:
@@ -90,8 +94,7 @@ func _process(delta):
 	
 
 	
-	if Input.is_action_just_pressed("ui_select") and cursor_active and cursor_ready:
-		#var current_menu_item := get_menu_item_at_index(cursor_index)
+	if Input.is_action_just_pressed("ui_select") and cursor_active and cursor_ready and defend_active:
 		
 		if current_menu_item != null:
 			if current_menu_item.has_method("cursor_select"):

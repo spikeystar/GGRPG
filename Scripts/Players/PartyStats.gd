@@ -47,7 +47,7 @@ var damien_trinket : String = "-"
 
 var party_sp = 20
 var party_max_sp = 20
-var party_level = 1
+var party_level = 3
 var party_exp = 0
 var next_level = 200
 
