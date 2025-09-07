@@ -6973,8 +6973,6 @@ frame = 22
 script = ExtResource( 5 )
 depth_test_offset = Vector2( -8, 28 )
 feet_height = 10.0
-use_dithering = false
-use_dither_blending = false
 
 [node name="Poof" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
 visible = false

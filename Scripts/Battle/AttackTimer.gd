@@ -51,13 +51,13 @@ func _on_WorldRoot_start_attack_timer():
 
 func _on_Timer_timeout():
 	active = false
-	if fighter_name == "gary" and max_hits ==3:
+	if fighter_name == "gary" and max_hits == 3:
 		emit_signal("attack_bonus")
 		max_hits = 0
-	elif fighter_name == "jacques" and max_hits ==2:
+	elif fighter_name == "jacques" and max_hits == 2:
 		emit_signal("attack_bonus")
 		max_hits = 0
-	elif fighter_name == "irina" and max_hits ==1:
+	elif fighter_name == "irina" and max_hits == 1:
 		emit_signal("attack_bonus")
 		max_hits = 0
 	else:

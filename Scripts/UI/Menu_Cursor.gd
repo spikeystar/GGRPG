@@ -4,6 +4,7 @@ export var menu_parent_path : NodePath
 export var cursor_offset : Vector2
 
 onready var menu_parent := get_node(menu_parent_path)
+#onready var defend_parent := get_node(menu_parent_path)
 
 var cursor_index : int = 0
 var defend_active = false
@@ -26,28 +27,38 @@ var wimpy = false
 
 export var tutorial : bool
 
+
+
 func _process(delta):
 	var input := Vector2.ZERO
 	var child_count = menu_parent.get_child_count()
+	#var defend_count = defend_parent.get_child_count()
 	
-	var current_menu_item := get_menu_item_at_index(cursor_index)
-	var defend_selection := get_menu_item_at_index(cursor_index)
-	
-	if child_count > 0 and defend_selection and defend_active:
-			if defend_selection.has_method("get_id"):
-				defend_name = defend_selection.get_id()
+	if defend_active:
+		var defend_selection := get_menu_item_at_index(cursor_index)
+		if child_count > 0 and defend_active:
+			defend_selection = get_menu_item_at_index(cursor_index)
+			
+		if Input.is_action_just_pressed("ui_select") and cursor_active and cursor_ready and defend_active:
+		
+			if defend_selection != null:
+				if defend_selection.has_method("cursor_select"):
+					defend_selection.cursor_select()
+			
+			
 				
-	
-	if child_count > 0 and current_menu_item and item_active:
+	if item_active or magic_active:
+		var current_menu_item := get_menu_item_at_index(cursor_index)
+		if child_count > 0 and current_menu_item and item_active:
 			if current_menu_item.has_method("get_id"):
 				item_name = current_menu_item.get_id()
 				
 	
-	if child_count > 0 and current_menu_item and magic_active:
+		if child_count > 0 and current_menu_item and magic_active:
 			if current_menu_item.has_method("get_id"):
 				menu_name = current_menu_item.get_id()
 				
-				
+
 	
 	
 	
@@ -101,20 +112,15 @@ func _process(delta):
 		
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)
+#	if defend_parent is VBoxContainer and defend_active:
+		#set_cursor_from_index(cursor_index + input.y)
 	elif menu_parent is HBoxContainer:
 		set_cursor_from_index(cursor_index + input.x)
 	elif menu_parent is GridContainer:
 		set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
-	elif menu_parent is PanelContainer:
-		set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
+	
 	
 
-	
-	if Input.is_action_just_pressed("ui_select") and cursor_active and cursor_ready and defend_active:
-		
-		if defend_selection != null:
-			if defend_selection.has_method("cursor_select"):
-				defend_selection.cursor_select()
 				
 	if Input.is_action_just_pressed("ui_up") and defend_active and up_count == 0 or up_count == 2 and not tutorial:
 		emit_signal("go_to_Item")
@@ -138,11 +144,13 @@ func _process(delta):
 func get_menu_item_at_index(index : int) -> Control:
 	if menu_parent == null:
 		return null
+		#pass
 	
 	if index >= menu_parent.get_child_count() or index < 0:
 		return null
 	
 	return menu_parent.get_child(index) as Control
+	
 
 func set_cursor_from_index(index : int) -> void:
 	var menu_item := get_menu_item_at_index(index)
@@ -156,6 +164,7 @@ func set_cursor_from_index(index : int) -> void:
 	rect_global_position = Vector2(position.x, position.y + size.y / 2.0) - (rect_size / 2.0) - cursor_offset
 	
 	cursor_index = index
+		
 
 func _on_WorldRoot_index_reset():
 	if cursor_index != -1:
