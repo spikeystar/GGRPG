@@ -39,6 +39,7 @@ func _process(delta):
 		if child_count > 0 and defend_active:
 			defend_selection = get_menu_item_at_index(cursor_index)
 			
+			
 		if Input.is_action_just_pressed("ui_select") and cursor_active and cursor_ready and defend_active:
 		
 			if defend_selection != null:

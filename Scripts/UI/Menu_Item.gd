@@ -1,10 +1,12 @@
 extends Label
-var defend_active = false
 var equipped = false
 var holder_name : String = "-"
 
+
 signal cursor_selected()
 #signal go_to_Item()
+
+		
 
 func _ready():
 	if text == PartyStats.gary_trinket:
@@ -26,7 +28,7 @@ func _ready():
 		holder_name = "-"
 		equipped = false
 	pass
-	
+
 
 func cursor_select() ->void:
 	emit_signal("cursor_selected")
@@ -78,6 +80,4 @@ func trinket_relocate():
 		PartyStats.damien_trinket = "-"
 	
 
-#func _on_WorldRoot_defend_active():
-	#defend_active = true
 	

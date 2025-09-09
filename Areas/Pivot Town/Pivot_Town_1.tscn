@@ -2088,6 +2088,15 @@ item_name = "Jhumki"
 position = Vector2( 184, -34 )
 polygon = PoolVector2Array( -73, -103, -34, -85, -75, -62, -111, -77 )
 
+[node name="Item_Get2" type="Area2D" parent="CollisionRoot"]
+position = Vector2( 172, -112 )
+script = ExtResource( 81 )
+item_name = "Pretty Gem"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Item_Get2"]
+position = Vector2( 184, -34 )
+polygon = PoolVector2Array( -77, -76, 2, -44, -29, -33, -80, -56, -114, -65 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
 position = Vector2( 242, -480 )
@@ -2479,7 +2488,6 @@ position = Vector2( -429, -740 )
 scale = Vector2( 1.7, 1.7 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 5
 speed_scale = 0.8
 playing = true
 
@@ -2488,7 +2496,6 @@ position = Vector2( 172, -419 )
 scale = Vector2( 1.6, 1.6 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 3
 speed_scale = 0.7
 playing = true
 
@@ -2558,6 +2565,7 @@ position = Vector2( 204, -528 )
 [connection signal="body_exited" from="CollisionRoot/NPC3" to="CollisionRoot/NPC3" method="_on_NPC_body_exited"]
 [connection signal="general_dialogue" from="CollisionRoot/NPC3" to="Camera2D/Interaction/Dialogue" method="_on_NPC3_general_dialogue"]
 [connection signal="item_get" from="CollisionRoot/Item_Get" to="Camera2D" method="_on_Item_Get_item_get"]
+[connection signal="item_get" from="CollisionRoot/Item_Get2" to="Camera2D" method="_on_Item_Get_item_get"]
 [connection signal="animate_Gary" from="Camera2D" to="." method="_on_Camera2D_animate_Gary"]
 [connection signal="quest_item" from="Camera2D/Interaction/Dialogue" to="Camera2D" method="_on_Dialogue_quest_item"]
 [connection signal="overworld" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_overworld"]
