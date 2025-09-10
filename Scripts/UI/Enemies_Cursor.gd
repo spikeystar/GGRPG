@@ -18,12 +18,12 @@ func _process(delta):
 	var input := Vector2.ZERO
 	var current_menu_item := get_menu_item_at_index(cursor_index)
 	
-	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and enemies_selecting:
+	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and enemies_selecting and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_left"):
 		input.y -= 1
 		self.modulate.a = 0
 		#yield(get_tree().create_timer(0.01), "timeout")
 		self.modulate.a = 1
-	if Input.is_action_just_pressed("ui_down") and enemies_selecting:
+	if Input.is_action_just_pressed("ui_down") and enemies_selecting and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_left"):
 		input.y += 1
 		self.modulate.a = 0
 		#yield(get_tree().create_timer(0.01), "timeout")

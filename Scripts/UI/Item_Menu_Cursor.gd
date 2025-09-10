@@ -20,22 +20,23 @@ func _process(delta):
 	var current_menu_item := get_menu_item_at_index(cursor_index)
 	#var item_name = current_menu_item.get_id()
 	
-	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and item_selecting:
+	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and item_selecting and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_left"):
 		input.y -= 1
-	if Input.is_action_just_pressed("ui_down") and item_selecting:
+	if Input.is_action_just_pressed("ui_down") and item_selecting and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_left"):
 		input.y += 1
 	else:
 		input.y += 0
+		
+		
+	if Input.is_action_just_pressed("ui_select") and item_selecting and not ongoing and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_accept") and not Input.is_action_just_pressed("ui_cancel"):
+		item_selecting = false
+		self.modulate.a = 0
 		
 	if Input.is_action_just_pressed("ui_accept") and item_selecting or Input.is_action_just_pressed("ui_left") and item_selecting:
 		SE.effect("Move Between")
 		item_selecting = false
 		self.modulate.a = 0
 		emit_signal("retread")
-		
-	if Input.is_action_just_pressed("ui_select") and item_selecting and not ongoing:
-		item_selecting = false
-		self.modulate.a = 0
 		
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)

@@ -100,6 +100,12 @@ signal Gravel_Spat
 func _ready():
 	enemies = $Field.get_children()
 	
+	if not boss_battle:
+		for x in enemies.size():
+			var enemy_name = enemies[x].get_name()
+			Party.add_enemy_name = enemy_name
+			Party.add_enemy()
+	
 	if not tutorial:
 		tutorial_wait = false
 	
@@ -156,9 +162,9 @@ func enemy_info_update():
 		$EnemyInfo/EnemyStatus.m_debuff = enemies[enemy_index].get_status("m_debuff")
 		$EnemyInfo/EnemyStatus.d_buff = enemies[enemy_index].get_status("d_buff")
 		$EnemyInfo/EnemyStatus.d_debuff = enemies[enemy_index].get_status("d_debuff")
-		if not boss_battle:
-			Party.add_enemy_name = get_name()
-			Party.add_enemy()
+		#if not boss_battle:
+		#	Party.add_enemy_name = get_name()
+		#	Party.add_enemy()
 
 	
 #func _process(delta):

@@ -315,6 +315,7 @@ func _on_TutorialOptions_yes():
 	yield($Camera2D/Interaction/Dialogue, "talk_done")
 	$Camera2D/Interaction/Dialogue.done()
 	PlayerManager.freeze = true
+	SE.silence("Select")
 	
 	Music.pause()
 	BattleMusic.id = "Standard_Battle"

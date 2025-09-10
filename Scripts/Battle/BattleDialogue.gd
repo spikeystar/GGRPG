@@ -179,11 +179,11 @@ func Tutorial_5():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "If you use magic with a type the same as the enemy you're attacking, you will do 0.5X damage."
+	$Name/Talk.text = "If you use magic that's the same type as the enemy you're attacking, you'll do 0.5X damage."
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "You start Neutral, but eventually you'll see moves or items that will change your typing."
+	$Name/Talk.text = "You start Neutral, but eventually your typing can be changed by moves or items."
 	talking()
 	yield(self, "talk_done")
 	
@@ -195,7 +195,7 @@ func Tutorial_5():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "And if you're the same type as an enemy attack, you're immune to its secondary effects."
+	$Name/Talk.text = "And being the same type as an enemy attack gives immunity to its secondary effects."
 	talking()
 	yield(self, "talk_done")
 	SE.effect("Menu Open")

@@ -66,23 +66,23 @@ func scroll_up():
 func _process(delta):
 	var size_max = inventory.size()
 	var inventory_max = (inventory.size() -1)
-	if Input.is_action_just_pressed("ui_down") and trinkets_active and trinket_index < inventory_max:
+	if Input.is_action_just_pressed("ui_down") and trinkets_active and trinket_index < inventory_max and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		trinket_index += 1
-	if Input.is_action_just_pressed("ui_up") and trinkets_active and trinket_index > 0:
+	if Input.is_action_just_pressed("ui_up") and trinkets_active and trinket_index > 0 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		trinket_index -= 1
-	if Input.is_action_just_pressed("ui_down") and trinket_index >=15:
+	if Input.is_action_just_pressed("ui_down") and trinket_index >=15 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_left"):
 		#SE.effect("Move Between")
 		scroll_down()
-	if Input.is_action_just_pressed("ui_up") and trinket_index >=14:
+	if Input.is_action_just_pressed("ui_up") and trinket_index >=14 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_left"):
 		#SE.effect("Move Between")
 		scroll_up()
 	
 		
 func _input(event):
 	var inventory_max = (inventory.size() -1)
-	if Input.is_action_just_pressed("ui_select") and trinkets_active:
+	if Input.is_action_just_pressed("ui_select") and trinkets_active and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_accept") and not Input.is_action_just_pressed("ui_cancel"):
 		SceneManager.transitioning = true
 		SE.effect("Select")
 		get_id()

@@ -55,7 +55,7 @@ func _process(delta):
 	PartyStats.party_id = (member_index + 1)
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_right") and party_selecting:
+	if Input.is_action_just_pressed("ui_right") and party_selecting and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		select_next_member(+1)
 		#reverse = false
 		
@@ -63,7 +63,7 @@ func _input(event):
 			SE.effect("Move Between")
 			reverse = false
 		
-	if Input.is_action_just_pressed("ui_left") and party_selecting and not member_index == 0 and not members_active:
+	if Input.is_action_just_pressed("ui_left") and party_selecting and not member_index == 0 and not members_active and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_right"):
 		select_next_member(-1)
 		
 		if PartyStats.party_members > 1:
@@ -72,7 +72,7 @@ func _input(event):
 		yield(get_tree().create_timer(0.1), "timeout")
 		reverse = true
 		
-	if Input.is_action_just_pressed("ui_left") and party_selecting and not member_index == 0 and members_active and switching:
+	if Input.is_action_just_pressed("ui_left") and party_selecting and not member_index == 0 and members_active and switching and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_right"):
 		select_next_member(-1)
 		
 		if PartyStats.party_members > 1:
@@ -81,10 +81,10 @@ func _input(event):
 		yield(get_tree().create_timer(0.1), "timeout")
 		reverse = true
 		
-	if Input.is_action_just_pressed("ui_left") and party_selecting and member_index == 0:
+	if Input.is_action_just_pressed("ui_left") and party_selecting and member_index == 0 and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_right"):
 		reverse = true
 			
-	if Input.is_action_just_pressed("ui_left") and party_selecting and not members_active and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting or Input.is_action_just_pressed("ui_accept") and party_selecting and not members_active and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting or Input.is_action_just_pressed("ui_cancel") and party_selecting and not members_active and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting:
+	if Input.is_action_just_pressed("ui_left") and party_selecting and not members_active and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_accept") and party_selecting and not members_active and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_right") or Input.is_action_just_pressed("ui_cancel") and party_selecting and not members_active and member_index == 0 and not stats_active and reverse and not switching and not item_selecting and not trinket_selecting and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_right"):
 		SE.effect("Move Between")
 		print("gloop 2")
 		Cursors[member_index].hide()
@@ -93,43 +93,43 @@ func _input(event):
 		party_selecting = false
 		emit_signal("main_retread")
 		
-	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members >= 4 and member_index == 0:
+	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members >= 4 and member_index == 0 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 3
 		Cursors[0].hide()
 		Cursors[3].show()
 		
-	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members >= 4 and member_index == 1:
+	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members >= 4 and member_index == 1 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 3
 		Cursors[1].hide()
 		Cursors[3].show()
 		
-	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members == 4 and member_index == 2:
+	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members == 4 and member_index == 2 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 3
 		Cursors[2].hide()
 		Cursors[3].show()
 		
-	if Input.is_action_just_pressed("ui_up") and party_selecting and member_index == 3 and PartyStats.party_members >= 4:
+	if Input.is_action_just_pressed("ui_up") and party_selecting and member_index == 3 and PartyStats.party_members >= 4 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 0
 		Cursors[3].hide()
 		Cursors[0].show()
 		
-	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members == 5 and member_index == 2:
+	if Input.is_action_just_pressed("ui_down") and party_selecting and PartyStats.party_members == 5 and member_index == 2 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 4
 		Cursors[2].hide()
 		Cursors[4].show()
 		
-	if Input.is_action_just_pressed("ui_up") and party_selecting and PartyStats.party_members == 5 and member_index == 4:
+	if Input.is_action_just_pressed("ui_up") and party_selecting and PartyStats.party_members == 5 and member_index == 4 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 1
 		Cursors[4].hide()
 		Cursors[1].show()
 
-	if Input.is_action_just_pressed("ui_select") and party_selecting and able and not switching and not member_selecting:
+	if Input.is_action_just_pressed("ui_select") and party_selecting and able and not switching and not member_selecting and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_accept") and not Input.is_action_just_pressed("ui_cancel"):
 		SE.effect("Select")
 		emit_signal("member_options")
 		members_active = true
@@ -180,7 +180,7 @@ func _input(event):
 		emit_signal("main_retread")
 		
 		
-	if Input.is_action_just_pressed("ui_select") and party_selecting and able and switching and member_selecting:
+	if Input.is_action_just_pressed("ui_select") and party_selecting and able and switching and member_selecting and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_accept") and not Input.is_action_just_pressed("ui_cancel"):
 		SE.effect("Switch")
 		emit_signal("switched")
 		switching = false
@@ -211,13 +211,13 @@ func _input(event):
 		
 		##########
 		
-	if Input.is_action_just_pressed("ui_right") and item_selecting:
+	if Input.is_action_just_pressed("ui_right") and item_selecting and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		select_next_member(+1)
 		
-	if Input.is_action_just_pressed("ui_left") and item_selecting:
+	if Input.is_action_just_pressed("ui_left") and item_selecting and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_right"):
 		select_next_member(-1)
 
-	if Input.is_action_just_pressed("ui_select") and item_selecting and able:
+	if Input.is_action_just_pressed("ui_select") and item_selecting and able and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_accept") and not Input.is_action_just_pressed("ui_cancel"):
 		SceneManager.transitioning = true
 		SE.effect("Heal")
 		selector_name = get_name()
@@ -235,37 +235,37 @@ func _input(event):
 		item_selecting = false
 		able = false
 		
-	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members >= 4 and member_index == 0:
+	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members >= 4 and member_index == 0 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 3
 		Cursors[0].hide()
 		Cursors[3].show()
 		
-	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members >= 4 and member_index == 1:
+	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members >= 4 and member_index == 1 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 3
 		Cursors[1].hide()
 		Cursors[3].show()
 		
-	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members == 4 and member_index == 2:
+	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members == 4 and member_index == 2 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 3
 		Cursors[2].hide()
 		Cursors[3].show()
 		
-	if Input.is_action_just_pressed("ui_up") and item_selecting and member_index == 3 and PartyStats.party_members >= 4:
+	if Input.is_action_just_pressed("ui_up") and item_selecting and member_index == 3 and PartyStats.party_members >= 4 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 0
 		Cursors[3].hide()
 		Cursors[0].show()
 		
-	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members == 5 and member_index == 2:
+	if Input.is_action_just_pressed("ui_down") and item_selecting and PartyStats.party_members == 5 and member_index == 2 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 4
 		Cursors[2].hide()
 		Cursors[4].show()
 		
-	if Input.is_action_just_pressed("ui_up") and item_selecting and PartyStats.party_members == 5 and member_index == 4:
+	if Input.is_action_just_pressed("ui_up") and item_selecting and PartyStats.party_members == 5 and member_index == 4 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 1
 		Cursors[4].hide()
@@ -273,13 +273,13 @@ func _input(event):
 		
 		##############
 		
-	if Input.is_action_just_pressed("ui_right") and trinket_selecting:
+	if Input.is_action_just_pressed("ui_right") and trinket_selecting and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		select_next_member(+1)
 		
-	if Input.is_action_just_pressed("ui_left") and trinket_selecting:
+	if Input.is_action_just_pressed("ui_left") and trinket_selecting and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_right"):
 		select_next_member(-1)
 
-	if Input.is_action_just_pressed("ui_select") and trinket_selecting and able:
+	if Input.is_action_just_pressed("ui_select") and trinket_selecting and able and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_accept") and not Input.is_action_just_pressed("ui_cancel"):
 		SceneManager.transitioning = true
 		SE.effect("Switch")
 		selector_name = get_name()
@@ -297,37 +297,37 @@ func _input(event):
 		trinket_selecting = false
 		able = false
 		
-	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members >= 4 and member_index == 0:
+	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members >= 4 and member_index == 0 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 3
 		Cursors[0].hide()
 		Cursors[3].show()
 		
-	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members >= 4 and member_index == 1:
+	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members >= 4 and member_index == 1 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 3
 		Cursors[1].hide()
 		Cursors[3].show()
 		
-	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members == 4 and member_index == 2:
+	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members == 4 and member_index == 2 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 3
 		Cursors[2].hide()
 		Cursors[3].show()
 		
-	if Input.is_action_just_pressed("ui_up") and trinket_selecting and member_index == 3 and PartyStats.party_members >= 4:
+	if Input.is_action_just_pressed("ui_up") and trinket_selecting and member_index == 3 and PartyStats.party_members >= 4 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 0
 		Cursors[3].hide()
 		Cursors[0].show()
 		
-	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members == 5 and member_index == 2:
+	if Input.is_action_just_pressed("ui_down") and trinket_selecting and PartyStats.party_members == 5 and member_index == 2 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 4
 		Cursors[2].hide()
 		Cursors[4].show()
 		
-	if Input.is_action_just_pressed("ui_up") and trinket_selecting and PartyStats.party_members == 5 and member_index == 4:
+	if Input.is_action_just_pressed("ui_up") and trinket_selecting and PartyStats.party_members == 5 and member_index == 4 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		member_index = 1
 		Cursors[4].hide()

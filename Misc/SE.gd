@@ -8,7 +8,7 @@ func silence(id : String):
 	if id == "Select":
 		$Select.volume_db = -80
 		yield(get_tree().create_timer(0.3), "timeout")
-		$Select.volume_db = -1.5
+		$Select.volume_db = -4
 		
 func mega_silence(id : String):
 	if id == "Move Between":

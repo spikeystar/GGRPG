@@ -33,16 +33,16 @@ func add_slot(item_index):
 	
 func _process(delta):
 	var inventory_max = (inventory.size() -1)
-	if Input.is_action_just_pressed("ui_down") and item_active and item_index < inventory_max:
+	if Input.is_action_just_pressed("ui_down") and item_active and item_index < inventory_max and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		item_index += 1
-	if Input.is_action_just_pressed("ui_up") and item_active and item_index > 0:
+	if Input.is_action_just_pressed("ui_up") and item_active and item_index > 0 and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_left"):
 		SE.effect("Move Between")
 		item_index -= 1
 		
 func _input(event):
 	var inventory_max = (inventory.size() -1)
-	if Input.is_action_just_pressed("ui_select") and item_active:
+	if Input.is_action_just_pressed("ui_select") and item_active and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_accept") and not Input.is_action_just_pressed("ui_cancel"):
 		get_id()
 		selected_id = item_id
 		if item_id == "Yummy Cake" or item_id == "Sugar Pill" or item_id == "Ginger Tea":

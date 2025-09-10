@@ -21,7 +21,7 @@ func _process(delta):
 	var input := Vector2.ZERO
 	var current_menu_item := get_menu_item_at_index(cursor_index)
 	
-	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and trinket_selecting:
+	if Input.is_action_just_pressed("ui_up") and cursor_index >0 and trinket_selecting and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_left"):
 		input.y -= 1
 		#down_count -= 1
 		#if down_count > 13:
@@ -29,7 +29,7 @@ func _process(delta):
 		self.modulate.a = 0
 		#yield(get_tree().create_timer(0.01), "timeout")
 		self.modulate.a = 1
-	if Input.is_action_just_pressed("ui_down") and trinket_selecting:
+	if Input.is_action_just_pressed("ui_down") and trinket_selecting and not Input.is_action_just_pressed("ui_right") and not Input.is_action_just_pressed("ui_left"):
 		input.y += 1
 		self.modulate.a = 0
 		#yield(get_tree().create_timer(0.01), "timeout")
@@ -40,15 +40,16 @@ func _process(delta):
 	else:
 		input.y += 0
 		
-	if Input.is_action_just_pressed("ui_accept") and trinket_selecting or Input.is_action_just_pressed("ui_left") and trinket_selecting:
+		
+	if Input.is_action_just_pressed("ui_select") and trinket_selecting and not ongoing and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_accept") and not Input.is_action_just_pressed("ui_cancel"):
+		trinket_selecting = false
+		self.modulate.a = 0
+		
+	if Input.is_action_just_pressed("ui_accept") and trinket_selecting or Input.is_action_just_pressed("ui_left") and trinket_selecting or Input.is_action_just_pressed("ui_cancel") and trinket_selecting:
 		SE.effect("Move Between")
 		trinket_selecting = false
 		self.modulate.a = 0
 		emit_signal("retread")
-		
-	if Input.is_action_just_pressed("ui_select") and trinket_selecting and not ongoing:
-		trinket_selecting = false
-		self.modulate.a = 0
 		
 	if menu_parent is VBoxContainer:
 		set_cursor_from_index(cursor_index + input.y)

@@ -17,6 +17,7 @@ var key_empty = false
 var switching = false
 var ongoing = false
 var members = false
+var ready = true
 
 signal party_selecting
 signal item_selecting
@@ -32,12 +33,12 @@ func _process(delta):
 	
 	menu_name = current_menu_item.get_id()
 
-	if Input.is_action_just_pressed("ui_up") and main_active:
+	if Input.is_action_just_pressed("ui_up") and main_active and not Input.is_action_just_pressed("ui_right"):
 		input.y -= 1
 		if down_count >=1:
 			SE.effect("Move Between")
 			down_count -= 1
-	if Input.is_action_just_pressed("ui_down") and down_count <5 and main_active:
+	if Input.is_action_just_pressed("ui_down") and down_count <5 and main_active and not Input.is_action_just_pressed("ui_right"):
 		SE.effect("Move Between")
 		input.y += 1
 		down_count += 1	
@@ -57,13 +58,13 @@ func _process(delta):
 		main_active = false
 		emit_signal("item_selecting")
 		
-	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Trinkets" and not trinkets_empty:
+	if Input.is_action_just_pressed("ui_right")and main_active and menu_name == "Trinkets" and not trinkets_empty:
 		SE.effect("Move Between")
 		self.hide()
 		main_active = false
 		emit_signal("trinket_selecting")
 		
-	if Input.is_action_just_pressed("ui_right") and main_active and menu_name == "Enemies":
+	if Input.is_action_just_pressed("ui_right")and main_active and menu_name == "Enemies":
 		if Party.EnemyList.size() > 0:
 			SE.effect("Move Between")
 			self.hide()
@@ -77,7 +78,6 @@ func _process(delta):
 		emit_signal("key_selecting")
 		
 	if Input.is_action_just_pressed("ui_accept") and not main_active and not stats_active and not ongoing or Input.is_action_just_pressed("ui_cancel") and not main_active and not stats_active and not ongoing:
-		print("gloop")
 		#self.show()
 		#main_active = true
 		#emit_signal("retread")

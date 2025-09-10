@@ -64,8 +64,8 @@ func _ready():
 	#add_key_item_name = "Lighthouse Key"
 	#add_key_item()	
 	
-	add_trinket_name = "Gold Bracelet"
-	add_trinket()	
+	#add_trinket_name = "Gold Bracelet"
+	#add_trinket()	
 	#add_trinket_name = "Gold Chain"
 	#add_trinket()	
 	#add_trinket_name = "Gold Earring"
@@ -117,6 +117,7 @@ func add_key_item():
 	new_slot.text = add_key_item_name
 	if add_key_item_name == "Jhumki" and jhumki_amount > 0:
 		jhumki_amount += 1
+		return
 	if add_key_item_name == "Jhumki" and jhumki_amount == 0:
 		KeyItems.insert(0, new_slot)
 		jhumki_amount += 1

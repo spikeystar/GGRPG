@@ -23,7 +23,7 @@ func _process(delta):
 	var current_menu_item := get_menu_item_at_index(cursor_index)
 	menu_name = current_menu_item.get_id()
 	
-	if Input.is_action_just_pressed("ui_up") and member_options:
+	if Input.is_action_just_pressed("ui_up") and member_options and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_right"):
 		if up_count == -1:
 			SE.effect("Move Between")
 			up_count = 0
@@ -33,7 +33,7 @@ func _process(delta):
 			down_count -= 1
 		
 			
-	if Input.is_action_just_pressed("ui_down") and down_count <1 and member_options:
+	if Input.is_action_just_pressed("ui_down") and down_count <1 and member_options and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_right"):
 		SE.effect("Move Between")
 		input.y += 1
 		down_count += 1
@@ -63,7 +63,7 @@ func _process(delta):
 				
 		
 func _input(event):
-	if Input.is_action_just_pressed("ui_accept") and member_options or Input.is_action_just_pressed("ui_left") and member_options or Input.is_action_just_pressed("ui_cancel") and member_options:
+	if Input.is_action_just_pressed("ui_accept") and not Input.is_action_just_pressed("ui_select") and member_options or Input.is_action_just_pressed("ui_left") and member_options and not Input.is_action_just_pressed("ui_select") or Input.is_action_just_pressed("ui_cancel") and member_options and not Input.is_action_just_pressed("ui_select"):
 		SE.effect("Cancel")
 		self.hide()
 		member_options = false
@@ -72,17 +72,17 @@ func _input(event):
 		emit_signal("party_selecting")
 		emit_signal("retread")
 		
-	if Input.is_action_just_pressed("ui_select") and member_options and down_count == 0 and PartyStats.party_members > 1:
+	if Input.is_action_just_pressed("ui_select") and member_options and down_count == 0 and PartyStats.party_members == 1:
+		SE.effect("Unable")
+		
+	if Input.is_action_just_pressed("ui_select") and member_options and down_count == 0 and PartyStats.party_members > 1 and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_accept") and not Input.is_action_just_pressed("ui_cancel"):
 		SE.effect("Select")
 		member_options = false
 		cursor_index = 0
 		down_count = 0
 		emit_signal("switch_selecting")
 		
-	if Input.is_action_just_pressed("ui_select") and member_options and down_count == 0 and PartyStats.party_members == 1:
-		SE.effect("Unable")
-		
-	if Input.is_action_just_pressed("ui_select") and member_options and down_count == 1:
+	if Input.is_action_just_pressed("ui_select") and member_options and down_count == 1 and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_accept") and not Input.is_action_just_pressed("ui_cancel"):
 		SE.effect("Select")
 		member_options = false
 		cursor_index = 0

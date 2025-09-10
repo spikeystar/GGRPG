@@ -554,8 +554,8 @@ position = Vector2( 17, -86 )
 z_index = 4096
 current = true
 script = ExtResource( 21 )
-minPos = Vector2( 13, -65 )
-maxPos = Vector2( 25, -65 )
+minPos = Vector2( 10, -60 )
+maxPos = Vector2( 10, -60 )
 follow_player = true
 
 [node name="Info_Window" type="Sprite" parent="Camera2D"]
