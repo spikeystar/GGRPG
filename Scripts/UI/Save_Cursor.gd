@@ -39,11 +39,11 @@ func _process(delta):
 	else:
 		input.y += 0
 		
-	if Input.is_action_just_pressed("ui_accept") and not ongoing:
-		return
-		self.modulate.a = 0
-		emit_signal("retread")
-		cursor_index = 0
+	#if Input.is_action_just_pressed("ui_accept") and not ongoing:
+	#	return
+	#	self.modulate.a = 0
+	#	emit_signal("retread")
+	#	cursor_index = 0
 		
 		
 	if menu_parent is VBoxContainer:

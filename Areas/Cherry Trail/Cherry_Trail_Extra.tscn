@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Assets/Cherry Trail/hill c.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Cherry Trail/bush a.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Cherry Trail/sprout.png" type="Texture" id=11]
 [ext_resource path="res://Assets/General/Shadows/circle shadow large.png" type="Texture" id=12]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion B.png" type="Texture" id=13]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=15]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=16]
 [ext_resource path="res://Scripts/Area_Specific/Cherry Trail.gd" type="Script" id=18]
@@ -78,32 +79,6 @@
 9/shape_one_way_margin = 0.0
 9/shapes = [  ]
 9/z_index = 0
-10/name = "White Flower Tile A.png 10"
-10/tex_offset = Vector2( 0, 0 )
-10/modulate = Color( 1, 1, 1, 1 )
-10/region = Rect2( 0, 0, 64, 32 )
-10/tile_mode = 0
-10/occluder_offset = Vector2( 0, 0 )
-10/navigation_offset = Vector2( 0, 0 )
-10/shape_offset = Vector2( 0, 0 )
-10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-10/shape_one_way = false
-10/shape_one_way_margin = 0.0
-10/shapes = [  ]
-10/z_index = 0
-11/name = "White Flower Tile B.png 11"
-11/tex_offset = Vector2( 0, 0 )
-11/modulate = Color( 1, 1, 1, 1 )
-11/region = Rect2( 0, 0, 64, 32 )
-11/tile_mode = 0
-11/occluder_offset = Vector2( 0, 0 )
-11/navigation_offset = Vector2( 0, 0 )
-11/shape_offset = Vector2( 0, 0 )
-11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-11/shape_one_way = false
-11/shape_one_way_margin = 0.0
-11/shapes = [  ]
-11/z_index = 0
 12/name = "Tall Grass A.png 12"
 12/texture = ExtResource( 26 )
 12/tex_offset = Vector2( 0, 0 )
@@ -174,6 +149,20 @@
 16/shape_one_way_margin = 0.0
 16/shapes = [  ]
 16/z_index = 0
+17/name = "Dandelion B.png 17"
+17/texture = ExtResource( 13 )
+17/tex_offset = Vector2( 0, 0 )
+17/modulate = Color( 1, 1, 1, 1 )
+17/region = Rect2( 0, 0, 64, 32 )
+17/tile_mode = 0
+17/occluder_offset = Vector2( 0, 0 )
+17/navigation_offset = Vector2( 0, 0 )
+17/shape_offset = Vector2( 0, 0 )
+17/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+17/shape_one_way = false
+17/shape_one_way_margin = 0.0
+17/shapes = [  ]
+17/z_index = 0
 
 [node name="WorldRoot" type="Node2D"]
 script = ExtResource( 18 )
@@ -274,13 +263,13 @@ format = 1
 tile_data = PoolIntArray( -393221, 7, 0, -393220, 7, 0, -393219, 7, 0, -393218, 7, 0, -393217, 7, 0, -458752, 7, 0, -458751, 7, 0, -458750, 7, 0, -327686, 7, 0, -327685, 7, 0, -327684, 7, 0, -327683, 7, 0, -327682, 7, 0, -327681, 7, 0, -393216, 7, 0, -393215, 7, 0, -393214, 7, 0, -393213, 7, 0, -262150, 7, 0, -262149, 7, 0, -262148, 7, 0, -262147, 7, 0, -262146, 7, 0, -262145, 7, 0, -327680, 7, 0, -327679, 7, 0, -327678, 7, 0, -327677, 7, 0, -327676, 7, 0, -196616, 7, 0, -196615, 7, 0, -196614, 7, 0, -196613, 7, 0, -196612, 7, 0, -196611, 7, 0, -196610, 7, 0, -196609, 7, 0, -262144, 7, 0, -262143, 7, 0, -262142, 7, 0, -262141, 7, 0, -262140, 7, 0, -131080, 7, 0, -131079, 7, 0, -131078, 7, 0, -131077, 7, 0, -131076, 7, 0, -131075, 7, 0, -131074, 7, 0, -131073, 7, 0, -196608, 7, 0, -196607, 7, 0, -196606, 7, 0, -196605, 7, 0, -196604, 7, 0, -65542, 7, 0, -65541, 7, 0, -65540, 7, 0, -65539, 7, 0, -65538, 7, 0, -65537, 7, 0, -131072, 7, 0, -131071, 7, 0, -131070, 7, 0, -131069, 7, 0, -131068, 7, 0, -6, 7, 0, -5, 7, 0, -4, 7, 0, -3, 7, 0, -2, 7, 0, -1, 7, 0, -65536, 7, 0, -65535, 7, 0, -65534, 7, 0, -65533, 7, 0, -65532, 7, 0, 65530, 7, 0, 65531, 7, 0, 65532, 7, 0, 65533, 7, 0, 65534, 7, 0, 65535, 7, 0, 0, 7, 0, 1, 7, 0, 2, 7, 0, 3, 7, 0, 4, 7, 0, 131067, 7, 0, 131068, 7, 0, 131069, 7, 0, 131070, 7, 0, 131071, 7, 0, 65536, 7, 0, 65537, 7, 0, 65538, 7, 0, 65539, 7, 0, 65540, 7, 0, 196605, 7, 0, 196606, 7, 0, 196607, 7, 0, 131072, 7, 0, 131073, 7, 0, 131074, 7, 0, 131075, 7, 0 )
 
 [node name="Flower Map" type="TileMap" parent="YSort/Floor"]
-modulate = Color( 1, 1, 1, 0.627451 )
+modulate = Color( 1, 1, 1, 0.8 )
 position = Vector2( -31, 12 )
 mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
-tile_data = PoolIntArray( -393220, 13, 0, -393219, 8, 0, -458751, 16, 0, -327686, 16, 0, -327685, 9, 0, -393216, 9, 0, -393214, 12, 0, -262145, 16, 0, -327676, 16, 0, -196612, 12, 0, -262144, 8, 0, -262140, 9, 0, -131076, 12, 0, -196606, 16, 0, -196604, 12, 0, -65541, 9, 0, -65539, 16, 0, -131071, 12, 0, -6, 12, 0, -2, 8, 0, -65533, 13, 0, 65530, 8, 0, 65533, 13, 0, 2, 9, 0, 131068, 16, 0, 65536, 8, 0, 65540, 16, 0, 196606, 9, 0, 196607, 12, 0, 131074, 12, 0 )
+tile_data = PoolIntArray( -393220, 13, 0, -393219, 8, 0, -458751, 17, 0, -327686, 16, 0, -327685, 9, 0, -393216, 9, 0, -393214, 12, 0, -262145, 16, 0, -327676, 16, 0, -196612, 12, 0, -262144, 8, 0, -262140, 9, 0, -131076, 12, 0, -196606, 16, 0, -196604, 12, 0, -65541, 9, 0, -65539, 16, 0, -131071, 12, 0, -6, 12, 0, -2, 8, 0, -65533, 13, 0, 65530, 8, 0, 65533, 13, 0, 2, 9, 0, 131068, 16, 0, 65536, 8, 0, 65540, 16, 0, 196606, 9, 0, 196607, 12, 0, 131073, 17, 0, 131074, 17, 0 )
 
 [node name="CircleShadowLarge" type="Sprite" parent="YSort/Floor"]
 modulate = Color( 1, 1, 1, 0.6 )

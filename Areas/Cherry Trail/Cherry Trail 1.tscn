@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=2]
@@ -42,6 +42,8 @@
 [ext_resource path="res://Enemies/Cherry Trail/Cheribo/Cheribo_wander.tscn" type="PackedScene" id=40]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 5.tscn" type="PackedScene" id=42]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=43]
+[ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion B.png" type="Texture" id=44]
 
 [sub_resource type="TileSet" id=1]
 7/name = "Grass Tile.png 7"
@@ -102,32 +104,6 @@
 9/shape_one_way_margin = 0.0
 9/shapes = [  ]
 9/z_index = 0
-10/name = "White Flower Tile A.png 10"
-10/tex_offset = Vector2( 0, 0 )
-10/modulate = Color( 1, 1, 1, 1 )
-10/region = Rect2( 0, 0, 64, 32 )
-10/tile_mode = 0
-10/occluder_offset = Vector2( 0, 0 )
-10/navigation_offset = Vector2( 0, 0 )
-10/shape_offset = Vector2( 0, 0 )
-10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-10/shape_one_way = false
-10/shape_one_way_margin = 0.0
-10/shapes = [  ]
-10/z_index = 0
-11/name = "White Flower Tile B.png 11"
-11/tex_offset = Vector2( 0, 0 )
-11/modulate = Color( 1, 1, 1, 1 )
-11/region = Rect2( 0, 0, 64, 32 )
-11/tile_mode = 0
-11/occluder_offset = Vector2( 0, 0 )
-11/navigation_offset = Vector2( 0, 0 )
-11/shape_offset = Vector2( 0, 0 )
-11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-11/shape_one_way = false
-11/shape_one_way_margin = 0.0
-11/shapes = [  ]
-11/z_index = 0
 12/name = "Tall Grass A.png 12"
 12/texture = ExtResource( 24 )
 12/tex_offset = Vector2( 0, 0 )
@@ -156,6 +132,34 @@
 13/shape_one_way_margin = 0.0
 13/shapes = [  ]
 13/z_index = 0
+14/name = "Dandelion A.png 14"
+14/texture = ExtResource( 43 )
+14/tex_offset = Vector2( 0, 0 )
+14/modulate = Color( 1, 1, 1, 1 )
+14/region = Rect2( 0, 0, 64, 32 )
+14/tile_mode = 0
+14/occluder_offset = Vector2( 0, 0 )
+14/navigation_offset = Vector2( 0, 0 )
+14/shape_offset = Vector2( 0, 0 )
+14/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+14/shape_one_way = false
+14/shape_one_way_margin = 0.0
+14/shapes = [  ]
+14/z_index = 0
+15/name = "Dandelion B.png 15"
+15/texture = ExtResource( 44 )
+15/tex_offset = Vector2( 0, 0 )
+15/modulate = Color( 1, 1, 1, 1 )
+15/region = Rect2( 0, 0, 64, 32 )
+15/tile_mode = 0
+15/occluder_offset = Vector2( 0, 0 )
+15/navigation_offset = Vector2( 0, 0 )
+15/shape_offset = Vector2( 0, 0 )
+15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+15/shape_one_way = false
+15/shape_one_way_margin = 0.0
+15/shapes = [  ]
+15/z_index = 0
 
 [node name="WorldRoot" type="Node2D"]
 script = ExtResource( 23 )
@@ -276,7 +280,7 @@ mode = 1
 tile_set = SubResource( 2 )
 cell_size = Vector2( 62, 22 )
 format = 1
-tile_data = PoolIntArray( -1048575, 9, 0, -1048572, 9, 0, -786428, 8, 0, -524283, 13, 0, -262146, 12, 0, -196611, 13, 0, -131080, 9, 0, -131065, 9, 0, 65529, 12, 0, 65544, 13, 0, 196606, 9, 0 )
+tile_data = PoolIntArray( -1048575, 9, 0, -1048573, 14, 0, -1048572, 9, 0, -786441, 14, 0, -786428, 8, 0, -720885, 15, 0, -524283, 13, 0, -262146, 12, 0, -196611, 13, 0, -262137, 14, 0, -131080, 9, 0, -196600, 14, 0, -131065, 9, 0, 65529, 12, 0, 65533, 14, 0, 65544, 13, 0, 196606, 9, 0, 131076, 15, 0 )
 script = ExtResource( 33 )
 height = 10.0
 
