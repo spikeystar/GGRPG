@@ -71,6 +71,7 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_select") and item_active:
 		SE.effect("Select")
 		get_id()
+		item_active = false
 		if item_id == "Yummy Cake" or item_id == "Bounty Herb" or item_id == "Sugar Pill" or item_id == "Ginger Tea":
 			emit_signal("heal_item_chosen")
 			emit_signal("item_chosen")
@@ -82,7 +83,7 @@ func _input(event):
 		if item_id == "Spikey Bomb":
 			emit_signal("all_battle_item_chosen")
 		Party.item_index = item_index
-		item_active = false
+		
 		
 func get_id():
 	if item_active and not empty_items:

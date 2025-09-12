@@ -962,7 +962,7 @@ func item_animation():
 func _on_Fighters_item_chosen():
 	fighter_selection = false
 	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
-	var item_id = $ItemWindow/ItemWindowPanel/MenuCursor.item_name
+	var item_id = $ItemWindow/ItemWindowPanel/ItemInventory.item_id
 	$ItemUsage.position = selector_position
 	yield(get_tree().create_timer(0.3), "timeout")
 	if item_id == "Yummy Cake":
@@ -1035,7 +1035,7 @@ func _on_Enemies_item_chosen():
 func _on_Enemies_jinx_doll():
 	$Enemies/EnemyInfo.hide()
 	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
-	var item_id = $ItemWindow.get_item_id()
+	var item_id = $ItemWindow/ItemWindowPanel/ItemInventory.item_id
 	$ItemUsage.position = selector_position
 	if item_id == "Jinx Doll":
 		$ItemUsage/Item.frame = 1
