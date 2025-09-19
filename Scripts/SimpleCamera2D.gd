@@ -241,7 +241,7 @@ func _on_Dialogue_quest_item():
 		Party.add_key_item_name = item_name
 		Party.add_key_item()
 	else:
-			Party.add_item()
+		Party.add_item()
 			
 	$QuestItem.show()
 	$QuestItem.item_animation()

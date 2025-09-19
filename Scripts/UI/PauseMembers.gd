@@ -50,10 +50,12 @@ func initial():
 		SE.effect("Move Between")
 		reverse = false
 
+# warning-ignore:unused_argument
 func _process(delta):
 	set_labels()
 	PartyStats.party_id = (member_index + 1)
 
+# warning-ignore:unused_argument
 func _input(event):
 	if Input.is_action_just_pressed("ui_right") and party_selecting and not Input.is_action_just_pressed("ui_down") and not Input.is_action_just_pressed("ui_up") and not Input.is_action_just_pressed("ui_left"):
 		select_next_member(+1)

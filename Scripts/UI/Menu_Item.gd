@@ -36,9 +36,10 @@ func cursor_select() ->void:
 func get_id():
 	if text == "Unequip Trinket" or text == "-":
 		return "-"
-		print("hello")
 	else:
+		print(text)
 		return text
+		
 	
 func get_holder_name():
 	return holder_name

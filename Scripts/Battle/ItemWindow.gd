@@ -10,6 +10,7 @@ func _ready():
 func _process(delta):
 	if not empty_items:
 		item_id = $ItemWindowPanel/ItemInventory.get_id()
+		#item_id = $ItemWindowPanel/MenuCursor.menu_name
 		item_check()
 
 func item_check():

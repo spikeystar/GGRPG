@@ -226,7 +226,7 @@ func set_positions():
 			fighters[2].position = Vector2(-23, 194)
 			
 		if PartyStats.gary_id == 4 or PartyStats.gary_id == 5:
-			$Gary_Battle.queue_free()
+			$Gary_Battle.hide()
 			
 		if PartyStats.jacques_id == 4 or PartyStats.jacques_id == 5:
 			$Jacques_Battle.hide()

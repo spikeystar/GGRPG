@@ -65,6 +65,7 @@ func _input(event):
 	
 	elif Input.is_action_just_pressed("ui_select") and menu_name == "Talk" and not able and not complete and $Dialogue/Name/Talk.percent_visible == 1:
 		SE.effect("Select")
+		$ShopOptions/MenuCursor.option_selecting = false
 		ongoing = true
 		$ShopOptions.hide()
 		$Dialogue.show()

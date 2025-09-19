@@ -12,7 +12,7 @@ func reset():
 	$Defense_info.text = "7"
 	$EnemyInfo.text = "They're not very strong but are a little mischevious. They like to line up behind things"
 
-func _process(delta):
+func _process(_delta):
 	var key_id = $EnemiesNode/EnemiesInventory.get_id()
 	if key_id == "Cheribo":
 		$EnemyDisplay.position = Vector2(86, -126)

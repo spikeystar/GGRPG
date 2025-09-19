@@ -63,6 +63,8 @@ func _ready():
 	
 	#add_key_item_name = "Lighthouse Key"
 	#add_key_item()	
+	#add_key_item_name = "Lighthouse Key"
+	#add_key_item()	
 	
 	#add_trinket_name = "Gold Bracelet"
 	#add_trinket()	
@@ -77,6 +79,8 @@ func _ready():
 	#add_item()	
 		
 func add_item():
+	if add_item_name == "True" or add_item_name == "False":
+		return
 	if Inventory.size() == 10:
 		var new_slot = slot.duplicate()
 		new_slot.text = add_item_name
@@ -94,6 +98,8 @@ func add_tutorial_item():
 		
 	
 func add_trinket():
+	if add_trinket_name == "True" or add_trinket_name == "False":
+		return
 	if Trinkets.size() > 1:
 		Trinkets.remove(Trinkets.size() - 1)
 		new_trinket()
@@ -113,6 +119,8 @@ func new_trinket():
 	Trinkets.append(new_slot)
 	
 func add_key_item():
+	if add_key_item_name == "True" or add_key_item_name == "False":
+		return
 	var new_slot = slot.duplicate()
 	new_slot.text = add_key_item_name
 	if add_key_item_name == "Jhumki" and jhumki_amount > 0:

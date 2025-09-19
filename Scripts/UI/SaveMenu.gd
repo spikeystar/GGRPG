@@ -9,6 +9,9 @@ enum TransitionType {
 const TransitionPlayer = preload("res://Objects/SceneTransition/TransitionPlayer.tscn")
 export(TransitionType) var transition_type = TransitionType.FADE_TO_BLACK;
 
+const menu_slot = preload("res://UI/Slot.tscn")
+onready var slot = menu_slot.instance()
+
 var Intro = "res://UI/Intro.tscn"
 
 var Garys_House = "res://Gary_sHouse.tscn"
@@ -42,6 +45,10 @@ var save3_location : String
 var save3_level : String
 var save3_frame : int
 var save3_js : int
+
+var target_array = []
+var reading_array = []
+var saving_array = []
 
 var data = {
 		"save1" : save1,
@@ -349,6 +356,7 @@ func save_file():
 		data["jewel_seeds"] = Party.jewel_seeds
 		data["jhumki_amount"] = Party.jhumki_amount
 		data["marbles"] = Party.marbles
+		
 		data["Tutorial"] = Party.Tutorial
 		data["Inventory"] = Party.Inventory
 		data["Storage"] = Party.Storage
@@ -361,7 +369,60 @@ func save_file():
 		data["Suzy_Spells"] = Party.Suzy_Spells
 		data["Damien_Spells"] = Party.Damien_Spells
 		data["Tom"] = Shops.Tom
+		data["Cranston"] = Shops.Cranston
 		
+		#reading_array = Party.Tutorial
+		#save_array()
+		#data["Tutorial"] = saving_array
+		
+		#reading_array = Party.Inventory
+		#save_array()
+		#data["Inventory"] = saving_array
+		
+	#	reading_array = Party.Storage
+	#	save_array()
+	#	data["Storage"] = saving_array
+		
+	#	reading_array = Party.Trinkets
+	#	save_array()
+	#	data["Trinkets"] = saving_array
+		
+	#	reading_array = Party.KeyItems
+	#	save_array()
+	#	data["KeyItems"] = saving_array
+		
+	#	reading_array = Party.EnemyList
+	#	save_array()
+	#	data["EnemyList"] = saving_array
+		
+	#	reading_array = Party.Gary_Spells
+	#	save_array()
+	#	data["Gary_Spells"] = saving_array
+		
+	#	reading_array = Party.Jacques_Spells
+	#	save_array()
+	#	data["Jacques_Spells"] = saving_array
+		
+	#	reading_array = Party.Irina_Spells
+#		save_array()
+	#	data["Irina_Spells"] = saving_array
+	
+	#	reading_array = Party.Suzy_Spells
+	#	save_array()
+	#	data["Suzy_Spells"] = saving_array
+		
+	#	reading_array = Party.Damien_Spells
+	#	save_array()
+	#	data["Damien_Spells"] = saving_array
+		
+	#	reading_array = Shops.Tom
+	#	save_array()
+	#	data["Tom"] = saving_array
+		
+	#	reading_array = Shops.Cranston
+		#save_array()
+		#data["Cranston"] = saving_array
+	
 		data["party_members"] = PartyStats.party_members
 		data["party_level"] = PartyStats.party_level
 		data["gary_id"] = PartyStats.gary_id
@@ -463,18 +524,60 @@ func load_file():
 			Party.jewel_seeds = data["jewel_seeds"]
 			Party.jhumki_amount = data["jhumki_amount"]
 			Party.marbles = data["marbles"]
-			Party.Tutorial = data["Tutorial"] 
-			Party.Inventory = data["Inventory"]
-			Party.Storage = data["Storage"]
-			Party.Trinkets = data["Trinkets"]
-			Party.KeyItems = data["KeyItems"]
-			Party.EnemyList = data["EnemyList"]
-			Party.Gary_Spells = data["Gary_Spells"]
-			Party.Jacques_Spells = data["Jacques_Spells"]
-			Party.Irina_Spells = data["Irina_Spells"]
-			Party.Suzy_Spells = data["Suzy_Spells"]
-			Party.Damien_Spells = data["Damien_Spells"]
-			Shops.Tom = data["Tom"]
+			
+			reading_array = []
+			
+			reading_array = data["Tutorial"]
+			populate_array()
+			Party.Tutorial = target_array
+			
+			reading_array = data["Inventory"]
+			populate_array()
+			Party.Inventory = target_array
+			
+			reading_array = data["Storage"]
+			populate_array()
+			Party.Storage = target_array
+			
+			reading_array = data["Trinkets"]
+			populate_array()
+			Party.Trinkets = target_array
+			
+			reading_array = data["KeyItems"]
+			populate_array()
+			Party.KeyItems = target_array
+			
+			reading_array = data["EnemyList"]
+			populate_array()
+			Party.EnemyList = target_array
+			
+			reading_array = data["Gary_Spells"]
+			populate_array()
+			Party.Gary_Spells = target_array
+			
+			reading_array = data["Jacques_Spells"]
+			populate_array()
+			Party.Jacques_Spells = target_array
+			
+			reading_array = data["Irina_Spells"]
+			populate_array()
+			Party.Irina_Spells = target_array
+			
+			reading_array = data["Suzy_Spells"]
+			populate_array()
+			Party.Suzy_Spells = target_array
+			
+			reading_array = data["Damien_Spells"]
+			populate_array()
+			Party.Damien_Spells = target_array
+			
+			reading_array = data["Tom"]
+			populate_array()
+			Shops.Tom = target_array
+			
+			reading_array = data["Cranston"]
+			populate_array()
+			Shops.Cranston = target_array
 		
 			PartyStats.party_members = data["party_members"]
 			PartyStats.party_level = data["party_level"]
@@ -973,3 +1076,19 @@ func opening():
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.transition_in(Intro, _get_animation_name())
+
+func populate_array():
+	target_array = []
+	for x in range(reading_array.size()):
+		var new_slot = slot.duplicate()
+		new_slot.text = reading_array[x].text
+		target_array.append(new_slot)
+	reading_array = []
+
+		
+func save_array():
+	saving_array = []
+	for x in range (reading_array.size()):
+		var string_item = ""
+		string_item = reading_array[x].text
+		saving_array.append(string_item)

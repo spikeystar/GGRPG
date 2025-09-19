@@ -21,6 +21,13 @@ func _ready():
 	SceneManager.loading = true
 	PlayerManager.hide_player()
 	
+	#var transitionx = TransitionPlayer2.instance()
+	#get_tree().get_root().add_child(transitionx)
+	#transitionx.transition_in(target_scene, _get_animation_name())
+	#yield(get_tree().create_timer(0.7), "timeout")
+	#PlayerManager.show_player()
+	#SceneManager.loading = false
+	
 	if Music.id != "Jewel_Seeds" or not Music.is_playing:
 		Music.switch_songs()
 		Music.id = "Jewel_Seeds"

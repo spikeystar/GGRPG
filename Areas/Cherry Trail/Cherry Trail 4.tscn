@@ -603,7 +603,7 @@ align = 1
 
 [node name="PresentBase" parent="." instance=ExtResource( 41 )]
 position = Vector2( 377, -77 )
-item_name = "Pretty Gem"
+item_name = "Yummy Cake"
 floor_height = 32.0
 shadow_color = Color( 0.188235, 0.552941, 0.298039, 1 )
 

@@ -741,6 +741,7 @@ func _on_Enemies_enemy_chosen():
 	var fighter_node = $Fighters.get_f_current()
 	var fighter_name = $Fighters.get_f_name()
 	var enemy_position = $Enemies.get_e_position() + Vector2(-55, -8)
+	var time = 1
 	if fighter_name == "jacques":
 		SE.effect("Skateboard")
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
