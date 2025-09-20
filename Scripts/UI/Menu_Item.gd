@@ -28,6 +28,27 @@ func _ready():
 		holder_name = "-"
 		equipped = false
 	pass
+	
+func trinket_assign():
+	if text == PartyStats.gary_trinket:
+		holder_name = "Gary"
+		equipped = true
+	if text == PartyStats.jacques_trinket:
+		holder_name = "Jacques"
+		equipped = true
+	if text == PartyStats.irina_trinket:
+		holder_name = "Irina"
+		equipped = true
+	if text == PartyStats.suzy_trinket:
+		holder_name = "Suzy"
+		equipped = true
+	if text == PartyStats.damien_trinket:
+		holder_name = "Damien"
+		equipped = true
+	if text != PartyStats.gary_trinket and text != PartyStats.jacques_trinket and text != PartyStats.irina_trinket and text != PartyStats.suzy_trinket and text != PartyStats.damien_trinket:
+		holder_name = "-"
+		equipped = false
+	pass
 
 
 func cursor_select() ->void:

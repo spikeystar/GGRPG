@@ -524,6 +524,28 @@ func load_file():
 			Party.jewel_seeds = data["jewel_seeds"]
 			Party.jhumki_amount = data["jhumki_amount"]
 			Party.marbles = data["marbles"]
+			PartyStats.party_members = data["party_members"]
+			PartyStats.party_level = data["party_level"]
+			PartyStats.gary_id = data["gary_id"]
+			PartyStats.jacques_id = data["jacques_id"]
+			PartyStats.irina_id = data["irina_id"]
+			PartyStats.suzy_id = data["suzy_id"]
+			PartyStats.damien_id = data["damien_id"]
+			PartyStats.gary_trinket = data["gary_trinket"]
+			PartyStats.jacques_trinket = data["jacques_trinket"]
+			PartyStats.irina_trinket = data["irina_trinket"]
+			PartyStats.suzy_trinket = data["suzy_trinket"]
+			PartyStats.damien_trinket = data["damien_trinket"]
+			PartyStats.gary_current_health = data["gary_current_health"]
+			PartyStats.jacques_current_health = data["jacques_current_health"]
+			PartyStats.irina_current_health = data["irina_current_health"]
+			PartyStats.suzy_current_health = data["suzy_current_health"]
+			PartyStats.damien_current_health = data["damien_current_health"]
+			PartyStats.party_sp = data["party_sp"]
+			PartyStats.party_max_sp = data["party_max_sp"]
+			PartyStats.party_exp = data["party_exp"]
+			PartyStats.next_level = data["next_level"]
+			PartyStats.new_spell_2 = data["new_spell_2"]
 			
 			reading_array = []
 			
@@ -578,29 +600,6 @@ func load_file():
 			reading_array = data["Cranston"]
 			populate_array()
 			Shops.Cranston = target_array
-		
-			PartyStats.party_members = data["party_members"]
-			PartyStats.party_level = data["party_level"]
-			PartyStats.gary_id = data["gary_id"]
-			PartyStats.jacques_id = data["jacques_id"]
-			PartyStats.irina_id = data["irina_id"]
-			PartyStats.suzy_id = data["suzy_id"]
-			PartyStats.damien_id = data["damien_id"]
-			PartyStats.gary_trinket = data["gary_trinket"]
-			PartyStats.jacques_trinket = data["jacques_trinket"]
-			PartyStats.irina_trinket = data["irina_trinket"]
-			PartyStats.suzy_trinket = data["suzy_trinket"]
-			PartyStats.damien_trinket = data["damien_trinket"]
-			PartyStats.gary_current_health = data["gary_current_health"]
-			PartyStats.jacques_current_health = data["jacques_current_health"]
-			PartyStats.irina_current_health = data["irina_current_health"]
-			PartyStats.suzy_current_health = data["suzy_current_health"]
-			PartyStats.damien_current_health = data["damien_current_health"]
-			PartyStats.party_sp = data["party_sp"]
-			PartyStats.party_max_sp = data["party_max_sp"]
-			PartyStats.party_exp = data["party_exp"]
-			PartyStats.next_level = data["next_level"]
-			PartyStats.new_spell_2 = data["new_spell_2"]
 		
 			EventManager.new_file = data["new_file"]
 			EventManager.first_save = data["first_save"]
@@ -1082,6 +1081,7 @@ func populate_array():
 	for x in range(reading_array.size()):
 		var new_slot = slot.duplicate()
 		new_slot.text = reading_array[x].text
+		new_slot.trinket_assign()
 		target_array.append(new_slot)
 	reading_array = []
 
