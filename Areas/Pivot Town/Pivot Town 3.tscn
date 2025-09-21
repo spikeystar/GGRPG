@@ -617,7 +617,7 @@ scale = Vector2( 1.52769, 1.24796 )
 texture = ExtResource( 10 )
 
 [node name="Flower Map" type="TileMap" parent="YSort/Floor"]
-modulate = Color( 1, 1, 1, 0.627451 )
+modulate = Color( 1, 1, 1, 0.78 )
 position = Vector2( -71, -79 )
 mode = 1
 tile_set = SubResource( 1 )

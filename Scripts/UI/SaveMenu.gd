@@ -357,72 +357,6 @@ func save_file():
 		data["jhumki_amount"] = Party.jhumki_amount
 		data["marbles"] = Party.marbles
 		
-		data["Tutorial"] = Party.Tutorial
-		data["Inventory"] = Party.Inventory
-		data["Storage"] = Party.Storage
-		data["Trinkets"] = Party.Trinkets
-		data["KeyItems"] = Party.KeyItems
-		data["EnemyList"] = Party.EnemyList
-		data["Gary_Spells"] = Party.Gary_Spells
-		data["Jacques_Spells"] = Party.Jacques_Spells
-		data["Irina_Spells"] = Party.Irina_Spells
-		data["Suzy_Spells"] = Party.Suzy_Spells
-		data["Damien_Spells"] = Party.Damien_Spells
-		data["Tom"] = Shops.Tom
-		data["Cranston"] = Shops.Cranston
-		
-		#reading_array = Party.Tutorial
-		#save_array()
-		#data["Tutorial"] = saving_array
-		
-		#reading_array = Party.Inventory
-		#save_array()
-		#data["Inventory"] = saving_array
-		
-	#	reading_array = Party.Storage
-	#	save_array()
-	#	data["Storage"] = saving_array
-		
-	#	reading_array = Party.Trinkets
-	#	save_array()
-	#	data["Trinkets"] = saving_array
-		
-	#	reading_array = Party.KeyItems
-	#	save_array()
-	#	data["KeyItems"] = saving_array
-		
-	#	reading_array = Party.EnemyList
-	#	save_array()
-	#	data["EnemyList"] = saving_array
-		
-	#	reading_array = Party.Gary_Spells
-	#	save_array()
-	#	data["Gary_Spells"] = saving_array
-		
-	#	reading_array = Party.Jacques_Spells
-	#	save_array()
-	#	data["Jacques_Spells"] = saving_array
-		
-	#	reading_array = Party.Irina_Spells
-#		save_array()
-	#	data["Irina_Spells"] = saving_array
-	
-	#	reading_array = Party.Suzy_Spells
-	#	save_array()
-	#	data["Suzy_Spells"] = saving_array
-		
-	#	reading_array = Party.Damien_Spells
-	#	save_array()
-	#	data["Damien_Spells"] = saving_array
-		
-	#	reading_array = Shops.Tom
-	#	save_array()
-	#	data["Tom"] = saving_array
-		
-	#	reading_array = Shops.Cranston
-		#save_array()
-		#data["Cranston"] = saving_array
-	
 		data["party_members"] = PartyStats.party_members
 		data["party_level"] = PartyStats.party_level
 		data["gary_id"] = PartyStats.gary_id
@@ -445,6 +379,20 @@ func save_file():
 		data["party_exp"] = PartyStats.party_exp
 		data["next_level"] = PartyStats.next_level
 		data["new_spell_2"] = PartyStats.new_spell_2
+		
+		data["Tutorial"] = Party.Tutorial
+		data["Inventory"] = Party.Inventory
+		data["Storage"] = Party.Storage
+		data["Trinkets"] = Party.Trinkets
+		data["KeyItems"] = Party.KeyItems
+		data["EnemyList"] = Party.EnemyList
+		data["Gary_Spells"] = Party.Gary_Spells
+		data["Jacques_Spells"] = Party.Jacques_Spells
+		data["Irina_Spells"] = Party.Irina_Spells
+		data["Suzy_Spells"] = Party.Suzy_Spells
+		data["Damien_Spells"] = Party.Damien_Spells
+		data["Tom"] = Shops.Tom
+		data["Cranston"] = Shops.Cranston
 		
 		data["new_file"] = EventManager.new_file
 		data["first_save"] = EventManager.first_save
