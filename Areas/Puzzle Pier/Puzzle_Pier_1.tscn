@@ -4460,8 +4460,8 @@ texture_scale = Vector2( 0.8, 0.8 )
 texture_offset = Vector2( 0, 15 )
 height = 300.0
 
-[node name="BBox8" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
-position = Vector2( -561, 16 )
+[node name="BBox4" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
+position = Vector2( 1462, 392 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -4471,8 +4471,19 @@ texture_scale = Vector2( 0.8, 0.8 )
 texture_offset = Vector2( 0, 15 )
 height = 300.0
 
-[node name="BBox4" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
-position = Vector2( 1462, 392 )
+[node name="BBox10" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
+position = Vector2( 1382, 359 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 2, 1 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 300.0
+
+[node name="BBox8" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
+position = Vector2( -561, 16 )
 __meta__ = {
 "_editor_description_": ""
 }
