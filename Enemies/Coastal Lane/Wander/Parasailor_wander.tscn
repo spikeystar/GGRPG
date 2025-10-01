@@ -18,7 +18,7 @@
 radius = 1.0
 
 [sub_resource type="CircleShape2D" id=178]
-radius = 81.0062
+radius = 92.0386
 
 [sub_resource type="CircleShape2D" id=179]
 
@@ -46,7 +46,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 2, -1 ) ]
+"values": [ Vector2( -29, -12 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("BodyVisualRoot/Enemy:position")
@@ -99,7 +99,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 6 ) ]
+"values": [ Vector2( -29, -12 ) ]
 }
 
 [sub_resource type="Animation" id=177]
@@ -128,7 +128,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 6 ) ]
+"values": [ Vector2( -29, -12 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("BodyVisualRoot/Enemy:position")
@@ -149,6 +149,7 @@ script = ExtResource( 10 )
 spawn_z = 130
 min_speed = 0.5
 max_speed = 0.65
+shadow_offset = 30.0
 target_scene = ExtResource( 11 )
 alt_scene = ExtResource( 5 )
 
@@ -189,7 +190,7 @@ collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot/PlayerDetection"]
 modulate = Color( 1, 1, 1, 0.254902 )
-position = Vector2( -3.43644, -25.4754 )
+position = Vector2( 2.29096, -25.4753 )
 scale = Vector2( 1.03351, 0.873578 )
 shape = SubResource( 178 )
 
@@ -210,9 +211,10 @@ shape = SubResource( 179 )
 
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
 self_modulate = Color( 1, 1, 1, 0.6 )
-position = Vector2( 2, -1 )
+position = Vector2( -29, -12 )
 scale = Vector2( 0.914288, 0.918545 )
 texture = ExtResource( 4 )
+centered = false
 script = ExtResource( 3 )
 alpha_clip = 0.01
 always_update = true
@@ -235,8 +237,6 @@ script = ExtResource( 2 )
 depth_test_offset = Vector2( -8, 130 )
 feet_height = 130.0
 height = 130.0
-use_dithering = false
-use_dither_blending = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
 autoplay = "walk_front"

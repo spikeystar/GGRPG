@@ -10,6 +10,7 @@ export var jump_velocity = 10
 export var ground_enemy : bool
 export var min_speed : float
 export var max_speed : float
+export var shadow_offset : float
 
 export var shadow_front_x : float
 export var shadow_front_y : float
@@ -166,7 +167,8 @@ func _physics_process(delta):
 	if not sprite.flip_h:
 		shadow_sprite.offset.x = 0
 		shadow_sprite.offset.y = 0
-		
+	if sprite.flip_h:
+		shadow_sprite.offset.x = shadow_offset
 	
 	anim_player.playback_speed = lerp(min_speed, max_speed, clamp(abs(motion_root.velocity.length() / VEL_ANIM_MAX), 0, 1));
 	#if motion_root.velocity.y == 0:
