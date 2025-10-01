@@ -146,7 +146,7 @@ tracks/2/keys = {
 [node name="Parasailor" type="YSort"]
 position = Vector2( 0, -2 )
 script = ExtResource( 10 )
-spawn_z = 100
+spawn_z = 130
 min_speed = 0.5
 max_speed = 0.65
 target_scene = ExtResource( 11 )
@@ -157,7 +157,7 @@ position = Vector2( 0, 1 )
 collision_mask = 2
 collision/safe_margin = 0.5
 script = ExtResource( 9 )
-spawn_z = 100
+spawn_z = 130
 ACCELERATION = 65
 CHASE_SPEED = 35
 WANDER_SPEED = 30
@@ -210,7 +210,7 @@ shape = SubResource( 179 )
 
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
 self_modulate = Color( 1, 1, 1, 0.6 )
-position = Vector2( -6, 6 )
+position = Vector2( 2, -1 )
 scale = Vector2( 0.914288, 0.918545 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
@@ -232,8 +232,9 @@ texture = ExtResource( 7 )
 offset = Vector2( 0, -12 )
 hframes = 9
 script = ExtResource( 2 )
-depth_test_offset = Vector2( -8, 28 )
-feet_height = 10.0
+depth_test_offset = Vector2( -8, 130 )
+feet_height = 130.0
+height = 130.0
 use_dithering = false
 use_dither_blending = false
 
