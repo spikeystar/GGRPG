@@ -1189,7 +1189,7 @@ preview_collision_box = false
 
 [node name="Ledge1" parent="YSort/MiddleGround" instance=ExtResource( 40 )]
 modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
-position = Vector2( -189, -63 )
+position = Vector2( -188, -59 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -1874,7 +1874,7 @@ polygon = PoolVector2Array( -474, -59, -497, -71, -472, -82, -498, -93, -470, -1
 
 [node name="NavmeshLayer2" parent="CollisionRoot/Navmesh2" instance=ExtResource( 19 )]
 position = Vector2( -215, 137 )
-polygon = PoolVector2Array( -262, -146, -114, -197, -73, -187, -42, -198, 33, -170, 1, -158, 34, -146, -114, -92 )
+polygon = PoolVector2Array( -262, -146, -114, -197, -73, -187, -39, -200, 34, -172, 1, -158, 34, -146, -114, -92 )
 height = 40.0
 
 [node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 19 )]
@@ -1990,6 +1990,7 @@ text = "You got a Flummery Flambe!"
 align = 1
 
 [node name="Spikes" type="Area2D" parent="."]
+visible = false
 position = Vector2( -106, -67 )
 collision_layer = 5
 collision_mask = 7

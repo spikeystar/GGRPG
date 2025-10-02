@@ -9,7 +9,7 @@ export var player_friction = 2
 export var max_player_speed = 2
 export var gravity = 9.8
 export var max_vertical_speed = 20
-export var jump_velocity = 10
+export var jump_velocity = 310
 export var player_height = 64
 
 var bubble = false
@@ -105,7 +105,7 @@ func _physics_process(delta):
 		#gravity = 350
 		
 	if not bouncy:
-		gravity = 940
+		gravity = 935
 	
 	if Input.is_action_just_pressed("ui_push") and is_on_ground and not freeze and not jumping and not cutscene and not loading:
 		is_on_ground = false

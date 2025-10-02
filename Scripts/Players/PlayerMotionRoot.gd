@@ -111,8 +111,11 @@ func _physics_process(delta):
 		vel.z = jump_velocity
 		
 	if not bouncy:
-		gravity = 940
-		jump_velocity = 300
+		#gravity = 940
+		#jump_velocity = 300
+		
+		gravity = 935
+		jump_velocity = 310
 		
 	if Input.is_action_just_pressed("ui_push") and sleep and not ongoing and not loading:
 		PlayerManager.freeze = false
