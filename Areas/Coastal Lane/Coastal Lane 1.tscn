@@ -316,7 +316,7 @@ mode = 1
 tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 format = 1
-tile_data = PoolIntArray( -1114111, 22, 0, -458749, 22, 0, -327685, 20, 0, -393212, 18, 0, -393210, 21, 0, -262150, 20, 0, -262146, 21, 0, -196611, 18, 0, -262137, 20, 0, -131078, 22, 0, -196604, 21, 0, -131063, 21, 0, 65530, 22, 0, 65542, 18, 0, 196603, 19, 0, 196609, 21, 0, 327676, 21, 0, 393222, 18, 0, 458759, 21, 0, 524289, 22, 0, 524293, 22, 0 )
+tile_data = PoolIntArray( -1114111, 22, 0, -458749, 22, 0, -327685, 20, 0, -393212, 18, 0, -393210, 21, 0, -262150, 20, 0, -262146, 21, 0, -196611, 18, 0, -262137, 20, 0, -131078, 22, 0, -196604, 21, 0, -131063, 21, 0, 65530, 22, 0, 65542, 18, 0, 196603, 19, 0, 196609, 21, 0, 327676, 21, 0, 393216, 20, 0, 393222, 18, 0, 458759, 21, 0, 524289, 22, 0, 524293, 22, 0 )
 
 [node name="DirtB" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 1, 1, 0.968627 )
@@ -619,37 +619,32 @@ position = Vector2( -33, 100 )
 polygon = PoolVector2Array( -277, 71, -159, 27, -214, 6, -173, -7, -212, -18, -182, -24, -234, -43, -216, -55, -257, -66, -216, -81, -244, -94, -219, -107, -246, -118, -222, -127, -245, -138, 13, -230, 33, -216, 58, -228, 186, -183, 249, -203, 403, -260, 281, -305, 406, -346, 651, -259, 619, -251, 651, -238, 345, -129, 465, -83, 402, -71, 468, -63, 431, -53, 464, -39, 414, -27, 390, -18, 432, -8, 369, 13, 192, 84, 146, 79, 92, 95, 40, 71, 4, 82, -90, 51, -216, 95 )
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 3 )]
-position = Vector2( -185, 69 )
-door_name = "CherryTrail3_4"
-direction = Vector2( 1, 1 )
-
-[node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 3 )]
-position = Vector2( 310, -204 )
-door_name = "CherryTrail4_5"
-direction = Vector2( 1, -1 )
-
-[node name="PlayerSpawnFromCherryTrail3" parent="CollisionRoot" instance=ExtResource( 3 )]
-position = Vector2( 304, 53 )
-door_name = "CherryTrailExtra_4"
+position = Vector2( 358, -204 )
+door_name = "PivotTown1_CoastalLane1"
 direction = Vector2( -1, 1 )
 
-[node name="DoorwayToCherryTrail5" parent="CollisionRoot" instance=ExtResource( 4 )]
+[node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 3 )]
+position = Vector2( -203, 156 )
+door_name = "CoastalLane2_CoastalLane1"
+direction = Vector2( 1, 1 )
+
+[node name="Doorway1" parent="CollisionRoot" instance=ExtResource( 4 )]
 position = Vector2( 304, -192 )
 script = ExtResource( 39 )
-target_scene = "res://Areas/Cherry Trail/Cherry Trail 5.tscn"
-exit_name = "CherryTrail4_5"
+target_scene = "res://Areas/Pivot Town/Pivot_Town_1.tscn"
+exit_name = "CoastalLane1_PivotTown1"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToCherryTrail5"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Doorway1"]
 position = Vector2( -6, -2 )
 polygon = PoolVector2Array( 74, -54, 92, -48, -33, -2, -51, -10 )
 
-[node name="DoorwayToCherryTrail4" parent="CollisionRoot" instance=ExtResource( 4 )]
+[node name="Doorway2" parent="CollisionRoot" instance=ExtResource( 4 )]
 position = Vector2( -254, 182 )
 script = ExtResource( 39 )
-target_scene = "res://Areas/Cherry Trail/Cherry_Trail_3.tscn"
-exit_name = "CherryTrail3_4"
+target_scene = "res://Areas/Coastal Lane/Coastal Lane 2.tscn"
+exit_name = "CoastalLane1_CoastalLane2"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/DoorwayToCherryTrail4"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Doorway2"]
 position = Vector2( -6, -2 )
 polygon = PoolVector2Array( -32, -17, 30, 9, 11, 17, -50, -10 )
 
@@ -685,7 +680,8 @@ align = 1
 
 [node name="PresentBase" parent="." instance=ExtResource( 5 )]
 position = Vector2( -151, -146 )
-item_name = "Yummy Cake"
+item_name = "Marbles"
+marbles_amount = 300
 floor_height = 65.0
 shadow_color = Color( 0.188235, 0.552941, 0.298039, 1 )
 

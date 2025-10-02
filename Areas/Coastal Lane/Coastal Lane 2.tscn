@@ -1060,31 +1060,29 @@ position = Vector2( -226, 20 )
 polygon = PoolVector2Array( -449, -46, 801, -453, 1116.37, -335.096, 1130, -330, -42, 104 )
 
 [node name="PlayerSpawn1" parent="CollisionRoot" instance=ExtResource( 39 )]
-position = Vector2( 859, -453 )
-door_name = "CherryTrail3_4"
-direction = Vector2( 1, 1 )
-
-[node name="PlayerSpawn2" parent="CollisionRoot" instance=ExtResource( 39 )]
-position = Vector2( -337, 135 )
-door_name = "CherryTrail4_5"
-direction = Vector2( 1, -1 )
-
-[node name="Entrance" parent="CollisionRoot" instance=ExtResource( 39 )]
-position = Vector2( 802, -426 )
-door_name = "Entrance"
+position = Vector2( 862, -450 )
+door_name = "CoastalLane1_CoastalLane2"
 direction = Vector2( -1, -1 )
 height = 40
 
-[node name="Default" parent="CollisionRoot" instance=ExtResource( 39 )]
-position = Vector2( 802, -426 )
+[node name="PlayerSpawn2" parent="CollisionRoot" instance=ExtResource( 39 )]
+position = Vector2( -659, 102 )
+door_name = "CoastalLane3_CoastalLane2"
+direction = Vector2( 1, 1 )
+height = 40
+
+[node name="Entrance" parent="CollisionRoot" instance=ExtResource( 39 )]
+position = Vector2( 777, -407 )
+door_name = "Entrance"
 direction = Vector2( -1, -1 )
 height = 40
 
 [node name="Doorway1" parent="CollisionRoot" instance=ExtResource( 35 )]
 position = Vector2( 885, -459 )
 script = ExtResource( 7 )
-target_scene = "res://Areas/Cherry Trail/Cherry Trail 5.tscn"
-exit_name = "CherryTrail4_5"
+target_scene = "res://Areas/Coastal Lane/Coastal Lane 1.tscn"
+exit_name = "CoastalLane2_CoastalLane1"
+height = 40.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Doorway1"]
 position = Vector2( -6, -2 )
@@ -1094,7 +1092,8 @@ polygon = PoolVector2Array( -11, -28, 81, 7, 52, 17, -41, -18 )
 position = Vector2( -249, 187 )
 script = ExtResource( 7 )
 target_scene = "res://Areas/Cherry Trail/Cherry_Trail_3.tscn"
-exit_name = "CherryTrail3_4"
+exit_name = "CoastalLane2_CoastalLane3"
+height = 40.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Doorway2"]
 position = Vector2( -475, -61 )
