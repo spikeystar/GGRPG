@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const LOWEST_Z : int = 0;
-const HIGHEST_Z : int = 512;
+const HIGHEST_Z : int = 1512;
 
 export var spawn_z = 0
 export var player_acceleration = 12

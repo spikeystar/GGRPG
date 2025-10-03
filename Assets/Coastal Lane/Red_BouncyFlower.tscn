@@ -33,7 +33,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 2, 1, 0 ]
 }
 
-[node name="BouncyFlower" type="YSort"]
+[node name="Red_BouncyFlower" type="YSort"]
 script = ExtResource( 2 )
 texture = ExtResource( 1 )
 texture_scale = Vector2( 0.7, 0.8 )

@@ -544,9 +544,10 @@ script = ExtResource( 45 )
 z_index = -20
 
 [node name="BlueBckgd" type="Sprite" parent="YSort/Background"]
-position = Vector2( -29, -271 )
-scale = Vector2( 2.26338, 1.56638 )
+position = Vector2( 187.155, -293.405 )
+scale = Vector2( 2.33369, 1.60719 )
 texture = ExtResource( 13 )
+flip_h = true
 
 [node name="HillA3" type="Sprite" parent="YSort/Background"]
 position = Vector2( 742.265, -894.695 )
@@ -1133,6 +1134,7 @@ texture_offset = Vector2( 1, 25 )
 height = 90.0
 depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
+detect_touches = true
 always_update = true
 
 [node name="MovingLedge2" parent="YSort/MiddleGround" instance=ExtResource( 48 )]
@@ -1149,6 +1151,7 @@ texture_offset = Vector2( 1, 30 )
 height = 90.0
 depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
+detect_touches = true
 always_update = true
 
 [node name="MovingLedge3" parent="YSort/MiddleGround" instance=ExtResource( 48 )]
@@ -1165,6 +1168,7 @@ texture_offset = Vector2( 1, 30 )
 height = 90.0
 depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
+detect_touches = true
 always_update = true
 
 [node name="BouncyFlower" parent="YSort/MiddleGround" instance=ExtResource( 52 )]
@@ -1236,7 +1240,6 @@ position = Vector2( -244, -158 )
 polygon = PoolVector2Array( 263, 547, 951, 299, 1418, 87, 1424, -45, 1334, -125, 1157, -58, 813, -179, 920, -243, 904, -296, 487, -496, 131, -406, -537, -117, -584, 39, -515, 208, -599, 285, -243, 339, -81, 395 )
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 50 )]
-visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 15 )]
 position = Vector2( 394, -148 )
@@ -1256,12 +1259,12 @@ height = 20.0
 [node name="NavmeshLayer4" parent="CollisionRoot/Navmesh" instance=ExtResource( 15 )]
 position = Vector2( -400, -553 )
 polygon = PoolVector2Array( 264, -100, 414, -154, 595, -88, 440, -37 )
-height = 500.0
+height = 580.0
 
 [node name="Bottom" parent="CollisionRoot/Navmesh" instance=ExtResource( 15 )]
 visible = false
 position = Vector2( -226, 20 )
-polygon = PoolVector2Array( -449, -46, -372, -76, -816, -312, -798, -460, -506, -620, -198, -890, 165, -858, 561, -861, 721, -410, 757, -455, 890, -510, 1217, -398, 1221, -376, 1130, -330, -42, 110 )
+polygon = PoolVector2Array( -449, -46, -372, -76, -816, -312, -798, -460, -506, -620, -155, -761, 165, -858, 561, -861, 721, -410, 757, -455, 890, -510, 1217, -398, 1221, -376, 1130, -330, 1050.62, -286.765, 1019, -270, 997, -159, 750, 51, 223, 164, 49, 78, -42, 110 )
 
 [node name="PlayerSpawn1" parent="CollisionRoot" instance=ExtResource( 16 )]
 position = Vector2( 862, -450 )
@@ -1270,9 +1273,9 @@ direction = Vector2( -1, -1 )
 height = 40
 
 [node name="PlayerSpawn3" parent="CollisionRoot" instance=ExtResource( 16 )]
-position = Vector2( -159, -79 )
+position = Vector2( -163, -97 )
 direction = Vector2( -1, -1 )
-height = 40
+height = 90
 
 [node name="PlayerSpawn2" parent="CollisionRoot" instance=ExtResource( 16 )]
 position = Vector2( -659, 102 )
@@ -1367,3 +1370,5 @@ rect_scale = Vector2( 1.2, 1.1 )
 custom_fonts/font = ExtResource( 42 )
 text = "You got a Flummery Flambe!"
 align = 1
+
+[connection signal="bouncy" from="CollisionRoot/Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]

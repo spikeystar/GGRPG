@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 const LOWEST_Z : int = 0;
-const HIGHEST_Z : int = 512;
+const HIGHEST_Z : int = 1512;
 
 export var spawn_z = 0
 export var player_acceleration = 12
@@ -85,6 +85,7 @@ func _physics_process(delta):
 		shadow_z = teleport_z
 
 	is_on_ground = pos_z <= floor_z + 4
+	
 	
 	# Input direction
 	var input_dir = Vector2.ZERO
