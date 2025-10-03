@@ -6,6 +6,8 @@ export var bottom = -128 setget _set_bottom
 var collision_shapes = []
 var motion_root = null
 
+var floating = false
+
 func _ready():
 	discover_shapes()
 

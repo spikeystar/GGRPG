@@ -5,5 +5,7 @@ extends CollisionPolygon2D
 
 export var height: float = 0.0
 
+export var floating = false
+
 func floor_check():
 	pass

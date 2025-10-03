@@ -3,6 +3,7 @@ extends Area2D
 var entered = false
 var transitioning = false
 var player_height
+export var floating = false
 
 const TransitionPlayer = preload("res://Objects/SceneTransition/TransitionPlayer.tscn")
 const PixelationPlayer = preload("res://UI/PixelationTransition.tscn")

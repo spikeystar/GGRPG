@@ -30,6 +30,7 @@ var jumping = false
 var jump_disabled = false
 var bubble = false
 var popped = false
+var ascending = false
 
 func _ready():
 	floor_z = spawn_z
@@ -51,11 +52,18 @@ func set_facing_direction(direction : Vector2):
 func update_floor():
 	floor_z = LOWEST_Z
 	ceiling_z = HIGHEST_Z
+	
 	for f in floor_layers:
+		if "floating" in f:
+			if f.floating:
+				ascending = true
+			if not f.floating:
+				ascending = false
 		if f.bottom <= pos_z:
 			floor_z = max(floor_z, f.height)
 		else:
 			ceiling_z = min(ceiling_z, f.bottom)
+
 
 func _physics_process(delta):
 	var freeze = PlayerManager.freeze
@@ -78,7 +86,7 @@ func _physics_process(delta):
 		floor_z = teleport_z
 		shadow_z = teleport_z
 
-	is_on_ground = pos_z <= floor_z + 2
+	is_on_ground = int(pos_z) <= int(floor_z + 2)
 	
 	# Input direction
 	var input_dir = Vector2.ZERO
@@ -110,12 +118,15 @@ func _physics_process(delta):
 		jump_velocity = 220
 		vel.z = jump_velocity
 		
-	if not bouncy:
+	if not bouncy and not ascending:
 		#gravity = 940
 		#jump_velocity = 300
 		
 		gravity = 935
 		jump_velocity = 310
+		
+	if ascending:
+		jump_velocity = 450
 		
 	if Input.is_action_just_pressed("ui_push") and sleep and not ongoing and not loading:
 		PlayerManager.freeze = false
@@ -144,6 +155,7 @@ func _physics_process(delta):
 	else:
 		vel.z = 0
 		pos_z = floor_z
+		
 		jumping = false
 	
 	pos_z += vel.z * delta

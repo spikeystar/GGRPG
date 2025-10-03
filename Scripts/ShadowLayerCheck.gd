@@ -1,7 +1,7 @@
 extends Area2D
 
 const LOWEST_Z : int = 0
-const HIGHEST_Z : int = 512
+const HIGHEST_Z : int = 1512
 
 onready var motion_root = get_parent();
 
@@ -17,6 +17,8 @@ onready var motion_root = get_parent();
 func _process(delta):
 	var floor_z = LOWEST_Z
 	var ceiling_z = HIGHEST_Z
+	var layers = get_overlapping_areas()
+	
 	for area in get_overlapping_areas():
 		var check_floor_z = 0
 		var check_ceiling_z = -128
@@ -28,7 +30,38 @@ func _process(delta):
 			floor_z = max(floor_z, check_floor_z)
 		else:
 			ceiling_z = min(ceiling_z, check_ceiling_z)
-	motion_root.shadow_z = floor_z
+		
+	if layers.size() > 1:
+		var heights = []
+		for area in get_overlapping_areas():
+			if "height" in area:
+				heights.append(area.height)
+				
+		var peak = int(heights.max())
+		var motion = int(motion_root.pos_z) + 3
+		
+	#	print("height")
+	#	print(int(heights.max()))
+	#	print("motion")
+	#	print(int(motion_root.pos_z))
+		
+		if peak > motion:
+			motion_root.shadow_z = motion_root.pos_z
+			if PlayerManager.jumping:
+				motion_root.shadow_z = floor_z
+		else:
+			motion_root.shadow_z = heights.max()
+			
+		
+		#if heights.max() > motion_root.pos_z:
+		#	motion_root.shadow_z = floor_z
+
+		#	if int(heights.max()) > int(motion_root.pos_z):
+		#		motion_root.shadow_z = floor_z
+				
+		
+	else:
+		motion_root.shadow_z = floor_z
 
 #func _on_area_shape_entered(_area_rid : RID, area : Area2D, area_shape_index : int, _local_shape_index : int):
 #

@@ -7,6 +7,8 @@ signal touched(touch_direction)
 signal bumped_from_bottom()
 var present_height = 0
 
+
+
 #---------#
 # Imports #
 #---------#
@@ -81,6 +83,7 @@ export var always_update: bool = false setget set_always_update
 
 export var bubble_flower: bool = false
 
+export var floating = false
 #------------#
 # Properties #
 #------------#
@@ -281,6 +284,7 @@ func _physics_process(delta):
 			$AnimationPlayer.play("bubble")
 		if SceneManager.bubble:
 			$AnimationPlayer.play("RESET")
+			
 
 #---------#
 # Methods #
@@ -420,12 +424,14 @@ func _generate_collider():
 		collision_body = StaticBody2D.new()
 		collision_body.name = "COLLIDABLE_BOX_GENERATED_CollisionBody"
 		collision_body.set_script(collision_body_script)
+		collision_body.floating = floating
 		add_child(collision_body)
 	
 	if floor_notify_area == null or not weakref(floor_notify_area).get_ref():
 		floor_notify_area = Area2D.new()
 		floor_notify_area.name = "COLLIDABLE_BOX_GENERATED_FloorNotifyArea"
 		floor_notify_area.set_script(floor_setter_script)
+		floor_notify_area.floating = floating
 		add_child(floor_notify_area)
 	
 	if collision_body_shape != null:

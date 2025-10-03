@@ -57,6 +57,7 @@ func _generate_meshes():
 	for tile_id in tile_set.get_tiles_ids():
 		var used_cells_by_id = get_used_cells_by_id(tile_id)
 		if used_cells_by_id.size() > 0:
+			
 			var tile_texture = tile_set.tile_get_texture(tile_id)
 			var tile_texture_size = tile_texture.get_size()
 			var tile_texture_region = tile_set.tile_get_region(tile_id)

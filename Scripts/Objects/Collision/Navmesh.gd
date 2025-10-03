@@ -8,6 +8,8 @@ const layer_script = preload("res://Scripts/Objects/Collision/FloorSetter.gd")
 
 export var height = 0
 
+export var floating = false
+
 const MARGIN : int = 16;
 
 var motion_root

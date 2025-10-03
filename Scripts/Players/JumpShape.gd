@@ -84,7 +84,7 @@ func _physics_process(delta):
 		floor_z = teleport_z
 		shadow_z = teleport_z
 
-	is_on_ground = pos_z <= floor_z + 4
+	is_on_ground = int(pos_z) <= int(floor_z + 2)
 	
 	
 	# Input direction
