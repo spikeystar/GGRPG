@@ -55,9 +55,9 @@ func update_floor():
 	
 	for f in floor_layers:
 		if "floating" in f:
-			if f.floating:
+			if f.floating and int(f.height) == int(pos_z):
 				ascending = true
-			if not f.floating:
+			if not f.floating and int(f.height) == int(pos_z):
 				ascending = false
 		if f.bottom <= pos_z:
 			floor_z = max(floor_z, f.height)
@@ -126,7 +126,7 @@ func _physics_process(delta):
 		jump_velocity = 310
 		
 	if ascending:
-		jump_velocity = 450
+		jump_velocity = 420
 		
 	if Input.is_action_just_pressed("ui_push") and sleep and not ongoing and not loading:
 		PlayerManager.freeze = false
@@ -157,6 +157,7 @@ func _physics_process(delta):
 		pos_z = floor_z
 		
 		jumping = false
+		
 	
 	pos_z += vel.z * delta
 	
@@ -164,8 +165,10 @@ func _physics_process(delta):
 	pos_z = min(current_max_z, pos_z)
 	pos_z = max(floor_z, pos_z)
 	
+	
 	if pos_z == current_max_z and vel.z > 0:
 		vel.z = 0
+		
 
 	
 	var delta2D = Vector2(vel.x, -vel.y * 0.5)

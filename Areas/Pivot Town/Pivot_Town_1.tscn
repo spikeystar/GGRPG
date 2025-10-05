@@ -754,7 +754,6 @@ texture = ExtResource( 19 )
 
 [node name="PlantC5" type="Sprite" parent="YSort/Floor"]
 position = Vector2( 177.673, -900.748 )
-rotation = -0.0726572
 scale = Vector2( 1.61617, 1.54281 )
 texture = ExtResource( 19 )
 flip_h = true
@@ -1562,9 +1561,9 @@ height = 10.0
 
 [node name="DirtD" type="Sprite" parent="YSort/MiddleGround"]
 modulate = Color( 0.980392, 0.964706, 0.960784, 1 )
-position = Vector2( 10, -81 )
+position = Vector2( 20.0212, -82.7456 )
 rotation = 0.0284625
-scale = Vector2( 0.94717, 0.809897 )
+scale = Vector2( 1.00522, 0.881739 )
 texture = ExtResource( 60 )
 
 [node name="Bucket" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
@@ -2489,7 +2488,7 @@ position = Vector2( -429, -740 )
 scale = Vector2( 1.7, 1.7 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 2
+frame = 1
 speed_scale = 0.8
 playing = true
 
@@ -2498,7 +2497,7 @@ position = Vector2( 172, -419 )
 scale = Vector2( 1.6, 1.6 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 1
+frame = 5
 speed_scale = 0.7
 playing = true
 

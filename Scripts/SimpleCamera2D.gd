@@ -23,6 +23,7 @@ var new_overworld_menu
 var able = false
 
 var motion_root
+var shadow
 var z_offset = 0
 var is_in_editor = Engine.is_editor_hint()
 var tween
@@ -73,13 +74,26 @@ func _process(delta):
 		if not motion_root:
 			# Getting Gary. Pretty stupid way to do it. But Gary is spawned at runtime...
 			motion_root = PlayerManager.player_motion_root
+			shadow = PlayerManager.player_shadow
 			z_offset = motion_root.pos_z
 			
 		if motion_root:
 			z_offset = min(max(motion_root.shadow_z, motion_root.pos_z), z_offset)
 			if z_offset < motion_root.shadow_z:
 				z_offset = min(z_offset + vertical_speed * delta, max(motion_root.shadow_z, motion_root.pos_z))
+		
 			
+		
+			if follow_player:
+				global_position.x = clamp(motion_root.global_position.x + player_offset.x, minPos.x, maxPos.x)
+				global_position.y = clamp(motion_root.global_position.y - z_offset + player_offset.y, minPos.y, maxPos.y)
+			
+			
+	if motion_root and motion_root.jumping and motion_root.ascending:
+			z_offset = min(max(motion_root.pos_z, motion_root.pos_z), z_offset)
+			if z_offset < motion_root.pos_z:
+				z_offset = min(z_offset + vertical_speed * delta, max(motion_root.pos_z, motion_root.pos_z)) - 3
+
 			if follow_player:
 				global_position.x = clamp(motion_root.global_position.x + player_offset.x, minPos.x, maxPos.x)
 				global_position.y = clamp(motion_root.global_position.y - z_offset + player_offset.y, minPos.y, maxPos.y)
