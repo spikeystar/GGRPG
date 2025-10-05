@@ -12,8 +12,8 @@ const depth_buffer_object_transparent_shader = preload("res://Scripts/Rendering/
 # Properties #
 #------------#
 
-const DEPTH_EDGE_BUFFER = 1000.0
-const DEPTH_DRAW_FAR = 2000.0
+const DEPTH_EDGE_BUFFER = 1500.0
+const DEPTH_DRAW_FAR = 3000.0
 
 var depth_camera: Camera
 var depth_viewport: Viewport
