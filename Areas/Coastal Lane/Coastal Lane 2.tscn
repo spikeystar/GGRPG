@@ -1046,7 +1046,7 @@ height = 40.0
 
 [node name="NavmeshLayer2" parent="CollisionRoot/Navmesh" instance=ExtResource( 37 )]
 position = Vector2( -625, 227 )
-polygon = PoolVector2Array( -211, -201, -27, -265, 125, -207, 569, -368, 662, -331, 228, -175, 372, -120, 317, -99, 403, -67, 348, -42, 252, -76, 184, -55 )
+polygon = PoolVector2Array( -211, -201, -27, -265, 125, -207, 569, -368, 662, -331, 228, -175, 372, -120, 316, -101, 252, -76, 184, -55, 32, -116, -57, -80, -140, -111, -49, -142 )
 height = 40.0
 
 [node name="NavmeshLayer3" parent="CollisionRoot/Navmesh" instance=ExtResource( 37 )]
@@ -1091,7 +1091,7 @@ polygon = PoolVector2Array( -11, -28, 81, 7, 52, 17, -41, -18 )
 [node name="Doorway2" parent="CollisionRoot" instance=ExtResource( 35 )]
 position = Vector2( -249, 187 )
 script = ExtResource( 7 )
-target_scene = "res://Areas/Cherry Trail/Cherry_Trail_3.tscn"
+target_scene = "res://Areas/Coastal Lane/Coastal Lane 3.tscn"
 exit_name = "CoastalLane2_CoastalLane3"
 height = 40.0
 
