@@ -1601,7 +1601,7 @@ polygon = PoolVector2Array( -11, -28, 81, 7, 52, 17, -41, -18 )
 [node name="Doorway2" parent="CollisionRoot" instance=ExtResource( 17 )]
 position = Vector2( -249, 187 )
 script = ExtResource( 47 )
-target_scene = "res://Areas/Cherry Trail/Cherry_Trail_3.tscn"
+target_scene = "res://Areas/Coastal Lane/Coastal Lane 4.tscn"
 exit_name = "CoastalLane3_CoastalLane4"
 height = 80.0
 

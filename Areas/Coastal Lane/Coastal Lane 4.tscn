@@ -1232,7 +1232,6 @@ position = Vector2( -244, -158 )
 polygon = PoolVector2Array( 271, 436, 835, 174, 1401, 22, 1424, -45, 1374, -224, 1275, -388, 1027, -507, 852, -512, 551, -470, 433, -391, 369, -234, 205, -162, -65, -161, -463, 39, -475, 58, -223, 265 )
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 48 )]
-visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 47 )]
 position = Vector2( 435, 116 )
@@ -1241,12 +1240,12 @@ height = 40.0
 
 [node name="NavmeshLayer2" parent="CollisionRoot/Navmesh" instance=ExtResource( 47 )]
 position = Vector2( -308, -463 )
-polygon = PoolVector2Array( -204, -201, -117, -233, 33, -179, 192, -232, 223, -219, 256, -231, 281.153, -222.141, 319, -232, 526, -158, 499, -145, 527, -135, 497, -124, 525, -114, 498, -105, 525, -94, 496, -88, 525, -69, 497.518, -61.6947, 527, -48, 464, -28, 501, -14, 257, 72, 190, 48, 163, 58, 96, 37, 70, 47, 38, 36, 4, 48, -229, -36, -206, -45, -230, -58, -208, -68, -232, -82, -53, -144 )
+polygon = PoolVector2Array( -204, -201, -117, -233, 33, -179, 192, -232, 223, -219, 256, -231, 281.153, -222.141, 319, -232, 526, -158, 499, -145, 527, -135, 497, -124, 525, -114, 498, -105, 525, -94, 496, -88, 525, -69, 497.518, -61.6947, 527, -48, 464, -28, 506, -13, 257, 74, 190, 48, 163, 58, 96, 37, 70, 47, 38, 36, 4, 48, -229, -36, -206, -45, -230, -58, -208, -68, -232, -82, -53, -144 )
 height = 40.0
 
 [node name="NavmeshLayer3" parent="CollisionRoot/Navmesh" instance=ExtResource( 47 )]
 position = Vector2( -59, -290 )
-polygon = PoolVector2Array( 163, -90, 287, -133, 719, 23, 595, 65 )
+polygon = PoolVector2Array( 161, -90, 283, -135, 719, 23, 595, 65 )
 height = 40.0
 
 [node name="Bottom" parent="CollisionRoot/Navmesh" instance=ExtResource( 47 )]
@@ -1256,24 +1255,19 @@ polygon = PoolVector2Array( -284, -207, -113, -429, 532, -654, 887, -670, 1003, 
 
 [node name="PlayerSpawn1" parent="CollisionRoot" instance=ExtResource( 50 )]
 position = Vector2( -378, -647 )
-door_name = "CoastalLane1_CoastalLane2"
+door_name = "CoastalLane3_CoastalLane4"
 direction = Vector2( 1, -1 )
 height = 40
 
 [node name="PlayerSpawn2" parent="CollisionRoot" instance=ExtResource( 50 )]
 position = Vector2( 500, -26 )
-door_name = "CoastalLane3_CoastalLane2"
+door_name = "CoastalLane4_CoastalLane5"
 direction = Vector2( 1, 1 )
 height = 40
 
 [node name="Entrance" parent="CollisionRoot" instance=ExtResource( 50 )]
 position = Vector2( -31, -512 )
 door_name = "Entrance"
-direction = Vector2( 1, -1 )
-height = 40
-
-[node name="Default" parent="CollisionRoot" instance=ExtResource( 50 )]
-position = Vector2( -31, -512 )
 direction = Vector2( 1, -1 )
 height = 40
 
@@ -1286,8 +1280,8 @@ height = 40
 [node name="Doorway1" parent="CollisionRoot" instance=ExtResource( 51 )]
 position = Vector2( 885, -459 )
 script = ExtResource( 41 )
-target_scene = "res://Areas/Coastal Lane/Coastal Lane 1.tscn"
-exit_name = "CoastalLane2_CoastalLane1"
+target_scene = "res://Areas/Coastal Lane/Coastal Lane 3.tscn"
+exit_name = "CoastalLane4_CoastalLane3"
 height = 40.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Doorway1"]
@@ -1297,8 +1291,8 @@ polygon = PoolVector2Array( 47, -50, 72, -41, -19, -9, -41, -18 )
 [node name="Doorway2" parent="CollisionRoot" instance=ExtResource( 51 )]
 position = Vector2( -249, 187 )
 script = ExtResource( 41 )
-target_scene = "res://Areas/Coastal Lane/Coastal Lane 3.tscn"
-exit_name = "CoastalLane2_CoastalLane3"
+target_scene = "res://Areas/Coastal Lane/Coastal Lane 5.tscn"
+exit_name = "CoastalLane4_CoastalLane5"
 height = 40.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Doorway2"]
@@ -1340,7 +1334,7 @@ z_index = 4096
 current = true
 script = ExtResource( 46 )
 minPos = Vector2( -230, -600 )
-maxPos = Vector2( 850, -60 )
+maxPos = Vector2( 850, -40 )
 follow_player = true
 
 [node name="Info_Window" type="Sprite" parent="Camera2D"]
@@ -1428,7 +1422,7 @@ floor_height = 68.0
 shadow_color = Color( 0.576471, 0.298039, 0.247059, 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 819, -330 )
+position = Vector2( 973, -47 )
 
 [connection signal="bouncy" from="CollisionRoot/Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="bouncy" from="CollisionRoot/Bouncy2" to="YSort/MiddleGround/BouncyFlower2" method="_on_Bouncy2_bouncy"]
@@ -1437,5 +1431,5 @@ position = Vector2( 819, -330 )
 [connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
-[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]
+[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]
