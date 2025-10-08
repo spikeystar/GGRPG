@@ -482,6 +482,13 @@ texture_offset = Vector2( 0, 15 )
 height = 24.0
 preview_collision_box = false
 
+[node name="SquareShadow7" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 1, 1, 1, 0.196078 )
+position = Vector2( -148, -84 )
+rotation = -0.0550355
+scale = Vector2( 1.84582, 1.68361 )
+texture = ExtResource( 38 )
+
 [node name="Ledge1" parent="YSort/MiddleGround" instance=ExtResource( 40 )]
 modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
 position = Vector2( -148, -73 )
@@ -531,7 +538,7 @@ scale = Vector2( 1.68, 1.45 )
 texture = ExtResource( 10 )
 
 [node name="CrabgrassA3" type="Sprite" parent="YSort/MiddleGround"]
-position = Vector2( 498, -87 )
+position = Vector2( 498, -88 )
 scale = Vector2( 1.68, 1.45 )
 texture = ExtResource( 10 )
 flip_h = true

@@ -1232,6 +1232,7 @@ position = Vector2( -244, -158 )
 polygon = PoolVector2Array( 271, 436, 835, 174, 1401, 22, 1424, -45, 1374, -224, 1275, -388, 1027, -507, 852, -512, 551, -470, 433, -391, 369, -234, 205, -162, -65, -161, -463, 39, -475, 58, -223, 265 )
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 48 )]
+visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 47 )]
 position = Vector2( 435, 116 )
@@ -1240,7 +1241,7 @@ height = 40.0
 
 [node name="NavmeshLayer2" parent="CollisionRoot/Navmesh" instance=ExtResource( 47 )]
 position = Vector2( -308, -463 )
-polygon = PoolVector2Array( -204, -201, -117, -233, 33, -179, 192, -232, 223, -219, 256, -231, 281.153, -222.141, 319, -232, 526, -158, 499, -145, 527, -135, 497, -124, 525, -114, 498, -105, 525, -94, 496, -88, 525, -69, 497.518, -61.6947, 527, -48, 464, -28, 506, -13, 257, 74, 190, 48, 163, 58, 96, 37, 70, 47, 38, 36, 4, 48, -229, -36, -206, -45, -230, -58, -208, -68, -232, -82, -53, -144 )
+polygon = PoolVector2Array( -204, -201, -117, -233, 33, -179, 192, -234, 223, -223, 253, -237, 282, -225, 319, -232, 526, -158, 499, -145, 527, -135, 497, -124, 525, -114, 498, -105, 525, -94, 496, -88, 525, -69, 497.518, -61.6947, 527, -48, 464, -28, 506, -13, 257, 74, 190, 48, 163, 58, 96, 37, 70, 47, 38, 36, 4, 48, -229, -36, -206, -45, -230, -58, -208, -68, -232, -82, -53, -144 )
 height = 40.0
 
 [node name="NavmeshLayer3" parent="CollisionRoot/Navmesh" instance=ExtResource( 47 )]
@@ -1431,5 +1432,5 @@ position = Vector2( 973, -47 )
 [connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
-[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]
+[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]

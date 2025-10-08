@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Coastal Lane/Moving Ledge.png" type="Texture" id=1]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/Objects/Platform_PathFollow.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=5]
+
+[node name="FlowingLedge_Coastal" type="PathFollow2D"]
+rotate = false
+loop = false
+script = ExtResource( 4 )
+speed = 60
+
+[node name="SquareShadow" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.196078 )
+position = Vector2( 17, 28 )
+scale = Vector2( 2.93543, 2.50151 )
+texture = ExtResource( 2 )
+script = ExtResource( 5 )
+
+[node name="MovingLedge" parent="." instance=ExtResource( 3 )]
+modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 28 )
+grid_size = Vector2( 3.7, 3.5 )
+texture = ExtResource( 1 )
+texture_scale = Vector2( -1.65, 1.6 )
+texture_offset = Vector2( 1, 25 )
+height = 90.0
+depth_test_offset = Vector3( 0, 400, 0 )
+preview_collision_box = false
+detect_touches = true
+always_update = true
+floating = true
