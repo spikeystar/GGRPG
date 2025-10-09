@@ -1,8 +1,7 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=1]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=2]
-[ext_resource path="res://Assets/Coastal Lane/FlowingLedge_Coastal.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=4]
 [ext_resource path="res://Assets/General/Tiles/Coastal Tile.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Coastal Lane/Palm Tree A.png" type="Texture" id=6]
@@ -38,7 +37,6 @@
 [ext_resource path="res://Assets/Coastal Lane/Crabgrass B.png" type="Texture" id=36]
 [ext_resource path="res://Assets/Coastal Lane/Starfish B.png" type="Texture" id=37]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Tall Grass B.png" type="Texture" id=38]
-[ext_resource path="res://Scripts/Path Spawn.gd" type="Script" id=39]
 [ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion A.png" type="Texture" id=40]
 [ext_resource path="res://Assets/General/Tiles/Grass Tile.png" type="Texture" id=41]
 [ext_resource path="res://Assets/Coastal Lane/Seashell A.png" type="Texture" id=42]
@@ -53,6 +51,8 @@
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=51]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=52]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=53]
+[ext_resource path="res://Assets/Coastal Lane/FlowingPlatform_Coastal.tscn" type="PackedScene" id=54]
+[ext_resource path="res://Scripts/Objects/FlowingPlatforms.gd" type="Script" id=55]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -624,11 +624,6 @@
 23/shapes = [  ]
 23/z_index = 0
 
-[sub_resource type="Curve2D" id=8]
-_data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1025.1, -113.39, 0, 0, 0, 0, -67.3249, -563.241 )
-}
-
 [node name="WorldRoot" type="Node2D"]
 script = ExtResource( 47 )
 
@@ -1084,6 +1079,19 @@ script = ExtResource( 53 )
 height = 85.0
 use_transparency = true
 
+[node name="FlowingPlatforms" type="Node2D" parent="YSort/MiddleGround"]
+position = Vector2( -60, 1 )
+script = ExtResource( 55 )
+spawn_time = 7.0
+speed = 50.0
+follower = ExtResource( 54 )
+
+[node name="Spawn" type="Position2D" parent="YSort/MiddleGround/FlowingPlatforms"]
+position = Vector2( 715, -206 )
+
+[node name="End" type="Position2D" parent="YSort/MiddleGround/FlowingPlatforms"]
+position = Vector2( 423, -315 )
+
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
@@ -1162,8 +1170,9 @@ polygon = PoolVector2Array( -211, -201, -27, -265, 125, -207, 228, -175, 372, -1
 height = 80.0
 
 [node name="Bottom" parent="CollisionRoot/Navmesh" instance=ExtResource( 29 )]
+visible = false
 position = Vector2( -226, 20 )
-polygon = PoolVector2Array( -541, -151, -65, -410, 560, -601, 1276, -333, 963, 69, 110, 231 )
+polygon = PoolVector2Array( -541, -151, -65, -410, 560, -601, 1276, -333, 1354, -48, 963, 69, 110, 231 )
 
 [node name="PlayerSpawn1" parent="CollisionRoot" instance=ExtResource( 25 )]
 position = Vector2( 862, -450 )
@@ -1248,19 +1257,6 @@ position = Vector2( 205, -786 )
 item_name = "Jhumki"
 floor_height = 670.0
 shadow_color = Color( 0.188235, 0.45098, 0.243137, 1 )
-
-[node name="Platform_Path" type="Path2D" parent="."]
-position = Vector2( -155, 89 )
-curve = SubResource( 8 )
-script = ExtResource( 39 )
-spawn_time = 7.0
-follower = ExtResource( 3 )
-
-[node name="FlowingLedge_Coastal" parent="Platform_Path" instance=ExtResource( 3 )]
-position = Vector2( 1025.1, -113.39 )
-
-[node name="SpawnPosition" type="Position2D" parent="Platform_Path"]
-position = Vector2( -39, -552 )
 
 [connection signal="bouncy" from="CollisionRoot/Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

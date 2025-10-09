@@ -14,6 +14,7 @@ export var player_height = 64
 
 var bubble = false
 var popped = false
+var ascending = false
 
 var is_player_jump_shape = true
 
@@ -56,7 +57,19 @@ func set_facing_direction(direction : Vector2):
 func update_floor():
 	floor_z = LOWEST_Z
 	ceiling_z = HIGHEST_Z
+	
+	#for f in floor_layers:
+	#	if f.bottom <= pos_z:
+	#		floor_z = max(floor_z, f.height)
+	#	else:
+	#		ceiling_z = min(ceiling_z, f.bottom)
+			
 	for f in floor_layers:
+		if "floating" in f:
+			if f.floating and int(f.height) == int(pos_z):
+				ascending = true
+			if not f.floating and int(f.height) == int(pos_z):
+				ascending = false
 		if f.bottom <= pos_z:
 			floor_z = max(floor_z, f.height)
 		else:
@@ -105,8 +118,11 @@ func _physics_process(delta):
 		#jumping = true
 		#gravity = 350
 		
-	if not bouncy:
+	if not bouncy and not ascending:
 		gravity = 935
+		
+	if ascending:
+		jump_velocity = 420
 	
 	if Input.is_action_just_pressed("ui_push") and is_on_ground and not freeze and not jumping and not cutscene and not loading:
 		is_on_ground = false

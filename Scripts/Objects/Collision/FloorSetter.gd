@@ -4,6 +4,9 @@ extends Area2D
 export var height : float = 0 setget _set_height
 
 export var floating = false
+export var flowing = false
+
+var vel : Vector3;
 
 # This is the z-position below the floor where the player can start walking underneath it
 export var bottom : float = -128 setget _set_bottom

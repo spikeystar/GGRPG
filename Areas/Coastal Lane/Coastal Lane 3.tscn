@@ -1374,11 +1374,11 @@ position = Vector2( -164, 30 )
 __meta__ = {
 "_editor_description_": ""
 }
-tile_size = Vector2( 60, 28 )
+tile_size = Vector2( 60, 27 )
 grid_size = Vector2( 3.65, 3.65 )
 texture = ExtResource( 38 )
-texture_scale = Vector2( -1.65, 1.6 )
-texture_offset = Vector2( 0, 31 )
+texture_scale = Vector2( -1.65, 1.65 )
+texture_offset = Vector2( 0, 33 )
 height = 90.0
 detect_touches = true
 always_update = true
@@ -1517,7 +1517,6 @@ floor_height = 650.0
 preview_collision_box = false
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Water" type="Area2D" parent="CollisionRoot"]
 position = Vector2( -14, -95 )

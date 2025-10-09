@@ -9,6 +9,9 @@ const layer_script = preload("res://Scripts/Objects/Collision/FloorSetter.gd")
 export var height = 0
 
 export var floating = false
+export var flowing = false
+
+var vel : Vector3;
 
 const MARGIN : int = 16;
 

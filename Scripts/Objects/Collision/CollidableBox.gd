@@ -84,6 +84,9 @@ export var always_update: bool = false setget set_always_update
 export var bubble_flower: bool = false
 
 export var floating = false
+export var flowing = false
+
+var vel : Vector3;
 #------------#
 # Properties #
 #------------#
@@ -425,6 +428,7 @@ func _generate_collider():
 		collision_body.name = "COLLIDABLE_BOX_GENERATED_CollisionBody"
 		collision_body.set_script(collision_body_script)
 		collision_body.floating = floating
+		collision_body.flowing = flowing
 		add_child(collision_body)
 	
 	if floor_notify_area == null or not weakref(floor_notify_area).get_ref():
@@ -963,6 +967,10 @@ func _generate_collision_box_preview():
 		if collision_preview_mesh != null and weakref(collision_preview_mesh).get_ref():
 			collision_preview_mesh.queue_free()
 			collision_preview_mesh = null
+			
+func update_height():
+	collision_body_shape.height = height
+	collision_body_shape.bottom = floor_height
 
 func _on_Bouncy_bouncy():
 	$AnimationPlayer.play("bouncy")

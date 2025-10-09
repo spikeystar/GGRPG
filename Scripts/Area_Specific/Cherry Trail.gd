@@ -8,5 +8,3 @@ func _ready():
 		Music.music()
 
 	SceneManager.SceneEnemies = []
-
- 

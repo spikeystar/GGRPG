@@ -4,6 +4,9 @@ var entered = false
 var transitioning = false
 var player_height
 export var floating = false
+export var flowing = false
+
+var vel : Vector3;
 
 const TransitionPlayer = preload("res://Objects/SceneTransition/TransitionPlayer.tscn")
 const PixelationPlayer = preload("res://UI/PixelationTransition.tscn")

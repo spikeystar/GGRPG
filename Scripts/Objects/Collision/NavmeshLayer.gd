@@ -6,6 +6,9 @@ extends CollisionPolygon2D
 export var height: float = 0.0
 
 export var floating = false
+export var flowing = false
+
+var vel : Vector3;
 
 func floor_check():
 	pass

@@ -7,6 +7,9 @@ var collision_shapes = []
 var motion_root = null
 
 var floating = false
+var flowing = false
+
+var vel : Vector3;
 
 func _ready():
 	discover_shapes()

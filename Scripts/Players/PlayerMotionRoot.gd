@@ -30,7 +30,12 @@ var jumping = false
 var jump_disabled = false
 var bubble = false
 var popped = false
+
 var ascending = false
+
+var flowing = false
+var flowing_x : float
+var flowing_y : float
 
 func _ready():
 	floor_z = spawn_z
@@ -59,6 +64,16 @@ func update_floor():
 				ascending = true
 			if not f.floating and int(f.height) == int(pos_z):
 				ascending = false
+				
+		if "flowing" in f:
+			if f.floating and int(f.height) == int(pos_z):
+				flowing = true
+				flowing_x = f.vel.x
+				flowing_y = f.vel.y
+			if not f.floating and int(f.height) == int(pos_z):
+				flowing = false
+				
+				
 		if f.bottom <= pos_z:
 			floor_z = max(floor_z, f.height)
 		else:
