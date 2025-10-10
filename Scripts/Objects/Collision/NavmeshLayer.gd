@@ -9,6 +9,7 @@ export var floating = false
 export var flowing = false
 
 var vel : Vector3;
+var velocity
 
 func floor_check():
 	pass

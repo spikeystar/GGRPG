@@ -34,8 +34,7 @@ var popped = false
 var ascending = false
 
 var flowing = false
-var flowing_x : float
-var flowing_y : float
+var velocity : Vector2
 
 func _ready():
 	floor_z = spawn_z
@@ -66,11 +65,10 @@ func update_floor():
 				ascending = false
 				
 		if "flowing" in f:
-			if f.floating and int(f.height) == int(pos_z):
+			if f.flowing and int(f.height) == int(pos_z):
 				flowing = true
-				flowing_x = f.vel.x
-				flowing_y = f.vel.y
-			if not f.floating and int(f.height) == int(pos_z):
+				velocity = f.velocity
+			if not f.flowing and int(f.height) == int(pos_z):
 				flowing = false
 				
 				
@@ -184,10 +182,12 @@ func _physics_process(delta):
 	if pos_z == current_max_z and vel.z > 0:
 		vel.z = 0
 		
-
-	
 	var delta2D = Vector2(vel.x, -vel.y * 0.5)
-	move_and_slide(delta2D)
+	
+	if flowing:
+		move_and_slide(delta2D + velocity)
+	else:
+		move_and_slide(delta2D)
 	
 	if vel.x > 0 or vel.y > 0 or vel.z > 0 or vel.x < 0 or vel.y < 0 or vel.z < 0:
 		PlayerManager.standing = false

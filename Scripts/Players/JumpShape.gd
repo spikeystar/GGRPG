@@ -14,7 +14,11 @@ export var player_height = 64
 
 var bubble = false
 var popped = false
+
 var ascending = false
+
+var flowing = false
+var velocity : Vector2
 
 var is_player_jump_shape = true
 
@@ -70,6 +74,14 @@ func update_floor():
 				ascending = true
 			if not f.floating and int(f.height) == int(pos_z):
 				ascending = false
+				
+		if "flowing" in f:
+			if f.flowing and int(f.height) == int(pos_z):
+				flowing = true
+				velocity = f.velocity
+			if not f.flowing and int(f.height) == int(pos_z):
+				flowing = false
+		
 		if f.bottom <= pos_z:
 			floor_z = max(floor_z, f.height)
 		else:
@@ -172,7 +184,11 @@ func _physics_process(delta):
 	
 	
 	var delta2D = Vector2(vel.x, -vel.y * 0.5)
-	move_and_slide(delta2D)
+	
+	if flowing:
+		move_and_slide(delta2D + velocity)
+	else:
+		move_and_slide(delta2D)
 
 	if jump_timer:
 		yield(get_tree().create_timer(0.2), "timeout")

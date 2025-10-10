@@ -10,6 +10,7 @@ var floating = false
 var flowing = false
 
 var vel : Vector3;
+var velocity
 
 func _ready():
 	discover_shapes()

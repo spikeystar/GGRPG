@@ -42,6 +42,9 @@ func _physics_process(delta):
 	
 	$JumpShape.shape_origin = body_visual_root.global_position
 	$JumpShape.origin_z = motion_root.pos_z
+	
+	$MotionRoot/CollisionShape2D.disabled = false
+	$JumpShape/CollisionShape2D.disabled = false
 
 	var last_dir = motion_root.last_dir
 	
@@ -116,6 +119,8 @@ func _physics_process(delta):
 	if ouch:
 		anim_tree.active = false
 		anim_player.play("ouch")
+		$MotionRoot/CollisionShape2D.disabled = true
+		$JumpShape/CollisionShape2D.disabled = true
 		
 	if not ouch and not drown and not sleep and not cutscene:
 		anim_player.stop()
@@ -124,6 +129,9 @@ func _physics_process(delta):
 	if drown:
 		anim_tree.active = false
 		anim_player.play("drown")
+		$MotionRoot/CollisionShape2D.disabled = true
+		$JumpShape/CollisionShape2D.disabled = true
+		
 		
 	if not sleep:
 		shadow_sprite.offset.x = 0

@@ -1519,6 +1519,7 @@ preview_collision_box = false
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Water" type="Area2D" parent="CollisionRoot"]
+visible = false
 position = Vector2( -14, -95 )
 script = ExtResource( 44 )
 target_scene = "res://Areas/Coastal Lane/Coastal Lane 3.tscn"
@@ -1540,7 +1541,6 @@ position = Vector2( -244, -158 )
 polygon = PoolVector2Array( 697, 40, 918, 9, 575, -181, 336, -320, 168, -410, 87, -498, -305, -250, -157, -146, 46, -207, 186, -167, 340, -126, 487, -64 )
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 50 )]
-visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 15 )]
 position = Vector2( 394, -148 )

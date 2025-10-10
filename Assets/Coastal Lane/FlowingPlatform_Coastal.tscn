@@ -33,3 +33,4 @@ preview_collision_box = false
 detect_touches = true
 always_update = true
 floating = true
+flowing = true

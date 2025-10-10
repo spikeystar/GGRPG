@@ -7,6 +7,8 @@ signal touched(touch_direction)
 signal bumped_from_bottom()
 var present_height = 0
 
+var velocity
+
 
 
 #---------#
@@ -436,6 +438,7 @@ func _generate_collider():
 		floor_notify_area.name = "COLLIDABLE_BOX_GENERATED_FloorNotifyArea"
 		floor_notify_area.set_script(floor_setter_script)
 		floor_notify_area.floating = floating
+		floor_notify_area.flowing = flowing
 		add_child(floor_notify_area)
 	
 	if collision_body_shape != null:
@@ -971,6 +974,12 @@ func _generate_collision_box_preview():
 func update_height():
 	collision_body_shape.height = height
 	collision_body_shape.bottom = floor_height
+	
+func update_velocity():
+	#collision_body.velocity = velocity
+	#collision_body_shape.velocity = velocity
+	floor_notify_area.velocity = velocity 
+	#floor_notify_area_shape.velocity = velocity
 
 func _on_Bouncy_bouncy():
 	$AnimationPlayer.play("bouncy")
@@ -980,3 +989,4 @@ func _on_Bouncy2_bouncy():
 
 func _on_Bouncy3_bouncy():
 	$AnimationPlayer.play("bouncy")
+

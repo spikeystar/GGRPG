@@ -7,6 +7,7 @@ export var floating = false
 export var flowing = false
 
 var vel : Vector3;
+var velocity
 
 const TransitionPlayer = preload("res://Objects/SceneTransition/TransitionPlayer.tscn")
 const PixelationPlayer = preload("res://UI/PixelationTransition.tscn")

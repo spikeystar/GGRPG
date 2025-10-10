@@ -7,6 +7,7 @@ export var floating = false
 export var flowing = false
 
 var vel : Vector3;
+var velocity
 
 var isSolid : bool = true;
 
