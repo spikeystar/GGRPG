@@ -19,7 +19,7 @@ func _process(delta):
 func spawn():
 	var new_follower = follower.instance()
 	new_follower.global_position = $Spawn.position
-	new_follower.end_position = $End.position
+	new_follower.end_position = $End.global_position
 	new_follower.speed = speed
 	add_child(new_follower)
 	#var direction = ($Spawn.position - $End.position).normalized()
