@@ -27,7 +27,6 @@ func _ready():
 	Gary.set_right()
 	
 	
-	
 	yield(get_tree().create_timer(1.5), "timeout")
 	$AnimationPlayer2.play("Intro")
 	
@@ -52,9 +51,9 @@ func _input(event):
 		SE.effect("Switch")
 		Music.quiet_2()
 		able = false
-		var transition = TransitionPlayer2.instance()
-		get_tree().get_root().add_child(transition)
-		transition.transition_in(target_scene, _get_animation_name())
+		var transition2 = TransitionPlayer2.instance()
+		get_tree().get_root().add_child(transition2)
+		transition2.transition_in(target_scene, _get_animation_name())
 
 func _get_animation_name():
 	var animation_name = "FadeToBlack" # default
