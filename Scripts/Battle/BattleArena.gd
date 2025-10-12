@@ -183,10 +183,12 @@ static func thousands_sep(number, prefix=''):
 	#fighter_turn_used = $Fighters.get_turn_value()
 
 func _input(event):
-	if (Input.is_action_just_pressed("ui_select")):
-		fighter_turn_used = $Fighters.get_turn_value()
+	#if (Input.is_action_just_pressed("ui_select")):
+		#fighter_turn_used = $Fighters.get_turn_value()
 	
 	if (Input.is_action_just_pressed("ui_select")) and not BB_active and fighter_selection and attack_ended and not fighter_turn_used and not ongoing and not enemy_selecting and not SceneManager.victory and not tutorial and not SceneManager.enemy_turn:
+		fighter_turn_used = $Fighters.get_turn_value()
+		
 		SE.effect("Select")
 		$BattleButtons.show()
 		$BattleButtons/AttackX.hide()
@@ -1005,6 +1007,7 @@ func _on_Fighters_item_chosen():
 	item_animation()
 	yield(get_tree().create_timer(1.5), "timeout")
 	emit_signal("action_ended")
+	emit_signal("item_inactive")
 	attack_ended = true
 	ongoing = false
 	

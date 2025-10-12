@@ -1386,6 +1386,19 @@ height = 400.0
 floor_height = 20.0
 preview_collision_box = false
 
+[node name="BBox14" parent="YSort/MiddleGround" instance=ExtResource( 18 )]
+visible = false
+position = Vector2( 173, -213 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.5, 3.5 )
+texture_scale = Vector2( 0.8, 0.8 )
+texture_offset = Vector2( 0, 15 )
+height = 120.0
+floor_height = 20.0
+
 [node name="Cactus4" parent="YSort/MiddleGround" instance=ExtResource( 18 )]
 modulate = Color( 1, 0.968627, 0.984314, 1 )
 position = Vector2( -305, -145 )
@@ -1827,7 +1840,6 @@ alternate = false
 visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 39 )]
-visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 40 )]
 visible = false
@@ -1843,9 +1855,11 @@ disabled = true
 height = 20.0
 
 [node name="NavmeshLayer2" parent="CollisionRoot/Navmesh2" instance=ExtResource( 40 )]
+visible = false
 polygon = PoolVector2Array( -434, -248, -333, -277, -288, -280, -275, -281, -246, -293, -220, -303, -194, -320, 17.9073, -390.315, 26, -393, 67, -421, 240, -481, 295, -458, 364, -428, 357, -348, 356, -295, 398, -294, 712, -177, 704, -143, 396, -11, 4, 128, -184, 65, -276, 27, -288, -47, -289, -94, -301, -168, -399, -198, -428.717, -227.368 )
 
 [node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 40 )]
+visible = false
 position = Vector2( -171, -98 )
 polygon = PoolVector2Array( -275, -147, -168, -178, -115, -188, -85, -194, -45, -204, -28, -211, -24, -223, 209, -296, 225, -310, 229, -328, 238, -332, 306, -346, 393, -380, 422, -388, 468, -363, 534, -345, 553, -338, 534, -330, 479, -309, 437, -295, 416, -281, 398, -277, 370, -268, 346, -260, 323, -261, 298, -269, 286, -280, 275, -279, 270, -269, 64, -168, 41, -166, 29, -174, 15, -168, 1, -158, 8, -136, -2, -120, -55, -91, -129, -70, -236, -101 )
 height = 140.0
@@ -1863,7 +1877,6 @@ direction = Vector2( -1, -1 )
 height = 140
 
 [node name="StaticBody2D" type="StaticBody2D" parent="CollisionRoot"]
-visible = false
 position = Vector2( -334, 50 )
 collision_layer = 3
 collision_mask = 3
@@ -1875,7 +1888,6 @@ position = Vector2( 3, 9 )
 polygon = PoolVector2Array( 131, -134, 145, -118, 171, -118, 202, -123, 242, -146, 237, -169, 194, -184, 124, -184, 117, -172, 118, -155 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="CollisionRoot"]
-visible = false
 position = Vector2( -334, 50 )
 collision_layer = 3
 collision_mask = 3
@@ -1892,12 +1904,12 @@ position = Vector2( 169, -128 )
 collision_layer = 3
 collision_mask = 3
 script = ExtResource( 23 )
-height = 20
+height = 40
 
 [node name="Boundary" type="CollisionPolygon2D" parent="CollisionRoot/StaticBody2D3"]
 position = Vector2( -156, 12 )
 rotation = -0.00718073
-polygon = PoolVector2Array( 147.8, -110.942, 139.65, -89.9995, 149.599, -82.9279, 172.556, -76.7629, 214.684, -94.4609, 242.848, -117.259, 270.991, -137.058, 301.112, -153.842, 333.255, -173.612, 353.341, -185.468, 340.427, -197.561 )
+polygon = PoolVector2Array( 147.8, -110.942, 139.65, -89.9995, 149.599, -82.9279, 172.556, -76.7629, 223.662, -91.3963, 253.798, -110.18, 282.948, -130.972, 301.112, -153.842, 333.255, -173.612, 353.341, -185.468, 340.427, -197.561 )
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="CollisionRoot"]
 position = Vector2( 157, -152 )
@@ -1909,7 +1921,7 @@ height = 48
 [node name="Boundary" type="CollisionPolygon2D" parent="CollisionRoot/StaticBody2D4"]
 position = Vector2( -156, 16 )
 rotation = -0.00718073
-polygon = PoolVector2Array( 147.8, -110.942, 139.65, -89.9995, 149.599, -82.9279, 172.556, -76.7629, 214.684, -94.4609, 242.848, -117.259, 270.991, -137.058, 301.112, -153.842, 333.255, -173.612, 353.341, -185.468, 340.427, -197.561 )
+polygon = PoolVector2Array( 147.8, -110.942, 139.65, -89.9995, 149.599, -82.9279, 176.534, -73.7343, 222.648, -89.4036, 250.819, -113.202, 279.941, -129.993, 305.069, -147.813, 338.255, -173.576, 357.326, -183.439, 340.427, -197.561 )
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="CollisionRoot"]
 position = Vector2( 31, -162 )

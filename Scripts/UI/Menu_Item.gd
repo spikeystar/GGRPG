@@ -58,7 +58,7 @@ func get_id():
 	if text == "Unequip Trinket" or text == "-":
 		return "-"
 	else:
-		print(text)
+		#print(text)
 		return text
 		
 	

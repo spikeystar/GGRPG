@@ -190,6 +190,7 @@ func _on_WorldRoot_magic_active():
 	up_count = 0
 	magic_active = true
 	defend_active = false
+	item_active = false
 	cursor_active = true
 	spell_selected = false
 
