@@ -853,9 +853,10 @@ func enemies_active_check():
 		
 		enemies_active = false
 		yield(get_tree().create_timer(0.2), "timeout")
-		emit_signal("fighters_active")
-		enemy_countdown()
-		enemy_turns = 0
+		if not SceneManager.game_over:
+			emit_signal("fighters_active")
+			enemy_countdown()
+			enemy_turns = 0
 			
 	
 func enemy_countdown():

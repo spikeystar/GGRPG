@@ -1,7 +1,7 @@
 extends Node
 
 var party_id : int
-var party_members = 3
+var party_members = 2
 var member_name : String
 var holder_name : String
 
@@ -61,8 +61,8 @@ func _ready():
 	suzy_current_health = suzy_health
 	damien_current_health = damien_health
 	
-	#gary_current_health = 1
-	#jacques_current_health = 1
+	gary_current_health = 1
+	jacques_current_health = 1
 	#irina_current_health = 1
 	
 	if party_level >= 3:

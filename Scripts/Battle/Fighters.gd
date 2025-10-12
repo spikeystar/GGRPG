@@ -247,19 +247,21 @@ func _on_WorldRoot_BB_active():
 		hide_cursors(fighter_index)
 		
 func select_next_fighter(index_offset):
-	var last_fighter_index = fighter_index;
-	var new_fighter_index = fposmod(last_fighter_index + index_offset, fighters.size())
-	fighters[last_fighter_index].unfocus()
-	fighters[new_fighter_index].focus()
-	fighter_index = new_fighter_index
+	if not SceneManager.game_over:
+		var last_fighter_index = fighter_index;
+		var new_fighter_index = fposmod(last_fighter_index + index_offset, fighters.size())
+		fighters[last_fighter_index].unfocus()
+		fighters[new_fighter_index].focus()
+		fighter_index = new_fighter_index
 	
 func select_next_fighter2(index_offset):
-	var last_fighter_index = fighter_index;
-	var new_fighter_index : int
-	new_fighter_index = fposmod(last_fighter_index + index_offset, fighters2.size())
-	fighters2[last_fighter_index].unfocus()
-	fighters2[new_fighter_index].focus()
-	fighter_index = new_fighter_index
+	if not SceneManager.game_over:
+		var last_fighter_index = fighter_index;
+		var new_fighter_index : int
+		new_fighter_index = fposmod(last_fighter_index + index_offset, fighters2.size())
+		fighters2[last_fighter_index].unfocus()
+		fighters2[new_fighter_index].focus()
+		fighter_index = new_fighter_index
 
 func _input(event):
 	#if SceneManager.victory:
@@ -570,7 +572,7 @@ func damage():
 		fighters[fighter_index].multi_debuff()
 	if anxious and not immune and not is_dead:
 		fighters[fighter_index]._anxious()
-	if sp_loss and not immune:
+	if sp_loss and not immune and not is_dead:
 		fighters[fighter_index].SP_loss(SP_amount)
 	if move_spread == "single":
 		yield(get_tree().create_timer(1.7), "timeout")
@@ -588,7 +590,8 @@ func damage_end():
 			fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
 	reset_status()
 	game_over_check()
-	emit_signal("fighter_damage_over")
+	if not SceneManager.victory and not SceneManager.game_over:
+		emit_signal("fighter_damage_over")
 	
 func type_matchup():
 	var fighter_type = fighters[fighter_index].get_status("type")
@@ -733,12 +736,13 @@ func f_turn_used():
 	fighters[selector_index]._turn_used()
 	max_turns += 1
 	
-func fighters_active_check():	
-	var array_size = fighters2.size()
+func fighters_active_check():
+	if not SceneManager.game_over:	
+		var array_size = fighters2.size()
 	
-	print("max_turns")
-	print(max_turns)
-	print(str(fighters2.size()) + "FIGHTER SIZE")
+		print("max_turns")
+		print(max_turns)
+		print(str(fighters2.size()) + "FIGHTER SIZE")
 	
 #	for x in range (fighters2.size()):
 	#	var dead = fighters2[x].death_count()
@@ -758,15 +762,15 @@ func fighters_active_check():
 			#array_size - 1
 			
 	#if max_turns == array_size:
-	if max_turns == array_size:
-		emit_signal ("enemies_enabled")
-		enemies_active = true
-	else:
-		if not SceneManager.victory and not SceneManager.game_over:
-			yield(get_tree().create_timer(0.8), "timeout")
-			fighters_active = true
-			emit_signal("fighters_active")
-			select_next_fighter(+1)
+		if max_turns == array_size:
+			emit_signal ("enemies_enabled")
+			enemies_active = true
+		else:
+			if not SceneManager.victory and not SceneManager.game_over:
+				yield(get_tree().create_timer(0.8), "timeout")
+				fighters_active = true
+				emit_signal("fighters_active")
+				select_next_fighter(+1)
 
 func _on_WorldRoot_f_index_reset():
 	fighters.remove(fighter_index)
