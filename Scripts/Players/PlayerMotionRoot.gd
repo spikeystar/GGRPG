@@ -141,6 +141,9 @@ func _physics_process(delta):
 	if ascending:
 		jump_velocity = 420
 		
+	if ascending and flowing:
+		jump_velocity = 460
+		
 	if Input.is_action_just_pressed("ui_push") and sleep and not ongoing and not loading:
 		PlayerManager.freeze = false
 		
@@ -200,5 +203,3 @@ func _physics_process(delta):
 	#if is_on_ground:
 		#yield(get_tree().create_timer(0.3), "timeout")
 		#jumping = false
-
-	print(pos_z)
