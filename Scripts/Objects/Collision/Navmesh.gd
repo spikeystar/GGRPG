@@ -60,6 +60,8 @@ func _ready():
 			area_copy.visible = false
 			area_copy.set_script(layer_script)
 			area_copy.set("height", child.height)
+			area_copy.set("floating", child.floating)
+			area_copy.set("flowing", child.flowing)
 			get_parent().call_deferred("add_child", area_copy)
 			area_copy.add_child(area_polygon)
 

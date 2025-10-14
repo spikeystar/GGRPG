@@ -200,3 +200,5 @@ func _physics_process(delta):
 	#if is_on_ground:
 		#yield(get_tree().create_timer(0.3), "timeout")
 		#jumping = false
+
+	print(pos_z)
