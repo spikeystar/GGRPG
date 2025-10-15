@@ -635,7 +635,7 @@ script = ExtResource( 47 )
 z_index = -20
 
 [node name="BlueBckgd" type="Sprite" parent="YSort/Background"]
-position = Vector2( 95, -90 )
+position = Vector2( 124, -95 )
 scale = Vector2( 2.80734, 2.0216 )
 texture = ExtResource( 16 )
 
@@ -688,7 +688,7 @@ scale = Vector2( 1.43658, 1.63113 )
 texture = ExtResource( 6 )
 
 [node name="CrabgrassA3" type="Sprite" parent="YSort/Background"]
-position = Vector2( -476, -92 )
+position = Vector2( -1232, -476 )
 scale = Vector2( 1.66, 1.31875 )
 texture = ExtResource( 31 )
 flip_h = true
@@ -896,33 +896,68 @@ texture = ExtResource( 39 )
 [node name="Deco" type="Node2D" parent="YSort/Floor"]
 
 [node name="ClamA" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -179, -170 )
+position = Vector2( -276, -597 )
 texture = ExtResource( 24 )
 
 [node name="ClamA2" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 530, -427 )
+position = Vector2( 161, -616 )
 texture = ExtResource( 24 )
 
 [node name="ClamA3" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 699, -177 )
+position = Vector2( 709, -19 )
 texture = ExtResource( 24 )
 
 [node name="ClamA4" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -221, 121 )
+position = Vector2( 257, 3 )
 texture = ExtResource( 24 )
 flip_h = true
 
+[node name="ClamA6" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 506, -362 )
+texture = ExtResource( 24 )
+
 [node name="ClamA5" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -685, -153 )
+position = Vector2( -781, -377 )
+texture = ExtResource( 24 )
+flip_h = true
+
+[node name="ClamA8" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -614, 14 )
+texture = ExtResource( 24 )
+flip_h = true
+
+[node name="ClamA7" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -87, 114 )
 texture = ExtResource( 24 )
 flip_h = true
 
 [node name="ClamB" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -497, 1 )
+position = Vector2( -490, -592 )
 texture = ExtResource( 17 )
 
 [node name="ClamB2" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 161, -293 )
+position = Vector2( 184, -255 )
+texture = ExtResource( 17 )
+
+[node name="ClamB7" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 65, 346 )
+texture = ExtResource( 17 )
+
+[node name="ClamB8" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 1090, -125 )
+texture = ExtResource( 17 )
+
+[node name="ClamB9" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -1070, -115 )
+texture = ExtResource( 17 )
+
+[node name="ClamB6" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 462, -444 )
+texture = ExtResource( 17 )
+flip_h = true
+
+[node name="ClamB5" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -2, -660 )
 texture = ExtResource( 17 )
 
 [node name="ClamB3" type="Sprite" parent="YSort/Floor/Deco"]
@@ -931,25 +966,58 @@ texture = ExtResource( 17 )
 flip_h = true
 
 [node name="SeashellB" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -532, -225 )
+position = Vector2( -575, -326 )
 texture = ExtResource( 32 )
 
+[node name="SeashellB7" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 315, 274 )
+texture = ExtResource( 32 )
+
+[node name="SeashellB6" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -944, -68 )
+texture = ExtResource( 32 )
+
+[node name="SeashellB4" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -117, -61 )
+texture = ExtResource( 32 )
+flip_h = true
+
+[node name="SeashellB5" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 905, -325 )
+texture = ExtResource( 32 )
+flip_h = true
+
 [node name="SeashellB2" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 43, -351 )
+position = Vector2( -190, -674 )
 texture = ExtResource( 32 )
 flip_h = true
 
 [node name="SeashellA" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 666, -286 )
+position = Vector2( 991, -156 )
 texture = ExtResource( 42 )
 
 [node name="SeashellA2" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -7, 76 )
+position = Vector2( -362, -356 )
+texture = ExtResource( 42 )
+flip_h = true
+
+[node name="SeashellA5" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -878, 63 )
+texture = ExtResource( 42 )
+flip_h = true
+
+[node name="SeashellA6" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -1021, -358 )
+texture = ExtResource( 42 )
+flip_h = true
+
+[node name="SeashellA4" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 287, -571 )
 texture = ExtResource( 42 )
 flip_h = true
 
 [node name="StarfishA" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -385, -98 )
+position = Vector2( -417, -490 )
 texture = ExtResource( 23 )
 
 [node name="StarfishA2" type="Sprite" parent="YSort/Floor/Deco"]
@@ -958,16 +1026,60 @@ texture = ExtResource( 23 )
 flip_h = true
 
 [node name="StarfishA3" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 74, -268 )
+position = Vector2( 73, -274 )
+texture = ExtResource( 23 )
+flip_h = true
+
+[node name="StarfishA6" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -157, -224 )
+texture = ExtResource( 23 )
+
+[node name="StarfishA13" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -897, -324 )
+texture = ExtResource( 23 )
+
+[node name="StarfishA12" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -452, 14 )
+texture = ExtResource( 23 )
+
+[node name="StarfishA9" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -92, -636 )
+texture = ExtResource( 23 )
+flip_h = true
+
+[node name="StarfishA10" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 573, -472 )
+texture = ExtResource( 23 )
+flip_h = true
+
+[node name="StarfishA7" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 373, -44 )
+texture = ExtResource( 23 )
+
+[node name="StarfishA14" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 503, 222 )
+texture = ExtResource( 23 )
+
+[node name="StarfishA8" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 153, 14 )
+texture = ExtResource( 23 )
+flip_h = true
+
+[node name="StarfishA11" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 29, 238 )
 texture = ExtResource( 23 )
 flip_h = true
 
 [node name="StarfishB" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -745, -54 )
+position = Vector2( -694, -446 )
+texture = ExtResource( 37 )
+
+[node name="StarfishB11" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -792, 26 )
 texture = ExtResource( 37 )
 
 [node name="StarfishB2" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -487, -87 )
+position = Vector2( -274, -424 )
 texture = ExtResource( 37 )
 
 [node name="StarfishB3" type="Sprite" parent="YSort/Floor/Deco"]
@@ -979,7 +1091,7 @@ position = Vector2( 17, -149 )
 texture = ExtResource( 37 )
 
 [node name="StarfishB5" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 419, -353 )
+position = Vector2( 1006, -245 )
 texture = ExtResource( 37 )
 flip_h = true
 
@@ -989,28 +1101,63 @@ texture = ExtResource( 37 )
 flip_h = true
 
 [node name="StarfishB7" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 355, -198 )
+position = Vector2( -18, -266 )
 texture = ExtResource( 37 )
+
+[node name="StarfishB14" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 90, -631 )
+texture = ExtResource( 37 )
+flip_h = true
+
+[node name="StarfishB8" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -178, -134 )
+texture = ExtResource( 37 )
+flip_h = true
+
+[node name="StarfishB15" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -719, -275 )
+texture = ExtResource( 37 )
+flip_h = true
+
+[node name="StarfishB12" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 157, 227 )
+texture = ExtResource( 37 )
+flip_h = true
+
+[node name="StarfishB13" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 611, 108 )
+texture = ExtResource( 37 )
+flip_h = true
+
+[node name="StarfishB10" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 319, -473 )
+texture = ExtResource( 37 )
+flip_h = true
+
+[node name="StarfishB9" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( 409, -137 )
+texture = ExtResource( 37 )
+flip_h = true
 
 [node name="StarfishA4" type="Sprite" parent="YSort/Floor/Deco"]
 position = Vector2( 608, -394 )
 texture = ExtResource( 23 )
 
 [node name="StarfishA5" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 853, -112 )
+position = Vector2( 749, -276 )
 texture = ExtResource( 23 )
 
 [node name="SeashellA3" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -654, -149 )
+position = Vector2( -727, -501 )
 texture = ExtResource( 42 )
 
 [node name="SeashellB3" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 1027, -273 )
+position = Vector2( 877, 57 )
 texture = ExtResource( 32 )
 flip_h = true
 
 [node name="ClamB4" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 332, 36 )
+position = Vector2( -266, 127 )
 texture = ExtResource( 17 )
 flip_h = true
 
@@ -1984,7 +2131,7 @@ z_index = 4096
 current = true
 script = ExtResource( 51 )
 minPos = Vector2( -700, -550 )
-maxPos = Vector2( 850, 210 )
+maxPos = Vector2( 850, 205 )
 follow_player = true
 
 [node name="Info_Window" type="Sprite" parent="Camera2D"]
@@ -2026,7 +2173,7 @@ floor_height = 110.0
 shadow_color = Color( 0.188235, 0.486275, 0.372549, 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 822, -426 )
+position = Vector2( -661, 357 )
 
 [connection signal="bouncy" from="CollisionRoot/Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="bouncy" from="CollisionRoot/Bouncy2" to="YSort/MiddleGround/BouncyFlower2" method="_on_Bouncy2_bouncy"]
