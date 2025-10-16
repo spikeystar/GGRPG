@@ -7,6 +7,8 @@
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=5]
 
 [node name="LoopingPlatform_Coastal" type="KinematicBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource( 4 )
 
 [node name="SquareShadow" type="Sprite" parent="."]

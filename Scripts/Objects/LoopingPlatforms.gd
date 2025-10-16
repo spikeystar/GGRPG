@@ -5,7 +5,6 @@ var Positions = []
 
 export var speed : int
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	Positions = $Positions.get_children()
 	

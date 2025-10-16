@@ -13,10 +13,11 @@ func _process(delta):
 	velocity = (distance * speed)
 	
 	if Vector2(int(global_position.x), int(global_position.y)) != Vector2(int(end_position.x), int(end_position.y)):
-		move_and_slide(velocity)
-		$MovingLedge._generate_meshes()
 		$MovingLedge.velocity = velocity
 		$MovingLedge.update_velocity()
+		move_and_slide(velocity)
+		$MovingLedge._generate_meshes()
+		
 		
 	#print(Vector2(int(global_position.x), int(global_position.y)))
 	#print(Vector2(int(end_position.x), int(end_position.y)))
