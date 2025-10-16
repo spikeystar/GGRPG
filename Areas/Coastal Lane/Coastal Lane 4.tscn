@@ -1050,16 +1050,17 @@ always_update = true
 
 [node name="Ledge5" parent="YSort/MiddleGround" instance=ExtResource( 43 )]
 modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
-position = Vector2( 678.207, -301.008 )
+position = Vector2( 678, -300 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 60, 29 )
-grid_size = Vector2( 3.7, 3.7 )
+grid_size = Vector2( 3.3, 3.3 )
 texture = ExtResource( 52 )
 texture_scale = Vector2( -1.45, 1.45 )
 texture_offset = Vector2( 2, 30 )
-height = 60.0
+height = 70.0
+preview_collision_box = false
 detect_touches = true
 always_update = true
 
@@ -1440,5 +1441,5 @@ position = Vector2( 648, -14 )
 [connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
-[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]
+[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]

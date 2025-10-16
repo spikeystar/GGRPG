@@ -2005,7 +2005,6 @@ script = ExtResource( 4 )
 depth_test_offset = Vector2( 0, 800 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Water" type="Area2D" parent="CollisionRoot"]
 visible = false
@@ -2016,10 +2015,10 @@ exit_name = "Entrance"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Water"]
 position = Vector2( -244, -158 )
-polygon = PoolVector2Array( -231, 635, 684, 790, 1144, 546, 1725, 190, 1424, -45, 1334, -125, 1226, -136, 1045, -78, 1001, -63, 922, -82, 813, -124, 805, -156, 982, -233, 904, -296, 539, -538, 164, -506, -647, -281, -929, -210, -960, -74, -1053, 234, -864, 428, -352, 273, 73, 498 )
-disabled = true
+polygon = PoolVector2Array( -283, 632, 684, 790, 1144, 546, 1725, 190, 1424, -45, 1334, -125, 1226, -136, 1045, -78, 1001, -63, 922, -82, 813, -124, 825, -146, 911, -171, 979, -204, 982, -233, 904, -296, 539, -538, 164, -506, -351, -411, -647, -281, -929, -210, -960, -74, -1053, 234, -864, 428, -357, 328, -105, 499, -226, 556 )
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 28 )]
+visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 29 )]
 position = Vector2( 394, -148 )
@@ -2052,25 +2051,24 @@ polygon = PoolVector2Array( -244, -231, 92, -351, 121, -341, 157, -352, 183, -34
 height = 80.0
 
 [node name="Bottom" parent="CollisionRoot/Navmesh" instance=ExtResource( 29 )]
-visible = false
 position = Vector2( -226, 20 )
-polygon = PoolVector2Array( -813, -50, -879, -307, -781, -390, -381, -576, 72, -686, 458, -666, 560, -601, 1168, -275, 1289, -272, 1298, -126, 1297, 4, 1073, 99, 773, 326, 574, 326, 92, 331 )
+polygon = PoolVector2Array( -813, -50, -879, -307, -781, -390, -381, -576, 72, -686, 458, -666, 560, -601, 754, -496, 778, -459, 817, -448, 1168, -275, 1289, -272, 1298, -126, 1297, 4, 1073, 99, 773, 326, 574, 326, 92, 331 )
 disabled = true
 
 [node name="PlayerSpawn1" parent="CollisionRoot" instance=ExtResource( 25 )]
-position = Vector2( 862, -450 )
-door_name = "CoastalLane1_CoastalLane2"
+position = Vector2( 853, -450 )
+door_name = "CoastalLane4_CoastalLane5"
 direction = Vector2( -1, -1 )
 height = 80
 
 [node name="PlayerSpawn2" parent="CollisionRoot" instance=ExtResource( 25 )]
 position = Vector2( -659, 102 )
-door_name = "CoastalLane3_CoastalLane2"
+door_name = "CoastalLane6_CoastalLane5"
 direction = Vector2( 1, 1 )
 height = 80
 
 [node name="Entrance" parent="CollisionRoot" instance=ExtResource( 25 )]
-position = Vector2( 860, -449 )
+position = Vector2( 786, -426 )
 door_name = "Entrance"
 direction = Vector2( -1, -1 )
 height = 80

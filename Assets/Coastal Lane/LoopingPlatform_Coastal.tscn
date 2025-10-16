@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Coastal Lane/Moving Ledge.png" type="Texture" id=2]
+[ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Objects/LoopingPlatform.gd" type="Script" id=4]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=5]
+
+[node name="LoopingPlatform_Coastal" type="KinematicBody2D"]
+script = ExtResource( 4 )
+
+[node name="SquareShadow" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.196078 )
+position = Vector2( -5, -30 )
+rotation = 0.0120703
+scale = Vector2( 2.66306, 2.57502 )
+texture = ExtResource( 3 )
+script = ExtResource( 1 )
+
+[node name="MovingLedge" parent="." instance=ExtResource( 5 )]
+modulate = Color( 0.988235, 0.988235, 0.952941, 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 28 )
+grid_size = Vector2( 3.1, 3 )
+texture = ExtResource( 2 )
+texture_scale = Vector2( -1.3, 1.25 )
+texture_offset = Vector2( 1, 25 )
+height = 60.0
+depth_test_offset = Vector3( 0, 400, 0 )
+preview_collision_box = false
+detect_touches = true
+always_update = true
+flowing = true
