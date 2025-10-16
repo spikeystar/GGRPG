@@ -972,28 +972,37 @@ speed = 50
 position = Vector2( 5, 9 )
 
 [node name="Position1" type="Position2D" parent="YSort/MiddleGround/LoopingPlatforms/Positions"]
-position = Vector2( -165, 2 )
+position = Vector2( -170, 3 )
 
 [node name="Position2" type="Position2D" parent="YSort/MiddleGround/LoopingPlatforms/Positions"]
-position = Vector2( -81, -70 )
+position = Vector2( -95, -96 )
 
 [node name="Position3" type="Position2D" parent="YSort/MiddleGround/LoopingPlatforms/Positions"]
-position = Vector2( 87, -73 )
+position = Vector2( 81, -75 )
 
 [node name="Position4" type="Position2D" parent="YSort/MiddleGround/LoopingPlatforms/Positions"]
-position = Vector2( 158, 0 )
+position = Vector2( 150, -22 )
 
 [node name="Position5" type="Position2D" parent="YSort/MiddleGround/LoopingPlatforms/Positions"]
-position = Vector2( 89, 85 )
+position = Vector2( 93, 105 )
 
 [node name="Position6" type="Position2D" parent="YSort/MiddleGround/LoopingPlatforms/Positions"]
-position = Vector2( -88, 83 )
+position = Vector2( -129, 100 )
 
 [node name="Platforms" type="Node2D" parent="YSort/MiddleGround/LoopingPlatforms"]
 position = Vector2( 5, 20 )
 
 [node name="LoopingPlatform_Coastal3" parent="YSort/MiddleGround/LoopingPlatforms/Platforms" instance=ExtResource( 4 )]
-position = Vector2( -165, -9 )
+position = Vector2( -170, -8 )
+onto_1 = true
+
+[node name="LoopingPlatform_Coastal4" parent="YSort/MiddleGround/LoopingPlatforms/Platforms" instance=ExtResource( 4 )]
+position = Vector2( 81, -86 )
+onto_3 = true
+
+[node name="LoopingPlatform_Coastal5" parent="YSort/MiddleGround/LoopingPlatforms/Platforms" instance=ExtResource( 4 )]
+position = Vector2( 93, 85 )
+onto_5 = true
 
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
@@ -1147,9 +1156,9 @@ text = "You got a Flummery Flambe!"
 align = 1
 
 [node name="PresentBase" parent="." instance=ExtResource( 1 )]
-position = Vector2( 205, -786 )
+position = Vector2( -40, -338 )
 item_name = "Jhumki"
-floor_height = 670.0
-shadow_color = Color( 0.188235, 0.45098, 0.243137, 1 )
+floor_height = 60.0
+shadow_color = Color( 0.19, 0.45, 0.24, 0 )
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
