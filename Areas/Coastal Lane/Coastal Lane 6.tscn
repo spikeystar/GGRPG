@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=2]
@@ -54,6 +54,7 @@
 [ext_resource path="res://Scripts/Objects/LoopingPlatforms.gd" type="Script" id=52]
 [ext_resource path="res://Assets/Coastal Lane/Ledge A.png" type="Texture" id=53]
 [ext_resource path="res://Assets/Cherry Trail/dirt a.png" type="Texture" id=54]
+[ext_resource path="res://Assets/Coastal Lane/Whirlpool.png" type="Texture" id=55]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -441,6 +442,34 @@
 22/shapes = [  ]
 22/z_index = 0
 
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 55 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 55 )
+region = Rect2( 100, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 55 )
+region = Rect2( 200, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 55 )
+region = Rect2( 300, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 55 )
+region = Rect2( 400, 0, 100, 100 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="WorldRoot" type="Node2D"]
 script = ExtResource( 47 )
 
@@ -650,19 +679,32 @@ texture = ExtResource( 27 )
 script = ExtResource( 5 )
 depth_test_offset = Vector2( 0, 200 )
 
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.1 )
+position = Vector2( -135, -198.5 )
+scale = Vector2( 1.46, 1.57 )
+frames = SubResource( 12 )
+frame = 1
+speed_scale = 0.85
+playing = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="YSort/Floor"]
+self_modulate = Color( 1, 1, 1, 0.28 )
+position = Vector2( -135.25, -200.641 )
+scale = Vector2( 0.935, 1.04719 )
+frames = SubResource( 12 )
+frame = 4
+speed_scale = 1.1
+playing = true
+
 [node name="Deco" type="Node2D" parent="YSort/Floor"]
-visible = false
 
 [node name="ClamA" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -179, -170 )
-texture = ExtResource( 25 )
-
-[node name="ClamA2" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 530, -427 )
+position = Vector2( -352, -184 )
 texture = ExtResource( 25 )
 
 [node name="ClamA3" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 699, -177 )
+position = Vector2( -123, -64 )
 texture = ExtResource( 25 )
 
 [node name="ClamA4" type="Sprite" parent="YSort/Floor/Deco"]
@@ -676,30 +718,38 @@ texture = ExtResource( 25 )
 flip_h = true
 
 [node name="ClamB" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -497, 1 )
+position = Vector2( 69, -249 )
 texture = ExtResource( 18 )
 
 [node name="ClamB2" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 161, -293 )
+position = Vector2( -321, -129 )
 texture = ExtResource( 18 )
-
-[node name="ClamB3" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 1002, -324 )
-texture = ExtResource( 18 )
-flip_h = true
 
 [node name="SeashellB" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -532, -225 )
+position = Vector2( -241, -299 )
+texture = ExtResource( 28 )
+
+[node name="SeashellB3" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -224, -85 )
 texture = ExtResource( 28 )
 
 [node name="SeashellB2" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 43, -351 )
+position = Vector2( 71, -123 )
 texture = ExtResource( 28 )
 flip_h = true
 
 [node name="SeashellA" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 666, -286 )
+position = Vector2( 17, -291 )
 texture = ExtResource( 38 )
+
+[node name="SeashellA4" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -320, -235 )
+texture = ExtResource( 38 )
+
+[node name="SeashellA5" type="Sprite" parent="YSort/Floor/Deco"]
+position = Vector2( -41, -83 )
+texture = ExtResource( 38 )
+flip_h = true
 
 [node name="SeashellA2" type="Sprite" parent="YSort/Floor/Deco"]
 position = Vector2( -7, 76 )
@@ -707,16 +757,11 @@ texture = ExtResource( 38 )
 flip_h = true
 
 [node name="StarfishA" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -385, -98 )
+position = Vector2( -286, -80 )
 texture = ExtResource( 24 )
 
 [node name="StarfishA2" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 134, -105 )
-texture = ExtResource( 24 )
-flip_h = true
-
-[node name="StarfishA3" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 74, -268 )
+position = Vector2( 102, -193 )
 texture = ExtResource( 24 )
 flip_h = true
 
@@ -725,7 +770,7 @@ position = Vector2( -745, -54 )
 texture = ExtResource( 33 )
 
 [node name="StarfishB2" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -487, -87 )
+position = Vector2( -291, -277 )
 texture = ExtResource( 33 )
 
 [node name="StarfishB3" type="Sprite" parent="YSort/Floor/Deco"]
@@ -733,16 +778,11 @@ position = Vector2( -341, 61 )
 texture = ExtResource( 33 )
 
 [node name="StarfishB4" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 17, -149 )
+position = Vector2( 27, -77 )
 texture = ExtResource( 33 )
-
-[node name="StarfishB5" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 419, -353 )
-texture = ExtResource( 33 )
-flip_h = true
 
 [node name="StarfishB6" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 784, -333 )
+position = Vector2( -63, -299 )
 texture = ExtResource( 33 )
 flip_h = true
 
@@ -751,21 +791,12 @@ position = Vector2( 355, -198 )
 texture = ExtResource( 33 )
 
 [node name="StarfishA4" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 608, -394 )
-texture = ExtResource( 24 )
-
-[node name="StarfishA5" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 853, -112 )
+position = Vector2( -146, -289 )
 texture = ExtResource( 24 )
 
 [node name="SeashellA3" type="Sprite" parent="YSort/Floor/Deco"]
 position = Vector2( -654, -149 )
 texture = ExtResource( 38 )
-
-[node name="SeashellB3" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( 1027, -273 )
-texture = ExtResource( 28 )
-flip_h = true
 
 [node name="ClamB4" type="Sprite" parent="YSort/Floor/Deco"]
 position = Vector2( 332, 36 )
@@ -1097,6 +1128,7 @@ script = ExtResource( 5 )
 height = 500.0
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Water" type="Area2D" parent="CollisionRoot"]
 visible = false
@@ -1108,6 +1140,17 @@ exit_name = "Entrance"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Water"]
 position = Vector2( -244, -158 )
 polygon = PoolVector2Array( 167, 243, 376, 204, 414, 138, 425, 72, 359, -53, 200, -106, 15, -84, -18, -4, 132, -28, 264, -25, 294, 125, 156, 161, 7, 130, -51, 76, -7, -36, 16, -87, -99, -64, -169, 21, -164, 73, -137, 166, -58, 226 )
+
+[node name="Water2" type="Area2D" parent="CollisionRoot"]
+visible = false
+position = Vector2( -119, -232 )
+script = ExtResource( 50 )
+target_scene = "res://Areas/Coastal Lane/Coastal Lane 6.tscn"
+exit_name = "Entrance"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Water2"]
+position = Vector2( -53, -109 )
+polygon = PoolVector2Array( 215, 211, 178, 62, 48, 58, -104, 83, -137, 166, -76, 219, 71, 252 )
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 41 )]
 visible = false
@@ -1133,13 +1176,20 @@ direction = Vector2( -1, -1 )
 height = 40
 
 [node name="PlayerSpawn2" parent="CollisionRoot" instance=ExtResource( 44 )]
-position = Vector2( -659, 102 )
-door_name = "CoastalLane3_CoastalLane2"
+position = Vector2( -516, 50 )
+door_name = "CoastalLane7_CoastalLane6"
 direction = Vector2( 1, 1 )
 height = 40
 
+[node name="PlayerSpawn3" parent="CollisionRoot" instance=ExtResource( 44 )]
+position = Vector2( -560, -460 )
+door_name = "CoastalLaneExtra_CoastalLane6q"
+direction = Vector2( -1, 1 )
+height = 70
+
 [node name="Entrance" parent="CollisionRoot" instance=ExtResource( 44 )]
-position = Vector2( 777, -407 )
+visible = false
+position = Vector2( 255, -224 )
 door_name = "Entrance"
 direction = Vector2( -1, -1 )
 height = 40

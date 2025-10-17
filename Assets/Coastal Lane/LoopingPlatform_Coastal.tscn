@@ -34,4 +34,5 @@ depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
 detect_touches = true
 always_update = true
+floating = true
 flowing = true
