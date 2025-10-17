@@ -974,6 +974,14 @@ onto_1 = true
 position = Vector2( 83, -78 )
 onto_3 = true
 
+[node name="PresentBase" parent="YSort/MiddleGround/LoopingPlatforms/Platforms/LoopingPlatform_Coastal4" instance=ExtResource( 1 )]
+position = Vector2( 1, -89 )
+item_name = "Sugar Pill"
+floor_height = 60.0
+shadow_color = Color( 0.188235, 0.552941, 0.298039, 1 )
+flowing = true
+flowing_name = "CoastalLane6"
+
 [node name="LoopingPlatform_Coastal5" parent="YSort/MiddleGround/LoopingPlatforms/Platforms" instance=ExtResource( 4 )]
 position = Vector2( 93, 96 )
 onto_5 = true
@@ -1119,8 +1127,8 @@ position = Vector2( -226, 20 )
 polygon = PoolVector2Array( -340, -102, -357, -153, -364, -188, -290, -393, -154, -426, 136, -413, 326, -401, 477, -383, 591, -215, 567, -17, 505, 41, 441, 29, 226, 70, 84, 60, -40, 49, -324, -42 )
 
 [node name="PlayerSpawn1" parent="CollisionRoot" instance=ExtResource( 44 )]
-position = Vector2( 862, -450 )
-door_name = "CoastalLane1_CoastalLane2"
+position = Vector2( 448, -267 )
+door_name = "CoastalLane5_CoastalLane6"
 direction = Vector2( -1, -1 )
 height = 40
 
@@ -1188,10 +1196,4 @@ custom_fonts/font = ExtResource( 3 )
 text = "You got a Flummery Flambe!"
 align = 1
 
-[node name="PresentBase" parent="." instance=ExtResource( 1 )]
-position = Vector2( -40, -338 )
-item_name = "Jhumki"
-floor_height = 60.0
-shadow_color = Color( 0.19, 0.45, 0.24, 0 )
-
-[connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
+[connection signal="item_get" from="YSort/MiddleGround/LoopingPlatforms/Platforms/LoopingPlatform_Coastal4/PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

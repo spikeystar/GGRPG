@@ -5,7 +5,12 @@ signal item_get
 
 onready var collidable_box = $CollidableBox
 onready var animation_player = $AnimationPlayer
-onready var square_shadow = $SquareShadow
+
+onready var square_shadow = $ShadowYSort/ShadowVisualRoot/SquareShadow
+onready var shadow_sprite = $ShadowYSort/ShadowVisualRoot/SquareShadow
+
+onready var shadow_y_sort = $ShadowYSort
+onready var shadow_visual_root = $ShadowYSort/ShadowVisualRoot
 
 export var item_name : String
 export var marbles_amount : int
@@ -13,14 +18,17 @@ export var floor_height = 0.0 setget set_floor_height
 export var box_height_above_floor = 95.0 setget set_box_height_above_floor
 export(Color) var shadow_color = Color(0.0, 0.0, 0.0, 1.0) setget set_shadow_color
 
-export var flowing = false
-export var flowing_name: String
+var pos_z 
+var shadow_z : float = 0
 
 var is_ready = false
 var is_opened = false
 
-func _ready():		
+func _ready():
 	is_ready = true
+	
+	pos_z = floor_height
+	shadow_z = floor_height
 	
 	square_shadow.modulate = shadow_color
 	square_shadow.update_mesh()
@@ -29,15 +37,21 @@ func _ready():
 
 		_calculate_box_position()
 
-		if not Global.Collected.has(global_position) and not Global.Collected.has(flowing_name):
+		if not Global.Collected.has(global_position):
 			animation_player.play("Idle")
 			collidable_box.connect("bumped_from_bottom", self, "_on_bumped_from_bottom")
 		else:
 			animation_player.play("Done")
 			
-func _process(delta):
-	if flowing:
-		$CollidableBox._generate_meshes()
+#func _process(delta):
+	#var draw_shadow_z = shadow_z
+#	var draw_shadow_y_sort = Global.calculate_y_sort(Vector3(global_position.x, global_position.y, shadow_z))
+	#if is_ready:
+	#	shadow_sprite.height = $ShadowAreaCheck.shadow_z + 1
+	
+	#shadow_y_sort.global_position = Vector2(global_position.x, draw_shadow_y_sort)
+	#shadow_visual_root.global_position = global_position + Vector2(0.0, -draw_shadow_z)
+
 
 func set_floor_height(new_floor_height):
 	floor_height = new_floor_height
@@ -87,7 +101,7 @@ func item_animation():
 	
 	
 func item_get():
-	if not Global.Collected.has(global_position) or not Global.Collected.has(flowing_name):
+	if not Global.Collected.has(global_position):
 		SE.effect("Present")
 		Party.add_item_name = item_name
 		if item_name == "Jhumki":
@@ -97,26 +111,22 @@ func item_get():
 			Party.add_item()
 		emit_signal("item_get")
 		Global.Collected.append(global_position)
-		if flowing:
-			Global.Collected.append(flowing_name)
 	else:
 		return
 		
 func trinket_get():
-	if not Global.Collected.has(global_position) or not Global.Collected.has(flowing_name):
+	if not Global.Collected.has(global_position):
 		SE.effect("Present")
 		Party.trinket_get = true
 		Party.add_trinket_name = item_name
 		Party.add_trinket()
 		emit_signal("item_get")
 		Global.Collected.append(global_position)
-		if flowing:
-			Global.Collected.append(flowing_name)
 	else:
 		return
 	
 func marbles_get():
-	if not Global.Collected.has(global_position) or not Global.Collected.has(flowing_name):
+	if not Global.Collected.has(global_position):
 		SE.effect("Present")
 		#Party.marbles += marbles_amount
 		Party.marbles = clamp(Party.marbles + marbles_amount, 0, 999999)
@@ -124,20 +134,16 @@ func marbles_get():
 		Party.add_item_name = str(marbles_amount) + " Marbles"
 		emit_signal("item_get")
 		Global.Collected.append(global_position)
-		if flowing:
-			Global.Collected.append(flowing_name)
 	else:
 		return
 		
 func full_heal():
-	if not Global.Collected.has(global_position) or not Global.Collected.has(flowing_name):
+	if not Global.Collected.has(global_position):
 		SE.effect("Full Heal")
 		PartyStats.full_heal()
 		Party.add_item_name = item_name
 		emit_signal("item_get")
 		Global.Collected.append(global_position)
-		if flowing:
-			Global.Collected.append(flowing_name)
 	else:
 		return
 	

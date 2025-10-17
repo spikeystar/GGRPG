@@ -3,6 +3,8 @@ extends Area2D
 const LOWEST_Z : int = 0
 const HIGHEST_Z : int = 512
 
+onready var shadow_z : float
+
 onready var motion_root = get_parent();
 
 #var floor_layers : Array = []
@@ -29,4 +31,7 @@ func _process(delta):
 			floor_z = max(floor_z, check_floor_z)
 		else:
 			ceiling_z = min(ceiling_z, check_ceiling_z)
-	motion_root.shadow_z = floor_z
+			shadow_z = 0
+#	motion_root.shadow_z = floor_z
+		shadow_z = floor_z
+	print(shadow_z)
