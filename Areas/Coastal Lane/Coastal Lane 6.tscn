@@ -693,7 +693,7 @@ self_modulate = Color( 1, 1, 1, 0.28 )
 position = Vector2( -135.25, -200.641 )
 scale = Vector2( 0.935, 1.04719 )
 frames = SubResource( 12 )
-frame = 4
+frame = 1
 speed_scale = 1.1
 playing = true
 
@@ -1128,7 +1128,6 @@ script = ExtResource( 5 )
 height = 500.0
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Water" type="Area2D" parent="CollisionRoot"]
 visible = false
@@ -1145,15 +1144,14 @@ polygon = PoolVector2Array( 167, 243, 376, 204, 414, 138, 425, 72, 359, -53, 200
 visible = false
 position = Vector2( -119, -232 )
 script = ExtResource( 50 )
-target_scene = "res://Areas/Coastal Lane/Coastal Lane 6.tscn"
-exit_name = "Entrance"
+target_scene = "res://Areas/Coastal Lane/Coastal Lane Extra.tscn"
+exit_name = "CoastalLane6_CoastalLaneExtra"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Water2"]
 position = Vector2( -53, -109 )
 polygon = PoolVector2Array( 215, 211, 178, 62, 48, 58, -104, 83, -137, 166, -76, 219, 71, 252 )
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 41 )]
-visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 42 )]
 position = Vector2( 154, -1 )
@@ -1182,15 +1180,22 @@ direction = Vector2( 1, 1 )
 height = 40
 
 [node name="PlayerSpawn3" parent="CollisionRoot" instance=ExtResource( 44 )]
-position = Vector2( -560, -460 )
-door_name = "CoastalLaneExtra_CoastalLane6q"
-direction = Vector2( -1, 1 )
+position = Vector2( -582, -436 )
+door_name = "CoastalLaneExtra_CoastalLane6"
+direction = Vector2( 1, -1 )
 height = 70
 
 [node name="Entrance" parent="CollisionRoot" instance=ExtResource( 44 )]
 visible = false
 position = Vector2( 255, -224 )
 door_name = "Entrance"
+direction = Vector2( -1, -1 )
+height = 40
+
+[node name="Entrance3" parent="CollisionRoot" instance=ExtResource( 44 )]
+visible = false
+position = Vector2( 255, -224 )
+door_name = "CoastalLane6_CoastalLaneExtra"
 direction = Vector2( -1, -1 )
 height = 40
 
