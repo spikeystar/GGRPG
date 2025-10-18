@@ -63,15 +63,16 @@ func _calculate_box_position():
 		square_shadow.height = floor_height + 0.5
 
 func _on_bumped_from_bottom():
-	yield(get_tree().create_timer(0.1), "timeout")
-	animation_player.play("Open Box")
-	animation_player.playback_speed = 1.0
-	collidable_box.disconnect("bumped_from_bottom", self, "_on_bumped_from_bottom")
-	is_opened = true
-	set_item()
-	#emit_signal("item_get")
-	yield(get_tree().create_timer(0.1), "timeout")
-	item_animation()
+	if is_ready:
+		yield(get_tree().create_timer(0.1), "timeout")
+		animation_player.play("Open Box")
+		animation_player.playback_speed = 1.0
+		collidable_box.disconnect("bumped_from_bottom", self, "_on_bumped_from_bottom")
+		is_opened = true
+		set_item()
+		#emit_signal("item_get")
+		yield(get_tree().create_timer(0.1), "timeout")
+		item_animation()
 	
 
 func item_animation():
