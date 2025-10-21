@@ -684,7 +684,7 @@ self_modulate = Color( 1, 1, 1, 0.1 )
 position = Vector2( -135, -198.5 )
 scale = Vector2( 1.46, 1.57 )
 frames = SubResource( 12 )
-frame = 3
+frame = 2
 speed_scale = 0.85
 playing = true
 
@@ -693,7 +693,7 @@ self_modulate = Color( 1, 1, 1, 0.28 )
 position = Vector2( -135.25, -200.641 )
 scale = Vector2( 0.935, 1.04719 )
 frames = SubResource( 12 )
-frame = 4
+frame = 1
 speed_scale = 1.1
 playing = true
 
@@ -1072,12 +1072,11 @@ script = ExtResource( 5 )
 depth_test_offset = Vector2( 0, 400 )
 
 [node name="HillB4" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( -719, -87 )
+position = Vector2( -719, -88 )
 scale = Vector2( 1.8525, 1.94948 )
 texture = ExtResource( 40 )
 script = ExtResource( 5 )
-depth_test_offset = Vector2( 0, 100 )
-height = 300.0
+depth_test_offset = Vector2( 0, 300 )
 
 [node name="PalmTreeC2" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( 53, 147 )

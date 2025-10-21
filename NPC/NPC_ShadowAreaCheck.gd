@@ -34,4 +34,3 @@ func _process(delta):
 			shadow_z = 0
 #	motion_root.shadow_z = floor_z
 		shadow_z = floor_z
-	print(shadow_z)

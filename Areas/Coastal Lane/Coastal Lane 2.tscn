@@ -1027,7 +1027,6 @@ depth_test_offset = Vector2( 0, 600 )
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Water" type="Area2D" parent="CollisionRoot"]
-visible = false
 position = Vector2( -14, -95 )
 script = ExtResource( 47 )
 target_scene = "res://Areas/Coastal Lane/Coastal Lane 2.tscn"
@@ -1073,7 +1072,7 @@ direction = Vector2( 1, 1 )
 height = 40
 
 [node name="Entrance" parent="CollisionRoot" instance=ExtResource( 39 )]
-position = Vector2( 777, -407 )
+position = Vector2( 799, -420 )
 door_name = "Entrance"
 direction = Vector2( -1, -1 )
 height = 40
