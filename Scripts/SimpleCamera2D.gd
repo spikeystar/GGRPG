@@ -28,6 +28,8 @@ var z_offset = 0
 var is_in_editor = Engine.is_editor_hint()
 var tween
 
+var signpost_ready = false
+
 signal animate_Gary
 
 func _ready():
@@ -167,6 +169,16 @@ func _input(event):
 			#yield(get_tree().create_timer(0.6), "timeout")
 			#able = false
 			
+		if Input.is_action_pressed("ui_select") and signpost_ready:
+			SE.effect("Menu Open")
+			signpost_ready = false
+			var tween = create_tween()
+			tween.tween_property($Blurb, "modulate:a", 0, 0.1)
+			yield(get_tree().create_timer(0.1), "timeout")
+			$Blurb.show()
+			PlayerManager.freeze = false
+			SceneManager.ready_again = true
+			
 
 func _on_Item_Get_item_get():
 	var item_name = Party.add_item_name
@@ -261,4 +273,12 @@ func _on_Dialogue_quest_item():
 	$QuestItem.item_animation()
 	$QuestItem.global_position = PlayerManager.current_position + Vector2(2.2, -91)
 	item_window()
+	
+
+func _on_Signpost_signpost():
+	$Blurb.show()
+	var tween = create_tween()
+	tween.tween_property($Blurb, "modulate:a", 1, 0.1)
+	yield(get_tree().create_timer(0.1), "timeout")
+	signpost_ready = true
 	

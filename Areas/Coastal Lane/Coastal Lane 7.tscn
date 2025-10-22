@@ -1,10 +1,10 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=1]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/Cherry Trail/dirt c.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Objects/Signpost.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Coastal Lane/Palm Tree A.png" type="Texture" id=6]
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile B.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Cherry Trail/Clover Tile A.png" type="Texture" id=8]
@@ -51,6 +51,10 @@
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=49]
 [ext_resource path="res://Scripts/Drown.gd" type="Script" id=50]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=51]
+[ext_resource path="res://Assets/Puzzle Pier/small_balloons_B.png" type="Texture" id=52]
+[ext_resource path="res://Assets/Puzzle Pier/small_balloons_C.png" type="Texture" id=53]
+[ext_resource path="res://Assets/Puzzle Pier/signpost.png" type="Texture" id=54]
+[ext_resource path="res://UI/Pause/Pause Map.png" type="Texture" id=55]
 
 [sub_resource type="TileSet" id=1]
 7/name = "Grass Tile.png 7"
@@ -250,6 +254,16 @@
 24/shapes = [  ]
 24/z_index = 0
 
+[sub_resource type="DynamicFontData" id=2]
+antialiased = false
+font_path = "res://Misc/Font/Greenscr.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+outline_size = 3
+outline_color = Color( 0.36, 0.22644, 0.1692, 1 )
+font_data = SubResource( 2 )
+
 [node name="WorldRoot" type="Node2D"]
 position = Vector2( 0, 40 )
 script = ExtResource( 47 )
@@ -391,9 +405,6 @@ position = Vector2( 537, -299 )
 rotation = -0.00725972
 scale = Vector2( 0.779632, 0.724024 )
 texture = ExtResource( 45 )
-script = ExtResource( 5 )
-height = 45.0
-use_transparency = true
 
 [node name="Box3" parent="YSort/Floor" instance=ExtResource( 48 )]
 position = Vector2( 543, -300 )
@@ -548,15 +559,19 @@ flip_h = true
 
 [node name="MiddleGround" type="Node2D" parent="YSort"]
 
+[node name="CircleShadowSmall12" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 1, 1, 1, 0.54902 )
+position = Vector2( -56, -356 )
+rotation = -0.0239307
+scale = Vector2( 0.666315, 0.674781 )
+texture = ExtResource( 49 )
+
 [node name="SquareShadow" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.235294 )
 position = Vector2( 249, -462 )
 rotation = -0.00725972
 scale = Vector2( 0.779632, 0.724024 )
 texture = ExtResource( 45 )
-script = ExtResource( 5 )
-height = 45.0
-use_transparency = true
 
 [node name="PalmTreeC3" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 0.984314, 0.952941, 1, 1 )
@@ -568,7 +583,7 @@ script = ExtResource( 4 )
 depth_test_offset = Vector2( 0, 100 )
 
 [node name="PalmTreeC4" type="Sprite" parent="YSort/MiddleGround"]
-position = Vector2( -210.922, -84.2385 )
+position = Vector2( -205, -111 )
 rotation = 0.102207
 scale = Vector2( 1.2931, 1.51358 )
 texture = ExtResource( 6 )
@@ -582,9 +597,6 @@ position = Vector2( 295, -462 )
 rotation = -0.00725972
 scale = Vector2( 0.779632, 0.724024 )
 texture = ExtResource( 45 )
-script = ExtResource( 5 )
-height = 45.0
-use_transparency = true
 
 [node name="SquareShadow3" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.235294 )
@@ -592,9 +604,6 @@ position = Vector2( 73, -104 )
 rotation = 0.00684995
 scale = Vector2( 1.18889, 1.16616 )
 texture = ExtResource( 45 )
-script = ExtResource( 5 )
-height = 45.0
-use_transparency = true
 
 [node name="SquareShadow4" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.235294 )
@@ -602,9 +611,6 @@ position = Vector2( 218, -153 )
 rotation = 0.0186899
 scale = Vector2( 1.18889, 1.16616 )
 texture = ExtResource( 45 )
-script = ExtResource( 5 )
-height = 45.0
-use_transparency = true
 
 [node name="Box" parent="YSort/MiddleGround" instance=ExtResource( 48 )]
 position = Vector2( 252, -466 )
@@ -632,6 +638,19 @@ texture_offset = Vector2( 0, 15 )
 height = 28.0
 preview_collision_box = false
 
+[node name="Signpost" parent="YSort/MiddleGround" instance=ExtResource( 48 )]
+position = Vector2( -56, -371 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 54 )
+texture_scale = Vector2( 1.2, 1.2 )
+texture_offset = Vector2( 0, 15 )
+height = 90.0
+preview_collision_box = false
+
 [node name="CrabgrassA4" type="Sprite" parent="YSort/MiddleGround"]
 position = Vector2( 417, -214 )
 rotation = -0.0685797
@@ -641,7 +660,7 @@ script = ExtResource( 4 )
 depth_test_offset = Vector2( 0, 300 )
 
 [node name="HillB2" type="Sprite" parent="YSort/MiddleGround"]
-position = Vector2( -78, 19 )
+position = Vector2( -80, 24 )
 scale = Vector2( 1.76, 1.83896 )
 texture = ExtResource( 39 )
 script = ExtResource( 4 )
@@ -737,6 +756,21 @@ flip_h = true
 script = ExtResource( 4 )
 depth_test_offset = Vector2( 0, 300 )
 
+[node name="SmallBalloonsC2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 279, -317 )
+texture = ExtResource( 53 )
+script = ExtResource( 4 )
+depth_test_offset = Vector2( 0, 700 )
+
+[node name="SmallBalloonsB2" type="Sprite" parent="YSort/Foreground"]
+modulate = Color( 1, 0.972549, 1, 1 )
+position = Vector2( 32, -241 )
+rotation = -0.0976013
+scale = Vector2( 1.07, 1.02 )
+texture = ExtResource( 52 )
+script = ExtResource( 4 )
+depth_test_offset = Vector2( 0, 700 )
+
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Water" type="Area2D" parent="CollisionRoot"]
@@ -762,6 +796,10 @@ position = Vector2( 495, -441 )
 door_name = "CoastalLane6_CoastalLane7"
 direction = Vector2( -1, -1 )
 
+[node name="PlayerSpawn4" parent="CollisionRoot" instance=ExtResource( 43 )]
+position = Vector2( 495, -441 )
+direction = Vector2( -1, -1 )
+
 [node name="PlayerSpawn2" parent="CollisionRoot" instance=ExtResource( 43 )]
 position = Vector2( -437, -22 )
 door_name = "CoastalLane3_CoastalLane2"
@@ -769,9 +807,9 @@ direction = Vector2( 1, 1 )
 height = 40
 
 [node name="PlayerSpawn3" parent="CollisionRoot" instance=ExtResource( 43 )]
-position = Vector2( 146, -138 )
+position = Vector2( 149, -130 )
 door_name = "PuzzlePier1_CoastalLane7"
-direction = Vector2( 1, 1 )
+direction = Vector2( -1, 1 )
 
 [node name="Doorway1" parent="CollisionRoot" instance=ExtResource( 44 )]
 position = Vector2( 537, -453 )
@@ -804,6 +842,14 @@ exit_name = "CoastalLane7_PuzzlePier1"
 position = Vector2( -475, -61 )
 polygon = PoolVector2Array( 111, -20, 138, -8, 44, 27, 16, 16 )
 
+[node name="Signpost" type="Area2D" parent="CollisionRoot"]
+position = Vector2( -826, 85 )
+script = ExtResource( 5 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Signpost"]
+position = Vector2( 772, -444 )
+polygon = PoolVector2Array( 11, -6, 30, 9, -3, 24, -19.9679, 6.10462 )
+
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
 position = Vector2( 17, -86 )
@@ -811,7 +857,7 @@ z_index = 4096
 current = true
 script = ExtResource( 51 )
 minPos = Vector2( -500, -450 )
-maxPos = Vector2( 900, -30 )
+maxPos = Vector2( 900, -150 )
 follow_player = true
 
 [node name="Info_Window" type="Sprite" parent="Camera2D"]
@@ -834,9 +880,32 @@ custom_fonts/font = ExtResource( 2 )
 text = "You got a Flummery Flambe!"
 align = 1
 
+[node name="Blurb" type="Sprite" parent="Camera2D"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 0, -19 )
+scale = Vector2( 0.85, 0.8 )
+texture = ExtResource( 55 )
+
+[node name="Label" type="Label" parent="Camera2D/Blurb"]
+anchor_right = 0.01
+margin_left = -140.67
+margin_top = -34.5449
+margin_right = 130.333
+margin_bottom = 16.4551
+custom_fonts/font = SubResource( 3 )
+text = "Ahead: Treasure Way
+
+Right: Puzzle Pier"
+align = 1
+valign = 1
+autowrap = true
+
 [node name="PresentBase" parent="." instance=ExtResource( 40 )]
 position = Vector2( 271, -437 )
 item_name = "Full Heal"
 shadow_color = Color( 0.188235, 0.45098, 0.243137, 1 )
 
+[connection signal="body_exited" from="CollisionRoot/Signpost" to="CollisionRoot/Signpost" method="_on_Signpost_body_exited"]
+[connection signal="signpost" from="CollisionRoot/Signpost" to="Camera2D" method="_on_Signpost_signpost"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

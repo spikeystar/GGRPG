@@ -4664,34 +4664,38 @@ visible = false
 polygon = PoolVector2Array( -779, 84, -435, -88, -466, -105, -715, -226, -875, -149, -969, -195, -806, -271, -909, -323, -688, -426, -814, -495, -714, -536, -592, -473, -465, -537, -97, -352, 226, -194, 452, -113, 702, 6, 748, -15, 978, 44, 1046, 114, 1016, 132, 1045, 147, 1015, 158, 1204, 257, 1423, 365, 1737, 491, 1551, 582, 1932, 765, 2053, 706, 2400, 875, 2026, 1062, 1682, 890, 1803, 830, 1424, 642, 1230, 735, -53, 96, -402, 270 )
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 11 )]
-position = Vector2( 431, 91 )
-door_name = "PivotTown1_PivotTown2"
-direction = Vector2( -1, 1 )
+position = Vector2( -659, -471 )
+door_name = "CoastalLane7_PuzzlePier1"
+direction = Vector2( 1, -1 )
 
 [node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 11 )]
-position = Vector2( 327, -134 )
-door_name = "CherryTrail3_4"
+position = Vector2( 74, -194 )
+door_name = "Circus1_PuzzlePier1"
 direction = Vector2( -1, -1 )
 
-[node name="Needlepoint Path" parent="." instance=ExtResource( 12 )]
-visible = false
-position = Vector2( -414, -259 )
+[node name="PlayerSpawnFromCherryTrail3" parent="CollisionRoot" instance=ExtResource( 11 )]
+position = Vector2( -844, -219 )
+door_name = "PuzzlePier2_PuzzlePier1"
+direction = Vector2( -1, -1 )
+
+[node name="CoastalLane" parent="." instance=ExtResource( 12 )]
+position = Vector2( -758, -503 )
 script = ExtResource( 13 )
+target_scene = "res://Areas/Coastal Lane/Coastal Lane 7.tscn"
+exit_name = "PuzzlePier1_CoastalLane7"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Needlepoint Path"]
-polygon = PoolVector2Array( 23, -44, 49, -35, -39, -1, -59, -12 )
-disabled = true
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CoastalLane"]
+polygon = PoolVector2Array( 23, -44, 50, -31, -38, 0, -59, -12 )
 
-[node name="PivotTown1" parent="." instance=ExtResource( 12 )]
-position = Vector2( 480, 138 )
+[node name="PuzzlePier2" parent="." instance=ExtResource( 12 )]
+position = Vector2( -899, -180 )
 rotation = 0.0231584
 script = ExtResource( 13 )
-target_scene = "res://Areas/Pivot Town/Pivot_Town_1.tscn"
-exit_name = "PivotTown2_PivotTown1"
+target_scene = "res://Areas/Puzzle Pier/Puzzle_Pier_2.tscn"
+exit_name = "PuzzlePier1_PuzzlePier2"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PivotTown1"]
-polygon = PoolVector2Array( 24.7657, -53.5879, 46.9682, -45.0997, -48.1724, -6.88636, -70.3518, -14.3748 )
-disabled = true
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PuzzlePier2"]
+polygon = PoolVector2Array( -51.4957, -20.8131, 38.5456, 23.1136, 23.6885, 29.4594, -70.3518, -14.3748 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
@@ -4734,7 +4738,7 @@ position = Vector2( -47.3501, 124.25 )
 polygon = PoolVector2Array( -85.6499, -125.25, -48.6499, -118.25, -39.6499, -103.25, -41.6499, -92.25, -51.6499, -79.25, -78.6499, -70.25, -103.65, -70.25, -124.65, -76.25, -139.65, -85.25, -138.65, -101.25, -131.65, -110.25, -114.65, -122.25 )
 
 [node name="SaveStar" type="Sprite" parent="."]
-position = Vector2( -760, -341 )
+position = Vector2( -760, -339 )
 texture = ExtResource( 43 )
 
 [node name="Position2D" type="Position2D" parent="."]
