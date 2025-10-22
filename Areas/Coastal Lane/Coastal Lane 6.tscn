@@ -684,6 +684,7 @@ self_modulate = Color( 1, 1, 1, 0.1 )
 position = Vector2( -135, -198.5 )
 scale = Vector2( 1.46, 1.57 )
 frames = SubResource( 12 )
+frame = 2
 speed_scale = 0.85
 playing = true
 
@@ -692,6 +693,7 @@ self_modulate = Color( 1, 1, 1, 0.28 )
 position = Vector2( -135.25, -200.641 )
 scale = Vector2( 0.935, 1.04719 )
 frames = SubResource( 12 )
+frame = 4
 speed_scale = 1.1
 playing = true
 
@@ -926,7 +928,7 @@ script = ExtResource( 5 )
 depth_test_offset = Vector2( 0, 500 )
 
 [node name="HillB2" type="Sprite" parent="YSort/MiddleGround"]
-position = Vector2( 530, 43.0001 )
+position = Vector2( 544, 28 )
 scale = Vector2( 1.76, 1.83896 )
 texture = ExtResource( 40 )
 script = ExtResource( 5 )
@@ -1022,7 +1024,7 @@ rotation = -0.0550355
 scale = Vector2( 2.03144, 1.70601 )
 texture = ExtResource( 45 )
 script = ExtResource( 6 )
-height = 45.0
+height = 41.0
 use_transparency = true
 
 [node name="Ledge1" parent="YSort/MiddleGround" instance=ExtResource( 48 )]
@@ -1061,7 +1063,7 @@ script = ExtResource( 5 )
 depth_test_offset = Vector2( 0, 400 )
 
 [node name="PalmTreeC4" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 369, 33 )
+position = Vector2( 381, 34 )
 rotation = 0.102207
 scale = Vector2( 1.2931, 1.51358 )
 texture = ExtResource( 7 )
@@ -1100,13 +1102,6 @@ texture = ExtResource( 40 )
 script = ExtResource( 5 )
 depth_test_offset = Vector2( 0, 600 )
 
-[node name="HillB6" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 431, 218 )
-scale = Vector2( 2.03125, 2.09141 )
-texture = ExtResource( 40 )
-script = ExtResource( 5 )
-depth_test_offset = Vector2( 0, 600 )
-
 [node name="PalmTreeA2" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( -683, -111 )
 rotation = -0.0329346
@@ -1115,16 +1110,32 @@ texture = ExtResource( 30 )
 script = ExtResource( 5 )
 depth_test_offset = Vector2( 0, 600 )
 
+[node name="CrabgrassA6" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 572.233, 112.529 )
+rotation = -0.0685797
+scale = Vector2( 1.75538, 1.38335 )
+texture = ExtResource( 27 )
+script = ExtResource( 5 )
+depth_test_offset = Vector2( 0, 400 )
+
+[node name="HillB6" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 431, 218 )
+scale = Vector2( 2.03125, 2.09141 )
+texture = ExtResource( 40 )
+script = ExtResource( 5 )
+depth_test_offset = Vector2( 0, 500 )
+
 [node name="PalmTreeB2" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 216, 314 )
+position = Vector2( 216, 300 )
 rotation = 0.255976
 scale = Vector2( 1.5062, 1.92442 )
 texture = ExtResource( 30 )
 flip_h = true
 script = ExtResource( 5 )
-height = 500.0
+depth_test_offset = Vector2( 0, 900 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Water" type="Area2D" parent="CollisionRoot"]
 visible = false
@@ -1225,7 +1236,7 @@ z_index = 4096
 current = true
 script = ExtResource( 51 )
 minPos = Vector2( -500, -450 )
-maxPos = Vector2( 900, -30 )
+maxPos = Vector2( 310, -90 )
 follow_player = true
 
 [node name="Info_Window" type="Sprite" parent="Camera2D"]
@@ -1247,5 +1258,8 @@ rect_scale = Vector2( 1.2, 1.1 )
 custom_fonts/font = ExtResource( 3 )
 text = "You got a Flummery Flambe!"
 align = 1
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -131, 198 )
 
 [connection signal="item_get" from="YSort/MiddleGround/LoopingPlatforms/Platforms/LoopingPlatform_Coastal4/PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
