@@ -530,7 +530,7 @@ height = 5.0
 [node name="Deco" type="Node2D" parent="YSort/Floor"]
 
 [node name="ClamA" type="Sprite" parent="YSort/Floor/Deco"]
-position = Vector2( -363, -25 )
+position = Vector2( -380, -26 )
 texture = ExtResource( 24 )
 
 [node name="ClamA4" type="Sprite" parent="YSort/Floor/Deco"]
@@ -622,7 +622,7 @@ scale = Vector2( 1.68, 1.45 )
 texture = ExtResource( 27 )
 
 [node name="CrabgrassA" type="Sprite" parent="YSort/MiddleGround"]
-position = Vector2( -236, -14 )
+position = Vector2( -244, -14 )
 scale = Vector2( 1.68, 1.45 )
 texture = ExtResource( 39 )
 script = ExtResource( 6 )
@@ -632,9 +632,9 @@ height = 300.0
 z_index = 20
 
 [node name="PalmTreeB" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( -366, -72 )
+position = Vector2( -389.234, -75.2793 )
 rotation = -0.0113602
-scale = Vector2( 1.61093, 2.0072 )
+scale = Vector2( 1.58862, 2.01025 )
 texture = ExtResource( 26 )
 script = ExtResource( 6 )
 height = 300.0
