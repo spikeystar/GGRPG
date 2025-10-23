@@ -32,5 +32,5 @@ func _process(delta):
 		else:
 			ceiling_z = min(ceiling_z, check_ceiling_z)
 			shadow_z = 0
-#	motion_root.shadow_z = floor_z
-		shadow_z = floor_z
+	motion_root.shadow_z = floor_z
+		#shadow_z = floor_z

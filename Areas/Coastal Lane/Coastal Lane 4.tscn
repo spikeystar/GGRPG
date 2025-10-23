@@ -807,7 +807,7 @@ rotation = -0.00725972
 scale = Vector2( 0.779632, 0.724024 )
 texture = ExtResource( 40 )
 script = ExtResource( 5 )
-height = 45.0
+height = 41.0
 use_transparency = true
 
 [node name="SquareShadow3" type="Sprite" parent="YSort/MiddleGround"]
@@ -817,7 +817,7 @@ rotation = -0.00725972
 scale = Vector2( 0.779632, 0.724024 )
 texture = ExtResource( 40 )
 script = ExtResource( 5 )
-height = 45.0
+height = 41.0
 use_transparency = true
 
 [node name="SquareShadow4" type="Sprite" parent="YSort/MiddleGround"]
@@ -837,7 +837,7 @@ rotation = -0.00725972
 scale = Vector2( 0.779632, 0.724024 )
 texture = ExtResource( 40 )
 script = ExtResource( 5 )
-height = 45.0
+height = 41.0
 use_transparency = true
 
 [node name="Box4" parent="YSort/MiddleGround" instance=ExtResource( 43 )]
@@ -1441,5 +1441,5 @@ position = Vector2( 648, -14 )
 [connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
-[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]
+[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]

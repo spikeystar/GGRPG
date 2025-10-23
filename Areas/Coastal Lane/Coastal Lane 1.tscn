@@ -394,13 +394,13 @@ texture = ExtResource( 33 )
 
 [node name="CircleShadowSmall7" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.392157 )
-position = Vector2( 580, -134 )
+position = Vector2( 577, -156 )
 scale = Vector2( 0.935553, 1.00459 )
 texture = ExtResource( 33 )
 
 [node name="Bush" parent="YSort/MiddleGround" instance=ExtResource( 40 )]
 modulate = Color( 1, 0.988235, 0.988235, 1 )
-position = Vector2( 582, -143 )
+position = Vector2( 580, -164 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -611,10 +611,22 @@ texture = ExtResource( 13 )
 
 [node name="PalmTreeC3" type="Sprite" parent="YSort/Foreground"]
 self_modulate = Color( 0.976471, 0.921569, 1, 1 )
-position = Vector2( 403, 228 )
+position = Vector2( 398, 212 )
 rotation = 0.0818528
 scale = Vector2( 1.69533, 1.92741 )
 texture = ExtResource( 9 )
+
+[node name="CrabgrassA5" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 383, 317 )
+scale = Vector2( 1.68, 1.45 )
+texture = ExtResource( 10 )
+
+[node name="PalmTreeB2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 730, 157 )
+rotation = 0.183808
+scale = Vector2( 1.57979, 1.90578 )
+texture = ExtResource( 7 )
+flip_h = true
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 
@@ -628,7 +640,7 @@ polygon = PoolVector2Array( -277, 71, -159, 27, -214, 6, -173, -7, -212, -18, -1
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 3 )]
 position = Vector2( 358, -204 )
 door_name = "PivotTown1_CoastalLane1"
-direction = Vector2( -1, 1 )
+direction = Vector2( 1, -1 )
 
 [node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 3 )]
 position = Vector2( -203, 156 )
@@ -661,8 +673,8 @@ position = Vector2( 17, -86 )
 z_index = 4096
 current = true
 script = ExtResource( 41 )
-minPos = Vector2( -18, -80 )
-maxPos = Vector2( 240, -75 )
+minPos = Vector2( -30, -100 )
+maxPos = Vector2( 320, 0 )
 follow_player = true
 
 [node name="Info_Window" type="Sprite" parent="Camera2D"]

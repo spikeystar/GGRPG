@@ -18,6 +18,7 @@ export var flowing_name: String
 
 var is_ready = false
 var is_opened = false
+var bumpable = false
 
 func _ready():		
 	is_ready = true
@@ -35,6 +36,14 @@ func _ready():
 		else:
 			animation_player.play("Done")
 			
+	var timer = Timer.new()
+	add_child(timer)
+	timer.start(1)
+	timer.connect("timeout", self, "_on_timer_timeout")
+
+func _on_timer_timeout():
+	bumpable = true
+	
 func _process(delta):
 	if flowing:
 		$CollidableBox._generate_meshes()
@@ -63,7 +72,7 @@ func _calculate_box_position():
 		square_shadow.height = floor_height + 0.5
 
 func _on_bumped_from_bottom():
-	if is_ready:
+	if bumpable:
 		yield(get_tree().create_timer(0.1), "timeout")
 		animation_player.play("Open Box")
 		animation_player.playback_speed = 1.0

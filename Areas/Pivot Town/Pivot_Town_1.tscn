@@ -1771,6 +1771,38 @@ position = Vector2( 615, -1403 )
 [node name="Jacques" parent="YSort/MiddleGround" instance=ExtResource( 90 )]
 position = Vector2( 243, -479 )
 
+[node name="HillB5" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 1156, -446 )
+rotation = 0.0558606
+scale = Vector2( 1.35553, 1.2228 )
+texture = ExtResource( 6 )
+script = ExtResource( 29 )
+depth_test_offset = Vector2( 0, 100 )
+
+[node name="PlantA4" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 1122, -337 )
+rotation = -0.073129
+scale = Vector2( 2.48262, 2.58361 )
+texture = ExtResource( 14 )
+script = ExtResource( 29 )
+depth_test_offset = Vector2( 0, 200 )
+
+[node name="PlantB4" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 961, -259 )
+rotation = -0.176365
+scale = Vector2( 1.75908, 1.76185 )
+texture = ExtResource( 1 )
+script = ExtResource( 29 )
+depth_test_offset = Vector2( 0, 150 )
+
+[node name="HillC10" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 1071, -228 )
+rotation = -0.00106369
+scale = Vector2( 1.72148, 1.56892 )
+texture = ExtResource( 5 )
+script = ExtResource( 29 )
+depth_test_offset = Vector2( 0, 120 )
+
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
@@ -1784,24 +1816,6 @@ position = Vector2( 642, -92 )
 rotation = -0.129799
 scale = Vector2( 2.31272, 2.51742 )
 texture = ExtResource( 14 )
-
-[node name="HillB5" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 1156, -446 )
-rotation = 0.0558606
-scale = Vector2( 1.35553, 1.2228 )
-texture = ExtResource( 6 )
-
-[node name="PlantA4" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 1122, -337 )
-rotation = -0.073129
-scale = Vector2( 2.48262, 2.58361 )
-texture = ExtResource( 14 )
-
-[node name="PlantB4" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 961, -259 )
-rotation = -0.176365
-scale = Vector2( 1.75908, 1.76185 )
-texture = ExtResource( 1 )
 
 [node name="PlantB5" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( -929, -442 )
@@ -1840,12 +1854,6 @@ texture = ExtResource( 19 )
 position = Vector2( -900, -106 )
 rotation = -0.000796935
 scale = Vector2( 1.46369, 1.34137 )
-texture = ExtResource( 5 )
-
-[node name="HillC10" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 1071, -228 )
-rotation = -0.00106369
-scale = Vector2( 1.72148, 1.56892 )
 texture = ExtResource( 5 )
 
 [node name="HillC12" type="Sprite" parent="YSort/Foreground"]
@@ -1963,6 +1971,7 @@ disabled = true
 [node name="CoastalLane" parent="CollisionRoot" instance=ExtResource( 11 )]
 position = Vector2( 728, -25 )
 script = ExtResource( 75 )
+target_scene = "res://Areas/Coastal Lane/Coastal Lane 1.tscn"
 exit_name = "PivotTown1_CoastalLane1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/CoastalLane"]
@@ -2046,9 +2055,9 @@ door_name = "PivotTown3_PivotTown1"
 direction = Vector2( -1, -1 )
 
 [node name="FromPivotTown4" parent="CollisionRoot" instance=ExtResource( 23 )]
-position = Vector2( 901, -95 )
-door_name = "PivotTown1_CoastalLane1"
-direction = Vector2( 1, -1 )
+position = Vector2( 931, -80 )
+door_name = "CoastalLane1_PivotTown1"
+direction = Vector2( -1, 1 )
 
 [node name="NPC" type="Area2D" parent="CollisionRoot"]
 script = ExtResource( 69 )
@@ -2488,7 +2497,6 @@ position = Vector2( -429, -740 )
 scale = Vector2( 1.7, 1.7 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 3
 speed_scale = 0.8
 playing = true
 
@@ -2497,7 +2505,7 @@ position = Vector2( 172, -419 )
 scale = Vector2( 1.6, 1.6 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 2
+frame = 1
 speed_scale = 0.7
 playing = true
 

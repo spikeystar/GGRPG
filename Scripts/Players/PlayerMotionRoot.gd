@@ -58,13 +58,15 @@ func update_floor():
 	ceiling_z = HIGHEST_Z
 	
 	for f in floor_layers:
-		if "floating" in f:
+		if "floating" in f and not PlayerManager.drown and not PlayerManager.ouch:
 			if f.floating and int(f.height) == int(pos_z):
 				ascending = true
 			if not f.floating and int(f.height) == int(pos_z):
 				ascending = false
 				
-		if "flowing" in f:
+		if "flowing" in f and not PlayerManager.drown and not PlayerManager.ouch:
+			if PlayerManager.drown or PlayerManager.ouch:
+				return
 			if f.flowing and int(f.height) == int(pos_z):
 				flowing = true
 				velocity = f.velocity
@@ -76,6 +78,9 @@ func update_floor():
 			floor_z = max(floor_z, f.height)
 		else:
 			ceiling_z = min(ceiling_z, f.bottom)
+			
+	if PlayerManager.drown or PlayerManager.ouch:
+		velocity = Vector2(0,0)
 
 
 func _physics_process(delta):

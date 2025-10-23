@@ -819,7 +819,7 @@ rotation = -0.00725972
 scale = Vector2( 0.779632, 0.724024 )
 texture = ExtResource( 45 )
 script = ExtResource( 6 )
-height = 45.0
+height = 41.0
 use_transparency = true
 
 [node name="PalmTreeC5" type="Sprite" parent="YSort/MiddleGround"]
@@ -838,7 +838,7 @@ rotation = -0.00725972
 scale = Vector2( 0.779632, 0.724024 )
 texture = ExtResource( 45 )
 script = ExtResource( 6 )
-height = 45.0
+height = 41.0
 use_transparency = true
 
 [node name="SquareShadow3" type="Sprite" parent="YSort/MiddleGround"]
@@ -848,7 +848,7 @@ rotation = -0.00725972
 scale = Vector2( 0.779632, 0.724024 )
 texture = ExtResource( 45 )
 script = ExtResource( 6 )
-height = 45.0
+height = 41.0
 use_transparency = true
 
 [node name="SquareShadow4" type="Sprite" parent="YSort/MiddleGround"]

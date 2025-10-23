@@ -40,6 +40,24 @@ func transition_in(target_scene, animation_name = "FadeToBlack"):
 	self.animation_name = animation_name
 	self.target_scene = target_scene
 	animation_player.play(animation_name + "_In")
+	
+	if PlayerManager.drown:
+		var timer = Timer.new()
+		add_child(timer)
+		timer.start(0.5)
+		timer.connect("timeout", self, "_on_timer_timeout")
+		
+	if PlayerManager.ouch:
+		var timer = Timer.new()
+		add_child(timer)
+		timer.start(0.7)
+		timer.connect("timeout", self, "_on_timer_timeout")
+
+func _on_timer_timeout():
+	if PlayerManager.drown:
+		PlayerManager.drown = false
+	if PlayerManager.ouch:
+		PlayerManager.ouch = false
 
 func transition_out(animation_name = "FadeToBlack"):
 	self.animation_name = animation_name

@@ -51,22 +51,23 @@ func _on_body_exited(body):
 		#body_check = false
 	
 func _on_touch_area():
-	body_check = false
-	transitioning = true
-	SE.effect("Ouch")
-	PlayerManager.ouch = true
-	disconnect("body_entered", self, "_on_body_entered")
-	PlayerManager.freeze = true
-	yield(get_tree().create_timer(0.5), "timeout")
-	SE.effect("Poof")
-	yield(get_tree().create_timer(0.5), "timeout")
-	Global.door_name = exit_name
-	var transition = TransitionPlayer.instance()
-	get_tree().get_root().add_child(transition)
-	transition.spike_speed()
-	transition.transition_in(target_scene, _get_animation_name())
-	yield(get_tree().create_timer(0.6), "timeout")
-	PlayerManager.ouch = false
+	if not PlayerManager.drown or not PlayerManager.ouch:
+		body_check = false
+		transitioning = true
+		SE.effect("Ouch")
+		PlayerManager.ouch = true
+		disconnect("body_entered", self, "_on_body_entered")
+		PlayerManager.freeze = true
+		yield(get_tree().create_timer(0.5), "timeout")
+		SE.effect("Poof")
+		yield(get_tree().create_timer(0.5), "timeout")
+		Global.door_name = exit_name
+		var transition = TransitionPlayer.instance()
+		get_tree().get_root().add_child(transition)
+		transition.spike_speed()
+		transition.transition_in(target_scene, _get_animation_name())
+	#yield(get_tree().create_timer(0.6), "timeout")
+	#PlayerManager.ouch = false
 	
 	#yield(get_tree().create_timer(2), "timeout")
 	#transition.fade_speed()

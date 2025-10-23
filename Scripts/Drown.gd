@@ -54,48 +54,50 @@ func _on_body_exited(body):
 		body_check = false
 	
 func _on_touch_area():
-	Global.door_name = "Entrance"
-	body_check = false
-	transitioning = true
-	SE.effect("Drown 2")
-	PlayerManager.drown = true
-	disconnect("body_entered", self, "_on_body_entered")
-	PlayerManager.freeze = true
-	yield(get_tree().create_timer(0.3), "timeout")
-	var pixelation = PixelationPlayer.instance()
-	get_tree().get_root().add_child(pixelation)
-	pixelation.pixelate2()
-	yield(get_tree().create_timer(0.7), "timeout")
-	if SceneManager.counter > 1:
-		if priority == 0:
-			return
-			SceneManager.counter = 0
-		if priority == 1:
+	print("hello")
+	if not PlayerManager.drown or not PlayerManager.ouch:
+		Global.door_name = "Entrance"
+		body_check = false
+		transitioning = true
+		SE.effect("Drown 2")
+		PlayerManager.drown = true
+		disconnect("body_entered", self, "_on_body_entered")
+		PlayerManager.freeze = true
+		yield(get_tree().create_timer(0.3), "timeout")
+		var pixelation = PixelationPlayer.instance()
+		get_tree().get_root().add_child(pixelation)
+		pixelation.pixelate2()
+		yield(get_tree().create_timer(0.7), "timeout")
+		if SceneManager.counter > 1:
+			if priority == 0:
+				return
+				SceneManager.counter = 0
+			if priority == 1:
+				#SceneManager.counter = 0
+				#yield(get_tree().create_timer(0.01), "timeout")
+				SceneManager.counter += 1
+				Global.door_name = exit_name
+			
+		else:
+			Global.door_name = exit_name
 			SceneManager.counter = 0
 			yield(get_tree().create_timer(0.01), "timeout")
 			SceneManager.counter += 1
-			Global.door_name = exit_name
-			
-	else:
-		Global.door_name = exit_name
-		SceneManager.counter = 0
-		yield(get_tree().create_timer(0.01), "timeout")
-		SceneManager.counter += 1
-	var transition = TransitionPlayer.instance()
+		var transition = TransitionPlayer.instance()
 	
-	print("counter equals " + str(SceneManager.counter))
+		print("counter equals " + str(SceneManager.counter))
 	
-	if SceneManager.counter == 1:
-		get_tree().get_root().add_child(transition)
-		transition.transition_in(target_scene, _get_animation_name())
+		if SceneManager.counter == 1:
+			get_tree().get_root().add_child(transition)
+			transition.transition_in(target_scene, _get_animation_name())
 		
 		#SceneManager.times += 1
 		#print("run " + str(SceneManager.times))
 		
-		yield(get_tree().create_timer(0.6), "timeout")
-		PlayerManager.drown = false
-	else:
-		pass
+		#yield(get_tree().create_timer(0.6), "timeout")
+		#PlayerManager.drown = false
+		else:
+			pass
 	
 	#yield(get_tree().create_timer(2), "timeout")
 	#transition.queue_free()
