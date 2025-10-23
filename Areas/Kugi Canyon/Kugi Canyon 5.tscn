@@ -850,7 +850,7 @@ rotation = 0.0341947
 scale = Vector2( 0.810536, 0.702232 )
 texture = ExtResource( 33 )
 script = ExtResource( 48 )
-height = 123.0
+height = 121.0
 use_transparency = true
 
 [node name="SquareShadow18" type="Sprite" parent="YSort/MiddleGround"]
@@ -860,7 +860,7 @@ rotation = 0.0341947
 scale = Vector2( 0.810536, 0.702232 )
 texture = ExtResource( 33 )
 script = ExtResource( 48 )
-height = 123.0
+height = 121.0
 use_transparency = true
 
 [node name="Box8" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
@@ -1267,11 +1267,11 @@ use_transparency = true
 
 [node name="CircleShadowSmall3" type="Sprite" parent="YSort/MiddleGround"]
 self_modulate = Color( 1, 1, 1, 0.47 )
-position = Vector2( 629, -52 )
+position = Vector2( 629, -51 )
 scale = Vector2( 0.935749, 0.904412 )
 texture = ExtResource( 47 )
 script = ExtResource( 48 )
-height = 130.0
+height = 123.0
 use_transparency = true
 
 [node name="Prickly3" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
