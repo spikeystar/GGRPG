@@ -1135,7 +1135,6 @@ script = ExtResource( 5 )
 depth_test_offset = Vector2( 0, 900 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Water" type="Area2D" parent="CollisionRoot"]
 visible = false
@@ -1160,6 +1159,7 @@ position = Vector2( -53, -109 )
 polygon = PoolVector2Array( 215, 211, 178, 62, 48, 58, -104, 83, -137, 166, -76, 219, 71, 252 )
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 41 )]
+visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 42 )]
 position = Vector2( 154, -1 )

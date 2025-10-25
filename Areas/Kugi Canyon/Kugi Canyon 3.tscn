@@ -1304,6 +1304,7 @@ height = 40.0
 depth_test_offset = Vector3( 0, 400, 0 )
 preview_collision_box = false
 always_update = true
+floating = true
 
 [node name="Big Ledge" parent="YSort/MiddleGround" instance=ExtResource( 40 )]
 modulate = Color( 0.99, 0.9801, 0.9801, 1 )
@@ -1560,6 +1561,7 @@ height = 40.0
 preview_collision_box = false
 detect_touches = true
 always_update = true
+floating = true
 
 [node name="Spike Map Front" type="TileMap" parent="YSort/MiddleGround"]
 position = Vector2( -224, -99 )

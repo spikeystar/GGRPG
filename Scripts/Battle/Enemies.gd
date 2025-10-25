@@ -716,7 +716,9 @@ func _on_SpellList_all_enemy_spell():
 	emit_signal("all_enemy_spell")
 
 func _on_Fighters_enemies_enabled():
-	#yield(get_tree().create_timer(0.5), "timeout")
+	if SceneManager.game_over:
+		return
+		
 	SceneManager.enemy_turn = true
 	var poison_wait = false
 	var sd_wait = false
@@ -761,12 +763,16 @@ func _on_Fighters_enemies_enabled():
 		victory_check()
 	#yield(get_tree().create_timer(0.2), "timeout")
 	
-	if enemies_active:
+	if enemies_active and not SceneManager.game_over:
 		
 		for x in range(enemies.size()):
 			var stun = enemies[x].get_status("stun")
-			if not stun and enemies_active:
+			if not stun and enemies_active and not SceneManager.game_over:
+				if SceneManager.game_over:
+					return
 				yield(get_tree().create_timer(0.7), "timeout")
+				if SceneManager.game_over:
+					return
 				var move_list : Array = enemies[x].move_list
 				randomize()
 				var rng = RandomNumberGenerator.new()
@@ -847,6 +853,9 @@ func _on_Fighters_enemies_enabled():
 			enemies_active_check()
 		
 func enemies_active_check():
+	if SceneManager.game_over:
+		return
+	
 	if enemy_turns == (enemies.size()):
 		if tutorial:
 			tutorial_wait = true

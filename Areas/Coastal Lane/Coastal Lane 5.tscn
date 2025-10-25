@@ -2018,7 +2018,6 @@ position = Vector2( -244, -158 )
 polygon = PoolVector2Array( -283, 632, 684, 790, 1144, 546, 1725, 190, 1424, -45, 1334, -125, 1226, -136, 1045, -78, 1001, -63, 922, -82, 813, -124, 825, -146, 911, -171, 979, -204, 982, -233, 904, -296, 539, -538, 164, -506, -351, -411, -647, -281, -929, -210, -960, -74, -1053, 234, -864, 428, -357, 328, -105, 499, -226, 556 )
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 28 )]
-visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 29 )]
 position = Vector2( 394, -148 )
@@ -2051,6 +2050,7 @@ polygon = PoolVector2Array( -244, -231, 92, -351, 121, -341, 157, -352, 183, -34
 height = 80.0
 
 [node name="Bottom" parent="CollisionRoot/Navmesh" instance=ExtResource( 29 )]
+visible = false
 position = Vector2( -226, 20 )
 polygon = PoolVector2Array( -813, -50, -879, -307, -781, -390, -381, -576, 72, -686, 458, -666, 560, -601, 754, -496, 778, -459, 817, -448, 1168, -275, 1289, -272, 1298, -126, 1297, 4, 1073, 99, 773, 326, 574, 326, 92, 331 )
 disabled = true

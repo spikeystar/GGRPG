@@ -1244,7 +1244,6 @@ position = Vector2( -244, -158 )
 polygon = PoolVector2Array( 271, 436, 835, 174, 1401, 22, 1424, -45, 1374, -224, 1275, -388, 1027, -507, 852, -512, 551, -470, 433, -391, 369, -234, 205, -162, -65, -161, -463, 39, -475, 58, -223, 265 )
 
 [node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 48 )]
-visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 47 )]
 position = Vector2( 435, 116 )
@@ -1443,5 +1442,5 @@ position = Vector2( 648, -14 )
 [connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
-[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]
+[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]

@@ -737,12 +737,15 @@ func f_turn_used():
 	max_turns += 1
 	
 func fighters_active_check():
+	if SceneManager.game_over:
+		return
+	
 	if not SceneManager.game_over:	
 		var array_size = fighters2.size()
 	
-		print("max_turns")
-		print(max_turns)
-		print(str(fighters2.size()) + "FIGHTER SIZE")
+		#print("max_turns")
+		#print(max_turns)
+		#print(str(fighters2.size()) + "FIGHTER SIZE")
 	
 #	for x in range (fighters2.size()):
 	#	var dead = fighters2[x].death_count()
@@ -1014,6 +1017,9 @@ func _on_SpellList_all_ally_spell():
 	
 func _on_Enemies_fighters_active():
 	#max_turns = 0
+	if SceneManager.game_over:
+		return
+	
 	yield(get_tree().create_timer(0.3), "timeout")
 	for x in range (fighters.size() -1, -1, -1):
 		var dead = fighters[x].death_count()
