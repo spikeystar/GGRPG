@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=1]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=2]
@@ -64,6 +64,8 @@
 [ext_resource path="res://UI/Interaction Window.png" type="Texture" id=62]
 [ext_resource path="res://Scripts/Objects/StarOptions.gd" type="Script" id=63]
 [ext_resource path="res://Scripts/UI/StarOptionsCursor.gd" type="Script" id=64]
+[ext_resource path="res://Enemies/Coastal Lane/Wander/Hibiscus_wander_40.tscn" type="PackedScene" id=65]
+[ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=66]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -652,7 +654,7 @@ use_transparency = true
 
 [node name="DirtB3" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 1, 1, 0.968627 )
-position = Vector2( 822, -152 )
+position = Vector2( 832, -145 )
 rotation = -0.0548485
 scale = Vector2( 2.11612, 2.00788 )
 texture = ExtResource( 57 )
@@ -1117,6 +1119,12 @@ script = ExtResource( 5 )
 height = 65.0
 use_transparency = true
 
+[node name="Hibiscus" parent="YSort/MiddleGround" instance=ExtResource( 65 )]
+position = Vector2( 975, -185 )
+
+[node name="Hibiscus2" parent="YSort/MiddleGround" instance=ExtResource( 65 )]
+position = Vector2( 693, -79 )
+
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
@@ -1231,6 +1239,7 @@ script = ExtResource( 4 )
 depth_test_offset = Vector2( 0, 400 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Water" type="Area2D" parent="CollisionRoot"]
 visible = false
@@ -1435,6 +1444,19 @@ shadow_color = Color( 0.576471, 0.298039, 0.247059, 1 )
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 648, -14 )
 
+[node name="Enemy_Boundary" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 15
+script = ExtResource( 66 )
+
+[node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+polygon = PoolVector2Array( 470, -63, 1000, -294, 975, -314, 652, -282, 510, -232, 290, -156 )
+
+[node name="Repel2" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+position = Vector2( 265, -191 )
+polygon = PoolVector2Array( 277, -19, 293, -34, -142, -185, -34, -223, 389, -68, 427, -90, -46, -248, -173, -188, -159, -168 )
+
 [connection signal="bouncy" from="CollisionRoot/Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="bouncy" from="CollisionRoot/Bouncy2" to="YSort/MiddleGround/BouncyFlower2" method="_on_Bouncy2_bouncy"]
 [connection signal="star_options" from="CollisionRoot/SaveStar" to="Camera2D/StarOptions" method="_on_SaveStar_star_options"]
@@ -1442,5 +1464,5 @@ position = Vector2( 648, -14 )
 [connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
-[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]
+[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]

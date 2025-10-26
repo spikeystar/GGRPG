@@ -144,12 +144,12 @@ alt_chance = 50
 alternate = true
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
-visible = false
 position = Vector2( 0, 1 )
 collision_layer = 9
 collision_mask = 10
 collision/safe_margin = 0.5
 script = ExtResource( 9 )
+spawn_z = 40
 ACCELERATION = 80
 CHASE_SPEED = 200
 WANDER_SPEED = 25
@@ -184,7 +184,7 @@ position = Vector2( -1, -17 )
 shape = SubResource( 178 )
 
 [node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 3 )]
-position = Vector2( 5, 5 )
+position = Vector2( 9, 4 )
 scale = Vector2( 0.972756, 0.936889 )
 collision_layer = 7
 collision_mask = 6
