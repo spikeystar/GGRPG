@@ -34,8 +34,12 @@ func _ready():
 func _process(delta):
 	player_height = int(PlayerManager.player_motion_root.pos_z)
 	
-	if body_check and int(height) == player_height and not transitioning and SceneManager.counter > 0:
+	if body_check and int(height) == player_height and not transitioning and SceneManager.counter > 0 and not PlayerManager.drown and not PlayerManager.ouch:
 		_on_touch_area()
+		
+	if PlayerManager.drown or PlayerManager.ouch:
+		$CollisionPolygon2D.disabled = true
+		
 
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root and not transitioning and not body_check and not PlayerManager.drown:
@@ -56,7 +60,7 @@ func _on_body_exited(body):
 func _on_touch_area():
 	print("hello")
 	if not PlayerManager.drown or not PlayerManager.ouch:
-		Global.door_name = "Entrance"
+		Global.door_name = exit_name
 		body_check = false
 		transitioning = true
 		SE.effect("Drown 2")
@@ -70,8 +74,8 @@ func _on_touch_area():
 		yield(get_tree().create_timer(0.7), "timeout")
 		if SceneManager.counter > 1:
 			if priority == 0:
-				return
 				SceneManager.counter = 0
+				return
 			if priority == 1:
 				#SceneManager.counter = 0
 				#yield(get_tree().create_timer(0.01), "timeout")

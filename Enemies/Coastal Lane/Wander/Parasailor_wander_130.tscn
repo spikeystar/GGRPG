@@ -1,16 +1,16 @@
 [gd_scene load_steps=19 format=2]
 
-[ext_resource path="res://NPC/NPC_ShadowAreaCheck.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=3]
-[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=4]
-[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/PlayerDetection.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Enemies/Coastal Lane/Parasailor SS.png" type="Texture" id=7]
-[ext_resource path="res://Enemies/BattleTrigger.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scripts/Objects/EnemyMotionRoot.gd" type="Script" id=9]
-[ext_resource path="res://Scripts/Objects/EnemyTest.gd" type="Script" id=10]
-[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Objects/EnemyTest.gd" type="Script" id=2]
+[ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/BattleTrigger.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemies/PlayerDetection.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=8]
+[ext_resource path="res://Enemies/Coastal Lane/Parasailor SS.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/Objects/EnemyMotionRoot.gd" type="Script" id=10]
+[ext_resource path="res://NPC/NPC_ShadowAreaCheck.gd" type="Script" id=11]
 
 [sub_resource type="CircleShape2D" id=180]
 
@@ -145,19 +145,19 @@ tracks/2/keys = {
 
 [node name="Parasailor" type="YSort"]
 position = Vector2( 0, -2 )
-script = ExtResource( 10 )
+script = ExtResource( 2 )
 spawn_z = 130
 min_speed = 0.5
 max_speed = 0.65
 shadow_offset = 30.0
-target_scene = ExtResource( 11 )
-alt_scene = ExtResource( 5 )
+target_scene = ExtResource( 1 )
+alt_scene = ExtResource( 3 )
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
 position = Vector2( 0, 1 )
 collision_mask = 2
 collision/safe_margin = 0.5
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 spawn_z = 130
 ACCELERATION = 65
 CHASE_SPEED = 35
@@ -177,12 +177,12 @@ scale = Vector2( 1.30987, 1.35385 )
 shape = SubResource( 180 )
 
 [node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
-script = ExtResource( 1 )
+script = ExtResource( 11 )
 
 [node name="ShadowCheck" type="CollisionShape2D" parent="MotionRoot/ShadowAreaCheck"]
 shape = SubResource( 172 )
 
-[node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 6 )]
+[node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 5 )]
 position = Vector2( -5, 12 )
 scale = Vector2( 0.872995, 1.17761 )
 collision_layer = 4
@@ -194,7 +194,7 @@ position = Vector2( 2.29096, -25.4753 )
 scale = Vector2( 1.03351, 0.873578 )
 shape = SubResource( 178 )
 
-[node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 8 )]
+[node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 4 )]
 position = Vector2( -4, -7 )
 scale = Vector2( 0.918882, 0.860568 )
 collision_layer = 7
@@ -213,9 +213,9 @@ shape = SubResource( 179 )
 self_modulate = Color( 1, 1, 1, 0.6 )
 position = Vector2( -29, -12 )
 scale = Vector2( 0.914288, 0.918545 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 centered = false
-script = ExtResource( 3 )
+script = ExtResource( 8 )
 alpha_clip = 0.01
 always_update = true
 use_dithering = false
@@ -230,10 +230,10 @@ position = Vector2( -1, 0 )
 [node name="Enemy" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
 modulate = Color( 0.972549, 0.988235, 1, 1 )
 position = Vector2( 4, -24 )
-texture = ExtResource( 7 )
+texture = ExtResource( 9 )
 offset = Vector2( 0, -12 )
 hframes = 9
-script = ExtResource( 2 )
+script = ExtResource( 7 )
 depth_test_offset = Vector2( -8, 130 )
 feet_height = 130.0
 height = 130.0

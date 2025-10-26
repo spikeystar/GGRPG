@@ -30,6 +30,9 @@ func _process(delta):
 	if body_check and int(height) == player_height:
 		_on_touch_area()
 		
+	if PlayerManager.ouch or PlayerManager.drown:
+		$CollisionPolygon2D.disabled = true
+		
 
 func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root and not transitioning:
