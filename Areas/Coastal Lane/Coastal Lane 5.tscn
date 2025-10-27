@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=1]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=2]
@@ -57,6 +57,8 @@
 [ext_resource path="res://Scripts/Objects/FlowingPlatforms.gd" type="Script" id=55]
 [ext_resource path="res://Enemies/Coastal Lane/Wander/Hibiscus_wander_80.tscn" type="PackedScene" id=56]
 [ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=57]
+[ext_resource path="res://Enemies/Coastal Lane/Wander/Craggy_wander_95.tscn" type="PackedScene" id=58]
+[ext_resource path="res://Enemies/Coastal Lane/Wander/Parasailor_wander_160.tscn" type="PackedScene" id=59]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -1825,6 +1827,9 @@ preview_collision_box = false
 [node name="Hibiscus" parent="YSort/MiddleGround" instance=ExtResource( 56 )]
 position = Vector2( -542, 270 )
 
+[node name="Craggy" parent="YSort/MiddleGround" instance=ExtResource( 58 )]
+position = Vector2( 75, -79 )
+
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
@@ -2193,12 +2198,24 @@ polygon = PoolVector2Array( 200, -61, 434, -148, 501, -130, 633, -141, 693, -135
 position = Vector2( -17, -18 )
 polygon = PoolVector2Array( 347, -15, 367, -67, 290, -60, 275, -64, 202, -44, 121, -55, -76, -121, -111, -169, -34, -223, -1, -216, 96, -226, 118, -234, 360, -146, 364, -107, 345, -74, 389, -68, 427, -90, 405, -152, 115, -250, 26, -244, -38, -245, -106, -216, -147, -169, -136, -123, 134, -26 )
 
+[node name="Parasailor" parent="." instance=ExtResource( 59 )]
+position = Vector2( -663, -138 )
+
+[node name="Parasailor2" parent="." instance=ExtResource( 59 )]
+position = Vector2( 55, -420 )
+
+[node name="Parasailor3" parent="." instance=ExtResource( 59 )]
+position = Vector2( 766, -130 )
+
+[node name="Parasailor4" parent="." instance=ExtResource( 59 )]
+position = Vector2( 299, 142 )
+
 [connection signal="bouncy" from="CollisionRoot/Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="bouncy" from="CollisionRoot/Bouncy2" to="YSort/MiddleGround/BouncyFlower2" method="_on_Bouncy2_bouncy"]
 [connection signal="bouncy" from="CollisionRoot/Bouncy3" to="YSort/MiddleGround/BouncyFlower3" method="_on_Bouncy3_bouncy"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase2_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
-[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase2_item_get"]
+[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]

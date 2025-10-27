@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Assets/Coastal Lane/Starfish B.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Coastal Lane/Crabgrass B.png" type="Texture" id=2]
@@ -57,6 +57,7 @@
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=55]
 [ext_resource path="res://Enemies/Coastal Lane/Wander/Hibiscus_wander_80.tscn" type="PackedScene" id=56]
 [ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=57]
+[ext_resource path="res://Enemies/Coastal Lane/Wander/Parasailor_wander_670.tscn" type="PackedScene" id=58]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -1522,7 +1523,6 @@ floor_height = 650.0
 preview_collision_box = false
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Water" type="Area2D" parent="CollisionRoot"]
 visible = false
@@ -1682,7 +1682,6 @@ floor_height = 670.0
 shadow_color = Color( 0.188235, 0.45098, 0.243137, 1 )
 
 [node name="Enemy_Boundary" type="Area2D" parent="."]
-visible = false
 collision_layer = 8
 collision_mask = 15
 script = ExtResource( 57 )
@@ -1693,7 +1692,10 @@ polygon = PoolVector2Array( 711, -127, 784, -125, 821, -90, 949, -19, 992, 12, 1
 
 [node name="Repel2" type="CollisionPolygon2D" parent="Enemy_Boundary"]
 position = Vector2( -201, -190 )
-polygon = PoolVector2Array( 849, -131, 961, -90, 1012, -81, 1097, -99, 1199, -141, 1233, -183, 1092, -138, 967, -147, 864, -182, 718, -240, 871, -306, 848, -320, 704, -270, 680, -247, 692, -191 )
+polygon = PoolVector2Array( 849, -131, 961, -90, 1012, -81, 1097, -99, 1199, -141, 1233, -183, 1213, -193, 1093, -145, 1055, -138, 973, -142, 865, -183, 728, -235, 812, -271, 894, -298, 848, -320, 704, -270, 680, -247, 692, -191 )
+
+[node name="Parasailor" parent="." instance=ExtResource( 58 )]
+position = Vector2( -63, -324 )
 
 [connection signal="bouncy" from="CollisionRoot/Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]

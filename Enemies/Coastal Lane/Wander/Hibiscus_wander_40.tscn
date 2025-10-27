@@ -184,8 +184,8 @@ position = Vector2( -1, -17 )
 shape = SubResource( 178 )
 
 [node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 3 )]
-position = Vector2( 9, 4 )
-scale = Vector2( 0.972756, 0.936889 )
+position = Vector2( 9, -1 )
+scale = Vector2( 1.07975, 0.494472 )
 collision_layer = 7
 collision_mask = 6
 

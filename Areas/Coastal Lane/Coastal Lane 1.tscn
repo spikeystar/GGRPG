@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=2]
@@ -33,6 +33,7 @@
 [ext_resource path="res://Assets/General/Tiles/Flowers/Dandelion B.png" type="Texture" id=31]
 [ext_resource path="res://Assets/General/Backgrounds/blue bckgd.png" type="Texture" id=32]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=33]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=34]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=35]
 [ext_resource path="res://Scripts/Area_Specific/Cherry Trail.gd" type="Script" id=36]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=37]
@@ -532,6 +533,8 @@ height = 28.0
 position = Vector2( 350, 141 )
 scale = Vector2( 1.68, 1.45 )
 texture = ExtResource( 10 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 100 )
 
 [node name="CrabgrassA4" type="Sprite" parent="YSort/MiddleGround"]
 position = Vector2( 608, -99 )
@@ -558,6 +561,8 @@ texture = ExtResource( 13 )
 position = Vector2( 269, 212 )
 scale = Vector2( 1.68, 1.85833 )
 texture = ExtResource( 12 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 100 )
 
 [node name="HillA2" type="Sprite" parent="YSort/MiddleGround"]
 position = Vector2( 518, 21 )
@@ -573,9 +578,16 @@ texture = ExtResource( 10 )
 position = Vector2( 103, 156 )
 scale = Vector2( 1.68, 1.45 )
 texture = ExtResource( 11 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 100 )
 
 [node name="Hibiscus" parent="YSort/MiddleGround" instance=ExtResource( 22 )]
 position = Vector2( -39, 37 )
+target_scene = ExtResource( 29 )
+alt_scene = ExtResource( 29 )
+
+[node name="Hibiscus2" parent="YSort/MiddleGround" instance=ExtResource( 22 )]
+position = Vector2( 217, 126 )
 target_scene = ExtResource( 29 )
 alt_scene = ExtResource( 29 )
 
@@ -586,6 +598,8 @@ z_index = 20
 position = Vector2( 2.00006, 303 )
 scale = Vector2( 2.065, 2.07229 )
 texture = ExtResource( 13 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 100 )
 
 [node name="PalmTreeB" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( 126, 237 )
@@ -593,6 +607,8 @@ rotation = 0.183808
 scale = Vector2( 1.42659, 1.76072 )
 texture = ExtResource( 7 )
 flip_h = true
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 400 )
 
 [node name="PalmTreeA" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( -332, 8 )
@@ -618,11 +634,15 @@ position = Vector2( 398, 212 )
 rotation = 0.0818528
 scale = Vector2( 1.69533, 1.92741 )
 texture = ExtResource( 9 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 400 )
 
 [node name="CrabgrassA5" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( 383, 317 )
 scale = Vector2( 1.68, 1.45 )
 texture = ExtResource( 10 )
+script = ExtResource( 34 )
+depth_test_offset = Vector2( 0, 500 )
 
 [node name="PalmTreeB2" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( 730, 157 )

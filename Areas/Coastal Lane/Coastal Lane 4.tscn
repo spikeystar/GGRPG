@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=1]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=2]
@@ -66,6 +66,7 @@
 [ext_resource path="res://Scripts/UI/StarOptionsCursor.gd" type="Script" id=64]
 [ext_resource path="res://Enemies/Coastal Lane/Wander/Hibiscus_wander_40.tscn" type="PackedScene" id=65]
 [ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=66]
+[ext_resource path="res://Enemies/Coastal Lane/Wander/Craggy_wander_40.tscn" type="PackedScene" id=67]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -1125,6 +1126,9 @@ position = Vector2( 975, -185 )
 [node name="Hibiscus2" parent="YSort/MiddleGround" instance=ExtResource( 65 )]
 position = Vector2( 693, -79 )
 
+[node name="Craggy" parent="YSort/MiddleGround" instance=ExtResource( 67 )]
+position = Vector2( 355, -296 )
+
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
@@ -1281,7 +1285,7 @@ height = 40
 
 [node name="PlayerSpawn2" parent="CollisionRoot" instance=ExtResource( 50 )]
 position = Vector2( 500, -26 )
-door_name = "CoastalLane4_CoastalLane5"
+door_name = "CoastalLane5_CoastalLane4"
 direction = Vector2( 1, 1 )
 height = 40
 
@@ -1442,7 +1446,7 @@ floor_height = 68.0
 shadow_color = Color( 0.576471, 0.298039, 0.247059, 1 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 648, -14 )
+position = Vector2( 694, -64 )
 
 [node name="Enemy_Boundary" type="Area2D" parent="."]
 visible = false

@@ -89,6 +89,10 @@ func _physics_process(delta):
 	$MotionRoot/PlayerDetection.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z)
 	$MotionRoot/BattleTrigger.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z)
 	
+	if spawn_z == 0:
+		$MotionRoot/BattleTrigger.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z + 15)
+	if spawn_z > 0 and spawn_z < 150:
+		$MotionRoot/BattleTrigger.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z + (spawn_z / 1.5))
 	
 	if Global.battle_ended:
 		#after_battle()
