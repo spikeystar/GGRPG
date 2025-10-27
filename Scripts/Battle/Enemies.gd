@@ -78,24 +78,7 @@ var m_debuff
 var d_debuff
 var debuffing = false
 
-signal Basic
-signal Barrage
-signal Beat_Down
-signal Sting
-signal Sabotage
-signal Pester
-signal Extort
-signal Slash
-signal Splat
-signal Asphyxiate
-signal Stream_Strike
-signal Bubble_Ring
-signal Friction
-signal Aero_Bullet
-signal Squall
-signal Zap
-signal Terra_Arrow
-signal Gravel_Spat
+signal Enemy_Attack
 
 func _ready():
 	enemies = $Field.get_children()
@@ -791,59 +774,42 @@ func _on_Fighters_enemies_enabled():
 					yield($EnemyMove, "move_window_done")
 				e_attack = enemies[x].get_stats("e_attack")
 				e_magic = enemies[x].get_stats("e_magic")
+				emit_signal("Enemy_Attack")
 				if move_name == "Basic":
-					emit_signal("Basic")
 					yield(get_tree().create_timer(2), "timeout")
 				if move_name == "Barrage":
-					emit_signal("Barrage")
 					yield(get_tree().create_timer(3.3), "timeout")
 				if move_name == "Beat Down":
-					emit_signal("Beat_Down")
 					yield(get_tree().create_timer(3), "timeout")
 				if move_name == "Sting":
-					emit_signal("Sting")
 					yield(get_tree().create_timer(3.3), "timeout")
 				if move_name == "Sabotage":
-					emit_signal("Sabotage")
 					yield(get_tree().create_timer(3), "timeout")
 				if move_name == "Pester":
-					emit_signal("Pester")
 					yield(get_tree().create_timer(3), "timeout")
 				if move_name == "Extort":
-					emit_signal("Extort")
 					yield(get_tree().create_timer(3.5), "timeout")
 				if move_name == "Slash":
-					emit_signal("Slash")
 					yield(get_tree().create_timer(3.8), "timeout")
 				if move_name == "Splat":
-					emit_signal("Splat")
 					yield(get_tree().create_timer(3.8), "timeout")
 				if move_name == "Asphyxiate":
-					emit_signal("Asphyxiate")
 					yield(get_tree().create_timer(4.5), "timeout")
 				if move_name == "Bubble Ring":
-					emit_signal("Bubble_Ring")
 					yield(get_tree().create_timer(5), "timeout")
 				if move_name == "Stream Strike":
-					emit_signal("Stream_Strike")
 					yield(get_tree().create_timer(4.5), "timeout")
 				if move_name == "Friction":
-					emit_signal("Friction")
 					yield(get_tree().create_timer(4), "timeout")
 				if move_name == "Aero Bullet":
-					emit_signal("Aero_Bullet")
 					yield(get_tree().create_timer(3.5), "timeout")
 				if move_name == "Squall":
-					emit_signal("Squall")
 					yield(get_tree().create_timer(4), "timeout")
 				if move_name == "Zap":
-					emit_signal("Zap")
 					yield(get_tree().create_timer(3.5), "timeout")
 				if move_name == "Terra Arrow":
-					emit_signal("Terra_Arrow")
 					yield(get_tree().create_timer(3.5), "timeout")
 				if move_name == "Gravel Spat":
-					emit_signal("Gravel_Spat")
 					yield(get_tree().create_timer(3.5), "timeout")
 					
 					

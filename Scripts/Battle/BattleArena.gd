@@ -38,6 +38,7 @@ var wimpy = false
 var dizzy = false
 var item_stolen = false
 var new_spell = false
+var enemy_move_name
 
 var tutorial_1 = false
 var tutorial_2 = false
@@ -1379,7 +1380,50 @@ func Prism_Snow():
 func _on_Enemies_update_move_window():
 	$Fighters/HUDS.hiding()
 	
-func _on_Enemies_Basic():
+func _on_Enemies_Enemy_Attack():
+	enemy_move_name = $Enemies.move_name
+	
+	if enemy_move_name == "Basic":
+		Basic()
+	if enemy_move_name == "Barrage":
+		Barrage()
+	if enemy_move_name == "Beat Down":
+		Beat_Down()
+	if enemy_move_name == "Sting":
+		Sting()
+	if enemy_move_name == "Sabotage":
+		Sabotage()
+	if enemy_move_name == "Pester":
+		Pester()
+	if enemy_move_name == "Extort":
+		Extort()
+	if enemy_move_name == "Slash":
+		Slash()
+	if enemy_move_name == "Splat":
+		Splat()
+	if enemy_move_name == "Asphyxiate":
+		Asphyxiate()
+	if enemy_move_name == "Bubble Ring":
+		Bubble_Ring()
+	if enemy_move_name == "Stream Strike":
+		Stream_Strike()
+	if enemy_move_name == "Friction":
+		Friction()
+	if enemy_move_name == "Aero Bullet":
+		Aero_Bullet()
+	if enemy_move_name == "Squall":
+		Squall()
+	if enemy_move_name == "Zap":
+		Zap()
+	if enemy_move_name == "Friction":
+		Friction()
+	if enemy_move_name == "Terra Arrow":
+		Terra_Arrow()
+	if enemy_move_name == "Gravel Spat":
+		Gravel_Spat()
+	
+	
+func Basic():
 	SE.effect("Basic")
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
@@ -1390,7 +1434,7 @@ func _on_Enemies_Basic():
 	$Fighters.e_magic = $Enemies.e_magic
 	$Fighters.damage()
 
-func _on_Enemies_Barrage():
+func Barrage():
 	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
@@ -1411,7 +1455,7 @@ func _on_Enemies_Barrage():
 	$Fighters/HUDS.showing()
 	
 
-func _on_Enemies_Beat_Down():
+func Beat_Down():
 	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
@@ -1432,7 +1476,7 @@ func _on_Enemies_Beat_Down():
 	$Fighters/HUDS.showing()
 	
 
-func _on_Enemies_Sting():
+func Sting():
 	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
@@ -1453,7 +1497,7 @@ func _on_Enemies_Sting():
 	$Fighters/HUDS.showing()
 	
 
-func _on_Enemies_Sabotage():
+func Sabotage():
 	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
@@ -1474,7 +1518,7 @@ func _on_Enemies_Sabotage():
 	$Fighters/HUDS.showing()
 	
 
-func _on_Enemies_Pester():
+func Pester():
 	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
@@ -1495,7 +1539,7 @@ func _on_Enemies_Pester():
 	$Fighters/HUDS.showing()
 	
 
-func _on_Enemies_Extort():
+func Extort():
 	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
@@ -1517,7 +1561,7 @@ func _on_Enemies_Extort():
 	$Fighters/HUDS.showing()
 	
 
-func _on_Enemies_Slash():
+func Slash():
 	BattleMusic.quiet_0()
 	$Fighters.move_spread = "spread"
 	randomize()
@@ -1545,7 +1589,7 @@ func _on_Enemies_Slash():
 	$Fighters.damage_end()
 	
 
-func _on_Enemies_Splat():
+func Splat():
 	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
@@ -1566,7 +1610,7 @@ func _on_Enemies_Splat():
 	$Fighters/HUDS.showing()
 	
 
-func _on_Enemies_Asphyxiate():
+func Asphyxiate():
 	BattleMusic.quiet_0()
 	$Fighters.move_spread = "single"
 	$Fighters.pick_fighter()
@@ -1587,7 +1631,7 @@ func _on_Enemies_Asphyxiate():
 	$Fighters/HUDS.showing()
 	
 
-func _on_Enemies_Bubble_Ring():
+func Bubble_Ring():
 	BattleMusic.quiet_0()
 	randomize()
 	var rng = RandomNumberGenerator.new()
@@ -1613,7 +1657,7 @@ func _on_Enemies_Bubble_Ring():
 	$Fighters/HUDS.showing()
 	
 
-func _on_Enemies_Stream_Strike():
+func Stream_Strike():
 	BattleMusic.quiet_0()
 	randomize()
 	var rng = RandomNumberGenerator.new()
@@ -1639,7 +1683,7 @@ func _on_Enemies_Stream_Strike():
 	$Fighters/HUDS.showing()
 	
 
-func _on_Enemies_Friction():
+func Friction():
 	BattleMusic.quiet_0()
 	randomize()
 	var rng = RandomNumberGenerator.new()
@@ -1679,7 +1723,7 @@ func _on_Enemies_Friction():
 	$Fighters/HUDS.showing()
 	
 
-func _on_Enemies_Aero_Bullet():
+func Aero_Bullet():
 	BattleMusic.quiet_0()
 	randomize()
 	var rng = RandomNumberGenerator.new()
@@ -1705,7 +1749,7 @@ func _on_Enemies_Aero_Bullet():
 	$Fighters/HUDS.showing()
 	
 
-func _on_Enemies_Squall():
+func Squall():
 	BattleMusic.quiet_0()
 	$Fighters.move_spread = "spread"
 	randomize()
@@ -1733,7 +1777,7 @@ func _on_Enemies_Squall():
 	$Fighters.damage_end()
 	
 
-func _on_Enemies_Zap():
+func Zap():
 	BattleMusic.quiet_0()
 	randomize()
 	var rng = RandomNumberGenerator.new()
@@ -1760,7 +1804,7 @@ func _on_Enemies_Zap():
 	
 
 
-func _on_Enemies_Terra_Arrow():
+func Terra_Arrow():
 	BattleMusic.quiet_0()
 	randomize()
 	var rng = RandomNumberGenerator.new()
@@ -1786,7 +1830,7 @@ func _on_Enemies_Terra_Arrow():
 	$Fighters/HUDS.showing()
 	
 
-func _on_Enemies_Gravel_Spat():
+func Gravel_Spat():
 	BattleMusic.quiet_0()
 	$Fighters.move_spread = "spread"
 	randomize()
@@ -1814,4 +1858,3 @@ func _on_Enemies_Gravel_Spat():
 	yield(get_tree().create_timer(0.7), "timeout")
 	$Fighters.damage_end()
 	
-
