@@ -811,6 +811,8 @@ func _on_Fighters_enemies_enabled():
 					yield(get_tree().create_timer(3.5), "timeout")
 				if move_name == "Gravel Spat":
 					yield(get_tree().create_timer(3.5), "timeout")
+				if move_name == "Hay Fever":
+					yield(get_tree().create_timer(4.5), "timeout")
 					
 					
 				enemies[x].reset_animation()

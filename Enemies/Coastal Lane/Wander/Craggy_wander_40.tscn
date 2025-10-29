@@ -194,7 +194,7 @@ height = 40.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
 position = Vector2( -1.02801, 2.13472 )
-scale = Vector2( 1.8612, -0.347443 )
+scale = Vector2( 1.40088, -1.25445 )
 shape = SubResource( 179 )
 
 [node name="ShadowYSort" type="Node2D" parent="."]

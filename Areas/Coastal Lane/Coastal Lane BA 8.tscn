@@ -1,91 +1,91 @@
 [gd_scene load_steps=92 format=2]
 
-[ext_resource path="res://Scripts/Battle/AttackTimer.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=2]
-[ext_resource path="res://Scripts/Battle/BattleArena.gd" type="Script" id=3]
-[ext_resource path="res://Assets/Coastal Lane/Coastal Lane BA 1.jpg" type="Texture" id=4]
-[ext_resource path="res://UI/Battle/New Spell 1.png" type="Texture" id=5]
-[ext_resource path="res://UI/Battle/Gary Alive HUD.png" type="Texture" id=6]
-[ext_resource path="res://UI/Cursor.png" type="Texture" id=7]
-[ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=8]
-[ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=9]
-[ext_resource path="res://UI/Battle/Status/Status Icons.png" type="Texture" id=10]
-[ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Scripts/Battle/Enemies.gd" type="Script" id=12]
-[ext_resource path="res://Misc/Font/Move Select Theme.tres" type="Theme" id=13]
-[ext_resource path="res://Misc/Font/Move Select.tres" type="DynamicFont" id=14]
-[ext_resource path="res://BattleSystem/MovePlayer.tscn" type="PackedScene" id=15]
-[ext_resource path="res://UI/Battle/Move Icons.png" type="Texture" id=16]
-[ext_resource path="res://UI/Battle/Suzy Dead HUD.png" type="Texture" id=17]
-[ext_resource path="res://Scripts/Battle/EnemyMoveWindow.gd" type="Script" id=18]
-[ext_resource path="res://Scripts/Battle/EnemyName.gd" type="Script" id=19]
-[ext_resource path="res://Scripts/Battle/HUDS.gd" type="Script" id=20]
-[ext_resource path="res://Scripts/Battle/EnemyStatus.gd" type="Script" id=21]
-[ext_resource path="res://Scripts/Battle/Fighters.gd" type="Script" id=22]
-[ext_resource path="res://UI/Battle/Gary Dead HUD.png" type="Texture" id=23]
-[ext_resource path="res://UI/Battle/Magic Window.png" type="Texture" id=24]
-[ext_resource path="res://UI/Battle/New Spell 2.png" type="Texture" id=25]
-[ext_resource path="res://UI/Battle/Irina Dead HUD.png" type="Texture" id=26]
-[ext_resource path="res://Scripts/Battle/ItemInventory_Battle.gd" type="Script" id=27]
-[ext_resource path="res://Scripts/Battle/ItemWindow.gd" type="Script" id=28]
-[ext_resource path="res://Scripts/Battle/MagicWindow.gd" type="Script" id=29]
-[ext_resource path="res://Scripts/Battle/PartySP.gd" type="Script" id=30]
-[ext_resource path="res://Scripts/Battle/SpellList.gd" type="Script" id=31]
-[ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=32]
-[ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=33]
-[ext_resource path="res://UI/Battle/Jacques Dead HUD.png" type="Texture" id=34]
-[ext_resource path="res://Misc/Font/HUD.tres" type="DynamicFont" id=35]
-[ext_resource path="res://UI/Battle/Item Window.png" type="Texture" id=36]
-[ext_resource path="res://UI/Battle/Enemy Info.png" type="Texture" id=37]
-[ext_resource path="res://UI/LossText.tscn" type="PackedScene" id=38]
-[ext_resource path="res://Misc/Font/Enemy Move.tres" type="DynamicFont" id=39]
-[ext_resource path="res://UI/SPText.tscn" type="PackedScene" id=40]
-[ext_resource path="res://UI/Battle/Jacques Alive HUD.png" type="Texture" id=41]
-[ext_resource path="res://UI/Battle/Enemy Move.png" type="Texture" id=42]
-[ext_resource path="res://UI/Battle/Level Up 1.png" type="Texture" id=43]
-[ext_resource path="res://Misc/Font/Victory.tres" type="DynamicFont" id=44]
-[ext_resource path="res://UI/Battle/Level Up Text.png" type="Texture" id=45]
-[ext_resource path="res://UI/HealText.tscn" type="PackedScene" id=46]
-[ext_resource path="res://UI/Battle/Victory Window.png" type="Texture" id=47]
-[ext_resource path="res://UI/Battle/Enemy Status.png" type="Texture" id=48]
-[ext_resource path="res://Misc/Font/Enemy Name Theme.tres" type="Theme" id=49]
-[ext_resource path="res://UI/DamageText.tscn" type="PackedScene" id=50]
-[ext_resource path="res://UI/Battle/Irina Alive HUD.png" type="Texture" id=51]
-[ext_resource path="res://UI/Battle/Defense Window.png" type="Texture" id=52]
-[ext_resource path="res://Misc/Font/Enemy Name.tres" type="DynamicFont" id=53]
-[ext_resource path="res://UI/Battle/Level Up 2.png" type="Texture" id=54]
-[ext_resource path="res://BattleSystem/ItemUsage.tscn" type="PackedScene" id=55]
-[ext_resource path="res://Players/Gary/Gary_Battle.tscn" type="PackedScene" id=56]
-[ext_resource path="res://Players/Jacques/Jacques_Battle.tscn" type="PackedScene" id=57]
-[ext_resource path="res://Players/Irina/Irina_Battle.tscn" type="PackedScene" id=58]
-[ext_resource path="res://UI/Battle/BattleButtons/BattleButtons.tscn" type="PackedScene" id=59]
-[ext_resource path="res://Players/Damien/Damien_Battle.tscn" type="PackedScene" id=60]
-[ext_resource path="res://Players/Suzy/Suzy_Battle.tscn" type="PackedScene" id=61]
-[ext_resource path="res://UI/Battle/Suzy Alive HUD.png" type="Texture" id=62]
-[ext_resource path="res://UI/Battle/Damien Dead HUD.png" type="Texture" id=63]
-[ext_resource path="res://UI/Battle/Damien Alive HUD.png" type="Texture" id=64]
-[ext_resource path="res://Enemies/Coastal Lane/Battle/Hibiscus_battle.tscn" type="PackedScene" id=65]
+[ext_resource path="res://Players/Damien/Damien_Battle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/Battle/Suzy Dead HUD.png" type="Texture" id=2]
+[ext_resource path="res://Players/Suzy/Suzy_Battle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/Battle/Suzy Alive HUD.png" type="Texture" id=4]
+[ext_resource path="res://UI/Battle/Damien Dead HUD.png" type="Texture" id=5]
+[ext_resource path="res://UI/Battle/Damien Alive HUD.png" type="Texture" id=6]
+[ext_resource path="res://BattleSystem/MovePlayer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/Battle/Move Icons.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/Battle/BattleArena.gd" type="Script" id=10]
+[ext_resource path="res://Players/Gary/Gary_Battle.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/Battle/AttackTimer.gd" type="Script" id=12]
+[ext_resource path="res://UI/Battle/New Spell 1.png" type="Texture" id=13]
+[ext_resource path="res://UI/Battle/Gary Alive HUD.png" type="Texture" id=14]
+[ext_resource path="res://UI/Cursor.png" type="Texture" id=15]
+[ext_resource path="res://Misc/Font/Item Info.tres" type="DynamicFont" id=16]
+[ext_resource path="res://Assets/General/Demo Items SS.png" type="Texture" id=17]
+[ext_resource path="res://UI/Battle/Status/Status Icons.png" type="Texture" id=18]
+[ext_resource path="res://UI/Menu Cursor.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Scripts/Battle/Enemies.gd" type="Script" id=20]
+[ext_resource path="res://Misc/Font/Move Select Theme.tres" type="Theme" id=21]
+[ext_resource path="res://Misc/Font/Move Select.tres" type="DynamicFont" id=22]
+[ext_resource path="res://Scripts/Battle/EnemyMoveWindow.gd" type="Script" id=23]
+[ext_resource path="res://Scripts/Battle/EnemyName.gd" type="Script" id=24]
+[ext_resource path="res://Scripts/Battle/HUDS.gd" type="Script" id=25]
+[ext_resource path="res://Scripts/Battle/EnemyStatus.gd" type="Script" id=26]
+[ext_resource path="res://Scripts/Battle/Fighters.gd" type="Script" id=27]
+[ext_resource path="res://UI/Battle/Gary Dead HUD.png" type="Texture" id=28]
+[ext_resource path="res://UI/Battle/New Spell 2.png" type="Texture" id=29]
+[ext_resource path="res://UI/Battle/Magic Window.png" type="Texture" id=30]
+[ext_resource path="res://UI/Battle/Irina Dead HUD.png" type="Texture" id=31]
+[ext_resource path="res://Scripts/Battle/ItemInventory_Battle.gd" type="Script" id=32]
+[ext_resource path="res://Scripts/Battle/ItemWindow.gd" type="Script" id=33]
+[ext_resource path="res://Scripts/Battle/MagicWindow.gd" type="Script" id=34]
+[ext_resource path="res://Scripts/Battle/PartySP.gd" type="Script" id=35]
+[ext_resource path="res://Scripts/Battle/SpellList.gd" type="Script" id=36]
+[ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=37]
+[ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=38]
+[ext_resource path="res://UI/Battle/Jacques Dead HUD.png" type="Texture" id=39]
+[ext_resource path="res://Misc/Font/HUD.tres" type="DynamicFont" id=40]
+[ext_resource path="res://UI/Battle/Item Window.png" type="Texture" id=41]
+[ext_resource path="res://UI/Battle/Enemy Info.png" type="Texture" id=42]
+[ext_resource path="res://UI/LossText.tscn" type="PackedScene" id=43]
+[ext_resource path="res://Misc/Font/Enemy Move.tres" type="DynamicFont" id=44]
+[ext_resource path="res://UI/SPText.tscn" type="PackedScene" id=45]
+[ext_resource path="res://UI/Battle/Jacques Alive HUD.png" type="Texture" id=46]
+[ext_resource path="res://UI/Battle/Enemy Move.png" type="Texture" id=47]
+[ext_resource path="res://UI/Battle/Level Up 1.png" type="Texture" id=48]
+[ext_resource path="res://Misc/Font/Victory.tres" type="DynamicFont" id=49]
+[ext_resource path="res://UI/Battle/Level Up Text.png" type="Texture" id=50]
+[ext_resource path="res://UI/HealText.tscn" type="PackedScene" id=51]
+[ext_resource path="res://UI/Battle/Victory Window.png" type="Texture" id=52]
+[ext_resource path="res://UI/Battle/Enemy Status.png" type="Texture" id=53]
+[ext_resource path="res://Misc/Font/Enemy Name Theme.tres" type="Theme" id=54]
+[ext_resource path="res://UI/DamageText.tscn" type="PackedScene" id=55]
+[ext_resource path="res://UI/Battle/Irina Alive HUD.png" type="Texture" id=56]
+[ext_resource path="res://UI/Battle/Defense Window.png" type="Texture" id=57]
+[ext_resource path="res://Misc/Font/Enemy Name.tres" type="DynamicFont" id=58]
+[ext_resource path="res://UI/Battle/Level Up 2.png" type="Texture" id=59]
+[ext_resource path="res://BattleSystem/ItemUsage.tscn" type="PackedScene" id=60]
+[ext_resource path="res://Players/Jacques/Jacques_Battle.tscn" type="PackedScene" id=61]
+[ext_resource path="res://Players/Irina/Irina_Battle.tscn" type="PackedScene" id=62]
+[ext_resource path="res://UI/Battle/BattleButtons/BattleButtons.tscn" type="PackedScene" id=63]
+[ext_resource path="res://Assets/Coastal Lane/Coastal Lane BA 1.jpg" type="Texture" id=64]
+[ext_resource path="res://Enemies/Coastal Lane/Battle/Parasailor_battle.tscn" type="PackedScene" id=68]
 
 [sub_resource type="Theme" id=31]
 
 [sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 32 )
+texture = ExtResource( 37 )
 region_rect = Rect2( 0, 0, 400, 125 )
 margin_left = 2.0
 margin_bottom = 7.0
 
 [sub_resource type="StyleBoxTexture" id=9]
-texture = ExtResource( 52 )
+texture = ExtResource( 57 )
 region_rect = Rect2( 0, 0, 150, 150 )
 
 [sub_resource type="StyleBoxTexture" id=16]
-texture = ExtResource( 36 )
+texture = ExtResource( 41 )
 region_rect = Rect2( 0, 0, 350, 300 )
 margin_left = 60.0
 margin_top = 39.0
 
 [sub_resource type="StyleBoxTexture" id=17]
-texture = ExtResource( 24 )
+texture = ExtResource( 30 )
 region_rect = Rect2( 0, 0, 350, 300 )
 margin_left = 62.0
 margin_top = 61.0
@@ -577,7 +577,7 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=27]
 animations = [ {
-"frames": [ ExtResource( 43 ), ExtResource( 54 ) ],
+"frames": [ ExtResource( 48 ), ExtResource( 59 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -585,7 +585,7 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=26]
 animations = [ {
-"frames": [ ExtResource( 5 ), ExtResource( 25 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 29 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -593,7 +593,7 @@ animations = [ {
 
 [node name="WorldRoot" type="Control"]
 pause_mode = 2
-script = ExtResource( 3 )
+script = ExtResource( 10 )
 main_menu = "res://UI/MainMenu.tscn"
 EXP_base = 20
 marbles_base = 29
@@ -610,31 +610,34 @@ margin_bottom = 350.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Arena" type="Sprite" parent="."]
-texture = ExtResource( 4 )
+texture = ExtResource( 64 )
 
 [node name="Attack_Arena" type="Sprite" parent="Arena"]
 visible = false
 
 [node name="Enemies" type="Node2D" parent="."]
-script = ExtResource( 12 )
+script = ExtResource( 20 )
 
 [node name="Field" type="Node2D" parent="Enemies"]
 
-[node name="Hibiscus_battle" parent="Enemies/Field" instance=ExtResource( 65 )]
-position = Vector2( -22, 26 )
+[node name="Parasailor_battle2" parent="Enemies/Field" instance=ExtResource( 68 )]
+position = Vector2( -38, -12 )
 
-[node name="Hibiscus_battle2" parent="Enemies/Field" instance=ExtResource( 65 )]
-position = Vector2( 102, 70 )
+[node name="Parasailor_battle3" parent="Enemies/Field" instance=ExtResource( 68 )]
+position = Vector2( 123, -69 )
+
+[node name="Parasailor_battle4" parent="Enemies/Field" instance=ExtResource( 68 )]
+position = Vector2( 149, 60 )
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
 position = Vector2( 165, 225 )
-texture = ExtResource( 37 )
+texture = ExtResource( 42 )
 
 [node name="EnemyStatus" type="Sprite" parent="Enemies/EnemyInfo"]
 position = Vector2( -37, 16 )
-texture = ExtResource( 48 )
-script = ExtResource( 21 )
+texture = ExtResource( 53 )
+script = ExtResource( 26 )
 
 [node name="Icons" type="Node2D" parent="Enemies/EnemyInfo/EnemyStatus"]
 position = Vector2( -126, -229 )
@@ -644,14 +647,14 @@ position = Vector2( -126, -229 )
 [node name="Fire" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Types"]
 visible = false
 position = Vector2( 51, 229 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 
 [node name="Water" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Types"]
 visible = false
 position = Vector2( 51, 229 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 1
@@ -659,7 +662,7 @@ frame = 1
 [node name="Air" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Types"]
 visible = false
 position = Vector2( 51, 229 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 4
@@ -667,7 +670,7 @@ frame = 4
 [node name="Earth" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Types"]
 visible = false
 position = Vector2( 51, 229 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 5
@@ -675,7 +678,7 @@ frame = 5
 [node name="Neutral" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Types"]
 visible = false
 position = Vector2( 51, 229 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 16
@@ -685,7 +688,7 @@ frame = 16
 [node name="Attack_D" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
 visible = false
 position = Vector2( 81, 229 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 12
@@ -693,7 +696,7 @@ frame = 12
 [node name="Attack_B" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
 visible = false
 position = Vector2( 81, 229 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 8
@@ -701,7 +704,7 @@ frame = 8
 [node name="Magic_D" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
 visible = false
 position = Vector2( 111, 229 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 13
@@ -709,7 +712,7 @@ frame = 13
 [node name="Magic_B" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
 visible = false
 position = Vector2( 111, 229 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 9
@@ -717,7 +720,7 @@ frame = 9
 [node name="Defense_D" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
 visible = false
 position = Vector2( 141, 229 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 14
@@ -725,7 +728,7 @@ frame = 14
 [node name="Defense_B" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
 visible = false
 position = Vector2( 141, 229 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 10
@@ -733,7 +736,7 @@ frame = 10
 [node name="Poison" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
 visible = false
 position = Vector2( 171, 229 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 7
@@ -741,7 +744,7 @@ frame = 7
 [node name="Stun" type="Sprite" parent="Enemies/EnemyInfo/EnemyStatus/Icons/Statuses"]
 visible = false
 position = Vector2( 201, 229 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 11
@@ -753,18 +756,18 @@ margin_right = 35.0
 margin_bottom = -8.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme = ExtResource( 49 )
+theme = ExtResource( 54 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.196078 )
-custom_fonts/font = ExtResource( 53 )
+custom_fonts/font = ExtResource( 58 )
 text = "Cheribo"
-script = ExtResource( 19 )
+script = ExtResource( 24 )
 
 [node name="EnemyMove" type="Sprite" parent="Enemies"]
 visible = false
 position = Vector2( -163, -233 )
 scale = Vector2( 0.976667, 1 )
-texture = ExtResource( 42 )
-script = ExtResource( 18 )
+texture = ExtResource( 47 )
+script = ExtResource( 23 )
 
 [node name="Move_Name" type="Label" parent="Enemies/EnemyMove"]
 margin_left = -125.426
@@ -775,7 +778,7 @@ size_flags_horizontal = 2
 size_flags_vertical = 0
 theme = SubResource( 31 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.196078 )
-custom_fonts/font = ExtResource( 39 )
+custom_fonts/font = ExtResource( 44 )
 text = "Gravel Spat"
 
 [node name="Icons" type="Node2D" parent="Enemies/EnemyMove"]
@@ -783,35 +786,35 @@ position = Vector2( 26.6345, -2 )
 
 [node name="Type1" type="Sprite" parent="Enemies/EnemyMove/Icons"]
 position = Vector2( 15.3584, 1 )
-texture = ExtResource( 16 )
+texture = ExtResource( 8 )
 hframes = 4
 vframes = 2
 frame = 1
 
 [node name="Type2" type="Sprite" parent="Enemies/EnemyMove/Icons"]
 position = Vector2( 41.9795, 1 )
-texture = ExtResource( 16 )
+texture = ExtResource( 8 )
 hframes = 4
 vframes = 2
 frame = 6
 
 [node name="Fighters" type="Node2D" parent="."]
-script = ExtResource( 22 )
+script = ExtResource( 27 )
 
 [node name="HUDS" type="VBoxContainer" parent="Fighters"]
 margin_left = -209.0
 margin_top = -242.0
 margin_right = -169.0
 margin_bottom = -202.0
-script = ExtResource( 20 )
+script = ExtResource( 25 )
 
 [node name="GaryHud" type="Sprite" parent="Fighters/HUDS"]
 position = Vector2( 120, 13 )
-texture = ExtResource( 6 )
+texture = ExtResource( 14 )
 
 [node name="Dead" type="Sprite" parent="Fighters/HUDS/GaryHud"]
 visible = false
-texture = ExtResource( 23 )
+texture = ExtResource( 28 )
 
 [node name="Health" type="Label" parent="Fighters/HUDS/GaryHud"]
 margin_left = 2.0
@@ -819,7 +822,7 @@ margin_top = -5.0
 margin_right = 47.0
 margin_bottom = 10.0
 custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
-custom_fonts/font = ExtResource( 35 )
+custom_fonts/font = ExtResource( 40 )
 text = "88/88"
 align = 1
 valign = 1
@@ -831,7 +834,7 @@ scale = Vector2( 0.95, 0.95 )
 [node name="Attack" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
 visible = false
 position = Vector2( -34.7368, -28.421 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 8
@@ -839,7 +842,7 @@ frame = 8
 [node name="Attack_D" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
 visible = false
 position = Vector2( -34.7368, -28.421 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 12
@@ -847,7 +850,7 @@ frame = 12
 [node name="Magic" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
 visible = false
 position = Vector2( -54.7369, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 9
@@ -855,7 +858,7 @@ frame = 9
 [node name="Magic_D" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
 visible = false
 position = Vector2( -54.7369, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 13
@@ -863,7 +866,7 @@ frame = 13
 [node name="Defense" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
 visible = false
 position = Vector2( -76.8421, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 10
@@ -871,7 +874,7 @@ frame = 10
 [node name="Defense_D" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
 visible = false
 position = Vector2( -76.8421, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 14
@@ -879,7 +882,7 @@ frame = 14
 [node name="Wimpy" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
 visible = false
 position = Vector2( -95.7895, -25.2632 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 2
@@ -887,7 +890,7 @@ frame = 2
 [node name="Dizzy" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
 visible = false
 position = Vector2( -95.7895, -25.2632 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 6
@@ -895,7 +898,7 @@ frame = 6
 [node name="Stun" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
 visible = false
 position = Vector2( -104.211, -3.15788 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 11
@@ -903,7 +906,7 @@ frame = 11
 [node name="Targeted" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
 visible = false
 position = Vector2( -98.9474, 18.9474 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 15
@@ -911,7 +914,7 @@ frame = 15
 [node name="Anxious" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
 visible = false
 position = Vector2( -83.1579, 35.7895 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 3
@@ -919,7 +922,7 @@ frame = 3
 [node name="Poison" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
 visible = false
 position = Vector2( -60, 40 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 7
@@ -927,18 +930,18 @@ frame = 7
 [node name="Type" type="Sprite" parent="Fighters/HUDS/GaryHud/Icons"]
 visible = false
 position = Vector2( -38.9474, 31.5789 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 5
 
 [node name="JacquesHud" type="Sprite" parent="Fighters/HUDS"]
 position = Vector2( 59, 92 )
-texture = ExtResource( 41 )
+texture = ExtResource( 46 )
 
 [node name="Dead" type="Sprite" parent="Fighters/HUDS/JacquesHud"]
 visible = false
-texture = ExtResource( 34 )
+texture = ExtResource( 39 )
 
 [node name="Health" type="Label" parent="Fighters/HUDS/JacquesHud"]
 anchor_right = 1.0
@@ -948,7 +951,7 @@ margin_top = -41.0
 margin_right = -74.0
 margin_bottom = -27.0
 custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
-custom_fonts/font = ExtResource( 35 )
+custom_fonts/font = ExtResource( 40 )
 text = "97/97"
 align = 1
 valign = 1
@@ -960,7 +963,7 @@ scale = Vector2( 0.95, 0.95 )
 [node name="Attack" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
 visible = false
 position = Vector2( -34.7368, -28.421 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 8
@@ -968,7 +971,7 @@ frame = 8
 [node name="Attack_D" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
 visible = false
 position = Vector2( -34.7368, -28.421 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 12
@@ -976,7 +979,7 @@ frame = 12
 [node name="Magic" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
 visible = false
 position = Vector2( -54.7369, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 9
@@ -984,7 +987,7 @@ frame = 9
 [node name="Magic_D" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
 visible = false
 position = Vector2( -54.7369, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 13
@@ -992,7 +995,7 @@ frame = 13
 [node name="Defense" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
 visible = false
 position = Vector2( -76.8421, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 10
@@ -1000,7 +1003,7 @@ frame = 10
 [node name="Defense_D" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
 visible = false
 position = Vector2( -76.8421, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 14
@@ -1008,7 +1011,7 @@ frame = 14
 [node name="Wimpy" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
 visible = false
 position = Vector2( -95.7895, -25.2632 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 2
@@ -1016,7 +1019,7 @@ frame = 2
 [node name="Dizzy" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
 visible = false
 position = Vector2( -95.7895, -25.2632 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 6
@@ -1024,7 +1027,7 @@ frame = 6
 [node name="Stun" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
 visible = false
 position = Vector2( -104.211, -3.15788 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 11
@@ -1032,7 +1035,7 @@ frame = 11
 [node name="Targeted" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
 visible = false
 position = Vector2( -98.9474, 18.9474 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 15
@@ -1040,7 +1043,7 @@ frame = 15
 [node name="Anxious" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
 visible = false
 position = Vector2( -83.1579, 35.7895 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 3
@@ -1048,7 +1051,7 @@ frame = 3
 [node name="Poison" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
 visible = false
 position = Vector2( -60, 40 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 7
@@ -1056,18 +1059,18 @@ frame = 7
 [node name="Type" type="Sprite" parent="Fighters/HUDS/JacquesHud/Icons"]
 visible = false
 position = Vector2( -38.9474, 31.5789 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 1
 
 [node name="IrinaHud" type="Sprite" parent="Fighters/HUDS"]
 position = Vector2( 2, 174 )
-texture = ExtResource( 51 )
+texture = ExtResource( 56 )
 
 [node name="Dead" type="Sprite" parent="Fighters/HUDS/IrinaHud"]
 visible = false
-texture = ExtResource( 26 )
+texture = ExtResource( 31 )
 
 [node name="Health" type="Label" parent="Fighters/HUDS/IrinaHud"]
 anchor_right = 1.0
@@ -1077,7 +1080,7 @@ margin_top = -42.0
 margin_right = -62.0
 margin_bottom = -28.0
 custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
-custom_fonts/font = ExtResource( 35 )
+custom_fonts/font = ExtResource( 40 )
 text = "113/113"
 align = 1
 valign = 1
@@ -1089,7 +1092,7 @@ scale = Vector2( 0.95, 0.95 )
 [node name="Attack" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
 visible = false
 position = Vector2( -34.7368, -28.421 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 8
@@ -1097,7 +1100,7 @@ frame = 8
 [node name="Attack_D" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
 visible = false
 position = Vector2( -34.7368, -28.421 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 12
@@ -1105,7 +1108,7 @@ frame = 12
 [node name="Magic" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
 visible = false
 position = Vector2( -54.7369, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 9
@@ -1113,7 +1116,7 @@ frame = 9
 [node name="Magic_D" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
 visible = false
 position = Vector2( -54.7369, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 13
@@ -1121,7 +1124,7 @@ frame = 13
 [node name="Defense" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
 visible = false
 position = Vector2( -76.8421, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 10
@@ -1129,7 +1132,7 @@ frame = 10
 [node name="Defense_D" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
 visible = false
 position = Vector2( -76.8421, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 14
@@ -1137,7 +1140,7 @@ frame = 14
 [node name="Wimpy" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
 visible = false
 position = Vector2( -95.7895, -25.2632 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 2
@@ -1145,7 +1148,7 @@ frame = 2
 [node name="Dizzy" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
 visible = false
 position = Vector2( -95.7895, -25.2632 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 6
@@ -1153,7 +1156,7 @@ frame = 6
 [node name="Stun" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
 visible = false
 position = Vector2( -104.211, -3.15788 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 11
@@ -1161,7 +1164,7 @@ frame = 11
 [node name="Targeted" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
 visible = false
 position = Vector2( -98.9474, 18.9474 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 15
@@ -1169,7 +1172,7 @@ frame = 15
 [node name="Anxious" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
 visible = false
 position = Vector2( -83.1579, 35.7895 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 3
@@ -1177,7 +1180,7 @@ frame = 3
 [node name="Poison" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
 visible = false
 position = Vector2( -60, 40 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 7
@@ -1185,18 +1188,18 @@ frame = 7
 [node name="Type" type="Sprite" parent="Fighters/HUDS/IrinaHud/Icons"]
 visible = false
 position = Vector2( -38.9474, 31.5789 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 1
 
 [node name="SuzyHud" type="Sprite" parent="Fighters/HUDS"]
 position = Vector2( 2, 174 )
-texture = ExtResource( 62 )
+texture = ExtResource( 4 )
 
 [node name="Dead" type="Sprite" parent="Fighters/HUDS/SuzyHud"]
 visible = false
-texture = ExtResource( 17 )
+texture = ExtResource( 2 )
 
 [node name="Health" type="Label" parent="Fighters/HUDS/SuzyHud"]
 anchor_right = 1.0
@@ -1206,7 +1209,7 @@ margin_top = -42.0
 margin_right = -62.0
 margin_bottom = -28.0
 custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
-custom_fonts/font = ExtResource( 35 )
+custom_fonts/font = ExtResource( 40 )
 text = "113/113"
 align = 1
 valign = 1
@@ -1218,7 +1221,7 @@ scale = Vector2( 0.95, 0.95 )
 [node name="Attack" type="Sprite" parent="Fighters/HUDS/SuzyHud/Icons"]
 visible = false
 position = Vector2( -34.7368, -28.421 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 8
@@ -1226,7 +1229,7 @@ frame = 8
 [node name="Attack_D" type="Sprite" parent="Fighters/HUDS/SuzyHud/Icons"]
 visible = false
 position = Vector2( -34.7368, -28.421 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 12
@@ -1234,7 +1237,7 @@ frame = 12
 [node name="Magic" type="Sprite" parent="Fighters/HUDS/SuzyHud/Icons"]
 visible = false
 position = Vector2( -54.7369, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 9
@@ -1242,7 +1245,7 @@ frame = 9
 [node name="Magic_D" type="Sprite" parent="Fighters/HUDS/SuzyHud/Icons"]
 visible = false
 position = Vector2( -54.7369, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 13
@@ -1250,7 +1253,7 @@ frame = 13
 [node name="Defense" type="Sprite" parent="Fighters/HUDS/SuzyHud/Icons"]
 visible = false
 position = Vector2( -76.8421, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 10
@@ -1258,7 +1261,7 @@ frame = 10
 [node name="Defense_D" type="Sprite" parent="Fighters/HUDS/SuzyHud/Icons"]
 visible = false
 position = Vector2( -76.8421, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 14
@@ -1266,7 +1269,7 @@ frame = 14
 [node name="Wimpy" type="Sprite" parent="Fighters/HUDS/SuzyHud/Icons"]
 visible = false
 position = Vector2( -95.7895, -25.2632 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 2
@@ -1274,7 +1277,7 @@ frame = 2
 [node name="Dizzy" type="Sprite" parent="Fighters/HUDS/SuzyHud/Icons"]
 visible = false
 position = Vector2( -95.7895, -25.2632 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 6
@@ -1282,7 +1285,7 @@ frame = 6
 [node name="Stun" type="Sprite" parent="Fighters/HUDS/SuzyHud/Icons"]
 visible = false
 position = Vector2( -104.211, -3.15788 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 11
@@ -1290,7 +1293,7 @@ frame = 11
 [node name="Targeted" type="Sprite" parent="Fighters/HUDS/SuzyHud/Icons"]
 visible = false
 position = Vector2( -98.9474, 18.9474 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 15
@@ -1298,7 +1301,7 @@ frame = 15
 [node name="Anxious" type="Sprite" parent="Fighters/HUDS/SuzyHud/Icons"]
 visible = false
 position = Vector2( -83.1579, 35.7895 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 3
@@ -1306,7 +1309,7 @@ frame = 3
 [node name="Poison" type="Sprite" parent="Fighters/HUDS/SuzyHud/Icons"]
 visible = false
 position = Vector2( -60, 40 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 7
@@ -1314,18 +1317,18 @@ frame = 7
 [node name="Type" type="Sprite" parent="Fighters/HUDS/SuzyHud/Icons"]
 visible = false
 position = Vector2( -38.9474, 31.5789 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 1
 
 [node name="DamienHud" type="Sprite" parent="Fighters/HUDS"]
 position = Vector2( 2, 174 )
-texture = ExtResource( 64 )
+texture = ExtResource( 6 )
 
 [node name="Dead" type="Sprite" parent="Fighters/HUDS/DamienHud"]
 visible = false
-texture = ExtResource( 63 )
+texture = ExtResource( 5 )
 
 [node name="Health" type="Label" parent="Fighters/HUDS/DamienHud"]
 anchor_right = 1.0
@@ -1335,7 +1338,7 @@ margin_top = -42.0
 margin_right = -62.0
 margin_bottom = -28.0
 custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
-custom_fonts/font = ExtResource( 35 )
+custom_fonts/font = ExtResource( 40 )
 text = "113/113"
 align = 1
 valign = 1
@@ -1347,7 +1350,7 @@ scale = Vector2( 0.95, 0.95 )
 [node name="Attack" type="Sprite" parent="Fighters/HUDS/DamienHud/Icons"]
 visible = false
 position = Vector2( -34.7368, -28.421 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 8
@@ -1355,7 +1358,7 @@ frame = 8
 [node name="Attack_D" type="Sprite" parent="Fighters/HUDS/DamienHud/Icons"]
 visible = false
 position = Vector2( -34.7368, -28.421 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 12
@@ -1363,7 +1366,7 @@ frame = 12
 [node name="Magic" type="Sprite" parent="Fighters/HUDS/DamienHud/Icons"]
 visible = false
 position = Vector2( -54.7369, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 9
@@ -1371,7 +1374,7 @@ frame = 9
 [node name="Magic_D" type="Sprite" parent="Fighters/HUDS/DamienHud/Icons"]
 visible = false
 position = Vector2( -54.7369, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 13
@@ -1379,7 +1382,7 @@ frame = 13
 [node name="Defense" type="Sprite" parent="Fighters/HUDS/DamienHud/Icons"]
 visible = false
 position = Vector2( -76.8421, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 10
@@ -1387,7 +1390,7 @@ frame = 10
 [node name="Defense_D" type="Sprite" parent="Fighters/HUDS/DamienHud/Icons"]
 visible = false
 position = Vector2( -76.8421, -37.8947 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 14
@@ -1395,7 +1398,7 @@ frame = 14
 [node name="Wimpy" type="Sprite" parent="Fighters/HUDS/DamienHud/Icons"]
 visible = false
 position = Vector2( -95.7895, -25.2632 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 2
@@ -1403,7 +1406,7 @@ frame = 2
 [node name="Dizzy" type="Sprite" parent="Fighters/HUDS/DamienHud/Icons"]
 visible = false
 position = Vector2( -95.7895, -25.2632 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 6
@@ -1411,7 +1414,7 @@ frame = 6
 [node name="Stun" type="Sprite" parent="Fighters/HUDS/DamienHud/Icons"]
 visible = false
 position = Vector2( -104.211, -3.15788 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 11
@@ -1419,7 +1422,7 @@ frame = 11
 [node name="Targeted" type="Sprite" parent="Fighters/HUDS/DamienHud/Icons"]
 visible = false
 position = Vector2( -98.9474, 18.9474 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 15
@@ -1427,7 +1430,7 @@ frame = 15
 [node name="Anxious" type="Sprite" parent="Fighters/HUDS/DamienHud/Icons"]
 visible = false
 position = Vector2( -83.1579, 35.7895 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 3
@@ -1435,7 +1438,7 @@ frame = 3
 [node name="Poison" type="Sprite" parent="Fighters/HUDS/DamienHud/Icons"]
 visible = false
 position = Vector2( -60, 40 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 7
@@ -1443,12 +1446,12 @@ frame = 7
 [node name="Type" type="Sprite" parent="Fighters/HUDS/DamienHud/Icons"]
 visible = false
 position = Vector2( -38.9474, 31.5789 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 1
 
-[node name="Gary_Battle" parent="Fighters" instance=ExtResource( 56 )]
+[node name="Gary_Battle" parent="Fighters" instance=ExtResource( 11 )]
 position = Vector2( -240, 86 )
 f_health = 88
 f_attack = 70
@@ -1456,47 +1459,47 @@ f_attack_base = 3
 f_magic = 30
 f_magic_base = 10
 f_defense = 20
-TEXT_DAMAGE = ExtResource( 50 )
-TEXT_SP = ExtResource( 40 )
-TEXT_LOSS = ExtResource( 38 )
+TEXT_DAMAGE = ExtResource( 55 )
+TEXT_SP = ExtResource( 45 )
+TEXT_LOSS = ExtResource( 43 )
 
-[node name="Jacques_Battle" parent="Fighters" instance=ExtResource( 57 )]
+[node name="Jacques_Battle" parent="Fighters" instance=ExtResource( 61 )]
 position = Vector2( -135, 144 )
 f_health = 97
 f_attack = 55
 f_attack_base = 5
 f_magic = 40
-TEXT_DAMAGE = ExtResource( 50 )
-TEXT_HEAL = ExtResource( 46 )
-TEXT_SP = ExtResource( 40 )
-TEXT_LOSS = ExtResource( 38 )
+TEXT_DAMAGE = ExtResource( 55 )
+TEXT_HEAL = ExtResource( 51 )
+TEXT_SP = ExtResource( 45 )
+TEXT_LOSS = ExtResource( 43 )
 
-[node name="Irina_Battle" parent="Fighters" instance=ExtResource( 58 )]
+[node name="Irina_Battle" parent="Fighters" instance=ExtResource( 62 )]
 position = Vector2( -23, 194 )
 f_health = 113
 f_attack = 55
 f_attack_base = 10
 f_magic = 10
 f_defense = 10
-TEXT_DAMAGE = ExtResource( 50 )
-TEXT_HEAL = ExtResource( 46 )
-TEXT_SP = ExtResource( 40 )
-TEXT_LOSS = ExtResource( 38 )
+TEXT_DAMAGE = ExtResource( 55 )
+TEXT_HEAL = ExtResource( 51 )
+TEXT_SP = ExtResource( 45 )
+TEXT_LOSS = ExtResource( 43 )
 
-[node name="Suzy_Battle" parent="Fighters" instance=ExtResource( 61 )]
+[node name="Suzy_Battle" parent="Fighters" instance=ExtResource( 3 )]
 position = Vector2( -380, 277 )
 
-[node name="Damien_Battle" parent="Fighters" instance=ExtResource( 60 )]
+[node name="Damien_Battle" parent="Fighters" instance=ExtResource( 1 )]
 position = Vector2( -165, 378 )
 
 [node name="AttackTimer" type="Node2D" parent="Fighters"]
-script = ExtResource( 1 )
+script = ExtResource( 12 )
 
 [node name="Timer" type="Timer" parent="Fighters/AttackTimer"]
 wait_time = 1.5
 one_shot = true
 
-[node name="BattleButtons" parent="." instance=ExtResource( 59 )]
+[node name="BattleButtons" parent="." instance=ExtResource( 63 )]
 visible = false
 position = Vector2( -23, 156 )
 
@@ -1521,12 +1524,13 @@ size_flags_horizontal = 4
 custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.192157 )
 custom_constants/line_spacing = 0
-custom_fonts/font = ExtResource( 33 )
+custom_fonts/font = ExtResource( 38 )
 text = "You ran away and lost some marbles!"
 align = 1
 valign = 1
 
 [node name="DefenseWindow" type="PanelContainer" parent="."]
+visible = false
 margin_left = 126.0
 margin_top = 112.0
 margin_right = 270.0
@@ -1553,14 +1557,14 @@ margin_bottom = 15.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
-theme = ExtResource( 13 )
+theme = ExtResource( 21 )
 custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.156863 )
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 22 )
 text = "Defend"
 align = 1
 valign = 1
-script = ExtResource( 2 )
+script = ExtResource( 9 )
 
 [node name="Flee" type="Label" parent="DefenseWindow/VBoxContainer"]
 margin_left = 10.0
@@ -1570,16 +1574,16 @@ margin_bottom = 40.0
 rect_min_size = Vector2( 30, 0 )
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource( 13 )
+theme = ExtResource( 21 )
 custom_colors/font_color = Color( 0.976471, 0.964706, 0.964706, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.156863 )
-custom_fonts/font = ExtResource( 14 )
+custom_fonts/font = ExtResource( 22 )
 text = "Flee"
 align = 1
 valign = 1
-script = ExtResource( 2 )
+script = ExtResource( 9 )
 
-[node name="MenuCursor" parent="DefenseWindow" instance=ExtResource( 11 )]
+[node name="MenuCursor" parent="DefenseWindow" instance=ExtResource( 19 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 59.0
@@ -1593,7 +1597,7 @@ cursor_offset = Vector2( 17, 2.5 )
 
 [node name="ItemWindow" type="Node2D" parent="."]
 visible = false
-script = ExtResource( 28 )
+script = ExtResource( 33 )
 
 [node name="ItemWindowPanel" type="PanelContainer" parent="ItemWindow"]
 margin_left = -19.0
@@ -1613,9 +1617,9 @@ margin_bottom = 39.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 9
-script = ExtResource( 27 )
+script = ExtResource( 32 )
 
-[node name="MenuCursor" parent="ItemWindow/ItemWindowPanel" instance=ExtResource( 11 )]
+[node name="MenuCursor" parent="ItemWindow/ItemWindowPanel" instance=ExtResource( 19 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 60.0
@@ -1632,7 +1636,7 @@ margin_left = 195.0
 margin_top = 121.0
 margin_right = 297.0
 margin_bottom = 193.0
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 16 )
 text = "20 HP"
 align = 1
 autowrap = true
@@ -1640,14 +1644,14 @@ autowrap = true
 [node name="ItemInventory" type="Sprite" parent="ItemWindow"]
 position = Vector2( 243, 62 )
 scale = Vector2( 1.1, 1.1 )
-texture = ExtResource( 9 )
+texture = ExtResource( 17 )
 hframes = 3
 vframes = 4
 
 [node name="MagicWindow" type="Node2D" parent="."]
 visible = false
 position = Vector2( -1, -2 )
-script = ExtResource( 29 )
+script = ExtResource( 34 )
 
 [node name="MagicWindowPanel" type="PanelContainer" parent="MagicWindow"]
 margin_left = -17.0
@@ -1668,9 +1672,9 @@ size_flags_horizontal = 2
 size_flags_vertical = 2
 custom_constants/separation = 12
 alignment = 1
-script = ExtResource( 31 )
+script = ExtResource( 36 )
 
-[node name="MenuCursor" parent="MagicWindow/MagicWindowPanel" instance=ExtResource( 11 )]
+[node name="MenuCursor" parent="MagicWindow/MagicWindowPanel" instance=ExtResource( 19 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 62.0
@@ -1688,9 +1692,9 @@ margin_top = 2.0
 margin_right = 120.0
 margin_bottom = 16.0
 theme = SubResource( 18 )
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 16 )
 text = "SP: 30/30"
-script = ExtResource( 30 )
+script = ExtResource( 35 )
 
 [node name="SpellInfo" type="Label" parent="MagicWindow"]
 margin_left = 194.0
@@ -1709,7 +1713,7 @@ margin_left = 224.0
 margin_top = 40.0
 margin_right = 264.0
 margin_bottom = 54.0
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 16 )
 text = "SP: 5"
 
 [node name="SpellType" type="Label" parent="MagicWindow"]
@@ -1717,12 +1721,12 @@ margin_left = 210.0
 margin_top = 83.0
 margin_right = 250.0
 margin_bottom = 97.0
-custom_fonts/font = ExtResource( 8 )
+custom_fonts/font = ExtResource( 16 )
 text = "Type:"
 
 [node name="SpellTypeIcon" type="Sprite" parent="MagicWindow"]
 position = Vector2( 266, 89 )
-texture = ExtResource( 10 )
+texture = ExtResource( 18 )
 hframes = 4
 vframes = 5
 frame = 4
@@ -1730,9 +1734,9 @@ frame = 4
 [node name="BattleDialogue" type="Sprite" parent="."]
 visible = false
 position = Vector2( -134, -223 )
-texture = ExtResource( 32 )
+texture = ExtResource( 37 )
 
-[node name="DialogueCursor" parent="BattleDialogue" instance=ExtResource( 11 )]
+[node name="DialogueCursor" parent="BattleDialogue" instance=ExtResource( 19 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 142.0
@@ -1805,12 +1809,12 @@ position = Vector2( -23, 156 )
 [node name="TC" type="Sprite" parent="."]
 visible = false
 position = Vector2( -141, 62 )
-texture = ExtResource( 7 )
+texture = ExtResource( 15 )
 
 [node name="TC2" type="Sprite" parent="."]
 visible = false
 position = Vector2( 139, -186 )
-texture = ExtResource( 7 )
+texture = ExtResource( 15 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -1823,7 +1827,7 @@ position = Vector2( 0, -49 )
 
 [node name="VictoryWindow" type="Sprite" parent="VictoryWindow"]
 scale = Vector2( 1.15, 1.15 )
-texture = ExtResource( 47 )
+texture = ExtResource( 52 )
 
 [node name="Marbles" type="Label" parent="VictoryWindow"]
 margin_left = -134.0
@@ -1832,7 +1836,7 @@ margin_right = -58.0
 margin_bottom = -6.0
 custom_colors/font_color = Color( 1, 0.998, 0.99, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0156863 )
-custom_fonts/font = ExtResource( 44 )
+custom_fonts/font = ExtResource( 49 )
 text = "Marbles"
 
 [node name="MarblesReward" type="Label" parent="VictoryWindow"]
@@ -1844,7 +1848,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_colors/font_color = Color( 1, 0.998, 0.99, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0156863 )
-custom_fonts/font = ExtResource( 44 )
+custom_fonts/font = ExtResource( 49 )
 text = "100"
 align = 1
 
@@ -1856,7 +1860,7 @@ margin_bottom = 43.0
 size_flags_horizontal = 4
 custom_colors/font_color = Color( 1, 0.998, 0.99, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0156863 )
-custom_fonts/font = ExtResource( 44 )
+custom_fonts/font = ExtResource( 49 )
 text = "EXP"
 align = 1
 
@@ -1869,7 +1873,7 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_colors/font_color = Color( 1, 0.998, 0.99, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0156863 )
-custom_fonts/font = ExtResource( 44 )
+custom_fonts/font = ExtResource( 49 )
 text = "382"
 align = 1
 
@@ -1887,7 +1891,7 @@ playing = true
 
 [node name="LevelUpText" type="Sprite" parent="LevelUpWindow/Window"]
 position = Vector2( 4.09091, 1.82568 )
-texture = ExtResource( 45 )
+texture = ExtResource( 50 )
 offset = Vector2( -1, 0.25 )
 
 [node name="NewSpellWindow" type="Node2D" parent="."]
@@ -1910,14 +1914,14 @@ grow_horizontal = 2
 grow_vertical = 2
 custom_colors/font_color = Color( 1, 0.998, 0.99, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0.0156863 )
-custom_fonts/font = ExtResource( 44 )
+custom_fonts/font = ExtResource( 49 )
 text = "Gary learned \"Earthslide\"!"
 align = 1
 
-[node name="ItemUsage" parent="." instance=ExtResource( 55 )]
+[node name="ItemUsage" parent="." instance=ExtResource( 60 )]
 visible = false
 
-[node name="MovePlayer" parent="." instance=ExtResource( 15 )]
+[node name="MovePlayer" parent="." instance=ExtResource( 7 )]
 
 [node name="Position2D" type="Position2D" parent="."]
 visible = false

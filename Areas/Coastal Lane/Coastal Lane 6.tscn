@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=2]
@@ -58,6 +58,12 @@
 [ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=56]
 [ext_resource path="res://Enemies/Coastal Lane/Wander/Hibiscus_wander_40.tscn" type="PackedScene" id=57]
 [ext_resource path="res://Enemies/Coastal Lane/Wander/Craggy_wander_40.tscn" type="PackedScene" id=58]
+[ext_resource path="res://Areas/Coastal Lane/Coastal Lane BA 9.tscn" type="PackedScene" id=59]
+[ext_resource path="res://Areas/Coastal Lane/Coastal Lane BA 7.tscn" type="PackedScene" id=60]
+[ext_resource path="res://Areas/Coastal Lane/Coastal Lane BA 3.tscn" type="PackedScene" id=61]
+[ext_resource path="res://Areas/Coastal Lane/Coastal Lane BA 1.tscn" type="PackedScene" id=62]
+[ext_resource path="res://Areas/Coastal Lane/Coastal Lane BA 6.tscn" type="PackedScene" id=63]
+[ext_resource path="res://Areas/Coastal Lane/Coastal Lane BA 4.tscn" type="PackedScene" id=64]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -687,7 +693,7 @@ self_modulate = Color( 1, 1, 1, 0.1 )
 position = Vector2( -135, -198.5 )
 scale = Vector2( 1.46, 1.57 )
 frames = SubResource( 12 )
-frame = 3
+frame = 4
 speed_scale = 0.85
 playing = true
 
@@ -696,7 +702,7 @@ self_modulate = Color( 1, 1, 1, 0.28 )
 position = Vector2( -135.25, -200.641 )
 scale = Vector2( 0.935, 1.04719 )
 frames = SubResource( 12 )
-frame = 4
+frame = 3
 speed_scale = 1.1
 playing = true
 
@@ -1047,12 +1053,18 @@ preview_collision_box = false
 
 [node name="Hibiscus" parent="YSort/MiddleGround" instance=ExtResource( 57 )]
 position = Vector2( -516, -138 )
+target_scene = ExtResource( 62 )
+alt_scene = ExtResource( 60 )
 
 [node name="Craggy" parent="YSort/MiddleGround" instance=ExtResource( 58 )]
 position = Vector2( 169, -287 )
+target_scene = ExtResource( 61 )
+alt_scene = ExtResource( 64 )
 
 [node name="Craggy2" parent="YSort/MiddleGround" instance=ExtResource( 58 )]
 position = Vector2( 167, 55 )
+target_scene = ExtResource( 63 )
+alt_scene = ExtResource( 59 )
 
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
@@ -1245,7 +1257,6 @@ polygon = PoolVector2Array( -19, -23, 78, 12, 44, 27, -50, -10 )
 pause_mode = 2
 position = Vector2( 17, -86 )
 z_index = 4096
-current = true
 script = ExtResource( 51 )
 minPos = Vector2( -500, -450 )
 maxPos = Vector2( 310, -90 )

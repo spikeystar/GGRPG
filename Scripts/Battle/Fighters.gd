@@ -247,7 +247,7 @@ func _on_WorldRoot_BB_active():
 		hide_cursors(fighter_index)
 		
 func select_next_fighter(index_offset):
-	if not SceneManager.game_over:
+	if not SceneManager.game_over and not enemies_active:
 		var last_fighter_index = fighter_index;
 		var new_fighter_index = fposmod(last_fighter_index + index_offset, fighters.size())
 		fighters[last_fighter_index].unfocus()
@@ -255,7 +255,7 @@ func select_next_fighter(index_offset):
 		fighter_index = new_fighter_index
 	
 func select_next_fighter2(index_offset):
-	if not SceneManager.game_over:
+	if not SceneManager.game_over and not enemies_active:
 		var last_fighter_index = fighter_index;
 		var new_fighter_index : int
 		new_fighter_index = fposmod(last_fighter_index + index_offset, fighters2.size())
@@ -1188,7 +1188,7 @@ func Sweet_gift():
 		yield(get_tree().create_timer(0.5), "timeout")
 		fighter_index = -1
 	fighters_active_check()
-	BB_active = false
+	#BB_active = false
 	
 func Blossom():	
 	f_turn_used()

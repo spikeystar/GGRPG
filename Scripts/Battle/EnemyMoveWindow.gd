@@ -74,3 +74,6 @@ func set_type():
 	if move_name == "Gravel Spat":
 		$Icons/Type1.frame = 3
 		$Icons/Type2.frame = 5
+	if move_name == "Hay Fever":
+		$Icons/Type1.frame = 3
+		$Icons/Type2.frame = 6

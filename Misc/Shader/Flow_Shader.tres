@@ -4,6 +4,6 @@
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/wave_count = 30.0
-shader_param/speed = 3.6
-shader_param/height = 0.004
+shader_param/wave_count = 40.0
+shader_param/speed = 5.7
+shader_param/height = 0.005

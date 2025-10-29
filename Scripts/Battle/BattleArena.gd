@@ -1194,7 +1194,7 @@ func _on_Fighters_ally_spell_chosen():
 		Sweet_Gift()
 	if spell_id == "Blossom":
 		$Fighters.Blossom()
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(get_tree().create_timer(3), "timeout")
 	BattleMusic.loud_0()
 	emit_signal("action_ended")
 	fighter_selection = false
@@ -1421,6 +1421,8 @@ func _on_Enemies_Enemy_Attack():
 		Terra_Arrow()
 	if enemy_move_name == "Gravel Spat":
 		Gravel_Spat()
+	if enemy_move_name == "Hay Fever":
+		Hay_Fever()
 	
 	
 func Basic():
@@ -1851,6 +1853,33 @@ func Gravel_Spat():
 		var chance = rng.randi_range(1, 100)
 		if chance <= 25:
 			$Fighters.wimpy = true
+		$Fighters.fighter_index = x
+		$Fighters.damage()
+	yield(get_tree().create_timer(1), "timeout")
+	$Fighters/HUDS.showing()
+	yield(get_tree().create_timer(0.7), "timeout")
+	$Fighters.damage_end()
+	
+func Hay_Fever():
+	BattleMusic.quiet_0()
+	$Fighters.move_spread = "spread"
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	$MovePlayer.position = Vector2(0, 0)
+	SE.effect("Prism Snow")
+	$MovePlayer/AnimPlayer.play("Hay_Fever")
+	yield(get_tree().create_timer(2), "timeout")
+	BattleMusic.loud_0()
+	for x in range ($Fighters.fighters.size()):
+		$Fighters.move_kind = "magic"
+		$Fighters.move_type = "earth"
+		$Fighters.enemy_type = $Enemies.get_type()
+		$Fighters.e_move_base = 20
+		$Fighters.e_attack = $Enemies.e_attack
+		var chance = rng.randi_range(1, 100)
+		if chance <= 30:
+			$Fighters.a_debuff = true
 		$Fighters.fighter_index = x
 		$Fighters.damage()
 	yield(get_tree().create_timer(1), "timeout")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Assets/Coastal Lane/Starfish B.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Coastal Lane/Crabgrass B.png" type="Texture" id=2]
@@ -58,6 +58,9 @@
 [ext_resource path="res://Enemies/Coastal Lane/Wander/Hibiscus_wander_80.tscn" type="PackedScene" id=56]
 [ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=57]
 [ext_resource path="res://Enemies/Coastal Lane/Wander/Parasailor_wander_670.tscn" type="PackedScene" id=58]
+[ext_resource path="res://Areas/Coastal Lane/Coastal Lane BA 9.tscn" type="PackedScene" id=59]
+[ext_resource path="res://Areas/Coastal Lane/Coastal Lane BA 2.tscn" type="PackedScene" id=60]
+[ext_resource path="res://Areas/Coastal Lane/Coastal Lane BA 7.tscn" type="PackedScene" id=61]
 
 [sub_resource type="StreamTexture" id=4]
 
@@ -1423,6 +1426,9 @@ texture = ExtResource( 43 )
 
 [node name="Hibiscus" parent="YSort/MiddleGround" instance=ExtResource( 56 )]
 position = Vector2( -599, 100 )
+target_scene = ExtResource( 60 )
+alt_scene = ExtResource( 59 )
+alt_chance = 30
 
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
@@ -1648,7 +1654,6 @@ position = Vector2( 200, -781 )
 pause_mode = 2
 position = Vector2( 17, -86 )
 z_index = 4096
-current = true
 script = ExtResource( 49 )
 vertical_speed = 200.0
 minPos = Vector2( -600, -750 )
@@ -1696,6 +1701,8 @@ polygon = PoolVector2Array( 849, -131, 961, -90, 1012, -81, 1097, -99, 1199, -14
 
 [node name="Parasailor" parent="." instance=ExtResource( 58 )]
 position = Vector2( -63, -324 )
+target_scene = ExtResource( 61 )
+alt_scene = ExtResource( 61 )
 
 [connection signal="bouncy" from="CollisionRoot/Bouncy" to="YSort/MiddleGround/BouncyFlower" method="_on_Bouncy_bouncy"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
