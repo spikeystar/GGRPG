@@ -1654,6 +1654,7 @@ position = Vector2( 200, -781 )
 pause_mode = 2
 position = Vector2( 17, -86 )
 z_index = 4096
+current = true
 script = ExtResource( 49 )
 vertical_speed = 200.0
 minPos = Vector2( -600, -750 )

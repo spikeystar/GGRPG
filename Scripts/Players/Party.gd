@@ -10,6 +10,7 @@ var trinket_get = false
 var sent_storage = false
 var event_name : String
 var jhumki_amount : int = 0
+var misc_name : String
 
 const menu_slot = preload("res://UI/Slot.tscn")
 onready var slot = menu_slot.instance()
@@ -172,6 +173,21 @@ func deposit_item():
 func remove_storage():
 	Storage.remove(storage_index)
 	storage_index = clamp(storage_index, 0, Storage.size() - 1)
+	
+func event_removal_Inventory():
+	var counter = 0
+	for x in Inventory.size():
+		if Inventory[x].get_id() == misc_name and counter == 0:
+			Inventory.remove(x)
+			counter += 1
+			
+func event_removal_KeyItems():
+	var counter = 0
+	for x in KeyItems.size():
+		if KeyItems[x].get_id() == misc_name and counter == 0:
+			KeyItems.remove(x)
+			counter += 1
+			
 	
 
 func boss_event():
