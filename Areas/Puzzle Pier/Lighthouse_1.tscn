@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scripts/General_Dialogue.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Tiles/Stone.png" type="Texture" id=2]
@@ -19,7 +19,6 @@
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=17]
 [ext_resource path="res://Assets/General/Shadows/rectangle shadow small.png" type="Texture" id=18]
 [ext_resource path="res://Assets/General/Backgrounds/Inside BCKGD.png" type="Texture" id=34]
-[ext_resource path="res://Scripts/General_Interaction.gd" type="Script" id=36]
 [ext_resource path="res://UI/Interaction Window.png" type="Texture" id=37]
 [ext_resource path="res://Scripts/Inn.gd" type="Script" id=38]
 [ext_resource path="res://Scripts/UI/Inn_Menu_Cursor.gd" type="Script" id=39]
@@ -256,7 +255,6 @@ texture = ExtResource( 18 )
 flip_h = true
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
-visible = false
 position = Vector2( 3.99995, -0.0209439 )
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 55 )]
@@ -271,51 +269,33 @@ __meta__ = {
 [node name="Outside" parent="Node2D/CollisionRoot" instance=ExtResource( 54 )]
 position = Vector2( -160.553, 85.8418 )
 script = ExtResource( 11 )
-target_scene = "res://Areas/Pivot Town/Pivot_Town_1.tscn"
-exit_name = "PivotTown1_Derek"
+target_scene = "res://Areas/Puzzle Pier/Puzzle_Pier_1.tscn"
+exit_name = "Lighthouse1_PuzzlePier1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Outside"]
-position = Vector2( -13, 10 )
-polygon = PoolVector2Array( -28, -23, 2, -36, 63, -6, 32, 6 )
-disabled = true
+position = Vector2( 1.01596, 2.99476 )
+polygon = PoolVector2Array( -23.162, -30.8792, -12.1831, -34.9367, 49.9365, -12.2616, 37.9628, -7.19888 )
 
 [node name="Upstairs" parent="Node2D/CollisionRoot" instance=ExtResource( 54 )]
 position = Vector2( 4.78001, -42.0256 )
 script = ExtResource( 11 )
 staircase = true
-target_scene = "res://Areas/Pivot Town/Derek_House_2.tscn"
-exit_name = "Derek1_Derek2"
+target_scene = "res://Areas/Puzzle Pier/Lighthouse_2.tscn"
+exit_name = "Lighthouse1_Lighthouse2"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/Upstairs"]
-position = Vector2( -5.97897, 4.03136 )
-polygon = PoolVector2Array( -22.0885, -26.8165, -11.1306, -34.874, 19.9055, -18.1045, 10.9423, -11.0574 )
-disabled = true
-
-[node name="PlayerSpawnDefault" parent="Node2D/CollisionRoot" instance=ExtResource( 59 )]
-position = Vector2( -19.2301, -43.8999 )
-door_name = "Derek2_Derek1"
-direction = Vector2( -1, -1 )
+position = Vector2( 29.3399, 64.8473 )
+polygon = PoolVector2Array( -23.1306, -24.8792, -18.183, -34.9053, 23.9211, -15.1255, 16.9579, -8.0889 )
 
 [node name="PlayerSpawnFromOutsideHouse2" parent="Node2D/CollisionRoot" instance=ExtResource( 59 )]
-position = Vector2( -123.668, 63.6484 )
-door_name = "PivotTown1_Derek"
+position = Vector2( -123.7, 57.6485 )
+door_name = "PuzzlePier1_Lighthouse1"
 direction = Vector2( 1, 1 )
 
-[node name="NPC" type="Area2D" parent="Node2D/CollisionRoot"]
-script = ExtResource( 36 )
-npc_name = "Derek"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/NPC"]
-position = Vector2( 64.8001, -38.3398 )
-polygon = PoolVector2Array( -6.00998, -1.96857, 26.0576, 10.8637, 12.1102, 20.9369, -19.9679, 6.10462 )
-
-[node name="NPC2" type="Area2D" parent="Node2D/CollisionRoot"]
-script = ExtResource( 36 )
-npc_name = "Marjorie"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/CollisionRoot/NPC2"]
-position = Vector2( 271.462, 87.5798 )
-polygon = PoolVector2Array( -6.00998, -1.96857, 26.0576, 10.8637, 12.1102, 20.9369, -19.9679, 6.10462 )
+[node name="PlayerSpawnFromOutsideHouse3" parent="Node2D/CollisionRoot" instance=ExtResource( 59 )]
+position = Vector2( 7.07844, 14.9631 )
+door_name = "Lighthouse2_Lighthouse1"
+direction = Vector2( -1, -1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
@@ -433,9 +413,4 @@ text = "You got a Flummery Flambe!"
 align = 1
 
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
-[connection signal="body_exited" from="Node2D/CollisionRoot/NPC" to="Node2D/CollisionRoot/NPC" method="_on_NPC_body_exited"]
-[connection signal="general_dialogue" from="Node2D/CollisionRoot/NPC" to="Camera2D/Interaction" method="_on_NPC_general_dialogue"]
-[connection signal="general_dialogue" from="Node2D/CollisionRoot/NPC" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]
-[connection signal="body_exited" from="Node2D/CollisionRoot/NPC2" to="Node2D/CollisionRoot/NPC2" method="_on_NPC2_body_exited"]
-[connection signal="general_dialogue" from="Node2D/CollisionRoot/NPC2" to="Camera2D/Interaction/Dialogue" method="_on_NPC2_general_dialogue"]
 [connection signal="option_selecting" from="Camera2D/Interaction" to="Camera2D/Interaction/ShopOptions/MenuCursor" method="_on_Interaction_option_selecting"]

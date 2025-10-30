@@ -25,7 +25,7 @@
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Assets/General/Backgrounds/blue bckgd.png" type="Texture" id=24]
 [ext_resource path="res://NPC/Puzzle Pier/Nathan.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Scripts/Item_Interact.gd" type="Script" id=26]
+[ext_resource path="res://Scripts/Objects/SceneTransition/Doorway.gd" type="Script" id=26]
 [ext_resource path="res://Assets/Puzzle Pier/Ferris_Wheel.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Assets/General/Backgrounds/Inside BCKGD.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Puzzle Pier/flowerbox_a.png" type="Texture" id=29]
@@ -4735,6 +4735,22 @@ position = Vector2( -862, -208 )
 door_name = "PuzzlePier2_PuzzlePier1"
 direction = Vector2( 1, 1 )
 
+[node name="PlayerSpawnFromCherryTrail4" parent="CollisionRoot" instance=ExtResource( 11 )]
+position = Vector2( 1496, 479 )
+door_name = "Lighthouse1_PuzzlePier1"
+direction = Vector2( -1, -1 )
+
+[node name="Lighthouse_Door" parent="CollisionRoot" instance=ExtResource( 12 )]
+position = Vector2( 1535, 470 )
+script = ExtResource( 26 )
+metal = true
+target_scene = "res://Areas/Puzzle Pier/Lighthouse_1.tscn"
+exit_name = "PuzzlePier1_Lighthouse1"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Lighthouse_Door"]
+position = Vector2( -14, 10 )
+polygon = PoolVector2Array( -40, -18, -23, -6, 7, 4, 21, -6, 24, -19, 0, -27, -22, -30 )
+
 [node name="CoastalLane" parent="." instance=ExtResource( 12 )]
 position = Vector2( -758, -503 )
 script = ExtResource( 13 )
@@ -4784,21 +4800,9 @@ custom_fonts/font = ExtResource( 4 )
 text = "You got a Flummery Flambe!"
 align = 1
 
-[node name="Item_Interact" type="Area2D" parent="."]
-visible = false
-position = Vector2( 309, -145 )
-script = ExtResource( 26 )
-item_name = "Picnic Pie"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Item_Interact"]
-position = Vector2( -47.3501, 124.25 )
-polygon = PoolVector2Array( -85.6499, -125.25, -48.6499, -118.25, -39.6499, -103.25, -41.6499, -92.25, -51.6499, -79.25, -78.6499, -70.25, -103.65, -70.25, -124.65, -76.25, -139.65, -85.25, -138.65, -101.25, -131.65, -110.25, -114.65, -122.25 )
-
 [node name="SaveStar" type="Sprite" parent="."]
 position = Vector2( -760, -339 )
 texture = ExtResource( 43 )
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 2276, 1175 )
-
-[connection signal="item_get" from="Item_Interact" to="Camera2D" method="_on_Item_Interact_item_get"]
