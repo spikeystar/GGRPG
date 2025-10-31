@@ -98,6 +98,280 @@ func set_id():
 		item_cost = 1000
 		$Info.text = "Increases holder's Defense by 30%\nWhammy! chance +5"
 		$Carrying.hide()
+		
+	if item_id == "Delicious Cake":
+		$Display.show()
+		$Display.frame = 45
+		$Cost.text = "300 Mb"
+		item_cost = 300
+		$Info.text = "150 HP"
+		$Carrying.show()
+		
+	if item_id == "Amazing Cake":
+		$Display.show()
+		$Display.frame = 46
+		$Cost.text = "600 Mb"
+		item_cost = 600
+		$Info.text = "300 HP"
+		$Carrying.show()
+		
+	if item_id == "Lovely Gem":
+		$Display.show()
+		$Display.frame = 47
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Beautiful Gem":
+		$Display.show()
+		$Display.frame = 48
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+	
+	if item_id == "Polar Parfait":
+		$Display.show()
+		$Display.frame = 49
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Flummery Flambé":
+		$Display.show()
+		$Display.frame = 50
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Saffron Soufflé":
+		$Display.show()
+		$Display.frame = 51
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Nori Cookie":
+		$Display.show()
+		$Display.frame = 52
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Icescream":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Hocus Potion":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+	
+	if item_id == "Magic Mushroom":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Starberry":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Remedy Bouquet":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Perfect Panacea":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Strange Perfume":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Spikey Bomb":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Jinx Doll":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Faulty Amp":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Blister Grenade":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Chilly Globe":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Power Drill":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	#####
+	
+	if item_id == "Ruby Pendant":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Sapphire Pendant":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Topaz Pendant":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Peridot Pendant":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Flashlight":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Compass":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "White Flag":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Antique Watch":
+		$Display.show()
+		$Display.frame = 0
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Black Bass":
+		$Display.show()
+		$Display.frame = 84
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Flying V":
+		$Display.show()
+		$Display.frame = 85
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Silly Hammer":
+		$Display.show()
+		$Display.frame = 87
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Pink Key":
+		$Display.show()
+		$Display.frame = 88
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
+		
+	if item_id == "Fork & Knife":
+		$Display.show()
+		$Display.frame = 89
+		$Cost.text = "50 Mb"
+		item_cost = 50
+		$Info.text = "50 HP"
+		$Carrying.show()
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and buying and able and Party.marbles >= item_cost:

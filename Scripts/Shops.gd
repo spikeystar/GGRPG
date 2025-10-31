@@ -9,6 +9,7 @@ var shop_name : String
 var this_shop : Array
 var Tom : Array = []
 var Cranston : Array = []
+var Marvin : Array = []
 
 func _ready():
 	this_shop = Tom
@@ -34,6 +35,16 @@ func _ready():
 	item_name = "Ginger Tea"
 	add_item()
 	item_name = "Bounty Herb"
+	add_item()
+	
+	this_shop = Marvin
+	item_name = "Yummy Cake"
+	add_item()
+	item_name = "Polar Parfait"
+	add_item()
+	item_name = "Nori Cookie"
+	add_item()
+	item_name = "Ginger Tea"
 	add_item()
 	
 func add_item():

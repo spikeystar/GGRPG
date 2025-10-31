@@ -15,6 +15,9 @@ func _ready():
 	if shop_name == "Cranston":
 		for x in range (Shops.Cranston.size()):
 			inventory.append(Shops.Cranston[x].duplicate())
+	if shop_name == "Marvin":
+		for x in range (Shops.Marvin.size()):
+			inventory.append(Shops.Marvin[x].duplicate())
 	for item_index in inventory.size():
 		add_slot(item_index)
 	if inventory.size() > 10:
