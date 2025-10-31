@@ -73,7 +73,7 @@ func _input(event):
 		$Dialogue/DialogueCursor.hide()
 		text_2()
 		tween_go()
-		yield(get_tree().create_timer(2), "timeout")
+		yield(get_tree().create_timer(1), "timeout")
 		$Dialogue/DialogueCursor.show()
 		able = false
 		complete = true

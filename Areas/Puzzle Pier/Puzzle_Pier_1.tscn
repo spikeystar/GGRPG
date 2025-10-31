@@ -5311,9 +5311,9 @@ texture = ExtResource( 89 )
 script = ExtResource( 85 )
 
 [node name="Buy_Inventory" type="VBoxContainer" parent="Camera2D/Shop/Buy"]
-margin_left = -145.0
+margin_left = -141.31
 margin_top = -111.0
-margin_right = 14.9997
+margin_right = 18.6899
 margin_bottom = -71.0
 grow_horizontal = 2
 rect_min_size = Vector2( 160, 0 )
@@ -5326,7 +5326,7 @@ shop_name = "Marvin"
 [node name="MenuCursor" parent="Camera2D/Shop/Buy" instance=ExtResource( 74 )]
 script = ExtResource( 75 )
 menu_parent_path = NodePath("../Buy_Inventory")
-cursor_offset = Vector2( -12, 0 )
+cursor_offset = Vector2( -10.5, 1 )
 
 [node name="Display" type="Sprite" parent="Camera2D/Shop/Buy"]
 position = Vector2( 84.9992, -81.6665 )
@@ -5334,6 +5334,7 @@ scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 72 )
 hframes = 3
 vframes = 32
+frame = 49
 
 [node name="Cost" type="Label" parent="Camera2D/Shop/Buy"]
 margin_left = 47.0
@@ -5401,9 +5402,9 @@ texture = ExtResource( 89 )
 script = ExtResource( 82 )
 
 [node name="Sell_Inventory" type="VBoxContainer" parent="Camera2D/Shop/Sell"]
-margin_left = -145.0
+margin_left = -141.31
 margin_top = -111.0
-margin_right = 15.0
+margin_right = 18.69
 margin_bottom = -51.0
 grow_horizontal = 2
 rect_min_size = Vector2( 0, 60 )
@@ -5414,7 +5415,7 @@ script = ExtResource( 84 )
 [node name="MenuCursor" parent="Camera2D/Shop/Sell" instance=ExtResource( 74 )]
 script = SubResource( 3 )
 menu_parent_path = NodePath("../Sell_Inventory")
-cursor_offset = Vector2( -12, 0 )
+cursor_offset = Vector2( -10.5, 1 )
 
 [node name="Display" type="Sprite" parent="Camera2D/Shop/Sell"]
 position = Vector2( 84.9992, -81.6665 )
@@ -5478,9 +5479,9 @@ texture = ExtResource( 89 )
 script = ExtResource( 86 )
 
 [node name="Deposit_Inventory" type="VBoxContainer" parent="Camera2D/Shop/Deposit"]
-margin_left = -145.0
+margin_left = -141.31
 margin_top = -111.0
-margin_right = 15.0
+margin_right = 18.69
 margin_bottom = -51.0
 grow_horizontal = 2
 rect_min_size = Vector2( 0, 60 )
@@ -5491,7 +5492,7 @@ script = ExtResource( 77 )
 [node name="MenuCursor" parent="Camera2D/Shop/Deposit" instance=ExtResource( 74 )]
 script = SubResource( 4 )
 menu_parent_path = NodePath("../Deposit_Inventory")
-cursor_offset = Vector2( -12, 0 )
+cursor_offset = Vector2( -10.5, 1 )
 
 [node name="Display" type="Sprite" parent="Camera2D/Shop/Deposit"]
 position = Vector2( 84.9992, -81.6665 )
@@ -5539,9 +5540,9 @@ texture = ExtResource( 89 )
 script = ExtResource( 83 )
 
 [node name="Withdraw_Inventory" type="VBoxContainer" parent="Camera2D/Shop/Withdraw"]
-margin_left = -145.0
+margin_left = -141.31
 margin_top = -111.0
-margin_right = 15.0
+margin_right = 18.69
 margin_bottom = -51.0
 grow_horizontal = 2
 rect_min_size = Vector2( 0, 60 )
@@ -5552,7 +5553,7 @@ script = ExtResource( 87 )
 [node name="MenuCursor" parent="Camera2D/Shop/Withdraw" instance=ExtResource( 74 )]
 script = SubResource( 5 )
 menu_parent_path = NodePath("../Withdraw_Inventory")
-cursor_offset = Vector2( -12, 0 )
+cursor_offset = Vector2( -10.5, 1 )
 
 [node name="Display" type="Sprite" parent="Camera2D/Shop/Withdraw"]
 position = Vector2( 84.9992, -81.6665 )
