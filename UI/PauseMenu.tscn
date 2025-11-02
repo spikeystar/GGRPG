@@ -24,7 +24,7 @@
 [ext_resource path="res://Scripts/UI/Member_Options_Cursor.gd" type="Script" id=22]
 [ext_resource path="res://Scripts/UI/MemberOptions.gd" type="Script" id=23]
 [ext_resource path="res://UI/Pause/Member Stats.png" type="Texture" id=24]
-[ext_resource path="res://Assets/General/Weapons SS.png" type="Texture" id=25]
+[ext_resource path="res://Assets/General/All Weapons SS.png" type="Texture" id=25]
 [ext_resource path="res://Scripts/UI/Item_Menu_Cursor.gd" type="Script" id=26]
 [ext_resource path="res://Scripts/UI/Pause_Items.gd" type="Script" id=27]
 [ext_resource path="res://Scripts/UI/Pause_Trinkets.gd" type="Script" id=28]

@@ -25,17 +25,17 @@ func set_id():
 	if trinket_id == "Gold Bracelet":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 6
-		$TrinketInfo.text = "Increases holder's Attack by 30%\n\nWhammy! chance +5"
+		$TrinketInfo.text = "Attack +30%\n\nWhammy! chance +5"
 		set_trinket_holder()
 	if trinket_id == "Gold Chain":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 7
-		$TrinketInfo.text = "Increases holder's Defense by 30%\n\nWhammy! chance +5"
+		$TrinketInfo.text = "Defense +30%\n\nWhammy! chance +5"
 		set_trinket_holder()
 	if trinket_id == "Gold Earring":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 8
-		$TrinketInfo.text = "Increases holder's Magic by 30%\n\nWhammy! chance +5"
+		$TrinketInfo.text = "Magic +30%\n\nWhammy! chance +5"
 		set_trinket_holder()
 	if trinket_id == "-":
 		$TrinketInventory.hide()

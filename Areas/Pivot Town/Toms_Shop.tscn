@@ -948,7 +948,6 @@ menu_parent_path = NodePath("../VBoxContainer")
 cursor_offset = Vector2( -21, 0 )
 
 [node name="Buy" type="Sprite" parent="Camera2D/Shop"]
-visible = false
 position = Vector2( 109.997, 76.0209 )
 scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 42 )
@@ -973,11 +972,12 @@ menu_parent_path = NodePath("../Buy_Inventory")
 cursor_offset = Vector2( -12, 0 )
 
 [node name="Display" type="Sprite" parent="Camera2D/Shop/Buy"]
-position = Vector2( 84.9992, -81.6665 )
+position = Vector2( 85, -82 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 50 )
 hframes = 3
 vframes = 32
+frame = 2
 
 [node name="Cost" type="Label" parent="Camera2D/Shop/Buy"]
 margin_left = 47.0

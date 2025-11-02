@@ -83,6 +83,8 @@ func set_id():
 		$Display.hide()
 		$Cost.hide()
 		$Info.text = "No items"
+		
+	
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and selling and able and Party.Inventory.size() > 0:
