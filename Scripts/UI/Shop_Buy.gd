@@ -5,6 +5,7 @@ var able = false
 var item_cost : int
 var bag_name : String
 var bag_number : int
+export var this_shop : String
 
 signal shop_check
 signal not_enough
@@ -57,6 +58,7 @@ func set_id():
 		$Info.text = "50 HP"
 		$Carrying.show()
 		$Display.position = Vector2(85, -82)
+		$Display.scale = Vector2(1.1, 1.1)
 	if item_id == "Pretty Gem":
 		$Display.show()
 		$Display.frame = 1
@@ -65,6 +67,7 @@ func set_id():
 		$Info.text = "20 SP"
 		$Carrying.show()
 		$Display.position = Vector2(85, -82)
+		$Display.scale = Vector2(1.1, 1.1)
 	if item_id == "Sugar Pill":
 		$Display.show()
 		$Display.frame = 3
@@ -73,6 +76,7 @@ func set_id():
 		$Info.text = "30 HP & 5 SP\nGrants a random buff"
 		$Carrying.show()
 		$Display.position = Vector2(85, -82)
+		$Display.scale = Vector2(1.1, 1.1)
 	if item_id == "Ginger Tea":
 		$Display.show()
 		$Display.frame = 4
@@ -81,6 +85,7 @@ func set_id():
 		$Info.text = "10 HP & 5 SP\nHeals all statuses and debuffs"
 		$Carrying.show()
 		$Display.position = Vector2(85, -82)
+		$Display.scale = Vector2(1.1, 1.1)
 	if item_id == "Bounty Herb":
 		$Display.show()
 		$Display.frame = 5
@@ -89,6 +94,7 @@ func set_id():
 		$Info.text = "Revives a fallen party member to half health"
 		$Carrying.show()
 		$Display.position = Vector2(85, -82)
+		$Display.scale = Vector2(1.1, 1.1)
 	if item_id == "Gold Bracelet":
 		$Display.show()
 		$Display.frame = 6
@@ -97,6 +103,7 @@ func set_id():
 		$Info.text = "Attack +30%\nWhammy! chance +5"
 		$Carrying.hide()
 		$Display.position = Vector2(85, -82)
+		$Display.scale = Vector2(1.1, 1.1)
 	if item_id == "Gold Chain":
 		$Display.show()
 		$Display.frame = 7
@@ -105,6 +112,7 @@ func set_id():
 		$Info.text = "Defense +30%\nWhammy! chance +5"
 		$Carrying.hide()
 		$Display.position = Vector2(85, -82)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 		
 	if item_id == "Picnic Pie":
@@ -115,6 +123,7 @@ func set_id():
 		$Info.text = "100 HP for all"
 		$Carrying.show()
 		$Display.position = Vector2(85, -82)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 		
 	if item_id == "Delicious Cake":
@@ -125,6 +134,7 @@ func set_id():
 		$Info.text = "150 HP"
 		$Carrying.show()
 		$Display.position = Vector2(85, -82)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Amazing Cake":
 		$Display.show()
@@ -133,7 +143,8 @@ func set_id():
 		item_cost = 600
 		$Info.text = "300 HP"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(83, -78)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Lovely Gem":
 		$Display.show()
@@ -142,7 +153,8 @@ func set_id():
 		item_cost = 300
 		$Info.text = "50 SP"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(88, -80)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Beautiful Gem":
 		$Display.show()
@@ -151,7 +163,8 @@ func set_id():
 		item_cost = 600
 		$Info.text = "100 SP"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(85, -78)
+		$Display.scale = Vector2(1.1, 1.1)
 	
 	if item_id == "Polar Parfait":
 		$Display.show()
@@ -160,7 +173,8 @@ func set_id():
 		item_cost = 200
 		$Info.text = "50 HP & 10 SP\nApplies Water type"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(85, -79)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Flummery Flambé":
 		$Display.show()
@@ -169,7 +183,8 @@ func set_id():
 		item_cost = 200
 		$Info.text = "50 HP & 10 SP\nApplies Fire type"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(83, -78)
+		$Display.scale = Vector2(1.15, 1.15)
 		
 	if item_id == "Saffron Soufflé":
 		$Display.show()
@@ -178,7 +193,8 @@ func set_id():
 		item_cost = 200
 		$Info.text = "50 HP & 10 SP\nApplies Air type"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(85, -68)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Nori Cookie":
 		$Display.show()
@@ -187,7 +203,8 @@ func set_id():
 		item_cost = 200
 		$Info.text = "50 HP & 10 SP\nApplies Earth type"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(85, -71)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Icescream":
 		$Display.show()
@@ -196,7 +213,8 @@ func set_id():
 		item_cost = 500
 		$Info.text = "100 HP & 20 SP\nHeals Stun status"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(81, -78)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Hocus Potion":
 		$Display.show()
@@ -205,7 +223,8 @@ func set_id():
 		item_cost = 2000
 		$Info.text = "30 SP\nPrevents all statuses for 3 turns"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(83, -74.5)
+		$Display.scale = Vector2(1.12, 1.12)
 	
 	if item_id == "Magic Mushroom":
 		$Display.show()
@@ -214,7 +233,8 @@ func set_id():
 		item_cost = 5000
 		$Info.text = "100 HP & 20 SP\nHeals all statuses & applies all buffs"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(85, -75)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Starberry":
 		$Display.show()
@@ -223,7 +243,8 @@ func set_id():
 		item_cost = 3000
 		$Info.text = "150 HP & 50 SP\nHeals Poison status"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(89, -76)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Remedy Bouquet":
 		$Display.show()
@@ -232,7 +253,8 @@ func set_id():
 		item_cost = 4000
 		$Info.text = "30 HP & 5 SP for all\nHeals all statuses and debuffs"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(87, -76)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Perfect Panacea":
 		$Display.show()
@@ -241,7 +263,8 @@ func set_id():
 		item_cost = 20000
 		$Info.text = "Fully heals & revives party\nApllies all buffs"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(84, -76)
+		$Display.scale = Vector2(1.2, 1.2)
 		
 	if item_id == "Strange Perfume":
 		$Display.show()
@@ -250,7 +273,8 @@ func set_id():
 		item_cost = 1000
 		$Info.text = "Inverts all enemy types & applies a random debuff"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(86.5, -77)
+		$Display.scale = Vector2(1.15, 1.15)
 		
 	if item_id == "Spikey Bomb":
 		$Display.show()
@@ -259,7 +283,8 @@ func set_id():
 		item_cost = 1500
 		$Info.text = "Damage all enemies with a Neutral attack"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(83, -70)
+		$Display.scale = Vector2(1.25, 1.25)
 		
 	if item_id == "Jinx Doll":
 		$Display.show()
@@ -268,7 +293,8 @@ func set_id():
 		item_cost = 5000
 		$Info.text = "Inflicts all debuffs & Poison on one enemy"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(88.5, -75)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Faulty Amp":
 		$Display.show()
@@ -277,7 +303,8 @@ func set_id():
 		item_cost = 2000
 		$Info.text = "Damage all enemies with an Air attack"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(86, -66)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Blister Grenade":
 		$Display.show()
@@ -286,7 +313,8 @@ func set_id():
 		item_cost = 2000
 		$Info.text = "Damage all enemies with a Fire attack"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(85.5, -77)
+		$Display.scale = Vector2(1.15, 1.15)
 		
 	if item_id == "Chilly Globe":
 		$Display.show()
@@ -295,7 +323,8 @@ func set_id():
 		item_cost = 2000
 		$Info.text = "Damage all enemies with a Water attack"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(81, -68)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Power Drill":
 		$Display.show()
@@ -304,7 +333,8 @@ func set_id():
 		item_cost = 2000
 		$Info.text = "Damage all enemies with an Earth attack"
 		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Display.position = Vector2(88, -65)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	#####
 	
@@ -314,8 +344,9 @@ func set_id():
 		$Cost.text = "5,000 Mb"
 		item_cost = 5000
 		$Info.text = "Magic & Defense +20%\nSets type to Fire & Whammy! chance +2"
-		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Carrying.hide()
+		$Display.position = Vector2(84.5, -79)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Sapphire Pendant":
 		$Display.show()
@@ -323,8 +354,9 @@ func set_id():
 		$Cost.text = "5,000 Mb"
 		item_cost = 5000
 		$Info.text = "Magic & Defense +20%\nSets type to Water & Whammy! chance +2"
-		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Carrying.hide()
+		$Display.position = Vector2(84.5, -79)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Topaz Pendant":
 		$Display.show()
@@ -332,8 +364,9 @@ func set_id():
 		$Cost.text = "5,000 Mb"
 		item_cost = 5000
 		$Info.text = "Magic & Defense +20%\nSets type to Air & Whammy! chance +2"
-		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Carrying.hide()
+		$Display.position = Vector2(84.5, -79)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Peridot Pendant":
 		$Display.show()
@@ -341,8 +374,9 @@ func set_id():
 		$Cost.text = "5,000 Mb"
 		item_cost = 5000
 		$Info.text = "Magic & Defense +20%\nSets type to Earth & Whammy! chance +2"
-		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Carrying.hide()
+		$Display.position = Vector2(84.5, -79)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Flashlight":
 		$Display.show()
@@ -350,8 +384,9 @@ func set_id():
 		$Cost.text = "4,000 Mb"
 		item_cost = 4000
 		$Info.text = "Holder's Magic +20%\nPrevents Targeted status on party"
-		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Carrying.hide()
+		$Display.position = Vector2(84, -79)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Compass":
 		$Display.show()
@@ -359,8 +394,9 @@ func set_id():
 		$Cost.text = "3,000 Mb"
 		item_cost = 3000
 		$Info.text = "Holder's Magic +20%\nPrevents Dizzy status on party"
-		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Carrying.hide()
+		$Display.position = Vector2(87.5, -78.5)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "White Flag":
 		$Display.show()
@@ -368,8 +404,9 @@ func set_id():
 		$Cost.text = "5,000 Mb"
 		item_cost = 5000
 		$Info.text = "Party's Defense +30%\nKeeps party types as Neutral"
-		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Carrying.hide()
+		$Display.position = Vector2(84, -82)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Antique Watch":
 		$Display.show()
@@ -377,8 +414,9 @@ func set_id():
 		$Cost.text = "7,000 Mb"
 		item_cost = 7000
 		$Info.text = "Magic +10%\nStun chance +10% & Whammy! chance +2"
-		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Carrying.hide()
+		$Display.position = Vector2(85, -78.5)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Black Bass":
 		$Display.show()
@@ -386,8 +424,9 @@ func set_id():
 		$Cost.text = "3,000 Mb"
 		item_cost = 3000
 		$Info.text = "A hefty weapon that can crush opponents"
-		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Carrying.hide()
+		$Display.position = Vector2(84, -75)
+		$Display.scale = Vector2(1.05, 1.05)
 		
 	if item_id == "Flying V":
 		$Display.show()
@@ -395,8 +434,9 @@ func set_id():
 		$Cost.text = "7,000 Mb"
 		item_cost = 7000
 		$Info.text = "A lightweight guitar that deals devastating blows"
-		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Carrying.hide()
+		$Display.position = Vector2(84.5, -75)
+		$Display.scale = Vector2(1, 1)
 		
 	if item_id == "Silly Hammer":
 		$Display.show()
@@ -404,8 +444,9 @@ func set_id():
 		$Cost.text = "6,000 Mb"
 		item_cost = 6000
 		$Info.text = "A toy hammer that hits suprisingly hard"
-		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Carrying.hide()
+		$Display.position = Vector2(86, -74)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Pink Key":
 		$Display.show()
@@ -413,8 +454,9 @@ func set_id():
 		$Cost.text = "7,000 Mb"
 		item_cost = 7000
 		$Info.text = "A majestic key that is meant for battle"
-		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Carrying.hide()
+		$Display.position = Vector2(86, -72)
+		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Fork & Knife":
 		$Display.show()
@@ -422,8 +464,19 @@ func set_id():
 		$Cost.text = "7,000 Mb"
 		item_cost = 7000
 		$Info.text = "A set of cutlery that can tear up enemies"
-		$Carrying.show()
-		$Display.position = Vector2(85, -82)
+		$Carrying.hide()
+		$Display.position = Vector2(85, -75)
+		$Display.scale = Vector2(1.05, 1.05)
+		
+	if item_id == "Jhumki":
+		$Display.show()
+		$Display.frame = 90
+		$Cost.text = "10,000 Mb"
+		item_cost = 10000
+		$Info.text = "A small golden ornament that some collect"
+		$Carrying.hide()
+		$Display.position = Vector2(83.5, -80.5)
+		$Display.scale = Vector2(1.1, 1.1)
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and buying and able and Party.marbles >= item_cost:
@@ -432,7 +485,7 @@ func _input(event):
 			Party.marbles = Party.marbles - item_cost
 			Party.add_trinket_name = item_id
 			Party.add_trinket()
-			Shops.shop_name = "Tom"
+			Shops.shop_name = this_shop
 			Shops.item_index = $Buy_Inventory.item_index
 			Shops.remove_item()
 			$MenuCursor.item_selecting = false
@@ -444,8 +497,49 @@ func _input(event):
 			able = false
 			yield(get_tree().create_timer(0.1), "timeout")
 			able = true
+		if item_id == "Jhumki":
+			SE.effect("Select")
+			Party.marbles = Party.marbles - item_cost
+			Party.add_key_item_name = item_id
+			Party.add_key_item()
+			Shops.shop_name = this_shop
+			Shops.item_index = $Buy_Inventory.item_index
+			Shops.remove_item()
+			$MenuCursor.item_selecting = false
+			if $Buy_Inventory.item_index == $Buy_Inventory.inventory_max:
+				$Buy_Inventory.item_index -=1
+				$MenuCursor.cursor_index -= 1
+			$Buy_Inventory.item_removed()
+			$MenuCursor.item_selecting = true
+			able = false
+			yield(get_tree().create_timer(0.1), "timeout")
+			able = true
+		if item_id == "Black Bass" or item_id == "Flying V" or item_id == "Silly Hammer" or item_id == "Pink Key" or item_id == "Fork & Knife":
+			SE.effect("Select")
+			Party.marbles = Party.marbles - item_cost
+			Shops.shop_name = this_shop
+			Shops.item_index = $Buy_Inventory.item_index
+			Shops.remove_item()
+			$MenuCursor.item_selecting = false
+			if $Buy_Inventory.item_index == $Buy_Inventory.inventory_max:
+				$Buy_Inventory.item_index -=1
+				$MenuCursor.cursor_index -= 1
+			$Buy_Inventory.item_removed()
+			$MenuCursor.item_selecting = true
+			able = false
+			yield(get_tree().create_timer(0.1), "timeout")
+			able = true
+			if item_id == "Black Bass":
+				PartyStats.gary_weapon = "Black Bass"
+			if item_id == "Flying V":
+				PartyStats.gary_weapon = "Flying V"
+			if item_id == "Silly Hammer":
+				PartyStats.irina_weapon = "Silly Hammer"
+			if item_id == "Pink Key":
+				PartyStats.irina_weapon = "Pink Key"
+			if item_id == "Fork & Knife":
+				PartyStats.suzy_weapon = "Fork & Knife"
 		else:
-			#SE.effect("Marble")
 			SE.effect("Select")
 			Party.marbles = Party.marbles - item_cost
 			Party.add_item_name = item_id
@@ -454,6 +548,7 @@ func _input(event):
 			able = false
 			yield(get_tree().create_timer(0.1), "timeout")
 			able = true
+			
 	if Input.is_action_just_pressed("ui_select") and able and buying:
 		if Party.marbles < item_cost:
 			SE.effect("Unable")
