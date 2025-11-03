@@ -178,7 +178,7 @@ func set_id():
 		$Display.frame = 58
 		$Info.text = "30 HP & 5 SP for all\nHeals all statuses and debuffs"
 		$Display.position = Vector2(87, -76)
-		$Display.scale = Vector2(1.1, 1.1)
+		$Display.scale = Vector2(1.15, 1.15)
 		$Storage.show()
 		
 	if item_id == "Perfect Panacea":
@@ -186,7 +186,7 @@ func set_id():
 		$Display.frame = 57
 		$Info.text = "Fully heals & revives party\nApllies all buffs"
 		$Display.position = Vector2(84, -76)
-		$Display.scale = Vector2(1.2, 1.2)
+		$Display.scale = Vector2(1.25, 1.25)
 		$Storage.show()
 		
 	if item_id == "Strange Perfume":
@@ -210,7 +210,7 @@ func set_id():
 		$Display.frame = 65
 		$Info.text = "Inflicts all debuffs & Poison on one enemy"
 		$Display.position = Vector2(88.5, -75)
-		$Display.scale = Vector2(1.1, 1.1)
+		$Display.scale = Vector2(1.15, 1.15)
 		$Storage.show()
 		
 	if item_id == "Faulty Amp":
@@ -218,7 +218,7 @@ func set_id():
 		$Display.frame = 61
 		$Info.text = "Damage all enemies with an Air attack"
 		$Display.position = Vector2(86, -66)
-		$Display.scale = Vector2(1.1, 1.1)
+		$Display.scale = Vector2(1.15, 1.15)
 		$Storage.show()
 		
 	if item_id == "Blister Grenade":
@@ -242,7 +242,7 @@ func set_id():
 		$Display.frame = 62
 		$Info.text = "Damage all enemies with an Earth attack"
 		$Display.position = Vector2(88, -65)
-		$Display.scale = Vector2(1.1, 1.1)
+		$Display.scale = Vector2(1.15, 1.15)
 		$Storage.show()
 
 func _input(event):

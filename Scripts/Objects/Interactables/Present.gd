@@ -154,31 +154,243 @@ func full_heal():
 func set_item():
 	if item_name == "Yummy Cake":
 		$ItemUsage/Item.frame = 0
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		item_get()
 	if item_name == "Pretty Gem":
 		$ItemUsage/Item.frame = 1
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		item_get()
 	if item_name == "Ginger Tea":
 		$ItemUsage/Item.frame = 4
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		item_get()
 	if item_name == "Sugar Pill":
 		$ItemUsage/Item.frame = 3
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		item_get()
 	if item_name == "Bounty Herb":
 		$ItemUsage/Item.frame = 5
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		item_get()
 	if item_name == "Picnic Pie":
 		$ItemUsage/Item.frame = 2
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		item_get()
 	if item_name == "Marbles":
 		$ItemUsage/Item.frame = 11
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		marbles_get()
 	if item_name == "Full Heal":
 		$ItemUsage/Item.frame = 10
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		full_heal()
 	if item_name == "Gold Earring":
 		$ItemUsage/Item.frame = 8
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		trinket_get()
 	if item_name == "Jhumki":
 		$ItemUsage/Item.frame = 90
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		item_get()
+				
+	if item_name == "Remedy Bouquet":
+		$ItemUsage/Item.frame = 58
+		$ItemUsage/Item.position = Vector2(4, 4)
+		$ItemUsage/Item.scale = Vector2(1, 1)
+		item_get()
+		
+	if item_name == "Perfect Panacea":
+		$ItemUsage/Item.frame = 57
+		$ItemUsage/Item.position = Vector2(0.5, 5)
+		$ItemUsage/Item.scale = Vector2(1, 1)
+		item_get()
+	
+	if item_name == "Delicious Cake":
+		$ItemUsage/Item.frame = 45
+		$ItemUsage/Item.position = Vector2(0, 0)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		item_get()
+	
+	if item_name == "Amazing Cake":
+		$ItemUsage/Item.frame = 46
+		$ItemUsage/Item.position = Vector2(0, 1)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		item_get()
+		
+	if item_name == "Polar Parfait":
+		$ItemUsage/Item.frame = 50
+		$ItemUsage/Item.position = Vector2(0, 3)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		item_get()
+		
+	if item_name == "Flummery Flambé":
+		$ItemUsage/Item.frame = 49
+		$ItemUsage/Item.position = Vector2(-1, 3)
+		$ItemUsage/Item.scale = Vector2(0.92, 0.92)
+		item_get()
+		
+	if item_name == "Saffron Soufflé":
+		$ItemUsage/Item.frame = 51
+		$ItemUsage/Item.position = Vector2(0, 9)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		item_get()
+		
+	if item_name == "Nori Cookie":
+		$ItemUsage/Item.frame = 52
+		$ItemUsage/Item.position = Vector2(0.5, 7)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		item_get()
+		
+	if item_name == "Lovely Gem":
+		$ItemUsage/Item.frame = 47
+		$ItemUsage/Item.position = Vector2(3, 1)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		item_get()
+		
+	if item_name == "Beautiful Gem":
+		$ItemUsage/Item.frame = 48
+		$ItemUsage/Item.position = Vector2(0, 2)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		item_get()
+		
+	if item_name == "Starberry":
+		$ItemUsage/Item.frame = 55
+		$ItemUsage/Item.position = Vector2(4, 3)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		item_get()
+		
+	if item_name == "Icescream":
+		$ItemUsage/Item.frame = 54
+		$ItemUsage/Item.position = Vector2(-1, 3)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		item_get()
+		
+	if item_name == "Hocus Potion":
+		$ItemUsage/Item.frame = 63
+		$ItemUsage/Item.position = Vector2(-2, 8)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		item_get()
+		
+	if item_name == "Magic Mushroom":
+		$ItemUsage/Item.frame = 56
+		$ItemUsage/Item.position = Vector2(2, 5)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		item_get()
+		
+	if item_name == "Strange Perfume":
+		$ItemUsage/Item.frame = 64
+		$ItemUsage/Item.position = Vector2(6, 4)
+		$ItemUsage/Item.scale = Vector2(1, 1)
+		item_get()
+		
+	if item_name == "Jinx Doll":
+		$ItemUsage/Item.frame = 65
+		$ItemUsage/Item.position = Vector2(4, 4)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		item_get()
+		
+	if item_name == "Spikey Bomb":
+		$ItemUsage/Item.frame = 53
+		$ItemUsage/Item.position = Vector2(2, 8)
+		$ItemUsage/Item.scale = Vector2(1, 1)
+		item_get()
+		
+	if item_name == "Blister Grenade":
+		$ItemUsage/Item.frame = 59
+		$ItemUsage/Item.position = Vector2(3, 3)
+		$ItemUsage/Item.scale = Vector2(1, 1)
+		item_get()
+
+	if item_name == "Power Drill":
+		$ItemUsage/Item.frame = 62
+		$ItemUsage/Item.position = Vector2(3, 13)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		item_get()
+
+	if item_name == "Faulty Amp":
+		$ItemUsage/Item.frame = 61
+		$ItemUsage/Item.position = Vector2(2, 10)
+		$ItemUsage/Item.scale = Vector2(1, 1)
+		item_get()
+		
+	if item_name == "Chilly Globe":
+		$ItemUsage/Item.frame = 60
+		$ItemUsage/Item.position = Vector2(-2, 11)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		item_get()
+		
+	if item_name == "Lucky Locket":
+		$ItemUsage/Item.frame = 14
+		$ItemUsage/Item.position = Vector2(3, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		trinket_get()
+		
+	if item_name == "Beggar's Amulet":
+		$ItemUsage/Item.frame = 15
+		$ItemUsage/Item.position = Vector2(0, -1)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		trinket_get()
+		
+	if item_name == "Martyr's Medal":
+		$ItemUsage/Item.frame = 16
+		$ItemUsage/Item.position = Vector2(0, -1)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		trinket_get()
+		
+	if item_name == "Bottlecap":
+		$ItemUsage/Item.frame = 17
+		$ItemUsage/Item.position = Vector2(5, -1)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		trinket_get()
+		
+	if item_name == "Overdrive":
+		$ItemUsage/Item.frame = 23
+		$ItemUsage/Item.position = Vector2(1, 1)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		trinket_get()
+		
+	if item_name == "Ripple Ribbon":
+		$ItemUsage/Item.frame = 27
+		$ItemUsage/Item.position = Vector2(1, 5)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		trinket_get()
+		
+	if item_name == "Toxic Barb":
+		$ItemUsage/Item.frame = 28
+		$ItemUsage/Item.position = Vector2(1, 3)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		trinket_get()
+		
+	if item_name == "Shooting Star":
+		$ItemUsage/Item.frame = 31
+		$ItemUsage/Item.position = Vector2(2, 1)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		trinket_get()
+		
+	if item_name == "Megaphone":
+		$ItemUsage/Item.frame = 36
+		$ItemUsage/Item.position = Vector2(-2, 0)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		trinket_get()
+		
+	if item_name == "Butterfly Charm":
+		$ItemUsage/Item.frame = 14
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		trinket_get()
+		
+	if item_name == "Froggie Charm":
+		$ItemUsage/Item.frame = 14
+		$ItemUsage/Item.position = Vector2(-2, 1)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		trinket_get()

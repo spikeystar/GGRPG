@@ -1,14 +1,22 @@
 extends Node
 
+const FerrisWheel = preload("res://Areas/Puzzle Pier/Minigame/FerrisWheel.tscn")
+
+onready var FerrisWheel_Scene = FerrisWheel.instance()
+
 func _ready():
+	SceneManager.day = false
+	SceneManager.night = false
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	var cycle = rng.randi_range(1, 100)
 	if cycle <= 50:
 		night()
+		SceneManager.night = true
 	else:
 		day()
+		SceneManager.day = true
 	
 	#EventManager.Pivot_Town = true
 	
@@ -110,3 +118,6 @@ func night():
 	$YSort/Foreground/StringLights13.frame = 1
 	$YSort/Foreground/StringLights14.frame = 1
 	$YSort/Foreground/StringLights15.frame = 1
+
+func FerrisWheel_Start():
+	PlayerManager.freeze = true

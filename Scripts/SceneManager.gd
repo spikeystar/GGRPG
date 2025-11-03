@@ -24,5 +24,8 @@ var enemy_repel = false
 var enemy_turn = false
 var transitioning = false
 
+var day = false
+var night = false
+
 ## DEBUG ##
 var times = 0

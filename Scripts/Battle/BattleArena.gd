@@ -971,39 +971,194 @@ func _on_Fighters_item_chosen():
 	yield(get_tree().create_timer(0.3), "timeout")
 	if item_id == "Yummy Cake":
 		$ItemUsage/Item.frame = 0
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		$Fighters.heal = true
 		$Fighters.HP_amount = 50
 	if item_id == "Pretty Gem":
 		$ItemUsage/Item.frame = 1
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		$Fighters.SP = true
 		$Fighters.SP_amount = 20
 	if item_id == "Picnic Pie":
 		$ItemUsage/Item.frame = 2
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		$Fighters.all_heal = true
 		$Fighters.HP_amount = 100
 	if item_id == "Sugar Pill":
 		$ItemUsage/Item.frame = 3
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		$Fighters.combo_heal = true
 		$Fighters.HP_amount = 30
 		$Fighters.SP_amount = 5
 		$Fighters.random_buff()
 	if item_id == "Ginger Tea":
 		$ItemUsage/Item.frame = 4
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		$Fighters.restore = true
 		$Fighters.item_name = "Ginger Tea"
 	if item_id == "Bounty Herb":
 		$ItemUsage/Item.frame = 5
+		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		$Fighters.restore = true
 		$Fighters.revive = true
 		$Fighters.item_name = "Bounty Herb"
+		
+		
 	if item_id == "Remedy Bouquet":
-		$ItemUsage/Item.frame = 5
+		$ItemUsage/Item.frame = 58
+		$ItemUsage/Item.position = Vector2(4, 4)
+		$ItemUsage/Item.scale = Vector2(1, 1)
 		$Fighters.remedy_b = true
 		$Fighters.item_name = "Remedy Bouquet"
+		
 	if item_id == "Perfect Panacea":
-		$ItemUsage/Item.frame = 5
+		$ItemUsage/Item.frame = 57
+		$ItemUsage/Item.position = Vector2(0.5, 5)
+		$ItemUsage/Item.scale = Vector2(1, 1)
 		$Fighters.perfect_p = true
 		$Fighters.item_name = "Perfect Panacea"
+	
+	if item_id == "Delicious Cake":
+		$ItemUsage/Item.frame = 45
+		$ItemUsage/Item.position = Vector2(0, 0)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Delicious Cake"
+	
+	if item_id == "Amazing Cake":
+		$ItemUsage/Item.frame = 46
+		$ItemUsage/Item.position = Vector2(0, 1)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Amazing Cake"
+		
+	if item_id == "Polar Parfait":
+		$ItemUsage/Item.frame = 50
+		$ItemUsage/Item.position = Vector2(0, 3)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Polar Parfait"
+		
+	if item_id == "Flummery Flambé":
+		$ItemUsage/Item.frame = 49
+		$ItemUsage/Item.position = Vector2(-1, 3)
+		$ItemUsage/Item.scale = Vector2(0.92, 0.92)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Flummery Flambé"
+		
+	if item_id == "Saffron Soufflé":
+		$ItemUsage/Item.frame = 51
+		$ItemUsage/Item.position = Vector2(0, 9)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Saffron Soufflé"
+		
+	if item_id == "Nori Cookie":
+		$ItemUsage/Item.frame = 52
+		$ItemUsage/Item.position = Vector2(0.5, 7)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Nori Cookie"
+		
+	if item_id == "Lovely Gem":
+		$ItemUsage/Item.frame = 47
+		$ItemUsage/Item.position = Vector2(3, 1)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Lovely Gem"
+		
+	if item_id == "Beautiful Gem":
+		$ItemUsage/Item.frame = 48
+		$ItemUsage/Item.position = Vector2(0, 2)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Beautiful Gem"
+		
+	if item_id == "Starberry":
+		$ItemUsage/Item.frame = 55
+		$ItemUsage/Item.position = Vector2(4, 3)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Starberry"
+		
+	if item_id == "Icescream":
+		$ItemUsage/Item.frame = 54
+		$ItemUsage/Item.position = Vector2(-1, 3)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Icescream"
+		
+	if item_id == "Hocus Potion":
+		$ItemUsage/Item.frame = 63
+		$ItemUsage/Item.position = Vector2(-2, 8)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Hocus Potion"
+		
+	if item_id == "Magic Mushroom":
+		$ItemUsage/Item.frame = 56
+		$ItemUsage/Item.position = Vector2(2, 5)
+		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Magic Mushroom"
+		
+	if item_id == "Strange Perfume":
+		$ItemUsage/Item.frame = 64
+		$ItemUsage/Item.position = Vector2(6, 4)
+		$ItemUsage/Item.scale = Vector2(1, 1)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Strange Perfume"
+		
+	if item_id == "Jinx Doll":
+		$ItemUsage/Item.frame = 65
+		$ItemUsage/Item.position = Vector2(4, 4)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Jinx Doll"
+		
+	if item_id == "Spikey Bomb":
+		$ItemUsage/Item.frame = 53
+		$ItemUsage/Item.position = Vector2(2, 8)
+		$ItemUsage/Item.scale = Vector2(1, 1)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Spikey Bomb"
+		
+	if item_id == "Blister Grenade":
+		$ItemUsage/Item.frame = 59
+		$ItemUsage/Item.position = Vector2(3, 3)
+		$ItemUsage/Item.scale = Vector2(1, 1)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Blister Grenade"
+		
+	if item_id == "Power Drill":
+		$ItemUsage/Item.frame = 62
+		$ItemUsage/Item.position = Vector2(3, 13)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Power Drill"
+	
+	if item_id == "Faulty Amp":
+		$ItemUsage/Item.frame = 61
+		$ItemUsage/Item.position = Vector2(2, 10)
+		$ItemUsage/Item.scale = Vector2(1, 1)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Faulty Amp"
+		
+	if item_id == "Chilly Globe":
+		$ItemUsage/Item.frame = 60
+		$ItemUsage/Item.position = Vector2(-2, 11)
+		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
+		$Fighters.perfect_p = true
+		$Fighters.item_name = "Chilly Globe"
+		
+		
+		
 	$Fighters.item_used()
 	item_animation()
 	yield(get_tree().create_timer(1.5), "timeout")

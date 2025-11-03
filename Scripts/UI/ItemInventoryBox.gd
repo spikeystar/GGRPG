@@ -45,16 +45,16 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_select") and item_active and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_accept") and not Input.is_action_just_pressed("ui_cancel"):
 		get_id()
 		selected_id = item_id
-		if item_id == "Yummy Cake" or item_id == "Sugar Pill" or item_id == "Ginger Tea":
+		if item_id == "Yummy Cake" or item_id == "Sugar Pill" or item_id == "Ginger Tea" or item_id == "Polar Parfait" or item_id == "Flummery Flambé" or item_id == "Saffron Soufflé" or item_id == "Nori Cookie" or item_id == "Delicious Cake" or item_id == "Amazing Cake" or item_id == "Icescream" or item_id == "Magic Mushroom" or item_id == "Starberry":
 			emit_signal("heal_item_chosen")
 			item_active = false
 			SE.effect("Select")
-		if item_id == "Picnic Pie" or item_id == "Pretty Gem":
+		if item_id == "Picnic Pie" or item_id == "Pretty Gem" or item_id == "Lovely Gem" or item_id == "Beautiful Gem" or item_id == "Remedy Bouquet" or item_id == "Perfect Panacea" or item_id == "Hocus Potion":
 			SceneManager.transitioning = true
 			_on_Members_item_usage()
 			item_active = false
 			SE.effect("Heal")
-		if item_id == "Bounty Herb":
+		if item_id == "Bounty Herb" or item_id == "Strange Perfume" or item_id == "Spikey Bomb" or item_id == "Blister Grenade" or item_id == "Chilly Globe" or item_id == "Faulty Amp" or item_id == "Power Drill":
 			emit_signal("not_usable")
 			SE.effect("Unable")
 		
@@ -94,6 +94,12 @@ func _on_Members_item_usage():
 	if selected_id == "Yummy Cake":
 		amount = 50
 		set_member_target()
+	if selected_id == "Delicious Cake":
+		amount = 150
+		set_member_target()
+	if selected_id == "Amazing Cake":
+		amount = 300
+		set_member_target()
 	if selected_id == "Sugar Pill":
 		amount = 30
 		set_member_target()
@@ -104,11 +110,62 @@ func _on_Members_item_usage():
 		set_member_target()
 		amount = 5
 		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
+	if selected_id == "Flummery Flambé":
+		amount = 50
+		set_member_target()
+		amount = 10
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
+	if selected_id == "Saffron Soufflé":
+		amount = 50
+		set_member_target()
+		amount = 10
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
+	if selected_id == "Polar Parfait":
+		amount = 50
+		set_member_target()
+		amount = 10
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
+	if selected_id == "Nori Cookie":
+		amount = 50
+		set_member_target()
+		amount = 10
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
+	if selected_id == "Starberry":
+		amount = 150
+		set_member_target()
+		amount = 50
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
+	if selected_id == "Magic Mushroom":
+		amount = 100
+		set_member_target()
+		amount = 20
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
+	if selected_id == "Icescream":
+		amount = 100
+		set_member_target()
+		amount = 20
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
 	if selected_id == "Picnic Pie":
 		amount = 100
 		all_heal()
 	if selected_id == "Pretty Gem":
 		amount = 20
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
+	if selected_id == "Lovely Gem":
+		amount = 50
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
+	if selected_id == "Beautiful Gem":
+		amount = 100
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
+	if selected_id == "Hocus Potion":
+		amount = 20
+		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
+	if selected_id == "Perfect Panacea":
+		PartyStats.full_heal()
+	if selected_id == "Remedy Bouquet":
+		amount = 30
+		all_heal()
+		amount = 15
 		PartyStats.party_sp = clamp(PartyStats.party_sp + amount, 0, PartyStats.party_max_sp)
 	
 		

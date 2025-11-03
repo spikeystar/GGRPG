@@ -72,15 +72,15 @@ func _input(event):
 		SE.effect("Select")
 		get_id()
 		item_active = false
-		if item_id == "Yummy Cake" or item_id == "Bounty Herb" or item_id == "Sugar Pill" or item_id == "Ginger Tea":
+		if item_id == "Yummy Cake" or item_id == "Bounty Herb" or item_id == "Sugar Pill" or item_id == "Ginger Tea" or item_id == "Flummery Flambé" or item_id == "Saffron Soufflé" or item_id == "Polar Parfait" or item_id == "Nori Cookie" or item_id == "Starberry" or item_id == "Hocus Potion" or item_id == "Magic Mushroom" or item_id == "Delicious Cake" or item_id == "Amazing Cake":
 			emit_signal("heal_item_chosen")
 			emit_signal("item_chosen")
-		if item_id == "Picnic Pie" or item_id == "Pretty Gem":
+		if item_id == "Picnic Pie" or item_id == "Pretty Gem" or item_id == "Lovely Gem" or item_id == "Beautiful Gem" or item_id == "Remedy Bouquet" or item_id == "Perfect Panacea":
 			emit_signal("all_heal_item_chosen")
 			emit_signal("item_chosen")
 		if item_id == "Jinx Doll":
 			emit_signal("battle_item_chosen")
-		if item_id == "Spikey Bomb":
+		if item_id == "Spikey Bomb" or item_id == "Blister Grenade" or item_id == "Faulty Amp" or item_id == "Chilly Globe" or item_id == "Power Drill" or item_id == "Strange Perfume":
 			emit_signal("all_battle_item_chosen")
 		Party.item_index = item_index
 		

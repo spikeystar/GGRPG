@@ -254,7 +254,7 @@ func set_id():
 		$Info.text = "30 HP & 5 SP for all\nHeals all statuses and debuffs"
 		$Carrying.show()
 		$Display.position = Vector2(87, -76)
-		$Display.scale = Vector2(1.1, 1.1)
+		$Display.scale = Vector2(1.15, 1.15)
 		
 	if item_id == "Perfect Panacea":
 		$Display.show()
@@ -264,7 +264,7 @@ func set_id():
 		$Info.text = "Fully heals & revives party\nApllies all buffs"
 		$Carrying.show()
 		$Display.position = Vector2(84, -76)
-		$Display.scale = Vector2(1.2, 1.2)
+		$Display.scale = Vector2(1.25, 1.25)
 		
 	if item_id == "Strange Perfume":
 		$Display.show()
@@ -294,7 +294,7 @@ func set_id():
 		$Info.text = "Inflicts all debuffs & Poison on one enemy"
 		$Carrying.show()
 		$Display.position = Vector2(88.5, -75)
-		$Display.scale = Vector2(1.1, 1.1)
+		$Display.scale = Vector2(1.15, 1.15)
 		
 	if item_id == "Faulty Amp":
 		$Display.show()
@@ -304,7 +304,7 @@ func set_id():
 		$Info.text = "Damage all enemies with an Air attack"
 		$Carrying.show()
 		$Display.position = Vector2(86, -66)
-		$Display.scale = Vector2(1.1, 1.1)
+		$Display.scale = Vector2(1.15, 1.15)
 		
 	if item_id == "Blister Grenade":
 		$Display.show()
@@ -334,7 +334,7 @@ func set_id():
 		$Info.text = "Damage all enemies with an Earth attack"
 		$Carrying.show()
 		$Display.position = Vector2(88, -65)
-		$Display.scale = Vector2(1.1, 1.1)
+		$Display.scale = Vector2(1.15, 1.15)
 		
 	#####
 	
@@ -476,6 +476,46 @@ func set_id():
 		$Info.text = "A small golden ornament that some collect"
 		$Carrying.hide()
 		$Display.position = Vector2(83.5, -80.5)
+		$Display.scale = Vector2(1.1, 1.1)
+		
+	if item_id == "Opal Pendant":
+		$Display.show()
+		$Display.frame = 22
+		$Cost.text = "10,000 Mb"
+		item_cost = 10000
+		$Info.text = "Magic & Defense +30%\nImmune to Neutral move effects & Whammy! chance +4"
+		$Carrying.hide()
+		$Display.position = Vector2(84.5, -79)
+		$Display.scale = Vector2(1.1, 1.1)
+		
+	if item_id == "Shiny Watch":
+		$Display.show()
+		$Display.frame = 34
+		$Cost.text = "10,000 Mb"
+		item_cost = 10000
+		$Info.text = "Magic +20%\nStun chance +20% & Whammy! chance +2"
+		$Carrying.hide()
+		$Display.position = Vector2(85, -78.5)
+		$Display.scale = Vector2(1.1, 1.1)
+		
+	if item_id == "Spiderbite Ring":
+		$Display.show()
+		$Display.frame = 25
+		$Cost.text = "8,000 Mb"
+		item_cost = 8000
+		$Info.text = "All stats +40% & Whammy! chance +5 while afflicted by a status"
+		$Carrying.hide()
+		$Display.position = Vector2(84.5, -76.5)
+		$Display.scale = Vector2(1.15, 1.15)
+		
+	if item_id == "Cutie Charm":
+		$Display.show()
+		$Display.frame = 40
+		$Cost.text = "12,000 Mb"
+		item_cost = 12000
+		$Info.text = "All stats +10% & Whammy! chance +5\nRecover 5% HP & 10% SP each turn"
+		$Carrying.hide()
+		$Display.position = Vector2(81, -76)
 		$Display.scale = Vector2(1.1, 1.1)
 
 func _input(event):

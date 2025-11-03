@@ -974,12 +974,12 @@ menu_parent_path = NodePath("../Buy_Inventory")
 cursor_offset = Vector2( -12, 0 )
 
 [node name="Display" type="Sprite" parent="Camera2D/Shop/Buy"]
-position = Vector2( 83, -70 )
-scale = Vector2( 1.25, 1.25 )
+position = Vector2( 81.3333, -76.6667 )
+scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 50 )
 hframes = 3
 vframes = 32
-frame = 53
+frame = 40
 
 [node name="Cost" type="Label" parent="Camera2D/Shop/Buy"]
 margin_left = 47.0

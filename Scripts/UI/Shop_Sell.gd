@@ -212,7 +212,7 @@ func set_id():
 		item_cost = 3000
 		$Info.text = "30 HP & 5 SP for all\nHeals all statuses and debuffs"
 		$Display.position = Vector2(87, -76)
-		$Display.scale = Vector2(1.1, 1.1)
+		$Display.scale = Vector2(1.15, 1.15)
 		
 	if item_id == "Perfect Panacea":
 		$Display.show()
@@ -221,7 +221,7 @@ func set_id():
 		item_cost = 15000
 		$Info.text = "Fully heals & revives party\nApllies all buffs"
 		$Display.position = Vector2(84, -76)
-		$Display.scale = Vector2(1.2, 1.2)
+		$Display.scale = Vector2(1.25, 1.25)
 		
 	if item_id == "Strange Perfume":
 		$Display.show()
@@ -248,7 +248,7 @@ func set_id():
 		item_cost = 4000
 		$Info.text = "Inflicts all debuffs & Poison on one enemy"
 		$Display.position = Vector2(88.5, -75)
-		$Display.scale = Vector2(1.1, 1.1)
+		$Display.scale = Vector2(1.15, 1.15)
 		
 	if item_id == "Faulty Amp":
 		$Display.show()
@@ -257,7 +257,7 @@ func set_id():
 		item_cost = 1500
 		$Info.text = "Damage all enemies with an Air attack"
 		$Display.position = Vector2(86, -66)
-		$Display.scale = Vector2(1.1, 1.1)
+		$Display.scale = Vector2(1.15, 1.15)
 		
 	if item_id == "Blister Grenade":
 		$Display.show()
@@ -284,7 +284,7 @@ func set_id():
 		item_cost = 1500
 		$Info.text = "Damage all enemies with an Earth attack"
 		$Display.position = Vector2(88, -65)
-		$Display.scale = Vector2(1.1, 1.1)
+		$Display.scale = Vector2(1.15, 1.15)
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and selling and able and Party.Inventory.size() > 0:
