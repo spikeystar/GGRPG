@@ -30,3 +30,12 @@ func _input(event):
 		$MenuCursor.able = false
 		emit_signal("chosen")
 		emit_signal("no")
+		
+		if SceneManager.npc_name == "Jacob":
+			SE.effect("Cancel")
+			reset()
+			
+func reset():
+	$MenuCursor.option_selecting = false
+	$MenuCursor.cursor_index = 0
+	$MenuCursor.able = false

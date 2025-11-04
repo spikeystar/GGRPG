@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=2]
+[gd_scene load_steps=104 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=1]
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=2]
@@ -93,6 +93,11 @@
 [ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=91]
 [ext_resource path="res://Scripts/General_Dialogue.gd" type="Script" id=92]
 [ext_resource path="res://Scripts/Inn.gd" type="Script" id=93]
+[ext_resource path="res://Scripts/UI/TutorialOptions.gd" type="Script" id=94]
+[ext_resource path="res://Scripts/UI/TutorialCursor.gd" type="Script" id=95]
+[ext_resource path="res://UI/Interaction Window.png" type="Texture" id=96]
+[ext_resource path="res://Scripts/Minigame_Area.gd" type="Script" id=97]
+[ext_resource path="res://Scripts/Minigame.gd" type="Script" id=98]
 
 [sub_resource type="TileSet" id=1]
 0/name = "wood tile a.png 0"
@@ -5145,6 +5150,14 @@ script = ExtResource( 80 )
 position = Vector2( 1079.16, 317.612 )
 polygon = PoolVector2Array( -18, -32, -7, -40, 62, -6.00003, 46, 0.999969 )
 
+[node name="FerrisWheel" parent="CollisionRoot" instance=ExtResource( 12 )]
+position = Vector2( -277, -138 )
+script = ExtResource( 97 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/FerrisWheel"]
+position = Vector2( 1079.16, 317.612 )
+polygon = PoolVector2Array( -18, -32, -5.16003, -37.612, 23.84, -25.612, 15.84, -16.612 )
+
 [node name="CoastalLane" parent="." instance=ExtResource( 12 )]
 position = Vector2( -758, -503 )
 script = ExtResource( 13 )
@@ -5630,6 +5643,88 @@ text = "Hey. What do you need?"
 autowrap = true
 percent_visible = 0.1
 
+[node name="Minigame" type="Node2D" parent="Camera2D"]
+script = ExtResource( 98 )
+
+[node name="Dialogue" type="Sprite" parent="Camera2D/Minigame"]
+visible = false
+position = Vector2( -130, -221 )
+z_index = 3
+texture = ExtResource( 5 )
+script = ExtResource( 92 )
+
+[node name="DialogueCursor" parent="Camera2D/Minigame/Dialogue" instance=ExtResource( 91 )]
+visible = false
+position = Vector2( 154.045, 25.1428 )
+
+[node name="Name" type="Label" parent="Camera2D/Minigame/Dialogue"]
+margin_left = -158.813
+margin_top = -33.5715
+margin_right = 162.0
+margin_bottom = 17.4285
+custom_fonts/font = ExtResource( 4 )
+text = "Tom:"
+autowrap = true
+script = ExtResource( 70 )
+
+[node name="Talk" type="Label" parent="Camera2D/Minigame/Dialogue/Name"]
+margin_left = 47.0
+margin_top = -0.00012207
+margin_right = 310.384
+margin_bottom = 50.9999
+custom_fonts/font = ExtResource( 4 )
+text = "Hey. What do you need?"
+autowrap = true
+percent_visible = 0.1
+
+[node name="EventOptions" type="Sprite" parent="Camera2D/Minigame"]
+visible = false
+position = Vector2( 226, 201 )
+scale = Vector2( 1, 1.02 )
+texture = ExtResource( 96 )
+script = ExtResource( 94 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/Minigame/EventOptions"]
+margin_left = -41.9048
+margin_top = -22.0
+margin_right = 41.0952
+margin_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1, 1.05 )
+custom_constants/separation = 10
+
+[node name="Yes" type="Label" parent="Camera2D/Minigame/EventOptions/VBoxContainer"]
+margin_right = 83.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 4 )
+text = "Yes"
+align = 1
+autowrap = true
+script = ExtResource( 73 )
+
+[node name="No" type="Label" parent="Camera2D/Minigame/EventOptions/VBoxContainer"]
+margin_top = 25.0
+margin_right = 83.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 4 )
+text = "No"
+align = 1
+autowrap = true
+script = ExtResource( 73 )
+
+[node name="MenuCursor" parent="Camera2D/Minigame/EventOptions" instance=ExtResource( 74 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -38.4623
+margin_top = 52.0832
+margin_right = 42.5377
+margin_bottom = 77.0832
+rect_scale = Vector2( 1, 1.05 )
+script = ExtResource( 95 )
+menu_parent_path = NodePath("../VBoxContainer")
+cursor_offset = Vector2( -37, 3 )
+
 [node name="SaveStar" type="Sprite" parent="."]
 position = Vector2( -760, -339 )
 texture = ExtResource( 43 )
@@ -5639,6 +5734,8 @@ position = Vector2( 2276, 1175 )
 
 [connection signal="body_exited" from="CollisionRoot/Shop" to="CollisionRoot/Shop" method="_on_Shop_body_exited"]
 [connection signal="interaction" from="CollisionRoot/Shop" to="Camera2D/Shop" method="_on_Shop_interaction"]
+[connection signal="body_exited" from="CollisionRoot/FerrisWheel" to="CollisionRoot/FerrisWheel" method="_on_FerrisWheel_body_exited"]
+[connection signal="interaction" from="CollisionRoot/FerrisWheel" to="Camera2D/Minigame" method="_on_FerrisWheel_interaction"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy" method="_on_Interaction_buying"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/Buy_Inventory" method="_on_Interaction_buying"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/MenuCursor" method="_on_Interaction_buying"]
@@ -5670,3 +5767,4 @@ position = Vector2( 2276, 1175 )
 [connection signal="withdraw" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw/Withdraw_Inventory" method="_on_Interaction_withdraw"]
 [connection signal="withdraw" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw/MenuCursor" method="_on_Interaction_withdraw"]
 [connection signal="empty_items" from="Camera2D/Shop/Sell/Sell_Inventory" to="Camera2D/Shop/Sell/MenuCursor" method="_on_Sell_Inventory_empty_items"]
+[connection signal="no" from="Camera2D/Minigame/EventOptions" to="CollisionRoot/FerrisWheel" method="_on_EventOptions_no"]
