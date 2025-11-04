@@ -5729,8 +5729,8 @@ cursor_offset = Vector2( -37, 3 )
 position = Vector2( -760, -339 )
 texture = ExtResource( 43 )
 
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 2276, 1175 )
+[node name="FerrisWheelSpawn" type="Position2D" parent="."]
+position = Vector2( 761, 131 )
 
 [connection signal="body_exited" from="CollisionRoot/Shop" to="CollisionRoot/Shop" method="_on_Shop_body_exited"]
 [connection signal="interaction" from="CollisionRoot/Shop" to="Camera2D/Shop" method="_on_Shop_interaction"]
@@ -5768,3 +5768,4 @@ position = Vector2( 2276, 1175 )
 [connection signal="withdraw" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw/MenuCursor" method="_on_Interaction_withdraw"]
 [connection signal="empty_items" from="Camera2D/Shop/Sell/Sell_Inventory" to="Camera2D/Shop/Sell/MenuCursor" method="_on_Sell_Inventory_empty_items"]
 [connection signal="no" from="Camera2D/Minigame/EventOptions" to="CollisionRoot/FerrisWheel" method="_on_EventOptions_no"]
+[connection signal="yes" from="Camera2D/Minigame/EventOptions" to="." method="_on_EventOptions_yes"]

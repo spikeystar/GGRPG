@@ -282,3 +282,14 @@ func _on_Signpost_signpost():
 	yield(get_tree().create_timer(0.1), "timeout")
 	signpost_ready = true
 	
+func basic_transition_in():
+	var transition = TransitionPlayer.instance()
+	get_tree().get_root().add_child(transition)
+	transition.ease_in()
+	
+func basic_transition_out():
+	var transition = TransitionPlayer.instance()
+	get_tree().get_root().add_child(transition)
+	transition.ease_out()
+	yield(get_tree().create_timer(0.5), "timeout")
+	transition.queue_free()

@@ -1,8 +1,17 @@
 extends Node
+onready var Gary = PlayerManager.player_instance
 
+#onready var Jacques = $YSort/MiddleGround/Jacques
+#onready var JacquesPlayer = $YSort/MiddleGround/Jacques/BodyYSort/AnimationPlayer
+
+#onready var Irina = $YSort/MiddleGround/Irina
+#onready var IrinaPlayer = $YSort/MiddleGround/Irina/BodyYSort/AnimationPlayer
+
+const TransitionPlayer = preload("res://UI/SceneTransition.tscn")
 const FerrisWheel = preload("res://Areas/Puzzle Pier/Minigame/FerrisWheel.tscn")
 
-onready var FerrisWheel_Scene = FerrisWheel.instance()
+
+
 
 func _ready():
 	SceneManager.day = false
@@ -121,3 +130,28 @@ func night():
 
 func FerrisWheel_Start():
 	PlayerManager.freeze = true
+
+
+func _on_EventOptions_yes():
+	SE.effect("Select")
+	PlayerManager.cutscene = true
+	if SceneManager.npc_name == "Jacob":
+		#yield(get_tree().create_timer(0.5), "timeout")
+		var FerrisWheel_Scene = FerrisWheel.instance()
+		$Camera2D.basic_transition_out()
+		yield(get_tree().create_timer(0.5), "timeout")
+		$Camera2D.add_child(FerrisWheel_Scene)
+		var tween = create_tween()
+		tween.tween_property(Gary.motion_root, "global_position", $FerrisWheelSpawn.position, 1)
+		Gary.set_right_f()
+		yield(get_tree().create_timer(7), "timeout")
+		$Camera2D.basic_transition_out()
+		yield(get_tree().create_timer(0.3), "timeout")
+		$Camera2D.basic_transition_in()
+		yield(get_tree().create_timer(0.3), "timeout")
+		$Camera2D.remove_child(FerrisWheel_Scene)
+		$Camera2D.follow_player = true
+		$Camera2D.current = true
+		PlayerManager.freeze = false
+		PlayerManager.cutscene = false
+	

@@ -204,12 +204,14 @@ func set_right():
 	anim_tree.get("parameters/playback").travel("Idle")
 	anim_tree.set("parameters/Idle/blend_position", Vector2(1, -1))
 	
+	
 func set_right_f():
 	#motion_root.last_dir = Vector2(1, 1)
 	anim_player.play("shadow_reset")
 	anim_tree.active = true
 	anim_tree.get("parameters/playback").travel("Idle")
 	anim_tree.set("parameters/Idle/blend_position", Vector2(-1, -1))
+	motion_root.last_dir = Vector2(-1, -1)
 	
 func set_left():
 	#motion_root.last_dir = Vector2(1, 1)
