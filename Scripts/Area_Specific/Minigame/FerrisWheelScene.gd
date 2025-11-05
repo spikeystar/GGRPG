@@ -3,6 +3,11 @@ extends Node2D
 func _ready():
 	$Day.hide()
 	$Night.hide()
+	yield(get_tree().create_timer(0.4), "timeout")
+	SE.effect("Metal Door")
+	yield(get_tree().create_timer(0.7), "timeout")
+	$AnimationPlayer.play("open")
+	
 	
 	if SceneManager.day:
 		#yield(get_tree().create_timer(0.2), "timeout")
