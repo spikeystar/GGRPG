@@ -6,6 +6,7 @@ var item_texture = preload("res://Assets/General/All Items.png")
 
 func _ready():
 	$ItemInventory.texture = item_texture
+	$ItemInventory.vframes = 32
 	#$ItemWindowPanel/MenuCursor.show()
 	
 func _process(delta):
