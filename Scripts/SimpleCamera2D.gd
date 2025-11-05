@@ -286,6 +286,8 @@ func basic_transition_in():
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.ease_in()
+	yield(get_tree().create_timer(0.6), "timeout")
+	transition.queue_free()
 	
 func basic_transition_out():
 	var transition = TransitionPlayer.instance()

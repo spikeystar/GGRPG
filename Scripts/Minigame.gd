@@ -29,7 +29,7 @@ func _input(event):
 		$EventOptions.show()
 		welcome = false
 		#emit_signal("option_selecting")
-		yield(get_tree().create_timer(0.1), "timeout")
+		yield(get_tree().create_timer(0.05), "timeout")
 		$EventOptions/MenuCursor.cursor_ready()
 	
 func welcome_text():

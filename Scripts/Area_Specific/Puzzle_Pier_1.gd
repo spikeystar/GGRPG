@@ -133,25 +133,24 @@ func FerrisWheel_Start():
 
 
 func _on_EventOptions_yes():
-	SE.effect("Select")
-	PlayerManager.cutscene = true
+	SE.effect("Switch")
 	if SceneManager.npc_name == "Jacob":
-		#yield(get_tree().create_timer(0.5), "timeout")
 		var FerrisWheel_Scene = FerrisWheel.instance()
 		$Camera2D.basic_transition_out()
 		yield(get_tree().create_timer(0.5), "timeout")
+		SE.effect("Metal Door")
 		$Camera2D.add_child(FerrisWheel_Scene)
-		var tween = create_tween()
-		tween.tween_property(Gary.motion_root, "global_position", $FerrisWheelSpawn.position, 1)
+		Gary.motion_root.global_position = $FerrisWheelSpawn.position
 		Gary.set_right_f()
 		yield(get_tree().create_timer(7), "timeout")
-		$Camera2D.basic_transition_out()
-		yield(get_tree().create_timer(0.3), "timeout")
-		$Camera2D.basic_transition_in()
-		yield(get_tree().create_timer(0.3), "timeout")
+		#$Camera2D.basic_transition_out()
+		yield(get_tree().create_timer(0.5), "timeout")
 		$Camera2D.remove_child(FerrisWheel_Scene)
+		$Camera2D.basic_transition_in()
+		yield(get_tree().create_timer(0.05), "timeout")
+		SE.effect("Metal Door")
 		$Camera2D.follow_player = true
 		$Camera2D.current = true
+		yield(get_tree().create_timer(0.7), "timeout")
 		PlayerManager.freeze = false
-		PlayerManager.cutscene = false
 	
