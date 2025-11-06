@@ -2148,6 +2148,7 @@ polygon = PoolVector2Array( -181, -48, -184, -53, -180, -57, -166, -55, -158, -5
 pause_mode = 2
 position = Vector2( 17, -86 )
 z_index = 4096
+current = true
 script = ExtResource( 51 )
 minPos = Vector2( -700, -550 )
 maxPos = Vector2( 850, 205 )
@@ -2236,8 +2237,8 @@ alt_chance = 35
 [connection signal="bouncy" from="CollisionRoot/Bouncy2" to="YSort/MiddleGround/BouncyFlower2" method="_on_Bouncy2_bouncy"]
 [connection signal="bouncy" from="CollisionRoot/Bouncy3" to="YSort/MiddleGround/BouncyFlower3" method="_on_Bouncy3_bouncy"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
-[connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase2_item_get"]
-[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]
+[connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase2_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]
+[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]

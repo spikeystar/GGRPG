@@ -94,7 +94,7 @@ func _physics_process(delta):
 	#if spawn_z > 0 and spawn_z < 45 and ground_enemy:
 	#	$MotionRoot/BattleTrigger.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z + 25)
 	if spawn_z > 0 and spawn_z < 150 and ground_enemy:
-		$MotionRoot/BattleTrigger.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z + (spawn_z / 1.5))
+		$MotionRoot/BattleTrigger.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z + (spawn_z / 1.25))
 	
 	if Global.battle_ended:
 		#after_battle()

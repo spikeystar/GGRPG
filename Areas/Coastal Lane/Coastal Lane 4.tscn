@@ -1368,6 +1368,7 @@ polygon = PoolVector2Array( -17, -13, 0, -7, 21, -13, 17, -2, 30, 5, 11, 6, 0, 1
 pause_mode = 2
 position = Vector2( 17, -86 )
 z_index = 4096
+current = true
 script = ExtResource( 46 )
 minPos = Vector2( -210, -600 )
 maxPos = Vector2( 850, -175 )
@@ -1480,5 +1481,5 @@ polygon = PoolVector2Array( 277, -19, 293, -34, -142, -185, -34, -223, 389, -68,
 [connection signal="save_menu" from="Camera2D/StarOptions" to="Camera2D" method="_on_StarOptions_save_menu"]
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
-[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]
+[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]
