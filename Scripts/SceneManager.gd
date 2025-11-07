@@ -23,6 +23,7 @@ var bubble = false
 var enemy_repel = false
 var enemy_turn = false
 var transitioning = false
+var minigame_done = false
 
 var day = false
 var night = false

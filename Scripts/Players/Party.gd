@@ -35,7 +35,7 @@ var Suzy_Spells : Array = []
 var Damien_Spells : Array = []
 
 func _ready():
-	marbles = 500
+	marbles = 2000
 	
 	add_item_name = "Yummy Cake"
 	add_item()
@@ -45,6 +45,7 @@ func _ready():
 	add_item()
 	add_item_name = "Pretty Gem"
 	add_item()	
+	
 	
 	add_item_name = "Pretty Gem"
 	add_tutorial_item()

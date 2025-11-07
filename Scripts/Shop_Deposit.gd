@@ -70,12 +70,6 @@ func set_id():
 		$Info.text = "Revives a fallen party member to half health"
 		$Display.position = Vector2(85, -82)
 		$Display.scale = Vector2(1.1, 1.1)
-	if $MenuCursor.empty:
-		$Display.hide()
-		$Storage.hide()
-		$Info.text = "No items"
-		$Display.position = Vector2(85, -82)
-		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Delicious Cake":
 		$Display.show()
@@ -244,6 +238,13 @@ func set_id():
 		$Display.position = Vector2(88, -65)
 		$Display.scale = Vector2(1.15, 1.15)
 		$Storage.show()
+		
+	if $MenuCursor.empty:
+		$Display.hide()
+		$Storage.hide()
+		$Info.text = "No items"
+		$Display.position = Vector2(85, -82)
+		$Display.scale = Vector2(1.1, 1.1)
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and deposit and able and Party.Inventory.size() > 0:

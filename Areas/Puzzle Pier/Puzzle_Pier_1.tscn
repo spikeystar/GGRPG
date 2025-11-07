@@ -5158,6 +5158,14 @@ script = ExtResource( 97 )
 position = Vector2( 1079.16, 317.612 )
 polygon = PoolVector2Array( -18, -32, -5.16003, -37.612, 23.84, -25.612, 15.84, -16.612 )
 
+[node name="FortuneStand" parent="CollisionRoot" instance=ExtResource( 12 )]
+position = Vector2( -277, -138 )
+script = ExtResource( 97 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/FortuneStand"]
+position = Vector2( 1506, 534 )
+polygon = PoolVector2Array( -18, -32, -5.16003, -37.612, 23.84, -25.612, 15.84, -16.612 )
+
 [node name="CoastalLane" parent="." instance=ExtResource( 12 )]
 position = Vector2( -758, -503 )
 script = ExtResource( 13 )
@@ -5736,6 +5744,8 @@ position = Vector2( 761, 131 )
 [connection signal="interaction" from="CollisionRoot/Shop" to="Camera2D/Shop" method="_on_Shop_interaction"]
 [connection signal="body_exited" from="CollisionRoot/FerrisWheel" to="CollisionRoot/FerrisWheel" method="_on_FerrisWheel_body_exited"]
 [connection signal="interaction" from="CollisionRoot/FerrisWheel" to="Camera2D/Minigame" method="_on_FerrisWheel_interaction"]
+[connection signal="body_exited" from="CollisionRoot/FortuneStand" to="CollisionRoot/FortuneStand" method="_on_FerrisWheel_body_exited"]
+[connection signal="interaction" from="CollisionRoot/FortuneStand" to="Camera2D/Minigame" method="_on_FortuneStand_interaction"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy" method="_on_Interaction_buying"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/Buy_Inventory" method="_on_Interaction_buying"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/MenuCursor" method="_on_Interaction_buying"]

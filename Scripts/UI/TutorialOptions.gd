@@ -22,7 +22,7 @@ func _process(delta):
 		cost = 100
 		
 	if SceneManager.npc_name == "Estella":
-		cost = 1000
+		cost = 2000
 		
 		
 func _input(event):
@@ -44,7 +44,7 @@ func _input(event):
 		emit_signal("chosen")
 		emit_signal("no")
 		
-		if SceneManager.npc_name == "Jacob":
+		if SceneManager.npc_name == "Jacob" or SceneManager.npc_name == "Estella":
 			SE.effect("Cancel")
 			reset()
 			

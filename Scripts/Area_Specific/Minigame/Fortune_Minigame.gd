@@ -26,9 +26,9 @@ func _ready():
 	fortune_populate()
 	SE.effect("Menu Open")
 	Cards = $Cards.get_children()
-	Cards[0].cursor_show()
 	$AnimationPlayer.play("open")
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(0.8), "timeout")
+	Cards[0].cursor_show()
 	able = true
 	
 func select_next_card(card_index_offset):
@@ -112,11 +112,13 @@ func _input(event):
 		$Item.show()
 		yield(get_tree().create_timer(1), "timeout")
 		done = true
+		SceneManager.minigame_done = true
 		
 	if Input.is_action_just_pressed("ui_select") and done:
 		SE.effect("Menu Open")
 		$AnimationPlayer.play_backwards("open")
-		yield(get_tree().create_timer(0.8), "timeout")
+		$AnimationPlayer.playback_speed = 1
+		yield(get_tree().create_timer(0.9), "timeout")
 		self.queue_free()
 		
 		
@@ -130,24 +132,24 @@ func _input(event):
 
 func fortune_populate():
 	var one = "Things may seem dire at the moment, but a new friend or ally will show up soon to give you the help that you need"
-	var two = "ping pong"
-	var three = "ping pong"
-	var four = "ping pong"
+	var two = "You should reach out to a friend that you haven't spoken to in a while. They may need a shoulder to lean on but don't know who to ask"
+	var three = "At the next opportunity you have, do a good deed. You will be energized by the kindness you share with those around you"
+	var four = "Put yourself out there and try something new in the next few days. You will be rewarded for your openness to new experiences"
 	Courageous_Fortunes = [one, two, three, four]
 	
-	var five = "Things may seem dire at the moment, but a new friend or ally will show up soon to give you the help that you need"
-	var six = "ping pong"
-	var seven = "ping pong"
-	var eight = "ping pong"
+	var five = "Everything is not as it seems. Think critically about what has been worrying you lately. You may need to ask a friend for advice to clear your mind"
+	var six = "Your dreams have been trying to tell you something important. Write down what happens the next time you sleep and discuss it with a friend"
+	var seven = "What you've been wishing for may manifest itself soon in an unexpected form. Carefully observe the coming events around you and take note of what seems most exciting"
+	var eight = "The night time is when you are at your most powerful lately. Adjust your schedule as needed so that you may best utilize the current flow of your energy"
 	Mysterious_Fortunes = [five, six, seven, eight]
 	
-	var nine = "Things may seem dire at the moment, but a new friend or ally will show up soon to give you the help that you need"
+	var nine = "You may be feeling burdened by some tough decisions in your life. Take a moment to think slowly about your choices and choose the one that brings you the most peace"
 	var ten = "ping pong"
 	var eleven = "ping pong"
 	var twelve = "ping pong"
 	Healing_Fortunes = [nine, ten, eleven, twelve]
 	
-	var thirteen = "Things may seem dire at the moment, but a new friend or ally will show up soon to give you the help that you need"
+	var thirteen = ""
 	var fourteen = "ping pong"
 	var fifteen = "ping pong"
 	var sixteen = "ping pong"

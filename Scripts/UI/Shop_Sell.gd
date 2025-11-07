@@ -92,10 +92,7 @@ func set_id():
 		$Display.position = Vector2(85, -82)
 		$Display.scale = Vector2(1.1, 1.1)
 		
-	if $MenuCursor.empty:
-		$Display.hide()
-		$Cost.hide()
-		$Info.text = "No items"
+	
 		
 	if item_id == "Delicious Cake":
 		$Display.show()
@@ -285,6 +282,11 @@ func set_id():
 		$Info.text = "Damage all enemies with an Earth attack"
 		$Display.position = Vector2(88, -65)
 		$Display.scale = Vector2(1.15, 1.15)
+		
+	if $MenuCursor.empty:
+		$Display.hide()
+		$Cost.hide()
+		$Info.text = "No items"
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and selling and able and Party.Inventory.size() > 0:
