@@ -86,7 +86,7 @@ position = Vector2( -21, 4 )
 rotation = 0.00523599
 
 [node name="Nikolai" parent="Node2D" instance=ExtResource( 34 )]
-position = Vector2( 214.809, -37.1252 )
+position = Vector2( 220.814, -36.1567 )
 
 [node name="JewelSeed" parent="Node2D" instance=ExtResource( 32 )]
 position = Vector2( 47.5, -83.256 )
@@ -240,6 +240,7 @@ scale = Vector2( 0.963403, 0.824944 )
 texture = ExtResource( 23 )
 
 [node name="CollisionRoot" type="Node2D" parent="Node2D"]
+visible = false
 position = Vector2( 3.99995, -0.0209439 )
 
 [node name="Navmesh" parent="Node2D/CollisionRoot" instance=ExtResource( 22 )]
@@ -284,7 +285,7 @@ current = true
 zoom = Vector2( 0.655, 0.65 )
 script = ExtResource( 16 )
 minPos = Vector2( -140, -100 )
-maxPos = Vector2( 200, 50 )
+maxPos = Vector2( 200, -10 )
 follow_player = true
 
 [node name="Interaction" type="Node2D" parent="Camera2D"]
