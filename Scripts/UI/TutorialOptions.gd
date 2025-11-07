@@ -21,6 +21,9 @@ func _process(delta):
 	if SceneManager.npc_name == "Jacob":
 		cost = 100
 		
+	if SceneManager.npc_name == "Estella":
+		cost = 1000
+		
 		
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and ready and menu_name == "Yes" and Party.marbles < cost:
@@ -29,6 +32,7 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("ui_select") and ready and menu_name == "Yes" and Party.marbles >= cost:
 		self.hide()
+		Party.marbles -= cost
 		$MenuCursor.option_selecting = false
 		$MenuCursor.able = false
 		emit_signal("chosen")

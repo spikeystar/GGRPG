@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/UI/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://UI/Spikey! Text.png" type="Texture" id=3]
 
-[sub_resource type="DynamicFontData" id=4]
+[sub_resource type="DynamicFontData" id=13]
 antialiased = false
 font_path = "res://Misc/Font/Greenscr.ttf"
 
@@ -13,7 +13,7 @@ size = 12
 outline_size = 2
 outline_color = Color( 0.42, 0.26348, 0.2016, 1 )
 extra_spacing_space = -3
-font_data = SubResource( 4 )
+font_data = SubResource( 13 )
 
 [sub_resource type="Animation" id=6]
 length = 0.001

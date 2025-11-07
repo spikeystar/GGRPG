@@ -27,5 +27,11 @@ var transitioning = false
 var day = false
 var night = false
 
+var attack_fortune = false
+var magic_fortune = false
+var defense_fortune = false
+var whammy_fortune = false
+var fortune_counter = 0
+
 ## DEBUG ##
 var times = 0

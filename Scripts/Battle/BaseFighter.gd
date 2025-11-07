@@ -77,10 +77,14 @@ func _ready():
 	set_stats()
 	set_formation()
 	set_trinket()
+	set_fortune()
+	
 	
 	og_attack = f_attack
 	og_magic = f_magic
 	og_defense = f_defense
+	
+	
 	
 func focus():
 	#if able:
@@ -703,6 +707,24 @@ func set_trinket():
 	elif trinket == "Gold Earring":
 		f_magic = int(f_magic + (f_magic*0.3))
 		whammy_chance += 5
+		
+func set_fortune():
+	if SceneManager.attack_fortune:
+		f_attack = int(f_attack + (f_attack*0.1))
+	if SceneManager.magic_fortune:
+		f_attack = int(f_magic + (f_magic*0.1))
+	if SceneManager.defense_fortune:
+		f_attack = int(f_defense + (f_defense*0.1))
+	if SceneManager.lucky_fortune:
+		whammy_chance += 3
+		
+	SceneManager.fortune_counter -= 1
+	
+	if SceneManager.fortune_counter == 0:
+		SceneManager.attack_fortune = false
+		SceneManager.magic_fortune = false
+		SceneManager.defense_fortune = false
+		SceneManager.lucky_fortune = false
 		
 ##########
 func status_restore():
