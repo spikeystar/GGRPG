@@ -131,28 +131,28 @@ func _input(event):
 		SE.effect("Move Between")
 
 func fortune_populate():
-	var one = "Things may seem dire at the moment, but a new friend or ally will show up soon to give you the help that you need"
-	var two = "You should reach out to a friend that you haven't spoken to in a while. They may need a shoulder to lean on but don't know who to ask"
-	var three = "At the next opportunity you have, do a good deed. You will be energized by the kindness you share with those around you"
-	var four = "Put yourself out there and try something new in the next few days. You will be rewarded for your openness to new experiences"
+	var one = "Things may seem dire at the moment, but a new friend or ally will show up soon to give you the help that you need."
+	var two = "You should reach out to a friend that you haven't spoken to in a while. They may need a shoulder to lean on but don't know who to ask."
+	var three = "At the next opportunity you have, do a good deed. You will be energized by the kindness you share with those around you."
+	var four = "Put yourself out there and try something new in the next few days. You will be rewarded for your openness to new experiences."
 	Courageous_Fortunes = [one, two, three, four]
 	
-	var five = "Everything is not as it seems. Think critically about what has been worrying you lately. You may need to ask a friend for advice to clear your mind"
-	var six = "Your dreams have been trying to tell you something important. Write down what happens the next time you sleep and discuss it with a friend"
-	var seven = "What you've been wishing for may manifest itself soon in an unexpected form. Carefully observe the coming events around you and take note of what seems most exciting"
-	var eight = "The night time is when you are at your most powerful lately. Adjust your schedule as needed so that you may best utilize the current flow of your energy"
+	var five = "Everything is not as it seems. Think critically about what has been worrying you lately. You may need to ask a friend for advice to clear your mind."
+	var six = "Your dreams have been trying to tell you something important. Write down what happens the next time you sleep and discuss it with a friend."
+	var seven = "What you've been wishing for may manifest itself soon in an unexpected form. Carefully observe the coming events around you and take note of what seems most exciting."
+	var eight = "The night time is when you are at your most powerful lately. Adjust your schedule as needed so that you may best utilize the current flow of your energy."
 	Mysterious_Fortunes = [five, six, seven, eight]
 	
-	var nine = "You may be feeling burdened by some tough decisions in your life. Take a moment to think slowly about your choices and choose the one that brings you the most peace"
-	var ten = "ping pong"
-	var eleven = "ping pong"
-	var twelve = "ping pong"
+	var nine = "You may be feeling burdened by some tough decisions in your life. Take a moment to think slowly about your choices and choose the one that brings you the most peace."
+	var ten = "Let go of something that has not been responding to your efforts lately. Your body and spirit are in need of recovery. Take back some energy for yourself."
+	var eleven = "Tonight before you rest take a moment for some deep breathes. Think of one thing you were grateful for today and let that feeling soothe you while you sleep."
+	var twelve = "The next time you are offered to make plans, consider resting instead. There may be things you haven't noticed recently because you haven't stopped moving."
 	Healing_Fortunes = [nine, ten, eleven, twelve]
 	
-	var thirteen = ""
-	var fourteen = "ping pong"
-	var fifteen = "ping pong"
-	var sixteen = "ping pong"
+	var thirteen = "Be wise with the company you share as of late. Your heart will be spared if you steer clear of those with charms that ring false."
+	var fourteen = "Something interesting will enter your life soon. Take stock of your current condition and make sure you are adequately prepared to answer the call."
+	var fifteen = "A complicated challenge may fall onto your path soon. Listen to your intuition, you already know the right way to solve your problems."
+	var sixteen = "There are many in your life who find such joy in knowing you. Find a way to celebrate yourself with some companions soon."
 	Lucky_Fortunes = [thirteen, fourteen, fifteen, sixteen]
 
 func item_set():

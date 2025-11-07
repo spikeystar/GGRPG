@@ -5173,7 +5173,7 @@ target_scene = "res://Areas/Coastal Lane/Coastal Lane 7.tscn"
 exit_name = "PuzzlePier1_CoastalLane7"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CoastalLane"]
-polygon = PoolVector2Array( 23, -44, 50, -31, -38, 0, -59, -12 )
+polygon = PoolVector2Array( 23, -44, 50, -31, -39, 10, -69, -9 )
 
 [node name="PuzzlePier2" parent="." instance=ExtResource( 12 )]
 position = Vector2( -899, -180 )

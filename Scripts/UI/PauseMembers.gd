@@ -31,6 +31,7 @@ func _ready():
 	Cursors = $Cursors.get_children()
 	set_available()
 	set_labels()
+	set_fortune()
 	
 func select_next_member(index_offset):
 	var last_member_index = member_index;
@@ -704,3 +705,31 @@ func _on_MemberOptionsCursor_retread():
 	stats_active = false
 	yield(get_tree().create_timer(0.1), "timeout")
 	members_active = false
+	
+func set_fortune():
+	$Fortune.hide()
+	$Fortune_Counter.hide()
+	
+	if SceneManager.attack_fortune:
+		$Fortune.show()
+		$Fortune_Counter.show()
+		$Fortune.frame = 0
+		$Fortune_Counter.text = str(SceneManager.fortune_counter)
+	if SceneManager.magic_fortune:
+		$Fortune.show()
+		$Fortune_Counter.show()
+		$Fortune.frame = 1
+		$Fortune_Counter.text = str(SceneManager.fortune_counter)
+	if SceneManager.defense_fortune:
+		$Fortune.show()
+		$Fortune_Counter.show()
+		$Fortune.frame = 2
+		$Fortune_Counter.text = str(SceneManager.fortune_counter)
+	if SceneManager.whammy_fortune:
+		$Fortune.show()
+		$Fortune_Counter.show()
+		$Fortune.frame = 3
+		$Fortune_Counter.text = str(SceneManager.fortune_counter)
+	if SceneManager.fortune_counter <= 0:
+		$Fortune.hide()
+		$Fortune_Counter.hide()

@@ -109,6 +109,15 @@ func _ready():
 		tutorial_1 = true
 	#player_instance.queue_free()
 
+	if SceneManager.fortune_counter > 0:
+		SceneManager.fortune_counter -= 1
+	
+	if SceneManager.fortune_counter == 0:
+		SceneManager.attack_fortune = false
+		SceneManager.magic_fortune = false
+		SceneManager.defense_fortune = false
+		SceneManager.whammy_fortune = false
+
 func boss_specific():
 	if battle_name == "Saguarotel":
 		$Enemies/Field/Tenant_A_battle.hide()

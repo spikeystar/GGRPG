@@ -715,16 +715,9 @@ func set_fortune():
 		f_attack = int(f_magic + (f_magic*0.1))
 	if SceneManager.defense_fortune:
 		f_attack = int(f_defense + (f_defense*0.1))
-	if SceneManager.lucky_fortune:
+	if SceneManager.whammy_fortune:
 		whammy_chance += 3
 		
-	SceneManager.fortune_counter -= 1
-	
-	if SceneManager.fortune_counter == 0:
-		SceneManager.attack_fortune = false
-		SceneManager.magic_fortune = false
-		SceneManager.defense_fortune = false
-		SceneManager.lucky_fortune = false
 		
 ##########
 func status_restore():

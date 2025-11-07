@@ -147,8 +147,7 @@ func _input(event):
 			SE.effect("Item_Get")
 			Party.add_item()
 			$Camera2D._on_Item_Get_item_get()
-			yield(get_tree().create_timer(0.5), "timeout")
-			PlayerManager.freeze = false
+
 
 func _on_EventOptions_yes():
 	SE.effect("Switch")
