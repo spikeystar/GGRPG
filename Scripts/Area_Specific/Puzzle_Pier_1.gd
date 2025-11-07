@@ -147,7 +147,7 @@ func _input(event):
 			SE.effect("Item_Get")
 			Party.add_item()
 			$Camera2D._on_Item_Get_item_get()
-
+			$CollisionRoot/FortuneStand.reset()
 
 func _on_EventOptions_yes():
 	SE.effect("Switch")

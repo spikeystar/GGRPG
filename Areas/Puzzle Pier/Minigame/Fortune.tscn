@@ -224,9 +224,9 @@ align = 1
 
 [node name="Fortune" type="Label" parent="."]
 visible = false
-margin_left = -199.0
+margin_left = -200.0
 margin_top = -91.0
-margin_right = 199.0
+margin_right = 198.0
 margin_bottom = -22.0
 custom_fonts/font = SubResource( 6 )
 text = "There are many choices that are burdening you right now. Think wisely and pick the option that will bring you the most peace"

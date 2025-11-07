@@ -49,3 +49,7 @@ func _on_EventOptions_no():
 	yield(get_tree().create_timer(0.05), "timeout")
 	gary_entered = true
 	PlayerManager.freeze = false
+	
+func reset():
+	gary_entered = true
+	

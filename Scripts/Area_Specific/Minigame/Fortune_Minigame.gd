@@ -85,7 +85,7 @@ func fortune_set():
 		$Fortune.text = Lucky_Fortunes[fortune_choice]
 		
 	var extra_roll = rng.randi_range(0, 100)
-	if extra_roll == 1:
+	if extra_roll <= 3:
 		item_pool = Extra_Pool
 
 
@@ -152,7 +152,7 @@ func fortune_populate():
 	var thirteen = "Be wise with the company you share as of late. Your heart will be spared if you steer clear of those with charms that ring false."
 	var fourteen = "Something interesting will enter your life soon. Take stock of your current condition and make sure you are adequately prepared to answer the call."
 	var fifteen = "A complicated challenge may fall onto your path soon. Listen to your intuition, you already know the right way to solve your problems."
-	var sixteen = "There are many in your life who find such joy in knowing you. Find a way to celebrate yourself with some companions soon."
+	var sixteen = "There are many in your life who feel such joy in knowing you. Find a way to celebrate yourself with some companions soon."
 	Lucky_Fortunes = [thirteen, fourteen, fifteen, sixteen]
 
 func item_set():
