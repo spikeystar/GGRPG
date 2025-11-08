@@ -46,7 +46,6 @@ func _ready():
 	add_item_name = "Pretty Gem"
 	add_item()	
 	
-	
 	add_item_name = "Pretty Gem"
 	add_tutorial_item()
 	

@@ -1595,7 +1595,6 @@ menu_parent_path = NodePath("../VBoxContainer")
 cursor_offset = Vector2( 17, 2.5 )
 
 [node name="ItemWindow" type="Node2D" parent="."]
-visible = false
 script = ExtResource( 39 )
 
 [node name="ItemWindowPanel" type="PanelContainer" parent="ItemWindow"]
@@ -1613,9 +1612,12 @@ margin_left = 60.0
 margin_top = 39.0
 margin_right = 60.0
 margin_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 9
+alignment = 1
 script = ExtResource( 40 )
 
 [node name="MenuCursor" parent="ItemWindow/ItemWindowPanel" instance=ExtResource( 15 )]

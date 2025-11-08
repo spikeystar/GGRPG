@@ -1610,9 +1610,12 @@ margin_left = 60.0
 margin_top = 39.0
 margin_right = 60.0
 margin_bottom = 39.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 custom_constants/separation = 9
+alignment = 1
 script = ExtResource( 46 )
 
 [node name="MenuCursor" parent="ItemWindow/ItemWindowPanel" instance=ExtResource( 1 )]

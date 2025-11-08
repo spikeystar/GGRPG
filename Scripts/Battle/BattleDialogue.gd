@@ -73,7 +73,7 @@ func Tutorial_1():
 	#window_hide()
 	
 	#window_show()
-	$Name/Talk.text = "When you see it you can press (Shift) to bring up your options."
+	$Name/Talk.text = "When you see it you can press (Shift) or (Z) to bring up your options."
 	talking()
 	yield(self, "talk_done")
 	window_hide()
@@ -83,7 +83,7 @@ func Tutorial_1():
 func Tutorial_2():
 	window_show()
 	$Name.text = "Michael:"
-	$Name/Talk.text = "If you press (Return) before you've selected a move you can return to fighter selection."
+	$Name/Talk.text = "If you press (Return) or (X) before you've selected a move you can return to fighter selection."
 	talking()
 	yield(self, "talk_done")
 	#window_hide()
@@ -112,7 +112,7 @@ func Tutorial_3():
 	#window_hide()
 	
 	#window_show()
-	$Name/Talk.text = "If you press the (Shift) button with the correct timing while attacking, you'll do extra damage!"
+	$Name/Talk.text = "If you press (Shift) or (Z) with the correct timing while attacking, you'll do extra damage!"
 	talking()
 	yield(self, "talk_done")
 	
@@ -124,7 +124,7 @@ func Tutorial_3():
 	talking()
 	yield(self, "talk_done")
 	
-	$Name/Talk.text = "Give it a try by pressing (Shift) now to start the attack!"
+	$Name/Talk.text = "Give it a try by pressing (Shift) or (Z) now to start the attack!"
 	talking()
 	yield(self, "talk_done")
 	window_hide()

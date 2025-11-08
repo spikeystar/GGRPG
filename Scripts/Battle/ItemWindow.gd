@@ -7,6 +7,9 @@ var item_texture = preload("res://Assets/General/All Items.png")
 func _ready():
 	$ItemInventory.texture = item_texture
 	$ItemInventory.vframes = 32
+	$ItemWindowPanel.grow_horizontal = Control.GROW_DIRECTION_END
+	$ItemWindowPanel/ItemInventory.alignment = BoxContainer.ALIGN_BEGIN
+	$ItemWindowPanel/ItemInventory.grow_horizontal = Control.GROW_DIRECTION_END
 	#$ItemWindowPanel/MenuCursor.show()
 	
 func _process(delta):
