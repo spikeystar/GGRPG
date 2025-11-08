@@ -72,7 +72,7 @@ func _input(event):
 		SE.effect("Select")
 		get_id()
 		item_active = false
-		if item_id == "Yummy Cake" or item_id == "Bounty Herb" or item_id == "Sugar Pill" or item_id == "Ginger Tea" or item_id == "Flummery Flambé" or item_id == "Saffron Soufflé" or item_id == "Polar Parfait" or item_id == "Nori Cookie" or item_id == "Starberry" or item_id == "Hocus Potion" or item_id == "Magic Mushroom" or item_id == "Delicious Cake" or item_id == "Amazing Cake":
+		if item_id == "Yummy Cake" or item_id == "Bounty Herb" or item_id == "Sugar Pill" or item_id == "Ginger Tea" or item_id == "Flummery Flambe" or item_id == "Saffron Souffle" or item_id == "Polar Parfait" or item_id == "Nori Cookie" or item_id == "Starberry" or item_id == "Hocus Potion" or item_id == "Magic Mushroom" or item_id == "Delicious Cake" or item_id == "Amazing Cake":
 			emit_signal("heal_item_chosen")
 			emit_signal("item_chosen")
 		if item_id == "Picnic Pie" or item_id == "Pretty Gem" or item_id == "Lovely Gem" or item_id == "Beautiful Gem" or item_id == "Remedy Bouquet" or item_id == "Perfect Panacea":

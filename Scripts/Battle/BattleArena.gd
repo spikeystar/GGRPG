@@ -1054,19 +1054,19 @@ func _on_Fighters_item_chosen():
 		$Fighters.perfect_p = true
 		$Fighters.item_name = "Polar Parfait"
 		
-	if item_id == "Flummery Flambé":
+	if item_id == "Flummery Flambe":
 		$ItemUsage/Item.frame = 49
 		$ItemUsage/Item.position = Vector2(-1, 3)
 		$ItemUsage/Item.scale = Vector2(0.92, 0.92)
 		$Fighters.perfect_p = true
-		$Fighters.item_name = "Flummery Flambé"
+		$Fighters.item_name = "Flummery Flambe"
 		
-	if item_id == "Saffron Soufflé":
+	if item_id == "Saffron Souffle":
 		$ItemUsage/Item.frame = 51
 		$ItemUsage/Item.position = Vector2(0, 9)
 		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
 		$Fighters.perfect_p = true
-		$Fighters.item_name = "Saffron Soufflé"
+		$Fighters.item_name = "Saffron Souffle"
 		
 	if item_id == "Nori Cookie":
 		$ItemUsage/Item.frame = 52

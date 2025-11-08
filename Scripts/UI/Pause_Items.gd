@@ -85,13 +85,13 @@ func set_id():
 		$ItemInventory.position = Vector2(90, -117)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 		
-	if item_id == "Flummery Flambé":
+	if item_id == "Flummery Flambe":
 		$ItemInventory.frame = 49
 		$ItemInfo.text = "50 HP & 10 SP\n\nApplies Fire type"
 		$ItemInventory.position = Vector2(89, -116)
 		$ItemInventory.scale = Vector2(1.15, 1.15)
 		
-	if item_id == "Saffron Soufflé":
+	if item_id == "Saffron Souffle":
 		$ItemInventory.frame = 51
 		$ItemInfo.text = "50 HP & 10 SP\n\nApplies Air type"
 		$ItemInventory.position = Vector2(90, -108)

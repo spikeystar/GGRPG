@@ -139,7 +139,7 @@ func set_id():
 		$Display.position = Vector2(85, -79)
 		$Display.scale = Vector2(1.1, 1.1)
 		
-	if item_id == "Flummery Flambé":
+	if item_id == "Flummery Flambe":
 		$Display.show()
 		$Display.frame = 49
 		$Cost.text = "100 Mb"
@@ -148,7 +148,7 @@ func set_id():
 		$Display.position = Vector2(83, -78)
 		$Display.scale = Vector2(1.15, 1.15)
 		
-	if item_id == "Saffron Soufflé":
+	if item_id == "Saffron Souffle":
 		$Display.show()
 		$Display.frame = 51
 		$Cost.text = "100 Mb"

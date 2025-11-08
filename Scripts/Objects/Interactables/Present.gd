@@ -233,13 +233,13 @@ func set_item():
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		item_get()
 		
-	if item_name == "Flummery Flambé":
+	if item_name == "Flummery Flambe":
 		$ItemUsage/Item.frame = 49
 		$ItemUsage/Item.position = Vector2(-1, 3)
 		$ItemUsage/Item.scale = Vector2(0.92, 0.92)
 		item_get()
 		
-	if item_name == "Saffron Soufflé":
+	if item_name == "Saffron Souffle":
 		$ItemUsage/Item.frame = 51
 		$ItemUsage/Item.position = Vector2(0, 9)
 		$ItemUsage/Item.scale = Vector2(0.85, 0.85)

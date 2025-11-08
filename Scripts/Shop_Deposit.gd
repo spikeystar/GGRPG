@@ -111,7 +111,7 @@ func set_id():
 		$Display.scale = Vector2(1.1, 1.1)
 		$Storage.show()
 		
-	if item_id == "Flummery Flambé":
+	if item_id == "Flummery Flambe":
 		$Display.show()
 		$Display.frame = 49
 		$Info.text = "50 HP & 10 SP\nApplies Fire type"
@@ -119,7 +119,7 @@ func set_id():
 		$Display.scale = Vector2(1.15, 1.15)
 		$Storage.show()
 		
-	if item_id == "Saffron Soufflé":
+	if item_id == "Saffron Souffle":
 		$Display.show()
 		$Display.frame = 51
 		$Info.text = "50 HP & 10 SP\nApplies Air type"

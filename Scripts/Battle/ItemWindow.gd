@@ -7,9 +7,15 @@ var item_texture = preload("res://Assets/General/All Items.png")
 func _ready():
 	$ItemInventory.texture = item_texture
 	$ItemInventory.vframes = 32
-	$ItemWindowPanel.grow_horizontal = Control.GROW_DIRECTION_END
-	$ItemWindowPanel/ItemInventory.alignment = BoxContainer.ALIGN_BEGIN
-	$ItemWindowPanel/ItemInventory.grow_horizontal = Control.GROW_DIRECTION_END
+	$ItemWindowPanel.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	
+	$ItemWindowPanel/ItemInventory.alignment = BoxContainer.ALIGN_CENTER
+	$ItemWindowPanel/ItemInventory.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	$ItemWindowPanel/ItemInventory.grow_vertical = Control.GROW_DIRECTION_BOTH
+	$ItemWindowPanel/ItemInventory.size_flags_horizontal = Control.SIZE_EXPAND
+	$ItemWindowPanel/ItemInventory.size_flags_vertical = Control.SIZE_EXPAND
+	$ItemWindowPanel/ItemInventory.rect_min_size = Vector2(114, 0)
+
 	#$ItemWindowPanel/MenuCursor.show()
 	
 func _process(delta):
@@ -97,7 +103,7 @@ func item_check():
 		$ItemInventory.show()
 		$ItemInventory.frame = 50
 		
-	if item_id == "Flummery Flambé":
+	if item_id == "Flummery Flambe":
 		$ItemInfo.text = "50 HP & 10 SP\nApplies Fire type"
 		$ItemInventory.position = Vector2(241, 69)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
@@ -105,7 +111,7 @@ func item_check():
 		$ItemInventory.show()
 		$ItemInventory.frame = 49
 		
-	if item_id == "Saffron Soufflé":
+	if item_id == "Saffron Souffle":
 		$ItemInfo.text = "50 HP & 10 SP\nApplies Air type"
 		$ItemInventory.position = Vector2(242, 75)
 		$ItemInventory.scale = Vector2(1.1, 1.1)

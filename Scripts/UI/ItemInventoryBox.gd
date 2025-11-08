@@ -45,7 +45,7 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_select") and item_active and not Input.is_action_just_pressed("ui_left") and not Input.is_action_just_pressed("ui_accept") and not Input.is_action_just_pressed("ui_cancel"):
 		get_id()
 		selected_id = item_id
-		if item_id == "Yummy Cake" or item_id == "Sugar Pill" or item_id == "Ginger Tea" or item_id == "Polar Parfait" or item_id == "Flummery Flambé" or item_id == "Saffron Soufflé" or item_id == "Nori Cookie" or item_id == "Delicious Cake" or item_id == "Amazing Cake" or item_id == "Icescream" or item_id == "Magic Mushroom" or item_id == "Starberry":
+		if item_id == "Yummy Cake" or item_id == "Sugar Pill" or item_id == "Ginger Tea" or item_id == "Polar Parfait" or item_id == "Flummery Flambe" or item_id == "Saffron Souffle" or item_id == "Nori Cookie" or item_id == "Delicious Cake" or item_id == "Amazing Cake" or item_id == "Icescream" or item_id == "Magic Mushroom" or item_id == "Starberry":
 			emit_signal("heal_item_chosen")
 			item_active = false
 			SE.effect("Select")

@@ -166,6 +166,7 @@ script = ExtResource( 23 )
 
 [node name="Cheribo" parent="." instance=ExtResource( 40 )]
 position = Vector2( -14, -27 )
+alternate = false
 
 [node name="Cheribo2" parent="." instance=ExtResource( 40 )]
 position = Vector2( 253, 12 )
