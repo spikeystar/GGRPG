@@ -198,7 +198,7 @@ func _on_PresentBase_item_get():
 		Party.marbles_get = false
 	elif Party.trinket_get:
 		var item_name = Party.add_trinket_name
-		if item_name == "Overdrive":
+		if item_name == "Overdrive" or item_name == "Amazing Cake" or item_name == "Icescream":
 			$Info_Window/First_Text.text = "You got an " + item_name + "!"
 		else:
 			$Info_Window/First_Text.text = "You got a " + item_name + "!"
@@ -261,6 +261,8 @@ func _on_Dialogue_quest_item():
 	emit_signal("animate_Gary")
 	var item_name = Party.add_item_name
 	$Info_Window/First_Text.text = "You got a " + item_name + "!"
+	if item_name == "Angel Egg":
+			$Info_Window/First_Text.text = "You got an " + item_name + "!"
 	SE.effect("Item_Get")
 	Party.add_item_name = item_name
 	if item_name == "Jhumki":
