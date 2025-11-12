@@ -26,8 +26,7 @@ vframes = 32
 frame = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-scale = Vector2( 2.28372, 2.2333 )
+scale = Vector2( 0.699275, 1.27533 )
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]

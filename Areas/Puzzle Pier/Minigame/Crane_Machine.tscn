@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Assets/Puzzle Pier/Crane Intro.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/General/All Items.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/Puzzle Pier/Crane_Machine/Crane.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Assets/Puzzle Pier/Crane_Machine/Crane_Item.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scripts/Area_Specific/Minigame/Crane_Item_Movement.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/Area_Specific/Minigame/Crane_Machine.gd" type="Script" id=12]
 
 [sub_resource type="DynamicFontData" id=9]
 antialiased = false
@@ -123,6 +124,7 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=16]
 
 [node name="Crane_Machine" type="Node2D"]
+script = ExtResource( 12 )
 
 [node name="Intro" type="Node2D" parent="."]
 
@@ -252,13 +254,16 @@ color = Color( 0, 0, 0, 1 )
 position = Vector2( 140, -40 )
 scale = Vector2( 1.8, 1.8 )
 frames = SubResource( 15 )
-frame = 1
+frame = 2
 speed_scale = 1.75
 playing = true
 
 [node name="Items" type="Node2D" parent="Game"]
 script = ExtResource( 11 )
 speed = 50.0
+
+[node name="BasketPosition" type="Position2D" parent="Game/Items"]
+position = Vector2( -176, 109 )
 
 [node name="Crane_Items" type="Node2D" parent="Game/Items"]
 

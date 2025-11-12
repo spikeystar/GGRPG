@@ -16,7 +16,7 @@ var Lucky_Fortunes = []
 var Courageous_Pool = ["Spikey Bomb", "Faulty Amp", "Chilly Globe", "Power Drill", "Blister Grenade"]
 var Mysterious_Pool = ["Starberry", "Lovely Gem", "Beautiful Gem", "Strange Perfume"]
 var Healing_Pool = ["Bounty Herb", "Remedy Bouquet", "Delicious Cake", "Amazing Cake", "Picnic Pie"]
-var Lucky_Pool = ["Magic Mushroom", "Hocus Potion", "Jinx Doll"]
+var Lucky_Pool = ["Beautiful Gem", "Magic Mushroom", "Hocus Potion", "Jinx Doll"]
 var Extra_Pool = ["Perfect Panacea"]
 
 var item_pool = []

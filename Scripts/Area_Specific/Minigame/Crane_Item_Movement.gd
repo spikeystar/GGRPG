@@ -5,6 +5,7 @@ var Item_Choice = ["Yummy Cake", "Pretty Gem", "Picnic Pie", "Sugar Pill", "Pola
 
 export var speed : float
 var Positions = []
+var BasketPosition : Vector2
 
 
 func _ready():
@@ -13,6 +14,7 @@ func _ready():
 	rng.randomize()
 	
 	Positions = [$Position1, $Position2, $Position3, $Position4]
+	BasketPosition = $BasketPosition.global_position
 	
 	for child in $Crane_Items.get_children():
 		var item_pick = rng.randi_range(0, (Item_Choice.size() - 1))
@@ -20,6 +22,7 @@ func _ready():
 		child.Positions = Positions.duplicate()
 		child.speed = speed
 		child.item_name = this_item
+		child.BasketPosition = BasketPosition
 		
 	if not EventManager.Crane_Item_1:
 		$Crane_Items/Crane_Item4.item_name = "Stress Ball"

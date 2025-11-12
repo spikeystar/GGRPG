@@ -6,6 +6,7 @@ var velocity
 var speed : float
 var end_position : Vector2
 var Positions = []
+var BasketPosition : Vector2
 
 export var counter = 0
 
@@ -181,5 +182,17 @@ func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape
 
 
 func _on_Item_Area_area_entered(area):
+	var current_y = global_position.y
+	var BasketX = Vector2(BasketPosition.x, current_y)
 	grabbed = true
 	Party.add_item_name = item_name
+	yield(get_tree().create_timer(0.5), "timeout")
+	var tween = create_tween()
+	tween.tween_property(self, "global_position", BasketX, 2)
+	yield(tween, "finished")
+	yield(get_tree().create_timer(0.3), "timeout")
+	var tween2 = create_tween()
+	tween2.tween_property(self, "global_position", BasketPosition, 1)
+	SE.effect("Drama Descend")
+	yield(tween2, "finished")
+	SE.effect("Item_Get")
