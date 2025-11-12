@@ -24,3 +24,10 @@ var BL_Inn_CS = false
 var Irina_Intro_CS = false
 var Irina_Meetup_CS = false
 var Edgar_Check_In_CS = false
+
+var Crane_Item_1 = false
+var Crane_Item_2 = false
+var Space_Item_1 = false
+var Space_Item_2 = false
+var Water_Item_1 = false
+var Water_Item_2 = false

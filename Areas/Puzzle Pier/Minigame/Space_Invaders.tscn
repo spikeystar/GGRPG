@@ -127,7 +127,7 @@ margin_bottom = -192.0
 custom_colors/font_color = Color( 1, 0.990833, 0.95, 1 )
 custom_colors/font_color_shadow = Color( 0.25, 0.159042, 0.1025, 1 )
 custom_fonts/font = ExtResource( 4 )
-text = "Space Invaders"
+text = "Space Quest"
 align = 1
 
 [node name="Instruction" type="Label" parent="."]
