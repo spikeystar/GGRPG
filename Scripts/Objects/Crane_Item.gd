@@ -7,11 +7,9 @@ var speed : float
 var end_position : Vector2
 var Positions = []
 
-export var onto_1 = false
-export var onto_2 = false
-export var onto_3 = false
-export var onto_4 = false
-export var begin = false
+export var counter = 0
+
+var grabbed = false
 
 
 func _ready():
@@ -19,62 +17,23 @@ func _ready():
 	set_item()
 	
 func _process(delta):
-	var distance = (end_position - global_position).normalized()
-	velocity = (distance * speed)
-	move_and_slide(velocity)
-	movement()
-	
-func movement():
-	if onto_1 and begin:
-		end_position = Positions[0].global_position
-		begin = false
-		
-	if onto_2 and begin:
+	if not grabbed:
+		var distance = (end_position - global_position).normalized()
+		velocity = (distance * speed)
+		move_and_slide(velocity)
+		area_movement()
+
+func area_movement():
+	if counter == 1:
 		end_position = Positions[1].global_position
-		begin = false
-	
-	if onto_3 and begin:
+	if counter == 2:
 		end_position = Positions[2].global_position
-		begin = false
-		
-	if onto_4 and begin:
+	if counter == 3:
 		end_position = Positions[3].global_position
-		begin = false
-	
-	if Vector2(int(global_position.x), int(global_position.y)) >= Vector2(int(Positions[0].global_position.x - 1), int(Positions[0].global_position.y - 1)) && Vector2(int(global_position.x), int(global_position.y)) < Vector2(int(Positions[0].global_position.x + 1), int(Positions[0].global_position.y + 1)) && onto_1 and not begin:
-		end_position = Positions[1].global_position
-		onto_1 = false
-		onto_2 = true
-		begin = false
-
-		
-	if Vector2(int(global_position.x), int(global_position.y)) >= Vector2(int(Positions[1].global_position.x - 1), int(Positions[1].global_position.y - 1)) && Vector2(int(global_position.x), int(global_position.y)) < Vector2(int(Positions[1].global_position.x + 1), int(Positions[1].global_position.y + 1)) && onto_2 and not begin:
-		end_position = Positions[2].global_position
-		onto_2 = false
-		onto_3 = true
-		begin = false
-		
-	if Vector2(int(global_position.x), int(global_position.y)) >= Vector2(int(Positions[2].global_position.x - 1), int(Positions[2].global_position.y - 1)) && Vector2(int(global_position.x), int(global_position.y)) < Vector2(int(Positions[2].global_position.x + 1), int(Positions[2].global_position.y + 1)) && onto_3 and not begin:
-		end_position = Positions[3].global_position
-		onto_3 = false
-		onto_4 = true
-		begin = false
-		
-	if Vector2(int(global_position.x), int(global_position.y)) >= Vector2(int(Positions[3].global_position.x - 1), int(Positions[3].global_position.y - 1)) && Vector2(int(global_position.x), int(global_position.y)) < Vector2(int(Positions[3].global_position.x + 1), int(Positions[3].global_position.y + 1)) && onto_4 and not begin and not onto_1:
+	if counter == 4:
 		end_position = Positions[0].global_position
-		onto_4 = false
-		onto_1 = true
-		begin = false
+		counter = 0
 
-
-#func make_timer():
-	#var timer = Timer.new()
-	#add_child(timer)
-	#timer.start(4)
-	#timer.connect("timeout", self, "_on_timer_timeout")
-
-#func _on_timer_timeout():
-#	loop_ready = true
 
 func set_item():
 	if item_name == "Stress Ball":
@@ -114,7 +73,7 @@ func set_item():
 
 	if item_name == "Jhumki":
 		$ItemUsage/Item.frame = 90
-		$ItemUsage/Item.position = Vector2(-2, -2)
+		$ItemUsage/Item.position = Vector2(0, 0)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 
 				
@@ -216,3 +175,11 @@ func set_item():
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		
 	
+
+func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	counter += 1
+
+
+func _on_Item_Area_area_entered(area):
+	grabbed = true
+	Party.add_item_name = item_name
