@@ -115,6 +115,7 @@ func _input(event):
 		SceneManager.minigame_done = true
 		
 	if Input.is_action_just_pressed("ui_select") and done:
+		done = false
 		SE.effect("Menu Open")
 		$AnimationPlayer.play_backwards("open")
 		$AnimationPlayer.playback_speed = 1

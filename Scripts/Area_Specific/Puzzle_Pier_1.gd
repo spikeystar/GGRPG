@@ -158,9 +158,7 @@ func _input(event):
 			$Camera2D.follow_player = true
 			$Camera2D.current = true
 			yield(get_tree().create_timer(0.5), "timeout")
-			$CollisionRoot/CraneStand.reset()
 			if SceneManager.win:
-				SceneManager.win = false
 				SE.effect("Item_Get")
 				$Camera2D._on_Item_Get_item_get()
 				if Party.add_key_item_name == "Jhumki":
@@ -174,6 +172,8 @@ func _input(event):
 				yield(get_tree().create_timer(0.5), "timeout")
 				PlayerManager.freeze = false
 				PlayerManager.cutscene = false
+			SceneManager.win = false
+			$CollisionRoot/CraneStand.reset()
 
 func _on_EventOptions_yes():
 	SE.effect("Switch")

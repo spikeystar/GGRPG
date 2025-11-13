@@ -30,6 +30,7 @@ func _input(event):
 		$Game/Crane.handle_movement = true
 		
 	if Input.is_action_just_pressed("ui_select") and done:
+		done = false
 		var tween = create_tween()
 		tween.tween_property($Notify, "modulate:a", 0, 0.15)
 		SceneManager.counter = 0
@@ -46,8 +47,8 @@ func _input(event):
 
 
 func _on_Crane_game_done():
+	yield(get_tree().create_timer(0.8), "timeout")
 	done = true
-	yield(get_tree().create_timer(1), "timeout")
 	var tween = create_tween()
 	tween.tween_property($Notify, "modulate:a", 1, 0.15)
 	$Notify.show()

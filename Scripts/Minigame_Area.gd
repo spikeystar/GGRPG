@@ -3,6 +3,7 @@ extends Area2D
 export var height = 0.0
 var gary_entered = false
 signal interaction
+export var NPC_name : String
 
 func _ready():
 	#var timer = Timer.new()
@@ -46,9 +47,10 @@ func _on_FerrisWheel_body_exited(body):
 	gary_entered = false
 
 func _on_EventOptions_no():
-	yield(get_tree().create_timer(0.05), "timeout")
-	gary_entered = true
-	PlayerManager.freeze = false
+	if SceneManager.npc_name == NPC_name:
+		yield(get_tree().create_timer(0.2), "timeout")
+		gary_entered = true
+		PlayerManager.freeze = false
 	
 func reset():
 	gary_entered = true
