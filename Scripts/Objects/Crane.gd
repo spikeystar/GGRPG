@@ -8,6 +8,7 @@ var origin : Vector2
 var speed = 1000
 
 var initial = false
+var first = false
 
 var handle_movement = false
 var extend_movement = false
@@ -22,6 +23,10 @@ var MaxRight : Vector2
 var done = false
 signal game_done
 
+var moving = false
+
+
+
 var BasketPosition : Vector2
 
 # Called when the node enters the scene tree for the first time.
@@ -31,7 +36,10 @@ func _ready():
 func _process(delta):
 	var max_left = false
 	var max_right = false
-	if Vector2(int(global_position.x), int(global_position.y)) == Vector2(int(origin.x), int(origin.y)):
+	moving = false
+	
+	
+	if Vector2(int(global_position.x), int(global_position.y)) <= Vector2(int(origin.x), int(origin.y)):
 		max_left = true
 	#if Vector2(int(global_position.x), int(global_position.y)) == Vector2(int(250), int(global_position.y)):
 	if Vector2(int(global_position.x), int(global_position.y)) >= Vector2(int(MaxRight.x), int(MaxRight.y)):
@@ -39,8 +47,24 @@ func _process(delta):
 	
 	if Input.is_action_pressed("ui_right") and handle_movement and not max_right:
 		input_dir.x += 1.0
+	
 	if Input.is_action_pressed("ui_left") and handle_movement and not max_left:
 		input_dir.x -= 1.0
+		
+	if Input.is_action_just_pressed("ui_right") and handle_movement and not max_right:
+		moving = true
+	
+	if Input.is_action_just_pressed("ui_left") and handle_movement and not max_left:
+		moving = true
+		
+	if Input.is_action_pressed("ui_right") and handle_movement and max_right:
+		SE.effect("Jammed")
+	if Input.is_action_pressed("ui_left") and handle_movement and max_left:
+		SE.effect("Jammed")
+		
+	if moving:
+		SE.effect("Handle")
+
 	
 	if input_dir.length_squared() > 1:
 		input_dir = input_dir.normalized()
@@ -61,11 +85,12 @@ func _process(delta):
 			move_and_slide(velocity)
 			
 			
-			
-			
-		
-			
 func _input(event):
+	if Input.is_action_pressed("ui_right") and handle_movement and not first:
+		SE.effect("Handle")
+		first = true
+	
+	
 	if Input.is_action_just_pressed("ui_select") and handle_movement:
 		handle_movement = false
 		extend_movement = true
@@ -85,6 +110,7 @@ func _input(event):
 			
 	if Input.is_action_just_pressed("ui_select") and grabbing:
 			$AnimationPlayer.play("close")
+			SE.silence("Extend")
 			grabbing = false
 			yield(get_tree().create_timer(0.05), "timeout")
 			$Claw_Body/Claw/Area2D/CollisionShape2D.disabled = true
@@ -109,32 +135,41 @@ func _input(event):
 
 func chain_extend():
 		yield(get_tree().create_timer(0.1), "timeout")
+		SE.effect("Extend")
 		$Chains.show()
 		$Chains/Chain1.show()
-		yield(get_tree().create_timer(0.15), "timeout")
+		yield(get_tree().create_timer(0.1), "timeout")
 		if extending:
-			yield(get_tree().create_timer(0.35), "timeout")
-			$Chains/Chain2.show()
-		if extending:
-			yield(get_tree().create_timer(0.4), "timeout")
-			$Chains/Chain3.show()
+			yield(get_tree().create_timer(0.3), "timeout")
+			if extending:
+				$Chains/Chain2.show()
 		if extending:
 			yield(get_tree().create_timer(0.4), "timeout")
-			$Chains/Chain4.show()
+			if extending:
+				$Chains/Chain3.show()
 		if extending:
-			yield(get_tree().create_timer(0.45), "timeout")
-			$Chains/Chain5.show()
-		if extending:
-			yield(get_tree().create_timer(0.45), "timeout")
-			$Chains/Chain6.show()
-		if extending:
-			yield(get_tree().create_timer(0.44), "timeout")
-			$Chains/Chain7.show()
+			yield(get_tree().create_timer(0.41), "timeout")
+			if extending:
+				$Chains/Chain4.show()
 		if extending:
 			yield(get_tree().create_timer(0.44), "timeout")
-			$Chains/Chain8.show()
+			if extending:
+				$Chains/Chain5.show()
+		if extending:
+			yield(get_tree().create_timer(0.45), "timeout")
+			if extending:
+				$Chains/Chain6.show()
+		if extending:
+			yield(get_tree().create_timer(0.4), "timeout")
+			if extending:
+				$Chains/Chain7.show()
+		if extending:
+			yield(get_tree().create_timer(0.44), "timeout")
+			if extending:
+				$Chains/Chain8.show()
 		else:
 			return
+		
 		
 
 func _on_Area2D_area_entered(area):

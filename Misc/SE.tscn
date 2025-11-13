@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://SE/Item Get SE.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Misc/SE.gd" type="Script" id=2]
@@ -78,6 +78,9 @@
 [ext_resource path="res://SE/Battle/Sting SE.mp3" type="AudioStream" id=76]
 [ext_resource path="res://SE/Battle/Slash SE.mp3" type="AudioStream" id=77]
 [ext_resource path="res://SE/Battle/Zap SE.mp3" type="AudioStream" id=78]
+[ext_resource path="res://SE/Jammed SE.mp3" type="AudioStream" id=79]
+[ext_resource path="res://SE/Handle SE.mp3" type="AudioStream" id=80]
+[ext_resource path="res://SE/Extend SE.mp3" type="AudioStream" id=81]
 
 [node name="SE" type="Node"]
 pause_mode = 2
@@ -226,6 +229,11 @@ volume_db = 10.0
 stream = ExtResource( 54 )
 volume_db = -2.0
 pitch_scale = 0.95
+
+[node name="Jammed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 79 )
+volume_db = -1.0
+pitch_scale = 1.04
 
 [node name="Move_Between" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 52 )
@@ -378,3 +386,13 @@ volume_db = 3.0
 [node name="Zap" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 78 )
 volume_db = -10.0
+
+[node name="Handle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 80 )
+volume_db = 1.0
+pitch_scale = 0.98
+
+[node name="Extend" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 81 )
+volume_db = -1.5
+pitch_scale = 0.95

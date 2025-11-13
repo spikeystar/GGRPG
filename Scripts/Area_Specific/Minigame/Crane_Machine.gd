@@ -30,6 +30,7 @@ func _input(event):
 		$Game/Crane.handle_movement = true
 		
 	if Input.is_action_just_pressed("ui_select") and done:
+		SE.effect("Switch")
 		done = false
 		var tween = create_tween()
 		tween.tween_property($Notify, "modulate:a", 0, 0.15)
