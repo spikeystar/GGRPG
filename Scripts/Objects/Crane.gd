@@ -7,13 +7,20 @@ var input_dir = Vector2.ZERO
 var origin : Vector2
 var speed = 1000
 
-var handle_movement = true
+var initial = false
+
+var handle_movement = false
 var extend_movement = false
 var extending = false
 var grabbing = false
 var able = true
 var caught = false
 var return_home = false
+
+var MaxRight : Vector2
+
+var done = false
+signal game_done
 
 var BasketPosition : Vector2
 
@@ -23,10 +30,14 @@ func _ready():
 
 func _process(delta):
 	var max_left = false
+	var max_right = false
 	if Vector2(int(global_position.x), int(global_position.y)) == Vector2(int(origin.x), int(origin.y)):
 		max_left = true
+	#if Vector2(int(global_position.x), int(global_position.y)) == Vector2(int(250), int(global_position.y)):
+	if Vector2(int(global_position.x), int(global_position.y)) >= Vector2(int(MaxRight.x), int(MaxRight.y)):
+		max_right = true
 	
-	if Input.is_action_pressed("ui_right") and handle_movement:
+	if Input.is_action_pressed("ui_right") and handle_movement and not max_right:
 		input_dir.x += 1.0
 	if Input.is_action_pressed("ui_left") and handle_movement and not max_left:
 		input_dir.x -= 1.0
@@ -72,51 +83,61 @@ func _input(event):
 			$Claw_Body/Claw/Area2D/CollisionShape2D.disabled = false
 			grabbing = true
 			
-			if grabbing:
-				$AnimationPlayer.play("close")
-				grabbing = false
-				yield(get_tree().create_timer(0.05), "timeout")
-				$Claw_Body/Claw/Area2D/CollisionShape2D.disabled = true
+	if Input.is_action_just_pressed("ui_select") and grabbing:
+			$AnimationPlayer.play("close")
+			grabbing = false
+			yield(get_tree().create_timer(0.05), "timeout")
+			$Claw_Body/Claw/Area2D/CollisionShape2D.disabled = true
+			
+			SE.effect("Basic")
+			var BasketX = Vector2(origin.x, origin.y)
+			yield(get_tree().create_timer(0.5), "timeout")
+			var tween = create_tween()
+			tween.tween_property(self, "global_position", BasketX, 2)
+			yield(tween, "finished")
+			SE.effect("Metal Door")
+			$AnimationPlayer.play("open")
+			yield(get_tree().create_timer(1), "timeout")
+			if not caught:
+				SE.effect("Unable")
+			yield(get_tree().create_timer(1), "timeout")
+			done = true
+			emit_signal("game_done")
+
+			
 		
 
 func chain_extend():
-		yield(get_tree().create_timer(0.2), "timeout")
+		yield(get_tree().create_timer(0.1), "timeout")
 		$Chains.show()
 		$Chains/Chain1.show()
-		yield(get_tree().create_timer(0.2), "timeout")
+		yield(get_tree().create_timer(0.15), "timeout")
 		if extending:
-			yield(get_tree().create_timer(0.3), "timeout")
+			yield(get_tree().create_timer(0.35), "timeout")
 			$Chains/Chain2.show()
 		if extending:
-			yield(get_tree().create_timer(0.5), "timeout")
+			yield(get_tree().create_timer(0.4), "timeout")
 			$Chains/Chain3.show()
 		if extending:
-			yield(get_tree().create_timer(0.5), "timeout")
+			yield(get_tree().create_timer(0.4), "timeout")
 			$Chains/Chain4.show()
 		if extending:
-			yield(get_tree().create_timer(0.5), "timeout")
+			yield(get_tree().create_timer(0.45), "timeout")
 			$Chains/Chain5.show()
 		if extending:
-			yield(get_tree().create_timer(0.5), "timeout")
+			yield(get_tree().create_timer(0.45), "timeout")
 			$Chains/Chain6.show()
 		if extending:
-			yield(get_tree().create_timer(0.5), "timeout")
+			yield(get_tree().create_timer(0.44), "timeout")
 			$Chains/Chain7.show()
 		if extending:
-			yield(get_tree().create_timer(0.5), "timeout")
+			yield(get_tree().create_timer(0.44), "timeout")
 			$Chains/Chain8.show()
 		else:
 			return
 		
 
 func _on_Area2D_area_entered(area):
-	SE.effect("Basic")
-	var BasketX = Vector2(BasketPosition.x, origin.y)
 	caught = true
-	yield(get_tree().create_timer(0.5), "timeout")
-	var tween = create_tween()
-	tween.tween_property(self, "global_position", BasketX, 2)
-	yield(tween, "finished")
-	SE.effect("Metal Door")
-	$AnimationPlayer.play("open")
+	
 	

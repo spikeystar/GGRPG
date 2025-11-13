@@ -10,6 +10,7 @@ onready var Gary = PlayerManager.player_instance
 const TransitionPlayer = preload("res://UI/SceneTransition.tscn")
 const FerrisWheel = preload("res://Areas/Puzzle Pier/Minigame/FerrisWheel.tscn")
 const Fortune = preload("res://Areas/Puzzle Pier/Minigame/Fortune.tscn")
+const Crane_Machine = preload("res://Areas/Puzzle Pier/Minigame/Crane_Machine.tscn")
 
 
 
@@ -148,6 +149,31 @@ func _input(event):
 			Party.add_item()
 			$Camera2D._on_Item_Get_item_get()
 			$CollisionRoot/FortuneStand.reset()
+			
+		if SceneManager.npc_name == "Nathan":
+			PlayerManager.freeze = true
+			yield(get_tree().create_timer(0.5), "timeout")
+			$Camera2D.basic_transition_in()
+			yield(get_tree().create_timer(0.05), "timeout")
+			$Camera2D.follow_player = true
+			$Camera2D.current = true
+			yield(get_tree().create_timer(0.5), "timeout")
+			$CollisionRoot/CraneStand.reset()
+			if SceneManager.win:
+				SceneManager.win = false
+				SE.effect("Item_Get")
+				$Camera2D._on_Item_Get_item_get()
+				if Party.add_key_item_name == "Jhumki":
+					Party.add_key_item()
+					Party.add_item_name = "False"
+				if Party.add_trinket_name == "Stress Ball":
+					Party.add_trinket()
+					Party.add_item_name = "False"
+				Party.add_item()
+			if not SceneManager.win:
+				yield(get_tree().create_timer(0.5), "timeout")
+				PlayerManager.freeze = false
+				PlayerManager.cutscene = false
 
 func _on_EventOptions_yes():
 	SE.effect("Switch")
@@ -175,3 +201,9 @@ func _on_EventOptions_yes():
 		$Camera2D.basic_transition_out()
 		yield(get_tree().create_timer(0.5), "timeout")
 		$Camera2D.add_child(Fortune_Scene)
+		
+	if SceneManager.npc_name == "Nathan":
+		var Crane_Scene = Crane_Machine.instance()
+		$Camera2D.basic_transition_out()
+		yield(get_tree().create_timer(0.5), "timeout")
+		$Camera2D.add_child(Crane_Scene)

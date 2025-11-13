@@ -25,22 +25,31 @@ func set_id():
 	if trinket_id == "Gold Bracelet":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 6
+		$TrinketInventory.position = Vector2(90, -121)
 		$TrinketInfo.text = "Attack +30%\n\nWhammy! chance +5"
 		set_trinket_holder()
 	if trinket_id == "Gold Chain":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 7
+		$TrinketInventory.position = Vector2(90, -121)
 		$TrinketInfo.text = "Defense +30%\n\nWhammy! chance +5"
 		set_trinket_holder()
 	if trinket_id == "Gold Earring":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 8
+		$TrinketInventory.position = Vector2(90, -121)
 		$TrinketInfo.text = "Magic +30%\n\nWhammy! chance +5"
 		set_trinket_holder()
 	if trinket_id == "-":
 		$TrinketInventory.hide()
 		$TrinketInventory.frame = 0
 		$TrinketInfo.text = "Remove the trinket from a party member"
+		set_trinket_holder()
+	if trinket_id == "Stress Ball":
+		$TrinketInventory.show()
+		$TrinketInventory.frame = 13
+		$TrinketInventory.position = Vector2(90, -119)
+		$TrinketInfo.text = "Attack +20%\n\nPrevents Wimpy status for whole party"
 		set_trinket_holder()
 
 func _on_Members_main_retread():

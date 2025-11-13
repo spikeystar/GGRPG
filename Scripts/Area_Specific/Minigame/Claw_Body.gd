@@ -7,6 +7,7 @@ var vel : Vector2
 var acceleration = 5000
 var friction = 20
 var input_dir = Vector2.ZERO
+var MaxBottom : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,5 +26,5 @@ func _process(delta):
 		
 	var delta2D = Vector2(vel.x, -vel.y * 0.5)
 	
-	if not int(global_position.y) >= (37) and extend_movement:
+	if not int(global_position.y) >= int((MaxBottom.y)) and extend_movement:
 		move_and_slide(delta2D)

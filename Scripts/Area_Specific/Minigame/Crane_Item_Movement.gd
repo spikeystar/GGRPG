@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var Item_Choice = ["Yummy Cake", "Pretty Gem", "Picnic Pie", "Sugar Pill", "Polar Parfait", "Spikey Bomb", "Yummy Cake", "Pretty Gem", "Picnic Pie", "Bounty Herb", "Polar Parfait", "Spikey Bomb", "Yummy Cake", "Pretty Gem", "Picnic Pie", "Bounty Herb", "Polar Parfait", "Spikey Bomb", "Hocus Potion", "Magic Mushroom", "Jinx Doll", "Yummy Cake", "Strange Perfume", "Faulty Amp", "Power Drill", "Chilly Globe", "Blister Grenade", "Delicious Cake", "Lovely Gem", "Strange Perfume", "Flummery Flambe", "Saffron Souffle", "Nori Cookie", "Ginger Tea", "Sugar Pill", "Yummy Cake", "Yummy Cake", "Picnic Pie", "Bounty Herb", "Polar Parfait", "Spikey Bomb", "Yummy Cake", "Yummy Cake", "Picnic Pie", "Bounty Herb", "Polar Parfait", "Picnic Pie", "Yummy Cake", "Picnic Pie", "Spikey Bomb", "Lovely Gem"]
+var Item_Choice = ["Yummy Cake", "Pretty Gem", "Picnic Pie", "Sugar Pill", "Polar Parfait", "Spikey Bomb", "Yummy Cake", "Pretty Gem", "Picnic Pie", "Bounty Herb", "Polar Parfait", "Spikey Bomb", "Yummy Cake", "Pretty Gem", "Picnic Pie", "Bounty Herb", "Polar Parfait", "Spikey Bomb", "Yummy Cake", "Strange Perfume", "Faulty Amp", "Power Drill", "Chilly Globe", "Blister Grenade", "Delicious Cake", "Lovely Gem", "Strange Perfume", "Flummery Flambe", "Saffron Souffle", "Nori Cookie", "Ginger Tea", "Sugar Pill", "Yummy Cake", "Yummy Cake", "Picnic Pie", "Bounty Herb", "Polar Parfait", "Spikey Bomb", "Yummy Cake", "Yummy Cake", "Picnic Pie", "Bounty Herb", "Polar Parfait", "Picnic Pie", "Yummy Cake", "Picnic Pie", "Spikey Bomb", "Lovely Gem", "Picnic Pie"]
 
 export var speed : float
 var Positions = []

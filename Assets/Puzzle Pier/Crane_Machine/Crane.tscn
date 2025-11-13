@@ -140,12 +140,14 @@ texture = ExtResource( 1 )
 hframes = 3
 
 [node name="Area2D" type="Area2D" parent="Claw_Body/Claw"]
+position = Vector2( -4.24242, -1.25 )
+scale = Vector2( 4.69767, 1 )
 collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Claw_Body/Claw/Area2D"]
-position = Vector2( 1.21212, 13.75 )
-scale = Vector2( 0.285272, 1.26817 )
+position = Vector2( 1.16112, 12.5 )
+scale = Vector2( 0.247331, 1.14837 )
 shape = SubResource( 5 )
 disabled = true
 

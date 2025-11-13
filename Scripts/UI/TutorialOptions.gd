@@ -4,6 +4,8 @@ var ready = false
 var menu_name : String
 var cost = 0
 
+export var minigame = false
+
 signal chosen
 signal yes
 signal no
@@ -23,6 +25,9 @@ func _process(delta):
 		
 	if SceneManager.npc_name == "Estella":
 		cost = 2000
+		
+	if SceneManager.npc_name == "Nathan":
+		cost = 500
 		
 		
 func _input(event):
@@ -44,7 +49,7 @@ func _input(event):
 		emit_signal("chosen")
 		emit_signal("no")
 		
-		if SceneManager.npc_name == "Jacob" or SceneManager.npc_name == "Estella":
+		if minigame:
 			SE.effect("Cancel")
 			reset()
 			

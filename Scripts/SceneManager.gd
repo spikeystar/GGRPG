@@ -34,5 +34,7 @@ var defense_fortune = false
 var whammy_fortune = false
 var fortune_counter = 0
 
+var win = false
+
 ## DEBUG ##
 var times = 0

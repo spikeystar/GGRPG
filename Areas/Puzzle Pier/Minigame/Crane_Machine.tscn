@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Assets/Puzzle Pier/Crane Intro.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/General/All Items.png" type="Texture" id=2]
@@ -12,22 +12,12 @@
 [ext_resource path="res://Assets/Puzzle Pier/Crane_Machine/Crane_Item.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Scripts/Area_Specific/Minigame/Crane_Item_Movement.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/Area_Specific/Minigame/Crane_Machine.gd" type="Script" id=12]
-
-[sub_resource type="DynamicFontData" id=9]
-antialiased = false
-font_path = "res://Misc/Font/Greenscr.ttf"
-
-[sub_resource type="DynamicFont" id=6]
-size = 14
-outline_size = 2
-outline_color = Color( 0.42, 0.26348, 0.2016, 1 )
-extra_spacing_space = -3
-font_data = SubResource( 9 )
+[ext_resource path="res://UI/Battle/Enemy Info.png" type="Texture" id=13]
 
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/path = NodePath("Game/ColorRect:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -69,7 +59,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=7]
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/path = NodePath("Game/ColorRect:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -123,101 +113,63 @@ animations = [ {
 
 [sub_resource type="CircleShape2D" id=16]
 
+[sub_resource type="DynamicFontData" id=9]
+antialiased = false
+font_path = "res://Misc/Font/Greenscr.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 14
+outline_size = 2
+outline_color = Color( 0.42, 0.26348, 0.2016, 1 )
+extra_spacing_space = -3
+font_data = SubResource( 9 )
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Instruction2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Notify/Instruction2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.3 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "flicker"
+length = 2.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Notify/Instruction2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.3 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.301961 ) ]
+}
+
 [node name="Crane_Machine" type="Node2D"]
 script = ExtResource( 12 )
-
-[node name="Intro" type="Node2D" parent="."]
-
-[node name="Screen" type="Sprite" parent="Intro"]
-texture = ExtResource( 1 )
-
-[node name="Title" type="Label" parent="Intro"]
-margin_left = -140.0
-margin_top = -227.0
-margin_right = 144.0
-margin_bottom = -192.0
-custom_colors/font_color = Color( 1, 0.990833, 0.95, 1 )
-custom_colors/font_color_shadow = Color( 0.25, 0.159042, 0.1025, 1 )
-custom_fonts/font = ExtResource( 6 )
-text = "Crane Machine"
-align = 1
-
-[node name="Instruction" type="Label" parent="Intro"]
-margin_left = -131.0
-margin_top = -59.0
-margin_right = 149.0
-margin_bottom = 268.0
-custom_constants/line_spacing = 9
-custom_fonts/font = SubResource( 6 )
-text = "First, press (Right) or (Left) to move the crane
-
-Then, press (Shift) or (Z) to release the claw
-
-Finally, press (Shift) or (Z) again to stop the claw and grab an item"
-align = 1
-autowrap = true
-
-[node name="Stars" type="Node2D" parent="Intro"]
-
-[node name="StarDeco" type="Sprite" parent="Intro/Stars"]
-modulate = Color( 0.95, 0.95, 0.95, 1 )
-position = Vector2( -176, -105 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 4 )
-
-[node name="StarDeco2" type="Sprite" parent="Intro/Stars"]
-modulate = Color( 0.95, 0.95, 0.95, 1 )
-position = Vector2( -88, -105 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 4 )
-
-[node name="StarDeco3" type="Sprite" parent="Intro/Stars"]
-modulate = Color( 0.95, 0.95, 0.95, 1 )
-position = Vector2( 0, -105 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 4 )
-
-[node name="StarDeco4" type="Sprite" parent="Intro/Stars"]
-modulate = Color( 0.95, 0.95, 0.95, 1 )
-position = Vector2( 88, -105 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 4 )
-
-[node name="StarDeco5" type="Sprite" parent="Intro/Stars"]
-modulate = Color( 0.95, 0.95, 0.95, 1 )
-position = Vector2( 176, -105 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 4 )
-
-[node name="StarDeco6" type="Sprite" parent="Intro/Stars"]
-modulate = Color( 0.95, 0.95, 0.95, 1 )
-position = Vector2( -176, 193 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 4 )
-
-[node name="StarDeco7" type="Sprite" parent="Intro/Stars"]
-modulate = Color( 0.95, 0.95, 0.95, 1 )
-position = Vector2( -88, 193 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 4 )
-
-[node name="StarDeco8" type="Sprite" parent="Intro/Stars"]
-modulate = Color( 0.95, 0.95, 0.95, 1 )
-position = Vector2( 0, 193 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 4 )
-
-[node name="StarDeco9" type="Sprite" parent="Intro/Stars"]
-modulate = Color( 0.95, 0.95, 0.95, 1 )
-position = Vector2( 88, 193 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 4 )
-
-[node name="StarDeco10" type="Sprite" parent="Intro/Stars"]
-modulate = Color( 0.95, 0.95, 0.95, 1 )
-position = Vector2( 176, 193 )
-scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 4 )
 
 [node name="Screen2" type="Sprite" parent="."]
 texture = ExtResource( 5 )
@@ -235,18 +187,11 @@ vframes = 32
 frame = 55
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "open"
 playback_speed = 0.6
 anims/RESET = SubResource( 3 )
 anims/flash = SubResource( 5 )
 anims/open = SubResource( 7 )
-
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-margin_left = -320.0
-margin_top = -280.0
-margin_right = 320.0
-margin_bottom = 280.0
-color = Color( 0, 0, 0, 1 )
 
 [node name="Game" type="Node2D" parent="."]
 
@@ -263,7 +208,7 @@ script = ExtResource( 11 )
 speed = 50.0
 
 [node name="BasketPosition" type="Position2D" parent="Game/Items"]
-position = Vector2( -176, 109 )
+position = Vector2( -177, 109 )
 
 [node name="Crane_Items" type="Node2D" parent="Game/Items"]
 
@@ -359,3 +304,138 @@ texture = ExtResource( 7 )
 position = Vector2( -175, 235 )
 scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 3 )
+
+[node name="Intro" type="Node2D" parent="Game"]
+
+[node name="Screen" type="Sprite" parent="Game/Intro"]
+texture = ExtResource( 1 )
+
+[node name="Title" type="Label" parent="Game/Intro"]
+margin_left = -140.0
+margin_top = -227.0
+margin_right = 144.0
+margin_bottom = -192.0
+custom_colors/font_color = Color( 1, 0.990833, 0.95, 1 )
+custom_colors/font_color_shadow = Color( 0.25, 0.159042, 0.1025, 1 )
+custom_fonts/font = ExtResource( 6 )
+text = "Crane Machine"
+align = 1
+
+[node name="Instruction" type="Label" parent="Game/Intro"]
+margin_left = -131.0
+margin_top = -59.0
+margin_right = 149.0
+margin_bottom = 268.0
+custom_constants/line_spacing = 9
+custom_fonts/font = SubResource( 6 )
+text = "First, press (Right) or (Left) to move the crane
+
+Then, press (Shift) or (Z) to release the claw
+
+Finally, press (Shift) or (Z) again to stop the claw and grab an item"
+align = 1
+autowrap = true
+
+[node name="Stars" type="Node2D" parent="Game/Intro"]
+
+[node name="StarDeco" type="Sprite" parent="Game/Intro/Stars"]
+modulate = Color( 0.95, 0.95, 0.95, 1 )
+position = Vector2( -176, -105 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 4 )
+
+[node name="StarDeco2" type="Sprite" parent="Game/Intro/Stars"]
+modulate = Color( 0.95, 0.95, 0.95, 1 )
+position = Vector2( -88, -105 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 4 )
+
+[node name="StarDeco3" type="Sprite" parent="Game/Intro/Stars"]
+modulate = Color( 0.95, 0.95, 0.95, 1 )
+position = Vector2( 0, -105 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 4 )
+
+[node name="StarDeco4" type="Sprite" parent="Game/Intro/Stars"]
+modulate = Color( 0.95, 0.95, 0.95, 1 )
+position = Vector2( 88, -105 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 4 )
+
+[node name="StarDeco5" type="Sprite" parent="Game/Intro/Stars"]
+modulate = Color( 0.95, 0.95, 0.95, 1 )
+position = Vector2( 176, -105 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 4 )
+
+[node name="StarDeco6" type="Sprite" parent="Game/Intro/Stars"]
+modulate = Color( 0.95, 0.95, 0.95, 1 )
+position = Vector2( -176, 193 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 4 )
+
+[node name="StarDeco7" type="Sprite" parent="Game/Intro/Stars"]
+modulate = Color( 0.95, 0.95, 0.95, 1 )
+position = Vector2( -88, 193 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 4 )
+
+[node name="StarDeco8" type="Sprite" parent="Game/Intro/Stars"]
+modulate = Color( 0.95, 0.95, 0.95, 1 )
+position = Vector2( 0, 193 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 4 )
+
+[node name="StarDeco9" type="Sprite" parent="Game/Intro/Stars"]
+modulate = Color( 0.95, 0.95, 0.95, 1 )
+position = Vector2( 88, 193 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 4 )
+
+[node name="StarDeco10" type="Sprite" parent="Game/Intro/Stars"]
+modulate = Color( 0.95, 0.95, 0.95, 1 )
+position = Vector2( 176, 193 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="Game"]
+margin_left = -320.0
+margin_top = -280.0
+margin_right = 320.0
+margin_bottom = 280.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Notify" type="Node2D" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Sprite" type="Sprite" parent="Notify"]
+scale = Vector2( 0.85, 0.95 )
+texture = ExtResource( 13 )
+
+[node name="Instruction2" type="Label" parent="Notify"]
+self_modulate = Color( 1, 1, 1, 0.3 )
+margin_left = -141.0
+margin_top = -8.0
+margin_right = 139.0
+margin_bottom = 319.0
+custom_constants/line_spacing = 9
+custom_fonts/font = SubResource( 6 )
+text = "Press (Shift)/(Z)"
+align = 1
+autowrap = true
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="Notify"]
+root_node = NodePath("../..")
+autoplay = "flicker"
+playback_speed = 1.3
+anims/RESET = SubResource( 17 )
+anims/flicker = SubResource( 18 )
+
+[node name="MaxRight" type="Position2D" parent="."]
+position = Vector2( 248, -166 )
+
+[node name="MaxBottom" type="Position2D" parent="."]
+position = Vector2( 248, 37 )
+
+[connection signal="game_done" from="Game/Crane" to="." method="_on_Crane_game_done"]

@@ -148,7 +148,7 @@ func set_item():
 		
 	if item_name == "Spikey Bomb":
 		$ItemUsage/Item.frame = 53
-		$ItemUsage/Item.position = Vector2(2, 8)
+		$ItemUsage/Item.position = Vector2(1, 8)
 		$ItemUsage/Item.scale = Vector2(1, 1)
 
 		
@@ -185,14 +185,33 @@ func _on_Item_Area_area_entered(area):
 	var current_y = global_position.y
 	var BasketX = Vector2(BasketPosition.x, current_y)
 	grabbed = true
-	Party.add_item_name = item_name
+	SceneManager.counter += 1
+	var counter = SceneManager.counter
+	if counter > 1:
+		grabbed = false
 	yield(get_tree().create_timer(0.5), "timeout")
-	var tween = create_tween()
-	tween.tween_property(self, "global_position", BasketX, 2)
-	yield(tween, "finished")
-	yield(get_tree().create_timer(0.3), "timeout")
-	var tween2 = create_tween()
-	tween2.tween_property(self, "global_position", BasketPosition, 1)
-	SE.effect("Drama Descend")
-	yield(tween2, "finished")
-	SE.effect("Item_Get")
+	if grabbed and counter == 1:
+		var tween = create_tween()
+		tween.tween_property(self, "global_position", BasketX, 2)
+		yield(tween, "finished")
+		yield(get_tree().create_timer(0.3), "timeout")
+		var tween2 = create_tween()
+		tween2.tween_property(self, "global_position", BasketPosition, 1)
+		SE.effect("Drama Descend")
+		yield(tween2, "finished")
+		SE.effect("Item_Get")
+		SceneManager.win = true
+		if item_name == "Jhumki":
+			Party.add_key_item_name = "Jhumki"
+			Party.add_item_name = item_name
+			EventManager.Crane_Item_2 = true
+		if item_name == "Stress Ball":
+			Party.add_trinket_name = "Stress Ball"
+			Party.add_item_name = item_name
+			EventManager.Crane_Item_1 = true
+		else:
+			Party.add_item_name = item_name
+
+func _on_Item_Area_area_exited(area):
+	pass
+	#grabbed = false
