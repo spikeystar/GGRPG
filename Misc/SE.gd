@@ -126,6 +126,8 @@ func effect(id : String):
 		$Handle.play()
 	if id == "Extend":
 		$Extend.play()
+	if id == "Grab":
+		$Grab.play()
 		
 		
 #######################################################

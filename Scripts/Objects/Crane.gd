@@ -115,7 +115,7 @@ func _input(event):
 			yield(get_tree().create_timer(0.05), "timeout")
 			$Claw_Body/Claw/Area2D/CollisionShape2D.disabled = true
 			
-			SE.effect("Basic")
+			SE.effect("Grab")
 			var BasketX = Vector2(origin.x, origin.y)
 			yield(get_tree().create_timer(0.5), "timeout")
 			var tween = create_tween()
