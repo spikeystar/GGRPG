@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=2]
+[gd_scene load_steps=85 format=2]
 
 [ext_resource path="res://SE/Item Get SE.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Misc/SE.gd" type="Script" id=2]
@@ -82,6 +82,8 @@
 [ext_resource path="res://SE/Handle SE.mp3" type="AudioStream" id=80]
 [ext_resource path="res://SE/Extend SE.mp3" type="AudioStream" id=81]
 [ext_resource path="res://SE/Grab SE.mp3" type="AudioStream" id=82]
+[ext_resource path="res://SE/Win SE.mp3" type="AudioStream" id=83]
+[ext_resource path="res://SE/Fail SE.mp3" type="AudioStream" id=84]
 
 [node name="SE" type="Node"]
 pause_mode = 2
@@ -232,6 +234,11 @@ volume_db = -2.0
 pitch_scale = 0.95
 
 [node name="Jammed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 79 )
+volume_db = -1.0
+pitch_scale = 1.04
+
+[node name="Jammed2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 79 )
 volume_db = -1.0
 pitch_scale = 1.04
@@ -400,4 +407,14 @@ pitch_scale = 0.95
 
 [node name="Grab" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 82 )
+volume_db = -2.0
 pitch_scale = 0.9
+
+[node name="Win" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 83 )
+volume_db = -10.0
+
+[node name="Fail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 84 )
+volume_db = -5.5
+pitch_scale = 1.01

@@ -39,7 +39,7 @@ func area_movement():
 func set_item():
 	if item_name == "Stress Ball":
 		$ItemUsage/Item.frame = 13
-		$ItemUsage/Item.position = Vector2(2, 1)
+		$ItemUsage/Item.position = Vector2(2, 3)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 	
 	if item_name == "Yummy Cake":
@@ -54,7 +54,7 @@ func set_item():
 	
 	if item_name == "Ginger Tea":
 		$ItemUsage/Item.frame = 4
-		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.position = Vector2(1,-2)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 	
 	if item_name == "Sugar Pill":
@@ -94,7 +94,7 @@ func set_item():
 		
 	if item_name == "Polar Parfait":
 		$ItemUsage/Item.frame = 50
-		$ItemUsage/Item.position = Vector2(0, 3)
+		$ItemUsage/Item.position = Vector2(0, 0)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 
 		
@@ -112,13 +112,13 @@ func set_item():
 		
 	if item_name == "Nori Cookie":
 		$ItemUsage/Item.frame = 52
-		$ItemUsage/Item.position = Vector2(0.5, 7)
+		$ItemUsage/Item.position = Vector2(0.5, 9)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 
 		
 	if item_name == "Lovely Gem":
 		$ItemUsage/Item.frame = 47
-		$ItemUsage/Item.position = Vector2(3, 1)
+		$ItemUsage/Item.position = Vector2(4, 1)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 
 		
@@ -136,7 +136,7 @@ func set_item():
 		
 	if item_name == "Strange Perfume":
 		$ItemUsage/Item.frame = 64
-		$ItemUsage/Item.position = Vector2(6, 4)
+		$ItemUsage/Item.position = Vector2(6, 3)
 		$ItemUsage/Item.scale = Vector2(1, 1)
 
 		
@@ -160,7 +160,7 @@ func set_item():
 
 	if item_name == "Power Drill":
 		$ItemUsage/Item.frame = 62
-		$ItemUsage/Item.position = Vector2(3, 13)
+		$ItemUsage/Item.position = Vector2(5, 13)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 
 
@@ -182,6 +182,8 @@ func _on_Area2D_area_shape_entered(area_rid, area, area_shape_index, local_shape
 
 
 func _on_Item_Area_area_entered(area):
+	SE.silence("Metal Door")
+	SE.effect("Grab")
 	var current_y = global_position.y
 	var BasketX = Vector2(BasketPosition.x, current_y)
 	grabbed = true
@@ -199,7 +201,7 @@ func _on_Item_Area_area_entered(area):
 		tween2.tween_property(self, "global_position", BasketPosition, 1)
 		SE.effect("Drama Descend")
 		yield(tween2, "finished")
-		SE.effect("Item_Get")
+		SE.effect("Win")
 		SceneManager.win = true
 		if item_name == "Jhumki":
 			Party.add_key_item_name = "Jhumki"

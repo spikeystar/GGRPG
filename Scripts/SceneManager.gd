@@ -25,6 +25,7 @@ var enemy_turn = false
 var transitioning = false
 var minigame_done = false
 
+var time_decided = false
 var day = false
 var night = false
 
@@ -35,6 +36,9 @@ var whammy_fortune = false
 var fortune_counter = 0
 
 var win = false
+
+var ammo_b = false
+var ammo_c = false
 
 ## DEBUG ##
 var times = 0

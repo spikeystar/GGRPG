@@ -5,6 +5,7 @@ var acceleration = 5000
 var friction = 20
 var input_dir = Vector2.ZERO
 var origin : Vector2
+var sensor_origin : Vector2
 var speed = 1000
 
 var initial = false
@@ -24,6 +25,8 @@ var done = false
 signal game_done
 
 var moving = false
+var stopped_position : Vector2
+var jammed = false
 
 
 
@@ -31,19 +34,21 @@ var BasketPosition : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	origin = global_position
+	origin.x = int(global_position.x)
+	origin.y = int(global_position.y)
+	sensor_origin.x = int($Sensor.global_position.x)
 
 func _process(delta):
 	var max_left = false
 	var max_right = false
 	moving = false
 	
-	
 	if Vector2(int(global_position.x), int(global_position.y)) <= Vector2(int(origin.x), int(origin.y)):
 		max_left = true
-	#if Vector2(int(global_position.x), int(global_position.y)) == Vector2(int(250), int(global_position.y)):
+		
 	if Vector2(int(global_position.x), int(global_position.y)) >= Vector2(int(MaxRight.x), int(MaxRight.y)):
 		max_right = true
+		
 	
 	if Input.is_action_pressed("ui_right") and handle_movement and not max_right:
 		input_dir.x += 1.0
@@ -57,10 +62,14 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_left") and handle_movement and not max_left:
 		moving = true
 		
-	if Input.is_action_pressed("ui_right") and handle_movement and max_right:
+	if handle_movement and int($Sensor.global_position.x) <= int(MaxRight.x):
 		SE.effect("Jammed")
-	if Input.is_action_pressed("ui_left") and handle_movement and max_left:
+						
+		
+	if Input.is_action_just_pressed("ui_right") and handle_movement and max_right:
 		SE.effect("Jammed")
+	if Input.is_action_just_pressed("ui_left") and handle_movement and jammed:
+		SE.effect("Jammed2")
 		
 	if moving:
 		SE.effect("Handle")
@@ -112,10 +121,10 @@ func _input(event):
 			$AnimationPlayer.play("close")
 			SE.silence("Extend")
 			grabbing = false
+			SE.effect("Metal Door")
 			yield(get_tree().create_timer(0.05), "timeout")
 			$Claw_Body/Claw/Area2D/CollisionShape2D.disabled = true
 			
-			SE.effect("Grab")
 			var BasketX = Vector2(origin.x, origin.y)
 			yield(get_tree().create_timer(0.5), "timeout")
 			var tween = create_tween()
@@ -125,7 +134,7 @@ func _input(event):
 			$AnimationPlayer.play("open")
 			yield(get_tree().create_timer(1), "timeout")
 			if not caught:
-				SE.effect("Unable")
+				SE.effect("Fail")
 			yield(get_tree().create_timer(1), "timeout")
 			done = true
 			emit_signal("game_done")
@@ -175,4 +184,11 @@ func chain_extend():
 func _on_Area2D_area_entered(area):
 	caught = true
 	
-	
+
+func _on_MaxLeft_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
+	jammed = true
+	if first and jammed and handle_movement:
+		SE.effect("Jammed2")
+
+func _on_MaxLeft_area_shape_exited(area_rid, area, area_shape_index, local_shape_index):
+	jammed = false

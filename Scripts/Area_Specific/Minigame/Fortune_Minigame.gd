@@ -97,6 +97,7 @@ func _input(event):
 		Cards[card_index].flip()
 		$AnimationPlayer.play("flash")
 		yield(get_tree().create_timer(0.4), "timeout")
+		SE.effect("Win")
 		$Cards.hide()
 		$Screen.hide()
 		$Title.hide()

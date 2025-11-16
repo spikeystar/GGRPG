@@ -13,6 +13,10 @@ func silence(id : String):
 		$Extend.volume_db = -80
 		yield(get_tree().create_timer(4), "timeout")
 		$Extend.volume_db = -1
+	if id == "Metal Door":
+		$Metal_Door.volume_db = -80
+		yield(get_tree().create_timer(0.3), "timeout")
+		$Metal_Door.volume_db = -4
 		
 func mega_silence(id : String):
 	if id == "Move Between":
@@ -122,12 +126,18 @@ func effect(id : String):
 		$Whammy.play()
 	if id == "Jammed":
 		$Jammed.play()
+	if id == "Jammed2":
+		$Jammed2.play()
 	if id == "Handle":
 		$Handle.play()
 	if id == "Extend":
 		$Extend.play()
 	if id == "Grab":
 		$Grab.play()
+	if id == "Win":
+		$Win.play()
+	if id == "Fail":
+		$Fail.play()
 		
 		
 #######################################################

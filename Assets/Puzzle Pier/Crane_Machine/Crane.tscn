@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Puzzle Pier/Crane_Machine/Claw SS.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Puzzle Pier/Crane_Machine/Chain.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [sub_resource type="CircleShape2D" id=6]
 
 [sub_resource type="CircleShape2D" id=5]
+
+[sub_resource type="CircleShape2D" id=7]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -151,9 +153,23 @@ scale = Vector2( 0.247331, 1.14837 )
 shape = SubResource( 5 )
 disabled = true
 
+[node name="MaxLeft" type="Area2D" parent="Claw_Body"]
+scale = Vector2( 0.0716713, 0.303778 )
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Claw_Body/MaxLeft"]
+scale = Vector2( 1.95402, 2.3861 )
+shape = SubResource( 7 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/close = SubResource( 3 )
 anims/open = SubResource( 4 )
 
+[node name="Sensor" type="Position2D" parent="."]
+position = Vector2( 1.81818, -0.625 )
+
 [connection signal="area_entered" from="Claw_Body/Claw/Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_shape_entered" from="Claw_Body/MaxLeft" to="." method="_on_MaxLeft_area_shape_entered"]
+[connection signal="area_shape_exited" from="Claw_Body/MaxLeft" to="." method="_on_MaxLeft_area_shape_exited"]

@@ -38,3 +38,4 @@ func _process(delta):
 		SE.effect("Jammed")
 		bottom_reached = false
 		extend_movement = false
+
