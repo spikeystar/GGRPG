@@ -35,6 +35,9 @@ func _ready():
 	$Intro/Item2.item_set()
 	$Intro/Item3.item_set()
 	
+	$Game/Spaceship.MaxLeft = $Game/MaxLeft.global_position
+	$Game/Spaceship.MaxRight = $Game/MaxRight.global_position
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -8,7 +8,7 @@
 [ext_resource path="res://Assets/Puzzle Pier/Minigame_Item.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Puzzle Pier/Space_Quest/Aliens SS.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Puzzle Pier/Space_Quest/Space Background.jpg" type="Texture" id=8]
-[ext_resource path="res://Assets/Puzzle Pier/Space_Quest/Spaceship SS.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Puzzle Pier/Space_Quest/Spaceship.tscn" type="PackedScene" id=9]
 
 [sub_resource type="DynamicFontData" id=9]
 antialiased = false
@@ -281,13 +281,6 @@ texture = ExtResource( 7 )
 hframes = 6
 frame = 4
 
-[node name="Sprite4" type="Sprite" parent="Game"]
-position = Vector2( -4.23516e-22, 205 )
-scale = Vector2( 1.4, 1.4 )
-texture = ExtResource( 9 )
-hframes = 2
-frame = 1
-
 [node name="Score" type="Label" parent="Game"]
 margin_left = 117.0
 margin_top = 257.0
@@ -298,6 +291,24 @@ custom_fonts/font = SubResource( 6 )
 text = "Score: 500"
 align = 1
 autowrap = true
+
+[node name="Spaceship" parent="Game" instance=ExtResource( 9 )]
+position = Vector2( -1, 205 )
+
+[node name="MaxLeft" type="Position2D" parent="Game"]
+position = Vector2( -282, 205 )
+
+[node name="MaxRight" type="Position2D" parent="Game"]
+position = Vector2( 282, 205 )
+
+[node name="SpawnLeft" type="Position2D" parent="Game"]
+position = Vector2( -282, -320 )
+
+[node name="SpawnRight" type="Position2D" parent="Game"]
+position = Vector2( 282, -320 )
+
+[node name="Origin" type="Position2D" parent="Game"]
+position = Vector2( -1, 205 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 0.6
