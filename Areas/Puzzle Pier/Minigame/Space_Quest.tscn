@@ -6,7 +6,6 @@
 [ext_resource path="res://Misc/Font/SaveStar.tres" type="DynamicFont" id=4]
 [ext_resource path="res://Assets/Puzzle Pier/Space_Quest/Moon.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Puzzle Pier/Minigame_Item.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Puzzle Pier/Space_Quest/Aliens SS.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Puzzle Pier/Space_Quest/Space Background.jpg" type="Texture" id=8]
 [ext_resource path="res://Assets/Puzzle Pier/Space_Quest/Spaceship.tscn" type="PackedScene" id=9]
 
@@ -20,6 +19,9 @@ outline_size = 2
 outline_color = Color( 0.42, 0.26348, 0.2016, 1 )
 extra_spacing_space = -3
 font_data = SubResource( 9 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 320, 38 )
 
 [sub_resource type="DynamicFont" id=10]
 size = 14
@@ -117,6 +119,54 @@ script = ExtResource( 2 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
+[node name="Game" type="Node2D" parent="."]
+
+[node name="Space" type="Sprite" parent="Game"]
+modulate = Color( 0.984314, 0.964706, 0.980392, 1 )
+texture = ExtResource( 8 )
+
+[node name="Moon" type="Sprite" parent="Game"]
+position = Vector2( 0, 243 )
+texture = ExtResource( 5 )
+
+[node name="Score" type="Label" parent="Game"]
+margin_left = 117.0
+margin_top = 257.0
+margin_right = 397.0
+margin_bottom = 584.0
+custom_constants/line_spacing = 9
+custom_fonts/font = SubResource( 6 )
+text = "Score: 500"
+align = 1
+autowrap = true
+
+[node name="Spaceship" parent="Game" instance=ExtResource( 9 )]
+position = Vector2( -1, 205 )
+
+[node name="MaxLeft" type="Position2D" parent="Game"]
+position = Vector2( -282, 205 )
+
+[node name="MaxRight" type="Position2D" parent="Game"]
+position = Vector2( 282, 205 )
+
+[node name="SpawnLeft" type="Position2D" parent="Game"]
+position = Vector2( -275, -320 )
+
+[node name="SpawnRight" type="Position2D" parent="Game"]
+position = Vector2( 270, -320 )
+
+[node name="Origin" type="Position2D" parent="Game"]
+position = Vector2( -1, 205 )
+
+[node name="MoonArea" type="Area2D" parent="Game"]
+visible = false
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/MoonArea"]
+position = Vector2( 0, 258 )
+shape = SubResource( 13 )
+
 [node name="Intro" type="Node2D" parent="."]
 
 [node name="Screen" type="Sprite" parent="Intro"]
@@ -142,7 +192,7 @@ custom_constants/line_spacing = 9
 custom_fonts/font = SubResource( 6 )
 text = "Use (Right) and (Left) to move the spaceship
 
-Press (Shift) or (Z) to fire projectiles at enemies"
+Press (Spacebar) to fire projectiles at enemies"
 align = 1
 autowrap = true
 
@@ -254,72 +304,18 @@ position = Vector2( 176, -105 )
 scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 3 )
 
-[node name="Game" type="Node2D" parent="."]
-
-[node name="Space" type="Sprite" parent="Game"]
-modulate = Color( 0.984314, 0.964706, 0.980392, 1 )
-texture = ExtResource( 8 )
-
-[node name="Moon" type="Sprite" parent="Game"]
-position = Vector2( 0, 243 )
-texture = ExtResource( 5 )
-
-[node name="Sprite" type="Sprite" parent="Game"]
-position = Vector2( -86, -191 )
-texture = ExtResource( 7 )
-hframes = 6
-
-[node name="Sprite2" type="Sprite" parent="Game"]
-position = Vector2( 142, -112 )
-texture = ExtResource( 7 )
-hframes = 6
-frame = 2
-
-[node name="Sprite3" type="Sprite" parent="Game"]
-position = Vector2( -222, -55 )
-texture = ExtResource( 7 )
-hframes = 6
-frame = 4
-
-[node name="Score" type="Label" parent="Game"]
-margin_left = 117.0
-margin_top = 257.0
-margin_right = 397.0
-margin_bottom = 584.0
-custom_constants/line_spacing = 9
-custom_fonts/font = SubResource( 6 )
-text = "Score: 500"
-align = 1
-autowrap = true
-
-[node name="Spaceship" parent="Game" instance=ExtResource( 9 )]
-position = Vector2( -1, 205 )
-
-[node name="MaxLeft" type="Position2D" parent="Game"]
-position = Vector2( -282, 205 )
-
-[node name="MaxRight" type="Position2D" parent="Game"]
-position = Vector2( 282, 205 )
-
-[node name="SpawnLeft" type="Position2D" parent="Game"]
-position = Vector2( -282, -320 )
-
-[node name="SpawnRight" type="Position2D" parent="Game"]
-position = Vector2( 282, -320 )
-
-[node name="Origin" type="Position2D" parent="Game"]
-position = Vector2( -1, 205 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "open"
 playback_speed = 0.6
 anims/RESET = SubResource( 3 )
 anims/flash = SubResource( 5 )
 anims/open = SubResource( 7 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 margin_left = -320.0
 margin_top = -280.0
 margin_right = 320.0
 margin_bottom = 280.0
 color = Color( 0, 0, 0, 1 )
+
+[connection signal="body_entered" from="Game/MoonArea" to="." method="_on_MoonArea_body_entered"]

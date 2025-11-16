@@ -9,8 +9,19 @@ var item1 : String
 var item2 : String
 var item3 : String
 
+var intro = false
+var game_ready = false
+var spawn_ready = false
+var spawn_time = 4
+
+const Ammo = preload("res://Assets/Puzzle Pier/Space_Quest/Ammo.tscn")
+const Alien = preload("res://Assets/Puzzle Pier/Space_Quest/Alien.tscn")
+
 
 func _ready():
+	SE.effect("Menu Open")
+	SceneManager.win = false
+	SceneManager.score = 0
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -38,9 +49,61 @@ func _ready():
 	$Game/Spaceship.MaxLeft = $Game/MaxLeft.global_position
 	$Game/Spaceship.MaxRight = $Game/MaxRight.global_position
 	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+	yield(get_tree().create_timer(0.3), "timeout")
+	intro = true
 	
+func _process(delta):
+	$Game/Score.text = "Score: " + str(SceneManager.score)
+	
+	if SceneManager.score >= 50:
+		spawn_time = 2
+		
+	
+	if game_ready and spawn_ready:
+		spawn_ready = false
+		var timer = Timer.new()
+		add_child(timer)
+		timer.start(3)
+		timer.connect("timeout", self, "_on_timer_timeout")
+	
+
+func _input(event):
+	if Input.is_action_just_pressed("ui_select") and intro:
+		SE.effect("Menu Open")
+		intro = false
+		$AnimationPlayer.play_backwards("open")
+		$AnimationPlayer.playback_speed = 1
+		yield(get_tree().create_timer(0.5), "timeout")
+		$Intro.hide()
+		$AnimationPlayer.play("open")
+		yield(get_tree().create_timer(0.5), "timeout")
+		game_ready = true
+		$Game/Spaceship.initial = true
+		yield(get_tree().create_timer(2), "timeout")
+		spawn_ready = true
+		
+	if Input.is_action_just_pressed("ui_push") and game_ready and not SceneManager.win:
+		SE.effect("Move Between")
+		var ammo_piece = Ammo.instance()
+		add_child(ammo_piece)
+		ammo_piece.global_position = $Game/Spaceship/AmmoSpawn.global_position
+
+func _on_timer_timeout():
+	spawn_ready = true
+	if spawn_ready:
+		alien_spawn()
+
+func alien_spawn():
+	randomize()
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	var spawn_location : Vector2
+	spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x, $Game/SpawnRight.global_position.x)), $Game/SpawnRight.global_position.y)
+	var alien = Alien.instance()
+	add_child(alien)
+	alien.global_position = spawn_location
+	spawn_ready = false
+
+
+func _on_MoonArea_body_entered(body):
+	SceneManager.win = true

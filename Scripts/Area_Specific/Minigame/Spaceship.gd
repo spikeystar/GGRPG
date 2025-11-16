@@ -20,7 +20,7 @@ var MaxRight  : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	initial = true
+	pass
 
 
 func _process(delta):
@@ -33,10 +33,10 @@ func _process(delta):
 	if int(global_position.x) <= int(MaxLeft.x):
 		max_left = true
 	
-	if Input.is_action_pressed("ui_right") and initial and not max_right:
+	if Input.is_action_pressed("ui_right") and initial and not max_right and not SceneManager.win:
 		input_dir.x += 1.0
 	
-	if Input.is_action_pressed("ui_left") and initial and not max_left:
+	if Input.is_action_pressed("ui_left") and initial and not max_left and not SceneManager.win:
 		input_dir.x -= 1.0
 		
 	if input_dir.length_squared() > 1:
@@ -49,5 +49,5 @@ func _process(delta):
 		
 		var delta2D = Vector2(vel.x, -vel.y * 0.5)
 		
-		if initial:
+		if initial and not SceneManager.win:
 			move_and_slide(delta2D)

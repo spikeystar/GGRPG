@@ -37,6 +37,7 @@ var fortune_counter = 0
 
 var win = false
 
+var score = 0
 var ammo_b = false
 var ammo_c = false
 
