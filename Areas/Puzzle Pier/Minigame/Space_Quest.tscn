@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Assets/Puzzle Pier/Space Invaders Intro.jpg" type="Texture" id=1]
 [ext_resource path="res://Scripts/Area_Specific/Minigame/Space_Quest.gd" type="Script" id=2]
@@ -113,6 +113,86 @@ tracks/1/keys = {
 "values": [ 0.6 ]
 }
 
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("FinalScore:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Place:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FinalScore:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "final_score"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FinalScore:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Place:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FinalScore:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [node name="Space_Quest" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -151,6 +231,12 @@ position = Vector2( 282, 205 )
 
 [node name="SpawnLeft" type="Position2D" parent="Game"]
 position = Vector2( -275, -320 )
+
+[node name="UFOLeft" type="Position2D" parent="Game"]
+position = Vector2( -381, -111 )
+
+[node name="UFORight" type="Position2D" parent="Game"]
+position = Vector2( 381, -108 )
 
 [node name="SpawnRight" type="Position2D" parent="Game"]
 position = Vector2( 270, -320 )
@@ -236,7 +322,7 @@ margin_right = 4.0
 margin_bottom = 512.0
 custom_constants/line_spacing = 9
 custom_fonts/font = SubResource( 6 )
-text = "500pts"
+text = "1000pts"
 align = 1
 autowrap = true
 
@@ -247,7 +333,7 @@ margin_right = 142.0
 margin_bottom = 512.0
 custom_constants/line_spacing = 9
 custom_fonts/font = SubResource( 6 )
-text = "250pts"
+text = "500pts"
 align = 1
 autowrap = true
 
@@ -258,7 +344,7 @@ margin_right = 279.0
 margin_bottom = 512.0
 custom_constants/line_spacing = 9
 custom_fonts/font = SubResource( 6 )
-text = "100pts"
+text = "250pts"
 align = 1
 autowrap = true
 
@@ -304,12 +390,29 @@ position = Vector2( 176, -105 )
 scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 3 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "open"
-playback_speed = 0.6
-anims/RESET = SubResource( 3 )
-anims/flash = SubResource( 5 )
-anims/open = SubResource( 7 )
+[node name="Place" type="Label" parent="."]
+visible = false
+margin_left = -151.0
+margin_top = -94.0
+margin_right = 154.0
+margin_bottom = -59.0
+custom_colors/font_color = Color( 1, 0.990833, 0.95, 1 )
+custom_colors/font_color_shadow = Color( 0.25, 0.159042, 0.1025, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "1st!"
+align = 1
+
+[node name="FinalScore" type="Label" parent="."]
+visible = false
+margin_left = -154.0
+margin_top = -48.0
+margin_right = 151.0
+margin_bottom = -13.0
+custom_colors/font_color = Color( 1, 0.990833, 0.95, 1 )
+custom_colors/font_color_shadow = Color( 0.25, 0.159042, 0.1025, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "500pts"
+align = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -320.0
@@ -317,5 +420,17 @@ margin_top = -280.0
 margin_right = 320.0
 margin_bottom = 280.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "open"
+playback_speed = 0.6
+anims/RESET = SubResource( 3 )
+anims/flash = SubResource( 5 )
+anims/open = SubResource( 7 )
+
+[node name="TextPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.22
+anims/RESET = SubResource( 14 )
+anims/final_score = SubResource( 15 )
 
 [connection signal="body_entered" from="Game/MoonArea" to="." method="_on_MoonArea_body_entered"]

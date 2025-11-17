@@ -8,6 +8,8 @@ var origin : Vector2
 var sensor_origin : Vector2
 var speed = 1000
 
+var dead = false
+
 
 func _ready():
 	$AnimationPlayer.play("ammo_a")
@@ -18,7 +20,7 @@ func _ready():
 		$AnimationPlayer.play("ammo_c")
 
 
-func _process(delta):
+func _process(delta):	
 	input_dir.y += 1.0
 	
 	if input_dir.length_squared() > 1:
@@ -30,7 +32,14 @@ func _process(delta):
 		
 		var delta2D = Vector2(vel.x, -vel.y * 0.5)
 		
-		move_and_slide(delta2D)
+		if not dead:
+			move_and_slide(delta2D)
 
 func _on_Area2D_body_entered(body):
-	self.queue_free()
+	if SceneManager.ammo_c:
+		SE.effect("Drama Thud")
+		$AnimationPlayer.play("burst")
+		dead = true
+	else:
+		pass
+		

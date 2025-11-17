@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/Area_Specific/Minigame/Alien_Path.gd" type="Script" id=1]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -183, -279, 0, 0, 0, 0, -8, -201, 0, 0, 0, 0, -222, -155, 0, 0, 0, 0, 19, -77, 0, 0, 0, 0, -234, -33, 0, 0, 0, 0, 41, 25, 0, 0, 0, 0, -245, 52, 0, 0, 0, 0, 56, 109, 0, 0, 0, 0, -240, 140, 0, 0, 0, 0, 82, 194, 0, 0, 0, 0, -287, 220, 0, 0, 0, 0, 14, 250 )
+}
+
+[node name="AlienCPath" type="Path2D"]
+position = Vector2( 114, 1 )
+curve = SubResource( 1 )
+
+[node name="Follow" type="PathFollow2D" parent="."]
+unique_name_in_owner = true
+position = Vector2( -183, -279 )
+rotate = false
+loop = false
+script = ExtResource( 1 )

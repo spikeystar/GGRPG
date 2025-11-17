@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/Puzzle Pier/Space_Quest/Ammo SS.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Area_Specific/Minigame/Ammo.gd" type="Script" id=2]
@@ -160,6 +160,54 @@ tracks/12/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Anchor/Sprite:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Area2D/Ammo_C2:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.04198, 1.062 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath(".:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Ammo_C:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.1528, 1.17263 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -584,6 +632,154 @@ tracks/10/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath("Ammo_C:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.56815, 1.54957 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Anchor/Sprite:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Area2D/Ammo_C2:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.97581, 1.91272 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "burst"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Anchor/Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Anchor/Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0.9, 0.9 ), Vector2( 1.6, 1.6 ), Vector2( 2.3, 2.3 ), Vector2( 2.6, 2.6 ), Vector2( 2, 2 ), Vector2( 1.4, 1.4 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Anchor/Sprite:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 6.92, 0.3, 0.35, 1 ), Color( 4.94667, 0.533333, 0.566667, 1 ), Color( 2.97333, 0.766667, 0.783333, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.6 ), Color( 1, 1, 1, 0.301961 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Area2D/Ammo_C2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Ammo_C:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 2, 2 ), Vector2( 2.5, 2.5 ), Vector2( 1.8, 1.8 ), Vector2( 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Ammo_C:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.7, 1.7 ), Vector2( 4, 4 ), Vector2( 5, 5 ), Vector2( 6, 6 ), Vector2( 4, 4 ), Vector2( 2.5, 2.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Ammo_A:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Area2D/Ammo_A2:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="CapsuleShape2D" id=5]
 
@@ -607,6 +803,7 @@ anims/RESET = SubResource( 1 )
 anims/ammo_a = SubResource( 2 )
 anims/ammo_b = SubResource( 3 )
 anims/ammo_c = SubResource( 4 )
+anims/burst = SubResource( 7 )
 
 [node name="Ammo_A" type="CollisionShape2D" parent="."]
 visible = false
@@ -623,11 +820,10 @@ disabled = true
 
 [node name="Ammo_C" type="CollisionShape2D" parent="."]
 visible = false
-scale = Vector2( 1.04198, 1.062 )
+scale = Vector2( 1.1528, 1.17263 )
 shape = SubResource( 6 )
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 8
 
