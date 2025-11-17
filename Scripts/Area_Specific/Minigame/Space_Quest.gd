@@ -17,6 +17,8 @@ var spawn_ready = false
 var ufo_spawn_ready = false
 var spawn_time = 3
 var type_cooldown = false
+var double = false
+var triple = false
 
 const Ammo = preload("res://Assets/Puzzle Pier/Space_Quest/Ammo.tscn")
 const Alien = preload("res://Assets/Puzzle Pier/Space_Quest/Alien.tscn")
@@ -63,14 +65,20 @@ func _ready():
 func _process(delta):
 	$Game/Score.text = "Score: " + str(SceneManager.score)
 		
-	if SceneManager.score >= 200:
-		spawn_time = 2
-		
-	if SceneManager.score >= 500:
+	if SceneManager.score >= 100:
 		spawn_time = 1.5
 		
-	if SceneManager.score >= 800:
+	if SceneManager.score >= 200:
+		double = true
+		
+	if SceneManager.score >= 400:
 		spawn_time = 1
+		
+	if SceneManager.score >= 600:
+		triple = true
+		
+	if SceneManager.score >= 900:
+		spawn_time = 0.5
 		
 	
 	if game_ready and spawn_ready and not SceneManager.win and not SceneManager.minigame_done:
@@ -83,7 +91,7 @@ func _process(delta):
 		
 		var ufo_timer = Timer.new()
 		add_child(ufo_timer)
-		ufo_timer.start(10)
+		ufo_timer.start(20)
 		if not SceneManager.win and not SceneManager.minigame_done:
 			ufo_timer.connect("timeout", self, "_on_ufo_timer_timeout")
 		
@@ -140,6 +148,10 @@ func _on_timer_timeout():
 	spawn_ready = true
 	if spawn_ready and not SceneManager.win and not SceneManager.minigame_done:
 		alien_spawn()
+		if double:
+			alien_spawn()
+		if triple:
+			alien_spawn()
 		
 func _on_ammo_timer_timeout():
 	ammo_ready = true
@@ -184,7 +196,7 @@ func alien_spawn():
 		
 	if pick == 3:
 		var path_c = PathC.instance()
-		spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x + 150, $Game/SpawnRight.global_position.x - 20)), $Game/SpawnRight.global_position.y)
+		spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x + 170, $Game/SpawnRight.global_position.x - 20)), $Game/SpawnRight.global_position.y)
 		path_c.global_position = Vector2(spawn_location.x, spawn_location.y + 300)
 		$Game.add_child(path_c)
 		alien.path_alien = true
@@ -233,9 +245,15 @@ func _on_MoonArea_body_entered(body):
 		if SceneManager.score >= 500:
 			$Place.text = "2nd!"
 			Party.add_item_name = $Intro/Item2.item_name
+			if $Intro/Item2.item_name == "Jhumki":
+				Party.add_key_item_name = "Jhumki"
+				Party.add_item_name = "False"
 		if SceneManager.score >= 1000:
 			$Place.text = "1st!"
 			Party.add_item_name = $Intro/Item1.item_name
+			if $Intro/Item1.item_name == "Comfy Blanket":
+				Party.add_trinket_name = "Comfy Blanket"
+				Party.add_item_name = "False"
 	if SceneManager.score < 250:
 		SE.effect("Fail")
 			

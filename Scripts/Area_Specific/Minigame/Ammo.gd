@@ -9,6 +9,7 @@ var sensor_origin : Vector2
 var speed = 1000
 
 var dead = false
+var ammo_c = false
 
 
 func _ready():
@@ -17,6 +18,7 @@ func _ready():
 	if SceneManager.ammo_b:
 		$AnimationPlayer.play("ammo_b")
 	if SceneManager.ammo_c:
+		ammo_c = true
 		$AnimationPlayer.play("ammo_c")
 
 
@@ -36,7 +38,7 @@ func _process(delta):
 			move_and_slide(delta2D)
 
 func _on_Area2D_body_entered(body):
-	if SceneManager.ammo_c:
+	if ammo_c:
 		SE.effect("Drama Thud")
 		$AnimationPlayer.play("burst")
 		dead = true

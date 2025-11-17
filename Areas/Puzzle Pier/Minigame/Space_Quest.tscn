@@ -392,9 +392,9 @@ texture = ExtResource( 3 )
 
 [node name="Place" type="Label" parent="."]
 visible = false
-margin_left = -151.0
+margin_left = -152.0
 margin_top = -94.0
-margin_right = 154.0
+margin_right = 153.0
 margin_bottom = -59.0
 custom_colors/font_color = Color( 1, 0.990833, 0.95, 1 )
 custom_colors/font_color_shadow = Color( 0.25, 0.159042, 0.1025, 1 )

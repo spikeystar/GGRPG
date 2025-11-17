@@ -10,6 +10,12 @@ func _process(delta):
 		
 	if SceneManager.score >= 400:
 		speed = 160
+		
+	if SceneManager.score >= 600:
+		speed = 180
+		
+	if SceneManager.score >= 800:
+		speed = 200
 	
 	if not SceneManager.win and not dead:
 		set_offset(get_offset() + speed * delta)
