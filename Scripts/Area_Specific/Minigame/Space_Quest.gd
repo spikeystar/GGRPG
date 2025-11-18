@@ -16,7 +16,7 @@ var ammo_ready = false
 var ammo_cooldown = 0.7
 var spawn_ready = false
 var ufo_spawn_ready = false
-var spawn_time = 3
+var spawn_time = 2.5
 var type_cooldown = false
 var double = false
 var triple = false
@@ -151,7 +151,10 @@ func _input(event):
 		SceneManager.minigame_done = true
 		$AnimationPlayer.play_backwards("open")
 		$AnimationPlayer.playback_speed = 1
-		yield(get_tree().create_timer(0.9), "timeout")
+		yield(get_tree().create_timer(0.8), "timeout")
+		if SceneManager.score < 250:
+			SceneManager.win = false
+		yield(get_tree().create_timer(0.1), "timeout")
 		self.queue_free()
 
 func _on_timer_timeout():
@@ -197,9 +200,9 @@ func alien_spawn():
 	
 	if pick == 2:
 		var path_b = PathB.instance()
-	#	spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x + 140, $Game/SpawnRight.global_position.x - 20)), $Game/SpawnRight.global_position.y)
-		spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x, $Game/SpawnRight.global_position.x)), $Game/SpawnRight.global_position.y)
-		path_b.global_position = Vector2(spawn_location.x, spawn_location.y + 500)
+		spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 180, $Game/SpawnRight.global_position.x - 270)), $Game/SpawnRight.global_position.y)
+		#spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x, $Game/SpawnRight.global_position.x)), $Game/SpawnRight.global_position.y)
+		path_b.global_position = Vector2(spawn_location.x, spawn_location.y + 370)
 		$Game.add_child(path_b)
 		alien.path_alien = true
 		path_b.get_node("Follow").add_child(alien)
@@ -207,9 +210,9 @@ func alien_spawn():
 		
 	if pick == 3:
 		var path_c = PathC.instance()
-		spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x + 50, $Game/SpawnRight.global_position.x - 150)), $Game/SpawnRight.global_position.y)
+		spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 180, $Game/SpawnRight.global_position.x - 300)), $Game/SpawnRight.global_position.y)
 		#spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x, $Game/SpawnRight.global_position.x)), $Game/SpawnRight.global_position.y)
-		path_c.global_position = Vector2(spawn_location.x, spawn_location.y + 400)
+		path_c.global_position = Vector2(spawn_location.x, spawn_location.y + 370)
 		$Game.add_child(path_c)
 		alien.path_alien = true
 		path_c.get_node("Follow").add_child(alien)
@@ -238,9 +241,8 @@ func ufo_spawn():
 		
 	
 func _on_MoonArea_body_entered(body):
-	SE.effect("Splat")
 	SceneManager.win = true
-	
+	SE.effect("Splat")	
 	$Game/Score.hide()
 	
 	yield(get_tree().create_timer(1.5), "timeout")
@@ -249,7 +251,6 @@ func _on_MoonArea_body_entered(body):
 	done = true
 	
 	if SceneManager.score >= 250:
-		SceneManager.win = true
 		SE.effect("Win")
 		$Place.show()
 		if SceneManager.score >= 250:

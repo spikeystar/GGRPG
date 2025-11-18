@@ -33,8 +33,12 @@ func _ready():
 
 func _process(delta):
 	if SceneManager.score >= 200:
-		acceleration = 6000
+		acceleration = 5500
 	if SceneManager.score >= 400:
+		acceleration = 6000
+	if SceneManager.score >= 800:
+		acceleration = 6500
+	if SceneManager.score >= 900:
 		acceleration = 7000
 	
 	input_dir.y -= 1.0

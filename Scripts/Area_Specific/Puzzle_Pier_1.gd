@@ -137,7 +137,6 @@ func FerrisWheel_Start():
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and SceneManager.minigame_done:
 		SceneManager.minigame_done = false
-		SceneManager.score = 0
 		
 		if SceneManager.npc_name == "Estella":
 			PlayerManager.freeze = true
@@ -200,6 +199,7 @@ func _input(event):
 				PlayerManager.freeze = false
 				PlayerManager.cutscene = false
 			SceneManager.win = false
+			SceneManager.score = 0
 			$CollisionRoot/SpaceStand.reset()
 
 func _on_EventOptions_yes():
