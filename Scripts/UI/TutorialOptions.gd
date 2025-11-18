@@ -29,6 +29,9 @@ func _process(delta):
 	if SceneManager.npc_name == "Nathan":
 		cost = 500
 		
+	if SceneManager.npc_name == "Terrence" or SceneManager.npc_name == "Devin":
+		cost = 200
+		
 		
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and ready and menu_name == "Yes" and Party.marbles < cost:

@@ -5177,6 +5177,15 @@ NPC_name = "Nathan"
 position = Vector2( 1506, 534 )
 polygon = PoolVector2Array( -30, -35, -13, -42, 35, -17, 17, -11 )
 
+[node name="SpaceStand" parent="CollisionRoot" instance=ExtResource( 12 )]
+position = Vector2( -1127, -558 )
+script = ExtResource( 97 )
+NPC_name = "Terrence"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/SpaceStand"]
+position = Vector2( 1506, 534 )
+polygon = PoolVector2Array( -30, -35, -13, -42, 35, -17, 17, -11 )
+
 [node name="CoastalLane" parent="." instance=ExtResource( 12 )]
 position = Vector2( -758, -503 )
 script = ExtResource( 13 )
@@ -5760,6 +5769,8 @@ position = Vector2( 761, 131 )
 [connection signal="interaction" from="CollisionRoot/FortuneStand" to="Camera2D/Minigame" method="_on_FortuneStand_interaction"]
 [connection signal="body_exited" from="CollisionRoot/CraneStand" to="CollisionRoot/CraneStand" method="_on_FerrisWheel_body_exited"]
 [connection signal="interaction" from="CollisionRoot/CraneStand" to="Camera2D/Minigame" method="_on_CraneStand_interaction"]
+[connection signal="body_exited" from="CollisionRoot/SpaceStand" to="CollisionRoot/SpaceStand" method="_on_FerrisWheel_body_exited"]
+[connection signal="interaction" from="CollisionRoot/SpaceStand" to="Camera2D/Minigame" method="_on_SpaceStand_interaction"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy" method="_on_Interaction_buying"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/Buy_Inventory" method="_on_Interaction_buying"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/MenuCursor" method="_on_Interaction_buying"]

@@ -10,6 +10,7 @@ var item2 : String
 var item3 : String
 
 var intro = false
+var done = false
 var game_ready = false
 var ammo_ready = false
 var ammo_cooldown = 0.7
@@ -143,6 +144,15 @@ func _input(event):
 		var ammo_piece = Ammo.instance()
 		add_child(ammo_piece)
 		ammo_piece.global_position = $Game/Spaceship/AmmoSpawn.global_position
+		
+		
+	if Input.is_action_just_pressed("ui_select") and done:
+		done = false
+		SceneManager.minigame_done = true
+		$AnimationPlayer.play_backwards("open")
+		$AnimationPlayer.playback_speed = 1
+		yield(get_tree().create_timer(0.9), "timeout")
+		self.queue_free()
 
 func _on_timer_timeout():
 	spawn_ready = true
@@ -181,14 +191,15 @@ func alien_spawn():
 	alien.alien_pick = pick
 	
 	if pick == 1:
-		add_child(alien)
+		$Game.add_child(alien)
 		alien.global_position = spawn_location
 		spawn_ready = false
 	
 	if pick == 2:
 		var path_b = PathB.instance()
-		spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x + 140, $Game/SpawnRight.global_position.x - 20)), $Game/SpawnRight.global_position.y)
-		path_b.global_position = Vector2(spawn_location.x, spawn_location.y + 300)
+	#	spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x + 140, $Game/SpawnRight.global_position.x - 20)), $Game/SpawnRight.global_position.y)
+		spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x, $Game/SpawnRight.global_position.x)), $Game/SpawnRight.global_position.y)
+		path_b.global_position = Vector2(spawn_location.x, spawn_location.y + 500)
 		$Game.add_child(path_b)
 		alien.path_alien = true
 		path_b.get_node("Follow").add_child(alien)
@@ -196,8 +207,9 @@ func alien_spawn():
 		
 	if pick == 3:
 		var path_c = PathC.instance()
-		spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x + 170, $Game/SpawnRight.global_position.x - 20)), $Game/SpawnRight.global_position.y)
-		path_c.global_position = Vector2(spawn_location.x, spawn_location.y + 300)
+		spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x + 50, $Game/SpawnRight.global_position.x - 150)), $Game/SpawnRight.global_position.y)
+		#spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x, $Game/SpawnRight.global_position.x)), $Game/SpawnRight.global_position.y)
+		path_c.global_position = Vector2(spawn_location.x, spawn_location.y + 400)
 		$Game.add_child(path_c)
 		alien.path_alien = true
 		path_c.get_node("Follow").add_child(alien)
@@ -216,11 +228,11 @@ func ufo_spawn():
 		new_ufo.move_left = true
 
 	if ufo_direction == 1:
-		add_child(new_ufo)
+		$Game.add_child(new_ufo)
 		new_ufo.global_position = $Game/UFOLeft.global_position
 		
 	if ufo_direction == 2:
-		add_child(new_ufo)
+		$Game.add_child(new_ufo)
 		new_ufo.global_position = $Game/UFORight.global_position
 		
 		
@@ -234,9 +246,10 @@ func _on_MoonArea_body_entered(body):
 	yield(get_tree().create_timer(1.5), "timeout")
 	$TextPlayer.play("final_score")
 	$FinalScore.text = str(SceneManager.score) + "pts"
-	SceneManager.minigame_done = true
+	done = true
 	
 	if SceneManager.score >= 250:
+		SceneManager.win = true
 		SE.effect("Win")
 		$Place.show()
 		if SceneManager.score >= 250:
@@ -247,13 +260,11 @@ func _on_MoonArea_body_entered(body):
 			Party.add_item_name = $Intro/Item2.item_name
 			if $Intro/Item2.item_name == "Jhumki":
 				Party.add_key_item_name = "Jhumki"
-				Party.add_item_name = "False"
 		if SceneManager.score >= 1000:
 			$Place.text = "1st!"
 			Party.add_item_name = $Intro/Item1.item_name
 			if $Intro/Item1.item_name == "Comfy Blanket":
 				Party.add_trinket_name = "Comfy Blanket"
-				Party.add_item_name = "False"
 	if SceneManager.score < 250:
 		SE.effect("Fail")
 			

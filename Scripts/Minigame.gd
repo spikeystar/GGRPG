@@ -40,7 +40,8 @@ func welcome_text():
 		$Dialogue/Name/Talk.text = "Hello, my dear~ I can read your fortune for 2,000 marbles. It's worth it, I promise~"
 	if SceneManager.npc_name == "Nathan":
 		$Dialogue/Name/Talk.text = "Hello there! Wanna try your hand at the crane machine for 500 Marbles?"
-
+	if SceneManager.npc_name == "Terrence":
+		$Dialogue/Name/Talk.text = "Hi! You can play Space Quest here for 200 Marbles, want to try?"
 
 func _on_FerrisWheel_interaction():
 	SceneManager.npc_name = "Jacob"
@@ -52,4 +53,8 @@ func _on_FortuneStand_interaction():
 
 func _on_CraneStand_interaction():
 	SceneManager.npc_name = "Nathan"
+	_welcome()
+	
+func _on_SpaceStand_interaction():
+	SceneManager.npc_name = "Terrence"
 	_welcome()

@@ -11,6 +11,7 @@ const TransitionPlayer = preload("res://UI/SceneTransition.tscn")
 const FerrisWheel = preload("res://Areas/Puzzle Pier/Minigame/FerrisWheel.tscn")
 const Fortune = preload("res://Areas/Puzzle Pier/Minigame/Fortune.tscn")
 const Crane_Machine = preload("res://Areas/Puzzle Pier/Minigame/Crane_Machine.tscn")
+const Space_Quest = preload("res://Areas/Puzzle Pier/Minigame/Space_Quest.tscn")
 
 
 
@@ -136,6 +137,7 @@ func FerrisWheel_Start():
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and SceneManager.minigame_done:
 		SceneManager.minigame_done = false
+		SceneManager.score = 0
 		
 		if SceneManager.npc_name == "Estella":
 			PlayerManager.freeze = true
@@ -174,6 +176,31 @@ func _input(event):
 				PlayerManager.cutscene = false
 			SceneManager.win = false
 			$CollisionRoot/CraneStand.reset()
+			
+		if SceneManager.npc_name == "Terrence":
+			PlayerManager.freeze = true
+			yield(get_tree().create_timer(0.5), "timeout")
+			$Camera2D.basic_transition_in()
+			yield(get_tree().create_timer(0.05), "timeout")
+			$Camera2D.follow_player = true
+			$Camera2D.current = true
+			yield(get_tree().create_timer(0.5), "timeout")
+			if SceneManager.win:
+				SE.effect("Item_Get")
+				$Camera2D._on_Item_Get_item_get()
+				if Party.add_key_item_name == "Jhumki":
+					Party.add_key_item()
+					Party.add_item_name = "False"
+				if Party.add_trinket_name == "Comfy Blanket":
+					Party.add_trinket()
+					Party.add_item_name = "False"
+				Party.add_item()
+			if not SceneManager.win:
+				yield(get_tree().create_timer(0.5), "timeout")
+				PlayerManager.freeze = false
+				PlayerManager.cutscene = false
+			SceneManager.win = false
+			$CollisionRoot/SpaceStand.reset()
 
 func _on_EventOptions_yes():
 	SE.effect("Switch")
@@ -207,3 +234,9 @@ func _on_EventOptions_yes():
 		$Camera2D.basic_transition_out()
 		yield(get_tree().create_timer(0.5), "timeout")
 		$Camera2D.add_child(Crane_Scene)
+		
+	if SceneManager.npc_name == "Terrence":
+		var Space_Scene = Space_Quest.instance()
+		$Camera2D.basic_transition_out()
+		yield(get_tree().create_timer(0.5), "timeout")
+		$Camera2D.add_child(Space_Scene)

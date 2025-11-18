@@ -227,7 +227,7 @@ position = Vector2( -1, 205 )
 position = Vector2( -282, 205 )
 
 [node name="MaxRight" type="Position2D" parent="Game"]
-position = Vector2( 282, 205 )
+position = Vector2( 280, 205 )
 
 [node name="SpawnLeft" type="Position2D" parent="Game"]
 position = Vector2( -275, -320 )
