@@ -138,6 +138,16 @@ func effect(id : String):
 		$Win.play()
 	if id == "Fail":
 		$Fail.play()
+	if id == "Alien_Spawn":
+		$Alien_Spawn.play()
+	if id == "Alien_Death":
+		$Alien_Death.play()
+	if id == "Alien_Triumph":
+		$Alien_Triumph.play()
+	if id == "Pew":
+		$Pew.play()
+	if id == "UFO":
+		$UFO.play()
 		
 		
 #######################################################

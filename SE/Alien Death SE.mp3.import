@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Alien Death SE.mp3-eab3166373cf897f05be3ab64f9f4d7a.mp3str"
+
+[deps]
+
+source_file="res://SE/Alien Death SE.mp3"
+dest_files=[ "res://.import/Alien Death SE.mp3-eab3166373cf897f05be3ab64f9f4d7a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Alien Triumph SE.mp3-cd196bb69296b3bd009446140acf4d98.mp3str"
+
+[deps]
+
+source_file="res://SE/Alien Triumph SE.mp3"
+dest_files=[ "res://.import/Alien Triumph SE.mp3-cd196bb69296b3bd009446140acf4d98.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

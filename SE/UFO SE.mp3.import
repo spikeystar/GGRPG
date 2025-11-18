@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/UFO SE.mp3-937e65b7e9abf1f74ed8d321880f5c41.mp3str"
+
+[deps]
+
+source_file="res://SE/UFO SE.mp3"
+dest_files=[ "res://.import/UFO SE.mp3-937e65b7e9abf1f74ed8d321880f5c41.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

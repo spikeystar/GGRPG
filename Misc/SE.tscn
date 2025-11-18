@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=90 format=2]
 
 [ext_resource path="res://SE/Item Get SE.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Misc/SE.gd" type="Script" id=2]
@@ -84,6 +84,11 @@
 [ext_resource path="res://SE/Grab SE.mp3" type="AudioStream" id=82]
 [ext_resource path="res://SE/Win SE.mp3" type="AudioStream" id=83]
 [ext_resource path="res://SE/Fail SE.mp3" type="AudioStream" id=84]
+[ext_resource path="res://SE/Alien Triumph SE.mp3" type="AudioStream" id=85]
+[ext_resource path="res://SE/Alien Spawn SE.mp3" type="AudioStream" id=86]
+[ext_resource path="res://SE/Alien Death SE.mp3" type="AudioStream" id=87]
+[ext_resource path="res://SE/Pew SE.mp3" type="AudioStream" id=88]
+[ext_resource path="res://SE/UFO SE.mp3" type="AudioStream" id=89]
 
 [node name="SE" type="Node"]
 pause_mode = 2
@@ -418,3 +423,24 @@ volume_db = -10.0
 stream = ExtResource( 84 )
 volume_db = -5.5
 pitch_scale = 1.01
+
+[node name="Alien_Spawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 86 )
+volume_db = 9.0
+
+[node name="Alien_Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 87 )
+volume_db = 10.0
+
+[node name="Alien_Triumph" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 85 )
+volume_db = 13.0
+
+[node name="Pew" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 88 )
+volume_db = 6.0
+pitch_scale = 0.95
+
+[node name="UFO" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 89 )
+volume_db = 13.0

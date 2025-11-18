@@ -140,7 +140,7 @@ func _input(event):
 		ammo_timer.start(ammo_cooldown)
 		ammo_timer.connect("timeout", self, "_on_ammo_timer_timeout")
 		
-		SE.effect("Move Between")
+		SE.effect("Pew")
 		var ammo_piece = Ammo.instance()
 		add_child(ammo_piece)
 		ammo_piece.global_position = $Game/Spaceship/AmmoSpawn.global_position
@@ -181,6 +181,7 @@ func _on_reset_timer_timeout():
 		type_cooldown = false
 
 func alien_spawn():
+	SE.effect("Alien_Spawn")
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -242,7 +243,7 @@ func ufo_spawn():
 	
 func _on_MoonArea_body_entered(body):
 	SceneManager.win = true
-	SE.effect("Splat")	
+	SE.effect("Alien_Triumph")	
 	$Game/Score.hide()
 	
 	yield(get_tree().create_timer(1.5), "timeout")

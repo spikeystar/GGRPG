@@ -69,7 +69,7 @@ func _on_Area2D_body_entered(body):
 		SceneManager.ammo_b = false
 		SceneManager.ammo_c = true
 	
-	SE.effect("Basic")
+	SE.effect("UFO")
 	dead = true
 	$AnimationPlayer.play("death")
 	$CollisionShape2D.set_deferred("disabled", true)

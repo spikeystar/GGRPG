@@ -58,7 +58,7 @@ func _process(delta):
 
 func _on_Area2D_body_entered(body):
 	SceneManager.score += 10
-	SE.effect("Basic")
+	SE.effect("Alien_Death")
 	dead = true
 	$AnimationPlayer.play("death")
 	$CollisionShape2D.set_deferred("disabled", true)

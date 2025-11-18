@@ -156,6 +156,7 @@ func _input(event):
 			yield(get_tree().create_timer(0.5), "timeout")
 			$Camera2D.basic_transition_in()
 			yield(get_tree().create_timer(0.05), "timeout")
+			Music.loud()
 			$Camera2D.follow_player = true
 			$Camera2D.current = true
 			yield(get_tree().create_timer(0.5), "timeout")
@@ -181,6 +182,7 @@ func _input(event):
 			yield(get_tree().create_timer(0.5), "timeout")
 			$Camera2D.basic_transition_in()
 			yield(get_tree().create_timer(0.05), "timeout")
+			Music.loud()
 			$Camera2D.follow_player = true
 			$Camera2D.current = true
 			yield(get_tree().create_timer(0.5), "timeout")
@@ -230,12 +232,14 @@ func _on_EventOptions_yes():
 		$Camera2D.add_child(Fortune_Scene)
 		
 	if SceneManager.npc_name == "Nathan":
+		Music.quiet()
 		var Crane_Scene = Crane_Machine.instance()
 		$Camera2D.basic_transition_out()
 		yield(get_tree().create_timer(0.5), "timeout")
 		$Camera2D.add_child(Crane_Scene)
 		
 	if SceneManager.npc_name == "Terrence":
+		Music.quiet()
 		var Space_Scene = Space_Quest.instance()
 		$Camera2D.basic_transition_out()
 		yield(get_tree().create_timer(0.5), "timeout")
