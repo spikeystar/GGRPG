@@ -30,6 +30,8 @@ const PathC = preload("res://Assets/Puzzle Pier/Space_Quest/AlienCPath.tscn")
 
 func _ready():
 	SE.effect("Menu Open")
+	SceneManager.ammo_b = false
+	SceneManager.ammo_c = false
 	SceneManager.minigame_done = false
 	SceneManager.win = false
 	SceneManager.score = 0
@@ -150,6 +152,8 @@ func _input(event):
 		SE.effect("Switch")
 		done = false
 		SceneManager.minigame_done = true
+		SceneManager.ammo_b = false
+		SceneManager.ammo_c = false
 		$AnimationPlayer.play_backwards("open")
 		$AnimationPlayer.playback_speed = 1
 		yield(get_tree().create_timer(0.8), "timeout")
@@ -214,7 +218,7 @@ func alien_spawn():
 	if pick == 3:
 		var path_c = PathC.instance()
 		var spawn_location_3 : Vector2
-		spawn_location_3 = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 170, $Game/SpawnRight.global_position.x - 320)), $Game/SpawnRight.global_position.y)
+		spawn_location_3 = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 170, $Game/SpawnRight.global_position.x - 340)), $Game/SpawnRight.global_position.y)
 		#spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x, $Game/SpawnRight.global_position.x)), $Game/SpawnRight.global_position.y)
 		path_c.global_position = Vector2(spawn_location_3.x, spawn_location_3.y + 370)
 		$Game.add_child(path_c)
