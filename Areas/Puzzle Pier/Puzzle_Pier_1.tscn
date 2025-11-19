@@ -5805,4 +5805,5 @@ position = Vector2( 761, 131 )
 [connection signal="no" from="Camera2D/Minigame/EventOptions" to="CollisionRoot/FerrisWheel" method="_on_EventOptions_no"]
 [connection signal="no" from="Camera2D/Minigame/EventOptions" to="CollisionRoot/FortuneStand" method="_on_EventOptions_no"]
 [connection signal="no" from="Camera2D/Minigame/EventOptions" to="CollisionRoot/CraneStand" method="_on_EventOptions_no"]
+[connection signal="no" from="Camera2D/Minigame/EventOptions" to="CollisionRoot/SpaceStand" method="_on_EventOptions_no"]
 [connection signal="yes" from="Camera2D/Minigame/EventOptions" to="." method="_on_EventOptions_yes"]

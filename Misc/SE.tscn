@@ -426,15 +426,15 @@ pitch_scale = 1.01
 
 [node name="Alien_Spawn" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 86 )
-volume_db = 9.0
+volume_db = 10.0
 
 [node name="Alien_Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 87 )
-volume_db = 10.0
+volume_db = 12.0
 
 [node name="Alien_Triumph" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 85 )
-volume_db = 13.0
+volume_db = 12.0
 
 [node name="Pew" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 88 )

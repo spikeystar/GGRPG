@@ -261,11 +261,13 @@ func _on_MoonArea_body_entered(body):
 			$Place.text = "2nd!"
 			Party.add_item_name = $Intro/Item2.item_name
 			if $Intro/Item2.item_name == "Jhumki":
+				EventManager.Space_Item_2 = true
 				Party.add_key_item_name = "Jhumki"
 		if SceneManager.score >= 1000:
 			$Place.text = "1st!"
 			Party.add_item_name = $Intro/Item1.item_name
 			if $Intro/Item1.item_name == "Comfy Blanket":
+				EventManager.Space_Item_1 = true
 				Party.add_trinket_name = "Comfy Blanket"
 	if SceneManager.score < 250:
 		SE.effect("Fail")
