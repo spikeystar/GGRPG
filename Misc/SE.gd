@@ -148,6 +148,8 @@ func effect(id : String):
 		$Pew.play()
 	if id == "UFO":
 		$UFO.play()
+	if id == "Explosive":
+		$Explosive.play()
 		
 		
 #######################################################

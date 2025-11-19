@@ -34,12 +34,12 @@ func _process(delta):
 		
 		var delta2D = Vector2(vel.x, -vel.y * 0.5)
 		
-		if not dead:
+		if not dead and not SceneManager.win:
 			move_and_slide(delta2D)
 
 func _on_Area2D_body_entered(body):
 	if ammo_c:
-		SE.effect("Drama Thud")
+		SE.effect("Explosive")
 		$AnimationPlayer.play("burst")
 		dead = true
 	else:

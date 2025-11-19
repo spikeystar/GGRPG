@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=2]
+[gd_scene load_steps=91 format=2]
 
 [ext_resource path="res://SE/Item Get SE.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Misc/SE.gd" type="Script" id=2]
@@ -89,6 +89,7 @@
 [ext_resource path="res://SE/Alien Death SE.mp3" type="AudioStream" id=87]
 [ext_resource path="res://SE/Pew SE.mp3" type="AudioStream" id=88]
 [ext_resource path="res://SE/UFO SE.mp3" type="AudioStream" id=89]
+[ext_resource path="res://SE/Explosive SE.mp3" type="AudioStream" id=90]
 
 [node name="SE" type="Node"]
 pause_mode = 2
@@ -443,4 +444,8 @@ pitch_scale = 0.95
 
 [node name="UFO" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 89 )
-volume_db = 13.0
+volume_db = 14.0
+
+[node name="Explosive" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 90 )
+volume_db = 10.0

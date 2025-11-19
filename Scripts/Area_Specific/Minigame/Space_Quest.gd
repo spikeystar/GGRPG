@@ -3,7 +3,7 @@ extends Node2D
 
 var FirstPool = ["Spikey Bomb", "Blister Grenade", "Power Drill", "Chilly Globe", "Faulty Amp"]
 var SecondPool = ["Polar Parfait", "Nori Cookie", "Flummery Flambe", "Saffron Souffle", "Lovely Gem", "Delicious Cake"]
-var ThirdPool = ["Bounty Herb", "Yummy Cake", "Pretty Gem", "Sugar Pill", "Ginger Tea", "Bounty Herb", "Yummy Cake"]
+var ThirdPool = ["Bounty Herb", "Yummy Cake", "Pretty Gem", "Sugar Pill", "Ginger Tea", "Bounty Herb", "Picnic Pie", "Picnic Pie", "Picnic Pie", "Picnic Pie"]
 
 var item1 : String
 var item2 : String
@@ -201,9 +201,10 @@ func alien_spawn():
 	
 	if pick == 2:
 		var path_b = PathB.instance()
-		spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 180, $Game/SpawnRight.global_position.x - 270)), $Game/SpawnRight.global_position.y)
+		var spawn_location_2 : Vector2
+		spawn_location_2 = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 180, $Game/SpawnRight.global_position.x - 270)), $Game/SpawnRight.global_position.y)
 		#spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x, $Game/SpawnRight.global_position.x)), $Game/SpawnRight.global_position.y)
-		path_b.global_position = Vector2(spawn_location.x, spawn_location.y + 370)
+		path_b.global_position = Vector2(spawn_location_2.x, spawn_location_2.y + 370)
 		$Game.add_child(path_b)
 		alien.path_alien = true
 		path_b.get_node("Follow").add_child(alien)
@@ -211,9 +212,10 @@ func alien_spawn():
 		
 	if pick == 3:
 		var path_c = PathC.instance()
-		spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 180, $Game/SpawnRight.global_position.x - 300)), $Game/SpawnRight.global_position.y)
+		var spawn_location_3 : Vector2
+		spawn_location_3 = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 180, $Game/SpawnRight.global_position.x - 300)), $Game/SpawnRight.global_position.y)
 		#spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x, $Game/SpawnRight.global_position.x)), $Game/SpawnRight.global_position.y)
-		path_c.global_position = Vector2(spawn_location.x, spawn_location.y + 370)
+		path_c.global_position = Vector2(spawn_location_3.x, spawn_location_3.y + 370)
 		$Game.add_child(path_c)
 		alien.path_alien = true
 		path_c.get_node("Follow").add_child(alien)
@@ -254,15 +256,17 @@ func _on_MoonArea_body_entered(body):
 	if SceneManager.score >= 250:
 		SE.effect("Win")
 		$Place.show()
-		if SceneManager.score >= 250:
+		if SceneManager.score >= 250 and SceneManager.score < 500:
 			$Place.text = "3rd!"
 			Party.add_item_name = $Intro/Item3.item_name
-		if SceneManager.score >= 500:
+			return
+		if SceneManager.score >= 500 and SceneManager.score < 1000:
 			$Place.text = "2nd!"
 			Party.add_item_name = $Intro/Item2.item_name
 			if $Intro/Item2.item_name == "Jhumki":
 				EventManager.Space_Item_2 = true
 				Party.add_key_item_name = "Jhumki"
+				return
 		if SceneManager.score >= 1000:
 			$Place.text = "1st!"
 			Party.add_item_name = $Intro/Item1.item_name
