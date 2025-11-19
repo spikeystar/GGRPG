@@ -203,16 +203,13 @@ func _on_Item_Area_area_entered(area):
 		yield(tween2, "finished")
 		SE.effect("Win")
 		SceneManager.win = true
+		Party.add_item_name = item_name
 		if item_name == "Jhumki":
 			Party.add_key_item_name = "Jhumki"
-			Party.add_item_name = item_name
 			EventManager.Crane_Item_2 = true
 		if item_name == "Stress Ball":
 			Party.add_trinket_name = "Stress Ball"
-			Party.add_item_name = item_name
-			EventManager.Crane_Item_1 = true
-		else:
-			Party.add_item_name = item_name
+			EventManager.Crane_Item_1 = true			
 
 func _on_Item_Area_area_exited(area):
 	pass

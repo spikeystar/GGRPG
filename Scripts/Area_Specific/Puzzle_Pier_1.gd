@@ -166,9 +166,11 @@ func _input(event):
 				$Camera2D._on_Item_Get_item_get()
 				if Party.add_key_item_name == "Jhumki":
 					Party.add_key_item()
+					Party.add_key_item_name = "False"
 					Party.add_item_name = "False"
 				if Party.add_trinket_name == "Stress Ball":
 					Party.add_trinket()
+					Party.add_trinket_name = "False"
 					Party.add_item_name = "False"
 				Party.add_item()
 			if not SceneManager.win:
@@ -192,9 +194,11 @@ func _input(event):
 				$Camera2D._on_Item_Get_item_get()
 				if Party.add_key_item_name == "Jhumki":
 					Party.add_key_item()
+					Party.add_key_item_name = "False"
 					Party.add_item_name = "False"
 				if Party.add_trinket_name == "Comfy Blanket":
 					Party.add_trinket()
+					Party.add_trinket_name = "False"
 					Party.add_item_name = "False"
 				Party.add_item()
 			if not SceneManager.win:
