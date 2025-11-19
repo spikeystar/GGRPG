@@ -142,11 +142,12 @@ func _input(event):
 		
 		SE.effect("Pew")
 		var ammo_piece = Ammo.instance()
-		add_child(ammo_piece)
+		$Game.add_child(ammo_piece)
 		ammo_piece.global_position = $Game/Spaceship/AmmoSpawn.global_position
 		
 		
 	if Input.is_action_just_pressed("ui_select") and done:
+		SE.effect("Switch")
 		done = false
 		SceneManager.minigame_done = true
 		$AnimationPlayer.play_backwards("open")
@@ -202,7 +203,7 @@ func alien_spawn():
 	if pick == 2:
 		var path_b = PathB.instance()
 		var spawn_location_2 : Vector2
-		spawn_location_2 = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 180, $Game/SpawnRight.global_position.x - 270)), $Game/SpawnRight.global_position.y)
+		spawn_location_2 = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 170, $Game/SpawnRight.global_position.x - 270)), $Game/SpawnRight.global_position.y)
 		#spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x, $Game/SpawnRight.global_position.x)), $Game/SpawnRight.global_position.y)
 		path_b.global_position = Vector2(spawn_location_2.x, spawn_location_2.y + 370)
 		$Game.add_child(path_b)
@@ -213,7 +214,7 @@ func alien_spawn():
 	if pick == 3:
 		var path_c = PathC.instance()
 		var spawn_location_3 : Vector2
-		spawn_location_3 = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 180, $Game/SpawnRight.global_position.x - 300)), $Game/SpawnRight.global_position.y)
+		spawn_location_3 = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 170, $Game/SpawnRight.global_position.x - 320)), $Game/SpawnRight.global_position.y)
 		#spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x, $Game/SpawnRight.global_position.x)), $Game/SpawnRight.global_position.y)
 		path_c.global_position = Vector2(spawn_location_3.x, spawn_location_3.y + 370)
 		$Game.add_child(path_c)

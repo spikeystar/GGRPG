@@ -100,7 +100,7 @@ func item_set():
 
 	if item_name == "Faulty Amp":
 		$Sprite.frame = 61
-		$Sprite.position = Vector2(2, 10)
+		$Sprite.position = Vector2(2, 14.5)
 		$Sprite.scale = Vector2(1, 1)
 
 	if item_name == "Chilly Globe":
