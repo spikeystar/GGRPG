@@ -207,7 +207,7 @@ func alien_spawn():
 	if pick == 2:
 		var path_b = PathB.instance()
 		var spawn_location_2 : Vector2
-		spawn_location_2 = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 170, $Game/SpawnRight.global_position.x - 270)), $Game/SpawnRight.global_position.y)
+		spawn_location_2 = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 160, $Game/SpawnRight.global_position.x - 290)), $Game/SpawnRight.global_position.y)
 		#spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x, $Game/SpawnRight.global_position.x)), $Game/SpawnRight.global_position.y)
 		path_b.global_position = Vector2(spawn_location_2.x, spawn_location_2.y + 370)
 		$Game.add_child(path_b)
@@ -218,7 +218,7 @@ func alien_spawn():
 	if pick == 3:
 		var path_c = PathC.instance()
 		var spawn_location_3 : Vector2
-		spawn_location_3 = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 170, $Game/SpawnRight.global_position.x - 340)), $Game/SpawnRight.global_position.y)
+		spawn_location_3 = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x - 170, $Game/SpawnRight.global_position.x - 355)), $Game/SpawnRight.global_position.y)
 		#spawn_location = Vector2((rng.randi_range($Game/SpawnLeft.global_position.x, $Game/SpawnRight.global_position.x)), $Game/SpawnRight.global_position.y)
 		path_c.global_position = Vector2(spawn_location_3.x, spawn_location_3.y + 370)
 		$Game.add_child(path_c)
