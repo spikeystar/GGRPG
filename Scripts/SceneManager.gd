@@ -24,6 +24,8 @@ var enemy_repel = false
 var enemy_turn = false
 var transitioning = false
 var minigame_done = false
+var event_start = false
+var current_time : int
 
 var time_decided = false
 var day = false
