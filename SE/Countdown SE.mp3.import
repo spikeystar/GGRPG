@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Countdown SE.mp3-248bd3999e9645971e9a6709c75b5b35.mp3str"
+
+[deps]
+
+source_file="res://SE/Countdown SE.mp3"
+dest_files=[ "res://.import/Countdown SE.mp3-248bd3999e9645971e9a6709c75b5b35.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -13,6 +13,7 @@ var intro = false
 var done = false
 var game_ready = false
 var spawn_ready = false
+var timer_ready = false
 var spawn_time = 2
 var time_up = false
 
@@ -27,7 +28,7 @@ func _ready():
 	SceneManager.score = 0
 	SceneManager.win = false
 	SceneManager.minigame_done = false
-	SceneManager.event_start = true
+	SceneManager.event_start = false
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
@@ -59,6 +60,26 @@ func _ready():
 func _process(delta):
 	$Game/Score.text = "Score: " + str(SceneManager.score)
 	
+	if SceneManager.current_time <= 41 and SceneManager.event_start:
+		spawn_time = 0.5
+		$Game/Belt1.speed_scale = 2
+		$Game/Belt2.speed_scale = 2
+		
+	if SceneManager.current_time <= 31 and SceneManager.event_start:
+		spawn_time = 0.2
+		$Game/Belt1.speed_scale = 3
+		$Game/Belt2.speed_scale = 3
+		
+	if SceneManager.current_time <= 21 and SceneManager.event_start:
+		spawn_time = 0.1
+		$Game/Belt1.speed_scale = 4
+		$Game/Belt2.speed_scale = 4
+		
+	if SceneManager.current_time <= 11 and SceneManager.event_start:
+		spawn_time = 0.05
+		$Game/Belt1.speed_scale = 5
+		$Game/Belt2.speed_scale = 5
+	
 	if game_ready and spawn_ready and not SceneManager.win and not SceneManager.minigame_done:
 		spawn_ready = false
 		var timer = Timer.new()
@@ -66,6 +87,26 @@ func _process(delta):
 		timer.start(spawn_time)
 		if not SceneManager.win and not SceneManager.minigame_done:
 			timer.connect("timeout", self, "_on_timer_timeout")
+			
+	if timer_ready:
+		$Game/Time.text = str(int($Game/Timer.time_left))
+		SceneManager.current_time = int($Game/Timer.time_left)
+		if $Game/Time.text == "4":
+			SE.effect("Countdown")
+		if $Game/Time.text == "3":
+			SE.effect("Countdown2")
+		if $Game/Time.text == "2":
+			SE.effect("Countdown")
+		if $Game/Time.text == "1":
+			SE.effect("Metal Door")
+		if $Game/Time.text == "0":
+			SceneManager.event_start = false
+			timer_ready = false
+			$Game/Belt1.playing = false
+			$Game/Belt2.playing = false
+			yield(get_tree().create_timer(0.5), "timeout")
+			final_score()
+		
 	
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and intro:
@@ -76,19 +117,37 @@ func _input(event):
 		yield(get_tree().create_timer(0.5), "timeout")
 		$Intro.hide()
 		$AnimationPlayer.play("open")
-		yield(get_tree().create_timer(0.5), "timeout")
+		yield(get_tree().create_timer(0.6), "timeout")
 		game_ready = true
-		yield(get_tree().create_timer(2), "timeout")
+		SE.effect("Countdown")
+		$Game/Countdown.text = "3"
+		$AnimationPlayer.play("Countdown")
+		yield(get_tree().create_timer(1), "timeout")
+		SE.effect("Countdown")
+		$Game/Countdown.text = "2"
+		$AnimationPlayer.play("Countdown")
+		yield(get_tree().create_timer(1), "timeout")
+		SE.effect("Countdown")
+		$Game/Countdown.text = "1"
+		$AnimationPlayer.play("Countdown")
+		yield(get_tree().create_timer(1), "timeout")
+		SE.effect("Switch")
 		SceneManager.event_start = true
 		initial_pieces()
 		spawn_left()
 		spawn_right()
 		spawn_ready = true
+		SceneManager.current_time = 60
+		$Game/Timer.start()
+		timer_ready = true
+		$Game/Belt1.playing = true
+		$Game/Belt2.playing = true
 		
 func _on_timer_timeout():
-	spawn_left()
-	spawn_right()
-
+	if SceneManager.event_start and not SceneManager.win and not SceneManager.minigame_done:
+		spawn_left()
+		spawn_right()
+	
 func initial_pieces():
 	$Game/Piece.move_left = true
 	$Game/Piece2.move_left = true
@@ -110,3 +169,37 @@ func spawn_right():
 	new_piece.global_position = $Game/SpawnRight.global_position
 	new_piece.move_left = true
 	$Game.add_child(new_piece)
+	
+func final_score():
+	SceneManager.win = true
+	$Game/Time.hide()
+	$Game/TimeWindow.hide()
+	$Game/Score.hide()
+	
+	yield(get_tree().create_timer(1.5), "timeout")
+	$TextPlayer.play("final_score")
+	$FinalScore.text = str(SceneManager.score) + "pts"
+	done = true
+	
+	if SceneManager.score >= 250:
+		SE.effect("Win")
+		$Place.show()
+		if SceneManager.score >= 250 and SceneManager.score < 500:
+			$Place.text = "3rd!"
+			Party.add_item_name = $Intro/Item3.item_name
+			return
+		if SceneManager.score >= 500 and SceneManager.score < 1000:
+			$Place.text = "2nd!"
+			Party.add_item_name = $Intro/Item2.item_name
+			if $Intro/Item2.item_name == "Jhumki":
+				EventManager.Water_Item_2 = true
+				Party.add_key_item_name = "Jhumki"
+				return
+		if SceneManager.score >= 1000:
+			$Place.text = "1st!"
+			Party.add_item_name = $Intro/Item1.item_name
+			if $Intro/Item1.item_name == "Surfboard":
+				EventManager.Water_Item_1 = true
+				PartyStats.jacques_weapon = "Surfboard"
+	if SceneManager.score < 250:
+		SE.effect("Fail")

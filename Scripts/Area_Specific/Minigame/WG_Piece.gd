@@ -8,7 +8,7 @@ var origin : Vector2
 var sensor_origin : Vector2
 var speed = 1000
 
-var Pieces = ["A", "B", "C", "D", "E", "W", "X", "Y", "Z"]
+var Pieces = ["A", "B", "C", "D", "E", "W", "X", "Y", "Z", "W", "X", "Y", "Z"]
 
 var able = false
 var good
@@ -22,17 +22,35 @@ func _ready():
 	randomize()
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	var piece_select = rng.randi_range(0, 8)
+	var piece_select = rng.randi_range(0, 12)
 	
 	$AnimationPlayer.play(Pieces[piece_select])
 	
 	if piece_select == 0 or piece_select == 1 or piece_select == 2 or piece_select == 3 or piece_select == 4:
 		good = true
 		
-	if piece_select == 5 or piece_select == 6 or piece_select == 7 or piece_select == 8:
+	if piece_select == 5 or piece_select == 6 or piece_select == 7 or piece_select == 8 or piece_select == 9 or piece_select == 10 or piece_select == 11 or piece_select == 12:
 		bad = true
 		
+
+		
 func _process(delta):
+	if SceneManager.current_time == 0 and SceneManager.event_start:
+		acceleration = 2000
+		
+	if SceneManager.current_time <= 41 and SceneManager.event_start:
+		acceleration = 3000
+		
+	if SceneManager.current_time <= 31 and SceneManager.event_start:
+		acceleration = 4000
+		
+	if SceneManager.current_time <= 21 and SceneManager.event_start:
+		acceleration = 6000
+		
+	if SceneManager.current_time <= 11 and SceneManager.event_start:
+		acceleration = 7000
+	
+	
 	if move_right:
 		input_dir.x += 1.0
 		

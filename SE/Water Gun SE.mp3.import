@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Water Gun SE.mp3-d7aa618c287d2eb1cc42a7bdda88ff69.mp3str"
+
+[deps]
+
+source_file="res://SE/Water Gun SE.mp3"
+dest_files=[ "res://.import/Water Gun SE.mp3-d7aa618c287d2eb1cc42a7bdda88ff69.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

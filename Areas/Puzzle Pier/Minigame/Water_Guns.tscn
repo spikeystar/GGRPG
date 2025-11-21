@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Assets/Puzzle Pier/Water Guns Intro.jpg" type="Texture" id=1]
 [ext_resource path="res://Assets/Puzzle Pier/Minigame_Item.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Assets/Puzzle Pier/Water Guns Background.jpg" type="Texture" id=7]
 [ext_resource path="res://Assets/Puzzle Pier/Water_Guns/Piece.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scripts/Area_Specific/Minigame/Water_Guns.gd" type="Script" id=9]
+[ext_resource path="res://UI/Battle/Defense Window.png" type="Texture" id=10]
 
 [sub_resource type="AtlasTexture" id=20]
 atlas = ExtResource( 5 )
@@ -242,6 +243,86 @@ tracks/1/keys = {
 "values": [ 0.6 ]
 }
 
+[sub_resource type="Animation" id=33]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("FinalScore:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Place:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FinalScore:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=34]
+resource_name = "final_score"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("FinalScore:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Place:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("FinalScore:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [node name="Water_Guns" type="Node2D"]
 script = ExtResource( 9 )
 
@@ -255,46 +336,44 @@ modulate = Color( 0.960784, 0.941176, 0.996078, 1 )
 position = Vector2( 0, -63 )
 scale = Vector2( 1.6, 1.6 )
 frames = SubResource( 18 )
-frame = 4
-playing = true
+speed_scale = 1.1
 
 [node name="Belt2" type="AnimatedSprite" parent="Game"]
 modulate = Color( 0.960784, 0.941176, 0.996078, 1 )
-position = Vector2( 0, 189 )
+position = Vector2( 0, 183 )
 scale = Vector2( 1.6, 1.6 )
 frames = SubResource( 30 )
-frame = 4
-playing = true
-
-[node name="Piece" parent="Game" instance=ExtResource( 8 )]
-position = Vector2( -229, 86 )
-
-[node name="Piece2" parent="Game" instance=ExtResource( 8 )]
-position = Vector2( -72, 86 )
-
-[node name="Piece3" parent="Game" instance=ExtResource( 8 )]
-position = Vector2( 90, 84 )
-
-[node name="Piece4" parent="Game" instance=ExtResource( 8 )]
-position = Vector2( 247, 85 )
-
-[node name="Piece5" parent="Game" instance=ExtResource( 8 )]
-position = Vector2( -231, -166 )
-
-[node name="Piece6" parent="Game" instance=ExtResource( 8 )]
-position = Vector2( -74, -166 )
-
-[node name="Piece7" parent="Game" instance=ExtResource( 8 )]
-position = Vector2( 88, -168 )
-
-[node name="Piece8" parent="Game" instance=ExtResource( 8 )]
-position = Vector2( 245, -167 )
-
-[node name="SpawnLeft" type="Position2D" parent="Game"]
-position = Vector2( -388, -166 )
+speed_scale = 1.1
 
 [node name="SpawnRight" type="Position2D" parent="Game"]
-position = Vector2( 404, 85 )
+position = Vector2( 404, 76 )
+
+[node name="Piece" parent="Game" instance=ExtResource( 8 )]
+position = Vector2( -229, 77 )
+
+[node name="Piece2" parent="Game" instance=ExtResource( 8 )]
+position = Vector2( -72, 77 )
+
+[node name="Piece3" parent="Game" instance=ExtResource( 8 )]
+position = Vector2( 90, 75 )
+
+[node name="Piece4" parent="Game" instance=ExtResource( 8 )]
+position = Vector2( 247, 76 )
+
+[node name="Piece5" parent="Game" instance=ExtResource( 8 )]
+position = Vector2( -231, -169 )
+
+[node name="Piece6" parent="Game" instance=ExtResource( 8 )]
+position = Vector2( -74, -169 )
+
+[node name="Piece7" parent="Game" instance=ExtResource( 8 )]
+position = Vector2( 88, -171 )
+
+[node name="Piece8" parent="Game" instance=ExtResource( 8 )]
+position = Vector2( 245, -170 )
+
+[node name="SpawnLeft" type="Position2D" parent="Game"]
+position = Vector2( -388, -169 )
 
 [node name="Countdown" type="Label" parent="Game"]
 visible = false
@@ -308,22 +387,6 @@ custom_fonts/font = ExtResource( 4 )
 text = "1"
 align = 1
 
-[node name="Cursor" type="Sprite" parent="Game"]
-position = Vector2( -145, 35 )
-scale = Vector2( 1.3, 1.3 )
-texture = ExtResource( 6 )
-
-[node name="Score" type="Label" parent="Game"]
-margin_left = 117.0
-margin_top = 257.0
-margin_right = 397.0
-margin_bottom = 584.0
-custom_constants/line_spacing = 9
-custom_fonts/font = SubResource( 31 )
-text = "Score: 500"
-align = 1
-autowrap = true
-
 [node name="MaxUp" type="Position2D" parent="Game"]
 position = Vector2( 0, -261 )
 
@@ -335,6 +398,43 @@ position = Vector2( 301, 0 )
 
 [node name="MaxLeft" type="Position2D" parent="Game"]
 position = Vector2( -301, 0 )
+
+[node name="Score" type="Label" parent="Game"]
+margin_left = 120.0
+margin_top = 249.0
+margin_right = 400.0
+margin_bottom = 576.0
+custom_constants/line_spacing = 9
+custom_fonts/font = SubResource( 31 )
+text = "Score: 100"
+align = 1
+autowrap = true
+
+[node name="TimeWindow" type="Sprite" parent="Game"]
+position = Vector2( 182, 255 )
+scale = Vector2( 0.32, 0.33 )
+texture = ExtResource( 10 )
+
+[node name="Time" type="Label" parent="Game"]
+margin_left = 42.0
+margin_top = 248.0
+margin_right = 322.0
+margin_bottom = 575.0
+custom_constants/line_spacing = 9
+custom_fonts/font = SubResource( 31 )
+text = "60
+"
+align = 1
+autowrap = true
+
+[node name="Timer" type="Timer" parent="Game"]
+wait_time = 60.0
+one_shot = true
+
+[node name="Cursor" type="Sprite" parent="Game"]
+position = Vector2( -145, 35 )
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 6 )
 
 [node name="Intro" type="Node2D" parent="."]
 
@@ -490,3 +590,32 @@ margin_top = -280.0
 margin_right = 320.0
 margin_bottom = 280.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="Place" type="Label" parent="."]
+visible = false
+margin_left = -152.0
+margin_top = -94.0
+margin_right = 153.0
+margin_bottom = -59.0
+custom_colors/font_color = Color( 1, 0.990833, 0.95, 1 )
+custom_colors/font_color_shadow = Color( 0.25, 0.159042, 0.1025, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "1st!"
+align = 1
+
+[node name="FinalScore" type="Label" parent="."]
+visible = false
+margin_left = -154.0
+margin_top = -48.0
+margin_right = 151.0
+margin_bottom = -13.0
+custom_colors/font_color = Color( 1, 0.990833, 0.95, 1 )
+custom_colors/font_color_shadow = Color( 0.25, 0.159042, 0.1025, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "500pts"
+align = 1
+
+[node name="TextPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.22
+anims/RESET = SubResource( 33 )
+anims/final_score = SubResource( 34 )

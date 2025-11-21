@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=2]
+[gd_scene load_steps=93 format=2]
 
 [ext_resource path="res://SE/Item Get SE.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Misc/SE.gd" type="Script" id=2]
@@ -90,6 +90,8 @@
 [ext_resource path="res://SE/Pew SE.mp3" type="AudioStream" id=88]
 [ext_resource path="res://SE/UFO SE.mp3" type="AudioStream" id=89]
 [ext_resource path="res://SE/Explosive SE.mp3" type="AudioStream" id=90]
+[ext_resource path="res://SE/Water Gun SE.mp3" type="AudioStream" id=91]
+[ext_resource path="res://SE/Countdown SE.mp3" type="AudioStream" id=92]
 
 [node name="SE" type="Node"]
 pause_mode = 2
@@ -448,4 +450,16 @@ volume_db = 14.0
 
 [node name="Explosive" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 90 )
+volume_db = 10.0
+
+[node name="Countdown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 92 )
+volume_db = 12.0
+
+[node name="Countdown2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 92 )
+volume_db = 12.0
+
+[node name="Water_Gun" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 91 )
 volume_db = 10.0

@@ -150,6 +150,12 @@ func effect(id : String):
 		$UFO.play()
 	if id == "Explosive":
 		$Explosive.play()
+	if id == "Countdown":
+		$Countdown.play()
+	if id == "Countdown2":
+		$Countdown2.play()
+	if id == "Water_Gun":
+		$Water_Gun.play()
 		
 		
 #######################################################
