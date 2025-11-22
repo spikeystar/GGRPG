@@ -42,6 +42,8 @@ func welcome_text():
 		$Dialogue/Name/Talk.text = "Hello there! Wanna try your hand at the crane machine for 500 Marbles?"
 	if SceneManager.npc_name == "Terrence":
 		$Dialogue/Name/Talk.text = "Hi! You can play Space Quest here for 200 Marbles, want to try?"
+	if SceneManager.npc_name == "Devin":
+		$Dialogue/Name/Talk.text = "Hey, want to play water guns here for 200 Marbles?"
 
 func _on_FerrisWheel_interaction():
 	SceneManager.npc_name = "Jacob"
@@ -57,4 +59,8 @@ func _on_CraneStand_interaction():
 	
 func _on_SpaceStand_interaction():
 	SceneManager.npc_name = "Terrence"
+	_welcome()
+
+func _on_WaterStand_interaction():
+	SceneManager.npc_name = "Devin"
 	_welcome()

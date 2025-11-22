@@ -5186,6 +5186,15 @@ NPC_name = "Terrence"
 position = Vector2( 1506, 534 )
 polygon = PoolVector2Array( -30, -35, -13, -42, 35, -17, 17, -11 )
 
+[node name="WaterStand" parent="CollisionRoot" instance=ExtResource( 12 )]
+position = Vector2( -938, -465 )
+script = ExtResource( 97 )
+NPC_name = "Devin"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/WaterStand"]
+position = Vector2( 1506, 534 )
+polygon = PoolVector2Array( -30, -35, -13, -42, 35, -17, 17, -11 )
+
 [node name="CoastalLane" parent="." instance=ExtResource( 12 )]
 position = Vector2( -758, -503 )
 script = ExtResource( 13 )
@@ -5771,6 +5780,8 @@ position = Vector2( 761, 131 )
 [connection signal="interaction" from="CollisionRoot/CraneStand" to="Camera2D/Minigame" method="_on_CraneStand_interaction"]
 [connection signal="body_exited" from="CollisionRoot/SpaceStand" to="CollisionRoot/SpaceStand" method="_on_FerrisWheel_body_exited"]
 [connection signal="interaction" from="CollisionRoot/SpaceStand" to="Camera2D/Minigame" method="_on_SpaceStand_interaction"]
+[connection signal="body_exited" from="CollisionRoot/WaterStand" to="CollisionRoot/WaterStand" method="_on_FerrisWheel_body_exited"]
+[connection signal="interaction" from="CollisionRoot/WaterStand" to="Camera2D/Minigame" method="_on_WaterStand_interaction"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy" method="_on_Interaction_buying"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/Buy_Inventory" method="_on_Interaction_buying"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/MenuCursor" method="_on_Interaction_buying"]
@@ -5806,4 +5817,5 @@ position = Vector2( 761, 131 )
 [connection signal="no" from="Camera2D/Minigame/EventOptions" to="CollisionRoot/FortuneStand" method="_on_EventOptions_no"]
 [connection signal="no" from="Camera2D/Minigame/EventOptions" to="CollisionRoot/CraneStand" method="_on_EventOptions_no"]
 [connection signal="no" from="Camera2D/Minigame/EventOptions" to="CollisionRoot/SpaceStand" method="_on_EventOptions_no"]
+[connection signal="no" from="Camera2D/Minigame/EventOptions" to="CollisionRoot/WaterStand" method="_on_EventOptions_no"]
 [connection signal="yes" from="Camera2D/Minigame/EventOptions" to="." method="_on_EventOptions_yes"]

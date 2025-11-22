@@ -39,16 +39,16 @@ func _process(delta):
 		acceleration = 2000
 		
 	if SceneManager.current_time <= 45 and SceneManager.event_start:
-		acceleration = 3000
+		acceleration = 3200
 		
 	if SceneManager.current_time <= 35 and SceneManager.event_start:
-		acceleration = 4000
+		acceleration = 4500
 		
 	if SceneManager.current_time <= 25 and SceneManager.event_start:
-		acceleration = 6000
+		acceleration = 6500
 		
 	if SceneManager.current_time <= 15 and SceneManager.event_start:
-		acceleration = 7000
+		acceleration = 7500
 	
 	
 	if move_right:
@@ -71,26 +71,31 @@ func _process(delta):
 
 
 func hit():
-	$Sprite.frame += 1
-	$AnimationPlayer.play("hit")
+	if good and not dead:
+		dead = true
+		SceneManager.score += 10
+		SE.effect("Marble")
+		$Sprite.frame += 1
+		$AnimationPlayer.play("hit")
+	if bad:
+		SceneManager.score -= 10
+		SE.effect("Fail")
+		$Sprite.frame += 1
+		$AnimationPlayer.play("hit")
 	
 	
 func _input(event):
-	if Input.is_action_just_pressed("ui_select") and able and SceneManager.event_start:
-		able = false
-		if not dead:
-			hit()
-		
-		if good and not dead:
-			dead = true
-			SceneManager.score += 10
-			SE.effect("Marble")
-		if bad:
-			SceneManager.score -= 10
-			SE.effect("Fail")
+	pass
+	#if Input.is_action_just_pressed("ui_select") and able and SceneManager.event_start:
+		#able = false
+	
 
 func _on_Area2D_body_entered(body):
 	able = true
+	if not dead and able:
+		hit()
+		
+		
 
 func _on_Area2D_body_exited(body):
 	able = false

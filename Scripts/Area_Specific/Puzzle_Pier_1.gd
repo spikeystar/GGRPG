@@ -12,6 +12,7 @@ const FerrisWheel = preload("res://Areas/Puzzle Pier/Minigame/FerrisWheel.tscn")
 const Fortune = preload("res://Areas/Puzzle Pier/Minigame/Fortune.tscn")
 const Crane_Machine = preload("res://Areas/Puzzle Pier/Minigame/Crane_Machine.tscn")
 const Space_Quest = preload("res://Areas/Puzzle Pier/Minigame/Space_Quest.tscn")
+const Water_Guns = preload("res://Areas/Puzzle Pier/Minigame/Water_Guns.tscn")
 
 
 
@@ -208,6 +209,34 @@ func _input(event):
 			SceneManager.win = false
 			SceneManager.score = 0
 			$CollisionRoot/SpaceStand.reset()
+			
+		if SceneManager.npc_name == "Devin":
+			PlayerManager.freeze = true
+			yield(get_tree().create_timer(0.5), "timeout")
+			$Camera2D.basic_transition_in()
+			yield(get_tree().create_timer(0.05), "timeout")
+			Music.loud()
+			$Camera2D.follow_player = true
+			$Camera2D.current = true
+			yield(get_tree().create_timer(0.5), "timeout")
+			if SceneManager.win:
+				SE.effect("Item_Get")
+				$Camera2D._on_Item_Get_item_get()
+				if Party.add_key_item_name == "Jhumki":
+					Party.add_key_item()
+					Party.add_key_item_name = "False"
+					Party.add_item_name = "False"
+				if Party.add_item_name == "Surfboard":
+					Party.add_item_name = "False"
+				Party.add_item()
+			if not SceneManager.win:
+				yield(get_tree().create_timer(0.5), "timeout")
+				PlayerManager.freeze = false
+				PlayerManager.cutscene = false
+			SceneManager.win = false
+			SceneManager.score = 0
+			SceneManager.event_start = false
+			$CollisionRoot/WaterStand.reset()
 
 func _on_EventOptions_yes():
 	SE.effect("Switch")
@@ -250,3 +279,10 @@ func _on_EventOptions_yes():
 		yield(get_tree().create_timer(0.5), "timeout")
 		Music.quiet()
 		$Camera2D.add_child(Space_Scene)
+		
+	if SceneManager.npc_name == "Devin":
+		var Water_Scene = Water_Guns.instance()
+		$Camera2D.basic_transition_out()
+		yield(get_tree().create_timer(0.5), "timeout")
+		Music.quiet()
+		$Camera2D.add_child(Water_Scene)
