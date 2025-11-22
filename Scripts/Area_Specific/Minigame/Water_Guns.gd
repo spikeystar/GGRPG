@@ -157,7 +157,7 @@ func _input(event):
 		$AnimationPlayer.play_backwards("open")
 		$AnimationPlayer.playback_speed = 1
 		yield(get_tree().create_timer(0.8), "timeout")
-		if SceneManager.score < 10:
+		if SceneManager.score < 300:
 			SceneManager.win = false
 		yield(get_tree().create_timer(0.1), "timeout")
 		self.queue_free()
@@ -202,25 +202,25 @@ func final_score():
 	$FinalScore.text = str(SceneManager.score) + "pts"
 	done = true
 	
-	if SceneManager.score >= 10:
+	if SceneManager.score >= 300:
 		SE.effect("Win")
 		$Place.show()
-		if SceneManager.score >= 10 and SceneManager.score < 20:
+		if SceneManager.score >= 300 and SceneManager.score < 350:
 			$Place.text = "3rd!"
 			Party.add_item_name = $Intro/Item3.item_name
 			return
-		if SceneManager.score >= 20 and SceneManager.score < 30:
+		if SceneManager.score >= 350 and SceneManager.score < 400:
 			$Place.text = "2nd!"
 			Party.add_item_name = $Intro/Item2.item_name
 			if $Intro/Item2.item_name == "Jhumki":
 				EventManager.Water_Item_2 = true
 				Party.add_key_item_name = "Jhumki"
 				return
-		if SceneManager.score >= 30:
+		if SceneManager.score >= 400:
 			$Place.text = "1st!"
 			Party.add_item_name = $Intro/Item1.item_name
 			if $Intro/Item1.item_name == "Surfboard":
 				EventManager.Water_Item_1 = true
 				PartyStats.jacques_weapon = "Surfboard"
-	if SceneManager.score < 10:
+	if SceneManager.score < 300:
 		SE.effect("Fail")
