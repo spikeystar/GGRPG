@@ -53,36 +53,37 @@ func _ready():
 	$Intro/Item2.item_set()
 	$Intro/Item3.item_set()
 
-	yield(get_tree().create_timer(0.3), "timeout")
+	yield(get_tree().create_timer(0.7), "timeout")
 	intro = true
 
 
 func _process(delta):
 	$Game/Score.text = "Score: " + str(SceneManager.score)
 	
-	if SceneManager.current_time <= 41 and SceneManager.event_start:
-		spawn_time = 0.5
-		$Game/Belt1.speed_scale = 2
-		$Game/Belt2.speed_scale = 2
+	if SceneManager.current_time <= 45 and SceneManager.event_start:
+		spawn_time = 1.3
+		$Game/Belt1.speed_scale = 1.9
+		$Game/Belt2.speed_scale = 1.9
 		
-	if SceneManager.current_time <= 31 and SceneManager.event_start:
-		spawn_time = 0.2
+	if SceneManager.current_time <= 35 and SceneManager.event_start:
+		spawn_time = 1
 		$Game/Belt1.speed_scale = 3
 		$Game/Belt2.speed_scale = 3
 		
-	if SceneManager.current_time <= 21 and SceneManager.event_start:
-		spawn_time = 0.1
+	if SceneManager.current_time <= 25 and SceneManager.event_start:
+		spawn_time = 0.67
 		$Game/Belt1.speed_scale = 4
 		$Game/Belt2.speed_scale = 4
 		
-	if SceneManager.current_time <= 11 and SceneManager.event_start:
-		spawn_time = 0.05
+	if SceneManager.current_time <= 15 and SceneManager.event_start:
+		spawn_time = 0.55
 		$Game/Belt1.speed_scale = 5
 		$Game/Belt2.speed_scale = 5
 	
 	if game_ready and spawn_ready and not SceneManager.win and not SceneManager.minigame_done:
 		spawn_ready = false
 		var timer = Timer.new()
+		timer.one_shot = true
 		add_child(timer)
 		timer.start(spawn_time)
 		if not SceneManager.win and not SceneManager.minigame_done:
@@ -131,6 +132,7 @@ func _input(event):
 		$Game/Countdown.text = "1"
 		$AnimationPlayer.play("Countdown")
 		yield(get_tree().create_timer(1), "timeout")
+		SE.effect("Metal Door")
 		SE.effect("Switch")
 		SceneManager.event_start = true
 		initial_pieces()
@@ -144,7 +146,8 @@ func _input(event):
 		$Game/Belt2.playing = true
 		
 func _on_timer_timeout():
-	if SceneManager.event_start and not SceneManager.win and not SceneManager.minigame_done:
+	spawn_ready = true
+	if spawn_ready and SceneManager.event_start and not SceneManager.win and not SceneManager.minigame_done:
 		spawn_left()
 		spawn_right()
 	

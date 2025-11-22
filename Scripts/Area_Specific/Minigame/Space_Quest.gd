@@ -62,7 +62,7 @@ func _ready():
 	$Game/Spaceship.MaxLeft = $Game/MaxLeft.global_position
 	$Game/Spaceship.MaxRight = $Game/MaxRight.global_position
 	
-	yield(get_tree().create_timer(0.3), "timeout")
+	yield(get_tree().create_timer(0.7), "timeout")
 	intro = true
 	
 func _process(delta):

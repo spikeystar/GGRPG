@@ -14,7 +14,7 @@ func _ready():
 	$Game/Crane/Claw_Body.MaxBottom = $MaxBottom.global_position
 	BasketPosition = $Game/Items/BasketPosition.global_position
 	$Game/Crane.BasketPosition = BasketPosition
-	yield(get_tree().create_timer(0.3), "timeout")
+	yield(get_tree().create_timer(0.7), "timeout")
 	able = true
 	
 func _input(event):

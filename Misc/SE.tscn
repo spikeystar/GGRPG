@@ -227,6 +227,7 @@ volume_db = -1.0
 
 [node name="Marble" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 48 )
+volume_db = 4.0
 
 [node name="Menu_Close" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 53 )
@@ -462,4 +463,4 @@ volume_db = 12.0
 
 [node name="Water_Gun" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 91 )
-volume_db = 10.0
+volume_db = 4.0

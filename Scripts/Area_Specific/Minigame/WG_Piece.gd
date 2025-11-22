@@ -38,16 +38,16 @@ func _process(delta):
 	if SceneManager.current_time == 0 and SceneManager.event_start:
 		acceleration = 2000
 		
-	if SceneManager.current_time <= 41 and SceneManager.event_start:
+	if SceneManager.current_time <= 45 and SceneManager.event_start:
 		acceleration = 3000
 		
-	if SceneManager.current_time <= 31 and SceneManager.event_start:
+	if SceneManager.current_time <= 35 and SceneManager.event_start:
 		acceleration = 4000
 		
-	if SceneManager.current_time <= 21 and SceneManager.event_start:
+	if SceneManager.current_time <= 25 and SceneManager.event_start:
 		acceleration = 6000
 		
-	if SceneManager.current_time <= 11 and SceneManager.event_start:
+	if SceneManager.current_time <= 15 and SceneManager.event_start:
 		acceleration = 7000
 	
 	
@@ -73,16 +73,16 @@ func _process(delta):
 func hit():
 	$Sprite.frame += 1
 	$AnimationPlayer.play("hit")
-	dead = true
 	
 	
 func _input(event):
-	if Input.is_action_just_pressed("ui_select") and able:
+	if Input.is_action_just_pressed("ui_select") and able and SceneManager.event_start:
 		able = false
 		if not dead:
 			hit()
 		
 		if good and not dead:
+			dead = true
 			SceneManager.score += 10
 			SE.effect("Marble")
 		if bad:
