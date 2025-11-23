@@ -593,7 +593,6 @@ text = "3"
 align = 1
 
 [node name="Stats" type="Sprite" parent="."]
-visible = false
 position = Vector2( 100, -56 )
 texture = ExtResource( 24 )
 script = ExtResource( 37 )
@@ -614,10 +613,11 @@ texture = ExtResource( 10 )
 hframes = 5
 
 [node name="WeaponDisplay" type="Sprite" parent="Stats"]
-position = Vector2( -109, 91 )
+position = Vector2( -108, 91 )
 texture = ExtResource( 25 )
 hframes = 9
 vframes = 3
+frame = 16
 
 [node name="Stats" type="Label" parent="Stats"]
 margin_left = 28.0
@@ -1326,6 +1326,7 @@ cursor_offset = Vector2( 17, 2.5 )
 pause_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 margin_left = -320.0
 margin_top = -280.0
 margin_right = 320.0

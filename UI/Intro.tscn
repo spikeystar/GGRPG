@@ -715,7 +715,7 @@ modulate = Color( 1, 0.996078, 0.996078, 1 )
 self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -1, 0 )
 frames = SubResource( 19 )
-frame = 2
+frame = 3
 speed_scale = 0.6
 playing = true
 
@@ -777,7 +777,7 @@ self_modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 0, -8 )
 scale = Vector2( 0.7, 0.7 )
 frames = SubResource( 10 )
-frame = 13
+frame = 10
 speed_scale = 0.9
 playing = true
 
@@ -788,12 +788,12 @@ frames = SubResource( 11 )
 speed_scale = 1.1
 
 [node name="Text" type="Label" parent="."]
-margin_left = -141.0
+margin_left = -143.0
 margin_top = 165.0
-margin_right = 132.0
+margin_right = 134.0
 margin_bottom = 198.0
 custom_fonts/font = SubResource( 18 )
-text = "Will someone save the Jewel Seeds?"
+text = "Sealled within the Inner Garden"
 align = 1
 autowrap = true
 

@@ -559,10 +559,16 @@ func flee():
 		PartyStats.damien_current_health = 1
 	
 func pre_attack():
+	#if fighter_name == "jacques" and PartyStats.jacques_weapon == "Surfboard":
+	#	$AnimationPlayer.play("Fighter_Pre_Attack_2")
+	#else:
 	$AnimationPlayer.play("Fighter_Pre_Attack")
 	able = false
 
 func attack():
+#	if fighter_name == "jacques" and PartyStats.jacques_weapon == "Surfboard":
+	#	$AnimationPlayer.play("Fighter_Attack_2")
+	#else:
 	$AnimationPlayer.play("Fighter_Attack")
 	$AnimationPlayer.playback_speed = 0.6
 	yield(get_tree().create_timer(3), "timeout")

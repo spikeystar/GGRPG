@@ -12,7 +12,7 @@ var gary_attack = 25
 var gary_magic = 23
 var gary_defense = 17
 var gary_trinket : String = "-"
-var gary_weapon : String = "-"
+var gary_weapon : String = "Red Fender"
 
 var jacques_id = 2
 var jacques_health = 60
@@ -21,7 +21,7 @@ var jacques_attack = 20
 var jacques_magic = 27
 var jacques_defense = 26
 var jacques_trinket : String = "-"
-var jacques_weapon : String = "-"
+var jacques_weapon : String = "Skateboard"
 
 var irina_id = 3
 var irina_health = 70
@@ -30,7 +30,7 @@ var irina_attack = 17
 var irina_magic = 25
 var irina_defense = 17
 var irina_trinket : String = "-"
-var irina_weapon : String = "-"
+var irina_weapon : String = "Star Wand"
 
 var suzy_id = 4
 var suzy_health = 122
@@ -39,7 +39,7 @@ var suzy_attack = 17
 var suzy_magic = 25
 var suzy_defense = 17
 var suzy_trinket : String = "-"
-var suzy_weapon : String = "-"
+var suzy_weapon : String = "Candy Gun"
 
 var damien_id = 5
 var damien_health = 122
@@ -48,7 +48,7 @@ var damien_attack = 17
 var damien_magic = 25
 var damien_defense = 17
 var damien_trinket : String = "-"
-var damien_weapon : String = "-"
+var damien_weapon : String = "Spellbook"
 
 var party_sp = 20
 var party_max_sp = 20
