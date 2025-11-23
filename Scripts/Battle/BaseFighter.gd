@@ -397,6 +397,8 @@ func SP(SP_amount: int):
 	PartyStats.party_sp = clamp(PartyStats.party_sp + SP_amount, 0, PartyStats.party_max_sp)
 	
 func weapon_SP(SP_amount: int):
+#	if fighter_name == "jacques" and PartyStats.jacques_weapon == "Surfboard":
+#		SP_amount = 3
 	if not anxious:
 		var sp_text = text(TEXT_SP)
 		if sp_text:
