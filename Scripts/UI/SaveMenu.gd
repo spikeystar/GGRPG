@@ -101,6 +101,11 @@ var data = {
 		"irina_current_health" : PartyStats.irina_current_health,
 		"suzy_current_health" : PartyStats.suzy_current_health,
 		"damien_current_health" : PartyStats.damien_current_health,
+		"gary_weapon" : PartyStats.gary_weapon,
+		"jacques_weapon" : PartyStats.jacques_weapon,
+		"irina_weapon" : PartyStats.irina_weapon,
+		"suzy_weapon" : PartyStats.suzy_weapon,
+		"damien_weapon" : PartyStats.damien_weapon,
 		"party_sp" : PartyStats.party_sp,
 		"party_max_sp" : PartyStats.party_max_sp,
 		"party_exp" : PartyStats.party_exp,
@@ -110,6 +115,11 @@ var data = {
 		"new_file" : EventManager.new_file,
 		"first_save" : EventManager.first_save,
 		"Collected" : Global.Collected,
+		"attack_fortune" : SceneManager.attack_fortune,
+		"magic_fortune" : SceneManager.magic_fortune,
+		"defense_fortune" : SceneManager.defense_fortune,
+		"whammy_fortune" : SceneManager.whammy_fortune,
+		"fortune_counter" : SceneManager.fortune_counter,
 		
 		"Cherry_Trail" : EventManager.Cherry_Trail,
 		"Pivot_Town" : EventManager.Pivot_Town,
@@ -489,6 +499,11 @@ func load_file():
 			PartyStats.irina_current_health = data["irina_current_health"]
 			PartyStats.suzy_current_health = data["suzy_current_health"]
 			PartyStats.damien_current_health = data["damien_current_health"]
+			PartyStats.gary_weapon = data["gary_weapon"]
+			PartyStats.jacques_weapon = data["jacques_weapon"]
+			PartyStats.irina_weapon = data["irina_weapon"]
+			PartyStats.suzy_weapon = data["suzy_weapon"]
+			PartyStats.damien_weapon = data["damien_weapon"]
 			PartyStats.party_sp = data["party_sp"]
 			PartyStats.party_max_sp = data["party_max_sp"]
 			PartyStats.party_exp = data["party_exp"]
@@ -552,6 +567,11 @@ func load_file():
 			EventManager.new_file = data["new_file"]
 			EventManager.first_save = data["first_save"]
 			Global.Collected = data["Collected"]
+			SceneManager.attack_fortune = data["attack_fortune"]
+			SceneManager.magic_fortune = data["magic_fortune"]
+			SceneManager.defense_fortune = data["defense_fortune"]
+			SceneManager.whammy_fortune = data["whammy_fortune"]
+			SceneManager.fortune_counter = data["fortune_counter"]
 		
 			EventManager.Cherry_Trail = data["Cherry_Trail"]
 			EventManager.Pivot_Town = data["Pivot_Town"]
