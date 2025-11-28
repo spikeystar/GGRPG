@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Gary Goat RPG! Demo"
+config/name="Gary Goat RPG! Full"
 run/main_scene="res://UI/MainMenu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="GGRPGSaveSystem"

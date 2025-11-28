@@ -12,25 +12,24 @@ func _process(delta):
 		$WeaponDisplay.frame = 0
 		$Weapon_info.text = "Red Fender"
 		
-		
-		#$Weapon_info.text = PartyStats.gary_weapon
-	#	if PartyStats.gary_weapon == "Red Fender":
-	#		$WeaponDisplay.frame = 0
-	#		$WeaponDisplay.position = Vector2(-109, 91)
-	#		$WeaponDisplay.scale = Vector2(1, 1)
-	#	if PartyStats.gary_weapon == "Black Bass":
-	#		$WeaponDisplay.frame = 3
-	#		$WeaponDisplay.position = Vector2(-109, 91)
-	#		$WeaponDisplay.scale = Vector2(1, 1)
-	#	if PartyStats.gary_weapon == "Flying V":
-	#		$WeaponDisplay.frame = 4
-	#		$WeaponDisplay.position = Vector2(-109, 90)
-	#		$WeaponDisplay.scale = Vector2(0.92, 0.92)
-	#	if PartyStats.gary_weapon == "Rickenbacker":
-	#		$WeaponDisplay.frame = 5
-	#		$WeaponDisplay.position = Vector2(-110, 91)
-	#		$WeaponDisplay.scale = Vector2(1, 1)
-	#		$Weapon_info.text = "Ricken\nbacker"
+		$Weapon_info.text = PartyStats.gary_weapon
+		if PartyStats.gary_weapon == "Red Fender":
+			$WeaponDisplay.frame = 0
+			$WeaponDisplay.position = Vector2(-109, 91)
+			$WeaponDisplay.scale = Vector2(1, 1)
+		if PartyStats.gary_weapon == "Black Bass":
+			$WeaponDisplay.frame = 3
+			$WeaponDisplay.position = Vector2(-109, 91)
+			$WeaponDisplay.scale = Vector2(1, 1)
+		if PartyStats.gary_weapon == "Flying V":
+			$WeaponDisplay.frame = 4
+			$WeaponDisplay.position = Vector2(-109, 90)
+			$WeaponDisplay.scale = Vector2(0.92, 0.92)
+		if PartyStats.gary_weapon == "Rickenbacker":
+			$WeaponDisplay.frame = 5
+			$WeaponDisplay.position = Vector2(-110, 91)
+			$WeaponDisplay.scale = Vector2(1, 1)
+			$Weapon_info.text = "Ricken\nbacker"
 			
 			
 		$HP_info.text = str(PartyStats.gary_current_health) + "/" + str(PartyStats.gary_health)
@@ -48,23 +47,23 @@ func _process(delta):
 		$Weapon_info.text = "Skateboard"
 		
 		
-		#$Weapon_info.text = PartyStats.jacques_weapon
-	#	if PartyStats.jacques_weapon == "Skateboard":
-	#		$WeaponDisplay.frame = 1
-	#		$WeaponDisplay.position = Vector2(-109, 91)
-	#		$WeaponDisplay.scale = Vector2(1, 1)
-	#	if PartyStats.jacques_weapon == "Surfboard":
-	#		$WeaponDisplay.frame = 6
-	#		$WeaponDisplay.position = Vector2(-110, 94)
-	#		$WeaponDisplay.scale = Vector2(1, 1)
-	#	if PartyStats.jacques_weapon == "Snowboard":
-	#		$WeaponDisplay.frame = 7
-	#		$WeaponDisplay.position = Vector2(-111, 93)
-	#		$WeaponDisplay.scale = Vector2(1, 1)
-	#	if PartyStats.jacques_weapon == "Santa Sleigh":
-	#		$WeaponDisplay.frame = 8
-	#		$WeaponDisplay.position = Vector2(-109, 92)
-	#		$WeaponDisplay.scale = Vector2(1, 1)
+		$Weapon_info.text = PartyStats.jacques_weapon
+		if PartyStats.jacques_weapon == "Skateboard":
+			$WeaponDisplay.frame = 1
+			$WeaponDisplay.position = Vector2(-109, 91)
+			$WeaponDisplay.scale = Vector2(1, 1)
+		if PartyStats.jacques_weapon == "Surfboard":
+			$WeaponDisplay.frame = 6
+			$WeaponDisplay.position = Vector2(-110, 94)
+			$WeaponDisplay.scale = Vector2(1, 1)
+		if PartyStats.jacques_weapon == "Snowboard":
+			$WeaponDisplay.frame = 7
+			$WeaponDisplay.position = Vector2(-111, 93)
+			$WeaponDisplay.scale = Vector2(1, 1)
+		if PartyStats.jacques_weapon == "Santa Sleigh":
+			$WeaponDisplay.frame = 8
+			$WeaponDisplay.position = Vector2(-109, 92)
+			$WeaponDisplay.scale = Vector2(1, 1)
 			
 			
 		$HP_info.text = str(PartyStats.jacques_current_health) + "/" + str(PartyStats.jacques_health)
@@ -81,23 +80,23 @@ func _process(delta):
 		$WeaponDisplay.frame = 2
 		$Weapon_info.text = "Star Wand"
 		
-		#$Weapon_info.text = PartyStats.irina_weapon
-		#if PartyStats.irina_weapon == "Star Wand":
-	#		$WeaponDisplay.frame = 2
-	#		$WeaponDisplay.position = Vector2(-109, 91)
-	#		$WeaponDisplay.scale = Vector2(1, 1)
-	#	if PartyStats.irina_weapon == "Silly Hammer":
-	#		$WeaponDisplay.frame = 9
-	#		$WeaponDisplay.position = Vector2(-111, 88)
-	#		$WeaponDisplay.scale = Vector2(1, 1)
-	#	if PartyStats.irina_weapon == "Pink Key":
-	#		$WeaponDisplay.frame = 10
-	#		$WeaponDisplay.position = Vector2(-111, 92)
-	#		$WeaponDisplay.scale = Vector2(1, 1)
-	#	if PartyStats.irina_weapon == "Fantasy Scepter":
-	#		$WeaponDisplay.frame = 11
-	#		$WeaponDisplay.position = Vector2(-111, 92)
-	#		$WeaponDisplay.scale = Vector2(0.96, 0.96)
+		$Weapon_info.text = PartyStats.irina_weapon
+		if PartyStats.irina_weapon == "Star Wand":
+			$WeaponDisplay.frame = 2
+			$WeaponDisplay.position = Vector2(-109, 91)
+			$WeaponDisplay.scale = Vector2(1, 1)
+		if PartyStats.irina_weapon == "Silly Hammer":
+			$WeaponDisplay.frame = 9
+			$WeaponDisplay.position = Vector2(-111, 88)
+			$WeaponDisplay.scale = Vector2(1, 1)
+		if PartyStats.irina_weapon == "Pink Key":
+			$WeaponDisplay.frame = 10
+			$WeaponDisplay.position = Vector2(-111, 92)
+			$WeaponDisplay.scale = Vector2(1, 1)
+		if PartyStats.irina_weapon == "Fantasy Scepter":
+			$WeaponDisplay.frame = 11
+			$WeaponDisplay.position = Vector2(-111, 92)
+			$WeaponDisplay.scale = Vector2(0.96, 0.96)
 			
 			
 		$HP_info.text = str(PartyStats.irina_current_health) + "/" + str(PartyStats.irina_health)
@@ -114,19 +113,19 @@ func _process(delta):
 		$WeaponDisplay.frame = 5
 		$Weapon_info.text = "Candy Gun"
 		
-		#$Weapon_info.text = PartyStats.suzy_weapon
-		#if PartyStats.suzy_weapon == "Candy Gun":
-		#	$WeaponDisplay.frame = 12
-		#	$WeaponDisplay.position = Vector2(-108, 90)
-		#	$WeaponDisplay.scale = Vector2(1, 1)
-		#if PartyStats.suzy_weapon == "Fork & Knife":
-		#	$WeaponDisplay.frame = 13
-		#	$WeaponDisplay.position = Vector2(-107.5, 89)
-		#	$WeaponDisplay.scale = Vector2(0.91, 0.91)
-		#if PartyStats.suzy_weapon == "Bubble Blaster":
-		#	$WeaponDisplay.frame = 14
-		#	$WeaponDisplay.position = Vector2(-108, 91)
-		#	$WeaponDisplay.scale = Vector2(1, 1)
+		$Weapon_info.text = PartyStats.suzy_weapon
+		if PartyStats.suzy_weapon == "Candy Gun":
+			$WeaponDisplay.frame = 12
+			$WeaponDisplay.position = Vector2(-108, 90)
+			$WeaponDisplay.scale = Vector2(1, 1)
+		if PartyStats.suzy_weapon == "Fork & Knife":
+			$WeaponDisplay.frame = 13
+			$WeaponDisplay.position = Vector2(-107.5, 89)
+			$WeaponDisplay.scale = Vector2(0.91, 0.91)
+		if PartyStats.suzy_weapon == "Bubble Blaster":
+			$WeaponDisplay.frame = 14
+			$WeaponDisplay.position = Vector2(-108, 91)
+			$WeaponDisplay.scale = Vector2(1, 1)
 		
 		
 		
@@ -143,15 +142,15 @@ func _process(delta):
 		$Display.frame = 4
 		$Weapon_info.text = "Spellbook"
 		
-		#$Weapon_info.text = PartyStats.damien_weapon
-		#if PartyStats.damien_weapon == "Spellbook":
-		#	$WeaponDisplay.frame = 15
-		#	$WeaponDisplay.position = Vector2(-108, 90)
-		#	$WeaponDisplay.scale = Vector2(1, 1)
-		#if PartyStats.damien_weapon == "Tome of Ruin":
-		#	$WeaponDisplay.frame = 16
-		#	$WeaponDisplay.position = Vector2(-108, 91)
-		#	$WeaponDisplay.scale = Vector2(1, 1)
+		$Weapon_info.text = PartyStats.damien_weapon
+		if PartyStats.damien_weapon == "Spellbook":
+			$WeaponDisplay.frame = 15
+			$WeaponDisplay.position = Vector2(-108, 90)
+			$WeaponDisplay.scale = Vector2(1, 1)
+		if PartyStats.damien_weapon == "Tome of Ruin":
+			$WeaponDisplay.frame = 16
+			$WeaponDisplay.position = Vector2(-108, 91)
+			$WeaponDisplay.scale = Vector2(1, 1)
 		
 		
 		$HP_info.text = str(PartyStats.damien_current_health) + "/" + str(PartyStats.damien_health)
