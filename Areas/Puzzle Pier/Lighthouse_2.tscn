@@ -212,9 +212,19 @@ always_update = true
 height = 80.0
 use_transparency = true
 
+[node name="SeedShadow" type="Sprite" parent="Node2D/YSort"]
+modulate = Color( 1, 1, 1, 0.25098 )
+position = Vector2( 47.6375, -69.2522 )
+scale = Vector2( 0.79, 0.779 )
+texture = ExtResource( 29 )
+script = ExtResource( 30 )
+always_update = true
+height = 80.0
+use_transparency = true
+
 [node name="BulbShadow2" type="Sprite" parent="Node2D/YSort"]
-modulate = Color( 0, 0, 0, 0.313726 )
-position = Vector2( 47.9396, -11.2498 )
+modulate = Color( 0, 0, 0, 0.235294 )
+position = Vector2( 46.9355, -12.2432 )
 scale = Vector2( 0.632142, 0.499841 )
 texture = ExtResource( 33 )
 
