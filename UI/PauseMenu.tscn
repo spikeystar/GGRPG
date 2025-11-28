@@ -593,6 +593,7 @@ text = "3"
 align = 1
 
 [node name="Stats" type="Sprite" parent="."]
+visible = false
 position = Vector2( 100, -56 )
 texture = ExtResource( 24 )
 script = ExtResource( 37 )
@@ -1326,7 +1327,6 @@ cursor_offset = Vector2( 17, 2.5 )
 pause_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 margin_left = -320.0
 margin_top = -280.0
 margin_right = 320.0
