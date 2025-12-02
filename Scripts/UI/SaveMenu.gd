@@ -412,7 +412,12 @@ func save_file():
 		data["new_file"] = EventManager.new_file
 		data["first_save"] = EventManager.first_save
 		data["Collected"] = Global.Collected
-		
+		data["attack_fortune"] = SceneManager.attack_fortune
+		data["magic_fortune"] = SceneManager.magic_fortune
+		data["defense_fortune"] = SceneManager.defense_fortune
+		data["whammy_fortune"] = SceneManager.whammy_fortune
+		data["fortune_counter"] = SceneManager.fortune_counter
+
 		data["Cherry_Trail"] = EventManager.Cherry_Trail
 		data["Pivot_Town"] = EventManager.Pivot_Town
 		data["Kugi_Canyon"] = EventManager.Kugi_Canyon
