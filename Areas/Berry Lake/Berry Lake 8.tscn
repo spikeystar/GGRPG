@@ -1002,7 +1002,7 @@ use_transparency = true
 
 [node name="SquareShadow" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 0, 0, 0, 0.196078 )
-position = Vector2( -367.11, -305.132 )
+position = Vector2( -367.11, -304.132 )
 rotation = 0.0682982
 scale = Vector2( 0.930755, 0.721107 )
 texture = ExtResource( 75 )

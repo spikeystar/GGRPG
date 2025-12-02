@@ -12,7 +12,7 @@ export var unavoid = false
 func _ready():
 	#activated = false
 	position.y += height
-	yield(get_tree().create_timer(0.3), "timeout")
+	#yield(get_tree().create_timer(0.3), "timeout")
 	connect("body_entered", self, "_on_body_entered")
 	connect("body_exited", self, "_on_body_exited")
 	
