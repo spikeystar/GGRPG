@@ -200,7 +200,7 @@ func _ready():
 		PlayerManager.freeze = true
 		
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "However, it looks like Henry hasn't finished repairing the fence that leads that way yet."
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "It looks like Henry has finished repairing all of the fences."
 		$Camera2D/Interaction/Dialogue/Name.text = "Edgar:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
@@ -208,7 +208,23 @@ func _ready():
 		PlayerManager.freeze = true
 		
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "So I guess the rest of our adventure will have to wait..."
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "So now you can freely make your way there through Coastal Lane."
+		$Camera2D/Interaction/Dialogue/Name.text = "Edgar:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Hmm, that does sound suspicious. We'll head there now."
+		$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "And it gives us an excuse to have some fun at Puzzle Pier!"
 		$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
@@ -216,29 +232,24 @@ func _ready():
 		PlayerManager.freeze = true
 		
 		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Before you go though, I have this note that I'd like you to read."
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Do be careful, and feel free to continue your journey without checking in all the time."
 		$Camera2D/Interaction/Dialogue/Name.text = "Edgar:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
 		$Camera2D/Interaction/Dialogue.done()
 		PlayerManager.freeze = true
 		
-		$Camera2D/Blurb.show()
-		$AnimationPlayer.play("open")
-		SE.effect("Menu Open")
-		yield($Camera2D/Blurb, "done")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "But please come back if you ever need a hint as to where the next Jewel Seed might be!"
+		$Camera2D/Interaction/Dialogue/Name.text = "Edgar:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
 		
 		$Camera2D/Interaction/Dialogue.show()
 		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Thanks Edgar!"
 		$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
-		$Camera2D/Interaction/Dialogue.talking()
-		yield($Camera2D/Interaction/Dialogue, "talk_done")
-		$Camera2D/Interaction/Dialogue.done()
-		PlayerManager.freeze = true
-		
-		$Camera2D/Interaction/Dialogue.show()
-		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Of course, and feel free to stop by here whenever you'd like."
-		$Camera2D/Interaction/Dialogue/Name.text = "Edgar:"
 		$Camera2D/Interaction/Dialogue.talking()
 		yield($Camera2D/Interaction/Dialogue, "talk_done")
 		$Camera2D/Interaction/Dialogue.done()
@@ -256,6 +267,7 @@ func _ready():
 		
 		PlayerManager.freeze = false
 		PlayerManager.cutscene = false
+		EventManager.Edgar_Check_In_CS = true
 		
 		
 	if not EventManager.Edgar_Tea_CS:

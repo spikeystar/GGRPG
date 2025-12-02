@@ -532,7 +532,7 @@ func damage():
 		damage = max(0, ((total) + int(total * (rand_range(0.05, 0.15)))) - f_defense)
 		
 	if enemy_type == move_type:
-		damage += (damage * 0.1)
+		damage += (damage * 0.2)
 	if type_bonus == "adv":
 		damage += (damage/2)
 	if type_bonus == "dis":

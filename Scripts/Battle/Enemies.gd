@@ -278,6 +278,7 @@ func enemy_damage():
 	var damage : int
 	var e_defense = target_enemy.get_e_defense()
 	var f_total = f_attack + f_attack_base
+	var type_bonus : String = type_matchup()
 	var whammy = false
 	var whammy_hit = rng.randi_range(1, 100)
 	if whammy_hit <= whammy_chance:
@@ -289,6 +290,12 @@ func enemy_damage():
 	if attack_bonus:
 		SE.effect("Success")
 		damage += (damage * 0.5)
+	if type_bonus == "adv":
+		damage += (damage/2)
+	if type_bonus == "dis":
+		damage -= (damage/2)
+	if type_bonus == "none":
+		pass
 	if whammy:
 		SE.effect("Whammy!")
 		damage += int(damage/2)

@@ -72,6 +72,13 @@ func _ready():
 		$Camera2D.follow_player = true
 		PlayerManager.freeze = false
 		PlayerManager.cutscene = false
+		
+	if EventManager.Edgar_Check_In_CS:
+		$YSort/MiddleGround/Fence.queue_free()
+		$YSort/MiddleGround/Fence2.queue_free()
+		$YSort/MiddleGround/Fence6.position = Vector2(740, -116)
+		$YSort/MiddleGround/Fence5.position = Vector2(854, -152)
+		$CollisionRoot/CoastalLane/CollisionPolygon2D.disabled = false
 
 func _on_Jacques_Meetup_area_event():
 	EventManager.Jacques_Meetup_CS = true
