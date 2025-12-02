@@ -384,6 +384,11 @@ func save_file():
 		data["irina_current_health"] = PartyStats.irina_current_health
 		data["suzy_current_health"] = PartyStats.suzy_current_health
 		data["damien_current_health"] = PartyStats.damien_current_health
+		data["gary_weapon"] = PartyStats.gary_weapon
+		data["jacques_weapon"] = PartyStats.jacques_weapon
+		data["irina_weapon"] = PartyStats.irina_weapon
+		data["suzy_weapon"] = PartyStats.suzy_weapon
+		data["damien_weapon"] = PartyStats.damien_weapon
 		data["party_sp"] = PartyStats.party_sp
 		data["party_max_sp"] = PartyStats.party_max_sp
 		data["party_exp"] = PartyStats.party_exp
