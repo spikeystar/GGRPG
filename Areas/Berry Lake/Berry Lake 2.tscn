@@ -1096,8 +1096,7 @@ position = Vector2( -158, -64 )
 target_scene = ExtResource( 60 )
 
 [node name="Smush2" parent="." instance=ExtResource( 57 )]
-position = Vector2( 499, -231 )
-shadow_front_x = -10.0
+position = Vector2( 476, -243 )
 target_scene = ExtResource( 60 )
 
 [node name="Druplet" parent="." instance=ExtResource( 58 )]

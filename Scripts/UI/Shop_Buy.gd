@@ -521,6 +521,7 @@ func set_id():
 func _input(event):
 	if Input.is_action_just_pressed("ui_select") and buying and able and Party.marbles >= item_cost:
 		if item_id == "Gold Bracelet" or item_id == "Gold Chain":
+			able = false
 			SE.effect("Select")
 			Party.marbles = Party.marbles - item_cost
 			Party.add_trinket_name = item_id
@@ -537,7 +538,9 @@ func _input(event):
 			able = false
 			yield(get_tree().create_timer(0.1), "timeout")
 			able = true
+			return
 		if item_id == "Jhumki":
+			able = false
 			SE.effect("Select")
 			Party.marbles = Party.marbles - item_cost
 			Party.add_key_item_name = item_id
@@ -551,10 +554,11 @@ func _input(event):
 				$MenuCursor.cursor_index -= 1
 			$Buy_Inventory.item_removed()
 			$MenuCursor.item_selecting = true
-			able = false
 			yield(get_tree().create_timer(0.1), "timeout")
 			able = true
+			return
 		if item_id == "Black Bass" or item_id == "Flying V" or item_id == "Silly Hammer" or item_id == "Pink Key" or item_id == "Fork & Knife":
+			able = false
 			SE.effect("Select")
 			Party.marbles = Party.marbles - item_cost
 			Shops.shop_name = this_shop
@@ -566,7 +570,6 @@ func _input(event):
 				$MenuCursor.cursor_index -= 1
 			$Buy_Inventory.item_removed()
 			$MenuCursor.item_selecting = true
-			able = false
 			yield(get_tree().create_timer(0.1), "timeout")
 			able = true
 			if item_id == "Black Bass":
@@ -579,15 +582,17 @@ func _input(event):
 				PartyStats.irina_weapon = "Pink Key"
 			if item_id == "Fork & Knife":
 				PartyStats.suzy_weapon = "Fork & Knife"
+			return
 		else:
+			able = false
 			SE.effect("Select")
 			Party.marbles = Party.marbles - item_cost
 			Party.add_item_name = item_id
 			Party.add_item()
 			emit_signal("shop_check")
-			able = false
 			yield(get_tree().create_timer(0.1), "timeout")
 			able = true
+			return
 			
 	if Input.is_action_just_pressed("ui_select") and able and buying:
 		if Party.marbles < item_cost:

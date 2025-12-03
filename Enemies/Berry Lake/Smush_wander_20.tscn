@@ -211,7 +211,6 @@ ground_enemy = true
 min_speed = 0.4
 max_speed = 0.5
 shadow_front_x = -15.0
-shadow_front_y = -2.0
 shadow_back_x = -7.0
 target_scene = ExtResource( 11 )
 alt_scene = ExtResource( 7 )

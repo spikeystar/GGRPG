@@ -7,7 +7,7 @@ func _ready():
 	$TrinketsNode/TrinketsCursor.inventory_max = $TrinketsNode/TrinketsInventory.trinket_max
 
 func reset():
-	trinket_id = $TrinketsNode/TrinketsInventory.initial_id()
+	trinket_id = $TrinketsNode/TrinketsInventory.trinket_id
 	set_id()
 
 func _process(delta):

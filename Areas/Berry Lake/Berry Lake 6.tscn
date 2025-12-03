@@ -971,7 +971,7 @@ position = Vector2( -331.786, -87.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -994,7 +994,7 @@ position = Vector2( -181.786, -238.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower2" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1017,7 +1017,7 @@ position = Vector2( -32.786, 37.831 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower3" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1040,7 +1040,7 @@ position = Vector2( 14.214, -146.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower4" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1063,7 +1063,7 @@ position = Vector2( 369.214, -73.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower5" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1086,7 +1086,7 @@ position = Vector2( 379.214, -359.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower6" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1109,7 +1109,7 @@ position = Vector2( 728.214, -282.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower7" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1132,7 +1132,7 @@ position = Vector2( 697.214, -469.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower8" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1155,7 +1155,7 @@ position = Vector2( 364.214, -517.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower9" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1178,7 +1178,7 @@ position = Vector2( -134.786, -78.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower10" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1201,7 +1201,7 @@ position = Vector2( -314.786, -198.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower11" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1224,7 +1224,7 @@ position = Vector2( 145.214, -25.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower12" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1247,7 +1247,7 @@ position = Vector2( 209.214, -176.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower13" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1270,7 +1270,7 @@ position = Vector2( 225.214, -445.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower14" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1293,7 +1293,7 @@ position = Vector2( 574.214, -369.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower15" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1316,7 +1316,7 @@ position = Vector2( 531.214, -520.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower16" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1339,7 +1339,7 @@ position = Vector2( 865.214, -403.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="Flower17" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1425,7 +1425,7 @@ position = Vector2( -25.4052, -274.395 )
 scale = Vector2( 0.983792, 1.02421 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="CircleShadowSmall26" type="Sprite" parent="YSort/MiddleGround"]
@@ -1434,7 +1434,7 @@ position = Vector2( 558.595, -259.395 )
 scale = Vector2( 0.983792, 1.02421 )
 texture = ExtResource( 52 )
 script = ExtResource( 5 )
-height = 25.0
+height = 15.0
 use_transparency = true
 
 [node name="BushA2" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
@@ -1889,6 +1889,7 @@ alt_chance = 50
 alternate = true
 
 [node name="Enemy_Boundary" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 15
 script = ExtResource( 61 )

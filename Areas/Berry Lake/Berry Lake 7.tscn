@@ -1539,7 +1539,7 @@ position = Vector2( -60.7232, -248.212 )
 scale = Vector2( 0.851073, 0.951523 )
 texture = ExtResource( 20 )
 script = ExtResource( 23 )
-height = 45.0
+height = 41.0
 use_transparency = true
 
 [node name="CircleShadowSmall5" type="Sprite" parent="YSort/MiddleGround"]
@@ -1584,7 +1584,7 @@ position = Vector2( -334.786, -94.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 20 )
 script = ExtResource( 23 )
-height = 45.0
+height = 35.0
 use_transparency = true
 
 [node name="CircleShadowSmall8" type="Sprite" parent="YSort/MiddleGround"]
@@ -1634,7 +1634,7 @@ position = Vector2( 181.214, 116.831 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 20 )
 script = ExtResource( 23 )
-height = 45.0
+height = 35.0
 use_transparency = true
 
 [node name="Flower2" parent="YSort/MiddleGround" instance=ExtResource( 45 )]
@@ -2109,7 +2109,6 @@ polygon = PoolVector2Array( -183, -48, -185, -53, -181, -58, -173, -59, -166, -5
 visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 22 )]
-visible = false
 position = Vector2( -29, -11 )
 polygon = PoolVector2Array( -351, -38, -371, -46, -364, -72, -344, -84, -369, -92, -341, -102, -371, -116, -341, -124, -367, -136, -243, -180, -336, -214, -280, -234, -186, -197, -35, -251, 109, -199, 30, -171, 60, -159, 31, -148, 60, -137, 1, -115, 29, -104, -3, -94, 28, -82, 0, -71, 30, -60, -189, 17 )
 height = 40.0

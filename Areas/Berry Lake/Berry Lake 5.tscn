@@ -1271,7 +1271,7 @@ position = Vector2( 109.214, 455.831 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 4 )
 script = ExtResource( 6 )
-height = 40.0
+height = 35.0
 use_transparency = true
 
 [node name="CircleShadowSmall3" type="Sprite" parent="YSort/MiddleGround"]
@@ -1281,7 +1281,7 @@ rotation = -0.0120099
 scale = Vector2( 1.15683, 1.19206 )
 texture = ExtResource( 4 )
 script = ExtResource( 6 )
-height = 40.0
+height = 35.0
 use_transparency = true
 
 [node name="CircleShadowSmall4" type="Sprite" parent="YSort/MiddleGround"]
@@ -1291,7 +1291,7 @@ rotation = -0.0120099
 scale = Vector2( 1.15683, 1.19206 )
 texture = ExtResource( 4 )
 script = ExtResource( 6 )
-height = 40.0
+height = 35.0
 use_transparency = true
 
 [node name="TreeA8" type="Sprite" parent="YSort/MiddleGround"]
@@ -1331,7 +1331,7 @@ position = Vector2( 674.214, -177.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 4 )
 script = ExtResource( 6 )
-height = 40.0
+height = 35.0
 use_transparency = true
 
 [node name="Flower2" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
