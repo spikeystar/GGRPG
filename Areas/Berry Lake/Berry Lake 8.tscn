@@ -1092,7 +1092,7 @@ position = Vector2( -434.786, -21.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 4 )
 script = ExtResource( 69 )
-height = 25.0
+height = 11.0
 use_transparency = true
 
 [node name="CircleShadowSmall3" type="Sprite" parent="YSort/MiddleGround"]
@@ -1101,7 +1101,7 @@ position = Vector2( -498, -35 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 4 )
 script = ExtResource( 69 )
-height = 25.0
+height = 11.0
 use_transparency = true
 
 [node name="CircleShadowSmall4" type="Sprite" parent="YSort/MiddleGround"]
@@ -1110,7 +1110,7 @@ position = Vector2( 311, -113 )
 scale = Vector2( 1.50658, 1.08835 )
 texture = ExtResource( 4 )
 script = ExtResource( 69 )
-height = 25.0
+height = 11.0
 use_transparency = true
 
 [node name="CircleShadowSmall10" type="Sprite" parent="YSort/MiddleGround"]
@@ -1119,7 +1119,7 @@ position = Vector2( 153, -424 )
 scale = Vector2( 1.53708, 1.32131 )
 texture = ExtResource( 4 )
 script = ExtResource( 69 )
-height = 25.0
+height = 11.0
 use_transparency = true
 
 [node name="CircleShadowSmall11" type="Sprite" parent="YSort/MiddleGround"]
@@ -1155,7 +1155,7 @@ position = Vector2( 351, -110 )
 scale = Vector2( 1.50658, 1.08835 )
 texture = ExtResource( 4 )
 script = ExtResource( 69 )
-height = 25.0
+height = 11.0
 use_transparency = true
 
 [node name="CircleShadowSmall6" type="Sprite" parent="YSort/MiddleGround"]
@@ -1173,7 +1173,7 @@ position = Vector2( 334, -156 )
 scale = Vector2( 2.47132, 2.66508 )
 texture = ExtResource( 4 )
 script = ExtResource( 69 )
-height = 16.0
+height = 11.0
 use_transparency = true
 
 [node name="CircleShadowSmall8" type="Sprite" parent="YSort/MiddleGround"]
@@ -1191,7 +1191,7 @@ position = Vector2( 114, -455 )
 scale = Vector2( 2.47132, 2.66508 )
 texture = ExtResource( 4 )
 script = ExtResource( 69 )
-height = 25.0
+height = 11.0
 use_transparency = true
 
 [node name="Violet Pot" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
@@ -1224,7 +1224,7 @@ position = Vector2( 171.214, -334.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 4 )
 script = ExtResource( 69 )
-height = 25.0
+height = 11.0
 use_transparency = true
 
 [node name="Flower2" parent="YSort/MiddleGround" instance=ExtResource( 12 )]

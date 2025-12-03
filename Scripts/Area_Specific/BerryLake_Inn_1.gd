@@ -21,7 +21,7 @@ func _ready():
 		PlayerManager.cutscene = true
 		Gary.walk_right()
 		var tween = create_tween()
-		tween.tween_property(Gary.motion_root, "global_position", $Position2D.position, 1)
+		tween.tween_property(Gary.motion_root, "global_position", $Position2D.position, 1.5)
 		yield(tween, "finished")
 		PlayerManager.freeze = true
 		Gary.set_right()

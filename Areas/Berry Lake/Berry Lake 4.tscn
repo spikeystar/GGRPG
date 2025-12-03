@@ -1007,7 +1007,7 @@ position = Vector2( -358, -203 )
 scale = Vector2( 0.894998, 0.964735 )
 texture = ExtResource( 22 )
 script = ExtResource( 62 )
-height = 40.0
+height = 35.0
 use_transparency = true
 
 [node name="CircleShadowSmall5" type="Sprite" parent="YSort/MiddleGround"]
@@ -1016,7 +1016,7 @@ position = Vector2( -99, -86 )
 scale = Vector2( 0.894998, 0.964735 )
 texture = ExtResource( 22 )
 script = ExtResource( 62 )
-height = 40.0
+height = 35.0
 use_transparency = true
 
 [node name="CircleShadowSmall6" type="Sprite" parent="YSort/MiddleGround"]
@@ -1025,7 +1025,7 @@ position = Vector2( 210, -82 )
 scale = Vector2( 0.894998, 0.964735 )
 texture = ExtResource( 22 )
 script = ExtResource( 62 )
-height = 40.0
+height = 35.0
 use_transparency = true
 
 [node name="CircleShadowSmall" type="Sprite" parent="YSort/MiddleGround"]
@@ -1034,7 +1034,7 @@ position = Vector2( -61.786, -416.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 22 )
 script = ExtResource( 62 )
-height = 40.0
+height = 35.0
 use_transparency = true
 
 [node name="Flower" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
@@ -1076,7 +1076,7 @@ position = Vector2( -1.786, 102.831 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 22 )
 script = ExtResource( 62 )
-height = 40.0
+height = 35.0
 use_transparency = true
 
 [node name="CircleShadowSmall3" type="Sprite" parent="YSort/MiddleGround"]
@@ -1085,7 +1085,7 @@ position = Vector2( 383, -184 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 22 )
 script = ExtResource( 62 )
-height = 40.0
+height = 35.0
 use_transparency = true
 
 [node name="CircleShadowSmall7" type="Sprite" parent="YSort/MiddleGround"]
@@ -1094,7 +1094,7 @@ position = Vector2( 63.214, -117.169 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 22 )
 script = ExtResource( 62 )
-height = 40.0
+height = 35.0
 use_transparency = true
 
 [node name="CircleShadowSmall9" type="Sprite" parent="YSort/MiddleGround"]
@@ -1112,7 +1112,7 @@ position = Vector2( 98, -122 )
 scale = Vector2( 1.28856, 1.11324 )
 texture = ExtResource( 22 )
 script = ExtResource( 62 )
-height = 40.0
+height = 35.0
 use_transparency = true
 
 [node name="Flower2" parent="YSort/MiddleGround" instance=ExtResource( 8 )]
@@ -1701,6 +1701,7 @@ alt_chance = 30
 alternate = true
 
 [node name="Enemy_Boundary" type="Area2D" parent="."]
+visible = false
 collision_layer = 8
 collision_mask = 15
 script = ExtResource( 67 )
@@ -1720,5 +1721,5 @@ polygon = PoolVector2Array( 135, -40, 126, -179, 323, -185, 387, -216, 254, -239
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase2_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]
-[connection signal="item_get" from="PresentBase4" to="Camera2D" method="_on_PresentBase4_item_get"]
 [connection signal="item_get" from="PresentBase4" to="Camera2D" method="_on_PresentBase_item_get"]
+[connection signal="item_get" from="PresentBase4" to="Camera2D" method="_on_PresentBase4_item_get"]

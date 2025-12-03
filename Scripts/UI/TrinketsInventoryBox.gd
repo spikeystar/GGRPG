@@ -191,8 +191,9 @@ func _on_Members_trinket_equipped():
 		inventory[x].trinket_scan()
 
 	yield(get_tree().create_timer(1), "timeout")
-	emit_signal("return_to_trinkets")
 	trinket_index = 0
+	trinket_id = inventory[trinket_index].get_id()
+	emit_signal("return_to_trinkets")
 	yield(get_tree().create_timer(0.3), "timeout")
 	trinkets_active = true
 

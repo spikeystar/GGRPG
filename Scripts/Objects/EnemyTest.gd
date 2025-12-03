@@ -93,7 +93,7 @@ func _physics_process(delta):
 		$MotionRoot/BattleTrigger.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z + 15)
 	#if spawn_z > 0 and spawn_z < 45 and ground_enemy:
 	#	$MotionRoot/BattleTrigger.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z + 25)
-	if spawn_z > 0 and spawn_z < 150 and ground_enemy:
+	if spawn_z > 0 and spawn_z < 130 and ground_enemy:
 		$MotionRoot/BattleTrigger.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z + (spawn_z / 1.25))
 	
 	if Global.battle_ended:
@@ -173,8 +173,8 @@ func _physics_process(delta):
 	if not sprite.flip_h:
 		shadow_sprite.offset.x = 0
 		shadow_sprite.offset.y = 0
-	if sprite.flip_h:
-		shadow_sprite.offset.x = shadow_offset
+	#if sprite.flip_h:
+	#	shadow_sprite.offset.x = shadow_offset
 	
 	anim_player.playback_speed = lerp(min_speed, max_speed, clamp(abs(motion_root.velocity.length() / VEL_ANIM_MAX), 0, 1));
 	#if motion_root.velocity.y == 0:

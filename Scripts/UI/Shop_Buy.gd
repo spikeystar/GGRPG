@@ -537,6 +537,7 @@ func _input(event):
 			able = false
 			yield(get_tree().create_timer(0.1), "timeout")
 			able = true
+			return
 		if item_id == "Jhumki":
 			SE.effect("Select")
 			Party.marbles = Party.marbles - item_cost
@@ -554,6 +555,7 @@ func _input(event):
 			able = false
 			yield(get_tree().create_timer(0.1), "timeout")
 			able = true
+			return
 		if item_id == "Black Bass" or item_id == "Flying V" or item_id == "Silly Hammer" or item_id == "Pink Key" or item_id == "Fork & Knife":
 			SE.effect("Select")
 			Party.marbles = Party.marbles - item_cost
@@ -579,6 +581,7 @@ func _input(event):
 				PartyStats.irina_weapon = "Pink Key"
 			if item_id == "Fork & Knife":
 				PartyStats.suzy_weapon = "Fork & Knife"
+			return
 		else:
 			SE.effect("Select")
 			Party.marbles = Party.marbles - item_cost
@@ -588,6 +591,7 @@ func _input(event):
 			able = false
 			yield(get_tree().create_timer(0.1), "timeout")
 			able = true
+			return
 			
 	if Input.is_action_just_pressed("ui_select") and able and buying:
 		if Party.marbles < item_cost:

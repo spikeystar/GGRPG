@@ -83,7 +83,7 @@ func Tutorial_1():
 func Tutorial_2():
 	window_show()
 	$Name.text = "Michael:"
-	$Name/Talk.text = "If you press (Return) or (X) before you've selected a move you can return to fighter selection."
+	$Name/Talk.text = "If you press (Return) or (X) before choosing a move you can return to fighter selection."
 	talking()
 	yield(self, "talk_done")
 	#window_hide()
