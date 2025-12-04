@@ -2047,7 +2047,7 @@ door_name = "PivotTown2_PivotTown1"
 direction = Vector2( 1, -1 )
 
 [node name="SaveStar" parent="CollisionRoot" instance=ExtResource( 23 )]
-position = Vector2( -234, -25 )
+position = Vector2( -238, -33 )
 door_name = "Pivot Town"
 
 [node name="FromPivotTown3" parent="CollisionRoot" instance=ExtResource( 23 )]
@@ -2498,7 +2498,6 @@ position = Vector2( -429, -740 )
 scale = Vector2( 1.7, 1.7 )
 z_index = 3
 frames = SubResource( 19 )
-frame = 2
 speed_scale = 0.8
 playing = true
 
@@ -2507,6 +2506,7 @@ position = Vector2( 172, -419 )
 scale = Vector2( 1.6, 1.6 )
 z_index = 3
 frames = SubResource( 19 )
+frame = 5
 speed_scale = 0.7
 playing = true
 

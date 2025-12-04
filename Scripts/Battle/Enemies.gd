@@ -293,6 +293,8 @@ func enemy_damage():
 		SE.effect("Whammy!")
 		damage += int(damage/2)
 		target_enemy.whammy = true
+		
+	damage = clamp(damage, 0, 999)
 	target_enemy.damage(damage)
 	is_attack = false
 	
@@ -369,6 +371,7 @@ func magic_damage():
 		SE.effect("Whammy!")
 		damage += int(damage/2)
 	
+	damage = clamp(damage, 0, 999)
 	target_enemy.magic_damage(damage, damage_type)
 	var dead = false
 	if target_enemy.get_health() == 0:
@@ -481,6 +484,7 @@ func all_magic_damage():
 			SE.effect("Whammy!")
 			damage += int(damage/2)
 		
+		damage = clamp(damage, 0, 999)
 		enemies[x].magic_damage(damage, damage_type)
 		var dead = false
 		if enemies[x].get_health() == 0:

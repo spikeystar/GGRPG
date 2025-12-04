@@ -543,6 +543,7 @@ func damage():
 	if damage == 0:
 		immune = true
 		
+	damage = clamp(damage, 0, 999)
 	fighters[fighter_index].damage(damage, move_type)
 	var is_dead = false
 	if fighters[fighter_index].get_health() == 0:

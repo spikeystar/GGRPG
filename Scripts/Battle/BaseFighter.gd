@@ -709,10 +709,10 @@ func set_trinket():
 	if trinket == "Gold Bracelet":
 		f_attack = int(f_attack + (f_attack*0.3))
 		whammy_chance += 5
-	elif trinket == "Gold Chain":
+	if trinket == "Gold Chain":
 		f_defense = int(f_defense + (f_defense*0.3))
 		whammy_chance += 5
-	elif trinket == "Gold Earring":
+	if trinket == "Gold Earring":
 		f_magic = int(f_magic + (f_magic*0.3))
 		whammy_chance += 5
 		
