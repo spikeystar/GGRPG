@@ -595,8 +595,8 @@ animations = [ {
 pause_mode = 2
 script = ExtResource( 4 )
 main_menu = "res://UI/MainMenu.tscn"
-EXP_base = 52
-marbles_base = 53
+EXP_base = 60
+marbles_base = 60
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -1886,6 +1886,7 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1902,7 +1903,6 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
-frame = 1
 speed_scale = 0.6
 playing = true
 

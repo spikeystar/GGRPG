@@ -597,8 +597,8 @@ animations = [ {
 pause_mode = 2
 script = ExtResource( 31 )
 main_menu = "res://UI/MainMenu.tscn"
-EXP_base = 41
-marbles_base = 56
+EXP_base = 45
+marbles_base = 50
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5

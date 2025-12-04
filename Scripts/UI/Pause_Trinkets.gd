@@ -55,6 +55,7 @@ func set_id():
 func _on_Members_main_retread():
 	$TrinketsNode/TrinketsInventory.trinket_index = 0
 	$TrinketsNode/TrinketsCursor.cursor_index = 0
+	SceneManager.transitioning = false
 
 func _on_TrinketsInventory_return_to_trinkets():
 	reset()

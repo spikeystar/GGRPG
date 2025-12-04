@@ -118,29 +118,29 @@ func level_up():
 		
 func set_stats():	
 	gary_health = 51 + int((party_level / 1.5) * 10.5)
-	gary_attack = 20 + int((party_level / 1.25) * 9)
-	gary_magic = 15 + int((party_level / 1.5)  * 7)
-	gary_defense = 5 + int((party_level / 2)  * 2)
+	gary_attack = 18 + int((party_level / 1.25) * 9)
+	gary_magic = 16 + int((party_level / 1.5)  * 7)
+	gary_defense = 4 + int((party_level / 1.3)  * 2)
 	
 	jacques_health = 55 + int((party_level / 1.5)  * 14)
 	jacques_attack = 20 + int((party_level / 1.25)  * 7)
-	jacques_magic = 22 + int((party_level / 1.5) * 5)
-	jacques_defense = 7 + int((party_level / 2)  * 3)
+	jacques_magic = 25 + int((party_level / 1.4) * 6)
+	jacques_defense = 7 + int((party_level / 1.3)  * 3)
 
 	irina_health = 60 + int((party_level / 1.5)  * 18)
 	irina_attack = 12 + int((party_level / 1.25)  * 5)
-	irina_magic = 24 + int((party_level / 1.5)  * 6)
-	irina_defense = 4 + int((party_level / 2)  * 1.5)
+	irina_magic = 28 + int((party_level / 1.25)  * 7)
+	irina_defense = 4 + int((party_level / 1.3)  * 1.5)
 	
 	suzy_health = 43 + int((party_level / 1.5) * 8)
-	suzy_attack = 27 + int((party_level / 1.25) * 12)
-	suzy_magic = 20 + int((party_level / 1.5)  * 6)
-	suzy_defense = 5 + int((party_level / 2)  * 1)
+	suzy_attack = 30 + int((party_level / 1.25) * 12)
+	suzy_magic = 22 + int((party_level / 1.5)  * 6)
+	suzy_defense = 5 + int((party_level / 1.3)  * 1.2)
 	
 	damien_health = 50 + int((party_level / 1.5)  * 11.5)
 	damien_attack = 10 + int((party_level / 1.25)  * 4)
-	damien_magic = 30 + int((party_level / 1.5) * 8)
-	damien_defense = 6 + int((party_level / 2)  * 2)
+	damien_magic = 37 + int((party_level / 1.2) * 9)
+	damien_defense = 6 + int((party_level / 1.3)  * 2)
 	
 	if party_level == 1:
 		gary_health = 50
