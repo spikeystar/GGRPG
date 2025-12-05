@@ -9,7 +9,7 @@ func reset():
 	$HP_info.text = "20"
 	$Attack_info.text = "8"
 	$Magic_info.text = "0"
-	$Defense_info.text = "7"
+	$Defense_info.text = "5"
 	$EnemyInfo.text = "They're not very strong but are a little mischevious. They like to line up behind things"
 
 func _process(_delta):
@@ -23,7 +23,7 @@ func _process(_delta):
 		$HP_info.text = "20"
 		$Attack_info.text = "8"
 		$Magic_info.text = "0"
-		$Defense_info.text = "7"
+		$Defense_info.text = "5"
 		$EnemyInfo.text = "They're not very strong but are a little mischevious. They like to line up behind things"
 	if key_id == "Flutterbie":
 		$EnemyDisplay.position = Vector2(86, -126)
