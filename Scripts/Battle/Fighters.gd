@@ -766,8 +766,9 @@ func fighters_active_check():
 			#array_size - 1
 			
 	#if max_turns == array_size:
-		if max_turns == array_size:
+		if max_turns >= array_size:
 			emit_signal ("enemies_enabled")
+			pickable_fighters()
 			enemies_active = true
 		else:
 			if not SceneManager.victory and not SceneManager.game_over:
@@ -793,6 +794,17 @@ func _on_WorldRoot_f_index_reset():
 				max_turns += 1
 	fighter_index = -1
 		#fighters = get_children()
+
+func pickable_fighters():
+	if fighters.size() <=0:
+		set_positions()
+		#fighters2 = fighters.duplicate()
+		for x in range (fighters.size() -1, -1, -1):
+			var dead = fighters[x].death_count()
+			if dead:
+				fighters.remove(x)
+				fighter_index = clamp(fighter_index, 0, fighters.size() - 1)
+	#fighter_index = -1
 
 func get_f_attack():
 	var f_attack = fighters[fighter_index].get_f_attack()
@@ -913,8 +925,7 @@ func item_used():
 				fighters2[target_index].restore(item_name)
 				yield(get_tree().create_timer(0.25), "timeout")
 				huds_heal_update()
-				for x in range (fighters2.size() -1, -1, -1):
-					fighters.remove(x)
+				fighters = []
 				set_positions()
 				for x in range (fighters2.size() -1, -1, -1):
 					turn_used = fighters2[x].get_turn_value()
@@ -1018,6 +1029,9 @@ func _on_SpellList_all_ally_spell():
 	
 func _on_Enemies_fighters_active():
 	#max_turns = 0
+	#fighters = []
+	#set_positions()
+	#fighters2 = fighters.duplicate()
 	if SceneManager.game_over:
 		return
 	
@@ -1089,9 +1103,11 @@ func _on_Enemies_fighters_active():
 	enemies_active = false
 	fighter_index = -1
 	
-	if max_turns == fighters2.size():
+	if max_turns >= fighters.size():
 		emit_signal ("enemies_enabled")
+		pickable_fighters()
 		enemies_active = true
+		return
 		
 	
 	yield(get_tree().create_timer(0.8), "timeout")
@@ -1117,8 +1133,7 @@ func revive_healing():
 		f_health = fighters2[target_index].get_f_health()
 		yield(get_tree().create_timer(0.25), "timeout")
 		huds_heal_update()
-		for x in range (fighters2.size() -1, -1, -1):
-			fighters.remove(x)
+		fighters = []
 		set_positions()
 		for x in range (fighters.size() -1, -1, -1):
 			var turn_used = fighters[x].get_turn_value()
@@ -1134,8 +1149,7 @@ func revive_healing():
 func stun_healing():
 	max_turns -= 1
 	huds_heal_update()
-	for x in range (fighters2.size() -1, -1, -1):
-			fighters.remove(x)
+	fighters = []
 	set_positions()
 	for x in range (fighters.size() -1, -1, -1):
 		var dead = fighters[x].death_count()
@@ -1350,8 +1364,7 @@ func Alchemy():
 	BB_active = false
 		
 func revive_resetting():
-	for x in range (fighters2.size() -1, -1, -1):
-		fighters.remove(x)
+	fighters = []
 	set_positions()
 	for x in range (fighters.size() -1, -1, -1):
 		var turn_used = fighters[x].get_turn_value()

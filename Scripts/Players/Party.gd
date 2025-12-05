@@ -78,6 +78,8 @@ func _ready():
 	#add_item()	
 	#add_item_name = "Bounty Herb"
 	#add_item()	
+	#add_item_name = "Ginger Tea"
+	#add_item()	
 		
 func add_item():
 	if add_item_name == "True" or add_item_name == "False":
