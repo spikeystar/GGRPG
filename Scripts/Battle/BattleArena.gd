@@ -1579,8 +1579,6 @@ func _on_Enemies_Enemy_Attack():
 		Squall()
 	if enemy_move_name == "Zap":
 		Zap()
-	if enemy_move_name == "Friction":
-		Friction()
 	if enemy_move_name == "Terra Arrow":
 		Terra_Arrow()
 	if enemy_move_name == "Gravel Spat":
