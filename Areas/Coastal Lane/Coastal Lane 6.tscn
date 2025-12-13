@@ -65,9 +65,9 @@
 [ext_resource path="res://Areas/Coastal Lane/Coastal Lane BA 6.tscn" type="PackedScene" id=63]
 [ext_resource path="res://Areas/Coastal Lane/Coastal Lane BA 4.tscn" type="PackedScene" id=64]
 
-[sub_resource type="StreamTexture" id=4]
+[sub_resource type="StreamTexture" id=13]
 
-[sub_resource type="StreamTexture" id=5]
+[sub_resource type="StreamTexture" id=14]
 
 [sub_resource type="TileSet" id=6]
 7/name = "Grass Tile.png 7"
@@ -113,7 +113,7 @@
 9/shapes = [  ]
 9/z_index = 0
 10/name = "White Flower Tile A.png 10"
-10/texture = SubResource( 4 )
+10/texture = SubResource( 13 )
 10/tex_offset = Vector2( 0, 0 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 0, 0, 64, 32 )
@@ -127,7 +127,7 @@
 10/shapes = [  ]
 10/z_index = 0
 11/name = "White Flower Tile B.png 11"
-11/texture = SubResource( 5 )
+11/texture = SubResource( 14 )
 11/tex_offset = Vector2( 0, 0 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 0, 0, 64, 32 )
@@ -693,7 +693,7 @@ self_modulate = Color( 1, 1, 1, 0.1 )
 position = Vector2( -135, -198.5 )
 scale = Vector2( 1.46, 1.57 )
 frames = SubResource( 12 )
-frame = 2
+frame = 4
 speed_scale = 0.85
 playing = true
 
@@ -702,7 +702,6 @@ self_modulate = Color( 1, 1, 1, 0.28 )
 position = Vector2( -135.25, -200.641 )
 scale = Vector2( 0.935, 1.04719 )
 frames = SubResource( 12 )
-frame = 1
 speed_scale = 1.1
 playing = true
 

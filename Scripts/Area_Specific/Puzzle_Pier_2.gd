@@ -30,6 +30,12 @@ func day():
 func night():
 	$YSort/NightRect.show()
 	$YSort/Background/NightBckgd.show()
+	$YSort/Background/Water.modulate.r = 2.6
+	$YSort/Background/Water.modulate.g = 0.24
+	$YSort/Background/Water.modulate.b = 0.26
+	$YSort/Background/Deco.modulate.r = 0.72
+	$YSort/Background/Deco.modulate.g = 0.72
+	$YSort/Background/Deco.modulate.b = 0.92
 	
 	$YSort/MiddleGround/Streetlamps/Streetlamp_A/AnimationPlayer.play("Night")
 
