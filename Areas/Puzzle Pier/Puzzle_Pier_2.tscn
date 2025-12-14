@@ -657,85 +657,85 @@ tile_data = PoolIntArray( -458753, 1, 0, -524288, 1, 0, -524287, 1, 0, -524286, 
 position = Vector2( 377, -187 )
 
 [node name="Fence_B7" parent="YSort/MiddleGround/Fence" instance=ExtResource( 34 )]
-position = Vector2( -185, 68 )
+position = Vector2( -196, 76 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 0.5, 1.3 )
+grid_size = Vector2( 0.05, 1.5 )
 texture = ExtResource( 47 )
 texture_scale = Vector2( 1.3, 1.35 )
-texture_offset = Vector2( 1, -3 )
+texture_offset = Vector2( 1, -10 )
 height = 70.0
 depth_test_offset = Vector3( 800, -600, 0 )
 preview_collision_box = false
 
 [node name="Fence_B6" parent="YSort/MiddleGround/Fence" instance=ExtResource( 34 )]
-position = Vector2( -233, 92 )
+position = Vector2( -244, 100 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 0.5, 1.3 )
+grid_size = Vector2( 0.05, 1.5 )
 texture = ExtResource( 47 )
 texture_scale = Vector2( 1.3, 1.35 )
-texture_offset = Vector2( 1, -3 )
+texture_offset = Vector2( 1, -10 )
 height = 70.0
 depth_test_offset = Vector3( 800, -600, 0 )
 preview_collision_box = false
 
 [node name="Fence_B5" parent="YSort/MiddleGround/Fence" instance=ExtResource( 34 )]
-position = Vector2( -281, 115 )
+position = Vector2( -292, 123 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 0.5, 1.3 )
+grid_size = Vector2( 0.05, 1.5 )
 texture = ExtResource( 47 )
 texture_scale = Vector2( 1.3, 1.35 )
-texture_offset = Vector2( 1, -3 )
+texture_offset = Vector2( 1, -10 )
 height = 70.0
 depth_test_offset = Vector3( 800, -600, 0 )
 preview_collision_box = false
 
 [node name="Fence_B4" parent="YSort/MiddleGround/Fence" instance=ExtResource( 34 )]
-position = Vector2( -329, 138 )
+position = Vector2( -340, 146 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 0.5, 1.3 )
+grid_size = Vector2( 0.05, 1.5 )
 texture = ExtResource( 47 )
 texture_scale = Vector2( 1.3, 1.35 )
-texture_offset = Vector2( 1, -3 )
+texture_offset = Vector2( 1, -10 )
 height = 70.0
 depth_test_offset = Vector3( 800, -600, 0 )
 preview_collision_box = false
 
 [node name="Fence_B3" parent="YSort/MiddleGround/Fence" instance=ExtResource( 34 )]
-position = Vector2( -377, 162 )
+position = Vector2( -388, 170 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 0.5, 1.3 )
+grid_size = Vector2( 0.05, 1.5 )
 texture = ExtResource( 47 )
 texture_scale = Vector2( 1.3, 1.35 )
-texture_offset = Vector2( 1, -3 )
+texture_offset = Vector2( 1, -10 )
 height = 70.0
 depth_test_offset = Vector3( 800, -600, 0 )
 preview_collision_box = false
 
 [node name="Fence_B2" parent="YSort/MiddleGround/Fence" instance=ExtResource( 34 )]
-position = Vector2( -425, 185 )
+position = Vector2( -436, 193 )
 __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 0.5, 1.3 )
+grid_size = Vector2( 0.05, 1.5 )
 texture = ExtResource( 47 )
 texture_scale = Vector2( 1.3, 1.35 )
-texture_offset = Vector2( 1, -3 )
+texture_offset = Vector2( 1, -10 )
 height = 70.0
 depth_test_offset = Vector3( 800, -600, 0 )
 preview_collision_box = false
@@ -837,7 +837,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 1.3, 0.5 )
+grid_size = Vector2( 1.5, 0.5 )
 texture = ExtResource( 33 )
 texture_scale = Vector2( 1.3, 1.35 )
 texture_offset = Vector2( 1, -3 )
@@ -924,6 +924,7 @@ texture_scale = Vector2( -1.2, 1.3 )
 texture_offset = Vector2( 7, 25 )
 height = 110.0
 depth_test_offset = Vector3( 0, -500, 0 )
+preview_collision_box = false
 
 [node name="Foreground" type="Node2D" parent="YSort"]
 visible = false
@@ -938,6 +939,7 @@ z_index = 4096
 texture = ExtResource( 60 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 23 )]
 

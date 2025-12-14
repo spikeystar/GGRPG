@@ -31,11 +31,11 @@ func _ready():
 		day()
 		SceneManager.day = true
 	
-	#EventManager.Pivot_Town = true
+	#EventManager.Puzzle_Pier = true
 	
 	SceneManager.SceneEnemies = []
 	
-	#SceneManager.location = "Pivot Town"
+	#SceneManager.location = "Puzzle Pier"
 	
 	if Music.id != "Puzzle_Pier" or not Music.is_playing:
 		Music.switch_songs()
