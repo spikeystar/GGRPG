@@ -75,6 +75,26 @@ func talk():
 		Henry()
 	if npc_name == "Reeler":
 		Reeler()
+	if npc_name == "Alison":
+		Alison()
+	if npc_name == "Quinn":
+		Quinn()
+	if npc_name == "Ruben":
+		Ruben()
+	if npc_name == "Andrew":
+		Andrew()
+	if npc_name == "Peter":
+		Peter()
+	if npc_name == "Taylor":
+		Taylor()
+	if npc_name == "Haley":
+		Haley()
+	if npc_name == "Kate":
+		Kate()
+	if npc_name == "Nikolai":
+		Nikolai()
+	if npc_name == "Brody":
+		Brody()
 		
 func Victor():
 	if js < 2 and not alternate:
@@ -226,6 +246,205 @@ func Reeler():
 		yield(self, "talk_done")
 		done()
 
+func Alison():
+	if not alternate:
+		$Name/Talk.text = "Sometimes the pier can get really crowded..."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "One time, the line for the Ferris Wheel went outside the front gate!"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif alternate:
+		$Name/Talk.text = "I hope you have fun at the Pier."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "There's lots of stuff to do, so take your time."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
+
+func Quinn():
+	if not alternate:
+		$Name/Talk.text = "Hi there! Are you enjoying Puzzle Pier?"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "You can win lots of special prizes from our games, so take a look!"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif alternate:
+		$Name/Talk.text = "Don't worry if you don't win the prize you wanted right away."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "Some prizes will stay waiting for you get them, so keep trying!"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
+
+func Ruben():
+	if not alternate:
+		$Name/Talk.text = "Do you feel the breeze from the ocean?"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "I love how the salt air smells! So refreshing!"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif alternate:
+		$Name/Talk.text = "Puzzle Pier is fun, but there's a lot going on."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "It's nice to watch the waves and take a little break too."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
+
+func Andrew():
+	if not alternate:
+		$Name/Talk.text = "Darn it! I can't get to first place in Space Quest!"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "Maybe I'll give it just one more try..."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif alternate:
+		$Name/Talk.text = "I thought playing water guns would be easier..."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "But it gets so fast at the end! I can't keep up!"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
+
+func Peter():
+	if not alternate:
+		$Name/Talk.text = "Woah, check out this Chilly Globe I got from the crane machine!"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "Not sure how you use it though... Maybe in a battle?"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif alternate:
+		$Name/Talk.text = "The crane machine is actually pretty easy if you know what you want."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "Just make sure your hand doesn't slip..."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
+
+func Taylor():
+	if not alternate:
+		$Name/Talk.text = "Should I get a Polar Parfait? Or a Nori Cookie?"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "I'm too hungry! I want both!"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif alternate:
+		$Name/Talk.text = "Have you ridden the Ferris Wheel yet?"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "You can see a really cool view from the top!"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
+
+func Haley():
+	if not alternate:
+		$Name/Talk.text = "Oh my gosh! My fortune was like totally spot on!"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "And I got this Pretty Gem to keep... so cool!"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif alternate:
+		$Name/Talk.text = "We should come here more often, I want to get my fortune read again."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "It's like kinda expensive though so I need to save up."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
+
+func Kate():
+	if not alternate:
+		$Name/Talk.text = "I heard that getting your fortune told also gives you a bonus effect"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "Like, you can be stronger in battles or something."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif alternate:
+		$Name/Talk.text = "This place is so cute, I want to get a photo at the end of the dock!"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "I want to add it to my scrapbook when I get home~"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
+
+func Nikolai():
+	if not alternate:
+		$Name/Talk.text = "Please come back here anytime."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "We have plenty of rides and games to enjoy!"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif alternate:
+		$Name/Talk.text = "I can't thank you enough for saving Puzzle Pier."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "I'm sure the rest of your journey will go well!"
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
+
+func Brody():
+	if not alternate:
+		$Name/Talk.text = "I can’t help it... I just really like Picnic Pie."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "I know you're meant to share them... but this is just for me."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = true
+	elif alternate:
+		$Name/Talk.text = "I wish ocean water tasted good..."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "I’m kind of thirsty now too."
+		talking()
+		yield(self, "talk_done")
+		done()
+		alternate = false
 
 func _on_SaveStarIntro_area_event():
 		show()

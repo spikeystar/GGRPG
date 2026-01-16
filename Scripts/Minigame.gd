@@ -35,7 +35,7 @@ func _input(event):
 func welcome_text():
 	$Dialogue/Name.text = SceneManager.npc_name + ":"
 	if SceneManager.npc_name == "Jacob":
-		$Dialogue/Name/Talk.text = "Would you like to ride the ferris wheel? It's only 100 Marbles!"
+		$Dialogue/Name/Talk.text = "Would you like to ride the Ferris Wheel? It's only 100 Marbles!"
 	if SceneManager.npc_name == "Estella":
 		$Dialogue/Name/Talk.text = "Hello, my dear~ I can read your fortune for 2,000 marbles. It's worth it, I promise~"
 	if SceneManager.npc_name == "Nathan":

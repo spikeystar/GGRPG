@@ -231,6 +231,8 @@ func _on_StarOptions_save_menu():
 	able = true
 
 func _on_StarOptions_overworld():
+	if SceneManager.time_decided:
+		SceneManager.time_decided = false
 	Music.stopped()
 	SE.effect("Select")
 	SceneManager.overworld = true

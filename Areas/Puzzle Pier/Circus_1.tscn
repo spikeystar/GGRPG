@@ -1,13 +1,14 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Red Circus Tile.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Shadows/rectangle shadow small.png" type="Texture" id=2]
 [ext_resource path="res://Assets/General/Tiles/Blue Circus Tile.png" type="Texture" id=3]
 [ext_resource path="res://Assets/General/Tiles/Yellow Circus Tile.png" type="Texture" id=4]
 [ext_resource path="res://Assets/General/Tiles/Purple Circus Tile.png" type="Texture" id=5]
-[ext_resource path="res://Assets/General/Backgrounds/blue bckgd.png" type="Texture" id=6]
+[ext_resource path="res://Assets/General/Backgrounds/Maroon BCKGD.jpg" type="Texture" id=6]
 [ext_resource path="res://Assets/General/Tiles/wood tile b.png" type="Texture" id=7]
 [ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/Area_Specific/Circus_1.gd" type="Script" id=9]
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=12]
@@ -17,9 +18,31 @@
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=16]
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=17]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=18]
+[ext_resource path="res://Scripts/Bouncy.gd" type="Script" id=19]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Spring.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scripts/Item_Interact.gd" type="Script" id=21]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=22]
-[ext_resource path="res://Assets/General/Backgrounds/Inside BCKGD.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Square.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Balloons C.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Balloons A.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Green P.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Orange P.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Red P.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Flags A.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Blue P.png" type="Texture" id=30]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Balloons B.png" type="Texture" id=31]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Flags B.png" type="Texture" id=32]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Yellow P.png" type="Texture" id=33]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Pink P.png" type="Texture" id=34]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Cone.png" type="Texture" id=35]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Red Rug.png" type="Texture" id=36]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=37]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Box C.png" type="Texture" id=38]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Box B.png" type="Texture" id=39]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Box A.png" type="Texture" id=40]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Med Ledge.png" type="Texture" id=41]
+[ext_resource path="res://Assets/Puzzle Pier/signpost.png" type="Texture" id=42]
+[ext_resource path="res://Scripts/Objects/Signpost.gd" type="Script" id=43]
 
 [sub_resource type="TileSet" id=1]
 0/name = "wood tile a.png 0"
@@ -108,6 +131,7 @@
 5/z_index = 0
 
 [node name="WorldRoot" type="Node2D"]
+script = ExtResource( 9 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -137,22 +161,66 @@ texture = ExtResource( 17 )
 [node name="Background" type="Node2D" parent="YSort"]
 z_index = -20
 
-[node name="DayBckgd" type="Sprite" parent="YSort/Background"]
-visible = false
-position = Vector2( 617, 282 )
-scale = Vector2( 3.81737, 2.76094 )
+[node name="MaroonBCKGD" type="Sprite" parent="YSort/Background"]
+modulate = Color( 0.98, 0.98, 0.98, 1 )
+position = Vector2( 193, -108 )
+scale = Vector2( 1.75007, 1.13811 )
 texture = ExtResource( 6 )
 
-[node name="NightBckgd" type="Sprite" parent="YSort/Background"]
-modulate = Color( 1, 0.701961, 1, 1 )
-position = Vector2( 687, 302 )
-scale = Vector2( 2.4616, 1.75777 )
-texture = ExtResource( 24 )
+[node name="BalloonsA" type="Sprite" parent="YSort/Background"]
+position = Vector2( 525, -343.388 )
+rotation = 0.0364469
+scale = Vector2( 1.70468, 1.50463 )
+texture = ExtResource( 25 )
+flip_h = true
+
+[node name="Cone" type="Sprite" parent="YSort/Background"]
+position = Vector2( 63, -195 )
+scale = Vector2( 1.3925, 1.36 )
+texture = ExtResource( 35 )
+
+[node name="GreenP" type="Sprite" parent="YSort/Background"]
+position = Vector2( 677, -348.388 )
+scale = Vector2( 1.65622, 1.55264 )
+texture = ExtResource( 26 )
+
+[node name="OrangeP" type="Sprite" parent="YSort/Background"]
+position = Vector2( -89, -132 )
+scale = Vector2( 1.62523, 1.55389 )
+texture = ExtResource( 27 )
+
+[node name="FlagsB2" type="Sprite" parent="YSort/Background"]
+position = Vector2( -56.6924, -220.339 )
+rotation = 0.461078
+scale = Vector2( 1.51969, 1.5378 )
+texture = ExtResource( 32 )
+flip_h = true
+
+[node name="PinkP" type="Sprite" parent="YSort/Background"]
+position = Vector2( 405.897, -261.885 )
+scale = Vector2( 1.40897, 1.32503 )
+texture = ExtResource( 34 )
+flip_h = true
+
+[node name="BalloonsB" type="Sprite" parent="YSort/Background"]
+position = Vector2( -219, -138 )
+rotation = -0.0626568
+scale = Vector2( 1.64095, 1.51451 )
+texture = ExtResource( 31 )
+
+[node name="FlagsA" type="Sprite" parent="YSort/Background"]
+position = Vector2( 519, -345.388 )
+rotation = 0.142847
+scale = Vector2( 1.3134, 1.29926 )
+texture = ExtResource( 29 )
 
 [node name="Floor" type="Node2D" parent="YSort"]
+position = Vector2( -2, -1 )
+rotation = 0.010451
 z_index = -10
 
 [node name="Tiles3" type="TileMap" parent="YSort/Floor"]
+visible = false
 modulate = Color( 0.960784, 0.992157, 0.992157, 1 )
 position = Vector2( -55.5, 57.5 )
 z_index = -5
@@ -161,9 +229,10 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 centered_textures = true
 format = 1
-tile_data = PoolIntArray( -655361, 3, 0, -720896, 5, 0, -720895, 3, 0, -720894, 5, 0, -720893, 3, 0, -720892, 5, 0, -589825, 5, 0, -655360, 3, 0, -655359, 5, 0, -655358, 3, 0, -655357, 5, 0, -655356, 3, 0, -524289, 3, 0, -589824, 5, 0, -589823, 3, 0, -589822, 5, 0, -589821, 3, 0, -589820, 5, 0, -458753, 5, 0, -524288, 3, 0, -524287, 5, 0, -524286, 3, 0, -524285, 5, 0, -524284, 3, 0, -393217, 3, 0, -458752, 2, 0, -458751, 3, 0, -458750, 2, 0, -458749, 3, 0, -458748, 2, 0, -327681, 2, 0, -393216, 3, 0, -393215, 2, 0, -393214, 3, 0, -393213, 2, 0, -393212, 3, 0, -262145, 3, 0, -327680, 2, 0, -327679, 3, 0, -327678, 2, 0, -327677, 3, 0, -327676, 2, 0, -196609, 2, 0, -262144, 3, 0, -262143, 2, 0, -262142, 3, 0, -262141, 2, 0, -262140, 3, 0, -131073, 3, 0, -196608, 4, 0, -196607, 3, 0, -196606, 4, 0, -196605, 3, 0, -196604, 4, 0, -65537, 4, 0, -131072, 3, 0, -131071, 4, 0, -131070, 3, 0, -131069, 4, 0, -131068, 3, 0, -1, 3, 0, -65536, 4, 0, -65535, 3, 0, -65534, 4, 0, -65533, 3, 0, -65532, 4, 0, 65535, 4, 0, 0, 3, 0, 1, 4, 0, 2, 3, 0, 3, 4, 0, 4, 3, 0 )
+tile_data = PoolIntArray( -655361, 3, 0, -720896, 5, 0, -720895, 3, 0, -720894, 5, 0, -720893, 3, 0, -720892, 2, 0, -589825, 5, 0, -655360, 3, 0, -655359, 5, 0, -655358, 3, 0, -655357, 5, 0, -655356, 3, 0, -524289, 3, 0, -589824, 5, 0, -589823, 3, 0, -589822, 5, 0, -589821, 3, 0, -589820, 2, 0, -458753, 5, 0, -524288, 3, 0, -524287, 5, 0, -524286, 3, 0, -524285, 5, 0, -524284, 3, 0, -393217, 3, 0, -458752, 2, 0, -458751, 3, 0, -458750, 2, 0, -458749, 3, 0, -458748, 2, 0, -327681, 2, 0, -393216, 3, 0, -393215, 2, 0, -393214, 3, 0, -393213, 2, 0, -393212, 3, 0, -262145, 3, 0, -327680, 2, 0, -327679, 3, 0, -327678, 2, 0, -327677, 3, 0, -327676, 2, 0, -196609, 2, 0, -262144, 3, 0, -262143, 2, 0, -262142, 3, 0, -262141, 2, 0, -262140, 3, 0, -131073, 3, 0, -196608, 4, 0, -196607, 3, 0, -196606, 4, 0, -196605, 3, 0, -196604, 2, 0, -65537, 4, 0, -131072, 3, 0, -131071, 4, 0, -131070, 3, 0, -131069, 4, 0, -131068, 3, 0, -1, 3, 0, -65536, 4, 0, -65535, 3, 0, -65534, 4, 0, -65533, 3, 0, -65532, 2, 0, 65535, 2, 0, 0, 3, 0, 1, 4, 0, 2, 3, 0, 3, 2, 0, 4, 3, 0, 65537, 3, 0, 65538, 2, 0, 131073, 2, 0, 131074, 3, 0 )
 
 [node name="Tiles2" type="TileMap" parent="YSort/Floor"]
+visible = false
 modulate = Color( 0.960784, 0.992157, 0.992157, 1 )
 position = Vector2( -55.5, 49.5 )
 z_index = -5
@@ -172,7 +241,7 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 centered_textures = true
 format = 1
-tile_data = PoolIntArray( -655361, 3, 0, -720896, 5, 0, -720895, 3, 0, -720894, 5, 0, -720893, 3, 0, -720892, 5, 0, -589825, 5, 0, -655360, 3, 0, -655359, 5, 0, -655358, 3, 0, -655357, 5, 0, -655356, 3, 0, -524289, 3, 0, -589824, 5, 0, -589823, 3, 0, -589822, 5, 0, -589821, 3, 0, -589820, 5, 0, -458753, 5, 0, -524288, 3, 0, -524287, 5, 0, -524286, 3, 0, -524285, 5, 0, -524284, 3, 0, -393217, 3, 0, -458752, 2, 0, -458751, 3, 0, -458750, 2, 0, -458749, 3, 0, -458748, 2, 0, -327681, 2, 0, -393216, 3, 0, -393215, 2, 0, -393214, 3, 0, -393213, 2, 0, -393212, 3, 0, -262145, 3, 0, -327680, 2, 0, -327679, 3, 0, -327678, 2, 0, -327677, 3, 0, -327676, 2, 0, -196609, 2, 0, -262144, 3, 0, -262143, 2, 0, -262142, 3, 0, -262141, 2, 0, -262140, 3, 0, -131073, 3, 0, -196608, 4, 0, -196607, 3, 0, -196606, 4, 0, -196605, 3, 0, -196604, 4, 0, -65537, 4, 0, -131072, 3, 0, -131071, 4, 0, -131070, 3, 0, -131069, 4, 0, -131068, 3, 0, -1, 3, 0, -65536, 4, 0, -65535, 3, 0, -65534, 4, 0, -65533, 3, 0, -65532, 4, 0, 65535, 4, 0, 0, 3, 0, 1, 4, 0, 2, 3, 0, 3, 4, 0, 4, 3, 0 )
+tile_data = PoolIntArray( -655361, 3, 0, -720896, 5, 0, -720895, 3, 0, -720894, 5, 0, -720893, 3, 0, -720892, 2, 0, -589825, 5, 0, -655360, 3, 0, -655359, 5, 0, -655358, 3, 0, -655357, 5, 0, -655356, 3, 0, -524289, 3, 0, -589824, 5, 0, -589823, 3, 0, -589822, 5, 0, -589821, 3, 0, -589820, 2, 0, -458753, 5, 0, -524288, 3, 0, -524287, 5, 0, -524286, 3, 0, -524285, 5, 0, -524284, 3, 0, -393217, 3, 0, -458752, 2, 0, -458751, 3, 0, -458750, 2, 0, -458749, 3, 0, -458748, 2, 0, -327681, 2, 0, -393216, 3, 0, -393215, 2, 0, -393214, 3, 0, -393213, 2, 0, -393212, 3, 0, -262145, 3, 0, -327680, 2, 0, -327679, 3, 0, -327678, 2, 0, -327677, 3, 0, -327676, 2, 0, -196609, 2, 0, -262144, 3, 0, -262143, 2, 0, -262142, 3, 0, -262141, 2, 0, -262140, 3, 0, -131073, 3, 0, -196608, 4, 0, -196607, 3, 0, -196606, 4, 0, -196605, 3, 0, -196604, 2, 0, -65537, 4, 0, -131072, 3, 0, -131071, 4, 0, -131070, 3, 0, -131069, 4, 0, -131068, 3, 0, -1, 3, 0, -65536, 4, 0, -65535, 3, 0, -65534, 4, 0, -65533, 3, 0, -65532, 2, 0, 65535, 2, 0, 0, 3, 0, 1, 4, 0, 2, 3, 0, 3, 2, 0, 4, 3, 0, 65537, 3, 0, 65538, 2, 0, 131073, 2, 0, 131074, 3, 0 )
 
 [node name="Tiles" type="TileMap" parent="YSort/Floor"]
 modulate = Color( 0.960784, 0.992157, 0.992157, 1 )
@@ -183,21 +252,297 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 62, 22 )
 centered_textures = true
 format = 1
-tile_data = PoolIntArray( -655361, 3, 0, -720896, 5, 0, -720895, 3, 0, -720894, 5, 0, -720893, 3, 0, -720892, 5, 0, -589825, 5, 0, -655360, 3, 0, -655359, 5, 0, -655358, 3, 0, -655357, 5, 0, -655356, 3, 0, -524289, 3, 0, -589824, 5, 0, -589823, 3, 0, -589822, 5, 0, -589821, 3, 0, -589820, 5, 0, -458753, 5, 0, -524288, 3, 0, -524287, 5, 0, -524286, 3, 0, -524285, 5, 0, -524284, 3, 0, -393217, 3, 0, -458752, 2, 0, -458751, 3, 0, -458750, 2, 0, -458749, 3, 0, -458748, 2, 0, -327681, 2, 0, -393216, 3, 0, -393215, 2, 0, -393214, 3, 0, -393213, 2, 0, -393212, 3, 0, -262145, 3, 0, -327680, 2, 0, -327679, 3, 0, -327678, 2, 0, -327677, 3, 0, -327676, 2, 0, -196609, 2, 0, -262144, 3, 0, -262143, 2, 0, -262142, 3, 0, -262141, 2, 0, -262140, 3, 0, -131073, 3, 0, -196608, 4, 0, -196607, 3, 0, -196606, 4, 0, -196605, 3, 0, -196604, 4, 0, -65537, 4, 0, -131072, 3, 0, -131071, 4, 0, -131070, 3, 0, -131069, 4, 0, -131068, 3, 0, -1, 3, 0, -65536, 4, 0, -65535, 3, 0, -65534, 4, 0, -65533, 3, 0, -65532, 4, 0, 65535, 4, 0, 0, 3, 0, 1, 4, 0, 2, 3, 0, 3, 4, 0, 4, 3, 0 )
+tile_data = PoolIntArray( -1900544, 2, 0, -1900543, 3, 0, -1900542, 2, 0, -1835008, 3, 0, -1835007, 2, 0, -1835006, 3, 0, -1769472, 2, 0, -1769471, 3, 0, -1769470, 2, 0, -1638403, 2, 0, -1638402, 3, 0, -1638401, 2, 0, -1703936, 3, 0, -1703935, 2, 0, -1703934, 3, 0, -1703933, 2, 0, -1703932, 3, 0, -1703931, 2, 0, -1703930, 3, 0, -1572867, 3, 0, -1572866, 2, 0, -1572865, 3, 0, -1638400, 2, 0, -1638399, 3, 0, -1638398, 2, 0, -1638397, 3, 0, -1638396, 2, 0, -1638395, 3, 0, -1638394, 2, 0, -1507331, 2, 0, -1507330, 3, 0, -1507329, 2, 0, -1572864, 3, 0, -1572863, 2, 0, -1572862, 3, 0, -1572861, 2, 0, -1572860, 3, 0, -1572859, 2, 0, -1572858, 3, 0, -1441795, 3, 0, -1441794, 2, 0, -1441793, 3, 0, -1507328, 2, 0, -1507327, 3, 0, -1507326, 2, 0, -1507325, 3, 0, -1507324, 2, 0, -1507323, 3, 0, -1507322, 2, 0, -1376259, 2, 0, -1376258, 3, 0, -1376257, 2, 0, -1441792, 3, 0, -1441791, 2, 0, -1441790, 3, 0, -1441789, 2, 0, -1441788, 3, 0, -1441787, 2, 0, -1441786, 3, 0, -1310723, 3, 0, -1310722, 2, 0, -1310721, 3, 0, -1376256, 2, 0, -1376255, 3, 0, -1376254, 2, 0, -1376253, 3, 0, -1376252, 2, 0, -1376251, 3, 0, -1376250, 2, 0, -1245187, 2, 0, -1245186, 3, 0, -1245185, 2, 0, -1310720, 3, 0, -1310719, 2, 0, -1310718, 3, 0, -1310717, 2, 0, -1310716, 3, 0, -1310715, 2, 0, -1310714, 3, 0, -1179651, 3, 0, -1179650, 2, 0, -1179649, 3, 0, -1245184, 2, 0, -1245183, 3, 0, -1245182, 2, 0, -1245181, 3, 0, -1245180, 2, 0, -1245179, 3, 0, -1245178, 2, 0, -1114115, 2, 0, -1114114, 3, 0, -1114113, 2, 0, -1179648, 3, 0, -1179647, 2, 0, -1179646, 3, 0, -1179645, 2, 0, -1179644, 3, 0, -1179643, 2, 0, -1179642, 3, 0, -1048579, 3, 0, -1048578, 2, 0, -1048577, 3, 0, -1114112, 2, 0, -1114111, 3, 0, -1114110, 2, 0, -1114109, 3, 0, -1114108, 2, 0, -1114107, 3, 0, -1114106, 2, 0, -983046, 3, 0, -983045, 2, 0, -983044, 3, 0, -983043, 2, 0, -983042, 3, 0, -983041, 2, 0, -1048576, 3, 0, -1048575, 2, 0, -1048574, 3, 0, -1048573, 2, 0, -1048572, 3, 0, -1048571, 2, 0, -1048570, 3, 0, -917510, 2, 0, -917509, 3, 0, -917508, 2, 0, -917507, 3, 0, -917506, 2, 0, -917505, 3, 0, -983040, 2, 0, -983039, 3, 0, -983038, 2, 0, -983037, 3, 0, -983036, 2, 0, -983035, 3, 0, -983034, 2, 0, -983033, 3, 0, -983032, 2, 0, -983031, 3, 0, -851974, 3, 0, -851973, 2, 0, -851972, 3, 0, -851971, 2, 0, -851970, 3, 0, -851969, 2, 0, -917504, 3, 0, -917503, 2, 0, -917502, 3, 0, -917501, 2, 0, -917500, 3, 0, -917499, 2, 0, -917498, 3, 0, -917497, 2, 0, -917496, 3, 0, -917495, 2, 0, -786435, 3, 0, -786434, 2, 0, -786433, 3, 0, -851968, 2, 0, -851967, 3, 0, -851966, 2, 0, -851965, 3, 0, -851964, 2, 0, -851963, 3, 0, -851962, 2, 0, -851961, 3, 0, -851960, 2, 0, -851959, 3, 0, -720899, 2, 0, -720898, 3, 0, -720897, 2, 0, -786432, 3, 0, -786431, 2, 0, -786430, 3, 0, -786429, 2, 0, -786428, 3, 0, -786427, 2, 0, -786426, 3, 0, -655363, 3, 0, -655362, 2, 0, -655361, 3, 0, -720896, 2, 0, -720895, 3, 0, -720894, 2, 0, -720893, 3, 0, -720892, 2, 0, -720891, 3, 0, -720890, 2, 0, -589827, 2, 0, -589826, 3, 0, -589825, 2, 0, -655360, 3, 0, -655359, 2, 0, -655358, 3, 0, -655357, 2, 0, -655356, 3, 0, -655355, 2, 0, -655354, 3, 0, -524291, 3, 0, -524290, 2, 0, -524289, 3, 0, -589824, 2, 0, -589823, 3, 0, -589822, 2, 0, -589821, 3, 0, -589820, 2, 0, -589819, 3, 0, -589818, 2, 0, -458755, 2, 0, -458754, 3, 0, -458753, 2, 0, -524288, 3, 0, -524287, 2, 0, -524286, 3, 0, -524285, 2, 0, -524284, 3, 0, -524283, 2, 0, -524282, 3, 0, -393219, 3, 0, -393218, 2, 0, -393217, 3, 0, -458752, 2, 0, -458751, 3, 0, -458750, 2, 0, -458749, 3, 0, -458748, 2, 0, -458747, 3, 0, -458746, 2, 0, -327683, 2, 0, -327682, 3, 0, -327681, 2, 0, -393216, 3, 0, -393215, 2, 0, -393214, 3, 0, -393213, 2, 0, -393212, 3, 0, -393211, 2, 0, -393210, 3, 0, -262147, 3, 0, -262146, 2, 0, -262145, 3, 0, -327680, 2, 0, -327679, 3, 0, -327678, 2, 0, -327677, 3, 0, -327676, 2, 0, -327675, 3, 0, -327674, 2, 0, -196611, 2, 0, -196610, 3, 0, -196609, 2, 0, -262144, 3, 0, -262143, 2, 0, -262142, 3, 0, -262141, 2, 0, -262140, 3, 0, -262139, 2, 0, -262138, 3, 0, -131075, 3, 0, -131074, 2, 0, -131073, 3, 0, -196608, 2, 0, -196607, 3, 0, -196606, 2, 0, -196605, 3, 0, -196604, 2, 0, -196603, 3, 0, -196602, 2, 0, -65539, 2, 0, -65538, 3, 0, -65537, 2, 0, -131072, 3, 0, -131071, 2, 0, -131070, 3, 0, -131069, 2, 0, -131068, 3, 0, -131067, 2, 0, -131066, 3, 0, -3, 3, 0, -2, 2, 0, -1, 3, 0, -65536, 2, 0, -65535, 3, 0, -65534, 2, 0, -65533, 3, 0, -65532, 2, 0, -65531, 3, 0, -65530, 2, 0, 65533, 2, 0, 65534, 3, 0, 65535, 2, 0, 0, 3, 0, 1, 2, 0, 2, 3, 0, 3, 2, 0, 4, 3, 0, 5, 2, 0, 6, 3, 0, 65537, 3, 0, 65538, 2, 0, 131073, 2, 0, 131074, 3, 0 )
+
+[node name="RedRug" type="Sprite" parent="YSort/Floor"]
+position = Vector2( 451, -105 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 36 )
+
+[node name="RedRug2" type="Sprite" parent="YSort/Floor"]
+position = Vector2( 181, -4 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 36 )
+
+[node name="RedRug3" type="Sprite" parent="YSort/Floor"]
+position = Vector2( 702.018, -193.347 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 36 )
 
 [node name="MiddleGround" type="Node2D" parent="YSort"]
 
+[node name="Spring" parent="YSort/MiddleGround" instance=ExtResource( 20 )]
+position = Vector2( 1437, 53 )
+
+[node name="Box A" parent="YSort/MiddleGround" instance=ExtResource( 37 )]
+position = Vector2( 658, -269 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 40 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+preview_collision_box = false
+
+[node name="Box A2" parent="YSort/MiddleGround" instance=ExtResource( 37 )]
+position = Vector2( 203, 91 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 40 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+preview_collision_box = false
+
+[node name="Box B" parent="YSort/MiddleGround" instance=ExtResource( 37 )]
+position = Vector2( 907, -173 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 39 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+preview_collision_box = false
+
+[node name="Box C" parent="YSort/MiddleGround" instance=ExtResource( 37 )]
+position = Vector2( 890, -151 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 38 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+preview_collision_box = false
+
+[node name="Box C2" parent="YSort/MiddleGround" instance=ExtResource( 37 )]
+position = Vector2( -152, 10 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 38 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+preview_collision_box = false
+
+[node name="BlocksA" type="Node2D" parent="YSort/MiddleGround"]
+position = Vector2( 3, 0 )
+
+[node name="Box C4" parent="YSort/MiddleGround/BlocksA" instance=ExtResource( 37 )]
+position = Vector2( 232, -197 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 38 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+preview_collision_box = false
+
+[node name="Box C3" parent="YSort/MiddleGround/BlocksA" instance=ExtResource( 37 )]
+position = Vector2( 211, -187 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 38 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+preview_collision_box = false
+
+[node name="Box C2" parent="YSort/MiddleGround/BlocksA" instance=ExtResource( 37 )]
+position = Vector2( 190, -177 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 38 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+preview_collision_box = false
+
+[node name="Box C5" parent="YSort/MiddleGround/BlocksA" instance=ExtResource( 37 )]
+position = Vector2( 233, -196 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 38 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+floor_height = 28.0
+preview_collision_box = false
+
+[node name="Box C6" parent="YSort/MiddleGround/BlocksA" instance=ExtResource( 37 )]
+position = Vector2( 212, -186 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 38 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+floor_height = 28.0
+preview_collision_box = false
+
+[node name="Box C7" parent="YSort/MiddleGround/BlocksA" instance=ExtResource( 37 )]
+position = Vector2( 191, -176 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 38 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+floor_height = 28.0
+preview_collision_box = false
+
+[node name="Box C8" parent="YSort/MiddleGround/BlocksA" instance=ExtResource( 37 )]
+position = Vector2( 234, -195 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 38 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+floor_height = 56.0
+preview_collision_box = false
+
+[node name="Box C9" parent="YSort/MiddleGround/BlocksA" instance=ExtResource( 37 )]
+position = Vector2( 213, -185 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 38 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+floor_height = 56.0
+preview_collision_box = false
+
+[node name="Box C10" parent="YSort/MiddleGround/BlocksA" instance=ExtResource( 37 )]
+position = Vector2( 192, -175 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 60, 27 )
+grid_size = Vector2( 0.9, 0.9 )
+texture = ExtResource( 38 )
+texture_scale = Vector2( 0.87, 0.87 )
+texture_offset = Vector2( 0, 6 )
+height = 28.0
+floor_height = 56.0
+preview_collision_box = false
+
+[node name="Med Ledge" parent="YSort/MiddleGround" instance=ExtResource( 37 )]
+modulate = Color( 0.96, 0.9408, 0.95232, 1 )
+position = Vector2( 1460, -79 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 63, 30 )
+grid_size = Vector2( 3, 3 )
+texture = ExtResource( 41 )
+texture_offset = Vector2( 4, 57 )
+height = 100.0
+depth_test_offset = Vector3( 0, 500, 0 )
+preview_collision_box = false
+
+[node name="Signpost" parent="YSort/MiddleGround" instance=ExtResource( 37 )]
+position = Vector2( 281, -177 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 0.76, 0.77 )
+texture = ExtResource( 42 )
+texture_scale = Vector2( 1.2, 1.2 )
+texture_offset = Vector2( 0, 15 )
+height = 90.0
+preview_collision_box = false
+
 [node name="Foreground" type="Node2D" parent="YSort"]
-visible = false
 z_index = 20
 
+[node name="Square" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 1049.43, -144.613 )
+scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 23 )
+
+[node name="YellowP" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 859, -30 )
+scale = Vector2( 1.45419, 1.40105 )
+texture = ExtResource( 33 )
+flip_h = true
+
+[node name="FlagsB" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 1121, -206 )
+rotation = 0.179072
+scale = Vector2( 1.91612, 1.75316 )
+texture = ExtResource( 32 )
+flip_h = true
+
+[node name="BalloonsC" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 1036.42, 53 )
+scale = Vector2( 1.63016, 1.59367 )
+texture = ExtResource( 24 )
+
+[node name="BlueP" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 480.006, 94.4209 )
+scale = Vector2( 1.64994, 1.51421 )
+texture = ExtResource( 30 )
+
+[node name="BalloonsB2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 324.62, 159.38 )
+rotation = 0.0590582
+scale = Vector2( 1.66013, 1.5052 )
+texture = ExtResource( 31 )
+flip_h = true
+
+[node name="RedP" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 142, 166 )
+scale = Vector2( 1.51, 1.5275 )
+texture = ExtResource( 28 )
+flip_h = true
+
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 10 )]
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 11 )]
-polygon = PoolVector2Array( -113, 36, 227, -131, 354, -70, 174, 18, 108, 46, 152, 49, 351, 149, 227, 202 )
+visible = false
+polygon = PoolVector2Array( -113, 36, 255, -95, 441, -31, 67, 103 )
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 12 )]
 position = Vector2( 431, 91 )
@@ -208,6 +553,24 @@ direction = Vector2( -1, 1 )
 position = Vector2( 327, -134 )
 door_name = "CherryTrail3_4"
 direction = Vector2( -1, -1 )
+
+[node name="Bouncy" type="Area2D" parent="CollisionRoot"]
+visible = false
+position = Vector2( 339, -14 )
+script = ExtResource( 19 )
+height = 45.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Bouncy"]
+position = Vector2( 20, 9 )
+polygon = PoolVector2Array( -192, -52, -183, -58, -165, -60, -151, -58, -140, -53, -137, -45, -142, -39, -152, -35, -167, -34, -184, -36, -192, -43 )
+
+[node name="Signpost" type="Area2D" parent="CollisionRoot"]
+position = Vector2( -826, 85 )
+script = ExtResource( 43 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Signpost"]
+position = Vector2( 772, -444 )
+polygon = PoolVector2Array( 11, -6, 30, 9, -3, 24, -19.9679, 6.10462 )
 
 [node name="Needlepoint Path" parent="." instance=ExtResource( 13 )]
 visible = false
@@ -272,4 +635,6 @@ polygon = PoolVector2Array( -85.6499, -125.25, -48.6499, -118.25, -39.6499, -103
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 2276, 1175 )
 
+[connection signal="bouncy" from="CollisionRoot/Bouncy" to="YSort/MiddleGround/Spring" method="_on_Bouncy_bouncy"]
+[connection signal="body_exited" from="CollisionRoot/Signpost" to="CollisionRoot/Signpost" method="_on_Signpost_body_exited"]
 [connection signal="item_get" from="Item_Interact" to="Camera2D" method="_on_Item_Interact_item_get"]

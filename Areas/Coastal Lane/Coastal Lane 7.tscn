@@ -46,7 +46,7 @@
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=45]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=46]
-[ext_resource path="res://Scripts/Area_Specific/Cherry Trail.gd" type="Script" id=47]
+[ext_resource path="res://Scripts/Area_Specific/Coastal_Lane_7.gd" type="Script" id=47]
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=48]
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=49]
 [ext_resource path="res://Scripts/Drown.gd" type="Script" id=50]

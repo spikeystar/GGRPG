@@ -18,18 +18,23 @@ const Water_Guns = preload("res://Areas/Puzzle Pier/Minigame/Water_Guns.tscn")
 
 
 func _ready():
-	SceneManager.day = false
-	SceneManager.night = false
-	randomize()
-	var rng = RandomNumberGenerator.new()
-	rng.randomize()
-	var cycle = rng.randi_range(1, 100)
-	if cycle <= 50:
-		night()
-		SceneManager.night = true
-	else:
-		day()
-		SceneManager.day = true
+	if not SceneManager.time_decided:
+		SceneManager.day = false
+		SceneManager.night = false
+		randomize()
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var cycle = rng.randi_range(1, 100)
+		if cycle <= 50:
+			night()
+		else:
+			day()
+			
+	if SceneManager.time_decided:
+		if SceneManager.day:
+			day()
+		if SceneManager.night:
+			night()
 	
 	#EventManager.Puzzle_Pier = true
 	
@@ -43,7 +48,8 @@ func _ready():
 		Music.music()
 
 func day():
-	print("day")
+	SceneManager.day = true
+	SceneManager.time_decided = true
 	$YSort/Background/NightBckgd.hide()
 	$YSort/NightRect.hide()
 	$YSort/Background/Water.modulate.r = 1
@@ -92,6 +98,8 @@ func day():
 	$YSort/Foreground/StringLights15.frame = 0
 	
 func night():
+	SceneManager.night = true
+	SceneManager.time_decided = true
 	$YSort/NightRect.show()
 	$YSort/Background/NightBckgd.show()
 	$YSort/Background/Water.modulate.r = 2.6
