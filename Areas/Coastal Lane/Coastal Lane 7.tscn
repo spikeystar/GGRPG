@@ -255,7 +255,7 @@
 24/shapes = [  ]
 24/z_index = 0
 
-[sub_resource type="DynamicFontData" id=2]
+[sub_resource type="DynamicFontData" id=4]
 antialiased = false
 font_path = "res://Misc/Font/Greenscr.ttf"
 
@@ -263,7 +263,7 @@ font_path = "res://Misc/Font/Greenscr.ttf"
 size = 18
 outline_size = 3
 outline_color = Color( 0.36, 0.22644, 0.1692, 1 )
-font_data = SubResource( 2 )
+font_data = SubResource( 4 )
 
 [node name="WorldRoot" type="Node2D"]
 position = Vector2( 0, 40 )

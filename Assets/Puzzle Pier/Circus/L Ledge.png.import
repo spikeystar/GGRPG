@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Med Ledge.png-89661ba90ecd683dcc0511d3529a30b2.stex"
+path="res://.import/L Ledge.png-e698f6787d888c1b9c77802c333dfcc0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Puzzle Pier/Circus/Med Ledge.png"
-dest_files=[ "res://.import/Med Ledge.png-89661ba90ecd683dcc0511d3529a30b2.stex" ]
+source_file="res://Assets/Puzzle Pier/Circus/L Ledge.png"
+dest_files=[ "res://.import/L Ledge.png-e698f6787d888c1b9c77802c333dfcc0.stex" ]
 
 [params]
 
