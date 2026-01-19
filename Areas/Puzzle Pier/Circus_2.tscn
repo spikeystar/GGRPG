@@ -8,7 +8,7 @@
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Blue Rug.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/L Ledge B.png" type="Texture" id=8]
-[ext_resource path="res://Scripts/Bouncy.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Sphere.png" type="Texture" id=9]
 [ext_resource path="res://Scripts/Item_Interact.gd" type="Script" id=10]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Square.png" type="Texture" id=11]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Balloons C.png" type="Texture" id=12]
@@ -38,9 +38,9 @@
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Flags A.png" type="Texture" id=36]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Blue P.png" type="Texture" id=37]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Yellow P.png" type="Texture" id=38]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Floating Ledge.png" type="Texture" id=39]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Box C.png" type="Texture" id=40]
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=41]
-[ext_resource path="res://Assets/Puzzle Pier/Circus/Spring.tscn" type="PackedScene" id=42]
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=45]
@@ -164,53 +164,65 @@ z_index = -20
 
 [node name="MaroonBCKGD" type="Sprite" parent="YSort/Background"]
 modulate = Color( 0.98, 0.98, 0.98, 1 )
-position = Vector2( 319, -201 )
+position = Vector2( 321, -200 )
 scale = Vector2( 1.75007, 1.13811 )
 texture = ExtResource( 30 )
 
+[node name="Square" type="Sprite" parent="YSort/Background"]
+position = Vector2( 505, -479 )
+scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 11 )
+
+[node name="BalloonsB" type="Sprite" parent="YSort/Background"]
+position = Vector2( 283, -435 )
+rotation = -0.0626568
+scale = Vector2( 1.64095, 1.51451 )
+texture = ExtResource( 16 )
+
+[node name="YellowP2" type="Sprite" parent="YSort/Background"]
+position = Vector2( 380, -354 )
+scale = Vector2( 1.45419, 1.40105 )
+texture = ExtResource( 38 )
+flip_h = true
+
+[node name="BlueP" type="Sprite" parent="YSort/Background"]
+position = Vector2( 963, -290 )
+scale = Vector2( 1.59497, 1.4721 )
+texture = ExtResource( 37 )
+
 [node name="BalloonsA" type="Sprite" parent="YSort/Background"]
-position = Vector2( 520, -713.596 )
+position = Vector2( -149, -262 )
 rotation = 0.0364469
 scale = Vector2( 1.5147, 1.39504 )
 texture = ExtResource( 13 )
 flip_h = true
 
+[node name="RedP" type="Sprite" parent="YSort/Background"]
+position = Vector2( 58, -253 )
+scale = Vector2( 1.51, 1.5275 )
+texture = ExtResource( 15 )
+flip_h = true
+
 [node name="Cone" type="Sprite" parent="YSort/Background"]
-position = Vector2( -404.581, -445.95 )
+position = Vector2( 1085, -217 )
 scale = Vector2( 1.3925, 1.36 )
 texture = ExtResource( 19 )
 
-[node name="GreenP" type="Sprite" parent="YSort/Background"]
-position = Vector2( 668, -698.984 )
-scale = Vector2( 1.65622, 1.55264 )
-texture = ExtResource( 14 )
-
-[node name="OrangeP" type="Sprite" parent="YSort/Background"]
-position = Vector2( -556.581, -382.95 )
-scale = Vector2( 1.62523, 1.55389 )
-texture = ExtResource( 35 )
-
 [node name="FlagsB2" type="Sprite" parent="YSort/Background"]
-position = Vector2( -524.273, -471.289 )
-rotation = 0.461078
-scale = Vector2( 1.51969, 1.5378 )
+position = Vector2( -112, -289 )
+rotation = 0.30997
+scale = Vector2( 1.20159, 1.21333 )
 texture = ExtResource( 17 )
 flip_h = true
 
 [node name="PinkP" type="Sprite" parent="YSort/Background"]
-position = Vector2( 396.897, -612.481 )
-scale = Vector2( 1.40897, 1.32503 )
+position = Vector2( -267, -139 )
+scale = Vector2( 1.46448, 1.46751 )
 texture = ExtResource( 18 )
 flip_h = true
 
-[node name="BalloonsB" type="Sprite" parent="YSort/Background"]
-position = Vector2( -691.581, -432.95 )
-rotation = -0.0626568
-scale = Vector2( 1.64095, 1.51451 )
-texture = ExtResource( 16 )
-
 [node name="FlagsA" type="Sprite" parent="YSort/Background"]
-position = Vector2( 510, -695.984 )
+position = Vector2( 498, -507 )
 rotation = 0.142847
 scale = Vector2( 1.3134, 1.29926 )
 texture = ExtResource( 36 )
@@ -282,11 +294,8 @@ texture = ExtResource( 7 )
 
 [node name="MiddleGround" type="Node2D" parent="YSort"]
 
-[node name="Spring" parent="YSort/MiddleGround" instance=ExtResource( 42 )]
-position = Vector2( 1437, 53 )
-
 [node name="L Ledge" parent="YSort/MiddleGround" instance=ExtResource( 6 )]
-position = Vector2( -48, -70 )
+position = Vector2( -49, -61 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -294,23 +303,11 @@ tile_size = Vector2( 100, 35 )
 grid_size = Vector2( 2, 2.2 )
 texture = ExtResource( 8 )
 texture_offset = Vector2( 0, 9 )
-height = 105.0
-preview_collision_box = false
-
-[node name="L Ledge2" parent="YSort/MiddleGround" instance=ExtResource( 6 )]
-position = Vector2( 543, -252 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 100, 35 )
-grid_size = Vector2( 2, 2.2 )
-texture = ExtResource( 8 )
-texture_offset = Vector2( 0, 9 )
-height = 105.0
+height = 110.0
 preview_collision_box = false
 
 [node name="M Ledge" parent="YSort/MiddleGround" instance=ExtResource( 6 )]
-position = Vector2( -138, -24 )
+position = Vector2( -136, -20 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -323,7 +320,7 @@ height = 90.0
 preview_collision_box = false
 
 [node name="S Ledge" parent="YSort/MiddleGround" instance=ExtResource( 6 )]
-position = Vector2( -44, -10 )
+position = Vector2( -43, -4 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -333,6 +330,19 @@ texture = ExtResource( 23 )
 texture_scale = Vector2( 0.95, 0.95 )
 texture_offset = Vector2( -1, 1 )
 height = 65.0
+preview_collision_box = false
+
+[node name="F Ledge" parent="YSort/MiddleGround" instance=ExtResource( 6 )]
+position = Vector2( 272, -164 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 24 )
+grid_size = Vector2( 2.6, 1.9 )
+texture = ExtResource( 39 )
+texture_scale = Vector2( 0.95, 0.95 )
+texture_offset = Vector2( 2, 9 )
+height = 45.0
 preview_collision_box = false
 
 [node name="S Ledge2" parent="YSort/MiddleGround" instance=ExtResource( 6 )]
@@ -346,6 +356,18 @@ texture = ExtResource( 23 )
 texture_scale = Vector2( 0.95, 0.95 )
 texture_offset = Vector2( -1, 1 )
 height = 65.0
+preview_collision_box = false
+
+[node name="L Ledge2" parent="YSort/MiddleGround" instance=ExtResource( 6 )]
+position = Vector2( 543, -252 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 100, 35 )
+grid_size = Vector2( 2, 2.2 )
+texture = ExtResource( 8 )
+texture_offset = Vector2( 0, 9 )
+height = 105.0
 preview_collision_box = false
 
 [node name="Box C" parent="YSort/MiddleGround" instance=ExtResource( 6 )]
@@ -362,7 +384,7 @@ height = 30.0
 preview_collision_box = false
 
 [node name="Box B" parent="YSort/MiddleGround" instance=ExtResource( 6 )]
-position = Vector2( 16, -15 )
+position = Vector2( 22, -11 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -465,32 +487,6 @@ texture_offset = Vector2( 0, 1 )
 height = 30.0
 preview_collision_box = false
 
-[node name="BalloonsB3" parent="YSort/MiddleGround" instance=ExtResource( 6 )]
-position = Vector2( -2, -413 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 1.3, 2 )
-texture = ExtResource( 22 )
-texture_scale = Vector2( -1.3, 1.3 )
-texture_offset = Vector2( -2, -4 )
-height = 150.0
-preview_collision_box = false
-
-[node name="BalloonsB4" parent="YSort/MiddleGround" instance=ExtResource( 6 )]
-position = Vector2( 191, -478 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 62, 30 )
-grid_size = Vector2( 1.3, 2 )
-texture = ExtResource( 22 )
-texture_scale = Vector2( -1.3, 1.3 )
-texture_offset = Vector2( -2, -4 )
-height = 150.0
-preview_collision_box = false
-
 [node name="BalloonsB5" parent="YSort/MiddleGround" instance=ExtResource( 6 )]
 position = Vector2( -258, -13 )
 __meta__ = {
@@ -520,52 +516,57 @@ preview_collision_box = false
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
-[node name="Square" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 1561.06, -364.75 )
-scale = Vector2( 1.7, 1.7 )
-texture = ExtResource( 11 )
+[node name="OrangeP" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 727, 25.389 )
+scale = Vector2( 1.62523, 1.55389 )
+texture = ExtResource( 35 )
+flip_h = true
+
+[node name="GreenP" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 147, 171 )
+scale = Vector2( 1.65622, 1.55264 )
+texture = ExtResource( 14 )
 
 [node name="YellowP" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 1365.21, -253.715 )
+position = Vector2( 1024, -123 )
 scale = Vector2( 1.43209, 1.36053 )
 texture = ExtResource( 38 )
 flip_h = true
 
-[node name="YellowP2" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( -735.581, -215.95 )
-scale = Vector2( 1.45419, 1.40105 )
-texture = ExtResource( 38 )
-flip_h = true
-
 [node name="FlagsB" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 1586.21, -431.715 )
+position = Vector2( 996, -333 )
 rotation = 0.179072
-scale = Vector2( 1.47741, 1.25761 )
+scale = Vector2( 1.23349, 1.00705 )
 texture = ExtResource( 17 )
 flip_h = true
 
+[node name="RedP2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 577, 74.389 )
+scale = Vector2( 1.51, 1.5275 )
+texture = ExtResource( 15 )
+
+[node name="Sphere" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 749, 165 )
+scale = Vector2( 1.35, 1.35 )
+texture = ExtResource( 9 )
+
 [node name="BalloonsC" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 1484.21, -268.715 )
+position = Vector2( 293, 157 )
 scale = Vector2( 1.39508, 1.31684 )
 texture = ExtResource( 12 )
 
-[node name="BlueP" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 529, 529.421 )
-scale = Vector2( 1.64994, 1.51421 )
-texture = ExtResource( 37 )
+[node name="FlagsB3" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 632, 26 )
+rotation = -0.0831124
+scale = Vector2( 1.47911, 1.45203 )
+texture = ExtResource( 17 )
+flip_h = true
 
 [node name="BalloonsB2" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 378, 601.421 )
-rotation = 0.0590582
-scale = Vector2( 1.66013, 1.5052 )
+position = Vector2( 1081, -48 )
+rotation = 0.0630122
+scale = Vector2( 1.53891, 1.3372 )
 texture = ExtResource( 16 )
-flip_h = true
-
-[node name="RedP" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 194, 610.421 )
-scale = Vector2( 1.51, 1.5275 )
-texture = ExtResource( 15 )
-flip_h = true
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 visible = false
@@ -573,7 +574,7 @@ visible = false
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 41 )]
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 44 )]
-polygon = PoolVector2Array( -178, 14, 256, -140, 172, -171, 255, -209, 351, -172, 660, -284, 754, -247, 846, -285, 936, -253, 839, -218, 923, -202, 919, -159, 610, -57, 720, -19, 626, 16, 534, -19, 152, 130, 5, 79, -57, 101, -116, 80, -55, 57 )
+polygon = PoolVector2Array( -273, -21, -211, -46, 59, -142, 592, -325, 970, -173, 126, 122, 5, 79, -57, 101, -116, 80, -55, 57 )
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 45 )]
 position = Vector2( 431, 91 )
@@ -584,15 +585,6 @@ direction = Vector2( -1, 1 )
 position = Vector2( 327, -134 )
 door_name = "CherryTrail3_4"
 direction = Vector2( -1, -1 )
-
-[node name="Bouncy" type="Area2D" parent="CollisionRoot"]
-position = Vector2( 1583, 48 )
-script = ExtResource( 9 )
-height = 45.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Bouncy"]
-position = Vector2( 20, 9 )
-polygon = PoolVector2Array( -192, -52, -183, -58, -165, -60, -151, -58, -140, -53, -137, -45, -142, -39, -152, -35, -167, -34, -184, -36, -192, -43 )
 
 [node name="Needlepoint Path" parent="." instance=ExtResource( 43 )]
 visible = false
@@ -657,5 +649,4 @@ polygon = PoolVector2Array( -85.6499, -125.25, -48.6499, -118.25, -39.6499, -103
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 2276, 1175 )
 
-[connection signal="bouncy" from="CollisionRoot/Bouncy" to="YSort/MiddleGround/Spring" method="_on_Bouncy_bouncy"]
 [connection signal="item_get" from="Item_Interact" to="Camera2D" method="_on_Item_Interact_item_get"]
