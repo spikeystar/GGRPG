@@ -1,6 +1,6 @@
 extends Area2D
 
-var area_height
+var area_height : int
 var player_height
 var able = false
 var inside = false
@@ -20,15 +20,21 @@ func _ready():
 func _process(delta):
 	player_height = int(PlayerManager.player_motion_root.pos_z)
 	
-	if not PlayerManager.freeze and not PlayerManager.jumping and player_height == area_height:
+	if not PlayerManager.freeze and not PlayerManager.jumping and player_height == area_height and not PlayerManager.floating:
 		able = true
+		
+	if not player_height == area_height:
+		able = false
 	
 	if able and inside:
 		emit_signal("destruct")
-		
+
 
 func _on_Area2D_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root:
 		inside = true
 		
-	
+func _on_Area2D_body_exited(body):
+	if "is_player_motion_root" in body and body.is_player_motion_root:
+		inside = false
+		able = false

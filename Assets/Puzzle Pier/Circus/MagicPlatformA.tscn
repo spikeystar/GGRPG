@@ -37,12 +37,48 @@ tracks/2/path = NodePath("Platform:use_collision")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Poof:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Poof:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 18 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Poof:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.6, 1.6 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -98,7 +134,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.8 ]
+"values": [ 0.6 ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -119,12 +155,62 @@ tracks/3/path = NodePath("Platform:use_collision")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "update_collision"
+} ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Poof:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Poof:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 18, 19, 20, 21, 22, 23 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Poof:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1.6, 1.6 ), Vector2( 1.2, 1.2 ) ]
 }
 
 [node name="MagicPlatformA" type="Node2D"]
@@ -144,6 +230,7 @@ preview_collision_box = false
 animation_hframes = 4
 use_transparency = true
 always_update = true
+magic = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "phase_in"
@@ -153,8 +240,8 @@ anims/phase_out = SubResource( 3 )
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false
-position = Vector2( -7, 7 )
-scale = Vector2( 1.4, 1.4 )
+position = Vector2( -5, -46 )
+scale = Vector2( 1.6, 1.6 )
 z_index = 4096
 texture = ExtResource( 2 )
 hframes = 9
@@ -162,12 +249,14 @@ vframes = 3
 frame = 18
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
+position = Vector2( -1, -7 )
 script = ExtResource( 4 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-position = Vector2( -1, 0 )
-polygon = PoolVector2Array( -74, -36, -13, -66, 67, -37, 3, -7 )
+position = Vector2( -4, 3 )
+scale = Vector2( 1.24106, 1.17385 )
+polygon = PoolVector2Array( -95.0802, -23.853, 0.805764, -74.9667, 96.6917, -33.2239, 4.83459, 17.8898 )
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_Area2D_body_exited"]
 [connection signal="destruct" from="Area2D" to="." method="_on_Area2D_destruct"]

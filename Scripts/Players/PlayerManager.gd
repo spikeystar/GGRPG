@@ -15,6 +15,7 @@ var jumping = false
 var ouch = false
 var drown = false
 var bouncy = false
+var floating = false
 var jump_disabled = false
 var cutscene = false
 var pause_delay = false

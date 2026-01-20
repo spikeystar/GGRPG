@@ -5,6 +5,7 @@ export var bottom : float = -128
 
 export var floating = false
 export var flowing = false
+export var magic = false
 
 var vel : Vector3;
 var velocity

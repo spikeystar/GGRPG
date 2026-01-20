@@ -87,6 +87,7 @@ export var bubble_flower: bool = false
 
 export var floating = false
 export var flowing = false
+export var magic = false
 
 var vel : Vector3;
 #------------#
@@ -431,6 +432,7 @@ func _generate_collider():
 		collision_body.set_script(collision_body_script)
 		collision_body.floating = floating
 		collision_body.flowing = flowing
+		collision_body.magic = magic
 		add_child(collision_body)
 	
 	if floor_notify_area == null or not weakref(floor_notify_area).get_ref():
@@ -439,6 +441,7 @@ func _generate_collider():
 		floor_notify_area.set_script(floor_setter_script)
 		floor_notify_area.floating = floating
 		floor_notify_area.flowing = flowing
+		floor_notify_area.magic = magic
 		add_child(floor_notify_area)
 	
 	if collision_body_shape != null:

@@ -5,6 +5,7 @@ export var height : float = 0 setget _set_height
 
 export var floating = false
 export var flowing = false
+export var magic = false
 
 var vel : Vector3;
 var velocity

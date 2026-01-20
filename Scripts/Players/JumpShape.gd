@@ -18,6 +18,7 @@ var popped = false
 var ascending = false
 
 var flowing = false
+var magic = false
 var velocity : Vector2
 
 var is_player_jump_shape = true
@@ -74,8 +75,10 @@ func update_floor():
 				return
 			if f.floating and int(f.height) == int(pos_z):
 				ascending = true
+				PlayerManager.floating = true
 			if not f.floating and int(f.height) == int(pos_z):
 				ascending = false
+				PlayerManager.floating = false
 				
 		if "flowing" in f and not PlayerManager.drown and not PlayerManager.ouch:
 			if PlayerManager.drown or PlayerManager.ouch:
@@ -85,6 +88,14 @@ func update_floor():
 				velocity = f.velocity
 			if not f.flowing and int(f.height) == int(pos_z):
 				flowing = false
+				
+		if "magic" in f and not PlayerManager.drown and not PlayerManager.ouch:
+			if PlayerManager.drown or PlayerManager.ouch:
+				return
+			if f.magic and int(f.height) == int(pos_z):
+				magic = true
+			if not f.magic and int(f.height) == int(pos_z):
+				magic = false
 		
 		if f.bottom <= pos_z:
 			floor_z = max(floor_z, f.height)
@@ -138,6 +149,9 @@ func _physics_process(delta):
 		gravity = 935
 		
 	if ascending:
+		jump_velocity = 420
+		
+	if magic:
 		jump_velocity = 420
 	
 	if Input.is_action_just_pressed("ui_push") and is_on_ground and not freeze and not jumping and not cutscene and not loading:

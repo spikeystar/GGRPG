@@ -8,6 +8,7 @@ var motion_root = null
 
 var floating = false
 var flowing = false
+var magic = false
 
 var vel : Vector3;
 var velocity
