@@ -29,6 +29,8 @@ func _process(delta):
 	$Ledge.update_velocity()
 	move_and_slide(velocity)
 	$Ledge._generate_meshes()
+	#$Shadow.global_position = global_position + Vector2(0, -(height + floor_height))
+	$Shadow.global_position = global_position + Vector2(0, (floor_height))
 	
 	if trapeze:
 		trapeze_movement()

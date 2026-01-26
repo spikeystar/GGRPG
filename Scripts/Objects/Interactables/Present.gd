@@ -217,7 +217,7 @@ func set_item():
 	
 	if item_name == "Delicious Cake":
 		$ItemUsage/Item.frame = 45
-		$ItemUsage/Item.position = Vector2(0, 0)
+		$ItemUsage/Item.position = Vector2(-2, 0)
 		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
 		item_get()
 	

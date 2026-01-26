@@ -1,7 +1,6 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Red Circus Tile.png" type="Texture" id=1]
-[ext_resource path="res://Assets/General/Shadows/rectangle shadow small.png" type="Texture" id=2]
 [ext_resource path="res://Assets/General/Tiles/Blue Circus Tile.png" type="Texture" id=3]
 [ext_resource path="res://Assets/General/Tiles/Yellow Circus Tile.png" type="Texture" id=4]
 [ext_resource path="res://Assets/General/Tiles/Purple Circus Tile.png" type="Texture" id=5]
@@ -148,27 +147,53 @@ script = ExtResource( 9 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Shadows" type="Node2D" parent="YSort"]
-visible = false
+
+[node name="SquareShadow" type="Sprite" parent="YSort/Shadows"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( -150, 13 )
+rotation = -0.00808621
+scale = Vector2( 0.779632, 0.724024 )
+texture = ExtResource( 17 )
+
+[node name="SquareShadow2" type="Sprite" parent="YSort/Shadows"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 202, 83 )
+rotation = -0.0597342
+scale = Vector2( 0.779632, 0.724024 )
+texture = ExtResource( 17 )
+
+[node name="SquareShadow3" type="Sprite" parent="YSort/Shadows"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 658, -270 )
+rotation = -0.0250122
+scale = Vector2( 0.80741, 0.731991 )
+texture = ExtResource( 17 )
+
+[node name="SquareShadow4" type="Sprite" parent="YSort/Shadows"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 889, -188 )
+rotation = -0.0250122
+scale = Vector2( 0.80741, 0.731991 )
+texture = ExtResource( 17 )
+
+[node name="SquareShadow5" type="Sprite" parent="YSort/Shadows"]
+self_modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( 889, -162 )
+rotation = -0.0250122
+scale = Vector2( 0.80741, 0.731991 )
+texture = ExtResource( 17 )
 
 [node name="CircleShadowSmall" type="Sprite" parent="YSort/Shadows"]
 self_modulate = Color( 1, 1, 1, 0.666667 )
-position = Vector2( -51, -272 )
+position = Vector2( 195, -109 )
 scale = Vector2( 0.875301, 0.941929 )
 texture = ExtResource( 14 )
 
-[node name="RectangleShadowSmall" type="Sprite" parent="YSort/Shadows"]
-self_modulate = Color( 1, 1, 1, 0.568627 )
-position = Vector2( 2181, 793 )
-rotation = -0.0312647
-scale = Vector2( 1.29051, 1.57289 )
-texture = ExtResource( 2 )
-
-[node name="SquareShadow" type="Sprite" parent="YSort/Shadows"]
-self_modulate = Color( 1, 1, 1, 0.333333 )
-position = Vector2( 1270, 333 )
-rotation = 0.0987094
-scale = Vector2( 2.39921, 1.93583 )
-texture = ExtResource( 17 )
+[node name="CircleShadowSmall2" type="Sprite" parent="YSort/Shadows"]
+self_modulate = Color( 1, 1, 1, 0.666667 )
+position = Vector2( 387, -174 )
+scale = Vector2( 0.875301, 0.941929 )
+texture = ExtResource( 14 )
 
 [node name="Background" type="Node2D" parent="YSort"]
 z_index = -20

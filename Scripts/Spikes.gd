@@ -31,7 +31,9 @@ func _process(delta):
 		_on_touch_area()
 		
 	if PlayerManager.ouch or PlayerManager.drown:
-		$CollisionPolygon2D.disabled = true
+		pass
+		#$CollisionPolygon2D.disabled = true
+		#$CollisionPolygon2D.set_deferred("disabled", true)
 		
 
 func _on_body_entered(body):

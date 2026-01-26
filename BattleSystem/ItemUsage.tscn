@@ -135,11 +135,10 @@ z_index = 4096
 texture = ExtResource( 2 )
 hframes = 3
 vframes = 32
-frame = 39
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false
-position = Vector2( 2, 3.57628e-07 )
+position = Vector2( -1, 0 )
 scale = Vector2( 1.05, 1.05 )
 z_index = 4096
 texture = ExtResource( 1 )

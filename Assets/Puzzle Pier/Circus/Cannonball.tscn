@@ -1,0 +1,154 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/Spikes.gd" type="Script" id=1]
+[ext_resource path="res://Assets/General/Basic Poof SS.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/PlayerDetection.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Objects/Projectile.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Cannonball A.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Poof:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Poof:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Projectile:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "destruct"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Poof:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Poof:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Projectile:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "delete"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 130.0
+
+[node name="Projectile" type="YSort"]
+scale = Vector2( 0.8, 0.8 )
+z_index = 5
+script = ExtResource( 5 )
+
+[node name="Projectile" type="Sprite" parent="."]
+position = Vector2( 1, -35 )
+scale = Vector2( 1.35, 1.37 )
+texture = ExtResource( 6 )
+
+[node name="Poof" type="Sprite" parent="."]
+visible = false
+position = Vector2( 3.75, -33.75 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/destruct = SubResource( 2 )
+
+[node name="Ouch" type="Area2D" parent="."]
+position = Vector2( -106.25, -66.25 )
+scale = Vector2( 1, 1 )
+collision_layer = 5
+collision_mask = 7
+script = ExtResource( 1 )
+target_scene = "res://Areas/Kugi Canyon/Kugi Canyon 3.tscn"
+exit_name = "Entrance"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ouch"]
+modulate = Color( 1, 1, 1, 0.254902 )
+position = Vector2( 106, 30.75 )
+scale = Vector2( 0.186655, 0.177925 )
+shape = SubResource( 3 )
+
+[node name="PlayerDetection" parent="." instance=ExtResource( 4 )]
+position = Vector2( 5.74997, 11.75 )
+collision_layer = 0
+collision_mask = 7
+script = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+modulate = Color( 1, 1, 1, 0.254902 )
+position = Vector2( -6, -47.25 )
+scale = Vector2( 0.192611, 0.184794 )
+shape = SubResource( 3 )
+disabled = true
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_PlayerDetection_body_entered"]

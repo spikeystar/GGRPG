@@ -5,7 +5,9 @@ extends Node2D
 # var a = 2
 # var b = "text"
 export var floor_height : int
+export var no_shadow = false
 var used = false
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,6 +15,9 @@ func _ready():
 	$Area2D.area_height = $Platform.height + floor_height
 	$Platform.floor_height = floor_height
 	$Poof.global_position += Vector2(0, -(floor_height))
+	
+	if no_shadow:
+		$SquareShadow.modulate.a = 0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
