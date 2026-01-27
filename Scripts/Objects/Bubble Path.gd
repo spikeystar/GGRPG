@@ -5,6 +5,8 @@ export var spawn_time : float
 
 export var follower : PackedScene
 
+export var cannon = false
+
 func _process(delta):
 	timer = timer + delta
 	
@@ -13,3 +15,7 @@ func _process(delta):
 		new_follower.global_position = $SpawnPosition.position
 		add_child(new_follower)
 		timer = 0
+		
+		if cannon:
+			$Poof/AnimationPlayer.play("spawn")
+			SE.effect("Drama Thud")

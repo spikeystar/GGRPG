@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Assets/Puzzle Pier/Circus/M Ledge.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Bouncy.gd" type="Script" id=2]
@@ -45,6 +45,8 @@
 [ext_resource path="res://Assets/General/Projectile_Path.tscn" type="PackedScene" id=43]
 [ext_resource path="res://Enemies/Circus/Kaboom_post_F.tscn" type="PackedScene" id=44]
 [ext_resource path="res://Enemies/Circus/Kaboom_post_B.tscn" type="PackedScene" id=45]
+[ext_resource path="res://Scripts/Rendering/DepthTestTileMap.gd" type="Script" id=46]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Cannon_Poof.tscn" type="PackedScene" id=47]
 
 [sub_resource type="TileSet" id=1]
 0/name = "wood tile a.png 0"
@@ -229,6 +231,8 @@ cell_size = Vector2( 62, 22 )
 centered_textures = true
 format = 1
 tile_data = PoolIntArray( -3145728, 3, 0, -3145727, 4, 0, -3080192, 4, 0, -3080191, 3, 0, -3014656, 3, 0, -3014655, 4, 0, -2883589, 3, 0, -2883588, 4, 0, -2883587, 3, 0, -2883586, 4, 0, -2883585, 3, 0, -2949120, 4, 0, -2949119, 3, 0, -2949118, 4, 0, -2949117, 3, 0, -2949116, 4, 0, -2818053, 4, 0, -2818052, 3, 0, -2818051, 4, 0, -2818050, 3, 0, -2818049, 4, 0, -2883584, 3, 0, -2883583, 4, 0, -2883582, 3, 0, -2883581, 4, 0, -2883580, 3, 0, -2752517, 3, 0, -2752516, 4, 0, -2752515, 3, 0, -2752514, 4, 0, -2752513, 3, 0, -2818048, 4, 0, -2818047, 3, 0, -2818046, 4, 0, -2818045, 3, 0, -2818044, 4, 0, -2686981, 4, 0, -2686980, 3, 0, -2686979, 4, 0, -2686978, 3, 0, -2686977, 4, 0, -2752512, 3, 0, -2752511, 4, 0, -2752510, 3, 0, -2752509, 4, 0, -2752508, 3, 0, -2686975, 3, 0, -2686974, 4, 0, -2621439, 4, 0, -2621438, 3, 0, -2555903, 3, 0, -2555902, 4, 0, -2490367, 4, 0, -2490366, 3, 0, -2424831, 3, 0, -2424830, 4, 0, -2359295, 4, 0, -2359294, 3, 0, -2293749, 4, 0, -2293748, 3, 0, -2228213, 3, 0, -2228212, 4, 0, -2162687, 3, 0, -2162686, 4, 0, -2097151, 4, 0, -2097150, 3, 0, -2031615, 3, 0, -2031614, 4, 0, -1966069, 4, 0, -1966068, 3, 0, -1835020, 3, 0, -1835019, 4, 0, -1835018, 3, 0, -1835015, 3, 0, -1835014, 4, 0, -1900533, 3, 0, -1900532, 4, 0, -1769484, 4, 0, -1769483, 3, 0, -1769482, 4, 0, -1769479, 4, 0, -1769478, 3, 0, -1835007, 4, 0, -1835006, 3, 0, -1769471, 3, 0, -1769470, 4, 0, -1572863, 4, 0, -1572862, 3, 0, -1507327, 3, 0, -1507326, 4, 0, -1507317, 4, 0, -1507316, 3, 0, -1441781, 3, 0, -1441780, 4, 0, -1245173, 4, 0, -1245172, 3, 0, -1114121, 3, 0, -1114120, 4, 0, -1179637, 3, 0, -1179636, 4, 0, -1048585, 4, 0, -1048584, 3, 0, -1048575, 4, 0, -1048574, 3, 0, -983039, 3, 0, -983038, 4, 0, -786431, 3, 0, -786430, 4, 0, -720895, 4, 0, -720894, 3, 0, -655349, 4, 0, -655348, 3, 0, -524298, 3, 0, -524297, 4, 0, -589813, 3, 0, -589812, 4, 0, -458762, 4, 0, -458761, 3, 0, -524287, 4, 0, -524286, 3, 0, -458751, 3, 0, -458750, 4, 0, -393215, 4, 0, -393214, 3, 0, -196607, 3, 0, -196606, 4, 0, -131071, 4, 0, -131070, 3, 0, -65535, 3, 0, -65534, 4, 0, 1, 4, 0, 2, 3, 0, 65537, 3, 0, 65538, 4, 0, 131072, 3, 0, 131073, 4, 0, 131074, 3, 0, 131075, 4, 0, 196608, 4, 0, 196609, 3, 0, 196610, 4, 0, 196611, 3, 0, 262144, 3, 0, 262145, 4, 0, 262146, 3, 0, 262147, 4, 0 )
+script = ExtResource( 46 )
+height = 150.0
 
 [node name="MiddleGround" type="Node2D" parent="YSort"]
 
@@ -256,34 +260,8 @@ position = Vector2( 1372, -198 )
 [node name="Spring" parent="YSort/MiddleGround" instance=ExtResource( 36 )]
 position = Vector2( 463, -399 )
 
-[node name="Box C" parent="YSort/MiddleGround" instance=ExtResource( 25 )]
-position = Vector2( -150, 12 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 64, 27 )
-grid_size = Vector2( 0.8, 0.74 )
-texture = ExtResource( 18 )
-texture_scale = Vector2( 0.85, 0.85 )
-texture_offset = Vector2( 0, 1 )
-height = 30.0
-preview_collision_box = false
-
 [node name="Box A" parent="YSort/MiddleGround" instance=ExtResource( 25 )]
-position = Vector2( 660, -271 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 64, 27 )
-grid_size = Vector2( 0.8, 0.74 )
-texture = ExtResource( 11 )
-texture_scale = Vector2( 0.85, 0.85 )
-texture_offset = Vector2( 0, 1 )
-height = 30.0
-preview_collision_box = false
-
-[node name="Box A2" parent="YSort/MiddleGround" instance=ExtResource( 25 )]
-position = Vector2( 210, 85 )
+position = Vector2( 1187, -494 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -296,7 +274,7 @@ height = 30.0
 preview_collision_box = false
 
 [node name="Box B" parent="YSort/MiddleGround" instance=ExtResource( 25 )]
-position = Vector2( 899, -185 )
+position = Vector2( 1098, -464 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -309,7 +287,7 @@ height = 30.0
 preview_collision_box = false
 
 [node name="Box C2" parent="YSort/MiddleGround" instance=ExtResource( 25 )]
-position = Vector2( 896, -161 )
+position = Vector2( 1145, -481 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -348,13 +326,13 @@ height = 150.0
 preview_collision_box = false
 
 [node name="MagicPlatformA2" parent="YSort/MiddleGround" instance=ExtResource( 41 )]
-position = Vector2( 612, -70 )
-floor_height = 80
+position = Vector2( 595, -18 )
+floor_height = 100
 no_shadow = true
 
 [node name="MagicPlatformA3" parent="YSort/MiddleGround" instance=ExtResource( 41 )]
-position = Vector2( 740, -255 )
-floor_height = 80
+position = Vector2( 741, -159 )
+floor_height = 100
 no_shadow = true
 
 [node name="M Ledge" parent="YSort/MiddleGround" instance=ExtResource( 25 )]
@@ -373,8 +351,12 @@ preview_collision_box = false
 [node name="ProjectileMaster" type="Node2D" parent="YSort/MiddleGround"]
 
 [node name="Projectile_Path" parent="YSort/MiddleGround/ProjectileMaster" instance=ExtResource( 43 )]
-position = Vector2( -446, -293 )
+position = Vector2( -57, -128 )
 follower = ExtResource( 42 )
+cannon = true
+
+[node name="Poof" parent="YSort/MiddleGround/ProjectileMaster/Projectile_Path" instance=ExtResource( 47 )]
+position = Vector2( 3, -25 )
 
 [node name="Cannonball" parent="YSort/MiddleGround/ProjectileMaster/Projectile_Path" instance=ExtResource( 42 )]
 speed = 100
@@ -437,52 +419,57 @@ flip_h = true
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 37 )]
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
-polygon = PoolVector2Array( -87, 68, 69, 14, 131, 35, -24, 92, 4, 103, -88, 137, -209, 90, -118, 58 )
-height = 80.0
+polygon = PoolVector2Array( -87, 68, 74, 11, 137, 34, -24, 92, 4, 103, -88, 137, -209, 90, -118, 58 )
+height = 120.0
+
+[node name="NavmeshLayer11" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
+position = Vector2( 1266, -427 )
+polygon = PoolVector2Array( -24, 24, -208, -44, -82, -88, 74, -33, 167, -67, 231, -43, 139, -9, 231, 24, 104, 69, 45, 47, -144, 113, -209, 90 )
+height = 120.0
 
 [node name="NavmeshLayer2" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
 position = Vector2( 308, -106 )
-polygon = PoolVector2Array( -85, 65, -24, 87, -115, 120, -177, 97 )
-height = 80.0
+polygon = PoolVector2Array( -83, 62, -19, 87, -118, 124, -184, 100 )
+height = 120.0
 
 [node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
 position = Vector2( 463, -161 )
-polygon = PoolVector2Array( -117, 77, -56, 98, -115, 120, -177, 97 )
-height = 80.0
+polygon = PoolVector2Array( -114, 75, -50, 98, -117, 123, -181, 98 )
+height = 120.0
 
 [node name="NavmeshLayer4" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
 position = Vector2( 587, -205 )
-polygon = PoolVector2Array( -117, 77, -54, 98, -115, 120, -177, 98 )
-height = 80.0
+polygon = PoolVector2Array( -115, 76, -51, 98, -117, 123, -182, 98 )
+height = 120.0
 
 [node name="NavmeshLayer5" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
 position = Vector2( 835, -294 )
-polygon = PoolVector2Array( -117, 77, -54, 98, -115, 120, -177, 98 )
-height = 80.0
+polygon = PoolVector2Array( -117, 76, -51, 99, -116, 123, -181, 99 )
+height = 120.0
 
 [node name="NavmeshLayer6" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
 position = Vector2( 960, -337 )
-polygon = PoolVector2Array( -117, 77, -54, 98, -115, 120, -177, 98 )
-height = 80.0
+polygon = PoolVector2Array( -117, 75, -51, 98, -117, 123, -182, 98 )
+height = 120.0
 
 [node name="NavmeshLayer7" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
 position = Vector2( 741, -437 )
-polygon = PoolVector2Array( -117, 77, -54, 98, -115, 120, -177, 98 )
-height = 80.0
+polygon = PoolVector2Array( -114, 76, -51, 99, -116, 124, -179, 100 )
+height = 120.0
 
 [node name="NavmeshLayer8" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
 position = Vector2( 615, -475 )
-polygon = PoolVector2Array( -140, 60, -52, 93, -114, 115, -204, 81 )
-height = 80.0
+polygon = PoolVector2Array( -140, 60, -47, 93, -114, 117, -208, 83 )
+height = 120.0
 
 [node name="NavmeshLayer9" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
 position = Vector2( 1117, -378 )
-polygon = PoolVector2Array( -119, 63, -58, 83, -150, 117, -212, 95 )
-height = 80.0
+polygon = PoolVector2Array( -119, 61, -54, 83, -150, 119, -214, 95 )
+height = 120.0
 
 [node name="NavmeshLayer10" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
-polygon = PoolVector2Array( -100, -369, 350, -631, 494, -619, 1063, -452, 1072, -468, 1183, -503, 1339, -455, 1427, -489, 1482, -471, 1393, -438, 1494, -405, 1374, -348, 1501, -252, 1343, -23, 463, 239, 4, 103, -88, 137, -209, 90, -118, 58, -224, -171 )
-height = 80.0
+visible = false
+polygon = PoolVector2Array( -100, -369, 350, -631, 494, -619, 1064, -455, 1072, -468, 1183, -503, 1339, -455, 1427, -489, 1482, -471, 1393, -438, 1494, -405, 1374, -348, 1501, -252, 1343, -23, 463, 239, 46, 201, -85, 189, -243, 129, -353, 41, -224, -171 )
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 39 )]
 position = Vector2( 431, 91 )
@@ -493,6 +480,11 @@ direction = Vector2( -1, 1 )
 position = Vector2( 327, -134 )
 door_name = "CherryTrail3_4"
 direction = Vector2( -1, -1 )
+
+[node name="PlayerSpawnFromCherryTrail3" parent="CollisionRoot" instance=ExtResource( 39 )]
+position = Vector2( -100, 90 )
+direction = Vector2( -1, -1 )
+height = 120
 
 [node name="Bouncy" type="Area2D" parent="CollisionRoot"]
 position = Vector2( 1583, 48 )

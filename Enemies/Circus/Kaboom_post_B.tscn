@@ -58,7 +58,7 @@ collision_layer = 3
 collision_mask = 6
 collision/safe_margin = 0.5
 script = ExtResource( 7 )
-spawn_z = 40
+spawn_z = 120
 
 [node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 5 )]
 position = Vector2( 56, 44 )
@@ -86,7 +86,7 @@ texture = ExtResource( 1 )
 script = ExtResource( 3 )
 alpha_clip = 0.01
 always_update = true
-height = 40.0
+height = 125.0
 use_dithering = false
 use_dither_blending = false
 use_transparency = true
@@ -101,8 +101,8 @@ vframes = 3
 frame = 2
 script = ExtResource( 2 )
 depth_test_offset = Vector2( -8, 28 )
-feet_height = 10.0
-height = 40.0
+feet_height = 110.0
+height = 120.0
 use_dithering = false
 use_dither_blending = false
 
