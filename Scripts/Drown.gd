@@ -5,6 +5,7 @@ var transitioning = false
 var player_height
 export var floating = false
 export var flowing = false
+export var abyss = false
 
 var vel : Vector3;
 var velocity
@@ -63,7 +64,10 @@ func _on_touch_area():
 		Global.door_name = exit_name
 		body_check = false
 		transitioning = true
-		SE.effect("Drown 2")
+		if abyss:
+			SE.effect("Fall")
+		if not abyss:
+			SE.effect("Drown 2")
 		PlayerManager.drown = true
 		disconnect("body_entered", self, "_on_body_entered")
 		PlayerManager.freeze = true

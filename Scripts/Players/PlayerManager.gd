@@ -53,6 +53,7 @@ func remove_player_from_scene():
 		# Collision object RIDs can be reused when switching scenes,
 		# need to clean up these exceptions or you get weird bugs where player doesn't collide with random shapes
 		player_instance.motion_root.floor_layers = []
+		
 		for collision_exception in player_instance.motion_root.get_collision_exceptions():
 			player_instance.motion_root.remove_collision_exception_with(collision_exception)
 		

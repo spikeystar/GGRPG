@@ -294,10 +294,10 @@ __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 61, 25 )
-grid_size = Vector2( 2.5, 2.3 )
+grid_size = Vector2( 2.5, 2.5 )
 texture = ExtResource( 1 )
 texture_scale = Vector2( 0.95, 0.95 )
-texture_offset = Vector2( 1, 3 )
+texture_offset = Vector2( 1, 2 )
 height = 30.0
 preview_collision_box = false
 animation_hframes = 4

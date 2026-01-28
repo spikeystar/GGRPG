@@ -295,6 +295,12 @@ func _physics_process(delta):
 #---------#
 # Methods #
 #---------#
+func destroy_collisions():
+	collision_body.queue_free()
+	collision_body_shape.queue_free()
+	floor_notify_area.queue_free()
+	floor_notify_area_shape.queue_free()
+	
 
 func _initialize_nodes():
 	for child in get_children():

@@ -2,9 +2,9 @@
 
 [ext_resource path="res://Scripts/Spikes.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Basic Poof SS.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Cannonball B.png" type="Texture" id=3]
 [ext_resource path="res://Enemies/PlayerDetection.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/Objects/Projectile.gd" type="Script" id=5]
-[ext_resource path="res://Assets/Puzzle Pier/Circus/Cannonball A.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -243,8 +243,9 @@ z_index = 5
 script = ExtResource( 5 )
 
 [node name="Projectile" type="Sprite" parent="."]
+modulate = Color( 0.98, 0.9702, 0.98, 1 )
 position = Vector2( 1, -35 )
-texture = ExtResource( 6 )
+texture = ExtResource( 3 )
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false

@@ -197,6 +197,7 @@ pitch_scale = 1.1
 
 [node name="Fall" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 25 )
+volume_db = 6.0
 
 [node name="Flee" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 26 )
