@@ -27,7 +27,7 @@ var body_check = false
 
 func _ready():
 	SceneManager.counter = 0
-	yield(get_tree().create_timer(0.5), "timeout")
+	#yield(get_tree().create_timer(0.5), "timeout")
 	connect("body_entered", self, "_on_body_entered")
 	connect("body_exited", self, "_on_body_exited")
 	position.y += height

@@ -1,12 +1,26 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://Scripts/Spikes.gd" type="Script" id=1]
-[ext_resource path="res://Assets/General/Basic Poof SS.png" type="Texture" id=2]
-[ext_resource path="res://Assets/Puzzle Pier/Circus/Cannonball B.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/Objects/Projectile.gd" type="Script" id=5]
-[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scripts/Objects/Projectile_MotionRoot.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Objects/Projectile.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Spikes.gd" type="Script" id=3]
+[ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=5]
+[ext_resource path="res://NPC/NPC_ShadowAreaCheck.gd" type="Script" id=6]
+[ext_resource path="res://Assets/General/Basic Poof SS.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Cannonball B.png" type="Texture" id=8]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="CircleShape2D" id=180]
+
+[sub_resource type="CircleShape2D" id=172]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id=181]
+radius = 170.199
+
+[sub_resource type="CircleShape2D" id=182]
+radius = 170.199
+
+[sub_resource type="Animation" id=183]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/path = NodePath("Poof:visible")
@@ -80,8 +94,20 @@ tracks/5/keys = {
 "update": 0,
 "values": [ true ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("BodyYSort/BodyVisualRoot/Sprite:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=184]
 resource_name = "destruct"
 length = 0.4
 tracks/0/type = "value"
@@ -159,132 +185,108 @@ tracks/5/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Projectile:visible")
+tracks/6/path = NodePath("BodyYSort/BodyVisualRoot/Sprite:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
-
-[sub_resource type="Animation" id=4]
-resource_name = "spawn"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Poof:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Poof:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Poof:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.5 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Poof:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 2, 2 ), Vector2( 1.4, 1.4 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("Poof:offset")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -1, 0 ) ]
-}
-
-[sub_resource type="CircleShape2D" id=3]
-radius = 170.199
 
 [node name="Projectile" type="YSort"]
-script = ExtResource( 5 )
-height = 120
+script = ExtResource( 2 )
+height = 130
+spawn_z = 130
 
-[node name="Projectile" parent="." instance=ExtResource( 6 )]
-position = Vector2( 0, 301 )
-texture = ExtResource( 3 )
-height = 40.0
-floor_height = 280.0
-preview_collision_box = false
-use_collision = false
-always_update = true
+[node name="MotionRoot" type="KinematicBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+collision/safe_margin = 0.5
+script = ExtResource( 1 )
+spawn_z = 130
 
-[node name="Poof" type="Sprite" parent="."]
-visible = false
-position = Vector2( 4, 0 )
-scale = Vector2( 2, 2 )
-z_index = 1
-texture = ExtResource( 2 )
-hframes = 4
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
+position = Vector2( 2, 0.0728853 )
+scale = Vector2( 1.42294, 0.314577 )
+shape = SubResource( 180 )
+disabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 1 )
-anims/destruct = SubResource( 2 )
-anims/spawn = SubResource( 4 )
+[node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
+position = Vector2( 1, 0 )
+script = ExtResource( 6 )
 
-[node name="Ouch" type="Area2D" parent="."]
+[node name="ShadowCheck" type="CollisionShape2D" parent="MotionRoot/ShadowAreaCheck"]
+position = Vector2( 1, 0 )
+shape = SubResource( 172 )
+
+[node name="Ouch" type="Area2D" parent="MotionRoot"]
+position = Vector2( 3, -25 )
 collision_layer = 0
 collision_mask = 5
-script = ExtResource( 1 )
+script = ExtResource( 3 )
 target_scene = "res://Areas/Puzzle Pier/Circus_4.tscn"
 height = 120.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ouch"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot/Ouch"]
 modulate = Color( 1, 1, 1, 0.254902 )
 position = Vector2( 0, 1 )
 scale = Vector2( 0.15685, 0.149126 )
-shape = SubResource( 3 )
+shape = SubResource( 181 )
 
-[node name="PlayerDetection" type="Area2D" parent="."]
+[node name="PlayerDetection" type="Area2D" parent="MotionRoot"]
+position = Vector2( 2, -25 )
 collision_layer = 0
 collision_mask = 5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot/PlayerDetection"]
 modulate = Color( 1, 1, 1, 0.254902 )
 position = Vector2( 7.10543e-15, 1 )
 scale = Vector2( 0.156004, 0.150738 )
-shape = SubResource( 3 )
+shape = SubResource( 182 )
 
-[connection signal="body_entered" from="PlayerDetection" to="." method="_on_PlayerDetection_body_entered"]
-[connection signal="body_exited" from="PlayerDetection" to="." method="_on_PlayerDetection_body_exited"]
+[node name="ShadowYSort" type="Node2D" parent="."]
+
+[node name="ShadowVisualRoot" type="Node2D" parent="ShadowYSort"]
+
+[node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
+modulate = Color( 1, 1, 1, 0.75 )
+position = Vector2( 3, -1 )
+scale = Vector2( 1.25253, 1.10018 )
+texture = ExtResource( 4 )
+script = ExtResource( 5 )
+alpha_clip = 0.01
+depth_test_offset = Vector2( 0, -30 )
+use_dithering = false
+use_dither_blending = false
+
+[node name="BodyYSort" type="Node2D" parent="."]
+
+[node name="BodyVisualRoot" type="Node2D" parent="BodyYSort"]
+
+[node name="Sprite" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
+modulate = Color( 0.972549, 0.988235, 1, 1 )
+position = Vector2( 3, -24 )
+texture = ExtResource( 8 )
+script = ExtResource( 5 )
+depth_test_offset = Vector2( -8, 28 )
+height = 280.0
+use_dithering = false
+use_dither_blending = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 183 )
+anims/destruct = SubResource( 184 )
+
+[node name="Poof" type="Sprite" parent="."]
+visible = false
+position = Vector2( 7, -25 )
+scale = Vector2( 2, 2 )
+z_index = 1
+texture = ExtResource( 7 )
+hframes = 4
+
+[connection signal="body_entered" from="MotionRoot/PlayerDetection" to="." method="_on_PlayerDetection_body_entered"]

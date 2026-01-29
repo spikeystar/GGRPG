@@ -37,7 +37,7 @@ func _on_Area2D_destruct():
 		timer.connect("timeout", self, "_on_timer_timeout")
 	
 func update_collision():
-	$Platform.use_collision = false
+	$Platform.remove_collision()
 	$Platform.set_use_collision(false)
 	$Platform._initialize_nodes()
 	

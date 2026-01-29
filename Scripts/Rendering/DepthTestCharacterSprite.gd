@@ -33,8 +33,10 @@ func _notification(what):
 
 func _ready():
 	is_ready = true
+	
 	_calculate_frame_size()
 	_generate_meshes()
+	
 
 func _enter_tree():
 	if is_ready:

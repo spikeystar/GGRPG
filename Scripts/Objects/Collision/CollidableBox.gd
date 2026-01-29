@@ -332,6 +332,9 @@ func _clear_depth_test_meshes():
 		Global.depth_buffer.remove_depth_test_mesh(depth_test_mesh)
 	depth_test_meshes = []
 
+func remove_collision():
+	PlayerManager.remove_collision(collision_body)
+
 func _queue_generate_touch_area():
 	if not is_queued_generate_touch_area:
 		is_queued_generate_touch_area = true

@@ -58,6 +58,9 @@ func remove_player_from_scene():
 			player_instance.motion_root.remove_collision_exception_with(collision_exception)
 		
 		add_child(player_instance)
+		
+func remove_collision(this_collision):
+	player_instance.motion_root.remove_collision_exception_with(this_collision)
 
 func add_player_to_scene():
 	var level_y_sort = get_tree().get_root().get_node_or_null("WorldRoot/YSort")
