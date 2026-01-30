@@ -14,8 +14,6 @@ func _process(delta):
 	if projectile:
 		if not $Projectile.stopped:
 			set_offset(get_offset() + speed * delta)
-		if $Projectile.dead:
-			self.queue_free()
 		
 			
 		

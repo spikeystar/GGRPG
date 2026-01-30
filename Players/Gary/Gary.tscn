@@ -784,6 +784,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 6 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=23]
 resource_name = "back_jump"
@@ -1060,6 +1072,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 8, -28 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=27]
 resource_name = "d_down_jump"
@@ -1192,6 +1216,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 8, -28 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=56]
@@ -1384,6 +1420,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 8, -28 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=25]
 resource_name = "d_up_jump"
@@ -1515,6 +1563,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 8, -28 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=57]
@@ -2903,6 +2963,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=24]
 resource_name = "front_jump"
@@ -3238,7 +3310,7 @@ tracks/5/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
-tracks/5/enabled = false
+tracks/5/enabled = true
 tracks/5/keys = {
 "times": PoolRealArray( 0.8, 0.9 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -3276,10 +3348,10 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = false
 tracks/8/keys = {
-"times": PoolRealArray( 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.8, 0.9, 0.901 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 2 ), ExtResource( 10 ) ]
+"values": [ ExtResource( 2 ), ExtResource( 10 ), ExtResource( 2 ) ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("BodyVisualRoot/Gary:position")
@@ -3328,6 +3400,20 @@ tracks/12/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, -8 ) ]
+}
+tracks/13/type = "method"
+tracks/13/path = NodePath("..")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shadow_update"
+} ]
 }
 
 [sub_resource type="Animation" id=249]
@@ -5089,6 +5175,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 9 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=26]
 resource_name = "side_jump"
@@ -5209,6 +5307,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 9 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=58]

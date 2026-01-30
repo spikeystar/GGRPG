@@ -7,7 +7,7 @@
 position = Vector2( -1, 4 )
 loop = false
 script = ExtResource( 1 )
-speed = 200
+speed = 170
 projectile = true
 
 [node name="Projectile" parent="." instance=ExtResource( 2 )]

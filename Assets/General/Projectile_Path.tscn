@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scripts/Objects/Bubble Path.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Objects/Projectile_Path.gd" type="Script" id=1]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -10,4 +10,4 @@ _data = {
 [node name="Projectile_Path" type="Path2D"]
 curve = SubResource( 1 )
 script = ExtResource( 1 )
-spawn_time = 4.0
+spawn_time = 3.0

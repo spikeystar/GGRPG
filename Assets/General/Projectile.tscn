@@ -106,6 +106,30 @@ tracks/6/keys = {
 "update": 0,
 "values": [ true ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("BodyYSort/BodyVisualRoot/Sprite:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.976471, 0.968627, 0.956863, 1 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("BodyYSort/BodyVisualRoot/Sprite:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=184]
 resource_name = "destruct"
@@ -196,18 +220,40 @@ tracks/6/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("BodyYSort/BodyVisualRoot/Sprite:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.976471, 0.968627, 0.956863, 1 ), Color( 0.976471, 0.968627, 0.956863, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("BodyYSort/BodyVisualRoot/Sprite:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.01, 0.01 ) ]
+}
 
 [node name="Projectile" type="YSort"]
 script = ExtResource( 2 )
-height = 130
-spawn_z = 130
+height = 120
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
 collision_layer = 0
 collision_mask = 0
 collision/safe_margin = 0.5
 script = ExtResource( 1 )
-spawn_z = 130
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
 position = Vector2( 2, 0.0728853 )
@@ -216,12 +262,15 @@ shape = SubResource( 180 )
 disabled = true
 
 [node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
+visible = false
 position = Vector2( 1, 0 )
 script = ExtResource( 6 )
 
 [node name="ShadowCheck" type="CollisionShape2D" parent="MotionRoot/ShadowAreaCheck"]
+visible = false
 position = Vector2( 1, 0 )
 shape = SubResource( 172 )
+disabled = true
 
 [node name="Ouch" type="Area2D" parent="MotionRoot"]
 position = Vector2( 3, -25 )
@@ -236,6 +285,7 @@ modulate = Color( 1, 1, 1, 0.254902 )
 position = Vector2( 0, 1 )
 scale = Vector2( 0.15685, 0.149126 )
 shape = SubResource( 181 )
+disabled = true
 
 [node name="PlayerDetection" type="Area2D" parent="MotionRoot"]
 position = Vector2( 2, -25 )
@@ -249,17 +299,20 @@ scale = Vector2( 0.156004, 0.150738 )
 shape = SubResource( 182 )
 
 [node name="ShadowYSort" type="Node2D" parent="."]
+visible = false
 
 [node name="ShadowVisualRoot" type="Node2D" parent="ShadowYSort"]
+visible = false
 
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
+visible = false
 modulate = Color( 1, 1, 1, 0.75 )
 position = Vector2( 3, -1 )
 scale = Vector2( 1.25253, 1.10018 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
 alpha_clip = 0.01
-depth_test_offset = Vector2( 0, -30 )
+depth_test_offset = Vector2( 0, 300 )
 use_dithering = false
 use_dither_blending = false
 
@@ -268,12 +321,11 @@ use_dither_blending = false
 [node name="BodyVisualRoot" type="Node2D" parent="BodyYSort"]
 
 [node name="Sprite" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
-modulate = Color( 0.972549, 0.988235, 1, 1 )
+modulate = Color( 0.976471, 0.968627, 0.956863, 1 )
 position = Vector2( 3, -24 )
 texture = ExtResource( 8 )
 script = ExtResource( 5 )
-depth_test_offset = Vector2( -8, 28 )
-height = 280.0
+depth_test_offset = Vector2( 0, 150 )
 use_dithering = false
 use_dither_blending = false
 
@@ -283,10 +335,11 @@ anims/destruct = SubResource( 184 )
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false
-position = Vector2( 7, -25 )
+position = Vector2( 6, -24 )
 scale = Vector2( 2, 2 )
 z_index = 1
 texture = ExtResource( 7 )
 hframes = 4
 
 [connection signal="body_entered" from="MotionRoot/PlayerDetection" to="." method="_on_PlayerDetection_body_entered"]
+[connection signal="body_exited" from="MotionRoot/PlayerDetection" to="." method="_on_PlayerDetection_body_exited"]

@@ -154,6 +154,7 @@ func _generate_meshes():
 		Vector2.ZERO
 	)
 	
+	
 	var top_mesh = depth_test_mesh_top.get_ref()
 	if top_mesh:
 		top_mesh.material_override.set_shader_param("alpha_clip", alpha_clip)
@@ -175,3 +176,4 @@ func _generate_meshes():
 		bottom_mesh.material_override.set_shader_param("sprite_flip_h", -1 if flip_h else 1)
 		bottom_mesh.material_override.set_shader_param("sprite_modulate", modulate * self_modulate)
 	was_flip_h = flip_h
+

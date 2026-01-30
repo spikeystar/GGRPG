@@ -122,8 +122,8 @@ func _physics_process(delta):
 		#$MotionRoot/CollisionShape2D.disabled = true
 		#$JumpShape/CollisionShape2D.disabled = true
 		
-		$MotionRoot/CollisionShape2D.set_deferred("disabled", true)
-		$JumpShape/CollisionShape2D.set_deferred("disabled", true)
+	#	$MotionRoot/CollisionShape2D.set_deferred("disabled", true)
+	#	$JumpShape/CollisionShape2D.set_deferred("disabled", true)
 		
 	if not ouch and not drown and not sleep and not cutscene:
 		anim_player.stop()
@@ -137,8 +137,8 @@ func _physics_process(delta):
 	#	$MotionRoot/CollisionShape2D.disabled = true
 	#	$JumpShape/CollisionShape2D.disabled = true
 		
-		$MotionRoot/CollisionShape2D.set_deferred("disabled", true)
-		$JumpShape/CollisionShape2D.set_deferred("disabled", true)
+		#$MotionRoot/CollisionShape2D.set_deferred("disabled", true)
+		#$JumpShape/CollisionShape2D.set_deferred("disabled", true)
 		
 		
 	if not sleep:
@@ -284,3 +284,5 @@ func back_hop_f():
 	anim_tree.active = false
 	anim_player.play("back_hop_f")
 
+func shadow_update():
+	shadow_sprite._generate_meshes()
