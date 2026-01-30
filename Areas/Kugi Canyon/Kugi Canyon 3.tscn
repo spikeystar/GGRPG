@@ -1199,7 +1199,6 @@ texture = ExtResource( 4 )
 texture_scale = Vector2( -1.75, 1.65 )
 texture_offset = Vector2( 0, 100 )
 height = 40.0
-preview_collision_box = false
 
 [node name="BaseLedge" parent="YSort/MiddleGround" instance=ExtResource( 40 )]
 modulate = Color( 0.988235, 0.988235, 0.952941, 1 )

@@ -252,6 +252,9 @@ func _exit_tree():
 		_clear_depth_test_meshes()
 
 func _physics_process(delta):
+	if PlayerManager.ouch and collision_body_shape != null and floor_notify_area_shape != null or PlayerManager.drown and collision_body_shape != null and floor_notify_area_shape != null:
+			for shape in [collision_body_shape, floor_notify_area_shape]:
+				shape.set_deferred("disabled", true)
 	
 	for mesh in meshes:
 		if mesh != null:

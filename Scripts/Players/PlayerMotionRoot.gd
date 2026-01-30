@@ -58,7 +58,7 @@ func update_floor():
 	ceiling_z = HIGHEST_Z
 	
 	for f in floor_layers:
-		if "floating" in f and not PlayerManager.drown and not PlayerManager.ouch:
+		if "floating" in f and not PlayerManager.drown and not PlayerManager.ouch and f != null:
 			if PlayerManager.drown or PlayerManager.ouch:
 				return
 			if f.floating and int(f.height) == int(pos_z):
@@ -66,7 +66,7 @@ func update_floor():
 			if not f.floating and int(f.height) == int(pos_z):
 				ascending = false
 				
-		if "flowing" in f and not PlayerManager.drown and not PlayerManager.ouch:
+		if "flowing" in f and not PlayerManager.drown and not PlayerManager.ouch and f != null:
 			if PlayerManager.drown or PlayerManager.ouch:
 				return
 			if f.flowing and int(f.height) == int(pos_z):
