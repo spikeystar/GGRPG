@@ -253,6 +253,9 @@ func _exit_tree():
 		_clear_depth_test_meshes()
 
 func _physics_process(delta):
+	if PlayerManager.ouch and collision_body_shape != null and floor_notify_area_shape != null or PlayerManager.drown and collision_body_shape != null and floor_notify_area_shape != null:
+			for shape in [collision_body_shape, floor_notify_area_shape]:
+				shape.set_deferred("disabled", true)
 	
 	for mesh in meshes:
 		if mesh != null:
@@ -442,6 +445,7 @@ func _generate_collider():
 		collision_body.floating = floating
 		collision_body.flowing = flowing
 		collision_body.magic = magic
+		
 		add_child(collision_body)
 	
 	if floor_notify_area == null or not weakref(floor_notify_area).get_ref():
@@ -823,6 +827,7 @@ func _generate_mesh(
 	texture_size: Vector2,
 	sort_position: Vector3
 ):
+	
 	# Generate y-sort container
 	var y_sort = Node2D.new()
 	y_sort.name = "COLLIDABLE_BOX_GENERATED_YSort"

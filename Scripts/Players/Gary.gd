@@ -128,8 +128,8 @@ func _physics_process(delta):
 	if not ouch and not drown and not sleep and not cutscene:
 		anim_player.stop()
 		anim_tree.active = true
-		$MotionRoot/CollisionShape2D.set_deferred("disabled", false)
-		$JumpShape/CollisionShape2D.set_deferred("disabled", false)
+		#$MotionRoot/CollisionShape2D.set_deferred("disabled", false)
+	#	$JumpShape/CollisionShape2D.set_deferred("disabled", false)
 		
 	if drown:
 		anim_tree.active = false
