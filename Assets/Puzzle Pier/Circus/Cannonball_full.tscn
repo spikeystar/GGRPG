@@ -1,13 +1,15 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Objects/Bubble Follow.gd" type="Script" id=1]
-[ext_resource path="res://Assets/General/Projectile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Cannonball_120.tscn" type="PackedScene" id=2]
 
 [node name="Cannonball" type="PathFollow2D"]
 position = Vector2( -1, 4 )
+rotate = false
+cubic_interp = false
 loop = false
 script = ExtResource( 1 )
-speed = 170
+speed = 220
 projectile = true
 
 [node name="Projectile" parent="." instance=ExtResource( 2 )]

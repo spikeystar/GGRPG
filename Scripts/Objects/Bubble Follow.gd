@@ -4,10 +4,14 @@ export var speed = 42
 
 export var projectile = false
 
+var flip
+
 func _ready():
-	rotation_degrees = 0
+	if projectile:
+		$Projectile.flip = flip
 	
-func _process(delta):
+func _physics_process(delta):
+	
 	if not projectile:
 		set_offset(get_offset() + speed * delta)
 		

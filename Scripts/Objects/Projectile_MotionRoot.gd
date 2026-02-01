@@ -35,8 +35,8 @@ var origin = Vector2()
 var initial_z
 var path = true
 
-
-
+var speed : float
+var end_position : Vector2
 
 
 func _ready():
@@ -49,7 +49,7 @@ func _physics_process(delta):
 	
 	is_on_ground = pos_z <= floor_z + 4
 	update_floor()
-
+	
 
 func update_floor():
 	floor_z = LOWEST_Z

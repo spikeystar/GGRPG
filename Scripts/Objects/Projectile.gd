@@ -36,8 +36,15 @@ var player_height
 const VEL_EPSILON = 0.1
 const VEL_ANIM_MAX = 30
 
-func _ready():
+var speed : float
+var end_position : Vector2
+
+var flip
+
+
+func _ready():	
 	pass
+	
 
 func _physics_process(delta):
 	player_height = int(PlayerManager.player_motion_root.pos_z)
@@ -58,8 +65,14 @@ func _physics_process(delta):
 	#$MotionRoot/PlayerDetection.global_position = motion_root.global_position #+ Vector2(0.0, -spawn_z)
 	#$MotionRoot/Ouch.global_position = motion_root.global_position #+ Vector2(0.0, -spawn_z)
 	
+	if flip:
+		body_sprite.flip_h = true
+	
 	body_sprite._generate_meshes()
+			
 		
+func update_meshes():
+	body_sprite._generate_meshes()
 
 func delete():
 	dead = true
@@ -69,23 +82,16 @@ func destruct():
 	stopped = true
 	$AnimationPlayer.play("destruct")
 
-func _on_PlayerDetection_body_entered(body):	
-	if "is_player_motion_root" in body and body.is_player_motion_root and not used and not dead and player_height == height or "is_player_motion_root" in body and body.is_player_motion_root and not used and not dead and player_height > (height) and player_height <= (height + 4):
-		$MotionRoot/Ouch._on_touch_area()
-		used = true
-		$AnimationPlayer.play("destruct")
-		stopped = true
-		
+func _on_PlayerDetection_body_entered(body):			
 	if "is_player_jump_shape" in body and body.is_player_jump_shape and not used and not dead and player_height == height or "is_player_jump_shape" in body and body.is_player_jump_shape and not used and not dead and player_height > (height) and player_height <= (height + 4):
-		$MotionRoot/Ouch._on_touch_area()
 		used = true
 		$AnimationPlayer.play("destruct")
 		stopped = true
-
-
-func _on_PlayerDetection_body_exited(body):
-	if "is_player_motion_root" in body and body.is_player_motion_root and used and not dead:
-		used = false
 		
+		if not PlayerManager.drown or not PlayerManager.ouch:
+			$MotionRoot/Ouch._on_touch_area()
+
+
+func _on_PlayerDetection_body_exited(body):		
 	if "is_player_jump_shape" in body and body.is_player_jump_shape and used and not dead:
 		used = false

@@ -6,6 +6,7 @@ export var speed : float
 
 export var follower : PackedScene
 
+
 func _ready():
 	spawn()
 
@@ -22,6 +23,8 @@ func spawn():
 	new_follower.end_position = $End.global_position
 	new_follower.speed = speed
 	add_child(new_follower)
+	
+	
 	#var direction = ($Spawn.position - $End.position).normalized()
 	#var distance = new_follower.position.distance_to(direction)
 	#var velocity = direction * min(speed, distance_to_target / delta)

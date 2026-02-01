@@ -4,7 +4,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -1, 4, 0, 0, 0, 0, 1374, 573 )
+"points": PoolVector2Array( 0, 0, 0, 0, -1, 4, 0, 0, 0, 0, 112.494, 54.3958, 0, 0, 0, 0, 1374, 573 )
 }
 
 [node name="Projectile_Path" type="Path2D"]
