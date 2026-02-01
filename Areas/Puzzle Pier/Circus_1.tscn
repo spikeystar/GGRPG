@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Red Circus Tile.png" type="Texture" id=1]
 [ext_resource path="res://Assets/General/Tiles/Blue Circus Tile.png" type="Texture" id=3]
@@ -17,8 +17,6 @@
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=16]
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=17]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=18]
-[ext_resource path="res://Scripts/Bouncy.gd" type="Script" id=19]
-[ext_resource path="res://Assets/Puzzle Pier/Circus/Spring.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scripts/Item_Interact.gd" type="Script" id=21]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=22]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Square.png" type="Texture" id=23]
@@ -306,9 +304,6 @@ scale = Vector2( 1.4, 1.3 )
 texture = ExtResource( 36 )
 
 [node name="MiddleGround" type="Node2D" parent="YSort"]
-
-[node name="Spring" parent="YSort/MiddleGround" instance=ExtResource( 20 )]
-position = Vector2( 1437, 53 )
 
 [node name="Box C" parent="YSort/MiddleGround" instance=ExtResource( 37 )]
 position = Vector2( -150, 12 )
@@ -717,31 +712,32 @@ texture = ExtResource( 28 )
 flip_h = true
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 10 )]
+visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 11 )]
 polygon = PoolVector2Array( -178, 14, 256, -140, 172, -171, 255, -209, 351, -172, 660, -284, 754, -247, 846, -285, 936, -253, 839, -218, 923, -202, 919, -159, 610, -57, 720, -19, 626, 16, 534, -19, 152, 130, 5, 79, -57, 101, -116, 80, -55, 57 )
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 12 )]
-position = Vector2( 431, 91 )
-door_name = "PivotTown1_PivotTown2"
-direction = Vector2( -1, 1 )
+position = Vector2( -38, 71 )
+door_name = "PuzzlePier1_Circus1"
+direction = Vector2( 1, 1 )
 
 [node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 12 )]
-position = Vector2( 327, -134 )
-door_name = "CherryTrail3_4"
+position = Vector2( 324, -138 )
+door_name = "ObstacleCourse1_Circus1"
 direction = Vector2( -1, -1 )
 
-[node name="Bouncy" type="Area2D" parent="CollisionRoot"]
-position = Vector2( 1583, 48 )
-script = ExtResource( 19 )
-height = 45.0
+[node name="PlayerSpawnFromCherryTrail3" parent="CollisionRoot" instance=ExtResource( 12 )]
+position = Vector2( 566, -48 )
+door_name = "Circus9_Circus1"
+direction = Vector2( -1, -1 )
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Bouncy"]
-position = Vector2( 20, 9 )
-polygon = PoolVector2Array( -192, -52, -183, -58, -165, -60, -151, -58, -140, -53, -137, -45, -142, -39, -152, -35, -167, -34, -184, -36, -192, -43 )
+[node name="PlayerSpawnFromCherryTrail4" parent="CollisionRoot" instance=ExtResource( 12 )]
+position = Vector2( 815, -237 )
+door_name = "Circus2_Circus1"
+direction = Vector2( -1, -1 )
 
 [node name="Signpost" type="Area2D" parent="CollisionRoot"]
 position = Vector2( -485, 283 )
@@ -751,23 +747,44 @@ script = ExtResource( 43 )
 position = Vector2( 772, -444 )
 polygon = PoolVector2Array( 11, -6, 30, 9, -3, 24, -19.9679, 6.10462 )
 
-[node name="Needlepoint Path" parent="." instance=ExtResource( 13 )]
-visible = false
-position = Vector2( -414, -259 )
+[node name="PuzzlePier" parent="." instance=ExtResource( 13 )]
+position = Vector2( -57, 92 )
 script = ExtResource( 18 )
+target_scene = "res://Areas/Puzzle Pier/Puzzle_Pier_1.tscn"
+exit_name = "Circus1_PuzzlePier1"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Needlepoint Path"]
-polygon = PoolVector2Array( 23, -44, 49, -35, -39, -1, -59, -12 )
-disabled = true
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PuzzlePier"]
+polygon = PoolVector2Array( -36, -20, 22, 1, 1, 10, -59, -12 )
 
-[node name="PivotTown1" parent="." instance=ExtResource( 13 )]
-position = Vector2( 480, 138 )
+[node name="Circus2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 853, -217 )
+rotation = 0.0231584
+script = ExtResource( 18 )
+target_scene = "res://Areas/Puzzle Pier/Circus_2.tscn"
+exit_name = "Circus1_Circus2"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Circus2"]
+polygon = PoolVector2Array( -11.5256, -65.7507, 79.1681, -36.8431, 59.405, -26.3826, -34.3574, -58.22 )
+
+[node name="Circus9" parent="." instance=ExtResource( 13 )]
+position = Vector2( 671, 24 )
 rotation = 0.0231584
 script = ExtResource( 18 )
 target_scene = "res://Areas/Pivot Town/Pivot_Town_1.tscn"
 exit_name = "PivotTown2_PivotTown1"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PivotTown1"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Circus9"]
+polygon = PoolVector2Array( 24.7657, -53.5879, 46.9682, -45.0997, -48.1724, -6.88636, -70.3518, -14.3748 )
+disabled = true
+
+[node name="ObstacleCourse" parent="." instance=ExtResource( 13 )]
+position = Vector2( 237, -153 )
+rotation = 0.0231584
+script = ExtResource( 18 )
+target_scene = "res://Areas/Pivot Town/Pivot_Town_1.tscn"
+exit_name = "PivotTown2_PivotTown1"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ObstacleCourse"]
 polygon = PoolVector2Array( 24.7657, -53.5879, 46.9682, -45.0997, -48.1724, -6.88636, -70.3518, -14.3748 )
 disabled = true
 
@@ -870,7 +887,6 @@ polygon = PoolVector2Array( -85.6499, -125.25, -48.6499, -118.25, -39.6499, -103
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 2276, 1175 )
 
-[connection signal="bouncy" from="CollisionRoot/Bouncy" to="YSort/MiddleGround/Spring" method="_on_Bouncy_bouncy"]
 [connection signal="body_exited" from="CollisionRoot/Signpost" to="CollisionRoot/Signpost" method="_on_Signpost_body_exited"]
 [connection signal="signpost" from="CollisionRoot/Signpost" to="Camera2D" method="_on_Signpost_signpost"]
 [connection signal="item_get" from="Item_Interact" to="Camera2D" method="_on_Item_Interact_item_get"]
