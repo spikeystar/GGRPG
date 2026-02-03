@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Orange P.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Blue Rug.png" type="Texture" id=2]
@@ -42,6 +42,124 @@
 [ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=40]
 [ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=41]
 [ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=42]
+[ext_resource path="res://Assets/General/Tiles/Water/Water A.png" type="Texture" id=43]
+[ext_resource path="res://Assets/General/Tiles/Abyss.png" type="Texture" id=44]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/MagicPlatformB.tscn" type="PackedScene" id=45]
+[ext_resource path="res://Scripts/Objects/Cyclic_Movement.gd" type="Script" id=46]
+
+[sub_resource type="TileSet" id=2]
+0/name = "wood tile a.png 0"
+0/texture = ExtResource( 34 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "wood tile b.png 1"
+1/texture = ExtResource( 33 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "Blue Circus Tile.png 2"
+2/texture = ExtResource( 24 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 64, 32 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "Yellow Circus Tile.png 3"
+3/texture = ExtResource( 31 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 64, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "Red Circus Tile.png 4"
+4/texture = ExtResource( 22 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 64, 32 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "Purple Circus Tile.png 5"
+5/texture = ExtResource( 25 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 64, 32 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+6/name = "Water A.png 6"
+6/texture = ExtResource( 43 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 0, 0, 64, 32 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shape_offset = Vector2( 0, 0 )
+6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+6/shape_one_way = false
+6/shape_one_way_margin = 0.0
+6/shapes = [  ]
+6/z_index = 0
+7/name = "Abyss.png 7"
+7/texture = ExtResource( 44 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 64, 32 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape_one_way = false
+7/shape_one_way_margin = 0.0
+7/shapes = [  ]
+7/z_index = 0
 
 [sub_resource type="TileSet" id=1]
 0/name = "wood tile a.png 0"
@@ -128,6 +246,8 @@
 5/shape_one_way_margin = 0.0
 5/shapes = [  ]
 5/z_index = 0
+
+[sub_resource type="CircleShape2D" id=3]
 
 [node name="WorldRoot" type="Node2D"]
 script = ExtResource( 15 )
@@ -216,6 +336,17 @@ texture = ExtResource( 35 )
 [node name="Floor" type="Node2D" parent="YSort"]
 z_index = -10
 
+[node name="Abyss" type="TileMap" parent="YSort/Floor"]
+modulate = Color( 0.568627, 0.168627, 0.631373, 1 )
+position = Vector2( -57, 48 )
+z_index = -5
+mode = 1
+tile_set = SubResource( 2 )
+cell_size = Vector2( 61, 21 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -851962, 7, 0, -851961, 7, 0, -851960, 7, 0, -851959, 7, 0, -851958, 7, 0, -851957, 7, 0, -851956, 7, 0, -851955, 7, 0, -851954, 7, 0, -851953, 7, 0, -851952, 7, 0, -851951, 7, 0, -851950, 7, 0, -851949, 7, 0, -851948, 7, 0, -851947, 7, 0, -851946, 7, 0, -786426, 7, 0, -786425, 7, 0, -786424, 7, 0, -786423, 7, 0, -786422, 7, 0, -786421, 7, 0, -786420, 7, 0, -786419, 7, 0, -786418, 7, 0, -786417, 7, 0, -786416, 7, 0, -786415, 7, 0, -786414, 7, 0, -786413, 7, 0, -786412, 7, 0, -786411, 7, 0, -786410, 7, 0, -720890, 7, 0, -720889, 7, 0, -720888, 7, 0, -720887, 7, 0, -720886, 7, 0, -720885, 7, 0, -720884, 7, 0, -720883, 7, 0, -720882, 7, 0, -720881, 7, 0, -720880, 7, 0, -720879, 7, 0, -720878, 7, 0, -720877, 7, 0, -720876, 7, 0, -720875, 7, 0, -720874, 7, 0, -655354, 7, 0, -655353, 7, 0, -655352, 7, 0, -655351, 7, 0, -655350, 7, 0, -655349, 7, 0, -655348, 7, 0, -655347, 7, 0, -655346, 7, 0, -655345, 7, 0, -655344, 7, 0, -655343, 7, 0, -655342, 7, 0, -655341, 7, 0, -655340, 7, 0, -655339, 7, 0, -655338, 7, 0, -589818, 7, 0, -589817, 7, 0, -589816, 7, 0, -589815, 7, 0, -589814, 7, 0, -589813, 7, 0, -589812, 7, 0, -589811, 7, 0, -589810, 7, 0, -589809, 7, 0, -589808, 7, 0, -589807, 7, 0, -589806, 7, 0, -589805, 7, 0, -589804, 7, 0, -589803, 7, 0, -589802, 7, 0, -524282, 7, 0, -524281, 7, 0, -524280, 7, 0, -524279, 7, 0, -524278, 7, 0, -524277, 7, 0, -524276, 7, 0, -524275, 7, 0, -524274, 7, 0, -524273, 7, 0, -524272, 7, 0, -524271, 7, 0, -524270, 7, 0, -524269, 7, 0, -524268, 7, 0, -524267, 7, 0, -524266, 7, 0, -458746, 7, 0, -458745, 7, 0, -458744, 7, 0, -458743, 7, 0, -458742, 7, 0, -458741, 7, 0, -458740, 7, 0, -458739, 7, 0, -458738, 7, 0, -458737, 7, 0, -458736, 7, 0, -458735, 7, 0, -458734, 7, 0, -458733, 7, 0, -458732, 7, 0, -458731, 7, 0, -458730, 7, 0, -393210, 7, 0, -393209, 7, 0, -393208, 7, 0, -393207, 7, 0, -393206, 7, 0, -393205, 7, 0, -393204, 7, 0, -393203, 7, 0, -393202, 7, 0, -393201, 7, 0, -393200, 7, 0, -393199, 7, 0, -393198, 7, 0, -393197, 7, 0, -393196, 7, 0, -393195, 7, 0, -393194, 7, 0, -327674, 7, 0, -327673, 7, 0, -327672, 7, 0, -327671, 7, 0, -327670, 7, 0, -327669, 7, 0, -327668, 7, 0, -327667, 7, 0, -327666, 7, 0, -327665, 7, 0, -327664, 7, 0, -327663, 7, 0, -327662, 7, 0, -327661, 7, 0, -327660, 7, 0, -327659, 7, 0, -327658, 7, 0, -262138, 7, 0, -262137, 7, 0, -262136, 7, 0, -262135, 7, 0, -262134, 7, 0, -262133, 7, 0, -262132, 7, 0, -262131, 7, 0, -262130, 7, 0, -262129, 7, 0, -262128, 7, 0, -262127, 7, 0, -262126, 7, 0, -262125, 7, 0, -262124, 7, 0, -262123, 7, 0, -262122, 7, 0, -196602, 7, 0, -196601, 7, 0, -196600, 7, 0, -196599, 7, 0, -196598, 7, 0, -196597, 7, 0, -196596, 7, 0, -196595, 7, 0, -196594, 7, 0, -196593, 7, 0, -196592, 7, 0, -196591, 7, 0, -196590, 7, 0, -196589, 7, 0, -196588, 7, 0, -196587, 7, 0, -196586, 7, 0, -131066, 7, 0, -131065, 7, 0, -131064, 7, 0, -131063, 7, 0, -131062, 7, 0, -131061, 7, 0, -131060, 7, 0, -131059, 7, 0, -131058, 7, 0, -131057, 7, 0, -131056, 7, 0, -131055, 7, 0, -131054, 7, 0, -131053, 7, 0, -131052, 7, 0, -131051, 7, 0, -131050, 7, 0, -65530, 7, 0, -65529, 7, 0, -65528, 7, 0, -65527, 7, 0, -65526, 7, 0, -65525, 7, 0, -65524, 7, 0, -65523, 7, 0, -65522, 7, 0, -65521, 7, 0, -65520, 7, 0, -65519, 7, 0, -65518, 7, 0, -65517, 7, 0, -65516, 7, 0, -65515, 7, 0, -65514, 7, 0, 5, 7, 0, 6, 7, 0, 7, 7, 0, 8, 7, 0, 9, 7, 0, 10, 7, 0, 11, 7, 0, 12, 7, 0, 13, 7, 0, 14, 7, 0, 15, 7, 0, 16, 7, 0, 17, 7, 0, 18, 7, 0, 19, 7, 0, 20, 7, 0, 21, 7, 0, 22, 7, 0, 65539, 7, 0, 65540, 7, 0, 65541, 7, 0, 65542, 7, 0, 65543, 7, 0, 65544, 7, 0, 65545, 7, 0, 65546, 7, 0, 65547, 7, 0, 65548, 7, 0, 65549, 7, 0, 65550, 7, 0, 65551, 7, 0, 65552, 7, 0, 65553, 7, 0, 65554, 7, 0, 65555, 7, 0, 65556, 7, 0, 65557, 7, 0, 65558, 7, 0 )
+
 [node name="Tiles" type="TileMap" parent="YSort/Floor"]
 modulate = Color( 0.960784, 0.992157, 0.992157, 1 )
 position = Vector2( -55.5, 41.5 )
@@ -234,9 +365,6 @@ scale = Vector2( 1.4, 1.3 )
 texture = ExtResource( 2 )
 
 [node name="MiddleGround" type="Node2D" parent="YSort"]
-
-[node name="Spring" parent="YSort/MiddleGround" instance=ExtResource( 39 )]
-position = Vector2( 1437, 53 )
 
 [node name="BalloonsB3" parent="YSort/MiddleGround" instance=ExtResource( 17 )]
 position = Vector2( -2, -413 )
@@ -301,6 +429,9 @@ texture_scale = Vector2( 0.95, 0.95 )
 texture_offset = Vector2( -3, 10 )
 height = 90.0
 preview_collision_box = false
+
+[node name="Spring" parent="YSort/MiddleGround" instance=ExtResource( 39 )]
+position = Vector2( 115, -44 )
 
 [node name="Box C" parent="YSort/MiddleGround" instance=ExtResource( 17 )]
 position = Vector2( 460, -58 )
@@ -368,6 +499,101 @@ texture_offset = Vector2( 0, 1 )
 height = 30.0
 preview_collision_box = false
 
+[node name="Cyclic_Movement" type="Node2D" parent="YSort/MiddleGround"]
+position = Vector2( 461, -28 )
+script = ExtResource( 46 )
+speed = 50.0
+movement_type = 4
+
+[node name="Platforms" type="Node2D" parent="YSort/MiddleGround/Cyclic_Movement"]
+position = Vector2( -4, 130 )
+
+[node name="MagicPlatformB" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
+position = Vector2( -175, -45 )
+floor_height = 220
+no_shadow = true
+
+[node name="MagicPlatformB2" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
+position = Vector2( -3, -122 )
+floor_height = 220
+no_shadow = true
+counter = 1
+
+[node name="MagicPlatformB3" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
+position = Vector2( 146, -178 )
+floor_height = 220
+no_shadow = true
+counter = 1
+
+[node name="MagicPlatformB4" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
+position = Vector2( 319, -119 )
+floor_height = 220
+no_shadow = true
+counter = 2
+
+[node name="MagicPlatformB5" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
+position = Vector2( 494, -58 )
+floor_height = 220
+no_shadow = true
+counter = 2
+
+[node name="MagicPlatformB6" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
+position = Vector2( 365, 26 )
+floor_height = 220
+no_shadow = true
+counter = 3
+
+[node name="MagicPlatformB7" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
+position = Vector2( 180, 93 )
+floor_height = 220
+no_shadow = true
+counter = 3
+
+[node name="MagicPlatformB8" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
+position = Vector2( -17, 34 )
+floor_height = 220
+no_shadow = true
+counter = 4
+
+[node name="Positions" type="Node2D" parent="YSort/MiddleGround/Cyclic_Movement"]
+position = Vector2( -4, 130 )
+
+[node name="Area2D" type="Area2D" parent="YSort/MiddleGround/Cyclic_Movement/Positions"]
+position = Vector2( -175, -45 )
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/MiddleGround/Cyclic_Movement/Positions/Area2D"]
+scale = Vector2( 0.177854, 0.213668 )
+shape = SubResource( 3 )
+
+[node name="Area2D2" type="Area2D" parent="YSort/MiddleGround/Cyclic_Movement/Positions"]
+position = Vector2( 146, -178 )
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/MiddleGround/Cyclic_Movement/Positions/Area2D2"]
+scale = Vector2( 0.227076, 0.239701 )
+shape = SubResource( 3 )
+
+[node name="Area2D3" type="Area2D" parent="YSort/MiddleGround/Cyclic_Movement/Positions"]
+position = Vector2( 494, -58 )
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/MiddleGround/Cyclic_Movement/Positions/Area2D3"]
+scale = Vector2( 0.15352, 0.154824 )
+shape = SubResource( 3 )
+
+[node name="Area2D4" type="Area2D" parent="YSort/MiddleGround/Cyclic_Movement/Positions"]
+position = Vector2( 180, 93 )
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/MiddleGround/Cyclic_Movement/Positions/Area2D4"]
+scale = Vector2( 0.118679, 0.102105 )
+shape = SubResource( 3 )
+
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
@@ -424,7 +650,7 @@ visible = false
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 41 )]
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 40 )]
-polygon = PoolVector2Array( -178, 14, 256, -140, 172, -171, 255, -209, 351, -172, 660, -284, 754, -247, 846, -285, 936, -253, 839, -218, 923, -202, 919, -159, 610, -57, 720, -19, 626, 16, 534, -19, 152, 130, 5, 79, -57, 101, -116, 80, -55, 57 )
+polygon = PoolVector2Array( -144, 25, 261, -127, 309, -114, 1022, 144, 581, 311, 147, 149, 5, 79, -87, 114, -149, 91, -55, 57 )
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 42 )]
 position = Vector2( 431, 91 )
@@ -437,7 +663,8 @@ door_name = "CherryTrail3_4"
 direction = Vector2( -1, -1 )
 
 [node name="Bouncy" type="Area2D" parent="CollisionRoot"]
-position = Vector2( 1583, 48 )
+visible = false
+position = Vector2( 261, -49 )
 script = ExtResource( 5 )
 height = 45.0
 
