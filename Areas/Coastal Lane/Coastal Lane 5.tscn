@@ -2239,6 +2239,6 @@ alt_chance = 35
 [connection signal="item_get" from="PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase2" to="Camera2D" method="_on_PresentBase2_item_get"]
-[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase2_item_get"]
+[connection signal="item_get" from="PresentBase3" to="Camera2D" method="_on_PresentBase3_item_get"]

@@ -21,6 +21,7 @@ var active = true
 func _ready():
 	$Area2D.area_height = $Platform.height + floor_height
 	$Platform.floor_height = floor_height
+	$Area2D.global_position += Vector2(0, -(floor_height))
 	$Poof.global_position += Vector2(0, -(floor_height))
 	
 	if no_shadow:

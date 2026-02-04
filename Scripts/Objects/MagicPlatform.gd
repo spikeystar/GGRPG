@@ -31,10 +31,10 @@ func _process(delta):
 
 
 func _on_Area2D_body_entered(body):
-	if "is_player_motion_root" in body and body.is_player_motion_root:
+	if "is_player_jump_shape" in body and body.is_player_jump_shape:
 		inside = true
 		
 func _on_Area2D_body_exited(body):
-	if "is_player_motion_root" in body and body.is_player_motion_root:
+	if "is_player_jump_shape" in body and body.is_player_jump_shape:
 		inside = false
 		able = false
