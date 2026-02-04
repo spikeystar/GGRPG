@@ -305,6 +305,7 @@ preview_collision_box = false
 animation_hframes = 4
 use_transparency = true
 always_update = true
+flowing = true
 magic = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -336,12 +337,12 @@ position = Vector2( -1, -7 )
 script = ExtResource( 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
 position = Vector2( -4, 3 )
 scale = Vector2( 1.24106, 1.17385 )
 polygon = PoolVector2Array( -95.0802, -23.853, 0.805764, -74.9667, 96.6917, -33.2239, 4.83459, 17.8898 )
 
 [node name="Position_Sensor" type="Area2D" parent="."]
-visible = false
 collision_layer = 64
 collision_mask = 0
 

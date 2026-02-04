@@ -11,7 +11,12 @@ var speed
 
 var Positions = []
 var movement_type = 0
+var detectable = true
 export var counter = 0
+
+export var debug = false
+
+var active = true
 
 func _ready():
 	$Area2D.area_height = $Platform.height + floor_height
@@ -25,13 +30,14 @@ func _process(delta):
 	var distance = (end_position - global_position).normalized()
 	velocity = (distance * speed)
 	
-	if Vector2(int(global_position.x), int(global_position.y)) != Vector2(int(end_position.x), int(end_position.y)):
-		$Platform.velocity = velocity
-		move_and_slide(velocity)
-		$Platform._generate_meshes()
-		area_movement()
-		
+	$Platform.velocity = velocity
+	move_and_slide(velocity)
+	$Platform._generate_meshes()
+	area_movement()
+	
+	if active:
 		$Platform.update_velocity()
+	
 		
 		
 func area_movement():
@@ -63,9 +69,11 @@ func _on_Area2D_destruct():
 		timer.connect("timeout", self, "_on_timer_timeout")
 	
 func update_collision():
+	$Platform.floor_ready = false
 	$Platform.remove_collision()
 	$Platform.set_use_collision(false)
 	$Platform._initialize_nodes()
+	active = false
 	
 func _on_timer_timeout():
 	used = false
@@ -74,8 +82,22 @@ func _on_timer_timeout():
 	$Platform.use_collision = true
 	$Platform.set_use_collision(true)
 	$Platform._initialize_nodes()
+	active = true
 	$AnimationPlayer.play("phase_in")
+	
+func _on_detect_timer_timeout():
+	detectable = true
 
 
 func _on_Position_Sensor_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
-	counter += 1
+	if detectable:
+		counter += 1
+		detectable = false
+		var detect_timer = Timer.new()
+		add_child(detect_timer)
+		detect_timer.one_shot = true
+		detect_timer.start(0.5)
+		detect_timer.connect("timeout", self, "_on_detect_timer_timeout")
+	else:
+		pass
+	

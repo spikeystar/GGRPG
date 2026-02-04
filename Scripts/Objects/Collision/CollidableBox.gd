@@ -8,6 +8,7 @@ signal bumped_from_bottom()
 var present_height = 0
 
 var velocity
+var floor_ready = true
 
 
 
@@ -305,7 +306,7 @@ func destroy_collisions():
 	floor_notify_area_shape.queue_free()
 	
 
-func _initialize_nodes():
+func _initialize_nodes():	
 	for child in get_children():
 		if child != null and weakref(child).get_ref() and child.name.begins_with("COLLIDABLE_BOX_GENERATED_"):
 			child.queue_free()
@@ -397,6 +398,8 @@ func _generate_touch_area():
 	
 	inner_touch_area.add_child(touch_shape)
 	add_child(inner_touch_area)
+	
+	floor_ready = true
 
 func _on_touch_area_body_entered(body):
 	if (
@@ -455,6 +458,7 @@ func _generate_collider():
 		floor_notify_area.floating = floating
 		floor_notify_area.flowing = flowing
 		floor_notify_area.magic = magic
+		floor_notify_area.velocity = velocity
 		add_child(floor_notify_area)
 	
 	if collision_body_shape != null:
@@ -995,7 +999,8 @@ func update_height():
 func update_velocity():
 	#collision_body.velocity = velocity
 	#collision_body_shape.velocity = velocity
-	floor_notify_area.velocity = velocity 
+	if floor_ready:
+		floor_notify_area.velocity = velocity
 	#floor_notify_area_shape.velocity = velocity
 
 func _on_Bouncy_bouncy():

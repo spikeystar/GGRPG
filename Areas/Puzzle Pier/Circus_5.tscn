@@ -500,7 +500,7 @@ height = 30.0
 preview_collision_box = false
 
 [node name="Cyclic_Movement" type="Node2D" parent="YSort/MiddleGround"]
-position = Vector2( 461, -28 )
+position = Vector2( 492, 8 )
 script = ExtResource( 46 )
 speed = 50.0
 movement_type = 4
@@ -509,48 +509,48 @@ movement_type = 4
 position = Vector2( -4, 130 )
 
 [node name="MagicPlatformB" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
-position = Vector2( -175, -45 )
+position = Vector2( -194, -53 )
 floor_height = 220
 no_shadow = true
 
 [node name="MagicPlatformB2" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
-position = Vector2( -3, -122 )
+position = Vector2( -15, -137 )
 floor_height = 220
 no_shadow = true
 counter = 1
 
 [node name="MagicPlatformB3" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
-position = Vector2( 146, -178 )
+position = Vector2( 145, -214 )
 floor_height = 220
 no_shadow = true
 counter = 1
 
 [node name="MagicPlatformB4" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
-position = Vector2( 319, -119 )
+position = Vector2( 330, -140 )
 floor_height = 220
 no_shadow = true
 counter = 2
 
 [node name="MagicPlatformB5" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
-position = Vector2( 494, -58 )
+position = Vector2( 519, -63 )
 floor_height = 220
 no_shadow = true
 counter = 2
 
 [node name="MagicPlatformB6" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
-position = Vector2( 365, 26 )
+position = Vector2( 366, 33 )
 floor_height = 220
 no_shadow = true
 counter = 3
 
 [node name="MagicPlatformB7" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
-position = Vector2( 180, 93 )
+position = Vector2( 172, 121 )
 floor_height = 220
 no_shadow = true
 counter = 3
 
 [node name="MagicPlatformB8" parent="YSort/MiddleGround/Cyclic_Movement/Platforms" instance=ExtResource( 45 )]
-position = Vector2( -17, 34 )
+position = Vector2( -27, 31 )
 floor_height = 220
 no_shadow = true
 counter = 4
@@ -559,7 +559,7 @@ counter = 4
 position = Vector2( -4, 130 )
 
 [node name="Area2D" type="Area2D" parent="YSort/MiddleGround/Cyclic_Movement/Positions"]
-position = Vector2( -175, -45 )
+position = Vector2( -194, -53 )
 collision_layer = 0
 collision_mask = 64
 
@@ -568,7 +568,7 @@ scale = Vector2( 0.177854, 0.213668 )
 shape = SubResource( 3 )
 
 [node name="Area2D2" type="Area2D" parent="YSort/MiddleGround/Cyclic_Movement/Positions"]
-position = Vector2( 146, -178 )
+position = Vector2( 145, -214 )
 collision_layer = 0
 collision_mask = 64
 
@@ -577,7 +577,7 @@ scale = Vector2( 0.227076, 0.239701 )
 shape = SubResource( 3 )
 
 [node name="Area2D3" type="Area2D" parent="YSort/MiddleGround/Cyclic_Movement/Positions"]
-position = Vector2( 494, -58 )
+position = Vector2( 519, -64 )
 collision_layer = 0
 collision_mask = 64
 
@@ -586,7 +586,7 @@ scale = Vector2( 0.15352, 0.154824 )
 shape = SubResource( 3 )
 
 [node name="Area2D4" type="Area2D" parent="YSort/MiddleGround/Cyclic_Movement/Positions"]
-position = Vector2( 180, 93 )
+position = Vector2( 172, 121 )
 collision_layer = 0
 collision_mask = 64
 
