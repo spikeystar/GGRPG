@@ -838,88 +838,6 @@ flip_h = true
 [node name="CollisionRoot" type="Node2D" parent="."]
 position = Vector2( 400, 0 )
 
-[node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 37 )]
-
-[node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
-position = Vector2( -2, -1 )
-polygon = PoolVector2Array( -87, 68, 74, 11, 137, 34, -24, 92, 4, 103, -88, 137, -118, 123, -171, 143, -225, 120, -182, 102, -209, 90, -118, 58 )
-height = 120.0
-
-[node name="NavmeshLayer11" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
-position = Vector2( 1266, -427 )
-polygon = PoolVector2Array( -24, 24, -204, -43, -81, -89, 73, -30, 167, -63, 224, -43, 135, -9, 222, 25, 104, 67, 45, 47, -144, 113, -209, 90 )
-height = 120.0
-
-[node name="NavmeshLayer2" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
-position = Vector2( 308, -106 )
-polygon = PoolVector2Array( -83, 62, -19, 87, -118, 124, -184, 100 )
-height = 120.0
-
-[node name="NavmeshLayer3" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
-position = Vector2( 463, -161 )
-polygon = PoolVector2Array( -114, 75, -50, 98, -117, 123, -181, 98 )
-height = 120.0
-
-[node name="NavmeshLayer4" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
-position = Vector2( 587, -205 )
-polygon = PoolVector2Array( -115, 76, -51, 98, -117, 123, -182, 98 )
-height = 120.0
-
-[node name="NavmeshLayer5" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
-position = Vector2( 835, -294 )
-polygon = PoolVector2Array( -117, 76, -51, 99, -116, 123, -181, 99 )
-height = 120.0
-
-[node name="NavmeshLayer6" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
-position = Vector2( 960, -337 )
-polygon = PoolVector2Array( -117, 75, -51, 98, -117, 123, -182, 98 )
-height = 120.0
-
-[node name="NavmeshLayer7" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
-position = Vector2( 741, -437 )
-polygon = PoolVector2Array( -114, 76, -51, 99, -116, 124, -179, 100 )
-height = 120.0
-
-[node name="NavmeshLayer8" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
-position = Vector2( 615, -475 )
-polygon = PoolVector2Array( -140, 60, -47, 93, -114, 117, -208, 83 )
-height = 120.0
-
-[node name="NavmeshLayer9" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
-position = Vector2( 1117, -378 )
-polygon = PoolVector2Array( -119, 61, -54, 83, -150, 119, -214, 95 )
-height = 120.0
-
-[node name="NavmeshLayer10" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
-polygon = PoolVector2Array( -100, -369, 350, -631, 494, -619, 1025, -374, 1115, -356, 1275, -326, 1440, -262, 1447, -223, 1343, -23, 463, 239, 46, 201, -85, 189, -243, 129, -353, 41, -224, -171 )
-
-[node name="PlayerSpawnFromCherryTrail5" parent="CollisionRoot" instance=ExtResource( 39 )]
-position = Vector2( -133, 110 )
-door_name = "Circus3_Circus4"
-direction = Vector2( 1, 1 )
-height = 120
-
-[node name="PlayerSpawnFromCherryTrail6" parent="CollisionRoot" instance=ExtResource( 39 )]
-position = Vector2( 1391, -455 )
-door_name = "Circus5_Circus4"
-direction = Vector2( -1, -1 )
-height = 120
-
-[node name="PlayerSpawnFromCherryTrail4" parent="CollisionRoot" instance=ExtResource( 39 )]
-position = Vector2( -67, 91 )
-door_name = "Entrance"
-direction = Vector2( 1, 1 )
-height = 120
-
-[node name="Bouncy" type="Area2D" parent="CollisionRoot"]
-position = Vector2( 610, -405 )
-script = ExtResource( 2 )
-height = 165.0
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Bouncy"]
-position = Vector2( 20, 9 )
-polygon = PoolVector2Array( -192, -52, -183, -58, -165, -60, -151, -58, -140, -53, -137, -45, -142, -39, -152, -35, -167, -34, -184, -36, -192, -43 )
-
 [node name="Abyss" type="Area2D" parent="CollisionRoot"]
 visible = false
 position = Vector2( -14, -95 )
@@ -932,6 +850,89 @@ exit_name = "Entrance"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Abyss"]
 position = Vector2( -244, -158 )
 polygon = PoolVector2Array( 609, 590, 1762, 188, 2190, -33, 1252, -398, 1012, -572, 373, -441, -317, -161, -458, 211, -72, 367 )
+
+[node name="Navmesh" parent="CollisionRoot" instance=ExtResource( 37 )]
+
+[node name="NavmeshLayer" parent="CollisionRoot/Navmesh" instance=ExtResource( 38 )]
+position = Vector2( -2, 1 )
+polygon = PoolVector2Array( -87, 68, 74, 11, 137, 34, -24, 92, 4, 103, -88, 137, -118, 123, -171, 143, -225, 120, -182, 102, -209, 90, -118, 58 )
+height = 120.0
+
+[node name="NavmeshLayer11" parent="CollisionRoot/Navmesh" instance=ExtResource( 38 )]
+position = Vector2( 1266, -427 )
+polygon = PoolVector2Array( -24, 24, -204, -43, -81, -89, 73, -30, 167, -63, 224, -43, 135, -9, 222, 25, 104, 67, 45, 47, -144, 113, -209, 90 )
+height = 120.0
+
+[node name="NavmeshLayer2" parent="CollisionRoot/Navmesh" instance=ExtResource( 38 )]
+position = Vector2( 308, -106 )
+polygon = PoolVector2Array( -83, 62, -19, 87, -118, 124, -184, 100 )
+height = 120.0
+
+[node name="NavmeshLayer3" parent="CollisionRoot/Navmesh" instance=ExtResource( 38 )]
+position = Vector2( 463, -161 )
+polygon = PoolVector2Array( -114, 75, -50, 98, -117, 123, -181, 98 )
+height = 120.0
+
+[node name="NavmeshLayer4" parent="CollisionRoot/Navmesh" instance=ExtResource( 38 )]
+position = Vector2( 587, -205 )
+polygon = PoolVector2Array( -115, 76, -51, 98, -117, 123, -182, 98 )
+height = 120.0
+
+[node name="NavmeshLayer5" parent="CollisionRoot/Navmesh" instance=ExtResource( 38 )]
+position = Vector2( 835, -294 )
+polygon = PoolVector2Array( -117, 76, -51, 99, -116, 123, -181, 99 )
+height = 120.0
+
+[node name="NavmeshLayer6" parent="CollisionRoot/Navmesh" instance=ExtResource( 38 )]
+position = Vector2( 960, -337 )
+polygon = PoolVector2Array( -117, 75, -51, 98, -117, 123, -182, 98 )
+height = 120.0
+
+[node name="NavmeshLayer7" parent="CollisionRoot/Navmesh" instance=ExtResource( 38 )]
+position = Vector2( 741, -437 )
+polygon = PoolVector2Array( -114, 76, -51, 99, -116, 124, -179, 100 )
+height = 120.0
+
+[node name="NavmeshLayer8" parent="CollisionRoot/Navmesh" instance=ExtResource( 38 )]
+position = Vector2( 615, -475 )
+polygon = PoolVector2Array( -140, 60, -47, 93, -114, 117, -208, 83 )
+height = 120.0
+
+[node name="NavmeshLayer9" parent="CollisionRoot/Navmesh" instance=ExtResource( 38 )]
+position = Vector2( 1117, -378 )
+polygon = PoolVector2Array( -119, 61, -54, 83, -150, 119, -214, 95 )
+height = 120.0
+
+[node name="NavmeshLayer10" parent="CollisionRoot/Navmesh" instance=ExtResource( 38 )]
+visible = false
+polygon = PoolVector2Array( -100, -369, 350, -631, 494, -619, 1025, -374, 1115, -356, 1275, -326, 1440, -262, 1447, -223, 1343, -23, 463, 239, 46, 201, -85, 189, -243, 129, -353, 41, -224, -171 )
+
+[node name="PlayerSpawnFromCherryTrail5" parent="CollisionRoot" instance=ExtResource( 39 )]
+position = Vector2( -135, 111 )
+door_name = "Circus3_Circus4"
+direction = Vector2( 1, 1 )
+height = 120
+
+[node name="PlayerSpawnFromCherryTrail6" parent="CollisionRoot" instance=ExtResource( 39 )]
+position = Vector2( 1391, -455 )
+door_name = "Circus5_Circus4"
+direction = Vector2( -1, -1 )
+height = 120
+
+[node name="PlayerSpawnFromCherryTrail4" parent="CollisionRoot" instance=ExtResource( 39 )]
+position = Vector2( -63, 102 )
+door_name = "Entrance"
+direction = Vector2( 1, 1 )
+height = 120
+
+[node name="Bouncy" type="Area2D" parent="CollisionRoot"]
+position = Vector2( 610, -405 )
+script = ExtResource( 2 )
+height = 165.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Bouncy"]
+position = Vector2( 20, 9 )
+polygon = PoolVector2Array( -192, -52, -183, -58, -165, -60, -151, -58, -140, -53, -137, -45, -142, -39, -152, -35, -167, -34, -184, -36, -192, -43 )
 
 [node name="Circus3" parent="." instance=ExtResource( 40 )]
 visible = false

@@ -1198,7 +1198,6 @@ flip_h = true
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 38 )]
-visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 39 )]
 polygon = PoolVector2Array( -248, -22, -166, -32, 65, -155, 137, -181, 499, -295, 517, -301, 649, -335, 709, -327, 1218, -150, 284, 177, 66, 101, -23, 135, -115, 102, -21, 70 )

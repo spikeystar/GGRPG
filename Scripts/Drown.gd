@@ -59,7 +59,6 @@ func _on_body_exited(body):
 		body_check = false
 	
 func _on_touch_area():
-	print("hello")
 	if not PlayerManager.drown or not PlayerManager.ouch:
 		Global.door_name = exit_name
 		body_check = false

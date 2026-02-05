@@ -660,6 +660,7 @@ polygon = PoolVector2Array( -79, -168, 183, -262, 217, -250, 248, -263, 523, -16
 [node name="PlayerSpawn1" parent="CollisionRoot" instance=ExtResource( 3 )]
 position = Vector2( -251, -280 )
 door_name = "CoastalLane6_CoastalLaneExtra"
+direction = Vector2( 1, -1 )
 height = 80
 
 [node name="Doorway1" parent="CollisionRoot" instance=ExtResource( 4 )]

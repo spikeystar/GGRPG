@@ -59,7 +59,6 @@ func _physics_process(delta):
 		anim_tree.get("parameters/playback").travel("Walk")
 		anim_tree.set("parameters/Walk/blend_position", Vector2(last_dir.x, -last_dir.y))
 		
-		
 	if abs(motion_root.vel.x) < 1 && abs(motion_root.vel.y) < 1 && abs(motion_root.vel.z) == 0 and SceneManager.bubble and not cutscene and not freeze:
 		anim_tree.get("parameters/playback").travel("Idle")
 		anim_tree.set("parameters/Idle/blend_position", Vector2(last_dir.x, -last_dir.y))
