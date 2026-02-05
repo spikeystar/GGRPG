@@ -161,7 +161,8 @@ func _physics_process(delta):
 	vel.y *= clamp(1 - (delta * player_friction), 0, 1);
 	
 	if vel.length_squared() > 5:
-		last_dir = Vector2(vel.x, vel.y).normalized()
+		if Vector2(vel.x, vel.y).normalized() != Vector2(0,0):
+			last_dir = Vector2(vel.x, vel.y).normalized()
 		
 	
 	if not is_on_ground and not bubble:
