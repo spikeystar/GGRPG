@@ -331,6 +331,7 @@ collision_layer = 0
 collision_mask = 5
 script = ExtResource( 6 )
 target_scene = "res://Areas/Puzzle Pier/Circus_4.tscn"
+exit_name = "Entrance"
 height = 120.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot/Ouch"]

@@ -453,6 +453,16 @@ scale = Vector2( 1.53687, 1.56348 )
 texture = ExtResource( 35 )
 flip_h = true
 
+[node name="Sphere" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 915, -585 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 30 )
+
+[node name="BalloonsC" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( 772, -629 )
+scale = Vector2( 1.77444, 1.67081 )
+texture = ExtResource( 4 )
+
 [node name="Kaboom_post" parent="YSort/MiddleGround" instance=ExtResource( 44 )]
 position = Vector2( -95, -144 )
 
@@ -616,7 +626,6 @@ curve = SubResource( 10 )
 spawn_time = 4.0
 follower = ExtResource( 42 )
 cannon = true
-flip = true
 
 [node name="Poof" parent="YSort/MiddleGround/ProjectileMaster/Projectile_Path3" instance=ExtResource( 47 )]
 position = Vector2( 743, 346 )
@@ -629,7 +638,6 @@ position = Vector2( 120, -376 )
 curve = SubResource( 6 )
 follower = ExtResource( 42 )
 cannon = true
-flip = true
 
 [node name="Poof" parent="YSort/MiddleGround/ProjectileMaster/Projectile_Path4" instance=ExtResource( 47 )]
 position = Vector2( 710, 313 )
@@ -643,7 +651,6 @@ curve = SubResource( 7 )
 spawn_time = 4.0
 follower = ExtResource( 42 )
 cannon = true
-flip = true
 
 [node name="Poof" parent="YSort/MiddleGround/ProjectileMaster/Projectile_Path5" instance=ExtResource( 47 )]
 position = Vector2( 714, 288 )
@@ -656,7 +663,6 @@ position = Vector2( 449, -491 )
 curve = SubResource( 8 )
 follower = ExtResource( 42 )
 cannon = true
-flip = true
 
 [node name="Poof" parent="YSort/MiddleGround/ProjectileMaster/Projectile_Path6" instance=ExtResource( 47 )]
 position = Vector2( 726, 299 )
@@ -670,18 +676,12 @@ curve = SubResource( 9 )
 spawn_time = 4.0
 follower = ExtResource( 42 )
 cannon = true
-flip = true
 
 [node name="Poof" parent="YSort/MiddleGround/ProjectileMaster/Projectile_Path7" instance=ExtResource( 47 )]
 position = Vector2( 684, 298 )
 
 [node name="SpawnPosition" type="Position2D" parent="YSort/MiddleGround/ProjectileMaster/Projectile_Path7"]
 position = Vector2( 4, -25 )
-
-[node name="Sphere" type="Sprite" parent="YSort/MiddleGround"]
-position = Vector2( 915, -585 )
-scale = Vector2( 1.2, 1.2 )
-texture = ExtResource( 30 )
 
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
@@ -703,11 +703,6 @@ rotation = 0.0590582
 scale = Vector2( 1.66591, 1.51032 )
 texture = ExtResource( 8 )
 flip_h = true
-
-[node name="BalloonsC" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 772, -629 )
-scale = Vector2( 1.77444, 1.67081 )
-texture = ExtResource( 4 )
 
 [node name="BlueP" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( -523, -186 )
@@ -841,12 +836,12 @@ texture = ExtResource( 27 )
 flip_h = true
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 position = Vector2( 400, 0 )
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 37 )]
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
+position = Vector2( -2, -1 )
 polygon = PoolVector2Array( -87, 68, 74, 11, 137, 34, -24, 92, 4, 103, -88, 137, -118, 123, -171, 143, -225, 120, -182, 102, -209, 90, -118, 58 )
 height = 120.0
 
@@ -898,19 +893,22 @@ height = 120.0
 [node name="NavmeshLayer10" parent="CollisionRoot/Navmesh2" instance=ExtResource( 38 )]
 polygon = PoolVector2Array( -100, -369, 350, -631, 494, -619, 1025, -374, 1115, -356, 1275, -326, 1440, -262, 1447, -223, 1343, -23, 463, 239, 46, 201, -85, 189, -243, 129, -353, 41, -224, -171 )
 
-[node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 39 )]
-position = Vector2( 431, 91 )
-door_name = "PivotTown1_PivotTown2"
-direction = Vector2( -1, 1 )
+[node name="PlayerSpawnFromCherryTrail5" parent="CollisionRoot" instance=ExtResource( 39 )]
+position = Vector2( -133, 110 )
+door_name = "Circus3_Circus4"
+direction = Vector2( 1, 1 )
+height = 120
 
-[node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 39 )]
-position = Vector2( 327, -134 )
-door_name = "CherryTrail3_4"
+[node name="PlayerSpawnFromCherryTrail6" parent="CollisionRoot" instance=ExtResource( 39 )]
+position = Vector2( 1391, -455 )
+door_name = "Circus5_Circus4"
 direction = Vector2( -1, -1 )
+height = 120
 
-[node name="PlayerSpawnFromCherryTrail3" parent="CollisionRoot" instance=ExtResource( 39 )]
-position = Vector2( -100, 90 )
-direction = Vector2( -1, -1 )
+[node name="PlayerSpawnFromCherryTrail4" parent="CollisionRoot" instance=ExtResource( 39 )]
+position = Vector2( -67, 91 )
+door_name = "Entrance"
+direction = Vector2( 1, 1 )
 height = 120
 
 [node name="Bouncy" type="Area2D" parent="CollisionRoot"]
@@ -923,34 +921,39 @@ position = Vector2( 20, 9 )
 polygon = PoolVector2Array( -192, -52, -183, -58, -165, -60, -151, -58, -140, -53, -137, -45, -142, -39, -152, -35, -167, -34, -184, -36, -192, -43 )
 
 [node name="Abyss" type="Area2D" parent="CollisionRoot"]
+visible = false
 position = Vector2( -14, -95 )
 priority = 1.0
 script = ExtResource( 49 )
 abyss = true
 target_scene = "res://Areas/Puzzle Pier/Circus_4.tscn"
+exit_name = "Entrance"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/Abyss"]
 position = Vector2( -244, -158 )
 polygon = PoolVector2Array( 609, 590, 1762, 188, 2190, -33, 1252, -398, 1012, -572, 373, -441, -317, -161, -458, 211, -72, 367 )
 
-[node name="Needlepoint Path" parent="." instance=ExtResource( 40 )]
-position = Vector2( 400, -259 )
+[node name="Circus3" parent="." instance=ExtResource( 40 )]
+visible = false
+position = Vector2( 246, 143 )
 script = ExtResource( 24 )
+target_scene = "res://Areas/Puzzle Pier/Circus_3.tscn"
+exit_name = "Circus4_Circus3"
+height = 120.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Needlepoint Path"]
-polygon = PoolVector2Array( 23, -44, 49, -35, -39, -1, -59, -12 )
-disabled = true
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Circus3"]
+polygon = PoolVector2Array( -45, -33, 5, -7, -35, 10, -77, -15 )
 
-[node name="PivotTown1" parent="." instance=ExtResource( 40 )]
-position = Vector2( 400, 138 )
+[node name="Circus5" parent="." instance=ExtResource( 40 )]
+position = Vector2( 1805, -438 )
 rotation = 0.0231584
 script = ExtResource( 24 )
-target_scene = "res://Areas/Pivot Town/Pivot_Town_1.tscn"
-exit_name = "PivotTown2_PivotTown1"
+target_scene = "res://Areas/Puzzle Pier/Circus_5.tscn"
+exit_name = "Circus4_Circus5"
+height = 120.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PivotTown1"]
-polygon = PoolVector2Array( 24.7657, -53.5879, 46.9682, -45.0997, -48.1724, -6.88636, -70.3518, -14.3748 )
-disabled = true
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Circus5"]
+polygon = PoolVector2Array( 24.7424, -54.5876, 90.2577, -33.0989, 58.4747, -23.3603, -1.01892, -43.9882 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2

@@ -43,8 +43,8 @@ func _physics_process(delta):
 	$JumpShape.shape_origin = body_visual_root.global_position
 	$JumpShape.origin_z = motion_root.pos_z
 	
-	$MotionRoot/CollisionShape2D.disabled = false
-	$JumpShape/CollisionShape2D.disabled = false
+	#$MotionRoot/CollisionShape2D.disabled = false
+	#$JumpShape/CollisionShape2D.disabled = false
 
 	var last_dir = motion_root.last_dir
 	
