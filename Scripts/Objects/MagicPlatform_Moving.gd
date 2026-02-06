@@ -28,6 +28,9 @@ func _ready():
 		$SquareShadow.modulate.a = 0
 
 func _process(delta):
+	#if debug:
+		#pass
+	
 	var distance = (end_position - global_position).normalized()
 	velocity = (distance * speed)
 	

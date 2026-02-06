@@ -295,13 +295,12 @@ script = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
 }
-tile_size = Vector2( 61, 25 )
+tile_size = Vector2( 59, 25 )
 grid_size = Vector2( 2.5, 2.5 )
 texture = ExtResource( 6 )
 texture_scale = Vector2( 0.95, 0.95 )
-texture_offset = Vector2( 1, 2 )
+texture_offset = Vector2( 2, 2 )
 height = 30.0
-preview_collision_box = false
 animation_hframes = 4
 use_transparency = true
 always_update = true
@@ -332,17 +331,15 @@ scale = Vector2( 1.78947, 1.08548 )
 texture = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 position = Vector2( -1, -7 )
 collision_layer = 4
 collision_mask = 4
 script = ExtResource( 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-visible = false
 position = Vector2( -4, 3 )
 scale = Vector2( 1.24106, 1.17385 )
-polygon = PoolVector2Array( -95.0802, -23.853, 0.805764, -74.9667, 96.6917, -33.2239, 4.83459, 17.8898 )
+polygon = PoolVector2Array( -63.6553, -34.9278, 4.02881, -66.448, 68.4898, -37.4835, 8.05763, -4.25949 )
 
 [node name="Position_Sensor" type="Area2D" parent="."]
 collision_layer = 64

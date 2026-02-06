@@ -329,7 +329,6 @@ scale = Vector2( 1.78947, 1.08548 )
 texture = ExtResource( 6 )
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 position = Vector2( -1, -7 )
 collision_layer = 4
 collision_mask = 4
@@ -338,7 +337,7 @@ script = ExtResource( 4 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2( -4, 3 )
 scale = Vector2( 1.24106, 1.17385 )
-polygon = PoolVector2Array( -95.0802, -23.853, 0.805764, -74.9667, 96.6917, -33.2239, 4.83459, 17.8898 )
+polygon = PoolVector2Array( -60.4322, -34.0759, -0.805763, -63.0404, 66.8783, -35.7797, 10.4749, -5.96328 )
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_Area2D_body_exited"]
