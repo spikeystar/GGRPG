@@ -747,6 +747,7 @@ texture = ExtResource( 13 )
 [node name="CollisionRoot" type="Node2D" parent="."]
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 41 )]
+visible = false
 
 [node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 44 )]
 polygon = PoolVector2Array( -273, -21, -211, -46, 59, -142, 592, -325, 970, -173, 126, 122, 5, 79, -57, 101, -116, 80, -55, 57 )
