@@ -164,7 +164,7 @@ func set_item():
 		item_get()
 	if item_name == "Ginger Tea":
 		$ItemUsage/Item.frame = 4
-		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.position = Vector2(-2, -6)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		item_get()
 	if item_name == "Sugar Pill":
@@ -174,22 +174,22 @@ func set_item():
 		item_get()
 	if item_name == "Bounty Herb":
 		$ItemUsage/Item.frame = 5
-		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.position = Vector2(0, 0)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		item_get()
 	if item_name == "Picnic Pie":
 		$ItemUsage/Item.frame = 2
-		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.position = Vector2(-2, 0)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		item_get()
 	if item_name == "Marbles":
 		$ItemUsage/Item.frame = 11
-		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.position = Vector2(-1, 0)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		marbles_get()
 	if item_name == "Full Heal":
 		$ItemUsage/Item.frame = 10
-		$ItemUsage/Item.position = Vector2(1, 0)
+		$ItemUsage/Item.position = Vector2(0, 0)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		full_heal()
 	if item_name == "Gold Earring":

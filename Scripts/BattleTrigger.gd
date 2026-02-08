@@ -19,7 +19,13 @@ func _ready():
 	connect("body_entered", self, "_on_body_entered")
 	connect("body_exited", self, "_on_body_exited")
 	
-	yield(get_tree().create_timer(1), "timeout")
+	var timer = Timer.new()
+	timer.one_shot = true
+	add_child(timer)
+	timer.start(1)
+	timer.connect("timeout", self, "_on_timer_timeout")
+	
+func _on_timer_timeout():
 	viable = true
 
 func _physics_process(delta):

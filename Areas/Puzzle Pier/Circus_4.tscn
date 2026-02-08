@@ -584,7 +584,7 @@ floor_height = 260.0
 [node name="PresentBase" parent="YSort/MiddleGround" instance=ExtResource( 51 )]
 position = Vector2( 380, -653 )
 rotation = 0.00523599
-item_name = "Jhumki"
+item_name = "Picnic Pie"
 floor_height = 350.0
 shadow_color = Color( 0.266667, 0.27451, 0.486275, 1 )
 
