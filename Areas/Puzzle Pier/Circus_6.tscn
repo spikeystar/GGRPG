@@ -607,7 +607,6 @@ texture = ExtResource( 29 )
 flip_h = true
 
 [node name="CollisionRoot" type="Node2D" parent="."]
-visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 10 )]
 
@@ -616,31 +615,32 @@ polygon = PoolVector2Array( -116, -54, 100, -131, 7, -163, 97, -192, 191, -161, 
 
 [node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 11 )]
 position = Vector2( 109, -156 )
-door_name = "PivotTown1_PivotTown2"
-direction = Vector2( -1, -1 )
+door_name = "Circus5_Circus6"
+direction = Vector2( 1, -1 )
 
 [node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 11 )]
-position = Vector2( 327, -134 )
-door_name = "CherryTrail3_4"
+position = Vector2( 627, -145 )
+door_name = "Circus7_Circus6"
 direction = Vector2( -1, -1 )
 
-[node name="Circus2" parent="." instance=ExtResource( 12 )]
-visible = false
-position = Vector2( -414, -259 )
+[node name="Circus5" parent="." instance=ExtResource( 12 )]
+position = Vector2( 72, -151 )
 script = ExtResource( 22 )
+target_scene = "res://Areas/Puzzle Pier/Circus_5.tscn"
+exit_name = "Circus6_Circus5"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Circus2"]
-polygon = PoolVector2Array( 23, -44, 49, -35, -39, -1, -59, -12 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Circus5"]
+polygon = PoolVector2Array( 24, -45, 41, -38, -46, -3, -59, -12 )
 
-[node name="Circus" parent="." instance=ExtResource( 12 )]
+[node name="Circus7" parent="." instance=ExtResource( 12 )]
 position = Vector2( 480, 138 )
 rotation = 0.0231584
 script = ExtResource( 22 )
-target_scene = "res://Areas/Pivot Town/Pivot_Town_1.tscn"
-exit_name = "PivotTown2_PivotTown1"
+exit_name = "Circus6_Circus7"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Circus"]
-polygon = PoolVector2Array( 24.7657, -53.5879, 46.9682, -45.0997, -48.1724, -6.88636, -70.3518, -14.3748 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Circus7"]
+position = Vector2( 118.761, -270.823 )
+polygon = PoolVector2Array( 24.7657, -53.5879, 113.483, -23.6342, 97.6496, -16.2656, 1.88776, -48.0566 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
