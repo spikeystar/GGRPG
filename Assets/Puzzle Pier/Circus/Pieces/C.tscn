@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Objects/Puzzle_Piece_Detection.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Pieces/C1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Pieces/C2.png" type="Texture" id=5]
+
+[node name="C" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 3 )
+piece_id = 3
+
+[node name="CollidableBox" parent="." instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 1, 9 )
+grid_size = Vector2( 1.2, 1.1 )
+height = 10.0
+preview_collision_box = false
+
+[node name="Sprite2" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+script = ExtResource( 1 )
+alpha_clip = 1.0
+height = 1.0
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+script = ExtResource( 1 )
+alpha_clip = 1.0
+height = 1.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+position = Vector2( -1, 1 )
+polygon = PoolVector2Array( -11, -10, 3, -12, 31, -3, 14, 6, -2, 5, -26, -2, -18, -9 )
+
+[connection signal="body_entered" from="." to="." method="_on_Puzzle_Piece_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Puzzle_Piece_body_exited"]

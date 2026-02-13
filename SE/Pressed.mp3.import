@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pressed.mp3-2b1c2396d8a63d1bc3d74b04b1ea44a7.mp3str"
+
+[deps]
+
+source_file="res://SE/Pressed.mp3"
+dest_files=[ "res://.import/Pressed.mp3-2b1c2396d8a63d1bc3d74b04b1ea44a7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

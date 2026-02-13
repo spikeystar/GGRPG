@@ -156,6 +156,8 @@ func effect(id : String):
 		$Countdown2.play()
 	if id == "Water_Gun":
 		$Water_Gun.play()
+	if id == "Pressed":
+		$Pressed.play()
 		
 		
 #######################################################
