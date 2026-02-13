@@ -3,7 +3,7 @@ extends Area2D
 
 var player_height
 
-var piece_height = 10
+var piece_height = 14
 
 export var piece_id : int
 
@@ -32,7 +32,7 @@ func _process(delta):
 		able = false
 		pressed = true
 		SE.effect("Pressed")
-		$CollidableBox.height = 5
+		$CollidableBox.height = 9
 		$Sprite.global_position.y = ($Sprite.global_position.y + 2000)
 		$Sprite2.global_position.y = ($Sprite.global_position.y - 2000)
 		
@@ -44,9 +44,9 @@ func _process(delta):
 		$Sprite.global_position.y = ($Sprite.global_position.y - 2000)
 		$Sprite2.global_position.y = ($Sprite2.global_position.y + 2000)
 		
-		if $CollidableBox.height != 10:
+		if $CollidableBox.height != 14:
 			SE.effect("Pressed")
-			$CollidableBox.height = 10
+			$CollidableBox.height = 14
 	
 func puzzle_check():
 	yield(get_tree().create_timer(0.5), "timeout")

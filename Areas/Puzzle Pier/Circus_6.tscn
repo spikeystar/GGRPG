@@ -768,7 +768,7 @@ position = Vector2( 582, -135 )
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false
-position = Vector2( 585, -116 )
+position = Vector2( 586, -116 )
 scale = Vector2( 2.2, 2.2 )
 z_index = 1
 texture = ExtResource( 41 )

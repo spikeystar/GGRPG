@@ -16,7 +16,7 @@ piece_id = 6
 visible = false
 position = Vector2( 1, 9 )
 grid_size = Vector2( 1.2, 1.1 )
-height = 10.0
+height = 14.0
 preview_collision_box = false
 
 [node name="Sprite2" type="Sprite" parent="."]
