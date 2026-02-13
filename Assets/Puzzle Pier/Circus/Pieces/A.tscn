@@ -12,22 +12,18 @@ collision_mask = 4
 script = ExtResource( 3 )
 
 [node name="CollidableBox" parent="." instance=ExtResource( 2 )]
-visible = false
-position = Vector2( 1, 9 )
+position = Vector2( 1, 6 )
 grid_size = Vector2( 1.2, 1.1 )
 height = 10.0
-preview_collision_box = false
 
 [node name="Sprite2" type="Sprite" parent="."]
 texture = ExtResource( 5 )
 script = ExtResource( 1 )
-alpha_clip = 1.0
 height = 1.0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 script = ExtResource( 1 )
-alpha_clip = 1.0
 height = 1.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
