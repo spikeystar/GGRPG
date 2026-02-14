@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Medallion.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Balloons C.png" type="Texture" id=2]
@@ -13,7 +13,7 @@
 [ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Assets/Puzzle Pier/balloons_b.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Puzzle Pier/Circus/Box A.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Sphere.png" type="Texture" id=14]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Cone.png" type="Texture" id=15]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Pieces/A1.png" type="Texture" id=16]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=17]
@@ -31,7 +31,6 @@
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Red P.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Balloons B.png" type="Texture" id=30]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Flags B.png" type="Texture" id=31]
-[ext_resource path="res://Assets/Puzzle Pier/Circus/Box B.png" type="Texture" id=32]
 [ext_resource path="res://Assets/General/Tiles/Yellow Circus Tile.png" type="Texture" id=33]
 [ext_resource path="res://Assets/General/Tiles/Purple Circus Tile.png" type="Texture" id=34]
 [ext_resource path="res://Assets/General/Shadows/rectangle shadow small.png" type="Texture" id=35]
@@ -257,56 +256,38 @@ scale = Vector2( 1.75007, 1.13811 )
 texture = ExtResource( 5 )
 
 [node name="BlueP2" type="Sprite" parent="YSort/Background"]
-position = Vector2( 496, -243 )
+position = Vector2( 499, -247 )
 scale = Vector2( 1.64994, 1.51421 )
 texture = ExtResource( 40 )
 
-[node name="BalloonsA" type="Sprite" parent="YSort/Background"]
-position = Vector2( 520, -713.596 )
-rotation = 0.0364469
-scale = Vector2( 1.5147, 1.39504 )
-texture = ExtResource( 26 )
-flip_h = true
-
-[node name="Cone" type="Sprite" parent="YSort/Background"]
-position = Vector2( -404.581, -445.95 )
-scale = Vector2( 1.3925, 1.36 )
-texture = ExtResource( 15 )
-
 [node name="GreenP" type="Sprite" parent="YSort/Background"]
-position = Vector2( 259, -241 )
+position = Vector2( 263, -241 )
 scale = Vector2( 1.64311, 1.53132 )
 texture = ExtResource( 27 )
 
-[node name="FlagsB2" type="Sprite" parent="YSort/Background"]
-position = Vector2( -524.273, -471.289 )
-rotation = 0.461078
-scale = Vector2( 1.51969, 1.5378 )
-texture = ExtResource( 31 )
-flip_h = true
-
 [node name="PinkP" type="Sprite" parent="YSort/Background"]
-position = Vector2( -125, -150 )
+position = Vector2( -125, -145 )
 scale = Vector2( 1.40897, 1.32503 )
 texture = ExtResource( 28 )
 flip_h = true
 
 [node name="PinkP2" type="Sprite" parent="YSort/Background"]
-position = Vector2( 831, -119 )
+position = Vector2( 824, -142 )
 scale = Vector2( 1.40897, 1.32503 )
 texture = ExtResource( 28 )
+
+[node name="BalloonsB3" type="Sprite" parent="YSort/Background"]
+position = Vector2( 934, -191 )
+rotation = 0.0590582
+scale = Vector2( 1.50043, 1.28443 )
+texture = ExtResource( 30 )
+flip_h = true
 
 [node name="BalloonsB" type="Sprite" parent="YSort/Background"]
 position = Vector2( -691.581, -432.95 )
 rotation = -0.0626568
 scale = Vector2( 1.64095, 1.51451 )
 texture = ExtResource( 30 )
-
-[node name="FlagsA" type="Sprite" parent="YSort/Background"]
-position = Vector2( 510, -695.984 )
-rotation = 0.142847
-scale = Vector2( 1.3134, 1.29926 )
-texture = ExtResource( 39 )
 
 [node name="Floor" type="Node2D" parent="YSort"]
 z_index = -10
@@ -325,87 +306,9 @@ tile_data = PoolIntArray( -1376255, 3, 0, -1376254, 5, 0, -1376253, 3, 0, -13107
 [node name="MiddleGround" type="Node2D" parent="YSort"]
 
 [node name="BalloonsC" type="Sprite" parent="YSort/MiddleGround"]
-position = Vector2( 371, -327 )
+position = Vector2( 362, -326 )
 scale = Vector2( 1.39508, 1.31684 )
 texture = ExtResource( 2 )
-
-[node name="Box C" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
-position = Vector2( -198, -211 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 64, 27 )
-grid_size = Vector2( 0.8, 0.74 )
-texture = ExtResource( 3 )
-texture_scale = Vector2( 0.85, 0.85 )
-texture_offset = Vector2( 0, 1 )
-height = 30.0
-preview_collision_box = false
-
-[node name="Box C3" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
-position = Vector2( -196, -154 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 64, 27 )
-grid_size = Vector2( 0.8, 0.74 )
-texture = ExtResource( 3 )
-texture_scale = Vector2( 0.85, 0.85 )
-texture_offset = Vector2( 0, 1 )
-height = 30.0
-preview_collision_box = false
-
-[node name="Box A" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
-position = Vector2( -259, -168 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 64, 27 )
-grid_size = Vector2( 0.8, 0.74 )
-texture = ExtResource( 14 )
-texture_scale = Vector2( 0.85, 0.85 )
-texture_offset = Vector2( 0, 1 )
-height = 30.0
-preview_collision_box = false
-
-[node name="Box A2" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
-position = Vector2( -289, -121 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 64, 27 )
-grid_size = Vector2( 0.8, 0.74 )
-texture = ExtResource( 14 )
-texture_scale = Vector2( 0.85, 0.85 )
-texture_offset = Vector2( 0, 1 )
-height = 30.0
-preview_collision_box = false
-
-[node name="Box B" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
-position = Vector2( -232, -88 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 64, 27 )
-grid_size = Vector2( 0.8, 0.74 )
-texture = ExtResource( 32 )
-texture_scale = Vector2( 0.85, 0.85 )
-texture_offset = Vector2( 0, 1 )
-height = 30.0
-preview_collision_box = false
-
-[node name="Box C2" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
-position = Vector2( -347, -205 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 64, 27 )
-grid_size = Vector2( 0.8, 0.74 )
-texture = ExtResource( 3 )
-texture_scale = Vector2( 0.85, 0.85 )
-texture_offset = Vector2( 0, 1 )
-height = 30.0
-preview_collision_box = false
 
 [node name="BalloonsB3" parent="YSort/MiddleGround" instance=ExtResource( 23 )]
 position = Vector2( -13, -68 )
@@ -432,6 +335,13 @@ texture_scale = Vector2( -1.3, 1.3 )
 texture_offset = Vector2( -2, -4 )
 height = 150.0
 preview_collision_box = false
+
+[node name="BalloonsA" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( -208, -128 )
+rotation = 0.0364469
+scale = Vector2( 1.5147, 1.39504 )
+texture = ExtResource( 26 )
+flip_h = true
 
 [node name="BlocksA" type="Node2D" parent="YSort/MiddleGround"]
 position = Vector2( 323, 43 )
@@ -650,51 +560,87 @@ position = Vector2( 511, -52 )
 z_index = 20
 
 [node name="GreenP2" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 655, 160 )
+position = Vector2( 653.994, 180.421 )
 scale = Vector2( 1.65622, 1.55264 )
 texture = ExtResource( 27 )
 flip_h = true
+
+[node name="Sphere2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 1021, -63 )
+scale = Vector2( 1.4, 1.4 )
+texture = ExtResource( 14 )
+
+[node name="FlagsB" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 875, -138 )
+rotation = 0.161267
+scale = Vector2( 1.47741, 1.25761 )
+texture = ExtResource( 31 )
 
 [node name="OrangeP" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( 905, 21 )
 scale = Vector2( 1.62523, 1.55389 )
 texture = ExtResource( 38 )
 
-[node name="Square" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 1561.06, -364.75 )
-scale = Vector2( 1.7, 1.7 )
-texture = ExtResource( 25 )
-
 [node name="YellowP2" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 379, 172 )
+position = Vector2( 375, 193 )
 scale = Vector2( 1.49709, 1.43553 )
 texture = ExtResource( 6 )
 flip_h = true
 
-[node name="FlagsB" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 1586.21, -431.715 )
-rotation = 0.179072
-scale = Vector2( 1.47741, 1.25761 )
-texture = ExtResource( 31 )
+[node name="YellowP3" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 901, 193 )
+scale = Vector2( 1.49709, 1.43553 )
+texture = ExtResource( 6 )
 flip_h = true
 
 [node name="BlueP" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( -109, 22 )
+position = Vector2( -100, 45 )
 scale = Vector2( 1.64994, 1.51421 )
 texture = ExtResource( 40 )
 
+[node name="RedP" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 118, 111 )
+scale = Vector2( 1.51, 1.5275 )
+texture = ExtResource( 29 )
+flip_h = true
+
 [node name="BalloonsB2" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 378, 601.421 )
+position = Vector2( 238, 206 )
 rotation = 0.0590582
 scale = Vector2( 1.66013, 1.5052 )
 texture = ExtResource( 30 )
 flip_h = true
 
-[node name="RedP" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 118, 103 )
-scale = Vector2( 1.51, 1.5275 )
-texture = ExtResource( 29 )
+[node name="Square" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 519.994, 267.421 )
+scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 25 )
+
+[node name="BalloonsA2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 768, 122 )
+rotation = 0.0364469
+scale = Vector2( 1.5147, 1.39504 )
+texture = ExtResource( 26 )
 flip_h = true
+
+[node name="FlagsB2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 482.994, 157.421 )
+rotation = 0.280347
+scale = Vector2( 1.51969, 1.5378 )
+texture = ExtResource( 31 )
+flip_h = true
+
+[node name="FlagsA" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( -9.00598, 3.42101 )
+rotation = 0.0939356
+scale = Vector2( 1.21459, 1.15881 )
+texture = ExtResource( 39 )
+flip_h = true
+
+[node name="Cone" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( -13, 154 )
+scale = Vector2( 1.3925, 1.36 )
+texture = ExtResource( 15 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
 visible = false
@@ -739,8 +685,8 @@ position = Vector2( -235, -234 )
 z_index = 4096
 current = true
 script = ExtResource( 24 )
-minPos = Vector2( 20, -250 )
-maxPos = Vector2( 700, -55 )
+minPos = Vector2( 50, -180 )
+maxPos = Vector2( 500, -55 )
 follow_player = true
 
 [node name="Info_Window" type="Sprite" parent="Camera2D"]
