@@ -229,7 +229,7 @@ func set_item():
 		
 	if item_name == "Polar Parfait":
 		$ItemUsage/Item.frame = 50
-		$ItemUsage/Item.position = Vector2(0, 3)
+		$ItemUsage/Item.position = Vector2(-2, 2)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
 		item_get()
 		
