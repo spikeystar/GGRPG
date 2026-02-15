@@ -371,7 +371,7 @@ height = 30.0
 preview_collision_box = false
 
 [node name="BlocksA" type="Node2D" parent="YSort/MiddleGround"]
-position = Vector2( 3, 0 )
+position = Vector2( 2, -1 )
 
 [node name="Box C5" parent="YSort/MiddleGround/BlocksA" instance=ExtResource( 37 )]
 position = Vector2( 246, -191 )

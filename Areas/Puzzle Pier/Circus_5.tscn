@@ -1157,6 +1157,30 @@ texture_offset = Vector2( 0, 15 )
 height = 120.0
 floor_height = 300.0
 
+[node name="Tiles6" type="TileMap" parent="YSort"]
+modulate = Color( 0.960784, 0.992157, 0.992157, 1 )
+position = Vector2( 1286, 186 )
+mode = 1
+tile_set = SubResource( 4 )
+cell_size = Vector2( 62, 22 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -393222, 3, 0, -393221, 2, 0, -393220, 3, 0, -393219, 2, 0, -393218, 3, 0, -327686, 2, 0, -327685, 3, 0, -327684, 2, 0, -327683, 3, 0, -327682, 2, 0, -262150, 3, 0, -262149, 2, 0, -262148, 3, 0, -262147, 2, 0, -262146, 3, 0, 589836, 2, 0 )
+script = ExtResource( 51 )
+height = 485.0
+
+[node name="Tiles5" type="TileMap" parent="YSort"]
+modulate = Color( 0.960784, 0.992157, 0.992157, 1 )
+position = Vector2( 1286, 181 )
+mode = 1
+tile_set = SubResource( 4 )
+cell_size = Vector2( 62, 22 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -393222, 3, 0, -393221, 2, 0, -393220, 3, 0, -393219, 2, 0, -393218, 3, 0, -327686, 2, 0, -327685, 3, 0, -327684, 2, 0, -327683, 3, 0, -327682, 2, 0, -262150, 3, 0, -262149, 2, 0, -262148, 3, 0, -262147, 2, 0, -262146, 3, 0, 589836, 2, 0 )
+script = ExtResource( 51 )
+height = 485.0
+
 [node name="Tiles4" type="TileMap" parent="YSort"]
 modulate = Color( 0.960784, 0.992157, 0.992157, 1 )
 position = Vector2( 1286, 174 )
