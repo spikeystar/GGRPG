@@ -16,6 +16,7 @@ func _ready():
 		
 	if EventManager.circus_puzzle:
 		$YSort/MiddleGround/BlocksA.queue_free()
+		$Circus7/CollisionPolygon2D.disabled = false
 
 
 func _on_G_puzzle_solved():
@@ -31,6 +32,7 @@ func _on_G_puzzle_solved():
 	$PoofPlayer.play("Poof")
 	yield(get_tree().create_timer(0.2), "timeout")
 	$YSort/MiddleGround/BlocksA.queue_free()
+	$Circus7/CollisionPolygon2D.disabled = false
 	yield(get_tree().create_timer(1), "timeout")
 	var tween3 = create_tween()
 	tween3.tween_property($Camera2D, "position", current_position, 1)

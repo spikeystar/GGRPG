@@ -26,6 +26,8 @@ var Irina_Meetup_CS = true
 var Edgar_Check_In_CS = false
 
 var circus_puzzle = false
+var calico_initial = false
+var circus_extra = false
 
 var Crane_Item_1 = false
 var Crane_Item_2 = false

@@ -6,6 +6,7 @@ signal text_ready
 signal talk_done
 signal restart
 signal quest_item
+signal event_trigger
 var length : int
 var alternate = false
 var js = Party.jewel_seeds
@@ -53,6 +54,13 @@ func talking():
 		$DialogueCursor.hide()
 		emit_signal("talk_done")
 		
+func talking_autoend():
+	tween_go()
+	yield(get_tree().create_timer((length/25) + 0.5), "timeout")
+	$DialogueCursor.show()
+	emit_signal("talk_done")
+	
+		
 func done():
 	hide()
 	PlayerManager.freeze = false
@@ -95,6 +103,8 @@ func talk():
 		Nikolai()
 	if npc_name == "Brody":
 		Brody()
+	if npc_name == "Calico":
+		Calico()
 		
 func Victor():
 	if js < 2 and not alternate:
@@ -446,6 +456,76 @@ func Brody():
 		done()
 		alternate = false
 
+func Calico():
+	if not EventManager.calico_initial:
+		emit_signal("event_trigger")
+		$Name/Talk.text = "Ack! How did you get in here!?"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "I'm supposed to keep this room hidden but..."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "Have you heard of Jhumkis? I'm kind of obssesed with them."
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "Tell you what, if you can show me (5) Jhumkis I'll let you have a look in this room!"
+		talking()
+		yield(self, "talk_done")
+		EventManager.calico_initial = true
+		if Party.jhumki_amount >= 5:
+			$Name/Talk.text = "Oh!! You have enough Jhumkis!"
+			talking()
+			yield(self, "talk_done")
+			$Name/Talk.text = "Let me see! Let me see!"
+			talking()
+			yield(self, "talk_done")
+			$Name/Talk.text = "They're so pretty... just the sight of one can make my day!"
+			talking()
+			yield(self, "talk_done")
+			$Name/Talk.text = "Alright, here you go as promised."
+			talking()
+			yield(self, "talk_done")
+			emit_signal("event_trigger")
+			cursor_ready = false
+			$DialogueCursor.hide()
+			hide()
+		if Party.jhumki_amount <5:
+			done()
+	if EventManager.calico_initial and Party.jhumki_amount <5:
+		$Name/Talk.text = "If you can show me (5) Jhumkis I'll let you have a look in this room!"
+		talking()
+		yield(self, "talk_done")
+		done()
+	if EventManager.calico_initial and Party.jhumki_amount >= 5 and not EventManager.circus_extra:
+		$Name/Talk.text = "Oh!! You have enough Jhumkis!"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "Let me see! Let me see!"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "They're so pretty... just the sight of one can make my day!"
+		talking()
+		yield(self, "talk_done")
+		$Name/Talk.text = "Alright, here you go as promised."
+		talking()
+		yield(self, "talk_done")
+		emit_signal("event_trigger")
+		cursor_ready = false
+		$DialogueCursor.hide()
+		hide()
+
+func Calico_after():
+	cursor_ready = false
+	npc_name = SceneManager.npc_name
+	show()
+	$Name/Talk.text = "And now I'm outta here!"
+	talking_autoend()
+	yield(self, "talk_done")
+	$DialogueCursor.hide()
+	hide()
+	cursor_ready = false
+	
+
 func _on_SaveStarIntro_area_event():
 		show()
 		$Name.text = "This is a Save Star. You can use it to save your game or fast travel to places you've been before."
@@ -483,3 +563,5 @@ func _on_Michael_Stall_area_event():
 	yield(tween, "finished")
 	PlayerManager.freeze = false
 	PlayerManager.cutscene = false
+
+
