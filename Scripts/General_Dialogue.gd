@@ -468,7 +468,7 @@ func Calico():
 		$Name/Talk.text = "Have you heard of Jhumkis? I'm kind of obssesed with them."
 		talking()
 		yield(self, "talk_done")
-		$Name/Talk.text = "Tell you what, if you can show me (5) Jhumkis I'll let you have a look in this room!"
+		$Name/Talk.text = "Tell you what, if you can show me 5 Jhumkis I'll let you have a look in this room!"
 		talking()
 		yield(self, "talk_done")
 		EventManager.calico_initial = true
@@ -492,7 +492,8 @@ func Calico():
 		if Party.jhumki_amount <5:
 			done()
 	if EventManager.calico_initial and Party.jhumki_amount <5:
-		$Name/Talk.text = "If you can show me (5) Jhumkis I'll let you have a look in this room!"
+		$Name/Talk.text = ""
+		$Name/Talk.text = "If you can show me 5 Jhumkis I'll let you have a look in this room!"
 		talking()
 		yield(self, "talk_done")
 		done()

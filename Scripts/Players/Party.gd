@@ -9,7 +9,7 @@ var marbles_get = false
 var trinket_get = false
 var sent_storage = false
 var event_name : String
-var jhumki_amount : int = 5
+var jhumki_amount : int = 0
 var misc_name : String
 
 const menu_slot = preload("res://UI/Slot.tscn")
