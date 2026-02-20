@@ -1,0 +1,512 @@
+[gd_scene load_steps=34 format=2]
+
+[ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Red Rug.png" type="Texture" id=2]
+[ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=3]
+[ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Rendering/DepthTestTileMap.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Stage.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/Area_Specific/Circus_8.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=9]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Orange P.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Present Box/TreasureBox.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Red P.png" type="Texture" id=13]
+[ext_resource path="res://Assets/General/Tiles/Purple Circus Tile.png" type="Texture" id=14]
+[ext_resource path="res://Assets/General/Tiles/wood tile b.png" type="Texture" id=15]
+[ext_resource path="res://Assets/General/Tiles/wood tile a.png" type="Texture" id=16]
+[ext_resource path="res://Assets/General/QuestItem.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Assets/General/Tiles/Red Circus Tile.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Puzzle Pier/balloons_b.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Step.png" type="Texture" id=20]
+[ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=21]
+[ext_resource path="res://Assets/General/Tiles/Yellow Circus Tile.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Square.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Balloons A.png" type="Texture" id=25]
+[ext_resource path="res://Assets/General/Tiles/Blue Circus Tile.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Balloons C.png" type="Texture" id=29]
+[ext_resource path="res://Assets/General/Backgrounds/Maroon BCKGD.jpg" type="Texture" id=31]
+[ext_resource path="res://Assets/Puzzle Pier/Circus/Yellow P.png" type="Texture" id=32]
+[ext_resource path="res://Objects/Collision/Navmesh.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Objects/Collision/NavmeshLayer.tscn" type="PackedScene" id=35]
+[ext_resource path="res://Objects/SceneTransition/PlayerSpawnLocation.tscn" type="PackedScene" id=36]
+[ext_resource path="res://Objects/SceneTransition/Doorway.tscn" type="PackedScene" id=37]
+
+[sub_resource type="TileSet" id=1]
+0/name = "wood tile a.png 0"
+0/texture = ExtResource( 16 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 64, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "wood tile b.png 1"
+1/texture = ExtResource( 15 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 64, 32 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+2/name = "Blue Circus Tile.png 2"
+2/texture = ExtResource( 28 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 0, 0, 64, 32 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shape_offset = Vector2( 0, 0 )
+2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+2/shape_one_way = false
+2/shape_one_way_margin = 0.0
+2/shapes = [  ]
+2/z_index = 0
+3/name = "Yellow Circus Tile.png 3"
+3/texture = ExtResource( 23 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 0, 0, 64, 32 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shape_offset = Vector2( 0, 0 )
+3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+3/shape_one_way = false
+3/shape_one_way_margin = 0.0
+3/shapes = [  ]
+3/z_index = 0
+4/name = "Red Circus Tile.png 4"
+4/texture = ExtResource( 18 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 0, 0, 64, 32 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shape_offset = Vector2( 0, 0 )
+4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+4/shape_one_way = false
+4/shape_one_way_margin = 0.0
+4/shapes = [  ]
+4/z_index = 0
+5/name = "Purple Circus Tile.png 5"
+5/texture = ExtResource( 14 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 0, 0, 64, 32 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shape_offset = Vector2( 0, 0 )
+5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+5/shape_one_way = false
+5/shape_one_way_margin = 0.0
+5/shapes = [  ]
+5/z_index = 0
+
+[node name="WorldRoot" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Shadows" type="Node2D" parent="YSort"]
+
+[node name="Background" type="Node2D" parent="YSort"]
+z_index = -20
+
+[node name="MaroonBCKGD" type="Sprite" parent="YSort/Background"]
+modulate = Color( 0.98, 0.98, 0.98, 1 )
+position = Vector2( 355, -189 )
+scale = Vector2( 1.75007, 1.13811 )
+texture = ExtResource( 31 )
+
+[node name="BalloonsC" type="Sprite" parent="YSort/Background"]
+position = Vector2( 592, -378 )
+scale = Vector2( 1.39508, 1.31684 )
+texture = ExtResource( 29 )
+
+[node name="BalloonsA4" type="Sprite" parent="YSort/Background"]
+position = Vector2( 51, -392 )
+rotation = -0.0572366
+scale = Vector2( 1.33084, 1.2208 )
+texture = ExtResource( 25 )
+flip_h = true
+
+[node name="BalloonsA5" type="Sprite" parent="YSort/Background"]
+position = Vector2( -236, -334 )
+rotation = -0.0572366
+scale = Vector2( 1.33084, 1.2208 )
+texture = ExtResource( 25 )
+flip_h = true
+
+[node name="Square" type="Sprite" parent="YSort/Background"]
+position = Vector2( 922, -251 )
+scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 24 )
+
+[node name="OrangeP3" type="Sprite" parent="YSort/Background"]
+position = Vector2( -124, -234 )
+scale = Vector2( 1.62523, 1.55389 )
+texture = ExtResource( 11 )
+
+[node name="OrangeP4" type="Sprite" parent="YSort/Background"]
+position = Vector2( 354, -379 )
+scale = Vector2( 1.62523, 1.55389 )
+texture = ExtResource( 11 )
+flip_h = true
+
+[node name="YellowP5" type="Sprite" parent="YSort/Background"]
+position = Vector2( 192.21, -344.611 )
+scale = Vector2( 1.5821, 1.50052 )
+texture = ExtResource( 32 )
+
+[node name="RedP4" type="Sprite" parent="YSort/Background"]
+position = Vector2( 30, -284 )
+scale = Vector2( 1.51, 1.5275 )
+texture = ExtResource( 13 )
+
+[node name="YellowP4" type="Sprite" parent="YSort/Background"]
+position = Vector2( 815, -141 )
+scale = Vector2( 1.5821, 1.50052 )
+texture = ExtResource( 32 )
+flip_h = true
+
+[node name="BalloonsA3" type="Sprite" parent="YSort/Background"]
+position = Vector2( 873, -233 )
+rotation = 0.175883
+scale = Vector2( 1.33084, 1.2208 )
+texture = ExtResource( 25 )
+flip_h = true
+
+[node name="RedP2" type="Sprite" parent="YSort/Background"]
+position = Vector2( 489, -345 )
+scale = Vector2( 1.51, 1.5275 )
+texture = ExtResource( 13 )
+flip_h = true
+
+[node name="YellowP" type="Sprite" parent="YSort/Background"]
+position = Vector2( 1365, -631.25 )
+scale = Vector2( 1.43209, 1.36053 )
+texture = ExtResource( 32 )
+flip_h = true
+
+[node name="Floor" type="Node2D" parent="YSort"]
+z_index = -10
+
+[node name="Tiles3" type="TileMap" parent="YSort/Floor"]
+modulate = Color( 0.960784, 0.992157, 0.992157, 1 )
+position = Vector2( -55.5, 57.5 )
+z_index = -5
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -1769476, 3, 0, -1769475, 5, 0, -1769474, 3, 0, -1703940, 5, 0, -1703939, 3, 0, -1703938, 5, 0, -1638404, 3, 0, -1638403, 5, 0, -1638402, 3, 0, -1572868, 5, 0, -1572867, 3, 0, -1572866, 5, 0, -1507332, 3, 0, -1507331, 5, 0, -1507330, 3, 0, -1441802, 5, 0, -1441801, 3, 0, -1441800, 5, 0, -1441799, 3, 0, -1441798, 5, 0, -1441797, 3, 0, -1441796, 5, 0, -1441795, 3, 0, -1441794, 5, 0, -1441793, 3, 0, -1507328, 5, 0, -1507327, 3, 0, -1507326, 5, 0, -1507325, 3, 0, -1507324, 5, 0, -1507323, 3, 0, -1507322, 5, 0, -1507321, 3, 0, -1507320, 5, 0, -1376266, 3, 0, -1376265, 5, 0, -1376264, 3, 0, -1376263, 5, 0, -1376262, 3, 0, -1376261, 5, 0, -1376260, 3, 0, -1376259, 5, 0, -1376258, 3, 0, -1376257, 5, 0, -1441792, 3, 0, -1441791, 5, 0, -1441790, 3, 0, -1441789, 5, 0, -1441788, 3, 0, -1441787, 5, 0, -1441786, 3, 0, -1441785, 5, 0, -1441784, 3, 0, -1310730, 5, 0, -1310729, 3, 0, -1310728, 5, 0, -1310727, 3, 0, -1310726, 5, 0, -1310725, 3, 0, -1310724, 5, 0, -1310723, 3, 0, -1310722, 5, 0, -1310721, 3, 0, -1376256, 5, 0, -1376255, 3, 0, -1376254, 5, 0, -1376253, 3, 0, -1376252, 5, 0, -1376251, 3, 0, -1376250, 5, 0, -1376249, 3, 0, -1376248, 5, 0, -1245194, 3, 0, -1245193, 5, 0, -1245192, 3, 0, -1245191, 5, 0, -1245190, 3, 0, -1245189, 5, 0, -1245188, 3, 0, -1245187, 5, 0, -1245186, 3, 0, -1245185, 5, 0, -1310720, 3, 0, -1310719, 5, 0, -1310718, 3, 0, -1310717, 5, 0, -1310716, 3, 0, -1310715, 5, 0, -1310714, 3, 0, -1310713, 5, 0, -1310712, 3, 0, -1179658, 5, 0, -1179657, 3, 0, -1179656, 5, 0, -1179655, 3, 0, -1179654, 5, 0, -1179653, 3, 0, -1179652, 5, 0, -1179651, 3, 0, -1179650, 5, 0, -1179649, 3, 0, -1245184, 5, 0, -1245183, 3, 0, -1245182, 5, 0, -1245181, 3, 0, -1245180, 5, 0, -1245179, 3, 0, -1245178, 5, 0, -1245177, 3, 0, -1245176, 5, 0, -1114122, 3, 0, -1114121, 5, 0, -1114120, 3, 0, -1114119, 5, 0, -1114118, 3, 0, -1114117, 5, 0, -1114116, 3, 0, -1114115, 5, 0, -1114114, 3, 0, -1114113, 5, 0, -1179648, 3, 0, -1179647, 5, 0, -1179646, 3, 0, -1179645, 5, 0, -1179644, 3, 0, -1179643, 5, 0, -1179642, 3, 0, -1179641, 5, 0, -1179640, 3, 0, -1048586, 5, 0, -1048585, 3, 0, -1048584, 5, 0, -1048583, 3, 0, -1048582, 5, 0, -1048581, 3, 0, -1048580, 5, 0, -1048579, 3, 0, -1048578, 5, 0, -1048577, 3, 0, -1114112, 5, 0, -1114111, 3, 0, -1114110, 5, 0, -1114109, 3, 0, -1114108, 5, 0, -1114107, 3, 0, -1114106, 5, 0, -1114105, 3, 0, -1114104, 5, 0, -983050, 3, 0, -983049, 5, 0, -983048, 3, 0, -983047, 5, 0, -983046, 3, 0, -983045, 5, 0, -983044, 3, 0, -983043, 5, 0, -983042, 3, 0, -983041, 5, 0, -1048576, 3, 0, -1048575, 5, 0, -1048574, 3, 0, -1048573, 5, 0, -1048572, 3, 0, -1048571, 5, 0, -1048570, 3, 0, -1048569, 5, 0, -1048568, 3, 0, -917514, 5, 0, -917513, 3, 0, -917512, 5, 0, -917511, 3, 0, -917510, 5, 0, -917509, 3, 0, -917508, 5, 0, -917507, 3, 0, -917506, 5, 0, -917505, 3, 0, -983040, 5, 0, -983039, 3, 0, -983038, 5, 0, -983037, 3, 0, -983036, 5, 0, -983035, 3, 0, -983034, 5, 0, -983033, 3, 0, -983032, 5, 0, -851978, 3, 0, -851977, 5, 0, -851976, 3, 0, -851975, 5, 0, -851974, 3, 0, -851973, 5, 0, -851972, 3, 0, -851971, 5, 0, -851970, 3, 0, -851969, 5, 0, -917504, 3, 0, -917503, 5, 0, -917502, 3, 0, -917501, 5, 0, -917500, 3, 0, -917499, 5, 0, -917498, 3, 0, -917497, 5, 0, -917496, 3, 0, -786442, 5, 0, -786441, 3, 0, -786440, 5, 0, -786439, 3, 0, -786438, 5, 0, -786437, 3, 0, -786436, 5, 0, -786435, 3, 0, -786434, 5, 0, -786433, 3, 0, -851968, 5, 0, -851967, 3, 0, -851966, 5, 0, -851965, 3, 0, -851964, 5, 0, -851963, 3, 0, -851962, 5, 0, -851961, 3, 0, -851960, 5, 0, -720906, 3, 0, -720905, 5, 0, -720904, 3, 0, -720903, 5, 0, -720902, 3, 0, -720901, 5, 0, -720900, 3, 0, -720899, 5, 0, -720898, 3, 0, -720897, 5, 0, -786432, 3, 0, -786431, 5, 0, -786430, 3, 0, -786429, 5, 0, -786428, 3, 0, -786427, 5, 0, -786426, 3, 0, -786425, 5, 0, -786424, 3, 0, -655370, 5, 0, -655369, 3, 0, -655368, 5, 0, -655367, 3, 0, -655366, 5, 0, -655365, 3, 0, -655364, 5, 0, -655363, 3, 0, -655362, 5, 0, -655361, 3, 0, -720896, 5, 0, -720895, 3, 0, -720894, 5, 0, -720893, 3, 0, -720892, 5, 0, -720891, 3, 0, -720890, 5, 0, -720889, 3, 0, -720888, 5, 0, -589834, 3, 0, -589833, 5, 0, -589832, 3, 0, -589831, 5, 0, -589830, 3, 0, -589829, 5, 0, -589828, 3, 0, -589827, 5, 0, -589826, 3, 0, -589825, 5, 0, -655360, 3, 0, -655359, 5, 0, -655358, 3, 0, -655357, 5, 0, -655356, 3, 0, -655355, 5, 0, -655354, 3, 0, -655353, 5, 0, -655352, 3, 0, -524298, 5, 0, -524297, 3, 0, -524296, 5, 0, -524295, 3, 0, -524294, 5, 0, -524293, 3, 0, -524292, 5, 0, -524291, 3, 0, -524290, 5, 0, -524289, 3, 0, -589824, 5, 0, -589823, 3, 0, -589822, 5, 0, -589821, 3, 0, -589820, 5, 0, -589819, 3, 0, -589818, 5, 0, -589817, 3, 0, -589816, 5, 0, -458762, 3, 0, -458761, 5, 0, -458760, 3, 0, -458759, 5, 0, -458758, 3, 0, -458757, 5, 0, -458756, 3, 0, -458755, 5, 0, -458754, 3, 0, -458753, 5, 0, -524288, 3, 0, -524287, 5, 0, -524286, 3, 0, -524285, 5, 0, -524284, 3, 0, -524283, 5, 0, -524282, 3, 0, -524281, 5, 0, -524280, 3, 0, -393226, 5, 0, -393225, 3, 0, -393224, 5, 0, -393223, 3, 0, -393222, 5, 0, -393221, 3, 0, -393220, 5, 0, -393219, 3, 0, -393218, 5, 0, -393217, 3, 0, -458752, 5, 0, -458751, 3, 0, -458750, 5, 0, -458749, 3, 0, -458748, 5, 0, -458747, 3, 0, -458746, 5, 0, -458745, 3, 0, -458744, 5, 0, -327690, 3, 0, -327689, 5, 0, -327688, 3, 0, -327687, 5, 0, -327686, 3, 0, -327685, 5, 0, -327684, 3, 0, -327683, 5, 0, -327682, 3, 0, -327681, 5, 0, -393216, 3, 0, -393215, 5, 0, -393214, 3, 0, -393213, 5, 0, -393212, 3, 0, -393211, 5, 0, -393210, 3, 0, -393209, 5, 0, -393208, 3, 0, -262154, 5, 0, -262153, 3, 0, -262152, 5, 0, -262151, 3, 0, -262150, 5, 0, -262149, 3, 0, -262148, 5, 0, -262147, 3, 0, -262146, 5, 0, -262145, 3, 0, -327680, 5, 0, -327679, 3, 0, -327678, 5, 0, -327677, 3, 0, -327676, 5, 0, -327675, 3, 0, -327674, 5, 0, -327673, 3, 0, -327672, 5, 0, -196610, 3, 0, -196609, 5, 0, -262144, 3, 0, -131074, 5, 0, -131073, 3, 0, -196608, 5, 0, -65538, 3, 0, -65537, 5, 0, -131072, 3, 0, -2, 5, 0, -1, 3, 0, -65536, 5, 0, 65534, 3, 0, 65535, 5, 0, 0, 3, 0 )
+script = ExtResource( 5 )
+height = 30.0
+
+[node name="Tiles2" type="TileMap" parent="YSort/Floor"]
+modulate = Color( 0.960784, 0.992157, 0.992157, 1 )
+position = Vector2( -55.5, 49.5 )
+z_index = -5
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -1769476, 3, 0, -1769475, 5, 0, -1769474, 3, 0, -1703940, 5, 0, -1703939, 3, 0, -1703938, 5, 0, -1638404, 3, 0, -1638403, 5, 0, -1638402, 3, 0, -1572868, 5, 0, -1572867, 3, 0, -1572866, 5, 0, -1507332, 3, 0, -1507331, 5, 0, -1507330, 3, 0, -1441802, 5, 0, -1441801, 3, 0, -1441800, 5, 0, -1441799, 3, 0, -1441798, 5, 0, -1441797, 3, 0, -1441796, 5, 0, -1441795, 3, 0, -1441794, 5, 0, -1441793, 3, 0, -1507328, 5, 0, -1507327, 3, 0, -1507326, 5, 0, -1507325, 3, 0, -1507324, 5, 0, -1507323, 3, 0, -1507322, 5, 0, -1507321, 3, 0, -1507320, 5, 0, -1376266, 3, 0, -1376265, 5, 0, -1376264, 3, 0, -1376263, 5, 0, -1376262, 3, 0, -1376261, 5, 0, -1376260, 3, 0, -1376259, 5, 0, -1376258, 3, 0, -1376257, 5, 0, -1441792, 3, 0, -1441791, 5, 0, -1441790, 3, 0, -1441789, 5, 0, -1441788, 3, 0, -1441787, 5, 0, -1441786, 3, 0, -1441785, 5, 0, -1441784, 3, 0, -1310730, 5, 0, -1310729, 3, 0, -1310728, 5, 0, -1310727, 3, 0, -1310726, 5, 0, -1310725, 3, 0, -1310724, 5, 0, -1310723, 3, 0, -1310722, 5, 0, -1310721, 3, 0, -1376256, 5, 0, -1376255, 3, 0, -1376254, 5, 0, -1376253, 3, 0, -1376252, 5, 0, -1376251, 3, 0, -1376250, 5, 0, -1376249, 3, 0, -1376248, 5, 0, -1245194, 3, 0, -1245193, 5, 0, -1245192, 3, 0, -1245191, 5, 0, -1245190, 3, 0, -1245189, 5, 0, -1245188, 3, 0, -1245187, 5, 0, -1245186, 3, 0, -1245185, 5, 0, -1310720, 3, 0, -1310719, 5, 0, -1310718, 3, 0, -1310717, 5, 0, -1310716, 3, 0, -1310715, 5, 0, -1310714, 3, 0, -1310713, 5, 0, -1310712, 3, 0, -1179658, 5, 0, -1179657, 3, 0, -1179656, 5, 0, -1179655, 3, 0, -1179654, 5, 0, -1179653, 3, 0, -1179652, 5, 0, -1179651, 3, 0, -1179650, 5, 0, -1179649, 3, 0, -1245184, 5, 0, -1245183, 3, 0, -1245182, 5, 0, -1245181, 3, 0, -1245180, 5, 0, -1245179, 3, 0, -1245178, 5, 0, -1245177, 3, 0, -1245176, 5, 0, -1114122, 3, 0, -1114121, 5, 0, -1114120, 3, 0, -1114119, 5, 0, -1114118, 3, 0, -1114117, 5, 0, -1114116, 3, 0, -1114115, 5, 0, -1114114, 3, 0, -1114113, 5, 0, -1179648, 3, 0, -1179647, 5, 0, -1179646, 3, 0, -1179645, 5, 0, -1179644, 3, 0, -1179643, 5, 0, -1179642, 3, 0, -1179641, 5, 0, -1179640, 3, 0, -1048586, 5, 0, -1048585, 3, 0, -1048584, 5, 0, -1048583, 3, 0, -1048582, 5, 0, -1048581, 3, 0, -1048580, 5, 0, -1048579, 3, 0, -1048578, 5, 0, -1048577, 3, 0, -1114112, 5, 0, -1114111, 3, 0, -1114110, 5, 0, -1114109, 3, 0, -1114108, 5, 0, -1114107, 3, 0, -1114106, 5, 0, -1114105, 3, 0, -1114104, 5, 0, -983050, 3, 0, -983049, 5, 0, -983048, 3, 0, -983047, 5, 0, -983046, 3, 0, -983045, 5, 0, -983044, 3, 0, -983043, 5, 0, -983042, 3, 0, -983041, 5, 0, -1048576, 3, 0, -1048575, 5, 0, -1048574, 3, 0, -1048573, 5, 0, -1048572, 3, 0, -1048571, 5, 0, -1048570, 3, 0, -1048569, 5, 0, -1048568, 3, 0, -917514, 5, 0, -917513, 3, 0, -917512, 5, 0, -917511, 3, 0, -917510, 5, 0, -917509, 3, 0, -917508, 5, 0, -917507, 3, 0, -917506, 5, 0, -917505, 3, 0, -983040, 5, 0, -983039, 3, 0, -983038, 5, 0, -983037, 3, 0, -983036, 5, 0, -983035, 3, 0, -983034, 5, 0, -983033, 3, 0, -983032, 5, 0, -851978, 3, 0, -851977, 5, 0, -851976, 3, 0, -851975, 5, 0, -851974, 3, 0, -851973, 5, 0, -851972, 3, 0, -851971, 5, 0, -851970, 3, 0, -851969, 5, 0, -917504, 3, 0, -917503, 5, 0, -917502, 3, 0, -917501, 5, 0, -917500, 3, 0, -917499, 5, 0, -917498, 3, 0, -917497, 5, 0, -917496, 3, 0, -786442, 5, 0, -786441, 3, 0, -786440, 5, 0, -786439, 3, 0, -786438, 5, 0, -786437, 3, 0, -786436, 5, 0, -786435, 3, 0, -786434, 5, 0, -786433, 3, 0, -851968, 5, 0, -851967, 3, 0, -851966, 5, 0, -851965, 3, 0, -851964, 5, 0, -851963, 3, 0, -851962, 5, 0, -851961, 3, 0, -851960, 5, 0, -720906, 3, 0, -720905, 5, 0, -720904, 3, 0, -720903, 5, 0, -720902, 3, 0, -720901, 5, 0, -720900, 3, 0, -720899, 5, 0, -720898, 3, 0, -720897, 5, 0, -786432, 3, 0, -786431, 5, 0, -786430, 3, 0, -786429, 5, 0, -786428, 3, 0, -786427, 5, 0, -786426, 3, 0, -786425, 5, 0, -786424, 3, 0, -655370, 5, 0, -655369, 3, 0, -655368, 5, 0, -655367, 3, 0, -655366, 5, 0, -655365, 3, 0, -655364, 5, 0, -655363, 3, 0, -655362, 5, 0, -655361, 3, 0, -720896, 5, 0, -720895, 3, 0, -720894, 5, 0, -720893, 3, 0, -720892, 5, 0, -720891, 3, 0, -720890, 5, 0, -720889, 3, 0, -720888, 5, 0, -589834, 3, 0, -589833, 5, 0, -589832, 3, 0, -589831, 5, 0, -589830, 3, 0, -589829, 5, 0, -589828, 3, 0, -589827, 5, 0, -589826, 3, 0, -589825, 5, 0, -655360, 3, 0, -655359, 5, 0, -655358, 3, 0, -655357, 5, 0, -655356, 3, 0, -655355, 5, 0, -655354, 3, 0, -655353, 5, 0, -655352, 3, 0, -524298, 5, 0, -524297, 3, 0, -524296, 5, 0, -524295, 3, 0, -524294, 5, 0, -524293, 3, 0, -524292, 5, 0, -524291, 3, 0, -524290, 5, 0, -524289, 3, 0, -589824, 5, 0, -589823, 3, 0, -589822, 5, 0, -589821, 3, 0, -589820, 5, 0, -589819, 3, 0, -589818, 5, 0, -589817, 3, 0, -589816, 5, 0, -458762, 3, 0, -458761, 5, 0, -458760, 3, 0, -458759, 5, 0, -458758, 3, 0, -458757, 5, 0, -458756, 3, 0, -458755, 5, 0, -458754, 3, 0, -458753, 5, 0, -524288, 3, 0, -524287, 5, 0, -524286, 3, 0, -524285, 5, 0, -524284, 3, 0, -524283, 5, 0, -524282, 3, 0, -524281, 5, 0, -524280, 3, 0, -393226, 5, 0, -393225, 3, 0, -393224, 5, 0, -393223, 3, 0, -393222, 5, 0, -393221, 3, 0, -393220, 5, 0, -393219, 3, 0, -393218, 5, 0, -393217, 3, 0, -458752, 5, 0, -458751, 3, 0, -458750, 5, 0, -458749, 3, 0, -458748, 5, 0, -458747, 3, 0, -458746, 5, 0, -458745, 3, 0, -458744, 5, 0, -327690, 3, 0, -327689, 5, 0, -327688, 3, 0, -327687, 5, 0, -327686, 3, 0, -327685, 5, 0, -327684, 3, 0, -327683, 5, 0, -327682, 3, 0, -327681, 5, 0, -393216, 3, 0, -393215, 5, 0, -393214, 3, 0, -393213, 5, 0, -393212, 3, 0, -393211, 5, 0, -393210, 3, 0, -393209, 5, 0, -393208, 3, 0, -262154, 5, 0, -262153, 3, 0, -262152, 5, 0, -262151, 3, 0, -262150, 5, 0, -262149, 3, 0, -262148, 5, 0, -262147, 3, 0, -262146, 5, 0, -262145, 3, 0, -327680, 5, 0, -327679, 3, 0, -327678, 5, 0, -327677, 3, 0, -327676, 5, 0, -327675, 3, 0, -327674, 5, 0, -327673, 3, 0, -327672, 5, 0, -196610, 3, 0, -196609, 5, 0, -262144, 3, 0, -131074, 5, 0, -131073, 3, 0, -196608, 5, 0, -65538, 3, 0, -65537, 5, 0, -131072, 3, 0, -2, 5, 0, -1, 3, 0, -65536, 5, 0, 65534, 3, 0, 65535, 5, 0, 0, 3, 0 )
+script = ExtResource( 5 )
+height = 30.0
+
+[node name="Tiles" type="TileMap" parent="YSort/Floor"]
+modulate = Color( 0.960784, 0.992157, 0.992157, 1 )
+position = Vector2( -55.5, 41.5 )
+z_index = -5
+mode = 1
+tile_set = SubResource( 1 )
+cell_size = Vector2( 62, 22 )
+centered_textures = true
+format = 1
+tile_data = PoolIntArray( -1769476, 3, 0, -1769475, 5, 0, -1769474, 3, 0, -1703940, 5, 0, -1703939, 3, 0, -1703938, 5, 0, -1638404, 3, 0, -1638403, 5, 0, -1638402, 3, 0, -1572868, 5, 0, -1572867, 3, 0, -1572866, 5, 0, -1507332, 3, 0, -1507331, 5, 0, -1507330, 3, 0, -1441802, 5, 0, -1441801, 3, 0, -1441800, 5, 0, -1441799, 3, 0, -1441798, 5, 0, -1441797, 3, 0, -1441796, 5, 0, -1441795, 3, 0, -1441794, 5, 0, -1441793, 3, 0, -1507328, 5, 0, -1507327, 3, 0, -1507326, 5, 0, -1507325, 3, 0, -1507324, 5, 0, -1507323, 3, 0, -1507322, 5, 0, -1507321, 3, 0, -1507320, 5, 0, -1376266, 3, 0, -1376265, 5, 0, -1376264, 3, 0, -1376263, 5, 0, -1376262, 3, 0, -1376261, 5, 0, -1376260, 3, 0, -1376259, 5, 0, -1376258, 3, 0, -1376257, 5, 0, -1441792, 3, 0, -1441791, 5, 0, -1441790, 3, 0, -1441789, 5, 0, -1441788, 3, 0, -1441787, 5, 0, -1441786, 3, 0, -1441785, 5, 0, -1441784, 3, 0, -1310730, 5, 0, -1310729, 3, 0, -1310728, 5, 0, -1310727, 3, 0, -1310726, 5, 0, -1310725, 3, 0, -1310724, 5, 0, -1310723, 3, 0, -1310722, 5, 0, -1310721, 3, 0, -1376256, 5, 0, -1376255, 3, 0, -1376254, 5, 0, -1376253, 3, 0, -1376252, 5, 0, -1376251, 3, 0, -1376250, 5, 0, -1376249, 3, 0, -1376248, 5, 0, -1245194, 3, 0, -1245193, 5, 0, -1245192, 3, 0, -1245191, 5, 0, -1245190, 3, 0, -1245189, 5, 0, -1245188, 3, 0, -1245187, 5, 0, -1245186, 3, 0, -1245185, 5, 0, -1310720, 3, 0, -1310719, 5, 0, -1310718, 3, 0, -1310717, 5, 0, -1310716, 3, 0, -1310715, 5, 0, -1310714, 3, 0, -1310713, 5, 0, -1310712, 3, 0, -1179658, 5, 0, -1179657, 3, 0, -1179656, 5, 0, -1179655, 3, 0, -1179654, 5, 0, -1179653, 3, 0, -1179652, 5, 0, -1179651, 3, 0, -1179650, 5, 0, -1179649, 3, 0, -1245184, 5, 0, -1245183, 3, 0, -1245182, 5, 0, -1245181, 3, 0, -1245180, 5, 0, -1245179, 3, 0, -1245178, 5, 0, -1245177, 3, 0, -1245176, 5, 0, -1114122, 3, 0, -1114121, 5, 0, -1114120, 3, 0, -1114119, 5, 0, -1114118, 3, 0, -1114117, 5, 0, -1114116, 3, 0, -1114115, 5, 0, -1114114, 3, 0, -1114113, 5, 0, -1179648, 3, 0, -1179647, 5, 0, -1179646, 3, 0, -1179645, 5, 0, -1179644, 3, 0, -1179643, 5, 0, -1179642, 3, 0, -1179641, 5, 0, -1179640, 3, 0, -1048586, 5, 0, -1048585, 3, 0, -1048584, 5, 0, -1048583, 3, 0, -1048582, 5, 0, -1048581, 3, 0, -1048580, 5, 0, -1048579, 3, 0, -1048578, 5, 0, -1048577, 3, 0, -1114112, 5, 0, -1114111, 3, 0, -1114110, 5, 0, -1114109, 3, 0, -1114108, 5, 0, -1114107, 3, 0, -1114106, 5, 0, -1114105, 3, 0, -1114104, 5, 0, -983050, 3, 0, -983049, 5, 0, -983048, 3, 0, -983047, 5, 0, -983046, 3, 0, -983045, 5, 0, -983044, 3, 0, -983043, 5, 0, -983042, 3, 0, -983041, 5, 0, -1048576, 3, 0, -1048575, 5, 0, -1048574, 3, 0, -1048573, 5, 0, -1048572, 3, 0, -1048571, 5, 0, -1048570, 3, 0, -1048569, 5, 0, -1048568, 3, 0, -917514, 5, 0, -917513, 3, 0, -917512, 5, 0, -917511, 3, 0, -917510, 5, 0, -917509, 3, 0, -917508, 5, 0, -917507, 3, 0, -917506, 5, 0, -917505, 3, 0, -983040, 5, 0, -983039, 3, 0, -983038, 5, 0, -983037, 3, 0, -983036, 5, 0, -983035, 3, 0, -983034, 5, 0, -983033, 3, 0, -983032, 5, 0, -851978, 3, 0, -851977, 5, 0, -851976, 3, 0, -851975, 5, 0, -851974, 3, 0, -851973, 5, 0, -851972, 3, 0, -851971, 5, 0, -851970, 3, 0, -851969, 5, 0, -917504, 3, 0, -917503, 5, 0, -917502, 3, 0, -917501, 5, 0, -917500, 3, 0, -917499, 5, 0, -917498, 3, 0, -917497, 5, 0, -917496, 3, 0, -786442, 5, 0, -786441, 3, 0, -786440, 5, 0, -786439, 3, 0, -786438, 5, 0, -786437, 3, 0, -786436, 5, 0, -786435, 3, 0, -786434, 5, 0, -786433, 3, 0, -851968, 5, 0, -851967, 3, 0, -851966, 5, 0, -851965, 3, 0, -851964, 5, 0, -851963, 3, 0, -851962, 5, 0, -851961, 3, 0, -851960, 5, 0, -720906, 3, 0, -720905, 5, 0, -720904, 3, 0, -720903, 5, 0, -720902, 3, 0, -720901, 5, 0, -720900, 3, 0, -720899, 5, 0, -720898, 3, 0, -720897, 5, 0, -786432, 3, 0, -786431, 5, 0, -786430, 3, 0, -786429, 5, 0, -786428, 3, 0, -786427, 5, 0, -786426, 3, 0, -786425, 5, 0, -786424, 3, 0, -655370, 5, 0, -655369, 3, 0, -655368, 5, 0, -655367, 3, 0, -655366, 5, 0, -655365, 3, 0, -655364, 5, 0, -655363, 3, 0, -655362, 5, 0, -655361, 3, 0, -720896, 5, 0, -720895, 3, 0, -720894, 5, 0, -720893, 3, 0, -720892, 5, 0, -720891, 3, 0, -720890, 5, 0, -720889, 3, 0, -720888, 5, 0, -589834, 3, 0, -589833, 5, 0, -589832, 3, 0, -589831, 5, 0, -589830, 3, 0, -589829, 5, 0, -589828, 3, 0, -589827, 5, 0, -589826, 3, 0, -589825, 5, 0, -655360, 3, 0, -655359, 5, 0, -655358, 3, 0, -655357, 5, 0, -655356, 3, 0, -655355, 5, 0, -655354, 3, 0, -655353, 5, 0, -655352, 3, 0, -524298, 5, 0, -524297, 3, 0, -524296, 5, 0, -524295, 3, 0, -524294, 5, 0, -524293, 3, 0, -524292, 5, 0, -524291, 3, 0, -524290, 5, 0, -524289, 3, 0, -589824, 5, 0, -589823, 3, 0, -589822, 5, 0, -589821, 3, 0, -589820, 5, 0, -589819, 3, 0, -589818, 5, 0, -589817, 3, 0, -589816, 5, 0, -458762, 3, 0, -458761, 5, 0, -458760, 3, 0, -458759, 5, 0, -458758, 3, 0, -458757, 5, 0, -458756, 3, 0, -458755, 5, 0, -458754, 3, 0, -458753, 5, 0, -524288, 3, 0, -524287, 5, 0, -524286, 3, 0, -524285, 5, 0, -524284, 3, 0, -524283, 5, 0, -524282, 3, 0, -524281, 5, 0, -524280, 3, 0, -393226, 5, 0, -393225, 3, 0, -393224, 5, 0, -393223, 3, 0, -393222, 5, 0, -393221, 3, 0, -393220, 5, 0, -393219, 3, 0, -393218, 5, 0, -393217, 3, 0, -458752, 5, 0, -458751, 3, 0, -458750, 5, 0, -458749, 3, 0, -458748, 5, 0, -458747, 3, 0, -458746, 5, 0, -458745, 3, 0, -458744, 5, 0, -327690, 3, 0, -327689, 5, 0, -327688, 3, 0, -327687, 5, 0, -327686, 3, 0, -327685, 5, 0, -327684, 3, 0, -327683, 5, 0, -327682, 3, 0, -327681, 5, 0, -393216, 3, 0, -393215, 5, 0, -393214, 3, 0, -393213, 5, 0, -393212, 3, 0, -393211, 5, 0, -393210, 3, 0, -393209, 5, 0, -393208, 3, 0, -262154, 5, 0, -262153, 3, 0, -262152, 5, 0, -262151, 3, 0, -262150, 5, 0, -262149, 3, 0, -262148, 5, 0, -262147, 3, 0, -262146, 5, 0, -262145, 3, 0, -327680, 5, 0, -327679, 3, 0, -327678, 5, 0, -327677, 3, 0, -327676, 5, 0, -327675, 3, 0, -327674, 5, 0, -327673, 3, 0, -327672, 5, 0, -196610, 3, 0, -196609, 5, 0, -262144, 3, 0, -131074, 5, 0, -131073, 3, 0, -196608, 5, 0, -65538, 3, 0, -65537, 5, 0, -131072, 3, 0, -2, 5, 0, -1, 3, 0, -65536, 5, 0, 65534, 3, 0, 65535, 5, 0, 0, 3, 0 )
+script = ExtResource( 5 )
+height = 30.0
+
+[node name="MiddleGround" type="Node2D" parent="YSort"]
+
+[node name="YellowP4" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( -269, -221 )
+scale = Vector2( 1.5821, 1.50052 )
+texture = ExtResource( 32 )
+flip_h = true
+
+[node name="BalloonsC2" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( -344, -193 )
+rotation = -0.0354107
+scale = Vector2( 1.39508, 1.31684 )
+texture = ExtResource( 29 )
+flip_h = true
+
+[node name="Square2" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( -292, -116 )
+scale = Vector2( 1.405, 1.33 )
+texture = ExtResource( 24 )
+
+[node name="RedP4" type="Sprite" parent="YSort/MiddleGround"]
+position = Vector2( -164, -70 )
+scale = Vector2( 1.56625, 1.54219 )
+texture = ExtResource( 13 )
+flip_h = true
+script = ExtResource( 1 )
+height = 20.0
+
+[node name="BalloonsB3" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
+position = Vector2( -192, -102 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 1.3, 2 )
+texture = ExtResource( 19 )
+texture_scale = Vector2( -1.3, 1.3 )
+texture_offset = Vector2( -2, -4 )
+height = 150.0
+preview_collision_box = false
+
+[node name="BalloonsB4" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
+position = Vector2( 336, -286 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 62, 30 )
+grid_size = Vector2( 1.3, 2 )
+texture = ExtResource( 19 )
+texture_scale = Vector2( -1.3, 1.3 )
+texture_offset = Vector2( -2, -4 )
+height = 150.0
+preview_collision_box = false
+
+[node name="Stage" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
+position = Vector2( 344, -55 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 64, 27 )
+grid_size = Vector2( 5.7, 5.7 )
+texture = ExtResource( 6 )
+texture_scale = Vector2( 1.55, 1.5 )
+texture_offset = Vector2( -2, 71 )
+height = 80.0
+preview_collision_box = false
+
+[node name="Rug" type="Sprite" parent="YSort/MiddleGround"]
+self_modulate = Color( 0.996078, 0.980392, 0.996078, 1 )
+position = Vector2( 340, -197 )
+scale = Vector2( 0.93, 0.83 )
+texture = ExtResource( 2 )
+script = ExtResource( 21 )
+height = 81.0
+use_transparency = true
+
+[node name="TreasureBox" parent="YSort/MiddleGround" instance=ExtResource( 12 )]
+position = Vector2( 416, -231 )
+floor_height = 80
+item_name = "Lighthouse Key"
+
+[node name="Step" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
+position = Vector2( 253, -69 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 70, 24 )
+grid_size = Vector2( 2.1, 1 )
+texture = ExtResource( 20 )
+texture_scale = Vector2( 0.85, 0.85 )
+texture_offset = Vector2( -5, 27 )
+height = 35.0
+preview_collision_box = false
+
+[node name="Step2" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
+position = Vector2( 219, -52 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 70, 24 )
+grid_size = Vector2( 2.1, 1 )
+texture = ExtResource( 20 )
+texture_scale = Vector2( 0.85, 0.85 )
+texture_offset = Vector2( -5, 27 )
+height = 35.0
+preview_collision_box = false
+
+[node name="Step3" parent="YSort/MiddleGround" instance=ExtResource( 10 )]
+position = Vector2( 254, -59 )
+__meta__ = {
+"_editor_description_": ""
+}
+tile_size = Vector2( 70, 24 )
+grid_size = Vector2( 2.1, 1 )
+texture = ExtResource( 20 )
+texture_scale = Vector2( 0.85, 0.85 )
+texture_offset = Vector2( -5, 27 )
+height = 35.0
+floor_height = 35.0
+preview_collision_box = false
+
+[node name="Foreground" type="Node2D" parent="YSort"]
+z_index = 20
+
+[node name="RedP" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 165, 78 )
+scale = Vector2( 1.51, 1.5275 )
+texture = ExtResource( 13 )
+flip_h = true
+
+[node name="RedP3" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 941, -168 )
+scale = Vector2( 1.51, 1.5275 )
+texture = ExtResource( 13 )
+flip_h = true
+
+[node name="RedP2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 584, 61.75 )
+scale = Vector2( 1.51, 1.5275 )
+texture = ExtResource( 13 )
+
+[node name="OrangeP" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 408, 129.75 )
+scale = Vector2( 1.62523, 1.55389 )
+texture = ExtResource( 11 )
+
+[node name="OrangeP2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 862, -36 )
+scale = Vector2( 1.62523, 1.55389 )
+texture = ExtResource( 11 )
+
+[node name="YellowP2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 281, 140 )
+scale = Vector2( 1.5821, 1.50052 )
+texture = ExtResource( 32 )
+flip_h = true
+
+[node name="YellowP3" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 744, 59 )
+scale = Vector2( 1.5821, 1.50052 )
+texture = ExtResource( 32 )
+
+[node name="Square3" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 698, 171 )
+scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 24 )
+
+[node name="BalloonsA" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 512, 84 )
+rotation = 0.0364469
+scale = Vector2( 1.33084, 1.2208 )
+texture = ExtResource( 25 )
+flip_h = true
+
+[node name="BalloonsA3" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 512, 84 )
+rotation = 0.0364469
+scale = Vector2( 1.33084, 1.2208 )
+texture = ExtResource( 25 )
+flip_h = true
+
+[node name="BalloonsA2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 853, 25 )
+rotation = 0.0364469
+scale = Vector2( 1.33084, 1.2208 )
+texture = ExtResource( 25 )
+
+[node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
+
+[node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 33 )]
+
+[node name="NavmeshLayer" parent="CollisionRoot/Navmesh2" instance=ExtResource( 35 )]
+polygon = PoolVector2Array( -223, -123, 346, -328, 538, -265, 688, -316, 781, -283, 631, -226, 887, -136, 361, 89, 101, -1, -54, 58, -156, 29, 8, -29 )
+
+[node name="PlayerSpawnFromCherryTrail1" parent="CollisionRoot" instance=ExtResource( 36 )]
+position = Vector2( -26, 12 )
+door_name = "Circus7_Circus8"
+direction = Vector2( 1, 1 )
+
+[node name="Circus7" parent="." instance=ExtResource( 37 )]
+visible = false
+position = Vector2( 480, 138 )
+rotation = 0.0231584
+script = ExtResource( 9 )
+target_scene = "res://Areas/Puzzle Pier/Circus_7.tscn"
+exit_name = "Circus8_Circus7"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Circus7"]
+position = Vector2( -560.027, -81.0536 )
+polygon = PoolVector2Array( -40.6608, -28.066, 53.0784, 2.77163, 22.3415, 14.4865, -70.4444, -18.3737 )
+
+[node name="Circus9" parent="." instance=ExtResource( 37 )]
+visible = false
+position = Vector2( 480, 138 )
+rotation = 0.0231584
+script = ExtResource( 9 )
+target_scene = "res://Areas/Puzzle Pier/Circus_7.tscn"
+exit_name = "CircusExtra_Circus7"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Circus9"]
+position = Vector2( 172.573, -409.106 )
+polygon = PoolVector2Array( 25.858, -49.612, 119.597, -18.7744, 100.741, -12.336, 7.00208, -43.1736 )
+disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+pause_mode = 2
+position = Vector2( -235, -234 )
+z_index = 4096
+current = true
+script = ExtResource( 8 )
+minPos = Vector2( 70, -175 )
+maxPos = Vector2( 380, -150 )
+follow_player = true
+
+[node name="Info_Window" type="Sprite" parent="Camera2D"]
+visible = false
+modulate = Color( 1, 1, 1, 0.6 )
+position = Vector2( -186, -232 )
+scale = Vector2( 0.7, 0.8 )
+z_index = 3
+texture = ExtResource( 4 )
+
+[node name="First_Text" type="Label" parent="Camera2D/Info_Window"]
+margin_left = -147.143
+margin_top = -11.0
+margin_right = 98.857
+margin_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_scale = Vector2( 1.2, 1.1 )
+custom_fonts/font = ExtResource( 3 )
+text = "You got a Flummery Flambe!"
+align = 1
+
+[node name="QuestItem" parent="Camera2D" instance=ExtResource( 17 )]
+visible = false
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -213, -145 )
+
+[connection signal="quest_item" from="YSort/MiddleGround/TreasureBox" to="Camera2D" method="_on_TreasureBox_quest_item"]
+[connection signal="animate_Gary" from="Camera2D" to="." method="_on_Camera2D_animate_Gary"]

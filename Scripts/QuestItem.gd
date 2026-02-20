@@ -13,6 +13,8 @@ func _ready():
 func item_animation():
 	if Party.add_item_name == "Jhumki":
 		$Item.frame = 90
+	if Party.add_item_name == "Lighthouse Key":
+		$Item.frame = 66
 	
 	$ItemPlayer.playback_speed = 0.9
 	$ItemPlayer.play("Item_Usage")

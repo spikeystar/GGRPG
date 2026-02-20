@@ -44,8 +44,8 @@ func effect(id : String):
 		$Buff.play()
 	if id == "Cancel":
 		$Cancel.play()
-	if id == "Chest":
-		$Chest.play()
+	if id == "Treasure Box":
+		$Treasure_Box.play()
 	if id == "Debuff":
 		$Debuff.play()
 	if id == "Defend":

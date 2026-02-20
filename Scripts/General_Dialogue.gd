@@ -489,8 +489,9 @@ func Calico():
 			cursor_ready = false
 			$DialogueCursor.hide()
 			hide()
-		if Party.jhumki_amount <5:
+		if Party.jhumki_amount < 5:
 			done()
+			return
 	if EventManager.calico_initial and Party.jhumki_amount <5:
 		$Name/Talk.text = ""
 		$Name/Talk.text = "If you can show me 5 Jhumkis I'll let you have a look in this room!"

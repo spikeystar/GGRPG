@@ -267,7 +267,7 @@ func _on_Dialogue_quest_item():
 			$Info_Window/First_Text.text = "You got an " + item_name + "!"
 	SE.effect("Item_Get")
 	Party.add_item_name = item_name
-	if item_name == "Jhumki":
+	if item_name == "Jhumki" or item_name == "Lighthouse Key":
 		Party.add_key_item_name = item_name
 		Party.add_key_item()
 	else:
@@ -275,7 +275,7 @@ func _on_Dialogue_quest_item():
 			
 	$QuestItem.show()
 	$QuestItem.item_animation()
-	$QuestItem.global_position = PlayerManager.current_position + Vector2(2.2, -91)
+	$QuestItem.global_position = PlayerManager.current_position + Vector2(2.2, (-91 - PlayerManager.player_motion_root.pos_z))
 	item_window()
 	
 
@@ -299,3 +299,7 @@ func basic_transition_out():
 	transition.ease_out()
 	yield(get_tree().create_timer(0.5), "timeout")
 	transition.queue_free()
+
+
+func _on_TreasureBox_quest_item():
+	_on_Dialogue_quest_item()
