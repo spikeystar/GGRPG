@@ -25,3 +25,6 @@ func _on_Camera2D_animate_Gary():
 	PlayerManager.freeze = true
 	PlayerManager.cutscene = true
 	Gary.animation("hold_seed")
+
+func _on_Boss_Battle_area_event():
+	pass

@@ -57,9 +57,9 @@ script = ExtResource( 4 )
 
 [node name="CollidableBox" parent="." instance=ExtResource( 3 )]
 tile_size = Vector2( 62, 32 )
-grid_size = Vector2( 1, 0.6 )
+grid_size = Vector2( 1.15, 0.7 )
 texture = ExtResource( 2 )
-texture_offset = Vector2( -3, 20 )
+texture_offset = Vector2( -2, 15 )
 height = 50.0
 preview_collision_box = false
 animation_hframes = 9
