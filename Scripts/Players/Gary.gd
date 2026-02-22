@@ -43,10 +43,12 @@ func _physics_process(delta):
 	$JumpShape.shape_origin = body_visual_root.global_position
 	$JumpShape.origin_z = motion_root.pos_z
 	
+	
 	#$MotionRoot/CollisionShape2D.disabled = false
 	#$JumpShape/CollisionShape2D.disabled = false
 
 	var last_dir = motion_root.last_dir
+	
 	
 	if freeze and not cutscene:
 		anim_tree.get("parameters/playback").travel("Idle")
@@ -159,6 +161,7 @@ func _physics_process(delta):
 	body_sprite.height = motion_root.pos_z
 	bubble_sprite.height = motion_root.pos_z
 	shadow_sprite.height = motion_root.shadow_z + 1
+	#body_sprite.feet_height = motion_root.pos_z + 10
 	
 	body_y_sort.global_position = Vector2(motion_root.global_position.x, draw_y_sort)
 	body_visual_root.global_position = motion_root.global_position + Vector2(0.0, -draw_pos_z)
@@ -262,6 +265,7 @@ func walk_left():
 func animation(var name: String):
 	anim_tree.active = false
 	anim_player.play(name)
+	anim_player.playback_speed = 3.5
 	
 func battle_ready():
 	anim_tree.active = false
@@ -285,3 +289,6 @@ func back_hop_f():
 
 func shadow_update():
 	shadow_sprite._generate_meshes()
+	
+func z_index(new_index:int):
+	body_y_sort.z_index = new_index

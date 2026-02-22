@@ -31,7 +31,7 @@ func _on_body_entered(body):
 	if "is_player_motion_root" in body and body.is_player_motion_root and not used and not unavoid:
 		activated = true
 		
-	if "is_player_motion_root" in body and body.is_player_motion_root and not used and unavoid:
+	if "is_player_motion_root" in body and body.is_player_motion_root and not used and unavoid and gary.pos_z >= height:
 		used = true
 		area_event()
 		

@@ -2269,7 +2269,7 @@ shape = SubResource( 172 )
 [node name="ShadowVisualRoot" type="Node2D" parent="ShadowYSort"]
 
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
-self_modulate = Color( 1, 1, 1, 0.55 )
+self_modulate = Color( 1, 1, 1, 0.54902 )
 position = Vector2( 3, 0 )
 scale = Vector2( 0.95, 0.95 )
 texture = ExtResource( 1 )
