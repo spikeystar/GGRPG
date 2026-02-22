@@ -255,6 +255,7 @@ func walk_left():
 func animation(var name: String):
 	anim_tree.active = false
 	anim_player.play(name)
+	anim_player.playback_speed = 3.5
 	
 func battle_ready():
 	anim_tree.active = false
@@ -278,3 +279,6 @@ func back_hop_f():
 
 func shadow_update():
 	shadow_sprite._generate_meshes()
+
+func z_index(new_index:int):
+	body_y_sort.z_index = new_index

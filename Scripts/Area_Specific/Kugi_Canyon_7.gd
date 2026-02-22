@@ -83,10 +83,11 @@ func _on_Boss_Battle_area_event():
 	EventManager.Saguarotel_Intro = true
 	PlayerManager.freeze = true
 	PlayerManager.cutscene = true
-	Gary.walk_right()
+	Gary.animation("d_up_r_walk")
 	var tween = create_tween()
 	tween.tween_property(Gary.motion_root, "global_position", $Position2D.position, 1)
 	yield(tween, "finished")
+	Gary.z_index(100)
 	Gary.set_right()
 	Jacques.position = Gary.motion_root.global_position
 	JacquesPlayer.play("back_walk")
@@ -94,6 +95,7 @@ func _on_Boss_Battle_area_event():
 	tween2.tween_property(Jacques, "global_position", $Position2D2.position, 0.5)
 	yield(tween2, "finished")
 	JacquesPlayer.play("back_idle_f")
+	Gary.z_index(0)
 	SE.effect("Select")
 	
 	$Camera2D/Interaction/Dialogue.show()
