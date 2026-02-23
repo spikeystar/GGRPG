@@ -15,6 +15,7 @@ const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
 const event_battle = preload("res://Areas/Cherry Trail/Cherry Trail BA 1.tscn")
 onready var target_scene = event_battle.instance()
 var event = false
+var OG_POS
 
 func _ready():
 	SceneManager.location = "Circus"
@@ -28,9 +29,16 @@ func _ready():
 	if SceneManager.time_decided:
 		SceneManager.time_decided = false
 		
+	if EventManager.Debrando:
+		$YSort/MiddleGround/BlocksA.queue_free()
+		$Boss_Battle.queue_free()
+		$Circus9/CollisionPolygon2D.disabled = false
+		
+		
 func _process(delta):
 	if Global.battle_ended and event:
 		event = false
+		EventManager.Debrando = true
 	#	Music.unpause()
 		SceneManager.SceneEnemies = []
 		get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(target_scene)
@@ -38,8 +46,12 @@ func _process(delta):
 		get_tree().get_root().add_child(transition)
 		transition.ease_in()
 		yield(get_tree().create_timer(0.01), "timeout")
+		
 		Global.battle_ended = false
 		Global.battling = false
+		
+		$YSort/MiddleGround/BlocksA.queue_free()
+		$Circus9/CollisionPolygon2D.disabled = false
 		
 		$YSort/MiddleGround/Hoop_Fire.hide()
 		$YSort/MiddleGround/Stage_Fire.hide()
@@ -51,6 +63,8 @@ func _process(delta):
 		$YSort/Shadows/RectangleShadowSmall2.show()
 		
 		yield(get_tree().create_timer(0.4), "timeout")
+		DebrandoPlayer.play("hop")
+		SE.effect("Drama Jump")
 		SE.effect("Select")
 		$Camera2D/Interaction/Dialogue.show()
 		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Gah!!"
@@ -60,6 +74,7 @@ func _process(delta):
 		$Camera2D/Interaction/Dialogue.done()
 		PlayerManager.freeze = true
 		
+		DebrandoPlayer.play("walk")
 		SE.effect("Select")
 		$Camera2D/Interaction/Dialogue.show()
 		$Camera2D/Interaction/Dialogue/Name/Talk.text = "How dare you miserable buffoons try to ruin our fun!"
@@ -69,7 +84,7 @@ func _process(delta):
 		$Camera2D/Interaction/Dialogue.done()
 		PlayerManager.freeze = true
 		
-		DebrandoPlayer.play("walk")
+		
 		SE.effect("Select")
 		$Camera2D/Interaction/Dialogue.show()
 		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Just wait until Pierre hears about this!"
@@ -87,6 +102,10 @@ func _process(delta):
 		Debrando.queue_free()
 		yield(get_tree().create_timer(1.5), "timeout")
 		
+		JacquesPlayer.play("back_idle_f")
+		IrinaPlayer.play("back_idle_f")
+		Gary.set_right()
+		
 		SE.effect("Select")
 		$Camera2D/Interaction/Dialogue.show()
 		$Camera2D/Interaction/Dialogue/Name/Talk.text = "He called us buffoons..."
@@ -96,6 +115,65 @@ func _process(delta):
 		$Camera2D/Interaction/Dialogue.done()
 		PlayerManager.freeze = true
 		
+		SE.effect("Select")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "What a weirdo."
+		$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		JacquesPlayer.play("suggest_back")
+		SE.effect("Select")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "This must be the Lighthouse Key if he was guarding it."
+		$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		SE.effect("Select")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Let's take it and get out of here as soon as we can."
+		$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		JacquesPlayer.play("back_idle_f")
+		SE.effect("Select")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Roger that!"
+		$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		yield(get_tree().create_timer(0.3), "timeout")
+		
+		Irina.z_index = 100
+		JacquesPlayer.play("front_walk_f")
+		IrinaPlayer.play("back_walk")
+		var tween7 = create_tween()
+		tween7.tween_property(Jacques, "global_position", Gary.motion_root.global_position, 0.6)
+		var tween8 = create_tween()
+		tween8.tween_property(Irina, "global_position", Gary.motion_root.global_position, 0.6)
+		yield(tween8, "finished")
+		Jacques.queue_free()
+		Irina.queue_free()
+		
+		var camera_tween = create_tween()
+		var camera_position = Vector2((Gary.motion_root.global_position.x + $Camera2D.player_offset.x), (Gary.motion_root.global_position.y - $Camera2D.z_offset + $Camera2D.player_offset.y))
+		camera_tween.tween_property($Camera2D, "global_position", camera_position, 0.5)
+		yield(camera_tween, "finished")
+		
+		#yield(get_tree().create_timer(0.5), "timeout")
+		$Camera2D.follow_player = true
+		PlayerManager.freeze = false
+		PlayerManager.cutscene = false
 		
 
 func _on_Camera2D_animate_Gary():
@@ -104,6 +182,7 @@ func _on_Camera2D_animate_Gary():
 	Gary.animation("hold_seed")
 
 func _on_Boss_Battle_area_event():
+		
 		event = true
 		PlayerManager.freeze = true
 		PlayerManager.cutscene = true
@@ -111,10 +190,10 @@ func _on_Boss_Battle_area_event():
 		yield(get_tree().create_timer(0.2), "timeout")
 		$Camera2D.follow_player = false
 		PlayerManager.freeze = true
-		var camera_tween = create_tween()
-		camera_tween.tween_property($Camera2D, "global_position", $CameraPOS.position, 0.6)
 		var tween = create_tween()
 		tween.tween_property(Gary.motion_root, "global_position", $GaryPOS.position, 0.6)
+		var camera_tween = create_tween()
+		camera_tween.tween_property($Camera2D, "global_position", $CameraPOS.position, 0.6)
 		yield(tween, "finished")
 		PlayerManager.freeze = true
 		Gary.set_right()
@@ -200,6 +279,7 @@ func _on_Boss_Battle_area_event():
 		var tween5 = create_tween()
 		tween5.tween_property(Debrando, "global_position", $DebrandoPOS3.position, 0.8)
 		yield(tween5, "finished")
+		$YSort/MiddleGround/Trapeze.queue_free()
 		SE.effect("Drama Thud")
 		DebrandoPlayer.play("walk")
 	

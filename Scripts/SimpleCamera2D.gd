@@ -267,7 +267,11 @@ func _on_Dialogue_quest_item():
 			$Info_Window/First_Text.text = "You got an " + item_name + "!"
 	SE.effect("Item_Get")
 	Party.add_item_name = item_name
-	if item_name == "Jhumki" or item_name == "Lighthouse Key":
+	if item_name == "Jhumki":
+		Party.add_key_item_name = item_name
+		Party.add_key_item()
+	if item_name == "Lighthouse Key":
+		EventManager.Lighthouse_Key = true
 		Party.add_key_item_name = item_name
 		Party.add_key_item()
 	else:

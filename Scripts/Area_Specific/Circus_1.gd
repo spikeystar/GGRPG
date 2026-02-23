@@ -11,3 +11,6 @@ func _ready():
 	
 	if SceneManager.time_decided:
 		SceneManager.time_decided = false
+
+	if EventManager.Debrando:
+		$YSort/MiddleGround/BlocksB.queue_free()
