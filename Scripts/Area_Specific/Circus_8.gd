@@ -12,7 +12,7 @@ onready var Debrando = $YSort/MiddleGround/Debrando
 onready var DebrandoPlayer = $YSort/MiddleGround/Debrando/BodyYSort/AnimationPlayer
 
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
-const event_battle = preload("res://Areas/Kugi Canyon/Kugi Canyon BA 11.tscn")
+const event_battle = preload("res://Areas/Cherry Trail/Cherry Trail BA 1.tscn")
 onready var target_scene = event_battle.instance()
 var event = false
 
@@ -27,7 +27,76 @@ func _ready():
 	
 	if SceneManager.time_decided:
 		SceneManager.time_decided = false
-
+		
+func _process(delta):
+	if Global.battle_ended and event:
+		event = false
+	#	Music.unpause()
+		SceneManager.SceneEnemies = []
+		get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(target_scene)
+		var transition = TransitionPlayer.instance()
+		get_tree().get_root().add_child(transition)
+		transition.ease_in()
+		yield(get_tree().create_timer(0.01), "timeout")
+		Global.battle_ended = false
+		Global.battling = false
+		
+		$YSort/MiddleGround/Hoop_Fire.hide()
+		$YSort/MiddleGround/Stage_Fire.hide()
+		$YSort/Foreground/Stage_Fire2.hide()
+		$YSort/MiddleGround/Step.texture_offset.y -= 1000
+		$YSort/MiddleGround/Step2.texture_offset.y -= 1000
+		$YSort/MiddleGround/Step3.texture_offset.y -= 1000
+		$YSort/Shadows/RectangleShadowSmall.show()
+		$YSort/Shadows/RectangleShadowSmall2.show()
+		
+		yield(get_tree().create_timer(0.4), "timeout")
+		SE.effect("Select")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Gah!!"
+		$Camera2D/Interaction/Dialogue/Name.text = "Debrando:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		SE.effect("Select")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "How dare you miserable buffoons try to ruin our fun!"
+		$Camera2D/Interaction/Dialogue/Name.text = "Debrando:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		DebrandoPlayer.play("walk")
+		SE.effect("Select")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Just wait until Pierre hears about this!"
+		$Camera2D/Interaction/Dialogue/Name.text = "Debrando:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		
+		yield(get_tree().create_timer(0.7), "timeout")
+		$PoofPlayer.play("Poof")
+		SE.effect("Poof")
+		yield(get_tree().create_timer(0.2), "timeout")
+		Debrando.queue_free()
+		yield(get_tree().create_timer(1.5), "timeout")
+		
+		SE.effect("Select")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "He called us buffoons..."
+		$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		
 
 func _on_Camera2D_animate_Gary():
 	PlayerManager.freeze = true
@@ -35,6 +104,7 @@ func _on_Camera2D_animate_Gary():
 	Gary.animation("hold_seed")
 
 func _on_Boss_Battle_area_event():
+		event = true
 		PlayerManager.freeze = true
 		PlayerManager.cutscene = true
 		Gary.animation("d_up_r_walk")
