@@ -572,7 +572,6 @@ position = Vector2( 2, -5 )
 position = Vector2( 452, -393 )
 scale = Vector2( 1.45, 1.25 )
 frames = SubResource( 2 )
-frame = 1
 speed_scale = 0.9
 playing = true
 
@@ -580,7 +579,7 @@ playing = true
 position = Vector2( 452, -393 )
 scale = Vector2( 1.45, 1.25 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 speed_scale = 0.95
 playing = true
 
@@ -606,6 +605,7 @@ position = Vector2( -1, 1 )
 position = Vector2( 246, -212 )
 scale = Vector2( 1.04785, 1.09542 )
 frames = SubResource( 3 )
+frame = 2
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="YSort/MiddleGround/Stage_Fire"]
@@ -618,7 +618,7 @@ speed_scale = 0.95
 position = Vector2( 441.025, -217.151 )
 scale = Vector2( 1.04785, 1.09542 )
 frames = SubResource( 3 )
-frame = 2
+frame = 1
 playing = true
 flip_h = true
 
@@ -1085,7 +1085,7 @@ position = Vector2( 438.322, -133.095 )
 rotation = 0.065556
 scale = Vector2( 1.04732, 1.04336 )
 frames = SubResource( 3 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="YSort/Foreground/Stage_Fire2"]
@@ -1093,7 +1093,7 @@ position = Vector2( 245.322, -133.095 )
 rotation = -0.175627
 scale = Vector2( 1.04937, 1.01777 )
 frames = SubResource( 3 )
-frame = 2
+frame = 1
 playing = true
 flip_h = true
 
@@ -1109,7 +1109,7 @@ texture = ExtResource( 13 )
 flip_h = true
 
 [node name="OrangeP" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 320, 131 )
+position = Vector2( 320, 127 )
 scale = Vector2( 1.62523, 1.55389 )
 texture = ExtResource( 11 )
 
@@ -1148,7 +1148,7 @@ scale = Vector2( 1.1964, 1.2246 )
 texture = ExtResource( 42 )
 
 [node name="BalloonsB" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 385, 98 )
+position = Vector2( 385, 95 )
 rotation = -0.0626568
 scale = Vector2( 1.41796, 1.24738 )
 texture = ExtResource( 47 )
@@ -1165,6 +1165,11 @@ polygon = PoolVector2Array( -223, -123, 346, -328, 538, -265, 688, -316, 781, -2
 position = Vector2( -26, 12 )
 door_name = "Circus7_Circus8"
 direction = Vector2( 1, 1 )
+
+[node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 36 )]
+position = Vector2( 659, -273 )
+door_name = "Circus9_Circus8"
+direction = Vector2( -1, -1 )
 
 [node name="Circus7" parent="." instance=ExtResource( 37 )]
 visible = false
@@ -1277,7 +1282,7 @@ visible = false
 position = Vector2( 508, -331 )
 
 [node name="DebrandoPOS2" type="Position2D" parent="."]
-position = Vector2( 505, -343 )
+position = Vector2( 507, -344 )
 
 [node name="DebrandoPOS3" type="Position2D" parent="."]
 position = Vector2( 382, -129 )

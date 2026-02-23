@@ -103,9 +103,17 @@ func _on_Boss_Battle_area_event():
 		
 		yield(get_tree().create_timer(0.5), "timeout")
 		
+
 		$CanvasPlayer.play("Canvas")
 		SE.effect("Drama Flash")
 		yield(get_tree().create_timer(0.1), "timeout")
+		
+		$YSort/MiddleGround/Step.texture_offset.y += 1000
+		$YSort/MiddleGround/Step2.texture_offset.y += 1000
+		$YSort/MiddleGround/Step3.texture_offset.y += 1000
+		$YSort/Shadows/RectangleShadowSmall.hide()
+		$YSort/Shadows/RectangleShadowSmall2.hide()
+		
 		$YSort/MiddleGround/Hoop.height = 75
 		JacquesPlayer.play("shock_back_jump")
 		IrinaPlayer.play("shock_back_jump")
