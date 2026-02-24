@@ -10,7 +10,7 @@
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=8]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=9]
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=10]
-[ext_resource path="res://Scripts/Area_Specific/Circus_1.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/Area_Specific/Circus.gd" type="Script" id=11]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=12]
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=14]

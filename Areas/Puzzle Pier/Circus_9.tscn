@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Red Rug.png" type="Texture" id=3]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=4]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=5]
-[ext_resource path="res://Scripts/Area_Specific/Circus_1.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Area_Specific/Circus.gd" type="Script" id=6]
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Sphere.png" type="Texture" id=8]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/S Ledge.png" type="Texture" id=9]
@@ -638,16 +638,6 @@ shadow_color = Color( 0.760784, 0.309804, 0.568627, 1 )
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
-[node name="Square" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 1597, 241 )
-scale = Vector2( 1.7, 1.7 )
-texture = ExtResource( 10 )
-
-[node name="Square3" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 713, 675 )
-scale = Vector2( 1.7, 1.7 )
-texture = ExtResource( 10 )
-
 [node name="GreenP2" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( 461, 77 )
 scale = Vector2( 1.65622, 1.55264 )
@@ -659,6 +649,28 @@ position = Vector2( 629, 95 )
 scale = Vector2( 1.55605, 1.48526 )
 texture = ExtResource( 40 )
 flip_h = true
+
+[node name="RedP2" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 798, 173 )
+scale = Vector2( 1.635, 1.58875 )
+texture = ExtResource( 14 )
+flip_h = true
+
+[node name="BalloonsB" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 916, 174 )
+rotation = 0.222833
+scale = Vector2( 1.53208, 1.42968 )
+texture = ExtResource( 15 )
+
+[node name="Square" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 1597, 241 )
+scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 10 )
+
+[node name="Square3" type="Sprite" parent="YSort/Foreground"]
+position = Vector2( 713, 675 )
+scale = Vector2( 1.7, 1.7 )
+texture = ExtResource( 10 )
 
 [node name="FlagsB" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( 566, 87 )
@@ -678,22 +690,10 @@ position = Vector2( 52, 743 )
 scale = Vector2( 1.64994, 1.51421 )
 texture = ExtResource( 39 )
 
-[node name="RedP2" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 798, 173 )
-scale = Vector2( 1.635, 1.58875 )
-texture = ExtResource( 14 )
-flip_h = true
-
 [node name="RedP3" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( 191, 769 )
 scale = Vector2( 1.635, 1.58875 )
 texture = ExtResource( 14 )
-
-[node name="BalloonsB" type="Sprite" parent="YSort/Foreground"]
-position = Vector2( 925, 203 )
-rotation = 0.222833
-scale = Vector2( 1.65875, 1.53839 )
-texture = ExtResource( 15 )
 
 [node name="BalloonsB3" type="Sprite" parent="YSort/Foreground"]
 position = Vector2( -56, 663 )

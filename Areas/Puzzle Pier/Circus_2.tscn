@@ -4,7 +4,7 @@
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=3]
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=4]
-[ext_resource path="res://Scripts/Area_Specific/Circus_1.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Area_Specific/Circus.gd" type="Script" id=5]
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Blue Rug.png" type="Texture" id=7]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/L Ledge B.png" type="Texture" id=8]

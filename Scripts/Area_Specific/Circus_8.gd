@@ -50,7 +50,7 @@ func _process(delta):
 		Global.battle_ended = false
 		Global.battling = false
 		
-		$YSort/MiddleGround/BlocksA.queue_free()
+		$YSort/MiddleGround/BlocksA.position.y += 1000
 		$Circus9/CollisionPolygon2D.disabled = false
 		
 		$YSort/MiddleGround/Hoop_Fire.hide()
@@ -99,7 +99,7 @@ func _process(delta):
 		$PoofPlayer.play("Poof")
 		SE.effect("Poof")
 		yield(get_tree().create_timer(0.2), "timeout")
-		Debrando.queue_free()
+		Debrando.position.y += 1000
 		yield(get_tree().create_timer(1.5), "timeout")
 		
 		JacquesPlayer.play("back_idle_f")
@@ -170,7 +170,6 @@ func _process(delta):
 		camera_tween.tween_property($Camera2D, "global_position", camera_position, 0.5)
 		yield(camera_tween, "finished")
 		
-		#yield(get_tree().create_timer(0.5), "timeout")
 		$Camera2D.follow_player = true
 		PlayerManager.freeze = false
 		PlayerManager.cutscene = false
@@ -182,7 +181,6 @@ func _on_Camera2D_animate_Gary():
 	Gary.animation("hold_seed")
 
 func _on_Boss_Battle_area_event():
-		
 		event = true
 		PlayerManager.freeze = true
 		PlayerManager.cutscene = true
@@ -263,7 +261,6 @@ func _on_Boss_Battle_area_event():
 		$YSort/Shadows/RectangleShadowSmall.hide()
 		$YSort/Shadows/RectangleShadowSmall2.hide()
 		
-		$YSort/MiddleGround/Hoop.height = 500
 		JacquesPlayer.play("shock_back_jump")
 		IrinaPlayer.play("shock_back_jump")
 		Gary.shock_back_jump()
@@ -279,7 +276,7 @@ func _on_Boss_Battle_area_event():
 		var tween5 = create_tween()
 		tween5.tween_property(Debrando, "global_position", $DebrandoPOS3.position, 0.8)
 		yield(tween5, "finished")
-		$YSort/MiddleGround/Trapeze.queue_free()
+		$YSort/MiddleGround/Trapeze.position.y += 1000
 		SE.effect("Drama Thud")
 		DebrandoPlayer.play("walk")
 	
@@ -364,4 +361,3 @@ func _on_Boss_Battle_area_event():
 		yield(get_tree().create_timer(1), "timeout")
 		transition.queue_free()
 		get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(target_scene)
-		$YSort/MiddleGround/Hoop.height = 200

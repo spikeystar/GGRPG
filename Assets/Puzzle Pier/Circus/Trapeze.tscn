@@ -28,10 +28,7 @@ texture_offset = Vector2( 0, 2 )
 height = 45.0
 floor_height = 320.0
 preview_collision_box = false
-detect_touches = true
 always_update = true
-floating = true
-flowing = true
 
 [node name="String A" type="Sprite" parent="."]
 self_modulate = Color( 0.968627, 0.945098, 0.988235, 1 )

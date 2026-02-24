@@ -22,7 +22,7 @@
 [ext_resource path="res://UI/Battle/Battle Dialogue.png" type="Texture" id=20]
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=21]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=22]
-[ext_resource path="res://Scripts/Area_Specific/Circus_1.gd" type="Script" id=23]
+[ext_resource path="res://Scripts/Area_Specific/Circus.gd" type="Script" id=23]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=24]
 [ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=26]

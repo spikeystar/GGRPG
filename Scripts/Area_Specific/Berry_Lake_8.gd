@@ -35,6 +35,7 @@ func _ready():
 		$YSort/JewelSeed.position = Vector2(-279, -1148)
 		$NPC.queue_free()
 		$YSort/MiddleGround/Reeler.queue_free()
+		$Reeler_Battle.queue_free()
 		
 func _process(delta):
 	if Global.battle_ended and event:
