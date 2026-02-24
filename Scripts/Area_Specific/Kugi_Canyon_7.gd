@@ -21,6 +21,7 @@ func _ready():
 		Music.music()
 		
 	if EventManager.Saguarotel:
+		$Boss_Battle.queue_free()
 		$AnimationPlayer.queue_free()
 		$YSort/MiddleGround/Saguarotel.queue_free()
 		$BerryLake1/CollisionPolygon2D.disabled = false
@@ -72,6 +73,7 @@ func _process(delta):
 		tween.tween_property(Jacques, "global_position", Gary.motion_root.global_position, 0.6)
 		yield(tween, "finished")
 		Jacques.queue_free()
+		Gary.z_index(0)
 		
 		$BerryLake1/CollisionPolygon2D.disabled = false
 		PlayerManager.freeze = false
@@ -95,7 +97,6 @@ func _on_Boss_Battle_area_event():
 	tween2.tween_property(Jacques, "global_position", $Position2D2.position, 0.5)
 	yield(tween2, "finished")
 	JacquesPlayer.play("back_idle_f")
-	Gary.z_index(0)
 	SE.effect("Select")
 	
 	$Camera2D/Interaction/Dialogue.show()

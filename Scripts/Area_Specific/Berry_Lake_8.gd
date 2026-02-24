@@ -32,6 +32,7 @@ func _ready():
 		$YSort/JewelSeed.position = Vector2(-303.5, -445)
 		
 	if EventManager.Reeler:
+		$Reeler_Battle.queue_free()
 		$YSort/JewelSeed.position = Vector2(-279, -1148)
 		$NPC.queue_free()
 		$YSort/MiddleGround/Reeler.queue_free()
@@ -99,7 +100,7 @@ func _process(delta):
 		var tween4 = create_tween()
 		tween4.tween_property(Reeler, "global_position", $Position2D4.position, 1.5)
 		yield(tween4, "finished")
-		Reeler.queue_free()
+		Reeler.position.y += 1000
 		
 		yield(get_tree().create_timer(0.5), "timeout")
 		
@@ -150,7 +151,7 @@ func _process(delta):
 		Jacques.queue_free()
 		
 		Party.jewel_seeds = 1
-		EventManager.Reeler
+		#EventManager.Reeler
 		PlayerManager.freeze = false
 		PlayerManager.cutscene = false
 
