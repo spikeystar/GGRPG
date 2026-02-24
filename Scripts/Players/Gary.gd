@@ -278,6 +278,7 @@ func smile():
 func shock_back_jump():
 	anim_tree.active = false
 	anim_player.play("shock_back_jump")
+	anim_player.playback_speed = 2.5
 	
 func back_hop():
 	anim_tree.active = false

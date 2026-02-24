@@ -41,12 +41,12 @@ func _process(delta):
 		EventManager.Debrando = true
 	#	Music.unpause()
 		SceneManager.SceneEnemies = []
+		
 		get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(target_scene)
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)
 		transition.ease_in()
-		yield(get_tree().create_timer(0.01), "timeout")
-		
+		yield(get_tree().create_timer(0.01), "timeout")	
 		Global.battle_ended = false
 		Global.battling = false
 		
@@ -263,7 +263,7 @@ func _on_Boss_Battle_area_event():
 		$YSort/Shadows/RectangleShadowSmall.hide()
 		$YSort/Shadows/RectangleShadowSmall2.hide()
 		
-		$YSort/MiddleGround/Hoop.height = 75
+		$YSort/MiddleGround/Hoop.height = 500
 		JacquesPlayer.play("shock_back_jump")
 		IrinaPlayer.play("shock_back_jump")
 		Gary.shock_back_jump()
@@ -361,7 +361,7 @@ func _on_Boss_Battle_area_event():
 		var transition = TransitionPlayer.instance()
 		get_tree().get_root().add_child(transition)
 		transition.transition()
-		yield(get_tree().create_timer(0.9), "timeout")
+		yield(get_tree().create_timer(1), "timeout")
 		transition.queue_free()
 		get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(target_scene)
 		$YSort/MiddleGround/Hoop.height = 200

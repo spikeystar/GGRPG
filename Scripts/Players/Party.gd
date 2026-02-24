@@ -201,3 +201,9 @@ func boss_event():
 	if event_name == "Reeler":
 		add_enemy_name = "Reeler"
 		add_enemy()
+	if event_name == "Debrando":
+		add_enemy_name = "Debrando"
+		add_enemy()
+	if event_name == "Pierre":
+		add_enemy_name = "Pierre"
+		add_enemy()

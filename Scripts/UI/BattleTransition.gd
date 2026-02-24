@@ -8,6 +8,9 @@ func transition():
 func backwards_star():
 	animation_player.play_backwards("StarTransition")
 	
+func reset():
+	animation_player.play("TransitionIn")
+	animation_player.playback_speed = 100
 	
 func ease_in():
 	animation_player.play("TransitionIn")
