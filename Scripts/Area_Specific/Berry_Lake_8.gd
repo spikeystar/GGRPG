@@ -319,6 +319,6 @@ func _on_Reeler_Battle_area_event():
 	var transition = TransitionPlayer.instance()
 	get_tree().get_root().add_child(transition)
 	transition.transition()
-	yield(get_tree().create_timer(0.9), "timeout")
+	yield(get_tree().create_timer(1), "timeout")
 	transition.queue_free()
 	get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(target_scene)
