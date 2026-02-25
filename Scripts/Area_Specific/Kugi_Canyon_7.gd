@@ -41,6 +41,7 @@ func _process(delta):
 		Global.battling = false
 		
 		Gary.set_right()
+		Gary.z_index(100)
 		Gary.motion_root.global_position = $Position2D.position
 		Jacques.global_position = $Position2D2.position
 		JacquesPlayer.play("back_idle_f")
@@ -170,6 +171,7 @@ func _on_Boss_Battle_area_event():
 	yield($Camera2D/Interaction/Dialogue, "talk_done")
 	$Camera2D/Interaction/Dialogue.done()
 	PlayerManager.freeze = true
+	Gary.z_index(0)
 	
 	Music.pause()
 	BattleMusic.id = "Miniboss_Battle"
