@@ -1509,21 +1509,6 @@ height = 10.0
 preview_collision_box = false
 use_collision = false
 
-[node name="Lilypad L2" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
-modulate = Color( 0.94902, 0.952941, 0.960784, 1 )
-position = Vector2( 1530.27, 647.373 )
-__meta__ = {
-"_editor_description_": ""
-}
-tile_size = Vector2( 59, 31 )
-grid_size = Vector2( 3.4, 3.5 )
-texture = ExtResource( 63 )
-texture_scale = Vector2( 1.45, 1.55 )
-texture_offset = Vector2( 0, 8 )
-height = 10.0
-preview_collision_box = false
-use_collision = false
-
 [node name="StarfruitM3" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
 modulate = Color( 0.94902, 0.952941, 0.960784, 1 )
 position = Vector2( 557, 117 )
@@ -1565,6 +1550,16 @@ texture_scale = Vector2( 0.6, 0.7 )
 texture_offset = Vector2( 2, 15 )
 height = 25.0
 preview_collision_box = false
+
+[node name="Sprite" type="Sprite" parent="YSort/MiddleGround"]
+modulate = Color( 0.94902, 0.952941, 0.960784, 1 )
+position = Vector2( 1532, 593 )
+scale = Vector2( 1.45, 1.55 )
+texture = ExtResource( 63 )
+script = ExtResource( 6 )
+always_update = true
+height = 10.0
+use_transparency = true
 
 [node name="PostLedge" parent="YSort/MiddleGround" instance=ExtResource( 13 )]
 modulate = Color( 0.94902, 0.952941, 0.960784, 1 )
@@ -1746,6 +1741,7 @@ script = ExtResource( 5 )
 depth_test_offset = Vector2( 0, 200 )
 
 [node name="CollisionRoot" type="Node2D" parent="."]
+visible = false
 
 [node name="Navmesh2" parent="CollisionRoot" instance=ExtResource( 7 )]
 position = Vector2( -8.39999, -15.1 )

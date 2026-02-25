@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Enemies/BattleTrigger.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemies/Berry Lake/Kerobi SS.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scripts/EnemyPost.gd" type="Script" id=8]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/PostEnemyMotionRoot.gd" type="Script" id=10]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 130.0
@@ -328,8 +329,8 @@ collision_mask = 6
 height = 40.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
-position = Vector2( -39.4886, -40.0052 )
-scale = Vector2( 2.72669, -2.97096 )
+position = Vector2( -40.672, -33.7052 )
+scale = Vector2( 1.8645, -2.44995 )
 shape = SubResource( 2 )
 disabled = true
 
@@ -359,8 +360,8 @@ texture = ExtResource( 2 )
 hframes = 12
 frame = 8
 script = ExtResource( 4 )
-depth_test_offset = Vector2( -8, 28 )
-feet_height = 10.0
+depth_test_offset = Vector2( 0, 35 )
+feet_height = 40.0
 height = 40.0
 use_dithering = false
 use_dither_blending = false
@@ -370,5 +371,10 @@ position = Vector2( 1, -23 )
 scale = Vector2( 2.44999, 3.00172 )
 shape = SubResource( 7 )
 disabled = true
+
+[node name="CollidableBox" parent="MotionRoot" instance=ExtResource( 11 )]
+position = Vector2( -2, 44 )
+height = 100.0
+floor_height = 40.0
 
 [connection signal="triggered" from="MotionRoot/BattleTrigger" to="." method="_on_BattleTrigger_triggered"]

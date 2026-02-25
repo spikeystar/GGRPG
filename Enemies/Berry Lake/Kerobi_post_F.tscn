@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Enemies/Berry Lake/Kerobi SS.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scripts/EnemyPost.gd" type="Script" id=8]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 1.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/PostEnemyMotionRoot.gd" type="Script" id=10]
+[ext_resource path="res://Objects/Collision/CollidableBox.tscn" type="PackedScene" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 130.0
@@ -309,5 +310,11 @@ position = Vector2( 0, -26 )
 scale = Vector2( 2.43132, 3.02645 )
 shape = SubResource( 7 )
 disabled = true
+
+[node name="CollidableBox" parent="." instance=ExtResource( 11 )]
+visible = false
+position = Vector2( -2, 46 )
+height = 100.0
+floor_height = 40.0
 
 [connection signal="triggered" from="MotionRoot/BattleTrigger" to="." method="_on_BattleTrigger_triggered"]
