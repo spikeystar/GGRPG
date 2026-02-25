@@ -52,7 +52,7 @@ func _process(delta):
 		Global.battle_ended = false
 		Global.battling = false
 		
-		
+		Gary.z_index(100)
 		JacquesPlayer.play("back_idle")
 		Gary.set_right_f()
 		yield(get_tree().create_timer(0.5), "timeout")
@@ -149,6 +149,7 @@ func _process(delta):
 		tween6.tween_property(Jacques, "global_position", Gary.motion_root.global_position, 0.5)
 		yield(tween6, "finished")
 		Jacques.queue_free()
+		Gary.z_index(0)
 		
 		Party.jewel_seeds = 1
 		#EventManager.Reeler
@@ -164,6 +165,7 @@ func _on_Reeler_Battle_area_event():
 	tween.tween_property(Gary.motion_root, "global_position", $Position2D.position, 1)
 	yield(tween, "finished")
 	Gary.set_right_f()
+	Gary.z_index(100)
 	
 	Jacques.global_position = Gary.motion_root.global_position
 	JacquesPlayer.play("back_walk_f")
@@ -321,5 +323,6 @@ func _on_Reeler_Battle_area_event():
 	get_tree().get_root().add_child(transition)
 	transition.transition()
 	yield(get_tree().create_timer(1), "timeout")
+	Gary.z_index(0)
 	transition.queue_free()
 	get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(target_scene)

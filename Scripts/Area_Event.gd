@@ -12,7 +12,13 @@ export var unavoid = false
 func _ready():
 	#activated = false
 	position.y += height
-	#yield(get_tree().create_timer(0.3), "timeout")
+	var timer = Timer.new()
+	timer.one_shot = true
+	add_child(timer)
+	timer.start(0.3)
+	timer.connect("timeout", self, "_on_timer_timeout")
+	
+func _on_timer_timeout():
 	connect("body_entered", self, "_on_body_entered")
 	connect("body_exited", self, "_on_body_exited")
 	

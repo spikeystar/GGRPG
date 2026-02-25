@@ -41,6 +41,7 @@ func _process(delta):
 		Global.battling = false
 		
 		Gary.set_right()
+		Gary.z_index(100)
 		Gary.motion_root.global_position = $Position2D.position
 		Jacques.global_position = $Position2D2.position
 		JacquesPlayer.play("back_idle_f")
@@ -180,5 +181,6 @@ func _on_Boss_Battle_area_event():
 	get_tree().get_root().add_child(transition)
 	transition.transition()
 	yield(get_tree().create_timer(1), "timeout")
+	Gary.z_index(0)
 	transition.queue_free()
 	get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(target_scene)
