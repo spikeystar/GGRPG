@@ -32,7 +32,7 @@ func _ready():
 	SceneManager.SceneEnemies.append(self)
 
 func _physics_process(delta):
-	
+
 	if Global.battle_ended:
 		#after_battle()
 		Music.unpause()
