@@ -623,7 +623,6 @@ script = ExtResource( 35 )
 
 [node name="Sapling_battle" parent="Enemies/Field" instance=ExtResource( 54 )]
 position = Vector2( -31, -1 )
-e_attack = 13
 move4 = "Basic"
 
 [node name="Flutterbie_battle" parent="Enemies/Field" instance=ExtResource( 55 )]
