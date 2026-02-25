@@ -28,6 +28,7 @@ texture_offset = Vector2( 0, 2 )
 height = 45.0
 floor_height = 320.0
 preview_collision_box = false
+use_collision = false
 always_update = true
 
 [node name="String A" type="Sprite" parent="."]

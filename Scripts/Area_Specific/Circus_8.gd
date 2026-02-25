@@ -49,8 +49,10 @@ func _process(delta):
 		yield(get_tree().create_timer(0.01), "timeout")	
 		Global.battle_ended = false
 		Global.battling = false
-		
-		$YSort/MiddleGround/BlocksA.position.y += 1000
+		$YSort/MiddleGround/BlocksA.global_position.y += 5000
+		for x in $YSort/MiddleGround/BlocksA.get_children():
+			x.texture_offset.y += 5000
+
 		$Circus9/CollisionPolygon2D.disabled = false
 		
 		$YSort/MiddleGround/Hoop_Fire.hide()
@@ -276,7 +278,7 @@ func _on_Boss_Battle_area_event():
 		var tween5 = create_tween()
 		tween5.tween_property(Debrando, "global_position", $DebrandoPOS3.position, 0.8)
 		yield(tween5, "finished")
-		$YSort/MiddleGround/Trapeze.position.y += 1000
+		$YSort/MiddleGround/Trapeze.queue_free()
 		SE.effect("Drama Thud")
 		DebrandoPlayer.play("walk")
 	

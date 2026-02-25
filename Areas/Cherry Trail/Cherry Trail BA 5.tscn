@@ -622,7 +622,6 @@ script = ExtResource( 35 )
 
 [node name="Cheribo_battle" parent="Enemies/Field" instance=ExtResource( 53 )]
 position = Vector2( 57, 34 )
-e_attack = 12
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
@@ -1879,6 +1878,7 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1895,7 +1895,6 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
