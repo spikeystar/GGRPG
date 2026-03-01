@@ -877,6 +877,10 @@ position = Vector2( 149, -130 )
 door_name = "PuzzlePier1_CoastalLane7"
 direction = Vector2( -1, 1 )
 
+[node name="Testing" parent="CollisionRoot" instance=ExtResource( 43 )]
+position = Vector2( 148, -130 )
+direction = Vector2( -1, 1 )
+
 [node name="Doorway1" parent="CollisionRoot" instance=ExtResource( 44 )]
 position = Vector2( 537, -453 )
 script = ExtResource( 46 )

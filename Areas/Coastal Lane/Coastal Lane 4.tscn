@@ -649,12 +649,13 @@ height = 40.0
 
 [node name="DirtB2" type="Sprite" parent="YSort/Floor"]
 self_modulate = Color( 1, 1, 1, 0.968627 )
-position = Vector2( -96, -565 )
+position = Vector2( -98, -560 )
 rotation = -0.0548485
 scale = Vector2( 2.11612, 2.00788 )
 texture = ExtResource( 56 )
 script = ExtResource( 5 )
 alpha_clip = 0.1
+always_update = true
 height = 40.0
 use_transparency = true
 

@@ -267,7 +267,7 @@ func Alison():
 		done()
 		alternate = true
 	elif alternate:
-		$Name/Talk.text = "I hope you have fun at the Pier."
+		$Name/Talk.text = "I hope you have fun at the Pier!"
 		talking()
 		yield(self, "talk_done")
 		$Name/Talk.text = "There's lots of stuff to do, so take your time."

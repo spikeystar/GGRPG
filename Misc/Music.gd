@@ -39,6 +39,7 @@ func music():
 	is_playing = true
 	
 func switch_songs():
+	return
 	if is_playing:
 		active.stop()
 

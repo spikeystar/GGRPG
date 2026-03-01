@@ -8,6 +8,11 @@ var Cherry_Trail = false
 var Pivot_Town = false
 var Kugi_Canyon = false
 var Berry_Lake = false
+var Puzzle_Pier = false
+var Circus = false
+var Treasure_Way = false
+var Gambleopolis = false
+var Diamond_Den = false
 
 var new_file = true
 var first_save = false
