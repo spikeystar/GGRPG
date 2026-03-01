@@ -7,7 +7,7 @@ func silence(id : String):
 		$Move_Between.volume_db = 1
 	if id == "Select":
 		$Select.volume_db = -80
-		yield(get_tree().create_timer(0.3), "timeout")
+		yield(get_tree().create_timer(0.4), "timeout")
 		$Select.volume_db = -4
 	if id == "Extend":
 		$Extend.volume_db = -80

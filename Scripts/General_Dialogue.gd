@@ -437,7 +437,34 @@ func Nikolai():
 		alternate = false
 
 func Brody():
-	if not alternate:
+	if not EventManager.Brody_Intro and not EventManager.Brody_Entry:
+		SE.silence("Select")
+		hide()
+		emit_signal("event_trigger")
+		return
+	if EventManager.Brody_Intro and not EventManager.Brody_Entry:
+		var item_name = ""
+		var entry_check = false
+		for x in range (Party.Inventory.size()):
+			item_name = Party.Inventory[x].get_id()
+			if item_name == "Picnic Pie" and not entry_check:
+				Party.item_index = x
+				Party.remove_item()
+				entry_check = true
+		if entry_check:
+			SE.silence("Select")
+			hide()
+			emit_signal("event_trigger")
+			EventManager.Brody_Entry = true
+			return
+		if not entry_check:
+			$Name/Talk.text = "I told you to go away! Go away!"
+			talking()
+			yield(self, "talk_done")
+			done()
+			
+	
+	if not alternate and EventManager.Brody_Intro and EventManager.Brody_Entry:
 		$Name/Talk.text = "I can’t help it... I just really like Picnic Pie."
 		talking()
 		yield(self, "talk_done")
@@ -446,7 +473,7 @@ func Brody():
 		yield(self, "talk_done")
 		done()
 		alternate = true
-	elif alternate:
+	elif alternate and EventManager.Brody_Intro and EventManager.Brody_Entry:
 		$Name/Talk.text = "I wish ocean water tasted good..."
 		talking()
 		yield(self, "talk_done")

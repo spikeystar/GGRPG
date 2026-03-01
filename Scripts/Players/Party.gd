@@ -74,10 +74,12 @@ func _ready():
 	#add_trinket_name = "Gold Earring"
 	#add_trinket()	
 	
-	#add_item_name = "Sugar Pill"
-	#add_item()	
-	#add_item_name = "Bounty Herb"
-	#add_item()	
+	add_item_name = "Picnic Pie"
+	add_item()	
+	add_item_name = "Bounty Herb"
+	add_item()	
+	add_item_name = "Picnic Pie"
+	add_item()	
 		
 func add_item():
 	if add_item_name == "True" or add_item_name == "False":

@@ -6172,7 +6172,7 @@ door_name = "CoastalLane7_PuzzlePier1"
 direction = Vector2( 1, -1 )
 
 [node name="PlayerSpawnFromCherryTrail2" parent="CollisionRoot" instance=ExtResource( 11 )]
-position = Vector2( 50, -189 )
+position = Vector2( 50, -186 )
 door_name = "Circus1_PuzzlePier1"
 direction = Vector2( -1, -1 )
 
@@ -6350,6 +6350,16 @@ right = true
 position = Vector2( 772, -444 )
 polygon = PoolVector2Array( 9, -2, -3, 10, -38, -2, -29, -13 )
 
+[node name="NPC10" type="Area2D" parent="CollisionRoot"]
+position = Vector2( -676, 254 )
+script = ExtResource( 124 )
+npc_name = "Brody"
+right = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CollisionRoot/NPC10"]
+position = Vector2( 772, -444 )
+polygon = PoolVector2Array( 9, -2, -2, 13, -17, 8, -38, -2, -29, -13 )
+
 [node name="CoastalLane" parent="." instance=ExtResource( 12 )]
 position = Vector2( -758, -503 )
 script = ExtResource( 13 )
@@ -6368,6 +6378,18 @@ exit_name = "PuzzlePier1_PuzzlePier2"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PuzzlePier2"]
 polygon = PoolVector2Array( -51.4957, -20.8131, 38.5456, 23.1136, 23.6885, 29.4594, -70.3518, -14.3748 )
+
+[node name="Circus1" parent="." instance=ExtResource( 12 )]
+position = Vector2( 120, -212 )
+rotation = 0.0231584
+script = ExtResource( 13 )
+target_scene = "res://Areas/Puzzle Pier/Circus_1.tscn"
+exit_name = "PuzzlePier1_Circus1"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Circus1"]
+position = Vector2( -2.90658, 4.06839 )
+polygon = PoolVector2Array( -58.4244, -17.6519, 27.1085, 4.37341, 31.339, 14.2781, 21.388, 16.5092, -3.69789, 13.0891, -46.9642, 2.08806, -67.1441, -5.44667, -70.4444, -18.3737 )
+disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 pause_mode = 2
@@ -6982,6 +7004,27 @@ position = Vector2( -513, -374 )
 [node name="GaryPOS_Intro" type="Position2D" parent="."]
 position = Vector2( -554, -392 )
 
+[node name="GaryPOS_Brody" type="Position2D" parent="."]
+position = Vector2( 31, -163 )
+
+[node name="BrodyPOS" type="Position2D" parent="."]
+position = Vector2( 80, -298 )
+
+[node name="BrodyPOS2" type="Position2D" parent="."]
+position = Vector2( -30, -260 )
+
+[node name="BrodyPOS3" type="Position2D" parent="."]
+position = Vector2( 634, 68 )
+
+[node name="BrodyPOS4" type="Position2D" parent="."]
+position = Vector2( 2154, 915 )
+
+[node name="JacquesPOS_Brody" type="Position2D" parent="."]
+position = Vector2( -17, -190 )
+
+[node name="IrinaPOS_Brody" type="Position2D" parent="."]
+position = Vector2( 81, -144 )
+
 [node name="JacquesPOS_Intro" type="Position2D" parent="."]
 position = Vector2( -606, -367 )
 
@@ -7025,6 +7068,8 @@ position = Vector2( -86, -196 )
 [connection signal="general_dialogue" from="CollisionRoot/NPC8" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]
 [connection signal="body_exited" from="CollisionRoot/NPC9" to="CollisionRoot/NPC9" method="_on_NPC_body_exited"]
 [connection signal="general_dialogue" from="CollisionRoot/NPC9" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]
+[connection signal="body_exited" from="CollisionRoot/NPC10" to="CollisionRoot/NPC10" method="_on_NPC_body_exited"]
+[connection signal="general_dialogue" from="CollisionRoot/NPC10" to="Camera2D/Interaction/Dialogue" method="_on_NPC_general_dialogue"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy" method="_on_Interaction_buying"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/Buy_Inventory" method="_on_Interaction_buying"]
 [connection signal="buying" from="Camera2D/Shop" to="Camera2D/Shop/Buy/MenuCursor" method="_on_Interaction_buying"]
@@ -7056,6 +7101,7 @@ position = Vector2( -86, -196 )
 [connection signal="withdraw" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw/Withdraw_Inventory" method="_on_Interaction_withdraw"]
 [connection signal="withdraw" from="Camera2D/Shop" to="Camera2D/Shop/Withdraw/MenuCursor" method="_on_Interaction_withdraw"]
 [connection signal="empty_items" from="Camera2D/Shop/Sell/Sell_Inventory" to="Camera2D/Shop/Sell/MenuCursor" method="_on_Sell_Inventory_empty_items"]
+[connection signal="event_trigger" from="Camera2D/Interaction/Dialogue" to="." method="_on_Dialogue_event_trigger"]
 [connection signal="no" from="Camera2D/Minigame/EventOptions" to="CollisionRoot/FerrisWheel" method="_on_EventOptions_no"]
 [connection signal="no" from="Camera2D/Minigame/EventOptions" to="CollisionRoot/FortuneStand" method="_on_EventOptions_no"]
 [connection signal="no" from="Camera2D/Minigame/EventOptions" to="CollisionRoot/CraneStand" method="_on_EventOptions_no"]

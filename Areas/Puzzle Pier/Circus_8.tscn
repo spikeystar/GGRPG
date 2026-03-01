@@ -572,6 +572,7 @@ position = Vector2( 2, -5 )
 position = Vector2( 452, -393 )
 scale = Vector2( 1.45, 1.25 )
 frames = SubResource( 2 )
+frame = 2
 speed_scale = 0.9
 playing = true
 
@@ -579,7 +580,7 @@ playing = true
 position = Vector2( 452, -393 )
 scale = Vector2( 1.45, 1.25 )
 frames = SubResource( 2 )
-frame = 1
+frame = 2
 speed_scale = 0.95
 playing = true
 
