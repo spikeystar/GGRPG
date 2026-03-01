@@ -446,7 +446,8 @@ func Brody():
 		var item_name = ""
 		var entry_check = false
 		for x in range (Party.Inventory.size()):
-			item_name = Party.Inventory[x].get_id()
+			if not entry_check:
+				item_name = Party.Inventory[x].get_id()
 			if item_name == "Picnic Pie" and not entry_check:
 				Party.item_index = x
 				Party.remove_item()

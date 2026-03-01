@@ -5582,7 +5582,7 @@ height = 100.0
 preview_collision_box = false
 
 [node name="Nikolai" parent="YSort/MiddleGround" instance=ExtResource( 54 )]
-position = Vector2( 1419, 425 )
+position = Vector2( 2244, -1044 )
 
 [node name="Peter" parent="YSort/MiddleGround" instance=ExtResource( 60 )]
 position = Vector2( 335, 145 )
@@ -6341,7 +6341,7 @@ position = Vector2( 772, -444 )
 polygon = PoolVector2Array( 7, -3, 1, 12, -38, -2, -29, -12 )
 
 [node name="NPC9" type="Area2D" parent="CollisionRoot"]
-position = Vector2( 658, 878 )
+position = Vector2( 1547, -620 )
 script = ExtResource( 124 )
 npc_name = "Nikolai"
 right = true
@@ -6388,7 +6388,7 @@ exit_name = "PuzzlePier1_Circus1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Circus1"]
 position = Vector2( -2.90658, 4.06839 )
-polygon = PoolVector2Array( -58.4244, -17.6519, 27.1085, 4.37341, 31.339, 14.2781, 21.388, 16.5092, -3.69789, 13.0891, -46.9642, 2.08806, -67.1441, -5.44667, -70.4444, -18.3737 )
+polygon = PoolVector2Array( -58.4244, -17.6519, 27.1085, 4.37341, 33.3617, 15.2316, 22.4804, 20.4849, 7.50758, 21.832, -3.51263, 21.087, -13.6026, 17.3196, -29.7604, 10.692, -47.9177, 4.11069, -67.1441, -5.44667, -70.4444, -18.3737 )
 disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

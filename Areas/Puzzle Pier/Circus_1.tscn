@@ -1,6 +1,7 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Assets/General/Tiles/Red Circus Tile.png" type="Texture" id=1]
+[ext_resource path="res://NPC/Puzzle Pier/Calico.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/General/Tiles/Blue Circus Tile.png" type="Texture" id=3]
 [ext_resource path="res://Assets/General/Tiles/Yellow Circus Tile.png" type="Texture" id=4]
 [ext_resource path="res://Assets/General/Tiles/Purple Circus Tile.png" type="Texture" id=5]
@@ -17,6 +18,8 @@
 [ext_resource path="res://Misc/Font/Dialogue.tres" type="DynamicFont" id=16]
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=17]
 [ext_resource path="res://Scripts/Objects/SceneTransition/Exit.gd" type="Script" id=18]
+[ext_resource path="res://Players/Irina/Irina.tscn" type="PackedScene" id=19]
+[ext_resource path="res://NPC/Puzzle Pier/Pierre.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Scripts/Item_Interact.gd" type="Script" id=21]
 [ext_resource path="res://Scripts/SimpleCamera2D.gd" type="Script" id=22]
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Square.png" type="Texture" id=23]
@@ -42,6 +45,11 @@
 [ext_resource path="res://Scripts/Objects/Signpost.gd" type="Script" id=43]
 [ext_resource path="res://UI/Pause/Pause Map.png" type="Texture" id=44]
 [ext_resource path="res://UI/Star Deco.png" type="Texture" id=45]
+[ext_resource path="res://Players/Jacques/Jacques.tscn" type="PackedScene" id=46]
+[ext_resource path="res://Scripts/UI/Talk_Adjusting.gd" type="Script" id=47]
+[ext_resource path="res://Scripts/Inn.gd" type="Script" id=48]
+[ext_resource path="res://Scripts/General_Dialogue.gd" type="Script" id=49]
+[ext_resource path="res://UI/DialogueCursor.tscn" type="PackedScene" id=50]
 
 [sub_resource type="TileSet" id=1]
 0/name = "wood tile a.png 0"
@@ -661,6 +669,18 @@ texture_offset = Vector2( -2, -4 )
 height = 150.0
 preview_collision_box = false
 
+[node name="Calico" parent="YSort/MiddleGround" instance=ExtResource( 2 )]
+position = Vector2( -1054, -872 )
+
+[node name="Pierre" parent="YSort/MiddleGround" instance=ExtResource( 20 )]
+position = Vector2( -920, -869 )
+
+[node name="Jacques" parent="YSort/MiddleGround" instance=ExtResource( 46 )]
+position = Vector2( -809, -898 )
+
+[node name="Irina" parent="YSort/MiddleGround" instance=ExtResource( 19 )]
+position = Vector2( -689, -878 )
+
 [node name="Foreground" type="Node2D" parent="YSort"]
 z_index = 20
 
@@ -874,6 +894,43 @@ texture = ExtResource( 45 )
 position = Vector2( 131.455, 100 )
 texture = ExtResource( 45 )
 
+[node name="Interaction" type="Node2D" parent="Camera2D"]
+script = ExtResource( 48 )
+inn_name = "Freya"
+cost = 50
+target_scene = "res://Areas/Pivot Town/Pivot_Inn_2.tscn"
+
+[node name="Dialogue" type="Sprite" parent="Camera2D/Interaction"]
+visible = false
+position = Vector2( -130, -221 )
+z_index = 3
+texture = ExtResource( 15 )
+script = ExtResource( 49 )
+
+[node name="DialogueCursor" parent="Camera2D/Interaction/Dialogue" instance=ExtResource( 50 )]
+visible = false
+position = Vector2( 154.045, 25.1428 )
+
+[node name="Name" type="Label" parent="Camera2D/Interaction/Dialogue"]
+margin_left = -158.813
+margin_top = -33.5715
+margin_right = 162.0
+margin_bottom = 17.4285
+custom_fonts/font = ExtResource( 16 )
+text = "Tom:"
+autowrap = true
+script = ExtResource( 47 )
+
+[node name="Talk" type="Label" parent="Camera2D/Interaction/Dialogue/Name"]
+margin_left = 47.0
+margin_top = -0.00012207
+margin_right = 310.384
+margin_bottom = 50.9999
+custom_fonts/font = ExtResource( 16 )
+text = "Hey. What do you need?"
+autowrap = true
+percent_visible = 0.1
+
 [node name="Item_Interact" type="Area2D" parent="."]
 visible = false
 position = Vector2( 309, -145 )
@@ -884,8 +941,26 @@ item_name = "Picnic Pie"
 position = Vector2( -47.3501, 124.25 )
 polygon = PoolVector2Array( -85.6499, -125.25, -48.6499, -118.25, -39.6499, -103.25, -41.6499, -92.25, -51.6499, -79.25, -78.6499, -70.25, -103.65, -70.25, -124.65, -76.25, -139.65, -85.25, -138.65, -101.25, -131.65, -110.25, -114.65, -122.25 )
 
-[node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 2276, 1175 )
+[node name="CameraPOS" type="Position2D" parent="."]
+position = Vector2( 701, -197 )
+
+[node name="GaryPOS" type="Position2D" parent="."]
+position = Vector2( 39, 37 )
+
+[node name="JacquesPOS" type="Position2D" parent="."]
+position = Vector2( -13, 16 )
+
+[node name="IrinaPOS" type="Position2D" parent="."]
+position = Vector2( 87, 52 )
+
+[node name="PierrePOS2" type="Position2D" parent="."]
+position = Vector2( 869, -261 )
+
+[node name="PierrePOS" type="Position2D" parent="."]
+position = Vector2( 762, -177 )
+
+[node name="CalicoPOS" type="Position2D" parent="."]
+position = Vector2( 642, -219 )
 
 [connection signal="body_exited" from="CollisionRoot/Signpost" to="CollisionRoot/Signpost" method="_on_Signpost_body_exited"]
 [connection signal="signpost" from="CollisionRoot/Signpost" to="Camera2D" method="_on_Signpost_signpost"]

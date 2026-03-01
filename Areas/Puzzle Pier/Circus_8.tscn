@@ -572,7 +572,6 @@ position = Vector2( 2, -5 )
 position = Vector2( 452, -393 )
 scale = Vector2( 1.45, 1.25 )
 frames = SubResource( 2 )
-frame = 2
 speed_scale = 0.9
 playing = true
 
@@ -580,7 +579,6 @@ playing = true
 position = Vector2( 452, -393 )
 scale = Vector2( 1.45, 1.25 )
 frames = SubResource( 2 )
-frame = 2
 speed_scale = 0.95
 playing = true
 
@@ -607,6 +605,7 @@ position = Vector2( -1, 1 )
 position = Vector2( 246, -212 )
 scale = Vector2( 1.04785, 1.09542 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="YSort/MiddleGround/Stage_Fire"]
@@ -619,7 +618,6 @@ speed_scale = 0.95
 position = Vector2( 441.025, -217.151 )
 scale = Vector2( 1.04785, 1.09542 )
 frames = SubResource( 3 )
-frame = 2
 playing = true
 flip_h = true
 
@@ -1086,7 +1084,6 @@ position = Vector2( 438.322, -133.095 )
 rotation = 0.065556
 scale = Vector2( 1.04732, 1.04336 )
 frames = SubResource( 3 )
-frame = 2
 playing = true
 
 [node name="AnimatedSprite3" type="AnimatedSprite" parent="YSort/Foreground/Stage_Fire2"]
@@ -1094,7 +1091,6 @@ position = Vector2( 245.322, -133.095 )
 rotation = -0.175627
 scale = Vector2( 1.04937, 1.01777 )
 frames = SubResource( 3 )
-frame = 2
 playing = true
 flip_h = true
 

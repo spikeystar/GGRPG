@@ -43,18 +43,22 @@ func _ready():
 		if SceneManager.night:
 			night()
 	
-	#EventManager.Puzzle_Pier = true
-	
 	SceneManager.SceneEnemies = []
 	
-	#SceneManager.location = "Puzzle Pier"
-	
 	EventManager.Puzzle_Pier = true
+	EventManager.Brody_Intro = true
+	EventManager.Brody_Entry = true
+	
+	#SceneManager.location = "Puzzle Pier"
 	
 	if Music.id != "Puzzle_Pier" or not Music.is_playing:
 		Music.switch_songs()
 		Music.id = "Puzzle_Pier"
 		Music.music()
+	
+	if Party.jewel_seeds >= 2:
+		$YSort/MiddleGround/Nikolai.global_position = Vector2(1419, 425)
+		$CollisionRoot/NPC9.global_position = Vector2(658, 878)
 		
 	if EventManager.Brody_Intro and EventManager.Brody_Entry:
 		$Circus1/CollisionPolygon2D.disabled = false
@@ -321,8 +325,8 @@ func _ready():
 		var tween8 = create_tween()
 		tween8.tween_property(Irina, "global_position", Gary.motion_root.global_position, 0.5)
 		yield(tween8, "finished")
-		Jacques.queue_free()
-		Irina.queue_free()
+		Jacques.global_position = Vector2(5000, 5000)
+		Irina.global_position = Vector2(5000, 5000)
 		Pierre.global_position = Vector2(5000, 5000)
 		
 		yield(get_tree().create_timer(0.2), "timeout")
