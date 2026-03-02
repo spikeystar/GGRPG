@@ -23,6 +23,11 @@ const Crane_Machine = preload("res://Areas/Puzzle Pier/Minigame/Crane_Machine.ts
 const Space_Quest = preload("res://Areas/Puzzle Pier/Minigame/Space_Quest.tscn")
 const Water_Guns = preload("res://Areas/Puzzle Pier/Minigame/Water_Guns.tscn")
 
+const TransitionPlayer2 = preload("res://UI/BattleTransition.tscn")
+const event_battle = preload("res://Areas/Cherry Trail/Cherry Trail BA 1.tscn")
+onready var target_scene = event_battle.instance()
+var event = false
+
 
 func _ready():
 	if not SceneManager.time_decided:
@@ -48,6 +53,8 @@ func _ready():
 	EventManager.Puzzle_Pier = true
 	EventManager.Brody_Intro = true
 	EventManager.Brody_Entry = true
+	EventManager.Lighthouse_Key = true
+	#EventManager.Lighthouse_Intro = true
 	
 	#SceneManager.location = "Puzzle Pier"
 	
@@ -55,6 +62,14 @@ func _ready():
 		Music.switch_songs()
 		Music.id = "Puzzle_Pier"
 		Music.music()
+		
+	if EventManager.Lighthouse_Key and not EventManager.Pierre:
+		$Boss_Battle/CollisionPolygon2D.disabled = false
+		night()
+	
+	if EventManager.Pierre:
+		$Boss_Battle/CollisionPolygon2D.disabled = true
+		$CollisionRoot/Lighthouse_Door/CollisionPolygon2D.disabled = false
 	
 	if Party.jewel_seeds >= 2:
 		$YSort/MiddleGround/Nikolai.global_position = Vector2(1419, 425)
@@ -336,6 +351,129 @@ func _ready():
 		yield(camera_tween2, "finished")
 		
 		$Camera2D.follow_player = true
+		PlayerManager.freeze = false
+		PlayerManager.cutscene = false
+		
+	if EventManager.Lighthouse_Intro and not EventManager.Lighthouse_After:
+		PlayerManager.freeze = true
+		PlayerManager.cutscene = true
+		EventManager.Lighthouse_After = true
+		Gary.z_index(100)
+		Gary.global_position = $GaryPOS_After.global_position
+		Jacques.global_position = $JacquesPOS_After.global_position
+		Irina.global_position = $IrinaPOS_After.global_position
+		Gary.animation("d_down_idle")
+		JacquesPlayer.play("front_idle_f")
+		IrinaPlayer.play("back_idle")
+		
+		yield(get_tree().create_timer(0.7), "timeout")
+		
+		SE.effect("Select")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "We did it! Another Jewel Seed is safe with us."
+		$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "I'm glad that all worked out."
+		$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		IrinaPlayer.play("suggest_back_f")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Where to now? Should we head back to Edgar?"
+		$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		IrinaPlayer.play("back_idle")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Hmm... Up to you guys, but on our way here I did see a path through Treasure Way."
+		$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		JacquesPlayer.play("suggest_front_f")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Following that would take us to Gambleopolis."
+		$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		JacquesPlayer.play("front_idle_f")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "It's a kind of glitzy but seedy town with a big casino."
+		$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Ohh! Do you think there will be lots of gemstones there?"
+		$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		JacquesPlayer.play("suggest_front_f")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Exactly. And maybe someone who has seen a Jewel Seed."
+		$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		JacquesPlayer.play("front_idle_f")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "That makes sense!"
+		$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Alright, let's head that way whenever we're ready."
+		$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		JacquesPlayer.play("back_walk_f")
+		var tween = create_tween()
+		tween.tween_property(Jacques, "global_position", $JacquesPOS_After2.position, 0.4)
+		IrinaPlayer.play("back_walk_f")
+		var tween2 = create_tween()
+		tween2.tween_property(Irina, "global_position", $IrinaPOS_After2.position, 0.4)
+		yield(tween2, "finished")
+		JacquesPlayer.play("front_walk_f")
+		var tween3 = create_tween()
+		tween3.tween_property(Jacques, "global_position", Gary.motion_root.global_position, 0.6)
+		IrinaPlayer.play("back_walk")
+		var tween4 = create_tween()
+		tween4.tween_property(Irina, "global_position", Gary.motion_root.global_position, 0.6)
+		yield(tween4, "finished")
+		Jacques.global_position = Vector2(5000, 5000)
+		Irina.global_position = Vector2(5000, 5000)
+		
+		yield(get_tree().create_timer(0.4), "timeout")
+		Gary.z_index(0)
 		PlayerManager.freeze = false
 		PlayerManager.cutscene = false
 		
@@ -1019,3 +1157,314 @@ func _on_Dialogue_event_trigger():
 		PlayerManager.freeze = false
 		PlayerManager.cutscene = false
 		$Circus1/CollisionPolygon2D.disabled = false
+
+
+func _on_Boss_Battle_area_event():
+	$Boss_Battle.queue_free()
+	event = true
+	PlayerManager.freeze = true
+	PlayerManager.cutscene = true
+	Gary.walk()
+	$Camera2D.follow_player = false
+	var camera_tween = create_tween()
+	camera_tween.tween_property($Camera2D, "global_position", $CameraPOS_Boss.position, 1)
+	var tween = create_tween()
+	tween.tween_property(Gary.motion_root, "global_position", $GaryPOS_Boss.position, 1)
+	yield(tween, "finished")
+	Gary.animation("d_up_r_idle")
+	
+	Music.pause()
+	SE.effect("Select")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Stop right there, you insolent fools!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	Gary.z_index(100)
+	Jacques.position = Gary.motion_root.global_position
+	JacquesPlayer.play("back_walk")
+	Irina.position = Gary.motion_root.global_position
+	IrinaPlayer.play("front_walk_f")
+	var tween2 = create_tween()
+	tween2.tween_property(Jacques, "global_position", $JacquesPOS_Boss.position, 0.6)
+	var tween3 = create_tween()
+	tween3.tween_property(Irina, "global_position", $IrinaPOS_Boss.position, 0.6)
+	yield(tween3, "finished")
+	JacquesPlayer.play("back_idle_f")
+	IrinaPlayer.play("back_idle_f")
+	Gary.z_index(0)
+	
+	SE.effect("Select")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Where is that voice coming from...?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	JacquesPlayer.play("back_idle")
+	IrinaPlayer.play("front_idle_f")
+	Gary.animation("d_down_r_idle")
+	yield(get_tree().create_timer(0.6), "timeout")
+	
+	JacquesPlayer.play("front_idle_f")
+	IrinaPlayer.play("back_idle")
+	Gary.animation("d_down_idle")
+	
+	yield(get_tree().create_timer(0.6), "timeout")
+
+	JacquesPlayer.play("back_idle_f")
+	IrinaPlayer.play("front_idle")
+	Gary.animation("d_up_idle")
+	
+	yield(get_tree().create_timer(1), "timeout")
+	
+	$CanvasPlayer.play("Canvas")
+	SE.effect("Drama Flash")
+	yield(get_tree().create_timer(0.1), "timeout")
+	
+	$YSort/MiddleGround/Estella/BodyYSort/AnimationPlayer.play("idle_f")
+	$YSort/MiddleGround/Kate/BodyYSort/AnimationPlayer.play("idle_f")
+	JacquesPlayer.play("shock_back_jump")
+	IrinaPlayer.play("shock_back_jump")
+	Gary.shock_back_jump()
+	
+	Pierre.global_position = $PierrePOS_Boss.global_position
+	PierrePlayer.play("idle_attack")
+	
+	yield(get_tree().create_timer(1.5), "timeout")
+	JacquesPlayer.play("battle_ready")
+	IrinaPlayer.play("battle_ready")
+	Gary.animation("battle_ready")
+	PierrePlayer.play("idle")
+	
+	SE.effect("Select")
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Well, well, well..."
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "You dimwits really thought that you could just wander into MY circus..."
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Break into MY lighthouse..."
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "And do as you please?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "I THINK NOT!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "We know you have a Jewel Seed hidden in the lighthouse!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "We're taking it back to where it belongs!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	Music.switch_songs()
+	Music.id = "High_Tension"
+	Music.music()
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Hahaha..."
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Where it belongs?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Oh, I can't wait to see you eat those words."
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "It belongs right here!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Do you know why people come to Puzzle Pier?"
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "Because they want to be entertained."
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "And I'm about to give you the show of a lifetime..."
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	$Camera2D/Interaction/Dialogue.show()
+	$Camera2D/Interaction/Dialogue/Name/Talk.text = "THE -END- OF A LIFETIME!"
+	$Camera2D/Interaction/Dialogue/Name.text = "Pierre:"
+	$Camera2D/Interaction/Dialogue.talking()
+	yield($Camera2D/Interaction/Dialogue, "talk_done")
+	$Camera2D/Interaction/Dialogue.done()
+	PlayerManager.freeze = true
+	
+	Pierre.z_index = 100
+	PierrePlayer.play("attack")
+	yield(get_tree().create_timer(0.8), "timeout")
+	
+	Music.pause()
+	BattleMusic.id = "Boss_Battle"
+	BattleMusic.music()
+	Global.battling = true
+	get_tree().paused = true
+	var transition = TransitionPlayer2.instance()
+	get_tree().get_root().add_child(transition)
+	transition.transition()
+	yield(get_tree().create_timer(1), "timeout")
+	transition.queue_free()
+	get_tree().get_root().get_node("WorldRoot/Camera2D").add_child(target_scene)
+	
+func _process(delta):
+	if Global.battle_ended and event:
+		event = false
+		EventManager.Pierre = true
+		Music.switch_songs()
+		Music.id = "Puzzle_Pier"
+		Music.music()
+		SceneManager.SceneEnemies = []
+		
+		Pierre.global_position = Vector2(5000, 5000)
+		$YSort/MiddleGround/Estella/BodyYSort/AnimationPlayer.play("idle")
+		$YSort/MiddleGround/Kate/BodyYSort/AnimationPlayer.play("idle")
+		JacquesPlayer.play("back_idle_f")
+		IrinaPlayer.play("back_idle_f")
+		Gary.animation("d_up_r_idle")
+		
+		get_tree().get_root().get_node("WorldRoot/Camera2D").remove_child(target_scene)
+		var transition = TransitionPlayer2.instance()
+		get_tree().get_root().add_child(transition)
+		transition.ease_in()
+		yield(get_tree().create_timer(0.01), "timeout")	
+		Global.battle_ended = false
+		Global.battling = false
+		
+		yield(get_tree().create_timer(0.6), "timeout")
+
+		IrinaPlayer.play("back_hop_f")
+		SE.effect("Select")
+		SE.effect("Drama Hop")
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "He's gone!"
+		$Camera2D/Interaction/Dialogue/Name.text = "Irina:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Not surprised that scumbag pulled a vanishing act after all that."
+		$Camera2D/Interaction/Dialogue/Name.text = "Jacques:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Yeah, well good riddance!"
+		$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		$Camera2D/Interaction/Dialogue.show()
+		$Camera2D/Interaction/Dialogue/Name/Talk.text = "Now let's get into the lighthouse, quick!"
+		$Camera2D/Interaction/Dialogue/Name.text = "Gary:"
+		$Camera2D/Interaction/Dialogue.talking()
+		yield($Camera2D/Interaction/Dialogue, "talk_done")
+		$Camera2D/Interaction/Dialogue.done()
+		PlayerManager.freeze = true
+		
+		Gary.z_index(100)
+		Gary.set_right()
+		JacquesPlayer.play("front_walk_f")
+		IrinaPlayer.play("back_walk")
+		var tween7 = create_tween()
+		tween7.tween_property(Jacques, "global_position", Gary.motion_root.global_position, 0.6)
+		var tween8 = create_tween()
+		tween8.tween_property(Irina, "global_position", Gary.motion_root.global_position, 0.6)
+		yield(tween8, "finished")
+		Jacques.global_position = Vector2(5000, 5000)
+		Irina.global_position = Vector2(5000, 5000)
+		Gary.z_index(0)
+		
+		var camera_tween = create_tween()
+		var camera_position = Vector2((Gary.motion_root.global_position.x + $Camera2D.player_offset.x), (Gary.motion_root.global_position.y - $Camera2D.z_offset + $Camera2D.player_offset.y))
+		camera_tween.tween_property($Camera2D, "global_position", camera_position, 0.5)
+		yield(camera_tween, "finished")
+		$Camera2D.follow_player = true
+		
+		yield(get_tree().create_timer(0.4), "timeout")
+		$CollisionRoot/Lighthouse_Door/CollisionPolygon2D.disabled = false
+		PlayerManager.freeze = false
+		PlayerManager.cutscene = false
+		Gary.set_right()

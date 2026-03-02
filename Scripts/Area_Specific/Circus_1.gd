@@ -206,9 +206,9 @@ func _ready():
 		tween5.tween_property(Gary.motion_root, "global_position", $GaryPOS.position, 1)
 		yield(tween5, "finished")
 		Gary.set_right()
-		Jacques.position = Gary.motion_root.global_position
+		Jacques.global_position = Gary.motion_root.global_position
 		JacquesPlayer.play("back_walk")
-		Irina.position = Gary.motion_root.global_position
+		Irina.global_position = Gary.motion_root.global_position
 		IrinaPlayer.play("front_walk_f")
 		Irina.z_index = 100
 		var tween6 = create_tween()

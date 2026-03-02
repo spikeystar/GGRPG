@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://NPC/Test.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Rendering/DepthTestCharacterSprite.gd" type="Script" id=2]
@@ -173,7 +173,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 1.25, 1.2 ), Vector2( 1.35, 1.35 ), Vector2( 1.4, 1.4 ), Vector2( 1.5, 1.5 ) ]
+"values": [ Vector2( 1.25, 1.2 ), Vector2( 1.35, 1.35 ), Vector2( 1.5, 1.5 ), Vector2( 1.6, 1.6 ) ]
 }
 
 [sub_resource type="Animation" id=183]
@@ -481,6 +481,83 @@ tracks/5/keys = {
 "values": [ Vector2( 1.25, 1.25 ) ]
 }
 
+[sub_resource type="Animation" id=184]
+resource_name = "idle_attack"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("BodyVisualRoot/NPC:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("BodyVisualRoot/NPC:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("BodyVisualRoot/NPC:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( -1, -53 ), Vector2( -3, -53 ), Vector2( -1, -53 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimationPlayer:playback_speed")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.35 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("BodyVisualRoot/NPC:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.25, 1.25 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../ShadowYSort/ShadowVisualRoot/ShadowCircle:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3, 0 ) ]
+}
+
 [sub_resource type="Animation" id=176]
 resource_name = "idle_back"
 length = 0.4
@@ -747,6 +824,7 @@ anims/back_hop = SubResource( 183 )
 anims/front_hop = SubResource( 177 )
 anims/front_hop_f = SubResource( 180 )
 anims/idle = SubResource( 174 )
+anims/idle_attack = SubResource( 184 )
 anims/idle_back = SubResource( 176 )
 anims/idle_back_f = SubResource( 179 )
 anims/idle_f = SubResource( 182 )
