@@ -29,7 +29,7 @@ onready var target_scene = event_battle.instance()
 var event = false
 
 
-func _ready():
+func _ready():	
 	if not SceneManager.time_decided:
 		SceneManager.day = false
 		SceneManager.night = false
@@ -37,12 +37,12 @@ func _ready():
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var cycle = rng.randi_range(1, 100)
-		if cycle <= 50:
+		if cycle <= 50 and EventManager.Pierre:
 			night()
 		else:
 			day()
 			
-	if SceneManager.time_decided:
+	if SceneManager.time_decided and EventManager.Pierre:
 		if SceneManager.day:
 			day()
 		if SceneManager.night:
@@ -50,11 +50,12 @@ func _ready():
 	
 	SceneManager.SceneEnemies = []
 	
-	EventManager.Puzzle_Pier = true
-	EventManager.Brody_Intro = true
-	EventManager.Brody_Entry = true
-	EventManager.Lighthouse_Key = true
-	#EventManager.Lighthouse_Intro = true
+#	EventManager.Puzzle_Pier = true
+#	EventManager.Brody_Intro = true
+#	EventManager.Brody_Entry = true
+#	EventManager.Lighthouse_Key = true
+#	EventManager.Pierre = true
+#	EventManager.Lighthouse_Intro = true
 	
 	#SceneManager.location = "Puzzle Pier"
 	

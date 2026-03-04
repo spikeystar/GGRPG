@@ -466,7 +466,7 @@ func Brody():
 			
 	
 	if not alternate and EventManager.Brody_Intro and EventManager.Brody_Entry:
-		$Name/Talk.text = "I can’t help it... I just really like Picnic Pie."
+		$Name/Talk.text = "I can't help it... I just really like Picnic Pie."
 		talking()
 		yield(self, "talk_done")
 		$Name/Talk.text = "I know you're meant to share them... but this is just for me."
@@ -478,7 +478,7 @@ func Brody():
 		$Name/Talk.text = "I wish ocean water tasted good..."
 		talking()
 		yield(self, "talk_done")
-		$Name/Talk.text = "I’m kind of thirsty now too."
+		$Name/Talk.text = "I'm kind of thirsty now too."
 		talking()
 		yield(self, "talk_done")
 		done()

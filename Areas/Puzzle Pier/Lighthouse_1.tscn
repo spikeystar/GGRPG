@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Scripts/General_Dialogue.gd" type="Script" id=1]
 [ext_resource path="res://Assets/General/Tiles/Stone.png" type="Texture" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Assets/Present Box/PresentBase.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=17]
 [ext_resource path="res://Assets/General/Shadows/rectangle shadow small.png" type="Texture" id=18]
+[ext_resource path="res://Scripts/Area_Specific/Lighthouse_1.gd" type="Script" id=19]
 [ext_resource path="res://Assets/General/Backgrounds/Inside BCKGD.png" type="Texture" id=34]
 [ext_resource path="res://UI/Interaction Window.png" type="Texture" id=37]
 [ext_resource path="res://Scripts/Inn.gd" type="Script" id=38]
@@ -75,6 +76,7 @@
 
 [node name="WorldRoot" type="Node2D"]
 position = Vector2( -21, 4 )
+script = ExtResource( 19 )
 
 [node name="PresentBase" parent="." instance=ExtResource( 16 )]
 position = Vector2( 320, -47 )

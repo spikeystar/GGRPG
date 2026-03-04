@@ -13,7 +13,7 @@ onready var PierrePlayer = $YSort/MiddleGround/Pierre/BodyYSort/AnimationPlayer
 onready var Calico = $YSort/MiddleGround/Calico
 onready var CalicoPlayer = $YSort/MiddleGround/Calico/BodyYSort/AnimationPlayer
 
-func _ready():
+func _ready():	
 	SceneManager.location = "Circus"
 	if Music.id != "Circus":
 		Music.switch_songs()

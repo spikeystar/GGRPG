@@ -414,16 +414,16 @@ align = 1
 position = Vector2( 132, 47 )
 
 [node name="JacquesPOS" type="Position2D" parent="."]
-position = Vector2( 91, 30 )
+position = Vector2( 90, 30 )
 
 [node name="IrinaPOS" type="Position2D" parent="."]
 position = Vector2( 172, 62 )
 
 [node name="JSPOS1" type="Position2D" parent="."]
-position = Vector2( 154, -7 )
+position = Vector2( 153, -7 )
 
 [node name="JSPOS2" type="Position2D" parent="."]
-position = Vector2( 154, -55 )
+position = Vector2( 153, -55 )
 
 [connection signal="body_exited" from="Node2D/CollisionRoot/NPC" to="Node2D/CollisionRoot/NPC" method="_on_NPC_body_exited"]
 [connection signal="general_dialogue" from="Node2D/CollisionRoot/NPC" to="Camera2D/Interaction" method="_on_NPC_general_dialogue"]
