@@ -19,6 +19,8 @@ func _ready():
 		if SceneManager.night:
 			night()
 	
+	if EventManager.Lighthouse_Key and not EventManager.Pierre:
+		night()
 	#EventManager.Pivot_Town = true
 	
 	SceneManager.SceneEnemies = []
@@ -32,6 +34,7 @@ func _ready():
 
 func day():
 	SceneManager.day = true
+	SceneManager.night = false
 	SceneManager.time_decided = true
 	$YSort/Background/NightBckgd.hide()
 	
@@ -39,6 +42,7 @@ func day():
 	
 func night():
 	SceneManager.night = true
+	SceneManager.day = false
 	SceneManager.time_decided = true
 	$YSort/NightRect.show()
 	$YSort/Background/NightBckgd.show()

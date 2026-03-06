@@ -29,7 +29,7 @@ onready var target_scene = event_battle.instance()
 var event = false
 
 
-func _ready():	
+func _ready():		
 	if not SceneManager.time_decided:
 		SceneManager.day = false
 		SceneManager.night = false
@@ -481,6 +481,7 @@ func _ready():
 
 func day():
 	SceneManager.day = true
+	SceneManager.night = false
 	SceneManager.time_decided = true
 	$YSort/Background/NightBckgd.hide()
 	$YSort/NightRect.hide()
@@ -531,6 +532,7 @@ func day():
 	
 func night():
 	SceneManager.night = true
+	SceneManager.day = false
 	SceneManager.time_decided = true
 	$YSort/NightRect.show()
 	$YSort/Background/NightBckgd.show()
