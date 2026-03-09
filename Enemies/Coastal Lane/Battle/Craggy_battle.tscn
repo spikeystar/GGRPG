@@ -750,7 +750,7 @@ tracks/0/path = NodePath("Poof:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -1057,8 +1057,7 @@ vframes = 5
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false
-position = Vector2( 7, -33 )
-scale = Vector2( 0.8, 0.8 )
+position = Vector2( 9, -34 )
 texture = ExtResource( 15 )
 hframes = 9
 vframes = 3

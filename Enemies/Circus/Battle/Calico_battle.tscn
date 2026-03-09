@@ -1,20 +1,20 @@
 [gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Assets/General/Shadows/circle shadow small.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Battle/BaseEnemy.gd" type="Script" id=2]
-[ext_resource path="res://UI/Cursor.png" type="Texture" id=3]
-[ext_resource path="res://UI/HealText.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/DamageText.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Enemies/Battle Animations/Damage Star SS.png" type="Texture" id=6]
-[ext_resource path="res://Assets/General/Item Usage Animations SS.png" type="Texture" id=7]
-[ext_resource path="res://Misc/Shader/Buff Material.tres" type="Material" id=8]
-[ext_resource path="res://Misc/Shader/Debuff_Material.tres" type="Material" id=9]
-[ext_resource path="res://UI/PoisonText.tscn" type="PackedScene" id=10]
-[ext_resource path="res://UI/StoredText.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Enemies/Battle Animations/Damage Star SS.png" type="Texture" id=2]
+[ext_resource path="res://UI/PoisonText.tscn" type="PackedScene" id=3]
+[ext_resource path="res://UI/StoredText.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scripts/Battle/BaseEnemy.gd" type="Script" id=5]
+[ext_resource path="res://UI/Cursor.png" type="Texture" id=6]
+[ext_resource path="res://UI/HealText.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/DamageText.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/General/Item Usage Animations SS.png" type="Texture" id=9]
+[ext_resource path="res://Misc/Shader/Buff Material.tres" type="Material" id=10]
+[ext_resource path="res://Misc/Shader/Debuff_Material.tres" type="Material" id=11]
 [ext_resource path="res://UI/StunImage.tscn" type="PackedScene" id=12]
 [ext_resource path="res://UI/PoisonImage.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Enemies/Battle Animations/Battle Animations SS.png" type="Texture" id=14]
-[ext_resource path="res://Enemies/Coastal Lane/Hibiscus SS.png" type="Texture" id=15]
+[ext_resource path="res://Enemies/Circus/Calico SS.png" type="Texture" id=15]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -64,7 +64,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 5, -20 ) ]
+"values": [ Vector2( 11, -41 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Sprite:self_modulate")
@@ -160,7 +160,7 @@ tracks/11/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.5 ]
+"values": [ 0.35 ]
 }
 tracks/12/type = "value"
 tracks/12/path = NodePath(".:visible")
@@ -200,7 +200,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ null, ExtResource( 8 ) ]
+"values": [ null, ExtResource( 10 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:material:shader_param/flash_modifier")
@@ -224,7 +224,19 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 0, 2, 0, 1, 0, 2, 0 ]
+"values": [ 0, 1, 2, 0, 1, 2, 0, 1, 2 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 11, -41 ) ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -240,7 +252,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ null, ExtResource( 9 ) ]
+"values": [ null, ExtResource( 11 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:material:shader_param/flash_modifier")
@@ -264,7 +276,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 0, 2, 0, 1, 0, 2, 0 ]
+"values": [ 0, 1, 2, 0, 1, 2, 0, 1, 2 ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("AnimationPlayer:playback_speed")
@@ -278,10 +290,22 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0.5 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 11, -41 ) ]
+}
 
 [sub_resource type="Animation" id=9]
 resource_name = "enemy_attack"
-length = 0.5
+length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -289,10 +313,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 3, 4, 5, 4, 5, 4 ]
+"values": [ 6, 7 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:offset")
@@ -301,10 +325,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"times": PoolRealArray( 0, 0.1, 0.7, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, -5 ), Vector2( 0, -15 ), Vector2( 0, -10 ), Vector2( 0, -7 ) ]
+"values": [ Vector2( 2, -7 ), Vector2( 4, -7 ), Vector2( 4, -12 ), Vector2( 4, -10 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:position")
@@ -313,10 +337,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 5, -20 ) ]
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( 10, -44 ), Vector2( 10, -45 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("CircleShadowSmall:position")
@@ -344,7 +368,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 7 ]
+"values": [ 8 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:position")
@@ -380,7 +404,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -5 ) ]
+"values": [ Vector2( 4, -26 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -396,7 +420,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 3, -5 ) ]
+"values": [ Vector2( 6, -5 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:frame")
@@ -408,7 +432,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 7 ]
+"values": [ 9 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprite:position")
@@ -456,7 +480,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -5 ) ]
+"values": [ Vector2( 4, -26 ) ]
 }
 tracks/6/type = "value"
 tracks/6/path = NodePath("Sprite:visible")
@@ -473,7 +497,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "enemy_idle"
-length = 0.4
+length = 0.3
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
@@ -485,7 +509,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 5, -20 ) ]
+"values": [ Vector2( 11, -41 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:frame")
@@ -497,7 +521,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 2, 0, 1 ]
+"values": [ 0, 1, 2, 1 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("CircleShadowSmall:position")
@@ -533,7 +557,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ 0.5 ]
+"values": [ 0.35 ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Sprite:material")
@@ -755,7 +779,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.8, 0.8 ) ]
+"values": [ Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Poof:frame")
@@ -867,7 +891,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 7 ), null ]
+"values": [ ExtResource( 9 ), null ]
 }
 
 [sub_resource type="Animation" id=21]
@@ -895,7 +919,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 7 ), null ]
+"values": [ ExtResource( 9 ), null ]
 }
 
 [sub_resource type="Animation" id=22]
@@ -922,7 +946,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ ExtResource( 7 ) ]
+"values": [ ExtResource( 9 ) ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -950,7 +974,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 7 ), null ]
+"values": [ ExtResource( 9 ), null ]
 }
 
 [sub_resource type="Animation" id=24]
@@ -978,7 +1002,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 7 ), null ]
+"values": [ ExtResource( 9 ), null ]
 }
 
 [sub_resource type="Animation" id=25]
@@ -1006,77 +1030,76 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 7 ), null ]
+"values": [ ExtResource( 9 ), null ]
 }
 
-[node name="Hibiscus_battle" type="Node2D"]
-script = ExtResource( 2 )
-ID = "Hibiscus"
+[node name="Calico_battle" type="Node2D"]
+script = ExtResource( 5 )
+ID = "Calico"
 e_health = 85
 e_attack = 22
 e_magic = 12
 e_defense = 24
-initial_type = "earth"
+initial_type = "fire"
 IMAGE_STUN = ExtResource( 12 )
 IMAGE_POISON = ExtResource( 13 )
-TEXT_DAMAGE = ExtResource( 5 )
-TEXT_HEAL = ExtResource( 4 )
-TEXT_STORED = ExtResource( 11 )
-TEXT_POISON = ExtResource( 10 )
-move1 = "Pester"
-move2 = "Terra Arrow"
-move3 = "Hay Fever"
+TEXT_DAMAGE = ExtResource( 8 )
+TEXT_HEAL = ExtResource( 7 )
+TEXT_STORED = ExtResource( 4 )
+TEXT_POISON = ExtResource( 3 )
+move1 = "Basic"
 
 [node name="CircleShadowSmall" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.588235 )
 position = Vector2( 8, -6 )
-scale = Vector2( 0.91462, 0.706501 )
+scale = Vector2( 1.01116, 0.764526 )
 texture = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 5, -20 )
-scale = Vector2( 1.05, 1.05 )
+position = Vector2( 11, -41 )
+scale = Vector2( 1.15, 1.1 )
 texture = ExtResource( 15 )
 offset = Vector2( 0, -5 )
-hframes = 11
+hframes = 3
+vframes = 3
 
 [node name="DamageStar" type="Sprite" parent="."]
 visible = false
-position = Vector2( 2, -28 )
-texture = ExtResource( 6 )
+position = Vector2( 11, -40 )
+texture = ExtResource( 2 )
 hframes = 6
 vframes = 6
 frame = 24
 
 [node name="Effect" type="Sprite" parent="."]
 visible = false
-position = Vector2( 7, -28 )
-texture = ExtResource( 7 )
+position = Vector2( 9, -42 )
+texture = ExtResource( 9 )
 hframes = 5
 vframes = 5
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false
-position = Vector2( 6, -33 )
-scale = Vector2( 0.8, 0.8 )
+position = Vector2( 9, -47 )
 texture = ExtResource( 14 )
 hframes = 9
 vframes = 3
 
 [node name="Cursor" type="Sprite" parent="."]
-position = Vector2( -57, -74 )
-texture = ExtResource( 3 )
+position = Vector2( -42, -105 )
+texture = ExtResource( 6 )
 
 [node name="TextOffset" type="Position2D" parent="."]
 visible = false
+position = Vector2( 10, -23 )
 
-[node name="DamageText" parent="." instance=ExtResource( 5 )]
+[node name="DamageText" parent="." instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 4, -44 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "enemy_idle"
-playback_speed = 0.5
+playback_speed = 0.35
 anims/RESET = SubResource( 1 )
 anims/buff = SubResource( 18 )
 anims/debuff = SubResource( 19 )

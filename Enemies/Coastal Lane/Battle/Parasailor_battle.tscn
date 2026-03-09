@@ -798,7 +798,7 @@ tracks/0/path = NodePath("Poof:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -822,7 +822,7 @@ tracks/2/path = NodePath("Poof:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -1104,7 +1104,7 @@ frame = 1
 
 [node name="DamageStar" type="Sprite" parent="."]
 visible = false
-position = Vector2( -3, -31 )
+position = Vector2( 1, -32 )
 texture = ExtResource( 6 )
 hframes = 6
 vframes = 6
@@ -1119,8 +1119,8 @@ vframes = 5
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false
-position = Vector2( 3, -30 )
-scale = Vector2( 0.8, 0.8 )
+position = Vector2( 2.38419e-07, -33 )
+scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 14 )
 hframes = 9
 vframes = 3
