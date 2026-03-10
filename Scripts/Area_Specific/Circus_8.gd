@@ -12,7 +12,7 @@ onready var Debrando = $YSort/MiddleGround/Debrando
 onready var DebrandoPlayer = $YSort/MiddleGround/Debrando/BodyYSort/AnimationPlayer
 
 const TransitionPlayer = preload("res://UI/BattleTransition.tscn")
-const event_battle = preload("res://Areas/Cherry Trail/Cherry Trail BA 1.tscn")
+const event_battle = preload("res://Areas/Puzzle Pier/Circus BA 2.tscn")
 onready var target_scene = event_battle.instance()
 var event = false
 var OG_POS

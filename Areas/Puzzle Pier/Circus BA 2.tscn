@@ -64,7 +64,7 @@
 [ext_resource path="res://UI/Battle/Damien Dead HUD.png" type="Texture" id=62]
 [ext_resource path="res://UI/Battle/Damien Alive HUD.png" type="Texture" id=63]
 [ext_resource path="res://Assets/Puzzle Pier/Puzzle Pier BA 2 Extra A.png" type="Texture" id=64]
-[ext_resource path="res://Enemies/Coastal Lane/Battle/Parasailor_battle.tscn" type="PackedScene" id=65]
+[ext_resource path="res://Enemies/Circus/Battle/Debrando_battle.tscn" type="PackedScene" id=65]
 [ext_resource path="res://Assets/Puzzle Pier/Puzzle Pier BA 2.jpg" type="Texture" id=66]
 [ext_resource path="res://Assets/Puzzle Pier/Puzzle Pier BA 2 Extra B.png" type="Texture" id=67]
 
@@ -599,6 +599,7 @@ script = ExtResource( 40 )
 main_menu = "res://UI/MainMenu.tscn"
 EXP_base = 20
 marbles_base = 29
+boss_battle = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_left = 0.5
@@ -628,14 +629,8 @@ script = ExtResource( 9 )
 
 [node name="Field" type="Node2D" parent="Enemies"]
 
-[node name="Parasailor_battle2" parent="Enemies/Field" instance=ExtResource( 65 )]
-position = Vector2( -38, -12 )
-
-[node name="Parasailor_battle3" parent="Enemies/Field" instance=ExtResource( 65 )]
-position = Vector2( 123, -69 )
-
-[node name="Parasailor_battle4" parent="Enemies/Field" instance=ExtResource( 65 )]
-position = Vector2( 149, 60 )
+[node name="Debrando_battle" parent="Enemies/Field" instance=ExtResource( 65 )]
+position = Vector2( 112, 37 )
 
 [node name="Extra_A" type="Sprite" parent="Enemies"]
 modulate = Color( 1, 1, 0.980392, 1 )
