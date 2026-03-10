@@ -24,7 +24,7 @@ const Space_Quest = preload("res://Areas/Puzzle Pier/Minigame/Space_Quest.tscn")
 const Water_Guns = preload("res://Areas/Puzzle Pier/Minigame/Water_Guns.tscn")
 
 const TransitionPlayer2 = preload("res://UI/BattleTransition.tscn")
-const event_battle = preload("res://Areas/Cherry Trail/Cherry Trail BA 1.tscn")
+const event_battle = preload("res://Areas/Puzzle Pier/Circus BA 3.tscn")
 onready var target_scene = event_battle.instance()
 var event = false
 
@@ -50,10 +50,10 @@ func _ready():
 	
 	SceneManager.SceneEnemies = []
 	
-#	EventManager.Puzzle_Pier = true
-#	EventManager.Brody_Intro = true
-#	EventManager.Brody_Entry = true
-#	EventManager.Lighthouse_Key = true
+	EventManager.Puzzle_Pier = true
+	EventManager.Brody_Intro = true
+	EventManager.Brody_Entry = true
+	EventManager.Lighthouse_Key = true
 #	EventManager.Pierre = true
 #	EventManager.Lighthouse_Intro = true
 	

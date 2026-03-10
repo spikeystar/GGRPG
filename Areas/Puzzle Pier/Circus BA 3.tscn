@@ -1,6 +1,6 @@
 [gd_scene load_steps=92 format=2]
 
-[ext_resource path="res://Enemies/Coastal Lane/Battle/Parasailor_battle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/Circus/Battle/Pierre_battle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Puzzle Pier/Puzzle Pier BA 3B.jpg" type="Texture" id=2]
 [ext_resource path="res://Scripts/UI/Menu_Item.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Battle/EnemyStatus.gd" type="Script" id=5]
@@ -620,14 +620,8 @@ script = ExtResource( 33 )
 
 [node name="Field" type="Node2D" parent="Enemies"]
 
-[node name="Parasailor_battle2" parent="Enemies/Field" instance=ExtResource( 1 )]
-position = Vector2( -38, -12 )
-
-[node name="Parasailor_battle3" parent="Enemies/Field" instance=ExtResource( 1 )]
-position = Vector2( 123, -69 )
-
-[node name="Parasailor_battle4" parent="Enemies/Field" instance=ExtResource( 1 )]
-position = Vector2( 149, 60 )
+[node name="Pierre_battle" parent="Enemies/Field" instance=ExtResource( 1 )]
+position = Vector2( 76, 23 )
 
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false

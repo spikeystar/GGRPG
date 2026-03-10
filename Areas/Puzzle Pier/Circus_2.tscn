@@ -699,7 +699,7 @@ floor_height = 65.0
 shadow_color = Color( 0.760784, 0.309804, 0.568627, 1 )
 
 [node name="Cheribo" parent="YSort/MiddleGround" instance=ExtResource( 48 )]
-position = Vector2( 249, -72 )
+position = Vector2( 242, 35 )
 target_scene = ExtResource( 47 )
 alt_scene = ExtResource( 47 )
 
@@ -798,6 +798,7 @@ polygon = PoolVector2Array( -30, -21, 65, 13, 47, 20, -46, -15 )
 pause_mode = 2
 position = Vector2( -235, -234 )
 z_index = 4096
+current = true
 script = ExtResource( 25 )
 minPos = Vector2( 20, -250 )
 maxPos = Vector2( 700, -55 )
