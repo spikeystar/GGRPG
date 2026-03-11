@@ -95,6 +95,7 @@ shape = SubResource( 172 )
 [node name="ShadowCircle" type="Sprite" parent="ShadowYSort/ShadowVisualRoot"]
 position = Vector2( 3, 0 )
 texture = ExtResource( 1 )
+offset = Vector2( 2, -2 )
 script = ExtResource( 2 )
 alpha_clip = 0.01
 depth_test_offset = Vector2( 0, -20 )
