@@ -125,6 +125,27 @@ func boss_specific():
 		yield(get_tree().create_timer(2), "timeout")
 		$Enemies/Field/Tenant_A_battle.show()
 		$Enemies/Field/Tenant_B_battle.show()
+	if battle_name == "Pierre":
+		$Fighters.boss = true
+		$Fighters.wait_time = 1.5
+		$Beam2.hide()
+		$Beam.hide()
+		$Enemies/Field/Pierre_battle/Sprite.self_modulate.v = 0.3
+		yield(get_tree().create_timer(1.3), "timeout")
+		SE.effect("Big Switch")
+		$Enemies/Field/Pierre_battle/Sprite.self_modulate.v = 1
+		$NightRect.hide()
+		$Arena/AltArena1.hide()
+		$Beam2.show()
+		$Beam.show()
+
+func _on_Lighthouse_battle_event_death():
+	$Beam2.hide()
+	$Beam.hide()
+	$Arena/AltArena1.hide()
+	$Arena/AltArena2.show()
+	$Enemies/Field/Pierre_battle.e_defense = 10
+	
 	
 func boss_event():
 	if battle_name == "Saguarotel" and not EventManager.Saguarotel:
@@ -135,6 +156,16 @@ func boss_event():
 		Party.event_name = battle_name
 		EventManager.Reeler = true
 		Party.boss_event()
+	if battle_name == "Debrando" and not EventManager.Debrando:
+		Party.event_name = battle_name
+		EventManager.Debrando = true
+		Party.boss_event()
+	if battle_name == "Pierre" and not EventManager.Pierre:
+		Party.event_name = battle_name
+		EventManager.Pierre = true
+		Party.boss_event()
+		
+
 		
 #Window Display
 func hide_cursors():
@@ -2049,3 +2080,6 @@ func Hay_Fever():
 	yield(get_tree().create_timer(0.7), "timeout")
 	$Fighters.damage_end()
 	
+
+
+

@@ -1,0 +1,679 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://UI/HealText.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/DamageText.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/General/Item Usage Animations SS.png" type="Texture" id=4]
+[ext_resource path="res://UI/PoisonText.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/StoredText.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Enemies/Battle Animations/Boss Death SS.png" type="Texture" id=9]
+[ext_resource path="res://UI/StunImage.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scripts/Battle/BaseEnemy.gd" type="Script" id=11]
+[ext_resource path="res://UI/Cursor.png" type="Texture" id=12]
+[ext_resource path="res://Enemies/Battle Animations/Damage Star SS.png" type="Texture" id=13]
+[ext_resource path="res://UI/PoisonImage.tscn" type="PackedScene" id=14]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CircleShadowSmall:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 9, 14 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "buff"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("CircleShadowSmall:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 9, 14 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+resource_name = "debuff"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("CircleShadowSmall:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 9, 14 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "enemy_attack"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("CircleShadowSmall:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 9, 14 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "enemy_damage"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("CircleShadowSmall:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, 15 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "enemy_death"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("CircleShadowSmall:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, 15 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "enemy_idle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CircleShadowSmall:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 9, 14 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "special"
+length = 0.8
+
+[sub_resource type="Animation" id=26]
+resource_name = "waiting"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("CircleShadowSmall:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, 15 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("DamageStar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 24 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageStar:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "air"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("DamageStar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageStar:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "earth"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("DamageStar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9, 10, 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageStar:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "fire"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("DamageStar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 18, 19, 20, 21, 22, 23 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageStar:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "neutral"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("DamageStar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 24, 25, 26, 27, 28, 29 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageStar:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "water"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("DamageStar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 13, 14, 15, 16, 17 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageStar:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "whammy"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("DamageStar:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 30, 31, 32, 33, 34, 35 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DamageStar:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Poof:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "poof"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Poof:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.498039 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cursor:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "cursor_idle"
+length = 1.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cursor:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.372549 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "Heal"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Effect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Effect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ), null ]
+}
+
+[sub_resource type="Animation" id=21]
+resource_name = "Perfect"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Effect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 15, 16, 17, 18, 19, 15, 20 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Effect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ), null ]
+}
+
+[sub_resource type="Animation" id=22]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Effect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Effect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ ExtResource( 4 ) ]
+}
+
+[sub_resource type="Animation" id=23]
+resource_name = "Restore"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Effect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 8, 9, 5, 20 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Effect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ), null ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "SP"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Effect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 20, 21, 22, 23, 24, 20, 20 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Effect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ), null ]
+}
+
+[sub_resource type="Animation" id=25]
+resource_name = "Strange"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Effect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14, 10, 20 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Effect:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ), null ]
+}
+
+[node name="Lighthouse_battle" type="Node2D"]
+scale = Vector2( 1.05, 1.05 )
+script = ExtResource( 11 )
+ID = "Lighthouse"
+e_health = 5
+e_attack = 30
+e_magic = 27
+e_defense = 10
+initial_type = "neutral"
+special = true
+IMAGE_STUN = ExtResource( 10 )
+IMAGE_POISON = ExtResource( 14 )
+TEXT_DAMAGE = ExtResource( 3 )
+TEXT_HEAL = ExtResource( 2 )
+TEXT_STORED = ExtResource( 8 )
+TEXT_POISON = ExtResource( 7 )
+move1 = "Aero Bullet"
+move2 = "Splat"
+move3 = "Asphyxiate"
+
+[node name="CircleShadowSmall" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( -1.90476, 14.2857 )
+scale = Vector2( 2.44692, 1.63607 )
+offset = Vector2( 9, 14 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 19.0476, -103.81 )
+scale = Vector2( 1.2, 1.2 )
+offset = Vector2( -13, 62 )
+hframes = 3
+vframes = 4
+
+[node name="DamageStar" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0.952381, -0.952381 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 13 )
+hframes = 6
+vframes = 6
+frame = 24
+
+[node name="Effect" type="Sprite" parent="."]
+visible = false
+position = Vector2( -0.95238, -1.90476 )
+scale = Vector2( 1.6, 1.6 )
+texture = ExtResource( 4 )
+hframes = 5
+vframes = 5
+
+[node name="Poof" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0.952381, -4.7619 )
+texture = ExtResource( 9 )
+hframes = 4
+vframes = 2
+
+[node name="Cursor" type="Sprite" parent="."]
+position = Vector2( -91.4286, -86.6667 )
+texture = ExtResource( 12 )
+
+[node name="TextOffset" type="Position2D" parent="."]
+position = Vector2( 1.19209e-07, -4.7619 )
+
+[node name="DamageText" parent="." instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 4, -44 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "enemy_idle"
+playback_speed = 0.5
+anims/RESET = SubResource( 1 )
+anims/buff = SubResource( 18 )
+anims/debuff = SubResource( 19 )
+anims/enemy_attack = SubResource( 9 )
+anims/enemy_damage = SubResource( 3 )
+anims/enemy_death = SubResource( 4 )
+anims/enemy_idle = SubResource( 2 )
+anims/special = SubResource( 27 )
+anims/waiting = SubResource( 26 )
+
+[node name="DamagePlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.8
+anims/RESET = SubResource( 5 )
+anims/air = SubResource( 12 )
+anims/earth = SubResource( 13 )
+anims/fire = SubResource( 14 )
+anims/neutral = SubResource( 6 )
+anims/water = SubResource( 15 )
+anims/whammy = SubResource( 16 )
+
+[node name="PoofPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.6
+anims/RESET = SubResource( 7 )
+anims/poof = SubResource( 8 )
+
+[node name="CursorPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 10 )
+anims/cursor_idle = SubResource( 11 )
+
+[node name="EffectPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 0.75
+anims/Heal = SubResource( 20 )
+anims/Perfect = SubResource( 21 )
+anims/RESET = SubResource( 22 )
+anims/Restore = SubResource( 23 )
+anims/SP = SubResource( 24 )
+anims/Strange = SubResource( 25 )

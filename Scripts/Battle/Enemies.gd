@@ -647,8 +647,6 @@ func boss_check():
 			enemies[enemy_index].stall()
 			enemies[enemy_index].death_tagged = true
 		elif current_enemy == "Saguarotel" and enemies.size() == 1:
-			#yield(get_tree().create_timer(0.5), "timeout")
-			#enemies[enemy_index].boss_death()
 			enemies[enemy_index].stall()
 			enemies[enemy_index].death_tagged = true
 		else:
@@ -658,17 +656,36 @@ func boss_check():
 		if $Field/Reeler_battle.health == 0:
 			enemies[enemy_index].death_tagged = true
 			enemies[enemy_index].stall()
+	if battle_name == "Debrando":
+		if $Field/Debrando_battle.health == 0:
+			enemies[enemy_index].death_tagged = true
+			enemies[enemy_index].stall()
+	if battle_name == "Pierre":
+		if $Field/Lighthouse_battle.health == 0:
+			enemies[enemy_index].death()
+			enemies[enemy_index].death_tagged = true
+		if $Field/Pierre_battle.health == 0:
+			enemies[enemy_index].death_tagged = true
+			enemies[enemy_index].stall()
 			
 			
 func finale_check():
 	#print(str(enemies.size()) + "size") 
 	if battle_name == "Saguarotel" and enemies.size() == 0:
-			yield(get_tree().create_timer(1), "timeout")
+			yield(get_tree().create_timer(1.2), "timeout")
 			$Field/Saguarotel_battle.boss_death()
 	if battle_name == "Reeler" and enemies.size() == 0:
 			$Field/Reeler_battle.stall()
-			yield(get_tree().create_timer(1), "timeout")
+			yield(get_tree().create_timer(1.2), "timeout")
 			$Field/Reeler_battle.boss_death()
+	if battle_name == "Debrando" and enemies.size() == 0:
+			$Field/Debrando_battle.stall()
+			yield(get_tree().create_timer(1.2), "timeout")
+			$Field/Debrando_battle.boss_death()
+	if battle_name == "Pierre" and enemies.size() == 0:
+			$Field/Pierre_battle.stall()
+			yield(get_tree().create_timer(1.2), "timeout")
+			$Field/Pierre_battle.boss_death()
 			
 func jinx_doll():
 	pass
@@ -761,7 +778,8 @@ func _on_Fighters_enemies_enabled():
 		
 		for x in range(enemies.size()):
 			var stun = enemies[x].get_status("stun")
-			if not stun and enemies_active and not SceneManager.game_over:
+			var special = enemies[x].special
+			if not stun and not special and enemies_active and not SceneManager.game_over:
 				if SceneManager.game_over:
 					return
 				yield(get_tree().create_timer(0.7), "timeout")
@@ -827,7 +845,7 @@ func _on_Fighters_enemies_enabled():
 					
 					
 				enemies[x].reset_animation()
-			elif stun:
+			elif stun or special:
 				enemy_turns += 1
 			enemies_active_check()
 		

@@ -85,6 +85,9 @@ signal damien
 signal game_over
 var game_over = false
 
+var boss = false
+var wait_time = 1
+
 func _ready():
 	#fighters = get_children()
 	set_positions()
@@ -94,6 +97,8 @@ func _ready():
 		fighter_index = x
 		huds_update()
 	yield(get_tree().create_timer(1), "timeout")
+	if boss:
+		yield(get_tree().create_timer(wait_time), "timeout")
 	fighters_active = true
 	emit_signal("fighters_active")
 	select_next_fighter(+1)

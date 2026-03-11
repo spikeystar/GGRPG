@@ -1414,7 +1414,7 @@ func _process(delta):
 
 		IrinaPlayer.play("back_hop_f")
 		SE.effect("Select")
-		SE.effect("Drama Hop")
+		SE.effect("Drama Jump")
 		$Camera2D/Interaction/Dialogue.show()
 		$Camera2D/Interaction/Dialogue/Name/Talk.text = "He's gone!"
 		$Camera2D/Interaction/Dialogue/Name.text = "Irina:"

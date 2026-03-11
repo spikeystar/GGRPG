@@ -7,6 +7,7 @@ export(int) var e_magic
 export(int) var e_defense 
 export(String) var initial_type = ""
 export(bool) var boss = false
+export(bool) var special = false
 var current_type = ""
 export(PackedScene) var IMAGE_STUN: PackedScene = null
 export(PackedScene) var IMAGE_POISON: PackedScene = null
@@ -68,7 +69,7 @@ export(String) var move13 = ""
 onready var move_list : Array = [move1, move2, move3, move4, move5, move6, move7, move8, move9, move10, move11, move12, move13]
 var check_name : String
 
-#signal enemy_dead
+signal event_death
 
 func _ready():
 	reset_animation()
@@ -84,6 +85,7 @@ func _ready():
 	og_attack = e_attack
 	og_magic = e_magic
 	og_defense = e_defense
+	
 		
 func get_name():
 	return ID
@@ -129,18 +131,20 @@ func get_e_defense():
 	return e_defense
 	
 func buff():
-	yield(get_tree().create_timer(0.1), "timeout")
-	SE.effect("Buff")
-	$AnimationPlayer.play("buff")
-	yield($AnimationPlayer, "animation_finished")
-	reset_animation()
+	if not special:
+		yield(get_tree().create_timer(0.1), "timeout")
+		SE.effect("Buff")
+		$AnimationPlayer.play("buff")
+		yield($AnimationPlayer, "animation_finished")
+		reset_animation()
 	
 func debuff():
-	yield(get_tree().create_timer(0.1), "timeout")
-	SE.effect("Debuff")
-	$AnimationPlayer.play("debuff")
-	yield($AnimationPlayer, "animation_finished")
-	reset_animation()
+	if not special:
+		yield(get_tree().create_timer(0.1), "timeout")
+		SE.effect("Debuff")
+		$AnimationPlayer.play("debuff")
+		yield($AnimationPlayer, "animation_finished")
+		reset_animation()
 	
 func reset_animation():	
 	$AnimationPlayer.playback_speed = 0.5
@@ -247,12 +251,16 @@ func type_damage(damage_type):
 		$DamagePlayer.play("whammy")
 		
 func death():
-		SE.effect("Enemy Death")
-		$AnimationPlayer.play("enemy_death")
-		$AnimationPlayer.playback_speed = 0.8
-		yield(get_tree().create_timer(0.1), "timeout")
-		$Poof.show()
-		$PoofPlayer.play("poof")
+		if ID == "Lighthouse":
+			SE.effect("Big Switch")
+			emit_signal("event_death")
+		elif not boss:
+			SE.effect("Enemy Death")
+			$AnimationPlayer.play("enemy_death")
+			$AnimationPlayer.playback_speed = 0.8
+			yield(get_tree().create_timer(0.1), "timeout")
+			$Poof.show()
+			$PoofPlayer.play("poof")
 		
 func boss_death():
 	$AnimationPlayer.play("enemy_death")
@@ -283,7 +291,7 @@ func image(IMAGE: PackedScene, image_position: Vector2 = global_position):
 		return image
 
 func _stun():
-	if not stun and not boss:
+	if not stun and not boss and not special:
 		stun = true
 		stun_timer = 1
 		yield(get_tree().create_timer(1.5), "timeout")
@@ -292,7 +300,7 @@ func _stun():
 		pass
 		
 func _poison():
-	if not poison:
+	if not poison and not special:
 		poison = true
 		poison_timer = 3
 		e_attack -= (og_attack * 0.2)
@@ -361,7 +369,7 @@ func enemy_restore():
 	current_type = initial_type
 	
 func apply_type(id : String):
-	if not applied_type and not id == current_type:
+	if not applied_type and not id == current_type and not special:
 		applied_type = true
 		current_type = id
 		type_timer = 3
@@ -369,13 +377,13 @@ func apply_type(id : String):
 		return
 	
 func apply_buff(id : String):
-	if id == "attack" and not a_buff and not a_debuff:
+	if id == "attack" and not a_buff and not a_debuff and not special:
 		a_buff = true
 		a_buff_timer = 4
 		e_attack += (og_attack * 0.3)
 		buff_counter += 1
 		buff()
-	elif id == "attack" and a_debuff:
+	elif id == "attack" and a_debuff and not special:
 		a_debuff = false
 		a_buff_timer = 4 - a_debuff_timer
 		debuff_counter -= 1
@@ -387,13 +395,13 @@ func apply_buff(id : String):
 		e_attack += (og_attack * 0.3)
 		buff()
 		
-	if id == "magic" and not m_buff and not m_debuff:
+	if id == "magic" and not m_buff and not m_debuff and not special:
 		m_buff = true
 		m_buff_timer = 4
 		e_magic += (og_magic * 0.3)
 		buff_counter += 1
 		buff()
-	elif id == "magic" and m_debuff:
+	elif id == "magic" and m_debuff and not special:
 		m_debuff = false
 		m_buff_timer = 4 - m_debuff_timer
 		m_debuff_timer = 0
@@ -406,13 +414,13 @@ func apply_buff(id : String):
 		buff()
 		
 		
-	if id == "defense" and not d_buff and not d_debuff:
+	if id == "defense" and not d_buff and not d_debuff and not special:
 		d_buff = true
 		d_buff_timer = 4
 		e_defense += (og_defense * 0.3)
 		buff_counter += 1
 		buff()
-	elif id == "defense" and d_debuff:
+	elif id == "defense" and d_debuff and not special:
 		d_debuff = false
 		d_buff_timer = 4 - d_debuff_timer
 		d_debuff_timer = 0
@@ -426,13 +434,13 @@ func apply_buff(id : String):
 		
 		
 func apply_debuff(id : String):
-	if id == "attack" and not a_debuff and not a_buff:
+	if id == "attack" and not a_debuff and not a_buff and not special:
 		a_debuff = true
 		a_debuff_timer = 3
 		e_attack -= (og_attack * 0.3)
 		debuff_counter += 1
 		debuff()
-	if id == "attack" and a_buff:
+	if id == "attack" and a_buff and not special:
 		a_buff = false
 		a_debuff_timer = 3 - a_buff_timer
 		a_buff_timer = 0
@@ -445,13 +453,13 @@ func apply_debuff(id : String):
 		debuff()
 		
 		
-	if id == "magic" and not m_debuff and not m_buff:
+	if id == "magic" and not m_debuff and not m_buff and not special:
 		m_debuff = true
 		m_debuff_timer = 3
 		e_magic -= (og_magic * 0.3)
 		debuff_counter += 1
 		debuff()
-	if id == "magic" and m_buff:
+	if id == "magic" and m_buff and not special:
 		m_buff = false
 		m_debuff_timer = 3 - m_buff_timer
 		m_buff_timer = 0
@@ -464,13 +472,13 @@ func apply_debuff(id : String):
 		debuff()
 		
 		
-	if id == "defense" and not d_debuff and not d_buff:
+	if id == "defense" and not d_debuff and not d_buff and not special:
 		d_debuff = true
 		d_debuff_timer = 4
 		e_defense -= (og_defense * 0.3)
 		debuff_counter += 1
 		debuff()
-	if id == "defense" and d_buff:
+	if id == "defense" and d_buff and not special:
 		d_buff = false
 		d_debuff_timer = 3 - d_buff_timer
 		d_buff_timer = 0
@@ -506,11 +514,11 @@ func random_buff():
 	else:
 		return
 	
-	if index == "attack" and not a_buff:
+	if index == "attack" and not a_buff and not special:
 		apply_buff("attack")
-	if index == "magic" and not m_buff:
+	if index == "magic" and not m_buff and not special:
 		apply_buff("magic")
-	if index == "defense" and not d_buff:
+	if index == "defense" and not d_buff and not special:
 		apply_buff("defense")
 		
 func random_debuff():
@@ -536,11 +544,11 @@ func random_debuff():
 	else:
 		return
 	
-	if index == "attack" and not a_debuff:
+	if index == "attack" and not a_debuff and not special:
 		apply_debuff("attack")
-	if index == "magic" and not m_debuff:
+	if index == "magic" and not m_debuff and not special:
 		apply_debuff("magic")
-	if index == "defense" and not d_debuff:
+	if index == "defense" and not d_debuff and not special:
 		apply_debuff("defense")
 
 func multi_random_buff_old():

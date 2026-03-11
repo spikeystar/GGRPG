@@ -1297,10 +1297,10 @@ tracks/1/keys = {
 scale = Vector2( 1.05, 1.05 )
 script = ExtResource( 1 )
 ID = "Pierre"
-e_health = 500
+e_health = 1
 e_attack = 30
 e_magic = 27
-e_defense = 30
+e_defense = 9999
 initial_type = "air"
 boss = true
 IMAGE_STUN = ExtResource( 12 )
@@ -1347,7 +1347,7 @@ vframes = 5
 
 [node name="Poof" type="Sprite" parent="."]
 visible = false
-position = Vector2( 5.71429, -24.7619 )
+position = Vector2( 5.71429, -29.5238 )
 texture = ExtResource( 11 )
 hframes = 4
 vframes = 2

@@ -98,6 +98,8 @@ func effect(id : String):
 		$Menu_Open.play()
 	if id == "Metal Door":
 		$Metal_Door.play()
+	if id == "Big Switch":
+		$Big_Switch.play()
 	if id == "Move Between":
 		$Move_Between.play()
 	if id == "Ouch":
