@@ -799,6 +799,10 @@ hframes = 4
 vframes = 2
 frame = 6
 
+[node name="Extra" type="Sprite" parent="."]
+position = Vector2( 174, 168 )
+texture = ExtResource( 1 )
+
 [node name="Fighters" type="Node2D" parent="."]
 script = ExtResource( 18 )
 
@@ -1927,10 +1931,6 @@ visible = false
 [node name="Position2D" type="Position2D" parent="."]
 visible = false
 position = Vector2( -130, -17 )
-
-[node name="Extra" type="Sprite" parent="."]
-position = Vector2( 174, 168 )
-texture = ExtResource( 1 )
 
 [connection signal="BB_active" from="." to="Enemies" method="_on_WorldRoot_BB_active"]
 [connection signal="BB_active" from="." to="Fighters" method="_on_WorldRoot_BB_active"]

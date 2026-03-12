@@ -149,6 +149,7 @@ script = ExtResource( 7 )
 ground_enemy = true
 min_speed = 0.4
 max_speed = 0.5
+shadow_back_x = -10.0
 target_scene = ExtResource( 6 )
 alt_scene = ExtResource( 9 )
 alt_chance = 50
@@ -156,7 +157,7 @@ alternate = true
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
 visible = false
-position = Vector2( 0, 1 )
+position = Vector2( 3, -9 )
 collision_layer = 9
 collision_mask = 10
 collision/safe_margin = 0.5
@@ -174,7 +175,7 @@ MAX_CHASE_DISTANCE = 160
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
 position = Vector2( 2, 0.0728853 )
-scale = Vector2( 1.42294, 0.314577 )
+scale = Vector2( 1.42294, 0.273872 )
 shape = SubResource( 180 )
 
 [node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
@@ -184,8 +185,8 @@ script = ExtResource( 8 )
 shape = SubResource( 172 )
 
 [node name="PlayerDetection" parent="MotionRoot" instance=ExtResource( 10 )]
-visible = false
 position = Vector2( 6, 11 )
+scale = Vector2( 0.7, 0.7 )
 collision_layer = 0
 collision_mask = 1
 
@@ -196,7 +197,7 @@ shape = SubResource( 178 )
 
 [node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 11 )]
 position = Vector2( 5, 5 )
-scale = Vector2( 0.972756, 0.936889 )
+scale = Vector2( 0.870397, 0.763065 )
 collision_layer = 7
 collision_mask = 6
 
@@ -228,8 +229,9 @@ use_transparency = true
 [node name="Enemy" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
 modulate = Color( 0.972549, 0.988235, 1, 1 )
 position = Vector2( 4, -23 )
-scale = Vector2( 0.85, 0.85 )
+scale = Vector2( 1.15, 1.15 )
 texture = ExtResource( 1 )
+offset = Vector2( -1, -4 )
 hframes = 5
 vframes = 3
 script = ExtResource( 3 )
