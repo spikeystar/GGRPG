@@ -138,7 +138,7 @@ func _physics_process(delta):
 			velocity = velocity.move_toward(direction * CHASE_SPEED, ACCELERATION * delta)
 			apply_friction2(delta)
 			
-			if not ground_enemy and not bouncy:
+			if not ground_enemy and not bouncy and pos_z > $PlayerDetection.player_z:
 				lower_height(delta)
 				var player_z = $PlayerDetection.player_z
 				pos_z = max(player_z, pos_z)
