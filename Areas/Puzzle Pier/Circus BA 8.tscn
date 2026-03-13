@@ -631,6 +631,10 @@ position = Vector2( 61, -89 )
 [node name="Teddyfloat_battle2" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 229, -35 )
 
+[node name="Extra" type="Sprite" parent="Enemies"]
+position = Vector2( 174, 168 )
+texture = ExtResource( 68 )
+
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
 position = Vector2( 165, 225 )
@@ -799,10 +803,6 @@ texture = ExtResource( 65 )
 hframes = 4
 vframes = 2
 frame = 6
-
-[node name="Extra" type="Sprite" parent="."]
-position = Vector2( 174, 168 )
-texture = ExtResource( 68 )
 
 [node name="Fighters" type="Node2D" parent="."]
 script = ExtResource( 8 )

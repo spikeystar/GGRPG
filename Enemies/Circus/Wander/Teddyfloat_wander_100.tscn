@@ -145,7 +145,7 @@ tracks/2/keys = {
 
 [node name="Teddyfloat" type="YSort"]
 script = ExtResource( 7 )
-spawn_z = 110
+spawn_z = 100
 min_speed = 0.5
 max_speed = 0.65
 shadow_offset = 30.0
@@ -157,7 +157,7 @@ position = Vector2( 0, 1 )
 collision_mask = 2
 collision/safe_margin = 0.5
 script = ExtResource( 4 )
-spawn_z = 110
+spawn_z = 100
 ACCELERATION = 65
 CHASE_SPEED = 35
 WANDER_SPEED = 30
@@ -190,7 +190,7 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot/PlayerDetection"]
 modulate = Color( 1, 1, 1, 0.254902 )
 position = Vector2( 2.29096, -25.4753 )
-scale = Vector2( 1.03351, 0.873578 )
+scale = Vector2( 1.08873, 0.960568 )
 shape = SubResource( 178 )
 
 [node name="BattleTrigger" parent="MotionRoot" instance=ExtResource( 10 )]
@@ -235,8 +235,12 @@ offset = Vector2( 0, -12 )
 hframes = 3
 vframes = 3
 script = ExtResource( 2 )
-depth_test_offset = Vector2( -8, 0 )
-height = 110.0
+alpha_clip = 0.1
+depth_test_offset = Vector2( -8, 28 )
+feet_height = 20.0
+height = 100.0
+use_dithering = false
+use_dither_blending = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
 autoplay = "walk_front"

@@ -636,6 +636,10 @@ position = Vector2( 88, -21 )
 [node name="Tricky_battle" parent="Enemies/Field" instance=ExtResource( 66 )]
 position = Vector2( 216, 61 )
 
+[node name="Extra" type="Sprite" parent="Enemies"]
+position = Vector2( 174, 168 )
+texture = ExtResource( 67 )
+
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
 position = Vector2( 165, 225 )
@@ -804,10 +808,6 @@ texture = ExtResource( 62 )
 hframes = 4
 vframes = 2
 frame = 6
-
-[node name="Extra" type="Sprite" parent="."]
-position = Vector2( 174, 168 )
-texture = ExtResource( 67 )
 
 [node name="Fighters" type="Node2D" parent="."]
 script = ExtResource( 5 )
@@ -1896,7 +1896,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1913,6 +1912,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 

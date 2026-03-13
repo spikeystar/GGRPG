@@ -632,6 +632,10 @@ position = Vector2( 64, -73 )
 [node name="Ladybug_battle" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 215, 52 )
 
+[node name="Extra" type="Sprite" parent="Enemies"]
+position = Vector2( 174, 168 )
+texture = ExtResource( 65 )
+
 [node name="EnemyInfo" type="Sprite" parent="Enemies"]
 visible = false
 position = Vector2( 165, 225 )
@@ -800,10 +804,6 @@ texture = ExtResource( 63 )
 hframes = 4
 vframes = 2
 frame = 6
-
-[node name="Extra" type="Sprite" parent="."]
-position = Vector2( 174, 168 )
-texture = ExtResource( 65 )
 
 [node name="Fighters" type="Node2D" parent="."]
 script = ExtResource( 6 )
@@ -1892,7 +1892,6 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
-frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1909,6 +1908,7 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
