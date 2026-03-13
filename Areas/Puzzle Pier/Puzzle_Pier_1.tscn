@@ -7098,7 +7098,7 @@ position = Vector2( 1298, 484 )
 position = Vector2( 1259, 516 )
 
 [node name="CameraPOS_Boss" type="Position2D" parent="."]
-position = Vector2( 1329, 488 )
+position = Vector2( 1325, 475 )
 
 [node name="PierrePOS_Boss" type="Position2D" parent="."]
 position = Vector2( 1364, 473 )
@@ -7149,7 +7149,7 @@ unavoid = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boss_Battle"]
 position = Vector2( 1107, 801 )
-polygon = PoolVector2Array( 206, -89, 323, -167, 447, -225, 513, -244, 605, -230, 600, -160, 712, -91, 554, -1, 441, 45, 267, -13 )
+polygon = PoolVector2Array( 230, -78, 345, -127, 448, -204, 513, -244, 605, -230, 600, -160, 712, -91, 582, 12, 422, 83, 267, -13 )
 disabled = true
 
 [connection signal="body_exited" from="CollisionRoot/Shop" to="CollisionRoot/Shop" method="_on_Shop_body_exited"]

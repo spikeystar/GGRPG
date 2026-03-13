@@ -127,11 +127,11 @@ func boss_specific():
 		$Enemies/Field/Tenant_B_battle.show()
 	if battle_name == "Pierre":
 		$Fighters.boss = true
-		$Fighters.wait_time = 1.5
+		$Fighters.wait_time = 1.7
 		$Beam2.hide()
 		$Beam.hide()
 		$Enemies/Field/Pierre_battle/Sprite.self_modulate.v = 0.3
-		yield(get_tree().create_timer(1.3), "timeout")
+		yield(get_tree().create_timer(1.5), "timeout")
 		SE.effect("Big Switch")
 		$Enemies/Field/Pierre_battle/Sprite.self_modulate.v = 1
 		$NightRect.hide()
