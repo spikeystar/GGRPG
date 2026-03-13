@@ -176,7 +176,7 @@ func update_floor():
 	floor_z = LOWEST_Z
 	ceiling_z = HIGHEST_Z
 	for f in floor_layers:
-		if f.bottom <= pos_z:
+		if f.bottom <= pos_z and not f.flowing and not f.floating:
 			floor_z = max(floor_z, f.height)
 		else:
 			ceiling_z = min(ceiling_z, f.bottom)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://Assets/Puzzle Pier/Circus/Orange P.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Rendering/DepthTestFloorSprite.gd" type="Script" id=2]
@@ -56,6 +56,15 @@
 [ext_resource path="res://Assets/General/Shadows/square shadow.png" type="Texture" id=54]
 [ext_resource path="res://Assets/General/Shadows/rectangle shadow small.png" type="Texture" id=55]
 [ext_resource path="res://Assets/General/Shadows/rectangle shadow large.png" type="Texture" id=56]
+[ext_resource path="res://Scripts/Enemy_Boundary.gd" type="Script" id=57]
+[ext_resource path="res://Areas/Puzzle Pier/Circus BA 6.tscn" type="PackedScene" id=58]
+[ext_resource path="res://Areas/Puzzle Pier/Circus BA 1.tscn" type="PackedScene" id=59]
+[ext_resource path="res://Areas/Puzzle Pier/Circus BA 4.tscn" type="PackedScene" id=60]
+[ext_resource path="res://Areas/Puzzle Pier/Circus BA 10.tscn" type="PackedScene" id=61]
+[ext_resource path="res://Enemies/Circus/Wander/Poplette_wander_90.tscn" type="PackedScene" id=62]
+[ext_resource path="res://Enemies/Circus/Wander/Teddyfloat_wander_190.tscn" type="PackedScene" id=63]
+[ext_resource path="res://Enemies/Circus/Wander/Kaboom_wander_90.tscn" type="PackedScene" id=64]
+[ext_resource path="res://Areas/Puzzle Pier/Circus BA 9.tscn" type="PackedScene" id=65]
 
 [sub_resource type="TileSet" id=2]
 0/name = "wood tile a.png 0"
@@ -1177,7 +1186,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 tile_size = Vector2( 62, 24 )
-grid_size = Vector2( 2.6, 1.9 )
+grid_size = Vector2( 2.75, 2 )
 texture = ExtResource( 26 )
 texture_scale = Vector2( 0.95, 0.95 )
 texture_offset = Vector2( 2, 9 )
@@ -1262,6 +1271,29 @@ texture_scale = Vector2( 0.8, 0.8 )
 texture_offset = Vector2( 0, 15 )
 height = 120.0
 floor_height = 300.0
+
+[node name="Poplette" parent="YSort/MiddleGround" instance=ExtResource( 62 )]
+position = Vector2( 133, 152 )
+target_scene = ExtResource( 59 )
+alt_scene = ExtResource( 60 )
+
+[node name="Poplette2" parent="YSort/MiddleGround" instance=ExtResource( 62 )]
+position = Vector2( 1046, 447 )
+target_scene = ExtResource( 59 )
+alt_scene = ExtResource( 60 )
+
+[node name="Kaboom" parent="YSort/MiddleGround" instance=ExtResource( 64 )]
+position = Vector2( 899, 436 )
+target_scene = ExtResource( 61 )
+alt_scene = ExtResource( 61 )
+alternate = false
+
+[node name="Teddyfloat" parent="YSort/MiddleGround" instance=ExtResource( 63 )]
+position = Vector2( 880, 420 )
+target_scene = ExtResource( 58 )
+alt_scene = ExtResource( 65 )
+alt_chance = 50
+alternate = true
 
 [node name="Tiles6" type="TileMap" parent="YSort"]
 modulate = Color( 0.960784, 0.992157, 0.992157, 1 )
@@ -1547,6 +1579,19 @@ root_node = NodePath("../YSort/MiddleGround")
 autoplay = "ledge1"
 anims/RESET = SubResource( 5 )
 anims/ledge1 = SubResource( 6 )
+
+[node name="Enemy_Boundary" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 15
+script = ExtResource( 57 )
+
+[node name="Repel" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+position = Vector2( 462, 31 )
+polygon = PoolVector2Array( 31, -138, -94, -53, -464, 110, -313, 188, 150, -52 )
+
+[node name="Repel2" type="CollisionPolygon2D" parent="Enemy_Boundary"]
+position = Vector2( 914, 150 )
+polygon = PoolVector2Array( 31, -138, -94, -53, -464, 110, -313, 188, 150, -52 )
 
 [connection signal="item_get" from="YSort/MiddleGround/PresentBase" to="Camera2D" method="_on_PresentBase_item_get"]
 [connection signal="item_get" from="YSort/MiddleGround/PresentBase2" to="Camera2D" method="_on_PresentBase_item_get"]

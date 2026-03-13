@@ -149,6 +149,7 @@ script = ExtResource( 8 )
 ground_enemy = true
 min_speed = 0.4
 max_speed = 0.5
+shadow_back_x = -10.0
 target_scene = ExtResource( 7 )
 alt_scene = ExtResource( 4 )
 alt_chance = 50
@@ -156,7 +157,7 @@ alternate = true
 
 [node name="MotionRoot" type="KinematicBody2D" parent="."]
 position = Vector2( 0, 1 )
-collision_layer = 9
+collision_layer = 8
 collision_mask = 10
 collision/safe_margin = 0.5
 script = ExtResource( 5 )
@@ -226,7 +227,9 @@ use_transparency = true
 [node name="Enemy" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
 modulate = Color( 0.972549, 0.988235, 1, 1 )
 position = Vector2( 2, -15 )
+scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 6 )
+offset = Vector2( 0, -1 )
 hframes = 3
 vframes = 3
 script = ExtResource( 2 )
