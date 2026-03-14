@@ -610,6 +610,7 @@ func _item_damage():
 	var damage = item_damage
 	for x in range(enemies.size()):
 		enemy_index = x
+		damage = item_damage
 		var type_bonus : String = type_matchup()
 		if type_bonus == "adv":
 			damage += (damage/2)
@@ -618,10 +619,10 @@ func _item_damage():
 		if type_bonus == "none":
 			pass
 		
-		enemies[x].damage(damage)
+		enemies[x].magic_damage(damage, move_type)
 		if move_type != "neutral":
 			enemies[x].apply_type(move_type)
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(get_tree().create_timer(1.7), "timeout")
 	for x in range(enemies.size()):
 		if enemies[x].is_dead() and not boss_battle:
 			enemies[x].death()
@@ -633,7 +634,7 @@ func _item_damage():
 			var death_tagged = enemies[x].get_death_tag()
 			if death_tagged == true:
 				enemies.remove(x)
-				enemy_index = clamp(enemy_index, 0, enemies.size())
+				enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
 	yield(get_tree().create_timer(0.8), "timeout")
 	if not SceneManager.victory:
 		victory_check()
@@ -705,12 +706,12 @@ func _on_ItemInventory_battle_item_chosen():
 	yield(get_tree().create_timer(0.2), "timeout")
 	item_selecting = true
 
-func battle_item_used():
-	yield(get_tree().create_timer(1.5), "timeout")
-	_item_damage()
+#func battle_item_used():
+#	yield(get_tree().create_timer(1.5), "timeout")
+#	_item_damage()
 
 func _on_ItemInventory_all_battle_item_chosen():
-	show_cursors()
+	#show_cursors()
 	emit_signal("item_chosen")
 	
 func _on_SpellList_single_enemy_spell():

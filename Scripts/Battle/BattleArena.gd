@@ -1152,49 +1152,49 @@ func _on_Fighters_item_chosen():
 		$ItemUsage/Item.frame = 64
 		$ItemUsage/Item.position = Vector2(6, 4)
 		$ItemUsage/Item.scale = Vector2(1, 1)
-		$Fighters.perfect_p = true
+		#$Fighters.perfect_p = true
 		$Fighters.item_name = "Strange Perfume"
 		
 	if item_id == "Jinx Doll":
 		$ItemUsage/Item.frame = 65
 		$ItemUsage/Item.position = Vector2(4, 4)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
-		$Fighters.perfect_p = true
+		#$Fighters.perfect_p = true
 		$Fighters.item_name = "Jinx Doll"
 		
 	if item_id == "Spikey Bomb":
 		$ItemUsage/Item.frame = 53
 		$ItemUsage/Item.position = Vector2(2, 8)
 		$ItemUsage/Item.scale = Vector2(1, 1)
-		$Fighters.perfect_p = true
+		#$Fighters.perfect_p = true
 		$Fighters.item_name = "Spikey Bomb"
 		
 	if item_id == "Blister Grenade":
 		$ItemUsage/Item.frame = 59
 		$ItemUsage/Item.position = Vector2(3, 3)
 		$ItemUsage/Item.scale = Vector2(1, 1)
-		$Fighters.perfect_p = true
+		#$Fighters.perfect_p = true
 		$Fighters.item_name = "Blister Grenade"
 		
 	if item_id == "Power Drill":
 		$ItemUsage/Item.frame = 62
 		$ItemUsage/Item.position = Vector2(3, 13)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
-		$Fighters.perfect_p = true
+		#$Fighters.perfect_p = true
 		$Fighters.item_name = "Power Drill"
 	
 	if item_id == "Faulty Amp":
 		$ItemUsage/Item.frame = 61
 		$ItemUsage/Item.position = Vector2(2, 10)
 		$ItemUsage/Item.scale = Vector2(1, 1)
-		$Fighters.perfect_p = true
+		#$Fighters.perfect_p = true
 		$Fighters.item_name = "Faulty Amp"
 		
 	if item_id == "Chilly Globe":
 		$ItemUsage/Item.frame = 60
 		$ItemUsage/Item.position = Vector2(-2, 11)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
-		$Fighters.perfect_p = true
+		#$Fighters.perfect_p = true
 		$Fighters.item_name = "Chilly Globe"
 		
 		
@@ -1213,17 +1213,52 @@ func _on_Fighters_item_chosen():
 	#$Fighters.fighters_active_check()
 
 func _on_Enemies_item_chosen():
-	$EnemyInfo.hide()
 	var fighter_position = $Fighters.get_f_position() + Vector2(40, -40)
 	var item_id = $ItemWindow/ItemWindowPanel/ItemInventory.item_id
 	$ItemUsage.position = fighter_position
 	yield(get_tree().create_timer(0.3), "timeout")
-	if item_id == "Spikey Bomb":
-		$ItemUsage/Item.frame = 0
-		$Enemies.item_damage = 100
 	$Fighters.battle_item_used()
-	$Enemies.battle_item_used()
 	item_animation()
+	if item_id == "Spikey Bomb":
+		$ItemUsage/Item.frame = 53
+		$ItemUsage/Item.position = Vector2(2, 8)
+		$ItemUsage/Item.scale = Vector2(1.1, 1.1)
+		$Enemies.item_damage = 100
+		$Enemies.move_type = "neutral"
+		Spikey_Bomb()
+		yield(get_tree().create_timer(1.5), "timeout")
+	if item_id == "Chilly Globe":
+		$ItemUsage/Item.frame = 60
+		$ItemUsage/Item.position = Vector2(-2, 11)
+		$ItemUsage/Item.scale = Vector2(0.9, 0.9)
+		$Enemies.item_damage = 10
+		$Enemies.move_type = "water"
+		Chilly_Globe()
+		yield(get_tree().create_timer(1.5), "timeout")
+	if item_id == "Power Drill":
+		$ItemUsage/Item.frame = 62
+		$ItemUsage/Item.position = Vector2(3, 13)
+		$ItemUsage/Item.scale = Vector2(0.9, 0.9)
+		$Enemies.item_damage = 10
+		$Enemies.move_type = "earth"
+		Power_Drill()
+		yield(get_tree().create_timer(1.5), "timeout")
+	if item_id == "Blister Grenade":
+		$ItemUsage/Item.frame = 59
+		$ItemUsage/Item.position = Vector2(3, 3)
+		$ItemUsage/Item.scale = Vector2(1.1, 1.1)
+		$Enemies.item_damage = 10
+		$Enemies.move_type = "fire"
+		Blister_Grenade()
+		yield(get_tree().create_timer(1.5), "timeout")
+	if item_id == "Faulty Amp":
+		$ItemUsage/Item.frame = 61
+		$ItemUsage/Item.position = Vector2(2, 10)
+		$ItemUsage/Item.scale = Vector2(1.1, 1.1)
+		$Enemies.item_damage = 10
+		$Enemies.move_type = "air"
+		Faulty_Amp()
+		yield(get_tree().create_timer(1.5), "timeout")
 	yield(get_tree().create_timer(1.5), "timeout")
 	emit_signal("action_ended")
 	fighter_selection = false
@@ -2080,6 +2115,24 @@ func Hay_Fever():
 	yield(get_tree().create_timer(0.7), "timeout")
 	$Fighters.damage_end()
 	
-
+func Spikey_Bomb():
+	yield(get_tree().create_timer(4), "timeout")
+	$Enemies._item_damage()
+	
+func Chilly_Globe():
+	yield(get_tree().create_timer(4), "timeout")
+	$Enemies._item_damage()
+	
+func Power_Drill():
+	yield(get_tree().create_timer(4), "timeout")
+	$Enemies._item_damage()
+	
+func Blister_Grenade():
+	yield(get_tree().create_timer(4), "timeout")
+	$Enemies._item_damage()
+	
+func Faulty_Amp():
+	yield(get_tree().create_timer(4), "timeout")
+	$Enemies._item_damage()
 
 

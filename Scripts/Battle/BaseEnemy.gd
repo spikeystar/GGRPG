@@ -117,7 +117,8 @@ func get_status(parameter: String):
 		return current_type
 	
 func get_type():
-	return initial_type
+	#return initial_type
+	return current_type
 	
 func get_stats(parameter: String):
 	if parameter == "e_attack":
