@@ -2116,7 +2116,11 @@ func Hay_Fever():
 	$Fighters.damage_end()
 	
 func Spikey_Bomb():
-	yield(get_tree().create_timer(4), "timeout")
+	yield(get_tree().create_timer(1.5), "timeout")
+	$MovePlayer/AnimPlayer.play("Spikey_Bomb")
+	yield(get_tree().create_timer(0.5), "timeout")
+	$WindowPlayer.play("little_shake")
+	yield(get_tree().create_timer(2), "timeout")
 	$Enemies._item_damage()
 	
 func Chilly_Globe():
