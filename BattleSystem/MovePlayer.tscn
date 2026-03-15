@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://BattleSystem/BattleMoves/Sweet_Gift/Sweet Gift SS.png" type="Texture" id=1]
 [ext_resource path="res://Test/Testing Screenshot.png" type="Texture" id=2]
@@ -48,6 +48,7 @@
 [ext_resource path="res://BattleSystem/BattleMoves/Spikey_Bomb/spikey_bomb_2.png" type="Texture" id=46]
 [ext_resource path="res://BattleSystem/BattleMoves/Spikey_Bomb/spikey_bomb_1.png" type="Texture" id=47]
 [ext_resource path="res://BattleSystem/BattleMoves/Chilly_Globe/Regular Snow Texture.png" type="Texture" id=48]
+[ext_resource path="res://BattleSystem/BattleMoves/Chilly_Globe/Chilly Globe SS.png" type="Texture" id=49]
 
 [sub_resource type="Animation" id=19]
 resource_name = "Aero_Bullet"
@@ -403,6 +404,202 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 1.0, 0.9 ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "Chilly_Globe"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Chilly_Globe:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Chilly_Globe/Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Chilly_Globe/Sprite2:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 4, 5, 6, 7, 0, 4, 5, 6, 7, 0, 4, 5, 6, 7 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Chilly_Globe/Sprite3:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Chilly_Globe/Sprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Chilly_Globe/Sprite2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.7, 0.8, 1.3, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.501961 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Chilly_Globe/Sprite3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.3, 1.4, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Chilly_Globe/Node2D:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.25 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0.75 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.666667 ), Color( 1, 1, 1, 0.333333 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.25 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0.75 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.25 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0.75 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.75 ), Color( 1, 1, 1, 0.5 ), Color( 1, 1, 1, 0.25 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Chilly_Globe/Node2D/Sprite4:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 51.0, 103.0, 154.0, 206.0, 257.0, 310.0, 360.0, 0.0, 90.0, 180.0, 270.0, 360.0, 0.0, 45.0, 90.0, 135.0, 180.0, 225.0, 270.0, 315.0, 360.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Chilly_Globe/Node2D/Sprite5:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 51.0, 103.0, 154.0, 206.0, 257.0, 310.0, 0.0, 0.0, 90.0, 180.0, 270.0, 0.0, 0.0, 45.0, 90.0, 135.0, 180.0, 225.0, 270.0, 315.0, 0.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Chilly_Globe/Node2D/Sprite6:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 51.0, 103.0, 154.0, 206.0, 257.0, 310.0, 0.0, 0.0, 90.0, 180.0, 270.0, 0.0, 0.0, 45.0, 90.0, 135.0, 180.0, 225.0, 270.0, 315.0, 0.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Chilly_Globe/Node2D/Sprite7:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 51.0, 103.0, 154.0, 206.0, 257.0, 310.0, 0.0, 0.0, 90.0, 180.0, 270.0, 0.0, 0.0, 45.0, 90.0, 135.0, 180.0, 225.0, 270.0, 315.0, 0.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Chilly_Globe/Node2D/Sprite8:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 51.0, 103.0, 154.0, 206.0, 257.0, 310.0, 0.0, 0.0, 90.0, 180.0, 270.0, 0.0, 0.0, 45.0, 90.0, 135.0, 180.0, 225.0, 270.0, 315.0, 0.0 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Chilly_Globe/Node2D/Sprite9:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.501, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 51.0, 103.0, 154.0, 206.0, 257.0, 51.0, 310.0, 0.0, 0.0, 90.0, 180.0, 270.0, 0.0, 0.0, 45.0, 90.0, 135.0, 180.0, 225.0, 270.0, 315.0, 51.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Chilly_Globe/Node2D/Sprite10:rotation_degrees")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0.0, 51.0, 103.0, 154.0, 206.0, 257.0, 310.0, 0.0, 0.0, 90.0, 180.0, 270.0, 0.0, 0.0, 45.0, 90.0, 135.0, 180.0, 225.0, 270.0, 315.0, 0.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Chilly_Globe/TextureRect:self_modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.156863 ), Color( 1, 1, 1, 0.4 ), Color( 1, 1, 1, 0.6 ), Color( 1, 1, 1, 0.4 ), Color( 1, 1, 1, 0.156863 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -2527,6 +2724,198 @@ tracks/135/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.117647 ) ]
 }
+tracks/136/type = "value"
+tracks/136/path = NodePath("Chilly_Globe:visible")
+tracks/136/interp = 1
+tracks/136/loop_wrap = true
+tracks/136/imported = false
+tracks/136/enabled = true
+tracks/136/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/137/type = "value"
+tracks/137/path = NodePath("Chilly_Globe/Sprite:frame")
+tracks/137/interp = 1
+tracks/137/loop_wrap = true
+tracks/137/imported = false
+tracks/137/enabled = true
+tracks/137/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/138/type = "value"
+tracks/138/path = NodePath("Chilly_Globe/Sprite2:frame")
+tracks/138/interp = 1
+tracks/138/loop_wrap = true
+tracks/138/imported = false
+tracks/138/enabled = true
+tracks/138/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/139/type = "value"
+tracks/139/path = NodePath("Chilly_Globe/Sprite3:frame")
+tracks/139/interp = 1
+tracks/139/loop_wrap = true
+tracks/139/imported = false
+tracks/139/enabled = true
+tracks/139/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/140/type = "value"
+tracks/140/path = NodePath("Chilly_Globe/Sprite:modulate")
+tracks/140/interp = 1
+tracks/140/loop_wrap = true
+tracks/140/imported = false
+tracks/140/enabled = true
+tracks/140/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.5 ) ]
+}
+tracks/141/type = "value"
+tracks/141/path = NodePath("Chilly_Globe/Sprite2:modulate")
+tracks/141/interp = 1
+tracks/141/loop_wrap = true
+tracks/141/imported = false
+tracks/141/enabled = true
+tracks/141/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/142/type = "value"
+tracks/142/path = NodePath("Chilly_Globe/Sprite3:modulate")
+tracks/142/interp = 1
+tracks/142/loop_wrap = true
+tracks/142/imported = false
+tracks/142/enabled = true
+tracks/142/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/143/type = "value"
+tracks/143/path = NodePath("Chilly_Globe/Node2D:modulate")
+tracks/143/interp = 1
+tracks/143/loop_wrap = true
+tracks/143/imported = false
+tracks/143/enabled = true
+tracks/143/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/144/type = "value"
+tracks/144/path = NodePath("Chilly_Globe/Node2D/Sprite4:rotation_degrees")
+tracks/144/interp = 1
+tracks/144/loop_wrap = true
+tracks/144/imported = false
+tracks/144/enabled = true
+tracks/144/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/145/type = "value"
+tracks/145/path = NodePath("Chilly_Globe/Node2D/Sprite5:rotation_degrees")
+tracks/145/interp = 1
+tracks/145/loop_wrap = true
+tracks/145/imported = false
+tracks/145/enabled = true
+tracks/145/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/146/type = "value"
+tracks/146/path = NodePath("Chilly_Globe/Node2D/Sprite6:rotation_degrees")
+tracks/146/interp = 1
+tracks/146/loop_wrap = true
+tracks/146/imported = false
+tracks/146/enabled = true
+tracks/146/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/147/type = "value"
+tracks/147/path = NodePath("Chilly_Globe/Node2D/Sprite7:rotation_degrees")
+tracks/147/interp = 1
+tracks/147/loop_wrap = true
+tracks/147/imported = false
+tracks/147/enabled = true
+tracks/147/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/148/type = "value"
+tracks/148/path = NodePath("Chilly_Globe/Node2D/Sprite8:rotation_degrees")
+tracks/148/interp = 1
+tracks/148/loop_wrap = true
+tracks/148/imported = false
+tracks/148/enabled = true
+tracks/148/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/149/type = "value"
+tracks/149/path = NodePath("Chilly_Globe/Node2D/Sprite9:rotation_degrees")
+tracks/149/interp = 1
+tracks/149/loop_wrap = true
+tracks/149/imported = false
+tracks/149/enabled = true
+tracks/149/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/150/type = "value"
+tracks/150/path = NodePath("Chilly_Globe/Node2D/Sprite10:rotation_degrees")
+tracks/150/interp = 1
+tracks/150/loop_wrap = true
+tracks/150/imported = false
+tracks/150/enabled = true
+tracks/150/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/151/type = "value"
+tracks/151/path = NodePath("Chilly_Globe/TextureRect:self_modulate")
+tracks/151/interp = 1
+tracks/151/loop_wrap = true
+tracks/151/imported = false
+tracks/151/enabled = true
+tracks/151/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.156863 ) ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "Sabotage"
@@ -3720,6 +4109,7 @@ anims/Asphyxiate = SubResource( 15 )
 anims/Barrage = SubResource( 7 )
 anims/Beat_Down = SubResource( 8 )
 anims/Bubble_Ring = SubResource( 16 )
+anims/Chilly_Globe = SubResource( 31 )
 anims/Earthslide = SubResource( 6 )
 anims/Extort = SubResource( 11 )
 anims/Friction = SubResource( 18 )
@@ -4343,7 +4733,7 @@ position = Vector2( 0, 50 )
 position = Vector2( 3, -192 )
 scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 28 )
-frame = 6
+offset = Vector2( 16, 10 )
 
 [node name="CanvasLayer" type="ColorRect" parent="Spikey_Bomb"]
 visible = false
@@ -4356,11 +4746,10 @@ color = Color( 0.968627, 0.901961, 0.901961, 1 )
 
 [node name="Chilly_Globe" type="Node2D" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0.4 )
 z_index = 4
 
 [node name="TextureRect" type="TextureRect" parent="Chilly_Globe"]
-self_modulate = Color( 1, 1, 1, 0.5 )
+self_modulate = Color( 1, 1, 1, 0.156863 )
 material = SubResource( 30 )
 margin_left = -450.0
 margin_top = -400.0
@@ -4370,3 +4759,83 @@ rect_scale = Vector2( 0.87, 0.87 )
 rect_pivot_offset = Vector2( 450, 400 )
 texture = ExtResource( 48 )
 stretch_mode = 2
+
+[node name="Sprite" type="Sprite" parent="Chilly_Globe"]
+modulate = Color( 1, 1, 1, 0.5 )
+position = Vector2( -164, -159 )
+texture = ExtResource( 49 )
+hframes = 3
+vframes = 3
+
+[node name="Sprite2" type="Sprite" parent="Chilly_Globe"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 160, -43 )
+texture = ExtResource( 49 )
+hframes = 3
+vframes = 3
+
+[node name="Sprite3" type="Sprite" parent="Chilly_Globe"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -88, 123 )
+texture = ExtResource( 49 )
+hframes = 3
+vframes = 3
+
+[node name="Node2D" type="Node2D" parent="Chilly_Globe"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="Sprite4" type="Sprite" parent="Chilly_Globe/Node2D"]
+position = Vector2( 136, 134 )
+texture = ExtResource( 49 )
+hframes = 3
+vframes = 3
+frame = 8
+
+[node name="Sprite5" type="Sprite" parent="Chilly_Globe/Node2D"]
+position = Vector2( -251, -12 )
+texture = ExtResource( 49 )
+hframes = 3
+vframes = 3
+frame = 8
+__meta__ = {
+"_editor_description_": "iI"
+}
+
+[node name="Sprite6" type="Sprite" parent="Chilly_Globe/Node2D"]
+position = Vector2( 53, -198 )
+texture = ExtResource( 49 )
+hframes = 3
+vframes = 3
+frame = 8
+
+[node name="Sprite7" type="Sprite" parent="Chilly_Globe/Node2D"]
+position = Vector2( -26, -27 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 49 )
+hframes = 3
+vframes = 3
+frame = 8
+
+[node name="Sprite8" type="Sprite" parent="Chilly_Globe/Node2D"]
+position = Vector2( 262, -163 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 49 )
+hframes = 3
+vframes = 3
+frame = 8
+
+[node name="Sprite9" type="Sprite" parent="Chilly_Globe/Node2D"]
+position = Vector2( -259, 193 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 49 )
+hframes = 3
+vframes = 3
+frame = 8
+
+[node name="Sprite10" type="Sprite" parent="Chilly_Globe/Node2D"]
+position = Vector2( 246, 220 )
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 49 )
+hframes = 3
+vframes = 3
+frame = 8

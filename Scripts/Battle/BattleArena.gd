@@ -1213,6 +1213,7 @@ func _on_Fighters_item_chosen():
 	#$Fighters.fighters_active_check()
 
 func _on_Enemies_item_chosen():
+	$Fighters/HUDS.hiding()
 	var fighter_position = $Fighters.get_f_position() + Vector2(40, -40)
 	var item_id = $ItemWindow/ItemWindowPanel/ItemInventory.item_id
 	$ItemUsage.position = fighter_position
@@ -1289,6 +1290,7 @@ func _on_Enemies_jinx_doll():
 	$Fighters.ongoing = false
 
 func _on_Enemies_e_item_finished():
+	$Fighters/HUDS.showing()
 	Party.remove_item()
 	emit_signal("item_removed")
 	ongoing = false
@@ -2116,7 +2118,7 @@ func Hay_Fever():
 	$Fighters.damage_end()
 	
 func Spikey_Bomb():
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(get_tree().create_timer(1.8), "timeout")
 	$MovePlayer/AnimPlayer.play("Spikey_Bomb")
 	yield(get_tree().create_timer(0.5), "timeout")
 	$WindowPlayer.play("little_shake")
@@ -2124,7 +2126,14 @@ func Spikey_Bomb():
 	$Enemies._item_damage()
 	
 func Chilly_Globe():
-	yield(get_tree().create_timer(4), "timeout")
+	yield(get_tree().create_timer(1.8), "timeout")
+	$WindowPlayer.play("darken")
+	yield(get_tree().create_timer(1), "timeout")
+	$MovePlayer/AnimPlayer.play("Chilly_Globe")
+	yield(get_tree().create_timer(3), "timeout")
+	$WindowPlayer.playback_speed = 1
+	$WindowPlayer.play_backwards("darken")
+	yield(get_tree().create_timer(1), "timeout")
 	$Enemies._item_damage()
 	
 func Power_Drill():
