@@ -216,7 +216,7 @@ func set_id():
 		$Display.frame = 57
 		$Cost.text = "15,000 Mb"
 		item_cost = 15000
-		$Info.text = "Fully heals & revives party\nApllies all buffs"
+		$Info.text = "Fully heals & revives party\nApplies all buffs"
 		$Display.position = Vector2(84, -76)
 		$Display.scale = Vector2(1.25, 1.25)
 		
@@ -234,7 +234,7 @@ func set_id():
 		$Display.frame = 53
 		$Cost.text = "1,000 Mb"
 		item_cost = 1000
-		$Info.text = "Damage all enemies with a Neutral attack"
+		$Info.text = "Damages all enemies with a Neutral attack"
 		$Display.position = Vector2(83, -70)
 		$Display.scale = Vector2(1.25, 1.25)
 		
@@ -252,7 +252,7 @@ func set_id():
 		$Display.frame = 61
 		$Cost.text = "1,500 Mb"
 		item_cost = 1500
-		$Info.text = "Damage all enemies with an Air attack"
+		$Info.text = "Damages all enemies with an Air attack\nApplies Air type"
 		$Display.position = Vector2(86, -66)
 		$Display.scale = Vector2(1.15, 1.15)
 		
@@ -261,7 +261,7 @@ func set_id():
 		$Display.frame = 59
 		$Cost.text = "1,500 Mb"
 		item_cost = 1500
-		$Info.text = "Damage all enemies with a Fire attack"
+		$Info.text = "Damages all enemies with a Fire attack\nApplies Fire type"
 		$Display.position = Vector2(85.5, -77)
 		$Display.scale = Vector2(1.15, 1.15)
 		
@@ -270,7 +270,7 @@ func set_id():
 		$Display.frame = 60
 		$Cost.text = "1,500 Mb"
 		item_cost = 1500
-		$Info.text = "Damage all enemies with a Water attack"
+		$Info.text = "Damages all enemies with a Water attack\nApplies Water type"
 		$Display.position = Vector2(81, -68)
 		$Display.scale = Vector2(1.1, 1.1)
 		
@@ -279,7 +279,7 @@ func set_id():
 		$Display.frame = 62
 		$Cost.text = "1,500 Mb"
 		item_cost = 1500
-		$Info.text = "Damage all enemies with an Earth attack"
+		$Info.text = "Damages all enemies with an Earth attack\nApplies Earth type"
 		$Display.position = Vector2(88, -65)
 		$Display.scale = Vector2(1.15, 1.15)
 		

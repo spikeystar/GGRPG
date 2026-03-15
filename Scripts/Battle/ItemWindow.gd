@@ -168,7 +168,7 @@ func item_check():
 		$ItemInventory.frame = 58
 		
 	if item_id == "Perfect Panacea":
-		$ItemInfo.text = "Fully heals & revives party\nApllies all buffs"
+		$ItemInfo.text = "Fully heals & revives party\nApplies all buffs"
 		$ItemInventory.position = Vector2(241, 66)
 		$ItemInventory.scale = Vector2(1.25, 1.25)
 		
@@ -184,7 +184,7 @@ func item_check():
 		$ItemInventory.frame = 64
 		
 	if item_id == "Spikey Bomb":
-		$ItemInfo.text = "Damage all enemies with a Neutral attack"
+		$ItemInfo.text = "Damages all enemies with a Neutral attack"
 		$ItemInventory.position = Vector2(243, 73)
 		$ItemInventory.scale = Vector2(1.25, 1.25)
 		
@@ -200,7 +200,7 @@ func item_check():
 		$ItemInventory.frame = 65
 		
 	if item_id == "Faulty Amp":
-		$ItemInfo.text = "Damage all enemies with an Air attack"
+		$ItemInfo.text = "Damages all enemies with an Air attack\n\nApplies Air type"
 		$ItemInventory.position = Vector2(245, 79)
 		$ItemInventory.scale = Vector2(1.15, 1.15)
 		
@@ -208,7 +208,7 @@ func item_check():
 		$ItemInventory.frame = 61
 		
 	if item_id == "Blister Grenade":
-		$ItemInfo.text = "Damage all enemies with a Fire attack"
+		$ItemInfo.text = "Damages all enemies with a Fire attack\n\nApplies Fire type"
 		$ItemInventory.position = Vector2(244, 66)
 		$ItemInventory.scale = Vector2(1.15, 1.15)
 		
@@ -216,7 +216,7 @@ func item_check():
 		$ItemInventory.frame = 59
 		
 	if item_id == "Chilly Globe":
-		$ItemInfo.text = "Damage all enemies with a Water attack"
+		$ItemInfo.text = "Damages all enemies with a Water attack\n\nApplies Water type"
 		$ItemInventory.position = Vector2(240, 75)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 		
@@ -224,7 +224,7 @@ func item_check():
 		$ItemInventory.frame = 60
 		
 	if item_id == "Power Drill":
-		$ItemInfo.text = "Damage all enemies with an Earth attack"
+		$ItemInfo.text = "Damages all enemies with an Earth attack\n\nApplies Earth type"
 		$ItemInventory.position = Vector2(247, 77)
 		$ItemInventory.scale = Vector2(1.15, 1.15)
 		

@@ -178,7 +178,7 @@ func set_id():
 	if item_id == "Perfect Panacea":
 		$Display.show()
 		$Display.frame = 57
-		$Info.text = "Fully heals & revives party\nApllies all buffs"
+		$Info.text = "Fully heals & revives party\nApplies all buffs"
 		$Display.position = Vector2(84, -76)
 		$Display.scale = Vector2(1.25, 1.25)
 		$Storage.show()
@@ -194,7 +194,7 @@ func set_id():
 	if item_id == "Spikey Bomb":
 		$Display.show()
 		$Display.frame = 53
-		$Info.text = "Damage all enemies with a Neutral attack"
+		$Info.text = "Damages all enemies with a Neutral attack"
 		$Display.position = Vector2(83, -70)
 		$Display.scale = Vector2(1.25, 1.25)
 		$Storage.show()
@@ -210,7 +210,7 @@ func set_id():
 	if item_id == "Faulty Amp":
 		$Display.show()
 		$Display.frame = 61
-		$Info.text = "Damage all enemies with an Air attack"
+		$Info.text = "Damages all enemies with an Air attack\nApplies Air type"
 		$Display.position = Vector2(86, -66)
 		$Display.scale = Vector2(1.15, 1.15)
 		$Storage.show()
@@ -218,7 +218,7 @@ func set_id():
 	if item_id == "Blister Grenade":
 		$Display.show()
 		$Display.frame = 59
-		$Info.text = "Damage all enemies with a Fire attack"
+		$Info.text = "Damages all enemies with a Fire attack\nApplies Fire type"
 		$Display.position = Vector2(85.5, -77)
 		$Display.scale = Vector2(1.15, 1.15)
 		$Storage.show()
@@ -226,7 +226,7 @@ func set_id():
 	if item_id == "Chilly Globe":
 		$Display.show()
 		$Display.frame = 60
-		$Info.text = "Damage all enemies with a Water attack"
+		$Info.text = "Damages all enemies with a Water attack\nApplies Water type"
 		$Display.position = Vector2(81, -68)
 		$Display.scale = Vector2(1.1, 1.1)
 		$Storage.show()
@@ -234,7 +234,7 @@ func set_id():
 	if item_id == "Power Drill":
 		$Display.show()
 		$Display.frame = 62
-		$Info.text = "Damage all enemies with an Earth attack"
+		$Info.text = "Damages all enemies with an Earth attack\nApplies Earth type"
 		$Display.position = Vector2(88, -65)
 		$Display.scale = Vector2(1.15, 1.15)
 		$Storage.show()
