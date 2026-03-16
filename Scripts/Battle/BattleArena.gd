@@ -2141,7 +2141,11 @@ func Power_Drill():
 	$Enemies._item_damage()
 	
 func Blister_Grenade():
-	yield(get_tree().create_timer(4), "timeout")
+	yield(get_tree().create_timer(2.1), "timeout")
+	$MovePlayer/AnimPlayer.play("Blister_Grenade")
+	yield(get_tree().create_timer(0.4), "timeout")
+	$WindowPlayer.play("little_shake")
+	yield(get_tree().create_timer(2), "timeout")
 	$Enemies._item_damage()
 	
 func Faulty_Amp():
