@@ -2149,7 +2149,15 @@ func Blister_Grenade():
 	$Enemies._item_damage()
 	
 func Faulty_Amp():
-	yield(get_tree().create_timer(4), "timeout")
+	yield(get_tree().create_timer(1.8), "timeout")
+	$WindowPlayer.play("darken")
+	yield(get_tree().create_timer(1), "timeout")
+	$WindowPlayer.play("little_shake")
+	$MovePlayer/AnimPlayer.play("Faulty_Amp")
+	yield(get_tree().create_timer(1.5), "timeout")
+	$WindowPlayer.playback_speed = 1
+	$WindowPlayer.play_backwards("darken")
+	yield(get_tree().create_timer(1), "timeout")
 	$Enemies._item_damage()
 
 
