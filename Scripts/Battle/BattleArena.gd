@@ -2118,46 +2118,51 @@ func Hay_Fever():
 	$Fighters.damage_end()
 	
 func Spikey_Bomb():
+	$MovePlayer.position = Vector2(0, 0)
 	yield(get_tree().create_timer(1.8), "timeout")
 	$MovePlayer/AnimPlayer.play("Spikey_Bomb")
 	yield(get_tree().create_timer(0.5), "timeout")
 	$WindowPlayer.play("little_shake")
-	yield(get_tree().create_timer(2), "timeout")
+	yield(get_tree().create_timer(1.8), "timeout")
 	$Enemies._item_damage()
 	
 func Chilly_Globe():
+	$MovePlayer.position = Vector2(0, 0)
 	yield(get_tree().create_timer(1.8), "timeout")
 	$WindowPlayer.play("darken")
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(0.9), "timeout")
 	$MovePlayer/AnimPlayer.play("Chilly_Globe")
 	yield(get_tree().create_timer(3), "timeout")
 	$WindowPlayer.playback_speed = 1
 	$WindowPlayer.play_backwards("darken")
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(0.9), "timeout")
 	$Enemies._item_damage()
 	
 func Power_Drill():
+	$MovePlayer.position = Vector2(0, 0)
 	yield(get_tree().create_timer(4), "timeout")
 	$Enemies._item_damage()
 	
 func Blister_Grenade():
+	$MovePlayer.position = Vector2(0, 0)
 	yield(get_tree().create_timer(2.1), "timeout")
 	$MovePlayer/AnimPlayer.play("Blister_Grenade")
 	yield(get_tree().create_timer(0.4), "timeout")
 	$WindowPlayer.play("little_shake")
-	yield(get_tree().create_timer(2), "timeout")
+	yield(get_tree().create_timer(1.8), "timeout")
 	$Enemies._item_damage()
 	
 func Faulty_Amp():
+	$MovePlayer.position = Vector2(0, 0)
 	yield(get_tree().create_timer(1.8), "timeout")
 	$WindowPlayer.play("darken")
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(0.9), "timeout")
 	$WindowPlayer.play("little_shake")
 	$MovePlayer/AnimPlayer.play("Faulty_Amp")
 	yield(get_tree().create_timer(1.5), "timeout")
 	$WindowPlayer.playback_speed = 1
 	$WindowPlayer.play_backwards("darken")
-	yield(get_tree().create_timer(1), "timeout")
+	yield(get_tree().create_timer(0.9), "timeout")
 	$Enemies._item_damage()
 
 
