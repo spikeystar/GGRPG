@@ -1151,7 +1151,7 @@ func _on_Fighters_item_chosen():
 	if item_id == "Strange Perfume":
 		$ItemUsage/Item.frame = 64
 		$ItemUsage/Item.position = Vector2(6, 4)
-		$ItemUsage/Item.scale = Vector2(1, 1)
+		$ItemUsage/Item.scale = Vector2(1.1, 1.1)
 		#$Fighters.perfect_p = true
 		$Fighters.item_name = "Strange Perfume"
 		
@@ -1259,6 +1259,13 @@ func _on_Enemies_item_chosen():
 		$Enemies.item_damage = 10
 		$Enemies.move_type = "air"
 		Faulty_Amp()
+		yield(get_tree().create_timer(1.5), "timeout")
+	if item_id == "Strange Perfume":
+		$ItemUsage/Item.frame = 64
+		$ItemUsage/Item.position = Vector2(2, 10)
+		$ItemUsage/Item.scale = Vector2(1.1, 1.1)
+		$Enemies.strange_perfume = true
+		Strange_Perfume()
 		yield(get_tree().create_timer(1.5), "timeout")
 	yield(get_tree().create_timer(1.5), "timeout")
 	emit_signal("action_ended")
@@ -2170,5 +2177,15 @@ func Faulty_Amp():
 	$WindowPlayer.play_backwards("darken")
 	yield(get_tree().create_timer(0.9), "timeout")
 	$Enemies._item_damage()
+	
+func Strange_Perfume():
+	$MovePlayer.position = Vector2(0, 0)
+	yield(get_tree().create_timer(1.8), "timeout")
+	$WindowPlayer.play("darken")
+	yield(get_tree().create_timer(1.5), "timeout")
+	$WindowPlayer.playback_speed = 1
+	$WindowPlayer.play_backwards("darken")
+	yield(get_tree().create_timer(0.9), "timeout")
+	$Enemies.special_item()
 
 

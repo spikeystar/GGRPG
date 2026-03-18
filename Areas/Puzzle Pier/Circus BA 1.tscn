@@ -648,13 +648,13 @@ script = ExtResource( 14 )
 [node name="Field" type="Node2D" parent="Enemies"]
 
 [node name="Poplette_battle" parent="Enemies/Field" instance=ExtResource( 67 )]
-position = Vector2( -32, 49 )
-
-[node name="Teddyfloat_battle" parent="Enemies/Field" instance=ExtResource( 2 )]
-position = Vector2( 100, -53 )
+position = Vector2( -30, 54 )
 
 [node name="Ladybug_battle" parent="Enemies/Field" instance=ExtResource( 66 )]
-position = Vector2( 192, 69 )
+position = Vector2( 193, 68 )
+
+[node name="Teddyfloat_battle" parent="Enemies/Field" instance=ExtResource( 2 )]
+position = Vector2( 95, -57 )
 
 [node name="Extra" type="Sprite" parent="Enemies"]
 position = Vector2( 174, 168 )

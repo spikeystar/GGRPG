@@ -376,6 +376,19 @@ func apply_type(id : String):
 		type_timer = 3
 	else:
 		return
+		
+func invert_type():
+	if not applied_type and not special and current_type != "neutral":
+		if current_type == "fire":
+			apply_type("water")
+		if current_type == "water":
+			apply_type("fire")
+		if current_type == "air":
+			apply_type("earth")
+		if current_type == "earth":
+			apply_type("air")
+	else:
+		return
 	
 func apply_buff(id : String):
 	if id == "attack" and not a_buff and not a_debuff and not special:

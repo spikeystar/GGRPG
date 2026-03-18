@@ -649,11 +649,11 @@ script = ExtResource( 13 )
 [node name="Poplette_battle" parent="Enemies/Field" instance=ExtResource( 66 )]
 position = Vector2( 32, 89 )
 
-[node name="Kaboom_battle2" parent="Enemies/Field" instance=ExtResource( 67 )]
-position = Vector2( 52, -18 )
-
 [node name="Kaboom_battle" parent="Enemies/Field" instance=ExtResource( 67 )]
 position = Vector2( 215, 54 )
+
+[node name="Kaboom_battle2" parent="Enemies/Field" instance=ExtResource( 67 )]
+position = Vector2( 52, -18 )
 
 [node name="Extra" type="Sprite" parent="Enemies"]
 position = Vector2( 174, 168 )
@@ -1915,6 +1915,7 @@ scale = Vector2( 1.1, 1.09 )
 [node name="Window" type="AnimatedSprite" parent="LevelUpWindow"]
 position = Vector2( -5, -111 )
 frames = SubResource( 27 )
+frame = 1
 speed_scale = 0.6
 playing = true
 
@@ -1931,7 +1932,6 @@ scale = Vector2( 0.985, 0.985 )
 [node name="Window" type="AnimatedSprite" parent="NewSpellWindow"]
 scale = Vector2( 1.1, 1.09 )
 frames = SubResource( 26 )
-frame = 1
 speed_scale = 0.6
 playing = true
 

@@ -69,6 +69,7 @@ var stun = false
 var poison = false
 var stun_chance : int
 var poison_chance : int
+var strange_perfume = false
 
 
 var random_debuff
@@ -639,6 +640,25 @@ func _item_damage():
 	if not SceneManager.victory:
 		victory_check()
 	yield(get_tree().create_timer(0.4), "timeout")
+	emit_signal("e_item_finished")
+	
+func special_item():
+	BB_active = false
+	ongoing = true
+	
+	if strange_perfume:
+		for x in range(enemies.size()):
+			enemy_index = x
+			enemies[x].random_debuff()
+			enemies[x].invert_type()
+	else:
+		pass
+	yield(get_tree().create_timer(1.7), "timeout")
+	yield(get_tree().create_timer(0.8), "timeout")
+	if not SceneManager.victory:
+		victory_check()
+	yield(get_tree().create_timer(0.4), "timeout")
+	strange_perfume = false
 	emit_signal("e_item_finished")
 	
 func boss_check():

@@ -649,11 +649,11 @@ script = ExtResource( 27 )
 [node name="Tricky_battle" parent="Enemies/Field" instance=ExtResource( 4 )]
 position = Vector2( 49, 71 )
 
-[node name="Teddyfloat_battle" parent="Enemies/Field" instance=ExtResource( 2 )]
-position = Vector2( 61, -89 )
-
 [node name="Teddyfloat_battle2" parent="Enemies/Field" instance=ExtResource( 2 )]
 position = Vector2( 229, -35 )
+
+[node name="Teddyfloat_battle" parent="Enemies/Field" instance=ExtResource( 2 )]
+position = Vector2( 61, -89 )
 
 [node name="Extra" type="Sprite" parent="Enemies"]
 position = Vector2( 174, 168 )

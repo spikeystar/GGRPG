@@ -78,7 +78,7 @@ func _ready():
 	add_item()	
 	add_item_name = "Power Drill"
 	add_item()	
-	add_item_name = "Blister Grenade"
+	add_item_name = "Strange Perfume"
 	add_item()	
 	add_item_name = "Faulty Amp"
 	add_item()	
