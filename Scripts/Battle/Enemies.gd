@@ -209,7 +209,9 @@ func _input(event):
 	
 	if Input.is_action_just_pressed("ui_select") and item_selecting:
 		SE.effect("Select")
-		emit_signal("jinx_doll")
+		#emit_signal("jinx_doll")
+		emit_signal("item_chosen")
+		$EnemyInfo.hide()
 		hide_cursors()
 		target_index = enemy_index
 		item_selecting = false

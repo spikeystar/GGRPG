@@ -939,6 +939,8 @@ func _on_ItemInventory_item_chosen():
 	
 func _on_ItemInventory_battle_item_chosen():
 	ongoing = true
+	$Fighters.ongoing = true
+	$Fighters.halt = true
 	enemy_selecting = true
 	$Fighters.idle()
 	emit_signal("action_ongoing")
@@ -1267,6 +1269,12 @@ func _on_Enemies_item_chosen():
 		$Enemies.strange_perfume = true
 		Strange_Perfume()
 		yield(get_tree().create_timer(1.5), "timeout")
+	if item_id == "Jinx Doll":
+		$ItemUsage/Item.frame = 65
+		$ItemUsage/Item.position = Vector2(2, 10)
+		$ItemUsage/Item.scale = Vector2(0.98, 0.98)
+		Jinx_Doll()
+		yield(get_tree().create_timer(1.5), "timeout")
 	yield(get_tree().create_timer(1.5), "timeout")
 	emit_signal("action_ended")
 	fighter_selection = false
@@ -1304,6 +1312,7 @@ func _on_Enemies_e_item_finished():
 	Party.remove_item()
 	emit_signal("item_removed")
 	ongoing = false
+	enemy_selecting = false
 	$Fighters.ongoing = false
 	$Fighters.halt = false
 	$Fighters.fighters_active_check()
@@ -2045,7 +2054,6 @@ func Zap():
 	$Fighters/HUDS.showing()
 	
 
-
 func Terra_Arrow():
 	BattleMusic.quiet_0()
 	randomize()
@@ -2200,4 +2208,5 @@ func Jinx_Doll():
 	$WindowPlayer.play_backwards("darken")
 	yield(get_tree().create_timer(0.9), "timeout")
 	$Enemies.jinx_doll()
+	
 
