@@ -1239,7 +1239,7 @@ func _on_Enemies_item_chosen():
 	if item_id == "Power Drill":
 		$ItemUsage/Item.frame = 62
 		$ItemUsage/Item.position = Vector2(3, 13)
-		$ItemUsage/Item.scale = Vector2(0.9, 0.9)
+		$ItemUsage/Item.scale = Vector2(0.98, 0.98)
 		$Enemies.item_damage = 10
 		$Enemies.move_type = "earth"
 		Power_Drill()
@@ -2140,7 +2140,13 @@ func Chilly_Globe():
 	
 func Power_Drill():
 	$MovePlayer.position = Vector2(0, 0)
-	yield(get_tree().create_timer(4), "timeout")
+	yield(get_tree().create_timer(2), "timeout")
+	$MovePlayer/AnimPlayer.play("Power_Drill")
+	yield(get_tree().create_timer(0.2), "timeout")
+	$WindowPlayer.play("little_shake")
+	yield(get_tree().create_timer(0.5), "timeout")
+	$WindowPlayer.play("little_shake")
+	yield(get_tree().create_timer(2), "timeout")
 	$Enemies._item_damage()
 	
 func Blister_Grenade():

@@ -74,9 +74,9 @@ func _ready():
 	#add_trinket_name = "Gold Earring"
 	#add_trinket()	
 	
-	add_item_name = "Spikey Bomb"
+	add_item_name = "Power Drill"
 	add_item()	
-	add_item_name = "Chilly Globe"
+	add_item_name = "Power Drill"
 	add_item()	
 	add_item_name = "Blister Grenade"
 	add_item()	
