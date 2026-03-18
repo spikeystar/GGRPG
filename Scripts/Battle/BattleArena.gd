@@ -1280,21 +1280,24 @@ func _on_Enemies_jinx_doll():
 	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
 	var item_id = $ItemWindow/ItemWindowPanel/ItemInventory.item_id
 	$ItemUsage.position = selector_position
-	if item_id == "Jinx Doll":
-		$ItemUsage/Item.frame = 1
 	yield(get_tree().create_timer(0.3), "timeout")
-	$Fighters.battle_item_used()
-	$Enemies.jinx_doll()
 	item_animation()
+	$Fighters.battle_item_used()
+	if item_id == "Jinx Doll":
+		$ItemUsage/Item.frame = 65
+		$ItemUsage/Item.position = Vector2(2, 10)
+		$ItemUsage/Item.scale = Vector2(0.98, 0.98)
+		Jinx_Doll()
+		yield(get_tree().create_timer(1.5), "timeout")
 	yield(get_tree().create_timer(1.5), "timeout")
 	emit_signal("action_ended")
 	fighter_selection = false
 	attack_ended = true
 	attack_show = false
-	Party.remove_item()
-	emit_signal("item_removed")
-	ongoing = false
-	$Fighters.ongoing = false
+	#Party.remove_item()
+	#emit_signal("item_removed")
+	#ongoing = false
+	#$Fighters.ongoing = false
 
 func _on_Enemies_e_item_finished():
 	$Fighters/HUDS.showing()
@@ -2188,4 +2191,13 @@ func Strange_Perfume():
 	yield(get_tree().create_timer(0.9), "timeout")
 	$Enemies.special_item()
 
+func Jinx_Doll():
+	$MovePlayer.position = Vector2(0, 0)
+	yield(get_tree().create_timer(1.8), "timeout")
+	$WindowPlayer.play("darken")
+	yield(get_tree().create_timer(1.5), "timeout")
+	$WindowPlayer.playback_speed = 1
+	$WindowPlayer.play_backwards("darken")
+	yield(get_tree().create_timer(0.9), "timeout")
+	$Enemies.jinx_doll()
 

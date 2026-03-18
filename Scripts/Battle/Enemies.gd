@@ -709,7 +709,17 @@ func finale_check():
 			$Field/Pierre_battle.boss_death()
 			
 func jinx_doll():
-	pass
+	BB_active = false
+	ongoing = true
+	enemies[target_index].apply_debuff("attack")
+	enemies[target_index].apply_debuff("magic")
+	enemies[target_index].apply_debuff("defense")
+	enemies[target_index]._poison()
+	yield(get_tree().create_timer(1.7), "timeout")
+	yield(get_tree().create_timer(0.8), "timeout")
+	if not SceneManager.victory:
+		victory_check()
+	yield(get_tree().create_timer(0.4), "timeout")
 	emit_signal("e_item_finished")
 	multi_debuff = false
 
@@ -721,8 +731,11 @@ func _on_WorldRoot_action_ended():
 	ongoing = false
 
 func _on_ItemInventory_battle_item_chosen():
+	$EnemyInfo/EnemyStatus.enemy_selecting = true
+	enemy_index = -1 
 	show_cursors()
 	select_next_enemy(+1)
+	enemy_info_update()
 	yield(get_tree().create_timer(0.2), "timeout")
 	item_selecting = true
 
