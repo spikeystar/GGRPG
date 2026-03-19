@@ -2193,7 +2193,9 @@ func Strange_Perfume():
 	$MovePlayer.position = Vector2(0, 0)
 	yield(get_tree().create_timer(1.8), "timeout")
 	$WindowPlayer.play("darken")
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(get_tree().create_timer(0.8), "timeout")
+	$MovePlayer/AnimPlayer.play("Strange_Perfume")
+	yield(get_tree().create_timer(1.7), "timeout")
 	$WindowPlayer.playback_speed = 1
 	$WindowPlayer.play_backwards("darken")
 	yield(get_tree().create_timer(0.9), "timeout")
