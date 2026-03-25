@@ -2202,10 +2202,13 @@ func Strange_Perfume():
 	$Enemies.special_item()
 
 func Jinx_Doll():
-	$MovePlayer.position = Vector2(0, 0)
+	var enemy_position = $Enemies.get_e_position()
+	$MovePlayer.position = enemy_position + Vector2(-32, -55)
 	yield(get_tree().create_timer(1.8), "timeout")
 	$WindowPlayer.play("darken")
-	yield(get_tree().create_timer(1.5), "timeout")
+	yield(get_tree().create_timer(0.8), "timeout")
+	$MovePlayer/AnimPlayer.play("Jinx_Doll")
+	yield(get_tree().create_timer(2.5), "timeout")
 	$WindowPlayer.playback_speed = 1
 	$WindowPlayer.play_backwards("darken")
 	yield(get_tree().create_timer(0.9), "timeout")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=2]
+[gd_scene load_steps=107 format=2]
 
 [ext_resource path="res://BattleSystem/BattleMoves/Sweet_Gift/Sweet Gift SS.png" type="Texture" id=1]
 [ext_resource path="res://Test/Testing Screenshot.png" type="Texture" id=2]
@@ -65,6 +65,9 @@
 [ext_resource path="res://BattleSystem/BattleMoves/Power_Drill/Power_Drill4.png" type="Texture" id=63]
 [ext_resource path="res://BattleSystem/BattleMoves/Power_Drill/Power_Drill5.png" type="Texture" id=64]
 [ext_resource path="res://BattleSystem/BattleMoves/Strange_Perfume/Strange Perfume SS.png" type="Texture" id=65]
+[ext_resource path="res://BattleSystem/BattleMoves/Jinx_Doll/Nail SS.png" type="Texture" id=66]
+[ext_resource path="res://BattleSystem/BattleMoves/Jinx_Doll/Bats SS.png" type="Texture" id=67]
+[ext_resource path="res://BattleSystem/BattleMoves/Jinx_Doll/Face SS 2.png" type="Texture" id=68]
 
 [sub_resource type="Animation" id=19]
 resource_name = "Aero_Bullet"
@@ -1308,6 +1311,166 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 0.696078 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=38]
+resource_name = "Jinx_Doll"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Jinx_Doll:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Jinx_Doll/Nail:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.156863 ), Color( 1, 1, 1, 0.75 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.8 ), Color( 1, 1, 1, 0.6 ), Color( 1, 1, 1, 0.4 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Jinx_Doll/Nail:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 1, 2 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Jinx_Doll/Nail:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 1.55, 1.55 ), Vector2( 1.7, 1.7 ), Vector2( 1.8, 1.8 ), Vector2( 2, 2 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Jinx_Doll/Nail:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Jinx_Doll/Bats:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.6, 0.7, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Jinx_Doll/Bats:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.7, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.75 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.7 ), Color( 1, 1, 1, 0.4 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Jinx_Doll/Bats:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.6, 0.8, 0.9, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Jinx_Doll/Face:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.9, 1, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, true, false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Jinx_Doll/Face:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Jinx_Doll/Face:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 1, 1.1, 1.2, 1.8, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.6 ), Color( 1, 1, 1, 0.85098 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.701961 ), Color( 1, 1, 1, 0.4 ), Color( 1, 1, 1, 0.2 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Jinx_Doll/Face:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.9, 1.8, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1.55, 1.55 ), Vector2( 2.2, 2.2 ), Vector2( 3, 3 ), Vector2( 4, 4 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("AnimPlayer:playback_speed")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 1.1, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0.7, 0.6, 1.1 ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -3808,6 +3971,162 @@ tracks/191/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.0588235 ) ]
 }
+tracks/192/type = "value"
+tracks/192/path = NodePath("Jinx_Doll:visible")
+tracks/192/interp = 1
+tracks/192/loop_wrap = true
+tracks/192/imported = false
+tracks/192/enabled = true
+tracks/192/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/193/type = "value"
+tracks/193/path = NodePath("Jinx_Doll/Nail:self_modulate")
+tracks/193/interp = 1
+tracks/193/loop_wrap = true
+tracks/193/imported = false
+tracks/193/enabled = true
+tracks/193/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.156863 ) ]
+}
+tracks/194/type = "value"
+tracks/194/path = NodePath("Jinx_Doll/Nail:frame")
+tracks/194/interp = 1
+tracks/194/loop_wrap = true
+tracks/194/imported = false
+tracks/194/enabled = true
+tracks/194/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/195/type = "value"
+tracks/195/path = NodePath("Jinx_Doll/Nail:scale")
+tracks/195/interp = 1
+tracks/195/loop_wrap = true
+tracks/195/imported = false
+tracks/195/enabled = true
+tracks/195/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ) ]
+}
+tracks/196/type = "value"
+tracks/196/path = NodePath("Jinx_Doll/Nail:visible")
+tracks/196/interp = 1
+tracks/196/loop_wrap = true
+tracks/196/imported = false
+tracks/196/enabled = true
+tracks/196/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/197/type = "value"
+tracks/197/path = NodePath("Jinx_Doll/Bats:visible")
+tracks/197/interp = 1
+tracks/197/loop_wrap = true
+tracks/197/imported = false
+tracks/197/enabled = true
+tracks/197/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/198/type = "value"
+tracks/198/path = NodePath("Jinx_Doll/Bats:self_modulate")
+tracks/198/interp = 1
+tracks/198/loop_wrap = true
+tracks/198/imported = false
+tracks/198/enabled = true
+tracks/198/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.75 ) ]
+}
+tracks/199/type = "value"
+tracks/199/path = NodePath("Jinx_Doll/Bats:frame")
+tracks/199/interp = 1
+tracks/199/loop_wrap = true
+tracks/199/imported = false
+tracks/199/enabled = true
+tracks/199/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/200/type = "value"
+tracks/200/path = NodePath("Jinx_Doll/Bats:modulate")
+tracks/200/interp = 1
+tracks/200/loop_wrap = true
+tracks/200/imported = false
+tracks/200/enabled = true
+tracks/200/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.7 ) ]
+}
+tracks/201/type = "value"
+tracks/201/path = NodePath("Jinx_Doll/Face:visible")
+tracks/201/interp = 1
+tracks/201/loop_wrap = true
+tracks/201/imported = false
+tracks/201/enabled = true
+tracks/201/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/202/type = "value"
+tracks/202/path = NodePath("Jinx_Doll/Face:frame")
+tracks/202/interp = 1
+tracks/202/loop_wrap = true
+tracks/202/imported = false
+tracks/202/enabled = true
+tracks/202/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/203/type = "value"
+tracks/203/path = NodePath("Jinx_Doll/Face:self_modulate")
+tracks/203/interp = 1
+tracks/203/loop_wrap = true
+tracks/203/imported = false
+tracks/203/enabled = true
+tracks/203/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.6 ) ]
+}
+tracks/204/type = "value"
+tracks/204/path = NodePath("Jinx_Doll/Face:scale")
+tracks/204/interp = 1
+tracks/204/loop_wrap = true
+tracks/204/imported = false
+tracks/204/enabled = true
+tracks/204/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.55, 1.55 ) ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "Sabotage"
@@ -4539,10 +4858,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.4, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ false, true, false ]
+"values": [ false, true, true, false ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Strange_Perfume/Sprite4:visible")
@@ -4590,7 +4909,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0.4, 0.5, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Color( 1, 1, 1, 0.3 ), Color( 1, 1, 1, 0.65098 ), Color( 1, 1, 1, 0.85098 ), Color( 1, 1, 1, 0.45098 ), Color( 1, 1, 1, 0.25098 ) ]
+"values": [ Color( 1, 1, 1, 0.3 ), Color( 1, 1, 1, 0.65098 ), Color( 1, 1, 1, 0.85098 ), Color( 1, 1, 1, 0.45098 ), Color( 1, 1, 1, 0.117647 ) ]
 }
 tracks/9/type = "value"
 tracks/9/path = NodePath("Strange_Perfume/Sprite:frame")
@@ -4638,7 +4957,7 @@ tracks/12/keys = {
 "times": PoolRealArray( 0.4, 0.5, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 2, 3, 2, 2, 2 ]
+"values": [ 2, 3, 2, 3, 2 ]
 }
 tracks/13/type = "value"
 tracks/13/path = NodePath("Strange_Perfume/CanvasLayer:visible")
@@ -5222,6 +5541,7 @@ anims/Friction = SubResource( 18 )
 anims/Gravel_Spat = SubResource( 23 )
 anims/Hay_Fever = SubResource( 26 )
 anims/Icicle = SubResource( 5 )
+anims/Jinx_Doll = SubResource( 38 )
 anims/Pester = SubResource( 12 )
 anims/Power_Drill = SubResource( 35 )
 anims/Prism_Snow = SubResource( 24 )
@@ -6091,3 +6411,30 @@ margin_top = -1002.0
 margin_right = 1185.0
 margin_bottom = 992.0
 color = Color( 1, 0.78, 0.56, 1 )
+
+[node name="Jinx_Doll" type="Node2D" parent="."]
+visible = false
+
+[node name="Nail" type="Sprite" parent="Jinx_Doll"]
+self_modulate = Color( 1, 1, 1, 0.156863 )
+position = Vector2( 33, -8 )
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 66 )
+hframes = 3
+
+[node name="Bats" type="Sprite" parent="Jinx_Doll"]
+visible = false
+modulate = Color( 1, 1, 1, 0.7 )
+self_modulate = Color( 1, 1, 1, 0.75 )
+position = Vector2( 42, -16 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 67 )
+hframes = 4
+
+[node name="Face" type="Sprite" parent="Jinx_Doll"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.6 )
+position = Vector2( 34, 21 )
+scale = Vector2( 1.55, 1.55 )
+texture = ExtResource( 68 )
+hframes = 2
