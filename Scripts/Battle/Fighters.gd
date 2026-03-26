@@ -901,6 +901,8 @@ func item_used():
 		huds_heal_update()
 	if SP:
 		fighters[selector_index].SP(SP_amount)
+	if apply_type:
+		fighters2[target_index].fighter_apply_type(changing_type)
 	if combo_heal:
 		fighter_name = fighters2[target_index].get_name()
 		fighters2[target_index].heal(HP_amount)
@@ -985,6 +987,8 @@ func item_used():
 	remedy_b = false
 	perfect_p = false
 	item_selecting = false
+	apply_type = false
+	changing_type = "neutral"
 	#yield(get_tree().create_timer(0.3), "timeout")
 	yield(get_tree().create_timer(1), "timeout")
 	fighters_active_check()

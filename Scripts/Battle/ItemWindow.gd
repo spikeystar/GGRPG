@@ -30,13 +30,13 @@ func item_check():
 		$ItemInventory.show()
 		$ItemInventory.frame = 0
 		$ItemInfo.text = "50 HP"
-		$ItemInventory.position = Vector2(243, 62)
+		$ItemInventory.position = Vector2(244, 62)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 	if item_id == "Pretty Gem":
 		$ItemInventory.show()
 		$ItemInventory.frame = 1
 		$ItemInfo.text = "20 SP"
-		$ItemInventory.position = Vector2(243, 62)
+		$ItemInventory.position = Vector2(244, 62)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 	if item_id == "Picnic Pie":
 		$ItemInventory.show()
@@ -105,7 +105,7 @@ func item_check():
 		
 	if item_id == "Flummery Flambe":
 		$ItemInfo.text = "50 HP & 10 SP\nApplies Fire type"
-		$ItemInventory.position = Vector2(241, 69)
+		$ItemInventory.position = Vector2(242, 69)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 		
 		$ItemInventory.show()
@@ -153,7 +153,7 @@ func item_check():
 		
 	if item_id == "Starberry":
 		$ItemInfo.text = "150 HP & 50 SP\nHeals Poison status"
-		$ItemInventory.position = Vector2(247.5, 62)
+		$ItemInventory.position = Vector2(249, 66)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 		
 		$ItemInventory.show()

@@ -1070,71 +1070,97 @@ func _on_Fighters_item_chosen():
 		$ItemUsage/Item.frame = 45
 		$ItemUsage/Item.position = Vector2(0, 0)
 		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
-		$Fighters.perfect_p = true
+		$Fighters.heal = true
+		$Fighters.HP_amount = 150
 		$Fighters.item_name = "Delicious Cake"
 	
 	if item_id == "Amazing Cake":
 		$ItemUsage/Item.frame = 46
 		$ItemUsage/Item.position = Vector2(0, 1)
 		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
-		$Fighters.perfect_p = true
+		$Fighters.heal = true
+		$Fighters.HP_amount = 300
 		$Fighters.item_name = "Amazing Cake"
 		
 	if item_id == "Polar Parfait":
 		$ItemUsage/Item.frame = 50
 		$ItemUsage/Item.position = Vector2(0, 3)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
-		$Fighters.perfect_p = true
 		$Fighters.item_name = "Polar Parfait"
+		$Fighters.combo_heal = true
+		$Fighters.HP_amount = 50
+		$Fighters.SP_amount = 10
+		$Fighters.apply_type = true
+		$Fighters.changing_type = "water"
 		
 	if item_id == "Flummery Flambe":
 		$ItemUsage/Item.frame = 49
 		$ItemUsage/Item.position = Vector2(-1, 3)
 		$ItemUsage/Item.scale = Vector2(0.92, 0.92)
-		$Fighters.perfect_p = true
 		$Fighters.item_name = "Flummery Flambe"
+		$Fighters.combo_heal = true
+		$Fighters.HP_amount = 50
+		$Fighters.SP_amount = 10
+		$Fighters.apply_type = true
+		$Fighters.changing_type = "fire"
 		
 	if item_id == "Saffron Souffle":
 		$ItemUsage/Item.frame = 51
 		$ItemUsage/Item.position = Vector2(0, 9)
 		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
-		$Fighters.perfect_p = true
 		$Fighters.item_name = "Saffron Souffle"
+		$Fighters.combo_heal = true
+		$Fighters.HP_amount = 50
+		$Fighters.SP_amount = 10
+		$Fighters.apply_type = true
+		$Fighters.changing_type = "air"
 		
 	if item_id == "Nori Cookie":
 		$ItemUsage/Item.frame = 52
 		$ItemUsage/Item.position = Vector2(0.5, 7)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
-		$Fighters.perfect_p = true
 		$Fighters.item_name = "Nori Cookie"
+		$Fighters.combo_heal = true
+		$Fighters.HP_amount = 50
+		$Fighters.SP_amount = 10
+		$Fighters.apply_type = true
+		$Fighters.changing_type = "earth"
 		
 	if item_id == "Lovely Gem":
 		$ItemUsage/Item.frame = 47
 		$ItemUsage/Item.position = Vector2(3, 1)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
-		$Fighters.perfect_p = true
 		$Fighters.item_name = "Lovely Gem"
+		$Fighters.SP = true
+		$Fighters.SP_amount = 50
 		
 	if item_id == "Beautiful Gem":
 		$ItemUsage/Item.frame = 48
 		$ItemUsage/Item.position = Vector2(0, 2)
 		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
-		$Fighters.perfect_p = true
 		$Fighters.item_name = "Beautiful Gem"
+		$Fighters.SP = true
+		$Fighters.SP_amount = 100
 		
 	if item_id == "Starberry":
 		$ItemUsage/Item.frame = 55
 		$ItemUsage/Item.position = Vector2(4, 3)
-		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
-		$Fighters.perfect_p = true
+		$ItemUsage/Item.scale = Vector2(0.9, 0.9)
 		$Fighters.item_name = "Starberry"
+		$Fighters.combo_heal = true
+		$Fighters.restore = true
+		$Fighters.HP_amount = 150
+		$Fighters.SP_amount = 30
 		
 	if item_id == "Icescream":
 		$ItemUsage/Item.frame = 54
 		$ItemUsage/Item.position = Vector2(-1, 3)
-		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
-		$Fighters.perfect_p = true
+		$ItemUsage/Item.scale = Vector2(1, 1)
 		$Fighters.item_name = "Icescream"
+		$Fighters.combo_heal = true
+		$Fighters.restore = true
+		$Fighters.HP_amount = 100
+		$Fighters.SP_amount = 20
 		
 	if item_id == "Hocus Potion":
 		$ItemUsage/Item.frame = 63

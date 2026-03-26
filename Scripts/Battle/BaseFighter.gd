@@ -84,7 +84,8 @@ func _ready():
 	og_magic = f_magic
 	og_defense = f_defense
 	
-	
+	if fighter_name == "jacques":
+		poison = true
 	
 func focus():
 	#if able:
@@ -319,6 +320,14 @@ func restore(id : String):
 		SE.effect("Revive")
 		$Effect.show()
 		$EffectPlayer.play("Restore")
+	elif id == "Icescream":
+		yield(get_tree().create_timer(0.2), "timeout")
+		if stun:	
+			stun_restore()
+	elif id == "Starberry":
+		yield(get_tree().create_timer(0.2), "timeout")
+		if poison:	
+			poison_restore()
 	elif id == "Perfect Panacea":
 		yield(get_tree().create_timer(0.2), "timeout")
 		status_restore()
@@ -772,6 +781,17 @@ func status_restore():
 		f_defense += (og_defense * 0.3)
 		whammy_chance += 1
 		
+func stun_restore():
+	if stun:
+		stun = false
+		stun_timer = 0
+		turn_used = false
+		
+func poison_restore():
+	if poison:
+		poison = false
+		poison_timer = 0
+		f_attack += (og_attack * 0.2)
 
 func status_countdown():
 	if stun:
@@ -912,6 +932,14 @@ func _dizzy():
 		
 func apply_type(id : String):
 	if not applied_type and not hocus_potion and not id == current_type:
+		applied_type = true
+		current_type = id
+		type_timer = 3
+	else:
+		return
+		
+func fighter_apply_type(id : String):
+	if not applied_type and not id == current_type:
 		applied_type = true
 		current_type = id
 		type_timer = 3
