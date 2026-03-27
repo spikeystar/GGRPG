@@ -80,11 +80,11 @@ func _ready():
 #	add_item()	
 #	add_item_name = "Strange Perfume"
 #	add_item()	
-#	add_item_name = "Faulty Amp"
-#	add_item()	
-	add_item_name = "Icescream"
+	add_item_name = "Ginger Tea"
 	add_item()	
-	add_item_name = "Hocus Potion"
+	add_item_name = "Magic Mushroom"
+	add_item()	
+	add_item_name = "Remedy Bouquet"
 	add_item()	
 		
 func add_item():

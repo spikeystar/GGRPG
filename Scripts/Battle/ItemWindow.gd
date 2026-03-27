@@ -96,7 +96,7 @@ func item_check():
 		$ItemInventory.frame = 48
 	
 	if item_id == "Polar Parfait":
-		$ItemInfo.text = "50 HP & 10 SP\nApplies Water type"
+		$ItemInfo.text = "50 HP & 10 SP\n\nApplies Water type"
 		$ItemInventory.position = Vector2(243, 65)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 		
@@ -104,7 +104,7 @@ func item_check():
 		$ItemInventory.frame = 50
 		
 	if item_id == "Flummery Flambe":
-		$ItemInfo.text = "50 HP & 10 SP\nApplies Fire type"
+		$ItemInfo.text = "50 HP & 10 SP\n\nApplies Fire type"
 		$ItemInventory.position = Vector2(242, 69)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 		
@@ -112,7 +112,7 @@ func item_check():
 		$ItemInventory.frame = 49
 		
 	if item_id == "Saffron Souffle":
-		$ItemInfo.text = "50 HP & 10 SP\nApplies Air type"
+		$ItemInfo.text = "50 HP & 10 SP\n\nApplies Air type"
 		$ItemInventory.position = Vector2(242, 75)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 		
@@ -120,7 +120,7 @@ func item_check():
 		$ItemInventory.frame = 51
 		
 	if item_id == "Nori Cookie":
-		$ItemInfo.text = "50 HP & 10 SP\nApplies Earth type"
+		$ItemInfo.text = "50 HP & 10 SP\n\nApplies Earth type"
 		$ItemInventory.position = Vector2(242.5, 72)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 		
@@ -128,7 +128,7 @@ func item_check():
 		$ItemInventory.frame = 52
 		
 	if item_id == "Icescream":
-		$ItemInfo.text = "100 HP & 20 SP\nHeals Stun status"
+		$ItemInfo.text = "100 HP & 20 SP\n\nHeals Stun status"
 		$ItemInventory.position = Vector2(240, 64)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 		
@@ -136,7 +136,7 @@ func item_check():
 		$ItemInventory.frame = 54
 		
 	if item_id == "Hocus Potion":
-		$ItemInfo.text = "30 SP\nPrevents all statuses for 3 turns"
+		$ItemInfo.text = "30 SP\n\nPrevents all statuses for 3 turns"
 		$ItemInventory.position = Vector2(240, 69)
 		$ItemInventory.scale = Vector2(1.12, 1.12)
 		
@@ -144,7 +144,7 @@ func item_check():
 		$ItemInventory.frame = 63
 	
 	if item_id == "Magic Mushroom":
-		$ItemInfo.text = "100 HP & 20 SP\nHeals all statuses & applies all buffs"
+		$ItemInfo.text = "100 HP & 20 SP\n\nHeals all statuses & applies all buffs"
 		$ItemInventory.position = Vector2(243, 68)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 		
@@ -152,7 +152,7 @@ func item_check():
 		$ItemInventory.frame = 56
 		
 	if item_id == "Starberry":
-		$ItemInfo.text = "150 HP & 50 SP\nHeals Poison status"
+		$ItemInfo.text = "150 HP & 50 SP\n\nHeals Poison status"
 		$ItemInventory.position = Vector2(249, 66)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 		
@@ -160,7 +160,7 @@ func item_check():
 		$ItemInventory.frame = 55
 		
 	if item_id == "Remedy Bouquet":
-		$ItemInfo.text = "30 HP & 5 SP for all\nHeals all statuses and debuffs"
+		$ItemInfo.text = "30 HP & 5 SP for all\n\nHeals all statuses and debuffs"
 		$ItemInventory.position = Vector2(247, 66)
 		$ItemInventory.scale = Vector2(1.2, 1.2)
 		
@@ -168,7 +168,7 @@ func item_check():
 		$ItemInventory.frame = 58
 		
 	if item_id == "Perfect Panacea":
-		$ItemInfo.text = "Fully heals & revives party\nApplies all buffs"
+		$ItemInfo.text = "Fully heals & revives party\n\nApplies all buffs"
 		$ItemInventory.position = Vector2(241, 66)
 		$ItemInventory.scale = Vector2(1.25, 1.25)
 		

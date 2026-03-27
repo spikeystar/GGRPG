@@ -1172,7 +1172,7 @@ func _on_Fighters_item_chosen():
 	if item_id == "Magic Mushroom":
 		$ItemUsage/Item.frame = 56
 		$ItemUsage/Item.position = Vector2(2, 5)
-		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
+		$ItemUsage/Item.scale = Vector2(0.95, 0.95)
 		$Fighters.item_name = "Magic Mushroom"
 		$Fighters.restore = true
 		$Fighters.buff("attack")
@@ -1704,7 +1704,7 @@ func _on_Enemies_Enemy_Attack():
 	
 func Basic():
 	SE.effect("Basic")
-	$Fighters.stun = true
+	#$Fighters.stun = true
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.move_spread = "single"

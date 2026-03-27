@@ -85,7 +85,7 @@ func _ready():
 	og_defense = f_defense
 	
 	if fighter_name == "jacques":
-		poison = true
+		stun = true
 	
 func focus():
 	#if able:
@@ -237,10 +237,6 @@ func heal(HP_amount):
 		SE.effect("Heal")
 		$Effect.show()
 		$EffectPlayer.play("Heal")
-		yield(get_tree().create_timer(0.2), "timeout")
-		var heal_text = text(TEXT_HEAL)
-		if heal_text:
-			heal_text.label.text = str(0)
 	else:
 		health = clamp(health + HP_amount, 0, f_health)
 		yield(get_tree().create_timer(0.2), "timeout")
@@ -300,70 +296,95 @@ func restore(id : String):
 		$Effect.show()
 		$EffectPlayer.play("Heal")
 	elif id == "Ginger Tea":
-		health = clamp(health + 10, 0, f_health)
-		PartyStats.party_sp = clamp(PartyStats.party_sp + 5, 0, PartyStats.party_max_sp)
-		yield(get_tree().create_timer(0.2), "timeout")
-		var heal_text = text(TEXT_HEAL)
-		if heal_text:
-			heal_text.label.text = str(10)
-		status_restore()
-		SE.effect("Revive")
-		$Effect.show()
-		$EffectPlayer.play("Restore")
-		yield(get_tree().create_timer(0.8), "timeout")
-		var sp_text = text(TEXT_SP)
-		if sp_text:
-			sp_text.label.text = str(5)
+		if not dead:
+			health = clamp(health + 10, 0, f_health)
+			PartyStats.party_sp = clamp(PartyStats.party_sp + 5, 0, PartyStats.party_max_sp)
+			yield(get_tree().create_timer(0.2), "timeout")
+			var heal_text = text(TEXT_HEAL)
+			if heal_text:
+				heal_text.label.text = str(10)
+			status_restore()
+			SE.effect("Revive")
+			$Effect.show()
+			$EffectPlayer.play("Restore")
+			yield(get_tree().create_timer(0.8), "timeout")
+			var sp_text = text(TEXT_SP)
+			if sp_text:
+				sp_text.label.text = str(5)
+		if dead:
+			yield(get_tree().create_timer(0.2), "timeout")
+			SE.effect("Revive")
+			$Effect.show()
+			$EffectPlayer.play("Restore")
 	elif id == "Remedy Bouquet":
-		health = clamp(health + 30, 0, f_health)
-		PartyStats.party_sp = clamp(PartyStats.party_sp + 5, 0, PartyStats.party_max_sp)
-		yield(get_tree().create_timer(0.2), "timeout")
-		var heal_text = text(TEXT_HEAL)
-		if heal_text:
-			heal_text.label.text = str(30)
-		status_restore()
-		SE.effect("Revive")
-		$Effect.show()
-		$EffectPlayer.play("Restore")
-		yield(get_tree().create_timer(0.8), "timeout")
-		var sp_text = text(TEXT_SP)
-		if sp_text:
-			sp_text.label.text = str(5)
+		if not dead:
+			status_restore()
+			health = clamp(health + 30, 0, f_health)
+			PartyStats.party_sp = clamp(PartyStats.party_sp + 5, 0, PartyStats.party_max_sp)
+			yield(get_tree().create_timer(0.2), "timeout")
+			var heal_text = text(TEXT_HEAL)
+			if heal_text:
+				heal_text.label.text = str(30)
+			SE.effect("Revive")
+			$Effect.show()
+			$EffectPlayer.play("Restore")
+			yield(get_tree().create_timer(0.8), "timeout")
+			var sp_text = text(TEXT_SP)
+			if sp_text:
+				sp_text.label.text = str(5)
+		if dead:
+			yield(get_tree().create_timer(0.2), "timeout")
+			SE.effect("Revive")
+			$Effect.show()
+			$EffectPlayer.play("Restore")
 	elif id == "Icescream":
 		yield(get_tree().create_timer(0.2), "timeout")
-		if stun:	
+		if stun and not dead:	
 			stun_restore()
 	elif id == "Starberry":
 		yield(get_tree().create_timer(0.2), "timeout")
-		if poison:	
+		if poison and not dead:	
 			poison_restore()
 	elif id == "Magic Mushroom":
-		health = clamp(health + 100, 0, f_health)
-		PartyStats.party_sp = clamp(PartyStats.party_sp + 20, 0, PartyStats.party_max_sp)
-		yield(get_tree().create_timer(0.2), "timeout")
-		var heal_text = text(TEXT_HEAL)
-		if heal_text:
-			heal_text.label.text = str(100)
-		status_restore()
-		SE.effect("Revive")
-		$Effect.show()
-		$EffectPlayer.play("Strange")
-		yield(get_tree().create_timer(0.8), "timeout")
-		var sp_text = text(TEXT_SP)
-		if sp_text:
-			sp_text.label.text = str(20)
+		if not dead:
+			health = clamp(health + 100, 0, f_health)
+			PartyStats.party_sp = clamp(PartyStats.party_sp + 20, 0, PartyStats.party_max_sp)
+			yield(get_tree().create_timer(0.2), "timeout")
+			var heal_text = text(TEXT_HEAL)
+			if heal_text:
+				heal_text.label.text = str(100)
+			status_restore()
+			SE.effect("Revive")
+			$Effect.show()
+			$EffectPlayer.play("Strange")
+			yield(get_tree().create_timer(0.8), "timeout")
+			var sp_text = text(TEXT_SP)
+			if sp_text:
+				sp_text.label.text = str(20)
+		if dead:
+			yield(get_tree().create_timer(0.2), "timeout")
+			SE.effect("Revive")
+			$Effect.show()
+			$EffectPlayer.play("Strange")
 	elif id == "Hocus Potion":
-		PartyStats.party_sp = clamp(PartyStats.party_sp + 20, 0, PartyStats.party_max_sp)
-		yield(get_tree().create_timer(0.2), "timeout")
-		hocus_potion = true
-		hocus_potion_timer = 3
-		SE.effect("Revive")
-		$Effect.show()
-		$EffectPlayer.play("Strange")
-		yield(get_tree().create_timer(0.8), "timeout")
-		var sp_text = text(TEXT_SP)
-		if sp_text:
-			sp_text.label.text = str(20)
+		if not dead:
+			PartyStats.party_sp = clamp(PartyStats.party_sp + 20, 0, PartyStats.party_max_sp)
+			yield(get_tree().create_timer(0.2), "timeout")
+			hocus_potion = true
+			hocus_potion_timer = 3
+			SE.effect("Revive")
+			$Effect.show()
+			$EffectPlayer.play("Strange")
+			yield(get_tree().create_timer(0.8), "timeout")
+			var sp_text = text(TEXT_SP)
+			if sp_text:
+				sp_text.label.text = str(20)
+		if dead:
+			yield(get_tree().create_timer(0.2), "timeout")
+			SE.effect("Revive")
+			$Effect.show()
+			$EffectPlayer.play("Strange")
+				
 	elif id == "Perfect Panacea":
 		yield(get_tree().create_timer(0.2), "timeout")
 		if dead:
@@ -434,15 +455,20 @@ func restore(id : String):
 		$EffectPlayer.play("SP")
 		
 func SP(SP_amount: int):
-	yield(get_tree().create_timer(0.2), "timeout")
-	SE.effect("Revive")
-	$Effect.show()
-	$EffectPlayer.play("SP")
-	yield(get_tree().create_timer(0.2), "timeout")
-	var sp_text = text(TEXT_SP)
-	if sp_text:
-		sp_text.label.text = str(SP_amount)
-	PartyStats.party_sp = clamp(PartyStats.party_sp + SP_amount, 0, PartyStats.party_max_sp)
+	if not dead:
+		yield(get_tree().create_timer(0.2), "timeout")
+		SE.effect("Revive")
+		$Effect.show()
+		$EffectPlayer.play("SP")
+		yield(get_tree().create_timer(0.2), "timeout")
+		var sp_text = text(TEXT_SP)
+		if sp_text:
+			sp_text.label.text = str(SP_amount)
+		PartyStats.party_sp = clamp(PartyStats.party_sp + SP_amount, 0, PartyStats.party_max_sp)
+	if dead:
+		SE.effect("Revive")
+		$Effect.show()
+		$EffectPlayer.play("SP")
 	
 func weapon_SP(SP_amount: int):
 #	if fighter_name == "jacques" and PartyStats.jacques_weapon == "Surfboard":
@@ -469,11 +495,12 @@ func SP_loss(SP_amount: int):
 	PartyStats.party_sp = clamp(PartyStats.party_sp - SP_amount, 0, PartyStats.party_max_sp)
 		
 func combo_heal(SP_amount : int):
-	yield(get_tree().create_timer(1), "timeout")
-	var sp_text = text(TEXT_SP)
-	if sp_text:
-		sp_text.label.text = str(SP_amount)
-	PartyStats.party_sp = clamp(PartyStats.party_sp + SP_amount, 0, PartyStats.party_max_sp)
+	if not dead:
+		yield(get_tree().create_timer(1), "timeout")
+		var sp_text = text(TEXT_SP)
+		if sp_text:
+			sp_text.label.text = str(SP_amount)
+		PartyStats.party_sp = clamp(PartyStats.party_sp + SP_amount, 0, PartyStats.party_max_sp)
 
 func damage(amount: int, damage_type: String):
 	var damage_text = text(TEXT_DAMAGE)

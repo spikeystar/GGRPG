@@ -955,6 +955,7 @@ func item_used():
 				fighters2[target_index].restore(item_name)
 				yield(get_tree().create_timer(0.25), "timeout")
 				huds_heal_update()
+				
 	fighter_index = selector_index
 	if not revive and not stun and not remedy_b and not perfect_p:
 		_on_WorldRoot_f_index_reset()
@@ -974,6 +975,9 @@ func item_used():
 		fighter_index = -1
 	else:
 		fighter_index = -1
+		
+	
+	
 	BB_active = false
 	heal = false
 	SP = false
@@ -1237,18 +1241,21 @@ func Remedy_Bouquet():
 		stun = fighters2[x].get_status("stun")
 		if stun:
 			fighters2[x].restore(item_name)
-			yield(get_tree().create_timer(0.25), "timeout")
 			target_index = x
 			stun_healing()
+			huds_heal_update()
 		else: 
 			fighters2[x].restore(item_name)
 			target_index = x
 			huds_heal_update()
 	fighter_index = selector_index
-	if not stun:
-		_on_WorldRoot_f_index_reset()
-	elif stun:
-		fighter_index = -1
+#	if not stun:
+#		_on_WorldRoot_f_index_reset()
+#	elif stun:
+#		fighter_index = -1
+	yield(get_tree().create_timer(0.5), "timeout")
+
+	_on_WorldRoot_f_index_reset()
 	
 func Perfect_Panacea():
 	for x in range (fighters2.size()):
