@@ -1166,21 +1166,23 @@ func _on_Fighters_item_chosen():
 		$ItemUsage/Item.frame = 63
 		$ItemUsage/Item.position = Vector2(-2, 8)
 		$ItemUsage/Item.scale = Vector2(0.88, 0.88)
-		$Fighters.perfect_p = true
+		$Fighters.restore = true
 		$Fighters.item_name = "Hocus Potion"
 		
 	if item_id == "Magic Mushroom":
 		$ItemUsage/Item.frame = 56
 		$ItemUsage/Item.position = Vector2(2, 5)
 		$ItemUsage/Item.scale = Vector2(0.85, 0.85)
-		$Fighters.perfect_p = true
 		$Fighters.item_name = "Magic Mushroom"
+		$Fighters.restore = true
+		$Fighters.buff("attack")
+		$Fighters.buff("magic")
+		$Fighters.buff("defense")
 		
 	if item_id == "Strange Perfume":
 		$ItemUsage/Item.frame = 64
 		$ItemUsage/Item.position = Vector2(6, 4)
 		$ItemUsage/Item.scale = Vector2(1.1, 1.1)
-		#$Fighters.perfect_p = true
 		$Fighters.item_name = "Strange Perfume"
 		
 	if item_id == "Jinx Doll":
@@ -1702,6 +1704,7 @@ func _on_Enemies_Enemy_Attack():
 	
 func Basic():
 	SE.effect("Basic")
+	$Fighters.stun = true
 	$Fighters.move_kind = "attack"
 	$Fighters.move_type = "neutral"
 	$Fighters.move_spread = "single"

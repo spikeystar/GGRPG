@@ -315,11 +315,20 @@ func restore(id : String):
 		if sp_text:
 			sp_text.label.text = str(5)
 	elif id == "Remedy Bouquet":
+		health = clamp(health + 30, 0, f_health)
+		PartyStats.party_sp = clamp(PartyStats.party_sp + 5, 0, PartyStats.party_max_sp)
 		yield(get_tree().create_timer(0.2), "timeout")
+		var heal_text = text(TEXT_HEAL)
+		if heal_text:
+			heal_text.label.text = str(30)
 		status_restore()
 		SE.effect("Revive")
 		$Effect.show()
 		$EffectPlayer.play("Restore")
+		yield(get_tree().create_timer(0.8), "timeout")
+		var sp_text = text(TEXT_SP)
+		if sp_text:
+			sp_text.label.text = str(5)
 	elif id == "Icescream":
 		yield(get_tree().create_timer(0.2), "timeout")
 		if stun:	
@@ -328,10 +337,35 @@ func restore(id : String):
 		yield(get_tree().create_timer(0.2), "timeout")
 		if poison:	
 			poison_restore()
+	elif id == "Magic Mushroom":
+		health = clamp(health + 100, 0, f_health)
+		PartyStats.party_sp = clamp(PartyStats.party_sp + 20, 0, PartyStats.party_max_sp)
+		yield(get_tree().create_timer(0.2), "timeout")
+		var heal_text = text(TEXT_HEAL)
+		if heal_text:
+			heal_text.label.text = str(100)
+		status_restore()
+		SE.effect("Revive")
+		$Effect.show()
+		$EffectPlayer.play("Strange")
+		yield(get_tree().create_timer(0.8), "timeout")
+		var sp_text = text(TEXT_SP)
+		if sp_text:
+			sp_text.label.text = str(20)
+	elif id == "Hocus Potion":
+		PartyStats.party_sp = clamp(PartyStats.party_sp + 20, 0, PartyStats.party_max_sp)
+		yield(get_tree().create_timer(0.2), "timeout")
+		hocus_potion = true
+		hocus_potion_timer = 3
+		SE.effect("Revive")
+		$Effect.show()
+		$EffectPlayer.play("Strange")
+		yield(get_tree().create_timer(0.8), "timeout")
+		var sp_text = text(TEXT_SP)
+		if sp_text:
+			sp_text.label.text = str(20)
 	elif id == "Perfect Panacea":
 		yield(get_tree().create_timer(0.2), "timeout")
-		status_restore()
-		#GIVE ALL BUFFS
 		if dead:
 			health = f_health
 			$AnimationPlayer.play_backwards("Fighter_Dead")
@@ -341,8 +375,12 @@ func restore(id : String):
 			turn_used = false
 		else:
 			pass
+		status_restore()
 		$Effect.show()
 		$EffectPlayer.play("Perfect")
+		apply_buff("attack")
+		apply_buff("magic")
+		apply_buff("defense")
 	elif id == "Miracle Bell":
 		yield(get_tree().create_timer(0.2), "timeout")
 		status_restore()

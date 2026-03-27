@@ -82,9 +82,9 @@ func _ready():
 #	add_item()	
 #	add_item_name = "Faulty Amp"
 #	add_item()	
-	add_item_name = "Starberry"
+	add_item_name = "Icescream"
 	add_item()	
-	add_item_name = "Flummery Flambe"
+	add_item_name = "Hocus Potion"
 	add_item()	
 		
 func add_item():
