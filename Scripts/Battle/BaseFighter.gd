@@ -84,8 +84,10 @@ func _ready():
 	og_magic = f_magic
 	og_defense = f_defense
 	
-	if fighter_name == "jacques":
-		stun = true
+	if fighter_name == "gary":
+		hocus_potion = true
+#	if fighter_name == "jacques":
+	#	stun = true
 	
 func focus():
 	#if able:
@@ -386,9 +388,9 @@ func restore(id : String):
 			$EffectPlayer.play("Strange")
 				
 	elif id == "Perfect Panacea":
-		yield(get_tree().create_timer(0.2), "timeout")
+		status_restore()
+		health = f_health
 		if dead:
-			health = f_health
 			$AnimationPlayer.play_backwards("Fighter_Dead")
 			$AnimationPlayer.play("Fighter_BattleReady")
 			dead = false
@@ -396,12 +398,15 @@ func restore(id : String):
 			turn_used = false
 		else:
 			pass
-		status_restore()
+		PartyStats.party_sp = PartyStats.party_max_sp
+		yield(get_tree().create_timer(0.2), "timeout")
+		SE.effect("Revive")
 		$Effect.show()
 		$EffectPlayer.play("Perfect")
 		apply_buff("attack")
 		apply_buff("magic")
 		apply_buff("defense")
+		
 	elif id == "Miracle Bell":
 		yield(get_tree().create_timer(0.2), "timeout")
 		status_restore()
@@ -996,7 +1001,7 @@ func _dizzy():
 		return
 		
 func apply_type(id : String):
-	if not applied_type and not hocus_potion and not id == current_type:
+	if not applied_type and not hocus_potion and not id == current_type and not dead:
 		applied_type = true
 		current_type = id
 		type_timer = 3
@@ -1004,7 +1009,7 @@ func apply_type(id : String):
 		return
 		
 func fighter_apply_type(id : String):
-	if not applied_type and not id == current_type:
+	if not applied_type and not id == current_type and not dead:
 		applied_type = true
 		current_type = id
 		type_timer = 3
