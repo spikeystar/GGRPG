@@ -68,6 +68,7 @@ func _ready():
 	
 	#gary_current_health = 1
 	#jacques_current_health = 1
+	#jacques_defense = 0
 	#irina_current_health = 1
 	#gary_magic = 5000
 	

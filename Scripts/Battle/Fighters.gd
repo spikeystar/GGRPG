@@ -987,10 +987,12 @@ func item_used():
 	fighters_active_check()
 
 func buff(id : String):
-	fighters2[target_index].apply_buff(id)
+	if not fighters2[target_index].dead:
+		fighters2[target_index].apply_buff(id)
 	
 func random_buff():
-	fighters2[target_index].random_buff()
+	if not fighters2[target_index].dead:
+		fighters2[target_index].random_buff()
 
 func _on_ItemInventory_battle_item_chosen():
 	selector_index = fighter_index

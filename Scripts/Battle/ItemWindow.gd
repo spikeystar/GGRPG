@@ -30,13 +30,13 @@ func item_check():
 		$ItemInventory.show()
 		$ItemInventory.frame = 0
 		$ItemInfo.text = "50 HP"
-		$ItemInventory.position = Vector2(243, 62)
+		$ItemInventory.position = Vector2(244, 62)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 	if item_id == "Pretty Gem":
 		$ItemInventory.show()
 		$ItemInventory.frame = 1
 		$ItemInfo.text = "20 SP"
-		$ItemInventory.position = Vector2(243, 62)
+		$ItemInventory.position = Vector2(244, 62)
 		$ItemInventory.scale = Vector2(1.1, 1.1)
 	if item_id == "Picnic Pie":
 		$ItemInventory.show()
