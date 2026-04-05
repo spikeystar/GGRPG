@@ -844,12 +844,12 @@ menu_parent_path = NodePath("../TrinketsInventory")
 cursor_offset = Vector2( 17, 2.5 )
 
 [node name="TrinketInventory" type="Sprite" parent="Trinkets"]
-position = Vector2( 90, -119 )
+position = Vector2( 91, -116 )
 scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 12 )
 hframes = 3
 vframes = 32
-frame = 13
+frame = 44
 
 [node name="Held_name" type="Label" parent="Trinkets"]
 margin_left = 62.0

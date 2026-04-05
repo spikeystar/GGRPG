@@ -217,3 +217,11 @@ func effect(id : String):
 		$Thunderstorm.play()
 	if id == "Zap":
 		$Zap.play()
+	if id == "Spikey Bomb":
+		$Spikey_Bomb.play()
+	if id == "Chilly Globe":
+		$Chilly_Globe.play()
+	if id == "Blister Grenade":
+		$Blister_Grenade.play()
+	if id == "Faulty Amp":
+		$Faulty_Amp.play()

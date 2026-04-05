@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Chilly Globe SE.mp3-c0388fde19a3648e28303f1f03cc5f2a.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Chilly Globe SE.mp3"
+dest_files=[ "res://.import/Chilly Globe SE.mp3-c0388fde19a3648e28303f1f03cc5f2a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -337,15 +337,34 @@ func set_id():
 		$Display.scale = Vector2(1.15, 1.15)
 		
 	#####
+	if item_id == "Lucky Locket":
+		$Display.show()
+		$Display.frame = 14
+		$Cost.text = "5,000 Mb"
+		item_cost = 5000
+		$Info.text = "Doubles battle marbles\nWhammy! chance +2"
+		$Carrying.hide()
+		$Display.position = Vector2(86.5, -71.5)
+		$Display.scale = Vector2(1.1, 1.1)
+		
+	if item_id == "Bottlecap":
+		$Display.show()
+		$Display.frame = 17
+		$Cost.text = "5,000 Mb"
+		item_cost = 5000
+		$Info.text = "Doubles battle EXP\nLowers all party stats by 30%"
+		$Carrying.hide()
+		$Display.position = Vector2(89.5, -85)
+		$Display.scale = Vector2(1.1, 1.1)
 	
 	if item_id == "Ruby Pendant":
 		$Display.show()
 		$Display.frame = 18
 		$Cost.text = "5,000 Mb"
 		item_cost = 5000
-		$Info.text = "Magic & Defense +20%\nSets type to Fire & Whammy! chance +2"
+		$Info.text = "Magic & Defense +20%\nSets type to Fire\nWhammy! chance +2"
 		$Carrying.hide()
-		$Display.position = Vector2(84.5, -79)
+		$Display.position = Vector2(85, -79)
 		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Sapphire Pendant":
@@ -353,9 +372,9 @@ func set_id():
 		$Display.frame = 19
 		$Cost.text = "5,000 Mb"
 		item_cost = 5000
-		$Info.text = "Magic & Defense +20%\nSets type to Water & Whammy! chance +2"
+		$Info.text = "Magic & Defense +20%\nSets type to Water\nWhammy! chance +2"
 		$Carrying.hide()
-		$Display.position = Vector2(84.5, -79)
+		$Display.position = Vector2(85, -79)
 		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Topaz Pendant":
@@ -363,9 +382,9 @@ func set_id():
 		$Display.frame = 20
 		$Cost.text = "5,000 Mb"
 		item_cost = 5000
-		$Info.text = "Magic & Defense +20%\nSets type to Air & Whammy! chance +2"
+		$Info.text = "Magic & Defense +20%\nSets type to Air\nWhammy! chance +2"
 		$Carrying.hide()
-		$Display.position = Vector2(84.5, -79)
+		$Display.position = Vector2(85, -79)
 		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Peridot Pendant":
@@ -373,9 +392,9 @@ func set_id():
 		$Display.frame = 21
 		$Cost.text = "5,000 Mb"
 		item_cost = 5000
-		$Info.text = "Magic & Defense +20%\nSets type to Earth & Whammy! chance +2"
+		$Info.text = "Magic & Defense +20%\nSets type to Earth\nWhammy! chance +2"
 		$Carrying.hide()
-		$Display.position = Vector2(84.5, -79)
+		$Display.position = Vector2(85, -79)
 		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Flashlight":
@@ -383,7 +402,7 @@ func set_id():
 		$Display.frame = 24
 		$Cost.text = "4,000 Mb"
 		item_cost = 4000
-		$Info.text = "Holder's Magic +20%\nPrevents Targeted status on party"
+		$Info.text = "Magic +20%\nPrevents Targeted status for whole party"
 		$Carrying.hide()
 		$Display.position = Vector2(84, -79)
 		$Display.scale = Vector2(1.1, 1.1)
@@ -393,7 +412,7 @@ func set_id():
 		$Display.frame = 29
 		$Cost.text = "3,000 Mb"
 		item_cost = 3000
-		$Info.text = "Holder's Magic +20%\nPrevents Dizzy status on party"
+		$Info.text = "Magic +20%\nPrevents Dizzy status for whole party"
 		$Carrying.hide()
 		$Display.position = Vector2(87.5, -78.5)
 		$Display.scale = Vector2(1.1, 1.1)
@@ -403,9 +422,9 @@ func set_id():
 		$Display.frame = 32
 		$Cost.text = "5,000 Mb"
 		item_cost = 5000
-		$Info.text = "Party's Defense +30%\nKeeps party types as Neutral"
+		$Info.text = "Defense +30% for whole party\nKeeps party types as Neutral entire battle"
 		$Carrying.hide()
-		$Display.position = Vector2(84, -82)
+		$Display.position = Vector2(85, -83)
 		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Antique Watch":
@@ -413,9 +432,9 @@ func set_id():
 		$Display.frame = 33
 		$Cost.text = "7,000 Mb"
 		item_cost = 7000
-		$Info.text = "Magic +10%\nStun chance +10% & Whammy! chance +2"
+		$Info.text = "Magic +10%, prevents Stun status\nAttacks that Stun have +10% chance"
 		$Carrying.hide()
-		$Display.position = Vector2(85, -78.5)
+		$Display.position = Vector2(85, -80)
 		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Black Bass":
@@ -483,9 +502,9 @@ func set_id():
 		$Display.frame = 22
 		$Cost.text = "10,000 Mb"
 		item_cost = 10000
-		$Info.text = "Magic & Defense +30%\nImmune to Neutral move effects & Whammy! chance +4"
+		$Info.text = "Magic & Defense +30%\nImmune to status effects from Neutral moves\nWhammy! chance +4"
 		$Carrying.hide()
-		$Display.position = Vector2(84.5, -79)
+		$Display.position = Vector2(85, -79)
 		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Shiny Watch":
@@ -493,9 +512,9 @@ func set_id():
 		$Display.frame = 34
 		$Cost.text = "10,000 Mb"
 		item_cost = 10000
-		$Info.text = "Magic +20%\nStun chance +20% & Whammy! chance +2"
+		$Info.text = "Magic +20%, prevents Stun status\nAttacks that Stun have +10% chance\nBuffs +1 turn, Debuffs -1 turn"
 		$Carrying.hide()
-		$Display.position = Vector2(85, -78.5)
+		$Display.position = Vector2(85, -80)
 		$Display.scale = Vector2(1.1, 1.1)
 		
 	if item_id == "Spiderbite Ring":
@@ -503,7 +522,7 @@ func set_id():
 		$Display.frame = 25
 		$Cost.text = "8,000 Mb"
 		item_cost = 8000
-		$Info.text = "All stats +40% & Whammy! chance +5 while afflicted by a status"
+		$Info.text = "All stats +30% & Whammy! chance +5 while afflicted by a status"
 		$Carrying.hide()
 		$Display.position = Vector2(84.5, -76.5)
 		$Display.scale = Vector2(1.15, 1.15)
@@ -513,9 +532,9 @@ func set_id():
 		$Display.frame = 40
 		$Cost.text = "12,000 Mb"
 		item_cost = 12000
-		$Info.text = "All stats +10% & Whammy! chance +5\nRecover 5% HP & 10% SP each turn"
+		$Info.text = "Recover 10% max HP & SP each turn\nWhammy! chance +2"
 		$Carrying.hide()
-		$Display.position = Vector2(81, -76)
+		$Display.position = Vector2(82, -77)
 		$Display.scale = Vector2(1.1, 1.1)
 
 func _input(event):

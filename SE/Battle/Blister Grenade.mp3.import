@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Blister Grenade.mp3-fbd25bc4519f599fdedc44879b5be5c0.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Blister Grenade.mp3"
+dest_files=[ "res://.import/Blister Grenade.mp3-fbd25bc4519f599fdedc44879b5be5c0.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

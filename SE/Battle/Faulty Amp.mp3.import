@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Faulty Amp.mp3-7e12a0e8c4eb1263f38dc93bfc3384d9.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Faulty Amp.mp3"
+dest_files=[ "res://.import/Faulty Amp.mp3-7e12a0e8c4eb1263f38dc93bfc3384d9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

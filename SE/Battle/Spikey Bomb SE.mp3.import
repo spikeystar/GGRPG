@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Spikey Bomb SE.mp3-d5c39d9e000a245c78d11cedd4e9be32.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Spikey Bomb SE.mp3"
+dest_files=[ "res://.import/Spikey Bomb SE.mp3-d5c39d9e000a245c78d11cedd4e9be32.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

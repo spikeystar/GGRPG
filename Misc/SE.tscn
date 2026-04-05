@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=2]
+[gd_scene load_steps=98 format=2]
 
 [ext_resource path="res://SE/Item Get SE.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Misc/SE.gd" type="Script" id=2]
@@ -93,6 +93,10 @@
 [ext_resource path="res://SE/Water Gun SE.mp3" type="AudioStream" id=91]
 [ext_resource path="res://SE/Countdown SE.mp3" type="AudioStream" id=92]
 [ext_resource path="res://SE/Pressed.mp3" type="AudioStream" id=93]
+[ext_resource path="res://SE/Battle/Spikey Bomb SE.mp3" type="AudioStream" id=94]
+[ext_resource path="res://SE/Battle/Chilly Globe SE.mp3" type="AudioStream" id=95]
+[ext_resource path="res://SE/Battle/Blister Grenade.mp3" type="AudioStream" id=96]
+[ext_resource path="res://SE/Battle/Faulty Amp.mp3" type="AudioStream" id=97]
 
 [node name="SE" type="Node"]
 pause_mode = 2
@@ -481,3 +485,19 @@ volume_db = 4.0
 stream = ExtResource( 93 )
 volume_db = -2.0
 pitch_scale = 0.9
+
+[node name="Spikey_Bomb" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 94 )
+volume_db = -2.0
+
+[node name="Chilly_Globe" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 95 )
+volume_db = -8.0
+
+[node name="Blister_Grenade" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 96 )
+volume_db = -2.0
+
+[node name="Faulty_Amp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 97 )
+volume_db = 1.0
