@@ -1254,7 +1254,7 @@ func _on_Enemies_item_chosen():
 		$ItemUsage/Item.frame = 53
 		$ItemUsage/Item.position = Vector2(2, 8)
 		$ItemUsage/Item.scale = Vector2(1.1, 1.1)
-		$Enemies.item_damage = 100
+		$Enemies.item_damage = 200
 		$Enemies.move_type = "neutral"
 		Spikey_Bomb()
 		yield(get_tree().create_timer(1.5), "timeout")
@@ -1262,7 +1262,7 @@ func _on_Enemies_item_chosen():
 		$ItemUsage/Item.frame = 60
 		$ItemUsage/Item.position = Vector2(-2, 11)
 		$ItemUsage/Item.scale = Vector2(0.9, 0.9)
-		$Enemies.item_damage = 10
+		$Enemies.item_damage = 200
 		$Enemies.move_type = "water"
 		Chilly_Globe()
 		yield(get_tree().create_timer(1.5), "timeout")
@@ -1270,7 +1270,7 @@ func _on_Enemies_item_chosen():
 		$ItemUsage/Item.frame = 62
 		$ItemUsage/Item.position = Vector2(3, 13)
 		$ItemUsage/Item.scale = Vector2(0.98, 0.98)
-		$Enemies.item_damage = 10
+		$Enemies.item_damage = 200
 		$Enemies.move_type = "earth"
 		Power_Drill()
 		yield(get_tree().create_timer(1.5), "timeout")
@@ -1278,7 +1278,7 @@ func _on_Enemies_item_chosen():
 		$ItemUsage/Item.frame = 59
 		$ItemUsage/Item.position = Vector2(3, 3)
 		$ItemUsage/Item.scale = Vector2(1.1, 1.1)
-		$Enemies.item_damage = 10
+		$Enemies.item_damage = 200
 		$Enemies.move_type = "fire"
 		Blister_Grenade()
 		yield(get_tree().create_timer(1.5), "timeout")
@@ -1286,7 +1286,7 @@ func _on_Enemies_item_chosen():
 		$ItemUsage/Item.frame = 61
 		$ItemUsage/Item.position = Vector2(2, 10)
 		$ItemUsage/Item.scale = Vector2(1.1, 1.1)
-		$Enemies.item_damage = 10
+		$Enemies.item_damage = 200
 		$Enemies.move_type = "air"
 		Faulty_Amp()
 		yield(get_tree().create_timer(1.5), "timeout")
@@ -2190,6 +2190,7 @@ func Chilly_Globe():
 func Power_Drill():
 	$MovePlayer.position = Vector2(0, 0)
 	yield(get_tree().create_timer(2), "timeout")
+	SE.effect("Power Drill")
 	$MovePlayer/AnimPlayer.play("Power_Drill")
 	yield(get_tree().create_timer(0.2), "timeout")
 	$WindowPlayer.play("little_shake")

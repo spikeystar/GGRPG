@@ -225,3 +225,5 @@ func effect(id : String):
 		$Blister_Grenade.play()
 	if id == "Faulty Amp":
 		$Faulty_Amp.play()
+	if id == "Power Drill":
+		$Power_Drill.play()

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Power Drill.mp3-1f8cee4827cd806278fe8ff46ed7825d.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Power Drill.mp3"
+dest_files=[ "res://.import/Power Drill.mp3-1f8cee4827cd806278fe8ff46ed7825d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
