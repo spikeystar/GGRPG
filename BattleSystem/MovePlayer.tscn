@@ -1491,10 +1491,34 @@ tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0, 1.1, 1.7 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.7, 1.1, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0.7, 0.6, 1.1 ]
+"values": [ 0.75, 0.7, 0.6, 1.1 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Jinx_Doll/CanvasLayer:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Jinx_Doll/CanvasLayer:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.0196078 ), Color( 1, 1, 1, 0.0392157 ), Color( 1, 1, 1, 0.0980392 ), Color( 1, 1, 1, 0.0588235 ), Color( 1, 1, 1, 0.0392157 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -4151,6 +4175,30 @@ tracks/204/keys = {
 "update": 0,
 "values": [ Vector2( 1.55, 1.55 ) ]
 }
+tracks/205/type = "value"
+tracks/205/path = NodePath("Jinx_Doll/CanvasLayer:visible")
+tracks/205/interp = 1
+tracks/205/loop_wrap = true
+tracks/205/imported = false
+tracks/205/enabled = true
+tracks/205/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/206/type = "value"
+tracks/206/path = NodePath("Jinx_Doll/CanvasLayer:modulate")
+tracks/206/interp = 1
+tracks/206/loop_wrap = true
+tracks/206/imported = false
+tracks/206/enabled = true
+tracks/206/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.0392157 ) ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "Sabotage"
@@ -6462,3 +6510,12 @@ position = Vector2( 34, 21 )
 scale = Vector2( 1.55, 1.55 )
 texture = ExtResource( 68 )
 hframes = 2
+
+[node name="CanvasLayer" type="ColorRect" parent="Jinx_Doll"]
+visible = false
+modulate = Color( 1, 1, 1, 0.0392157 )
+margin_left = -1146.0
+margin_top = -1002.0
+margin_right = 1185.0
+margin_bottom = 992.0
+color = Color( 0.54902, 0.101961, 1, 1 )

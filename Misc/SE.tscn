@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=2]
+[gd_scene load_steps=101 format=2]
 
 [ext_resource path="res://SE/Item Get SE.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Misc/SE.gd" type="Script" id=2]
@@ -98,6 +98,8 @@
 [ext_resource path="res://SE/Battle/Blister Grenade.mp3" type="AudioStream" id=96]
 [ext_resource path="res://SE/Battle/Faulty Amp.mp3" type="AudioStream" id=97]
 [ext_resource path="res://SE/Battle/Power Drill.mp3" type="AudioStream" id=98]
+[ext_resource path="res://SE/Battle/Strange Perfume.mp3" type="AudioStream" id=99]
+[ext_resource path="res://SE/Battle/Jinx Doll SE.mp3" type="AudioStream" id=100]
 
 [node name="SE" type="Node"]
 pause_mode = 2
@@ -505,3 +507,13 @@ volume_db = 1.0
 
 [node name="Power_Drill" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 98 )
+
+[node name="Strange_Perfume" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 99 )
+volume_db = 13.0
+pitch_scale = 1.05
+
+[node name="Jinx_Doll" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 100 )
+volume_db = 3.0
+pitch_scale = 1.05

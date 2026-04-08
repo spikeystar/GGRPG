@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Jinx Doll SE.mp3-81c5bd14a6449b8cfc2ee48bcf66bb22.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Jinx Doll SE.mp3"
+dest_files=[ "res://.import/Jinx Doll SE.mp3-81c5bd14a6449b8cfc2ee48bcf66bb22.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

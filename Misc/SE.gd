@@ -227,3 +227,7 @@ func effect(id : String):
 		$Faulty_Amp.play()
 	if id == "Power Drill":
 		$Power_Drill.play()
+	if id == "Strange Perfume":
+		$Strange_Perfume.play()
+	if id == "Jinx Doll":
+		$Jinx_Doll.play()

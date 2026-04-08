@@ -74,13 +74,13 @@ func _ready():
 	#add_trinket_name = "Gold Earring"
 	#add_trinket()	
 	
-	add_item_name = "Chilly Globe"
+	add_item_name = "Strange Perfume"
 	add_item()	
-	add_item_name = "Blister Grenade"
+	add_item_name = "Strange Perfume"
 	add_item()	
-	add_item_name = "Faulty Amp"
+	add_item_name = "Jinx Doll"
 	add_item()	
-	add_item_name = "Power Drill"
+	add_item_name = "Jinx Doll"
 	add_item()	
 
 		

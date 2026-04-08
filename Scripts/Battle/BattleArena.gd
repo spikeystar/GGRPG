@@ -2228,6 +2228,7 @@ func Strange_Perfume():
 	yield(get_tree().create_timer(1.8), "timeout")
 	$WindowPlayer.play("darken")
 	yield(get_tree().create_timer(0.8), "timeout")
+	SE.effect("Strange Perfume")
 	$MovePlayer/AnimPlayer.play("Strange_Perfume")
 	yield(get_tree().create_timer(1.7), "timeout")
 	$WindowPlayer.playback_speed = 1
@@ -2241,6 +2242,7 @@ func Jinx_Doll():
 	yield(get_tree().create_timer(1.8), "timeout")
 	$WindowPlayer.play("darken")
 	yield(get_tree().create_timer(0.8), "timeout")
+	SE.effect("Jinx Doll")
 	$MovePlayer/AnimPlayer.play("Jinx_Doll")
 	yield(get_tree().create_timer(2.5), "timeout")
 	$WindowPlayer.playback_speed = 1

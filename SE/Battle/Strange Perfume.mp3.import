@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Strange Perfume.mp3-733d2f72d871085388095f8c8ba0745f.mp3str"
+
+[deps]
+
+source_file="res://SE/Battle/Strange Perfume.mp3"
+dest_files=[ "res://.import/Strange Perfume.mp3-733d2f72d871085388095f8c8ba0745f.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
