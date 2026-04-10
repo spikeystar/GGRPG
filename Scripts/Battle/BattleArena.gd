@@ -166,7 +166,11 @@ func boss_event():
 		Party.boss_event()
 		
 
-		
+func trinket_reset():
+	SceneManager.comfy_blanket = false
+	SceneManager.stress_ball = false
+	SceneManager.lucky_locket = false
+
 #Window Display
 func hide_cursors():
 	if BB_active:
@@ -757,6 +761,7 @@ func _on_Flee_cursor_selected():
 		SE.effect("Flee")
 		ongoing = true
 		$DefenseWindow/MenuCursor.cursor_active = false
+		trinket_reset()
 		if defend_show:
 			$Fighters/HUDS.hide()
 			$DefenseWindow.hide()
@@ -844,9 +849,13 @@ func _on_Enemies_victory():
 	if not boss_battle and not event_battle:
 		EXP_reward =	int(EXP_base + (rand_range(0.05, 0.2) * EXP_base))
 		marbles_reward = int(marbles_base + (rand_range(0.05, 0.2) * marbles_base))
+		if SceneManager.lucky_locket:
+			marbles_reward += marbles_reward
 	else:
 		EXP_reward = EXP_base
 		marbles_reward = marbles_base
+		if SceneManager.lucky_locket:
+			marbles_reward += (marbles_reward/2)
 		
 	PartyStats.party_exp += EXP_reward
 	Party.marbles = clamp(Party.marbles + marbles_reward, 0, 999999)
@@ -869,6 +878,7 @@ func _on_Enemies_victory():
 	$VictoryWindow.show()
 	$WindowPlayer.play("victory_open")
 	emit_signal("update_party")
+	trinket_reset()
 	
 	$Fighters.hide_cursors_remote()
 	$Fighters.victory()
@@ -891,6 +901,7 @@ func _on_Enemies_victory():
 		victory_ended = true
 	
 func _on_Fighters_game_over():
+	trinket_reset()
 	SceneManager.game_over = true
 	ongoing = true
 	yield(get_tree().create_timer(1.5), "timeout")

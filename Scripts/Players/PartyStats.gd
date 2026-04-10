@@ -71,7 +71,8 @@ func _ready():
 	#jacques_defense = 0
 	#irina_current_health = 1
 	#gary_magic = 5000
-	gary_attack = 5000
+	#gary_attack = 5000
+	#gary_trinket = "Martyr's Medal"
 	
 	#party_sp = 0
 	

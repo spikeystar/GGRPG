@@ -493,11 +493,12 @@ func anxious_SP(SP_amount: int):
 		PartyStats.party_sp = clamp(PartyStats.party_sp - SP_amount, 0, PartyStats.party_max_sp)
 	
 func SP_loss(SP_amount: int):
-	yield(get_tree().create_timer(2), "timeout")
-	var sp_text = text(TEXT_LOSS)
-	if sp_text:
-		sp_text.label.text = str(SP_amount)
-	PartyStats.party_sp = clamp(PartyStats.party_sp - SP_amount, 0, PartyStats.party_max_sp)
+	if not SceneManager.comfy_blanket:
+		yield(get_tree().create_timer(2), "timeout")
+		var sp_text = text(TEXT_LOSS)
+		if sp_text:
+			sp_text.label.text = str(SP_amount)
+		PartyStats.party_sp = clamp(PartyStats.party_sp - SP_amount, 0, PartyStats.party_max_sp)
 		
 func combo_heal(SP_amount : int):
 	if not dead:
@@ -785,7 +786,7 @@ func spell_1():
 	$AnimationPlayer.play("Spell_1")
 	
 func spell_2():
-	$AnimationPlayer.play("Spell_2")
+	$AnimationPlayer.play("Spell_2")	
 	
 func set_trinket():
 	if trinket == "Gold Bracelet":
@@ -796,6 +797,20 @@ func set_trinket():
 		whammy_chance += 5
 	if trinket == "Gold Earring":
 		f_magic = int(f_magic + (f_magic*0.3))
+		whammy_chance += 5
+	if trinket == "Comfy Blanket":
+		f_defense = int(f_defense + (f_defense*0.2))
+		SceneManager.comfy_blanket = true
+	if trinket == "Stress Ball":
+		f_attack = int(f_attack + (f_attack*0.2))
+		SceneManager.stress_ball = true
+	if trinket == "Lucky Locket":
+		whammy_chance += 2
+		SceneManager.lucky_locket = true
+	if trinket == "Martyr's Medal":
+		f_attack = int(f_attack + (f_attack*0.3))
+		f_magic = int(f_magic + (f_magic*0.3))
+		f_defense = int(f_defense - (f_defense*0.5))
 		whammy_chance += 5
 		
 func set_fortune():
@@ -971,7 +986,7 @@ func envenomate():
 		return
 		
 func _anxious():
-	if not anxious and not hocus_potion:
+	if not anxious and not hocus_potion and not SceneManager.comfy_blanket:
 		anxious = true
 		anxious_timer = 3
 		f_magic -= (og_magic * 0.2)
@@ -987,7 +1002,7 @@ func _targeted():
 		return
 	
 func _wimpy():
-	if not wimpy and not dizzy and not hocus_potion:
+	if not wimpy and not dizzy and not hocus_potion and not SceneManager.stress_ball:
 		wimpy = true
 		wimpy_timer = 4
 	else:

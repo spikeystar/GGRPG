@@ -43,5 +43,23 @@ var score = 0
 var ammo_b = false
 var ammo_c = false
 
+var comfy_blanket = false
+var stress_ball = false
+var lucky_locket = false
+var beggars_amulet = false
+var bottlecap = false
+var flashlight = false
+var ripple_ribbon = false
+var toxic_barb = false
+var compass = false
+var cloud_shroud = false
+var shooting_star = false
+var white_flag = false
+var antique_watch = false
+var shiny_watch = false
+var megaphone = false
+var super_cape = false
+var flower_crown = false
+
 ## DEBUG ##
 var times = 0
