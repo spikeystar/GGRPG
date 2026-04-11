@@ -51,6 +51,8 @@ var d_debuff_timer = 0
 var buff_counter = 0
 var debuff_counter = 0
 
+var ripple_exception = false
+
 var damage_type : String
 
 export(String) var move1 = ""
@@ -171,6 +173,7 @@ func heal(amount : int):
 
 	
 func damage(amount: int):
+	ripple_exception = true
 	var damage_text = text(TEXT_DAMAGE)
 	if damage_text:
 		damage_text.label.text = str(amount)
@@ -188,8 +191,10 @@ func damage(amount: int):
 	$AnimationPlayer.playback_speed = 0.5
 	$AnimationPlayer.play("enemy_idle")
 	whammy = false
+	ripple_exception = false
 	
 func magic_damage(amount: int, damage_type: String):
+	ripple_exception = true
 	var damage_text = text(TEXT_DAMAGE)
 	if damage_text:
 		damage_text.label.text = str(amount)
@@ -203,6 +208,7 @@ func magic_damage(amount: int, damage_type: String):
 	yield(get_tree().create_timer(1.7), "timeout")
 	$AnimationPlayer.playback_speed = 0.5
 	$AnimationPlayer.play("enemy_idle")
+	ripple_exception = false
 	
 func poison_damage():
 	var amount = e_health / 10

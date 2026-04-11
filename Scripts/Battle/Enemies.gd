@@ -71,6 +71,9 @@ var stun_chance : int
 var poison_chance : int
 var strange_perfume = false
 
+var ripple_damage
+var toxic_barb
+
 
 var random_debuff
 var multi_debuff
@@ -272,6 +275,16 @@ func _on_WorldRoot_hide_enemy_cursor():
 func _on_AttackTimer_attack_bonus():
 	attack_bonus = true
 	
+func _ripple_damage():
+	for x in range(enemies.size()):
+		if not enemies[x].ripple_exception:
+			enemies[x].damage(int(ripple_damage))
+			
+func _ripple_magic_damage():
+	for x in range(enemies.size()):
+		if not enemies[x].ripple_exception:
+			enemies[x].magic_damage(int(ripple_damage), damage_type)
+	
 func enemy_damage():
 	BB_active = false
 	randomize()
@@ -284,10 +297,15 @@ func enemy_damage():
 	var type_bonus : String = type_matchup()
 	var whammy = false
 	var whammy_hit = rng.randi_range(1, 100)
+	var ripple_chance = rng.randi_range(1, 100)
 	if whammy_hit <= whammy_chance:
 		whammy = true
+	if toxic_barb:
+		var toxic_chance  = rng.randi_range(1, 100)
+		if toxic_chance <= 25:
+			poison = true
 		
-	print(str(f_total) + "damage")
+	#print(str(f_total) + "damage")
 	
 	damage = clamp(((((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)), 0, 999)
 	if attack_bonus:
@@ -308,7 +326,17 @@ func enemy_damage():
 	target_enemy.damage(damage)
 	is_attack = false
 	
-	
+	if SceneManager.ripple_ribbon:
+		ripple_damage = int(damage/3)
+		if ripple_chance <= 100:
+			var ripple_timer = Timer.new()
+			ripple_timer.one_shot = true
+			add_child(ripple_timer)
+			ripple_timer.start(0.6)
+			ripple_timer.connect("timeout", self, "_ripple_damage")
+
+
+						
 	#if is_attack and not attack_bonus:
 		#damage = max(0, ((f_total) + int(f_total * (rand_range(0.05, 0.15)))) - e_defense)
 		#target_enemy.damage(damage)
@@ -328,17 +356,38 @@ func enemy_damage():
 		target_enemy.death()
 		enemies.remove(enemy_index)
 		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
-		yield(get_tree().create_timer(0.5), "timeout")
-		ongoing = false
+		#yield(get_tree().create_timer(0.5), "timeout")
+		#ongoing = false
 	elif target_enemy.is_dead() and boss_battle:
 		ongoing = true
 		boss_check()
 		enemies.remove(enemy_index)
 		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
-		yield(get_tree().create_timer(0.5), "timeout")
-		ongoing = false
+		#yield(get_tree().create_timer(0.5), "timeout")
+		#ongoing = false
 	else:
 		target_enemy.reset_animation()
+	if not SceneManager.ripple_ribbon:
+		yield(get_tree().create_timer(0.5), "timeout")
+		ongoing = false
+		
+	if SceneManager.ripple_ribbon:
+		yield(get_tree().create_timer(0.59), "timeout")
+		for x in range(enemies.size()):
+			if enemies[x].is_dead() and not boss_battle:
+				enemies[x].death()
+				enemies[x].death_tagged = true
+			elif enemies[x].is_dead() and boss_battle:
+				enemy_index = x
+				boss_check()
+		for x in range(enemies.size() -1, -1, -1):
+			var death_tagged = enemies[x].get_death_tag()
+			if death_tagged == true:
+				enemies.remove(x)
+				enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
+		yield(get_tree().create_timer(0.5), "timeout")
+		ongoing = false
+		
 	if enemies.size() == 0:
 		emit_signal("victory")
 		SceneManager.victory = true
@@ -354,6 +403,14 @@ func magic_damage():
 	var damage : int
 	var e_defense = target_enemy.get_e_defense()
 	var f_total = f_magic + f_magic_base
+	
+	var ripple_chance = rng.randi_range(1, 100)
+	var immune_override = false
+	if toxic_barb:
+		var toxic_chance  = rng.randi_range(1, 100)
+		if toxic_chance <= 25:
+			poison = true
+			immune_override = true
 	
 	var enemy_type = target_enemy.get_status("type")
 	var immune = false
@@ -386,6 +443,15 @@ func magic_damage():
 	var dead = false
 	if target_enemy.get_health() == 0:
 		dead = true
+		
+	if SceneManager.ripple_ribbon:
+		ripple_damage = int(damage/3)
+		if ripple_chance <= 100:
+			var ripple_timer = Timer.new()
+			ripple_timer.one_shot = true
+			add_child(ripple_timer)
+			ripple_timer.start(0.6)
+			ripple_timer.connect("timeout", self, "_ripple_magic_damage")
 	
 	yield(get_tree().create_timer(1.7), "timeout")
 	
@@ -395,17 +461,37 @@ func magic_damage():
 		target_enemy.death()
 		enemies.remove(enemy_index)
 		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
-		yield(get_tree().create_timer(0.5), "timeout")
-		ongoing = false
+		#yield(get_tree().create_timer(0.5), "timeout")
+		#ongoing = false
 	elif target_enemy.is_dead() and boss_battle:
 		ongoing = true
 		boss_check()
 		enemies.remove(enemy_index)
 		enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
-		yield(get_tree().create_timer(0.5), "timeout")
-		ongoing = false
+		#yield(get_tree().create_timer(0.5), "timeout")
+		#ongoing = false
 	else:
 		target_enemy.reset_animation()
+	if not SceneManager.ripple_ribbon:
+		yield(get_tree().create_timer(0.5), "timeout")
+		ongoing = false
+		
+	if SceneManager.ripple_ribbon:
+		yield(get_tree().create_timer(0.57), "timeout")
+		for x in range(enemies.size()):
+			if enemies[x].is_dead() and not boss_battle:
+				enemies[x].death()
+				enemies[x].death_tagged = true
+			elif enemies[x].is_dead() and boss_battle:
+				enemy_index = x
+				boss_check()
+		for x in range(enemies.size() -1, -1, -1):
+			var death_tagged = enemies[x].get_death_tag()
+			if death_tagged == true:
+				enemies.remove(x)
+				enemy_index = clamp(enemy_index, 0, enemies.size() - 1)
+		#yield(get_tree().create_timer(0.5), "timeout")
+		#ongoing = false
 		
 	if enemies.size() == 0:
 		SceneManager.victory = true
@@ -415,6 +501,8 @@ func magic_damage():
 	if stun and not immune and not dead:
 		target_enemy._stun()
 	if poison and not immune and not dead:
+		target_enemy._poison()
+	if poison and immune_override and not dead:
 		target_enemy._poison()
 	if a_debuff and not immune and not dead:
 		target_enemy.apply_debuff("attack")
@@ -441,7 +529,9 @@ func magic_damage():
 				target_enemy.random_debuff()
 				debuffing = true
 		
-		
+#	if SceneManager.ripple_ribbon:
+#		yield(get_tree().create_timer(0.3), "timeout")
+	
 	emit_signal("e_magic_damage_finish")
 	stun = false
 	poison = false
@@ -471,6 +561,13 @@ func all_magic_damage():
 		if whammy_hit <= whammy_chance:
 			whammy = true
 			damage_type = "whammy"
+			
+		var immune_override = false
+		if toxic_barb:
+			var toxic_chance  = rng.randi_range(1, 100)
+			if toxic_chance <= 25:
+				poison = true
+				immune_override = true
 		
 		var e_defense = enemies[x].get_e_defense()
 		var enemy_type = enemies[x].get_status("type")
@@ -507,6 +604,8 @@ func all_magic_damage():
 		if poison and not immune and not dead:
 			var apply = rng.randi_range(1, 100)
 			if apply <= poison_chance:
+				enemies[x]._poison()
+		if poison and immune_override and not dead:
 				enemies[x]._poison()
 		if a_debuff and not immune and not dead:
 			enemies[x].apply_debuff("attack")

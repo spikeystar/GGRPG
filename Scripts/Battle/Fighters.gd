@@ -500,6 +500,7 @@ func pick_fighter():
 	
 func damage():
 	var immune = false
+	var status_immune = false
 	#randomize()
 	var damage : int
 	#var rng = RandomNumberGenerator.new()
@@ -526,8 +527,13 @@ func damage():
 		
 	var f_defense = fighters[fighter_index].get_f_defense()
 	var fighter_type = fighters[fighter_index].get_status("type")
+	var fighter_trinket = fighters[fighter_index].get_trinket()
 	if fighter_type != "neutral" and fighter_type == move_type:
 		immune = true
+	if fighter_trinket == "Opal Pendant" and move_type == "neutral":
+		immune = true
+	if fighter_trinket == "Pumpkin Pin":
+		status_immune = true
 	var type_bonus : String = type_matchup()
 	
 	if move_kind == "attack":
@@ -546,6 +552,15 @@ func damage():
 	if type_bonus == "none":
 		pass
 		
+	if SceneManager.cloud_shroud:
+		randomize()
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var cloud_chance = rng.randi_range(1, 100)
+		if cloud_chance <= (100):
+			SE.effect("Marble")
+			damage = 0
+		
 	if damage == 0:
 		immune = true
 		
@@ -556,15 +571,15 @@ func damage():
 	
 	if apply_type and not is_dead:
 		fighters[fighter_index].apply_type(move_type)
-	if stun and not immune and not is_dead:
+	if stun and not immune and not status_immune and not is_dead:
 		fighters[fighter_index]._stun()
-	if poison and not immune and not is_dead:
+	if poison and not immune and not status_immune and not is_dead:
 		fighters[fighter_index]._poison()
-	if targeted and not immune and not is_dead:
+	if targeted and not immune and not status_immune and not is_dead:
 		fighters[fighter_index]._targeted()
-	if wimpy and not immune and not is_dead:
+	if wimpy and not immune and not status_immune and not is_dead:
 		fighters[fighter_index]._wimpy()
-	if dizzy and not immune and not is_dead:
+	if dizzy and not immune and not status_immune and not is_dead:
 		fighters[fighter_index]._dizzy()
 	if a_debuff and not immune and not is_dead:
 		fighters[fighter_index].apply_debuff("attack")
@@ -576,7 +591,7 @@ func damage():
 		fighters[fighter_index].random_debuff()
 	if multi_debuff and not immune and not is_dead:
 		fighters[fighter_index].multi_debuff()
-	if anxious and not immune and not is_dead:
+	if anxious and not immune and not status_immune and not is_dead:
 		fighters[fighter_index]._anxious()
 	if sp_loss and not immune and not is_dead:
 		fighters[fighter_index].SP_loss(SP_amount)
@@ -829,6 +844,10 @@ func get_f_attack_base():
 func get_f_defense():
 	var f_defense = fighters[fighter_index].get_f_defense()
 	return f_defense
+	
+func get_trinket():
+	var f_trinket = fighters[fighter_index].get_trinket()
+	return f_trinket
 	
 func idle():
 	fighters[fighter_index].idle()

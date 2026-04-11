@@ -115,7 +115,7 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 23
 		$TrinketInventory.position = Vector2(89, -120)
-		$TrinketInfo.text = "Attack & Magic +10%\n\nWhammy! chance +7"
+		$TrinketInfo.text = "Attack & Magic +20%\n\nWhammy! chance +7"
 		set_trinket_holder()
 	if trinket_id == "Flashlight":
 		$TrinketInventory.show()
@@ -139,7 +139,7 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 27
 		$TrinketInventory.position = Vector2(91, -116)
-		$TrinketInfo.text = "Attack & Magic +10%\n\n30% chance to hit all enemies with damage too\n\nWhammy! chance +3"
+		$TrinketInfo.text = "Attack & Magic +10%\n\n30% chance for a single attack to damage all enemies too\n\nWhammy! chance +3"
 		set_trinket_holder()
 	if trinket_id == "Toxic Barb":
 		$TrinketInventory.show()

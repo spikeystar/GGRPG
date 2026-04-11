@@ -170,6 +170,20 @@ func trinket_reset():
 	SceneManager.comfy_blanket = false
 	SceneManager.stress_ball = false
 	SceneManager.lucky_locket = false
+	SceneManager.beggars_amulet = false
+	SceneManager.bottlecap = false
+	SceneManager.flashlight = false
+	SceneManager.ripple_ribbon = false
+	SceneManager.toxic_barb = false
+	SceneManager.compass = false
+	SceneManager.cloud_shroud = false
+	SceneManager.shooting_star = false
+	SceneManager.white_flag = false
+	SceneManager.antique_watch = false
+	SceneManager.shiny_watch = false
+	SceneManager.megaphone = false
+	SceneManager.super_cape = false
+	SceneManager.flower_crown = false
 
 #Window Display
 func hide_cursors():
@@ -790,6 +804,10 @@ func _on_Enemies_enemy_chosen():
 	var fighter_name = $Fighters.get_f_name()
 	var enemy_position = $Enemies.get_e_position() + Vector2(-55, -8)
 	var time = 1
+	var fighter_trinket = $Fighters.get_trinket()
+	if fighter_trinket == "Toxic Barb":
+		$Enemies.toxic_barb = true
+	
 	if fighter_name == "jacques":
 		SE.effect("Skateboard")
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
@@ -851,11 +869,15 @@ func _on_Enemies_victory():
 		marbles_reward = int(marbles_base + (rand_range(0.05, 0.2) * marbles_base))
 		if SceneManager.lucky_locket:
 			marbles_reward += marbles_reward
+		if SceneManager.bottlecap:
+			EXP_reward += EXP_reward
 	else:
 		EXP_reward = EXP_base
 		marbles_reward = marbles_base
 		if SceneManager.lucky_locket:
-			marbles_reward += (marbles_reward/2)
+			marbles_reward += int(marbles_reward/2)
+		if SceneManager.bottlecap:
+			EXP_reward += int(EXP_reward/2)
 		
 	PartyStats.party_exp += EXP_reward
 	Party.marbles = clamp(Party.marbles + marbles_reward, 0, 999999)
@@ -1249,7 +1271,17 @@ func _on_Fighters_item_chosen():
 	ongoing = false
 	
 	if not tutorial:
-		Party.remove_item()
+		if SceneManager.beggars_amulet:
+			randomize()
+			var rng = RandomNumberGenerator.new()
+			rng.randomize()
+			var chance = rng.randi_range(1, 100)
+			if chance <= 50:
+				Party.remove_item()
+			if chance > 50:
+				SE.effect("Item_Get")
+		if not SceneManager.beggars_amulet:
+			Party.remove_item()
 		emit_signal("item_removed")
 	#$Fighters.fighters_active_check()
 
@@ -1348,7 +1380,17 @@ func _on_Enemies_jinx_doll():
 
 func _on_Enemies_e_item_finished():
 	$Fighters/HUDS.showing()
-	Party.remove_item()
+	if SceneManager.beggars_amulet:
+		randomize()
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var chance = rng.randi_range(1, 100)
+		if chance <= 50:
+			Party.remove_item()
+		if chance > 50:
+			SE.effect("Item_Get")
+	if not SceneManager.beggars_amulet:
+			Party.remove_item()
 	emit_signal("item_removed")
 	ongoing = false
 	enemy_selecting = false
@@ -1430,6 +1472,11 @@ func _on_Enemies_single_enemy_spell():
 	$Enemies.f_magic = $Fighters.get_f_magic()
 	#$Enemies.f_magic_base = $Fighters.get_f_magic_base()
 	$Enemies.fighter_type = $Fighters.get_status("type")
+	
+	var fighter_trinket = $Fighters.get_trinket()
+	if fighter_trinket == "Toxic Barb":
+		$Enemies.toxic_barb = true
+		
 	$Enemies.magic_damage()
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
@@ -1464,6 +1511,11 @@ func _on_Enemies_all_enemy_spell():
 	$Enemies.f_magic = $Fighters.get_f_magic()
 	#$Enemies.f_magic_base = $Fighters.get_f_magic_base()
 	$Enemies.fighter_type = $Fighters.get_status("type")
+	
+	var fighter_trinket = $Fighters.get_trinket()
+	if fighter_trinket == "Toxic Barb":
+		$Enemies.toxic_barb = true
+		
 	$Enemies.all_magic_damage()
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")

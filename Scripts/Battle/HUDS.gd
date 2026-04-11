@@ -496,6 +496,11 @@ func initial_health():
 	$IrinaHud/Health.text = str(PartyStats.irina_current_health) + "/" + str(PartyStats.irina_health)
 	$SuzyHud/Health.text = str(PartyStats.suzy_current_health) + "/" + str(PartyStats.suzy_health)
 	$DamienHud/Health.text = str(PartyStats.damien_current_health) + "/" + str(PartyStats.damien_health)
+	gary_statuses()
+	jacques_statuses()
+	irina_statuses()
+	suzy_statuses()
+	damien_statuses()
 
 func hiding():
 	modulate.a = 0.5

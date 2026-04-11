@@ -69,6 +69,9 @@ var d_debuff_timer = 0
 var hocus_potion
 var hocus_potion_timer = 0
 
+var spiderbite_ring = false
+var spiderbite_ring_active = false
+
 onready var Congeal = preload("res://Misc/Shader/Congeal_Shader.tres")
 
 
@@ -79,15 +82,22 @@ func _ready():
 	set_trinket()
 	set_fortune()
 	
+	var timer = Timer.new()
+	timer.one_shot = true
+	add_child(timer)
+	timer.start(0.1)
+	timer.connect("timeout", self, "_on_timer_timeout")
 	
+	#if fighter_name == "gary":
+	#	hocus_potion = true
+#	if fighter_name == "jacques":
+	#	stun = true
+	
+func _on_timer_timeout():
+	trinket_recheck()
 	og_attack = f_attack
 	og_magic = f_magic
 	og_defense = f_defense
-	
-	if fighter_name == "gary":
-		hocus_potion = true
-#	if fighter_name == "jacques":
-	#	stun = true
 	
 func focus():
 	#if able:
@@ -759,6 +769,8 @@ func get_turn_value():
 	return turn_used
 	
 func victory():
+	$Sprite.self_modulate.r = 1
+	$Sprite.self_modulate.g = 1
 	$AnimationPlayer.play("Fighter_Victory")
 	if fighter_name == "gary":
 		PartyStats.gary_current_health = health
@@ -807,11 +819,95 @@ func set_trinket():
 	if trinket == "Lucky Locket":
 		whammy_chance += 2
 		SceneManager.lucky_locket = true
+	if trinket == "Beggar's Amulet":
+		f_magic = int(f_magic + (f_magic*0.1))
+		f_defense = int(f_defense + (f_defense*0.1))
+		SceneManager.beggars_amulet = true
 	if trinket == "Martyr's Medal":
 		f_attack = int(f_attack + (f_attack*0.3))
 		f_magic = int(f_magic + (f_magic*0.3))
 		f_defense = int(f_defense - (f_defense*0.5))
 		whammy_chance += 5
+	if trinket == "Ruby Pendant":
+		f_magic = int(f_magic + (f_magic*0.2))
+		f_defense = int(f_defense + (f_defense*0.2))
+		whammy_chance += 2
+		base_type = "fire"
+		current_type = "fire"
+	if trinket == "Sapphire Pendant":
+		f_magic = int(f_magic + (f_magic*0.2))
+		f_defense = int(f_defense + (f_defense*0.2))
+		whammy_chance += 2
+		base_type = "water"
+		current_type = "water"
+	if trinket == "Topaz Pendant":
+		f_magic = int(f_magic + (f_magic*0.2))
+		f_defense = int(f_defense + (f_defense*0.2))
+		whammy_chance += 2
+		base_type = "air"
+		current_type = "air"
+	if trinket == "Peridot Pendant":
+		f_magic = int(f_magic + (f_magic*0.2))
+		f_defense = int(f_defense + (f_defense*0.2))
+		whammy_chance += 2
+		base_type = "earth"
+		current_type = "earth"
+	if trinket == "Opal Pendant":
+		f_magic = int(f_magic + (f_magic*0.3))
+		f_defense = int(f_defense + (f_defense*0.3))
+		whammy_chance += 4
+	if trinket == "Bottlecap":
+		SceneManager.bottlecap = true
+	if trinket == "Overdrive":
+		f_magic = int(f_magic + (f_magic*0.2))
+		f_attack = int(f_attack + (f_attack*0.2))
+		whammy_chance += 7
+	if trinket == "Flashlight":
+		f_magic = int(f_magic + (f_magic*0.2))
+		SceneManager.flashlight = true
+	if trinket == "Flashlight":
+		f_magic = int(f_magic + (f_magic*0.2))
+		SceneManager.flashlight = true
+	if trinket == "Spiderbite Ring":
+		spiderbite_ring = true
+	if trinket == "Pumpkin Pin":
+		f_attack = int(f_attack + (f_attack*0.1))
+		f_magic = int(f_magic + (f_magic*0.1))
+		f_defense = int(f_defense + (f_defense*0.1))
+	if trinket == "Ripple Ribbon":
+		f_attack = int(f_attack + (f_attack*0.1))
+		f_magic = int(f_magic + (f_magic*0.1))
+		whammy_chance += 3
+		SceneManager.ripple_ribbon = true
+	if trinket == "Toxic Barb":
+		f_attack = int(f_attack + (f_attack*0.2))
+	if trinket == "Compass":
+		f_magic = int(f_magic + (f_magic*0.2))
+		SceneManager.compass = true
+	if trinket == "Cloud Shroud":
+		SceneManager.cloud_shroud = true
+	
+		
+func get_trinket():
+	return trinket
+	
+func trinket_recheck():
+	if SceneManager.bottlecap:
+		f_attack = int(f_attack - (f_attack*0.3))
+		f_magic = int(f_magic - (f_magic*0.3))
+		f_defense = int(f_defense - (f_defense*0.3))
+	if SceneManager.cloud_shroud:
+		f_defense = int(f_defense - (f_defense*0.1))
+		
+		
+func spiderbite_reset():
+	spiderbite_ring_active = false
+	f_attack -= (og_attack * 0.3)
+	f_magic -= (og_magic * 0.3)
+	f_defense -= (og_defense * 0.3)
+	whammy_chance -= 5
+	$Sprite.self_modulate.r = 1
+	$Sprite.self_modulate.g = 1
 		
 func set_fortune():
 	if SceneManager.attack_fortune:
@@ -830,26 +926,42 @@ func status_restore():
 		stun = false
 		stun_timer = 0
 		turn_used = false
+		if spiderbite_ring_active:
+			spiderbite_reset()
 	if poison:
 		poison = false
 		poison_timer = 0
-		f_attack += (og_attack * 0.2)
+		if not spiderbite_ring:
+			f_attack += (og_attack * 0.2)
+		if spiderbite_ring_active:
+			spiderbite_reset()
 	if anxious:
 		anxious = false
 		anxious_timer = 0
-		f_magic += (og_magic * 0.2)
+		if not spiderbite_ring:
+			f_magic += (og_magic * 0.2)
+		if spiderbite_ring_active:
+			spiderbite_reset()
 	if targeted:
 		targeted = false
 		targeted_timer = 0
 		SceneManager.targeted_applied = false
+		if spiderbite_ring_active:
+			spiderbite_reset()
 	if applied_type:
 		applied_type = false
 		type_timer = 0
-		current_type = "neutral"
-	wimpy = false
-	wimpy_timer = 0
-	dizzy = false
-	dizzy_timer = 0
+		current_type = base_type
+	if wimpy:
+		wimpy = false
+		wimpy_timer = 0
+		if spiderbite_ring_active:
+			spiderbite_reset()
+	if dizzy:
+		dizzy = false
+		dizzy_timer = 0
+		if spiderbite_ring_active:
+			spiderbite_reset()
 	if a_debuff:
 		a_debuff = false
 		a_debuff_timer = 0
@@ -871,12 +983,17 @@ func stun_restore():
 		stun = false
 		stun_timer = 0
 		turn_used = false
+		if spiderbite_ring_active:
+			spiderbite_reset()
 		
 func poison_restore():
 	if poison:
 		poison = false
 		poison_timer = 0
-		f_attack += (og_attack * 0.2)
+		if not spiderbite_ring:
+			f_attack += (og_attack * 0.2)
+		if spiderbite_ring_active:
+			spiderbite_reset()
 
 func status_countdown():
 	if stun:
@@ -884,28 +1001,39 @@ func status_countdown():
 		if stun_timer == 0:
 			stun = false
 			turn_used = false
+			if spiderbite_ring_active:
+				spiderbite_reset()
 	if wimpy:
 		wimpy_timer -= 1
 		if wimpy_timer == 0:
 			wimpy = false
+			if spiderbite_ring_active:
+				spiderbite_reset()
 	if dizzy:
 		dizzy_timer -= 1
 		if dizzy_timer == 0:
 			dizzy = false
+			if spiderbite_ring_active:
+				spiderbite_reset()
 	if poison:
 		poison_timer -= 1
 		if poison_timer == 0:
 			poison = false
-			f_attack += (og_attack * 0.2)
+			if not spiderbite_ring:
+				f_attack += (og_attack * 0.2)
+			if spiderbite_ring_active:
+				spiderbite_reset()
 	if targeted:
 		targeted_timer -= 1
 		if targeted_timer == 0:
 			targeted = false	
 			SceneManager.targeted_applied = false
+			if spiderbite_ring_active:
+				spiderbite_reset()
 	if applied_type:
 		type_timer -= 1
 		if type_timer == 0:
-			current_type = "neutral"
+			current_type = base_type
 			
 	if a_buff:
 		a_buff_timer -= 1
@@ -953,7 +1081,10 @@ func status_countdown():
 		anxious_timer -= 1
 		if anxious_timer == 0:
 			anxious = false
-			f_magic += (og_magic * 0.2)
+			if not spiderbite_ring:
+				f_magic += (og_magic * 0.2)
+			if spiderbite_ring_active:
+				spiderbite_reset()
 		yield(get_tree().create_timer(0.7), "timeout")
 		anxious_SP(1)
 
@@ -962,6 +1093,14 @@ func _stun():
 		stun = true
 		turn_used = true
 		stun_timer = 2
+		if spiderbite_ring and not spiderbite_ring_active:
+			spiderbite_ring_active = true
+			$Sprite.self_modulate.r = 0.97
+			$Sprite.self_modulate.g = 0.7
+			f_attack += (og_attack * 0.3)
+			f_magic += (og_magic * 0.3)
+			f_defense += (og_defense * 0.3)
+			whammy_chance += 5
 	else:
 		return
 
@@ -969,7 +1108,16 @@ func _poison():
 	if not poison and not hocus_potion:
 		poison = true
 		poison_timer = 3
-		f_attack -= (og_attack * 0.2)
+		if not spiderbite_ring:
+			f_attack -= (og_attack * 0.2)
+		if spiderbite_ring and not spiderbite_ring_active:
+			spiderbite_ring_active = true
+			$Sprite.self_modulate.r = 0.97
+			$Sprite.self_modulate.g = 0.7
+			f_attack += (og_attack * 0.3)
+			f_magic += (og_magic * 0.3)
+			f_defense += (og_defense * 0.3)
+			whammy_chance += 5
 	else:
 		return
 		
@@ -977,7 +1125,16 @@ func envenomate():
 	if not poison and not hocus_potion:
 		poison = true
 		poison_timer = 3
-		f_attack -= (og_attack * 0.2)
+		if not spiderbite_ring:
+			f_attack -= (og_attack * 0.2)
+		if spiderbite_ring and not spiderbite_ring_active:
+			spiderbite_ring_active = true
+			$Sprite.self_modulate.r = 0.97
+			$Sprite.self_modulate.g = 0.7
+			f_attack += (og_attack * 0.3)
+			f_magic += (og_magic * 0.3)
+			f_defense += (og_defense * 0.3)
+			whammy_chance += 5
 	if poison:
 		apply_debuff("attack")
 		apply_debuff("magic")
@@ -989,15 +1146,32 @@ func _anxious():
 	if not anxious and not hocus_potion and not SceneManager.comfy_blanket:
 		anxious = true
 		anxious_timer = 3
-		f_magic -= (og_magic * 0.2)
+		if not spiderbite_ring:
+			f_magic -= (og_magic * 0.2)
+		if spiderbite_ring and not spiderbite_ring_active:
+			spiderbite_ring_active = true
+			$Sprite.self_modulate.r = 0.97
+			$Sprite.self_modulate.g = 0.7
+			f_attack += (og_attack * 0.3)
+			f_magic += (og_magic * 0.3)
+			f_defense += (og_defense * 0.3)
+			whammy_chance += 5
 	else:
 		return
 		
 func _targeted():
-	if not targeted and not SceneManager.targeted_applied and not hocus_potion:
+	if not targeted and not SceneManager.targeted_applied and not hocus_potion and not SceneManager.flashlight:
 		targeted = true
 		SceneManager.targeted_applied = true
 		targeted_timer = 3
+		if spiderbite_ring and not spiderbite_ring_active:
+			spiderbite_ring_active = true
+			$Sprite.self_modulate.r = 0.97
+			$Sprite.self_modulate.g = 0.7
+			f_attack += (og_attack * 0.3)
+			f_magic += (og_magic * 0.3)
+			f_defense += (og_defense * 0.3)
+			whammy_chance += 5
 	else:
 		return
 	
@@ -1005,13 +1179,29 @@ func _wimpy():
 	if not wimpy and not dizzy and not hocus_potion and not SceneManager.stress_ball:
 		wimpy = true
 		wimpy_timer = 4
+		if spiderbite_ring and not spiderbite_ring_active:
+			spiderbite_ring_active = true
+			$Sprite.self_modulate.r = 0.97
+			$Sprite.self_modulate.g = 0.7
+			f_attack += (og_attack * 0.3)
+			f_magic += (og_magic * 0.3)
+			f_defense += (og_defense * 0.3)
+			whammy_chance += 5
 	else:
 		return
 		
 func _dizzy():
-	if not dizzy and not wimpy and not hocus_potion:
+	if not dizzy and not wimpy and not hocus_potion and not SceneManager.compass:
 		dizzy = true
 		dizzy_timer = 4
+		if spiderbite_ring and not spiderbite_ring_active:
+			spiderbite_ring_active = true
+			$Sprite.self_modulate.r = 0.97
+			$Sprite.self_modulate.g = 0.7
+			f_attack += (og_attack * 0.3)
+			f_magic += (og_magic * 0.3)
+			f_defense += (og_defense * 0.3)
+			whammy_chance += 5
 	else:
 		return
 		
