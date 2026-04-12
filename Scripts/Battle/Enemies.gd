@@ -281,6 +281,7 @@ func _ripple_damage():
 			enemies[x].damage(int(ripple_damage))
 			
 func _ripple_magic_damage():
+	SE.effect("Success")
 	for x in range(enemies.size()):
 		if not enemies[x].ripple_exception:
 			enemies[x].magic_damage(int(ripple_damage), damage_type)

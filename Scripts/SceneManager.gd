@@ -53,7 +53,6 @@ var ripple_ribbon = false
 var toxic_barb = false
 var compass = false
 var cloud_shroud = false
-var shooting_star = false
 var white_flag = false
 var antique_watch = false
 var shiny_watch = false

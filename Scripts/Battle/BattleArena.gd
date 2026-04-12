@@ -51,6 +51,8 @@ var tutorial_8 = false
 var tutorial_9 = false
 var tutorial_10 = false
 
+var shooting_star = false
+
 
 onready var party_members : int
 onready var party_id : int
@@ -177,7 +179,6 @@ func trinket_reset():
 	SceneManager.toxic_barb = false
 	SceneManager.compass = false
 	SceneManager.cloud_shroud = false
-	SceneManager.shooting_star = false
 	SceneManager.white_flag = false
 	SceneManager.antique_watch = false
 	SceneManager.shiny_watch = false
@@ -841,10 +842,23 @@ func _on_Enemies_e_damage_finish():
 	var fighter_index = $Fighters.get_f_index()
 	var fighter_position = $Fighters.get_position()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
+	var fighter_trinket = $Fighters.get_trinket()
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
 	yield(tween, "finished")
 	$Fighters.sp_recovery()
+	
+	if fighter_trinket == "Shooting Star":
+		randomize()
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var chance = rng.randi_range(1, 100)
+		if chance <= 20:
+			$Fighters.fighter_index = fighter_index
+			$Fighters.shooting_star()
+			$Fighters.huds_heal_update()
+			shooting_star = false
+	
 	yield(get_tree().create_timer(0.5), "timeout")
 	attack_ended = true
 	#yield(get_tree().create_timer(0.2), "timeout")
@@ -852,6 +866,8 @@ func _on_Enemies_e_damage_finish():
 	emit_signal("f_index_reset")
 	$Fighters.fighters_active_check()
 	#emit_signal("f_index_reset")
+	
+
 	
 
 func _on_WorldRoot_f_turn_used():
@@ -1476,6 +1492,9 @@ func _on_Enemies_single_enemy_spell():
 	var fighter_trinket = $Fighters.get_trinket()
 	if fighter_trinket == "Toxic Barb":
 		$Enemies.toxic_barb = true
+	if fighter_trinket == "Shooting Star":
+		shooting_star = true
+		$Fighters.stored_index = $Fighters.fighter_index
 		
 	$Enemies.magic_damage()
 	emit_signal("f_turn_used")
@@ -1515,16 +1534,38 @@ func _on_Enemies_all_enemy_spell():
 	var fighter_trinket = $Fighters.get_trinket()
 	if fighter_trinket == "Toxic Barb":
 		$Enemies.toxic_barb = true
+	if fighter_trinket == "Shooting Star":
+		$Fighters.stored_index = $Fighters.fighter_index
+		shooting_star = true
 		
 	$Enemies.all_magic_damage()
 	emit_signal("f_turn_used")
 	emit_signal("magic_inactive")
 	emit_signal("f_index_reset")
+	
+	if shooting_star:
+		randomize()
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var chance = rng.randi_range(1, 100)
+		if chance <= 20:
+			var shooting_timer = Timer.new()
+			shooting_timer.one_shot = true
+			add_child(shooting_timer)
+			shooting_timer.start(1.5)
+			shooting_timer.connect("timeout", self, "_shooting_star")
+		
 	$ItemWindow/ItemWindowPanel/MenuCursor.magic_active = false
 	$DefenseWindow/MenuCursor.magic_active = false
 	yield(get_tree().create_timer(2.5), "timeout")
 	$Fighters.fighters_active_check()
 	
+func _shooting_star():
+	$Fighters.fighter_index = $Fighters.stored_index
+	$Fighters.shooting_star()
+	$Fighters.huds_heal_update()
+	shooting_star = false
+	$Fighters.fighter_index = -1
 	
 func _on_Fighters_ally_spell_chosen():
 	var selector_position = $Fighters.get_selector_position() + Vector2(40, -40)
@@ -1555,11 +1596,15 @@ func _on_Fighters_ally_spell_chosen():
 func _on_Enemies_e_magic_damage_finish():
 	$Fighters/HUDS.showing()
 	var fighter_node = $Fighters.get_f_current()
+	var fighter_index = $Fighters.get_f_index()
 	var fighter_position = $Fighters.get_position()
 	var fighter_OG_position = $Fighters.get_f_OG_position()
+	var fighter_trinket = $Fighters.get_trinket()
+	
 	tween = create_tween()
 	tween.tween_property(fighter_node, "position", fighter_OG_position, 0.5)
 	yield(tween, "finished")
+	
 	yield(get_tree().create_timer(0.3), "timeout")
 	ongoing = false
 	$Fighters.ongoing = false

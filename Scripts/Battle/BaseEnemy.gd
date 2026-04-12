@@ -294,7 +294,7 @@ func image(IMAGE: PackedScene, image_position: Vector2 = global_position):
 	if IMAGE:
 		var image = IMAGE.instance()
 		get_tree().current_scene.add_child(image)
-		image.position = $TextOffset.global_position + Vector2(4, -53)
+		image.position = $TextOffset.global_position + Vector2(3, -51)
 		return image
 
 func _stun():
@@ -311,6 +311,8 @@ func _poison():
 		poison = true
 		poison_timer = 3
 		e_attack -= (og_attack * 0.2)
+		yield(get_tree().create_timer(1.5), "timeout")
+		var poison_image = image(IMAGE_POISON)
 	else:
 		pass
 

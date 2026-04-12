@@ -69,6 +69,7 @@ var m_debuff = false
 var d_debuff = false
 var random_debuff = false
 var multi_debuff = false
+var stored_index : int
 
 
 signal fighters_active
@@ -529,6 +530,14 @@ func damage():
 	var fighter_type = fighters[fighter_index].get_status("type")
 	var fighter_trinket = fighters[fighter_index].get_trinket()
 	if fighter_type != "neutral" and fighter_type == move_type:
+		immune = true
+	if fighter_trinket == "Ruby Pendant" and move_type == "fire":
+		immune = true
+	if fighter_trinket == "Sapphire Pendant" and move_type == "water":
+		immune = true
+	if fighter_trinket == "Topaz Pendant" and move_type == "air":
+		immune = true
+	if fighter_trinket == "Peridot Pendant" and move_type == "earth":
 		immune = true
 	if fighter_trinket == "Opal Pendant" and move_type == "neutral":
 		immune = true
@@ -1040,6 +1049,9 @@ func buff(id : String):
 func random_buff():
 	if not fighters2[target_index].dead:
 		fighters2[target_index].random_buff()
+		
+func shooting_star():
+	fighters2[fighter_index].random_buff()
 
 func _on_ItemInventory_battle_item_chosen():
 	selector_index = fighter_index

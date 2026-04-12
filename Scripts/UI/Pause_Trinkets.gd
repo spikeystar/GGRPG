@@ -79,31 +79,31 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 18
 		$TrinketInventory.position = Vector2(90, -117.5)
-		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Fire\n\nWhammy! chance +2"
+		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Fire, always immune to status effects from Fire moves\n\nWhammy! chance +2"
 		set_trinket_holder()
 	if trinket_id == "Sapphire Pendant":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 19
 		$TrinketInventory.position = Vector2(90, -117.5)
-		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Water\n\nWhammy! chance +2"
+		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Water, always immune to status effects from Water moves\n\nWhammy! chance +2"
 		set_trinket_holder()
 	if trinket_id == "Topaz Pendant":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 20
 		$TrinketInventory.position = Vector2(90, -117.5)
-		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Air\n\nWhammy! chance +2"
+		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Air, always immune to status effects from Air moves\n\nWhammy! chance +2"
 		set_trinket_holder()
 	if trinket_id == "Peridot Pendant":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 21
 		$TrinketInventory.position = Vector2(90, -117.5)
-		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Earth\n\nWhammy! chance +2"
+		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Earth, always immune to status effects from Earth moves\n\nWhammy! chance +2"
 		set_trinket_holder()
 	if trinket_id == "Opal Pendant":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 22
 		$TrinketInventory.position = Vector2(90, -119)
-		$TrinketInfo.text = "Magic & Defense +30%\n\nImmune to status effects from Neutral moves\n\nWhammy! chance +4"
+		$TrinketInfo.text = "Magic & Defense +30%\n\nAlways immune to status effects from Neutral moves\n\nWhammy! chance +4"
 		set_trinket_holder()
 	if trinket_id == "Bottlecap":
 		$TrinketInventory.show()

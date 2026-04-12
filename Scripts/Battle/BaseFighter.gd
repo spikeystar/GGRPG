@@ -886,6 +886,12 @@ func set_trinket():
 		SceneManager.compass = true
 	if trinket == "Cloud Shroud":
 		SceneManager.cloud_shroud = true
+	if trinket == "Shooting Star":
+		f_attack = int(f_attack + (f_attack*0.2))
+		f_magic = int(f_magic + (f_magic*0.2))
+		whammy_chance += 2
+	if trinket == "White Flag":
+		SceneManager.white_flag = true
 	
 		
 func get_trinket():
@@ -897,7 +903,11 @@ func trinket_recheck():
 		f_magic = int(f_magic - (f_magic*0.3))
 		f_defense = int(f_defense - (f_defense*0.3))
 	if SceneManager.cloud_shroud:
-		f_defense = int(f_defense - (f_defense*0.1))
+		f_defense = int(f_defense + (f_defense*0.1))
+	if SceneManager.white_flag:
+		f_defense = int(f_defense + (f_defense*0.3))
+		base_type = "neutral"
+		current_type = "neutral"
 		
 		
 func spiderbite_reset():
@@ -1206,7 +1216,7 @@ func _dizzy():
 		return
 		
 func apply_type(id : String):
-	if not applied_type and not hocus_potion and not id == current_type and not dead:
+	if not applied_type and not hocus_potion and not id == current_type and not dead and not SceneManager.white_flag:
 		applied_type = true
 		current_type = id
 		type_timer = 3
