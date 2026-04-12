@@ -402,7 +402,7 @@ func set_id():
 		$Display.frame = 24
 		$Cost.text = "4,000 Mb"
 		item_cost = 4000
-		$Info.text = "Magic +20%\nPrevents Targeted status for whole party"
+		$Info.text = "Magic +30%\nPrevents Targeted status for whole party"
 		$Carrying.hide()
 		$Display.position = Vector2(84, -79)
 		$Display.scale = Vector2(1.1, 1.1)
@@ -412,7 +412,7 @@ func set_id():
 		$Display.frame = 29
 		$Cost.text = "3,000 Mb"
 		item_cost = 3000
-		$Info.text = "Magic +20%\nPrevents Dizzy status for whole party"
+		$Info.text = "Magic +30%\nPrevents Dizzy status for whole party"
 		$Carrying.hide()
 		$Display.position = Vector2(87.5, -78.5)
 		$Display.scale = Vector2(1.1, 1.1)
@@ -512,7 +512,7 @@ func set_id():
 		$Display.frame = 34
 		$Cost.text = "10,000 Mb"
 		item_cost = 10000
-		$Info.text = "Magic +20% & prevents Stun\n\nAll attacks have a 10% chance to Stun\n\nBuffs +1 turn"
+		$Info.text = "Magic +30% & prevents Stun\n\nAll attacks have a 10% chance to Stun\n\nBuffs +1 turn"
 		$Carrying.hide()
 		$Display.position = Vector2(85, -80)
 		$Display.scale = Vector2(1.1, 1.1)

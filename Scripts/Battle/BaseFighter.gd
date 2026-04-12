@@ -847,10 +847,10 @@ func set_trinket():
 		f_magic = int(f_magic + (f_magic*0.3))
 		whammy_chance += 5
 	if trinket == "Comfy Blanket":
-		f_defense = int(f_defense + (f_defense*0.2))
+		f_defense = int(f_defense + (f_defense*0.3))
 		SceneManager.comfy_blanket = true
 	if trinket == "Stress Ball":
-		f_attack = int(f_attack + (f_attack*0.2))
+		f_attack = int(f_attack + (f_attack*0.3))
 		SceneManager.stress_ball = true
 	if trinket == "Lucky Locket":
 		whammy_chance += 2
@@ -899,7 +899,7 @@ func set_trinket():
 		f_attack = int(f_attack + (f_attack*0.2))
 		whammy_chance += 7
 	if trinket == "Flashlight":
-		f_magic = int(f_magic + (f_magic*0.2))
+		f_magic = int(f_magic + (f_magic*0.3))
 		SceneManager.flashlight = true
 	if trinket == "Spiderbite Ring":
 		spiderbite_ring = true
@@ -909,27 +909,28 @@ func set_trinket():
 		f_defense = int(f_defense + (f_defense*0.1))
 		whammy_chance += 3
 	if trinket == "Ripple Ribbon":
-		f_attack = int(f_attack + (f_attack*0.1))
-		f_magic = int(f_magic + (f_magic*0.1))
+		f_attack = int(f_attack + (f_attack*0.2))
+		f_magic = int(f_magic + (f_magic*0.2))
 		whammy_chance += 3
 		SceneManager.ripple_ribbon = true
 	if trinket == "Toxic Barb":
-		f_attack = int(f_attack + (f_attack*0.2))
+		f_attack = int(f_attack + (f_attack*0.3))
 	if trinket == "Compass":
-		f_magic = int(f_magic + (f_magic*0.2))
+		f_magic = int(f_magic + (f_magic*0.3))
 		SceneManager.compass = true
 	if trinket == "Cloud Shroud":
 		SceneManager.cloud_shroud = true
 	if trinket == "Shooting Star":
-		f_attack = int(f_attack + (f_attack*0.2))
-		f_magic = int(f_magic + (f_magic*0.2))
-		whammy_chance += 2
+		f_attack = int(f_attack + (f_attack*0.1))
+		f_magic = int(f_magic + (f_magic*0.1))
+		f_defense = int(f_defense + (f_defense*0.1))
+		whammy_chance += 3
 	if trinket == "White Flag":
 		SceneManager.white_flag = true
 	if trinket == "Antique Watch":
 		f_magic = int(f_magic + (f_magic*0.2))
 	if trinket == "Shiny Watch":
-		f_magic = int(f_magic + (f_magic*0.2))
+		f_magic = int(f_magic + (f_magic*0.3))
 	if trinket == "Megaphone":
 		SceneManager.megaphone = true
 	if trinket == "Angel Egg":
@@ -954,7 +955,7 @@ func set_trinket():
 		f_magic = int(f_magic + (f_magic*0.2))
 		whammy_chance += 3
 	if trinket == "Mystic Catalyst":
-		f_magic = int(f_magic + (f_magic*0.2))
+		f_magic = int(f_magic + (f_magic*0.3))
 	if trinket == "Crux Reactor":
 		f_magic = int(f_magic + (f_magic*0.5))
 		whammy_chance += 5

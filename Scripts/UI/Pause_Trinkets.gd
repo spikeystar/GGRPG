@@ -49,13 +49,13 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 13
 		$TrinketInventory.position = Vector2(90, -118)
-		$TrinketInfo.text = "Attack +20%\n\nPrevents Wimpy status for whole party"
+		$TrinketInfo.text = "Attack +30%\n\nPrevents Wimpy status for whole party"
 		set_trinket_holder()
 	if trinket_id == "Comfy Blanket":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 12
 		$TrinketInventory.position = Vector2(90, -118)
-		$TrinketInfo.text = "Defense +20%\n\nPrevents Anxious status & SP loss for whole party"
+		$TrinketInfo.text = "Defense +30%\n\nPrevents Anxious status & SP loss for whole party"
 		set_trinket_holder()
 	if trinket_id == "Lucky Locket":
 		$TrinketInventory.show()
@@ -121,7 +121,7 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 24
 		$TrinketInventory.position = Vector2(89, -117)
-		$TrinketInfo.text = "Magic +20%\n\nPrevents Targeted status for whole party"
+		$TrinketInfo.text = "Magic +30%\n\nPrevents Targeted status for whole party"
 		set_trinket_holder()
 	if trinket_id == "Spiderbite Ring":
 		$TrinketInventory.show()
@@ -139,19 +139,19 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 27
 		$TrinketInventory.position = Vector2(91, -116)
-		$TrinketInfo.text = "Attack & Magic +10%\n\n30% chance for a single attack to damage all enemies too\n\nWhammy! chance +3"
+		$TrinketInfo.text = "Attack & Magic +20%\n\n30% chance for a single attack to damage all enemies too\n\nWhammy! chance +3"
 		set_trinket_holder()
 	if trinket_id == "Toxic Barb":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 28
 		$TrinketInventory.position = Vector2(90, -116)
-		$TrinketInfo.text = "Attack +20%\n\nAll holder's attacks have an additional 25% chance to inflict Poison"
+		$TrinketInfo.text = "Attack +30%\n\nAll attacks have a 25% chance to Poison"
 		set_trinket_holder()
 	if trinket_id == "Compass":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 29
 		$TrinketInventory.position = Vector2(92, -117)
-		$TrinketInfo.text = "Magic +20%\n\nPrevents Dizzy status for whole party"
+		$TrinketInfo.text = "Magic +30%\n\nPrevents Dizzy status for whole party"
 		set_trinket_holder()
 	if trinket_id == "Cloud Shroud":
 		$TrinketInventory.show()
@@ -163,7 +163,7 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 31
 		$TrinketInventory.position = Vector2(92.5, -116)
-		$TrinketInfo.text = "Attack & Magic +10%\n\n20% chance to gain a random buff after attacking\n\nWhammy! chance +2"
+		$TrinketInfo.text = "All stats +10%\n\n30% chance to gain a random buff after attacking\n\nWhammy! chance +3"
 		set_trinket_holder()
 	if trinket_id == "White Flag":
 		$TrinketInventory.show()
@@ -181,7 +181,7 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 34
 		$TrinketInventory.position = Vector2(91.5, -118.5)
-		$TrinketInfo.text = "Magic +20% & prevents Stun\n\nAll attacks have a 10% chance to Stun\n\nBuffs +1 turn"
+		$TrinketInfo.text = "Magic +30% & prevents Stun\n\nAll attacks have a 10% chance to Stun\n\nBuffs +1 turn"
 		set_trinket_holder()
 	if trinket_id == "Megaphone":
 		$TrinketInventory.show()
@@ -229,7 +229,7 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 42
 		$TrinketInventory.position = Vector2(90, -116.5)
-		$TrinketInfo.text = "Magic +20%\n\nHolder uses 1/2 SP for magic"
+		$TrinketInfo.text = "Magic +30%\n\nHolder uses 1/2 SP for magic"
 		set_trinket_holder()
 	if trinket_id == "Flower Crown":
 		$TrinketInventory.show()

@@ -864,7 +864,7 @@ func _on_Enemies_e_damage_finish():
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var chance = rng.randi_range(1, 100)
-		if chance <= 20:
+		if chance <= 30:
 			$Fighters.fighter_index = fighter_index
 			$Fighters.shooting_star()
 			$Fighters.huds_heal_update()
@@ -1563,7 +1563,7 @@ func _on_Enemies_all_enemy_spell():
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var chance = rng.randi_range(1, 100)
-		if chance <= 20:
+		if chance <= 30:
 			var shooting_timer = Timer.new()
 			shooting_timer.one_shot = true
 			add_child(shooting_timer)
