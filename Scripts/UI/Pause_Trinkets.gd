@@ -67,7 +67,7 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 15
 		$TrinketInventory.position = Vector2(91, -112)
-		$TrinketInfo.text = "Magic & Defense +10%\n\n50% chance for party to keep an item after use"
+		$TrinketInfo.text = "Magic & Defense +20%\n\n50% chance for party to keep an item after use"
 		set_trinket_holder()
 	if trinket_id == "Martyr's Medal":
 		$TrinketInventory.show()
@@ -157,7 +157,7 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 30
 		$TrinketInventory.position = Vector2(90, -118)
-		$TrinketInfo.text = "Defense +10% for whole party\n\n10% chance for attacks to miss party"
+		$TrinketInfo.text = "Defense +20% for whole party\n\n10% chance for attacks to miss party"
 		set_trinket_holder()
 	if trinket_id == "Shooting Star":
 		$TrinketInventory.show()
@@ -175,19 +175,19 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 33
 		$TrinketInventory.position = Vector2(91.5, -118.5)
-		$TrinketInfo.text = "Magic +10%, prevents Stun status\n\nAttacks that Stun have +10% chance"
+		$TrinketInfo.text = "Magic +20%, prevents Stun status\n\nAll attacks have 10% chance to Stun"
 		set_trinket_holder()
 	if trinket_id == "Shiny Watch":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 34
 		$TrinketInventory.position = Vector2(91.5, -118.5)
-		$TrinketInfo.text = "Magic +20%, prevents Stun status\n\nAttacks that Stun have +10% chance\n\nBuffs +1 turn, Debuffs -1 turn"
+		$TrinketInfo.text = "Magic +20%, prevents Stun status\n\nAll attacks have 10% chance to Stun\n\nBuffs +1 turn"
 		set_trinket_holder()
 	if trinket_id == "Megaphone":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 36
 		$TrinketInventory.position = Vector2(91, -122)
-		$TrinketInfo.text = "Magic +20%\n\nAll party Buffs +2 turns"
+		$TrinketInfo.text = "Magic +20% for whole party\n\nAll party Buffs +2 turns"
 		set_trinket_holder()
 	if trinket_id == "Angel Egg":
 		$TrinketInventory.show()

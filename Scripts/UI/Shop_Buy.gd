@@ -432,7 +432,7 @@ func set_id():
 		$Display.frame = 33
 		$Cost.text = "7,000 Mb"
 		item_cost = 7000
-		$Info.text = "Magic +10%, prevents Stun status\nAttacks that Stun have +10% chance"
+		$Info.text = "Magic +20%, prevents Stun status\nAll attacks have 10% chance to Stun"
 		$Carrying.hide()
 		$Display.position = Vector2(85, -80)
 		$Display.scale = Vector2(1.1, 1.1)
@@ -512,7 +512,7 @@ func set_id():
 		$Display.frame = 34
 		$Cost.text = "10,000 Mb"
 		item_cost = 10000
-		$Info.text = "Magic +20%, prevents Stun status\nAttacks that Stun have +10% chance\nBuffs +1 turn, Debuffs -1 turn"
+		$Info.text = "Magic +20%, prevents Stun status\n\nAll attacks have 10% chance to Stun\n\nBuffs +1 turn"
 		$Carrying.hide()
 		$Display.position = Vector2(85, -80)
 		$Display.scale = Vector2(1.1, 1.1)

@@ -180,8 +180,6 @@ func trinket_reset():
 	SceneManager.compass = false
 	SceneManager.cloud_shroud = false
 	SceneManager.white_flag = false
-	SceneManager.antique_watch = false
-	SceneManager.shiny_watch = false
 	SceneManager.megaphone = false
 	SceneManager.super_cape = false
 	SceneManager.flower_crown = false
@@ -808,6 +806,8 @@ func _on_Enemies_enemy_chosen():
 	var fighter_trinket = $Fighters.get_trinket()
 	if fighter_trinket == "Toxic Barb":
 		$Enemies.toxic_barb = true
+	if fighter_trinket == "Antique Watch" or fighter_trinket == "Shiny Watch":
+		$Enemies.shiny_watch = true
 	
 	if fighter_name == "jacques":
 		SE.effect("Skateboard")
@@ -1492,6 +1492,8 @@ func _on_Enemies_single_enemy_spell():
 	var fighter_trinket = $Fighters.get_trinket()
 	if fighter_trinket == "Toxic Barb":
 		$Enemies.toxic_barb = true
+	if fighter_trinket == "Antique Watch" or fighter_trinket == "Shiny Watch":
+		$Enemies.shiny_watch = true
 	if fighter_trinket == "Shooting Star":
 		shooting_star = true
 		$Fighters.stored_index = $Fighters.fighter_index
@@ -1534,6 +1536,8 @@ func _on_Enemies_all_enemy_spell():
 	var fighter_trinket = $Fighters.get_trinket()
 	if fighter_trinket == "Toxic Barb":
 		$Enemies.toxic_barb = true
+	if fighter_trinket == "Antique Watch" or fighter_trinket == "Shiny Watch":
+		$Enemies.shiny_watch = true
 	if fighter_trinket == "Shooting Star":
 		$Fighters.stored_index = $Fighters.fighter_index
 		shooting_star = true

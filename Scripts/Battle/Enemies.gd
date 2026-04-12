@@ -71,8 +71,9 @@ var stun_chance : int
 var poison_chance : int
 var strange_perfume = false
 
-var ripple_damage
-var toxic_barb
+var ripple_damage = false
+var toxic_barb = false
+var shiny_watch = false
 
 
 var random_debuff
@@ -305,6 +306,10 @@ func enemy_damage():
 		var toxic_chance  = rng.randi_range(1, 100)
 		if toxic_chance <= 25:
 			poison = true
+	if shiny_watch:
+		var shiny_chance  = rng.randi_range(1, 100)
+		if shiny_chance <= 10:
+			stun = true
 		
 	#print(str(f_total) + "damage")
 	
@@ -348,8 +353,10 @@ func enemy_damage():
 		#print("success!")
 		#is_attack = false
 
-	if poison:
+	if poison and not target_enemy.is_dead():
 		target_enemy._poison()
+	if stun and not target_enemy.is_dead():
+		target_enemy._stun()
 	yield(get_tree().create_timer(1.7), "timeout")
 	target_enemy.unfocus()
 	if target_enemy.is_dead() and not boss_battle:
@@ -394,6 +401,9 @@ func enemy_damage():
 		SceneManager.victory = true
 		finale_check()
 	emit_signal("e_damage_finish")
+	
+	toxic_barb = false
+	shiny_watch = false
 		
 func magic_damage():
 	BB_active = false
@@ -411,6 +421,12 @@ func magic_damage():
 		var toxic_chance  = rng.randi_range(1, 100)
 		if toxic_chance <= 25:
 			poison = true
+			immune_override = true
+			
+	if shiny_watch:
+		var shiny_chance  = rng.randi_range(1, 100)
+		if shiny_chance <= 10:
+			stun = true
 			immune_override = true
 	
 	var enemy_type = target_enemy.get_status("type")
@@ -505,6 +521,8 @@ func magic_damage():
 		target_enemy._poison()
 	if poison and immune_override and not dead:
 		target_enemy._poison()
+	if stun and immune_override and not dead:
+		target_enemy._stun()
 	if a_debuff and not immune and not dead:
 		target_enemy.apply_debuff("attack")
 		debuffing = true
@@ -541,6 +559,9 @@ func magic_damage():
 	d_debuff = false
 	random_debuff = false
 	multi_debuff = false
+	
+	toxic_barb = false
+	shiny_watch = false
 		
 		
 func all_magic_damage():
@@ -568,6 +589,12 @@ func all_magic_damage():
 			var toxic_chance  = rng.randi_range(1, 100)
 			if toxic_chance <= 25:
 				poison = true
+				immune_override = true
+				
+		if shiny_watch:
+			var shiny_chance  = rng.randi_range(1, 100)
+			if shiny_chance <= 10:
+				stun = true
 				immune_override = true
 		
 		var e_defense = enemies[x].get_e_defense()
@@ -608,6 +635,8 @@ func all_magic_damage():
 				enemies[x]._poison()
 		if poison and immune_override and not dead:
 				enemies[x]._poison()
+		if stun and immune_override and not dead:
+				enemies[x]._stun()
 		if a_debuff and not immune and not dead:
 			enemies[x].apply_debuff("attack")
 			debuffing = true
@@ -674,6 +703,9 @@ func all_magic_damage():
 	d_debuff = false
 	random_debuff = false
 	multi_debuff = false
+	
+	toxic_barb = false
+	shiny_watch = false
 		
 		
 func type_matchup():

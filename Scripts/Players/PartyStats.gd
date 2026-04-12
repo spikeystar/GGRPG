@@ -72,7 +72,7 @@ func _ready():
 	#irina_current_health = 1
 	#gary_magic = 5000
 	#gary_attack = 5000
-	gary_trinket = "Ripple Ribbon"
+	gary_trinket = "Shiny Watch"
 	
 	#party_sp = 0
 	

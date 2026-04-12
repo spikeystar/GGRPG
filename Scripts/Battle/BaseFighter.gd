@@ -820,8 +820,8 @@ func set_trinket():
 		whammy_chance += 2
 		SceneManager.lucky_locket = true
 	if trinket == "Beggar's Amulet":
-		f_magic = int(f_magic + (f_magic*0.1))
-		f_defense = int(f_defense + (f_defense*0.1))
+		f_magic = int(f_magic + (f_magic*0.2))
+		f_defense = int(f_defense + (f_defense*0.2))
 		SceneManager.beggars_amulet = true
 	if trinket == "Martyr's Medal":
 		f_attack = int(f_attack + (f_attack*0.3))
@@ -865,9 +865,6 @@ func set_trinket():
 	if trinket == "Flashlight":
 		f_magic = int(f_magic + (f_magic*0.2))
 		SceneManager.flashlight = true
-	if trinket == "Flashlight":
-		f_magic = int(f_magic + (f_magic*0.2))
-		SceneManager.flashlight = true
 	if trinket == "Spiderbite Ring":
 		spiderbite_ring = true
 	if trinket == "Pumpkin Pin":
@@ -892,6 +889,12 @@ func set_trinket():
 		whammy_chance += 2
 	if trinket == "White Flag":
 		SceneManager.white_flag = true
+	if trinket == "Antique Watch":
+		f_magic = int(f_magic + (f_magic*0.2))
+	if trinket == "Shiny Watch":
+		f_magic = int(f_magic + (f_magic*0.2))
+	if trinket == "Megaphone":
+		SceneManager.megaphone = true
 	
 		
 func get_trinket():
@@ -903,11 +906,13 @@ func trinket_recheck():
 		f_magic = int(f_magic - (f_magic*0.3))
 		f_defense = int(f_defense - (f_defense*0.3))
 	if SceneManager.cloud_shroud:
-		f_defense = int(f_defense + (f_defense*0.1))
+		f_defense = int(f_defense + (f_defense*0.2))
 	if SceneManager.white_flag:
 		f_defense = int(f_defense + (f_defense*0.3))
 		base_type = "neutral"
 		current_type = "neutral"
+	if SceneManager.megaphone:
+		f_magic = int(f_magic - (f_magic*0.2))
 		
 		
 func spiderbite_reset():
@@ -1047,37 +1052,43 @@ func status_countdown():
 			
 	if a_buff:
 		a_buff_timer -= 1
-		if a_buff_timer == 0:
+		if a_buff_timer <= 0:
+			a_buff_timer = 0
 			a_buff = false
 			f_attack -= (og_attack * 0.3)
 			whammy_chance -= 1
 	if a_debuff:
 		a_debuff_timer -= 1
-		if a_debuff_timer == 0:
+		if a_debuff_timer <= 0:
+			a_debuff_timer = 0
 			a_debuff = false	
 			f_attack += (og_attack * 0.3)
 			whammy_chance += 1
 	if m_buff:
 		m_buff_timer -= 1
-		if m_buff_timer == 0:
+		if m_buff_timer <= 0:
+			m_buff_timer = 0
 			m_buff = false
 			f_magic -= (og_magic * 0.3)
 			whammy_chance -= 1
 	if m_debuff:
 		m_debuff_timer -= 1
-		if m_debuff_timer == 0:
+		if m_debuff_timer <= 0:
+			m_debuff_timer = 0
 			m_debuff = false	
 			f_magic += (og_magic * 0.3)
 			whammy_chance += 1		
 	if d_buff:
 		d_buff_timer -= 1
-		if d_buff_timer == 0:
+		if d_buff_timer <= 0:
+			d_buff_timer = 0
 			d_buff = false
 			f_defense -= (og_defense * 0.3)
 			whammy_chance -= 1
 	if d_debuff:
 		d_debuff_timer -= 1
-		if d_debuff_timer == 0:
+		if d_debuff_timer <= 0:
+			d_debuff_timer = 0
 			d_debuff = false	
 			f_defense += (og_defense * 0.3)
 			whammy_chance += 1	
@@ -1099,7 +1110,7 @@ func status_countdown():
 		anxious_SP(1)
 
 func _stun():
-	if not stun and not hocus_potion:
+	if not stun and not hocus_potion and not trinket == "Antique Watch" or not stun and not hocus_potion and not trinket == "Shiny Watch":
 		stun = true
 		turn_used = true
 		stun_timer = 2
@@ -1235,113 +1246,161 @@ func apply_buff(id : String):
 	if id == "attack" and not a_buff and not a_debuff:
 		a_buff = true
 		a_buff_timer = 4
+		if trinket == "Shiny Watch":
+			a_buff_timer = 5
+		if SceneManager.megaphone:
+			a_buff_timer = 6
 		f_attack += (og_attack * 0.3)
 		whammy_chance += 1
 		buff()
 	elif id == "attack" and a_debuff:
 		a_debuff = false
 		a_buff_timer = 3 - a_debuff_timer
+		if trinket == "Shiny Watch":
+			a_buff_timer = 4 - a_debuff_timer
+		if SceneManager.megaphone:
+			a_buff_timer = 5 - a_debuff_timer
 		a_debuff_timer = 0
 		if a_buff_timer > 0:
+			a_debuff = false
 			a_buff = true
 			f_attack += (og_attack * 0.3)
 			whammy_chance += 1
-		f_attack += (og_attack * 0.3)
-		whammy_chance += 1
+			f_attack += (og_attack * 0.3)
+			whammy_chance += 1
 		buff()
 		
 	if id == "magic" and not m_buff and not m_debuff:
 		m_buff = true
 		m_buff_timer = 4
+		if trinket == "Shiny Watch":
+			m_buff_timer = 5
+		if SceneManager.megaphone:
+			m_buff_timer = 6
 		f_magic += (og_magic * 0.3)
 		whammy_chance += 1
 		buff()
 	elif id == "magic" and m_debuff:
 		m_debuff = false
 		m_buff_timer = 3 - m_debuff_timer
+		if trinket == "Shiny Watch":
+			m_buff_timer = 4 - a_debuff_timer
+		if SceneManager.megaphone:
+			m_buff_timer = 5 - a_debuff_timer
 		m_debuff_timer = 0
 		if m_buff_timer > 0:
+			m_debuff = false
 			m_buff = true
 			f_magic += (og_magic * 0.3)
 			whammy_chance += 1
-		f_magic += (og_magic * 0.3)
-		whammy_chance += 1
+			f_magic += (og_magic * 0.3)
+			whammy_chance += 1
 		buff()
-		
 		
 	if id == "defense" and not d_buff and not d_debuff:
 		d_buff = true
 		d_buff_timer = 3
+		if trinket == "Shiny Watch":
+			d_buff_timer = 4
+		if SceneManager.megaphone:
+			d_buff_timer = 5
 		f_defense += (og_defense * 0.3)
 		whammy_chance += 1
 		buff()
 	elif id == "defense" and d_debuff:
 		d_debuff = false
 		d_buff_timer = 3 - d_debuff_timer
+		if trinket == "Shiny Watch":
+			d_buff_timer = 4 - a_debuff_timer
+		if SceneManager.megaphone:
+			d_buff_timer = 5 - a_debuff_timer
 		d_debuff_timer = 0
 		if d_buff_timer > 0:
+			d_debuff = false
 			d_buff = true
 			f_defense += (og_defense * 0.3)
 			whammy_chance += 1
-		f_defense += (og_defense * 0.3)
-		whammy_chance += 1
+			f_defense += (og_defense * 0.3)
+			whammy_chance += 1
 		buff()	
 		
 func apply_debuff(id : String):
 	if id == "attack" and not a_debuff and not a_buff and not hocus_potion:
 		a_debuff = true
 		a_debuff_timer = 4
+		if trinket == "Shiny Watch":
+			a_debuff_timer = 3
 		f_attack -= (og_attack * 0.3)
 		whammy_chance -= 1
 		debuff()
 	if id == "attack" and a_buff and not hocus_potion:
-		a_buff = false
 		a_debuff_timer = 3 - a_buff_timer
-		a_buff_timer = 0
+		if trinket == "Shiny Watch":
+			a_debuff_timer = 2 - a_buff_timer
+		if not trinket == "Shiny Watch" or SceneManager.megaphone:
+			a_buff_timer = 0
+		if trinket == "Shiny Watch" or SceneManager.megaphone:
+			if a_buff_timer > 0:
+				a_buff_timer = a_buff_timer - a_debuff_timer
 		if a_debuff_timer > 0:
+			a_buff = false
 			a_debuff = true
 			f_attack -= (og_attack * 0.3)
 			whammy_chance -= 1
-		f_attack -= (og_attack * 0.3)
-		whammy_chance -= 1
+			f_attack -= (og_attack * 0.3)
+			whammy_chance -= 1
 		debuff()
-		
 		
 	if id == "magic" and not m_debuff and not m_buff and not hocus_potion:
 		m_debuff = true
 		m_debuff_timer = 4
+		if trinket == "Shiny Watch":
+			m_debuff_timer = 3
 		f_magic -= (og_magic * 0.3)
 		whammy_chance -= 1
 		debuff()
 	if id == "magic" and m_buff and not hocus_potion:
-		m_buff = false
 		m_debuff_timer = 3 - m_buff_timer
-		m_buff_timer = 0
+		if trinket == "Shiny Watch":
+			m_debuff_timer = 2 - m_buff_timer
+		if not trinket == "Shiny Watch" or SceneManager.megaphone:
+			m_buff_timer = 0
+		if trinket == "Shiny Watch" or SceneManager.megaphone:
+			if m_buff_timer > 0:
+				m_buff_timer = m_buff_timer - m_debuff_timer
 		if m_debuff_timer > 0:
+			m_buff = false
 			m_debuff = true
 			f_magic -= (og_magic * 0.3)
 			whammy_chance -= 1
-		f_magic -= (og_magic * 0.3)
-		whammy_chance -= 1
+			f_magic -= (og_magic * 0.3)
+			whammy_chance -= 1
 		debuff()
-		
 		
 	if id == "defense" and not d_debuff and not d_buff and not hocus_potion:
 		d_debuff = true
 		d_debuff_timer = 4
+		if trinket == "Shiny Watch":
+			d_debuff_timer = 3
 		f_defense -= (og_defense * 0.3)
 		whammy_chance -= 1
 		debuff()
 	if id == "defense" and d_buff and not hocus_potion:
-		d_buff = false
 		d_debuff_timer = 3 - d_buff_timer
-		d_buff_timer = 0
+		if trinket == "Shiny Watch":
+			d_debuff_timer = 2 - d_buff_timer
+		if not trinket == "Shiny Watch" or SceneManager.megaphone:
+			d_buff_timer = 0
+		if trinket == "Shiny Watch" or SceneManager.megaphone:
+			if d_buff_timer > 0:
+				d_buff_timer = d_buff_timer - d_debuff_timer
 		if d_debuff_timer > 0:
+			d_buff = false
 			d_debuff = true
 			f_defense -= (og_defense * 0.3)
 			whammy_chance -= 1
-		f_defense -= (og_defense * 0.3)
-		whammy_chance -= 1
+			f_defense -= (og_defense * 0.3)
+			whammy_chance -= 1
 		debuff()
 
 func random_buff():
