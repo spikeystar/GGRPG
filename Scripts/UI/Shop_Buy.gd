@@ -432,7 +432,7 @@ func set_id():
 		$Display.frame = 33
 		$Cost.text = "7,000 Mb"
 		item_cost = 7000
-		$Info.text = "Magic +20%, prevents Stun status\nAll attacks have 10% chance to Stun"
+		$Info.text = "Magic +20% & prevents Stun\nAll attacks have a 10% chance to Stun"
 		$Carrying.hide()
 		$Display.position = Vector2(85, -80)
 		$Display.scale = Vector2(1.1, 1.1)
@@ -502,7 +502,7 @@ func set_id():
 		$Display.frame = 22
 		$Cost.text = "10,000 Mb"
 		item_cost = 10000
-		$Info.text = "Magic & Defense +30%\nImmune to status effects from Neutral moves\nWhammy! chance +4"
+		$Info.text = "Magic & Defense +30%\nAlways prevents status effects from Neutral moves\nWhammy! chance +4"
 		$Carrying.hide()
 		$Display.position = Vector2(85, -79)
 		$Display.scale = Vector2(1.1, 1.1)
@@ -512,7 +512,7 @@ func set_id():
 		$Display.frame = 34
 		$Cost.text = "10,000 Mb"
 		item_cost = 10000
-		$Info.text = "Magic +20%, prevents Stun status\n\nAll attacks have 10% chance to Stun\n\nBuffs +1 turn"
+		$Info.text = "Magic +20% & prevents Stun\n\nAll attacks have a 10% chance to Stun\n\nBuffs +1 turn"
 		$Carrying.hide()
 		$Display.position = Vector2(85, -80)
 		$Display.scale = Vector2(1.1, 1.1)
@@ -532,7 +532,7 @@ func set_id():
 		$Display.frame = 40
 		$Cost.text = "12,000 Mb"
 		item_cost = 12000
-		$Info.text = "Recover 10% max HP & SP each turn\nWhammy! chance +2"
+		$Info.text = "Recover 20% max HP & 10% SP each turn\nWhammy! chance +2"
 		$Carrying.hide()
 		$Display.position = Vector2(82, -77)
 		$Display.scale = Vector2(1.1, 1.1)

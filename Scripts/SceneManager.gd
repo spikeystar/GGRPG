@@ -59,6 +59,7 @@ var shiny_watch = false
 var megaphone = false
 var super_cape = false
 var flower_crown = false
+var crux_name = ""
 
 ## DEBUG ##
 var times = 0

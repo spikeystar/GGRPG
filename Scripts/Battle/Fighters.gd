@@ -489,19 +489,22 @@ func pick_fighter():
 	rng.randomize()
 	if move_spread == "single":
 		var targeted = false
+		var targeted_active = false
 		var target_index
 		for x in range (fighters.size()):
 			targeted = fighters[x].get_status("targeted")
 			if targeted:
+				targeted_active = true
 				target_index = x
-		if targeted:
-			fighter_index = target_index
-		else:
+		if not targeted_active:
 			fighter_index = rng.randi_range(0, fighters.size() - 1)
+		if targeted_active:
+			fighter_index = target_index
 	
 func damage():
 	var immune = false
 	var status_immune = false
+	var debuff_immune = false
 	#randomize()
 	var damage : int
 	#var rng = RandomNumberGenerator.new()
@@ -541,8 +544,10 @@ func damage():
 		immune = true
 	if fighter_trinket == "Opal Pendant" and move_type == "neutral":
 		immune = true
-	if fighter_trinket == "Pumpkin Pin":
+	if fighter_trinket == "Flower Crown":
 		status_immune = true
+	if fighter_trinket == "Pumpkin Pin":
+		debuff_immune = true
 	var type_bonus : String = type_matchup()
 	
 	if move_kind == "attack":
@@ -555,9 +560,15 @@ func damage():
 	if enemy_type == move_type:
 		damage += (damage * 0.2)
 	if type_bonus == "adv":
-		damage += (damage/2)
+		if SceneManager.super_cape:
+			damage += (damage)
+		if not SceneManager.super_cape:
+			damage += (damage/2)
 	if type_bonus == "dis":
-		damage -= (damage/2)
+		if SceneManager.super_cape:
+			damage -= (damage)
+		if not SceneManager.super_cape:
+			damage -= (damage/2)
 	if type_bonus == "none":
 		pass
 		
@@ -590,19 +601,19 @@ func damage():
 		fighters[fighter_index]._wimpy()
 	if dizzy and not immune and not status_immune and not is_dead:
 		fighters[fighter_index]._dizzy()
-	if a_debuff and not immune and not is_dead:
+	if a_debuff and not immune and not is_dead and not debuff_immune:
 		fighters[fighter_index].apply_debuff("attack")
-	if m_debuff and not immune and not is_dead:
+	if m_debuff and not immune and not is_dead and not debuff_immune:
 		fighters[fighter_index].apply_debuff("magic")
-	if d_debuff and not immune and not is_dead:
+	if d_debuff and not immune and not is_dead and not debuff_immune:
 		fighters[fighter_index].apply_debuff("defense")
-	if random_debuff and not immune and not is_dead:
+	if random_debuff and not immune and not is_dead and not debuff_immune:
 		fighters[fighter_index].random_debuff()
-	if multi_debuff and not immune and not is_dead:
+	if multi_debuff and not immune and not is_dead and not debuff_immune:
 		fighters[fighter_index].multi_debuff()
 	if anxious and not immune and not status_immune and not is_dead:
 		fighters[fighter_index]._anxious()
-	if sp_loss and not immune and not is_dead:
+	if sp_loss and not immune and not is_dead and not fighter_trinket == "Flower Crown":
 		fighters[fighter_index].SP_loss(SP_amount)
 	if move_spread == "single":
 		yield(get_tree().create_timer(1.7), "timeout")

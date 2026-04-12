@@ -494,6 +494,23 @@ func weapon_SP(SP_amount: int):
 			sp_text.label.text = str(SP_amount)
 		PartyStats.party_sp = clamp(PartyStats.party_sp + SP_amount, 0, PartyStats.party_max_sp)
 	
+func regain_health(HP_amount):
+	if not dead:
+		health = clamp(health + HP_amount, 0, f_health)
+		yield(get_tree().create_timer(0.6), "timeout")
+		var heal_text = text(TEXT_HEAL)
+		if heal_text:
+			heal_text.label.text = str(HP_amount)
+	
+func regain_SP(SP_amount: int):
+	if not dead:
+		PartyStats.party_sp = clamp(PartyStats.party_sp + SP_amount, 0, PartyStats.party_max_sp)
+		yield(get_tree().create_timer(1.2), "timeout")
+		var sp_text = text(TEXT_SP)
+		if sp_text:
+			sp_text.label.text = str(SP_amount)
+
+	
 func anxious_SP(SP_amount: int):
 	if not dead:
 		var sp_text = text(TEXT_LOSS)
@@ -530,7 +547,18 @@ func damage(amount: int, damage_type: String):
 	type_damage(damage_type)
 	$AnimationPlayer.playback_speed = 0.5
 	health = max(0, health - amount)
+	if trinket == "Angel Egg" and health == 0:
+		health = 1
 	yield(get_tree().create_timer(1.6), "timeout")
+	if trinket == "Angel Egg" and health == 1:
+		SE.effect("Marble")
+		$Effect.show()
+		$EffectPlayer.play("Heal")
+		f_attack = int(f_attack - (f_attack*0.2))
+		f_magic = int(f_magic - (f_magic*0.2))
+		og_attack = int(og_attack - (og_attack*0.2))
+		og_magic = int(og_magic - (og_magic*0.2))
+		trinket = "-"
 	if health == 0:
 		dead = true
 		lose_buffs()
@@ -764,6 +792,14 @@ func turn_restored():
 			f_defense -= (og_defense * 0.5)
 			defending = false
 			
+	if trinket == "Butterfly Charm" and not dead:
+		regain_health(int(f_health * 0.2))
+	if trinket == "Froggie Charm" and not dead:
+		regain_SP(int(PartyStats.party_max_sp * 0.1))
+	if trinket == "Cutie Charm" and not dead:
+		regain_health(int(f_health * 0.2))
+		regain_SP(int(PartyStats.party_max_sp * 0.1))
+			
 	
 func get_turn_value():
 	return turn_used
@@ -871,6 +907,7 @@ func set_trinket():
 		f_attack = int(f_attack + (f_attack*0.1))
 		f_magic = int(f_magic + (f_magic*0.1))
 		f_defense = int(f_defense + (f_defense*0.1))
+		whammy_chance += 3
 	if trinket == "Ripple Ribbon":
 		f_attack = int(f_attack + (f_attack*0.1))
 		f_magic = int(f_magic + (f_magic*0.1))
@@ -895,7 +932,32 @@ func set_trinket():
 		f_magic = int(f_magic + (f_magic*0.2))
 	if trinket == "Megaphone":
 		SceneManager.megaphone = true
-	
+	if trinket == "Angel Egg":
+		f_attack = int(f_attack + (f_attack*0.2))
+		f_magic = int(f_magic + (f_magic*0.2))
+	if trinket == "Regal Brooch":
+		f_defense = int(f_defense + (f_defense))
+		whammy_chance += 3
+		_targeted()
+	if trinket == "Butterfly Charm":
+		whammy_chance += 5
+	if trinket == "Froggie Charm":
+		whammy_chance += 5
+	if trinket == "Cutie Charm":
+		whammy_chance += 2
+	if trinket == "Flower Crown":
+		SceneManager.flower_crown = true
+		whammy_chance += 3
+	if trinket == "Super Cape":
+		SceneManager.super_cape = true
+		f_attack = int(f_attack + (f_attack*0.2))
+		f_magic = int(f_magic + (f_magic*0.2))
+		whammy_chance += 3
+	if trinket == "Mystic Catalyst":
+		f_magic = int(f_magic + (f_magic*0.2))
+	if trinket == "Crux Reactor":
+		f_magic = int(f_magic + (f_magic*0.5))
+		whammy_chance += 5
 		
 func get_trinket():
 	return trinket
@@ -913,7 +975,10 @@ func trinket_recheck():
 		current_type = "neutral"
 	if SceneManager.megaphone:
 		f_magic = int(f_magic - (f_magic*0.2))
-		
+	if SceneManager.flower_crown:
+		f_attack = int(f_attack + (f_attack*0.1))
+		f_magic = int(f_magic + (f_magic*0.1))
+		f_defense = int(f_defense + (f_defense*0.1))
 		
 func spiderbite_reset():
 	spiderbite_ring_active = false
@@ -957,7 +1022,7 @@ func status_restore():
 			f_magic += (og_magic * 0.2)
 		if spiderbite_ring_active:
 			spiderbite_reset()
-	if targeted:
+	if targeted and not trinket == "Regal Brooch":
 		targeted = false
 		targeted_timer = 0
 		SceneManager.targeted_applied = false
@@ -1038,7 +1103,7 @@ func status_countdown():
 				f_attack += (og_attack * 0.2)
 			if spiderbite_ring_active:
 				spiderbite_reset()
-	if targeted:
+	if targeted and not trinket == "Regal Brooch":
 		targeted_timer -= 1
 		if targeted_timer == 0:
 			targeted = false	
@@ -1110,7 +1175,7 @@ func status_countdown():
 		anxious_SP(1)
 
 func _stun():
-	if not stun and not hocus_potion and not trinket == "Antique Watch" or not stun and not hocus_potion and not trinket == "Shiny Watch":
+	if not stun and not hocus_potion and not trinket == "Antique Watch" or not stun and not hocus_potion and not trinket == "Shiny Watch" or not stun and not hocus_potion and not trinket == "Butterfly Charm":
 		stun = true
 		turn_used = true
 		stun_timer = 2
@@ -1126,7 +1191,7 @@ func _stun():
 		return
 
 func _poison():
-	if not poison and not hocus_potion:
+	if not poison and not hocus_potion and not trinket == "Froggie Charm":
 		poison = true
 		poison_timer = 3
 		if not spiderbite_ring:
@@ -1325,7 +1390,7 @@ func apply_buff(id : String):
 		buff()	
 		
 func apply_debuff(id : String):
-	if id == "attack" and not a_debuff and not a_buff and not hocus_potion:
+	if id == "attack" and not a_debuff and not a_buff and not hocus_potion and not trinket == "Pumpkin Pin":
 		a_debuff = true
 		a_debuff_timer = 4
 		if trinket == "Shiny Watch":
@@ -1333,7 +1398,7 @@ func apply_debuff(id : String):
 		f_attack -= (og_attack * 0.3)
 		whammy_chance -= 1
 		debuff()
-	if id == "attack" and a_buff and not hocus_potion:
+	if id == "attack" and a_buff and not hocus_potion and not trinket == "Pumpkin Pin":
 		a_debuff_timer = 3 - a_buff_timer
 		if trinket == "Shiny Watch":
 			a_debuff_timer = 2 - a_buff_timer
@@ -1351,7 +1416,7 @@ func apply_debuff(id : String):
 			whammy_chance -= 1
 		debuff()
 		
-	if id == "magic" and not m_debuff and not m_buff and not hocus_potion:
+	if id == "magic" and not m_debuff and not m_buff and not hocus_potion and not trinket == "Pumpkin Pin":
 		m_debuff = true
 		m_debuff_timer = 4
 		if trinket == "Shiny Watch":
@@ -1359,7 +1424,7 @@ func apply_debuff(id : String):
 		f_magic -= (og_magic * 0.3)
 		whammy_chance -= 1
 		debuff()
-	if id == "magic" and m_buff and not hocus_potion:
+	if id == "magic" and m_buff and not hocus_potion and not trinket == "Pumpkin Pin":
 		m_debuff_timer = 3 - m_buff_timer
 		if trinket == "Shiny Watch":
 			m_debuff_timer = 2 - m_buff_timer
@@ -1377,7 +1442,7 @@ func apply_debuff(id : String):
 			whammy_chance -= 1
 		debuff()
 		
-	if id == "defense" and not d_debuff and not d_buff and not hocus_potion:
+	if id == "defense" and not d_debuff and not d_buff and not hocus_potion and not trinket == "Pumpkin Pin":
 		d_debuff = true
 		d_debuff_timer = 4
 		if trinket == "Shiny Watch":
@@ -1385,7 +1450,7 @@ func apply_debuff(id : String):
 		f_defense -= (og_defense * 0.3)
 		whammy_chance -= 1
 		debuff()
-	if id == "defense" and d_buff and not hocus_potion:
+	if id == "defense" and d_buff and not hocus_potion and not trinket == "Pumpkin Pin":
 		d_debuff_timer = 3 - d_buff_timer
 		if trinket == "Shiny Watch":
 			d_debuff_timer = 2 - d_buff_timer

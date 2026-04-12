@@ -318,9 +318,15 @@ func enemy_damage():
 		SE.effect("Success")
 		damage += (damage * 0.5)
 	if type_bonus == "adv":
-		damage += (damage/2)
+		if SceneManager.super_cape:
+			damage += (damage)
+		if not SceneManager.super_cape:
+			damage += (damage/2)
 	if type_bonus == "dis":
-		damage -= (damage/2)
+		if SceneManager.super_cape:
+			damage -= (damage)
+		if not SceneManager.super_cape:
+			damage -= (damage/2)
 	if type_bonus == "none":
 		pass
 	if whammy:
@@ -446,9 +452,15 @@ func magic_damage():
 	if fighter_type == move_type:
 		damage += (damage * 0.2)
 	if type_bonus == "adv":
-		damage += (damage/2)
+		if SceneManager.super_cape:
+			damage += (damage)
+		if not SceneManager.super_cape:
+			damage += (damage/2)
 	if type_bonus == "dis":
-		damage -= (damage/2)
+		if SceneManager.super_cape:
+			damage -= (damage)
+		if not SceneManager.super_cape:
+			damage -= (damage/2)
 	if type_bonus == "none":
 		pass
 	if whammy:
@@ -489,9 +501,10 @@ func magic_damage():
 		#ongoing = false
 	else:
 		target_enemy.reset_animation()
-	if not SceneManager.ripple_ribbon:
-		yield(get_tree().create_timer(0.5), "timeout")
-		ongoing = false
+		
+#	if not SceneManager.ripple_ribbon:
+#		yield(get_tree().create_timer(0.5), "timeout")
+#		ongoing = false
 		
 	if SceneManager.ripple_ribbon:
 		yield(get_tree().create_timer(0.57), "timeout")
@@ -552,6 +565,7 @@ func magic_damage():
 #		yield(get_tree().create_timer(0.3), "timeout")
 	
 	emit_signal("e_magic_damage_finish")
+	ongoing = false
 	stun = false
 	poison = false
 	a_debuff = false
@@ -609,9 +623,15 @@ func all_magic_damage():
 		if fighter_type == move_type:
 			damage += (damage * 0.2)
 		if type_bonus == "adv":
-			damage += (damage/2)
+			if SceneManager.super_cape:
+				damage += (damage)
+			if not SceneManager.super_cape:
+				damage += (damage/2)
 		if type_bonus == "dis":
-			damage -= (damage/2)
+			if SceneManager.super_cape:
+				damage -= (damage)
+			if not SceneManager.super_cape:
+				damage -= (damage/2)
 		if type_bonus == "none":
 			pass
 		
@@ -694,8 +714,9 @@ func all_magic_damage():
 			if multi_debuff and not immune and not dead:
 				enemies[x].multi_random_debuff()
 		debuffing = true
-		
+
 	emit_signal("e_magic_damage_finish")
+	ongoing = false
 	stun = false
 	poison = false
 	a_debuff = false
@@ -748,9 +769,15 @@ func _item_damage():
 		damage = item_damage
 		var type_bonus : String = type_matchup()
 		if type_bonus == "adv":
-			damage += (damage/2)
+			if SceneManager.super_cape:
+				damage += (damage)
+			if not SceneManager.super_cape:
+				damage += (damage/2)
 		if type_bonus == "dis":
-			damage -= (damage/2)
+			if SceneManager.super_cape:
+				damage -= (damage)
+			if not SceneManager.super_cape:
+				damage -= (damage/2)
 		if type_bonus == "none":
 			pass
 		

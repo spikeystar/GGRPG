@@ -183,6 +183,7 @@ func trinket_reset():
 	SceneManager.megaphone = false
 	SceneManager.super_cape = false
 	SceneManager.flower_crown = false
+	SceneManager.crux_name = ""
 
 #Window Display
 func hide_cursors():
@@ -353,6 +354,16 @@ func _input(event):
 	if (Input.is_action_just_pressed("ui_left")) and BB_active and not magic_show and not dizzy and not tutorial:
 		SE.effect("Move Between")
 		$MagicWindow/MagicWindowPanel/SpellList.fighter_name = $Fighters.get_f_name()
+		$MagicWindow.mystic_catalyst = false
+		$MagicWindow.crux_reactor = false
+		$MagicWindow/MagicWindowPanel/SpellList.mystic_catalyst = false
+		$MagicWindow/MagicWindowPanel/SpellList.crux_reactor = false
+		if $Fighters.get_trinket() == "Mystic Catalyst":
+			$MagicWindow.mystic_catalyst = true
+			$MagicWindow/MagicWindowPanel/SpellList.mystic_catalyst = true
+		if $Fighters.get_trinket() == "Crux Reactor":
+			$MagicWindow.crux_reactor = true
+			$MagicWindow/MagicWindowPanel/SpellList.crux_reactor = true
 		magic_show = true
 		item_halt = true
 		attack_show = false

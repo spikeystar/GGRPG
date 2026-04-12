@@ -18,6 +18,9 @@ signal all_ally_spell()
 
 export var tutorial : bool
 
+var mystic_catalyst = false
+var crux_reactor = false
+
 func _ready():
 	pass
 	
@@ -51,8 +54,9 @@ func _input(event):
 		#get_id()
 	
 	
-	
-	
+	if Input.is_action_just_pressed("ui_select") and magic_active and crux_reactor and SceneManager.crux_name == spell_id and not spell_selected:
+		SE.effect("Unable")
+		return
 	
 	if Input.is_action_just_pressed("ui_down") and magic_active and spell_index == list_max and not spell_selected and not tutorial:
 		SE.effect("Move Between")
@@ -86,6 +90,8 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_select") and not spell_selected and magic_active and PartyStats.party_sp < spell_cost:
 		SE.effect("Unable")
 		return
+		
+
 		
 func _on_Fighters_gary():
 	fighter_name = "gary"
@@ -155,8 +161,18 @@ func _on_WorldRoot_magic_inactive():
 	
 func _on_SpellList_spell_chosen():
 	spell_selected = true
+	
+	if crux_reactor:
+		SceneManager.crux_name = spell_id
+		crux_reactor = false
+	mystic_catalyst = false
 
 func _on_SpellList_ally_spell_chosen():
 	spell_selected = true
+	
+	if crux_reactor:
+		SceneManager.crux_name = spell_id
+		crux_reactor = false
+	mystic_catalyst = false
 
 

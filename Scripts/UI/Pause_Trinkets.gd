@@ -79,31 +79,31 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 18
 		$TrinketInventory.position = Vector2(90, -117.5)
-		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Fire, always immune to status effects from Fire moves\n\nWhammy! chance +2"
+		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Fire, always prevents status effects from Fire moves\n\nWhammy! chance +2"
 		set_trinket_holder()
 	if trinket_id == "Sapphire Pendant":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 19
 		$TrinketInventory.position = Vector2(90, -117.5)
-		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Water, always immune to status effects from Water moves\n\nWhammy! chance +2"
+		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Water, always prevents status effects from Water moves\n\nWhammy! chance +2"
 		set_trinket_holder()
 	if trinket_id == "Topaz Pendant":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 20
 		$TrinketInventory.position = Vector2(90, -117.5)
-		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Air, always immune to status effects from Air moves\n\nWhammy! chance +2"
+		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Air, always prevents status effects from Air moves\n\nWhammy! chance +2"
 		set_trinket_holder()
 	if trinket_id == "Peridot Pendant":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 21
 		$TrinketInventory.position = Vector2(90, -117.5)
-		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Earth, always immune to status effects from Earth moves\n\nWhammy! chance +2"
+		$TrinketInfo.text = "Magic & Defense +20%\n\nSets default type to Earth, always prevents status effects from Earth moves\n\nWhammy! chance +2"
 		set_trinket_holder()
 	if trinket_id == "Opal Pendant":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 22
 		$TrinketInventory.position = Vector2(90, -119)
-		$TrinketInfo.text = "Magic & Defense +30%\n\nAlways immune to status effects from Neutral moves\n\nWhammy! chance +4"
+		$TrinketInfo.text = "Magic & Defense +30%\n\nAlways prevents status effects from Neutral moves\n\nWhammy! chance +4"
 		set_trinket_holder()
 	if trinket_id == "Bottlecap":
 		$TrinketInventory.show()
@@ -133,7 +133,7 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 26
 		$TrinketInventory.position = Vector2(92, -114.5)
-		$TrinketInfo.text = "All stats +10%\n\nPrevents all statuses on holder"
+		$TrinketInfo.text = "All stats +10%\n\nPrevents all debuffs on holder\n\nWhammy! chance +3"
 		set_trinket_holder()
 	if trinket_id == "Ripple Ribbon":
 		$TrinketInventory.show()
@@ -175,13 +175,13 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 33
 		$TrinketInventory.position = Vector2(91.5, -118.5)
-		$TrinketInfo.text = "Magic +20%, prevents Stun status\n\nAll attacks have 10% chance to Stun"
+		$TrinketInfo.text = "Magic +20% & prevent Stun\n\nAll attacks have a 10% chance to Stun"
 		set_trinket_holder()
 	if trinket_id == "Shiny Watch":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 34
 		$TrinketInventory.position = Vector2(91.5, -118.5)
-		$TrinketInfo.text = "Magic +20%, prevents Stun status\n\nAll attacks have 10% chance to Stun\n\nBuffs +1 turn"
+		$TrinketInfo.text = "Magic +20% & prevents Stun\n\nAll attacks have a 10% chance to Stun\n\nBuffs +1 turn"
 		set_trinket_holder()
 	if trinket_id == "Megaphone":
 		$TrinketInventory.show()
@@ -205,19 +205,19 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 38
 		$TrinketInventory.position = Vector2(91.5, -121)
-		$TrinketInfo.text = "Recover 10% max HP each turn"
+		$TrinketInfo.text = "Recover 20% max HP each turn & prevents Stun\n\nWhammy! chance +5"
 		set_trinket_holder()
 	if trinket_id == "Froggie Charm":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 39
 		$TrinketInventory.position = Vector2(86.5, -117.5)
-		$TrinketInfo.text = "Recover 10% max SP each turn"
+		$TrinketInfo.text = "Recover 10% max SP each turn & prevents Poison\n\nWhammy! chance +5"
 		set_trinket_holder()
 	if trinket_id == "Cutie Charm":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 40
 		$TrinketInventory.position = Vector2(87, -115)
-		$TrinketInfo.text = "Recover 10% max HP & SP each turn\n\nWhammy! chance +2"
+		$TrinketInfo.text = "Recover 20% max HP & 10% SP each turn\n\nWhammy! chance +2"
 		set_trinket_holder()
 	if trinket_id == "Super Cape":
 		$TrinketInventory.show()
@@ -229,19 +229,19 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 42
 		$TrinketInventory.position = Vector2(90, -116.5)
-		$TrinketInfo.text = "Magic +20%\n\nHolder uses 1/2 SP for magic\n\nWhammy! chance +2"
+		$TrinketInfo.text = "Magic +20%\n\nHolder uses 1/2 SP for magic"
 		set_trinket_holder()
 	if trinket_id == "Flower Crown":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 44
 		$TrinketInventory.position = Vector2(91, -116)
-		$TrinketInfo.text = "All stats +10%\n\nPrevents all statuses and SP loss on holder\n\nWhammy! chance +3"
+		$TrinketInfo.text = "All stats +10% for whole party\n\nPrevents all statuses & SP loss on holder\n\nWhammy! chance +3"
 		set_trinket_holder()
 	if trinket_id == "Crux Reactor":
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 43
 		$TrinketInventory.position = Vector2(90, -116)
-		$TrinketInfo.text = "Magic +50%, but holder uses 1.5X SP\n\nSame magic spell cannot be used twice in a row"
+		$TrinketInfo.text = "Magic +50%, but holder uses 1.5X SP\n\nSame magic spell cannot be used twice in a row\n\nWhammy! chance +5"
 		set_trinket_holder()
 
 func _on_Members_main_retread():
