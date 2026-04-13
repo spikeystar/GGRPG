@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Cloud Shroud SE.mp3-2f9eade2df449a0a0c126d5e37f2688c.mp3str"
+
+[deps]
+
+source_file="res://SE/Cloud Shroud SE.mp3"
+dest_files=[ "res://.import/Cloud Shroud SE.mp3-2f9eade2df449a0a0c126d5e37f2688c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -912,7 +912,6 @@ func set_trinket():
 		f_attack = int(f_attack + (f_attack*0.2))
 		f_magic = int(f_magic + (f_magic*0.2))
 		whammy_chance += 3
-		SceneManager.ripple_ribbon = true
 	if trinket == "Toxic Barb":
 		f_attack = int(f_attack + (f_attack*0.3))
 	if trinket == "Compass":

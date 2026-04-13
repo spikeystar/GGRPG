@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=2]
+[gd_scene load_steps=103 format=2]
 
 [ext_resource path="res://SE/Item Get SE.mp3" type="AudioStream" id=1]
 [ext_resource path="res://Misc/SE.gd" type="Script" id=2]
@@ -100,6 +100,8 @@
 [ext_resource path="res://SE/Battle/Power Drill.mp3" type="AudioStream" id=98]
 [ext_resource path="res://SE/Battle/Strange Perfume.mp3" type="AudioStream" id=99]
 [ext_resource path="res://SE/Battle/Jinx Doll SE.mp3" type="AudioStream" id=100]
+[ext_resource path="res://SE/Ripple Ribbon SE.mp3" type="AudioStream" id=101]
+[ext_resource path="res://SE/Cloud Shroud SE.mp3" type="AudioStream" id=102]
 
 [node name="SE" type="Node"]
 pause_mode = 2
@@ -518,3 +520,12 @@ pitch_scale = 1.05
 stream = ExtResource( 100 )
 volume_db = 3.0
 pitch_scale = 1.05
+
+[node name="Ripple_Ribbon" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 101 )
+volume_db = 17.5
+pitch_scale = 0.99
+
+[node name="Cloud_Shroud" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 102 )
+volume_db = 5.0

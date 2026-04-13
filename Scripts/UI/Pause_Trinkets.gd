@@ -139,7 +139,7 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 27
 		$TrinketInventory.position = Vector2(91, -116)
-		$TrinketInfo.text = "Attack & Magic +20%\n\n30% chance for a single attack to damage all enemies too\n\nWhammy! chance +3"
+		$TrinketInfo.text = "Attack & Magic +20%\n\n50% chance for a single attack to damage all enemies too\n\nWhammy! chance +3"
 		set_trinket_holder()
 	if trinket_id == "Toxic Barb":
 		$TrinketInventory.show()
@@ -157,7 +157,7 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 30
 		$TrinketInventory.position = Vector2(90, -118)
-		$TrinketInfo.text = "Defense +20% for whole party\n\n10% chance for attacks to miss party"
+		$TrinketInfo.text = "Defense +20% for whole party\n\n10% chance for attacks to miss a party member"
 		set_trinket_holder()
 	if trinket_id == "Shooting Star":
 		$TrinketInventory.show()

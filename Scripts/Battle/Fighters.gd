@@ -577,8 +577,8 @@ func damage():
 		var rng = RandomNumberGenerator.new()
 		rng.randomize()
 		var cloud_chance = rng.randi_range(1, 100)
-		if cloud_chance <= (100):
-			SE.effect("Marble")
+		if cloud_chance <= (10):
+			SE.effect("Cloud Shroud")
 			damage = 0
 		
 	if damage == 0:

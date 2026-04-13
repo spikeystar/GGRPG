@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ripple Ribbon SE.mp3-ea6fbebb3641a4f51d638a38869e44d3.mp3str"
+
+[deps]
+
+source_file="res://SE/Ripple Ribbon SE.mp3"
+dest_files=[ "res://.import/Ripple Ribbon SE.mp3-ea6fbebb3641a4f51d638a38869e44d3.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

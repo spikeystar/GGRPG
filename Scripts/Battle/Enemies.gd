@@ -71,6 +71,7 @@ var stun_chance : int
 var poison_chance : int
 var strange_perfume = false
 
+var ripple_ribbon = false
 var ripple_damage = false
 var toxic_barb = false
 var shiny_watch = false
@@ -277,12 +278,13 @@ func _on_AttackTimer_attack_bonus():
 	attack_bonus = true
 	
 func _ripple_damage():
+	SE.effect("Ripple Ribbon")
 	for x in range(enemies.size()):
 		if not enemies[x].ripple_exception:
 			enemies[x].damage(int(ripple_damage))
 			
 func _ripple_magic_damage():
-	SE.effect("Success")
+	SE.effect("Ripple Ribbon")
 	for x in range(enemies.size()):
 		if not enemies[x].ripple_exception:
 			enemies[x].magic_damage(int(ripple_damage), damage_type)
@@ -338,9 +340,9 @@ func enemy_damage():
 	target_enemy.damage(damage)
 	is_attack = false
 	
-	if SceneManager.ripple_ribbon:
+	if ripple_ribbon:
 		ripple_damage = int(damage/3)
-		if ripple_chance <= 100:
+		if ripple_chance <= 50:
 			var ripple_timer = Timer.new()
 			ripple_timer.one_shot = true
 			add_child(ripple_timer)
@@ -381,11 +383,11 @@ func enemy_damage():
 		#ongoing = false
 	else:
 		target_enemy.reset_animation()
-	if not SceneManager.ripple_ribbon:
+	if ripple_ribbon:
 		yield(get_tree().create_timer(0.5), "timeout")
 		ongoing = false
 		
-	if SceneManager.ripple_ribbon:
+	if ripple_ribbon:
 		yield(get_tree().create_timer(0.59), "timeout")
 		for x in range(enemies.size()):
 			if enemies[x].is_dead() and not boss_battle:
@@ -410,6 +412,7 @@ func enemy_damage():
 	
 	toxic_barb = false
 	shiny_watch = false
+	ripple_ribbon = false
 		
 func magic_damage():
 	BB_active = false
@@ -473,9 +476,9 @@ func magic_damage():
 	if target_enemy.get_health() == 0:
 		dead = true
 		
-	if SceneManager.ripple_ribbon:
+	if ripple_ribbon:
 		ripple_damage = int(damage/3)
-		if ripple_chance <= 100:
+		if ripple_chance <= 50:
 			var ripple_timer = Timer.new()
 			ripple_timer.one_shot = true
 			add_child(ripple_timer)
@@ -502,11 +505,11 @@ func magic_damage():
 	else:
 		target_enemy.reset_animation()
 		
-#	if not SceneManager.ripple_ribbon:
+#	if not ripple_ribbon:
 #		yield(get_tree().create_timer(0.5), "timeout")
 #		ongoing = false
 		
-	if SceneManager.ripple_ribbon:
+	if ripple_ribbon:
 		yield(get_tree().create_timer(0.57), "timeout")
 		for x in range(enemies.size()):
 			if enemies[x].is_dead() and not boss_battle:
@@ -561,8 +564,6 @@ func magic_damage():
 				target_enemy.random_debuff()
 				debuffing = true
 		
-#	if SceneManager.ripple_ribbon:
-#		yield(get_tree().create_timer(0.3), "timeout")
 	
 	emit_signal("e_magic_damage_finish")
 	ongoing = false
@@ -574,6 +575,7 @@ func magic_damage():
 	random_debuff = false
 	multi_debuff = false
 	
+	ripple_ribbon = false
 	toxic_barb = false
 	shiny_watch = false
 		

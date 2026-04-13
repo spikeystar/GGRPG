@@ -175,8 +175,6 @@ func trinket_reset():
 	SceneManager.beggars_amulet = false
 	SceneManager.bottlecap = false
 	SceneManager.flashlight = false
-	SceneManager.ripple_ribbon = false
-	SceneManager.toxic_barb = false
 	SceneManager.compass = false
 	SceneManager.cloud_shroud = false
 	SceneManager.white_flag = false
@@ -815,6 +813,8 @@ func _on_Enemies_enemy_chosen():
 	var enemy_position = $Enemies.get_e_position() + Vector2(-55, -8)
 	var time = 1
 	var fighter_trinket = $Fighters.get_trinket()
+	if fighter_trinket == "Ripple Ribbon":
+		$Enemies.ripple_ribbon = true
 	if fighter_trinket == "Toxic Barb":
 		$Enemies.toxic_barb = true
 	if fighter_trinket == "Antique Watch" or fighter_trinket == "Shiny Watch":
@@ -1501,6 +1501,8 @@ func _on_Enemies_single_enemy_spell():
 	$Enemies.fighter_type = $Fighters.get_status("type")
 	
 	var fighter_trinket = $Fighters.get_trinket()
+	if fighter_trinket == "Ripple Ribbon":
+		$Enemies.ripple_ribbon = true
 	if fighter_trinket == "Toxic Barb":
 		$Enemies.toxic_barb = true
 	if fighter_trinket == "Antique Watch" or fighter_trinket == "Shiny Watch":
@@ -1609,7 +1611,7 @@ func _on_Fighters_ally_spell_chosen():
 	
 	
 func _on_Enemies_e_magic_damage_finish():
-	$Fighters/HUDS.showing()
+	#$Fighters/HUDS.showing()
 	var fighter_node = $Fighters.get_f_current()
 	var fighter_index = $Fighters.get_f_index()
 	var fighter_position = $Fighters.get_position()

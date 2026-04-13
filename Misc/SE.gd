@@ -231,3 +231,7 @@ func effect(id : String):
 		$Strange_Perfume.play()
 	if id == "Jinx Doll":
 		$Jinx_Doll.play()
+	if id == "Ripple Ribbon":
+		$Ripple_Ribbon.play()
+	if id == "Cloud Shroud":
+		$Cloud_Shroud.play()
