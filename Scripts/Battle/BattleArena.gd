@@ -821,16 +821,19 @@ func _on_Enemies_enemy_chosen():
 		$Enemies.shiny_watch = true
 	
 	if fighter_name == "jacques":
-		SE.effect("Skateboard")
+		if PartyStats.jacques_weapon == "Skateboard":
+			SE.effect("Skateboard")
 	tween.tween_property(fighter_node, "position", enemy_position, 0.5)
 	yield(tween, "finished")
 	emit_signal("start_attack_timer")
 	$Fighters.fighter_attack()
 	fighter_selection = false
 	if fighter_name == "gary":
-		SE.effect("Red Fender")
+		if PartyStats.gary_weapon == "Red Fender":
+			SE.effect("Red Fender")
 	if fighter_name == "irina":
-		SE.effect("Star Wand")
+		if PartyStats.irina_weapon == "Star Wand":
+			SE.effect("Star Wand")
 	
 func _on_Fighters_anim_finish():
 	var f_name = $Fighters.get_f_name()

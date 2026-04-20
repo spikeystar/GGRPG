@@ -71,6 +71,7 @@ var hocus_potion_timer = 0
 
 var spiderbite_ring = false
 var spiderbite_ring_active = false
+var angel_egg_used = false
 
 onready var Congeal = preload("res://Misc/Shader/Congeal_Shader.tres")
 
@@ -549,15 +550,17 @@ func damage(amount: int, damage_type: String):
 	health = max(0, health - amount)
 	if trinket == "Angel Egg" and health == 0:
 		health = 1
+		angel_egg_used = true
 	yield(get_tree().create_timer(1.6), "timeout")
-	if trinket == "Angel Egg" and health == 1:
-		SE.effect("Marble")
+	if trinket == "Angel Egg" and angel_egg_used:
+		SE.effect("Angel Egg")
 		$Effect.show()
 		$EffectPlayer.play("Heal")
 		f_attack = int(f_attack - (f_attack*0.2))
 		f_magic = int(f_magic - (f_magic*0.2))
 		og_attack = int(og_attack - (og_attack*0.2))
 		og_magic = int(og_magic - (og_magic*0.2))
+		whammy_chance -= 3
 		trinket = "-"
 	if health == 0:
 		dead = true
@@ -682,15 +685,15 @@ func flee():
 		PartyStats.damien_current_health = 1
 	
 func pre_attack():
-	#if fighter_name == "jacques" and PartyStats.jacques_weapon == "Surfboard":
-	#	$AnimationPlayer.play("Fighter_Pre_Attack_2")
-	#else:
-	$AnimationPlayer.play("Fighter_Pre_Attack")
-	able = false
+	if fighter_name == "jacques" and PartyStats.jacques_weapon == "Surfboard":
+		$AnimationPlayer.play("Fighter_Pre_Attack_2")
+	else:
+		$AnimationPlayer.play("Fighter_Pre_Attack")
+		able = false
 
 func attack():
-#	if fighter_name == "jacques" and PartyStats.jacques_weapon == "Surfboard":
-	#	$AnimationPlayer.play("Fighter_Attack_2")
+	if fighter_name == "jacques" and PartyStats.jacques_weapon == "Surfboard":
+		$AnimationPlayer.play("Fighter_Attack_2")
 	#else:
 	$AnimationPlayer.play("Fighter_Attack")
 	$AnimationPlayer.playback_speed = 0.6
@@ -897,7 +900,7 @@ func set_trinket():
 	if trinket == "Overdrive":
 		f_magic = int(f_magic + (f_magic*0.2))
 		f_attack = int(f_attack + (f_attack*0.2))
-		whammy_chance += 7
+		whammy_chance += 10
 	if trinket == "Flashlight":
 		f_magic = int(f_magic + (f_magic*0.3))
 		SceneManager.flashlight = true
@@ -935,6 +938,7 @@ func set_trinket():
 	if trinket == "Angel Egg":
 		f_attack = int(f_attack + (f_attack*0.2))
 		f_magic = int(f_magic + (f_magic*0.2))
+		whammy_chance += 3
 	if trinket == "Regal Brooch":
 		f_defense = int(f_defense + (f_defense))
 		whammy_chance += 3

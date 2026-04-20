@@ -52,7 +52,7 @@ var damien_weapon : String = "Spellbook"
 
 var party_sp = 20
 var party_max_sp = 20
-var party_level = 3
+var party_level = 1
 var party_exp = 0
 var next_level = 200
 
@@ -66,13 +66,13 @@ func _ready():
 	suzy_current_health = suzy_health
 	damien_current_health = damien_health
 	
-	#gary_current_health = 1
+	#gary_current_health = 3
 	#jacques_current_health = 1
 	#jacques_defense = 0
 	#irina_current_health = 1
 	#gary_magic = 5000
 	#gary_attack = 5000
-	gary_trinket = "Cloud Shroud"
+	#gary_trinket = "Angel Egg"
 	#jacques_trinket = "Ripple Ribbon"
 	
 	#party_sp = 0

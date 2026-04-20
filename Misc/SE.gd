@@ -235,3 +235,5 @@ func effect(id : String):
 		$Ripple_Ribbon.play()
 	if id == "Cloud Shroud":
 		$Cloud_Shroud.play()
+	if id == "Angel Egg":
+		$Angel_Egg.play()

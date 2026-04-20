@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Angel Egg SE.mp3-7125d9e9174847fffd352902f069fec2.mp3str"
+
+[deps]
+
+source_file="res://SE/Angel Egg SE.mp3"
+dest_files=[ "res://.import/Angel Egg SE.mp3-7125d9e9174847fffd352902f069fec2.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

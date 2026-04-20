@@ -115,7 +115,7 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 23
 		$TrinketInventory.position = Vector2(89, -120)
-		$TrinketInfo.text = "Attack & Magic +20%\n\nWhammy! chance +7"
+		$TrinketInfo.text = "Attack & Magic +20%\n\nWhammy! chance +10"
 		set_trinket_holder()
 	if trinket_id == "Flashlight":
 		$TrinketInventory.show()
@@ -193,7 +193,7 @@ func set_id():
 		$TrinketInventory.show()
 		$TrinketInventory.frame = 35
 		$TrinketInventory.position = Vector2(91.5, -118)
-		$TrinketInfo.text = "Magic & Defense +20%\n\nHolder will always withstand one fatal hit, but the trinket's effects disappear after"
+		$TrinketInfo.text = "Magic & Defense +20%\n\nWhammy! chance +3\n\nHolder will always withstand one fatal hit, but the trinket's effects disappear after"
 		set_trinket_holder()
 	if trinket_id == "Regal Brooch":
 		$TrinketInventory.show()
