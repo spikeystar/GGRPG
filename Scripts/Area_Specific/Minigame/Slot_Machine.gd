@@ -13,7 +13,7 @@ var slot_3 = false
 func _ready():
 	$Slots/Slot1.frame = 0
 	$Slots/Slot2.frame = 5
-	$Slots/Slot3.frame = 2
+	$Slots/Slot3.frame = 6
 	$Slots/Slot1.speed_scale = 1.2
 	$Slots/Slot2.speed_scale = 1.2
 	$Slots/Slot3.speed_scale = 1.2

@@ -1133,7 +1133,7 @@ offset = Vector2( 0, 10 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 9, -23 )
-scale = Vector2( 1.7, 1.6 )
+scale = Vector2( 1.66, 1.55 )
 texture = ExtResource( 15 )
 offset = Vector2( 0, -10 )
 hframes = 3

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hoop_Fire1.png-d7de9da7959a7c23a3c554c5a4a157eb.stex"
+path="res://.import/Spearhead SS.png-495aa7e34e36cc4b7b06328dd900f80c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Puzzle Pier/Circus/Hoop_Fire1.png"
-dest_files=[ "res://.import/Hoop_Fire1.png-d7de9da7959a7c23a3c554c5a4a157eb.stex" ]
+source_file="res://Enemies/Treasure Way/Spearhead SS.png"
+dest_files=[ "res://.import/Spearhead SS.png-495aa7e34e36cc4b7b06328dd900f80c.stex" ]
 
 [params]
 

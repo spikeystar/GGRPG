@@ -235,7 +235,7 @@ offset = Vector2( 0, -12 )
 hframes = 3
 vframes = 3
 script = ExtResource( 2 )
-depth_test_offset = Vector2( -8, 30 )
+depth_test_offset = Vector2( -8, 28 )
 feet_height = 20.0
 height = 100.0
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Hoop_Fire2.png-761d44dc9807f535362714db35b19ddf.stex"
+path="res://.import/Hoverbie SS.png-bd5d18b73a30cc7836c72ec414c2bf0f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Puzzle Pier/Circus/Hoop_Fire2.png"
-dest_files=[ "res://.import/Hoop_Fire2.png-761d44dc9807f535362714db35b19ddf.stex" ]
+source_file="res://Enemies/Treasure Way/Hoverbie SS.png"
+dest_files=[ "res://.import/Hoverbie SS.png-bd5d18b73a30cc7836c72ec414c2bf0f.stex" ]
 
 [params]
 
