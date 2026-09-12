@@ -11,6 +11,7 @@ export var height = 0.0 # The height of the platform standing on, or jump height
 export var use_dithering = true # Dither alpha values
 export var use_dither_blending = true # Offset alpha dithering pattern every frame to create a smoothing effect
 
+export var printer = false
 #------------#
 # Properties #
 #------------#

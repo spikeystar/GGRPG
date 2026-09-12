@@ -6,7 +6,7 @@
 [ext_resource path="res://Scripts/Objects/EnemyMotionRoot.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Objects/EnemyTest.gd" type="Script" id=5]
 [ext_resource path="res://NPC/NPC_ShadowAreaCheck.gd" type="Script" id=6]
-[ext_resource path="res://Enemies/Circus/Teddyfloat SS.png" type="Texture" id=7]
+[ext_resource path="res://Enemies/Circus/Teddyfloat Wander SS.png" type="Texture" id=7]
 [ext_resource path="res://Enemies/PlayerDetection.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Enemies/BattleTrigger.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Areas/Cherry Trail/Cherry Trail BA 2.tscn" type="PackedScene" id=10]
@@ -173,7 +173,7 @@ MAX_Z_DIFF = 45
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MotionRoot"]
 position = Vector2( -7, -19 )
-scale = Vector2( 1.30987, 1.35385 )
+scale = Vector2( 1.16452, 1.23026 )
 shape = SubResource( 180 )
 
 [node name="ShadowAreaCheck" type="Area2D" parent="MotionRoot"]
@@ -201,8 +201,8 @@ collision_layer = 7
 collision_mask = 6
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="MotionRoot/BattleTrigger"]
-position = Vector2( -3.26484, -11.6202 )
-scale = Vector2( 1.10242, -1.15177 )
+position = Vector2( -5.44139, 27.8886 )
+scale = Vector2( 0.755092, 2.18341 )
 shape = SubResource( 179 )
 
 [node name="ShadowYSort" type="Node2D" parent="."]
@@ -230,14 +230,13 @@ position = Vector2( -1, 0 )
 [node name="Enemy" type="Sprite" parent="BodyYSort/BodyVisualRoot"]
 modulate = Color( 0.972549, 0.988235, 1, 1 )
 position = Vector2( 4, -24 )
-scale = Vector2( 1.35, 1.3 )
 texture = ExtResource( 7 )
 offset = Vector2( 0, -12 )
 hframes = 3
 vframes = 3
 script = ExtResource( 3 )
-depth_test_offset = Vector2( -8, 30 )
-feet_height = 20.0
+depth_test_offset = Vector2( -8, 28 )
+feet_height = -100.0
 height = 100.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BodyYSort"]
